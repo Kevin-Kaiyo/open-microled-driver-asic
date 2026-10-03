@@ -39,6 +39,6 @@ RTL exhaustive coverage 不代表模拟电路已在全部 duty / PVT 组合下�
 - `edge-duty064.csv` 保留同一 case 一个 turn-on 周围的原始 solver samples。PNG 图由原始 adaptive samples 绘制；可编辑 SVG 在本地 build 中生成。
 - `source-hashes.json` 对本次 RTL、testbench、analog source、runner 与 model lock 记录 SHA256。工具版本、host、参数、窗口、分母与每一项检查均保存在 summary 中。
 - Model downloads 逐文件校验 SHA256。SPICE run 前移除该 case 的旧 waveform，失败不能复用 stale data；若缺少完整、有限、单调的输出，则 runner 失败。全部检查通过后才能 `make evidence` 覆盖精简 evidence。
-- Python dependencies 在 `uv.lock`；native EDA 版本记录在 summary。未来升级 tool / PDK 后必须重跑并保存新证据，旧结果不自动适用。GitHub CI 是 Linux regression，不能代替 Mac 或 physical validation。
+- Python dependencies 在 `uv.lock`；native EDA 版本记录在 summary。未来升级 tool / PDK 后必须重跑并保存新证据，旧结果不自动适用。GitHub CI template 尚未启用、Linux regression 未执行；即使未来通过，也不能代替 physical validation。
 
 当前 reference current、MOS 尺寸、合成 LED、有限边沿和测试电压都是公开可检查的设计假设。未验证项包括真实 LED I-V / temperature / optical response、noise、mismatch / Monte Carlo、全 PVT、电压 stress、reference generation、array fanout、physical timing / glitches、IR drop、pads / ESD 和 MPW acceptance。

@@ -59,6 +59,8 @@ make sim
 
 见 [design](docs/design.md) 了解系统与逐器件连接；[verification](docs/verification.md) 记录检查标准、branch current 中的 charge 项、原始数据与图的区别，以及发现并修正的 diode IS 下限问题。
 
+GitHub Actions 配置保存在 [CI template](docs/ci/phase1.yml)，目前尚未启用或在 Linux 上验证：创建仓库时使用的 OAuth token 缺少 `workflow` scope，GitHub 拒绝带 workflow 的推送。已验证结果来自上面的 Mac 环境；启用步骤见 [CI instructions](docs/ci/README.md)。
+
 ## 仓库结构
 
 ```text
