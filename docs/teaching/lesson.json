@@ -1,0 +1,664 @@
+{
+  "slides": [
+    {
+      "title": "整体架构：让一个数字设定变成 LED 电流",
+      "purpose": "能说出整个项目的输入、处理环节和输出。",
+      "body": [
+        "用户设定 duty 与 enable，数字逻辑产生 PWM。",
+        "MOS current sink 决定导通电流，LED 模型决定电气工作点。",
+        "当前跑通一条单像素 RTL → transistor → LED 电流路径。",
+        "平均电流作为电气亮度代理，光学输出仍待测。"
+      ],
+      "notes": "先把 ASIC 看成分工明确的系统。数字逻辑回答“什么时候开”，模拟驱动回答“开时流多少电流”，LED 的电气特性参与决定电压工作点。当前输出是仿真电流，不能直接标为实测亮度。Python 负责运行、桥接和检查；实际 PWM 来自 RTL，电流来自 MOS/LED 的 SPICE 求解。 条件：单像素；单向 digital→analog。",
+      "sources": [
+        {
+          "label": "设计系统图",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/design.md"
+        },
+        {
+          "label": "runner",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/scripts/run_phase1.py"
+        }
+      ]
+    },
+    {
+      "title": "现在与长期：先完成一个像素，再增加规模",
+      "purpose": "分清当前交付范围与长期 ASIC 架构。",
+      "body": [
+        "已跑通一个像素的 RTL → transistor → LED 电流路径。",
+        "Standalone analog cell 已有 MAG/GDS、DRC/LVS 与 RC 回归。",
+        "下一步完成数字 physical integration、reference 与芯片接口。",
+        "4×4 的通信和像素存储仍按后续独立阶段展开。"
+      ],
+      "notes": "当前已经推进到 standalone 六 MOS analog cell：Magic DRC=0、Netgen unique match、GDS roundtrip 复核通过，七个 nets 全部 RC extraction 后完成配对电气回归。这只支持该 analog cell 与所选公开 deck 的结果。数字 PWM 的 synthesis/physical integration、pads/ESD、foundry signoff、硅片及光学实测仍未完成。FPGA 是未来外部 controller 候选，当前 RTL 使用 Icarus 执行。4×4 的 receiver、register map 与 pixel memory 尚未实现，先学习并完成这一个像素的完整接口责任。",
+      "sources": [
+        {
+          "label": "单像素物理与RC回归",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/summary.json"
+        },
+        {
+          "label": "roadmap",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/roadmap.md"
+        },
+        {
+          "label": "当前layout",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/layout.png"
+        }
+      ]
+    },
+    {
+      "title": "四种量：数据、时间、电流与光",
+      "purpose": "分清设定 code、PWM duty、导通电流与 optical brightness。",
+      "body": [
+        "duty 是数字设定，D 是一帧的高电平时间比例。",
+        "导通电流由模拟 reference 和 current mirror 决定。",
+        "保持脉冲幅度，改变脉冲宽度就是 PWM 调光。",
+        "平均电流是电气代理，需要实测才能换算光学亮度。"
+      ],
+      "notes": "只改变 duty 时，理想情况下改变的是点亮时间，导通电流幅值由 reference/mirror 决定。平均电流近似等于时间比例乘导通电流，但真实边沿有电荷项。把电流转换为光还需要器件效率、温度、current density 和测量，这些尚未建模或测量。 练习：保持导通电流 100 µA，25% duty 的理想平均电流是多少？答案 25 µA；这只是预估，稍后用仿真积分核对。 条件：typical、27 °C、VLED=5 V、synthetic Vf=2.8 V。",
+      "sources": [
+        {
+          "label": "brightness proxy",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/design.md"
+        },
+        {
+          "label": "metrics",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/metrics.csv"
+        }
+      ]
+    },
+    {
+      "title": "把信号路径与电流路径分开看",
+      "purpose": "在同一图上找出控制信号和真实导通电流路径。",
+      "body": [
+        "控制路径：数据 → PWM → gate selection。",
+        "参考路径：IREF → XREF → bias → gate。",
+        "LED 电流路径：VLED → LED → XOUT → GND。",
+        "Vlogic、VLED 与 IREF 目前都是 ideal sources。"
+      ],
+      "notes": "Gate 控制与 drain/source 导电路径不是同一根线。`VSENSE` 为零伏电压源，用于读取 branch current，不在模型中额外产生压降。全开时还有 reference 支路电流，系统总耗电不能只用 LED current 表示。真实供电阻抗、pad、封装和互连都需要以后加入。 条件：ideal rails、ground、IREF；当前无走线 R/C。",
+      "sources": [
+        {
+          "label": "pixel_driver.spice",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/analog/driver/pixel_driver.spice"
+        },
+        {
+          "label": "make_deck",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/scripts/run_phase1.py"
+        },
+        {
+          "label": "独立电路图",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/driver-evidence.md"
+        }
+      ]
+    },
+    {
+      "title": "先定义 clock、slot 和 frame",
+      "purpose": "用时间轴读懂 PWM 的时间单位。",
+      "body": [
+        "Clock 每个 rising edge 推进一次状态；1 MHz 对应 1 µs。",
+        "Slot 是相邻时钟边沿之间的一格时间。",
+        "Frame 包含 256 slots，周期为 256 µs。",
+        "PWM 重复频率为 1 MHz / 256 = 3906.25 Hz。"
+      ],
+      "notes": "教学缩略图只用于手算，不是改变实际 RTL。PWM frequency 描述一帧重复的速率，clock frequency 描述数字计数的步速。1 MHz 与 256 是起始设计假设，不是由 MicroLED datasheet 推导出的最佳参数。最短非零脉冲为一 slot，也就是 1 µs。 练习：clock 改为 2 MHz 且仍为 256 slots，frame 多长？128 µs；频率 7812.5 Hz。此练习不改源码、不声称已验证。 条件：baseline 1 MHz / 256 slots。",
+      "sources": [
+        {
+          "label": "pwm.md",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/pwm.md"
+        },
+        {
+          "label": "RTL",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/rtl/pixel_pwm.v"
+        },
+        {
+          "label": "testbench",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/sim/rtl/tb_pixel_pwm.v"
+        }
+      ]
+    },
+    {
+      "title": "counter 与 comparator 怎样生成 PWM",
+      "purpose": "能按 slot 手算 PWM 输出，并对应到 RTL。",
+      "body": [
+        "Counter 保存当前 slot 编号，范围为 0…255。",
+        "Comparator 判断 counter 是否小于 active_duty。",
+        "enable 为 1 且判断成立时，PWM 为高电平。",
+        "duty=64 时，高电平覆盖 slot 0…63。"
+      ],
+      "notes": "计数器寄存器保存“现在走到第几格”；组合比较器判断“是否还处于点亮范围”。零扩展 `{1'b0,counter}` 将 8-bit 计数值与 9-bit threshold 对齐。这里不用较复杂的通信知识也能读懂逻辑；后续接口只负责可靠地产生新的设定。 练习：用 8-slot 教学表、duty=3，写出输出：`11100000`。再回到真实 256-slot 代码。 条件：enable=1，帧内 active_duty 固定。",
+      "sources": [
+        {
+          "label": "pixel_pwm.v",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/rtl/pixel_pwm.v"
+        }
+      ]
+    },
+    {
+      "title": "为什么 duty 有 9 bits，counter 只有 8 bits",
+      "purpose": "理解 exact off / exact full-on 两个端点的编码。",
+      "body": [
+        "8-bit counter 覆盖 256 个 slots。",
+        "9-bit duty 用于同时表示 0 与 256 两个端点。",
+        "duty=255 仍有一个 off slot；256 为 exact full-on。",
+        "257…511 饱和到 256，共 257 个合法状态。"
+      ],
+      "notes": "8 bits 能表示 0…255，不能表示 256。多一位用于全开端点，所以合法状态共 257 个；不能据此称为 512 级灰阶或 9-bit analog effective resolution。代码 clamp 的测试覆盖所有 255 个越界值。 条件：counter=0…255；duty 为 9-bit unsigned。",
+      "sources": [
+        {
+          "label": "RTL",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/rtl/pixel_pwm.v"
+        },
+        {
+          "label": "rtl-selfcheck.log",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/rtl-selfcheck.log"
+        }
+      ]
+    },
+    {
+      "title": "帧边界提交：让一次更新作用于完整一帧",
+      "purpose": "区分 requested duty 与 active duty。",
+      "body": [
+        "Requested duty 是输入请求，active duty 是当前帧设定。",
+        "在 frame boundary 才锁存 duty 和 enable。",
+        "帧中更新不改变正在执行的脉冲。",
+        "下一帧采用边界前最后的输入值。"
+      ],
+      "notes": "如果直接用帧中变化的 duty 作比较，当前脉冲可能被截短或重新打开。锁存把请求与正在执行的一帧分开。当前输入属于同一 clock domain，尚未实现异步通信的 CDC 或 handshake。多像素后会需要整帧 atomic commit，这是同一思想的扩展。 练习：在 counter=100 时把 duty 从 64 改为 192，当前帧会立刻变高吗？不会；下一 frame 才使用 192。 条件：输入满足同域时序假设；未证明物理 setup/hold。",
+      "sources": [
+        {
+          "label": "更新与 reset",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/pwm.md"
+        },
+        {
+          "label": "RTL",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/rtl/pixel_pwm.v"
+        }
+      ]
+    },
+    {
+      "title": "reset 与 enable：两种不同的关断规则",
+      "purpose": "预测 reset、disable 与恢复输出的时间。",
+      "body": [
+        "Reset 为高有效同步信号，在下一 rising edge 生效。",
+        "Reset 清除设定，释放后从 slot 0 开始新帧。",
+        "enable=0 在下一 frame boundary 提交 off。",
+        "两种关断规则分别由 RTL testbench 检查。"
+      ],
+      "notes": "reset 可以中断当前 frame，enable 的正常更新则等到下一 frame。同步 reset 之前，RTL 寄存器没有已定义的初始化值。当前不是安全保护关断设计：没有过流 comparator，也没有异步 fault path。逻辑仿真通过不等于综合后组合 PWM comparator 无毛刺，后续数字物理验证需要单独进行。 条件：rising-edge synchronous reset；未实现 fault feedback。",
+      "sources": [
+        {
+          "label": "RTL",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/rtl/pixel_pwm.v"
+        },
+        {
+          "label": "pwm.md",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/pwm.md"
+        }
+      ]
+    },
+    {
+      "title": "从执行后的 RTL 边沿到 SPICE 电压",
+      "purpose": "理解 feed-forward 联动是怎样建立的。",
+      "body": [
+        "Icarus 执行 RTL，导出 time_ns,pwm 边沿记录。",
+        "Bridge 保留 timestamp，转换成 0 / 3.3 V。",
+        "每个边沿用 10 ns 的有限 ramp 表示。",
+        "ngspice 求解 MOS 与 LED；当前联动是单向 replay。"
+      ],
+      "notes": "逻辑 1 本身没有 3.3 V 的电气含义，bridge 显式加入这条假设。第一条已知 low 来自 500 ns reset，桥接把它向前延伸到 SPICE 0 ns，这是启动假设。10 ns 并非 standard-cell 测得的 slew，也不包含 pad、level shifter 或 drive strength。真正反馈联仿需要模拟检测改变 RTL 状态；当前只有单向 replay。 条件：10 ns slew、3.3 V amplitude；首个 frame=2.5 µs。",
+      "sources": [
+        {
+          "label": "read_events / pwl_points",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/scripts/run_phase1.py"
+        },
+        {
+          "label": "bridge tests",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/tests/test_bridge.py"
+        }
+      ]
+    },
+    {
+      "title": "Current mirror：先用 reference 求出 bias，再复制电流",
+      "purpose": "理解 diode-connected reference MOS 与 output MOS 的分工。",
+      "body": [
+        "Diode-connected XREF 将 IREF 转换成 bias 电压。",
+        "XOUT 利用相近 gate-source bias 复制电流。",
+        "相同 W/L 对应 nominal 1:1 mirror。",
+        "足够 headroom 与器件匹配是近似恒流的前提。"
+      ],
+      "notes": "Current mirror 复制的是 reference 定义的电流关系，不是无条件把任何 LED 电流锁死为 100 µA。XREF 把给定电流转换成所需 VGS。输出端 VDS 与参考端不同，PDK model 会包含由此产生的误差；当前未启用 mismatch。适合用这个最小电路学习 bias、工作区和非理想误差。 条件：1:1 W/L；external ideal IREF；无 cascode/feedback。",
+      "sources": [
+        {
+          "label": "pixel_driver.spice",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/analog/driver/pixel_driver.spice"
+        },
+        {
+          "label": "COCOA §5.3",
+          "url": "https://bmurmann.github.io/COCOA/contents/partI/partI.5.html#current-mirrors"
+        }
+      ]
+    },
+    {
+      "title": "Headroom：LED 占用电压后，MOS 还剩多少余量",
+      "purpose": "用节点电压解释为什么降低供电会掉电流。",
+      "body": [
+        "Vf 是 LED 在实际电流下的正向压降。",
+        "VDS,out 是输出 MOS drain 与 source 的电压。",
+        "当前 VDS,out = VLED − Vf(ILED)。",
+        "5 V nominal 下，actual Vf≈2.801 V，VDS≈2.199 V。"
+      ],
+      "notes": "MOS 维持近似恒流需要最低 compliance voltage，常称 headroom。长沟道近似可用 VDS ≥ VGS−VTH 来理解，但不能拿这个式子替代 BSIM 模型或可靠性检查。LED 的实际 Vf 会随电流改变，2.8 V 是 100 µA/27 °C 的锚定标签，不是固定电压源。 练习：暂按 Vf=2.8 V 手算：5 V→2.2 V 余量，2.9 V→0.1 V 余量。随后用 actual Vf 与电流核对，保留近似与仿真的差别。 条件：typical、27 °C、full-on；公式用于解释。",
+      "sources": [
+        {
+          "label": "headroom 推导",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/driver-evidence.md"
+        },
+        {
+          "label": "summary",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/summary.json"
+        }
+      ]
+    },
+    {
+      "title": "完整单像素电路：六个 MOS 各做一件事",
+      "purpose": "能从器件表逐项核对完整 netlist。",
+      "body": [
+        "XREF 生成 bias，XOUT 从 LED 支路 sink 电流。",
+        "XPASS 导通时将 bias 传递到 gate。",
+        "XCLAMP 关断时释放 gate charge。",
+        "XINV_N 与 XINV_P 产生互补控制 pwm_b。"
+      ],
+      "notes": "原始 PDK 以 `X` subcircuit 调用，端序为 D、G、S、B，B 是 bulk/body。NMOS bulk 接 ground、PMOS bulk 接 vlogic 是当前 schematic 连接；到 layout 要实现 well/substrate ties。讲完读者应可以逐行读源码，并指出每个 net 去向。 条件：original nmos_6p0 / pmos_6p0；不是 full-PDK extracted netlist。",
+      "sources": [
+        {
+          "label": "pixel_driver.spice",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/analog/driver/pixel_driver.spice"
+        },
+        {
+          "label": "PDK lock",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/analog/models/pdk-lock.json"
+        }
+      ]
+    },
+    {
+      "title": "On / Off 两个状态：为什么需要 gate clamp",
+      "purpose": "预测 gate selection 的状态，并理解 off-state 放电。",
+      "body": [
+        "PWM high：pass 开、clamp 关，gate 接近 bias。",
+        "PWM low：pass 关、clamp 开，gate 被拉低。",
+        "Gate 有电容；只断开连接可能留下电荷。",
+        "边沿仍需检查 inverter delay、overlap 与 bias droop。"
+      ],
+      "notes": "Clamp 不是装饰，它主动移除 gate charge。开关放在 gate 控制支路，LED 导通路径只有一个 XOUT，保留 headroom。Inverter 有有限延迟，pass 与 clamp 可能短暂同时导通；这种现象要从 gate/bias/pwm_b 波形判断，不能凭平均值说边沿完美。NMOS pass 能否传递 bias 还受 threshold/body effect 影响。 条件：Vlogic=3.3 V、10 ns input slew。",
+      "sources": [
+        {
+          "label": "gate selection 选择理由",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/driver-evidence.md"
+        },
+        {
+          "label": "edge CSV",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/edge-duty064.csv"
+        }
+      ]
+    },
+    {
+      "title": "为什么第一版选 GF180MCU 6 V MOS",
+      "purpose": "看懂工艺选择的需求与证据，而不是只记一个名称。",
+      "body": [
+        "起始需求为 5 V LED supply、3.3 V control 与低侧 sink。",
+        "GF180MCU 公开模型提供 3.3 V / 6 V MOS。",
+        "Phase 1 原始 model subset 与完整 gf180mcuD 分别锁定。",
+        "Layout 与 post-layout 对比使用同一 full PDK，避免混合版本。"
+      ],
+      "notes": "第一版工艺选择来自教学路径的电压域与器件需求，不是只记一个工艺名称。Phase 1 使用原始 nmos_6p0/pmos_6p0 model subset；当前物理流程使用完整 gf180mcuD，build hash为54435919abffb937387ec956209f9cf5fd2dfbee。Post-layout 的 schematic与RC提取网表都在这个 full PDK 下配对运行，不能把旧model subset与新版RC数值之差全归因于寄生。6 V器件标签不代表任意电压组合可靠或已达到foundry signoff。真实LED、IO与MPW要求仍可能改变最终选择。",
+      "sources": [
+        {
+          "label": "Phase1模型锁定",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/analog/models/pdk-lock.json"
+        },
+        {
+          "label": "full PDK和tool pin",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/scripts/layout/bootstrap_macos.sh"
+        },
+        {
+          "label": "物理回归模型边界",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/summary.json"
+        },
+        {
+          "label": "GF180 MOS device list",
+          "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/analog/model_parameters/LV/LV_1_4_1.html"
+        }
+      ]
+    },
+    {
+      "title": "把尺寸、供电和版本全部写出来",
+      "purpose": "能从参数表重建当前设计，不依赖口头说明。",
+      "body": [
+        "XREF / XOUT 的 W/L 为 10 / 2 µm。",
+        "Pass / clamp / inverter NMOS 为 2 / 1 µm，PMOS 为 4 / 1 µm。",
+        "VLED=5 V，Vlogic=3.3 V，external IREF=100 µA。",
+        "Model commit 与 SHA256 锁定，尺寸是公开 baseline 假设。"
+      ],
+      "notes": "尺寸是 baseline 假设，尚未针对面积、速度、mismatch 或功耗优化。较长 L 常用于降低输出电压影响，也增加面积/电容；该趋势需以具体 sweep 量化。原始 model 用米表达 W/L，`10u` 是 10 µm，不能与某些 open_pdks wrapper 的 µm 单位约定混用。PMOS 4 µm 宽度是起始 sizing，不能直接称成最优或平衡 rise/fall。 条件：original model units；ideal current reference 未实现片上电路。",
+      "sources": [
+        {
+          "label": "driver netlist",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/analog/driver/pixel_driver.spice"
+        },
+        {
+          "label": "pdk-lock.json",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/analog/models/pdk-lock.json"
+        },
+        {
+          "label": "runner",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/scripts/run_phase1.py"
+        }
+      ]
+    },
+    {
+      "title": "为什么先用 simple mirror，什么时候升级",
+      "purpose": "将拓扑复杂度与具体问题对应起来。",
+      "body": [
+        "电阻限流易理解，但对 Vf 与供电变化敏感。",
+        "Simple mirror 机制清楚，先暴露 output resistance 与 headroom。",
+        "Cascode 改善输出阻抗，需要更多 bias 与电压余量。",
+        "Current DAC 或 feedback 由明确精度和控制需求触发。"
+      ],
+      "notes": "第一版选择 six-MOS baseline 是为了能按器件学习并推进 layout。升级要由问题触发：例如 pre/post-layout 显示电流偏差大、低 duty settling 不足或阵列 reference fanout 过重，再设计相应改进。当前模型的 Vf 三点电流变化不大，不等于已经解决真实像素一致性。 条件：工程判断与教学趋势；非商业性能结论。",
+      "sources": [
+        {
+          "label": "baseline 比较",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/driver-evidence.md"
+        },
+        {
+          "label": "COCOA §5.3",
+          "url": "https://bmurmann.github.io/COCOA/contents/partI/partI.5.html#current-mirrors"
+        }
+      ]
+    },
+    {
+      "title": "Synthetic LED：公开假设比“像真的”更重要",
+      "purpose": "认识模型包括什么、每个参数是什么。",
+      "body": [
+        "当前是独立定义、尚未实测拟合的 synthetic LED。",
+        "N=3、RS=50 Ω 描述合成 I–V 与串联压降。",
+        "CJO=2 pF、VJ=2.5 V、M=0.33、TT=1 ns 描述 charge 假设。",
+        "EG=2.6 eV、TNOM=27 °C；IS 按目标 Vf 计算。"
+      ],
+      "notes": "这些参数由本项目独立设置，尚未拟合真实样品。CJO 不是所有偏压下固定 2 pF；TT 不是实测光学 rise time；EG 不能用于宣布材料颜色。当前无颜色、面积、current density、EQE、自热、aging 或封装参数。默认 Vf=2.8 V，变体 2.4/3.2 V 都是 synthetic load。 条件：所有 LED 参数均 synthetic。",
+      "sources": [
+        {
+          "label": "microled.spice",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/analog/models/microled.spice"
+        },
+        {
+          "label": "ngspice 47 manual §7.2",
+          "url": "https://ngspice.sourceforge.io/docs/ngspice-47-manual.pdf"
+        }
+      ]
+    },
+    {
+      "title": "独立 DC 校准：先确认负载，再连接 driver",
+      "purpose": "理解参数计算不等于 simulator 实际执行正确。",
+      "body": [
+        "先用独立 100 µA DC source 验证 LED，不连接 mirror。",
+        "27 °C 下分别核对 target Vf=2.4 / 2.8 / 3.2 V。",
+        "数值容差为 0.1 mV，当前误差约 1 µV。",
+        "接入 driver 后再次读取 actual Vf，避免只相信标签。"
+      ],
+      "notes": "曾出现 N=2.2 时计算的 IS 过小、simulator 下限处理使不同 target 变为相同曲线的问题。干净日志无法替代独立 operating-point 检查。最终 N=3 是为了当前教育性模型与数值范围一致，不是从真实器件提取出的 ideality factor。DC 校准只证明本模型在一个规定点执行正确。 条件：27 °C / 100 µA；不证明全 I–V/温度范围。 先定义 VT=(k/q)T，再由 Vf=N·VT·ln(I/IS+1)+I·RS 反求 IS；I=100 µA、T=300.15 K。",
+      "sources": [
+        {
+          "label": "led_calibration evidence",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/led-calibration.json"
+        },
+        {
+          "label": "led_is / calibrate_led",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/scripts/run_phase1.py"
+        },
+        {
+          "label": "已记录的故障",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/verification.md"
+        }
+      ]
+    },
+    {
+      "title": "可以跟着做：四个入口与各自输出",
+      "purpose": "读者能运行 baseline 并定位输出文件。",
+      "body": [
+        "make setup：固定 dependencies 并校验 model 下载。",
+        "make test：检查 bridge 与 RTL timing。",
+        "make sim：运行 RTL → PWL → transistor simulation。",
+        "make evidence：通过检查后保存 compact evidence。"
+      ],
+      "notes": "当前已验证 Mac arm64、Python 3.12.13、Icarus 13.0、ngspice 47。新机器应先按 environment.md 安装并记录实际版本；Homebrew formula 没有固定 native binary。`build/` 是可再生的完整本地输出，`evidence/` 是紧凑公开证据。只看到图不能验收，必须核对 exit status、summary checks 与原始数据。 练习：先跑 `make test`，在 RTL log 找到 518 frames 与 133159 checks；再跑 sim，找 `duty_064` 的 events.csv 与 testbench.spice。 条件：工具已安装、首次 model acquisition 需网络。",
+      "sources": [
+        {
+          "label": "Makefile",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/Makefile"
+        },
+        {
+          "label": "environment",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/environment.md"
+        },
+        {
+          "label": "uv.lock",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/uv.lock"
+        }
+      ]
+    },
+    {
+      "title": "如何量电流：先定窗口，再按时间积分",
+      "purpose": "能解释 average current 的分母和计算方式。",
+      "body": [
+        "首帧在 2.5 µs 开始，预热两个 frames。",
+        "测量窗口为 514.5–1538.5 µs，包含四个完整 frames。",
+        "Iavg 等于窗口内电流积分除以 1024 µs。",
+        "Adaptive samples 必须按时间加权，不能直接平均。"
+      ],
+      "notes": "Runner 插值到精确窗口边界后进行 trapezoidal integration，同时核对 RTL 报告的 frame/window，防止修改时钟后继续用旧时间窗。Plateau current 是排除每个 edge 后 100 ns 的 on-state 中位数；不能代替整帧面积。公开 uniform CSV 是 200 ns 插值 view，原始 adaptive waveform.dat 保存在可再生 build 中。 条件：4 complete frames；max timestep=200 ns baseline。",
+      "sources": [
+        {
+          "label": "windowed / average",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/scripts/run_phase1.py"
+        },
+        {
+          "label": "verification",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/verification.md"
+        },
+        {
+          "label": "waveform CSV",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/waveform-duty064.csv"
+        }
+      ]
+    },
+    {
+      "title": "Nominal 结果：PWM 改变时间，平均电流跟着变化",
+      "purpose": "用 measured full-on result 核对 duty-current 关系。",
+      "body": [
+        "Full-on 平均电流为 101.29959 µA。",
+        "25% duty 为 25.32414 µA，50% 为 50.64903 µA。",
+        "最小非零 duty 为 0.39494 µA，off 约为 3.61 pA。",
+        "Linearity 对照 D × measured full-on current。"
+      ],
+      "notes": "对照值是 D×measured full-on average，不是 D×ideal 100 µA。Simple mirror output 略高于 IREF，不能将 nominal linearity 当作绝对 current accuracy。门限为 max(0.01 µA, expected×3%)，属教育性 regression criterion。Off 约 3.61 pA 是模型输出，不能将之承诺为实物 leakage。 练习：计算 101.29959×0.25=25.32490 µA，与 measured 25.32414 µA 比较，差约 0.00076 µA。 条件：typical、27 °C、VLED=5 V、IREF=100 µA、synthetic Vf=2.8 V、4 frames。",
+      "sources": [
+        {
+          "label": "summary",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/summary.json"
+        },
+        {
+          "label": "metrics",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/metrics.csv"
+        }
+      ]
+    },
+    {
+      "title": "改变 Vf 与供电：必须保留掉电流的条件",
+      "purpose": "通过 negative control 识别 headroom 限制。",
+      "body": [
+        "5 V 下 target Vf=2.4 / 2.8 / 3.2 V，电流约 101.79 / 101.30 / 100.73 µA。",
+        "降低 VLED 至 2.9 V，平均电流降为 49.39 µA。",
+        "低供电 negative control 用来暴露 headroom 不足。",
+        "少量 corner 与 temperature cases 不构成完整 PVT。"
+      ],
+      "notes": "5 V 三点 spread 约 1.04%，但它只说明当前模型与条件。2.9 V case actual Vf≈2.74273 V、VDS≈0.15727 V，电流约为 nominal 的 48.75%。回归要求低于 nominal 90%，目的是确认模型能暴露 compliance 不足。3.0/3.3 V 也保留在 metrics。FF/SS 与 0/85 °C 是 full-on pilot cases，未覆盖完整 PVT×duty×Vf 组合。 条件：typical、27 °C，除特别标记外；Vf label 由 100 µA DC 校准定义。",
+      "sources": [
+        {
+          "label": "summary",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/summary.json"
+        },
+        {
+          "label": "metrics",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/metrics.csv"
+        }
+      ]
+    },
+    {
+      "title": "放大 PWM 边沿：branch current 包括充放电",
+      "purpose": "区分电气 transient、plateau 与 optical output。",
+      "body": [
+        "边沿同时读取 PWM、互补控制、bias、gate 与 LED 节点。",
+        "Branch current 包括 conduction 与 charge/displacement。",
+        "Duty=64 的 peak≈103.63 µA，minimum≈−2.24 µA。",
+        "这些是电气 transient，不能解释成光学峰值。"
+      ],
+      "notes": "短暂负电流或 overshoot 可以由电容充放电产生，不等于出现“负光”或更亮光峰。当前 runner 未单独提取 conduction current。Duty=1/64 用 200 ns 与 20 ns maximum timestep 比较，积分相对变化低于 0.5% 门限；不能把此结论扩大到所有 transient peak 的收敛或电压应力检查。 练习：先在图上识别 gate 被 clamp 拉低的时刻，再查看 bias 有没有短暂 droop，不用只盯 average current。 条件：typical、27 °C、5 V、duty=64；有限 10 ns control edge。",
+      "sources": [
+        {
+          "label": "edge-duty064.csv",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/edge-duty064.csv"
+        },
+        {
+          "label": "summary",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/summary.json"
+        },
+        {
+          "label": "verification",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/verification.md"
+        }
+      ]
+    },
+    {
+      "title": "读证据：每一个“通过”只属于它的层次",
+      "purpose": "能用分母、条件与文件判断当前完成程度。",
+      "body": [
+        "Bridge：7 tests；RTL：518 frames / 133159 checks。",
+        "Phase 1：19 coupled runs + 3 LED DC，19 analog assertions。",
+        "Full PDK 配对回归：36 transient runs + 3 LED DC，19 guards。",
+        "每个通过只支持对应层次、模型、条件与检查范围。"
+      ],
+      "notes": "不要把不同证据层次合成一个通过数字。旧Phase1有19个coupled transistor runs，另有3个独立LED DC校准；新full-PDK回归为17条件×2variants=34，再加仅RC variant的duty1/64两次50ns finer-step runs，共36 transient与3 LED DC。19 guards包括17个配对电流差检查和2个RC积分收敛检查。Standalone cell另有DRC0、LVS unique match与GDS roundtrip复核。这些不建立full PVT、Monte Carlo、数字timing closure或foundry signoff；两个PDK版本分别锁定。",
+      "sources": [
+        {
+          "label": "RTL selfcheck",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/rtl-selfcheck.log"
+        },
+        {
+          "label": "Phase1 summary",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/phase1/summary.json"
+        },
+        {
+          "label": "full-PDK paired summary",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/summary.json"
+        },
+        {
+          "label": "postlayout回归实现",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/scripts/layout/run_postlayout.py"
+        }
+      ]
+    },
+    {
+      "title": "Layout flow：每一步回答不同的问题",
+      "purpose": "知道 schematic、DRC、LVS、PEX 各自验证什么。",
+      "body": [
+        "实际 MAG/GDS 已生成，six-MOS cell DRC=0、LVS 唯一匹配。",
+        "GDS roundtrip 后再次得到 DRC=0 与 LVS 唯一匹配。",
+        "Magic RC extraction 覆盖 7/7 nets，配对回归 19 guards 全部通过。",
+        "这些是 standalone cell 证据，完整芯片 signoff 仍待完成。"
+      ],
+      "notes": "先定义每个检查回答的问题：DRC检查所选deck的几何规则，LVS核对器件、尺寸与连接，PEX提取寄生后才进行post-layout电气对照。当前Magic 8.3.684得到DRC=0，Netgen 1.5.324得到Circuits match uniquely；GDS重新导入后两项再次通过。Magic RC extraction覆盖7/7nets，产生六MOS、59个R与43个C；full-PDK配对回归36transient+3DC、19guards通过。公开deck结果不替代foundry signoff，数字PWM physical integration、pads/ESD与实测尚未完成。",
+      "sources": [
+        {
+          "label": "physical checks与计数",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/summary.json"
+        },
+        {
+          "label": "Magic DRC日志",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/magic-generate.log"
+        },
+        {
+          "label": "Netgen LVS日志",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/netgen-lvs.log"
+        },
+        {
+          "label": "GDS roundtrip DRC",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/magic-roundtrip.log"
+        },
+        {
+          "label": "GDS roundtrip LVS",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/netgen-roundtrip-lvs.log"
+        },
+        {
+          "label": "Magic RC extraction",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/magic-pex.log"
+        }
+      ]
+    },
+    {
+      "title": "一个像素的 layout：先理解连接与 matching",
+      "purpose": "能指出当前六 MOS cell 物理实现需要关注的节点。",
+      "body": [
+        "真实 layout 实现了六个 MOS 与七个电气 nets。",
+        "相同 full PDK 下，schematic full-on 为 101.29959 µA。",
+        "加入提取 RC 后为 101.23651 µA，变化 −0.06227%。",
+        "Duty=64 的 RC 平均电流为 25.30824 µA。"
+      ],
+      "notes": "用真实layout图对照第13页连接表，追踪bias、gate、led_k、pwm_b与body供电连接。Schematic符号最终需要well/substrate ties、contacts和metal实现；截图不能替代LVS网表。Post-layout比较必须固定同一full PDK：typical、27°C、VLED5V、Vlogic3.3V、IREF100µA、synthetic Vf2.8V，测量四个完整frames。全开平均电流由101.29959µA变为101.23651µA（−0.06227%）；quarter-duty为25.30824µA。此结果解释这块cell的提取寄生影响，不保证像素mismatch、阵列IR drop或实测精度。",
+      "sources": [
+        {
+          "label": "真实layout图",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/layout.png"
+        },
+        {
+          "label": "Magic source",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/layout/pixel_driver_layout.mag"
+        },
+        {
+          "label": "extracted RC netlist",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/pixel_driver_rc.spice"
+        },
+        {
+          "label": "full-PDK paired current",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/summary.json"
+        },
+        {
+          "label": "postlayout日志",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/postlayout-regression.log"
+        }
+      ]
+    },
+    {
+      "title": "4×4 之前：把单像素规则变成阵列规则",
+      "purpose": "理解增加 16 个像素会新增哪些系统责任。",
+      "body": [
+        "16 个 pixel 需要独立数据、寻址与统一 frame commit。",
+        "通信接口先写独立规格，再验证 protocol 与 CDC。",
+        "模拟新增 reference fanout、simultaneous switching 与 current spread。",
+        "先完成单像素物理退出条件，再进入 4×4 阵列。"
+      ],
+      "notes": "这是下一阶段概念，没有已实现 register map 或商业协议。若直接保存本项目 0…256 duty encoding，需要 16×9=144 bits，enable 可以另设；未来也可独立设计 8-bit brightness code 的映射，两者需明确。若 all-on electrical current 仅按 baseline 粗估，16×101.3 µA≈1.62 mA，只是 LED 支路预算，不含 reference/logic，更不构成阵列验证。先完成单像素物理退出条件，再定义可执行的 4×4 接口与预算。 练习：在 4×4 图上选 pixel (row=2,col=1)，列出一次更新需要的“地址、数据、提交时刻”，暂不指定通信位序。下一阶段再把它写成独立 protocol spec 与 testbench。 条件：全页为后续概念/预算；先单像素 layout，未实现 4×4。",
+      "sources": [
+        {
+          "label": "4×4 exit criteria",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/roadmap.md"
+        },
+        {
+          "label": "长期概念",
+          "url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/design.md"
+        }
+      ]
+    }
+  ]
+}

@@ -2,7 +2,16 @@
 
 An independently designed, open research platform for learning digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
-这是一个从 **1 Pixel** 开始的学习与研究项目。第一阶段已跑通 **Verilog PWM → MOS gate control → current mirror → synthetic MicroLED electrical load**，保存了可复现的代码、公开模型版本、波形和检查结果。后续目标是 transistor layout → DRC/LVS → extraction → post-layout simulation → digital/analog integration → GDS；当前成果的证据等级是 **pre-layout simulation**。
+这是一个从 **1 Pixel** 开始的学习与研究项目。已跑通 **Verilog PWM → MOS gate control → current mirror → synthetic MicroLED electrical load**，并完成这个六 MOS 模拟 cell 的真实版图、GDS、Magic DRC、Netgen LVS、RC 抽取与版图后配对仿真。当前证据覆盖单像素模拟 cell；数字 physical integration、完整芯片与实际光输出仍在后续阶段。
+
+## 先读教学资料
+
+按“整体架构 → PWM 逻辑 → 六个 MOS 与器件选型 → 模型与仿真 → 单像素版图”的顺序学习：
+
+- [28 页 PowerPoint](docs/teaching/open-microled-single-pixel-teaching-v2.pptx)：图解、可编辑图表、详细讲者备注。
+- [中文技术讲义 PDF](docs/teaching/open-microled-single-pixel-report.pdf) / [HTML](docs/teaching/report.html)：逐步解释、连接表、参数账本、结果和公开来源。
+- [教学内容与练习](docs/teaching/content-plan.md) / [结构化页面内容](docs/teaching/lesson.json)：完整公开教学设定。
+- [版图复现与证据范围](docs/layout/README.md)：从 schematic、版图到 RC 仿真的实际路径。
 
 ## 当前可运行路径
 
@@ -36,7 +45,7 @@ make sim
 
 ## 第一阶段结果
 
-2026-10-03 本地运行：**6 个 bridge tests、518 个 RTL frame / 133,159 次检查、19 个耦合 transistor runs + 3 个独立 LED DC calibration runs、19 项 analog 检查通过**。RTL 覆盖所有 0…256 duty 与可表示的越界值；nominal SPICE 检查 7 个 duty 点，另外覆盖 disable、Vf、供电余量、少量 corner / temperature 和 timestep convergence。各项条件和分母保存在 [summary.json](evidence/phase1/summary.json)。
+2026-10-03 本地运行：**7 个 bridge tests、518 个 RTL frame / 133,159 次检查、19 个耦合 transistor runs + 3 个独立 LED DC calibration runs、19 项 analog 检查通过**。RTL 覆盖所有 0…256 duty 与可表示的越界值；nominal SPICE 检查 7 个 duty 点，另外覆盖 disable、Vf、供电余量、少量 corner / temperature 和 timestep convergence。各项条件和分母保存在 [summary.json](evidence/phase1/summary.json)。
 
 以下都是仿真结果：典型 corner、27 °C、IREF=100 μA、合成 Vf=2.8 V @100 μA、1 MHz clock / 3.90625 kHz PWM；平均值在预热两帧后的四个完整 frame 上按时间积分。
 
@@ -70,7 +79,10 @@ analog/driver/       independent transistor pixel cell
 analog/models/       synthetic LED and immutable public-model manifest
 scripts/             model acquisition, RTL/SPICE orchestration, plots
 tests/               timing, integration and bridge checks
-evidence/phase1/     compact verified results, plots and source hashes
+evidence/phase1/     compact pre-layout results and source hashes
+evidence/layout/     GDS, extracted netlists and physical/RC evidence
+layout/              editable Magic layout and full-PDK schematic
+docs/teaching/       teaching PowerPoint, PDF, HTML and lesson content
 docs/research/       public sources, comparisons and evidence boundaries
 docs/               design, environment, verification, roadmap, original brief
 build/              ignored raw run outputs, regenerated locally
@@ -79,7 +91,9 @@ build/              ignored raw run outputs, regenerated locally
 
 ## 下一步与边界
 
-下一步优先完成 **同一 1-Pixel cell 的 schematic / transistor layout、DRC、LVS、PEX 与 post-layout 回归**，再扩展 4×4。完整 PDK、Xschem / Magic / Netgen / KLayout、LibreLane physical flow 尚未安装或验证；当前没有 GDS、silicon、optical measurement 或 tape-out signoff。少量 corner smoke tests 不构成完整 PVT / Monte Carlo qualification。阶段退出条件见 [roadmap](docs/roadmap.md)。
+当前已完成 **standalone 六 MOS 模拟 cell** 的 Magic DRC=0、Netgen LVS 唯一匹配、GDS 回读检查与 7/7 nets RC 抽取；抽取网表含 59 个 R、43 个 C。采用锁定完整 PDK 对 schematic 和 RC layout 配对仿真：17 个条件各运行两版，另加 RC 版两次细时间步，共 36 次 transient、3 次独立 LED 校准、19 项配对/收敛 guards 全部通过。典型全开电流从 101.29959 降至 101.23651 µA（约 −0.0623%），25% duty 的 RC 结果为 25.30824 µA。详见 [物理证据](evidence/layout/summary.json) 和 [版图说明](docs/layout/README.md)。
+
+这些结果只属于所选 Magic / Netgen 开放规则与这个模拟 cell。独立 KLayout foundry-deck 复核、数字 synthesis / timing / routing、数字模拟集成、pads / ESD、完整 PVT / mismatch、silicon / optical measurement 与 tape-out signoff 尚未完成。先读懂并复现单像素，再逐步定义 4×4 的数据、通信和供电分布；阶段退出条件见 [roadmap](docs/roadmap.md)。
 
 ASIC 与 FPGA optical-link 项目保持独立仓库。未来接口由两个项目共同定义；当前未实现 serial protocol / register map。只使用公开资料、公开 PDK 和独立设计，不使用企业内部文档或 proprietary circuit / RTL。原始目标保存在 [project brief](docs/project-brief.md)。
 

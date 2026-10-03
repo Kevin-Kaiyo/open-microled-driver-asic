@@ -25,6 +25,20 @@ STOP_S = WINDOW[1] + 2e-6
 SLEW_S = 10e-9
 
 
+def source_hashes(root=ROOT):
+    """Hash inspectable source inputs, excluding local metadata and outputs."""
+    suffixes = {".v", ".sv", ".spice", ".json", ".py", ".sh"}
+    sources = {}
+    for folder in ("rtl", "sim/rtl", "analog", "scripts"):
+        for path in sorted((root / folder).rglob("*")):
+            relative = path.relative_to(root)
+            if (path.is_file() and path.suffix in suffixes
+                    and not any(part.startswith(".") or part == "__pycache__"
+                                for part in relative.parts)):
+                sources[relative.as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
+    return sources
+
+
 def command(args, log, cwd=ROOT):
     result = subprocess.run([str(a) for a in args], cwd=cwd, capture_output=True, text=True)
     log.write_text(result.stdout + result.stderr)
@@ -386,9 +400,7 @@ def main():
         edge = (data[:, 0] >= WINDOW[0] - 100e-9) & (data[:, 0] <= WINDOW[0] + 300e-9)
         np.savetxt(evidence / "edge-duty064.csv", data[edge], delimiter=",", fmt="%.10g",
                    header="time_s,pwm_v,pwm_b_v,bias_v,gate_v,led_k_v,led_branch_current_A", comments="")
-        provenance = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
-                      for folder in ("rtl", "sim/rtl", "analog", "scripts")
-                      for p in sorted((ROOT / folder).rglob("*")) if p.is_file() and "__pycache__" not in str(p)}
+        provenance = source_hashes()
         (evidence / "source-hashes.json").write_text(json.dumps(provenance, indent=2) + "\n")
     print(f"PASS: {len(checks)} analog checks, {len(results)} transistor runs + {len(calibration)} isolated LED calibrations. Results: {build.relative_to(ROOT) if build.is_relative_to(ROOT) else build}")
 

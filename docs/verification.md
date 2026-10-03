@@ -7,11 +7,13 @@
 | 层次 | 检查内容 | 当前证据 |
 |---|---|---|
 | RTL | 0…256 全部 duty、257…511 clamp；frame-boundary update、enable、同步 reset、256→0→256 | 518 完整 frame，133,159 checks；[`rtl-selfcheck.log`](../evidence/phase1/rtl-selfcheck.log) |
-| Bridge | 实际 RTL timestamp → 10 ns PWL、边界状态、非均匀时间积分、缺失区间、重叠 ramp、RTL window drift | 6 个 Python unittest |
+| Bridge | 实际 RTL timestamp → 10 ns PWL、边界状态、非均匀时间积分、缺失区间、重叠 ramp、RTL window drift | 7 个 Python unittest，含 source provenance 排除检查 |
 | LED calibration | 独立 100 μA current source、27 °C、目标 Vf=2.4/2.8/3.2 V、误差 <0.1 mV | [`led-calibration.json`](../evidence/phase1/led-calibration.json) |
 | Coupled transistor simulation | 7 个 nominal duty 点、disable、2 个 Vf variants、3 个低供电点、FF/SS、0/85 °C、2 个 convergence reruns | 19 个 runs，外加 3 个独立 LED runs |
 | Analog assertions | 7 个 current/duty 误差、2 个 off、Vf regulation、3 个 coupled Vf、headroom negative control、2 个 timestep checks、3 个独立 LED calibration | 19 checks，全部通过 |
-| Layout / silicon / optics | DRC、LVS、PEX、GDS、测量 | 尚未执行 |
+| Standalone analog layout | Magic DRC、Netgen LVS、GDS 回读、RC 抽取 | DRC=0；LVS 唯一匹配；7/7 nets；59 R / 43 C，见 [版图证据](../evidence/layout/summary.json) |
+| Paired post-layout | 完整 PDK 下 schematic / RC 两版，17 条件 + RC 两次 timestep refinement | 36 transient + 3 LED DC；19 guards 全通过，见 [版图说明](layout/README.md) |
+| Digital physical / silicon / optics | 数字 timing / routing、制造与光测量 | 尚未执行 |
 
 RTL exhaustive coverage 不代表模拟电路已在全部 duty / PVT 组合下验证。FF、SS 在 27 °C / 5 V / full-on 单点运行；temperature 在 typical / 5 V / full-on 单点运行。当前不开启 global variation / mismatch，reference 仍理想。测试标准是教学 baseline 的回归门限，不是商业精度要求。
 

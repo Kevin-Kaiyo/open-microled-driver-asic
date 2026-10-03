@@ -1,11 +1,13 @@
 """Independent timing/integration checks for the RTL-to-SPICE boundary."""
 from pathlib import Path
+import hashlib
 import sys
+import tempfile
 import unittest
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from run_phase1 import average, digital_duty, pwl_points, verify_trace_window
+from run_phase1 import average, digital_duty, pwl_points, source_hashes, verify_trace_window
 
 
 class BridgeTests(unittest.TestCase):
@@ -40,6 +42,22 @@ class BridgeTests(unittest.TestCase):
             verify_trace_window("TRACE first_frame_ns=2500 measure_start_ns=256000 measure_end_ns=512000")
         with self.assertRaises(ValueError):
             verify_trace_window("TRACE missing")
+
+    def test_provenance_covers_sources_and_ignores_local_metadata(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            sources = ("rtl/pixel.v", "sim/rtl/test.v", "analog/driver/pixel.spice",
+                       "analog/models/pdk-lock.json", "scripts/run.py", "scripts/bootstrap.sh")
+            ignored = ("analog/.DS_Store", "scripts/.DS_Store", "scripts/__pycache__/run.py",
+                       "scripts/.cache/run.py", "scripts/.hidden.py", "analog/waveform.dat",
+                       "scripts/run.log")
+            for name in sources + ignored:
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(name)
+            self.assertEqual(source_hashes(root), {
+                name: hashlib.sha256(name.encode()).hexdigest() for name in sources
+            })
 
 
 if __name__ == "__main__":

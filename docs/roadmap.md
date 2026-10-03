@@ -1,6 +1,6 @@
 # 从 1 Pixel 到可评估 MPW 的路线
 
-本项目建立一个长期的 open mixed-signal ASIC 学习与研究平台。当前交付范围是 **1-Pixel RTL PWM → transistor driver → synthetic MicroLED electrical model 的可复现仿真路径**。完成这个里程碑不等于用户完整愿景、完整 ASIC design flow 或全平台已经完成。
+本项目建立一个长期的 open mixed-signal ASIC 学习与研究平台。当前交付范围是 **1-Pixel RTL PWM → transistor driver → synthetic MicroLED electrical model 的可复现仿真路径，以及 standalone analog cell 的版图 / DRC / LVS / RC 与配对仿真**。完成这个里程碑不等于用户完整愿景、完整 ASIC design flow 或全平台已经完成。
 
 每一步先达到明确 exit criteria，再扩展规模；结果始终区分 simulation、layout/physical verification、foundry acceptance 和 silicon measurement。
 
@@ -30,6 +30,8 @@ Exit criteria：
 - PEX 后重新仿真 PWM、current、headroom 和关键 corners；量化与 pre-layout 的差异。
 - 数字 PWM 的 synthesis / timing / placement / routing 有保存结果；模拟 macro 具有 GDS / LEF / SPICE 和明确接口假设。
 - GDS 可打开、检查且具有一致 layer mapping。此结果标为通过所选 open decks 的 physical verification；只有实际 foundry/shuttle 接受后才声称满足其 signoff。
+
+当前进度：模拟 cell 已完成 Magic DRC=0、Netgen LVS 唯一匹配、GDS 回读、7/7 nets RC extraction 与 19 项配对 / 收敛 guards。见 [实际版图流程](layout/README.md)。数字 PWM hardening、macro LEF 与完整集成尚未完成，因此本阶段整体仍有后续工作。
 
 ## 3. 4×4 array
 

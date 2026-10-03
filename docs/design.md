@@ -154,8 +154,8 @@ PWM linearity check 对照的是 `measured duty × measured full-on average`，*
 
 [`evidence/phase1/summary.json`](../evidence/phase1/summary.json) 是当前 compact evidence 入口，记录 host、工具版本、PDK lock、LED 校准、case conditions、检查和结果；[`source-hashes.json`](../evidence/phase1/source-hashes.json) 将运行证据关联到源文件。结果可以结合 [`waveforms.png`](../evidence/phase1/waveforms.png)、[`duty-current.png`](../evidence/phase1/duty-current.png) 和 [`vf-current.png`](../evidence/phase1/vf-current.png) 解释。修改源文件后应重新执行验证并生成匹配证据。
 
-当前证据是 **RTL + pre-layout PDK transistor simulation**。FF / SS 和 0 °C / 85 °C 是少量 pilot cases；没有建立 process × supply × temperature × duty × Vf 的完整组合，`sw_stat_global=0`、`sw_stat_mismatch=0` 也明确关闭了统计变化。不能将这些结果称为 full PVT sign-off、Monte Carlo、matching 或 yield 证明。
+本页上述 baseline 证据是 **RTL + pre-layout PDK transistor simulation**。新的 standalone analog physical 结果另见 [版图说明](layout/README.md)。FF / SS 和 0 °C / 85 °C 是少量 pilot cases；没有建立 process × supply × temperature × duty × Vf 的完整组合，`sw_stat_global=0`、`sw_stat_mismatch=0` 也明确关闭了统计变化。不能将这些结果称为 full PVT sign-off、Monte Carlo、matching 或 yield 证明。
 
-本阶段还没有 analog transistor layout、DRC、LVS、parasitic extraction、post-layout simulation、standard-cell physical integration、GDS、pad ring、ESD、package 或真实 MicroLED 测量。下阶段优先把这一个 pixel 做成可检查的 analog layout 和 PEX 对照，再扩展 4×4。真正双向反馈联仿需引入 current sense / comparator → RTL 状态改变 → 后续 PWM 改变；PWL edge replay 本身没有建立这项反馈。
+这个六 MOS cell 现在已有独立 analog layout、GDS、Magic DRC、Netgen LVS、RC extraction 与 paired post-layout simulation，具体范围和结果见 [physical summary](../evidence/layout/summary.json)。完整 PDK 对两种网表配对使用，避免把旧 model subset 与新抽取结果混算。数字 standard-cell physical integration、pad ring、ESD、package、真实 MicroLED 测量仍未完成。先学习并复现这个单像素，再逐步扩展 4×4。真正双向反馈联仿需引入 current sense / comparator → RTL 状态改变 → 后续 PWM 改变；PWL edge replay 本身没有建立这项反馈。
 
 公开调研和 baseline trade-offs 另见 [`driver-evidence.md`](research/driver-evidence.md)；PDK 与工具选择另见 [`pdk-and-tools.md`](research/pdk-and-tools.md)。

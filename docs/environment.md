@@ -1,6 +1,6 @@
 # 开发环境与复现
 
-环境检查日期：2026-10-03（Asia/Tokyo）。当前已验证的是 **Mac arm64 上的 1-Pixel RTL → SPICE batch simulation 环境**。完整 schematic / layout / physical verification / RTL-to-GDS EDA 环境尚未建立。
+环境检查日期：2026-10-03（Asia/Tokyo）。本页记录 **Mac arm64 上的 1-Pixel RTL → SPICE batch simulation 环境**。随后已建立 standalone analog cell 的 Magic / Netgen / RC 与 GDS 流程，安装版本、完整 PDK 锁定与实际复现步骤见 [版图环境](layout/README.md)。完整数字 RTL-to-GDS 与顶层芯片集成尚未建立。
 
 ## 当前可运行环境
 
