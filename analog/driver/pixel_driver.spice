@@ -1,0 +1,15 @@
+* Independently designed 1:1 current mirror with MOS gate selection.
+* Uses ORIGINAL GF model names; w/l are meters, not open_pdks micron units.
+* IREF and logic/LED rails belong to the external testbench.
+.subckt pixel_driver led_k pwm vlogic bias gate pwm_b
+* Reference / output mirror. Nominal IREF=100uA, W/L=10um/2um.
+XREF bias bias 0 0 nmos_6p0 w=10u l=2u
+XOUT led_k gate 0 0 nmos_6p0 w=10u l=2u
+* NMOS pass device connects bias to gate during PWM on.
+XPASS bias pwm gate 0 nmos_6p0 w=2u l=1u
+* Clamp removes gate charge during PWM off; gate is not intentionally floating.
+XCLAMP gate pwm_b 0 0 nmos_6p0 w=2u l=1u
+* Transistor-level inverter creates PWM complement from the 3.3V control rail.
+XINV_N pwm_b pwm 0 0 nmos_6p0 w=2u l=1u
+XINV_P pwm_b pwm vlogic vlogic pmos_6p0 w=4u l=1u
+.ends pixel_driver

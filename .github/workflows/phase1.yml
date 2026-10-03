@@ -1,0 +1,35 @@
+name: Phase 1 simulation
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rtl-spice:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.12'
+          enable-cache: true
+      - name: Install batch EDA tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog ngspice
+      - name: Locked dependencies and bridge checks
+        run: |
+          uv sync --locked
+          uv run python -m unittest discover -s tests -v
+      - name: RTL and transistor regression
+        run: uv run python scripts/run_phase1.py --output build/ci
+      - name: Preserve success or failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase1-raw-evidence
+          path: build/ci/
+          retention-days: 14

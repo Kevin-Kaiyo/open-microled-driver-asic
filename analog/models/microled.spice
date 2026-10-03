@@ -1,0 +1,8 @@
+* Independently defined synthetic electrical load. NOT measured MicroLED data.
+* LED_IS is chosen by the runner for the requested Vf at 100 uA / 27 C.
+* Diode includes exponential I-V, 50-ohm series R, 2-pF zero-bias C,
+* and a 1-ns transit-time assumption. No optical/thermal/aging model.
+.subckt microled anode cathode
+DLED anode cathode LED_SYNTHETIC
+.model LED_SYNTHETIC D (IS={LED_IS} N=3 RS=50 CJO=2p VJ=2.5 M=0.33 TT=1n EG=2.6 TNOM=27)
+.ends microled
