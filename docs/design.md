@@ -2,7 +2,7 @@
 
 本阶段已经建立一条可重复执行的驱动链：**真实 RTL 输出 → 电压波形桥接 → PDK transistor-level driver → synthetic MicroLED 电气负载 → 波形与电流积分**。它是 pre-layout、feed-forward coupled simulation；模拟结果没有反馈改变 RTL 状态。这里的“完整链路”指数字控制确实驱动了模拟电路，不表示已实现 feedback control 或双向 mixed-signal co-simulation。
 
-设计参数以仓库代码为主来源：[`pixel_driver.spice`](../analog/driver/pixel_driver.spice)、[`microled.spice`](../analog/models/microled.spice)、[`pixel_pwm.v`](../rtl/pixel_pwm.v) 和 [`run_phase1.py`](../scripts/run_phase1.py)。当前运行证据见 [`summary.json`](../evidence/phase1/summary.json)，具体条件、检查及工具版本从该文件读取，不由此文档另行维护通过数量。
+设计参数以仓库代码为主来源：[`pixel_driver.spice`](../analog/driver/pixel_driver.spice)、[`microled.spice`](../analog/models/microled.spice)、[`pixel_pwm.v`](../rtl/pixel_pwm.v) 和 [`run_phase1.py`](../scripts/run_phase1.py)。当前运行证据见 [`summary.json`](../evidence/phase1/summary.json)，具体条件、检查及工具版本从该文件读取，不由此文档另行维护通过数量。模型适用条件、计算复核和后续研究门槛见 [全面检阅](review/README.md)。
 
 ## 本阶段的系统
 
@@ -34,7 +34,7 @@ flowchart LR
     I --> M
 ```
 
-图中的箭头表达功能依赖，电气 netlist 的电流路径为 `VLED → VSENSE → LED anode → LED cathode → MOUT → ground`。RTL edge timestamp 被保留；桥接在每个 timestamp 开始 10 ns ramp，表示数字输出电压的 testbench 抽象。实际 standard-cell buffer、level shifter、IO pad 和电源 impedance 尚未进入该模型。
+图中的箭头表达功能依赖，电气 netlist 的电流路径为 `VLED → VSENSE → LED anode → LED cathode → MOUT → ground`。RTL edge timestamp 被保留；桥接在每个 timestamp 开始 10 ns ramp，表示数字输出电压的 testbench 抽象。此 ideal PWL voltage source 具有理想驱动能力，不是已实现的数字输出级；实际 standard-cell buffer、level shifter、IO pad、输出阻抗和电源 impedance 尚未进入该模型。
 
 ### 长期概念，尚未实现
 
@@ -70,6 +70,8 @@ Phase 1 没有 serial receiver、command decoder、register map、pixel memory�
 | `XINV_P` | 4 µm / 1 µm | CMOS inverter 的 PMOS，source / bulk 接 `vlogic`；PWM 低时将 `pwm_b` 拉到 3.3 V |
 
 `IREF vlogic bias DC 100u` 是 **外部 ideal current source**，由 runner 写入 testbench；不能将其描述成已完成的片上精密电流 reference。默认 `VLED=5 V`、`Vlogic=3.3 V`，ground 也是 ideal。使用 6 V MOS model 不表示已有 6 V digital standard-cell flow，也不代表任意器件端电压和未来 pad 条件均已验证。
+
+PWM off 只关闭 LED 输出支路，当前 IREF 支路仍持续取用 100 µA；按 3.3 V logic rail 计，reference 支路的供电功率仍为 **330 µW**，尚未计入其他支路或数字动态功耗。因此低 LED off current 不等于低 standby power。当前 transient 从 ngspice 求得的正常 DC operating point 开始，电源和 IREF 已按理想源施加；这不验证真实 power sequencing、供电斜率、掉电或上电过程中 reference / gate 的状态。
 
 PWM 高时，XINV_N 导通、XCLAMP 关断、XPASS 传递 bias，XOUT 导通。PWM 低时，XINV_P 导通、XPASS 关断、XCLAMP 把 gate 拉低，XOUT 关断。只放 XPASS 而没有 clamp 会把输出 gate 留成 charge-storage node，不能保证整个 off interval 内保持关断。
 
@@ -130,6 +132,8 @@ IS = 100 µA / expm1[(Vf_target - 100 µA × 50 Ω) / (3 × VT)]
 
 默认 clock 是 1 MHz，frame period 为 256 µs，PWM frequency 为 3906.25 Hz。`duty`、`enable` 只在 frame boundary 锁存；输入帧中变化不截断当前脉冲。`rst` 为高有效同步 reset，下一 rising edge 将输出清零；释放后的第一个 rising edge 从 slot 0 开始完整新帧。输入属于同一个 clock domain，尚未实现异步 interface 的 CDC / handshake。完整时序说明在 [`pwm.md`](pwm.md)。
 
+PWM 目前由 counter 的组合比较器直接输出。物理实现中 counter 多个 bit 的 clock-to-Q 和布线延迟可能不同，组合比较器存在短暂 glitch 的结构性风险；这是尚待 gate-level / timing / analog-load 验证的问题，并非已在当前 RTL 仿真中观测到的失败。现有理想 event replay 不包含这类物理延迟。
+
 RTL testbench 实际执行后导出 `time_ns,pwm` event CSV。第一条已知输出来自 500 ns 的 reset low；桥接将该已知 low 向前延伸到 SPICE 的 0 ns，是明确的 startup assumption。之后每个切换时刻来自 RTL，Python 不另算一套理想 PWM 替代它。10 ns PWL slew 只描述桥接电压，不是数字 cell timing 的测量。
 
 第一帧从 2500 ns 开始。跳过两帧后，测量区间严格取 **514.5–1538.5 µs，四个完整 frame**：
@@ -144,11 +148,15 @@ Runner 对 adaptive timestep 数据在边界插值，再做 trapezoidal integrat
 
 电流通过 zero-volt `VSENSE` 的 branch current 读取。它含 diode 的 conduction 与 charge/displacement 成分；有限边沿可能出现短暂 overshoot 或负电流。`peak_branch_current_uA` 和 `minimum_branch_current_uA` 是电气量，不是光强峰值。当前 runner 没有把 conduction current 从 total branch current 单独分解。
 
+独立数值检阅支持当前 frame 平均电流的计算与稳定性，但发现小纹波随积分方法、容差和步长改变；尚不能把 peak / ripple 解释成已收敛的物理指标，也不能据此推出 bandwidth。约 3.6 pA 的 nominal off current 同样明显依赖 GMIN，应仅保留为指定数值设置下的结果；真实器件 leakage 仍未确认，详见 [数值检阅](review/numeric-audit.md)。
+
 `on_plateau_current_uA` 使用窗口内的 on-state 样本，并排除每个 PWM edge 后 100 ns 后取 median；它帮助解释 pulse amplitude，但不能把 plateau 值代替整个 frame 积分。公开波形 CSV 的 uniform sample view 是插值后的 derived view；边沿 CSV 保留 solver 数据，完整原始输出和 testbench 保留在重新生成的 build 目录。
 
 平均 branch current 目前仅作为 **electrical brightness proxy**。在固定 pulse amplitude、充分 settle、off leakage 很小、光电效率近似不变时，才预期相对亮度随 duty 近似线性。项目没有 optical power / EQE / spectrum / photometric measurement，因此不能把图中的电流称为真实 luminance、cd/m²、optical efficiency 或 gamma calibration。
 
 PWM linearity check 对照的是 `measured duty × measured full-on average`，**不是** `duty × ideal 100 µA`。它证明本模型条件下的调制关系，不证明 reference accuracy。Vf regulation 和 off-current thresholds 是本阶段教育性验收标准；精确判据见 runner 与 summary，不是商业精度规格。
+
+同理，pre/post-layout 电流变化很小，不能代替对 100 µA 目标的绝对误差检查；reference 偏差、输出 VDS、模型和 mismatch 都需要分别评估。当前 paired transient 同时包含 diffusion area / perimeter 参数变化与 wire RC 的影响，不能将全部差异归为布线寄生；评估纯 wire RC 时应先对齐两套网表的 diffusion geometry。
 
 ## 证据与尚未完成的步骤
 

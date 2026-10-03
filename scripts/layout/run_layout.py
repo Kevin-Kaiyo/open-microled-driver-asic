@@ -5,12 +5,26 @@ import hashlib
 import json
 import os
 import platform
+import re
 import shutil
 import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[2]
 PDK_HASH = "54435919abffb937387ec956209f9cf5fd2dfbee"
+
+
+def verify_lvs_report(report):
+    """Require connectivity AND property agreement in the pinned Netgen report.
+
+    Netgen can exit zero and print 'Circuits match uniquely.' even when a MOS
+    width is wrong. The subsequent property-error section is decisive.
+    """
+    finals = re.findall(r"^Final result:\s*(.+)$", report, flags=re.MULTILINE)
+    if finals != ["Circuits match uniquely."]:
+        raise ValueError("LVS did not report one unambiguous unique match")
+    if re.search(r"property errors|do not match|not equivalent", report, flags=re.IGNORECASE):
+        raise ValueError("LVS reports property or connectivity errors")
 
 
 def main():
@@ -67,8 +81,7 @@ def main():
     command([netgen, "-batch", "lvs", f"{generate / 'pixel_driver_layout.spice'} pixel_driver_layout",
              f"{ROOT / 'layout/pixel_driver_schematic.spice'} pixel_driver_layout", setup,
              run / "netgen-lvs.log"], generate, "netgen-lvs-stdout.log")
-    if "Final result: Circuits match uniquely." not in (run / "netgen-lvs.log").read_text():
-        raise RuntimeError(f"LVS did not match; inspect {run}")
+    verify_lvs_report((run / "netgen-lvs.log").read_text())
     env["LAYOUT_GDS"] = str(generate / "pixel_driver_layout.gds")
     roundtrip_log = magic_run("roundtrip.tcl", roundtrip, "magic-roundtrip.log")
     if "ROUNDTRIP_DRC_COUNT 0" not in roundtrip_log or 'DRC style is now "drc(full)"' not in roundtrip_log:
@@ -76,8 +89,7 @@ def main():
     command([netgen, "-batch", "lvs", f"{roundtrip / 'pixel_driver_layout.spice'} pixel_driver_layout",
              f"{ROOT / 'layout/pixel_driver_schematic.spice'} pixel_driver_layout", setup,
              run / "netgen-roundtrip-lvs.log"], roundtrip, "netgen-roundtrip-lvs-stdout.log")
-    if "Final result: Circuits match uniquely." not in (run / "netgen-roundtrip-lvs.log").read_text():
-        raise RuntimeError(f"Roundtrip LVS did not match; inspect {run}")
+    verify_lvs_report((run / "netgen-roundtrip-lvs.log").read_text())
     pex_log = magic_run("extract_pixel.tcl", generate, "magic-pex.log")
     if "Nets extracted: 7 (1.000000)" not in pex_log:
         raise RuntimeError(f"RC extraction did not cover all seven nets; inspect {run}")
@@ -92,7 +104,9 @@ def main():
                                     ngspice=ngspice_version, iverilog=iverilog_version.splitlines()[0])
     summary["physical_checks"] = dict(magic_drc_count=0, netgen_lvs="unique match",
                                       gds_roundtrip_drc_count=0, gds_roundtrip_lvs="unique match",
+                                      lvs_property_errors=False, gds_roundtrip_lvs_property_errors=False,
                                       magic_drc_style="drc(full)", rc_nets_extracted=7, rc_nets_total=7)
+    summary["lvs_property_scope"] = "Connectivity, model classes and W/L with pinned deck tolerance; AD/AS/PD/PS and other deleted geometry properties are not compared"
     netlist_lines = (generate / "pixel_driver_rc.spice").read_text().splitlines()
     summary["extracted_counts"] = {name: sum(line.startswith(prefix) for line in netlist_lines)
                                     for name, prefix in (("mos", "X"), ("resistors", "R"), ("capacitors", "C"))}

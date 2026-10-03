@@ -4,6 +4,8 @@
 
 每一步先达到明确 exit criteria，再扩展规模；结果始终区分 simulation、layout/physical verification、foundry acceptance 和 silicon measurement。
 
+2026-10-03 的 [独立审阅](review/README.md) 确认目前器件尺寸、基本偏置及单像素方向可以继续，并修复了 LVS 忽略 property errors 的自动判定漏洞。当前优先工作仍在单像素：**真实 LED 数据与 model card、accuracy/power/short-pulse 预算 → 非理想 reference、mismatch 与交叉 PVT → matching/routing 优化和独立 physical checks → 数字集成及 4×4**。现有 nominal 仿真和版图前后变化小，不能代替这些指标或 foundry signoff。
+
 ## 1. 1-Pixel simulation baseline
 
 范围：独立设计 PWM RTL、GF180MCU 6 V MOS current mirror / PWM switching cell、external ideal current reference、简化 MicroLED 电气模型，以及 event trace → PWL → ngspice 的单向联动。
@@ -16,6 +18,8 @@ Exit criteria：
 - 能解释 LED current waveform、完整 frame 的平均电流与 duty 的关系；Vf sweep、headroom negative control 和 timestep refinement 有可检查结果。
 - 文档列出理想 reference、供电、尺寸、有限 output resistance、没有 layout parasitics/光学模型/真实 LED measurement 等限制。
 
+当前需要补齐的研究前提：选择可追溯的目标 LED 及发光面积，记录 I–V、动态/电容和温度数据来源与 model card；在这些条件下定义目标电流误差、总功耗、headroom 和最短有效 PWM pulse。synthetic model 的单点 DC 校准只确认模型按设定运行，不完成真实器件校准。
+
 当前阶段的证据由 README 链接的结果和运行 `summary.json` 给出；具体样本数、检查数和误差以对应运行记录为准。
 
 ## 2. 1-Pixel transistor layout、DRC/LVS/PEX
@@ -26,16 +30,19 @@ Exit criteria：
 
 - 明确 full PDK variant、build hash、tool/deck version；Xschem schematic netlist 与此前 SPICE baseline 对齐。
 - Analog layout 包含 device geometry、well/substrate ties、guard rings、contacts、routing 和可辨认 pins；布局采用可解释的 matching 方法。
-- DRC 无未解释错误；LVS 确认器件、参数和 connectivity 一致；保存完整报告与任何必要 waiver 的来源。
-- PEX 后重新仿真 PWM、current、headroom 和关键 corners；量化与 pre-layout 的差异。
+- DRC 无未解释错误；LVS 必须同时确认 connectivity 与 deck 检查的参数，拒绝 property errors，保存完整报告与任何必要 waiver 的来源。当前 deck 的 W/L tolerance 为 1%，允许 D/S 交换，忽略 AD/AS/PD/PS 等属性；不得把通过扩大为全部几何/寄生属性一致。
+- PEX 后重新仿真 PWM、current、headroom 和关键 corners；量化与 pre-layout 的差异。当前 schematic 与 extracted RC 同时存在 diffusion geometry 和 wiring RC 差异，必要时增加无 wiring RC 的几何抽取中间对照，避免把全部变化归因于连线。
+- 明确非理想 reference 的 accuracy、drift、compliance、启动和 power sequencing；在已定义的误差/功耗/最短脉冲预算下做 mismatch 与交叉 PVT 验证。区分目标电流误差、版图前后变化和 timestep 收敛误差。
 - 数字 PWM 的 synthesis / timing / placement / routing 有保存结果；模拟 macro 具有 GDS / LEF / SPICE 和明确接口假设。
 - GDS 可打开、检查且具有一致 layer mapping。此结果标为通过所选 open decks 的 physical verification；只有实际 foundry/shuttle 接受后才声称满足其 signoff。
 
-当前进度：模拟 cell 已完成 Magic DRC=0、Netgen LVS 唯一匹配、GDS 回读、7/7 nets RC extraction 与 19 项配对 / 收敛 guards。见 [实际版图流程](layout/README.md)。数字 PWM hardening、macro LEF 与完整集成尚未完成，因此本阶段整体仍有后续工作。
+当前进度：模拟 cell 已完成 Magic DRC=0、Netgen LVS 唯一匹配且无 property errors、GDS 回读、7/7 nets RC extraction 与 19 项配对 / 收敛 guards；严格 LVS 检查修复后已重新运行完整版图流程。见 [实际版图流程](layout/README.md)。独立 native KLayout DRC 仍未成功运行，其系统启动阻塞记录保留在版图说明中。数字 PWM hardening、macro LEF 与完整集成尚未完成，因此本阶段整体仍有后续工作。先用单像素的电气指标决定 matching/routing 优化，再增加阵列规模。
 
 ## 3. 4×4 array
 
 范围：复制已验证 pixel cell，加入独立定义的最小 register / pixel-data / serial interface 和 array timing。先研究 replication、reference distribution、PWM timing 与 power routing。
+
+进入条件：单像素已经在选定 LED/model card、非理想 reference 和声明的 PVT/mismatch 范围内达到 accuracy、power 与 short-pulse 预算，并完成相应 matching 与独立 physical checks。尚未满足时继续单像素研究，不用增加像素数量掩盖模型或精度缺口。
 
 Exit criteria：
 

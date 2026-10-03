@@ -1,6 +1,6 @@
 # Phase 1 验证与证据读取
 
-状态日期：2026-10-03。机器可读结果见 [`summary.json`](../evidence/phase1/summary.json)，逐 case 指标见 [`metrics.csv`](../evidence/phase1/metrics.csv)。数字、模拟和物理证据必须分别描述。
+状态日期：2026-10-03。机器可读结果见 [`summary.json`](../evidence/phase1/summary.json)，逐 case 指标见 [`metrics.csv`](../evidence/phase1/metrics.csv)。数字、模拟和物理证据必须分别描述。对原始结果的独立复核、数值敏感性与后续补充验证见 [全面检阅](review/README.md)；下表保留原 baseline 的检查范围。
 
 ## 已执行的检查
 
@@ -17,6 +17,8 @@
 
 RTL exhaustive coverage 不代表模拟电路已在全部 duty / PVT 组合下验证。FF、SS 在 27 °C / 5 V / full-on 单点运行；temperature 在 typical / 5 V / full-on 单点运行。当前不开启 global variation / mismatch，reference 仍理想。测试标准是教学 baseline 的回归门限，不是商业精度要求。
 
+Paired post-layout 的小差异只约束两套网表之间的相对变化，不能替代相对 `IREF=100 μA` 的绝对误差。当前 schematic 与 extracted 网表除了 wire RC，也存在 diffusion area / perimeter 参数的差别，影响器件结电容等项；两者 transient 差异不能全部归因于布线 RC。研究纯布线影响时，需要先建立相同 diffusion geometry 的 schematic 对照。
+
 ## 测量定义与门限
 
 - Clock period 1 μs，首个 frame 从 2.5 μs 开始；预热 2 frame 后测量 `[514.5, 1538.5] μs`，共 4 个完整 256 μs frame。Runner 验证 TB 报告的 TRACE 时间窗，阻止未来改时钟/预热后静默使用旧窗口。
@@ -24,9 +26,11 @@ RTL exhaustive coverage 不代表模拟电路已在全部 duty / PVT 组合下�
 - `VSENSE` 的正电流从 supply 流入 LED；它含 diode conduction 与 charge/displacement 部分。报告保留 peak / minimum branch current；完整稳定 frame 上的积分是 current-based brightness proxy，不是光功率或发光峰值。
 - Adaptive SPICE samples 按时间做 trapezoidal integration，并对窗口两端插值。禁止简单平均 samples。Plateau 是 PWM 高时排除 edge 后 100 ns 的 current 中位数，不能代替全 pulse area。
 - Nominal 平均 current 与 `D × Iavg(full-on)` 的差必须 ≤`max(0.01 μA, expected × 3%)`；off / disable 的绝对平均 current <1 nA。
+- 关断的约 3.6 pA 是指定求解设置下的结果，不能作为已验证的物理 leakage。独立 GMIN sweep 在同一 RC 网表上得到明显不同的 pA 数值，说明默认数值电导主导这一量级；可保留上述 <1 nA 的模型回归结论，真实 leakage 需器件模型和测量支持，详见 [数值检阅](review/numeric-audit.md)。
 - Vf=2.4…3.2 V 三点 current spread < nominal full-on 的 10%；独立 LED calibration 另用 0.1 mV 严格校验。Coupled full-on actual Vf 与 100 μA reference target 比较时采用 10 mV 门限，容纳实际 mirror current 与 100 μA 的小偏差。
 - 2.9 V supply 的 headroom negative control 必须降到 nominal full-on 的 90% 以下。实际结果约 49.39 μA；保留这个失败余量点，避免只展示高余量 nominal 点。
 - Duty=1、64 的最大 timestep 从 200 ns 缩到 20 ns，积分的相对变化必须 <0.5%。这是积分 convergence；不等同于所有 transient peak 或电气应力已收敛。
+- 独立积分重算与收紧容差/切换积分方法支持当前平均电流结果，但 full-on 小纹波随 trapezoidal / Gear 和 timestep 明显变化。`peak` / `minimum` 暂属原始求解输出，不能据此确立物理 ripple、settling、rise/fall time 或 bandwidth；这些指标需要各自的收敛与模型适用性检查。
 
 ## 模型校准故障与修正
 

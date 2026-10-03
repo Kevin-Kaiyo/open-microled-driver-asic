@@ -4,7 +4,13 @@ An independently designed, open research platform for learning digital, mixed-si
 
 这是一个从 **1 Pixel** 开始的学习与研究项目。已跑通 **Verilog PWM → MOS gate control → current mirror → synthetic MicroLED electrical load**，并完成这个六 MOS 模拟 cell 的真实版图、GDS、Magic DRC、Netgen LVS、RC 抽取与版图后配对仿真。当前证据覆盖单像素模拟 cell；数字 physical integration、完整芯片与实际光输出仍在后续阶段。
 
-## 先读教学资料
+## 最新检阅：先确认研究前提
+
+2026-10-03 已完成[器件物理、数据与计算的全面检阅](docs/review/README.md)，另有 [10 页总报告 PDF](docs/review/single-pixel-audit.pdf)。结论是：**平均电流计算与基本 MOS 选用成立，适合作为教学基线；真实 LED 参数、绝对精度和制造后一致性尚未确立。**
+
+本轮修复了 LVS 可能放过器件尺寸错误的门禁，原版图严格重验仍通过；55 份波形独立积分一致。约 3.6 pA 关断电流受 GMIN 主导，不能作为物理 leakage；平均值收敛不代表峰值/纹波/带宽已验证。名义 RC 全开相对 100 µA 偏差为 +1.2365%，与版图前后约 −0.0623% 的变化属于不同指标。下一步继续单像素：先确定真实 LED/model card、精度和功耗预算，再推进 reference、matching 与数字物理集成。
+
+## 教学资料与阅读顺序
 
 按“整体架构 → PWM 逻辑 → 六个 MOS 与器件选型 → 模型与仿真 → 单像素版图”的顺序学习：
 
@@ -12,6 +18,8 @@ An independently designed, open research platform for learning digital, mixed-si
 - [中文技术讲义 PDF](docs/teaching/open-microled-single-pixel-report.pdf) / [HTML](docs/teaching/report.html)：逐步解释、连接表、参数账本、结果和公开来源。
 - [教学内容与练习](docs/teaching/content-plan.md) / [结构化页面内容](docs/teaching/lesson.json)：完整公开教学设定。
 - [版图复现与证据范围](docs/layout/README.md)：从 schematic、版图到 RC 仿真的实际路径。
+
+上面的 PPT/PDF 保留为审阅前教学快照；漏电、纹波、误差归因和后续门槛请结合[最新检阅](docs/review/README.md)阅读。参数未因本轮审阅而调优，新增证据与脚本全部公开。
 
 ## 当前可运行路径
 
@@ -51,7 +59,7 @@ make sim
 
 | Duty | 平均 LED branch current |
 |---|---:|
-| 0 / 256 | 约 3.61 pA |
+| 0 / 256 | 约 3.61 pA（默认求解设置下的数值，不是漏电规格） |
 | 1 / 256 | 0.39494 μA |
 | 64 / 256 | 25.32414 μA |
 | 128 / 256 | 50.64903 μA |
@@ -81,8 +89,10 @@ scripts/             model acquisition, RTL/SPICE orchestration, plots
 tests/               timing, integration and bridge checks
 evidence/phase1/     compact pre-layout results and source hashes
 evidence/layout/     GDS, extracted netlists and physical/RC evidence
+evidence/review/     independent physics, arithmetic and sensitivity evidence
 layout/              editable Magic layout and full-PDK schematic
 docs/teaching/       teaching PowerPoint, PDF, HTML and lesson content
+docs/review/         current audit, assumptions, findings and decision gates
 docs/research/       public sources, comparisons and evidence boundaries
 docs/               design, environment, verification, roadmap, original brief
 build/              ignored raw run outputs, regenerated locally

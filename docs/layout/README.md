@@ -2,6 +2,8 @@
 
 更新日期：2026-10-03（Asia/Tokyo）。这一节对应教学项目的**同一个 1-Pixel analog cell**。它已经生成真实 transistor layout 与 GDS，并完成本文列出的本地检查；数字 PWM 仍是 RTL simulation。两者尚未在芯片版图内集成。
 
+本次器件物理前提、数据计算与检查流程的独立检阅见 [审阅总览](../review/README.md)。其中发现的 LVS property 判定漏洞已修复，完整版图流程已重新运行；当前阶段仍是公开工具与模型下的单像素验证。
+
 ![实际 GF180MCU GDS 几何与接线](../../evidence/layout/layout.png)
 
 ## 1. 先理解这张图
@@ -17,18 +19,22 @@ M2 与 M3 相交不自动导通；有 Via2 的位置才连接。MOS gate 的 pol
 | 步骤 | 实际结果 | 对应证据 |
 | --- | --- | --- |
 | Magic geometry DRC | `drc(full)`，错误数 0 | [magic-generate.log](../../evidence/layout/magic-generate.log) |
-| Netgen LVS | 6 MOS / 7 nets / 7 pins；`Circuits match uniquely`；尺寸与器件属性匹配 | [netgen-lvs.log](../../evidence/layout/netgen-lvs.log) |
+| Netgen LVS | 6 MOS / 7 nets / 7 pins；唯一匹配且没有 property errors；连接与 deck 检查的 W/L 等属性通过 | [netgen-lvs.log](../../evidence/layout/netgen-lvs.log) |
 | GDS 写出后回读 | 回读 GDS 重新 DRC，错误数 0；重新 LVS 唯一匹配 | [magic-roundtrip.log](../../evidence/layout/magic-roundtrip.log)、[roundtrip LVS](../../evidence/layout/netgen-roundtrip-lvs.log) |
 | Magic RC extraction | 7/7 nets 完成；6 MOS、59 resistors、43 capacitors | [magic-pex.log](../../evidence/layout/magic-pex.log)、[RC SPICE](../../evidence/layout/pixel_driver_rc.spice) |
 | Paired post-layout regression | 17 条件 × schematic/RC 两版本 + 2 次细步长检查；36 transient runs；另 3 次独立 LED DC calibration；19 guards 通过 | [summary.json](../../evidence/layout/summary.json)、[regression.log](../../evidence/layout/postlayout-regression.log) |
 
 DRC 是“几何是否符合当前 deck 的规则”，LVS 是“抽取出的器件与连线是否等于指定 schematic”，PEX 是“把实际连线的 parasitic R/C 加回仿真”。三项各解决一个不同问题。GDS 回读检查用于发现写出/导入后改变连接或几何的情况；不能把这些检查合称为 foundry signoff。
 
+LVS runner 现在要求唯一的成功 final result，并拒绝 property errors。审阅中的真实负对照将 MOUT 的 W 从 10 µm 改为 20 µm，Netgen 仍返回 exit 0，并在“连接唯一匹配”之后报告 property errors；仅检查退出码或匹配句会误判。原始版图尺寸与连接正确，修复后的检查已正确拒绝该负对照。锁定 Netgen deck 对 W/L 采用 1% tolerance，允许对称 MOS 的 D/S 交换，并忽略 AD/AS/PD/PS、SA/SB/SD 等属性；因此 LVS 成功不证明 junction geometry、局部版图环境或寄生参数相同。见 [真实对照](../../evidence/review/mos-lvs-controls.json) 和 [修复后检查](../../evidence/review/lvs-guard-checks.json)。
+
 Magic `drc(full)` 是锁定公开 PDK 所提供的 Magic 规则集合；这里的 `full` 是该工具的 style 名称，不表示所有 foundry signoff 规则覆盖。没有取得 foundry acceptance，没有完成独立 KLayout DRC deck 的成功报告；density/fill、antenna、ESD、IO/pads、IR-drop、电迁移、封装与顶层集成均不在这次完成范围内。RC 是 Magic 当前名义 `ngspice()` extraction style 的结果，没有建立 RC corner qualification 或与 silicon 测量的校准。
 
 ## 3. 加入实际 RC 后有什么变化
 
 为避免混用模型，本次比较的两侧都采用同一个锁定完整 `gf180mcuD` PDK。左侧是相同 W/L 的 schematic，右侧是其实际 layout 的 extracted RC。第一阶段较早的 model subset 被保留；没有把它替换后继续当作原来的证据。
+
+两侧同时存在 diffusion geometry 和 wiring RC 的差异：schematic 的 AD/AS/PD/PS 默认 0，抽取网表包含真实 diffusion 面积与周长。因此配对 transient 的差值不能全部归因于连线 RC。独立审阅补做了“真实 diffusion geometry、但无 wiring RC”的中间 DC 对照，nominal full-on 仍为 101.299594 µA；它支持下表 nominal DC 变化主要来自 wiring resistance，但不把这一归因扩展到边沿或所有条件。
 
 | 条件 | 同一完整 PDK 的 schematic | 实际 layout RC | 变化 |
 | --- | ---: | ---: | ---: |
@@ -39,6 +45,8 @@ Magic `drc(full)` 是锁定公开 PDK 所提供的 Magic 规则集合；这里�
 
 Paired current guard 是 `max(|I_schematic|×1%, 1 nA)`；细步长 guard 是 `max(|I_RC|×0.2%, 1 nA)`。这些是当前教学回归的工程 guard，不是工艺、LED 产品或精度保证。平均 branch current 仍只是 electrical brightness proxy。LED 的 diode/R/C/TT 参数依然是 synthetic，没有 optical、热、老化或实测拟合证据。外部 ideal IREF 与供电、3.3 V PWM 电压波形仍由 testbench 提供。
 
+尤其要区分“版图前后变化小于 1%”和“相对于 100 µA 目标的电流误差小于 1%”：当前 nominal extracted RC 为 101.236512 µA，已经偏离目标约 +1.24%。后续精度和功耗预算必须以目标值及明确条件验收。
+
 ## 4. 模型名与单位怎样衔接
 
 - 第一阶段 original model subset：`nmos_6p0` / `pmos_6p0`，commit 在 `analog/models/pdk-lock.json`。
@@ -46,7 +54,7 @@ Paired current guard 是 `max(|I_schematic|×1%, 1 nA)`；细步长 guard 是 `m
 - 本次 schematic 与 extracted SPICE 使用 SI 尺寸：`w=10u l=2u` 表示 10 µm / 2 µm。Magic PCell 输入 `w 10 l 2` 使用 µm。不要把其他包装器的“无后缀数字代表 µm”假设加到这套网表。
 - RC SPICE 的 `R` 数字单位为 Ω；`f` 后缀的 `C` 数字为 fF，MOS `ad/as` 为 m²，`pd/ps` 为 m。GDS 坐标由 database unit 换算成 µm。
 - 从原来 global ground `0` 到 cell 显式 pin `VSS` 是接口整理，testbench 仍把 VSS 接 `0`，器件连线不变。对称 MOS 的 D/S 可在 LVS 中合法交换。
-- RC summary 的 `on_cathode_to_global_ground_v` 是外部 `led_k` pin 对全局 ground 的电压，含 wiring drop；不能把它叫作内部 MOS VDS。当前 RC 输出 MOS 的内部两个端点是 `led_k.t0` / `VSS.t6`，本次没有记录其实际 VDS。`gate_v` 也对应外部 monitor pin，内部 RC gate 是另一节点。
+- RC summary 的 `on_cathode_to_global_ground_v` 是外部 `led_k` pin 对全局 ground 的电压，含 wiring drop；不能把它叫作内部 MOS VDS。当前 RC 输出 MOS 的内部两个端点是 `led_k.t0` / `VSS.t6`，原配对 transient 没有记录其实际 VDS。后续独立审阅的 nominal DC 解补得内部 VDS=2.195460 V、以较低电位端为 NMOS source 的 VGS=1.382167 V，详见 [MOS 审阅](../review/mos-pdk-audit.md)。`gate_v` 仍对应外部 monitor pin，内部 RC gate 是另一节点。
 
 ## 5. 工具、PDK 与复现
 
@@ -72,7 +80,7 @@ build/layout/venv/bin/python scripts/layout/run_layout.py --publish-evidence
 
 Python KLayout 0.30.12 已实际读取 GDS、核对 bounding box 与 layer list，并生成上图。另通过 Homebrew 安装了官方 arm64 native KLayout 0.30.12 到 `/Applications/KLayout`，但其 CLI 启动停在 `_dyld_start`，最终终止 exit 143；macOS `spctl` assessment 给出 `rejected`，包有 quarantine 与 ad-hoc signature。诊断保存在 `build/layout/logs/klayout-startup-sample.txt`、`klayout-spctl.log` 和 `klayout-install.log`。没有移除 OS 安全属性，没有产生独立 KLayout rule-deck 通过结果。安装成功和 Python reader 成功不等于 native DRC 可运行。
 
-下一节先对这一像素做更紧凑且可解释的 matching/routing 优化，核对独立规则，并完成更完整的 corner/mismatch 与最短脉冲分析；之后才考虑数字 PWM 的 physical implementation、macro integration 和 4×4。通信、register map、像素数据缓冲与扫描方案属于后续阵列阶段，目前没有实现。
+下一步继续保持单像素范围，按 [审阅总览](../review/README.md) 的优先级推进：先确定真实 LED 的可追溯数据与 model card，写明电流精度、总功耗、headroom 和最短脉冲的预算；再加入非理想 reference、mismatch 和交叉 PVT 条件，检查启动与电源顺序。达到电气指标后，才做 matching/routing 优化和独立 physical checks，并继续数字 PWM 的 physical implementation 与 macro integration。单像素满足这些门槛后再扩到 4×4。通信、register map、像素数据缓冲与扫描方案属于后续阵列阶段，目前没有实现。
 
 ## 7. 公开来源与实现范围
 
