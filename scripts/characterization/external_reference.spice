@@ -1,0 +1,14 @@
+* Independent teaching model: external calibrated current-source specification.
+* These values are candidate budgets, not measured or vendor-guaranteed specs.
+* This is not a transistor implementation of an on-chip reference generator.
+* Positive current flows from vp to out; ground is the simulator global node 0.
+* Calibration: i_nom at temp_cal, vlogic_cal and head_cal when cal_error=0.
+* tc_ppm and line_ppm_v are signed bounded sensitivities; r_out is in ohms.
+* Below head_min the selected linear dropout envelope is illustrative only.
+.subckt external_reference vp out params: i_nom=100u cal_error=0
++ tc_ppm=0 line_ppm_v=0 r_out=10meg temp_cal=27 vlogic_cal=3.3
++ head_cal=1.9 head_min=1.0
+BREF vp out I={max(0,i_nom*(1+cal_error+tc_ppm*1e-6*(temper-temp_cal)
++ +line_ppm_v*1e-6*(v(vp)-vlogic_cal))+(v(vp,out)-head_cal)/r_out)
++ *min(1,max(0,v(vp,out)/head_min))}
+.ends external_reference

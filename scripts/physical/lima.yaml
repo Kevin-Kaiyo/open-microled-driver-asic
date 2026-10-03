@@ -1,0 +1,20 @@
+# Project-local Linux VM. Does not use or alter Docker Desktop's data disk.
+vmType: vz
+arch: aarch64
+cpus: 4
+memory: 6GiB
+disk: 16GiB
+images:
+  - location: https://cloud-images.ubuntu.com/releases/noble/release-20260705/ubuntu-24.04-server-cloudimg-arm64.img
+    arch: aarch64
+    digest: sha256:7df0201546f75b8bcc1044594c806c35749421ad3c9bc1be2a3ab806cfae39cc
+mountType: virtiofs
+mounts:
+  - location: /Users/kimmy/Projects/open-microled-driver-asic
+    writable: true
+containerd:
+  system: false
+  user: true
+ssh:
+  loadDotSSHPubKeys: false
+  forwardAgent: false

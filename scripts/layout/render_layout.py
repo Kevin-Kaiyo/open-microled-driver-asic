@@ -10,7 +10,7 @@ plt.rcParams["font.family"] = ["Avenir Next", "Arial", "sans-serif"]
 
 ROOT = Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
-parser.add_argument("--gds", type=Path, default=ROOT / "build/layout/work_v2/pixel_driver_layout.gds")
+parser.add_argument("--gds", type=Path, default=ROOT / "evidence/layout/pixel_driver_layout.gds")
 parser.add_argument("--output", type=Path, default=ROOT / "evidence/layout/layout.png")
 args = parser.parse_args()
 layout = kdb.Layout()
@@ -44,12 +44,12 @@ for layer in sorted(layout.layer_indexes(), key=lambda i: layout.get_info(i).lay
             xy = [(point.x * dbu, point.y * dbu) for point in polygon.each_point_hull()]
             ax.add_patch(Polygon(xy, facecolor=color, edgecolor=color, linewidth=0.3, alpha=alpha))
         iterator.next()
-for name, x, w, l in (("MREF", 10, 10, 2), ("MOUT", 25, 10, 2), ("MPASS", 40, 2, 1),
+for name, x, w, l in (("MREF", 10, 20, 4), ("MOUT", 25, 20, 4), ("MPASS", 40, 2, 1),
                       ("MCLAMP", 55, 2, 1), ("MINV_N", 70, 2, 1), ("MINV_P", 85, 4, 1)):
-    ax.text(x, 29, f"{name}\nW/L = {w}/{l} µm", ha="center", va="bottom", fontsize=10, color="#293840")
+    ax.text(x, 40, f"{name}\nW/L = {w}/{l} µm", ha="center", va="bottom", fontsize=10, color="#293840")
 for name, y in (("VSS", 0), ("bias", 2), ("gate", 4), ("pwm", 6), ("pwm_b", 8), ("led_k", 10), ("vlogic", 12)):
     ax.text(-1.2, y, name, ha="right", va="center", fontsize=9, color="#293840")
-ax.set(xlim=(-8, 99), ylim=(-3, 36), xlabel="x (µm)", ylabel="y (µm)")
+ax.set(xlim=(-8, 99), ylim=(-3, 47), xlabel="x (µm)", ylabel="y (µm)")
 ax.set_aspect("equal")
 ax.spines[["top", "right"]].set_visible(False)
 ax.tick_params(colors="#657179")

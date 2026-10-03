@@ -1,0 +1,28 @@
+{
+  "DESIGN_NAME": "pixel_pwm",
+  "VERILOG_FILES": ["dir::../../rtl/pixel_pwm.v"],
+  "PDK": "gf180mcuD",
+  "STD_CELL_LIBRARY": "gf180mcu_fd_sc_mcu7t5v0",
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 1000,
+  "DEFAULT_CORNER": "nom_tt_025C_3v30",
+  "STA_CORNERS": [
+    "nom_tt_025C_3v30", "min_tt_025C_3v30", "max_tt_025C_3v30",
+    "nom_ss_125C_3v00", "min_ss_125C_3v00", "max_ss_125C_3v00",
+    "nom_ff_n40C_3v60", "min_ff_n40C_3v60", "max_ff_n40C_3v60"
+  ],
+  "LIB": {
+    "*_tt_025C_3v30": ["pdk_dir::libs.ref/gf180mcu_fd_sc_mcu7t5v0/lib/gf180mcu_fd_sc_mcu7t5v0__tt_025C_3v30.lib"],
+    "*_ss_125C_3v00": ["pdk_dir::libs.ref/gf180mcu_fd_sc_mcu7t5v0/lib/gf180mcu_fd_sc_mcu7t5v0__ss_125C_3v00.lib"],
+    "*_ff_n40C_3v60": ["pdk_dir::libs.ref/gf180mcu_fd_sc_mcu7t5v0/lib/gf180mcu_fd_sc_mcu7t5v0__ff_n40C_3v60.lib"]
+  },
+  "FP_SIZING": "absolute",
+  "DIE_AREA": [0, 0, 180, 180],
+  "FP_CORE_UTIL": 35,
+  "PL_TARGET_DENSITY_PCT": 40,
+  "DESIGN_REPAIR_MAX_SLEW_PCT": 20,
+  "GRT_DESIGN_REPAIR_MAX_SLEW_PCT": 10,
+  "PNR_EXCLUDED_CELL_FILE": "dir::../../scripts/physical/no-pnr.cells",
+  "VDD_NETS": ["VDD"],
+  "GND_NETS": ["VSS"]
+}

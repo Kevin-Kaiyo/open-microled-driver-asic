@@ -1,0 +1,705 @@
+{
+  "evidence_level": "single published measured I-V curve; static piecewise-linear interpolation and held-out same-curve validation only",
+  "physical_sample_count": null,
+  "curve_count": 1,
+  "measurement_temperature_C": null,
+  "measurement_temperature_reason": "not specified in the article measurement method or source workbook",
+  "thermal_model_validated": false,
+  "dynamic_model_validated": false,
+  "optical_model_validated": false,
+  "source_dataset_doi": "10.5281/zenodo.20034288",
+  "source_license": "CC-BY-4.0",
+  "source_archive_sha256": "4873cfd00f6ffa7e9c75e425e4e41d230a7100e43e9e74bb67225e37ea09c3ee",
+  "source_archive_md5": "755accbc45603195c376ffc70a776bc5",
+  "source_xlsx_sha256": "9d60a001a0aaffb5a24787fa4036d8a66782f1b74c7b162b0e24df7b8ed936f2",
+  "selected_source": "I-V.xlsx / Sheet1 / A3:B102 / 20μm yellow / Fig.2a",
+  "measured_points": 100,
+  "current_domain_A": [
+    1.0000000000000001e-07,
+    0.032
+  ],
+  "voltage_domain_V": [
+    2.41622,
+    6.40451
+  ],
+  "interpolation_at_100uA_V": 3.767909545454545,
+  "current_density_at_100uA_A_cm2": 25.0,
+  "held_out_interpolation": {
+    "method": "linear V versus I; inversely equivalent to linear I versus V;  every fourth knot index modulo 4 equals 1 withheld; endpoints retained",
+    "training_count": 75,
+    "holdout_count": 25,
+    "count": 25,
+    "rmse_mV": 1.9484581549413937,
+    "max_abs_mV": 2.9526677561779735,
+    "local_10uA_to_1mA": {
+      "count": 9,
+      "rmse_mV": 2.1919029203536153,
+      "max_abs_mV": 2.7029787234043035
+    },
+    "interpretation": "same-curve interpolation error;  not cross-device or cross-temperature generalization"
+  },
+  "local_analytic_fit": {
+    "form": "V=b+a*ln(I/100uA)+r*(I-100uA); a>=0, r>=0",
+    "nominal_requested_domain_A": [
+      1e-05,
+      0.001
+    ],
+    "actual_points_domain_A": [
+      1.004e-05,
+      0.00088744
+    ],
+    "training_count": 27,
+    "holdout_count": 9,
+    "b_V": 3.7569138751166338,
+    "a_V": 0.2790482073710887,
+    "r_ohm": 0.0,
+    "unconstrained_r_ohm": -43.35988707398146,
+    "held_out_error": {
+      "count": 9,
+      "rmse_mV": 6.967443737102487,
+      "max_abs_mV": 11.099174306550719
+    },
+    "training_error": {
+      "count": 27,
+      "rmse_mV": 7.032771280249054,
+      "max_abs_mV": 11.108181008182338
+    },
+    "interpretation": "empirical local shape; a is not reported as physical N because measurement T is unspecified; r=0 boundary is not device series resistance"
+  },
+  "global_analytic_fit": {
+    "b_V": 3.7817062318408348,
+    "a_V": 0.23154255310061816,
+    "r_ohm": 43.57490860597889,
+    "held_out_error": {
+      "count": 25,
+      "rmse_mV": 85.81739951501763,
+      "max_abs_mV": 221.36857873157822
+    },
+    "selected_as_circuit_model": false
+  },
+  "spice_replay": {
+    "runs": 101,
+    "maximum_abs_voltage_difference_V": 1.7763568394002505e-15,
+    "passed": true,
+    "points": [
+      {
+        "current_A": 1.0000000000000001e-07,
+        "expected_V": 2.41622,
+        "ngspice_V": 2.41622,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.1366000000000001e-07,
+        "expected_V": 2.42893,
+        "ngspice_V": 2.42893,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.29186e-07,
+        "expected_V": 2.44164,
+        "ngspice_V": 2.44164,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.46833e-07,
+        "expected_V": 2.4544,
+        "ngspice_V": 2.4544,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.6689e-07,
+        "expected_V": 2.46745,
+        "ngspice_V": 2.46745,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.89687e-07,
+        "expected_V": 2.48095,
+        "ngspice_V": 2.48095,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 2.1559800000000002e-07,
+        "expected_V": 2.49428,
+        "ngspice_V": 2.49428,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 2.45049e-07,
+        "expected_V": 2.50833,
+        "ngspice_V": 2.50833,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 2.7852299999999996e-07,
+        "expected_V": 2.52291,
+        "ngspice_V": 2.52291,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 3.16569e-07,
+        "expected_V": 2.53754,
+        "ngspice_V": 2.53754,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 3.59812e-07,
+        "expected_V": 2.55246,
+        "ngspice_V": 2.552460000000001,
+        "delta_V": 8.881784197001252e-16
+      },
+      {
+        "current_A": 4.0896200000000003e-07,
+        "expected_V": 2.56787,
+        "ngspice_V": 2.56787,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 4.6482700000000004e-07,
+        "expected_V": 2.58315,
+        "ngspice_V": 2.58315,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 5.283220000000001e-07,
+        "expected_V": 2.59883,
+        "ngspice_V": 2.59883,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 6.004899999999999e-07,
+        "expected_V": 2.61467,
+        "ngspice_V": 2.61467,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 6.82517e-07,
+        "expected_V": 2.63146,
+        "ngspice_V": 2.631460000000001,
+        "delta_V": 8.881784197001252e-16
+      },
+      {
+        "current_A": 7.757489999999999e-07,
+        "expected_V": 2.64873,
+        "ngspice_V": 2.64873,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 8.817160000000001e-07,
+        "expected_V": 2.66552,
+        "ngspice_V": 2.66552,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1e-06,
+        "expected_V": 2.68391,
+        "ngspice_V": 2.68391,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.1399999999999999e-06,
+        "expected_V": 2.70208,
+        "ngspice_V": 2.70208,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.29e-06,
+        "expected_V": 2.7209,
+        "ngspice_V": 2.7209,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.47e-06,
+        "expected_V": 2.7403,
+        "ngspice_V": 2.7403,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.67e-06,
+        "expected_V": 2.76057,
+        "ngspice_V": 2.76057,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.9e-06,
+        "expected_V": 2.78143,
+        "ngspice_V": 2.781429999999999,
+        "delta_V": -8.881784197001252e-16
+      },
+      {
+        "current_A": 2.16e-06,
+        "expected_V": 2.80278,
+        "ngspice_V": 2.80278,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 2.46e-06,
+        "expected_V": 2.82505,
+        "ngspice_V": 2.82505,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 2.79e-06,
+        "expected_V": 2.84748,
+        "ngspice_V": 2.84748,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 3.17e-06,
+        "expected_V": 2.87091,
+        "ngspice_V": 2.87091,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 3.61e-06,
+        "expected_V": 2.89512,
+        "ngspice_V": 2.89512,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 4.1000000000000006e-06,
+        "expected_V": 2.92062,
+        "ngspice_V": 2.92062,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 4.66e-06,
+        "expected_V": 2.94661,
+        "ngspice_V": 2.94661,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 5.29e-06,
+        "expected_V": 2.97324,
+        "ngspice_V": 2.97324,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 6.02e-06,
+        "expected_V": 3.00109,
+        "ngspice_V": 3.00109,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 6.84e-06,
+        "expected_V": 3.02922,
+        "ngspice_V": 3.02922,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 7.77e-06,
+        "expected_V": 3.05828,
+        "ngspice_V": 3.05828,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 8.84e-06,
+        "expected_V": 3.08864,
+        "ngspice_V": 3.08864,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.004e-05,
+        "expected_V": 3.11895,
+        "ngspice_V": 3.11895,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.1419999999999999e-05,
+        "expected_V": 3.15089,
+        "ngspice_V": 3.15089,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.2970000000000001e-05,
+        "expected_V": 3.18342,
+        "ngspice_V": 3.18342,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.475e-05,
+        "expected_V": 3.21723,
+        "ngspice_V": 3.21723,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.6760000000000002e-05,
+        "expected_V": 3.2508,
+        "ngspice_V": 3.2508,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 1.9050000000000002e-05,
+        "expected_V": 3.28545,
+        "ngspice_V": 3.28545,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 2.165e-05,
+        "expected_V": 3.32071,
+        "ngspice_V": 3.32071,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 2.461e-05,
+        "expected_V": 3.35714,
+        "ngspice_V": 3.35714,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 2.7969999999999998e-05,
+        "expected_V": 3.39332,
+        "ngspice_V": 3.39332,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 3.179e-05,
+        "expected_V": 3.43086,
+        "ngspice_V": 3.43086,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 3.6139999999999996e-05,
+        "expected_V": 3.46964,
+        "ngspice_V": 3.469640000000001,
+        "delta_V": 8.881784197001252e-16
+      },
+      {
+        "current_A": 4.1070000000000005e-05,
+        "expected_V": 3.50819,
+        "ngspice_V": 3.50819,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 4.668e-05,
+        "expected_V": 3.54635,
+        "ngspice_V": 3.54635,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 5.3060000000000004e-05,
+        "expected_V": 3.58481,
+        "ngspice_V": 3.58481,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 6.0310000000000004e-05,
+        "expected_V": 3.62274,
+        "ngspice_V": 3.62274,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 6.855e-05,
+        "expected_V": 3.66032,
+        "ngspice_V": 3.66032,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 7.790999999999999e-05,
+        "expected_V": 3.69762,
+        "ngspice_V": 3.69762,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 8.855000000000001e-05,
+        "expected_V": 3.73408,
+        "ngspice_V": 3.73408,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00010065000000000001,
+        "expected_V": 3.76983,
+        "ngspice_V": 3.76983,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.0001144,
+        "expected_V": 3.8055,
+        "ngspice_V": 3.8055,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00013002,
+        "expected_V": 3.84057,
+        "ngspice_V": 3.840570000000001,
+        "delta_V": 8.881784197001252e-16
+      },
+      {
+        "current_A": 0.00014779000000000002,
+        "expected_V": 3.87519,
+        "ngspice_V": 3.87519,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00016797,
+        "expected_V": 3.9097,
+        "ngspice_V": 3.9097,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00019092000000000002,
+        "expected_V": 3.94383,
+        "ngspice_V": 3.94383,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00021700000000000002,
+        "expected_V": 3.97803,
+        "ngspice_V": 3.97803,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00024664,
+        "expected_V": 4.01201,
+        "ngspice_V": 4.01201,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00028033,
+        "expected_V": 4.04594,
+        "ngspice_V": 4.04594,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00031862000000000004,
+        "expected_V": 4.07948,
+        "ngspice_V": 4.07948,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00036215000000000005,
+        "expected_V": 4.11364,
+        "ngspice_V": 4.11364,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00041162,
+        "expected_V": 4.14791,
+        "ngspice_V": 4.14791,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00046783999999999997,
+        "expected_V": 4.18222,
+        "ngspice_V": 4.18222,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00053175,
+        "expected_V": 4.21664,
+        "ngspice_V": 4.21664,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00060439,
+        "expected_V": 4.25143,
+        "ngspice_V": 4.25143,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00068695,
+        "expected_V": 4.28667,
+        "ngspice_V": 4.28667,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00078078,
+        "expected_V": 4.32213,
+        "ngspice_V": 4.32213,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00088744,
+        "expected_V": 4.35826,
+        "ngspice_V": 4.35826,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00100866,
+        "expected_V": 4.39501,
+        "ngspice_V": 4.39501,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.0011464399999999999,
+        "expected_V": 4.43266,
+        "ngspice_V": 4.43266,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00130305,
+        "expected_V": 4.47113,
+        "ngspice_V": 4.47113,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00148105,
+        "expected_V": 4.51045,
+        "ngspice_V": 4.51045,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00168336,
+        "expected_V": 4.55096,
+        "ngspice_V": 4.55096,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.0019133,
+        "expected_V": 4.59303,
+        "ngspice_V": 4.59303,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.0021746599999999997,
+        "expected_V": 4.63661,
+        "ngspice_V": 4.63661,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00247172,
+        "expected_V": 4.6819,
+        "ngspice_V": 4.6819,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00280935,
+        "expected_V": 4.72901,
+        "ngspice_V": 4.72901,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00319311,
+        "expected_V": 4.77805,
+        "ngspice_V": 4.778049999999999,
+        "delta_V": -1.7763568394002505e-15
+      },
+      {
+        "current_A": 0.0036292900000000003,
+        "expected_V": 4.82748,
+        "ngspice_V": 4.82748,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00412505,
+        "expected_V": 4.8816,
+        "ngspice_V": 4.8816,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00468853,
+        "expected_V": 4.93829,
+        "ngspice_V": 4.93829,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00532898,
+        "expected_V": 4.99802,
+        "ngspice_V": 4.998019999999999,
+        "delta_V": -1.7763568394002505e-15
+      },
+      {
+        "current_A": 0.00605692,
+        "expected_V": 5.06078,
+        "ngspice_V": 5.06078,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00688429,
+        "expected_V": 5.12696,
+        "ngspice_V": 5.12696,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00782468,
+        "expected_V": 5.19723,
+        "ngspice_V": 5.19723,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.00889353,
+        "expected_V": 5.27153,
+        "ngspice_V": 5.27153,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.01010839,
+        "expected_V": 5.35033,
+        "ngspice_V": 5.350329999999999,
+        "delta_V": -8.881784197001252e-16
+      },
+      {
+        "current_A": 0.011489190000000002,
+        "expected_V": 5.43423,
+        "ngspice_V": 5.434229999999999,
+        "delta_V": -1.7763568394002505e-15
+      },
+      {
+        "current_A": 0.01305861,
+        "expected_V": 5.52407,
+        "ngspice_V": 5.52407,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.01484241,
+        "expected_V": 5.62053,
+        "ngspice_V": 5.62053,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.01686988,
+        "expected_V": 5.72463,
+        "ngspice_V": 5.72463,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.01917431,
+        "expected_V": 5.83739,
+        "ngspice_V": 5.83739,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.021793510000000002,
+        "expected_V": 5.96038,
+        "ngspice_V": 5.96038,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.024770499999999997,
+        "expected_V": 6.09501,
+        "ngspice_V": 6.09501,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.028154150000000003,
+        "expected_V": 6.24234,
+        "ngspice_V": 6.24234,
+        "delta_V": 0.0
+      },
+      {
+        "current_A": 0.032,
+        "expected_V": 6.40451,
+        "ngspice_V": 6.404509999999999,
+        "delta_V": -8.881784197001252e-16
+      },
+      {
+        "current_A": 0.0001,
+        "expected_V": 3.767909545454545,
+        "ngspice_V": 3.767909545454545,
+        "delta_V": 0.0
+      }
+    ]
+  },
+  "ngspice_version": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******\n",
+  "source_hashes": {
+    "analog/models/measured-led/lin2026-yellow20-diamond-iv.csv": "9da8dbac6499c34159da5e3aa0c59cd6de43aad446090181b4c070beba9505ab",
+    "analog/models/measured-led/source-lock.json": "7a9210d1af46004469e4e97e5c05001c3004c1c6e828bca02f16e094a9577ba8",
+    "analog/models/measured-led/model-card.json": "83a17ae0ba181d307f7580255934ecc63071689dcc50ff4c9dc519bf24f08201",
+    "scripts/led/fit_lin2026.py": "5cca9c8a65ba98efc89c73fd00484b33d95400faa6e71e81c358f1a5cae0a6b1",
+    "analog/models/measured-led/lin2026-yellow20-dc.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc"
+  },
+  "python_numerical_versions": {
+    "numpy": "2.5.3",
+    "matplotlib": "3.11.2"
+  }
+}

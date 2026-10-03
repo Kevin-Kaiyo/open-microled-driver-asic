@@ -1,0 +1,9 @@
+# Keep the two exclusion entries from the locked PDK drc_exclude.cells.
+gf180mcu_fd_sc_mcu7t5v0__mux2_1
+gf180mcu_fd_sc_mcu7t5v0__oai33_2
+# The resizer selected delay buffers for high-fanout nets; SS output slew
+# exceeded 3 ns. Use ordinary buffer cells rather than delay cells in PNR.
+gf180mcu_fd_sc_mcu7t5v0__dly*
+# A buf_1 on the ten-load fanout also exceeded 3 ns at SS. Permit stronger
+# ordinary buffers; retain the original 3 ns constraint and all nine corners.
+gf180mcu_fd_sc_mcu7t5v0__buf_1

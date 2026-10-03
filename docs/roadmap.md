@@ -1,14 +1,24 @@
 # 从 1 Pixel 到可评估 MPW 的路线
 
-本项目建立一个长期的 open mixed-signal ASIC 学习与研究平台。当前交付范围是 **1-Pixel RTL PWM → transistor driver → synthetic MicroLED electrical model 的可复现仿真路径，以及 standalone analog cell 的版图 / DRC / LVS / RC 与配对仿真**。完成这个里程碑不等于用户完整愿景、完整 ASIC design flow 或全平台已经完成。
+更新日期：2026-10-04。本项目建立一个长期的 open mixed-signal ASIC 学习与研究平台。当前交付包括 **registered 1-Pixel PWM、W20/L4 mirror 的实际 analog layout/RC、非理想 reference 预算与固定种子 MC、公开实测 LED 的静态模型，以及数字 PWM macro 和独立 KLayout 检查**。各模块已取得的证据如下；完整 mixed-signal 顶层、真实动态负载与 silicon measurement 仍需后续工作。
 
 每一步先达到明确 exit criteria，再扩展规模；结果始终区分 simulation、layout/physical verification、foundry acceptance 和 silicon measurement。
 
-2026-10-03 的 [独立审阅](review/README.md) 确认目前器件尺寸、基本偏置及单像素方向可以继续，并修复了 LVS 忽略 property errors 的自动判定漏洞。当前优先工作仍在单像素：**真实 LED 数据与 model card、accuracy/power/short-pulse 预算 → 非理想 reference、mismatch 与交叉 PVT → matching/routing 优化和独立 physical checks → 数字集成及 4×4**。现有 nominal 仿真和版图前后变化小，不能代替这些指标或 foundry signoff。
+起于旧 10/2 版本的 [独立审阅](review/README.md) 修复了 LVS 忽略 property errors 的判定漏洞，并明确不能只靠 nominal 或 fixed-corner pass 判断精度。后续按同一预设指标发现旧版最差条件 MC 有 4/256 超限，因此采用 20/4，并用真实新提取结果重新验证。
+
+| 当前完成项 | 可检查的结果与入口 |
+|---|---|
+| 单像素 analog layout | W/L=20/4 µm；GDS cell 边界 95×37.66 µm，面积 3577.7 µm²，比旧版增加 41.26%；严格 DRC/LVS、GDS roundtrip 与 7/7 nets RC extraction 通过，见[版图说明](layout/README.md) |
+| Accuracy / reference / mismatch | 预设 absolute-current ±5%、最低码电荷 ±2%；实际 RC 的 1080 点 PVT/reference 范围 99.28026–102.07565 µA，五组各 256 MC 样本无超限，三条件最低码最大误差 0.76830%，见[研究报告](research/reference-and-matching.md) |
+| 真实 LED static 数据 | 可追溯 20 µm 方形黄色 InGaN 曲线与 model card；真实曲线/实际 RC 静态耦合完成，动态、测量温度和光学仍有缺口，见[实测数据说明](research/measured-led.md) |
+| 数字 registered PWM | 输出改由 FF 驱动，保留 256-slot/frame 语义；synthesis 与 gate-level 回归完成，见[数字验证](digital/README.md) |
+| 数字 macro 与独立检查 | PWM macro 物理实现及独立 KLayout rule-deck 检查已完成；具体工具、timing 条件、GDS/LEF 及 deck 覆盖见[物理实现](digital/physical.md) |
+
+当前顺序是继续补齐**真实 LED 动态/温度、实际 reference、单像素数字/模拟接口与顶层集成**，再定义 4×4 的共享 reference、供电、通信与一致性预算。有限 MC 样本与公开 deck 通过不等于制造 yield 或 foundry acceptance。
 
 ## 1. 1-Pixel simulation baseline
 
-范围：独立设计 PWM RTL、GF180MCU 6 V MOS current mirror / PWM switching cell、external ideal current reference、简化 MicroLED 电气模型，以及 event trace → PWL → ngspice 的单向联动。
+范围：独立设计 PWM RTL、GF180MCU 6 V MOS current mirror / PWM switching cell、external ideal current reference、简化 MicroLED 电气模型，以及 event trace → PWL → ngspice 的单向联动。这条基础回归已完成并保留，用来理解各部分；后续更真实的条件在独立证据中验证。
 
 Exit criteria：
 
@@ -16,9 +26,9 @@ Exit criteria：
 - RTL 自检覆盖 duty endpoints、中间灰阶和 reset/enable 行为；实际 PWM event trace 驱动 SPICE，不使用另一个独立 PWM 波形替代 RTL。
 - LED model 在指定 reference current / temperature 下通过独立校准；明确这是 synthetic electrical model。
 - 能解释 LED current waveform、完整 frame 的平均电流与 duty 的关系；Vf sweep、headroom negative control 和 timestep refinement 有可检查结果。
-- 文档列出理想 reference、供电、尺寸、有限 output resistance、没有 layout parasitics/光学模型/真实 LED measurement 等限制。
+- 文档明确该 baseline 的理想 reference/供电、尺寸、有限 output resistance、无 layout parasitics 和无光学模型等假设；新增 layout、实测 static 负载和 reference 实验独立标注，不能混写成同一个验证等级。
 
-当前需要补齐的研究前提：选择可追溯的目标 LED 及发光面积，记录 I–V、动态/电容和温度数据来源与 model card；在这些条件下定义目标电流误差、总功耗、headroom 和最短有效 PWM pulse。synthetic model 的单点 DC 校准只确认模型按设定运行，不完成真实器件校准。
+已补齐一条公开实测 LED I–V、20×20 µm² mesa 面积与 model card，并在[单像素 v0.2 指标](specifications/single-pixel-v0.2.md)中声明精度、短脉冲和研究 envelope。135 点实测 static 耦合矩阵在 MOS 27°C 等条件下给出 98.17501–100.98377 µA，另外保存 headroom 与功耗探针。仍需要 C–V/impedance 或 transient、I–V(T)、测量不确定度与光学数据；未知测量温度不能默认为 27°C。Synthetic 单点 DC 校准只确认模型按设定运行，不能替代这些物理资料。
 
 当前阶段的证据由 README 链接的结果和运行 `summary.json` 给出；具体样本数、检查数和误差以对应运行记录为准。
 
@@ -28,7 +38,7 @@ Exit criteria：
 
 Exit criteria：
 
-- 明确 full PDK variant、build hash、tool/deck version；Xschem schematic netlist 与此前 SPICE baseline 对齐。
+- 明确 full PDK variant、build hash、tool/deck version；schematic/source netlist 与此前 SPICE baseline 对齐。
 - Analog layout 包含 device geometry、well/substrate ties、guard rings、contacts、routing 和可辨认 pins；布局采用可解释的 matching 方法。
 - DRC 无未解释错误；LVS 必须同时确认 connectivity 与 deck 检查的参数，拒绝 property errors，保存完整报告与任何必要 waiver 的来源。当前 deck 的 W/L tolerance 为 1%，允许 D/S 交换，忽略 AD/AS/PD/PS 等属性；不得把通过扩大为全部几何/寄生属性一致。
 - PEX 后重新仿真 PWM、current、headroom 和关键 corners；量化与 pre-layout 的差异。当前 schematic 与 extracted RC 同时存在 diffusion geometry 和 wiring RC 差异，必要时增加无 wiring RC 的几何抽取中间对照，避免把全部变化归因于连线。
@@ -36,7 +46,9 @@ Exit criteria：
 - 数字 PWM 的 synthesis / timing / placement / routing 有保存结果；模拟 macro 具有 GDS / LEF / SPICE 和明确接口假设。
 - GDS 可打开、检查且具有一致 layer mapping。此结果标为通过所选 open decks 的 physical verification；只有实际 foundry/shuttle 接受后才声称满足其 signoff。
 
-当前进度：模拟 cell 已完成 Magic DRC=0、Netgen LVS 唯一匹配且无 property errors、GDS 回读、7/7 nets RC extraction 与 19 项配对 / 收敛 guards；严格 LVS 检查修复后已重新运行完整版图流程。见 [实际版图流程](layout/README.md)。独立 native KLayout DRC 仍未成功运行，其系统启动阻塞记录保留在版图说明中。数字 PWM hardening、macro LEF 与完整集成尚未完成，因此本阶段整体仍有后续工作。先用单像素的电气指标决定 matching/routing 优化，再增加阵列规模。
+当前进度：实际 20/4 模拟 cell 完成 Magic DRC=0、Netgen 唯一匹配且无 property errors、GDS 回读、7/7 nets RC extraction 与 19 项配对/收敛 guards；并导出 GDS/LEF/SPICE。Reference 预算与 PDK 随机失配已独立复验，使用的是新结几何与新 RC，旧 10/2 失败及概念候选均保留。数字 registered-PWM macro 物理流程与独立 KLayout 检查也已完成，分别见[模拟版图](layout/README.md)、[reference/matching](research/reference-and-matching.md)、[数字物理实现](digital/physical.md)。
+
+旧 macOS native KLayout 启动阻塞是历史环境记录，仍保留诊断，但不是当前项目未做独立 DRC 的理由。当前未闭环的是实际 reference 器件/电路、startup/power sequencing、真实 LED 动态/温漂、数字输出级与模拟 gate 负载的接口，以及两个 macro 的顶层供电与连接验证；不能把 standalone macro 完成直接称作完整 ASIC 完成。进一步 matching 方法应针对系统性布局误差与真实接口约束选择。
 
 ## 3. 4×4 array
 

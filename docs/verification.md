@@ -1,6 +1,6 @@
 # Phase 1 验证与证据读取
 
-状态日期：2026-10-03。机器可读结果见 [`summary.json`](../evidence/phase1/summary.json)，逐 case 指标见 [`metrics.csv`](../evidence/phase1/metrics.csv)。数字、模拟和物理证据必须分别描述。对原始结果的独立复核、数值敏感性与后续补充验证见 [全面检阅](review/README.md)；下表保留原 baseline 的检查范围。
+状态日期：2026-10-04。机器可读结果见 [`summary.json`](../evidence/phase1/summary.json)，逐 case 指标见 [`metrics.csv`](../evidence/phase1/metrics.csv)。下表描述当前20/4、registered PWM 的synthetic baseline；[v0.2研究报告](research/research-report.md)另记录真实静态LED、reference/PVT、mismatch和数字physical。旧[全面检阅](review/README.md)保留为10/2历史快照。
 
 ## 已执行的检查
 
@@ -13,9 +13,10 @@
 | Analog assertions | 7 个 current/duty 误差、2 个 off、Vf regulation、3 个 coupled Vf、headroom negative control、2 个 timestep checks、3 个独立 LED calibration | 19 checks，全部通过 |
 | Standalone analog layout | Magic DRC、Netgen LVS、GDS 回读、RC 抽取 | DRC=0；LVS 唯一匹配；7/7 nets；59 R / 43 C，见 [版图证据](../evidence/layout/summary.json) |
 | Paired post-layout | 完整 PDK 下 schematic / RC 两版，17 条件 + RC 两次 timestep refinement | 36 transient + 3 LED DC；19 guards 全通过，见 [版图说明](layout/README.md) |
-| Digital physical / silicon / optics | 数字 timing / routing、制造与光测量 | 尚未执行 |
+| Digital mapping / physical | Registered PWM mapping、CTS/routing、STA、SDF、GDS/LEF | 实际数字结果和工具限制见[digital physical](digital/physical.md)；不以analog checks代替 |
+| Silicon / optics | 制造与本项目光测量 | 尚未执行 |
 
-RTL exhaustive coverage 不代表模拟电路已在全部 duty / PVT 组合下验证。FF、SS 在 27 °C / 5 V / full-on 单点运行；temperature 在 typical / 5 V / full-on 单点运行。当前不开启 global variation / mismatch，reference 仍理想。测试标准是教学 baseline 的回归门限，不是商业精度要求。
+RTL exhaustive coverage 不代表模拟电路已在全部 duty / PVT 组合下验证。本页baseline的FF/SS和temperature为少量pilot cases、统计关闭、理想reference。独立[actual RC研究](research/reference-and-matching.md)另完成1080点reference/PVT及五组各256MC；[实测静态负载](research/measured-led.md)另有135点固定MOS温度网格，均记录自己的条件和分母。
 
 Paired post-layout 的小差异只约束两套网表之间的相对变化，不能替代相对 `IREF=100 μA` 的绝对误差。当前 schematic 与 extracted 网表除了 wire RC，也存在 diffusion area / perimeter 参数的差别，影响器件结电容等项；两者 transient 差异不能全部归因于布线 RC。研究纯布线影响时，需要先建立相同 diffusion geometry 的 schematic 对照。
 
@@ -28,7 +29,7 @@ Paired post-layout 的小差异只约束两套网表之间的相对变化，不�
 - Nominal 平均 current 与 `D × Iavg(full-on)` 的差必须 ≤`max(0.01 μA, expected × 3%)`；off / disable 的绝对平均 current <1 nA。
 - 关断的约 3.6 pA 是指定求解设置下的结果，不能作为已验证的物理 leakage。独立 GMIN sweep 在同一 RC 网表上得到明显不同的 pA 数值，说明默认数值电导主导这一量级；可保留上述 <1 nA 的模型回归结论，真实 leakage 需器件模型和测量支持，详见 [数值检阅](review/numeric-audit.md)。
 - Vf=2.4…3.2 V 三点 current spread < nominal full-on 的 10%；独立 LED calibration 另用 0.1 mV 严格校验。Coupled full-on actual Vf 与 100 μA reference target 比较时采用 10 mV 门限，容纳实际 mirror current 与 100 μA 的小偏差。
-- 2.9 V supply 的 headroom negative control 必须降到 nominal full-on 的 90% 以下。实际结果约 49.39 μA；保留这个失败余量点，避免只展示高余量 nominal 点。
+- 2.9 V supply 的 headroom negative control 必须降到 nominal full-on 的 90% 以下；当前尺寸约48.83 µA（pre-layout、synthetic Vf=2.8 V）。保留失败余量点，真实静态LED的供电扫描另计。
 - Duty=1、64 的最大 timestep 从 200 ns 缩到 20 ns，积分的相对变化必须 <0.5%。这是积分 convergence；不等同于所有 transient peak 或电气应力已收敛。
 - 独立积分重算与收紧容差/切换积分方法支持当前平均电流结果，但 full-on 小纹波随 trapezoidal / Gear 和 timestep 明显变化。`peak` / `minimum` 暂属原始求解输出，不能据此确立物理 ripple、settling、rise/fall time 或 bandwidth；这些指标需要各自的收敛与模型适用性检查。
 

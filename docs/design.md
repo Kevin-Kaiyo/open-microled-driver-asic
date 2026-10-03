@@ -1,4 +1,6 @@
-# Phase 1：从 RTL PWM 到 1-Pixel LED Current
+# 单像素电路与 PWM：保留教学基线，推进 v0.2
+
+更新：2026-10-04。当前尺寸为 mirror 20/4 µm、registered PWM。除本页 synthetic LED 基本回归外，已完成[真实静态 LED 耦合](research/measured-led.md)、[actual RC reference/mismatch 研究](research/reference-and-matching.md)、[模拟 physical](layout/README.md)和[数字 physical](digital/physical.md)。整体当前结论见[研究报告](research/research-report.md)。
 
 本阶段已经建立一条可重复执行的驱动链：**真实 RTL 输出 → 电压波形桥接 → PDK transistor-level driver → synthetic MicroLED 电气负载 → 波形与电流积分**。它是 pre-layout、feed-forward coupled simulation；模拟结果没有反馈改变 RTL 状态。这里的“完整链路”指数字控制确实驱动了模拟电路，不表示已实现 feedback control 或双向 mixed-signal co-simulation。
 
@@ -62,8 +64,8 @@ Phase 1 没有 serial receiver、command decoder、register map、pixel memory�
 
 | Instance | W / L | 连接与功能 |
 |---|---|---|
-| `XREF` | 10 µm / 2 µm | drain 与 gate 都接 `bias`，source / bulk 接 ground；diode-connected reference device 将外部 IREF 转成 VGS |
-| `XOUT` | 10 µm / 2 µm | drain 接 `led_k`，gate 接 `gate`，source / bulk 接 ground；输出 current sink，与 XREF 构成 nominal 1:1 mirror |
+| `XREF` | 20 µm / 4 µm | drain 与 gate 都接 `bias`，source / bulk 接 ground；diode-connected reference device 将外部 IREF 转成 VGS |
+| `XOUT` | 20 µm / 4 µm | drain 接 `led_k`，gate 接 `gate`，source / bulk 接 ground；输出 current sink，与 XREF 构成 nominal 1:1 mirror |
 | `XPASS` | 2 µm / 1 µm | gate 由 `pwm` 控制；PWM 高时在 `bias` 与输出 `gate` 之间建立通路 |
 | `XCLAMP` | 2 µm / 1 µm | gate 由 `pwm_b` 控制；PWM 低时把输出 `gate` 接到 ground，释放 gate charge |
 | `XINV_N` | 2 µm / 1 µm | CMOS inverter 的 NMOS，PWM 高时将 `pwm_b` 拉低 |
@@ -132,7 +134,7 @@ IS = 100 µA / expm1[(Vf_target - 100 µA × 50 Ω) / (3 × VT)]
 
 默认 clock 是 1 MHz，frame period 为 256 µs，PWM frequency 为 3906.25 Hz。`duty`、`enable` 只在 frame boundary 锁存；输入帧中变化不截断当前脉冲。`rst` 为高有效同步 reset，下一 rising edge 将输出清零；释放后的第一个 rising edge 从 slot 0 开始完整新帧。输入属于同一个 clock domain，尚未实现异步 interface 的 CDC / handshake。完整时序说明在 [`pwm.md`](pwm.md)。
 
-PWM 目前由 counter 的组合比较器直接输出。物理实现中 counter 多个 bit 的 clock-to-Q 和布线延迟可能不同，组合比较器存在短暂 glitch 的结构性风险；这是尚待 gate-level / timing / analog-load 验证的问题，并非已在当前 RTL 仿真中观测到的失败。现有理想 event replay 不包含这类物理延迟。
+v0.2 的 PWM 已改为 output flip-flop 驱动。普通 slot 注册 `next_counter < active_duty`，frame 边界注册新输入对应的 slot 0，保持原有 frame 时序。这样把 counter/comparator 路径隔在 D-input，减少组合路径直接驱动像素的毛刺风险；D-input 的 setup/hold 仍需实际 STA。exhaustive RTL、GF180 mapped gate simulation 与输出结构检查已通过，详见 [digital](digital/README.md)；实际 CTS/routing、STA 和 SDF 的范围另见 [physical](digital/physical.md)。基本 coupled regression 的 PWL 仍来自实际 RTL，10 ns slew 是电气桥接假设。
 
 RTL testbench 实际执行后导出 `time_ns,pwm` event CSV。第一条已知输出来自 500 ns 的 reset low；桥接将该已知 low 向前延伸到 SPICE 的 0 ns，是明确的 startup assumption。之后每个切换时刻来自 RTL，Python 不另算一套理想 PWM 替代它。10 ns PWL slew 只描述桥接电压，不是数字 cell timing 的测量。
 
@@ -162,8 +164,8 @@ PWM linearity check 对照的是 `measured duty × measured full-on average`，*
 
 [`evidence/phase1/summary.json`](../evidence/phase1/summary.json) 是当前 compact evidence 入口，记录 host、工具版本、PDK lock、LED 校准、case conditions、检查和结果；[`source-hashes.json`](../evidence/phase1/source-hashes.json) 将运行证据关联到源文件。结果可以结合 [`waveforms.png`](../evidence/phase1/waveforms.png)、[`duty-current.png`](../evidence/phase1/duty-current.png) 和 [`vf-current.png`](../evidence/phase1/vf-current.png) 解释。修改源文件后应重新执行验证并生成匹配证据。
 
-本页上述 baseline 证据是 **RTL + pre-layout PDK transistor simulation**。新的 standalone analog physical 结果另见 [版图说明](layout/README.md)。FF / SS 和 0 °C / 85 °C 是少量 pilot cases；没有建立 process × supply × temperature × duty × Vf 的完整组合，`sw_stat_global=0`、`sw_stat_mismatch=0` 也明确关闭了统计变化。不能将这些结果称为 full PVT sign-off、Monte Carlo、matching 或 yield 证明。
+本页 Phase1 baseline 证据是 **RTL + pre-layout PDK transistor simulation**；其 FF / SS 和 0 °C / 85 °C 是少量 pilot cases，统计开关关闭。独立 v0.2 研究另做了1080点 reference/PVT 与五组各256 actual RC Monte Carlo，见 [matching](research/reference-and-matching.md)。这两组证据不可混算，也不能把条件样本称为 full signoff 或 manufacturing yield。
 
-这个六 MOS cell 现在已有独立 analog layout、GDS、Magic DRC、Netgen LVS、RC extraction 与 paired post-layout simulation，具体范围和结果见 [physical summary](../evidence/layout/summary.json)。完整 PDK 对两种网表配对使用，避免把旧 model subset 与新抽取结果混算。数字 standard-cell physical integration、pad ring、ESD、package、真实 MicroLED 测量仍未完成。先学习并复现这个单像素，再逐步扩展 4×4。真正双向反馈联仿需引入 current sense / comparator → RTL 状态改变 → 后续 PWM 改变；PWL edge replay 本身没有建立这项反馈。
+这个六 MOS cell 现在已有独立 analog layout、GDS、Magic DRC、Netgen LVS、RC extraction 与 paired post-layout simulation，具体范围见 [physical summary](../evidence/layout/summary.json)。完整 PDK 对两种网表配对使用，避免旧 model subset 与抽取结果混算。数字 standard-cell macro 的 physical 实现另见 [digital physical](digital/physical.md)；两macro共同top、pad ring、ESD、package和本项目实物测量仍未完成。公开作者数据支持一种真实 MicroLED 静态曲线，动态、温度与光学模型未确立。真正双向反馈需 current sense / comparator → RTL 状态改变 → 后续 PWM 改变；PWL replay没有建立这项反馈。
 
 公开调研和 baseline trade-offs 另见 [`driver-evidence.md`](research/driver-evidence.md)；PDK 与工具选择另见 [`pdk-and-tools.md`](research/pdk-and-tools.md)。

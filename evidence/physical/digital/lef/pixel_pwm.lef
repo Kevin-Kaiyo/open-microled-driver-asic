@@ -1,0 +1,181 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO pixel_pwm
+  CLASS BLOCK ;
+  FOREIGN pixel_pwm ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 180.000 BY 180.000 ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER Metal4 ;
+        RECT 22.240 15.380 23.840 161.020 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 6.720 31.530 173.040 33.130 ;
+    END
+  END VDD
+  PIN VSS
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER Metal4 ;
+        RECT 25.540 15.380 27.140 161.020 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 6.720 34.830 173.040 36.430 ;
+    END
+  END VSS
+  PIN clk
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 4.738000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 119.840 0.560 120.400 ;
+    END
+  END clk
+  PIN duty[0]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 72.800 0.560 73.360 ;
+    END
+  END duty[0]
+  PIN duty[1]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 75.040 0.560 75.600 ;
+    END
+  END duty[1]
+  PIN duty[2]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 73.920 0.560 74.480 ;
+    END
+  END duty[2]
+  PIN duty[3]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 87.360 0.560 87.920 ;
+    END
+  END duty[3]
+  PIN duty[4]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 78.400 0.560 78.960 ;
+    END
+  END duty[4]
+  PIN duty[5]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 91.840 0.560 92.400 ;
+    END
+  END duty[5]
+  PIN duty[6]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 105.280 0.560 105.840 ;
+    END
+  END duty[6]
+  PIN duty[7]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 110.880 0.560 111.440 ;
+    END
+  END duty[7]
+  PIN duty[8]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 101.920 0.560 102.480 ;
+    END
+  END duty[8]
+  PIN enable
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 92.960 0.560 93.520 ;
+    END
+  END enable
+  PIN pwm
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 1.182800 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 86.240 0.560 86.800 ;
+    END
+  END pwm
+  PIN rst
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 113.120 0.560 113.680 ;
+    END
+  END rst
+  OBS
+      LAYER Nwell ;
+        RECT 6.290 15.250 173.470 161.150 ;
+      LAYER Metal1 ;
+        RECT 6.720 15.380 173.040 161.020 ;
+      LAYER Metal2 ;
+        RECT 8.540 15.490 93.380 160.910 ;
+      LAYER Metal3 ;
+        RECT 0.560 120.700 93.430 160.860 ;
+        RECT 0.860 119.540 93.430 120.700 ;
+        RECT 0.560 113.980 93.430 119.540 ;
+        RECT 0.860 112.820 93.430 113.980 ;
+        RECT 0.560 111.740 93.430 112.820 ;
+        RECT 0.860 110.580 93.430 111.740 ;
+        RECT 0.560 106.140 93.430 110.580 ;
+        RECT 0.860 104.980 93.430 106.140 ;
+        RECT 0.560 102.780 93.430 104.980 ;
+        RECT 0.860 101.620 93.430 102.780 ;
+        RECT 0.560 93.820 93.430 101.620 ;
+        RECT 0.860 91.540 93.430 93.820 ;
+        RECT 0.560 88.220 93.430 91.540 ;
+        RECT 0.860 85.940 93.430 88.220 ;
+        RECT 0.560 79.260 93.430 85.940 ;
+        RECT 0.860 78.100 93.430 79.260 ;
+        RECT 0.560 75.900 93.430 78.100 ;
+        RECT 0.860 72.500 93.430 75.900 ;
+        RECT 0.560 15.540 93.430 72.500 ;
+  END
+END pixel_pwm
+END LIBRARY
+

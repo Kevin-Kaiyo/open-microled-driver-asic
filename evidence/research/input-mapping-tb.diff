@@ -1,0 +1,42 @@
+--- evidence/research/input-snapshots/ce23d247156ea1e28a0abaefa84ad018eade72c18f4c6d1e1093f4d5ca4ed9ea/sim/rtl/tb_pixel_pwm.v
++++ sim/rtl/tb_pixel_pwm.v
+@@ -16,6 +16,7 @@
+     integer requested_duty = 64;
+     integer requested_enable = 1;
+     integer trace_only = 0;
++    integer trace_realtime = 0;
+     integer warmup_frames = 2;
+     integer measure_frames = 4;
+     integer unused_arg;
+@@ -71,8 +72,12 @@
+         end else if (last_event_ns >= 0.0) begin
+             $fatal(1, "PWM became unknown after its first known reset value");
+         end
+-        if (trace_fd != 0 && (pwm === 1'b0 || pwm === 1'b1))
+-            $fdisplay(trace_fd, "%0d,%0d", $time, pwm);
++        if (trace_fd != 0 && (pwm === 1'b0 || pwm === 1'b1)) begin
++            if (trace_realtime != 0)
++                $fdisplay(trace_fd, "%0.3f,%0d", $realtime, pwm);
++            else
++                $fdisplay(trace_fd, "%0d,%0d", $time, pwm);
++        end
+         if (watch_midframe != 0)
+             midframe_changes = midframe_changes + 1;
+     end
+@@ -250,6 +255,7 @@
+         unused_arg = $value$plusargs("DUTY=%d", requested_duty);
+         unused_arg = $value$plusargs("ENABLE=%d", requested_enable);
+         unused_arg = $value$plusargs("TRACE_ONLY=%d", trace_only);
++        unused_arg = $value$plusargs("TRACE_REALTIME=%d", trace_realtime);
+         unused_arg = $value$plusargs("WARMUP_FRAMES=%d", warmup_frames);
+         unused_arg = $value$plusargs("MEASURE_FRAMES=%d", measure_frames);
+         if (CLK_PERIOD_NS < 16 || CLK_PERIOD_NS % 2 != 0)
+@@ -263,6 +269,8 @@
+             $fatal(1, "ENABLE must be 0 or 1");
+         if (trace_only != 0 && trace_only != 1)
+             $fatal(1, "TRACE_ONLY must be 0 or 1");
++        if (trace_realtime != 0 && trace_realtime != 1)
++            $fatal(1, "TRACE_REALTIME must be 0 or 1");
+         if (warmup_frames < 0 || measure_frames < 1)
+             $fatal(1, "WARMUP_FRAMES >= 0 and MEASURE_FRAMES >= 1 required");
+ 

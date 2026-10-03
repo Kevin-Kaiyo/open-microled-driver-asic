@@ -2,6 +2,8 @@
 
 调研日期：2026-10-03（Asia/Tokyo）。本页记录公开来源与本项目独立设计判断；不包含商业产品的协议、register map、内部 schematic 或 layout。公开产品和论文用于识别问题，不作为可直接复用的电路 IP。第一阶段执行结果以仓库生成的波形、日志和结果文件为准，本页不是仿真通过证明。
 
+2026-10-04 实施更新：保留simple mirror架构；两mirror管改为20/4µm，经过实际layout/PEX、reference/PVT与同种子mismatch复验；同时新增真实静态LED I–V模型。当前技术判断见[研究报告](research-report.md)，尺寸依据与完整条件见[reference/matching](reference-and-matching.md)。本页保留最初方案比较的公开证据。
+
 ## 1. 第一版选择
 
 选择 **1:1 simple NMOS current mirror sink + MOS gate selection + off-state gate clamp**。它同时展示 reference current、MOS 饱和区、LED headroom、PWM 动态和电流积分，而且可以逐个器件进行后续 layout。第一版只做 1 pixel；不加入 cascode、current DAC、温度补偿或商业协议。

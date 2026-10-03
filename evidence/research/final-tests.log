@@ -1,0 +1,22 @@
+uv run python -m unittest discover -s tests -v
+test_exact_boundary_edges_and_full_on (test_bridge.BridgeTests.test_exact_boundary_edges_and_full_on) ... ok
+test_irregular_samples_use_time_weighted_integration (test_bridge.BridgeTests.test_irregular_samples_use_time_weighted_integration) ... ok
+test_missing_interval_fails (test_bridge.BridgeTests.test_missing_interval_fails) ... ok
+test_overlapping_voltage_transitions_fail (test_bridge.BridgeTests.test_overlapping_voltage_transitions_fail) ... ok
+test_provenance_covers_sources_and_ignores_local_metadata (test_bridge.BridgeTests.test_provenance_covers_sources_and_ignores_local_metadata) ... ok
+test_trace_timing_drift_is_rejected_even_for_constant_pwm (test_bridge.BridgeTests.test_trace_timing_drift_is_rejected_even_for_constant_pwm) ... ok
+test_voltage_ramp_starts_at_actual_rtl_edge (test_bridge.BridgeTests.test_voltage_ramp_starts_at_actual_rtl_edge) ... ok
+test_incomplete_or_ambiguous_report_is_rejected (test_layout_lvs.LayoutLvsTests.test_incomplete_or_ambiguous_report_is_rejected) ... ok
+test_real_wrong_width_report_is_rejected (test_layout_lvs.LayoutLvsTests.test_real_wrong_width_report_is_rejected) ... ok
+test_successful_connectivity_and_properties (test_layout_lvs.LayoutLvsTests.test_successful_connectivity_and_properties) ... ok
+test_wrong_connectivity_is_rejected (test_layout_lvs.LayoutLvsTests.test_wrong_connectivity_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.008s
+
+OK
+uv run python scripts/run_phase1.py --rtl-only
+TRACE first_frame_ns=2500 measure_start_ns=514500 measure_end_ns=1538500 duty=64 enable=1
+PASS pixel_pwm: all 257 valid duty levels, all 255 clamped levels, frame updates, enable, reset; 518 frames and 133159 slot/value checks
+PASS pixel_pwm output events: 543 known events; at most one event per rising clock; delay window 0..0 ns; minimum high=1000.000 ns low=1000.000 ns
+sim/rtl/tb_pixel_pwm.v:309: $finish called at 134690501000 (1ps)

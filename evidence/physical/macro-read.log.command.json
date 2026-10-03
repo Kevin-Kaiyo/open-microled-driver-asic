@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "limactl",
+    "shell",
+    "asic",
+    "nerdctl",
+    "run",
+    "--rm",
+    "-v",
+    "/Users/kimmy/Projects/open-microled-driver-asic:/Users/kimmy/Projects/open-microled-driver-asic",
+    "-w",
+    "/Users/kimmy/Projects/open-microled-driver-asic",
+    "-e",
+    "QT_QPA_PLATFORM=offscreen",
+    "-e",
+    "PYTHONPATH=/Users/kimmy/Projects/open-microled-driver-asic/build/physical-flow/linux-python",
+    "-e",
+    "ASICFLOW_ROOT=/Users/kimmy/Projects/open-microled-driver-asic",
+    "-e",
+    "ASICFLOW_OUTPUT=/Users/kimmy/Projects/open-microled-driver-asic/build/physical-flow/analog-macro-read-v0.2",
+    "ghcr.io/librelane/librelane@sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f",
+    "openroad",
+    "-python",
+    "-exit",
+    "/Users/kimmy/Projects/open-microled-driver-asic/scripts/physical/read_macro.py"
+  ],
+  "exit_code": 0,
+  "image": "ghcr.io/librelane/librelane@sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f",
+  "runner_sha256": "2b198658cfa628ad028a36e0396bd8cd14f06bed1ee7233eff2e17c2d30c9d5a"
+}

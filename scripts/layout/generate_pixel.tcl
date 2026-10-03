@@ -1,5 +1,5 @@
 # Independent educational layout, using the pinned GF180MCU Magic PCells.
-# All coordinates are um; MOS W/L remain exactly those of Phase 1.
+# All coordinates are um; mirror W/L use the reviewed v0.2 20/4 sizing.
 proc rect {layer x1 y1 x2 y2} {
     box values ${x1}um ${y1}um ${x2}um ${y2}um
     paint $layer
@@ -13,8 +13,8 @@ proc padvia {lo hi via x y} {
     rect $via [expr {$x-$cut}] [expr {$y-$cut}] [expr {$x+$cut}] [expr {$y+$cut}]
 }
 set devices {
-    {MREF nfet_06v0 10 2 10 20 bias bias VSS VSS}
-    {MOUT nfet_06v0 10 2 25 20 led_k gate VSS VSS}
+    {MREF nfet_06v0 20 4 10 26 bias bias VSS VSS}
+    {MOUT nfet_06v0 20 4 25 26 led_k gate VSS VSS}
     {MPASS nfet_06v0 2 1 40 20 bias pwm gate VSS}
     {MCLAMP nfet_06v0 2 1 55 20 gate pwm_b VSS VSS}
     {MINV_N nfet_06v0 2 1 70 20 pwm_b pwm VSS VSS}
@@ -52,7 +52,9 @@ foreach device $devices {
     set dx [expr {$l/2.0+0.26}]
     set gx $cx
     set gy [expr {$cy-$w/2.0-0.28}]
-    set bx [expr {$cx-3.5}]
+    # Wider channel length moves the guard contact left; retain >=0.23um
+    # spacing between the bulk via landing and unconnected guard segments.
+    set bx [expr {$cx-max(3.5,$l/2.0+2.5)}]
     set ringx [expr {$cx-$l/2.0-0.98}]
     # Left-hand contacted guard ring connects to a dedicated bulk column.
     rect metal1 $bx [expr {$cy-0.25}] [expr {$ringx+0.15}] [expr {$cy+0.25}]

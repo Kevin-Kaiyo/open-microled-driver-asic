@@ -2,9 +2,10 @@
 * Uses ORIGINAL GF model names; w/l are meters, not open_pdks micron units.
 * IREF and logic/LED rails belong to the external testbench.
 .subckt pixel_driver led_k pwm vlogic bias gate pwm_b
-* Reference / output mirror. Nominal IREF=100uA, W/L=10um/2um.
-XREF bias bias 0 0 nmos_6p0 w=10u l=2u
-XOUT led_k gate 0 0 nmos_6p0 w=10u l=2u
+* v0.2 reference / output mirror. Nominal IREF=100uA, W/L=20um/4um.
+* Same W/L=5, four times gate area, evaluated using pinned PDK mismatch.
+XREF bias bias 0 0 nmos_6p0 w=20u l=4u
+XOUT led_k gate 0 0 nmos_6p0 w=20u l=4u
 * NMOS pass device connects bias to gate during PWM on.
 XPASS bias pwm gate 0 nmos_6p0 w=2u l=1u
 * Clamp removes gate charge during PWM off; gate is not intentionally floating.

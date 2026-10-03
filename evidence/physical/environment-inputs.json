@@ -1,0 +1,18 @@
+{
+  "lima_version": "2.2.0",
+  "lima_binary_sha256": "91c2985fbf0815f505a6f26ea48abe685f27491d0ab4720e445ec2e54be9581b",
+  "vm_config_sha256": "846cecf4ff55c303faa52dfad2016588364072b512f94037308e372a29a68716",
+  "image_index_digest": "sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f",
+  "image_arm64_manifest_digest": "sha256:f851ed1ae33a641389239dcf93194a8a2077e39eab9b1afdf8f9321078e49a18",
+  "nerdctl_version": "2.3.5",
+  "guest_image_digest": "sha256:7df0201546f75b8bcc1044594c806c35749421ad3c9bc1be2a3ab806cfae39cc",
+  "pdk_build": "54435919abffb937387ec956209f9cf5fd2dfbee",
+  "first_failure": {
+    "stage": "container image extraction",
+    "exit_code": 1,
+    "reason": "10GiB guest disk: no space left on device",
+    "log": "build/physical-flow/nerdctl-pull.log"
+  },
+  "recovery": "project VM fstrim; resize isolated disk to16GiB; retry immutable image",
+  "user_data_policy": "No Docker Desktop factory reset, Docker.raw removal, system security-attribute modification or user VM deletion."
+}

@@ -1,0 +1,538 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-04 Asia/Tokyo",
+  "passed": true,
+  "evidence_level": "Standalone routed PWM macro with 9-corner STA, Magic DRC, Netgen LVS, independent KLayout DRC; supported-path SDF to separately extracted analog RC replay",
+  "run_name": "pwm-v0.2-sized",
+  "physical_flow_steps": 76,
+  "flow_exit_code": 0,
+  "pdk_build": "54435919abffb937387ec956209f9cf5fd2dfbee",
+  "tools": {
+    "python": "3.13.9 (main, Oct 14 2025, 13:52:31) [GCC 14.3.0]",
+    "platform": "Linux-6.8.0-134-generic-aarch64-with-glibc2.40",
+    "tools": {
+      "librelane": {
+        "argv": [
+          "librelane",
+          "--version"
+        ],
+        "exit_code": 0,
+        "output": "LibreLane v3.0.14\n\nCopyright \u00a92025-2026 LibreLane Contributors\n\nAdapted from OpenLane 2.0\nCopyright \u00a92020-2025 Efabless Corporation\n\nAvailable under the Apache License, version 2. Included with the source code,\nbut you can also get a copy at https://www.apache.org/licenses/LICENSE-2.0\n\nIncluded tools and utilities may be distributed under stricter licenses.\n",
+        "launcher_path": "/nix/store/f8bhalkl3s4vjwd7g271xz92bra8yrm5-python3-3.13.9-env/bin/librelane",
+        "launcher_sha256": "7a0b1ff676a99616eb8c1614eca31dfe79102bba5945b2df49c39bc130795856"
+      },
+      "openroad": {
+        "argv": [
+          "openroad",
+          "-version"
+        ],
+        "exit_code": 0,
+        "output": "dcf36133a369abc8f3c5e5738cd4d82e4903c0e0 \n",
+        "launcher_path": "/nix/store/wkzln74z6ihjkvqmv7fjl19zm3hydxfl-openroad-2026-02-17-python3-3.13.9-env/bin/openroad",
+        "launcher_sha256": "a052e4d8d37f71cd90268ae90cbbf629418615648c2fb997ba7dfea24aafa2e6"
+      },
+      "yosys": {
+        "argv": [
+          "yosys",
+          "-V"
+        ],
+        "exit_code": 0,
+        "output": "Yosys 0.62 (git sha1 7326bb7d6641500ecb285c291a54a662cb1e76cf, clang++ 21.1.2 -fPIC -O3)\n",
+        "launcher_path": "/nix/store/8qcb29fdm14p8jf26v9zvyk5r7pb2zva-yosys-with-plugins-0.62-python3-3.13.9-env/bin/yosys",
+        "launcher_sha256": "2be6b2b6fe0b1df8b9c385d46bbc3d8cb9f660f8766bd8d5f95de9532cb42e34"
+      },
+      "klayout": {
+        "argv": [
+          "klayout",
+          "-v"
+        ],
+        "exit_code": 0,
+        "output": "KLayout 0.30.7\n",
+        "launcher_path": "/nix/store/6b8nac5c1g0bcqibr53jy1sm7pypg2a4-klayout-0.30.7/bin/klayout",
+        "launcher_sha256": "5f2c53b2a9991ddb00d2b8c52e330a27a0841560ad1f97fae9bf2dfb6a4dbac1"
+      },
+      "magic": {
+        "argv": [
+          "magic",
+          "--version"
+        ],
+        "exit_code": 0,
+        "output": "8.3.623\n",
+        "launcher_path": "/nix/store/x2xlwpvip0l202sj0005fbb3gzrmaz4q-magic-vlsi-8.3.623/bin/magic",
+        "launcher_sha256": "5b79ecc8cd24a8ef2c5578abb503299383d87a90a8e1b4c9087b5f00c073637d"
+      },
+      "netgen": {
+        "argv": [
+          "netgen",
+          "-batch"
+        ],
+        "exit_code": 0,
+        "output": "Netgen 1.5.316 compiled on Tue Feb 10 10:44:29 UTC 2026\nWarning: netgen command 'format' use fully-qualified name '::netgen::format'\nWarning: netgen command 'global' use fully-qualified name '::netgen::global'\n",
+        "launcher_path": "/nix/store/q35an5srff267qih45lk1mhnwk30831l-netgen-1.5.316/bin/netgen",
+        "launcher_sha256": "8392504a6a0bb9217d6083488537380aa1f0c944396ca851b847a4056d024489"
+      },
+      "drc_python_imports": {
+        "passed": true,
+        "klayout_version": "0.30.7"
+      }
+    },
+    "transport_log_tail": ""
+  },
+  "actual_frozen_input_provenance": {
+    "source_sha256": {
+      "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+      "layout/digital/config.json": "7bf23fef99e351b6b18fc914d35ff50fa093b1578c99bd3aff89b10058901a3d",
+      "layout/pdk-lock.json": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+      "scripts/digital/library-lock.json": "bb25aea2850bf9f9c3b090fbed45cf34fc73a9f6a938cd2168451beedab5541a",
+      "scripts/physical/no-pnr.cells": "35e31f76ff69246d52d8e70adb01895a0de37507352ba9fa27f7dc4bfcc13140"
+    },
+    "snapshot_sha256": {
+      "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+      "config.json": "1b604cc2b1956b40c465b035d8d346c08ec2734bcc969f1b475f443329d47e79"
+    },
+    "image": "ghcr.io/librelane/librelane@sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f"
+  },
+  "packaging_source_sha256": {
+    "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+    "layout/digital/config.json": "7bf23fef99e351b6b18fc914d35ff50fa093b1578c99bd3aff89b10058901a3d",
+    "scripts/digital/library-lock.json": "bb25aea2850bf9f9c3b090fbed45cf34fc73a9f6a938cd2168451beedab5541a",
+    "sim/rtl/tb_pixel_pwm.v": "f0fc5b991974b79a7a229567ece574da0a052367ccee9ebce69f6e4c41bf2dbe",
+    "sim/rtl/tb_pixel_pwm_sdf.v": "152bef659ddfc0e405876e3fe95513a40582709b9a01239b9296f7bf2d18d2f9",
+    "scripts/physical/lima.yaml": "846cecf4ff55c303faa52dfad2016588364072b512f94037308e372a29a68716",
+    "scripts/physical/no-pnr.cells": "35e31f76ff69246d52d8e70adb01895a0de37507352ba9fa27f7dc4bfcc13140",
+    "scripts/physical/pdk-lock.json": "50f119ae5e17f0589f0a7a58db4c7a6daa7e6e1b40c85e15cd0d96300f7c3762",
+    "scripts/physical/publish.py": "e5e0eeb6028eeefe27c6eb1bf971534c3d1599aa3146162913b15c7944ceffe6",
+    "scripts/physical/read_macro.py": "ffd530b03102f7d87327a9876dbca688ebab0539849540a3724053eb209dba07",
+    "scripts/physical/register_sta.tcl": "417065c5c1b5c258e85abdbd7db062bbb89c3979f928e1fc9b18b138888d109b",
+    "scripts/physical/requirements.txt": "4864231fc81f4d24f7d11c181d815b23de6282ae75dbe084c32aea201c19f82e",
+    "scripts/physical/run.py": "09d6007e0c8971a65fe80f459219b60d2c0c84c715409cc732677bc164cc2503",
+    "scripts/physical/run_sdf.py": "9f7fcf070e639858dd2e9a7bb06cff1481423dff5094200c55cc816d11541f15",
+    "docs/digital/README.md": "20860b4b7fd41cd15cefe87e3054eb124bd66201dd41c9ff8e1ae4c3545e7617",
+    "docs/digital/physical.md": "6d61c69a3bf5e788af4657b7d792702c379a29caacfa0bbdf5ee32ec46898db6"
+  },
+  "checkpoints": {
+    "route__drc_errors": 0,
+    "magic__drc_error__count": 0,
+    "design__lvs_error__count": 0,
+    "design__max_slew_violation__count": 0,
+    "design__max_cap_violation__count": 0,
+    "design__max_fanout_violation__count": 0,
+    "design__critical_disconnected_pin__count": 0,
+    "design__disconnected_pin__count": 0,
+    "antenna__violating__nets": 0,
+    "antenna__violating__pins": 0,
+    "timing__setup_vio__count": 0,
+    "timing__hold_vio__count": 0
+  },
+  "corners": {
+    "nom_tt_025C_3v30": {
+      "setup_worst_slack_ns": 796.7778626851699,
+      "hold_worst_slack_ns": 0.9686567377938469,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "max_slew_violation_count": 0,
+      "max_cap_violation_count": 0,
+      "r2r_setup": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 992.996582
+      },
+      "r2r_hold": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 0.968657
+      }
+    },
+    "min_tt_025C_3v30": {
+      "setup_worst_slack_ns": 796.8206089373622,
+      "hold_worst_slack_ns": 0.9641150373162622,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "max_slew_violation_count": 0,
+      "max_cap_violation_count": 0,
+      "r2r_setup": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 993.088867
+      },
+      "r2r_hold": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 0.964115
+      }
+    },
+    "max_tt_025C_3v30": {
+      "setup_worst_slack_ns": 796.729204717249,
+      "hold_worst_slack_ns": 0.9741097093558164,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "max_slew_violation_count": 0,
+      "max_cap_violation_count": 0,
+      "r2r_setup": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 992.88678
+      },
+      "r2r_hold": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 0.97411
+      }
+    },
+    "nom_ss_125C_3v00": {
+      "setup_worst_slack_ns": 793.7532811254642,
+      "hold_worst_slack_ns": 2.2082252207373236,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "max_slew_violation_count": 0,
+      "max_cap_violation_count": 0,
+      "r2r_setup": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 986.058594
+      },
+      "r2r_hold": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 2.208225
+      }
+    },
+    "min_ss_125C_3v00": {
+      "setup_worst_slack_ns": 793.835647241723,
+      "hold_worst_slack_ns": 2.1995095256583097,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "max_slew_violation_count": 0,
+      "max_cap_violation_count": 0,
+      "r2r_setup": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 986.24292
+      },
+      "r2r_hold": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 2.19951
+      }
+    },
+    "max_ss_125C_3v00": {
+      "setup_worst_slack_ns": 793.6564767804065,
+      "hold_worst_slack_ns": 2.218552959693685,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "max_slew_violation_count": 0,
+      "max_cap_violation_count": 0,
+      "r2r_setup": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 985.838745
+      },
+      "r2r_hold": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 2.218553
+      }
+    },
+    "nom_ff_n40C_3v60": {
+      "setup_worst_slack_ns": 798.0446751537298,
+      "hold_worst_slack_ns": 0.4394111865408991,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "max_slew_violation_count": 0,
+      "max_cap_violation_count": 0,
+      "r2r_setup": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 995.91626
+      },
+      "r2r_hold": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 0.439411
+      }
+    },
+    "min_ff_n40C_3v60": {
+      "setup_worst_slack_ns": 798.0701410060997,
+      "hold_worst_slack_ns": 0.43667737328774464,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "max_slew_violation_count": 0,
+      "max_cap_violation_count": 0,
+      "r2r_setup": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 995.969971
+      },
+      "r2r_hold": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 0.436677
+      }
+    },
+    "max_ff_n40C_3v60": {
+      "setup_worst_slack_ns": 798.0136954895745,
+      "hold_worst_slack_ns": 0.44265270479757357,
+      "setup_violation_count": 0,
+      "hold_violation_count": 0,
+      "max_slew_violation_count": 0,
+      "max_cap_violation_count": 0,
+      "r2r_setup": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 995.852722
+      },
+      "r2r_hold": {
+        "endpoint_count": 19,
+        "worst_slack_ns": 0.442653
+      }
+    }
+  },
+  "worst_setup_slack_ns": 793.6564767804065,
+  "worst_hold_slack_ns": 0.43667737328774464,
+  "worst_r2r_setup_slack_ns": 985.838745,
+  "gds": {
+    "dbu_um": 0.001,
+    "topcell": "pixel_pwm",
+    "bbox_um": [
+      0.0,
+      0.0,
+      180.0,
+      180.0
+    ],
+    "cell_count": 35
+  },
+  "die_area_um2": 32400,
+  "instance_count_including_taps_endcaps_fillers": 887,
+  "sequential_cell_count": 19,
+  "independent_klayout": {
+    "analog": {
+      "topcell": "pixel_driver_layout",
+      "item_count": 0,
+      "category_count": 651,
+      "input_hashes": {
+        "source": "/Users/kimmy/Projects/open-microled-driver-asic/evidence/layout/pixel_driver_layout.gds",
+        "gds_sha256": "20ff3a9d180eb0ef19de7a17a82e492e9153d2d7cf8ae77585024b10c7f431ad",
+        "runner_sha256": "6eed310882152bdf837e958301afcc75bc86e64ab2b27158fa931188466dc61f",
+        "main_deck_sha256": "9b986260e1909e9ce2ee97b2d1103dc513836bc6a440e876d66d23c85985c41a",
+        "image": "ghcr.io/librelane/librelane@sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f"
+      },
+      "enabled": [
+        "FEOL",
+        "BEOL",
+        "connectivity",
+        "offgrid"
+      ],
+      "density": false,
+      "antenna": false
+    },
+    "digital": {
+      "topcell": "pixel_pwm",
+      "item_count": 0,
+      "category_count": 651,
+      "input_hashes": {
+        "source": "/Users/kimmy/Projects/open-microled-driver-asic/build/physical-flow/pwm-v0.2-sized/final/gds/pixel_pwm.gds",
+        "topcell": "pixel_pwm",
+        "gds_sha256": "2045ef4da8a9e83f1db109372454504c66b6d3e963704ddb0caaf64118307aa2",
+        "runner_sha256": "6eed310882152bdf837e958301afcc75bc86e64ab2b27158fa931188466dc61f",
+        "main_deck_sha256": "9b986260e1909e9ce2ee97b2d1103dc513836bc6a440e876d66d23c85985c41a",
+        "image": "ghcr.io/librelane/librelane@sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f"
+      },
+      "enabled": [
+        "FEOL",
+        "BEOL",
+        "connectivity",
+        "offgrid"
+      ],
+      "density": false,
+      "antenna": false
+    }
+  },
+  "analog_macro_reader": {
+    "passed": true,
+    "lef_sha256": "5a21953e5450f49fcc07e033b75b6b5fb1b513348445c6ccbc357ab9ecf5adfc",
+    "size_um": [
+      95.0,
+      37.66
+    ],
+    "origin_um": [
+      0.0,
+      0.3
+    ],
+    "pin_count": 7,
+    "obstruction_count": 228
+  },
+  "sdf_replay_summary": "evidence/physical/sdf/summary.json",
+  "prior_attempts": [
+    {
+      "run_name": "pwm-v0.2",
+      "exit_code": 0,
+      "log_sha256": "47934b584f5dd29d9a2cabc7fc6fe147358e529f5a547a98fb3b9483535be1c4",
+      "local_log": "build/physical-flow/pwm-v0.2.log",
+      "max_slew_violation_count": 21
+    },
+    {
+      "run_name": "pwm-v0.2-slew",
+      "exit_code": 1,
+      "log_sha256": "881944304e80311fc2977d26e5cfe74c3f57ed7603b420fcc012d4bcfb63b71a",
+      "local_log": "build/physical-flow/pwm-v0.2-slew.log",
+      "reason": "OpenROAD RepairDesignPostGPL killed by Linux OOM; 50 percent slew margins; kernel evidence retained locally"
+    },
+    {
+      "run_name": "pwm-v0.2-ss",
+      "exit_code": 0,
+      "log_sha256": "2c59ae82699f15ff47137666a686613117acf639bb33d9040a981b81ef9b08f3",
+      "local_log": "build/physical-flow/pwm-v0.2-ss.log",
+      "max_slew_violation_count": 21
+    },
+    {
+      "run_name": "pwm-v0.2-buffers",
+      "exit_code": 0,
+      "log_sha256": "d7f86d8820c8e76ecbf818a82fbc0008b0a1c5b9e79f69f6920febc93c7a6c09",
+      "local_log": "build/physical-flow/pwm-v0.2-buffers.log",
+      "max_slew_violation_count": 11
+    }
+  ],
+  "sta_assumptions": {
+    "CLOCK_PERIOD": 1000,
+    "OUTPUT_CAP_LOAD": 72.91,
+    "MAX_TRANSITION_CONSTRAINT": 3,
+    "MAX_CAPACITANCE_CONSTRAINT": 0.2,
+    "MAX_FANOUT_CONSTRAINT": 10,
+    "CLOCK_UNCERTAINTY_CONSTRAINT": 0.25,
+    "CLOCK_TRANSITION_CONSTRAINT": 0.15,
+    "TIME_DERATING_CONSTRAINT": 5,
+    "IO_DELAY_CONSTRAINT": 20,
+    "SYNTH_DRIVING_CELL": "gf180mcu_fd_sc_mcu7t5v0__inv_1/ZN",
+    "SYNTH_CLK_DRIVING_CELL": "gf180mcu_fd_sc_mcu7t5v0__inv_4/ZN"
+  },
+  "limitations": [
+    "72.91 fF output load is a configured assumption, not measured analog input capacitance",
+    "No joint analog/digital placement, top LVS/PEX, pads, silicon or optical measurement",
+    "KLayout FEOL/BEOL/connectivity/offgrid pass; KLayout density and antenna modes not run",
+    "OpenROAD antenna checks passed; IR drop lacks explicit supply-source locations and is not sign-off",
+    "Official cell model unsupported XOR/XNOR paths and timing checks retained; SDF critical output path is verified separately",
+    "Flow setup R2R infinity was normalized to null in metrics; explicit 19-endpoint register queries provide finite margins",
+    "Full pre-run runner snapshot was not retained for initial attempts; frozen inputs, actual command, image digest and post-run input hashes are retained"
+  ],
+  "raw_outputs": "build/physical-flow/pwm-v0.2-sized",
+  "evidence_files_sha256": {
+    "digital/flow-command.json": "302e9d2eadefa6886a9ef4e70657174d8dc7cf7845ded7c4c90e724aaa311441",
+    "digital/gds/pixel_pwm.gds": "2045ef4da8a9e83f1db109372454504c66b6d3e963704ddb0caaf64118307aa2",
+    "digital/gds-inspection.json": "54a5a01f78b7a4325a4f1fc0d9d439a4a2bfa6441ad46a6ad6c8e345195e0665",
+    "digital/inputs/config.json": "1b604cc2b1956b40c465b035d8d346c08ec2734bcc969f1b475f443329d47e79",
+    "digital/inputs/no-pnr.cells": "35e31f76ff69246d52d8e70adb01895a0de37507352ba9fa27f7dc4bfcc13140",
+    "digital/inputs/provenance.json": "12c4a46d2ace0f61c3b641389786614224d5e1c46d2314edc605e441ff53005c",
+    "digital/lef/pixel_pwm.lef": "2cde702e470d423b3bb87dc38d50db87fefeb649582b2aac00443981f6cdc0e8",
+    "digital/lvs.json": "393b7a38116a5d490396c3f1b56bf3bd7dcc84b7a96bdc629219ade35ae400a5",
+    "digital/lvs.rpt": "3bbf30e71647b88a51c6e032e88380d9f876a58fb67ccd791db6cd3bf85e141f",
+    "digital/magic-drc.rpt": "868a34ea606b460464001bffef6b68ad3570d27f75d9c40528339a8913c8919a",
+    "digital/metrics.json": "1bb23878618e08e89ac285c6cc0897f54f7d56d47b6ff2d0c7068c9df235b3dc",
+    "digital/nl/pixel_pwm.nl.v": "50893dde08ce5ba1208fcb58b3f8d52771018cf2d113a5c37eb7020ef5d3ee44",
+    "digital/pnl/pixel_pwm.pnl.v": "924c0d8c9c17d03042c3e05fdae64c4c4563a1148e07af83c7195e43095804bd",
+    "digital/sdc/pixel_pwm.sdc": "6eb7bdcdfdee64728d724c875cfccc7742a35c2379451fa546107cf154221a5e",
+    "digital/sdf/max_ff_n40C_3v60/pixel_pwm__max_ff_n40C_3v60.sdf": "8160c443c46ac4cd195ade82437051b3f3eba714ad415bfa9f69cd62efc75776",
+    "digital/sdf/max_ss_125C_3v00/pixel_pwm__max_ss_125C_3v00.sdf": "7740c3a8d0f9bf26e1f1104e0e89acf097518769dffa378bd2d5b10d1c815a00",
+    "digital/sdf/max_tt_025C_3v30/pixel_pwm__max_tt_025C_3v30.sdf": "30e270e942ee82ac253ca6a7f92f59a7b1c7d6eca3bb5a2ae198c7af8bbc0958",
+    "digital/sdf/min_ff_n40C_3v60/pixel_pwm__min_ff_n40C_3v60.sdf": "02079ee1567e91a8f83de17f3e3c550eee4d75212943455f04aa3848f679be47",
+    "digital/sdf/min_ss_125C_3v00/pixel_pwm__min_ss_125C_3v00.sdf": "377798a6fdf8b1464b50772e7ee624db2c291b8ef02489b99b5e3e5ad8561d3f",
+    "digital/sdf/min_tt_025C_3v30/pixel_pwm__min_tt_025C_3v30.sdf": "493a6217919a161df8b97d879da85a59893deb8dad1aac49eab6e40dc42d6fbe",
+    "digital/sdf/nom_ff_n40C_3v60/pixel_pwm__nom_ff_n40C_3v60.sdf": "7b3240f71c618f7183a8b1b8744f75ae43461c1458b5a2a1cae2a04b47c5edc6",
+    "digital/sdf/nom_ss_125C_3v00/pixel_pwm__nom_ss_125C_3v00.sdf": "882ad45390172a484df0b002c05e57bfd6a942a1bf2e568cd7dc3eebe4137537",
+    "digital/sdf/nom_tt_025C_3v30/pixel_pwm__nom_tt_025C_3v30.sdf": "fa18f8a649e2a3bb198e63397e10c3117af7004485d58476610663bd0d1295b6",
+    "digital/spef/max/pixel_pwm.max.spef": "4bc0ffc0a2449a9dfe7962867a17722e243d68e47075a6344835ad1c1f6c556f",
+    "digital/spef/min/pixel_pwm.min.spef": "4696bda694471ea147cb2acccddb4c2745c3b4f3ce0d8bbfb48f6cba03140222",
+    "digital/spef/nom/pixel_pwm.nom.spef": "1499a261694d892e19a24bbb5fae855558543c4f03b9f46044178ccf52a4ff32",
+    "digital/sta/max_ff_n40C_3v60/checks.rpt": "84bcb2b31e1ae57e6501fd90f342a1f500abb5bca0efddca7707eb4d731db518",
+    "digital/sta/max_ff_n40C_3v60/max.rpt": "90cb6e16ea5b2fd15e37994ab0c22122bae1df5746abccb9b483ee016aee1133",
+    "digital/sta/max_ff_n40C_3v60/min.rpt": "9404b99c991f57c68e85f023935374e6ab56fbe48d394040bf0e1eacac9bd43e",
+    "digital/sta/max_ff_n40C_3v60/registers.log": "3b6cbf5041dcf9603ba91dace0addada461ef83bf827f1dae8fe21e08096e5a5",
+    "digital/sta/max_ss_125C_3v00/checks.rpt": "3ac6623767db6b2edd3f3bc591d65e784efcab7a47e0f4a68abaff5b408ecb6d",
+    "digital/sta/max_ss_125C_3v00/max.rpt": "170d48d40451cde60d2fe9a6f506ed0bd30239bd42c0564e41cee6a8259f27b3",
+    "digital/sta/max_ss_125C_3v00/min.rpt": "9b66b1edf86d1401e597df9d5c67f9e411acc8408cc19426bb9f5b52dd834bec",
+    "digital/sta/max_ss_125C_3v00/registers.log": "2c1ab04e22181f3ba2b8e6d803a3e9404beb848c0a0597eb581f3e470f74b2ba",
+    "digital/sta/max_tt_025C_3v30/checks.rpt": "1dfb47b58617606f7a57efe5e5ed2da1f18b1dafd2e1061c8e9d2b3d121be847",
+    "digital/sta/max_tt_025C_3v30/max.rpt": "c24d67e76886d328110bab0a2dd059f96292691085de6ac1aacb3487f0ce5f71",
+    "digital/sta/max_tt_025C_3v30/min.rpt": "f18e76ccfd763a1c9407b34a3f69bbf6c8d3db6061813096a0e86ba5943fec85",
+    "digital/sta/max_tt_025C_3v30/registers.log": "25f27196ce501d387fa482a2480c61618b983217bebe22bc126467504750f314",
+    "digital/sta/min_ff_n40C_3v60/checks.rpt": "f57608c16acc766a4a89eb8417a2ed5c3103d7a6e8714779f519bbde7fd7cf64",
+    "digital/sta/min_ff_n40C_3v60/max.rpt": "1bcbfdc9ceecaa7fe0332d09ac5357bca7baf90c32f97b898f4bca31ed658d67",
+    "digital/sta/min_ff_n40C_3v60/min.rpt": "14458bf4c57a426949fd815de8690b5afef4a0f093917ab28438460ac3f87dea",
+    "digital/sta/min_ff_n40C_3v60/registers.log": "012d2f246b5eb62ea570935c07bab49a637395390a0d857944570e92622ec6ba",
+    "digital/sta/min_ss_125C_3v00/checks.rpt": "3d10ed84b2a426c91aff0e0e6fadef1e1281c662f035b86746c3db23d854e55a",
+    "digital/sta/min_ss_125C_3v00/max.rpt": "3bcfe0e3ffefa3bb91fa8df42aca986472c49c6de675214c259ebdd7975ada2d",
+    "digital/sta/min_ss_125C_3v00/min.rpt": "532fa2c153fce293d00c05151c0117f1fa1f82233a720fa622f67e234d983095",
+    "digital/sta/min_ss_125C_3v00/registers.log": "1405e13cfec6b35ceacab0766edd68e03e49b678508022ee50571cce97a41a7a",
+    "digital/sta/min_tt_025C_3v30/checks.rpt": "499b41abcf1c166d48bb47e5c8ab43c992353c2921cfe8799b292003b0f4f7ce",
+    "digital/sta/min_tt_025C_3v30/max.rpt": "bc75b2645fea8566d7f07227c483dd927188ffbc352a31b53734477f7dc7e256",
+    "digital/sta/min_tt_025C_3v30/min.rpt": "977f46851b756b5cf8dfbdeb016212f8c2ae8ff5b017c3dd14b3270823464735",
+    "digital/sta/min_tt_025C_3v30/registers.log": "b4eca2f8b5d9e95a4f017eb0d5f1768b1492b11ced1fec0788e0e63c564e14d4",
+    "digital/sta/nom_ff_n40C_3v60/checks.rpt": "b81b04ebd7c5db0a7610a6f02ec636ad0bd7357b81aeb4ea8fad2d77cd9c7beb",
+    "digital/sta/nom_ff_n40C_3v60/max.rpt": "4e9c7f19871d5264a11c587e35fa4828c4e1a585f69a0e1cf087b4771b24d541",
+    "digital/sta/nom_ff_n40C_3v60/min.rpt": "84587848526dc3da964524d6bcf2df23098cff85719902e8745575664ed67d17",
+    "digital/sta/nom_ff_n40C_3v60/registers.log": "b037f766e8910fecfa749e63d12ac4187c490235a9536406336f246b36d099c8",
+    "digital/sta/nom_ss_125C_3v00/checks.rpt": "c9e9789b9b354e0cb33add9a2afa781706ac8c0cc2634c897abe5cb1fc46d589",
+    "digital/sta/nom_ss_125C_3v00/max.rpt": "47cfc127b9452507ac2f16f9768a34b332b287e7ffe2cf901e94b9cc54e4c1c7",
+    "digital/sta/nom_ss_125C_3v00/min.rpt": "7b4964a4161780f6e1816362ac9f7fab68ddb1c4637a895bfc76fe469696a921",
+    "digital/sta/nom_ss_125C_3v00/registers.log": "76dba94b0786f957286c1414078adc4a8b23e96f8bfd29cb017f8866307df4e8",
+    "digital/sta/nom_tt_025C_3v30/checks.rpt": "11587693c42f52f74816f4fc9533d5420b1831fe96906b952227a03011947569",
+    "digital/sta/nom_tt_025C_3v30/max.rpt": "87cfbf57fb46355ba8775475492613db67b65092dc3e2712d79b889069deefaa",
+    "digital/sta/nom_tt_025C_3v30/min.rpt": "2961f603e5af93b0e43b87cee5baf989c138e4f9a90aedb2d70d1db85bc9eb3f",
+    "digital/sta/nom_tt_025C_3v30/registers.log": "3462b1127fabdb12372055b7d0aacb3bf8850fe8a2682d7ab5ac38bd5efa423e",
+    "digital/sta/summary.rpt": "899f9ddf0664ed0a9b046736dbe798dbc5c0f37463af0752ed600798e5f1cb9c",
+    "digital/warnings.log": "395fa8c95d8df56713b26c4711701044bd996c26a0358c3dbea41ddbe3af53d8",
+    "environment-inputs.json": "b72729679b48a10cba1f9b8df77b9ef41f4d6ba9a592b3cf82c6623edf1cc3f1",
+    "klayout/analog/drc.log": "3031e5684cae244d2aad1b86805ee51a71999f51543c3436d68e62327d408365",
+    "klayout/analog/drc.lyrdb": "f454c0ef44cf36108645ec2bfa8015286a8620a071d29ad0097a505e7b220c59",
+    "klayout/analog/input-hashes.json": "ac2ae16714705cc0b3f9732e6ece3dc1df89aecd73a2596045d322bc11b1cd33",
+    "klayout/digital/drc.log": "80b4b0cbb0b023f7926eb921f5e9927d2ab96ccc2c0ef11f329657eda7fec706",
+    "klayout/digital/drc.lyrdb": "49c9541e6d724f8ff8793bbcbb2efc5c431ed0f81c387978b69b03a02cfe2574",
+    "klayout/digital/input-hashes.json": "02f0ed16a4e5728d2d4c6e251de9126bd8a74dcf4c934c11dbde85cbf133564f",
+    "macro-read.json": "8e7c3d1b954684bb4aea04ac9ba405128c72c719884c993c6aca6de3b0d0a2c9",
+    "macro-read.log": "6236ccf55bbe8fb610d02e14c82d80bd9151ac8691cc73e3c68154f0a31579bd",
+    "macro-read.log.command.json": "e19b5d75ea41a5fddbc8e0e26e890ddb498aafda01df0023f185117186630c44",
+    "pdk-lock.json": "50f119ae5e17f0589f0a7a58db4c7a6daa7e6e1b40c85e15cd0d96300f7c3762",
+    "sdf/analog-rc/duty_000/rtl/digital.log": "c4c8ea6870a557b6698a473bfea52d905a61cfcc8d6af1fefb45c1be689c2207",
+    "sdf/analog-rc/duty_000/rtl/events.csv": "c7978480f7c03308c186c088193ebc97ea54436da21da4238d20220712f5b347",
+    "sdf/analog-rc/duty_000/rtl/ngspice.log": "51c96c96ea158130ca692ee6954b5de92aa6b23d121deb9023c33cfca68f590a",
+    "sdf/analog-rc/duty_000/rtl/testbench.spice": "c9f5593ecc79bac8020c190d2fc1e35bc4bf9c90d8f3471232d6b0a0b593fadf",
+    "sdf/analog-rc/duty_000/sdf/digital.log": "0c98fb7247f638a534343d1776b3a219e2464783f7d565149376f04ed8aa224a",
+    "sdf/analog-rc/duty_000/sdf/events.csv": "733482bc22832fdb7a6fee953c5e198c56a735ef1173fd9660fe45678af5f9c4",
+    "sdf/analog-rc/duty_000/sdf/ngspice.log": "8cfef4be450099e9e93e83fd37afcb3d13ff46d06ee53fdcaa49c5fc6a8da7b7",
+    "sdf/analog-rc/duty_000/sdf/testbench.spice": "c9f5593ecc79bac8020c190d2fc1e35bc4bf9c90d8f3471232d6b0a0b593fadf",
+    "sdf/analog-rc/duty_001/rtl/digital.log": "35c0a406376fe6183ebb36503ca3bc70fbb5b9f63c9a2f208d9c3d047ab55fe8",
+    "sdf/analog-rc/duty_001/rtl/events.csv": "89fed42e634dd5f9ce2d1c4b287fda76ac4c1a2488ceb361ed83109bcdcdbc34",
+    "sdf/analog-rc/duty_001/rtl/ngspice.log": "bd8aa7aa5945e9e11d3b2d323edeb2d9b46503bb423b356acf79c527ea531ecb",
+    "sdf/analog-rc/duty_001/rtl/testbench.spice": "63563e0698b82c326b23d6717d784f047cec5eaacc615871e75c81bf31d2218d",
+    "sdf/analog-rc/duty_001/sdf/digital.log": "a9cd7a5537ff4ff8f2c89799ebd49834de83f5c76c3268c83eb60e8a2ffb6df5",
+    "sdf/analog-rc/duty_001/sdf/events.csv": "146ad4d3f8b8ec7f7bfbed621b666b773477fed549981895bbd6aae24f31d3ab",
+    "sdf/analog-rc/duty_001/sdf/ngspice.log": "6acb24c1a58cff0a8789dfa4fdd9e5961b403803422c3b8f17dc1407e73feedc",
+    "sdf/analog-rc/duty_001/sdf/testbench.spice": "51ac942448590472477380af89ac08457362cf3ba171c3721f33ea1da619839c",
+    "sdf/analog-rc/duty_064/rtl/digital.log": "4558439fbb37e6e815fd8c9e642272ab26a370244c9073209b055bc22779771a",
+    "sdf/analog-rc/duty_064/rtl/events.csv": "a904f368cefea61d21160b91c6cbcd63e06736169a7d592e038d0e5dab432723",
+    "sdf/analog-rc/duty_064/rtl/ngspice.log": "7a1cc764f65017d33f14b33001601527eafdbfbaf88657c765527416a0a0dc49",
+    "sdf/analog-rc/duty_064/rtl/testbench.spice": "bc5e0f3976c36761ad9738933669c6dc1cd6a1f688ad04e0a70349bec97afead",
+    "sdf/analog-rc/duty_064/sdf/digital.log": "2b6951d7d3ff7ef2b176e07261d59a80f6ad6f876d4fef8e08ab3e2b5f28b248",
+    "sdf/analog-rc/duty_064/sdf/events.csv": "854e1c0eaba52b8052923c13a696f48df7e550154bdc8a492a970555e7778103",
+    "sdf/analog-rc/duty_064/sdf/ngspice.log": "c12372b7c7abe101a329f15fbbf13c665e954b7f08cd62d339918c790f593a2e",
+    "sdf/analog-rc/duty_064/sdf/testbench.spice": "e211e42ca7da46f75dff337a2cff4bb3a222b4b01e433c72ca02cff8912008bc",
+    "sdf/analog-rc/duty_255/rtl/digital.log": "0f67cb117d64feb0cbe143973e58725dd69b466f2c9f8b37e9dcfb3e1883520e",
+    "sdf/analog-rc/duty_255/rtl/events.csv": "83bee1bb18828ebb21c9398e5e3c0c984011404aa08b9ed53b45358b033c6b6a",
+    "sdf/analog-rc/duty_255/rtl/ngspice.log": "df9b5438e826d067613772d602d3aeb725ee7094c687e90ef9dfb435bcd7d61d",
+    "sdf/analog-rc/duty_255/rtl/testbench.spice": "4ee5eb493d99f984fdf0cc0300c553c96fa97a44bcaadc2db84deed586fed759",
+    "sdf/analog-rc/duty_255/sdf/digital.log": "d43d5bb895d1a970abc2e87b4194aa0413d52b970994b189ab57236f957e7c2b",
+    "sdf/analog-rc/duty_255/sdf/events.csv": "b243822420d3ed4ab2cdd5dda177f29e4a05c6d156e0ac7b3f3c6b705953138f",
+    "sdf/analog-rc/duty_255/sdf/ngspice.log": "60694fe24a8e17ee95891f0a75deea60396c9560b964d74ffae164ad8628bc1b",
+    "sdf/analog-rc/duty_255/sdf/testbench.spice": "508e09a1d311229785d09c33b0dea7dd2c6ed3f43d89fa3dd83a7c52755537dd",
+    "sdf/analog-rc/duty_256/rtl/digital.log": "cbb235a189251f5a4c8eba4e02f60c4db37bd08cac921c1955e934ccd51b3f73",
+    "sdf/analog-rc/duty_256/rtl/events.csv": "295ffdc28ba66e75f3aff43496c2b2fc67431f8d1b0b9fb726b7bae449265793",
+    "sdf/analog-rc/duty_256/rtl/ngspice.log": "4416b33348cc3a88cd5973556d5f3a400c7017cc08c2e9a52894ea298e9e1ccd",
+    "sdf/analog-rc/duty_256/rtl/testbench.spice": "b3c3af2cf4a4ffd5c4058bb884ce822e6144261f3a30e0cb1d2986f0383f5a87",
+    "sdf/analog-rc/duty_256/sdf/digital.log": "731dea477da3a60849b2be6105bd67e9104d34cac563af3773142c38129a6a82",
+    "sdf/analog-rc/duty_256/sdf/events.csv": "7244a1fc7ac3cbded6d4c7aae1e429d57ae9267df7193969717360c919822c0c",
+    "sdf/analog-rc/duty_256/sdf/ngspice.log": "89bbe9b1d51db9fc29633efdadda104b0243759a5f4f4119db26fee7e845c119",
+    "sdf/analog-rc/duty_256/sdf/testbench.spice": "9253000eea900a15b8549a6016c44c1d18ace15cc6da6f82703cba1e03ab73c9",
+    "sdf/max_ff_n40C_3v60/events.csv": "59a39ac585ac26cea8534b3015c3be3378de1887703724e199b63e4d1ac37bad",
+    "sdf/max_ff_n40C_3v60/exhaustive.log": "241cc23f9bc3245e4bd152a15149bf8237defbb32f8127792fedd2159ee5e72f",
+    "sdf/max_ss_125C_3v00/events.csv": "8895792fd718b9290e17b93cb6fa0683e7c220e6b29ef25d6deb764e5b6986fd",
+    "sdf/max_ss_125C_3v00/exhaustive.log": "3edbb7686fafec22e6e75aa399a1316720fd528f28684a1eb6eceb072876d83c",
+    "sdf/max_tt_025C_3v30/events.csv": "3cc5354b9701d75fae1f51465711c52a89d8f49f94f061a4b1555dc9332af4d1",
+    "sdf/max_tt_025C_3v30/exhaustive.log": "ae49aa31edbfa0a7a8163ea97f2001c85173bafce04cb1dfbac65e816ca369de",
+    "sdf/min_ff_n40C_3v60/events.csv": "8c1bbb64b4b4a9f7301ea2c5753ee00d8276378f587f7a8e99013a6760f3671e",
+    "sdf/min_ff_n40C_3v60/exhaustive.log": "262fc57daecbc757b8e7b2b4ff49fb1044778f861f8bcf8a77d2e228ee91c556",
+    "sdf/min_ss_125C_3v00/events.csv": "e5ec8c724cecb78c7793fac471fd027268813f4be6ed49e44d53b616cd104b72",
+    "sdf/min_ss_125C_3v00/exhaustive.log": "fe3c05758e66f11fc037712171e9dd24895a03cff6473c48de9dfd27b19d3075",
+    "sdf/min_tt_025C_3v30/events.csv": "ed3fbc98f29d89ef5d4c26255c5532fb0f4d6090e555ad7d78aed6bb943f69db",
+    "sdf/min_tt_025C_3v30/exhaustive.log": "35824ad22cf75aefb8541b580daade4439bce7d68d75cf0a56c96b6e0d2e5f31",
+    "sdf/nom_ff_n40C_3v60/events.csv": "3de6dff841b41801147facd20bb720ffc38d9ff28fbd87d7a124ab29b590abfc",
+    "sdf/nom_ff_n40C_3v60/exhaustive.log": "5b533d1b9323750cd727ec909b41cee22721524af67e88e386a2d418e04ae39e",
+    "sdf/nom_ss_125C_3v00/events.csv": "1d56f575763e9fac823c3e2ec7854058e7b5590fe80810f4e2cf41dd4b6641e4",
+    "sdf/nom_ss_125C_3v00/exhaustive.log": "549f2504f6d45e1602b64a30e89baa58edffa3eca947e40b1f51ef8927f0d42d",
+    "sdf/nom_tt_025C_3v30/events.csv": "854e1c0eaba52b8052923c13a696f48df7e550154bdc8a492a970555e7778103",
+    "sdf/nom_tt_025C_3v30/exhaustive.log": "e0a33317656d574f9cb78d3b21a2643d1caa254b06551346e0c25dc82439e1aa",
+    "sdf/summary.json": "abcd204ce9e8f50dd674356baf98609074da4160958d3bea52ab3f1e30b526a7",
+    "tool-versions.json": "662dc05532610041f63b327d110cd265f2df55f064b39f6b83b8bb6e65f0c970"
+  }
+}

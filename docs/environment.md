@@ -1,6 +1,6 @@
 # 开发环境与复现
 
-环境检查日期：2026-10-03（Asia/Tokyo）。本页记录 **Mac arm64 上的 1-Pixel RTL → SPICE batch simulation 环境**。随后已建立 standalone analog cell 的 Magic / Netgen / RC 与 GDS 流程，安装版本、完整 PDK 锁定与实际复现步骤见 [版图环境](layout/README.md)。完整数字 RTL-to-GDS 与顶层芯片集成尚未建立。
+环境检查日期：2026-10-04（Asia/Tokyo）。本页记录 **Mac arm64 上的 1-Pixel RTL → SPICE batch simulation 环境**。standalone analog cell的Magic/Netgen/RC/GDS见[版图环境](layout/README.md)；数字PWM macro的实际RTL-to-GDS与独立KLayout见[digital physical](digital/physical.md)。顶层mixed-signal芯片尚未集成。
 
 ## 当前可运行环境
 
@@ -12,7 +12,8 @@
 | Python | uv 管理的 CPython 3.12.13 | 编排、结果校验和自动绘图 |
 | Python dependencies | `uv.lock` | 固定 numpy / matplotlib 等依赖版本 |
 | MOS models | `scripts/fetch_models.py` 的固定 commit / SHA256 | 下载并校验公开 model 子集 |
-| Docker daemon | 当前未运行 | 本次未通过 container 验证 |
+| Physical container | LibreLane3.0.14，锁定OCI digest，arm64 Linux | 项目独立Lima VM/containerd；实际数字physical与独立KLayout |
+| Docker Desktop | 原有VM遇storage attachment错误，未reset用户磁盘 | 失败日志保留，成功流程采用上面的独立环境 |
 
 PDK model acquisition、工具角色和版本边界见 [PDK 与工具链调研](research/pdk-and-tools.md)。这里的 SPICE models 是 full PDK 的子集；安装 ngspice / Icarus 成功并不代表已经具有 layout、DRC/LVS/PEX 或 GDS flow。
 

@@ -1,0 +1,1143 @@
+{
+  "date": "2026-10-04",
+  "evidence_level": "actual W20/L4 extracted RC; conditional model MC, bounded external reference, actual RTL pulse replay; no manufacturing qualification",
+  "raw_directory": "build/characterization/actual-w20-l4-apab0a2p",
+  "snapshot_directory": "build/characterization/actual-w20-l4-apab0a2p/frozen",
+  "actual_rc_sha256": "1de567fdc5697cd36f5879aa92c24b3b96d0b4f09f33b4a4720afb4aeeecd5b8",
+  "source_hashes": {
+    "analog/models/microled.spice": "ce9a3453abb87fc2aea894e7da2eff1448ff90a1432243ea90c747716ed20bba",
+    "scripts/characterization/external_reference.spice": "d67aee2701e59393b443330f0e8b77dc2b71e77da3f2a1f7422b957daa15250d",
+    "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+    "sim/rtl/tb_pixel_pwm.v": "ce23d247156ea1e28a0abaefa84ad018eade72c18f4c6d1e1093f4d5ca4ed9ea",
+    "scripts/run_phase1.py": "0b3896021260818cef1886723ac368e3ddc796f759c77cf2186b91859205154f",
+    "scripts/fetch_models.py": "da3f0fc09896cd66ca1cf1a9c5cb813637415aa870eecae1103748721c16166f",
+    "layout/pdk-lock.json": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+    "evidence/characterization/reference-matching-summary.json": "8b01dc37a5abf77973d99fe129885861a1835ceed5dfc6291110f934bc500e2f",
+    "evidence/characterization/candidate-w20-l4-summary.json": "965e569282ea52ab5d2c524d8d17dfb794927d3afbf5bfb56fb61042bf42f2a1",
+    "scripts/characterization/run_actual_mirror.py": "eb877c866724c8faf19639168fba03c5e3dfbdb43dce9a6d75a87e06d56f4195",
+    "scripts/characterization/run_reference_matching.py": "a013a07e9a148cd44ab108d8e2cae792850fa5f86dc2ef2d3c62a1e9e43765b7",
+    "scripts/characterization/candidates/pixel_driver_rc_actual_w20_l4.spice": "1de567fdc5697cd36f5879aa92c24b3b96d0b4f09f33b4a4720afb4aeeecd5b8"
+  },
+  "pdk_build": "54435919abffb937387ec956209f9cf5fd2dfbee",
+  "primitive_commit": "41918f5a2356b9fb49a897ecc4fb4716b0ab1041",
+  "pdk_model_sha256": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46",
+  "rc_count": {
+    "R": 59,
+    "C": 43
+  },
+  "tools": {
+    "ngspice": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******\n",
+    "python": "3.12.13 (main, Mar 25 2026, 03:16:06) [Clang 22.1.1 ]"
+  },
+  "candidate_targets": {
+    "absolute_current_error_pct": 5,
+    "minimum_code_area_error_pct": 2,
+    "temperature_c": [
+      0,
+      85
+    ],
+    "logic_v": [
+      2.97,
+      3.63
+    ],
+    "led_supply_v": [
+      4.5,
+      5.5
+    ]
+  },
+  "reference_specification": {
+    "source": "independent candidate teaching budget, no selected part or measured calibration",
+    "nominal_a": 0.0001,
+    "calibration_temperature_c": 27,
+    "calibration_headroom_v": 1.9,
+    "calibration_error_bound_pct": 0.5,
+    "tc_bound_ppm_per_c": 25,
+    "line_bound_ppm_per_v": 3000,
+    "output_resistance_ohm": 10000000.0,
+    "minimum_headroom_v": 1
+  },
+  "nominal_ideal_reference": {
+    "seed": 20261004,
+    "library": "typical",
+    "temperature_c": 27,
+    "logic_v": 3.3,
+    "led_supply_v": 5,
+    "local_mismatch": 0,
+    "global_variation": 0,
+    "reference": "ideal",
+    "calibration_error": 0,
+    "tc_ppm": 0,
+    "line_ppm_v": 0,
+    "pwm_on": true,
+    "iout": 0.000100695401252885,
+    "iref": 9.999999999999999e-05,
+    "bias": 1.374989431721129,
+    "headroom": 1.925010568278871,
+    "led_k": 2.199428453432127,
+    "power_w": 0.000833477018296527,
+    "out_vth": 0.6867846266566531,
+    "ref_vth": 0.6868238458367749,
+    "x0_dvth": -0.0,
+    "x0_mulu0": 1.0,
+    "x1_dvth": -0.0,
+    "x1_mulu0": 1.0,
+    "x2_dvth": 0.0,
+    "x2_mulu0": 1.0,
+    "x3_dvth": 0.0,
+    "x3_mulu0": 1.0,
+    "x4_dvth": 0.0,
+    "x4_mulu0": 1.0,
+    "x5_dvth": -0.0,
+    "x5_mulu0": 1.0,
+    "mirror_ratio": 1.00695401252885,
+    "reference_error_pct": -1.1102230246251565e-14,
+    "absolute_error_pct": 0.6954012528849862,
+    "absolute_current_budget_pass": true
+  },
+  "nominal_bounded_reference": {
+    "seed": 20261004,
+    "library": "typical",
+    "temperature_c": 27,
+    "logic_v": 3.3,
+    "led_supply_v": 5,
+    "local_mismatch": 0,
+    "global_variation": 0,
+    "reference": "bounded",
+    "calibration_error": 0,
+    "tc_ppm": 0,
+    "line_ppm_v": 0,
+    "pwm_on": true,
+    "iout": 0.0001006979021737776,
+    "iref": 0.0001000025001351121,
+    "bias": 1.374998648879032,
+    "headroom": 1.925001351120969,
+    "led_k": 2.199426401228269,
+    "power_w": 0.0008334977733468165,
+    "out_vth": 0.6867846465762434,
+    "ref_vth": 0.6868238668600757,
+    "x0_dvth": -0.0,
+    "x0_mulu0": 1.0,
+    "x1_dvth": -0.0,
+    "x1_mulu0": 1.0,
+    "x2_dvth": 0.0,
+    "x2_mulu0": 1.0,
+    "x3_dvth": 0.0,
+    "x3_mulu0": 1.0,
+    "x4_dvth": 0.0,
+    "x4_mulu0": 1.0,
+    "x5_dvth": -0.0,
+    "x5_mulu0": 1.0,
+    "mirror_ratio": 1.006953846531096,
+    "reference_error_pct": 0.00250013511209346,
+    "absolute_error_pct": 0.697902173777587,
+    "absolute_current_budget_pass": true
+  },
+  "mc": {
+    "samples_per_population": 256,
+    "seed_first": 20261004,
+    "seed_last": 20261259,
+    "seed_method": "Same PDK recipe as historical baseline: one process/sample; setseed then reset then op; no random reference error distribution invented.",
+    "populations": {
+      "local_only": {
+        "n": 256,
+        "iout": {
+          "mean": 0.00010071315839171875,
+          "sample_sd": 3.84282227304584e-07,
+          "min": 9.98265095022112e-05,
+          "max": 0.0001017053700442928,
+          "quantiles_2p5_50_97p5": [
+            9.999577046699083e-05,
+            0.0001007198346556971,
+            0.0001014643909535064
+          ]
+        },
+        "iref": {
+          "mean": 0.00010000000000000003,
+          "sample_sd": 4.0737224211462836e-20,
+          "min": 9.999999999999999e-05,
+          "max": 9.999999999999999e-05,
+          "quantiles_2p5_50_97p5": [
+            9.999999999999999e-05,
+            9.999999999999999e-05,
+            9.999999999999999e-05
+          ]
+        },
+        "mirror_ratio": {
+          "mean": 1.0071315839171877,
+          "sample_sd": 0.003842822273045834,
+          "min": 0.9982650950221121,
+          "max": 1.017053700442928,
+          "quantiles_2p5_50_97p5": [
+            0.9999577046699085,
+            1.0071983465569712,
+            1.0146439095350641
+          ]
+        },
+        "reference_error_pct": {
+          "mean": -1.1102230246251565e-14,
+          "sample_sd": 0.0,
+          "min": -1.1102230246251565e-14,
+          "max": -1.1102230246251565e-14,
+          "quantiles_2p5_50_97p5": [
+            -1.1102230246251565e-14,
+            -1.1102230246251565e-14,
+            -1.1102230246251565e-14
+          ]
+        },
+        "absolute_error_pct": {
+          "mean": 0.7131583917187487,
+          "sample_sd": 0.38428222730458433,
+          "min": -0.17349049778879744,
+          "max": 1.7053700442928088,
+          "quantiles_2p5_50_97p5": [
+            -0.004229533009167397,
+            0.7198346556971047,
+            1.4643909535063977
+          ]
+        },
+        "out_vth": {
+          "mean": 0.6867138657202391,
+          "sample_sd": 0.000967184550419651,
+          "min": 0.6840598850484149,
+          "max": 0.6890957716929803,
+          "quantiles_2p5_50_97p5": [
+            0.68470380911317,
+            0.6867058793574008,
+            0.6886462624142249
+          ]
+        },
+        "ref_vth": {
+          "mean": 0.6868144708285293,
+          "sample_sd": 0.0009309783508038128,
+          "min": 0.6845555680473235,
+          "max": 0.6892845743320433,
+          "quantiles_2p5_50_97p5": [
+            0.684992482714994,
+            0.6867925362263332,
+            0.6884684447399247
+          ]
+        },
+        "headroom": {
+          "mean": 1.9250202338979636,
+          "sample_sd": 0.0009650685526459993,
+          "min": 1.922460182799851,
+          "max": 1.927361253232291,
+          "quantiles_2p5_50_97p5": [
+            1.923305294842323,
+            1.925043364880294,
+            1.9269081468914486
+          ]
+        },
+        "power_w": {
+          "mean": 0.0008335658039906183,
+          "sample_sd": 1.9214111365109075e-06,
+          "min": 0.000829132559543038,
+          "max": 0.0008385268622534462,
+          "quantiles_2p5_50_97p5": [
+            0.0008299788643669361,
+            0.0008335991853105275,
+            0.0008373219667995137
+          ]
+        },
+        "over_absolute_current_budget_count": 0,
+        "population_note": "finite conditional model sample; not measured manufacturing yield"
+      },
+      "global_and_local": {
+        "n": 256,
+        "iout": {
+          "mean": 0.00010064861806849935,
+          "sample_sd": 3.9692916400880367e-07,
+          "min": 9.953156767111074e-05,
+          "max": 0.0001017427044810439,
+          "quantiles_2p5_50_97p5": [
+            9.988023295062556e-05,
+            0.00010063279682110421,
+            0.00010137127281295913
+          ]
+        },
+        "iref": {
+          "mean": 0.00010000000000000003,
+          "sample_sd": 4.0737224211462836e-20,
+          "min": 9.999999999999999e-05,
+          "max": 9.999999999999999e-05,
+          "quantiles_2p5_50_97p5": [
+            9.999999999999999e-05,
+            9.999999999999999e-05,
+            9.999999999999999e-05
+          ]
+        },
+        "mirror_ratio": {
+          "mean": 1.0064861806849938,
+          "sample_sd": 0.003969291640088039,
+          "min": 0.9953156767111075,
+          "max": 1.017427044810439,
+          "quantiles_2p5_50_97p5": [
+            0.9988023295062557,
+            1.0063279682110422,
+            1.0137127281295915
+          ]
+        },
+        "reference_error_pct": {
+          "mean": -1.1102230246251565e-14,
+          "sample_sd": 0.0,
+          "min": -1.1102230246251565e-14,
+          "max": -1.1102230246251565e-14,
+          "quantiles_2p5_50_97p5": [
+            -1.1102230246251565e-14,
+            -1.1102230246251565e-14,
+            -1.1102230246251565e-14
+          ]
+        },
+        "absolute_error_pct": {
+          "mean": 0.6486180684993542,
+          "sample_sd": 0.396929164008804,
+          "min": -0.4684323288892678,
+          "max": 1.7427044810438996,
+          "quantiles_2p5_50_97p5": [
+            -0.11976704937444183,
+            0.6327968211041979,
+            1.3712728129591178
+          ]
+        },
+        "out_vth": {
+          "mean": 0.6867156125863041,
+          "sample_sd": 0.028866345400432952,
+          "min": 0.5986108733047554,
+          "max": 0.7564200218093661,
+          "quantiles_2p5_50_97p5": [
+            0.6305892498804875,
+            0.6871395127530697,
+            0.7383391919090001
+          ]
+        },
+        "ref_vth": {
+          "mean": 0.6865877365123867,
+          "sample_sd": 0.02886209100701205,
+          "min": 0.5980047345708632,
+          "max": 0.755758641081325,
+          "quantiles_2p5_50_97p5": [
+            0.6307743382091694,
+            0.6872907323394328,
+            0.7389172787995928
+          ]
+        },
+        "headroom": {
+          "mean": 1.9249194762794177,
+          "sample_sd": 0.030606331933664962,
+          "min": 1.847819826016412,
+          "max": 2.022621835353283,
+          "quantiles_2p5_50_97p5": [
+            1.8698953780847833,
+            1.924126258389121,
+            1.9837288153700847
+          ]
+        },
+        "power_w": {
+          "mean": 0.0008332431012311172,
+          "sample_sd": 1.9846458200035815e-06,
+          "min": 0.0008276578492439574,
+          "max": 0.0008387135332935029,
+          "quantiles_2p5_50_97p5": [
+            0.0008294011756424005,
+            0.0008331639949937448,
+            0.0008368563749535439
+          ]
+        },
+        "over_absolute_current_budget_count": 0,
+        "population_note": "finite conditional model sample; not measured manufacturing yield"
+      },
+      "reference_nominal_and_global_local": {
+        "n": 256,
+        "iout": {
+          "mean": 0.00010065110991959599,
+          "sample_sd": 3.971736932126762e-07,
+          "min": 9.953050501917096e-05,
+          "max": 0.0001017421250824525,
+          "quantiles_2p5_50_97p5": [
+            9.988569661518413e-05,
+            0.0001006337530950442,
+            0.0001013739905609458
+          ]
+        },
+        "iref": {
+          "mean": 0.00010000249103369384,
+          "sample_sd": 3.0595112444548983e-09,
+          "min": 9.999478393037562e-05,
+          "max": 0.000100012257721525,
+          "quantiles_2p5_50_97p5": [
+            9.999699064308981e-05,
+            0.0001000024117488808,
+            0.00010000836980025027
+          ]
+        },
+        "mirror_ratio": {
+          "mean": 1.0064860182975313,
+          "sample_sd": 0.003969222044631549,
+          "min": 0.9953156843571923,
+          "max": 1.0174271145173632,
+          "quantiles_2p5_50_97p5": [
+            0.9988021982053962,
+            1.0063279372551257,
+            1.0137124613163413
+          ]
+        },
+        "reference_error_pct": {
+          "mean": 0.002491033693831357,
+          "sample_sd": 0.003059511244454501,
+          "min": -0.005216069624391917,
+          "max": 0.01225772152499971,
+          "quantiles_2p5_50_97p5": [
+            -0.0030093569101927176,
+            0.0024117488807928744,
+            0.00836980025026024
+          ]
+        },
+        "absolute_error_pct": {
+          "mean": 0.6511099195959917,
+          "sample_sd": 0.39717369321267576,
+          "min": -0.46949498082904384,
+          "max": 1.7421250824524837,
+          "quantiles_2p5_50_97p5": [
+            -0.11430338481587254,
+            0.6337530950441872,
+            1.373990560945787
+          ]
+        },
+        "out_vth": {
+          "mean": 0.6867156324337931,
+          "sample_sd": 0.02886632192357311,
+          "min": 0.5986109709507426,
+          "max": 0.7564199803135391,
+          "quantiles_2p5_50_97p5": [
+            0.6305893121872362,
+            0.6871395296956193,
+            0.7383391689284836
+          ]
+        },
+        "ref_vth": {
+          "mean": 0.6865877574593171,
+          "sample_sd": 0.028862066211539632,
+          "min": 0.5980048376451274,
+          "max": 0.7557585972246974,
+          "quantiles_2p5_50_97p5": [
+            0.6307744055278481,
+            0.6872907559328469,
+            0.7389172611181583
+          ]
+        },
+        "headroom": {
+          "mean": 1.9249103369384524,
+          "sample_sd": 0.03059511244452291,
+          "min": 1.847839303756175,
+          "max": 2.022577215249618,
+          "quantiles_2p5_50_97p5": [
+            1.8699064308982947,
+            1.9241174888079509,
+            1.9836980025028013
+          ]
+        },
+        "power_w": {
+          "mean": 0.0008332637808978299,
+          "sample_sd": 1.9867223521156773e-06,
+          "min": 0.0008276490101937989,
+          "max": 0.0008387087344260718,
+          "quantiles_2p5_50_97p5": [
+            0.0008294465889092156,
+            0.000833181620744765,
+            0.0008368789006815455
+          ]
+        },
+        "over_absolute_current_budget_count": 0,
+        "population_note": "finite conditional model sample; not measured manufacturing yield"
+      },
+      "conditional_low": {
+        "n": 256,
+        "iout": {
+          "mean": 9.929494694194719e-05,
+          "sample_sd": 3.18834701850853e-07,
+          "min": 9.8559015434189e-05,
+          "max": 0.0001001178825814667,
+          "quantiles_2p5_50_97p5": [
+            9.869958339838426e-05,
+            9.930058331111637e-05,
+            9.991820522101382e-05
+          ]
+        },
+        "iref": {
+          "mean": 9.920787466280181e-05,
+          "sample_sd": 9.756561555310894e-11,
+          "min": 9.920761583599185e-05,
+          "max": 9.92081113454938e-05,
+          "quantiles_2p5_50_97p5": [
+            9.920770129613865e-05,
+            9.92078769924946e-05,
+            9.920806554274025e-05
+          ]
+        },
+        "mirror_ratio": {
+          "mean": 1.0008776772874401,
+          "sample_sd": 0.0032144950217902414,
+          "min": 0.9934586400833334,
+          "max": 1.009174737641303,
+          "quantiles_2p5_50_97p5": [
+            0.9948754386894709,
+            1.0009340890760559,
+            1.007160544210524
+          ]
+        },
+        "reference_error_pct": {
+          "mean": -0.7921253371981839,
+          "sample_sd": 9.756561555323751e-05,
+          "min": -0.792384164008153,
+          "max": -0.791888654506212,
+          "quantiles_2p5_50_97p5": [
+            -0.7922987038613647,
+            -0.7921230075054075,
+            -0.791934457259752
+          ]
+        },
+        "absolute_error_pct": {
+          "mean": -0.7050530580528066,
+          "sample_sd": 0.3188347018508534,
+          "min": -1.4409845658109988,
+          "max": 0.1178825814666995,
+          "quantiles_2p5_50_97p5": [
+            -1.3004166016157392,
+            -0.6994166888836362,
+            -0.08179477898618837
+          ]
+        },
+        "out_vth": {
+          "mean": 0.7271988087488439,
+          "sample_sd": 0.0009675279681809292,
+          "min": 0.7245439562255365,
+          "max": 0.7295817839028748,
+          "quantiles_2p5_50_97p5": [
+            0.725188105770767,
+            0.7271912068619695,
+            0.7291316335455439
+          ]
+        },
+        "ref_vth": {
+          "mean": 0.7273045964023614,
+          "sample_sd": 0.0009309578001520137,
+          "min": 0.7250457221763139,
+          "max": 0.7297746700522562,
+          "quantiles_2p5_50_97p5": [
+            0.7254826178696191,
+            0.7272826778152476,
+            0.7289585186739456
+          ]
+        },
+        "headroom": {
+          "mean": 1.418746628018339,
+          "sample_sd": 0.0009756561555295916,
+          "min": 1.416158359918765,
+          "max": 1.421113454938199,
+          "quantiles_2p5_50_97p5": [
+            1.4170129613866034,
+            1.4187699249461134,
+            1.4206554274026006
+          ]
+        },
+        "power_w": {
+          "mean": 0.0007414746586759761,
+          "sample_sd": 1.4345529136605607e-06,
+          "min": 0.0007381632514557334,
+          "max": 0.0007451772854465682,
+          "quantiles_2p5_50_97p5": [
+            0.0007387958378950042,
+            0.0007415001400071739,
+            0.0007442791681511277
+          ]
+        },
+        "over_absolute_current_budget_count": 0,
+        "population_note": "finite conditional model sample; not measured manufacturing yield"
+      },
+      "conditional_high": {
+        "n": 256,
+        "iout": {
+          "mean": 0.00010209570173251303,
+          "sample_sd": 4.3286516738898694e-07,
+          "min": 0.0001010970646139402,
+          "max": 0.0001032135713728782,
+          "quantiles_2p5_50_97p5": [
+            0.00010128770177518834,
+            0.0001021032370070501,
+            0.00010294214689293083
+          ]
+        },
+        "iref": {
+          "mean": 0.0001007186117358786,
+          "sample_sd": 9.587791116588585e-11,
+          "min": 0.0001007183574083513,
+          "max": 0.0001007188443025766,
+          "quantiles_2p5_50_97p5": [
+            0.00010071844135306238,
+            0.00010071861404044385,
+            0.00010071879928374293
+          ]
+        },
+        "mirror_ratio": {
+          "mean": 1.0136726495825399,
+          "sample_sd": 0.0042984446525360445,
+          "min": 1.003756587969702,
+          "max": 1.0247735499173765,
+          "quantiles_2p5_50_97p5": [
+            1.0056492551950043,
+            1.0137470700420188,
+            1.0220772192541414
+          ]
+        },
+        "reference_error_pct": {
+          "mean": 0.7186117358785895,
+          "sample_sd": 9.587791116587981e-05,
+          "min": 0.7183574083512889,
+          "max": 0.7188443025766045,
+          "quantiles_2p5_50_97p5": [
+            0.7184413530623851,
+            0.7186140404438435,
+            0.718799283742938
+          ]
+        },
+        "absolute_error_pct": {
+          "mean": 2.095701732513032,
+          "sample_sd": 0.43286516738898695,
+          "min": 1.0970646139401907,
+          "max": 3.213571372878188,
+          "quantiles_2p5_50_97p5": [
+            1.287701775188335,
+            2.103237007050096,
+            2.9421468929308277
+          ]
+        },
+        "out_vth": {
+          "mean": 0.5936551025101371,
+          "sample_sd": 0.0009669246090961852,
+          "min": 0.5910017824756895,
+          "max": 0.5960362004755254,
+          "quantiles_2p5_50_97p5": [
+            0.5916455357191933,
+            0.5936470927828263,
+            0.5955871736649521
+          ]
+        },
+        "ref_vth": {
+          "mean": 0.5937507746522106,
+          "sample_sd": 0.0009309924465550997,
+          "min": 0.5914918537995365,
+          "max": 0.5962208968799033,
+          "quantiles_2p5_50_97p5": [
+            0.591928782143422,
+            0.5937288279599786,
+            0.5954047850661033
+          ]
+        },
+        "headroom": {
+          "mean": 2.4211173587861277,
+          "sample_sd": 0.0009587791116447361,
+          "min": 2.418574083513009,
+          "max": 2.423443025766225,
+          "quantiles_2p5_50_97p5": [
+            2.419413530623806,
+            2.421140404438953,
+            2.4229928374299554
+          ]
+        },
+        "power_w": {
+          "mean": 0.0009271349348177079,
+          "sample_sd": 2.3805142464274773e-06,
+          "min": 0.0009216427726081614,
+          "max": 0.0009332825167637028,
+          "quantiles_2p5_50_97p5": [
+            0.0009226913136981418,
+            0.0009271765201302215,
+            0.0009317901995430665
+          ]
+        },
+        "over_absolute_current_budget_count": 0,
+        "population_note": "finite conditional model sample; not measured manufacturing yield"
+      }
+    }
+  },
+  "reference_pvt": {
+    "n": 1080,
+    "summary": {
+      "n": 1080,
+      "iout": {
+        "mean": 0.00010068257827284735,
+        "sample_sd": 6.325851268463632e-07,
+        "min": 9.928025689070287e-05,
+        "max": 0.0001020756493379853,
+        "quantiles_2p5_50_97p5": [
+          9.957892007831383e-05,
+          0.00010068091075857315,
+          0.0001018138064712897
+        ]
+      },
+      "iref": {
+        "mean": 0.00010000241349209698,
+        "sample_sd": 5.157380215793885e-07,
+        "min": 9.920787352023785e-05,
+        "max": 0.0001007933832640656,
+        "quantiles_2p5_50_97p5": [
+          9.929322192404892e-05,
+          0.00010000060768688662,
+          0.00010071102816108327
+        ]
+      },
+      "mirror_ratio": {
+        "mean": 1.0068014768895388,
+        "sample_sd": 0.003611248652516652,
+        "min": 1.0006483126864492,
+        "max": 1.0135996240162377,
+        "quantiles_2p5_50_97p5": [
+          1.0010335867189548,
+          1.0069538925386818,
+          1.0130058978296042
+        ]
+      },
+      "reference_error_pct": {
+        "mean": 0.002413492096969514,
+        "sample_sd": 0.5157380215793885,
+        "min": -0.7921264797621563,
+        "max": 0.7933832640655947,
+        "quantiles_2p5_50_97p5": [
+          -0.7067780759510955,
+          0.0006076868866056184,
+          0.7110281610832481
+        ]
+      },
+      "absolute_error_pct": {
+        "mean": 0.6825782728473481,
+        "sample_sd": 0.6325851268463629,
+        "min": -0.7197431092971329,
+        "max": 2.075649337985297,
+        "quantiles_2p5_50_97p5": [
+          -0.4210799216861738,
+          0.6809107585731389,
+          1.8138064712897028
+        ]
+      },
+      "out_vth": {
+        "mean": 0.6690963946357296,
+        "sample_sd": 0.10940553431340694,
+        "min": 0.4787613792851137,
+        "max": 0.8423014461359297,
+        "quantiles_2p5_50_97p5": [
+          0.47876917137893166,
+          0.6867844625401167,
+          0.8422940018481102
+        ]
+      },
+      "ref_vth": {
+        "mean": 0.6691358761606171,
+        "sample_sd": 0.1094061410203942,
+        "min": 0.4788032046449199,
+        "max": 0.842338734993167,
+        "quantiles_2p5_50_97p5": [
+          0.4788070192185777,
+          0.6868238564209465,
+          0.8423361573013777
+        ]
+      },
+      "headroom": {
+        "mean": 1.924134920969886,
+        "sample_sd": 0.29673952267390996,
+        "min": 1.412107846162803,
+        "max": 2.425475804228658,
+        "quantiles_2p5_50_97p5": [
+          1.441577949397568,
+          1.925003531989882,
+          2.416288591075583
+        ]
+      },
+      "power_w": {
+        "mean": 0.0008335613812806717,
+        "sample_sd": 5.0849824452266786e-05,
+        "min": 0.0007414085505402604,
+        "max": 0.000927024643164951,
+        "quantiles_2p5_50_97p5": [
+          0.0007441814886673294,
+          0.0008331923050936345,
+          0.0009238877916400562
+        ]
+      },
+      "over_absolute_current_budget_count": 0,
+      "population_note": "finite conditional model sample; not measured manufacturing yield"
+    },
+    "minimum_case": {
+      "seed": 20261004,
+      "library": "ss",
+      "temperature_c": 85,
+      "logic_v": 2.97,
+      "led_supply_v": 4.5,
+      "local_mismatch": 0,
+      "global_variation": 0,
+      "reference": "bounded",
+      "calibration_error": -0.005,
+      "tc_ppm": -25,
+      "line_ppm_v": 3000,
+      "pwm_on": true,
+      "iout": 9.928025689070287e-05,
+      "iref": 9.920787368467703e-05,
+      "bias": 1.55126315322963,
+      "headroom": 1.41873684677037,
+      "led_k": 1.679382414113138,
+      "power_w": 0.0007414085505402604,
+      "out_vth": 0.7272695917929506,
+      "ref_vth": 0.7273139727235536,
+      "x0_dvth": -0.0,
+      "x0_mulu0": 1.0,
+      "x1_dvth": -0.0,
+      "x1_mulu0": 1.0,
+      "x2_dvth": 0.0,
+      "x2_mulu0": 1.0,
+      "x3_dvth": 0.0,
+      "x3_mulu0": 1.0,
+      "x4_dvth": 0.0,
+      "x4_mulu0": 1.0,
+      "x5_dvth": -0.0,
+      "x5_mulu0": 1.0,
+      "mirror_ratio": 1.000729611504989,
+      "reference_error_pct": -0.7921263153229718,
+      "absolute_error_pct": -0.7197431092971329,
+      "absolute_current_budget_pass": true
+    },
+    "maximum_case": {
+      "seed": 20261004,
+      "library": "ff",
+      "temperature_c": 0,
+      "logic_v": 3.63,
+      "led_supply_v": 5.5,
+      "local_mismatch": 0,
+      "global_variation": 0,
+      "reference": "bounded",
+      "calibration_error": 0.005,
+      "tc_ppm": -25,
+      "line_ppm_v": 3000,
+      "pwm_on": true,
+      "iout": 0.0001020756493379853,
+      "iref": 0.000100718610776403,
+      "bias": 1.208892235969485,
+      "headroom": 2.421107764030515,
+      "led_k": 2.709331371133222,
+      "power_w": 0.000927024643164951,
+      "out_vth": 0.5937258466319002,
+      "ref_vth": 0.593760148648647,
+      "x0_dvth": -0.0,
+      "x0_mulu0": 1.0,
+      "x1_dvth": -0.0,
+      "x1_mulu0": 1.0,
+      "x2_dvth": 0.0,
+      "x2_mulu0": 1.0,
+      "x3_dvth": 0.0,
+      "x3_mulu0": 1.0,
+      "x4_dvth": 0.0,
+      "x4_mulu0": 1.0,
+      "x5_dvth": -0.0,
+      "x5_mulu0": 1.0,
+      "mirror_ratio": 1.0134735631391398,
+      "reference_error_pct": 0.7186107764029837,
+      "absolute_error_pct": 2.075649337985297,
+      "absolute_current_budget_pass": true
+    },
+    "all_within_five_pct": true,
+    "all_reference_headrooms_valid": true
+  },
+  "lowest_code_pulses": [
+    {
+      "case": "nominal",
+      "condition": {
+        "library": "typical",
+        "temperature_c": 27,
+        "logic_v": 3.3,
+        "led_supply_v": 5,
+        "local_mismatch": 0,
+        "global_variation": 0,
+        "reference": "bounded",
+        "calibration_error": 0,
+        "tc_ppm": 0,
+        "line_ppm_v": 0,
+        "pwm_on": true
+      },
+      "maxstep_s": 5e-08,
+      "dc_current_a": 0.0001006979021737776,
+      "measurement_window_s": [
+        0.0005145,
+        0.0015385
+      ],
+      "measured_frames": 4,
+      "per_frame": [
+        {
+          "charge_c": 1.0038171099270924e-10,
+          "area_error_pct": -0.3139997698489272
+        },
+        {
+          "charge_c": 1.0038171103782311e-10,
+          "area_error_pct": -0.31399972504772
+        },
+        {
+          "charge_c": 1.0038171103819657e-10,
+          "area_error_pct": -0.31399972467685
+        },
+        {
+          "charge_c": 1.0038171103812666e-10,
+          "area_error_pct": -0.31399972474627225
+        }
+      ],
+      "max_abs_area_error_pct": 0.3139997698489272,
+      "within_two_pct": true,
+      "note": "area relative to actual same-condition full-on current; absolute current \u00b15% is checked separately"
+    },
+    {
+      "case": "nominal",
+      "condition": {
+        "library": "typical",
+        "temperature_c": 27,
+        "logic_v": 3.3,
+        "led_supply_v": 5,
+        "local_mismatch": 0,
+        "global_variation": 0,
+        "reference": "bounded",
+        "calibration_error": 0,
+        "tc_ppm": 0,
+        "line_ppm_v": 0,
+        "pwm_on": true
+      },
+      "maxstep_s": 1e-08,
+      "dc_current_a": 0.0001006979021737776,
+      "measurement_window_s": [
+        0.0005145,
+        0.0015385
+      ],
+      "measured_frames": 4,
+      "per_frame": [
+        {
+          "charge_c": 1.0038171081094222e-10,
+          "area_error_pct": -0.3139999503561808
+        },
+        {
+          "charge_c": 1.0038171081469423e-10,
+          "area_error_pct": -0.3139999466301724
+        },
+        {
+          "charge_c": 1.0038171082172568e-10,
+          "area_error_pct": -0.313999939647458
+        },
+        {
+          "charge_c": 1.0038171082129936e-10,
+          "area_error_pct": -0.31399994007081933
+        }
+      ],
+      "max_abs_area_error_pct": 0.3139999503561808,
+      "within_two_pct": true,
+      "note": "area relative to actual same-condition full-on current; absolute current \u00b15% is checked separately"
+    },
+    {
+      "case": "low",
+      "condition": {
+        "library": "ss",
+        "temperature_c": 85,
+        "logic_v": 2.97,
+        "led_supply_v": 4.5,
+        "local_mismatch": 0,
+        "global_variation": 0,
+        "reference": "bounded",
+        "calibration_error": -0.005,
+        "tc_ppm": -25,
+        "line_ppm_v": 3000,
+        "pwm_on": true
+      },
+      "maxstep_s": 5e-08,
+      "dc_current_a": 9.928025689070287e-05,
+      "measurement_window_s": [
+        0.0005145,
+        0.0015385
+      ],
+      "measured_frames": 4,
+      "per_frame": [
+        {
+          "charge_c": 9.851748960220175e-11,
+          "area_error_pct": -0.7682970536033618
+        },
+        {
+          "charge_c": 9.851748961074342e-11,
+          "area_error_pct": -0.768297044999755
+        },
+        {
+          "charge_c": 9.851748960756376e-11,
+          "area_error_pct": -0.7682970482024709
+        },
+        {
+          "charge_c": 9.851748960889943e-11,
+          "area_error_pct": -0.7682970468571249
+        }
+      ],
+      "max_abs_area_error_pct": 0.7682970536033618,
+      "within_two_pct": true,
+      "note": "area relative to actual same-condition full-on current; absolute current \u00b15% is checked separately"
+    },
+    {
+      "case": "low",
+      "condition": {
+        "library": "ss",
+        "temperature_c": 85,
+        "logic_v": 2.97,
+        "led_supply_v": 4.5,
+        "local_mismatch": 0,
+        "global_variation": 0,
+        "reference": "bounded",
+        "calibration_error": -0.005,
+        "tc_ppm": -25,
+        "line_ppm_v": 3000,
+        "pwm_on": true
+      },
+      "maxstep_s": 1e-08,
+      "dc_current_a": 9.928025689070287e-05,
+      "measurement_window_s": [
+        0.0005145,
+        0.0015385
+      ],
+      "measured_frames": 4,
+      "per_frame": [
+        {
+          "charge_c": 9.851748949072374e-11,
+          "area_error_pct": -0.768297165889531
+        },
+        {
+          "charge_c": 9.851748991831456e-11,
+          "area_error_pct": -0.7682967351988479
+        },
+        {
+          "charge_c": 9.851748945414292e-11,
+          "area_error_pct": -0.7682972027355572
+        },
+        {
+          "charge_c": 9.851748957698763e-11,
+          "area_error_pct": -0.7682970790002686
+        }
+      ],
+      "max_abs_area_error_pct": 0.7682972027355572,
+      "within_two_pct": true,
+      "note": "area relative to actual same-condition full-on current; absolute current \u00b15% is checked separately"
+    },
+    {
+      "case": "high",
+      "condition": {
+        "library": "ff",
+        "temperature_c": 0,
+        "logic_v": 3.63,
+        "led_supply_v": 5.5,
+        "local_mismatch": 0,
+        "global_variation": 0,
+        "reference": "bounded",
+        "calibration_error": 0.005,
+        "tc_ppm": -25,
+        "line_ppm_v": 3000,
+        "pwm_on": true
+      },
+      "maxstep_s": 5e-08,
+      "dc_current_a": 0.0001020756493379853,
+      "measurement_window_s": [
+        0.0005145,
+        0.0015385
+      ],
+      "measured_frames": 4,
+      "per_frame": [
+        {
+          "charge_c": 1.0190500814160328e-10,
+          "area_error_pct": -0.16717130627011967
+        },
+        {
+          "charge_c": 1.0190500807182315e-10,
+          "area_error_pct": -0.16717137463131415
+        },
+        {
+          "charge_c": 1.0190500802495781e-10,
+          "area_error_pct": -0.16717142054367695
+        },
+        {
+          "charge_c": 1.0190500788373337e-10,
+          "area_error_pct": -0.16717155889639512
+        }
+      ],
+      "max_abs_area_error_pct": 0.16717155889639512,
+      "within_two_pct": true,
+      "note": "area relative to actual same-condition full-on current; absolute current \u00b15% is checked separately"
+    },
+    {
+      "case": "high",
+      "condition": {
+        "library": "ff",
+        "temperature_c": 0,
+        "logic_v": 3.63,
+        "led_supply_v": 5.5,
+        "local_mismatch": 0,
+        "global_variation": 0,
+        "reference": "bounded",
+        "calibration_error": 0.005,
+        "tc_ppm": -25,
+        "line_ppm_v": 3000,
+        "pwm_on": true
+      },
+      "maxstep_s": 1e-08,
+      "dc_current_a": 0.0001020756493379853,
+      "measurement_window_s": [
+        0.0005145,
+        0.0015385
+      ],
+      "measured_frames": 4,
+      "per_frame": [
+        {
+          "charge_c": 1.0190500800854363e-10,
+          "area_error_pct": -0.16717143662408063
+        },
+        {
+          "charge_c": 1.0190500800866653e-10,
+          "area_error_pct": -0.16717143650368804
+        },
+        {
+          "charge_c": 1.0190500800853786e-10,
+          "area_error_pct": -0.16717143662973166
+        },
+        {
+          "charge_c": 1.0190500800847073e-10,
+          "area_error_pct": -0.16717143669550127
+        }
+      ],
+      "max_abs_area_error_pct": 0.16717143669550127,
+      "within_two_pct": true,
+      "note": "area relative to actual same-condition full-on current; absolute current \u00b15% is checked separately"
+    }
+  ],
+  "comparison_to_conceptual_w20_l4": {
+    "local_only": {
+      "mean_iout_change_a": 2.554412606634829e-09,
+      "iout_sd_ratio": 0.999574456630587
+    },
+    "global_and_local": {
+      "mean_iout_change_a": 2.58086695867658e-09,
+      "iout_sd_ratio": 0.9995807934623356
+    },
+    "reference_nominal_and_global_local": {
+      "mean_iout_change_a": 2.560736873984332e-09,
+      "iout_sd_ratio": 0.9995811904892951
+    },
+    "conditional_low": {
+      "mean_iout_change_a": 2.2585772590285463e-09,
+      "iout_sd_ratio": 0.9996497134050751
+    },
+    "conditional_high": {
+      "mean_iout_change_a": 2.587124843511906e-09,
+      "iout_sd_ratio": 0.9995162707812753
+    }
+  },
+  "limits": [
+    "Only the specified finite conditional populations were sampled; pass fractions are not manufacturing yield.",
+    "Synthetic LED electrical and temperature behavior remains assumed; measured LED static coupling is separate.",
+    "Reference is a candidate calibrated external-source specification, not an on-chip generator or selected part.",
+    "No RC process corners, systematic mismatch gradients, reference noise/bandwidth/startup, pad/ESD, silicon or optical validation.",
+    "Three deterministic pulse conditions do not constitute an MC pulse-area/yield study."
+  ]
+}

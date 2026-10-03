@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "model_id": "lin2026-yellow20-diamond-fig2a",
+  "role": "independent static load research case; does not replace synthetic baseline or select a procurable LED",
+  "evidence_level": "published measured I-V source-data curve, normalized and replayed independently",
+  "source": {
+    "paper_title": "Transfer-printed yellow and red InGaN micro-LEDs on diamond for ultra-low-power high-speed optical interconnects",
+    "paper_doi": "10.1038/s41467-026-74151-4",
+    "paper_date": "2026-06-17",
+    "paper_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13433930/",
+    "paper_license": "CC-BY-NC-ND-4.0",
+    "dataset_doi": "10.5281/zenodo.20034288",
+    "dataset_license": "CC-BY-4.0",
+    "dataset_version": "Zenodo record 20034288 (published 2026-06-18)",
+    "curve_locator": "I-V.xlsx Sheet1 A1:B102; header 20μm yellow; Fig.2a yellow 20μm curve"
+  },
+  "device": {
+    "material": "InGaN/GaN MQW",
+    "color_label": "yellow (source label; wavelength depends on current)",
+    "mesa_shape": "square",
+    "mesa_side_um": 20,
+    "mesa_area_um2": 400,
+    "current_density_area_basis": "square mesa area, as used by source current/current-density conversion; not a measured local current distribution",
+    "substrate": "diamond, flip-chip transfer-printed",
+    "specific_sample_serial": null,
+    "physical_sample_count": null,
+    "curve_count": 1,
+    "is_commercial_part_number": false
+  },
+  "measurement": {
+    "instrument": "Keithley 2614B precision source meter (paper Methods: Measurement method)",
+    "temperature_C": null,
+    "temperature_status": "not reported for this I-V sweep; room temperature is not assumed",
+    "junction_temperature_C": null,
+    "dc_or_pulse_mode": null,
+    "scan_direction": null,
+    "settling_time_s": null,
+    "repeat_count": null,
+    "uncertainty_budget": null,
+    "original_current_unit": "mA",
+    "normalized_current_unit": "A",
+    "voltage_unit": "V",
+    "measured_points": 100,
+    "measured_current_domain_A": [
+      1.0000000000000001e-07,
+      0.032
+    ],
+    "measured_voltage_domain_V": [
+      2.41622,
+      6.40451
+    ]
+  },
+  "derived": {
+    "voltage_at_100uA_V": 3.767909545454545,
+    "voltage_method": "linear interpolation between source 88.55uA/3.73408V and 100.65uA/3.76983V",
+    "current_density_at_100uA_A_cm2": 25.0
+  },
+  "simulation_interface": {
+    "netlist": "lin2026-yellow20-dc.spice",
+    "subcircuit": "lin2026_yellow20_dc",
+    "pins": [
+      "anode",
+      "cathode"
+    ],
+    "type": "behavioral current source with piecewise-linear measured I(V)",
+    "has_temperature_scaling": false,
+    "capacitance_model": null,
+    "transit_time_model": null,
+    "optical_model": null,
+    "self_heating_model": null,
+    "outside_domain": "a numerical linear extension to (0 V, 0 A) below first point, then standard PWL extrapolation; no measured reverse/off/high-current validation"
+  },
+  "validation": {
+    "same_curve_holdout": {
+      "method": "linear V versus I; inversely equivalent to linear I versus V;  every fourth knot index modulo 4 equals 1 withheld; endpoints retained",
+      "training_count": 75,
+      "holdout_count": 25,
+      "count": 25,
+      "rmse_mV": 1.9484581549413937,
+      "max_abs_mV": 2.9526677561779735,
+      "local_10uA_to_1mA": {
+        "count": 9,
+        "rmse_mV": 2.1919029203536153,
+        "max_abs_mV": 2.7029787234043035
+      },
+      "interpretation": "same-curve interpolation error;  not cross-device or cross-temperature generalization"
+    },
+    "static_ngspice_replay_runs": 101,
+    "static_ngspice_max_error_V": 1.7763568394002505e-15,
+    "cross_device_validation": false,
+    "cross_temperature_validation": false
+  },
+  "permitted_research_use": [
+    "static full-on current/headroom under the source curve",
+    "sensitivity comparison against synthetic baseline with clear evidence labels"
+  ],
+  "not_supported": [
+    "real-device leakage/black-level/contrast",
+    "PWM rise/fall timing or bandwidth without separately declared assumed capacitance",
+    "GaN physical ideality/temperature parameter extraction",
+    "optical power/EQE/thermal/aging reliability",
+    "manufacturing/purchasability or same-device integration with the GF180 layout"
+  ]
+}

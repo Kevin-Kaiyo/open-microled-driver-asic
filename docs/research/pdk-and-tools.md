@@ -2,6 +2,8 @@
 
 查阅日期：2026-10-03（Asia/Tokyo）。本文只使用公开、可追溯的主来源。厂商规格、软件支持声明与本项目验证结果分开记录；下面的选择是项目工程判断，不是 foundry 认证。
 
+2026-10-04 实施更新：完整 `gf180mcuD` 已用于20/4单像素模拟cell与标准单元PWM macro；实际数字flow选用 **LibreLane 3.0.14 pinned arm64 container + 项目独立Lima Linux VM**。既有Docker Desktop VM遇到storage attachment故障，没有reset用户磁盘；native Nix未安装。当前实际工具、成功检查、历史失败与复现见[digital physical](../digital/physical.md)；本页后续Nix/Docker比较保留为初始选型调研，不能当作已经安装和执行的路径。
+
 ## 1. 结论与适用范围
 
 **Phase 1 选择 GF180MCU 的公开 6 V MOS models，先完成 1-Pixel 电路和 RTL PWM 的联动仿真。进入版图时，获取锁定版本的完整 `gf180mcuD` PDK；数字实现优先采用 LibreLane，模拟 cell 使用 Xschem / ngspice + Magic / Netgen / KLayout。**

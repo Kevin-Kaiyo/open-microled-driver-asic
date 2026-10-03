@@ -1,0 +1,35 @@
+{
+  "evidence_level": "isolated mathematical boundary behavior only; no physical LED validation outside source range",
+  "runs": 3,
+  "separate_from_in_domain_replay_runs": 101,
+  "conclusion": "linear extrapolation below first and above last PWL knot; no endpoint clamp",
+  "source_hashes": {
+    "analog/models/measured-led/lin2026-yellow20-dc.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+    "analog/models/measured-led/lin2026-yellow20-diamond-iv.csv": "9da8dbac6499c34159da5e3aa0c59cd6de43aad446090181b4c070beba9505ab",
+    "scripts/led/probe_boundaries.py": "d40ab52279edfdb9b0e4c521ad4a519aae6dd3c183c16191ae88ee0ab8e14ce4"
+  },
+  "ngspice_version": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******\n",
+  "points": [
+    {
+      "voltage_V": -0.1,
+      "ngspice_current_A": -4.138695979670725e-09,
+      "linear_extension_expected_A": -4.138695979670726e-09,
+      "difference_A": 8.271806125530277e-25,
+      "passed": true
+    },
+    {
+      "voltage_V": 1.0,
+      "ngspice_current_A": 4.138695979670725e-08,
+      "linear_extension_expected_A": 4.1386959796707254e-08,
+      "difference_A": -6.617444900424222e-24,
+      "passed": true
+    },
+    {
+      "voltage_V": 6.8,
+      "ngspice_current_A": 0.04137901718258614,
+      "linear_extension_expected_A": 0.04137901718258618,
+      "difference_A": -4.163336342344337e-17,
+      "passed": true
+    }
+  ]
+}

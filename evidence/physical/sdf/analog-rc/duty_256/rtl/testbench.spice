@@ -1,0 +1,32 @@
+GF180MCU one-pixel feed-forward RTL/SPICE simulation
+.include design.ngspice
+.param sw_stat_global=0 sw_stat_mismatch=0
+.lib sm141064.ngspice typical
+.param LED_IS=2.272535114155243e-20
+.include "../../../../../../analog/models/microled.spice"
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/physical-flow/sdf-coupled-v0.2/pixel_driver_rc.spice"
+.temp 27
+VDD vdd 0 5.0
+VLOGIC vlogic 0 3.3
+IREF vlogic bias DC 100u
+VSENSE vdd led_a 0
+VPWM pwm 0 PWL(
++ 0 0
++ 2.5e-06 0
++ 2.51e-06 3.3
++ 0.0015405 3.3
++ )
+XLED led_a led_k microled
+XPIXEL 0 bias gate pwm pwm_b led_k vlogic pixel_driver_layout
+.options reltol=1e-5 abstol=1e-12 vntol=1e-7
+.control
+set noaskquit
+set numdgt=15
+set wr_vecnames
+set wr_singlescale
+save v(pwm) v(pwm_b) v(bias) v(gate) v(led_k) i(VSENSE)
+tran 100n 0.0015405 0 2e-07
+wrdata waveform.dat v(pwm) v(pwm_b) v(bias) v(gate) v(led_k) i(VSENSE)
+quit
+.endc
+.end

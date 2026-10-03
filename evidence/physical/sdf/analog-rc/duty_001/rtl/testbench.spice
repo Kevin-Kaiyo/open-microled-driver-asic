@@ -1,0 +1,56 @@
+GF180MCU one-pixel feed-forward RTL/SPICE simulation
+.include design.ngspice
+.param sw_stat_global=0 sw_stat_mismatch=0
+.lib sm141064.ngspice typical
+.param LED_IS=2.272535114155243e-20
+.include "../../../../../../analog/models/microled.spice"
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/physical-flow/sdf-coupled-v0.2/pixel_driver_rc.spice"
+.temp 27
+VDD vdd 0 5.0
+VLOGIC vlogic 0 3.3
+IREF vlogic bias DC 100u
+VSENSE vdd led_a 0
+VPWM pwm 0 PWL(
++ 0 0
++ 2.5e-06 0
++ 2.51e-06 3.3
++ 3.5e-06 3.3
++ 3.51e-06 0
++ 0.0002585 0
++ 0.00025851 3.3
++ 0.0002595 3.3
++ 0.00025951 0
++ 0.0005145 0
++ 0.00051451 3.3
++ 0.0005155 3.3
++ 0.00051551 0
++ 0.0007705 0
++ 0.00077051 3.3
++ 0.0007715 3.3
++ 0.00077151 0
++ 0.0010265 0
++ 0.00102651 3.3
++ 0.0010275 3.3
++ 0.00102751 0
++ 0.0012825 0
++ 0.00128251 3.3
++ 0.0012835 3.3
++ 0.00128351 0
++ 0.0015385 0
++ 0.00153851 3.3
++ 0.0015405 3.3
++ )
+XLED led_a led_k microled
+XPIXEL 0 bias gate pwm pwm_b led_k vlogic pixel_driver_layout
+.options reltol=1e-5 abstol=1e-12 vntol=1e-7
+.control
+set noaskquit
+set numdgt=15
+set wr_vecnames
+set wr_singlescale
+save v(pwm) v(pwm_b) v(bias) v(gate) v(led_k) i(VSENSE)
+tran 100n 0.0015405 0 5e-08
+wrdata waveform.dat v(pwm) v(pwm_b) v(bias) v(gate) v(led_k) i(VSENSE)
+quit
+.endc
+.end

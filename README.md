@@ -1,46 +1,53 @@
 # Open MicroLED Driver ASIC
 
-An independently designed, open research platform for learning digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
+An independent, open teaching and research platform for digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
-这是一个从 **1 Pixel** 开始的学习与研究项目。已跑通 **Verilog PWM → MOS gate control → current mirror → synthetic MicroLED electrical load**，并完成这个六 MOS 模拟 cell 的真实版图、GDS、Magic DRC、Netgen LVS、RC 抽取与版图后配对仿真。当前证据覆盖单像素模拟 cell；数字 physical integration、完整芯片与实际光输出仍在后续阶段。
+从 **1 Pixel** 开始，当前研究版本为 **v0.2（2026-10-04）**：实际执行的 registered PWM 驱动 GF180MCU 六 MOS current sink；模拟 cell 已完成 layout、严格 LVS、DRC、GDS 与 RC 抽取。检阅后引入了可追溯的真实 LED 静态 I–V，依据失配结果把两只镜像管从 10/2 改为 **20/4 µm**，并重做电路、版图和验证。
 
-## 最新检阅：先确认研究前提
+## 先读当前研究报告
 
-2026-10-03 已完成[器件物理、数据与计算的全面检阅](docs/review/README.md)，另有 [10 页总报告 PDF](docs/review/single-pixel-audit.pdf)。结论是：**平均电流计算与基本 MOS 选用成立，适合作为教学基线；真实 LED 参数、绝对精度和制造后一致性尚未确立。**
+- [11 页当前研究报告 PDF](docs/research/research-report.pdf) / [HTML](docs/research/research-report.html) / [可检查的文字源](docs/research/research-report.md)：整体架构 → 六 MOS → LED 数据 → headroom → 尺寸选择 → reference / power → PWM → physical checks → 动态边界。
+- [研究资料入口](docs/research/README.md)：完整 source、assumptions、条件、许可、脚本和证据的索引。
+- [v0.2 预设研究指标](docs/specifications/single-pixel-v0.2.md)：100 µA±5%、最低码面积误差±2%，各项验证范围分开定义。
 
-本轮修复了 LVS 可能放过器件尺寸错误的门禁，原版图严格重验仍通过；55 份波形独立积分一致。约 3.6 pA 关断电流受 GMIN 主导，不能作为物理 leakage；平均值收敛不代表峰值/纹波/带宽已验证。名义 RC 全开相对 100 µA 偏差为 +1.2365%，与版图前后约 −0.0623% 的变化属于不同指标。下一步继续单像素：先确定真实 LED/model card、精度和功耗预算，再推进 reference、matching 与数字物理集成。
+[教学 PPT](docs/teaching/open-microled-single-pixel-teaching-v2.pptx)、[初版讲义](docs/teaching/open-microled-single-pixel-report.pdf)和[2026-10-03 检阅](docs/review/README.md)保留为历史快照。旧版尺寸、组合 PWM 和 synthetic LED 结论以当时输入为准；当前进展优先阅读 v0.2。
 
-## 教学资料与阅读顺序
-
-按“整体架构 → PWM 逻辑 → 六个 MOS 与器件选型 → 模型与仿真 → 单像素版图”的顺序学习：
-
-- [28 页 PowerPoint](docs/teaching/open-microled-single-pixel-teaching-v2.pptx)：图解、可编辑图表、详细讲者备注。
-- [中文技术讲义 PDF](docs/teaching/open-microled-single-pixel-report.pdf) / [HTML](docs/teaching/report.html)：逐步解释、连接表、参数账本、结果和公开来源。
-- [教学内容与练习](docs/teaching/content-plan.md) / [结构化页面内容](docs/teaching/lesson.json)：完整公开教学设定。
-- [版图复现与证据范围](docs/layout/README.md)：从 schematic、版图到 RC 仿真的实际路径。
-
-上面的 PPT/PDF 保留为审阅前教学快照；漏电、纹波、误差归因和后续门槛请结合[最新检阅](docs/review/README.md)阅读。参数未因本轮审阅而调优，新增证据与脚本全部公开。
-
-## 当前可运行路径
+## 当前实现与主要结果
 
 ```mermaid
 flowchart LR
-    TB[Test stimulus] --> RTL[1 MHz RTL / 256-slot PWM]
-    RTL --> CSV[Executed RTL edge trace]
-    CSV --> PWL[3.3 V PWL / 10 ns slew]
-    PWL --> MOS[GF180MCU 6-MOS pixel cell]
-    REF[External ideal IREF / 100 uA] --> MOS
-    MOS --> LED[Synthetic diode / Rs / charge model]
-    LED --> CHECK[Current integration / checks / plots]
+    INPUT[Clock / reset / duty / enable] --> PWM[Registered 256-slot PWM]
+    PWM --> TRACE[Executed RTL / gate trace]
+    TRACE --> BRIDGE[PWL replay]
+    BRIDGE --> CELL[GF180 six-MOS cell / actual RC]
+    REF[External reference] --> CELL
+    CELL --> SYN[Synthetic LED regression]
+    CELL --> IV[Measured static I-V replay]
+    SYN --> CHECK[Window integration / checks]
+    IV --> CHECK
 ```
 
-这里的 PWL 来自实际 RTL 执行。模拟电路使用公开 GF180MCU BSIM MOS models；并非 Python 直接生成理想电流。耦合方向为 digital → analog，没有 analog → RTL feedback。MicroLED 参数未经真实器件拟合，平均电流只作为 brightness proxy。
+1 MHz clock，每 slot 1 µs、每帧 256 µs，PWM 3906.25 Hz。`duty=0` 全关，`256` 全开，257–511 clamp 为 256；输入在 frame boundary 更新。电路为 simple 1:1 mirror、bias pass、gate clamp 与 CMOS inverter。该耦合路径为 digital→analog feed-forward，没有 analog→RTL feedback。
 
-**选择：** GF180MCU 公开 6 V MOS，simple NMOS current mirror，MOS bias-pass / gate-clamp 加 transistor CMOS inverter，共 6 个 MOS。LED supply 为 5 V，logic control 为 3.3 V；reference current 目前由外部理想源提供。PDK 和 baseline 的比较依据见 [PDK / tools](docs/research/pdk-and-tools.md) 与 [driver evidence](docs/research/driver-evidence.md)。
+| 研究或实现 | 实际结果与条件 |
+| --- | --- |
+| 真实 LED 数据 | Lin 2026 / Zenodo 20034288，20 µm yellow InGaN on diamond；100 µA 插值 Vf=3.767910 V；100 点、101 OP 重放检查；温度与动态参数未报告 |
+| 真实静态负载 + actual RC | 148 DC，其中135点网格；MOS固定27°C、LED曲线温度未知；98.175–100.984 µA，135/135在±5%内 |
+| 名义真实静态负载 | IOUT=99.788467 µA；LED rail + analog-control/reference rail=828.942349 µW，尚不含数字及实际reference generator功耗 |
+| Actual 20/4 reference / PVT | synthetic LED、1080 deterministic点；99.280257–102.075649 µA |
+| Actual 20/4 mismatch | 五组各256；最差条件103.213571 µA、σ0.432865 µA、0/256超限；旧10/2相同种子为4/256，均为条件模型样本，非制造良率 |
+| 最低码 / synthetic model | 3条件×2步长，6 transient；最大面积误差0.768297%，在±2%内 |
+| 真实静态模型动态探针 | 假设C=0.2/2/20pF，10 transient；20pF最低码18.45%导电电荷位于未测延拓区，明确不具备真实dynamic qualification |
+| Analog layout | 95×37.66 µm、3577.7 µm²；Magic DRC0、严格Netgen LVS、GDS roundtrip、7/7 nets、59R/43C、36 paired transient+3 calibration |
+| Analog macro views | GDS / MAG / LVS SPICE / RC SPICE / 实际导出LEF，七个公开接口 |
+| Digital logic / mapping | 518 frames / 133159 checks；95 mapped cells、19 FF；functional gate traces与RTL一致 |
+| Digital physical / independent DRC | 实际检查与最终条件见[physical report](docs/digital/physical.md)，与模拟cell及RTL结果分别记录 |
+
+功耗、current accuracy、PWM area 和 pre/post-layout delta 是不同指标。平均 branch current 是 **electrical brightness proxy**；没有 optical power、EQE、luminance 或 silicon measurement。Reference 的误差行为模型用于预算，尚未实现片上 reference generator。真实 I–V 不含 C–V、低电流/reverse、I–V(T) 与光学模型。
 
 ## 快速复现
 
-本机验证环境：Mac arm64、Python 3.12.13、Icarus Verilog 13.0、ngspice 47。需要 Homebrew 和 uv；首次 setup 下载约 1.4 MB 的公开 model 子集并校验 SHA256。
+基本仿真在 Mac arm64、Icarus Verilog 13.0、ngspice 47 和锁定 Python dependencies 下执行：
 
 ```sh
 brew install ngspice icarus-verilog uv
@@ -49,62 +56,40 @@ make test
 make sim
 ```
 
-`make sim` 将每次 RTL / SPICE run 的 netlist、event CSV、solver waveform、日志、metrics 和图保存到 `build/phase1/`。`make evidence` 在检查全部通过后更新版本控制中的精简证据。Python dependencies 由 `uv.lock` 固定；PDK 模型固定到 [pdk-lock.json](analog/models/pdk-lock.json)。完整环境说明见 [environment](docs/environment.md)。
+`make sim` 保存 raw events、netlists、solver waveforms 与日志到 `build/phase1/`；`make evidence` 仅在检查成功后更新 compact evidence。原始模型子集由 [analog lock](analog/models/pdk-lock.json)固定，它不是完整 physical PDK。
 
-## 第一阶段结果
+实际模拟 layout 需要 [full-PDK/tool 安装](docs/layout/README.md)与[layout lock](layout/pdk-lock.json)：
 
-2026-10-03 本地运行：**7 个 bridge tests、518 个 RTL frame / 133,159 次检查、19 个耦合 transistor runs + 3 个独立 LED DC calibration runs、19 项 analog 检查通过**。RTL 覆盖所有 0…256 duty 与可表示的越界值；nominal SPICE 检查 7 个 duty 点，另外覆盖 disable、Vf、供电余量、少量 corner / temperature 和 timestep convergence。各项条件和分母保存在 [summary.json](evidence/phase1/summary.json)。
-
-以下都是仿真结果：典型 corner、27 °C、IREF=100 μA、合成 Vf=2.8 V @100 μA、1 MHz clock / 3.90625 kHz PWM；平均值在预热两帧后的四个完整 frame 上按时间积分。
-
-| Duty | 平均 LED branch current |
-|---|---:|
-| 0 / 256 | 约 3.61 pA（默认求解设置下的数值，不是漏电规格） |
-| 1 / 256 | 0.39494 μA |
-| 64 / 256 | 25.32414 μA |
-| 128 / 256 | 50.64903 μA |
-| 192 / 256 | 75.97392 μA |
-| 256 / 256 | 101.29959 μA |
-
-在 5 V supply 下，synthetic Vf=2.4 / 2.8 / 3.2 V 时 full-on current 为约 101.79 / 101.30 / 100.73 μA。把 supply 降到 2.9 V，电流降到约 49.39 μA，显示 simple mirror 失去 headroom。模型能解释这些机制，但数值不代表某个实际 MicroLED 或制造后的芯片。
-
-![Executed RTL PWM and transistor-simulated LED branch current](evidence/phase1/waveforms.png)
-
-![Duty versus average current](evidence/phase1/duty-current.png)
-
-![Vf variation and supply headroom](evidence/phase1/vf-current.png)
-
-见 [design](docs/design.md) 了解系统与逐器件连接；[verification](docs/verification.md) 记录检查标准、branch current 中的 charge 项、原始数据与图的区别，以及发现并修正的 diode IS 下限问题。
-
-GitHub Actions 配置保存在 [CI template](docs/ci/phase1.yml)，目前尚未启用或在 Linux 上验证：创建仓库时使用的 OAuth token 缺少 `workflow` scope，GitHub 拒绝带 workflow 的推送。已验证结果来自上面的 Mac 环境；启用步骤见 [CI instructions](docs/ci/README.md)。
-
-## 仓库结构
-
-```text
-rtl/                 one-pixel PWM source
-sim/rtl/             exhaustive self-checking RTL testbench
-analog/driver/       independent transistor pixel cell
-analog/models/       synthetic LED and immutable public-model manifest
-scripts/             model acquisition, RTL/SPICE orchestration, plots
-tests/               timing, integration and bridge checks
-evidence/phase1/     compact pre-layout results and source hashes
-evidence/layout/     GDS, extracted netlists and physical/RC evidence
-evidence/review/     independent physics, arithmetic and sensitivity evidence
-layout/              editable Magic layout and full-PDK schematic
-docs/teaching/       teaching PowerPoint, PDF, HTML and lesson content
-docs/review/         current audit, assumptions, findings and decision gates
-docs/research/       public sources, comparisons and evidence boundaries
-docs/               design, environment, verification, roadmap, original brief
-build/              ignored raw run outputs, regenerated locally
-.cache/             ignored original PDK model files and their license
+```sh
+build/layout/venv/bin/python scripts/layout/run_layout.py --publish-evidence
+build/layout/venv/bin/python scripts/layout/export_macro.py
+.venv/bin/python scripts/led/fit_lin2026.py
+.venv/bin/python scripts/led/probe_boundaries.py
+build/layout/venv/bin/python scripts/characterization/run_actual_mirror.py
+build/layout/venv/bin/python scripts/characterization/measured_load.py
 ```
 
-## 下一步与边界
+数字 mapping、physical flow 和独立KLayout分别见[digital](docs/digital/README.md)、[physical](docs/digital/physical.md)。基本回归保留 synthetic LED，不让静态数据模型代替未测 charge dynamics。更改 model/parameters 时需要 DC calibration 与 coupled regression。
 
-当前已完成 **standalone 六 MOS 模拟 cell** 的 Magic DRC=0、Netgen LVS 唯一匹配、GDS 回读检查与 7/7 nets RC 抽取；抽取网表含 59 个 R、43 个 C。采用锁定完整 PDK 对 schematic 和 RC layout 配对仿真：17 个条件各运行两版，另加 RC 版两次细时间步，共 36 次 transient、3 次独立 LED 校准、19 项配对/收敛 guards 全部通过。典型全开电流从 101.29959 降至 101.23651 µA（约 −0.0623%），25% duty 的 RC 结果为 25.30824 µA。详见 [物理证据](evidence/layout/summary.json) 和 [版图说明](docs/layout/README.md)。
+## 如何核查证据
 
-这些结果只属于所选 Magic / Netgen 开放规则与这个模拟 cell。独立 KLayout foundry-deck 复核、数字 synthesis / timing / routing、数字模拟集成、pads / ESD、完整 PVT / mismatch、silicon / optical measurement 与 tape-out signoff 尚未完成。先读懂并复现单像素，再逐步定义 4×4 的数据、通信和供电分布；阶段退出条件见 [roadmap](docs/roadmap.md)。
+| 入口 | 对应内容 |
+| --- | --- |
+| [phase1](evidence/phase1/summary.json) | registered RTL + pre-layout transistor / synthetic LED regression |
+| [analog physical](evidence/layout/summary.json) | 严格physical checks与配对PEX回归，含所用deck限制 |
+| [real static LED](evidence/led-fit/lin2026-yellow20-fit.json) / [coupled](evidence/characterization/measured-load-summary.json) | 实测来源、插值与实际RC静态/假设动态检查 |
+| [actual mirror](evidence/characterization/actual-w20-l4-summary.json) | reference/PVT、同种子MC、最低码与独立复算 |
+| [digital mapping](evidence/digital/summary.json) | 标准单元映射、仿真模型边界与source hashes |
+| [current evidence index](evidence/research/current-manifest.json) | 当前文件hash、历史输入关联与报告验证 |
 
-ASIC 与 FPGA optical-link 项目保持独立仓库。未来接口由两个项目共同定义；当前未实现 serial protocol / register map。只使用公开资料、公开 PDK 和独立设计，不使用企业内部文档或 proprietary circuit / RTL。原始目标保存在 [project brief](docs/project-brief.md)。
+旧run的input hash保留原样。教学排版、数字config、可选trace logging等变化与当前源码的关系单独核查，不伪造旧source hashes。历史审阅manifest描述旧快照，不能当作当前source inventory。
 
-项目原创代码采用 [MIT License](LICENSE)。第三方工具与下载的 GF180MCU 模型保留各自 license；论文、专利与 datasheet 以来源引用，不把其公开可读性当作复用许可。
+GitHub Actions模板保存在[CI instructions](docs/ci/README.md)，尚未启用：原OAuth token缺少workflow scope。实际结果以公开run证据为准。
+
+## 下一步
+
+继续单像素：数字/模拟macro共同top、真实LED动态与温漂、可实现reference、供电/启动和总功耗。完成接口与预算后，再定义4×4的独立协议、register map、pixel memory、shared reference与power distribution。当前没有已完成的串行通信或完整芯片；pads/ESD、density/fill、provider acceptance、silicon与optical measurement仍属后续。[Roadmap](docs/roadmap.md)给出退出条件。
+
+ASIC与FPGA optical-link项目保持独立仓库，不能以另一项目的仿真替代本项目验证。只采用公开来源、公开PDK和独立设计；[原始brief](docs/project-brief.md)保留长期目标。
+
+原创代码采用[MIT](LICENSE)。数值LED dataset为CC BY4.0，论文本身为CC BY-NC-ND4.0；独立重绘数值曲线保留署名。第三方PDK、标准单元与工具遵循各自license和notices；数字GDS中的标准单元保留[Apache license与来源声明](evidence/physical/NOTICE.md)。
