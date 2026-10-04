@@ -1,4 +1,10 @@
-# 测试台输入版本与默认行为证明
+# 研究身份映射与独立复核
+
+v0.3 新证据：[macro polygon identity](macro-identity.json)、[共同top独立检查与真实LVS负对照](integration-review.json)、[54+6瞬态与DC/AC/电荷独立复算](interface-review.json)。[Current manifest](current-manifest.json)记录当前交付hash；检查数量是artifact / identity核查，不能当作新增工程case数。
+
+跨宏link的元件排序改变保留在[独立输入映射](../interface/input-mapping.json)：实际as-run与current字节hash分别保留，四端顺序及R/C类型、端点、数值、重数严格相同；错误图会被拒绝。它与下面旧TB的默认行为证明是两种独立映射，不能互相代替。
+
+## 原测试台输入版本与默认行为证明
 
 [input-mapping.json](input-mapping.json) 保留了一次明确的输入版本变化：`sim/rtl/tb_pixel_pwm.v` 新增可选 `TRACE_REALTIME`，默认值仍为 0。旧仿真实际使用的 TB hash 为 `ce23d247…d9ea`；现版本为 `f0fc5b99…2dbe`。RTL 本身未变。
 

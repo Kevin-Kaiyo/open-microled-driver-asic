@@ -1,6 +1,6 @@
-# 单像素电路与 PWM：保留教学基线，推进 v0.2
+# 单像素电路与 PWM：保留教学基线，推进 v0.3
 
-更新：2026-10-04。当前尺寸为 mirror 20/4 µm、registered PWM。除本页 synthetic LED 基本回归外，已完成[真实静态 LED 耦合](research/measured-led.md)、[actual RC reference/mismatch 研究](research/reference-and-matching.md)、[模拟 physical](layout/README.md)和[数字 physical](digital/physical.md)。整体当前结论见[研究报告](research/research-report.md)。
+更新：2026-10-04。当前尺寸为 mirror 20/4 µm、registered PWM。本页主要解释 synthetic LED 基本回归；独立研究已完成[真实静态 LED 耦合](research/measured-led.md)、[reference/mismatch](research/reference-and-matching.md)、[模拟 physical](layout/README.md)、[数字 physical](digital/physical.md)，v0.3 又完成[共同 macro top](../layout/integration/README.md)和[真实输出级接口](research/interface.md)。当前结论见[研究报告](research/research-report.md)。
 
 本阶段已经建立一条可重复执行的驱动链：**真实 RTL 输出 → 电压波形桥接 → PDK transistor-level driver → synthetic MicroLED 电气负载 → 波形与电流积分**。它是 pre-layout、feed-forward coupled simulation；模拟结果没有反馈改变 RTL 状态。这里的“完整链路”指数字控制确实驱动了模拟电路，不表示已实现 feedback control 或双向 mixed-signal co-simulation。
 
@@ -166,6 +166,6 @@ PWM linearity check 对照的是 `measured duty × measured full-on average`，*
 
 本页 Phase1 baseline 证据是 **RTL + pre-layout PDK transistor simulation**；其 FF / SS 和 0 °C / 85 °C 是少量 pilot cases，统计开关关闭。独立 v0.2 研究另做了1080点 reference/PVT 与五组各256 actual RC Monte Carlo，见 [matching](research/reference-and-matching.md)。这两组证据不可混算，也不能把条件样本称为 full signoff 或 manufacturing yield。
 
-这个六 MOS cell 现在已有独立 analog layout、GDS、Magic DRC、Netgen LVS、RC extraction 与 paired post-layout simulation，具体范围见 [physical summary](../evidence/layout/summary.json)。完整 PDK 对两种网表配对使用，避免旧 model subset 与抽取结果混算。数字 standard-cell macro 的 physical 实现另见 [digital physical](digital/physical.md)；两macro共同top、pad ring、ESD、package和本项目实物测量仍未完成。公开作者数据支持一种真实 MicroLED 静态曲线，动态、温度与光学模型未确立。真正双向反馈需 current sense / comparator → RTL 状态改变 → 后续 PWM 改变；PWL replay没有建立这项反馈。
+这个六 MOS cell 已有独立 analog layout、GDS、严格 DRC/LVS、RC 与配对仿真，见 [physical summary](../evidence/layout/summary.json)。完整 PDK 对两种网表配对使用，避免旧 model subset 与抽取结果混算。数字 standard-cell macro 见 [digital physical](digital/physical.md)；v0.3 共同 top 已有实际 PWM / PG routing、完整 GDS 抽取与所声明范围的检查。完整 joint PEX、pad ring、ESD、package和实物测量仍未完成。真实 MicroLED 的公开静态曲线已取得，动态、温度与光学模型未确立。双向反馈需 current sense / comparator → RTL 状态改变 → 后续 PWM 改变；本次 replay 未建立该反馈。
 
 公开调研和 baseline trade-offs 另见 [`driver-evidence.md`](research/driver-evidence.md)；PDK 与工具选择另见 [`pdk-and-tools.md`](research/pdk-and-tools.md)。

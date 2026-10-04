@@ -1,0 +1,50 @@
+{
+  "argv": [
+    "limactl",
+    "shell",
+    "asic",
+    "nerdctl",
+    "run",
+    "--rm",
+    "-v",
+    "/Users/kimmy/Projects/open-microled-driver-asic:/Users/kimmy/Projects/open-microled-driver-asic",
+    "-w",
+    "/Users/kimmy/Projects/open-microled-driver-asic/build/integration/r3",
+    "-e",
+    "QT_QPA_PLATFORM=offscreen",
+    "-e",
+    "PYTHONPATH=/Users/kimmy/Projects/open-microled-driver-asic/build/physical-flow/linux-python",
+    "-e",
+    "PDK_ROOT=/Users/kimmy/Projects/open-microled-driver-asic/build/layout/pdk",
+    "-e",
+    "INTEGRATION_ROOT=/Users/kimmy/Projects/open-microled-driver-asic",
+    "-e",
+    "INTEGRATION_RUN=/Users/kimmy/Projects/open-microled-driver-asic/build/integration/r3",
+    "-e",
+    "INTEGRATION_GDS=/Users/kimmy/Projects/open-microled-driver-asic/build/integration/r3/pixel_integrated.gds",
+    "ghcr.io/librelane/librelane@sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f",
+    "python3",
+    "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/pdk/gf180mcuD/libs.tech/klayout/tech/drc/run_drc.py",
+    "--path=/Users/kimmy/Projects/open-microled-driver-asic/build/integration/r3/pixel_integrated.gds",
+    "--variant=D",
+    "--topcell=pixel_integrated",
+    "--mp=1",
+    "--thr=4",
+    "--run_dir=/Users/kimmy/Projects/open-microled-driver-asic/build/integration/r3/klayout"
+  ],
+  "exit_code": 0,
+  "image": "ghcr.io/librelane/librelane@sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f",
+  "source_sha256": {
+    "scripts/integration/run.py": "a9e14781205fcc197962ac36584c367ad4a424e5602b67965c6048fb0e984eec",
+    "build/integration/r3/routing.json": "55511c037c6d696d2d6cccbeef15928e588d4447b384b362ae993d8905944534",
+    "build/integration/r3/pixel_integrated.gds": "f785cd70e76f6f287159bbb865712a8ed6121ed15dc65a99d78cbc35bed13938",
+    "build/layout/pdk/gf180mcuD/libs.tech/klayout/tech/drc/run_drc.py": "6eed310882152bdf837e958301afcc75bc86e64ab2b27158fa931188466dc61f",
+    "build/layout/pdk/gf180mcuD/libs.tech/klayout/tech/drc/gf180mcu.drc": "9b986260e1909e9ce2ee97b2d1103dc513836bc6a440e876d66d23c85985c41a"
+  },
+  "inputs_sha256": {
+    "evidence/layout/pixel_driver_layout.gds": "20ff3a9d180eb0ef19de7a17a82e492e9153d2d7cf8ae77585024b10c7f431ad",
+    "evidence/physical/digital/gds/pixel_pwm.gds": "2045ef4da8a9e83f1db109372454504c66b6d3e963704ddb0caaf64118307aa2",
+    "evidence/layout/pixel_driver_layout.lef": "5a21953e5450f49fcc07e033b75b6b5fb1b513348445c6ccbc357ab9ecf5adfc",
+    "evidence/physical/digital/lef/pixel_pwm.lef": "2cde702e470d423b3bb87dc38d50db87fefeb649582b2aac00443981f6cdc0e8"
+  }
+}

@@ -1,6 +1,6 @@
 # 从 1 Pixel 到可评估 MPW 的路线
 
-更新日期：2026-10-04。本项目建立一个长期的 open mixed-signal ASIC 学习与研究平台。当前交付包括 **registered 1-Pixel PWM、W20/L4 mirror 的实际 analog layout/RC、非理想 reference 预算与固定种子 MC、公开实测 LED 的静态模型，以及数字 PWM macro 和独立 KLayout 检查**。各模块已取得的证据如下；完整 mixed-signal 顶层、真实动态负载与 silicon measurement 仍需后续工作。
+更新日期：2026-10-04。本项目建立一个长期的 open mixed-signal ASIC 学习与研究平台。当前 v0.3 交付包括 **registered 1-Pixel PWM、W20/L4 analog layout/RC、reference / MC、公开实测 LED 静态模型，以及共同 routed macro top、实际末级输出与部分跨宏 RC 验证**。带 pads/ESD 的完整芯片、完整 joint PEX / 供电 sign-off、真实动态负载与 silicon measurement 仍需后续工作。
 
 每一步先达到明确 exit criteria，再扩展规模；结果始终区分 simulation、layout/physical verification、foundry acceptance 和 silicon measurement。
 
@@ -13,8 +13,9 @@
 | 真实 LED static 数据 | 可追溯 20 µm 方形黄色 InGaN 曲线与 model card；真实曲线/实际 RC 静态耦合完成，动态、测量温度和光学仍有缺口，见[实测数据说明](research/measured-led.md) |
 | 数字 registered PWM | 输出改由 FF 驱动，保留 256-slot/frame 语义；synthesis 与 gate-level 回归完成，见[数字验证](digital/README.md) |
 | 数字 macro 与独立检查 | PWM macro 物理实现及独立 KLayout rule-deck 检查已完成；具体工具、timing 条件、GDS/LEF 及 deck 覆盖见[物理实现](digital/physical.md) |
+| 共同 macro top 与真实接口 | 实际 PWM / PG routing、共同 full-GDS extraction / transistor LVS / DRC、label-free connectivity 与负对照；54 transient输出级研究，见[集成](../evidence/integration/README.md)、[接口](research/interface.md) |
 
-当前顺序是继续补齐**真实 LED 动态/温度、实际 reference、单像素数字/模拟接口与顶层集成**，再定义 4×4 的共享 reference、供电、通信与一致性预算。有限 MC 样本与公开 deck 通过不等于制造 yield 或 foundry acceptance。
+当前顺序是继续补齐**完整 joint PEX / 供电与启动、真实 LED 动态/温度、实际 reference / 总数字功耗**，再定义 4×4 的共享 reference、供电、通信与一致性预算。有限 MC 样本与公开 deck 通过不等于制造 yield 或 foundry acceptance。
 
 ## 1. 1-Pixel simulation baseline
 
@@ -48,7 +49,7 @@ Exit criteria：
 
 当前进度：实际 20/4 模拟 cell 完成 Magic DRC=0、Netgen 唯一匹配且无 property errors、GDS 回读、7/7 nets RC extraction 与 19 项配对/收敛 guards；并导出 GDS/LEF/SPICE。Reference 预算与 PDK 随机失配已独立复验，使用的是新结几何与新 RC，旧 10/2 失败及概念候选均保留。数字 registered-PWM macro 物理流程与独立 KLayout 检查也已完成，分别见[模拟版图](layout/README.md)、[reference/matching](research/reference-and-matching.md)、[数字物理实现](digital/physical.md)。
 
-旧 macOS native KLayout 启动阻塞是历史环境记录，仍保留诊断，但不是当前项目未做独立 DRC 的理由。当前未闭环的是实际 reference 器件/电路、startup/power sequencing、真实 LED 动态/温漂、数字输出级与模拟 gate 负载的接口，以及两个 macro 的顶层供电与连接验证；不能把 standalone macro 完成直接称作完整 ASIC 完成。进一步 matching 方法应针对系统性布局误差与真实接口约束选择。
+旧 macOS native KLayout 启动阻塞是历史环境记录，仍保留诊断。v0.3 已将两个 macro 接成共同 top，做实际抽取、内部 MOS / hierarchy LVS、DRC、独立几何图及失败检测；实际 buf_2 与 analog RC / 新连线探针也已完成。按[预设集成退出条件](specifications/single-pixel-v0.3.md)分别报告声明范围。当前未闭环的是实际 reference、startup/power sequencing、真实 LED 动态/温漂、输出 cell 自身与邻近导体的完整 joint PEX、供电 IR / 总数字功耗与 pad/ESD；不能把共同 macro top 完成称作完整 ASIC 完成。
 
 ## 3. 4×4 array
 

@@ -43,7 +43,8 @@ def main():
     @media print { body { background:white; } .page { width:170mm; max-width:none; padding:0; margin:0; break-after:page; }
       .page:last-child { break-after:auto; } }
     '''
+    version=re.search(r'研究报告\s+(v\d+\.\d+)',SOURCE.read_text()).group(1)
     (SOURCE.parent/'research-report.html').write_text('<!doctype html><html lang="zh-CN"><meta charset="utf-8">'+
-      '<title>Open MicroLED Driver ASIC 单像素研究报告 v0.2</title><style>'+css+'</style><body>'+''.join(pages)+'</body></html>')
+      '<title>Open MicroLED Driver ASIC 单像素研究报告 '+version+'</title><style>'+css+'</style><body>'+''.join(pages)+'</body></html>')
     print('Rendered',len(pages),'report sections')
 if __name__=='__main__':main()

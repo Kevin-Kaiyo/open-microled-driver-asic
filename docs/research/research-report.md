@@ -1,6 +1,6 @@
 # Open MicroLED Driver ASIC
 
-单像素研究报告 v0.2 · 2026-10-04 · 开源教学项目
+单像素研究报告 v0.3 · 2026-10-04 · 开源教学项目
 
 ## 01 从整体框架开始
 
@@ -8,7 +8,7 @@
 
 系统路径是：**duty / enable → registered PWM → gate-pass / clamp → NMOS current mirror → LED electrical load**。外部 IREF 决定导通电流，PWM 决定导通时间。两者一起决定每帧的平均电流。
 
-这轮检阅后的实质改进有三项：引入有出处的真实 LED 静态曲线；依据同种子统计结果，把镜像管从 10/2 改为 20/4 µm 并重做实际版图；把 PWM 输出注册，并推进标准单元物理流程。
+v0.2 已引入真实 LED 静态曲线、把镜像管从 10/2 改为 20/4 µm 并重做版图、注册 PWM 输出并完成标准单元物理流程。**本轮 v0.3 把两块 macro 接成真实共同顶层，并验证末级 buffer、实际模拟 RC 与新增金属连线的电气接口。**
 
 | 证据层级 | 当前成果与边界 |
 | --- | --- |
@@ -17,7 +17,8 @@
 | Analog physical | 真实六 MOS layout、严格 LVS、DRC、GDS 与 7/7-net RC extraction |
 | 电路研究 | 真实静态负载耦合；reference 误差预算；固定 corners 与有限 MC 分开验证 |
 | Digital physical | CTS、routing、STA、GDS/LEF；第 07 页列出最终实际结果 |
-| 芯片与实物 | 数字与模拟尚未合成一个通过全芯片检查的 top；无 pad/ESD、silicon 或 optical measurement |
+| 共同 physical top | 真实 PWM / 电源连线、共同 GDS 抽取、DRC/LVS、几何与错误注入检查；第 11-12 页展开 |
+| 芯片与实物 | 未包含 pad/ESD、完整供电与多角落 joint PEX；无 silicon 或 optical measurement |
 
 **判断：继续单像素。** 目前可以教清楚一条实际 ASIC 研究流程，但不能把模型通过称为真实 LED 动态或 tape-out readiness。4×4 的通信、寄存器和供电分配在单像素接口与预算稳定后定义。
 
@@ -135,10 +136,10 @@ W 与 L 都加倍，W/L 仍为 5，镜像管 gate 面积变为 4 倍。较大面
 | RTL exhaustive | 518 frames / 133159 checks / 543 个已知 PWM events |
 | Functional mapped gate simulation | 相同 exhaustive 检查通过；10 个 trace 与 RTL 完全相同 |
 | Native Yosys synthesis | 95 standard cells，19 个 FF；Liberty cell area 2434.4768 µm² |
-| 输出结构 | pwm 唯一直接 driver 为 FF.Q |
+| 输出结构 | Native mapping 为 FF.Q；最终 PnR 加入 `buf_2` 输出级 |
 | 1 ns timing template | 仅 simulator 模板探针；不代表 PVT 或布线延迟 |
 
-本轮实际完成 LibreLane 3.0.14 的76步flow：placement、CTS、routing、SPEF/SDF、GDS/LEF；九个corner组合的setup、hold、max slew、capacitance和fanout违规均为0。最差setup margin 793.656477 ns，hold margin 0.436677 ns。保持3 ns transition约束，通过buffer sizing修正原来的slow-corner slew超限。
+已有数字 macro 实际完成 LibreLane 3.0.14 的76步flow：placement、CTS、routing、SPEF/SDF、GDS/LEF；九个corner组合的setup、hold、max slew、capacitance和fanout违规均为0。最差setup margin 793.656477 ns，hold margin 0.436677 ns。保持3 ns transition约束，通过buffer sizing修正原来的slow-corner slew超限。
 
 STA 使用72.91 fF output load、0.15 ns clock transition、200 ns IO delays与0.25 ns uncertainty；这些是工程约束，不是实测analog输入电容。实际数字Magic DRC、route DRC、LVS以及独立KLayout结果见[physical证据](../../evidence/physical/summary.json)。
 
@@ -146,7 +147,7 @@ STA 使用72.91 fF output load、0.15 ns clock transition、200 ns IO delays与0
 
 SDF回放仍有24个XOR/XNOR ModPath未匹配、19项TIMINGCHECK不支持；关键输出路径已单独验证，setup/hold结论来自STA。模拟端仍是理想0/3.3 V、10 ns slew回放；未模拟真实输出级。条件与范围见[数字物理报告](../digital/physical.md)。
 
-该数字 macro 和模拟 macro 分别生成；尚未以一个共同 routed top 做全芯片 LVS、供电和模拟接口验证。这里没有 SPI、通信协议或像素 memory；这些属于后续阵列阶段。
+该数字 macro 和模拟 macro 的内部实现保持冻结。v0.3 新增共同 routed macro top 与实际输出级研究，见第 11-12 页；它们没有升级为完整芯片的供电 sign-off 或 joint timing closure。这里没有 SPI、通信协议或像素 memory。
 
 <!-- page -->
 
@@ -177,8 +178,8 @@ LEF 由同一个 layout 导出，尺寸与实际 GDS bbox 对齐，七个接口�
 
 | Macro 接口 | 含义与使用条件 |
 | --- | --- |
-| VSS / vlogic | Ground / 3.3 V analog-control rail，需定义 top 供电 |
-| pwm | Registered digital control input，尚需验证最终 top 的负载与边沿 |
+| VSS / vlogic | Ground / 3.3 V analog-control rail；共同 top 接 VSS / VDD |
+| pwm | Registered digital control input；真实末级与新增连线的研究见第 12 页 |
 | bias | 外部 reference current 注入点，需满足 compliance |
 | led_k | 外部 LED cathode；LED 阳极电源不在这个 cell 内 |
 | gate / pwm_b | 模拟 gate 与反相 PWM monitor；当前作为公开教学端口 |
@@ -204,13 +205,50 @@ LEF 由同一个 layout 导出，尺寸与实际 GDS bbox 对齐，七个接口�
 
 20 pF 最低码约 **90.651% 时间、18.45% 有符号静态导电电荷**落在未测低电流延拓区。0.2 pF 波形甚至短暂出现约 −9.77 mV LED 电压，而 reverse behavior 没有数据。域外比例的分母是 `∫I_static(VLED)dt`，不是 rail displacement current，也不是 `∫|I|dt`。
 
-本轮沿保存的 V(t) 插入全部 PWL knot crossing 后分区积分，另外报告逐帧均值、同相节点、端点电容电荷和重建残差；未设隐藏的 periodicity “通过”阈值。证据明确 **dynamic_qualification=false**。
+v0.2 研究沿保存的 V(t) 插入全部 PWL knot crossing 后分区积分，另外报告逐帧均值、同相节点、端点电容电荷和重建残差；未设隐藏的 periodicity “通过”阈值。新接口研究仍保留 **dynamic_qualification=false**。
 
 下一项有价值的数据是同结构器件的低电流/reverse I-V、C-V 或 impedance、pulse response、I-V(T) 和 L-I/EQE。取得前保留 synthetic baseline 与静态数据模型两条路径，不把 average current 写成真实 optical brightness。
 
 <!-- page -->
 
-## 11 复现、阅读与下一阶段
+## 11 两块 macro 怎样接成一个 physical top
+
+保留两块原 GDS 的器件和内部 routing，在共同 top 中 R0 放置：digital 原点 `(150,25)` µm，analog 原点 `(25,105.52)` µm。模拟的原始 bbox 下缘为 −0.3 µm，不能忽略 LEF ORIGIN。新增 Metal3 接 PWM，Metal4 / Metal5 与正确 Via stack 接 3.3 V / VSS；LED 阳极电源仍在 top 外。
+
+![真实共同顶层及跨宏连线](figures/integrated-top.png)
+
+| 共同顶层检查 | 实际证据 |
+| --- | --- |
+| 几何与接口 | 305×180 µm bbox，19 个外部 pins，含 PWM monitor；不是 die / pad-ring 尺寸 |
+| Macro 保留 | 独立逐层 polygon XOR 为零；另核查 36 个原 macro cells 的 shapes / hierarchy |
+| DRC | Magic `drc(full)`=0；独立 KLayout 651 categories、XML items=0 |
+| 实际抽取 / LVS | 完整 GDS 对官方标准单元晶体管 SPICE 与 golden top；唯一匹配且无 property errors |
+| 连通与负对照 | 不依赖 net labels 的 Metal/Via 图确认 PWM / VDD / VSS；实际 PWM 删段与电源桥接均被拒绝 |
+
+此次 LVS 包括 30 类保留 digital leaf 内部 MOS 拓扑和 deck 的 W/L 检查、analog 六 MOS 与共同连接。仍按 deck 忽略 filltie/endcap/fill_*，不比较 AD/AS/PD/PS；另以 buf_2 W 和 body-tie 错误证明检查可拒绝。Density、antenna、IR drop、pads/ESD 与 foundry acceptance 不包含在此结论内。[共同 top](../../evidence/integration/README.md) / [独立审查](integration-review.md)。
+
+<!-- page -->
+
+## 12 输出级、输入负载与最短 pulse
+
+模拟 PWM 连接三个 MOS gate。只加一个固定电容不足以描述切换负载：工作点 AC 为 `Cparallel=Im(Y)/(2πf)`；切换探针则积分端口电流，计算 `Q/ΔV`。Nominal 输入的上升 / 下降电荷等效值约 **36.715 / 36.668 fF**，与旧 STA 假设 72.91 fF 分开记录。
+
+实际末级是 `output12 / buf_2`，六个 canonical MOS，VNW=VDD、VPW=VSS。联合 testbench 包括其晶体管 SPICE、原数字输出网 nominal SPEF、actual analog RC，以及新跨宏 Metal3 span 的实际抽取：30 µm / 0.56 µm，**4.81871 Ω、PWM 相关 C 总计 2.34604 fF**。邻近电源耦合保留；helper 的 pwell 依据完整 top 的 substrate connection 接理想 VSS。
+
+| Synthetic LED / IREF=100 µA；真实末级 + 新连线 | TT 27°C / 3.3 V / VLED 5 V | SS 85°C / 2.97 V / 4.5 V | FF 0°C / 3.63 V / 5.5 V |
+| --- | ---: | ---: | ---: |
+| Full-on current / µA | 100.695401 | 100.068779 | 101.353805 |
+| duty=1 平均电流 / µA | 0.392355 | 0.388219 | 0.395169 |
+| 最低码面积误差 | −0.250683% | −0.684259% | −0.188099% |
+| 输出 rise / fall，30-70% / ns | 0.25852 / 0.13425 | 0.43990 / 0.21804 | 0.17745 / 0.09608 |
+
+主研究共 54 transient，包含 ideal / 实际 buffer、off / 1 / 64 / 255 / 256、三包络、实测 static+假设 2 pF 探针及步长细化。最低码与 full-on 使用预设 ±2% / ±5%；TT joint 10→1 ns 步长结果一致。这里的 MOS 条件与第 07 页数字 STA 的温压条件不同。
+
+实际 Liberty 的 slew 阈值是 **30-70%**。主探针采用 1 ns 全坡度；另以 7.5 ns 全坡度对应 3 ns 输入 slew 上界，6 次 stress 均通过，输出最大 rise/fall 为 **0.454954/0.258989 ns**。这里没有前级 FF 波形、完整数字 transient、输出 cell 的 junction/metal PEX 或全顶层多角落 PEX。电源和邻近耦合采用理想/静止边界；小幅 overshoot 是模型结果，不是 pad/ESD 或可靠性实测。[接口方法与结果](interface.md)。
+
+<!-- page -->
+
+## 13 复现、阅读与下一阶段
 
 先按 [environment](../environment.md) / [layout 安装](../layout/README.md)取得锁定依赖和完整 PDK。命令必须实际成功后才更新公开 evidence：
 
@@ -228,13 +266,15 @@ build/layout/venv/bin/python scripts/digital/run.py --publish-evidence
 
 数字 physical 与独立 DRC 使用锁定 LibreLane container；完整安装、调用和检查范围见 [physical 流程](../digital/physical.md)。全 PDK、VM、raw waveforms 和失败日志留在 `build/`；仓库只保留可核查的小型证据与 source hashes。[输入映射](../../evidence/research/README.md)保存实际旧 TB 快照，22 次新旧 RTL 执行确认10组默认trace相同；旧run hash保留原样，可选实时日志变化单独记录。
 
+新共同 top 和接口 probe 的运行命令、固定输入与失败日志分别见[集成说明](../../evidence/integration/README.md)和[接口报告](interface.md)。报告 HTML / PDF 的实际 browser 打印脚本已公开；每一页均渲染检查。v0.2 报告保留于[公开历史版本](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/tree/7ad33e16cfc26a8e785061ef1713156d36d97259/docs/research)。
+
 ### 下一阶段按证据推进
 
-1. 把数字与模拟 macro 接成同一 routed top，核对接口电平/负载、供电和完整 LVS；把已完成的TT SDF回放延伸为实际输出级、模拟负载与跨条件验证。
+1. 从本次共同 top 推进完整输出 cell / 邻近导体 / 供电的 joint PEX，验证 startup / power sequencing、probe loading 与总数字功耗；保持本轮 partial extraction 和边界条件的独立记录。
 2. 取得真实 LED 动态、温度和光学数据；确认最短有效 pulse 与亮度指标。
 3. 选择可实现的 reference source，验证 noise、compliance、startup、sequencing 和总功耗；若需要低 standby，重新评估偏置关断与启动成本。
 4. 单像素预算和接口稳定后，再定义 4×4 独立协议、register map、frame buffer、共享 reference 和供电分配。
 
 MPW 是后续可行性工作：pads/ESD、package、density/fill、antenna、provider 接受规则及测试责任均需实际资料和检查。当前成果没有升级为可投片芯片。
 
-[当前资料入口](README.md) · [旧教学 PPT](../teaching/open-microled-single-pixel-teaching-v2.pptx) · [2026-10-03 检阅快照](../review/README.md) · [完整 roadmap](../roadmap.md)。旧报告和 manifest 保留当时的设计与输入；当前 20/4、registered PWM 和新测量模型以本报告及新 evidence 为准。
+[当前资料入口](README.md) · [旧教学 PPT](../teaching/open-microled-single-pixel-teaching-v2.pptx) · [2026-10-03 检阅快照](../review/README.md) · [完整 roadmap](../roadmap.md)。旧报告和 manifest 保留当时的设计与输入；当前 20/4、registered PWM、共同 top 和声明的接口模型以本报告及新 evidence 为准。

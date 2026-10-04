@@ -1,6 +1,6 @@
 # Phase 1 验证与证据读取
 
-状态日期：2026-10-04。机器可读结果见 [`summary.json`](../evidence/phase1/summary.json)，逐 case 指标见 [`metrics.csv`](../evidence/phase1/metrics.csv)。下表描述当前20/4、registered PWM 的synthetic baseline；[v0.2研究报告](research/research-report.md)另记录真实静态LED、reference/PVT、mismatch和数字physical。旧[全面检阅](review/README.md)保留为10/2历史快照。
+状态日期：2026-10-04。机器可读结果见 [`summary.json`](../evidence/phase1/summary.json)，逐 case 指标见 [`metrics.csv`](../evidence/phase1/metrics.csv)。下表描述20/4、registered PWM 的synthetic baseline；[当前研究报告](research/research-report.md)另记录真实静态LED、reference/PVT、mismatch、数字physical以及v0.3共同top与真实输出级。旧[全面检阅](review/README.md)保留为10/2历史快照。
 
 ## 已执行的检查
 
@@ -48,4 +48,10 @@ Paired post-layout 的小差异只约束两套网表之间的相对变化，不�
 - Model downloads 逐文件校验 SHA256。SPICE run 前移除该 case 的旧 waveform，失败不能复用 stale data；若缺少完整、有限、单调的输出，则 runner 失败。全部检查通过后才能 `make evidence` 覆盖精简 evidence。
 - Python dependencies 在 `uv.lock`；native EDA 版本记录在 summary。未来升级 tool / PDK 后必须重跑并保存新证据，旧结果不自动适用。GitHub CI template 尚未启用、Linux regression 未执行；即使未来通过，也不能代替 physical validation。
 
-当前 reference current、MOS 尺寸、合成 LED、有限边沿和测试电压都是公开可检查的设计假设。未验证项包括真实 LED I-V / temperature / optical response、noise、mismatch / Monte Carlo、全 PVT、电压 stress、reference generation、array fanout、physical timing / glitches、IR drop、pads / ESD 和 MPW acceptance。
+当前 reference current、MOS 尺寸、合成 LED、有限边沿和测试电压都是公开可检查的设计假设。此基本回归未包含统计 mismatch、完整 PVT、真实动态与光学、非理想供电或制造接受；独立 MC / 静态数据 / 数字物理研究有各自证据，不能由本页 pilot cases 代替。
+
+## v0.3 的独立集成证据
+
+[共同 top](../evidence/integration/summary.json)记录实际 PWM / PG routing、完整 GDS extraction、数字保留 leaf 内部 MOS / analog / hierarchy LVS、Magic / KLayout DRC，以及真实物理开路和短路的拒绝结果。规则覆盖、忽略 cells/properties 与 substrate 边界在[集成说明](../layout/integration/README.md)公开。
+
+[真实输出级](../evidence/interface/summary.json)包括54组主瞬态、DC/AC/电荷研究，另有[六组输入slew stress](../evidence/interface/slew-budget-summary.json)。输入 as-run snapshots 与 current RC 的精确等价关系分别保留；[独立复算](../evidence/research/interface-review.json)和[独立集成审查](../evidence/research/integration-review.json)核查数值及失败检测。仍未建立完整 joint多角落PEX、PG IR/EM、输出cell自身PEX、真实LED动态、pad/ESD或silicon/optical measurement。

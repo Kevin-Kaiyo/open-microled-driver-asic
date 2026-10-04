@@ -1,0 +1,97 @@
+{
+  "passed": true,
+  "purpose": "as-run link and final serialization differ only instance names and order; preserve the actual recorded byte hashes",
+  "paths": {
+    "evidence/integration/pwm_link_rc.spice": {
+      "as_run_sha256": "b43d95d853a086565b7f42373b0be283208762dcd063e1ecd4909af005221a44",
+      "current_sha256": "f56728daf9e92f3f92504ba34369fbd86d5500ccf8117d60de5e354ae17b2288",
+      "snapshot_path": "evidence/interface/input-snapshots/pwm_link_rc.spice",
+      "snapshot_sha256": "b43d95d853a086565b7f42373b0be283208762dcd063e1ecd4909af005221a44"
+    },
+    "evidence/integration/link-rc.json": {
+      "as_run_sha256": "6a912c27d49a124b57ef057c81aa36958698905f84ff1987911285648b49304f",
+      "current_sha256": "d773d0d4141cbf764bc10ff2537bb1e2303250ff5e58ba67250f72fa2aeefa86",
+      "snapshot_path": "evidence/interface/input-snapshots/link-rc.json",
+      "snapshot_sha256": "6a912c27d49a124b57ef057c81aa36958698905f84ff1987911285648b49304f"
+    }
+  },
+  "electrical_graph": {
+    "subckt_and_ports": [
+      "pwm_link_rc",
+      "A",
+      "Y",
+      "VDD",
+      "VSS"
+    ],
+    "elements": [
+      [
+        "C",
+        [
+          "A",
+          "VSS"
+        ],
+        "8.534E-17"
+      ],
+      [
+        "C",
+        [
+          "VDD",
+          "VSS"
+        ],
+        "1.336146E-14"
+      ],
+      [
+        "C",
+        [
+          "VDD",
+          "VSS"
+        ],
+        "3.1819E-16"
+      ],
+      [
+        "C",
+        [
+          "VDD",
+          "Y"
+        ],
+        "1.4237E-16"
+      ],
+      [
+        "C",
+        [
+          "VSS",
+          "Y"
+        ],
+        "2.08991E-15"
+      ],
+      [
+        "C",
+        [
+          "VSS",
+          "Y"
+        ],
+        "2.842E-17"
+      ],
+      [
+        "R",
+        [
+          "A",
+          "Y"
+        ],
+        "4.81871"
+      ]
+    ]
+  },
+  "electrical_graph_sha256": "4b2208a8ae8ce08e0c6a3939508e42ca4d7c63eaa6a711764e5c416837366b2d",
+  "electrical_graph_equal": true,
+  "negative_controls": {
+    "changed_R_rejected": true,
+    "removed_C_rejected": true
+  },
+  "full_top_GDS_identity_equal": true,
+  "full_top_GDS_sha256": "f785cd70e76f6f287159bbb865712a8ed6121ed15dc65a99d78cbc35bed13938",
+  "metadata_changed": true,
+  "metadata_interpretation": "current metadata adds substrate binding/full-top extraction provenance and regenerated helper artifact locators; it does not retroactively change frozen stimulus/model",
+  "simulated_joint_PEX_scope": "new M3 metal-only span; ideal PG boundary; no full joint digital/analog PEX",
+  "mapper_sha256": "d3b5eb081e51a109708d8ca63e536b9dcc673d1bafeeea3158354488bff08eee"
+}

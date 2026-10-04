@@ -1,0 +1,15 @@
+* Isolated new M3 span only; full-top pwell substrate boundary mapped to VSS.
+* Macro-internal RC excluded; VDD/VSS ideal in the downstream interface probe.
+* NGSPICE file created from pwm_link_rc.ext - technology: gf180mcuD
+
+.subckt pwm_link_rc A Y VDD VSS
+R0 A Y 4.81871
+C0 VDD VSS 0.31819f
+C1 VDD Y 0.14237f
+C2 Y VSS 0.02842f
+* omitted self-cap after proven substrate mapping: C3 VSS VSS 12.08291f
+C4 Y VSS 2.08991f
+C5 A VSS 0.08534f
+C6 VDD VSS 13.36146f
+.ends
+
