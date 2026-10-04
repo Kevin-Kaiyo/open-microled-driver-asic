@@ -1,0 +1,9 @@
+* Independent external-reference teaching boundary model, not a generator.
+* Same nominal compliance/Rout envelope as characterization/external_reference.
+* enable is a dimensionless 0..1 voltage used only to declare startup timing.
+* Parameters are engineering assumptions; no silicon efficiency/noise/POR claim.
+.subckt reference_boundary vp out enable params: i_nom=100u r_out=10meg
++ head_cal=1.9 head_min=1.0
+BREF vp out I={v(enable)*max(0,i_nom+(v(vp,out)-head_cal)/r_out)
++ *min(1,max(0,v(vp,out)/head_min))}
+.ends reference_boundary

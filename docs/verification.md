@@ -1,6 +1,6 @@
 # Phase 1 验证与证据读取
 
-状态日期：2026-10-04。机器可读结果见 [`summary.json`](../evidence/phase1/summary.json)，逐 case 指标见 [`metrics.csv`](../evidence/phase1/metrics.csv)。下表描述20/4、registered PWM 的synthetic baseline；[当前研究报告](research/research-report.md)另记录真实静态LED、reference/PVT、mismatch、数字physical以及v0.3共同top与真实输出级。旧[全面检阅](review/README.md)保留为10/2历史快照。
+状态日期：2026-10-05，v0.4。机器可读基本回归见[`summary.json`](../evidence/phase1/summary.json)，逐case指标见[`metrics.csv`](../evidence/phase1/metrics.csv)。下表仍描述20/4、registered PWM的synthetic baseline；[分层研究报告](research/research-report.md)另记录真实静态LED、reference/PVT、mismatch、digital physical、v0.3共同top及v0.4联合signal PEX／电气边界。旧[全面检阅](review/README.md)保留为10/2历史快照。
 
 ## 已执行的检查
 
@@ -46,12 +46,29 @@ Paired post-layout 的小差异只约束两套网表之间的相对变化，不�
 - `edge-duty064.csv` 保留同一 case 一个 turn-on 周围的原始 solver samples。PNG 图由原始 adaptive samples 绘制；可编辑 SVG 在本地 build 中生成。
 - `source-hashes.json` 对本次 RTL、testbench、analog source、runner 与 model lock 记录 SHA256。工具版本、host、参数、窗口、分母与每一项检查均保存在 summary 中。
 - Model downloads 逐文件校验 SHA256。SPICE run 前移除该 case 的旧 waveform，失败不能复用 stale data；若缺少完整、有限、单调的输出，则 runner 失败。全部检查通过后才能 `make evidence` 覆盖精简 evidence。
-- Python dependencies 在 `uv.lock`；native EDA 版本记录在 summary。未来升级 tool / PDK 后必须重跑并保存新证据，旧结果不自动适用。GitHub CI template 尚未启用、Linux regression 未执行；即使未来通过，也不能代替 physical validation。
+- Python dependencies在`uv.lock`；native EDA版本记录在summary。升级tool／PDK后需重跑并保存新证据。GitHub CI template尚未启用，本页基本回归未在Linux CI执行；已经执行的Linux数字／共同top physical flow有独立证据，不能由软件CI互相替代。
 
 当前 reference current、MOS 尺寸、合成 LED、有限边沿和测试电压都是公开可检查的设计假设。此基本回归未包含统计 mismatch、完整 PVT、真实动态与光学、非理想供电或制造接受；独立 MC / 静态数据 / 数字物理研究有各自证据，不能由本页 pilot cases 代替。
 
-## v0.3 的独立集成证据
+## v0.3 的历史集成证据
 
 [共同 top](../evidence/integration/summary.json)记录实际 PWM / PG routing、完整 GDS extraction、数字保留 leaf 内部 MOS / analog / hierarchy LVS、Magic / KLayout DRC，以及真实物理开路和短路的拒绝结果。规则覆盖、忽略 cells/properties 与 substrate 边界在[集成说明](../layout/integration/README.md)公开。
 
-[真实输出级](../evidence/interface/summary.json)包括54组主瞬态、DC/AC/电荷研究，另有[六组输入slew stress](../evidence/interface/slew-budget-summary.json)。输入 as-run snapshots 与 current RC 的精确等价关系分别保留；[独立复算](../evidence/research/interface-review.json)和[独立集成审查](../evidence/research/integration-review.json)核查数值及失败检测。仍未建立完整 joint多角落PEX、PG IR/EM、输出cell自身PEX、真实LED动态、pad/ESD或silicon/optical measurement。
+[真实输出级](../evidence/interface/summary.json)包括54组主瞬态、DC／AC／电荷研究，另有[六组输入slew stress](../evidence/interface/slew-budget-summary.json)。原as-run snapshots与current RC等价映射保留；[独立复算](../evidence/research/interface-review.json)及[集成审查](../evidence/research/integration-review.json)核查数值和失败检测。它们描述v0.3分块模型；输出cell实际结几何与联合signal寄生在下一节另验证，不改写旧输入hash。
+
+## v0.4：联合signal PEX与边界验证
+
+[预设抽取条件](specifications/joint-pex-v0.4.md)和[电气门槛](specifications/electrical-v0.4.md)在新增结果前声明。实际从冻结共同GDS提取末级六MOS加模拟六MOS，nominal导出45个signal R、77个显式C、34邻居端口；另外四种RCstyle也执行真实提取。完整PG／body电阻及PG-only电容仍投影到ideal rails；它不是full-chip PEX或PG signoff。
+
+| 检查 | 实际证据及结果 | 不能推出的结论 |
+|---|---|---|
+| 抽取／端口／geometry | 五种style；实际M3右侧接入；MOS junction、ordered ports、R/C multiset与signed-cap ledger见[joint PEX](research/joint-pex.md) | 不能再叠加旧buf／SPEF／link／analog RC，也不能把语义复现叫字节一致 |
+| 同条件pre/post | 主研究37 transient／12 DC，146项工程guards通过；nominal RC三包络及SS×HRHC、FF×LRLC补充点，见[main](../evidence/robustness/main-summary.json) | 非所有MOS×RC×温度×供电组合穷举；synthetic LED不是实测动态模型 |
+| 启动／reference／控制／供电边界 | 19 transient／4 DC数值完成；明确保留理想reference越界、frame-latched enable延迟与实测静态LED series-R失效，见[boundary](../evidence/robustness/boundary-summary.json) | 数值完成不是system startup qualification；branch peak含位移电流，signed source energy不是全芯片能耗 |
+| 合计与独立复核 | 三批合计66 transient／28 circuit DC，另3组独立synthetic LED calibration；[summary](../evidence/robustness/summary.json)记录运行范围；[独立review](../evidence/research/v04-review.json)的13个复核阶段通过，包含18个实际错误负对照 | 不能把66个run称为66项功能验收，也不能以复算精度代替物理不确定度 |
+
+在声明的MOS包络、ideal供电／reference及邻居clamp下，nominal post full-on为100.752788／100.112984／101.423393µA（TT／SS／FF），最低码面积误差为−0.251524／−0.681304／−0.188819%；补充SS×HRHC最低码为−0.700133%，满足原±2%门槛。三个MOS条件分别为TT27°C3.3/5V、SS85°C2.97/4.5V、FF0°C3.63/5.5V，电源顺序Vlogic/VLED；不混称数字Liberty角落。
+
+边界结果与main pass并列保存：实测静态LED加假设RLED=10kΩ时电流88.265992µA，超出±5%；它是有意寻找headroom边界的假设阻抗，不是实际PDN值。实际RTL在20µs拉低enable，到258.5µs才提交PWM low；reset在20µs置高，20.5µs同步响应。若系统需要立即紧急关断，现有frame-latched enable不足，需另立控制/安全需求。
+
+启动时ideal IREF可在零供电下主动送能，使bias高于live rail；这揭示理想源前提，而不是证明真实电源会如此工作。外部compliance模型/较晚reference只是在声明边界下缓解异常，没有新增real reference／POR。功耗积分仅覆盖selected十二MOS signal模型和明确外部R/C，真实PG charging、preceding logic、pads、package与optics未建立。[完整边界解释](research/robustness.md)、[bench验证计划](research/bench-validation-plan.md)和[方向门槛](research/technical-value-market.md)给出下一步。

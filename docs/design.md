@@ -1,12 +1,20 @@
-# 单像素电路与 PWM：保留教学基线，推进 v0.3
+# 单像素电路与 PWM：从教学基线到 v0.4 联合信号模型
 
-更新：2026-10-04。当前尺寸为 mirror 20/4 µm、registered PWM。本页主要解释 synthetic LED 基本回归；独立研究已完成[真实静态 LED 耦合](research/measured-led.md)、[reference/mismatch](research/reference-and-matching.md)、[模拟 physical](layout/README.md)、[数字 physical](digital/physical.md)，v0.3 又完成[共同 macro top](../layout/integration/README.md)和[真实输出级接口](research/interface.md)。当前结论见[研究报告](research/research-report.md)。
+更新：2026-10-05。当前尺寸为 mirror 20/4 µm、registered PWM。本页解释 synthetic LED 基本回归，同时指向逐级增强的模型：真实静态负载、reference/mismatch、模拟／数字physical、v0.3共同macro top，及v0.4[联合signal PEX](research/joint-pex.md)与[电气边界](research/robustness.md)。分层解释见[研究报告](research/research-report.md)，实物目标见[bench计划](research/bench-validation-plan.md)，方向见[技术—价值—市场](research/technical-value-market.md)。
 
-本阶段已经建立一条可重复执行的驱动链：**真实 RTL 输出 → 电压波形桥接 → PDK transistor-level driver → synthetic MicroLED 电气负载 → 波形与电流积分**。它是 pre-layout、feed-forward coupled simulation；模拟结果没有反馈改变 RTL 状态。这里的“完整链路”指数字控制确实驱动了模拟电路，不表示已实现 feedback control 或双向 mixed-signal co-simulation。
+基本回归已经建立可重复执行的链：**真实RTL输出 → 电压波形桥接 → pre-layout PDK driver → synthetic LED → 波形与电流积分**。v0.4进一步用共同GDS提取的输出级／像素联合模型检查signal路径。两者仍是feed-forward coupled simulation；模拟结果没有反馈改变RTL状态。“完整链路”表示数字控制确实驱动电路，不表示feedback或双向mixed-signal co-simulation。
+
+## v0.4 为什么用一份联合模型
+
+实际共同GDS中，PWM从模拟macro的M3右侧接入；standalone analog RC的formal `pwm`位于左侧。若继续把右侧跨宏线接到旧左侧cut boundary，可能把同一段metal重复串联。v0.4从真实geometry重新提取末级`output12/buf_2`六MOS及像素六MOS，导出单个`output_pixel_pex`：nominal为12MOS、45 signal R、77显式C、34个邻居端口；另有四种actual RCstyle。
+
+Post只实例化这份joint model，**不再叠加旧buf schematic、SPEF、link RC或analog RC**。输出级实际AD／AS／PD／PS交给MOS model计算junction charge；导体R/C按实际端点及重数记录。重现按端口、数值与拓扑的语义一致性判断，工具排序不同不应伪称字节一致。[提取与投影说明](research/joint-pex.md)保留完整原始网表与ledger。
+
+该模型将所有PG／body电阻及PG-only电容投影到理想VDD/VSS，保留signal↔PG电容。邻居的stiff clamp等截断是实验条件，未包含其完整driver阻抗。因此startup源能量只覆盖声明的selected signal-path十二MOS与外部R/C假设，不是完整芯片供电、well/substrate、decap或preceding logic能量。实reference、真实LED动态／温度、实际PG与邻居仍是进入4×4前的工作。
 
 设计参数以仓库代码为主来源：[`pixel_driver.spice`](../analog/driver/pixel_driver.spice)、[`microled.spice`](../analog/models/microled.spice)、[`pixel_pwm.v`](../rtl/pixel_pwm.v) 和 [`run_phase1.py`](../scripts/run_phase1.py)。当前运行证据见 [`summary.json`](../evidence/phase1/summary.json)，具体条件、检查及工具版本从该文件读取，不由此文档另行维护通过数量。模型适用条件、计算复核和后续研究门槛见 [全面检阅](review/README.md)。
 
-## 本阶段的系统
+## 教学 baseline 的系统
 
 ```mermaid
 flowchart LR
@@ -56,7 +64,7 @@ flowchart LR
     PIX --> ARR[MicroLED array<br/>1 pixel → 4×4 → 8×8 → 16×16]
 ```
 
-Phase 1 没有 serial receiver、command decoder、register map、pixel memory、current DAC 或阵列扫描。后续协议由本项目独立定义；“SPI-like”可描述电气或时序习惯，不意味着复用任何商业 driver 的交易格式或 register map。FPGA 与 ASIC 保持独立仓库，未来再根据两端需要共同定义接口。
+当前单像素仍没有serial receiver、command decoder、register map、pixel memory、current DAC或阵列扫描。[方向报告](research/technical-value-market.md)中的4×4存储、packet、面积和共享reference只是可复算预算，不能称完成的阵列。后续协议由本项目独立定义；“SPI-like”可描述电气或时序习惯，不意味着复用商业driver的交易格式或register map。FPGA与ASIC保持独立仓库，未来再共同定义接口。
 
 ## 1-Pixel 电路：逐器件解释
 
@@ -73,7 +81,7 @@ Phase 1 没有 serial receiver、command decoder、register map、pixel memory�
 
 `IREF vlogic bias DC 100u` 是 **外部 ideal current source**，由 runner 写入 testbench；不能将其描述成已完成的片上精密电流 reference。默认 `VLED=5 V`、`Vlogic=3.3 V`，ground 也是 ideal。使用 6 V MOS model 不表示已有 6 V digital standard-cell flow，也不代表任意器件端电压和未来 pad 条件均已验证。
 
-PWM off 只关闭 LED 输出支路，当前 IREF 支路仍持续取用 100 µA；按 3.3 V logic rail 计，reference 支路的供电功率仍为 **330 µW**，尚未计入其他支路或数字动态功耗。因此低 LED off current 不等于低 standby power。当前 transient 从 ngspice 求得的正常 DC operating point 开始，电源和 IREF 已按理想源施加；这不验证真实 power sequencing、供电斜率、掉电或上电过程中 reference / gate 的状态。
+PWM off只关闭LED输出支路，当前IREF仍持续取用100µA；按3.3V logic rail计，reference支路供电为**330µW**，尚未计其他支路或数字动态功耗。低LED off current不等于低standby power。本页基本回归从正常DC operating point开始，rails与IREF已建立；v0.4另做[电源／reference初态探针](research/robustness.md)，仍没有实现真实reference generator或供电监测／POR，不能由这些模型探针保证系统安全上电。
 
 PWM 高时，XINV_N 导通、XCLAMP 关断、XPASS 传递 bias，XOUT 导通。PWM 低时，XINV_P 导通、XPASS 关断、XCLAMP 把 gate 拉低，XOUT 关断。只放 XPASS 而没有 clamp 会把输出 gate 留成 charge-storage node，不能保证整个 off interval 内保持关断。
 
@@ -166,6 +174,6 @@ PWM linearity check 对照的是 `measured duty × measured full-on average`，*
 
 本页 Phase1 baseline 证据是 **RTL + pre-layout PDK transistor simulation**；其 FF / SS 和 0 °C / 85 °C 是少量 pilot cases，统计开关关闭。独立 v0.2 研究另做了1080点 reference/PVT 与五组各256 actual RC Monte Carlo，见 [matching](research/reference-and-matching.md)。这两组证据不可混算，也不能把条件样本称为 full signoff 或 manufacturing yield。
 
-这个六 MOS cell 已有独立 analog layout、GDS、严格 DRC/LVS、RC 与配对仿真，见 [physical summary](../evidence/layout/summary.json)。完整 PDK 对两种网表配对使用，避免旧 model subset 与抽取结果混算。数字 standard-cell macro 见 [digital physical](digital/physical.md)；v0.3 共同 top 已有实际 PWM / PG routing、完整 GDS 抽取与所声明范围的检查。完整 joint PEX、pad ring、ESD、package和实物测量仍未完成。真实 MicroLED 的公开静态曲线已取得，动态、温度与光学模型未确立。双向反馈需 current sense / comparator → RTL 状态改变 → 后续 PWM 改变；本次 replay 未建立该反馈。
+六MOS cell已有独立analog layout／GDS／严格DRC-LVS／RC与配对仿真，见[physical summary](../evidence/layout/summary.json)。完整PDK用于配对，避免model subset与抽取结果混算。数字macro见[digital physical](digital/physical.md)；v0.3共同top的PWM／PG routing、full-GDS LVS与所声明physical checks保留原证据。v0.4增加actual output-stage junction与联合signal RC，仍没有完整PG／邻居驱动网络、pad ring／ESD／package或实物测量。真实LED公开静态曲线不建立动态／温度／光学模型；双向feedback仍需current sense／comparator改变后续RTL状态，本次replay未建立。
 
 公开调研和 baseline trade-offs 另见 [`driver-evidence.md`](research/driver-evidence.md)；PDK 与工具选择另见 [`pdk-and-tools.md`](research/pdk-and-tools.md)。

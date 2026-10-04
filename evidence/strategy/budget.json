@@ -1,0 +1,111 @@
+{
+  "status": "calculated_scenarios_only",
+  "date": "2026-10-05",
+  "not_array_validation": true,
+  "assumptions": {
+    "pixel_target_uA": 100,
+    "Vlogic_V": "3.3",
+    "VLED_V": 5,
+    "PWM_clock_Hz": 1000000,
+    "slots_per_frame": 256,
+    "PWM_frame_Hz": "3906.25",
+    "command_bits": 9,
+    "proposed_packet": "4 byte header/check plus 2 bytes per pixel; not implemented",
+    "power": "Freeze each analog/reference copy; ideal static I-V times duty. No true LED dynamic/temperature or shared reference validation.",
+    "area": "Sum of separate analog-cell bounding boxes only. Not array bbox, chip die or optical pitch."
+  },
+  "source_hashes": {
+    "evidence/characterization/actual-w20-l4-area.json": "f509160f0e4d7e0c9060a6fe56a1f9dd474c04bc0d23c76355a61d7bdc6b01e2",
+    "evidence/characterization/measured-load-summary.json": "98d8b3d0bb60b0e27f540fcb6cf44e87eeed2607fa2d5a3786c0f3c91b5c47ca",
+    "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+    "scripts/strategy/budget.py": "55ce7b40bf67c15608314716e127a2b96a72d32808d1cec71a879a5d493128fa"
+  },
+  "source_nominal": {
+    "name": "typical_5.00_3.30_100",
+    "current_uA": "99.78846743103914",
+    "led_v": "3.7672845628644342",
+    "led_rail_power_uW": "498.9423371551956",
+    "logic_rail_power_uW": "330.0000120319818"
+  },
+  "analog_cell": {
+    "width_um": "95.000",
+    "height_um": "37.660",
+    "bbox_area_um2": "3577.700000"
+  },
+  "rows": [
+    {
+      "pixels": 1,
+      "analog_copies_bbox_sum_mm2": "0.0035777",
+      "independent_reference_floor_mW": "0.33",
+      "full_on_analog_plus_LED_mW": "0.8289423491871774",
+      "single_buffer_bits": 9,
+      "double_buffer_bits": 18,
+      "raw_60Hz_bps": 540,
+      "raw_each_PWM_frame_bps": "35156.25",
+      "proposed_packet_bits": 48,
+      "proposed_packet_60Hz_bps": 2880,
+      "proposed_packet_each_PWM_frame_bps": "187500.00"
+    },
+    {
+      "pixels": 16,
+      "analog_copies_bbox_sum_mm2": "0.0572432",
+      "independent_reference_floor_mW": "5.28",
+      "full_on_analog_plus_LED_mW": "13.2630775869948384",
+      "single_buffer_bits": 144,
+      "double_buffer_bits": 288,
+      "raw_60Hz_bps": 8640,
+      "raw_each_PWM_frame_bps": "562500.00",
+      "proposed_packet_bits": 288,
+      "proposed_packet_60Hz_bps": 17280,
+      "proposed_packet_each_PWM_frame_bps": "1125000.00"
+    },
+    {
+      "pixels": 64,
+      "analog_copies_bbox_sum_mm2": "0.2289728",
+      "independent_reference_floor_mW": "21.12",
+      "full_on_analog_plus_LED_mW": "53.0523103479793536",
+      "single_buffer_bits": 576,
+      "double_buffer_bits": 1152,
+      "raw_60Hz_bps": 34560,
+      "raw_each_PWM_frame_bps": "2250000.00",
+      "proposed_packet_bits": 1056,
+      "proposed_packet_60Hz_bps": 63360,
+      "proposed_packet_each_PWM_frame_bps": "4125000.00"
+    },
+    {
+      "pixels": 256,
+      "analog_copies_bbox_sum_mm2": "0.9158912",
+      "independent_reference_floor_mW": "84.48",
+      "full_on_analog_plus_LED_mW": "212.2092413919174144",
+      "single_buffer_bits": 2304,
+      "double_buffer_bits": 4608,
+      "raw_60Hz_bps": 138240,
+      "raw_each_PWM_frame_bps": "9000000.00",
+      "proposed_packet_bits": 4128,
+      "proposed_packet_60Hz_bps": 247680,
+      "proposed_packet_each_PWM_frame_bps": "16125000.00"
+    }
+  ],
+  "additional": {
+    "16_pixel_d1_total_estimate_mW": "5.31118389607219973125",
+    "16_pixel_d64_total_estimate_mW": "7.2757693486207828",
+    "16_pixel_hypothetical_one_shared_reference_full_mW": "8.3130773944831312",
+    "16_pixel_hypothetical_one_shared_reference_d1_mW": "0.36118389607219973125",
+    "shared_reference_status": "hypothesis; fanout, startup, accuracy, noise, RC and power not validated",
+    "VGA_8bit_60Hz_raw_bps": 147456000,
+    "VGA_RGB_8bits_per_color_60Hz_raw_bps": 442368000,
+    "current_density_20um_square_A_per_cm2": "25",
+    "hypothetical_current_density_4um_square_A_per_cm2": "625",
+    "analog_bbox_to_4um_square_area_ratio": "223.606250"
+  },
+  "exclusions": [
+    "digital power and cell area",
+    "real current-reference generator power/area",
+    "shared bias circuitry",
+    "clock/protocol/register implementation",
+    "pads/ESD/package/board",
+    "power IR/EM and routing spacing",
+    "LED optical power/EQE/thermal behavior",
+    "manufacturing yield and monetary cost"
+  ]
+}

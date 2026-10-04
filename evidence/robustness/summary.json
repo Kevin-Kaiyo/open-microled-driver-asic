@@ -1,0 +1,1831 @@
+{
+  "schema_version": 1,
+  "status": "actual joint output/analog extracted cutout electrical regression plus explicit power/control boundary study",
+  "passed": true,
+  "normative_engineering_guards_passed": true,
+  "boundary_studies_completed_numerically": true,
+  "boundary_studies_are_system_qualification": false,
+  "source_hashes": {
+    "scripts/robustness/run.py": "81a8b32aa7374ea091f2aa4c185d3f429aa8098a645690b96058db389f4e9eff",
+    "scripts/robustness/tb_controls.v": "501444f007df586db89973e22b7073948ad603aa697d29e9768e52e4d18d3864",
+    "scripts/robustness/reference_boundary.spice": "0b32733641b9036325e3191c2045c40db8d96e2f1bb8005fe8a649d275f08aaa",
+    "docs/specifications/electrical-v0.4.md": "e538fa005c0f97e05929d64825c84551434a0447a9e5709c4ff4a56be553a78c",
+    "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+    "sim/rtl/tb_pixel_pwm.v": "f0fc5b991974b79a7a229567ece574da0a052367ccee9ebce69f6e4c41bf2dbe",
+    "analog/models/microled.spice": "ce9a3453abb87fc2aea894e7da2eff1448ff90a1432243ea90c747716ed20bba",
+    "analog/models/measured-led/lin2026-yellow20-dc.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+    "analog/models/measured-led/lin2026-yellow20-diamond-iv.csv": "9da8dbac6499c34159da5e3aa0c59cd6de43aad446090181b4c070beba9505ab",
+    "scripts/interface/buf_2.spice": "66a3cab5f73544f6b76ed0d276fbd86dbf4b533cdc9e75c111556be9ea429f28",
+    "evidence/layout/pixel_driver_rc.spice": "1de567fdc5697cd36f5879aa92c24b3b96d0b4f09f33b4a4720afb4aeeecd5b8",
+    "evidence/integration/pwm_link_rc.spice": "f56728daf9e92f3f92504ba34369fbd86d5500ccf8117d60de5e354ae17b2288",
+    "evidence/physical/digital/spef/nom/pixel_pwm.nom.spef": "1499a261694d892e19a24bbb5fae855558543c4f03b9f46044178ccf52a4ff32",
+    "layout/pdk-lock.json": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+    "scripts/physical/pdk-lock.json": "50f119ae5e17f0589f0a7a58db4c7a6daa7e6e1b40c85e15cd0d96300f7c3762",
+    "evidence/robustness/stage-contract.json": "ba3ad7bd6bd1dcdc3fbd9bcdd41e15f5f25fa18b9ddb0cbaf4a8171a87ca9657",
+    "evidence/joint-pex/nominal/output_pixel_pex.spice": "03813e63e64bf505570dbd1f81e6809366e6b4d31bbee129c28022956e1cc623",
+    "evidence/joint-pex/nominal/summary.json": "9fbfcd0c2c1add8a01b7bdfd6f3f1863333258973ee478aa5e30a7a85d7c86ed",
+    "evidence/joint-pex/nominal/projection-ledger.json.gz": "722cc43dbf004bbce942683b2f26ad215829b3e6de9a0c3127ea051356d17b71",
+    "evidence/joint-pex/hrhc/summary.json": "41d635de7b25c6de51a3b9f0babe91f21889c40ba5e99ff01bc4707575e58673",
+    "evidence/joint-pex/hrhc/projection-ledger.json.gz": "5bc57e731d6d148636053ac8d7d57855630c14e31d038f07b3c0ab18127ac81d",
+    "evidence/joint-pex/lrhc/summary.json": "af357c3b6216936f749513c56f23dcceb18efcb99343343f681ce243c0263edc",
+    "evidence/joint-pex/lrhc/projection-ledger.json.gz": "e4e47c349718b380f7e61b48704437226f032e2787b1de8e8e239f393f8a230a",
+    "evidence/joint-pex/hrlc/summary.json": "d4ec906199560cce22aef09634a2b01d90aae9655bfac73063f0a7c657feb6f8",
+    "evidence/joint-pex/hrlc/projection-ledger.json.gz": "b35b8d14a1cf399ad2a7e35168e1e25ba74590f7520a69cf8ce2945988953a63",
+    "evidence/joint-pex/lrlc/summary.json": "beb892eeac0a8255585b8c378e6d5daa6a12165368d96560740a809fab421191",
+    "evidence/joint-pex/lrlc/projection-ledger.json.gz": "a13c1bfbdeab3be45871331349e72c59534df911fc41f3a1b394164638282836",
+    "evidence/integration/pixel_integrated.gds": "f785cd70e76f6f287159bbb865712a8ed6121ed15dc65a99d78cbc35bed13938",
+    "evidence/joint-pex/hrhc/output_pixel_pex.spice": "2b2ff8db5e9ae55be8dd914628750df9787f29ee3ef6e3473134a713163c8680",
+    "evidence/joint-pex/lrhc/output_pixel_pex.spice": "c54d162fc05d328fb67f59a54d3c294e0ec6be23bba70c022b813596e5d8e674",
+    "evidence/joint-pex/hrlc/output_pixel_pex.spice": "602cab3bb76f552b83bf9ebf3226c088bacdb1323c5fb7e0683858510172cba2",
+    "evidence/joint-pex/lrlc/output_pixel_pex.spice": "5bcfdbdb9746259f0468257adc7d41ef94376e4d9c5da4f0722108d9c2635470"
+  },
+  "scope": {
+    "joint_extracted_signal_RC_with_actual_MOS_junctions": true,
+    "full_joint_cell_PG_PEX": false,
+    "PG_only_capacitance_included": false,
+    "body_PG_series_R_included": false,
+    "startup_is_selected_signal_model_plus_external_R_C_probe": true,
+    "full_digital_transistor": false,
+    "real_reference_generator": false,
+    "real_LED_dynamic": false,
+    "full_PG_or_substrate": false,
+    "preceding_FF_waveform": false
+  },
+  "model_contract": {
+    "schema_version": 1,
+    "subckt": "output_pixel_pex",
+    "model_path": "evidence/joint-pex/nominal/output_pixel_pex.spice",
+    "model_sha256": "03813e63e64bf505570dbd1f81e6809366e6b4d31bbee129c28022956e1cc623",
+    "ports_order": [
+      "I",
+      "VDD",
+      "VSS",
+      "BIAS",
+      "LED_K",
+      "GATE",
+      "PWM_B",
+      "PWM_DRIVE",
+      "PWM_MON",
+      "PWM",
+      "NBR_00",
+      "NBR_01",
+      "NBR_02",
+      "NBR_03",
+      "NBR_04",
+      "NBR_05",
+      "NBR_06",
+      "NBR_07",
+      "NBR_08",
+      "NBR_09",
+      "NBR_10",
+      "NBR_11",
+      "NBR_12",
+      "NBR_13",
+      "NBR_14",
+      "NBR_15",
+      "NBR_16",
+      "NBR_17",
+      "NBR_18",
+      "NBR_19",
+      "NBR_20",
+      "NBR_21",
+      "NBR_22",
+      "NBR_23",
+      "NBR_24",
+      "NBR_25",
+      "NBR_26",
+      "NBR_27",
+      "NBR_28",
+      "NBR_29",
+      "NBR_30",
+      "NBR_31",
+      "NBR_32",
+      "NBR_33"
+    ],
+    "pin_bindings": {
+      "I": "input",
+      "VDD": "vbuffer",
+      "VSS": "0",
+      "BIAS": "bias",
+      "LED_K": "led_k",
+      "GATE": "gate",
+      "PWM_B": "pwm_b",
+      "PWM_DRIVE": "driver_mon",
+      "PWM_MON": "legacy_pwm_monitor",
+      "PWM": "pwm",
+      "NBR_00": "nbr_00",
+      "NBR_01": "nbr_01",
+      "NBR_02": "nbr_02",
+      "NBR_03": "nbr_03",
+      "NBR_04": "nbr_04",
+      "NBR_05": "nbr_05",
+      "NBR_06": "nbr_06",
+      "NBR_07": "nbr_07",
+      "NBR_08": "nbr_08",
+      "NBR_09": "nbr_09",
+      "NBR_10": "nbr_10",
+      "NBR_11": "nbr_11",
+      "NBR_12": "nbr_12",
+      "NBR_13": "nbr_13",
+      "NBR_14": "nbr_14",
+      "NBR_15": "nbr_15",
+      "NBR_16": "nbr_16",
+      "NBR_17": "nbr_17",
+      "NBR_18": "nbr_18",
+      "NBR_19": "nbr_19",
+      "NBR_20": "nbr_20",
+      "NBR_21": "nbr_21",
+      "NBR_22": "nbr_22",
+      "NBR_23": "nbr_23",
+      "NBR_24": "nbr_24",
+      "NBR_25": "nbr_25",
+      "NBR_26": "nbr_26",
+      "NBR_27": "nbr_27",
+      "NBR_28": "nbr_28",
+      "NBR_29": "nbr_29",
+      "NBR_30": "nbr_30",
+      "NBR_31": "nbr_31",
+      "NBR_32": "nbr_32",
+      "NBR_33": "nbr_33"
+    },
+    "neighbor_sources": [
+      {
+        "port": "NBR_00",
+        "node": "nbr_00",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_31692_23056#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_19_2/a_124_375#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_01",
+        "node": "nbr_01",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_32064_23584#",
+        "hierarchical_net": "pixel_pwm_0/_092_/a_48_148#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_02",
+        "node": "nbr_02",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_32500_21532#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_36_472#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_03",
+        "node": "nbr_03",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_32588_21488#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_124_375#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_04",
+        "node": "nbr_04",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_32709_20448#",
+        "hierarchical_net": "pixel_pwm_0/_094_/a_245_68#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_05",
+        "node": "nbr_05",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_32715_22316#",
+        "hierarchical_net": "pixel_pwm_0/_090_/a_245_68#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_06",
+        "node": "nbr_06",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_32948_21532#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_484_472#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_07",
+        "node": "nbr_07",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33036_21488#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_572_375#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_08",
+        "node": "nbr_08",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33275_22316#",
+        "hierarchical_net": "pixel_pwm_0/_091_/a_245_68#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_09",
+        "node": "nbr_09",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33279_19965#",
+        "hierarchical_net": "pixel_pwm_0/_098_/ZN",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_10",
+        "node": "nbr_10",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33396_21152#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_16_18/a_36_472#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_11",
+        "node": "nbr_11",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33396_21532#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_932_472#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_12",
+        "node": "nbr_12",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33396_24288#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_20_18/a_36_472#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_13",
+        "node": "nbr_13",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33416_23446#",
+        "hierarchical_net": "pixel_pwm_0/_152_/a_2304_115#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_14",
+        "node": "nbr_14",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33484_21055#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_16_18/a_124_375#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_15",
+        "node": "nbr_15",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33484_21488#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_1020_375#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_16",
+        "node": "nbr_16",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33484_24191#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_20_18/a_124_375#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_17",
+        "node": "nbr_17",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33493_20448#",
+        "hierarchical_net": "pixel_pwm_0/_098_/a_469_68#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_18",
+        "node": "nbr_18",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33620_22720#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_18_20/a_36_472#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_19",
+        "node": "nbr_19",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33708_22623#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_18_20/a_124_375#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_20",
+        "node": "nbr_20",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33796_23056#",
+        "hierarchical_net": "pixel_pwm_0/_152_/a_2011_527#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_21",
+        "node": "nbr_21",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33844_21532#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_1380_472#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_22",
+        "node": "nbr_22",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_33932_21488#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_1468_375#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_23",
+        "node": "nbr_23",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_34144_23217#",
+        "hierarchical_net": "pixel_pwm_0/_152_/a_2296_527#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_24",
+        "node": "nbr_24",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_34200_23125#",
+        "hierarchical_net": "pixel_pwm_0/_152_/a_448_472#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_25",
+        "node": "nbr_25",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_34292_21532#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_17_26/a_36_472#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_26",
+        "node": "nbr_26",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_34380_21488#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_17_26/a_124_375#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_27",
+        "node": "nbr_27",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_34740_21532#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_17_26/a_484_472#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_28",
+        "node": "nbr_28",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "a_34828_21488#",
+        "hierarchical_net": "pixel_pwm_0/FILLER_17_26/a_572_375#",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_29",
+        "node": "nbr_29",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "duty[0]",
+        "hierarchical_net": "duty[0]",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_30",
+        "node": "nbr_30",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "duty[3]",
+        "hierarchical_net": "duty[3]",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_31",
+        "node": "nbr_31",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "duty[4]",
+        "hierarchical_net": "duty[4]",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_32",
+        "node": "nbr_32",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "duty[5]",
+        "hierarchical_net": "duty[5]",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      },
+      {
+        "port": "NBR_33",
+        "node": "nbr_33",
+        "quiet_voltage_fraction": 0,
+        "physical_net": "enable",
+        "hierarchical_net": "enable",
+        "boundary": "Explicit source in testbench. Internal floating/fillcap/FF nets are artificial quiet-clamp/rail-bracket sensitivities; no claim of functional neighbor state. External duty/enable may use declared input stimulus."
+      }
+    ],
+    "required_inputs_sha256": {
+      "evidence/joint-pex/nominal/summary.json": "9fbfcd0c2c1add8a01b7bdfd6f3f1863333258973ee478aa5e30a7a85d7c86ed",
+      "evidence/joint-pex/nominal/projection-ledger.json.gz": "722cc43dbf004bbce942683b2f26ad215829b3e6de9a0c3127ea051356d17b71",
+      "evidence/joint-pex/hrhc/summary.json": "41d635de7b25c6de51a3b9f0babe91f21889c40ba5e99ff01bc4707575e58673",
+      "evidence/joint-pex/hrhc/projection-ledger.json.gz": "5bc57e731d6d148636053ac8d7d57855630c14e31d038f07b3c0ab18127ac81d",
+      "evidence/joint-pex/lrhc/summary.json": "af357c3b6216936f749513c56f23dcceb18efcb99343343f681ce243c0263edc",
+      "evidence/joint-pex/lrhc/projection-ledger.json.gz": "e4e47c349718b380f7e61b48704437226f032e2787b1de8e8e239f393f8a230a",
+      "evidence/joint-pex/hrlc/summary.json": "d4ec906199560cce22aef09634a2b01d90aae9655bfac73063f0a7c657feb6f8",
+      "evidence/joint-pex/hrlc/projection-ledger.json.gz": "b35b8d14a1cf399ad2a7e35168e1e25ba74590f7520a69cf8ce2945988953a63",
+      "evidence/joint-pex/lrlc/summary.json": "beb892eeac0a8255585b8c378e6d5daa6a12165368d96560740a809fab421191",
+      "evidence/joint-pex/lrlc/projection-ledger.json.gz": "a13c1bfbdeab3be45871331349e72c59534df911fc41f3a1b394164638282836",
+      "evidence/integration/pixel_integrated.gds": "f785cd70e76f6f287159bbb865712a8ed6121ed15dc65a99d78cbc35bed13938"
+    },
+    "post_variants": {
+      "nominal": {
+        "model_path": "evidence/joint-pex/nominal/output_pixel_pex.spice",
+        "model_sha256": "03813e63e64bf505570dbd1f81e6809366e6b4d31bbee129c28022956e1cc623"
+      },
+      "hrhc": {
+        "model_path": "evidence/joint-pex/hrhc/output_pixel_pex.spice",
+        "model_sha256": "2b2ff8db5e9ae55be8dd914628750df9787f29ee3ef6e3473134a713163c8680"
+      },
+      "lrhc": {
+        "model_path": "evidence/joint-pex/lrhc/output_pixel_pex.spice",
+        "model_sha256": "c54d162fc05d328fb67f59a54d3c294e0ec6be23bba70c022b813596e5d8e674"
+      },
+      "hrlc": {
+        "model_path": "evidence/joint-pex/hrlc/output_pixel_pex.spice",
+        "model_sha256": "602cab3bb76f552b83bf9ebf3226c088bacdb1323c5fb7e0683858510172cba2"
+      },
+      "lrlc": {
+        "model_path": "evidence/joint-pex/lrlc/output_pixel_pex.spice",
+        "model_sha256": "5bcfdbdb9746259f0468257adc7d41ef94376e4d9c5da4f0722108d9c2635470"
+      }
+    },
+    "replaces_old_analog_buf_spef_link": true,
+    "physical_entry_um": [
+      119.99,
+      111.52
+    ],
+    "neighbor_clamp": "Artificial0V stiff boundary, not functional neighbor states; live-high bracket is startup-only sensitivity",
+    "scope": {
+      "includes": [
+        "actual output12 six MOS and diffusion A/P",
+        "analog six MOS and diffusion A/P",
+        "signal-component distributed metal/diffusion R",
+        "digital output routing + cross-macro span + actual analog input bus",
+        "selected signal coupling to ideal PG and explicit neighboring nets"
+      ],
+      "excludes": [
+        "full digital transistor transient",
+        "upstream FF active devices",
+        "all PG/source/body resistance and PG-only fixed-voltage capacitance",
+        "neighbor active drivers and distributed impedance",
+        "IR/EM/substrate impedance/pad/ESD/package/silicon/optics"
+      ],
+      "double_count_rule": "Instantiate this joint circuit once; do not additionally instantiate old buffer/analog RC/SPEF/link."
+    },
+    "projection_capacitance_f": {
+      "retain_aggregate": "8.612439E-14",
+      "fixed_pg_only_remove": "3.48561859E-12",
+      "outside_remove": "2.57874534E-12"
+    },
+    "projection": "All source/body/PG R and all PG-only C idealized/excluded; selected signal12MOS+junction model. Variable-rail runs are boundary probes, not complete PG energy/IR.",
+    "source_contract_path": "evidence/joint-pex/nominal/summary.json",
+    "source_contract_sha256": "9fbfcd0c2c1add8a01b7bdfd6f3f1863333258973ee478aa5e30a7a85d7c86ed"
+  },
+  "integration_method": "current: trapezoid of saved piecewise-linear I; power: exact quadratic product of separately interpolated saved V and I; not a recovery of unrecorded continuous-time samples",
+  "boundary_finding": "v0.3 standalone analog RC formal at left; actual physical PWM enters at right; post replaces all old route/analog/buf views as joint cutout",
+  "pre_post_pairs": [
+    {
+      "envelope": "tt",
+      "duty": 0,
+      "pre_current_uA": 3.6078391696245387e-06,
+      "post_current_uA": 3.6080267686591785e-06,
+      "delta_current_uA": 1.87599034639865e-10,
+      "relative_current_delta": null,
+      "pre_area_error_pct": null,
+      "post_area_error_pct": null,
+      "pre_rise_30_70_ns": null,
+      "post_rise_30_70_ns": null,
+      "pre_fall_70_30_ns": null,
+      "post_fall_70_30_ns": null
+    },
+    {
+      "envelope": "tt",
+      "duty": 1,
+      "pre_current_uA": 0.39235537206204607,
+      "post_current_uA": 0.3925756631658176,
+      "delta_current_uA": 0.0002202911037715305,
+      "relative_current_delta": 0.0005614581052217904,
+      "pre_area_error_pct": -0.2506827536718048,
+      "post_area_error_pct": -0.25152429488695116,
+      "pre_rise_30_70_ns": 0.25851786477574384,
+      "post_rise_30_70_ns": 0.27141720305729616,
+      "pre_fall_70_30_ns": 0.13424724385532188,
+      "post_fall_70_30_ns": 0.14444269445888086
+    },
+    {
+      "envelope": "tt",
+      "duty": 64,
+      "pre_current_uA": 25.172863044697117,
+      "post_current_uA": 25.187205709205106,
+      "delta_current_uA": 0.014342664507989156,
+      "relative_current_delta": 0.0005697669145747764,
+      "pre_area_error_pct": -0.0039218015192354905,
+      "post_area_error_pct": -0.003935049428804849,
+      "pre_rise_30_70_ns": 0.2585176305880746,
+      "post_rise_30_70_ns": 0.2714195661843513,
+      "pre_fall_70_30_ns": 0.1342472451563645,
+      "post_fall_70_30_ns": 0.1444423748360804
+    },
+    {
+      "envelope": "tt",
+      "duty": 255,
+      "pre_current_uA": 100.30106849707884,
+      "post_current_uA": 100.35822624456105,
+      "delta_current_uA": 0.05715774748220781,
+      "relative_current_delta": 0.0005698618004639222,
+      "pre_area_error_pct": -0.0009883589075720955,
+      "post_area_error_pct": -0.000992124115029025,
+      "pre_rise_30_70_ns": 0.2585184282356129,
+      "post_rise_30_70_ns": 0.2714203689276398,
+      "pre_fall_70_30_ns": 0.13424724483110384,
+      "post_fall_70_30_ns": 0.14444273468278146
+    },
+    {
+      "envelope": "tt",
+      "duty": 256,
+      "pre_current_uA": 100.6954012525646,
+      "post_current_uA": 100.75278750880979,
+      "delta_current_uA": 0.057386256245195,
+      "relative_current_delta": 0.0005698994743688068,
+      "pre_area_error_pct": 0.0,
+      "post_area_error_pct": 0.0,
+      "pre_rise_30_70_ns": null,
+      "post_rise_30_70_ns": null,
+      "pre_fall_70_30_ns": null,
+      "post_fall_70_30_ns": null
+    },
+    {
+      "envelope": "ss",
+      "duty": 0,
+      "pre_current_uA": 3.595836215244952e-06,
+      "post_current_uA": 3.596016438095484e-06,
+      "delta_current_uA": 1.8022285053209686e-10,
+      "relative_current_delta": null,
+      "pre_area_error_pct": null,
+      "post_area_error_pct": null,
+      "pre_rise_30_70_ns": null,
+      "post_rise_30_70_ns": null,
+      "pre_fall_70_30_ns": null,
+      "post_fall_70_30_ns": null
+    },
+    {
+      "envelope": "ss",
+      "duty": 1,
+      "pre_current_uA": 0.38821894212284963,
+      "post_current_uA": 0.3884019928166907,
+      "delta_current_uA": 0.0001830506938410581,
+      "relative_current_delta": 0.0004715140710036536,
+      "pre_area_error_pct": -0.6842594061087004,
+      "post_area_error_pct": -0.6813039741246807,
+      "pre_rise_30_70_ns": 0.43990034173917864,
+      "post_rise_30_70_ns": 0.46354034987598075,
+      "pre_fall_70_30_ns": 0.21803743923201613,
+      "post_fall_70_30_ns": 0.23717545614108937
+    },
+    {
+      "envelope": "ss",
+      "duty": 64,
+      "pre_current_uA": 25.014525317444082,
+      "post_current_uA": 25.025586704405125,
+      "delta_current_uA": 0.01106138696104253,
+      "relative_current_delta": 0.0004421985554661223,
+      "pre_area_error_pct": -0.010670608887963784,
+      "post_area_error_pct": -0.01062507674496338,
+      "pre_rise_30_70_ns": 0.43990045373726305,
+      "post_rise_30_70_ns": 0.4635404520078254,
+      "pre_fall_70_30_ns": 0.21804136350177944,
+      "post_fall_70_30_ns": 0.23717542404870506
+    },
+    {
+      "envelope": "ss",
+      "duty": 255,
+      "pre_current_uA": 99.67533241147788,
+      "post_current_uA": 99.71937178732746,
+      "delta_current_uA": 0.04403937584957873,
+      "relative_current_delta": 0.0004418282315605815,
+      "pre_area_error_pct": -0.002561388129418418,
+      "post_area_error_pct": -0.0025528673845753858,
+      "pre_rise_30_70_ns": 0.43990267960432317,
+      "post_rise_30_70_ns": 0.46354261531642016,
+      "pre_fall_70_30_ns": 0.21803770974045816,
+      "post_fall_70_30_ns": 0.23717513218148023
+    },
+    {
+      "envelope": "ss",
+      "duty": 256,
+      "pre_current_uA": 100.06877921782562,
+      "post_current_uA": 100.11298389899144,
+      "delta_current_uA": 0.04420468116582299,
+      "relative_current_delta": 0.00044174298428889536,
+      "pre_area_error_pct": 0.0,
+      "post_area_error_pct": 0.0,
+      "pre_rise_30_70_ns": null,
+      "post_rise_30_70_ns": null,
+      "pre_fall_70_30_ns": null,
+      "post_fall_70_30_ns": null
+    },
+    {
+      "envelope": "ff",
+      "duty": 0,
+      "pre_current_uA": 4.027764165595582e-06,
+      "post_current_uA": 4.02794741233975e-06,
+      "delta_current_uA": 1.8324674416758668e-10,
+      "relative_current_delta": null,
+      "pre_area_error_pct": null,
+      "post_area_error_pct": null,
+      "pre_rise_30_70_ns": null,
+      "post_rise_30_70_ns": null,
+      "pre_fall_70_30_ns": null,
+      "post_fall_70_30_ns": null
+    },
+    {
+      "envelope": "ff",
+      "duty": 1,
+      "pre_current_uA": 0.3951685909878669,
+      "post_current_uA": 0.3954370531366059,
+      "delta_current_uA": 0.00026846214873899044,
+      "relative_current_delta": 0.0006793610495912095,
+      "pre_area_error_pct": -0.18809882113599574,
+      "post_area_error_pct": -0.18881929068846892,
+      "pre_rise_30_70_ns": 0.17745038164568294,
+      "post_rise_30_70_ns": 0.18582814020201566,
+      "pre_fall_70_30_ns": 0.09608639892858678,
+      "post_fall_70_30_ns": 0.103580819268978
+    },
+    {
+      "envelope": "ff",
+      "duty": 64,
+      "pre_current_uA": 25.337704667941637,
+      "post_current_uA": 25.35509825959113,
+      "delta_current_uA": 0.017393591649494056,
+      "relative_current_delta": 0.0006864706917000252,
+      "pre_area_error_pct": -0.0029460490177268817,
+      "post_area_error_pct": -0.0029573995754872406,
+      "pre_rise_30_70_ns": 0.17745041449700877,
+      "post_rise_30_70_ns": 0.18582815711556955,
+      "pre_fall_70_30_ns": 0.09608526994886457,
+      "post_fall_70_30_ns": 0.10358085797499555
+    },
+    {
+      "envelope": "ff",
+      "duty": 255,
+      "pre_current_uA": 100.95713268247701,
+      "post_current_uA": 101.02644496232398,
+      "delta_current_uA": 0.06931227984696875,
+      "relative_current_delta": 0.0006865515888310192,
+      "pre_area_error_pct": -0.0007514249834805753,
+      "post_area_error_pct": -0.0007546916884759725,
+      "pre_rise_30_70_ns": 0.17745060748499547,
+      "post_rise_30_70_ns": 0.1858285202148771,
+      "pre_fall_70_30_ns": 0.09608279623318783,
+      "post_fall_70_30_ns": 0.10358083336360624
+    },
+    {
+      "envelope": "ff",
+      "duty": 256,
+      "pre_current_uA": 101.35380460453153,
+      "post_current_uA": 101.42339253334475,
+      "delta_current_uA": 0.0695879288132204,
+      "relative_current_delta": 0.000686584278555058,
+      "pre_area_error_pct": 0.0,
+      "post_area_error_pct": 0.0,
+      "pre_rise_30_70_ns": null,
+      "post_rise_30_70_ns": null,
+      "pre_fall_70_30_ns": null,
+      "post_fall_70_30_ns": null
+    }
+  ],
+  "conditions": {
+    "envelopes": {
+      "tt": {
+        "corner": "typical",
+        "temperature_c": 27,
+        "logic_v": 3.3,
+        "led_v": 5
+      },
+      "ss": {
+        "corner": "ss",
+        "temperature_c": 85,
+        "logic_v": 2.97,
+        "led_v": 4.5
+      },
+      "ff": {
+        "corner": "ff",
+        "temperature_c": 0,
+        "logic_v": 3.63,
+        "led_v": 5.5
+      }
+    },
+    "input_full_ramp_ns": 1,
+    "frame_period_s": 0.000256,
+    "warmup_frames": 2,
+    "main_measurement_window_s": [
+      0.0005145,
+      0.0010265
+    ],
+    "measured_frames": 2,
+    "reference_uA": 100,
+    "actual_Liberty_slew_percent": [
+      30,
+      70
+    ],
+    "LED_static_temperature": "unknown; static table never temperature scaled",
+    "startup_inputs": "actual RTL logical trace multiplied by live logic rail; no voltage-aware FF/POR implementation",
+    "current_metric": "LED electrical branch includes diode displacement current; not optical flux",
+    "power_metric": "signed energy / explicit duration; selected signal-path 12MOS shared logic rail, separate reference rail; pre buffer+analog summed before compare",
+    "excluded_startup_energy": "actual PG-only metal/well charging, removed internal body/PG R and full cell/chip decap/source energy; assumed 1nF does not replace excluded PG capacitance"
+  },
+  "normative_checks_count": 146,
+  "development_failure_record_path": "evidence/robustness/failure-record.json",
+  "development_failure_record_sha256": "36868eb2f6fee60ad7ffaf1357f190e0be5f83ae3864ab91c0c6ba94cfa679cb",
+  "main_post_matrix": [
+    {
+      "name": "tt_post_d0",
+      "MOS_envelope": "tt",
+      "RC_style": "nominal",
+      "duty": 0,
+      "current_uA": 3.6080267686591785e-06,
+      "area_error_pct": null,
+      "rise_30_70_ns": null,
+      "fall_70_30_ns": null
+    },
+    {
+      "name": "tt_post_d1",
+      "MOS_envelope": "tt",
+      "RC_style": "nominal",
+      "duty": 1,
+      "current_uA": 0.3925756631658176,
+      "area_error_pct": -0.25152429488695116,
+      "rise_30_70_ns": 0.27141720305729616,
+      "fall_70_30_ns": 0.14444269445888086
+    },
+    {
+      "name": "tt_post_d64",
+      "MOS_envelope": "tt",
+      "RC_style": "nominal",
+      "duty": 64,
+      "current_uA": 25.187205709205106,
+      "area_error_pct": -0.003935049428804849,
+      "rise_30_70_ns": 0.2714195661843513,
+      "fall_70_30_ns": 0.1444423748360804
+    },
+    {
+      "name": "tt_post_d255",
+      "MOS_envelope": "tt",
+      "RC_style": "nominal",
+      "duty": 255,
+      "current_uA": 100.35822624456105,
+      "area_error_pct": -0.000992124115029025,
+      "rise_30_70_ns": 0.2714203689276398,
+      "fall_70_30_ns": 0.14444273468278146
+    },
+    {
+      "name": "tt_post_d256",
+      "MOS_envelope": "tt",
+      "RC_style": "nominal",
+      "duty": 256,
+      "current_uA": 100.75278750880979,
+      "area_error_pct": 0.0,
+      "rise_30_70_ns": null,
+      "fall_70_30_ns": null
+    },
+    {
+      "name": "ss_post_d0",
+      "MOS_envelope": "ss",
+      "RC_style": "nominal",
+      "duty": 0,
+      "current_uA": 3.596016438095484e-06,
+      "area_error_pct": null,
+      "rise_30_70_ns": null,
+      "fall_70_30_ns": null
+    },
+    {
+      "name": "ss_post_d1",
+      "MOS_envelope": "ss",
+      "RC_style": "nominal",
+      "duty": 1,
+      "current_uA": 0.3884019928166907,
+      "area_error_pct": -0.6813039741246807,
+      "rise_30_70_ns": 0.46354034987598075,
+      "fall_70_30_ns": 0.23717545614108937
+    },
+    {
+      "name": "ss_post_d64",
+      "MOS_envelope": "ss",
+      "RC_style": "nominal",
+      "duty": 64,
+      "current_uA": 25.025586704405125,
+      "area_error_pct": -0.01062507674496338,
+      "rise_30_70_ns": 0.4635404520078254,
+      "fall_70_30_ns": 0.23717542404870506
+    },
+    {
+      "name": "ss_post_d255",
+      "MOS_envelope": "ss",
+      "RC_style": "nominal",
+      "duty": 255,
+      "current_uA": 99.71937178732746,
+      "area_error_pct": -0.0025528673845753858,
+      "rise_30_70_ns": 0.46354261531642016,
+      "fall_70_30_ns": 0.23717513218148023
+    },
+    {
+      "name": "ss_post_d256",
+      "MOS_envelope": "ss",
+      "RC_style": "nominal",
+      "duty": 256,
+      "current_uA": 100.11298389899144,
+      "area_error_pct": 0.0,
+      "rise_30_70_ns": null,
+      "fall_70_30_ns": null
+    },
+    {
+      "name": "ff_post_d0",
+      "MOS_envelope": "ff",
+      "RC_style": "nominal",
+      "duty": 0,
+      "current_uA": 4.02794741233975e-06,
+      "area_error_pct": null,
+      "rise_30_70_ns": null,
+      "fall_70_30_ns": null
+    },
+    {
+      "name": "ff_post_d1",
+      "MOS_envelope": "ff",
+      "RC_style": "nominal",
+      "duty": 1,
+      "current_uA": 0.3954370531366059,
+      "area_error_pct": -0.18881929068846892,
+      "rise_30_70_ns": 0.18582814020201566,
+      "fall_70_30_ns": 0.103580819268978
+    },
+    {
+      "name": "ff_post_d64",
+      "MOS_envelope": "ff",
+      "RC_style": "nominal",
+      "duty": 64,
+      "current_uA": 25.35509825959113,
+      "area_error_pct": -0.0029573995754872406,
+      "rise_30_70_ns": 0.18582815711556955,
+      "fall_70_30_ns": 0.10358085797499555
+    },
+    {
+      "name": "ff_post_d255",
+      "MOS_envelope": "ff",
+      "RC_style": "nominal",
+      "duty": 255,
+      "current_uA": 101.02644496232398,
+      "area_error_pct": -0.0007546916884759725,
+      "rise_30_70_ns": 0.1858285202148771,
+      "fall_70_30_ns": 0.10358083336360624
+    },
+    {
+      "name": "ff_post_d256",
+      "MOS_envelope": "ff",
+      "RC_style": "nominal",
+      "duty": 256,
+      "current_uA": 101.42339253334475,
+      "area_error_pct": 0.0,
+      "rise_30_70_ns": null,
+      "fall_70_30_ns": null
+    },
+    {
+      "name": "tt_post_d1_fine",
+      "MOS_envelope": "tt",
+      "RC_style": "nominal",
+      "duty": 1,
+      "current_uA": 0.39257566265379507,
+      "area_error_pct": -0.251524424985361,
+      "rise_30_70_ns": 0.27141958147160195,
+      "fall_70_30_ns": 0.1444420548880193
+    },
+    {
+      "name": "ss_post_d1_fine",
+      "MOS_envelope": "ss",
+      "RC_style": "nominal",
+      "duty": 1,
+      "current_uA": 0.38840198934783454,
+      "area_error_pct": -0.6813048611496564,
+      "rise_30_70_ns": 0.46354027701759476,
+      "fall_70_30_ns": 0.2371764425482259
+    },
+    {
+      "name": "ff_post_d1_fine",
+      "MOS_envelope": "ff",
+      "RC_style": "nominal",
+      "duty": 1,
+      "current_uA": 0.3954370529001858,
+      "area_error_pct": -0.18881935036261233,
+      "rise_30_70_ns": 0.18582882173150128,
+      "fall_70_30_ns": 0.10358641245114542
+    },
+    {
+      "name": "ss_hrhc_d1",
+      "MOS_envelope": "ss",
+      "RC_style": "hrhc",
+      "duty": 1,
+      "current_uA": 0.3883287907275471,
+      "area_error_pct": -0.7001333742800875,
+      "rise_30_70_ns": 0.5249819550433299,
+      "fall_70_30_ns": 0.26384193842297204
+    },
+    {
+      "name": "ss_hrhc_d256",
+      "MOS_envelope": "ss",
+      "RC_style": "hrhc",
+      "duty": 256,
+      "current_uA": 100.11309562071764,
+      "area_error_pct": 0.0,
+      "rise_30_70_ns": null,
+      "fall_70_30_ns": null
+    },
+    {
+      "name": "ff_lrlc_d1",
+      "MOS_envelope": "ff",
+      "RC_style": "lrlc",
+      "duty": 1,
+      "current_uA": 0.39544564064546506,
+      "area_error_pct": -0.18624254110244376,
+      "rise_30_70_ns": 0.1758531777227429,
+      "fall_70_30_ns": 0.09880897825203377
+    },
+    {
+      "name": "ff_lrlc_d256",
+      "MOS_envelope": "ff",
+      "RC_style": "lrlc",
+      "duty": 256,
+      "current_uA": 101.42297673437089,
+      "area_error_pct": 0.0,
+      "rise_30_70_ns": null,
+      "fall_70_30_ns": null
+    }
+  ],
+  "selected_terminal_power_decomposition": [
+    {
+      "name": "tt_post_d0",
+      "group": "main",
+      "window_s": [
+        0.0005145,
+        0.0010265
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 9.236548527767498e-15,
+        "LED_device_terminal_load": 2.634610496352167e-15,
+        "selected_joint_LED_K_terminal_input": 6.601938031415331e-15,
+        "reference_supply_rail_load": 1.6896e-07,
+        "behavioral_reference_element_load": 9.869568955154043e-08,
+        "selected_joint_BIAS_terminal_input": 7.026431044845957e-08,
+        "selected_joint_VDD_terminal_input": 2.3089522082408017e-14,
+        "selected_joint_all_terminal_net_input": 7.026434013991968e-08,
+        "declared_external_source_net_supply": 1.689600323260706e-07
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 1.8040133843295893e-05,
+        "LED_device_terminal_load": 5.145723625687826e-06,
+        "selected_joint_LED_K_terminal_input": 1.2894410217608067e-05,
+        "reference_supply_rail_load": 329.99999999999994,
+        "behavioral_reference_element_load": 192.76501865535238,
+        "selected_joint_BIAS_terminal_input": 137.23498134464757,
+        "selected_joint_VDD_terminal_input": 4.5096722817203156e-05,
+        "selected_joint_all_terminal_net_input": 137.2350393357806,
+        "declared_external_source_net_supply": 330.00006313685657
+      },
+      "raw_waveform_sha256": "fb93ddf082eee2cab8abe50915e6ca16e5f77fd79e850c24e8cd9e9c1c29a4a4",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "tt_post_d1",
+      "group": "main",
+      "window_s": [
+        0.0005145,
+        0.0010265
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 1.004993697704493e-09,
+        "LED_device_terminal_load": 5.602488203259971e-10,
+        "selected_joint_LED_K_terminal_input": 4.447448773784959e-10,
+        "reference_supply_rail_load": 1.6896e-07,
+        "behavioral_reference_element_load": 9.869585570410068e-08,
+        "selected_joint_BIAS_terminal_input": 7.026414429589932e-08,
+        "selected_joint_VDD_terminal_input": 2.0157752622393737e-12,
+        "selected_joint_all_terminal_net_input": 7.071091040570511e-08,
+        "declared_external_source_net_supply": 1.699670149301318e-07
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 1.9628783158290874,
+        "LED_device_terminal_load": 1.0942359771992127,
+        "selected_joint_LED_K_terminal_input": 0.8686423386298746,
+        "reference_supply_rail_load": 329.99999999999994,
+        "behavioral_reference_element_load": 192.76534317207162,
+        "selected_joint_BIAS_terminal_input": 137.23465682792832,
+        "selected_joint_VDD_terminal_input": 0.003937061059061276,
+        "selected_joint_all_terminal_net_input": 138.10724688614278,
+        "declared_external_source_net_supply": 331.96682603541365
+      },
+      "raw_waveform_sha256": "3aade47b8d73aeaaab1149ad0cebce4e9e6393f0bee5d9f77be197621a30f973",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "tt_post_d256",
+      "group": "main",
+      "window_s": [
+        0.0005145,
+        0.0010265
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 2.5792713602255307e-07,
+        "LED_device_terminal_load": 1.444711081814002e-07,
+        "selected_joint_LED_K_terminal_input": 1.1345602784115287e-07,
+        "reference_supply_rail_load": 1.6895999999999997e-07,
+        "behavioral_reference_element_load": 9.869569006572884e-08,
+        "selected_joint_BIAS_terminal_input": 7.026430993427113e-08,
+        "selected_joint_VDD_terminal_input": 2.344612329425553e-14,
+        "selected_joint_all_terminal_net_input": 1.8372036122233648e-07,
+        "declared_external_source_net_supply": 4.268871594694656e-07
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 503.7639375440489,
+        "LED_device_terminal_load": 282.1701331667972,
+        "selected_joint_LED_K_terminal_input": 221.59380437725167,
+        "reference_supply_rail_load": 329.9999999999999,
+        "behavioral_reference_element_load": 192.7650196596266,
+        "selected_joint_BIAS_terminal_input": 137.23498034037328,
+        "selected_joint_VDD_terminal_input": 4.5793209559092816e-05,
+        "selected_joint_all_terminal_net_input": 358.8288305123759,
+        "declared_external_source_net_supply": 833.7639833387999
+      },
+      "raw_waveform_sha256": "6ce0337ffcecd35e79397c0382ad38db1a3ed7d6424419467f40b9c8330a4938",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "simultaneous_ideal_early",
+      "group": "boundary",
+      "window_s": [
+        0,
+        2e-05
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 8.813835954639749e-09,
+        "LED_device_terminal_load": 4.927650511373845e-09,
+        "selected_joint_LED_K_terminal_input": 3.886185443265904e-09,
+        "reference_supply_rail_load": 6.253499999999999e-09,
+        "behavioral_reference_element_load": 3.516521926219104e-09,
+        "selected_joint_BIAS_terminal_input": 2.7369780737808946e-09,
+        "selected_joint_VDD_terminal_input": 7.218579825795817e-13,
+        "selected_joint_all_terminal_net_input": 6.6239218194871876e-09,
+        "declared_external_source_net_supply": 1.5068094257080137e-08
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 440.6917977319874,
+        "LED_device_terminal_load": 246.38252556869222,
+        "selected_joint_LED_K_terminal_input": 194.3092721632952,
+        "reference_supply_rail_load": 312.6749999999999,
+        "behavioral_reference_element_load": 175.8260963109552,
+        "selected_joint_BIAS_terminal_input": 136.84890368904473,
+        "selected_joint_VDD_terminal_input": 0.03609289912897908,
+        "selected_joint_all_terminal_net_input": 331.1960909743594,
+        "declared_external_source_net_supply": 753.4047128540068
+      },
+      "raw_waveform_sha256": "447c07749816af799f99b1a99eba47cfc8ebb5fd083721d25f6d8210e98673a0",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "simultaneous_ideal_late",
+      "group": "boundary",
+      "window_s": [
+        0,
+        2e-05
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 8.813834154743933e-09,
+        "LED_device_terminal_load": 4.927650511308101e-09,
+        "selected_joint_LED_K_terminal_input": 3.886183643435832e-09,
+        "reference_supply_rail_load": 6.187499999999999e-09,
+        "behavioral_reference_element_load": 3.6152023522413054e-09,
+        "selected_joint_BIAS_terminal_input": 2.5722976477586937e-09,
+        "selected_joint_VDD_terminal_input": 7.191067356260649e-13,
+        "selected_joint_all_terminal_net_input": 6.459236842395462e-09,
+        "declared_external_source_net_supply": 1.500208970594487e-08
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 440.6917077371966,
+        "LED_device_terminal_load": 246.38252556540507,
+        "selected_joint_LED_K_terminal_input": 194.30918217179158,
+        "reference_supply_rail_load": 309.37499999999994,
+        "behavioral_reference_element_load": 180.76011761206527,
+        "selected_joint_BIAS_terminal_input": 128.61488238793467,
+        "selected_joint_VDD_terminal_input": 0.03595533678130324,
+        "selected_joint_all_terminal_net_input": 322.9618421197731,
+        "declared_external_source_net_supply": 750.1044852972434
+      },
+      "raw_waveform_sha256": "f6d295ac766467c027fddddcedf2c9a0f0dd3bede8bec50ccac2c99a3a20182b",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "simultaneous_compliant_early",
+      "group": "boundary",
+      "window_s": [
+        0,
+        2e-05
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 8.814077754461153e-09,
+        "LED_device_terminal_load": 4.927790288460583e-09,
+        "selected_joint_LED_K_terminal_input": 3.8862874660005705e-09,
+        "reference_supply_rail_load": 6.249382937180447e-09,
+        "behavioral_reference_element_load": 3.6490069324832576e-09,
+        "selected_joint_BIAS_terminal_input": 2.60037600469719e-09,
+        "selected_joint_VDD_terminal_input": 7.210350073048785e-13,
+        "selected_joint_all_terminal_net_input": 6.487420950168344e-09,
+        "declared_external_source_net_supply": 1.5064218171112185e-08
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 440.7038877230576,
+        "LED_device_terminal_load": 246.38951442302914,
+        "selected_joint_LED_K_terminal_input": 194.3143733000285,
+        "reference_supply_rail_load": 312.4691468590224,
+        "behavioral_reference_element_load": 182.45034662416288,
+        "selected_joint_BIAS_terminal_input": 130.01880023485947,
+        "selected_joint_VDD_terminal_input": 0.03605175036524392,
+        "selected_joint_all_terminal_net_input": 324.3710475084172,
+        "declared_external_source_net_supply": 753.2109085556092
+      },
+      "raw_waveform_sha256": "5a7bcca233838f3cadcd117356830b0aea039e020d89b624aa762f0e11475528",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "logic_first_ideal_early",
+      "group": "boundary",
+      "window_s": [
+        0,
+        2e-05
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 6.019725388695866e-09,
+        "LED_device_terminal_load": 3.3743827783582496e-09,
+        "selected_joint_LED_K_terminal_input": 2.6453426103376164e-09,
+        "reference_supply_rail_load": 6.2534999999999995e-09,
+        "behavioral_reference_element_load": 3.5165132810710178e-09,
+        "selected_joint_BIAS_terminal_input": 2.7369867189289818e-09,
+        "selected_joint_VDD_terminal_input": 7.177630390005344e-13,
+        "selected_joint_all_terminal_net_input": 5.3830835367148675e-09,
+        "declared_external_source_net_supply": 1.2273979596144137e-08
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 300.98626943479326,
+        "LED_device_terminal_load": 168.71913891791246,
+        "selected_joint_LED_K_terminal_input": 132.26713051688083,
+        "reference_supply_rail_load": 312.67499999999995,
+        "behavioral_reference_element_load": 175.82566405355087,
+        "selected_joint_BIAS_terminal_input": 136.8493359464491,
+        "selected_joint_VDD_terminal_input": 0.03588815195002672,
+        "selected_joint_all_terminal_net_input": 269.1541768357433,
+        "declared_external_source_net_supply": 613.6989798072068
+      },
+      "raw_waveform_sha256": "bd22537daa394847098786c4b1669427ed2295da9d07816250ea90d460c84042",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "logic_first_ideal_late",
+      "group": "boundary",
+      "window_s": [
+        0,
+        2e-05
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 6.0197253869834044e-09,
+        "LED_device_terminal_load": 3.374382772490794e-09,
+        "selected_joint_LED_K_terminal_input": 2.6453426144926104e-09,
+        "reference_supply_rail_load": 6.187499999999999e-09,
+        "behavioral_reference_element_load": 3.6151942482705832e-09,
+        "selected_joint_BIAS_terminal_input": 2.572305751729416e-09,
+        "selected_joint_VDD_terminal_input": 7.149989362400997e-13,
+        "selected_joint_all_terminal_net_input": 5.21839980955807e-09,
+        "declared_external_source_net_supply": 1.220797683031945e-08
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 300.9862693491702,
+        "LED_device_terminal_load": 168.7191386245397,
+        "selected_joint_LED_K_terminal_input": 132.2671307246305,
+        "reference_supply_rail_load": 309.37499999999994,
+        "behavioral_reference_element_load": 180.75971241352914,
+        "selected_joint_BIAS_terminal_input": 128.61528758647077,
+        "selected_joint_VDD_terminal_input": 0.03574994681200498,
+        "selected_joint_all_terminal_net_input": 260.9199904779035,
+        "declared_external_source_net_supply": 610.3988415159724
+      },
+      "raw_waveform_sha256": "fc1ec3d58822ebda2dfeb0cc58dcabf53f70b1faca5802a68cf9ffe1a60d9f3b",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "logic_first_compliant_early",
+      "group": "boundary",
+      "window_s": [
+        0,
+        2e-05
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 6.019890647173758e-09,
+        "LED_device_terminal_load": 3.3744782945229857e-09,
+        "selected_joint_LED_K_terminal_input": 2.6454123526507724e-09,
+        "reference_supply_rail_load": 6.249383245647164e-09,
+        "behavioral_reference_element_load": 3.648998141253685e-09,
+        "selected_joint_BIAS_terminal_input": 2.600385104393479e-09,
+        "selected_joint_VDD_terminal_input": 7.169410948137391e-13,
+        "selected_joint_all_terminal_net_input": 5.246550842544921e-09,
+        "declared_external_source_net_supply": 1.2270027278321592e-08
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 300.99453235868793,
+        "LED_device_terminal_load": 168.72391472614927,
+        "selected_joint_LED_K_terminal_input": 132.2706176325386,
+        "reference_supply_rail_load": 312.4691622823582,
+        "behavioral_reference_element_load": 182.44990706268425,
+        "selected_joint_BIAS_terminal_input": 130.01925521967394,
+        "selected_joint_VDD_terminal_input": 0.03584705474068695,
+        "selected_joint_all_terminal_net_input": 262.32754212724603,
+        "declared_external_source_net_supply": 613.5013639160795
+      },
+      "raw_waveform_sha256": "3d72959d08e6dc8834b802d2aa0be97b30a667ed80bebde5c9034497e999eb59",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "LED_first_ideal_early",
+      "group": "boundary",
+      "window_s": [
+        0,
+        2e-05
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 6.007663372827608e-09,
+        "LED_device_terminal_load": 3.3558606332471316e-09,
+        "selected_joint_LED_K_terminal_input": 2.651802739580477e-09,
+        "reference_supply_rail_load": 3.9435e-09,
+        "behavioral_reference_element_load": 1.2064866710248682e-09,
+        "selected_joint_BIAS_terminal_input": 2.737013328975132e-09,
+        "selected_joint_VDD_terminal_input": 2.5602100007612644e-13,
+        "selected_joint_all_terminal_net_input": 5.389096935525159e-09,
+        "declared_external_source_net_supply": 9.95144423979716e-09
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 300.3831686413804,
+        "LED_device_terminal_load": 167.79303166235655,
+        "selected_joint_LED_K_terminal_input": 132.59013697902384,
+        "reference_supply_rail_load": 197.17499999999998,
+        "behavioral_reference_element_load": 60.3243335512434,
+        "selected_joint_BIAS_terminal_input": 136.85066644875658,
+        "selected_joint_VDD_terminal_input": 0.012801050003806321,
+        "selected_joint_all_terminal_net_input": 269.4548467762579,
+        "declared_external_source_net_supply": 497.57221198985803
+      },
+      "raw_waveform_sha256": "9aa3a39ed17435ecb94f710fb58424b6ac6df24a02b95cb4eb483202d5a21f43",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "LED_first_ideal_late",
+      "group": "boundary",
+      "window_s": [
+        0,
+        2e-05
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 5.917736835787603e-09,
+        "LED_device_terminal_load": 3.30548687468654e-09,
+        "selected_joint_LED_K_terminal_input": 2.6122499611010628e-09,
+        "reference_supply_rail_load": 3.8775e-09,
+        "behavioral_reference_element_load": 2.265789805935796e-09,
+        "selected_joint_BIAS_terminal_input": 1.6117101940642041e-09,
+        "selected_joint_VDD_terminal_input": 2.408291639636056e-13,
+        "selected_joint_all_terminal_net_input": 4.224225826107746e-09,
+        "declared_external_source_net_supply": 9.795502506730084e-09
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 295.88684178938007,
+        "LED_device_terminal_load": 165.274343734327,
+        "selected_joint_LED_K_terminal_input": 130.61249805505312,
+        "reference_supply_rail_load": 193.875,
+        "behavioral_reference_element_load": 113.2894902967898,
+        "selected_joint_BIAS_terminal_input": 80.58550970321019,
+        "selected_joint_VDD_terminal_input": 0.012041458198180277,
+        "selected_joint_all_terminal_net_input": 211.21129130538728,
+        "declared_external_source_net_supply": 489.77512533650423
+      },
+      "raw_waveform_sha256": "4a5d4571e220647ee38fcf3e3085ccb0e75adae65067e34ec2a426fb8ae986a3",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "LED_first_compliant_early",
+      "group": "boundary",
+      "window_s": [
+        0,
+        2e-05
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 6.007816891177018e-09,
+        "LED_device_terminal_load": 3.3559507252938758e-09,
+        "selected_joint_LED_K_terminal_input": 2.6518661658831423e-09,
+        "reference_supply_rail_load": 3.939364761868271e-09,
+        "behavioral_reference_element_load": 2.2995906987055857e-09,
+        "selected_joint_BIAS_terminal_input": 1.6397740631626853e-09,
+        "selected_joint_VDD_terminal_input": 2.548825656376892e-13,
+        "selected_joint_all_terminal_net_input": 4.291919954694162e-09,
+        "declared_external_source_net_supply": 9.947461378693625e-09
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 300.3908445588509,
+        "LED_device_terminal_load": 167.79753626469378,
+        "selected_joint_LED_K_terminal_input": 132.5933082941571,
+        "reference_supply_rail_load": 196.96823809341353,
+        "behavioral_reference_element_load": 114.97953493527928,
+        "selected_joint_BIAS_terminal_input": 81.98870315813426,
+        "selected_joint_VDD_terminal_input": 0.012744128281884459,
+        "selected_joint_all_terminal_net_input": 214.5959977347081,
+        "declared_external_source_net_supply": 497.37306893468127
+      },
+      "raw_waveform_sha256": "9ce397513f33f10a78a0eafc7bb27897126bff1d01a815bf205b30b441d0a76b",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "impedance_0_0_d1",
+      "group": "boundary",
+      "window_s": [
+        0.0005145,
+        0.0010265
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 1.0049936977007371e-09,
+        "LED_device_terminal_load": 5.602488203391664e-10,
+        "selected_joint_LED_K_terminal_input": 4.447448773615707e-10,
+        "reference_supply_rail_load": 1.6896e-07,
+        "behavioral_reference_element_load": 9.869585570410081e-08,
+        "selected_joint_BIAS_terminal_input": 7.026414429589919e-08,
+        "selected_joint_VDD_terminal_input": 2.0157752460621924e-12,
+        "selected_joint_all_terminal_net_input": 7.071091040567195e-08,
+        "declared_external_source_net_supply": 1.699670149301679e-07
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 1.962878315821752,
+        "LED_device_terminal_load": 1.0942359772249342,
+        "selected_joint_LED_K_terminal_input": 0.8686423385968177,
+        "reference_supply_rail_load": 329.99999999999994,
+        "behavioral_reference_element_load": 192.76534317207185,
+        "selected_joint_BIAS_terminal_input": 137.2346568279281,
+        "selected_joint_VDD_terminal_input": 0.003937061027465219,
+        "selected_joint_all_terminal_net_input": 138.10724688607797,
+        "declared_external_source_net_supply": 331.96682603548413
+      },
+      "raw_waveform_sha256": "054776533974fd745cbf7335ab887ef30125e3965b12b84f84ae63a108f97e27",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "impedance_0_0_d256",
+      "group": "boundary",
+      "window_s": [
+        0.0005145,
+        0.0010265
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 2.579271360225541e-07,
+        "LED_device_terminal_load": 1.4447110818140083e-07,
+        "selected_joint_LED_K_terminal_input": 1.134560278411533e-07,
+        "reference_supply_rail_load": 1.6896e-07,
+        "behavioral_reference_element_load": 9.869569006572879e-08,
+        "selected_joint_BIAS_terminal_input": 7.026430993427121e-08,
+        "selected_joint_VDD_terminal_input": 2.3446122115879557e-14,
+        "selected_joint_all_terminal_net_input": 1.8372036122233603e-07,
+        "declared_external_source_net_supply": 4.2688715946951957e-07
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 503.7639375440509,
+        "LED_device_terminal_load": 282.17013316679845,
+        "selected_joint_LED_K_terminal_input": 221.5938043772525,
+        "reference_supply_rail_load": 329.99999999999994,
+        "behavioral_reference_element_load": 192.76501965962652,
+        "selected_joint_BIAS_terminal_input": 137.23498034037343,
+        "selected_joint_VDD_terminal_input": 4.579320725757725e-05,
+        "selected_joint_all_terminal_net_input": 358.828830512375,
+        "declared_external_source_net_supply": 833.7639833389053
+      },
+      "raw_waveform_sha256": "0b75d68fa0044601386421cdabacac47e069976369d8ca06c8b7d961614ad479",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "impedance_10_100_d1",
+      "group": "boundary",
+      "window_s": [
+        0.0005145,
+        0.0010265
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 1.003097080179663e-09,
+        "LED_device_terminal_load": 5.602051675585161e-10,
+        "selected_joint_LED_K_terminal_input": 4.428919126211469e-10,
+        "reference_supply_rail_load": 1.6890879938942438e-07,
+        "behavioral_reference_element_load": 9.864465512090708e-08,
+        "selected_joint_BIAS_terminal_input": 7.02641442685173e-08,
+        "selected_joint_VDD_terminal_input": 2.014245227481104e-12,
+        "selected_joint_all_terminal_net_input": 7.070905587625162e-08,
+        "declared_external_source_net_supply": 1.6996693865896597e-07
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 1.9591739847259042,
+        "LED_device_terminal_load": 1.0941507178877266,
+        "selected_joint_LED_K_terminal_input": 0.8650232668381774,
+        "reference_supply_rail_load": 329.89999880746944,
+        "behavioral_reference_element_load": 192.66534203302163,
+        "selected_joint_BIAS_terminal_input": 137.23465677444784,
+        "selected_joint_VDD_terminal_input": 0.00393407270992403,
+        "selected_joint_all_terminal_net_input": 138.1036247583039,
+        "declared_external_source_net_supply": 331.9666770682929
+      },
+      "raw_waveform_sha256": "f739c82d0213b543dc67d62d13ea133f05a490828d91cd224d627042927c3b71",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "impedance_10_100_d256",
+      "group": "boundary",
+      "window_s": [
+        0.0005145,
+        0.0010265
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 2.5738672368941396e-07,
+        "LED_device_terminal_load": 1.4445913784317278e-07,
+        "selected_joint_LED_K_terminal_input": 1.1292758584624118e-07,
+        "reference_supply_rail_load": 1.6890879999289793e-07,
+        "behavioral_reference_element_load": 9.864449005864599e-08,
+        "selected_joint_BIAS_terminal_input": 7.026430993425194e-08,
+        "selected_joint_VDD_terminal_input": 2.3431538347539615e-14,
+        "selected_joint_all_terminal_net_input": 1.8319191921238582e-07,
+        "declared_external_source_net_supply": 4.268664010300558e-07
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 502.7084447058865,
+        "LED_device_terminal_load": 282.1467535999468,
+        "selected_joint_LED_K_terminal_input": 220.56169110593976,
+        "reference_supply_rail_load": 329.8999999861287,
+        "behavioral_reference_element_load": 192.66501964579294,
+        "selected_joint_BIAS_terminal_input": 137.2349803403358,
+        "selected_joint_VDD_terminal_input": 4.576472333503831e-05,
+        "selected_joint_all_terminal_net_input": 357.796717211691,
+        "declared_external_source_net_supply": 833.7234395118276
+      },
+      "raw_waveform_sha256": "44848bf63c3d7f8cf31147f4f2051b15531c25a7854b99486586539a315c1d67",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "impedance_100_1000_d1",
+      "group": "boundary",
+      "window_s": [
+        0.0005145,
+        0.0010265
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 9.972463044122551e-10,
+        "LED_device_terminal_load": 5.600634469913609e-10,
+        "selected_joint_LED_K_terminal_input": 4.3718285742089423e-10,
+        "reference_supply_rail_load": 1.6844799391651075e-07,
+        "behavioral_reference_element_load": 9.818384974203376e-08,
+        "selected_joint_BIAS_terminal_input": 7.026414417447699e-08,
+        "selected_joint_VDD_terminal_input": 2.0014215653278897e-12,
+        "selected_joint_all_terminal_net_input": 7.070333388665033e-08,
+        "declared_external_source_net_supply": 1.6996668864757488e-07
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 1.9477466883051855,
+        "LED_device_terminal_load": 1.0938739199050016,
+        "selected_joint_LED_K_terminal_input": 0.8538727684001839,
+        "reference_supply_rail_load": 328.999988118185,
+        "behavioral_reference_element_load": 191.76533152740964,
+        "selected_joint_BIAS_terminal_input": 137.23465659077533,
+        "selected_joint_VDD_terminal_input": 0.003909026494781033,
+        "selected_joint_all_terminal_net_input": 138.0924489973639,
+        "declared_external_source_net_supply": 331.96618876479465
+      },
+      "raw_waveform_sha256": "b5366cd38f73c5c22b8f3b1451a447153df12df405cd680e29f09d343b4779c2",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "impedance_100_1000_d256",
+      "group": "boundary",
+      "window_s": [
+        0.0005145,
+        0.0010265
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 2.5252880666087534e-07,
+        "LED_device_terminal_load": 1.4435036548609065e-07,
+        "selected_joint_LED_K_terminal_input": 1.081784411747847e-07,
+        "reference_supply_rail_load": 1.6844799992917256e-07,
+        "behavioral_reference_element_load": 9.818368999488088e-08,
+        "selected_joint_BIAS_terminal_input": 7.026430993429168e-08,
+        "selected_joint_VDD_terminal_input": 2.330359591003496e-14,
+        "selected_joint_all_terminal_net_input": 1.784427744121818e-07,
+        "declared_external_source_net_supply": 4.2667777043585157e-07
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 493.22032550952207,
+        "LED_device_terminal_load": 281.93430759002075,
+        "selected_joint_LED_K_terminal_input": 211.28601791950132,
+        "reference_supply_rail_load": 328.9999998616651,
+        "behavioral_reference_element_load": 191.76501952125167,
+        "selected_joint_BIAS_terminal_input": 137.23498034041341,
+        "selected_joint_VDD_terminal_input": 4.551483576178702e-05,
+        "selected_joint_all_terminal_net_input": 348.5210437737925,
+        "declared_external_source_net_supply": 833.3550203825224
+      },
+      "raw_waveform_sha256": "b9bfbab7b3d2d1ed127a13904f6efecc2040ff75d7eaf5c77eff0cb6edbf0bb2",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "logic_first_R100_RLED1000_decap",
+      "group": "boundary",
+      "window_s": [
+        0,
+        2e-05
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 5.2629581011029606e-09,
+        "LED_device_terminal_load": 3.1248581230405143e-09,
+        "selected_joint_LED_K_terminal_input": 2.1380999780624463e-09,
+        "reference_supply_rail_load": 6.16409720720426e-09,
+        "behavioral_reference_element_load": 3.5917408908379297e-09,
+        "selected_joint_BIAS_terminal_input": 2.5723563163663305e-09,
+        "selected_joint_VDD_terminal_input": 7.094963367423293e-13,
+        "selected_joint_all_terminal_net_input": 4.7112020123601395e-09,
+        "declared_external_source_net_supply": 4.5294133858455565e-08
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 263.147905055148,
+        "LED_device_terminal_load": 156.2429061520257,
+        "selected_joint_LED_K_terminal_input": 106.9049989031223,
+        "reference_supply_rail_load": 308.204860360213,
+        "behavioral_reference_element_load": 179.58704454189646,
+        "selected_joint_BIAS_terminal_input": 128.61781581831653,
+        "selected_joint_VDD_terminal_input": 0.03547481683711646,
+        "selected_joint_all_terminal_net_input": 235.56010061800694,
+        "declared_external_source_net_supply": 2264.706692922778
+      },
+      "raw_waveform_sha256": "27a639a8628e8de13b6e5dee660b13d91c8a15dfcae4b020d71281e17cb17c39",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    },
+    {
+      "name": "neighbors_all_live_high_LED_first",
+      "group": "boundary",
+      "window_s": [
+        0,
+        2e-05
+      ],
+      "energies_j": {
+        "external_LED_branch_rail_load": 6.007817776955863e-09,
+        "LED_device_terminal_load": 3.3559512211352246e-09,
+        "selected_joint_LED_K_terminal_input": 2.6518665558206384e-09,
+        "reference_supply_rail_load": 3.939364760106017e-09,
+        "behavioral_reference_element_load": 2.299590697049795e-09,
+        "selected_joint_BIAS_terminal_input": 1.6397740630562222e-09,
+        "selected_joint_VDD_terminal_input": 2.530383892037251e-13,
+        "selected_joint_all_terminal_net_input": 4.2919164176394995e-09,
+        "declared_external_source_net_supply": 9.947458335824518e-09
+      },
+      "duration_average_uW": {
+        "external_LED_branch_rail_load": 300.3908888477931,
+        "LED_device_terminal_load": 167.7975610567612,
+        "selected_joint_LED_K_terminal_input": 132.59332779103192,
+        "reference_supply_rail_load": 196.96823800530086,
+        "behavioral_reference_element_load": 114.97953485248975,
+        "selected_joint_BIAS_terminal_input": 81.9887031528111,
+        "selected_joint_VDD_terminal_input": 0.012651919460186255,
+        "selected_joint_all_terminal_net_input": 214.59582088197496,
+        "declared_external_source_net_supply": 497.37291679122586
+      },
+      "raw_waveform_sha256": "87d6804d00b60d940fa089e6d2a140a52cf265063cf030842c4c327096c226d0",
+      "interpretation": "selected joint terminal net input includes losses and internal stored-energy change; not pure heat or full PG power; reference rail and B-element are nested accounts, not additive independent loads"
+    }
+  ],
+  "teaching_waveform_slices": [
+    {
+      "path": "evidence/robustness/nominal-lowest-pulse.csv",
+      "sha256": "ec7d9230a3a0f4d17fef553eeea122c67f03cff14c809cb8507ce87cb942c5eb",
+      "source_waveform": "build/robustness/main-mx5nfi8b/tt_post_d1/waveform.dat",
+      "source_waveform_sha256": "3aade47b8d73aeaaab1149ad0cebce4e9e6393f0bee5d9f77be197621a30f973",
+      "time_window_s": [
+        0.00051445,
+        0.0005156
+      ],
+      "sample_stride": 1,
+      "purpose": "teaching plot only; primary current/power integrals use every saved raw point"
+    },
+    {
+      "path": "evidence/robustness/startup-ideal-LED-first.csv",
+      "sha256": "f5f2e42d03d27f647dba0a488c9fbf0c544c551d47aff7d084d45294cd12f293",
+      "source_waveform": "build/robustness/boundary-zkivszoz/LED_first_ideal_early/waveform.dat",
+      "source_waveform_sha256": "9aa3a39ed17435ecb94f710fb58424b6ac6df24a02b95cb4eb483202d5a21f43",
+      "time_window_s": [
+        0,
+        2e-05
+      ],
+      "sample_stride": 5,
+      "purpose": "teaching plot only; primary current/power integrals use every saved raw point"
+    },
+    {
+      "path": "evidence/robustness/startup-compliant-LED-first.csv",
+      "sha256": "93694efe850f3f306675152f7b26e3e26678287d69673238960374510baa8e64",
+      "source_waveform": "build/robustness/boundary-zkivszoz/LED_first_compliant_early/waveform.dat",
+      "source_waveform_sha256": "9ce397513f33f10a78a0eafc7bb27897126bff1d01a815bf205b30b441d0a76b",
+      "time_window_s": [
+        0,
+        2e-05
+      ],
+      "sample_stride": 5,
+      "purpose": "teaching plot only; primary current/power integrals use every saved raw point"
+    },
+    {
+      "path": "evidence/robustness/registered-enable.csv",
+      "sha256": "1343418d3bf536461fe9f652e9c7cf12468e061a0a73acc95035e7e44b8ef6f7",
+      "source_waveform": "build/robustness/boundary-zkivszoz/RTL_enable/waveform.dat",
+      "source_waveform_sha256": "3ee70b7762eb224bf8f2204e2b646a7fdcc7187ab7ea13d03a9abe28cab28430",
+      "time_window_s": [
+        0,
+        0.0006
+      ],
+      "sample_stride": 20,
+      "purpose": "teaching plot only; primary current/power integrals use every saved raw point"
+    }
+  ],
+  "power_decomposition_method": "exact saved-vector product integral at LED_K; linear account identities for LED_A split and VREF -> behavioral reference -> BIAS split; selected joint includes VDD + BIAS + LED_K + input/neighbor, with storage changes and exclusions declared",
+  "measured_static_supply_boundary": [
+    {
+      "name": "measured_static_R0",
+      "series_LED_R_ohm": 0,
+      "current_uA": 99.84028683994124,
+      "current_error_pct": -0.1597131600587609,
+      "full_on_5pct_target_met": true,
+      "LED_anode_v": 5.0
+    },
+    {
+      "name": "measured_static_R1000",
+      "series_LED_R_ohm": 1000,
+      "current_uA": 99.71422667589351,
+      "current_error_pct": -0.28577332410648637,
+      "full_on_5pct_target_met": true,
+      "LED_anode_v": 4.900285773324107
+    },
+    {
+      "name": "measured_static_R5000",
+      "series_LED_R_ohm": 5000,
+      "current_uA": 98.92029259810775,
+      "current_error_pct": -1.0797074018922492,
+      "full_on_5pct_target_met": true,
+      "LED_anode_v": 4.505398537009461
+    },
+    {
+      "name": "measured_static_R10000",
+      "series_LED_R_ohm": 10000,
+      "current_uA": 88.26599248514972,
+      "current_error_pct": -11.734007514850276,
+      "full_on_5pct_target_met": false,
+      "LED_anode_v": 4.117340075148501
+    }
+  ],
+  "observed_reference_startup_boundaries": [
+    {
+      "name": "simultaneous_ideal_early",
+      "bias_above_live_rail_max_v": 1.372349818058899,
+      "reference_B_active_delivery_energy_j": 1.3245020672964622e-10,
+      "minimum_reference_B_absorbed_power_uW": -137.23498180588993,
+      "command_low_peak_LED_branch_current_uA": 1.921964457499078,
+      "interpretation": "LED branch includes displacement; active B-reference energy identifies ideal-source boundary; no optical startup qualification"
+    },
+    {
+      "name": "simultaneous_ideal_late",
+      "bias_above_live_rail_max_v": 5.140769659476892e-15,
+      "reference_B_active_delivery_energy_j": -0.0,
+      "minimum_reference_B_absorbed_power_uW": -0.0,
+      "command_low_peak_LED_branch_current_uA": 1.919840538716521,
+      "interpretation": "LED branch includes displacement; active B-reference energy identifies ideal-source boundary; no optical startup qualification"
+    },
+    {
+      "name": "simultaneous_compliant_early",
+      "bias_above_live_rail_max_v": 5.911848028992758e-15,
+      "reference_B_active_delivery_energy_j": 2.5456470330907354e-46,
+      "minimum_reference_B_absorbed_power_uW": -9.267105718661621e-42,
+      "command_low_peak_LED_branch_current_uA": 1.919584376114445,
+      "interpretation": "LED branch includes displacement; active B-reference energy identifies ideal-source boundary; no optical startup qualification"
+    },
+    {
+      "name": "logic_first_ideal_early",
+      "bias_above_live_rail_max_v": 1.372349818058899,
+      "reference_B_active_delivery_energy_j": 1.3245005154529682e-10,
+      "minimum_reference_B_absorbed_power_uW": -137.23498180588993,
+      "command_low_peak_LED_branch_current_uA": 0.05015985251331922,
+      "interpretation": "LED branch includes displacement; active B-reference energy identifies ideal-source boundary; no optical startup qualification"
+    },
+    {
+      "name": "logic_first_ideal_late",
+      "bias_above_live_rail_max_v": 5.140769659476892e-15,
+      "reference_B_active_delivery_energy_j": -0.0,
+      "minimum_reference_B_absorbed_power_uW": -0.0,
+      "command_low_peak_LED_branch_current_uA": 0.05048805550590544,
+      "interpretation": "LED branch includes displacement; active B-reference energy identifies ideal-source boundary; no optical startup qualification"
+    },
+    {
+      "name": "logic_first_compliant_early",
+      "bias_above_live_rail_max_v": 5.911848028992758e-15,
+      "reference_B_active_delivery_energy_j": 2.5456470330350068e-46,
+      "minimum_reference_B_absorbed_power_uW": -9.267105718661621e-42,
+      "command_low_peak_LED_branch_current_uA": 0.050120363482489466,
+      "interpretation": "LED branch includes displacement; active B-reference energy identifies ideal-source boundary; no optical startup qualification"
+    },
+    {
+      "name": "LED_first_ideal_early",
+      "bias_above_live_rail_max_v": 1.372420969983746,
+      "reference_B_active_delivery_energy_j": 1.0930951144629023e-09,
+      "minimum_reference_B_absorbed_power_uW": -137.2420969983746,
+      "command_low_peak_LED_branch_current_uA": 2.015213350683942,
+      "interpretation": "LED branch includes displacement; active B-reference energy identifies ideal-source boundary; no optical startup qualification"
+    },
+    {
+      "name": "LED_first_ideal_late",
+      "bias_above_live_rail_max_v": 0.01645503078936794,
+      "reference_B_active_delivery_energy_j": -0.0,
+      "minimum_reference_B_absorbed_power_uW": -0.0,
+      "command_low_peak_LED_branch_current_uA": 2.012900926820653,
+      "interpretation": "LED branch includes displacement; active B-reference energy identifies ideal-source boundary; no optical startup qualification"
+    },
+    {
+      "name": "LED_first_compliant_early",
+      "bias_above_live_rail_max_v": 0.01645503085619271,
+      "reference_B_active_delivery_energy_j": 3.8195241750323526e-23,
+      "minimum_reference_B_absorbed_power_uW": -9.267105718661621e-42,
+      "command_low_peak_LED_branch_current_uA": 2.012883577691142,
+      "interpretation": "LED branch includes displacement; active B-reference energy identifies ideal-source boundary; no optical startup qualification"
+    },
+    {
+      "name": "logic_first_R100_RLED1000_decap",
+      "bias_above_live_rail_max_v": 3.063904120414172e-15,
+      "reference_B_active_delivery_energy_j": -0.0,
+      "minimum_reference_B_absorbed_power_uW": -0.0,
+      "command_low_peak_LED_branch_current_uA": 0.04989342505960656,
+      "interpretation": "LED branch includes displacement; active B-reference energy identifies ideal-source boundary; no optical startup qualification"
+    },
+    {
+      "name": "neighbors_all_live_high_LED_first",
+      "bias_above_live_rail_max_v": 0.01645503085619271,
+      "reference_B_active_delivery_energy_j": 1.7314567115489555e-23,
+      "minimum_reference_B_absorbed_power_uW": -9.267105718661621e-42,
+      "command_low_peak_LED_branch_current_uA": 2.012883577691142,
+      "interpretation": "LED branch includes displacement; active B-reference energy identifies ideal-source boundary; no optical startup qualification"
+    }
+  ],
+  "control_timing": {
+    "reset_assert_input_s": 2e-05,
+    "reset_registered_PWM_low_s": 2.05e-05,
+    "reset_release_input_s": 3e-05,
+    "registered_PWM_high_s": 3.05e-05,
+    "enable_low_input_s": 2e-05,
+    "frame_committed_PWM_low_s": 0.0002585,
+    "enable_high_input_s": 0.0003,
+    "frame_committed_PWM_high_s": 0.0005145,
+    "semantics": "actual RTL functional timing; additional electrical output-stage delay recorded separately; no POR/voltage-aware FF"
+  },
+  "counts": {
+    "transient_runs": 66,
+    "dc_circuit_runs": 28,
+    "synthetic_LED_calibration_runs": 3
+  },
+  "batches": {
+    "probe": {
+      "summary_path": "evidence/robustness/probe-summary.json",
+      "summary_sha256": "4ed6b81cdc93f98770f4562029d310465ca2d5023d3bf9906aa09098482d1d2f",
+      "run_directory": "build/robustness/probe-8p0a15d1",
+      "passed": true,
+      "transient_runs": 10,
+      "dc_runs": 12
+    },
+    "main": {
+      "summary_path": "evidence/robustness/main-summary.json",
+      "summary_sha256": "5c962bf85021991085f0d15370d355d0a8a2af02bc7119f257de6cf6d7f20321",
+      "run_directory": "build/robustness/main-mx5nfi8b",
+      "passed": true,
+      "transient_runs": 37,
+      "dc_runs": 12
+    },
+    "boundary": {
+      "summary_path": "evidence/robustness/boundary-summary.json",
+      "summary_sha256": "d4bf28fa216a2f5d894e4da0b19f6c647eb71d763b553d49ddad5bc0f71f65ad",
+      "run_directory": "build/robustness/boundary-zkivszoz",
+      "passed": true,
+      "transient_runs": 19,
+      "dc_runs": 4
+    }
+  },
+  "packager_sha256": "f415504559fe4b106a914012ae72da5cf244345f16b962227fabfad9339fef69"
+}

@@ -1,6 +1,6 @@
 # 开发环境与复现
 
-环境检查日期：2026-10-04（Asia/Tokyo）。本页记录 **Mac arm64 上的 1-Pixel RTL → SPICE batch simulation 环境**。原生模拟 layout 见[版图环境](layout/README.md)；数字PWM及Linux工具见[digital physical](digital/physical.md)。v0.3 [共同macro top](../layout/integration/README.md)已完成声明范围的集成；完整带pad/ESD芯片仍未建立。
+环境状态日期：2026-10-05（Asia/Tokyo），v0.4。本页记录 **Mac arm64 的一像素仿真、原生寄生提取与Linux物理工具环境**。原生analog layout见[版图环境](layout/README.md)；数字PWM／共同top的Linux工具见[digital physical](digital/physical.md)。v0.4从冻结共同GDS实际执行五种RCstyle提取，见[joint PEX](research/joint-pex.md)；完整带pad/ESD芯片仍未建立。
 
 ## 当前可运行环境
 
@@ -48,13 +48,17 @@ Homebrew 安装指令获取执行当天的 formula，**并未固定 Homebrew 内
 
 `build/phase1/` 保存运行日志、生成的 SPICE testbenches、RTL event traces、waveform data、自动绘图、`metrics.csv` 和 `summary.json`。最终判断以命令成功退出、`summary.json` 的实际 checks、模型校准以及原始波形为依据；仅看到绘图或日志中的正常结束字样不足以判断设计正确。
 
-复现时特别检查：LED model 在指定 current / temperature 下是否校准；PWM duty 是否来自 RTL；平均电流是否在完整 frame window 上积分；negative control 是否确实暴露 headroom 不足；step refinement 的结果是否收敛。LED 电气模型为 synthetic model，未对真实 MicroLED 的 measured I-V / capacitance / optical output 拟合。
+基本回归复现时检查：LED model在指定current／temperature下是否校准；PWM是否来自RTL；平均电流是否按完整frame积分；negative control是否暴露headroom不足；step refinement是否收敛。该baseline LED为synthetic。独立[真实静态LED](research/measured-led.md)已经拟合公开I–V，但没有真实capacitance／temperature／optical模型，不能混作同一套验证。
 
 ## 已取得的完整 PDK 与两种工具环境
 
 完整 `gf180mcuD` 已由 Ciel 取得，open_pdks build=`54435919abffb937387ec956209f9cf5fd2dfbee`。[Layout lock](../layout/pdk-lock.json)固定原生 Magic8.3.684 / Netgen1.5.324；[physical lock](../scripts/physical/pdk-lock.json)固定708份实际输入。Linux container 使用 Magic8.3.623 / Netgen1.5.316 / KLayout0.30.7；不同运行记录自己的工具版本，不把它们混称一个 binary 环境。
 
-共同top 的 Magic/KLayout/LVS 使用既有Linux容器；新增metal-only link extraction用原生Magic。新run先在私有build生成、验证，再发布；[安全复现命令](../layout/integration/README.md)及[接口仿真](research/interface.md)说明完整步骤。输出及raw input hashes分别保留，工具输出排序变化需显式映射。
+共同top的Magic／KLayout／LVS使用既有Linux容器；v0.3 metal-only link extraction用原生Magic。v0.4 joint extraction同样实际执行原生Magic8.3.684，锁定`gf180mcuD.tech`的nominal／HRHC／LRHC／HRLC／LRLC五种style；其系数、geometry、commands及全部physical inputs hash见[抽取方法](../evidence/joint-pex/extraction-method.json)。RCstyle与MOS PVT是不同维度。
+
+新run先在私有build生成和检查，再发布，[joint PEX复现](../evidence/joint-pex/README.md)与[电气研究](research/robustness.md)说明端口及cut boundary。Magic实例／R-C记录排序可变化，复现要比较ordered formal ports、device geometry、数值和拓扑multiset，保留as-run与public文件的各自hash；语义一致不等于字节一致。v0.4电气post仅实例化joint模型一次，不叠加v0.3的SPEF／link／analog RC。
+
+Joint信号模型理想化PG／body电阻和PG-only电容；其startup／series-R探针不是完整PG／substrate／数字芯片模型。阅读[预设电气范围](specifications/electrical-v0.4.md)后再重跑，以免把新增外部R/C假设称作package或PDN测量。实际reference generator、真实LED动态、provider接受与带pads/ESD芯片不由工具安装成功建立。
 
 报告使用 Markdown3.8.2、Playwright1.62.1与Chrome154.0.8037.95（本次实际版本）。公开 `scripts/research/render_report.py` / `print_report.cjs`；后者默认加载可用的 `playwright`，也允许通过 `REPORT_PLAYWRIGHT_MODULE` 和 `REPORT_CHROME_PATH` 使用已有安装。HTML / PDF 是排版结果，不作为物理仿真输入；另一环境打印后仍需逐页检查。
 

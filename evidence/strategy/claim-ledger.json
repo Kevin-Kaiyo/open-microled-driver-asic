@@ -1,0 +1,365 @@
+{
+  "date": "2026-10-05",
+  "source_catalogue": "evidence/strategy/sources.json",
+  "claims": [
+    {
+      "id": "C01",
+      "statement": "GF180MCU is officially described as 0.18 µm 3.3/6 V MCU CMOS, not a grant of all GF 180BCD capabilities",
+      "evidence_class": "official process description",
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "local_locators": [],
+      "conditions": {
+        "model_versions": "project pinned; product portfolio is live"
+      },
+      "supports": "Suitable open teaching baseline for current project voltage/headroom",
+      "does_not_support": "No technology-porting guarantee or commercial BCD/IP capability claim",
+      "confidence": "source verified",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C02",
+      "statement": "The Google GF180MCU repository is archived and its README still describes an experimental preview",
+      "evidence_class": "observed repository metadata",
+      "source_ids": [
+        "S01"
+      ],
+      "local_locators": [],
+      "conditions": {
+        "access_date": "2026-10-05",
+        "archive_date_on_banner": "2026-09-23"
+      },
+      "supports": "Confirm maintainer/provider/version before manufacturing",
+      "does_not_support": "Does not invalidate the arithmetic or locked model runs automatically",
+      "confidence": "source verified at access",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C03",
+      "statement": "GF lists display driver and microdisplay-backplane technologies at 28/40/55 nm",
+      "evidence_class": "manufacturer portfolio claim",
+      "source_ids": [
+        "S04"
+      ],
+      "local_locators": [],
+      "conditions": {
+        "not_a_project_PDK": "platform advertisement"
+      },
+      "supports": "Different density/application constraints motivate architecture/process choice",
+      "does_not_support": "Not proof that all LED circuits require these nodes",
+      "confidence": "company description",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C04",
+      "statement": "Commercial matrix benchmark LP5860 drives 198 scan dots using 18 sinks and 11 scan switches",
+      "evidence_class": "manufacturer production specification",
+      "source_ids": [
+        "S05",
+        "S06"
+      ],
+      "local_locators": [],
+      "conditions": {
+        "topology": "multiplexed matrix"
+      },
+      "supports": "Protocol, memory and diagnostics are part of a commercial driver system",
+      "does_not_support": "Not 198 independent constant-current sinks",
+      "confidence": "datasheet verified",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C05",
+      "statement": "LP5860 low-current device error bound is ±7% and channel error bound ±5.5% at 100 µA; ±3% applies at 50 mA",
+      "evidence_class": "manufacturer production specification",
+      "source_ids": [
+        "S05"
+      ],
+      "local_locators": [],
+      "conditions": {
+        "locator": "p7 section 7.5",
+        "VCC_V": 3.3,
+        "VLED_V": 3.8,
+        "VIO_V": 1.8,
+        "usual_TA_C": [
+          -40,
+          85
+        ],
+        "IOUT_uA": 100,
+        "PWM_percent": 100,
+        "all_channels_on": true,
+        "program": "MC=0 CC=42 DC=25",
+        "device_error_denominator": "ISET; numerator IAVE-ISET",
+        "channel_error_denominator": "IAVE; numerator IOUTX-IAVE",
+        "project_error_denominator": "100 µA target; one branch in declared simulations"
+      },
+      "supports": "Low-current accuracy is a distinct comparison problem",
+      "does_not_support": "Cannot infer project outperforms TI from finite simulation ±5% target",
+      "confidence": "datasheet conditions verified",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C06",
+      "statement": "JBD 0.1-series indexed specs list 500×380, 4 µm pitch, 10 bit, 480 Hz and typical 50 mW",
+      "evidence_class": "manufacturer product claim",
+      "source_ids": [
+        "S07"
+      ],
+      "local_locators": [],
+      "conditions": {
+        "power_image_brightness_conditions": "not reported in indexed data",
+        "page_revision": "unknown",
+        "full_page_access": "403"
+      },
+      "supports": "Illustrates combined density, optical, memory/interface and power demands",
+      "does_not_support": "Not independent measurement; no per-pixel power ranking against this project",
+      "confidence": "official indexed claim; purchasing datasheet needed",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C07",
+      "statement": "Hsiao et al. report yellow arrays exceeding 1 Gbit/s NRZ-OOK and reaching 1.5 Gbit/s OFDM",
+      "evidence_class": "author-reported primary experiment",
+      "source_ids": [
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "local_locators": [],
+      "conditions": {
+        "array_as_written": "30 µm × 8",
+        "access_scope": "abstract only",
+        "bias_receiver_BER_distance": "not extracted"
+      },
+      "supports": "VLC needs optical-link evidence and specified driver/receiver conditions",
+      "does_not_support": "Not a benchmark pass by the current ASIC; not 1 MHz PWM or display-data rate",
+      "confidence": "abstract-level experimental claim",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C08",
+      "statement": "There are public GF-family Tiny Tapeout shuttle routes; this design acceptance and price are unestablished",
+      "evidence_class": "provider schedule/requirements",
+      "source_ids": [
+        "S11",
+        "S12"
+      ],
+      "local_locators": [],
+      "conditions": {
+        "date": "2026-10-05",
+        "GF_analog_template_rail_pin_match": "not established",
+        "quote_for_project": null
+      },
+      "supports": "Investigate exact provider match only after a useful silicon measurement question exists",
+      "does_not_support": "Do not use SKY130 analog RC, prices, templates or schedules as GF180 project qualification",
+      "confidence": "route observed; project match unknown",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C09",
+      "statement": "16 frozen analog-cell bbox copies sum to 0.0572432 mm²",
+      "evidence_class": "calculation",
+      "source_ids": [],
+      "local_locators": [
+        "evidence/strategy/budget.json: rows[pixels=16]",
+        "evidence/characterization/actual-w20-l4-area.json: bbox_dbu"
+      ],
+      "conditions": {
+        "copies": 16,
+        "bbox_um": [
+          95,
+          37.66
+        ]
+      },
+      "supports": "First-order analog replication accounting",
+      "does_not_support": "Not 16×305×180 µm common-top span; not completed array/die/pixel pitch",
+      "confidence": "conditional",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C10",
+      "statement": "16 independent 100 µA reference branches at 3.3 V create a 5.28 mW floor",
+      "evidence_class": "calculation",
+      "source_ids": [],
+      "local_locators": [
+        "evidence/strategy/budget.json: rows[pixels=16]"
+      ],
+      "conditions": {
+        "continuous_reference": true,
+        "digital_power_excluded": true,
+        "generator_overhead_excluded": true
+      },
+      "supports": "Shared reference/standby policy may be a high-value next architecture question",
+      "does_not_support": "Shared reference accuracy/startup/fanout/power is not validated",
+      "confidence": "conditional",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C11",
+      "statement": "16 static-load copies estimate 13.2631 mW full-on and 5.3112 mW at code 1",
+      "evidence_class": "static model scaling calculation",
+      "source_ids": [],
+      "local_locators": [
+        "evidence/strategy/budget.json: additional / rows[pixels=16]"
+      ],
+      "conditions": {
+        "MOS_C": 27,
+        "LED_IV_temperature": "unknown",
+        "Vlogic_V": 3.3,
+        "VLED_V": 5,
+        "nominal_IOUT_uA": "99.78846743103914",
+        "lowest_duty": "1/256"
+      },
+      "supports": "Separate duty-dependent LED rail from fixed bias",
+      "does_not_support": "Not measured array or total chip energy; no real dynamic/optics/digital/pad/generator power",
+      "confidence": "conditional",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C12",
+      "statement": "4×4 effective storage is 18 byte single-buffer or 36 byte double-buffer; raw 60 Hz data is 8.64 kbit/s",
+      "evidence_class": "calculation",
+      "source_ids": [],
+      "local_locators": [
+        "rtl/pixel_pwm.v",
+        "evidence/strategy/budget.json"
+      ],
+      "conditions": {
+        "command_bits": 9,
+        "pixel_count": 16,
+        "command_domain": "0…256",
+        "enable_and_protocol_excluded": true
+      },
+      "supports": "Minimal 4×4 pixel-state budget",
+      "does_not_support": "No implemented serial interface, SRAM, double buffer or gate-area promise",
+      "confidence": "conditional",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C13",
+      "statement": "A proposed 288-bit 4×4 packet needs 17.28 kbit/s at 60 Hz and 1.125 Mbit/s at every PWM frame",
+      "evidence_class": "hypothetical packet calculation",
+      "source_ids": [],
+      "local_locators": [
+        "evidence/strategy/budget.json: assumptions / rows[pixels=16]"
+      ],
+      "conditions": {
+        "packet_header_check_bytes": 4,
+        "per_pixel_bytes": 2,
+        "PWM_frame_Hz": "3906.25",
+        "protocol_implemented": false
+      },
+      "supports": "1 MHz hypothetical SPI cannot finish every 256 µs frame update; video and PWM clocks differ",
+      "does_not_support": "Not a protocol guarantee, actual interface throughput or optical bitrate",
+      "confidence": "conditional",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C14",
+      "statement": "100 µA over a 20 µm square gives 25 A/cm²; over a hypothetical 4 µm square gives 625 A/cm²",
+      "evidence_class": "geometric calculation",
+      "source_ids": [],
+      "local_locators": [
+        "evidence/strategy/budget.json: additional"
+      ],
+      "conditions": {
+        "effective_area_assumption": "entire square mesa",
+        "4um_device": "hypothetical"
+      },
+      "supports": "Device geometry must accompany current targets",
+      "does_not_support": "Not JBD current density, thermal model, EQE or optical brightness",
+      "confidence": "conditional",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C15",
+      "statement": "Prioritize a reproducible device electrical-characterization / driver co-design teaching platform",
+      "evidence_class": "direction judgment",
+      "source_ids": [
+        "S01",
+        "S04",
+        "S05",
+        "S07",
+        "S08"
+      ],
+      "local_locators": [
+        "docs/research/technical-value-market.md: sections 1–7"
+      ],
+      "conditions": {
+        "current_project": "v0.3 one-pixel physical and model capabilities"
+      },
+      "supports": "Matches current voltage/current/verification assets and targets missing real-device evidence",
+      "does_not_support": "Not proven product-market fit, revenue, TAM/CAGR or willingness to pay",
+      "confidence": "conditional",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C16",
+      "statement": "Three user groups, five interviews, two use cases and one beginner reproduction are proposed demand tests",
+      "evidence_class": "validation proposal",
+      "source_ids": [],
+      "local_locators": [
+        "docs/research/technical-value-market.md: sections 6–7"
+      ],
+      "conditions": {
+        "interviews_executed": 0,
+        "orders": 0,
+        "paid_demand_validated": false
+      },
+      "supports": "Gather concrete workload/data/use commitments before scaling features",
+      "does_not_support": "Interview sample is not statistically representative; learning value is not market validation",
+      "confidence": "conditional",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C17",
+      "statement": "Manufacturing cost remains unknown until matching quotes, packaging and measurement responsibilities exist",
+      "evidence_class": "cost framework",
+      "source_ids": [
+        "S11",
+        "S12"
+      ],
+      "local_locators": [
+        "docs/research/technical-value-market.md: section 8"
+      ],
+      "conditions": {
+        "matching_MPW_quote": null,
+        "package_quote": null,
+        "budget_ceiling_B": "user-defined"
+      },
+      "supports": "Review total project cost and a measurement purpose before spending",
+      "does_not_support": "No production-unit-cost or yield prediction",
+      "confidence": "conditional",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    },
+    {
+      "id": "C18",
+      "statement": "Full-on current accuracy, lowest-code charge accuracy, optical output and manufacturing yield need different evidence",
+      "evidence_class": "engineering evidence boundary",
+      "source_ids": [],
+      "local_locators": [
+        "README.md",
+        "docs/research/interface.md",
+        "docs/research/measured-led.md"
+      ],
+      "conditions": {
+        "current_project": "simulation / public physical checks / imported static data"
+      },
+      "supports": "Stops neighboring evidence stages from being combined into product qualification",
+      "does_not_support": "No silicon or optical measurement claim",
+      "confidence": "conditional",
+      "reuse_status": "Original explanation / calculation with linked facts; no third-party images"
+    }
+  ],
+  "no_market_size_forecast": true,
+  "no_paid_customer_claim": true,
+  "no_provider_acceptance_claim": true,
+  "budget_implementation_status": "scenarios only",
+  "review_notes": [
+    "Manufacturer production bounds and project simulation targets are deliberately not ranked.",
+    "Publisher first-online date wins over conflicting institution-index month.",
+    "Commercial source images were not redistributed."
+  ]
+}

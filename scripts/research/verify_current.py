@@ -71,7 +71,7 @@ def main():
     check('Independent analog GDS identity',physical['independent_klayout']['analog']['input_hashes']['gds_sha256']==digest(ROOT/'evidence/layout/pixel_driver_layout.gds'))
     check('Independent digital GDS identity',physical['independent_klayout']['digital']['input_hashes']['gds_sha256']==digest(ROOT/'evidence/physical/digital/gds/pixel_pwm.gds'))
     version=re.search(r'研究报告\s+(v\d+\.\d+)',report).group(1)
-    if version=='v0.3':
+    if version in ('v0.3','v0.4'):
         joint=json.loads((ROOT/'evidence/integration/summary.json').read_text())
         check('Joint top completed',joint['passed'] is True)
         check('Nineteen explicit joint ports',len(joint['external_ports'])==19)
@@ -116,6 +116,9 @@ def main():
         figure=json.loads((ROOT/'evidence/research/integration-figure.json').read_text())
         for p,h in figure['source_sha256'].items():check('Current geometry figure source '+p,digest(ROOT/p)==h)
         check('Current geometry figure output',digest(ROOT/figure['output'])==figure['output_sha256'])
+    if version=='v0.4':
+        from verify_v04_assets import verify
+        verify(check,report)
     # PDF page count and visual inspection are distinct from electrical checks.
     result=subprocess.run(['pdfinfo',ROOT/'docs/research/research-report.pdf'],capture_output=True,text=True,check=True)
     count=int(re.search(r'^Pages:\s+(\d+)',result.stdout,re.M).group(1))
@@ -126,6 +129,8 @@ def main():
               'scripts/characterization/','scripts/digital/','scripts/physical/','scripts/led/',
               'scripts/layout/','scripts/research/','docs/research/','docs/digital/','docs/specifications/',
               'scripts/integration/','scripts/interface/','evidence/integration/','evidence/interface/',
+              'scripts/joint_pex/','scripts/robustness/','scripts/strategy/',
+              'evidence/joint-pex/','evidence/robustness/','evidence/strategy/','evidence/teaching/',
               'evidence/characterization/','evidence/digital/','evidence/layout/','evidence/led-fit/',
               'evidence/physical/','evidence/research/')
     for name in public:
@@ -136,7 +141,7 @@ def main():
           'passed':True,'checks':checks,'pdf_pages':count,'pdf_visual_pages_reviewed':list(range(1,count+1)),
           'current_file_hashes':{n:digest(ROOT/n) for n in sorted(set(selected))},
           'historical_identity_note':'As-run hashes in older evidence are preserved. Old TB snapshot and default-trace equivalence are public in input-mapping.json. Broad historical source inventories also include subsequently changed presentation/export scripts and independent digital config; these do not rewrite the analog run identity.',
-          'project_not_complete_at_chip_level':['full joint multi-corner PEX and supply sign-off','pads/ESD/package','actual reference generator and startup','real LED dynamic/thermal/optical calibration','provider acceptance','silicon/optical measurements']}
+          'project_not_complete_at_chip_level':['complete PG/body/substrate model and full-chip multi-corner electrical and supply sign-off','pads/ESD/package','actual reference generator and startup','real LED dynamic/thermal/optical calibration','provider acceptance','silicon/optical measurements']}
     (ROOT/'evidence/research/current-manifest.json').write_text(json.dumps(data,indent=2)+'\n')
     print(f'PASS {len(checks)} artifact checks; {len(selected)} current files indexed; {count} PDF pages reviewed')
 if __name__=='__main__':main()

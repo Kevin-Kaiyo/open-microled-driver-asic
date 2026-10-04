@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "raw_bytes_identical": false,
+  "model_bytes_identical": false,
+  "ordered_ports_identical": true,
+  "exact_geometric_multiset_identical": true,
+  "method": "Replace .res.ext rnode identifiers by exact (physical net base,x,y); compare ordered MOS terminals/properties and symmetric R/C endpoints/values/multiplicity, keeping all formal port names/order. No numeric tolerance and no clipping.",
+  "counts": {
+    "X": 12,
+    "R": 45,
+    "C": 77
+  },
+  "negative_controls": {
+    "port_swap": {
+      "rejected": true,
+      "model_sha256": "a32e8c8bf0605ffee994f2845f8ed0fa9bab1cfe830ddff77057578deb1918e8"
+    },
+    "remove_cap": {
+      "rejected": true,
+      "model_sha256": "340d75658cf5a9c38ca6b303b65d30bf2234db57b3fc2e086af8bde99a5a6970"
+    },
+    "change_resistor": {
+      "rejected": true,
+      "model_sha256": "c0885171cf74bea8db125325e3f84f4b5cebc69310033604b15d4abbf42a343d"
+    }
+  },
+  "run": "build/joint-pex/reproduce-nominal-r1",
+  "model": "build/joint-pex/reproduce-package-r1/nominal/output_pixel_pex.spice",
+  "inputs_sha256": {
+    "build/joint-pex/reproduce-nominal-r1/pixel_flat_rc.spice": "3bff1d1e537fa3cb6a4f7a8b3966be0be6dcf1de4c2a8ffa90ccd14f12c94b77",
+    "build/joint-pex/flat-nominal-r3/pixel_flat_rc.spice": "36ee3b79d0c8d8647328a989c9c2d989c4603697922d07794368609fe9f54806",
+    "evidence/joint-pex/nominal/output_pixel_pex.spice": "03813e63e64bf505570dbd1f81e6809366e6b4d31bbee129c28022956e1cc623",
+    "build/joint-pex/reproduce-package-r1/nominal/output_pixel_pex.spice": "3a2372a039c3ca6df34d1fe87c7d6adf5ce71e2a05298ae5167980565973f489",
+    "build/joint-pex/flat-nominal-r3/pixel_flat.res.ext": "4261f64777c5d8b3b3acb0d3d4340fc4a664d37d0178f5876dc70a47c8ae095e",
+    "build/joint-pex/reproduce-nominal-r1/pixel_flat.res.ext": "56077e5e85f41657f0aa808ee16d962d49ab5c4bd94ef66ab4e835f9b17bf8e3",
+    "scripts/joint_pex/verify_reproduction.py": "0884ef340d5062f65bde23d473c128c5ce974386e13964d3eaf864e52488d047"
+  },
+  "scope": "Fresh actual native Magic extraction + source export + private package. Internal rnode numbering may change despite fixed seed; original and reproduced byte hashes both preserved, equivalent electrical graph required."
+}

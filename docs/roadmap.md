@@ -1,6 +1,6 @@
 # 从 1 Pixel 到可评估 MPW 的路线
 
-更新日期：2026-10-04。本项目建立一个长期的 open mixed-signal ASIC 学习与研究平台。当前 v0.3 交付包括 **registered 1-Pixel PWM、W20/L4 analog layout/RC、reference / MC、公开实测 LED 静态模型，以及共同 routed macro top、实际末级输出与部分跨宏 RC 验证**。带 pads/ESD 的完整芯片、完整 joint PEX / 供电 sign-off、真实动态负载与 silicon measurement 仍需后续工作。
+更新日期：2026-10-05。本项目优先建立**可复现的 MicroLED 器件电测与驱动共设计教学平台**，从一像素走到可解释的研究阵列。v0.4在既有registered PWM、W20/L4 analog layout、公开静态LED数据和共同GDS上，增加实际输出级junction／cell metal与联合signal PEX、五种RCstyle及有预设门槛的电气研究。带pads/ESD完整芯片、实际PG／substrate／邻居驱动网络、real reference、LED动态／温度、provider接受与silicon／optical仍属后续。
 
 每一步先达到明确 exit criteria，再扩展规模；结果始终区分 simulation、layout/physical verification、foundry acceptance 和 silicon measurement。
 
@@ -14,8 +14,11 @@
 | 数字 registered PWM | 输出改由 FF 驱动，保留 256-slot/frame 语义；synthesis 与 gate-level 回归完成，见[数字验证](digital/README.md) |
 | 数字 macro 与独立检查 | PWM macro 物理实现及独立 KLayout rule-deck 检查已完成；具体工具、timing 条件、GDS/LEF 及 deck 覆盖见[物理实现](digital/physical.md) |
 | 共同 macro top 与真实接口 | 实际 PWM / PG routing、共同 full-GDS extraction / transistor LVS / DRC、label-free connectivity 与负对照；54 transient输出级研究，见[集成](../evidence/integration/README.md)、[接口](research/interface.md) |
+| v0.4联合signal PEX | 实际output12六MOS加像素六MOS，nominal45R／77C、34邻居端口；5种RCstyle；实际M3右端cut；PG-only理想化及原始projection ledger见[joint PEX](research/joint-pex.md) |
+| v0.4主研究与失败边界 | 主37 transient／12 DC、146guards通过；总66 transient／28 DC另3calibration；startup、reference、control与实测LED headroom失败分开报告，见[电气研究](research/robustness.md) |
+| 从技术走向使用价值 | [分层报告](research/research-report.md)、[bench计划](research/bench-validation-plan.md)、[技术—价值—市场](research/technical-value-market.md)；需求、付费与制造报价未验证 |
 
-当前顺序是继续补齐**完整 joint PEX / 供电与启动、真实 LED 动态/温度、实际 reference / 总数字功耗**，再定义 4×4 的共享 reference、供电、通信与一致性预算。有限 MC 样本与公开 deck 通过不等于制造 yield 或 foundry acceptance。
+当前顺序：**单像素real reference／安全上电控制与PG／邻居网络 → 真实LED动态／温度／光学及bench数据 → 外部初学者复现与具体用户需求 → 4×4共享reference／供电／通信预算 → 匹配provider的MPW评估**。所有4×4面积、功耗、buffer和packet数字只是场景预算，未实现；没有真实MPW／封装报价或付费需求。有限MC和公开deck pass不等于制造yield或foundry acceptance。
 
 ## 1. 1-Pixel simulation baseline
 
@@ -49,19 +52,22 @@ Exit criteria：
 
 当前进度：实际 20/4 模拟 cell 完成 Magic DRC=0、Netgen 唯一匹配且无 property errors、GDS 回读、7/7 nets RC extraction 与 19 项配对/收敛 guards；并导出 GDS/LEF/SPICE。Reference 预算与 PDK 随机失配已独立复验，使用的是新结几何与新 RC，旧 10/2 失败及概念候选均保留。数字 registered-PWM macro 物理流程与独立 KLayout 检查也已完成，分别见[模拟版图](layout/README.md)、[reference/matching](research/reference-and-matching.md)、[数字物理实现](digital/physical.md)。
 
-旧 macOS native KLayout 启动阻塞是历史环境记录，仍保留诊断。v0.3 已将两个 macro 接成共同 top，做实际抽取、内部 MOS / hierarchy LVS、DRC、独立几何图及失败检测；实际 buf_2 与 analog RC / 新连线探针也已完成。按[预设集成退出条件](specifications/single-pixel-v0.3.md)分别报告声明范围。当前未闭环的是实际 reference、startup/power sequencing、真实 LED 动态/温漂、输出 cell 自身与邻近导体的完整 joint PEX、供电 IR / 总数字功耗与 pad/ESD；不能把共同 macro top 完成称作完整 ASIC 完成。
+旧native KLayout启动问题保留为历史环境记录。v0.3按[集成退出条件](specifications/single-pixel-v0.3.md)完成共同top、full-GDS transistor LVS／DRC、独立geometry与真实错误检测；分块buf／analogRC／link电气结果冻结保留。v0.4按[joint目标](specifications/joint-pex-v0.4.md)取得真实末级junction与selected联合signal模型，从实际右侧接入，并用一份post模型替换旧分块路径；重现按语义而非记录排序字节检查。
+
+v0.4 PG/body电阻和PG-only电容仍是ideal-rail投影，34邻居的quiet／live-high clamp不建立其真实floating／active状态。Startup能量没有完整PG、preceding FF/logic或真实reference，因此probe完成不等于系统启动资格。[电气研究](research/robustness.md)保留10kΩ假设LED供电下的current失败及enable提交延迟，下一步应按用户要求决定reference/compliance、POR/关断控制与测量条件，而不是先扩像素。实际PG／邻居网络、real LED dynamics、digital total power、pad/ESD及制造要求仍需闭环。
 
 ## 3. 4×4 array
 
 范围：复制已验证 pixel cell，加入独立定义的最小 register / pixel-data / serial interface 和 array timing。先研究 replication、reference distribution、PWM timing 与 power routing。
 
-进入条件：单像素已经在选定 LED/model card、非理想 reference 和声明的 PVT/mismatch 范围内达到 accuracy、power 与 short-pulse 预算，并完成相应 matching 与独立 physical checks。尚未满足时继续单像素研究，不用增加像素数量掩盖模型或精度缺口。
+进入条件：单像素在选定LED/model card、可实现reference及声明PVT/mismatch下达到accuracy、power和short-pulse预算，并完成相应matching／独立physical检查；取得至少一项具体外部使用/器件任务。当前尚未满足，继续单像素和[bench计划](research/bench-validation-plan.md)。优先研究共享reference能否降低持续bias功耗，先验证fanout、startup、失配与跨通道耦合；不把预算省电量称为已实现。
 
 Exit criteria：
 
 - 独立协议与 register map 有文档及可执行 testbench，覆盖全部 16 个 pixel 的寻址、更新、reset/enable 和 test patterns。
 - 可生成并检查阵列 current / PWM patterns，解释同时点亮负载、数据更新和帧同步行为。
 - 保存各 pixel 与全阵列的供电/current budget；评估 shared reference、IR drop、clock distribution、routing 和 matching。
+- 面积从actual cell、shared logic/reference、routing和pads/ESD分别建账；305×180µm是共同macro跨度，不能乘16当作array die。数据更新频率、PWM frame与serial wire rate分开声明，prototype packet预算要通过实际testbench。
 - 阵列级 DRC/LVS 和必要 PEX / post-layout 分析完成；结果允许定位到具体 pixel，不能仅证明单个 cell。
 - 新接口与验证仍完全来自公开资料及本项目独立设计。
 
@@ -78,7 +84,7 @@ Exit criteria：
 
 ## 5. MPW feasibility 与 tape-out review
 
-范围：在可检查的 GDS 和 post-layout 证据上评估真实 shuttle、package、pads、ESD、IO、power 和 test strategy。公开路线存在不代表本项目当前可提交。
+范围：带着明确silicon measurement问题，在可检查的GDS和post-layout证据上评估实际shuttle、package、pads/ESD/IO、power与test strategy。公开route存在不代表当前可提交；GF180MCU与其他BCD、SKY130 analog模板/报价不能互换。[方向报告](research/technical-value-market.md)记录当前来源状态及成本边界。
 
 Exit criteria：
 

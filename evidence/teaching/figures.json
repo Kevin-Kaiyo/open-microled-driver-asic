@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-05T01:04:27.458162+09:00",
+  "evidence_class": "original conceptual drawings and ideal arithmetic examples",
+  "physical_measurement": false,
+  "formulas": {
+    "clock_hz": 1000000,
+    "slots_per_frame": 256,
+    "slot_s": 1e-06,
+    "frame_s": 0.000256,
+    "pwm_hz": 3906.25,
+    "ideal_full_current_uA": 100,
+    "ideal_lowest_avg_uA": 0.390625,
+    "ideal_lowest_charge_pC": 100,
+    "ideal_reference_input_power_uW": 330,
+    "power_example": [
+      {
+        "duty": 0,
+        "reference_uW": 330.0,
+        "led_rail_uW": 0.0,
+        "total_uW": 330.0
+      },
+      {
+        "duty": 1,
+        "reference_uW": 330.0,
+        "led_rail_uW": 1.953125,
+        "total_uW": 331.953125
+      },
+      {
+        "duty": 64,
+        "reference_uW": 330.0,
+        "led_rail_uW": 125.0,
+        "total_uW": 455.0
+      },
+      {
+        "duty": 256,
+        "reference_uW": 330.0,
+        "led_rail_uW": 500.0,
+        "total_uW": 830.0
+      }
+    ],
+    "v03_historical_worked_example": {
+      "source_case_names": [
+        "tt_joint_d256",
+        "tt_joint_d1"
+      ],
+      "full_current_uA": 100.69540125281141,
+      "lowest_average_current_uA": 0.3923553720580475,
+      "charge_per_frame_pC": 100.44297524686016,
+      "ideal_same_full_current_charge_pC": 100.69540125281141,
+      "absolute_current_error_pct": 0.6954012528114006,
+      "lowest_area_error_pct": -0.25068275493286274,
+      "scope": "v0.3 partial stitched interface model; does not include exact physical analog entry point or output-cell PEX"
+    }
+  },
+  "source_sha256": {
+    "scripts/research/teaching_figures.py": "ea993651a205cb77e59b2b190b5a0412506ebce2977594c8b6747de233ccb196",
+    "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+    "analog/driver/pixel_driver.spice": "376305eafa438e80883320984209d9e193b01e77a047cf131500318b794d9747",
+    "evidence/interface/summary.json": "5117f95afe4cfab4fe88f4e2495fdfeb07fa0eb51c3292c37b2b1a5c02705695"
+  },
+  "outputs_sha256": {
+    "docs/research/figures/teaching-architecture.png": "9e6bcf503eb41a7970bafb0185561e583d074f77edcc1b0a4de3c270bbd1ea10",
+    "docs/research/figures/teaching-pwm.png": "394a96c501e6053f928538ba9a92d7fa126110ec80c32d5d70a98c1a91b5c2e7",
+    "docs/research/figures/teaching-bias-power.png": "5287c70e6ff810b53fdc732caf01fd2e883bfe546a1500b60d33ba437b58d878"
+  },
+  "primary_source": {
+    "title": "GF180MCU PDK 1.4.1 MOSFETs",
+    "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/analog/model_parameters/LV/LV_1_4_1.html",
+    "accessed_date": "2026-10-05",
+    "supports": "public BSIM4 3.3 V and 6 V MOS model families; not manufacturing acceptance"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "failure_type": "Postprocessing complete-window check rejected decimal endpoint representation",
+  "resolved": true,
+  "physical_solver_failure": false,
+  "raw_directory": "build/robustness/boundary-v3ndp1l0",
+  "traceback_path": "build/robustness/boundary.log",
+  "traceback_sha256": "073f75c0f04ced8775d198aa6b482a266ccc050d5a6ffe5deadc148bb87bd582",
+  "failed_as_run_runner_sha256": "6aff6523d823664d53dae8ef358420fe3b9b151f988b4f3a640015fd1a754a20",
+  "final_runner_sha256": "81a8b32aa7374ea091f2aa4c185d3f429aa8098a645690b96058db389f4e9eff",
+  "observed_endpoint_cases": [
+    {
+      "case": "RTL_reset",
+      "requested_stop_s": 0.0001,
+      "actual_saved_stop_s": 9.999999999999999e-05,
+      "gap_s": 1.3552527156068805e-20,
+      "gap_float_ULPs": 1.0,
+      "all_saved_values_finite": true,
+      "time_strictly_increasing": true,
+      "raw_sha256": "72809999cc57fb5012c35fc20bbd3e9798bfd66ea15630381fd5aa24c79669f9"
+    },
+    {
+      "case": "RTL_enable",
+      "requested_stop_s": 0.0006,
+      "actual_saved_stop_s": 0.0005999999999999998,
+      "gap_s": 1.0842021724855044e-19,
+      "gap_float_ULPs": 1.0,
+      "all_saved_values_finite": true,
+      "time_strictly_increasing": true,
+      "raw_sha256": "3ee70b7762eb224bf8f2204e2b646a7fdcc7187ab7ea13d03a9abe28cab28430"
+    }
+  ],
+  "correction": "Permit only eight float ULPs of endpoint serialization representation; retain prescribed integration window, reject truly incomplete/nonfinite/nonmonotone waveforms",
+  "physical_models_and_engineering_gates_changed": false,
+  "final_uniform_source_batches": [
+    "build/robustness/probe-8p0a15d1",
+    "build/robustness/main-mx5nfi8b",
+    "build/robustness/boundary-zkivszoz"
+  ],
+  "old_successful_development_batches_retained": [
+    "build/robustness/probe-kk5ntu56",
+    "build/robustness/main-dvjh8flj"
+  ],
+  "counts_only_include_final_batches": true
+}

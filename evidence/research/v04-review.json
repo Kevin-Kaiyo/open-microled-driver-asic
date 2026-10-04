@@ -1,0 +1,4266 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-05",
+  "stages": {
+    "budget": {
+      "passed": true,
+      "exact_arithmetic_checks": 43,
+      "method": "Independent Fraction arithmetic from original geometry and DC input records; no budget runner import",
+      "analog_bbox_um2": "3577.7",
+      "common_top_span_um": [
+        305,
+        180
+      ],
+      "array_implemented": false,
+      "TI_comparison": {
+        "source": "https://www.ti.com/lit/ds/symlink/lp5860.pdf",
+        "locator": "Rev.A p7 §7.5, independently visually read",
+        "current_uA": 100,
+        "device_error_pct": 7,
+        "channel_error_pct": 5.5,
+        "device_denominator": "ISET; numerator device mean minus ISET",
+        "channel_denominator": "device channel mean; numerator selected channel minus mean",
+        "project_denominator": "100uA target for a single model branch",
+        "ranked": false
+      },
+      "source_hashes": {
+        "evidence/strategy/budget.json": "174350dac2804d23adf28abcb2590287664626c3cf9b29a306c913e2a8df3006",
+        "evidence/characterization/actual-w20-l4-area.json": "f509160f0e4d7e0c9060a6fe56a1f9dd474c04bc0d23c76355a61d7bdc6b01e2",
+        "evidence/characterization/measured-load-summary.json": "98d8b3d0bb60b0e27f540fcb6cf44e87eeed2607fa2d5a3786c0f3c91b5c47ca",
+        "evidence/strategy/claim-ledger.json": "e254514a84e75a26ccaca9246390afb11820d72e6510cfaa194d202b4d4dc617",
+        "evidence/strategy/sources.json": "fe3fb9f4aa887d313fd322189f00b763c35b1112c4eb81f941e55bb52a571fb6"
+      }
+    },
+    "PEX_nominal": {
+      "passed": true,
+      "rc_style": "nominal",
+      "placement": {
+        "instance": "output12",
+        "master": "gf180mcu_fd_sc_mcu7t5v0__buf_2",
+        "DEF_placement_um": [
+          7.84,
+          82.32
+        ],
+        "orientation": "S",
+        "official_LEF_size_um": [
+          4.48,
+          3.92
+        ],
+        "common_GDS_transform": "r180 162320,111240",
+        "origin_um": [
+          162.32,
+          111.24
+        ],
+        "cell_site_um": [
+          157.84,
+          107.32,
+          162.32,
+          111.24
+        ],
+        "source_hashes": {
+          "evidence/integration/pixel_integrated.gds": "f785cd70e76f6f287159bbb865712a8ed6121ed15dc65a99d78cbc35bed13938",
+          "build/physical-flow/pwm-v0.2-sized/44-openroad-detailedrouting/pixel_pwm.def": "984254680f0e53b93f81baf3e4cc2700ccc4998af772219f034d918810ad02cc",
+          "build/layout/pdk/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/lef/gf180mcu_fd_sc_mcu7t5v0.lef": "47dadf84c21b20f558d043c36271632f07b1c2c2a595b118e2e1050ebb74349b"
+        }
+      },
+      "raw_counts": {
+        "C": 36028,
+        "R": 18451,
+        "MOS": 5644
+      },
+      "independently_selected_MOS": [
+        {
+          "group": "output12",
+          "gate_um": [
+            161.20000000000002,
+            107.66
+          ],
+          "raw_device": "X2425",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "5.368E-13",
+            "pd": "0.00000332",
+            "as": "4.941E-13",
+            "ps": "0.00000203",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "DRIVER_I",
+            "VDD",
+            "a_31734_21868#"
+          ],
+          "raw_terminals": [
+            "a_31734_21868.t0",
+            "DRIVER_I.t2",
+            "VDD.t27",
+            "VDD.t26"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            159.89000000000001,
+            107.66
+          ],
+          "raw_device": "X3977",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "4.941E-13",
+            "pd": "0.00000203",
+            "as": "3.782E-13",
+            "ps": "0.00000184",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "a_31734_21868#",
+            "ANALOG_PWM",
+            "VDD"
+          ],
+          "raw_terminals": [
+            "VDD.t5160",
+            "a_31734_21868.t2",
+            "ANALOG_PWM.t0",
+            "VDD.t5159"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            158.77,
+            107.66
+          ],
+          "raw_device": "X3184",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "3.782E-13",
+            "pd": "0.00000184",
+            "as": "5.368E-13",
+            "ps": "0.00000332",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "a_31734_21868#",
+            "VDD",
+            "ANALOG_PWM"
+          ],
+          "raw_terminals": [
+            "ANALOG_PWM.t1",
+            "a_31734_21868.t3",
+            "VDD.t5162",
+            "VDD.t5161"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            161.1,
+            110.08
+          ],
+          "raw_device": "X2090",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "3.608E-13",
+            "pd": "0.00000252",
+            "as": "2.911E-13",
+            "ps": "0.00000153",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "DRIVER_I",
+            "VSS",
+            "a_31734_21868#"
+          ],
+          "raw_terminals": [
+            "a_31734_21868.t1",
+            "DRIVER_I.t3",
+            "VSS.t22",
+            "VSS.t21"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            159.79,
+            110.08
+          ],
+          "raw_device": "X3601",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "2.911E-13",
+            "pd": "0.00000153",
+            "as": "2.132E-13",
+            "ps": "0.00000134",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "a_31734_21868#",
+            "ANALOG_PWM",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t4850",
+            "a_31734_21868.t4",
+            "ANALOG_PWM.t2",
+            "VSS.t4849"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            158.67000000000002,
+            110.08
+          ],
+          "raw_device": "X2791",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "2.132E-13",
+            "pd": "0.00000134",
+            "as": "3.608E-13",
+            "ps": "0.00000252",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "a_31734_21868#",
+            "VSS",
+            "ANALOG_PWM"
+          ],
+          "raw_terminals": [
+            "ANALOG_PWM.t3",
+            "a_31734_21868.t5",
+            "VSS.t4852",
+            "VSS.t4851"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            109.5,
+            123.52
+          ],
+          "raw_device": "X2936",
+          "model": "pfet_06v0",
+          "properties_SI": {
+            "ad": "1.76E-12",
+            "pd": "0.00000888",
+            "as": "1.76E-12",
+            "ps": "0.00000888",
+            "w": "0.000004",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VDD",
+            "ANALOG_PWM",
+            "pwm_b",
+            "VDD"
+          ],
+          "raw_terminals": [
+            "VDD.t32",
+            "ANALOG_PWM.t4",
+            "pwm_b.t1",
+            "VDD.t31"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            94.5,
+            124.52
+          ],
+          "raw_device": "X2902",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "ANALOG_PWM",
+            "pwm_b",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t31",
+            "ANALOG_PWM.t5",
+            "pwm_b.t0",
+            "VSS.t30"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            79.5,
+            124.52
+          ],
+          "raw_device": "X3296",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "pwm_b",
+            "gate",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t28",
+            "pwm_b.t2",
+            "gate.t0",
+            "VSS.t27"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            64.5,
+            124.52
+          ],
+          "raw_device": "X3687",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "ANALOG_PWM",
+            "bias",
+            "gate"
+          ],
+          "raw_terminals": [
+            "gate.t1",
+            "ANALOG_PWM.t6",
+            "bias.t0",
+            "VSS.t29"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            48.0,
+            121.52
+          ],
+          "raw_device": "X3661",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-12",
+            "pd": "0.00004088",
+            "as": "8.8E-12",
+            "ps": "0.00004088",
+            "w": "0.000020",
+            "l": "0.000004"
+          },
+          "ext_terminals": [
+            "VSS",
+            "gate",
+            "led_k",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t41",
+            "gate.t2",
+            "led_k.t0",
+            "VSS.t40"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            33.0,
+            121.52
+          ],
+          "raw_device": "X4068",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-12",
+            "pd": "0.00004088",
+            "as": "8.8E-12",
+            "ps": "0.00004088",
+            "w": "0.000020",
+            "l": "0.000004"
+          },
+          "ext_terminals": [
+            "VSS",
+            "bias",
+            "bias",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t43",
+            "bias.t1",
+            "bias.t2",
+            "VSS.t42"
+          ]
+        }
+      ],
+      "disposition": {
+        "outside_R_removed": 2036,
+        "dynamic_R_retained": 45,
+        "ideal_PG_R_removed": 16370,
+        "outside_C_removed": 25244,
+        "dynamic_C_aggregated": 93,
+        "fixed_PG_C_removed": 10691
+      },
+      "extraction_tool_version": "8.3.684",
+      "extraction_tool_SHA256": "aef2fb7da2837c6e41da4b2dba2505897cd238d1d76c36a91414b448019d5292",
+      "exported_counts": {
+        "MOS": 12,
+        "R": 45,
+        "C": 77
+      },
+      "negative_raw_capacitors": [
+        {
+          "id": "C29760",
+          "nodes": [
+            "VDD.t4863",
+            "VSS"
+          ],
+          "value_F": "-1.257E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29779",
+          "nodes": [
+            "VDD.t4864",
+            "VSS"
+          ],
+          "value_F": "-1.257E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29825",
+          "nodes": [
+            "VDD.t4874",
+            "VSS"
+          ],
+          "value_F": "-1.257E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29871",
+          "nodes": [
+            "VDD.t4932",
+            "VSS"
+          ],
+          "value_F": "-1.257E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30681",
+          "nodes": [
+            "VDD.t2964",
+            "VSS"
+          ],
+          "value_F": "-3.846E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30705",
+          "nodes": [
+            "VDD.t4982",
+            "VSS"
+          ],
+          "value_F": "-1.257E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30819",
+          "nodes": [
+            "VDD.t3044",
+            "VSS"
+          ],
+          "value_F": "-2.81E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31649",
+          "nodes": [
+            "VDD.t5178",
+            "VSS"
+          ],
+          "value_F": "-1.257E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31697",
+          "nodes": [
+            "VDD.t2541",
+            "VSS"
+          ],
+          "value_F": "-3.846E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31699",
+          "nodes": [
+            "VDD.t5150",
+            "VSS"
+          ],
+          "value_F": "-1.58E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32123",
+          "nodes": [
+            "VDD.t5153",
+            "VSS"
+          ],
+          "value_F": "-1.257E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32587",
+          "nodes": [
+            "VDD.t5267",
+            "VSS"
+          ],
+          "value_F": "-1.257E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32632",
+          "nodes": [
+            "VDD.t2063",
+            "VSS"
+          ],
+          "value_F": "-3.846E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C33021",
+          "nodes": [
+            "VDD.t1677",
+            "VSS"
+          ],
+          "value_F": "-4.881E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C33492",
+          "nodes": [
+            "VDD.t5274",
+            "VSS"
+          ],
+          "value_F": "-3.032E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C33945",
+          "nodes": [
+            "VDD.t5346",
+            "VSS"
+          ],
+          "value_F": "-1.257E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C33946",
+          "nodes": [
+            "VDD.t5310",
+            "VSS"
+          ],
+          "value_F": "-1.257E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C34034",
+          "nodes": [
+            "VDD.t5347",
+            "VSS"
+          ],
+          "value_F": "-1.257E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C34408",
+          "nodes": [
+            "VDD.t5341",
+            "VSS"
+          ],
+          "value_F": "-1.257E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "swapped_ordered_ports",
+          "rejected": true,
+          "reason": "ordered ports differ",
+          "mutant_sha256": "7927fdb61e330079452d440e8cac8902cecf9fec954c291c14f20e491b2019c5",
+          "raw_path": "build/research/v04-review/nominal-swapped_ordered_ports.spice"
+        },
+        {
+          "name": "omitted_actual_dynamic_capacitor",
+          "rejected": true,
+          "reason": "C endpoint pair/multiplicity differ",
+          "mutant_sha256": "9acac394fb6bb1cfdbb8c99210a59b8221f3b4dee5945e2fe7918d90429d902b",
+          "raw_path": "build/research/v04-review/nominal-omitted_actual_dynamic_capacitor.spice"
+        },
+        {
+          "name": "doubled_actual_buffer_MOS_width",
+          "rejected": true,
+          "reason": "actual MOS W/L/body/junction properties or multiplicity differ",
+          "mutant_sha256": "d98e6425f84eae616e0104b4bafc87fde3c97a55c6b19ce2908eeaa8e7cfc149",
+          "raw_path": "build/research/v04-review/nominal-doubled_actual_buffer_MOS_width.spice"
+        }
+      ],
+      "independent_neighbor_identity": {
+        "matched_physical_MOS": 5644,
+        "explicit_neighbors": 34,
+        "neighbors": [
+          {
+            "port": "NBR_00",
+            "physical_net": "a_31692_23056#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_19_2/a_124_375#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_4"
+            ]
+          },
+          {
+            "port": "NBR_01",
+            "physical_net": "a_32064_23584#",
+            "hierarchical_net": "pixel_pwm_0/_092_/a_48_148#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__and4_1"
+            ]
+          },
+          {
+            "port": "NBR_02",
+            "physical_net": "a_32500_21532#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_36_472#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_16"
+            ]
+          },
+          {
+            "port": "NBR_03",
+            "physical_net": "a_32588_21488#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_124_375#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_16"
+            ]
+          },
+          {
+            "port": "NBR_04",
+            "physical_net": "a_32709_20448#",
+            "hierarchical_net": "pixel_pwm_0/_094_/a_245_68#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__nand2_1"
+            ]
+          },
+          {
+            "port": "NBR_05",
+            "physical_net": "a_32715_22316#",
+            "hierarchical_net": "pixel_pwm_0/_090_/a_245_68#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__nand2_1"
+            ]
+          },
+          {
+            "port": "NBR_06",
+            "physical_net": "a_32948_21532#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_484_472#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_16"
+            ]
+          },
+          {
+            "port": "NBR_07",
+            "physical_net": "a_33036_21488#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_572_375#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_16"
+            ]
+          },
+          {
+            "port": "NBR_08",
+            "physical_net": "a_33275_22316#",
+            "hierarchical_net": "pixel_pwm_0/_091_/a_245_68#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__nand2_1"
+            ]
+          },
+          {
+            "port": "NBR_09",
+            "physical_net": "a_33279_19965#",
+            "hierarchical_net": "pixel_pwm_0/_098_/ZN",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__nand3_1",
+              "gf180mcu_fd_sc_mcu7t5v0__nand4_1",
+              "pixel_pwm"
+            ]
+          },
+          {
+            "port": "NBR_10",
+            "physical_net": "a_33396_21152#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_16_18/a_36_472#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_16"
+            ]
+          },
+          {
+            "port": "NBR_11",
+            "physical_net": "a_33396_21532#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_932_472#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_16"
+            ]
+          },
+          {
+            "port": "NBR_12",
+            "physical_net": "a_33396_24288#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_20_18/a_36_472#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_4"
+            ]
+          },
+          {
+            "port": "NBR_13",
+            "physical_net": "a_33416_23446#",
+            "hierarchical_net": "pixel_pwm_0/_152_/a_2304_115#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__dffq_1"
+            ]
+          },
+          {
+            "port": "NBR_14",
+            "physical_net": "a_33484_21055#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_16_18/a_124_375#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_16"
+            ]
+          },
+          {
+            "port": "NBR_15",
+            "physical_net": "a_33484_21488#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_1020_375#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_16"
+            ]
+          },
+          {
+            "port": "NBR_16",
+            "physical_net": "a_33484_24191#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_20_18/a_124_375#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_4"
+            ]
+          },
+          {
+            "port": "NBR_17",
+            "physical_net": "a_33493_20448#",
+            "hierarchical_net": "pixel_pwm_0/_098_/a_469_68#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__nand4_1"
+            ]
+          },
+          {
+            "port": "NBR_18",
+            "physical_net": "a_33620_22720#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_18_20/a_36_472#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_4"
+            ]
+          },
+          {
+            "port": "NBR_19",
+            "physical_net": "a_33708_22623#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_18_20/a_124_375#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_4"
+            ]
+          },
+          {
+            "port": "NBR_20",
+            "physical_net": "a_33796_23056#",
+            "hierarchical_net": "pixel_pwm_0/_152_/a_2011_527#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__dffq_1"
+            ]
+          },
+          {
+            "port": "NBR_21",
+            "physical_net": "a_33844_21532#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_1380_472#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_16"
+            ]
+          },
+          {
+            "port": "NBR_22",
+            "physical_net": "a_33932_21488#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_17_10/a_1468_375#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_16"
+            ]
+          },
+          {
+            "port": "NBR_23",
+            "physical_net": "a_34144_23217#",
+            "hierarchical_net": "pixel_pwm_0/_152_/a_2296_527#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__dffq_1"
+            ]
+          },
+          {
+            "port": "NBR_24",
+            "physical_net": "a_34200_23125#",
+            "hierarchical_net": "pixel_pwm_0/_152_/a_448_472#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__dffq_1"
+            ]
+          },
+          {
+            "port": "NBR_25",
+            "physical_net": "a_34292_21532#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_17_26/a_36_472#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_8"
+            ]
+          },
+          {
+            "port": "NBR_26",
+            "physical_net": "a_34380_21488#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_17_26/a_124_375#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_8"
+            ]
+          },
+          {
+            "port": "NBR_27",
+            "physical_net": "a_34740_21532#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_17_26/a_484_472#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_8"
+            ]
+          },
+          {
+            "port": "NBR_28",
+            "physical_net": "a_34828_21488#",
+            "hierarchical_net": "pixel_pwm_0/FILLER_17_26/a_572_375#",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__fillcap_8"
+            ]
+          },
+          {
+            "port": "NBR_29",
+            "physical_net": "duty[0]",
+            "hierarchical_net": "duty[0]",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__buf_2",
+              "pixel_pwm"
+            ]
+          },
+          {
+            "port": "NBR_30",
+            "physical_net": "duty[3]",
+            "hierarchical_net": "duty[3]",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__buf_2",
+              "pixel_pwm"
+            ]
+          },
+          {
+            "port": "NBR_31",
+            "physical_net": "duty[4]",
+            "hierarchical_net": "duty[4]",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__buf_2",
+              "pixel_pwm"
+            ]
+          },
+          {
+            "port": "NBR_32",
+            "physical_net": "duty[5]",
+            "hierarchical_net": "duty[5]",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__buf_2",
+              "pixel_pwm"
+            ]
+          },
+          {
+            "port": "NBR_33",
+            "physical_net": "enable",
+            "hierarchical_net": "enable",
+            "masters": [
+              "gf180mcu_fd_sc_mcu7t5v0__buf_2",
+              "pixel_pwm"
+            ]
+          }
+        ],
+        "method": "Independent homogeneous matrix transforms of gate LxW rectangles, model+four geometric dimensions; hierarchical merge/equiv ties; D/S diffusion A/P used only when one distinct terminal is identified; declared aliases checked against actual ties"
+      },
+      "independent_RC_metrics": {
+        "output_drive_to_actual_analog_entry_R_ohm": 17.394804000000075,
+        "output_component_incident_C_F": "2.2847700000000000E-14",
+        "all_exported_C_sum_F": "8.6124390000000000E-14",
+        "passive_model": true,
+        "passivity_proof": "Every explicit C>=0 and R>0; each passive capacitor stamp has energy C*(Va-Vb)^2/2>=0"
+      },
+      "source_hashes": {
+        "evidence/joint-pex/nominal/summary.json": "9fbfcd0c2c1add8a01b7bdfd6f3f1863333258973ee478aa5e30a7a85d7c86ed",
+        "evidence/joint-pex/nominal/output_pixel_pex.spice": "03813e63e64bf505570dbd1f81e6809366e6b4d31bbee129c28022956e1cc623",
+        "build/joint-pex/flat-nominal-r3/pixel_flat_rc.spice": "36ee3b79d0c8d8647328a989c9c2d989c4603697922d07794368609fe9f54806",
+        "build/joint-pex/flat-nominal-r3/pixel_flat.ext": "31a5efee15867b5bb50cbc524606746ae078a1a66e970b0e074c7c9946cefe24",
+        "build/joint-pex/flat-nominal-r3/pixel_flat.res.ext": "4261f64777c5d8b3b3acb0d3d4340fc4a664d37d0178f5876dc70a47c8ae095e",
+        "build/joint-pex/flat-nominal-r3/extraction.json": "53f53fb5e94165ed9029fd1e179c3cf33394bf8c1f002f415c9b617ead801649"
+      },
+      "method": "DEF/LEF/GDS instance identity; raw R connected components; actual ext dimensions and terminal diffusion A/P; ordered MOS terminal identities; independent exact R/C multisets and algebraic cap aggregation; fixed ideal-PG projection only"
+    },
+    "PEX_hrhc": {
+      "passed": true,
+      "rc_style": "hrhc",
+      "placement": {
+        "instance": "output12",
+        "master": "gf180mcu_fd_sc_mcu7t5v0__buf_2",
+        "DEF_placement_um": [
+          7.84,
+          82.32
+        ],
+        "orientation": "S",
+        "official_LEF_size_um": [
+          4.48,
+          3.92
+        ],
+        "common_GDS_transform": "r180 162320,111240",
+        "origin_um": [
+          162.32,
+          111.24
+        ],
+        "cell_site_um": [
+          157.84,
+          107.32,
+          162.32,
+          111.24
+        ],
+        "source_hashes": {
+          "evidence/integration/pixel_integrated.gds": "f785cd70e76f6f287159bbb865712a8ed6121ed15dc65a99d78cbc35bed13938",
+          "build/physical-flow/pwm-v0.2-sized/44-openroad-detailedrouting/pixel_pwm.def": "984254680f0e53b93f81baf3e4cc2700ccc4998af772219f034d918810ad02cc",
+          "build/layout/pdk/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/lef/gf180mcu_fd_sc_mcu7t5v0.lef": "47dadf84c21b20f558d043c36271632f07b1c2c2a595b118e2e1050ebb74349b"
+        }
+      },
+      "raw_counts": {
+        "C": 36028,
+        "R": 18451,
+        "MOS": 5644
+      },
+      "independently_selected_MOS": [
+        {
+          "group": "output12",
+          "gate_um": [
+            161.20000000000002,
+            107.66
+          ],
+          "raw_device": "X2425",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "5.368E-13",
+            "pd": "0.00000332",
+            "as": "4.941E-13",
+            "ps": "0.00000203",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "DRIVER_I",
+            "VDD",
+            "a_31734_21868#"
+          ],
+          "raw_terminals": [
+            "a_31734_21868.t0",
+            "DRIVER_I.t2",
+            "VDD.t21",
+            "VDD.t20"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            159.89000000000001,
+            107.66
+          ],
+          "raw_device": "X3977",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "4.941E-13",
+            "pd": "0.00000203",
+            "as": "3.782E-13",
+            "ps": "0.00000184",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "a_31734_21868#",
+            "ANALOG_PWM",
+            "VDD"
+          ],
+          "raw_terminals": [
+            "VDD.t5154",
+            "a_31734_21868.t2",
+            "ANALOG_PWM.t0",
+            "VDD.t5153"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            158.77,
+            107.66
+          ],
+          "raw_device": "X3184",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "3.782E-13",
+            "pd": "0.00000184",
+            "as": "5.368E-13",
+            "ps": "0.00000332",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "a_31734_21868#",
+            "VDD",
+            "ANALOG_PWM"
+          ],
+          "raw_terminals": [
+            "ANALOG_PWM.t1",
+            "a_31734_21868.t3",
+            "VDD.t5156",
+            "VDD.t5155"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            161.1,
+            110.08
+          ],
+          "raw_device": "X2090",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "3.608E-13",
+            "pd": "0.00000252",
+            "as": "2.911E-13",
+            "ps": "0.00000153",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "DRIVER_I",
+            "VSS",
+            "a_31734_21868#"
+          ],
+          "raw_terminals": [
+            "a_31734_21868.t1",
+            "DRIVER_I.t3",
+            "VSS.t17",
+            "VSS.t16"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            159.79,
+            110.08
+          ],
+          "raw_device": "X3601",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "2.911E-13",
+            "pd": "0.00000153",
+            "as": "2.132E-13",
+            "ps": "0.00000134",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "a_31734_21868#",
+            "ANALOG_PWM",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t4845",
+            "a_31734_21868.t4",
+            "ANALOG_PWM.t2",
+            "VSS.t4844"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            158.67000000000002,
+            110.08
+          ],
+          "raw_device": "X2791",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "2.132E-13",
+            "pd": "0.00000134",
+            "as": "3.608E-13",
+            "ps": "0.00000252",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "a_31734_21868#",
+            "VSS",
+            "ANALOG_PWM"
+          ],
+          "raw_terminals": [
+            "ANALOG_PWM.t3",
+            "a_31734_21868.t5",
+            "VSS.t4847",
+            "VSS.t4846"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            109.5,
+            123.52
+          ],
+          "raw_device": "X2936",
+          "model": "pfet_06v0",
+          "properties_SI": {
+            "ad": "1.76E-12",
+            "pd": "0.00000888",
+            "as": "1.76E-12",
+            "ps": "0.00000888",
+            "w": "0.000004",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VDD",
+            "ANALOG_PWM",
+            "pwm_b",
+            "VDD"
+          ],
+          "raw_terminals": [
+            "VDD.t26",
+            "ANALOG_PWM.t4",
+            "pwm_b.t0",
+            "VDD.t25"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            94.5,
+            124.52
+          ],
+          "raw_device": "X2902",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "ANALOG_PWM",
+            "pwm_b",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t25",
+            "ANALOG_PWM.t5",
+            "pwm_b.t1",
+            "VSS.t24"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            79.5,
+            124.52
+          ],
+          "raw_device": "X3296",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "pwm_b",
+            "gate",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t23",
+            "pwm_b.t2",
+            "gate.t0",
+            "VSS.t22"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            64.5,
+            124.52
+          ],
+          "raw_device": "X3687",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "ANALOG_PWM",
+            "bias",
+            "gate"
+          ],
+          "raw_terminals": [
+            "gate.t1",
+            "ANALOG_PWM.t6",
+            "bias.t0",
+            "VSS.t26"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            48.0,
+            121.52
+          ],
+          "raw_device": "X3661",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-12",
+            "pd": "0.00004088",
+            "as": "8.8E-12",
+            "ps": "0.00004088",
+            "w": "0.000020",
+            "l": "0.000004"
+          },
+          "ext_terminals": [
+            "VSS",
+            "gate",
+            "led_k",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t36",
+            "gate.t2",
+            "led_k.t0",
+            "VSS.t35"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            33.0,
+            121.52
+          ],
+          "raw_device": "X4068",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-12",
+            "pd": "0.00004088",
+            "as": "8.8E-12",
+            "ps": "0.00004088",
+            "w": "0.000020",
+            "l": "0.000004"
+          },
+          "ext_terminals": [
+            "VSS",
+            "bias",
+            "bias",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t38",
+            "bias.t1",
+            "bias.t2",
+            "VSS.t37"
+          ]
+        }
+      ],
+      "disposition": {
+        "outside_R_removed": 2036,
+        "dynamic_R_retained": 45,
+        "ideal_PG_R_removed": 16370,
+        "outside_C_removed": 25244,
+        "dynamic_C_aggregated": 93,
+        "fixed_PG_C_removed": 10691
+      },
+      "exported_counts": {
+        "MOS": 12,
+        "R": 45,
+        "C": 77
+      },
+      "negative_raw_capacitors": [
+        {
+          "id": "C29760",
+          "nodes": [
+            "VDD.t4857",
+            "VSS"
+          ],
+          "value_F": "-1.343E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29779",
+          "nodes": [
+            "VDD.t4858",
+            "VSS"
+          ],
+          "value_F": "-1.343E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29825",
+          "nodes": [
+            "VDD.t4868",
+            "VSS"
+          ],
+          "value_F": "-1.343E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29871",
+          "nodes": [
+            "VDD.t4926",
+            "VSS"
+          ],
+          "value_F": "-1.343E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30681",
+          "nodes": [
+            "VDD.t2958",
+            "VSS"
+          ],
+          "value_F": "-4.109E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30705",
+          "nodes": [
+            "VDD.t4976",
+            "VSS"
+          ],
+          "value_F": "-1.343E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30819",
+          "nodes": [
+            "VDD.t3030",
+            "VSS"
+          ],
+          "value_F": "-3.003E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31649",
+          "nodes": [
+            "VDD.t5172",
+            "VSS"
+          ],
+          "value_F": "-1.343E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31697",
+          "nodes": [
+            "VDD.t2535",
+            "VSS"
+          ],
+          "value_F": "-4.109E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31699",
+          "nodes": [
+            "VDD.t5144",
+            "VSS"
+          ],
+          "value_F": "-1.688E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32123",
+          "nodes": [
+            "VDD.t5147",
+            "VSS"
+          ],
+          "value_F": "-1.343E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32587",
+          "nodes": [
+            "VDD.t5261",
+            "VSS"
+          ],
+          "value_F": "-1.343E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32632",
+          "nodes": [
+            "VDD.t2057",
+            "VSS"
+          ],
+          "value_F": "-4.109E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C33021",
+          "nodes": [
+            "VDD.t1701",
+            "VSS"
+          ],
+          "value_F": "-5.216E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C33492",
+          "nodes": [
+            "VDD.t5268",
+            "VSS"
+          ],
+          "value_F": "-3.24E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C33945",
+          "nodes": [
+            "VDD.t5340",
+            "VSS"
+          ],
+          "value_F": "-1.343E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C33946",
+          "nodes": [
+            "VDD.t5304",
+            "VSS"
+          ],
+          "value_F": "-1.343E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C34034",
+          "nodes": [
+            "VDD.t5341",
+            "VSS"
+          ],
+          "value_F": "-1.343E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C34408",
+          "nodes": [
+            "VDD.t5335",
+            "VSS"
+          ],
+          "value_F": "-1.343E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "swapped_ordered_ports",
+          "rejected": true,
+          "reason": "ordered ports differ",
+          "mutant_sha256": "7e71f6d5c5b900af3a5fb1b1839607282e10a42da30e35e81f375a8311c4f3ef",
+          "raw_path": "build/research/v04-review/hrhc-swapped_ordered_ports.spice"
+        },
+        {
+          "name": "omitted_actual_dynamic_capacitor",
+          "rejected": true,
+          "reason": "C endpoint pair/multiplicity differ",
+          "mutant_sha256": "9da1603d60852121efa0e2bf724ea1cf9d4b7102649aecb0480cbd55fbf911c8",
+          "raw_path": "build/research/v04-review/hrhc-omitted_actual_dynamic_capacitor.spice"
+        },
+        {
+          "name": "doubled_actual_buffer_MOS_width",
+          "rejected": true,
+          "reason": "actual MOS W/L/body/junction properties or multiplicity differ",
+          "mutant_sha256": "fb2edeee565b0545d631f1ce4bf3044b52d048c519b3d593c116a62a2a38110b",
+          "raw_path": "build/research/v04-review/hrhc-doubled_actual_buffer_MOS_width.spice"
+        }
+      ],
+      "independent_RC_metrics": {
+        "output_drive_to_actual_analog_entry_R_ohm": 39.700423000000384,
+        "output_component_incident_C_F": "2.8459170000000000E-14",
+        "all_exported_C_sum_F": "9.8585890000000000E-14",
+        "passive_model": true,
+        "passivity_proof": "Every explicit C>=0 and R>0; each passive capacitor stamp has energy C*(Va-Vb)^2/2>=0"
+      },
+      "source_hashes": {
+        "evidence/joint-pex/hrhc/summary.json": "41d635de7b25c6de51a3b9f0babe91f21889c40ba5e99ff01bc4707575e58673",
+        "evidence/joint-pex/hrhc/output_pixel_pex.spice": "2b2ff8db5e9ae55be8dd914628750df9787f29ee3ef6e3473134a713163c8680",
+        "build/joint-pex/flat-hrhc-r2/pixel_flat_rc.spice": "471e344363efab248868e3f55a3b313388686e0afc699b8654d9f724c62c65ab",
+        "build/joint-pex/flat-hrhc-r2/pixel_flat.ext": "b8192538c3bb88d6215f41ddb06c0af119f6050f32a76249e1ce09822fed10c1",
+        "build/joint-pex/flat-hrhc-r2/pixel_flat.res.ext": "2086c1449da4c52201c01e6fe56d52fffa9717284b8d5b0dfdae51d228ca98f9",
+        "build/joint-pex/flat-hrhc-r2/extraction.json": "03a178baf319a914e223ca6b5036f902df07c2cd60e1723a939e70560a10bb34"
+      },
+      "method": "DEF/LEF/GDS instance identity; raw R connected components; actual ext dimensions and terminal diffusion A/P; ordered MOS terminal identities; independent exact R/C multisets and algebraic cap aggregation; fixed ideal-PG projection only"
+    },
+    "PEX_lrhc": {
+      "passed": true,
+      "rc_style": "lrhc",
+      "placement": {
+        "instance": "output12",
+        "master": "gf180mcu_fd_sc_mcu7t5v0__buf_2",
+        "DEF_placement_um": [
+          7.84,
+          82.32
+        ],
+        "orientation": "S",
+        "official_LEF_size_um": [
+          4.48,
+          3.92
+        ],
+        "common_GDS_transform": "r180 162320,111240",
+        "origin_um": [
+          162.32,
+          111.24
+        ],
+        "cell_site_um": [
+          157.84,
+          107.32,
+          162.32,
+          111.24
+        ],
+        "source_hashes": {
+          "evidence/integration/pixel_integrated.gds": "f785cd70e76f6f287159bbb865712a8ed6121ed15dc65a99d78cbc35bed13938",
+          "build/physical-flow/pwm-v0.2-sized/44-openroad-detailedrouting/pixel_pwm.def": "984254680f0e53b93f81baf3e4cc2700ccc4998af772219f034d918810ad02cc",
+          "build/layout/pdk/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/lef/gf180mcu_fd_sc_mcu7t5v0.lef": "47dadf84c21b20f558d043c36271632f07b1c2c2a595b118e2e1050ebb74349b"
+        }
+      },
+      "raw_counts": {
+        "C": 35950,
+        "R": 18348,
+        "MOS": 5644
+      },
+      "independently_selected_MOS": [
+        {
+          "group": "output12",
+          "gate_um": [
+            161.20000000000002,
+            107.66
+          ],
+          "raw_device": "X2425",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "5.368E-13",
+            "pd": "0.00000332",
+            "as": "4.941E-13",
+            "ps": "0.00000203",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "DRIVER_I",
+            "VDD",
+            "a_31734_21868#"
+          ],
+          "raw_terminals": [
+            "a_31734_21868.t0",
+            "DRIVER_I.t2",
+            "VDD.t27",
+            "VDD.t26"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            159.89000000000001,
+            107.66
+          ],
+          "raw_device": "X3977",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "4.941E-13",
+            "pd": "0.00000203",
+            "as": "3.782E-13",
+            "ps": "0.00000184",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "a_31734_21868#",
+            "ANALOG_PWM",
+            "VDD"
+          ],
+          "raw_terminals": [
+            "VDD.t5103",
+            "a_31734_21868.t2",
+            "ANALOG_PWM.t3",
+            "VDD.t5102"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            158.77,
+            107.66
+          ],
+          "raw_device": "X3184",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "3.782E-13",
+            "pd": "0.00000184",
+            "as": "5.368E-13",
+            "ps": "0.00000332",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "a_31734_21868#",
+            "VDD",
+            "ANALOG_PWM"
+          ],
+          "raw_terminals": [
+            "ANALOG_PWM.t0",
+            "a_31734_21868.t3",
+            "VDD.t4997",
+            "VDD.t4996"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            161.1,
+            110.08
+          ],
+          "raw_device": "X2090",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "3.608E-13",
+            "pd": "0.00000252",
+            "as": "2.911E-13",
+            "ps": "0.00000153",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "DRIVER_I",
+            "VSS",
+            "a_31734_21868#"
+          ],
+          "raw_terminals": [
+            "a_31734_21868.t1",
+            "DRIVER_I.t3",
+            "VSS.t24",
+            "VSS.t23"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            159.79,
+            110.08
+          ],
+          "raw_device": "X3601",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "2.911E-13",
+            "pd": "0.00000153",
+            "as": "2.132E-13",
+            "ps": "0.00000134",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "a_31734_21868#",
+            "ANALOG_PWM",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t4743",
+            "a_31734_21868.t4",
+            "ANALOG_PWM.t1",
+            "VSS.t4742"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            158.67000000000002,
+            110.08
+          ],
+          "raw_device": "X2791",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "2.132E-13",
+            "pd": "0.00000134",
+            "as": "3.608E-13",
+            "ps": "0.00000252",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "a_31734_21868#",
+            "VSS",
+            "ANALOG_PWM"
+          ],
+          "raw_terminals": [
+            "ANALOG_PWM.t2",
+            "a_31734_21868.t5",
+            "VSS.t4747",
+            "VSS.t4746"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            109.5,
+            123.52
+          ],
+          "raw_device": "X2936",
+          "model": "pfet_06v0",
+          "properties_SI": {
+            "ad": "1.76E-12",
+            "pd": "0.00000888",
+            "as": "1.76E-12",
+            "ps": "0.00000888",
+            "w": "0.000004",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VDD",
+            "ANALOG_PWM",
+            "pwm_b",
+            "VDD"
+          ],
+          "raw_terminals": [
+            "VDD.t32",
+            "ANALOG_PWM.t4",
+            "pwm_b.t0",
+            "VDD.t31"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            94.5,
+            124.52
+          ],
+          "raw_device": "X2902",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "ANALOG_PWM",
+            "pwm_b",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t33",
+            "ANALOG_PWM.t5",
+            "pwm_b.t1",
+            "VSS.t32"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            79.5,
+            124.52
+          ],
+          "raw_device": "X3296",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "pwm_b",
+            "gate",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t30",
+            "pwm_b.t2",
+            "gate.t0",
+            "VSS.t29"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            64.5,
+            124.52
+          ],
+          "raw_device": "X3687",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "ANALOG_PWM",
+            "bias",
+            "gate"
+          ],
+          "raw_terminals": [
+            "gate.t1",
+            "ANALOG_PWM.t6",
+            "bias.t0",
+            "VSS.t31"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            48.0,
+            121.52
+          ],
+          "raw_device": "X3661",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-12",
+            "pd": "0.00004088",
+            "as": "8.8E-12",
+            "ps": "0.00004088",
+            "w": "0.000020",
+            "l": "0.000004"
+          },
+          "ext_terminals": [
+            "VSS",
+            "gate",
+            "led_k",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t43",
+            "gate.t2",
+            "led_k.t0",
+            "VSS.t42"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            33.0,
+            121.52
+          ],
+          "raw_device": "X4068",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-12",
+            "pd": "0.00004088",
+            "as": "8.8E-12",
+            "ps": "0.00004088",
+            "w": "0.000020",
+            "l": "0.000004"
+          },
+          "ext_terminals": [
+            "VSS",
+            "bias",
+            "bias",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t45",
+            "bias.t1",
+            "bias.t2",
+            "VSS.t44"
+          ]
+        }
+      ],
+      "disposition": {
+        "outside_R_removed": 1975,
+        "dynamic_R_retained": 45,
+        "ideal_PG_R_removed": 16328,
+        "outside_C_removed": 25183,
+        "dynamic_C_aggregated": 93,
+        "fixed_PG_C_removed": 10674
+      },
+      "exported_counts": {
+        "MOS": 12,
+        "R": 45,
+        "C": 77
+      },
+      "negative_raw_capacitors": [
+        {
+          "id": "C28251",
+          "nodes": [
+            "VDD.t5299",
+            "VSS"
+          ],
+          "value_F": "-1.345E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C28643",
+          "nodes": [
+            "VDD.t5216",
+            "VSS"
+          ],
+          "value_F": "-1.345E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C28644",
+          "nodes": [
+            "VDD.t5340",
+            "VSS"
+          ],
+          "value_F": "-1.345E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C28717",
+          "nodes": [
+            "VDD.t5347",
+            "VSS"
+          ],
+          "value_F": "-1.345E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29069",
+          "nodes": [
+            "VDD.t5263",
+            "VSS"
+          ],
+          "value_F": "-3.244E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29505",
+          "nodes": [
+            "VDD.t1677",
+            "VSS"
+          ],
+          "value_F": "-5.222E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30050",
+          "nodes": [
+            "VDD.t5268",
+            "VSS"
+          ],
+          "value_F": "-1.345E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30089",
+          "nodes": [
+            "VDD.t2063",
+            "VSS"
+          ],
+          "value_F": "-4.114E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30466",
+          "nodes": [
+            "VDD.t5200",
+            "VSS"
+          ],
+          "value_F": "-1.345E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30937",
+          "nodes": [
+            "VDD.t5181",
+            "VSS"
+          ],
+          "value_F": "-1.345E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30990",
+          "nodes": [
+            "VDD.t5199",
+            "VSS"
+          ],
+          "value_F": "-1.69E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30991",
+          "nodes": [
+            "VDD.t2541",
+            "VSS"
+          ],
+          "value_F": "-4.114E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31819",
+          "nodes": [
+            "VDD.t2964",
+            "VSS"
+          ],
+          "value_F": "-4.114E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31828",
+          "nodes": [
+            "VDD.t5101",
+            "VSS"
+          ],
+          "value_F": "-1.345E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31906",
+          "nodes": [
+            "VDD.t3052",
+            "VSS"
+          ],
+          "value_F": "-3.006E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32776",
+          "nodes": [
+            "VDD.t4856",
+            "VSS"
+          ],
+          "value_F": "-1.345E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32783",
+          "nodes": [
+            "VDD.t4852",
+            "VSS"
+          ],
+          "value_F": "-1.345E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32813",
+          "nodes": [
+            "VDD.t4899",
+            "VSS"
+          ],
+          "value_F": "-1.345E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32849",
+          "nodes": [
+            "VDD.t4960",
+            "VSS"
+          ],
+          "value_F": "-1.345E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "swapped_ordered_ports",
+          "rejected": true,
+          "reason": "ordered ports differ",
+          "mutant_sha256": "cdd4d7274d4c0f3a2f837208071a32ccb10ccbd8f7880433e7a0f58b8401d689",
+          "raw_path": "build/research/v04-review/lrhc-swapped_ordered_ports.spice"
+        },
+        {
+          "name": "omitted_actual_dynamic_capacitor",
+          "rejected": true,
+          "reason": "C endpoint pair/multiplicity differ",
+          "mutant_sha256": "03ae8b6cdde3ce268635983ce00c3ce544623cbe6c496e38b71dce323c15a93b",
+          "raw_path": "build/research/v04-review/lrhc-omitted_actual_dynamic_capacitor.spice"
+        },
+        {
+          "name": "doubled_actual_buffer_MOS_width",
+          "rejected": true,
+          "reason": "actual MOS W/L/body/junction properties or multiplicity differ",
+          "mutant_sha256": "4e8f22ea6751be726b3899a2431f2c011d2c16b7800e06075a2305bcf844259f",
+          "raw_path": "build/research/v04-review/lrhc-doubled_actual_buffer_MOS_width.spice"
+        }
+      ],
+      "independent_RC_metrics": {
+        "output_drive_to_actual_analog_entry_R_ohm": 7.089146000000122,
+        "output_component_incident_C_F": "2.6775750000000000E-14",
+        "all_exported_C_sum_F": "9.8557790000000000E-14",
+        "passive_model": true,
+        "passivity_proof": "Every explicit C>=0 and R>0; each passive capacitor stamp has energy C*(Va-Vb)^2/2>=0"
+      },
+      "source_hashes": {
+        "evidence/joint-pex/lrhc/summary.json": "af357c3b6216936f749513c56f23dcceb18efcb99343343f681ce243c0263edc",
+        "evidence/joint-pex/lrhc/output_pixel_pex.spice": "c54d162fc05d328fb67f59a54d3c294e0ec6be23bba70c022b813596e5d8e674",
+        "build/joint-pex/flat-lrhc-r2/pixel_flat_rc.spice": "7e5e03808b729498631109e69244d894ebb2f3bfff9abe1519a4434277cb0aef",
+        "build/joint-pex/flat-lrhc-r2/pixel_flat.ext": "35630455f8bc05e5f3434f3c4ca38b1279e4d11f787ea1d336acc9fb74667d45",
+        "build/joint-pex/flat-lrhc-r2/pixel_flat.res.ext": "026fc9b8d566ce5a08af0ce1f74af00c5386f554649d169e908d291f1ee71e61",
+        "build/joint-pex/flat-lrhc-r2/extraction.json": "d21e720a86ae51620ddc274c389da958ded34f5c5672658ee7d24cbebd875ffd"
+      },
+      "method": "DEF/LEF/GDS instance identity; raw R connected components; actual ext dimensions and terminal diffusion A/P; ordered MOS terminal identities; independent exact R/C multisets and algebraic cap aggregation; fixed ideal-PG projection only"
+    },
+    "PEX_hrlc": {
+      "passed": true,
+      "rc_style": "hrlc",
+      "placement": {
+        "instance": "output12",
+        "master": "gf180mcu_fd_sc_mcu7t5v0__buf_2",
+        "DEF_placement_um": [
+          7.84,
+          82.32
+        ],
+        "orientation": "S",
+        "official_LEF_size_um": [
+          4.48,
+          3.92
+        ],
+        "common_GDS_transform": "r180 162320,111240",
+        "origin_um": [
+          162.32,
+          111.24
+        ],
+        "cell_site_um": [
+          157.84,
+          107.32,
+          162.32,
+          111.24
+        ],
+        "source_hashes": {
+          "evidence/integration/pixel_integrated.gds": "f785cd70e76f6f287159bbb865712a8ed6121ed15dc65a99d78cbc35bed13938",
+          "build/physical-flow/pwm-v0.2-sized/44-openroad-detailedrouting/pixel_pwm.def": "984254680f0e53b93f81baf3e4cc2700ccc4998af772219f034d918810ad02cc",
+          "build/layout/pdk/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/lef/gf180mcu_fd_sc_mcu7t5v0.lef": "47dadf84c21b20f558d043c36271632f07b1c2c2a595b118e2e1050ebb74349b"
+        }
+      },
+      "raw_counts": {
+        "C": 36028,
+        "R": 18451,
+        "MOS": 5644
+      },
+      "independently_selected_MOS": [
+        {
+          "group": "output12",
+          "gate_um": [
+            161.20000000000002,
+            107.66
+          ],
+          "raw_device": "X2425",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "5.368E-13",
+            "pd": "0.00000332",
+            "as": "4.941E-13",
+            "ps": "0.00000203",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "DRIVER_I",
+            "VDD",
+            "a_31734_21868#"
+          ],
+          "raw_terminals": [
+            "a_31734_21868.t0",
+            "DRIVER_I.t2",
+            "VDD.t27",
+            "VDD.t26"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            159.89000000000001,
+            107.66
+          ],
+          "raw_device": "X3977",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "4.941E-13",
+            "pd": "0.00000203",
+            "as": "3.782E-13",
+            "ps": "0.00000184",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "a_31734_21868#",
+            "ANALOG_PWM",
+            "VDD"
+          ],
+          "raw_terminals": [
+            "VDD.t5210",
+            "a_31734_21868.t2",
+            "ANALOG_PWM.t0",
+            "VDD.t5209"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            158.77,
+            107.66
+          ],
+          "raw_device": "X3184",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "3.782E-13",
+            "pd": "0.00000184",
+            "as": "5.368E-13",
+            "ps": "0.00000332",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "a_31734_21868#",
+            "VDD",
+            "ANALOG_PWM"
+          ],
+          "raw_terminals": [
+            "ANALOG_PWM.t1",
+            "a_31734_21868.t3",
+            "VDD.t5212",
+            "VDD.t5211"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            161.1,
+            110.08
+          ],
+          "raw_device": "X2090",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "3.608E-13",
+            "pd": "0.00000252",
+            "as": "2.911E-13",
+            "ps": "0.00000153",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "DRIVER_I",
+            "VSS",
+            "a_31734_21868#"
+          ],
+          "raw_terminals": [
+            "a_31734_21868.t1",
+            "DRIVER_I.t3",
+            "VSS.t22",
+            "VSS.t21"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            159.79,
+            110.08
+          ],
+          "raw_device": "X3601",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "2.911E-13",
+            "pd": "0.00000153",
+            "as": "2.132E-13",
+            "ps": "0.00000134",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "a_31734_21868#",
+            "ANALOG_PWM",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t4907",
+            "a_31734_21868.t4",
+            "ANALOG_PWM.t2",
+            "VSS.t4906"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            158.67000000000002,
+            110.08
+          ],
+          "raw_device": "X2791",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "2.132E-13",
+            "pd": "0.00000134",
+            "as": "3.608E-13",
+            "ps": "0.00000252",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "a_31734_21868#",
+            "VSS",
+            "ANALOG_PWM"
+          ],
+          "raw_terminals": [
+            "ANALOG_PWM.t3",
+            "a_31734_21868.t5",
+            "VSS.t4909",
+            "VSS.t4908"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            109.5,
+            123.52
+          ],
+          "raw_device": "X2936",
+          "model": "pfet_06v0",
+          "properties_SI": {
+            "ad": "1.76E-12",
+            "pd": "0.00000888",
+            "as": "1.76E-12",
+            "ps": "0.00000888",
+            "w": "0.000004",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VDD",
+            "ANALOG_PWM",
+            "pwm_b",
+            "VDD"
+          ],
+          "raw_terminals": [
+            "VDD.t32",
+            "ANALOG_PWM.t4",
+            "pwm_b.t0",
+            "VDD.t31"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            94.5,
+            124.52
+          ],
+          "raw_device": "X2902",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "ANALOG_PWM",
+            "pwm_b",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t31",
+            "ANALOG_PWM.t5",
+            "pwm_b.t1",
+            "VSS.t30"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            79.5,
+            124.52
+          ],
+          "raw_device": "X3296",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "pwm_b",
+            "gate",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t28",
+            "pwm_b.t2",
+            "gate.t0",
+            "VSS.t27"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            64.5,
+            124.52
+          ],
+          "raw_device": "X3687",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "ANALOG_PWM",
+            "bias",
+            "gate"
+          ],
+          "raw_terminals": [
+            "gate.t1",
+            "ANALOG_PWM.t6",
+            "bias.t0",
+            "VSS.t29"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            48.0,
+            121.52
+          ],
+          "raw_device": "X3661",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-12",
+            "pd": "0.00004088",
+            "as": "8.8E-12",
+            "ps": "0.00004088",
+            "w": "0.000020",
+            "l": "0.000004"
+          },
+          "ext_terminals": [
+            "VSS",
+            "gate",
+            "led_k",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t41",
+            "gate.t2",
+            "led_k.t0",
+            "VSS.t40"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            33.0,
+            121.52
+          ],
+          "raw_device": "X4068",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-12",
+            "pd": "0.00004088",
+            "as": "8.8E-12",
+            "ps": "0.00004088",
+            "w": "0.000020",
+            "l": "0.000004"
+          },
+          "ext_terminals": [
+            "VSS",
+            "bias",
+            "bias",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t43",
+            "bias.t1",
+            "bias.t2",
+            "VSS.t42"
+          ]
+        }
+      ],
+      "disposition": {
+        "outside_R_removed": 2036,
+        "dynamic_R_retained": 45,
+        "ideal_PG_R_removed": 16370,
+        "outside_C_removed": 25244,
+        "dynamic_C_aggregated": 93,
+        "fixed_PG_C_removed": 10691
+      },
+      "exported_counts": {
+        "MOS": 12,
+        "R": 45,
+        "C": 77
+      },
+      "negative_raw_capacitors": [
+        {
+          "id": "C29760",
+          "nodes": [
+            "VDD.t4850",
+            "VSS"
+          ],
+          "value_F": "-1.103E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29779",
+          "nodes": [
+            "VDD.t4845",
+            "VSS"
+          ],
+          "value_F": "-1.103E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29825",
+          "nodes": [
+            "VDD.t4884",
+            "VSS"
+          ],
+          "value_F": "-1.103E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29871",
+          "nodes": [
+            "VDD.t4920",
+            "VSS"
+          ],
+          "value_F": "-1.103E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30681",
+          "nodes": [
+            "VDD.t2964",
+            "VSS"
+          ],
+          "value_F": "-3.374E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30705",
+          "nodes": [
+            "VDD.t5095",
+            "VSS"
+          ],
+          "value_F": "-1.103E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30819",
+          "nodes": [
+            "VDD.t3052",
+            "VSS"
+          ],
+          "value_F": "-2.466E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31649",
+          "nodes": [
+            "VDD.t5165",
+            "VSS"
+          ],
+          "value_F": "-1.103E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31697",
+          "nodes": [
+            "VDD.t2541",
+            "VSS"
+          ],
+          "value_F": "-3.374E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31699",
+          "nodes": [
+            "VDD.t5204",
+            "VSS"
+          ],
+          "value_F": "-1.386E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32123",
+          "nodes": [
+            "VDD.t5207",
+            "VSS"
+          ],
+          "value_F": "-1.103E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32587",
+          "nodes": [
+            "VDD.t5267",
+            "VSS"
+          ],
+          "value_F": "-1.103E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32632",
+          "nodes": [
+            "VDD.t2063",
+            "VSS"
+          ],
+          "value_F": "-3.374E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C33021",
+          "nodes": [
+            "VDD.t1687",
+            "VSS"
+          ],
+          "value_F": "-4.283E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C33492",
+          "nodes": [
+            "VDD.t5272",
+            "VSS"
+          ],
+          "value_F": "-2.661E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C33945",
+          "nodes": [
+            "VDD.t5345",
+            "VSS"
+          ],
+          "value_F": "-1.103E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C33946",
+          "nodes": [
+            "VDD.t5307",
+            "VSS"
+          ],
+          "value_F": "-1.103E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C34034",
+          "nodes": [
+            "VDD.t5346",
+            "VSS"
+          ],
+          "value_F": "-1.103E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C34408",
+          "nodes": [
+            "VDD.t5347",
+            "VSS"
+          ],
+          "value_F": "-1.103E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "swapped_ordered_ports",
+          "rejected": true,
+          "reason": "ordered ports differ",
+          "mutant_sha256": "a48912f4031e2811a03439938f5afdd18f0a212d64e2df193c8122d56b92d36a",
+          "raw_path": "build/research/v04-review/hrlc-swapped_ordered_ports.spice"
+        },
+        {
+          "name": "omitted_actual_dynamic_capacitor",
+          "rejected": true,
+          "reason": "C endpoint pair/multiplicity differ",
+          "mutant_sha256": "48dc44ba0f57d9260879f1c7d9faaae4be693f3f874cbf254723d9d683e43b47",
+          "raw_path": "build/research/v04-review/hrlc-omitted_actual_dynamic_capacitor.spice"
+        },
+        {
+          "name": "doubled_actual_buffer_MOS_width",
+          "rejected": true,
+          "reason": "actual MOS W/L/body/junction properties or multiplicity differ",
+          "mutant_sha256": "eea2e44cd4426ceba98e5aeacbc42bf738df7290b43adadcd0cdf8d045f07696",
+          "raw_path": "build/research/v04-review/hrlc-doubled_actual_buffer_MOS_width.spice"
+        }
+      ],
+      "independent_RC_metrics": {
+        "output_drive_to_actual_analog_entry_R_ohm": 39.700423000000384,
+        "output_component_incident_C_F": "2.1728510000000000E-14",
+        "all_exported_C_sum_F": "8.1116260000000000E-14",
+        "passive_model": true,
+        "passivity_proof": "Every explicit C>=0 and R>0; each passive capacitor stamp has energy C*(Va-Vb)^2/2>=0"
+      },
+      "source_hashes": {
+        "evidence/joint-pex/hrlc/summary.json": "d4ec906199560cce22aef09634a2b01d90aae9655bfac73063f0a7c657feb6f8",
+        "evidence/joint-pex/hrlc/output_pixel_pex.spice": "602cab3bb76f552b83bf9ebf3226c088bacdb1323c5fb7e0683858510172cba2",
+        "build/joint-pex/flat-hrlc-r2/pixel_flat_rc.spice": "eefbec7d0f5d62810509ac91ceaebb201060e0fefa2e32ec964865a0ddb882cd",
+        "build/joint-pex/flat-hrlc-r2/pixel_flat.ext": "8e71fd83add6d24357ad7ffc4079123a64af949620b65f4195fd0687e4f03398",
+        "build/joint-pex/flat-hrlc-r2/pixel_flat.res.ext": "bab6af9e0ca2d478d37ca7519065551341d6165508a54227cf8170786db9a9c6",
+        "build/joint-pex/flat-hrlc-r2/extraction.json": "d58461deac27459a4b48fb8a939bf89b48bf536bcca9030970d291bbc40e59b9"
+      },
+      "method": "DEF/LEF/GDS instance identity; raw R connected components; actual ext dimensions and terminal diffusion A/P; ordered MOS terminal identities; independent exact R/C multisets and algebraic cap aggregation; fixed ideal-PG projection only"
+    },
+    "PEX_lrlc": {
+      "passed": true,
+      "rc_style": "lrlc",
+      "placement": {
+        "instance": "output12",
+        "master": "gf180mcu_fd_sc_mcu7t5v0__buf_2",
+        "DEF_placement_um": [
+          7.84,
+          82.32
+        ],
+        "orientation": "S",
+        "official_LEF_size_um": [
+          4.48,
+          3.92
+        ],
+        "common_GDS_transform": "r180 162320,111240",
+        "origin_um": [
+          162.32,
+          111.24
+        ],
+        "cell_site_um": [
+          157.84,
+          107.32,
+          162.32,
+          111.24
+        ],
+        "source_hashes": {
+          "evidence/integration/pixel_integrated.gds": "f785cd70e76f6f287159bbb865712a8ed6121ed15dc65a99d78cbc35bed13938",
+          "build/physical-flow/pwm-v0.2-sized/44-openroad-detailedrouting/pixel_pwm.def": "984254680f0e53b93f81baf3e4cc2700ccc4998af772219f034d918810ad02cc",
+          "build/layout/pdk/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/lef/gf180mcu_fd_sc_mcu7t5v0.lef": "47dadf84c21b20f558d043c36271632f07b1c2c2a595b118e2e1050ebb74349b"
+        }
+      },
+      "raw_counts": {
+        "C": 35950,
+        "R": 18348,
+        "MOS": 5644
+      },
+      "independently_selected_MOS": [
+        {
+          "group": "output12",
+          "gate_um": [
+            161.20000000000002,
+            107.66
+          ],
+          "raw_device": "X2425",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "5.368E-13",
+            "pd": "0.00000332",
+            "as": "4.941E-13",
+            "ps": "0.00000203",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "DRIVER_I",
+            "VDD",
+            "a_31734_21868#"
+          ],
+          "raw_terminals": [
+            "a_31734_21868.t0",
+            "DRIVER_I.t2",
+            "VDD.t45",
+            "VDD.t44"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            159.89000000000001,
+            107.66
+          ],
+          "raw_device": "X3977",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "4.941E-13",
+            "pd": "0.00000203",
+            "as": "3.782E-13",
+            "ps": "0.00000184",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "a_31734_21868#",
+            "ANALOG_PWM",
+            "VDD"
+          ],
+          "raw_terminals": [
+            "VDD.t5201",
+            "a_31734_21868.t2",
+            "ANALOG_PWM.t0",
+            "VDD.t5200"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            158.77,
+            107.66
+          ],
+          "raw_device": "X3184",
+          "model": "pfet_05v0",
+          "properties_SI": {
+            "ad": "3.782E-13",
+            "pd": "0.00000184",
+            "as": "5.368E-13",
+            "ps": "0.00000332",
+            "w": "0.00000122",
+            "l": "5E-7"
+          },
+          "ext_terminals": [
+            "VDD",
+            "a_31734_21868#",
+            "VDD",
+            "ANALOG_PWM"
+          ],
+          "raw_terminals": [
+            "ANALOG_PWM.t1",
+            "a_31734_21868.t3",
+            "VDD.t5203",
+            "VDD.t5202"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            161.1,
+            110.08
+          ],
+          "raw_device": "X2090",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "3.608E-13",
+            "pd": "0.00000252",
+            "as": "2.911E-13",
+            "ps": "0.00000153",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "DRIVER_I",
+            "VSS",
+            "a_31734_21868#"
+          ],
+          "raw_terminals": [
+            "a_31734_21868.t1",
+            "DRIVER_I.t3",
+            "VSS.t40",
+            "VSS.t39"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            159.79,
+            110.08
+          ],
+          "raw_device": "X3601",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "2.911E-13",
+            "pd": "0.00000153",
+            "as": "2.132E-13",
+            "ps": "0.00000134",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "a_31734_21868#",
+            "ANALOG_PWM",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t4897",
+            "a_31734_21868.t4",
+            "ANALOG_PWM.t2",
+            "VSS.t4896"
+          ]
+        },
+        {
+          "group": "output12",
+          "gate_um": [
+            158.67000000000002,
+            110.08
+          ],
+          "raw_device": "X2791",
+          "model": "nfet_05v0",
+          "properties_SI": {
+            "ad": "2.132E-13",
+            "pd": "0.00000134",
+            "as": "3.608E-13",
+            "ps": "0.00000252",
+            "w": "8.2E-7",
+            "l": "6E-7"
+          },
+          "ext_terminals": [
+            "VSS",
+            "a_31734_21868#",
+            "VSS",
+            "ANALOG_PWM"
+          ],
+          "raw_terminals": [
+            "ANALOG_PWM.t3",
+            "a_31734_21868.t5",
+            "VSS.t4899",
+            "VSS.t4898"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            109.5,
+            123.52
+          ],
+          "raw_device": "X2936",
+          "model": "pfet_06v0",
+          "properties_SI": {
+            "ad": "1.76E-12",
+            "pd": "0.00000888",
+            "as": "1.76E-12",
+            "ps": "0.00000888",
+            "w": "0.000004",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VDD",
+            "ANALOG_PWM",
+            "pwm_b",
+            "VDD"
+          ],
+          "raw_terminals": [
+            "VDD.t50",
+            "ANALOG_PWM.t4",
+            "pwm_b.t0",
+            "VDD.t49"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            94.5,
+            124.52
+          ],
+          "raw_device": "X2902",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "ANALOG_PWM",
+            "pwm_b",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t49",
+            "ANALOG_PWM.t5",
+            "pwm_b.t1",
+            "VSS.t48"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            79.5,
+            124.52
+          ],
+          "raw_device": "X3296",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "pwm_b",
+            "gate",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t46",
+            "pwm_b.t2",
+            "gate.t0",
+            "VSS.t45"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            64.5,
+            124.52
+          ],
+          "raw_device": "X3687",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-13",
+            "pd": "0.00000488",
+            "as": "8.8E-13",
+            "ps": "0.00000488",
+            "w": "0.000002",
+            "l": "0.000001"
+          },
+          "ext_terminals": [
+            "VSS",
+            "ANALOG_PWM",
+            "bias",
+            "gate"
+          ],
+          "raw_terminals": [
+            "gate.t1",
+            "ANALOG_PWM.t6",
+            "bias.t0",
+            "VSS.t47"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            48.0,
+            121.52
+          ],
+          "raw_device": "X3661",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-12",
+            "pd": "0.00004088",
+            "as": "8.8E-12",
+            "ps": "0.00004088",
+            "w": "0.000020",
+            "l": "0.000004"
+          },
+          "ext_terminals": [
+            "VSS",
+            "gate",
+            "led_k",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t59",
+            "gate.t2",
+            "led_k.t0",
+            "VSS.t58"
+          ]
+        },
+        {
+          "group": "analog",
+          "gate_um": [
+            33.0,
+            121.52
+          ],
+          "raw_device": "X4068",
+          "model": "nfet_06v0",
+          "properties_SI": {
+            "ad": "8.8E-12",
+            "pd": "0.00004088",
+            "as": "8.8E-12",
+            "ps": "0.00004088",
+            "w": "0.000020",
+            "l": "0.000004"
+          },
+          "ext_terminals": [
+            "VSS",
+            "bias",
+            "bias",
+            "VSS"
+          ],
+          "raw_terminals": [
+            "VSS.t61",
+            "bias.t1",
+            "bias.t2",
+            "VSS.t60"
+          ]
+        }
+      ],
+      "disposition": {
+        "outside_R_removed": 1975,
+        "dynamic_R_retained": 45,
+        "ideal_PG_R_removed": 16328,
+        "outside_C_removed": 25183,
+        "dynamic_C_aggregated": 93,
+        "fixed_PG_C_removed": 10674
+      },
+      "exported_counts": {
+        "MOS": 12,
+        "R": 45,
+        "C": 77
+      },
+      "negative_raw_capacitors": [
+        {
+          "id": "C28251",
+          "nodes": [
+            "VDD.t5347",
+            "VSS"
+          ],
+          "value_F": "-1.104E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C28643",
+          "nodes": [
+            "VDD.t5306",
+            "VSS"
+          ],
+          "value_F": "-1.104E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C28644",
+          "nodes": [
+            "VDD.t5340",
+            "VSS"
+          ],
+          "value_F": "-1.104E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C28717",
+          "nodes": [
+            "VDD.t5323",
+            "VSS"
+          ],
+          "value_F": "-1.104E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29069",
+          "nodes": [
+            "VDD.t5277",
+            "VSS"
+          ],
+          "value_F": "-2.664E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C29505",
+          "nodes": [
+            "VDD.t1703",
+            "VSS"
+          ],
+          "value_F": "-4.288E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30050",
+          "nodes": [
+            "VDD.t5269",
+            "VSS"
+          ],
+          "value_F": "-1.104E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30089",
+          "nodes": [
+            "VDD.t2081",
+            "VSS"
+          ],
+          "value_F": "-3.378E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30466",
+          "nodes": [
+            "VDD.t5162",
+            "VSS"
+          ],
+          "value_F": "-1.104E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30937",
+          "nodes": [
+            "VDD.t5179",
+            "VSS"
+          ],
+          "value_F": "-1.104E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30990",
+          "nodes": [
+            "VDD.t5195",
+            "VSS"
+          ],
+          "value_F": "-1.388E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C30991",
+          "nodes": [
+            "VDD.t2559",
+            "VSS"
+          ],
+          "value_F": "-3.378E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31819",
+          "nodes": [
+            "VDD.t2982",
+            "VSS"
+          ],
+          "value_F": "-3.378E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31828",
+          "nodes": [
+            "VDD.t5092",
+            "VSS"
+          ],
+          "value_F": "-1.104E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C31906",
+          "nodes": [
+            "VDD.t3072",
+            "VSS"
+          ],
+          "value_F": "-2.469E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32776",
+          "nodes": [
+            "VDD.t4851",
+            "VSS"
+          ],
+          "value_F": "-1.104E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32783",
+          "nodes": [
+            "VDD.t4859",
+            "VSS"
+          ],
+          "value_F": "-1.104E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32813",
+          "nodes": [
+            "VDD.t4877",
+            "VSS"
+          ],
+          "value_F": "-1.104E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        },
+        {
+          "id": "C32849",
+          "nodes": [
+            "VDD.t4925",
+            "VSS"
+          ],
+          "value_F": "-1.104E-17",
+          "mapped_nodes": [
+            "VDD",
+            "VSS"
+          ]
+        }
+      ],
+      "negative_controls": [
+        {
+          "name": "swapped_ordered_ports",
+          "rejected": true,
+          "reason": "ordered ports differ",
+          "mutant_sha256": "6fa972213dc64363a7f268eda5a066e05efef8835513b49b7fcb322e9de15a07",
+          "raw_path": "build/research/v04-review/lrlc-swapped_ordered_ports.spice"
+        },
+        {
+          "name": "omitted_actual_dynamic_capacitor",
+          "rejected": true,
+          "reason": "C endpoint pair/multiplicity differ",
+          "mutant_sha256": "6ce1481bcb13c66ad5ccdc96ce57b17d11776a5e094fc349c3dc0b8acb336518",
+          "raw_path": "build/research/v04-review/lrlc-omitted_actual_dynamic_capacitor.spice"
+        },
+        {
+          "name": "doubled_actual_buffer_MOS_width",
+          "rejected": true,
+          "reason": "actual MOS W/L/body/junction properties or multiplicity differ",
+          "mutant_sha256": "f31ad4171ddb5f004584a1f580e72cafe96335114263524ccb2dd2ae61bf4bda",
+          "raw_path": "build/research/v04-review/lrlc-doubled_actual_buffer_MOS_width.spice"
+        }
+      ],
+      "independent_RC_metrics": {
+        "output_drive_to_actual_analog_entry_R_ohm": 7.089146000000079,
+        "output_component_incident_C_F": "2.0473810000000000E-14",
+        "all_exported_C_sum_F": "8.1094980000000000E-14",
+        "passive_model": true,
+        "passivity_proof": "Every explicit C>=0 and R>0; each passive capacitor stamp has energy C*(Va-Vb)^2/2>=0"
+      },
+      "source_hashes": {
+        "evidence/joint-pex/lrlc/summary.json": "beb892eeac0a8255585b8c378e6d5daa6a12165368d96560740a809fab421191",
+        "evidence/joint-pex/lrlc/output_pixel_pex.spice": "5bcfdbdb9746259f0468257adc7d41ef94376e4d9c5da4f0722108d9c2635470",
+        "build/joint-pex/flat-lrlc-r2/pixel_flat_rc.spice": "451f00c3819e4e4e9184a882d9a5cd0a4d5478df27df01862bd4d50a02db214c",
+        "build/joint-pex/flat-lrlc-r2/pixel_flat.ext": "234323d71e50dce6f3cb020e00a94b46d19e19e670685146dc6fc2c7890cd4c5",
+        "build/joint-pex/flat-lrlc-r2/pixel_flat.res.ext": "9c06a85ca008e4ed0ea79c6105d570536f11f82864e4bfbc2ecd67350c4b3bba",
+        "build/joint-pex/flat-lrlc-r2/extraction.json": "e14c73794fe1228bc912e13ea89cdd9939db257fe08bc676b2f418c9ea46b49d"
+      },
+      "method": "DEF/LEF/GDS instance identity; raw R connected components; actual ext dimensions and terminal diffusion A/P; ordered MOS terminal identities; independent exact R/C multisets and algebraic cap aggregation; fixed ideal-PG projection only"
+    },
+    "waveform_probe": {
+      "passed": true,
+      "group": "probe",
+      "transient_cases": 10,
+      "DC_cases": 12,
+      "scalar_recalculation_assertions": 384,
+      "maximum_recalculation_residuals": {
+        "DC_scalar": 5.684341886080802e-14,
+        "duration_s": 0.0,
+        "current_uA": 0.0,
+        "charge_C": 1.2924697071141057e-26,
+        "energy_J": 8.271806125530277e-25,
+        "power_uW": 5.684341886080802e-14,
+        "extremum_uA": 0.0,
+        "negative_energy_J": 0.0
+      },
+      "method": "Original raw linear panels clipped in normalized u; current antiderivative and quadratic V*I polynomial antiderivative; explicit signed sources and actual case duration (main512us); independent threshold interpolation and engineering guards; no runner import",
+      "source_hashes": {
+        "evidence/robustness/probe-summary.json": "4ed6b81cdc93f98770f4562029d310465ca2d5023d3bf9906aa09098482d1d2f"
+      },
+      "scope": "Actual selected-signal 12MOS ideal-PG projection; startup/series-R source energies omit extracted PG-only charging and full digital logic"
+    },
+    "raw_hierarchy_scope": {
+      "passed": true,
+      "method": "Read preserved raw hierarchy and frozen flat-export provenance; do not treat unweighted subcircuit definition counts as physical total capacitance",
+      "literal_hierarchy_definitions": 33,
+      "literal_unweighted_C_records": 29549,
+      "literal_unweighted_negative_C_records": 661,
+      "literal_unweighted_negative_C_sum_F": "-2.21063975E-12",
+      "examples": [
+        {
+          "name": "C93",
+          "nodes": [
+            "VNW.t0",
+            "VPW"
+          ],
+          "value_F": "-8.05E-18"
+        },
+        {
+          "name": "C81",
+          "nodes": [
+            "VDD",
+            "FILLER_1_2/a_2364_375#"
+          ],
+          "value_F": "-6.47E-18"
+        },
+        {
+          "name": "C207",
+          "nodes": [
+            "VDD",
+            "FILLER_1_72/a_3708_375#"
+          ],
+          "value_F": "-1.464E-17"
+        },
+        {
+          "name": "C214",
+          "nodes": [
+            "VDD",
+            "FILLER_29_2/a_1020_375#"
+          ],
+          "value_F": "-1.444E-17"
+        }
+      ],
+      "raw_hierarchy_not_instantiated_in_v04": true,
+      "raw_hierarchy_not_clipped": true,
+      "flat_exports": {
+        "nominal": {
+          "flat_run": "build/joint-pex/flat-nominal-r3",
+          "negative_raw_C": 19,
+          "input_identity_matches_v03": true
+        },
+        "hrhc": {
+          "flat_run": "build/joint-pex/flat-hrhc-r2",
+          "negative_raw_C": 19,
+          "input_identity_matches_v03": true
+        },
+        "lrhc": {
+          "flat_run": "build/joint-pex/flat-lrhc-r2",
+          "negative_raw_C": 19,
+          "input_identity_matches_v03": true
+        },
+        "hrlc": {
+          "flat_run": "build/joint-pex/flat-hrlc-r2",
+          "negative_raw_C": 19,
+          "input_identity_matches_v03": true
+        },
+        "lrlc": {
+          "flat_run": "build/joint-pex/flat-lrlc-r2",
+          "negative_raw_C": 19,
+          "input_identity_matches_v03": true
+        }
+      },
+      "interpretation": "The 661 signed raw records span 33 subcircuit definitions and include hierarchy/template corrections. They are not 661 physical negative capacitors. Direct clipping would change the correction algebra. Released models use fresh actual flat extraction, then independently checked fixed-PG projection; no raw hierarchy or old route RC is stacked.",
+      "source_hashes": {
+        "build/joint-pex/full-nominal-r1/pixel_integrated_rc.spice": "f45bd5f24e6796538d9c7702b3fbf0a585824eb51f2d9f76bae3dabc7b1233e8",
+        "evidence/joint-pex/summary.json": "410e9e9bcd67b2bcf768a0df2b2694a4ef09f0f86544be845e4f2bc4775c916a"
+      }
+    },
+    "waveform_main": {
+      "passed": true,
+      "group": "main",
+      "transient_cases": 37,
+      "DC_cases": 12,
+      "scalar_recalculation_assertions": 1371,
+      "maximum_recalculation_residuals": {
+        "DC_scalar": 5.684341886080802e-14,
+        "duration_s": 0.0,
+        "current_uA": 0.0,
+        "charge_C": 2.5849394142282115e-26,
+        "energy_J": 5.293955920339377e-23,
+        "power_uW": 1.1368683772161603e-13,
+        "extremum_uA": 0.0,
+        "negative_energy_J": 0.0,
+        "frame_current_uA": 7.105427357601002e-14,
+        "slew_ns": 0.0,
+        "pulse_ns": 0.0,
+        "area_error_pct": 3.3306690738754696e-14
+      },
+      "method": "Original raw linear panels clipped in normalized u; current antiderivative and quadratic V*I polynomial antiderivative; explicit signed sources and actual case duration (main512us); independent threshold interpolation and engineering guards; no runner import",
+      "source_hashes": {
+        "evidence/robustness/main-summary.json": "5c962bf85021991085f0d15370d355d0a8a2af02bc7119f257de6cf6d7f20321"
+      },
+      "scope": "Actual selected-signal 12MOS ideal-PG projection; startup/series-R source energies omit extracted PG-only charging and full digital logic"
+    },
+    "fresh_reproduction": {
+      "passed": true,
+      "ordered_formal_ports_equal": true,
+      "formal_identity_preserved_before_geometry": true,
+      "injective_nonformal_geometric_nodes": 44,
+      "exact_ordered_MOS_and_symmetric_RC_multisets_equal": true,
+      "model_records": {
+        "X": 12,
+        "R": 45,
+        "C": 77
+      },
+      "original_model_SHA256": "03813e63e64bf505570dbd1f81e6809366e6b4d31bbee129c28022956e1cc623",
+      "fresh_model_SHA256": "3a2372a039c3ca6df34d1fe87c7d6adf5ce71e2a05298ae5167980565973f489",
+      "byte_identical": false,
+      "method": "Independent parser keeps every formal port name first, maps remaining actual .res.ext nodes to unique(netbase,x,y), requires injectivity and no ambiguous repeated record, then compares full Decimal values and multiplicities; no RC stats-only test",
+      "source_hashes": {
+        "evidence/joint-pex/reproduction.json": "cce4187fd02cf1211607f54639dc29cf37588c0f37b8ffde2df70a33633bb3c3",
+        "evidence/joint-pex/nominal/output_pixel_pex.spice": "03813e63e64bf505570dbd1f81e6809366e6b4d31bbee129c28022956e1cc623",
+        "build/joint-pex/reproduce-package-r1/nominal/output_pixel_pex.spice": "3a2372a039c3ca6df34d1fe87c7d6adf5ce71e2a05298ae5167980565973f489",
+        "build/joint-pex/flat-nominal-r3/pixel_flat.res.ext": "4261f64777c5d8b3b3acb0d3d4340fc4a664d37d0178f5876dc70a47c8ae095e",
+        "build/joint-pex/reproduce-nominal-r1/pixel_flat.res.ext": "56077e5e85f41657f0aa808ee16d962d49ab5c4bd94ef66ab4e835f9b17bf8e3"
+      }
+    },
+    "endpoint_controls": {
+      "passed": true,
+      "representation_only_allowance_ULP": 8,
+      "positive_control_ULP": 2,
+      "negative_controls": [
+        {
+          "name": "endpoint_32_ULP",
+          "rejected": true,
+          "input_sha256": "354919639b6c1f8ba4eae02ed24f85b076f9fb1f98320ae24796ef876020fc56",
+          "endpoint_gap_s": 4.336808689942018e-19
+        },
+        {
+          "name": "missing_actual_last_sample",
+          "rejected": true,
+          "input_sha256": "a6e0ed14b6a63ff56adb6811e5488cb0c512bd846955a966826ea8dccf8f9eef",
+          "endpoint_gap_s": 9.864739356665029e-09
+        }
+      ],
+      "actual_serialized_stop_gap_ULP": 1.0,
+      "source_hashes": {
+        "evidence/robustness/boundary-summary.json": "d4bf28fa216a2f5d894e4da0b19f6c647eb71d763b553d49ddad5bc0f71f65ad",
+        "build/robustness/boundary-zkivszoz/RTL_reset/waveform.dat": "72809999cc57fb5012c35fc20bbd3e9798bfd66ea15630381fd5aa24c79669f9",
+        "build/research/v04-review/endpoint-two-ULP.dat": "280536cc8376fbb45e16f01b6aa752cd3e6fdb1fd2809f934a1bfe32a9bbbd63"
+      },
+      "method": "Actual raw RTL_reset tail retains all 18 saved columns. Only final text-coordinate is changed for 2 versus 32 ULP, plus actual endpoint sample omission. Declared denominator unchanged; no SPICE rerun or physical guard change"
+    },
+    "waveform_boundary": {
+      "passed": true,
+      "group": "boundary",
+      "transient_cases": 19,
+      "DC_cases": 4,
+      "scalar_recalculation_assertions": 598,
+      "maximum_recalculation_residuals": {
+        "DC_scalar": 5.684341886080802e-14,
+        "duration_s": 0.0,
+        "current_uA": 2.842170943040401e-14,
+        "charge_C": 6.617444900424222e-24,
+        "energy_J": 5.293955920339377e-23,
+        "power_uW": 1.1368683772161603e-13,
+        "extremum_uA": 0.0,
+        "negative_energy_J": 1.8611563782443123e-24
+      },
+      "method": "Original raw linear panels clipped in normalized u; current antiderivative and quadratic V*I polynomial antiderivative; explicit signed sources and actual case duration (main512us); independent threshold interpolation and engineering guards; no runner import",
+      "source_hashes": {
+        "evidence/robustness/boundary-summary.json": "d4bf28fa216a2f5d894e4da0b19f6c647eb71d763b553d49ddad5bc0f71f65ad"
+      },
+      "scope": "Actual selected-signal 12MOS ideal-PG projection; startup/series-R source energies omit extracted PG-only charging and full digital logic"
+    },
+    "terminal_power": {
+      "passed": true,
+      "terminal_accounts": 20,
+      "results": [
+        {
+          "name": "tt_post_d0",
+          "group": "main",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 1.8040133843295893e-05,
+            "LED_device_terminal_load": 5.145723625687826e-06,
+            "selected_joint_LED_K_terminal_input": 1.2894410217608067e-05,
+            "reference_supply_rail_load": 329.99999999999994,
+            "behavioral_reference_element_load": 192.7650186553524,
+            "selected_joint_BIAS_terminal_input": 137.23498134464754,
+            "selected_joint_VDD_terminal_input": 4.5096722817203156e-05,
+            "selected_joint_all_terminal_net_input": 137.23503933578058,
+            "declared_external_source_net_supply": 330.00006313685657
+          }
+        },
+        {
+          "name": "tt_post_d1",
+          "group": "main",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 1.9628783158290874,
+            "LED_device_terminal_load": 1.0942359771992127,
+            "selected_joint_LED_K_terminal_input": 0.8686423386298746,
+            "reference_supply_rail_load": 329.99999999999994,
+            "behavioral_reference_element_load": 192.76534317207162,
+            "selected_joint_BIAS_terminal_input": 137.23465682792832,
+            "selected_joint_VDD_terminal_input": 0.003937061059061276,
+            "selected_joint_all_terminal_net_input": 138.10724688614278,
+            "declared_external_source_net_supply": 331.96682603541365
+          }
+        },
+        {
+          "name": "tt_post_d256",
+          "group": "main",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 503.7639375440489,
+            "LED_device_terminal_load": 282.1701331667972,
+            "selected_joint_LED_K_terminal_input": 221.59380437725167,
+            "reference_supply_rail_load": 329.9999999999999,
+            "behavioral_reference_element_load": 192.7650196596266,
+            "selected_joint_BIAS_terminal_input": 137.2349803403733,
+            "selected_joint_VDD_terminal_input": 4.579320955909289e-05,
+            "selected_joint_all_terminal_net_input": 358.82883051237593,
+            "declared_external_source_net_supply": 833.7639833387999
+          }
+        },
+        {
+          "name": "simultaneous_ideal_early",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 440.6917977319875,
+            "LED_device_terminal_load": 246.3825255686923,
+            "selected_joint_LED_K_terminal_input": 194.3092721632952,
+            "reference_supply_rail_load": 312.6749999999999,
+            "behavioral_reference_element_load": 175.8260963109552,
+            "selected_joint_BIAS_terminal_input": 136.84890368904473,
+            "selected_joint_VDD_terminal_input": 0.03609289912897908,
+            "selected_joint_all_terminal_net_input": 331.1960909743594,
+            "declared_external_source_net_supply": 753.404712854007
+          }
+        },
+        {
+          "name": "simultaneous_ideal_late",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 440.6917077371966,
+            "LED_device_terminal_load": 246.38252556540507,
+            "selected_joint_LED_K_terminal_input": 194.30918217179158,
+            "reference_supply_rail_load": 309.37499999999994,
+            "behavioral_reference_element_load": 180.76011761206527,
+            "selected_joint_BIAS_terminal_input": 128.61488238793467,
+            "selected_joint_VDD_terminal_input": 0.03595533678130324,
+            "selected_joint_all_terminal_net_input": 322.9618421197731,
+            "declared_external_source_net_supply": 750.1044852972434
+          }
+        },
+        {
+          "name": "simultaneous_compliant_early",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 440.7038877230576,
+            "LED_device_terminal_load": 246.38951442302914,
+            "selected_joint_LED_K_terminal_input": 194.3143733000285,
+            "reference_supply_rail_load": 312.4691468590224,
+            "behavioral_reference_element_load": 182.4503466241629,
+            "selected_joint_BIAS_terminal_input": 130.01880023485944,
+            "selected_joint_VDD_terminal_input": 0.03605175036524392,
+            "selected_joint_all_terminal_net_input": 324.3710475084171,
+            "declared_external_source_net_supply": 753.2109085556092
+          }
+        },
+        {
+          "name": "logic_first_ideal_early",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 300.98626943479326,
+            "LED_device_terminal_load": 168.71913891791246,
+            "selected_joint_LED_K_terminal_input": 132.26713051688083,
+            "reference_supply_rail_load": 312.67499999999995,
+            "behavioral_reference_element_load": 175.82566405355087,
+            "selected_joint_BIAS_terminal_input": 136.8493359464491,
+            "selected_joint_VDD_terminal_input": 0.03588815195002672,
+            "selected_joint_all_terminal_net_input": 269.1541768357433,
+            "declared_external_source_net_supply": 613.6989798072068
+          }
+        },
+        {
+          "name": "logic_first_ideal_late",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 300.9862693491702,
+            "LED_device_terminal_load": 168.7191386245397,
+            "selected_joint_LED_K_terminal_input": 132.2671307246305,
+            "reference_supply_rail_load": 309.37499999999994,
+            "behavioral_reference_element_load": 180.75971241352917,
+            "selected_joint_BIAS_terminal_input": 128.61528758647077,
+            "selected_joint_VDD_terminal_input": 0.03574994681200498,
+            "selected_joint_all_terminal_net_input": 260.91999047790347,
+            "declared_external_source_net_supply": 610.3988415159724
+          }
+        },
+        {
+          "name": "logic_first_compliant_early",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 300.99453235868793,
+            "LED_device_terminal_load": 168.72391472614927,
+            "selected_joint_LED_K_terminal_input": 132.2706176325386,
+            "reference_supply_rail_load": 312.4691622823582,
+            "behavioral_reference_element_load": 182.44990706268425,
+            "selected_joint_BIAS_terminal_input": 130.01925521967394,
+            "selected_joint_VDD_terminal_input": 0.03584705474068695,
+            "selected_joint_all_terminal_net_input": 262.32754212724603,
+            "declared_external_source_net_supply": 613.5013639160795
+          }
+        },
+        {
+          "name": "LED_first_ideal_early",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 300.38316864138034,
+            "LED_device_terminal_load": 167.79303166235653,
+            "selected_joint_LED_K_terminal_input": 132.59013697902384,
+            "reference_supply_rail_load": 197.17499999999998,
+            "behavioral_reference_element_load": 60.3243335512434,
+            "selected_joint_BIAS_terminal_input": 136.85066644875658,
+            "selected_joint_VDD_terminal_input": 0.012801050003806321,
+            "selected_joint_all_terminal_net_input": 269.4548467762579,
+            "declared_external_source_net_supply": 497.5722119898579
+          }
+        },
+        {
+          "name": "LED_first_ideal_late",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 295.88684178938007,
+            "LED_device_terminal_load": 165.274343734327,
+            "selected_joint_LED_K_terminal_input": 130.61249805505312,
+            "reference_supply_rail_load": 193.875,
+            "behavioral_reference_element_load": 113.2894902967898,
+            "selected_joint_BIAS_terminal_input": 80.58550970321019,
+            "selected_joint_VDD_terminal_input": 0.012041458198180276,
+            "selected_joint_all_terminal_net_input": 211.21129130538728,
+            "declared_external_source_net_supply": 489.77512533650423
+          }
+        },
+        {
+          "name": "LED_first_compliant_early",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 300.3908445588509,
+            "LED_device_terminal_load": 167.79753626469378,
+            "selected_joint_LED_K_terminal_input": 132.5933082941571,
+            "reference_supply_rail_load": 196.96823809341353,
+            "behavioral_reference_element_load": 114.97953493527928,
+            "selected_joint_BIAS_terminal_input": 81.98870315813426,
+            "selected_joint_VDD_terminal_input": 0.012744128281884459,
+            "selected_joint_all_terminal_net_input": 214.5959977347081,
+            "declared_external_source_net_supply": 497.37306893468127
+          }
+        },
+        {
+          "name": "impedance_0_0_d1",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 1.962878315821752,
+            "LED_device_terminal_load": 1.0942359772249342,
+            "selected_joint_LED_K_terminal_input": 0.8686423385968177,
+            "reference_supply_rail_load": 329.99999999999994,
+            "behavioral_reference_element_load": 192.76534317207182,
+            "selected_joint_BIAS_terminal_input": 137.23465682792812,
+            "selected_joint_VDD_terminal_input": 0.003937061027465219,
+            "selected_joint_all_terminal_net_input": 138.107246886078,
+            "declared_external_source_net_supply": 331.9668260354842
+          }
+        },
+        {
+          "name": "impedance_0_0_d256",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 503.7639375440509,
+            "LED_device_terminal_load": 282.17013316679845,
+            "selected_joint_LED_K_terminal_input": 221.5938043772525,
+            "reference_supply_rail_load": 329.99999999999994,
+            "behavioral_reference_element_load": 192.76501965962652,
+            "selected_joint_BIAS_terminal_input": 137.23498034037343,
+            "selected_joint_VDD_terminal_input": 4.579320725757735e-05,
+            "selected_joint_all_terminal_net_input": 358.828830512375,
+            "declared_external_source_net_supply": 833.7639833389053
+          }
+        },
+        {
+          "name": "impedance_10_100_d1",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 1.9591739847259042,
+            "LED_device_terminal_load": 1.0941507178877266,
+            "selected_joint_LED_K_terminal_input": 0.8650232668381775,
+            "reference_supply_rail_load": 329.8999988074695,
+            "behavioral_reference_element_load": 192.66534203302163,
+            "selected_joint_BIAS_terminal_input": 137.2346567744479,
+            "selected_joint_VDD_terminal_input": 0.00393407270992403,
+            "selected_joint_all_terminal_net_input": 138.10362475830397,
+            "declared_external_source_net_supply": 331.9666770682929
+          }
+        },
+        {
+          "name": "impedance_10_100_d256",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 502.7084447058865,
+            "LED_device_terminal_load": 282.1467535999468,
+            "selected_joint_LED_K_terminal_input": 220.56169110593976,
+            "reference_supply_rail_load": 329.8999999861287,
+            "behavioral_reference_element_load": 192.66501964579294,
+            "selected_joint_BIAS_terminal_input": 137.2349803403358,
+            "selected_joint_VDD_terminal_input": 4.5764723335038457e-05,
+            "selected_joint_all_terminal_net_input": 357.796717211691,
+            "declared_external_source_net_supply": 833.7234395118276
+          }
+        },
+        {
+          "name": "impedance_100_1000_d1",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 1.9477466883051855,
+            "LED_device_terminal_load": 1.0938739199050016,
+            "selected_joint_LED_K_terminal_input": 0.8538727684001839,
+            "reference_supply_rail_load": 328.999988118185,
+            "behavioral_reference_element_load": 191.76533152740964,
+            "selected_joint_BIAS_terminal_input": 137.23465659077533,
+            "selected_joint_VDD_terminal_input": 0.003909026494781033,
+            "selected_joint_all_terminal_net_input": 138.0924489973639,
+            "declared_external_source_net_supply": 331.96618876479465
+          }
+        },
+        {
+          "name": "impedance_100_1000_d256",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 493.22032550952207,
+            "LED_device_terminal_load": 281.93430759002075,
+            "selected_joint_LED_K_terminal_input": 211.28601791950132,
+            "reference_supply_rail_load": 328.9999998616651,
+            "behavioral_reference_element_load": 191.76501952125165,
+            "selected_joint_BIAS_terminal_input": 137.23498034041344,
+            "selected_joint_VDD_terminal_input": 4.551483576178818e-05,
+            "selected_joint_all_terminal_net_input": 348.5210437737925,
+            "declared_external_source_net_supply": 833.3550203825224
+          }
+        },
+        {
+          "name": "logic_first_R100_RLED1000_decap",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 263.147905055148,
+            "LED_device_terminal_load": 156.2429061520257,
+            "selected_joint_LED_K_terminal_input": 106.9049989031223,
+            "reference_supply_rail_load": 308.204860360213,
+            "behavioral_reference_element_load": 179.58704454189646,
+            "selected_joint_BIAS_terminal_input": 128.61781581831653,
+            "selected_joint_VDD_terminal_input": 0.03547481683711645,
+            "selected_joint_all_terminal_net_input": 235.56010061800694,
+            "declared_external_source_net_supply": 2264.706692922778
+          }
+        },
+        {
+          "name": "neighbors_all_live_high_LED_first",
+          "group": "boundary",
+          "duration_average_uW": {
+            "external_LED_branch_rail_load": 300.3908888477931,
+            "LED_device_terminal_load": 167.7975610567612,
+            "selected_joint_LED_K_terminal_input": 132.59332779103192,
+            "reference_supply_rail_load": 196.96823800530086,
+            "behavioral_reference_element_load": 114.97953485248976,
+            "selected_joint_BIAS_terminal_input": 81.98870315281108,
+            "selected_joint_VDD_terminal_input": 0.012651919460186253,
+            "selected_joint_all_terminal_net_input": 214.5958208819749,
+            "declared_external_source_net_supply": 497.37291679122575
+          }
+        }
+      ],
+      "maximum_valid_energy_residual_J": 2.6469779601696886e-23,
+      "maximum_valid_power_residual_uW": 2.2737367544323206e-13,
+      "negative_control": {
+        "name": "double_count_behavioral_reference",
+        "rejected": true,
+        "input_sha256": "e48a64de2bd0f5683339e048bc107eab2c786c020aaefa9b6d74e4fc8a65fd0b"
+      },
+      "method": "Independent original raw integral I_LED * V_LED_K, plus previously independently recomputed VDD, reference, input and neighbor energies; signed nested terminal account identities and explicit duration; no packager import",
+      "interpretation": "Reference rail=B-element+BIAS, LED_A=LED device+LED_K. VDD draw alone is not all joint terminal input. Selected terminal net input includes internal stored-energy change; no pure-heat/full-PG power claim.",
+      "source_hashes": {
+        "evidence/robustness/summary.json": "3485e1478d850bad3e4ebc5dff7c5e0b511f768033f51899f3985e843174596d"
+      }
+    }
+  },
+  "limitations": [
+    "No new silicon/optical evidence",
+    "Ideal PG projection is not full PG/substrate signoff",
+    "RC variants are deck variants, distinct from MOS envelopes"
+  ],
+  "review_source_sha256": "01c68f008cdb4ffb46fe5366ff97f08e66aa35f639ec9488134936fdcaa2e6d3",
+  "review_completed_stages": [
+    "budget",
+    "PEX_nominal",
+    "PEX_hrhc",
+    "PEX_lrhc",
+    "PEX_hrlc",
+    "PEX_lrlc",
+    "waveform_probe",
+    "raw_hierarchy_scope",
+    "waveform_main",
+    "fresh_reproduction",
+    "endpoint_controls",
+    "waveform_boundary",
+    "terminal_power"
+  ],
+  "passed_completed_stages": true,
+  "all_verified_inputs_sha256": {
+    "evidence/strategy/budget.json": "174350dac2804d23adf28abcb2590287664626c3cf9b29a306c913e2a8df3006",
+    "evidence/characterization/actual-w20-l4-area.json": "f509160f0e4d7e0c9060a6fe56a1f9dd474c04bc0d23c76355a61d7bdc6b01e2",
+    "evidence/characterization/measured-load-summary.json": "98d8b3d0bb60b0e27f540fcb6cf44e87eeed2607fa2d5a3786c0f3c91b5c47ca",
+    "evidence/strategy/claim-ledger.json": "e254514a84e75a26ccaca9246390afb11820d72e6510cfaa194d202b4d4dc617",
+    "evidence/strategy/sources.json": "fe3fb9f4aa887d313fd322189f00b763c35b1112c4eb81f941e55bb52a571fb6",
+    "evidence/joint-pex/nominal/summary.json": "9fbfcd0c2c1add8a01b7bdfd6f3f1863333258973ee478aa5e30a7a85d7c86ed",
+    "evidence/joint-pex/nominal/output_pixel_pex.spice": "03813e63e64bf505570dbd1f81e6809366e6b4d31bbee129c28022956e1cc623",
+    "build/joint-pex/flat-nominal-r3/pixel_flat_rc.spice": "36ee3b79d0c8d8647328a989c9c2d989c4603697922d07794368609fe9f54806",
+    "build/joint-pex/flat-nominal-r3/pixel_flat.ext": "31a5efee15867b5bb50cbc524606746ae078a1a66e970b0e074c7c9946cefe24",
+    "build/joint-pex/flat-nominal-r3/pixel_flat.res.ext": "4261f64777c5d8b3b3acb0d3d4340fc4a664d37d0178f5876dc70a47c8ae095e",
+    "build/joint-pex/flat-nominal-r3/extraction.json": "53f53fb5e94165ed9029fd1e179c3cf33394bf8c1f002f415c9b617ead801649",
+    "evidence/joint-pex/hrhc/summary.json": "41d635de7b25c6de51a3b9f0babe91f21889c40ba5e99ff01bc4707575e58673",
+    "evidence/joint-pex/hrhc/output_pixel_pex.spice": "2b2ff8db5e9ae55be8dd914628750df9787f29ee3ef6e3473134a713163c8680",
+    "build/joint-pex/flat-hrhc-r2/pixel_flat_rc.spice": "471e344363efab248868e3f55a3b313388686e0afc699b8654d9f724c62c65ab",
+    "build/joint-pex/flat-hrhc-r2/pixel_flat.ext": "b8192538c3bb88d6215f41ddb06c0af119f6050f32a76249e1ce09822fed10c1",
+    "build/joint-pex/flat-hrhc-r2/pixel_flat.res.ext": "2086c1449da4c52201c01e6fe56d52fffa9717284b8d5b0dfdae51d228ca98f9",
+    "build/joint-pex/flat-hrhc-r2/extraction.json": "03a178baf319a914e223ca6b5036f902df07c2cd60e1723a939e70560a10bb34",
+    "evidence/joint-pex/lrhc/summary.json": "af357c3b6216936f749513c56f23dcceb18efcb99343343f681ce243c0263edc",
+    "evidence/joint-pex/lrhc/output_pixel_pex.spice": "c54d162fc05d328fb67f59a54d3c294e0ec6be23bba70c022b813596e5d8e674",
+    "build/joint-pex/flat-lrhc-r2/pixel_flat_rc.spice": "7e5e03808b729498631109e69244d894ebb2f3bfff9abe1519a4434277cb0aef",
+    "build/joint-pex/flat-lrhc-r2/pixel_flat.ext": "35630455f8bc05e5f3434f3c4ca38b1279e4d11f787ea1d336acc9fb74667d45",
+    "build/joint-pex/flat-lrhc-r2/pixel_flat.res.ext": "026fc9b8d566ce5a08af0ce1f74af00c5386f554649d169e908d291f1ee71e61",
+    "build/joint-pex/flat-lrhc-r2/extraction.json": "d21e720a86ae51620ddc274c389da958ded34f5c5672658ee7d24cbebd875ffd",
+    "evidence/joint-pex/hrlc/summary.json": "d4ec906199560cce22aef09634a2b01d90aae9655bfac73063f0a7c657feb6f8",
+    "evidence/joint-pex/hrlc/output_pixel_pex.spice": "602cab3bb76f552b83bf9ebf3226c088bacdb1323c5fb7e0683858510172cba2",
+    "build/joint-pex/flat-hrlc-r2/pixel_flat_rc.spice": "eefbec7d0f5d62810509ac91ceaebb201060e0fefa2e32ec964865a0ddb882cd",
+    "build/joint-pex/flat-hrlc-r2/pixel_flat.ext": "8e71fd83add6d24357ad7ffc4079123a64af949620b65f4195fd0687e4f03398",
+    "build/joint-pex/flat-hrlc-r2/pixel_flat.res.ext": "bab6af9e0ca2d478d37ca7519065551341d6165508a54227cf8170786db9a9c6",
+    "build/joint-pex/flat-hrlc-r2/extraction.json": "d58461deac27459a4b48fb8a939bf89b48bf536bcca9030970d291bbc40e59b9",
+    "evidence/joint-pex/lrlc/summary.json": "beb892eeac0a8255585b8c378e6d5daa6a12165368d96560740a809fab421191",
+    "evidence/joint-pex/lrlc/output_pixel_pex.spice": "5bcfdbdb9746259f0468257adc7d41ef94376e4d9c5da4f0722108d9c2635470",
+    "build/joint-pex/flat-lrlc-r2/pixel_flat_rc.spice": "451f00c3819e4e4e9184a882d9a5cd0a4d5478df27df01862bd4d50a02db214c",
+    "build/joint-pex/flat-lrlc-r2/pixel_flat.ext": "234323d71e50dce6f3cb020e00a94b46d19e19e670685146dc6fc2c7890cd4c5",
+    "build/joint-pex/flat-lrlc-r2/pixel_flat.res.ext": "9c06a85ca008e4ed0ea79c6105d570536f11f82864e4bfbc2ecd67350c4b3bba",
+    "build/joint-pex/flat-lrlc-r2/extraction.json": "e14c73794fe1228bc912e13ea89cdd9939db257fe08bc676b2f418c9ea46b49d",
+    "evidence/robustness/probe-summary.json": "4ed6b81cdc93f98770f4562029d310465ca2d5023d3bf9906aa09098482d1d2f",
+    "build/joint-pex/full-nominal-r1/pixel_integrated_rc.spice": "f45bd5f24e6796538d9c7702b3fbf0a585824eb51f2d9f76bae3dabc7b1233e8",
+    "evidence/joint-pex/summary.json": "410e9e9bcd67b2bcf768a0df2b2694a4ef09f0f86544be845e4f2bc4775c916a",
+    "evidence/robustness/main-summary.json": "5c962bf85021991085f0d15370d355d0a8a2af02bc7119f257de6cf6d7f20321",
+    "evidence/joint-pex/reproduction.json": "cce4187fd02cf1211607f54639dc29cf37588c0f37b8ffde2df70a33633bb3c3",
+    "build/joint-pex/reproduce-package-r1/nominal/output_pixel_pex.spice": "3a2372a039c3ca6df34d1fe87c7d6adf5ce71e2a05298ae5167980565973f489",
+    "build/joint-pex/reproduce-nominal-r1/pixel_flat.res.ext": "56077e5e85f41657f0aa808ee16d962d49ab5c4bd94ef66ab4e835f9b17bf8e3",
+    "evidence/robustness/boundary-summary.json": "d4bf28fa216a2f5d894e4da0b19f6c647eb71d763b553d49ddad5bc0f71f65ad",
+    "build/robustness/boundary-zkivszoz/RTL_reset/waveform.dat": "72809999cc57fb5012c35fc20bbd3e9798bfd66ea15630381fd5aa24c79669f9",
+    "build/research/v04-review/endpoint-two-ULP.dat": "280536cc8376fbb45e16f01b6aa752cd3e6fdb1fd2809f934a1bfe32a9bbbd63",
+    "evidence/robustness/summary.json": "3485e1478d850bad3e4ebc5dff7c5e0b511f768033f51899f3985e843174596d"
+  },
+  "passed": true,
+  "scope": "Independent input/provenance, 5 RC-style physical/netlist structure, fresh-reproduction exact graph, 66 transient + 28 DC raw mathematical/engineering checks; only SSxHRHC and FFxLRLC additional electrical cross points; ideal PG, artificial neighbor clamps and synthetic LED dynamics remain explicit exclusions",
+  "negative_controls_total": 18,
+  "public_recalculation_artifacts_sha256": {
+    "evidence/research/v04-controls.txt": "bd5a53b35895bc2b750422bd53bfdf028d16c45ed70c21d04edbb66e9e74e772",
+    "evidence/research/v04-boundary-recomputed.json": "011ffe9578f610084961614b5fe6510b8dbdc4235b80ee33405e41dc6d257a59",
+    "evidence/research/v04-main-recomputed.json": "4349dbb9fd2b89d3e80c353cfb2c2a9ffb631e2cd0359d98f54dadfd9894a57c",
+    "evidence/research/v04-probe-recomputed.json": "4e41629c445716452d3f923f7981225c7d4632bb9361921ef7571750c50e9531"
+  },
+  "freeze_schema": "Each stages.*.source_hashes and all_verified_inputs_sha256 is a repository-relative path->sha256 map; public_recalculation_artifacts_sha256 covers independent full small outputs; review_source_sha256 is scripts/research/review_v04.py. Preserve original as-run input hashes, not rewritten snapshots."
+}

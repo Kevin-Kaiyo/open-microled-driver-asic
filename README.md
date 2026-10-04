@@ -2,16 +2,20 @@
 
 An independent, open teaching and research platform for digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
-从 **1 Pixel** 开始，当前研究版本为 **v0.3（2026-10-04）**：registered PWM 与 GF180MCU 六 MOS current sink 已接入真实共同 physical top，新增 PWM / 电源 routing 后完成共同 GDS 抽取、严格 LVS、Magic 与独立 KLayout DRC。20/4 µm mirror 与原数字 macro 保持冻结；新接口研究以实际 `buf_2` 晶体管、模拟 RC 和新增跨宏连线 R/C 验证驱动负载与最短 pulse。
+从 **1 Pixel** 开始，当前研究版本为 **v0.4（2026-10-05）**：在冻结的共同GDS上，实际提取末级`output12/buf_2`、数字输出线、跨宏线与六MOS pixel的联合信号寄生模型；nominal为12MOS、45 signal R、77显式C，另有HRHC／LRHC／HRLC／LRLC四种actual RC提取。模型从真实M3右端接入，整体替换v0.3分块路径。主研究37次transient／12次DC、146项工程guards通过；[电源／控制边界](docs/research/robustness.md)另保留startup假设越界、enable延迟与static LED headroom失效。
+
+项目优先定位为**可复现的 MicroLED 器件电测与驱动共设计教学平台**。先把单像素的真实负载、reference、供电和控制边界讲清楚，再决定4×4是否值得实现。联合模型仍把PG／body电阻及PG-only电容投影到理想rails，邻居按声明的截断条件处理；它不构成完整芯片PEX、制造接受或光学验证。
 
 ## 先读当前研究报告
 
-- [13 页当前研究报告 PDF](docs/research/research-report.pdf) / [HTML](docs/research/research-report.html) / [可检查的文字源](docs/research/research-report.md)：整体架构 → 六 MOS → LED 数据 → reference / PWM → 版图 → 动态边界 → 共同顶层 → 真实输出级。
+- [28页分层研究报告 PDF](docs/research/research-report.pdf) / [HTML](docs/research/research-report.html) / [可检查的文字源](docs/research/research-report.md)：总览 → 初学者基础 → 工程验证 → 技术、价值与市场；同一结果按不同阅读深度解释。
 - [研究资料入口](docs/research/README.md)：完整 source、assumptions、条件、许可、脚本和证据的索引。
 - [v0.2 预设研究指标](docs/specifications/single-pixel-v0.2.md)：100 µA±5%、最低码面积误差±2%，各项验证范围分开定义。
 - [v0.3 集成退出条件](docs/specifications/single-pixel-v0.3.md)：实际金属连接、PG/body ties、负对照、接口负载及抽取范围。
+- [v0.4 联合PEX目标](docs/specifications/joint-pex-v0.4.md) / [电气预设门槛](docs/specifications/electrical-v0.4.md)：冻结模型边界、避免重复寄生、检查电源／reference／控制及失败条件。
+- [实际联合PEX](docs/research/joint-pex.md)、[实测验证计划](docs/research/bench-validation-plan.md)、[技术—价值—市场判断](docs/research/technical-value-market.md)：说明当前能证明什么，以及下一步如何得到更强证据。
 
-[教学 PPT](docs/teaching/open-microled-single-pixel-teaching-v2.pptx)、[初版讲义](docs/teaching/open-microled-single-pixel-report.pdf)、[2026-10-03 检阅](docs/review/README.md)与[v0.2 历史报告](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/tree/7ad33e16cfc26a8e785061ef1713156d36d97259/docs/research)保留各自快照。旧版尺寸、组合 PWM 和负载结论以当时输入为准；当前进展优先阅读 v0.3。
+[教学 PPT](docs/teaching/open-microled-single-pixel-teaching-v2.pptx)、[初版讲义](docs/teaching/open-microled-single-pixel-report.pdf)、[2026-10-03 检阅](docs/review/README.md)、[v0.2历史报告](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/tree/7ad33e16cfc26a8e785061ef1713156d36d97259/docs/research)与[v0.3历史报告](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/tree/f4d478707f055cf1015267e14a2a56e28c3e9991/docs/research)保留各自快照。旧版尺寸、PWM和分块RC结论以当时输入为准；旧run及source hash不被新模型覆盖。
 
 ## 当前实现与主要结果
 
@@ -20,11 +24,10 @@ flowchart LR
     INPUT[Clock / reset / duty / enable] --> PWM[Registered 256-slot PWM]
     PWM --> TRACE[Executed RTL / gate trace]
     TRACE --> BRIDGE[PWL replay]
-    BRIDGE --> BUF[Actual buf_2 transistors / output net and link RC]
-    BUF --> CELL[GF180 six-MOS cell / actual RC]
-    REF[External reference] --> CELL
-    CELL --> SYN[Synthetic LED regression]
-    CELL --> IV[Measured static I-V replay]
+    BRIDGE --> JOINT[output_pixel_pex / six buffer MOS + six pixel MOS / joint signal RC]
+    REF[External reference] --> JOINT
+    JOINT --> SYN[Synthetic LED regression]
+    JOINT --> IV[Measured static I-V replay]
     SYN --> CHECK[Window integration / checks]
     IV --> CHECK
 ```
@@ -47,6 +50,11 @@ flowchart LR
 | Joint routed macro top | 305×180 µm bbox、19 ports；共同实际GDS抽取、严格full-MOS/hierarchy LVS、Magic DRC0、独立KLayout XML0；错误PWM删段/PG桥接被拒绝 |
 | New PWM interconnect | 实际Metal3 span30µm、宽0.56µm；4.81871Ω、PWM相关C2.34604fF；只抽新top routing，非全芯片joint PEX |
 | Actual output-stage interface | 54 transient主研究；三包络joint最低码最大面积误差0.684259%，full-on100.068779–101.353805µA；另有3ns输入slew预算探针 |
+| v0.4 selected joint signal PEX | 共同实际GDS重新提取，12MOS；nominal45R／77C／34邻居端口，5种RCstyle；真实M3右侧接入；语义复现不要求输出排序字节一致，见[joint PEX](docs/research/joint-pex.md) |
+| v0.4 joint PEX电气主研究 | nominal RC三MOS包络及SS×HRHC／FF×LRLC补充点；full-on100.112984–101.423393µA、最低码最大面积误差0.700133%，通过预设±5%／±2%；非完整交叉穷举 |
+| v0.4 电源／控制／负载边界 | 三批总66transient／28circuit DC另3calibration；19transient／4DC边界探针数值完成不称qualified；假设RLED10kΩ下88.265992µA失效；enable20→258.5µs提交；启动能量非完整PG／全芯片 |
+
+表中的v0.2／v0.3电流与动态数值保留原先模型、窗口和条件。v0.4 post只使用一份联合模型，不额外叠加旧buf schematic、SPEF、link RC或analog RC；不能把不同路径结果拼成一个统一量产规格。
 
 功耗、current accuracy、PWM area 和 pre/post-layout delta 是不同指标。平均 branch current 是 **electrical brightness proxy**；没有 optical power、EQE、luminance 或 silicon measurement。Reference 的误差行为模型用于预算，尚未实现片上 reference generator。真实 I–V 不含 C–V、低电流/reverse、I–V(T) 与光学模型。
 
@@ -76,6 +84,8 @@ build/layout/venv/bin/python scripts/characterization/measured_load.py
 
 数字 mapping、physical flow 和独立KLayout分别见[digital](docs/digital/README.md)、[physical](docs/digital/physical.md)。基本回归保留 synthetic LED，不让静态数据模型代替未测 charge dynamics。更改 model/parameters 时需要 DC calibration 与 coupled regression。
 
+v0.4的实际抽取、私有build复现、端口与原始投影ledger见[joint PEX证据](evidence/joint-pex/README.md)。新的RCstyle是所锁定open deck的提取条件，不自动成为manufacturing signoff corners；MOS PVT与RC corner分开记录。
+
 ## 如何核查证据
 
 | 入口 | 对应内容 |
@@ -87,6 +97,9 @@ build/layout/venv/bin/python scripts/characterization/measured_load.py
 | [digital mapping](evidence/digital/summary.json) | 标准单元映射、仿真模型边界与source hashes |
 | [joint top](evidence/integration/README.md) / [independent review](docs/research/integration-review.md) | 新增route、完整GDS抽取、内部MOS与共同连接、失败检测和规则范围 |
 | [actual interface](docs/research/interface.md) | 真实buf_2输出、charge/AC输入负载、54transient、slew敏感性和部分RC边界 |
+| [v0.4 joint PEX](docs/research/joint-pex.md) / [独立review](evidence/research/v04-review.json) | 实际末级junction／cell metal、joint signal网络、5个RCstyle、端口／multiset／passivity与负对照 |
+| [v0.4 electrical boundary](docs/research/robustness.md) | 同条件pre/post、电源／reference／reset／enable、邻居截断、series-R与真实静态LED失效边界 |
+| [bench plan](docs/research/bench-validation-plan.md) / [direction](docs/research/technical-value-market.md) | 实物测量的具体目的；官方benchmark与可复算预算；用户需求和制造报价均未验证 |
 | [current evidence index](evidence/research/current-manifest.json) | 当前文件hash、历史输入关联与报告验证 |
 
 旧run的input hash保留原样。教学排版、数字config、可选trace logging等变化与当前源码的关系单独核查，不伪造旧source hashes。历史审阅manifest描述旧快照，不能当作当前source inventory。
@@ -95,7 +108,7 @@ GitHub Actions模板保存在[CI instructions](docs/ci/README.md)，尚未启用
 
 ## 下一步
 
-继续单像素：在本次共同top基础上推进完整joint PEX、真实LED动态与温漂、可实现reference、供电/启动和总功耗。完成这些预算后，再定义4×4的独立协议、register map、pixel memory、shared reference与power distribution。当前没有已完成的串行通信或带pad/ESD的完整芯片；density/fill、provider acceptance、silicon与optical measurement仍属后续。[Roadmap](docs/roadmap.md)给出退出条件。
+继续单像素：从联合signal PEX推进真实PG／邻居网络、可实现reference及安全上电控制，获取真实LED动态／温度／光学资料并执行[bench验证计划](docs/research/bench-validation-plan.md)。先完成这些需求与预算，再定义4×4的独立协议、register map、pixel memory、shared reference与power distribution。[技术—价值—市场判断](docs/research/technical-value-market.md)中的面积、功耗和带宽均为未实现预算；不能把305×180µm共同macro跨度当成可线性复制的pixel die面积。当前没有完成串行通信、带pad/ESD完整芯片或provider接受；[Roadmap](docs/roadmap.md)保留退出条件。
 
 ASIC与FPGA optical-link项目保持独立仓库，不能以另一项目的仿真替代本项目验证。只采用公开来源、公开PDK和独立设计；[原始brief](docs/project-brief.md)保留长期目标。
 
