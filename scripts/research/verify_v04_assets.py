@@ -9,6 +9,7 @@ import gzip
 import hashlib
 import json
 import re
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -151,9 +152,22 @@ def verify(check, report):
         check('Independent original raw recalculation ' + name, read('evidence/research/' + name)['passed'] is True)
 
     strategy = read('evidence/strategy/validation.json')
-    check('Strategy arithmetic and primary-source validation', strategy['passed'] is True and
+    check('Historical strategy arithmetic and source validation', strategy['passed'] is True and
           len(strategy['checks']) == 57 and all(c['passed'] for c in strategy['checks']))
-    hashes(strategy['artifacts_sha256'], label='Frozen value and market evidence')
+    # Editorial changes retain the older run's identity through its Git snapshot.
+    # This exception is limited to the two explicitly revised prose documents.
+    revisions = read('evidence/methodology/document-revisions.json')
+    allowed = {'docs/research/technical-value-market.md', 'evidence/strategy/README.md'}
+    for name, expected in strategy['artifacts_sha256'].items():
+        if name not in allowed:
+            hashes({name: expected}, label='Frozen historical research artifact')
+            continue
+        item = revisions['historical_strategy_documents'][name]
+        original = subprocess.check_output(['git', 'show', item['original_commit'] + ':' + name], cwd=ROOT)
+        check('Historical document identity ' + name,
+              hashlib.sha256(original).hexdigest() == expected == item['original_sha256'])
+        check('Current editorial revision identity ' + name,
+              digest(ROOT / name) == item['current_sha256'])
     teaching = read('evidence/teaching/figures.json')
     check('Concept figures not called measurements', teaching['physical_measurement'] is False)
     hashes(teaching['source_sha256'], label='Teaching calculation source')

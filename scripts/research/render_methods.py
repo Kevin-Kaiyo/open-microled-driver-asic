@@ -1,11 +1,11 @@
-"""Render the dated automotive study without replacing frozen v0.4 reports."""
+"""Render the dated experimental-methods study without replacing frozen v0.4 reports."""
 from pathlib import Path
 import html
 import markdown
 import re
 
 ROOT = Path(__file__).resolve().parents[2]
-BASE = ROOT / "docs/research/automotive"
+BASE = ROOT / "docs/research/experimental-methods"
 
 
 def public_links(body):
@@ -24,7 +24,7 @@ def public_links(body):
 
 
 def main():
-    source = (BASE / "benchmark-report.md").read_text()
+    source = (BASE / "report.md").read_text()
     pages = source.split("<!-- PAGE -->")
     sections = []
     for i, text in enumerate(pages, 1):
@@ -60,10 +60,10 @@ def main():
     @media print { body,.page { width:170mm; } }
     @media screen { body { background:#edf2f2; } .page { background:white; width:210mm; min-height:297mm; margin:8mm auto; padding:20mm; box-shadow:0 1px 8px #bac9ca; } }
     """
-    target = BASE / "benchmark-report.html"
+    target = BASE / "report.html"
     target.write_text('<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">'
                       '<meta name="viewport" content="width=device-width,initial-scale=1">'
-                      f'<title>{html.escape("车灯 MicroLED 对标研究 · 2026-10-06")}</title>'
+                      f'<title>{html.escape("MicroLED 实验性研发方法验证 · 2026-10-06")}</title>'
                       f'<style>{css}</style></head><body>'+"\n".join(sections)+"</body></html>\n")
     print(f"Rendered {len(pages)} sections: {target.relative_to(ROOT)}")
 

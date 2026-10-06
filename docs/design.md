@@ -1,6 +1,6 @@
 # 单像素电路与 PWM：从教学基线到 v0.4 联合信号模型
 
-更新：2026-10-05。当前尺寸为 mirror 20/4 µm、registered PWM。本页解释 synthetic LED 基本回归，同时指向逐级增强的模型：真实静态负载、reference/mismatch、模拟／数字physical、v0.3共同macro top，及v0.4[联合signal PEX](research/joint-pex.md)与[电气边界](research/robustness.md)。分层解释见[研究报告](research/research-report.md)，实物目标见[bench计划](research/bench-validation-plan.md)，方向见[技术—价值—市场](research/technical-value-market.md)。
+更新：2026-10-05。当前尺寸为 mirror 20/4 µm、registered PWM。本页解释 synthetic LED 基本回归，同时指向逐级增强的模型：真实静态负载、reference/mismatch、模拟／数字physical、v0.3共同macro top，及v0.4[联合signal PEX](research/joint-pex.md)与[电气边界](research/robustness.md)。分层解释见[研究报告](research/research-report.md)，实物目标见[bench计划](research/bench-validation-plan.md)，方向见[实验方法与研究价值](research/technical-value-market.md)。
 
 基本回归已经建立可重复执行的链：**真实RTL输出 → 电压波形桥接 → pre-layout PDK driver → synthetic LED → 波形与电流积分**。v0.4进一步用共同GDS提取的输出级／像素联合模型检查signal路径。两者仍是feed-forward coupled simulation；模拟结果没有反馈改变RTL状态。“完整链路”表示数字控制确实驱动电路，不表示feedback或双向mixed-signal co-simulation。
 
@@ -64,7 +64,7 @@ flowchart LR
     PIX --> ARR[MicroLED array<br/>1 pixel → 4×4 → 8×8 → 16×16]
 ```
 
-当前单像素仍没有serial receiver、command decoder、register map、pixel memory、current DAC或阵列扫描。[方向报告](research/technical-value-market.md)中的4×4存储、packet、面积和共享reference只是可复算预算，不能称完成的阵列。后续协议由本项目独立定义；“SPI-like”可描述电气或时序习惯，不意味着复用商业driver的交易格式或register map。FPGA与ASIC保持独立仓库，未来再共同定义接口。
+当前单像素仍没有serial receiver、command decoder、register map、pixel memory、current DAC或阵列扫描。[方向报告](research/technical-value-market.md)中的4×4存储、packet、面积和共享reference只是可复算预算，不能称完成的阵列。后续协议由本项目按实验问题独立定义，记录电气条件、时序、事务语义和register map。FPGA与ASIC保持独立仓库，未来再共同定义接口。
 
 ## 1-Pixel 电路：逐器件解释
 

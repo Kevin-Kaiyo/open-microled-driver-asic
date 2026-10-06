@@ -1,6 +1,6 @@
-# 从 1 Pixel 到可评估 MPW 的路线
+# 从 1 Pixel 开始的实验性研发方法验证路线
 
-更新日期：2026-10-05。本项目优先建立**可复现的 MicroLED 器件电测与驱动共设计教学平台**，从一像素走到可解释的研究阵列。v0.4在既有registered PWM、W20/L4 analog layout、公开静态LED数据和共同GDS上，增加实际输出级junction／cell metal与联合signal PEX、五种RCstyle及有预设门槛的电气研究。带pads/ESD完整芯片、实际PG／substrate／邻居驱动网络、real reference、LED动态／温度、provider接受与silicon／optical仍属后续。
+更新日期：2026-10-06。本项目用于**实验性研发方法验证与教学**，从独立假设出发，用可复现实验研究 MicroLED 器件电测与驱动共设计；每次规模扩展均由明确的实验问题决定。v0.4在既有registered PWM、W20/L4 analog layout、公开静态LED数据和共同GDS上，增加实际输出级junction／cell metal与联合signal PEX、五种RCstyle及有预设门槛的电气研究。带pads/ESD完整芯片、实际PG／substrate／邻居驱动网络、real reference、LED动态／温度、provider接受与silicon／optical仍属后续。
 
 每一步先达到明确 exit criteria，再扩展规模；结果始终区分 simulation、layout/physical verification、foundry acceptance 和 silicon measurement。
 
@@ -16,9 +16,9 @@
 | 共同 macro top 与真实接口 | 实际 PWM / PG routing、共同 full-GDS extraction / transistor LVS / DRC、label-free connectivity 与负对照；54 transient输出级研究，见[集成](../evidence/integration/README.md)、[接口](research/interface.md) |
 | v0.4联合signal PEX | 实际output12六MOS加像素六MOS，nominal45R／77C、34邻居端口；5种RCstyle；实际M3右端cut；PG-only理想化及原始projection ledger见[joint PEX](research/joint-pex.md) |
 | v0.4主研究与失败边界 | 主37 transient／12 DC、146guards通过；总66 transient／28 DC另3calibration；startup、reference、control与实测LED headroom失败分开报告，见[电气研究](research/robustness.md) |
-| 从技术走向使用价值 | [分层报告](research/research-report.md)、[bench计划](research/bench-validation-plan.md)、[技术—价值—市场](research/technical-value-market.md)；需求、付费与制造报价未验证 |
+| 研究方法与教学资料 | [分层报告](research/research-report.md)、[bench计划](research/bench-validation-plan.md)、[实验方法与研究价值](research/technical-value-market.md)；独立实验问题、预算与证据边界 |
 
-当前顺序：**单像素real reference／安全上电控制与PG／邻居网络 → 真实LED动态／温度／光学及bench数据 → 外部初学者复现与具体用户需求 → 4×4共享reference／供电／通信预算 → 匹配provider的MPW评估**。所有4×4面积、功耗、buffer和packet数字只是场景预算，未实现；没有真实MPW／封装报价或付费需求。有限MC和公开deck pass不等于制造yield或foundry acceptance。
+当前顺序：**单像素real reference／安全上电控制与PG／邻居网络 → 真实LED动态／温度／光学及bench数据 → 独立复现与实验问题复核 → 4×4共享reference／供电／通信实验 → 按测量需要评估MPW**。独立frame／mask场景可先在functional模型中研究，并将selected pixel接回既有单像素路径；该新模型尚未实现，也不替代物理阵列的进入条件。所有4×4面积、功耗、buffer和packet数字只是场景预算，未实现；MPW／封装尚无实际报价。有限MC和公开deck pass不等于制造yield或foundry acceptance。
 
 ## 1. 1-Pixel simulation baseline
 
@@ -60,7 +60,7 @@ v0.4 PG/body电阻和PG-only电容仍是ideal-rail投影，34邻居的quiet／li
 
 范围：复制已验证 pixel cell，加入独立定义的最小 register / pixel-data / serial interface 和 array timing。先研究 replication、reference distribution、PWM timing 与 power routing。
 
-进入条件：单像素在选定LED/model card、可实现reference及声明PVT/mismatch下达到accuracy、power和short-pulse预算，并完成相应matching／独立physical检查；取得至少一项具体外部使用/器件任务。当前尚未满足，继续单像素和[bench计划](research/bench-validation-plan.md)。优先研究共享reference能否降低持续bias功耗，先验证fanout、startup、失配与跨通道耦合；不把预算省电量称为已实现。
+进入条件：单像素在选定LED/model card、可实现reference及声明PVT/mismatch下达到accuracy、power和short-pulse预算，并完成相应matching／独立physical检查；明确至少一项需要多像素才能检验的实验假设及其通过／失败条件。当前尚未满足，继续单像素和[bench计划](research/bench-validation-plan.md)。优先研究共享reference能否降低持续bias功耗，先验证fanout、startup、失配与跨通道耦合；不把预算省电量称为已实现。
 
 Exit criteria：
 
@@ -84,7 +84,7 @@ Exit criteria：
 
 ## 5. MPW feasibility 与 tape-out review
 
-范围：带着明确silicon measurement问题，在可检查的GDS和post-layout证据上评估实际shuttle、package、pads/ESD/IO、power与test strategy。公开route存在不代表当前可提交；GF180MCU与其他BCD、SKY130 analog模板/报价不能互换。[方向报告](research/technical-value-market.md)记录当前来源状态及成本边界。
+范围：带着明确silicon measurement问题，在可检查的GDS和post-layout证据上评估实际shuttle、package、pads/ESD/IO、power与test strategy。公开route存在不代表当前可提交；GF180MCU与其他BCD、SKY130 analog模板/报价不能互换。[实验方法与研究价值](research/technical-value-market.md)说明进入实物研究前所需的证据与资源边界。
 
 Exit criteria：
 
@@ -94,13 +94,13 @@ Exit criteria：
 - 明确费用、deadline、package、交付数量和测试责任；真正购买/提交前形成可审阅设计包。
 - 投片与 silicon bring-up 分开报告；电气 measurements、真实 MicroLED drive 和 optical output 均有条件、原始数据及误差边界。
 
-## 2026-10-06：ADB／道路投影应用研究
+## 2026-10-06：独立控制与电气实验平台
 
-用户指定主要对标 **ams OSRAM EVIYOS 与上海晶合光电画芯系列**。本轮[对标研究](research/automotive/benchmark-report.md)新增产品身份、控制／芯片分工、公开资料边界与[平台缺口](research/automotive/platform-gap-analysis.md)，工程基线仍为v0.4。画芯报道参数及最新可靠性完成消息尚需原厂资料；EVIYOS公开接口名称不等于已经取得完整协议。没有商业ASIC、车灯ECU、hardware或optical的新验证。
+本轮[研发方法验证报告](research/experimental-methods/report.md)与[平台计划](research/experimental-methods/platform-plan.md)围绕独立假设定义控制、芯片、电气与仿真层之间的实验关系。研究对象包括帧更新是否完整、故障是否被检测、量化如何影响单像素电荷，以及reference／供电／保护条件如何改变输出。工程基线仍为v0.4；新的场景模型、帧缓存和控制器联动路径尚未实现。
 
-下一实施包建议先做独立synthetic scene／mask→ECU golden frame→完整帧校验／双buffer atomic commit→selected pixel量化→既有RTL／PWL／冻结joint PEX的可复现路径。全logical image仅在functional模型中存在；它不改变上面4×4 physical的进入条件。至少一个正常场景和一个错误更新对照须保留frame／source hashes、分段latency、量化误差和电荷积分；商业接口未知前使用自定义contract，不能宣称兼容。
+下一实施包先定义独立synthetic scene／mask → golden frame → 完整帧校验／双buffer atomic commit → selected pixel量化 → 既有RTL／PWL／冻结joint PEX的可复现路径。帧格式、时序、错误处理和通过／失败条件由本项目独立定义。全logical image仅在functional模型中存在；它不改变上面4×4 physical的进入条件。至少一个正常场景和一个错误更新对照须保留frame／source hashes、分段latency、量化误差和电荷积分，形成可检查的实验记录后才报告实现完成。
 
-单像素reference／startup／保护blank、真实PG／邻居及同器件dynamic／optical bench继续是工程优先门槛。取得明确实验需求与可获取器件资料后，再确定硬件平台与后续阵列；不默认拥有FPGA、camera或目标商业产品。完整型号、更新／灰阶、供电／thermal／optical测量条件以及qualification／车型映射是下一次对标决策需要补齐的数据。
+单像素reference／startup／保护blank、真实PG／邻居及同器件dynamic／optical bench继续是工程优先门槛。先明确可测负载、仪器、原始数据格式、温度和测量不确定度，再确定硬件平台与后续阵列；不默认拥有FPGA、camera或测量仪器。未来硬件的作用是检验已声明假设，并量化模型与测量之间的差异。
 
 ## 与独立 FPGA 项目的关系
 

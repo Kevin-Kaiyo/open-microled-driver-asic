@@ -1,50 +1,51 @@
-# 技术、价值与市场：先把可验证的能力做成可用的平台
+# 实验方法与研究价值：用单像素建立可复现的验证链
 
-更新：2026-10-05。定位判断基于已完成的 v0.3 单像素能力与本次核查的公开第一手资料；不是市场规模预测、客户订单或 ASIC 产品认证。面向入门读者的完整技术链路见[研究报告](research-report.md)。本页的来源、条件与判断逐项保存于 [sources](../../evidence/strategy/sources.json)、[claim ledger](../../evidence/strategy/claim-ledger.json)。
+定位更新：2026-10-06。工程结果按各自冻结版本读取；本页4×4预算沿用v0.3输入，当前单像素验证进展见[研究报告](research-report.md)。本项目以开放教学和实验性研发方法验证为目的，公开问题、假设、输入、误差与失败对照，便于独立复算和继续研究。
 
-**建议把这个项目定位为“可复现的 MicroLED 器件电测与驱动共设计平台”，以教学和小阵列研究为主线。** 当前最有价值的成果，是让读者从一个灰阶命令出发，检查 PWM、电流镜、器件数据、金属连接和误差，再知道哪些假设仍需测量。这条链路可以支持工程训练、公开器件模型和低电流驱动研究。直接进入几微米 pitch 的商业微显示背板，或把现有亮度 PWM 改称 Gbps 光通信驱动，都会跳过尚未解决的面积、供电、动态负载和系统验证问题。
+**优先验证 MicroLED 器件建模、驱动设计与物理实现之间的方法链。** 以一个灰阶命令为起点，检查PWM、电流镜、器件数据、金属连接和误差，再确定哪些结论仍依赖测量。单像素规模便于把问题逐层解释清楚；只有当新增路数能够回答明确的共享偏置、相互耦合或同步控制问题时，才扩展阵列。
 
-## 1. 入门：技术、价值、市场分别回答什么
+## 1. 入门：方法、证据与研究价值分别回答什么
 
-**技术**回答“在给定条件下能做什么”：例如在仿真中让约 100 µA 电流受 PWM 控制。**价值**回答“这项能力替谁减少什么问题”：例如帮助器件工程师区分低灰阶误差来自 LED、电流参考还是驱动时序。**市场**回答“谁愿意持续使用、贡献数据或为这种帮助付费”：目前还没有完成需求访谈或付费验证，因此后两项中的用户与购买行为是待验证假设。
+**方法**回答“怎样提出和检验问题”：例如固定供电与LED条件，检查约100 µA电流怎样受到PWM或参考源影响。**证据**回答“哪些数据支撑结论”：例如原始波形、测量条件、布局连接和独立错误对照。**研究价值**回答“是否增加了可复现的理解”：例如能否区分低灰阶误差来自LED、参考源、寄生还是时序。
 
-一个“能点亮”的电路只是起点。做教学时，读者还要看得懂、跑得起来、发现错误；做器件研究时，需要可更换的真实负载数据和测量条件；做商业产品时，还需可靠性、封装、测试、供货与成本。它们需要的证据逐级增加，不能由一个通过的仿真替代。
+一个可以运行的电路是起点。教学还需让读者理解前提、独立运行和发现错误；器件研究还需可追溯的真实数据、测量不确定度与模型适用边界；实物验证还需供电、封装、探针与温度条件。这些阶段需要各自的证据。
 
-本项目 v0.3 的约 100 µA 电流、1 µs 最短 PWM slot、共同 routed macro top 与有条件的 DRC/LVS 是真实可检查的设计工作。真实 LED 的 I–V 是公开测量数据；它仍没有完整 C–V、I–V(T)、反向区和光学模型。新的研究结果应按各自报告读取，不能借用本页的商业比较升级验证等级。
+冻结v0.3的约100 µA电流、1 µs最短PWM slot、共同routed macro top与有条件的DRC/LVS构成可检查的设计记录；v0.4进一步加入联合PEX和边界研究，见[联合PEX](joint-pex.md)与[电气验证](robustness.md)。真实LED的I–V来自公开测量数据，仍缺少完整C–V、I–V(T)、反向区和光学模型。每个结论应保持其来源条件与验证层级。
 
 ## 2. 工艺为什么适合当前学习目标
 
-GF180MCU 官方材料把它称为 **0.18 µm、3.3 V/6 V MCU process**；公开文档还列出其他器件族。较高电压和公开模型有利于从晶体管、电流镜到 LED headroom 的教学，代价是当前所用长沟道匹配器件和高压数字单元并不追求最小像素面积。GF 的 BCD 是另一组商业平台，不能把本项目的 GF180MCU 当作所有 180BCD 功率器件能力的代表。[GF180MCU 官方 README](https://github.com/google/gf180mcu-pdk/blob/main/README.rst)、[GF BCD 平台](https://gf.com/technologies/power/bcd/)。
+GF180MCU官方材料把它称为 **0.18 µm、3.3 V/6 V MCU process**；公开文档还列出其他器件族。较高电压和公开模型有利于从晶体管、电流镜到LED headroom的教学。当前采用的长沟道匹配器件和高压数字单元，便于观察面积、驱动能力和精度之间的取舍。器件能力必须按实际使用的model和rule deck读取。[GF180MCU官方README](https://github.com/google/gf180mcu-pdk/blob/main/README.rst)、[PDK官方文档](https://gf180mcu-pdk.readthedocs.io/en/latest/)。
 
-GF 官方目前将 display driver / microdisplay backplane 能力列在 28、40、55 nm 平台。这说明商业显示设计会选择适合密度、存储、泄漏、模拟电压及集成方式的工艺；它不证明 180 nm 不能研究 LED，也不证明只有缩小制程就能完成好背板。[GF Feature-rich CMOS，Display](https://gf.com/technologies/cmos/feature-rich-cmos/)。
+工艺名称本身不保证某种电路一定可行。研究中应记录器件类型、W/L、电压、body连接、模型版本与规则版本，再检查目标电流、headroom、寄生和面积。缩小器件会改变失配、输出电阻、寄生和接触结构，需要新的误差预算与真实版图证据。
 
-维护与制造资格也要分开。2026-10-05 浏览时，Google 的 GF180MCU 原仓库标记于 2026-09-23 archived，README 仍写 experimental preview / alpha、test-chip 使用不作保证。这不自动否定本项目锁定文件的模拟结果，但下一阶段必须确认实际维护分支、完整 PDK、规则与候选制造服务的匹配。公开模型、开放许可证与生产接受是三件事。[官方仓库状态与 README](https://github.com/google/gf180mcu-pdk/blob/main/README.rst)。
+维护与制造资格也要分开。2026-10-05浏览时，Google的GF180MCU原仓库标记于2026-09-23 archived，README仍写experimental preview / alpha、test-chip使用不作保证。这不自动否定锁定文件的模拟结果，但实物阶段必须确认实际维护分支、完整PDK、规则与候选制造服务的匹配。公开模型、开放许可证与生产接受是不同条件。[官方仓库状态与README](https://github.com/google/gf180mcu-pdk/blob/main/README.rst)。
 
-## 3. 三条应用方向的适配判断
+## 3. 三类实验问题及其证据缺口
 
-下表是工程判断，不是已验证的销售市场。这里的“用户”指需要解决问题的人；尚未确认谁会购买。
+研究范围按“需要回答什么问题”定义，具体实验条件应在运行前写清。
 
-| 方向 | 潜在用户的问题 | 当前适配 | 最大缺口 | 当前决定 |
+| 实验方向 | 要回答的问题 | 当前基础 | 下一项证据 | 当前安排 |
 |---|---|---|---|---|
-| 教学 / 器件电测 / 1–16 路研究驱动 | 学会完整验证链；检查 µA 电流、短脉冲与器件模型 | 高：一像素可复现，错误可追溯 | 实际 reference、LED 动态/温度、bench 数据和外部复现 | 优先推进 |
-| 商业 LED 矩阵或高密度微显示 | 像素一致性、低灰阶、面积、总功耗、接口、诊断与可靠供货 | 小研究阵列可借鉴；量产矩阵与微显示现阶段低 | 阵列未实现；高密度集成、存储、校准、封装、光学与量产资格 | 先测需求，再决定重新架构 |
-| 高速可见光通信 VLC | 电光带宽、驱动摆幅、接收 SNR、BER 与链路能耗 | 当前亮度 PWM 低 | RF/高速驱动、实测 S 参数/动态、接收机与光链路 | 独立研究分支，暂不合并目标 |
+| 单像素模型与电气行为 | 电流、headroom和短脉冲误差来自哪里 | 一像素RTL、晶体管与物理连接可检查 | 实际reference、LED动态/温度和bench数据 | 优先补齐 |
+| 1→16路的缩放假设 | 共享bias与同时切换怎样改变功耗、精度与时序 | 已有可复算面积/功耗/数据预算 | 单像素闭环后独立定义阵列、packet与同步实验 | 先保留预算，再按问题实现 |
+| 独立教学复现 | 读者能否从输入开始运行并解释一个失败 | 公开网表、脚本、报告与负向对照 | 外部运行记录、环境差异、错误解释和文档反馈 | 与工程修正同步推进 |
 
-小阵列研究并不要求驱动电路和发光 mesa 有相同 pitch。可以先在测试芯片或板级系统中，把外接 LED 的电流/时间误差测清楚。若用户真正需要的是在每个 4 µm 像素下面放完整电路，就必须重新选择 pixel architecture、存储位置、工艺与互连方式，不能把当前 macro 直接复制过去。
+小阵列研究不要求驱动电路和发光mesa具有相同pitch。可以先使用测试芯片或板级载体，把外接LED的电流与时间误差测清楚。如果将来研究几微米级pixel site，则需重新定义pixel architecture、存储位置、器件选择与互连方式；当前macro的复制预算不能回答这些问题。
 
-## 4. 官方 benchmark：比较条件比比较数字更重要
+## 4. 比较实验结果：先对齐条件与误差定义
 
-这些资料展示不同应用已经要求哪些能力。它们的数值不可直接排成性能榜。
+有意义的比较来自相同问题下的受控变化。对照实验先固定输入和计算窗口，再更换一个模型、电路参数或测量条件，并说明其余量是否保持一致。
 
-| 公开对照 | 数据及条件 | 对本项目的启示 | 不可比之处 |
+| 对照维度 | 应固定或记录的内容 | 能回答的问题 | 仍需注意的边界 |
 |---|---|---|---|
-| TI LP5860，Rev. A，2021-11，p.1、p.7 §7.5 | 18 sinks × 11 scan = 198 dots；100 µA 全开时 device error ±7%、channel error ±5.5%；50 mA 才是两项 ±3% | 低电流精度可以成为研究问题；先比较同一电流与负载条件 | 量产 data-sheet bounds 对比有限模型样本；scan matrix 对比独立 pixel |
-| JBD AM-µLED 0.1 Series，官方产品页，版本/日期未标 | 厂商列 500×380、4 µm pitch、10 bit、480 Hz、典型 50 mW | 商业微显示是密度、存储、光学和功耗的整套要求 | 未公开典型功耗对应的图案/亮度；不能把 50 mW 除以像素数后与本电路排名 |
-| Hsiao et al.，Scientific Reports，2024-03-25 | 作者报告 30 µm×8 yellow array 的 NRZ-OOK 超过 1 Gbit/s、OFDM 1.5 Gbit/s | 通信需实测电光链路及匹配的驱动和接收条件 | 本项目没有 optical link、BER 或同样器件/偏置条件；PWM slot 不是通信 symbol |
+| 理想reference与非理想reference | LED身份、目标电流、供电和启动顺序 | 参考源顺应电压及输出电阻是否改变首脉冲或稳态电流 | 行为源仍需实际电路与测量验证 |
+| Schematic与局部PEX | 相同MOS模型、刺激、测量窗口和端口 | 选定物理连接的R/C怎样改变电荷和时序 | 局部提取不能覆盖省略的PG与邻近活动 |
+| 模型预测与测量 | 器件批次、温度、供电、脉冲宽度、仪器与探针 | 模型在哪些条件下有系统性残差 | 仪器误差、探针负载和数据拟合范围需分开记录 |
+| 基线与故意错误 | 预先声明的检查规则、输入变更与预期失败项 | 检查能否发现错误连接、参数或计算 | 通过有限错误对照不等于覆盖所有失效模式 |
 
-来源：[TI data sheet](https://www.ti.com/lit/ds/symlink/lp5860.pdf)、[JBD 官方 0.1 产品页](https://www.jb-display.com/product_des/16.html)、[Hsiao 原论文](https://doi.org/10.1038/s41598-024-57132-9)、[作者所在大学的摘要](https://scholar.nycu.edu.tw/en/publications/advancing-high-performance-visible-light-communication-with-long-/)。论文 online date 采用[出版社 Crossmark](https://crossmark.crossref.org/dialog/?doi=10.1038%2Fs41598-024-57132-9)，避免把大学索引中的 December 当成首次发表日期。JBD 直接打开返回 403，本轮可读内容来自公开搜索索引；规格按厂商宣称保留，完整购买规格需另取正式 data sheet。
+本项目主验证中的±5%是单支路电流相对100 µA目标的检查，±2%是已定义窗口中的最低码电荷检查。改变分母、时间窗口或温度范围后，应重新注明指标；不能把单次模拟样本扩展成对所有器件与条件的保证。
 
-特别注意 TI 的 100 µA 行：p.7 §7.5 的条件为 VCC=3.3 V、VLED=3.8 V、VIO=1.8 V、所有 channels on、PWM=100%；常规器件 TA=−40…85°C，typical 值是 25°C。Device error以芯片平均电流相对设定值为分母；channel error以各路电流相对芯片平均值为分母。本项目±5%比较单支路与100 µA目标，分母与统计人口也不同。Headline 的 ±3% 不能直接套在 100 µA。**本项目的 ±5% 目标只在已声明模型/网格里检查，当前不能据此宣称精度优于 TI。** 价值假设是：公开方法能否在实际低电流条件下解释误差并给出有用改进。
+科学文献提供实验方法与边界的参考。Hsiao等在Scientific Reports于2024-03-25发表的yellow array研究报告NRZ-OOK超过1 Gbit/s、OFDM 1.5 Gbit/s。这些是不同器件、驱动与接收条件下的光学实验；本项目没有optical link或BER测量，1 µs亮度PWM slot不能推导通信速率。既有检索采用作者/出版社摘要级结论，未补造bias、距离和接收条件。[原论文](https://doi.org/10.1038/s41598-024-57132-9)、[作者所在大学摘要](https://scholar.nycu.edu.tw/en/publications/advancing-high-performance-visible-light-communication-with-long-/)、[出版社Crossmark日期](https://crossmark.crossref.org/dialog/?doi=10.1038%2Fs41598-024-57132-9)。
 
 ## 5. 从一像素到 4×4：先做四本账
 
@@ -99,55 +100,53 @@ Packet仅为独立提议：4byte头/校验+每像素2byte，总288bit，尚未�
 
 ### 5.4 尺寸与光学账：电流相同，物理条件未必相同
 
-20×20 µm² mesa在100 µA时，按完整方形面积算的平均电流密度为25 A/cm²。如果假设缩到4×4 µm²并保持同样100 µA，则密度会变为625 A/cm²，增加25倍。后一项仅为几何假设，不是JBD器件的电流条件。实际有效发光面积、电流拥挤、温升、sidewall损失与EQE都会改变结果，不能沿用同一个LED电气模型来预测小像素亮度。
+20×20 µm² mesa在100 µA时，按完整方形面积算的平均电流密度为25 A/cm²。如果假设缩到4×4 µm²并保持同样100 µA，则密度会变为625 A/cm²，增加25倍。后一项仅为几何假设，不对应任何指定器件的实际电流条件。实际有效发光面积、电流拥挤、温升、sidewall损失与EQE都会改变结果，不能沿用同一个LED电气模型来预测小像素亮度。
 
-## 6. 市场价值：先验证工程师愿意用的工作流
+## 6. 研究价值：验证一条可以解释误差的工作流
 
-本项目的差异化假设应具体到一种工作流：**拿到一份可公开的LED测量数据，建立有边界的model card，连接可检查的ASIC驱动，再把误差定位到reference、mirror、PWM、寄生或LED本身。** 公开模型和失败对照比单独提供一个PWM模块更有复用价值。这个判断来自当前工程资产与官方benchmark，并不是已经发生的客户行为。
+本项目要验证的工作流是：**取得可公开的LED测量数据 → 建立有边界的model card → 连接可检查的ASIC驱动 → 从原始结果定位reference、mirror、PWM、寄生或LED误差 → 用独立实验检查解释。** 公开输入、模型和失败对照，使别人能够复算结论并发现方法的不足。
 
-先验证三类用户的问题：
-
-| 用户假设 | 需要验证的实际问题 | 最小交付 | 价值证据 |
+| 研究任务 | 需要验证的问题 | 最小交付 | 评价证据 |
 |---|---|---|---|
-| 刚入门的半导体工程师 / 教师 | 能否理解并独立复现从spec到DRC/LVS/电流误差的链路 | 三层讲义、一像素baseline、故意断线/错误属性例子 | 外部读者成功复现并解释至少一个失败；记录卡点和耗时 |
-| MicroLED器件实验室 | 是否缺少便于与驱动联合评估的公开动态/温度模型 | 单器件measurement schema、model card、拟合与边界检查 | 真实数据、测量不确定度；同条件预测与holdout测量的误差 |
-| 小阵列驱动 / mixed-signal研究团队 | 100 µA附近的匹配、reference和短脉冲预算是否限制实验 | 1→16路需求书、共享bias假设与bench方案 | 用户提供具体current/pulse/temperature/power需求；模型或bench改进能改变设计决定 |
+| 入门教学 | 能否理解并独立复现从spec到DRC/LVS/电流误差的链路 | 分层讲义、一像素baseline、错误连接/属性例子 | 外部读者成功复现并解释至少一个失败；记录卡点和耗时 |
+| 器件建模 | 动态与温度模型能否预测未参与拟合的数据 | 单器件measurement schema、model card、拟合与边界检查 | 真实数据和测量不确定度；同条件预测与holdout测量误差 |
+| 驱动与物理实现 | 100 µA附近的reference、寄生和短脉冲预算能否解释观察差异 | 固定条件的schematic/PEX/bench实验与误差分解 | 改变一个因素后的残差变化；计算与波形可独立复核 |
 
-“能教学”应以读者能复现和解释为证据；“能服务实验室”应以数据与误差预测为证据；“能商业化”还要验证持续使用、交付维护成本及采购意愿。GitHub star、厂商宣传或市场增长报道都不能替代这些证据。本轮没有执行外部访谈、发信、采购或投片。
+“能教学”以独立复现和错误解释为证据；“模型有效”以有条件的预测误差为证据；“设计改进有效”以事先定义的对照实验为证据。仿真通过、图表完整与外部复现属于不同结论。当前仍需记录实际外部运行与bench测量。
 
-## 7. 可执行的方向门槛
+## 7. 可执行的实验推进门槛
 
-这些是建议的下一轮决策门槛，尚未宣称满足。先固定真实用户需要的规格，再展开新架构。
+以下是下一轮实验判据，尚未宣称满足。先固定问题、控制变量、测量量与接受条件，再开始实现和运行。
 
-| 决策 | Go所需证据 | No-go / 转向触发 | 下一步 |
+| 决策 | 所需证据 | 应缩窄或修正的情形 | 下一步 |
 |---|---|---|---|
-| 完成单像素平台 | 完整joint PEX与供电/启动、非理想reference预算；至少一组traceable LED动态与温度数据；维持既定±5% current/±2% lowest-code目标或透明重定spec | 模型没有目标pulse/voltage/temperature范围的数据；误差无法定位 | 缩窄声明范围，先测量或修模型 |
-| 进入4×4研究芯片 | 单像素条件闭环；16路用户需求、packet/commit/reset定义；shared bias、simultaneous switching、功耗与面积预算；按同规则做array验证 | 单像素尚未闭环；供电或固定bias功耗已超用户预算 | 保留一像素/分立测试载体，修改reference与架构 |
-| 证明教学/研究需求 | 建议先与5名目标用户访谈；至少2个独立使用场景；1名外部入门读者复现baseline并解释错误；至少1个可追溯LED数据合作意向 | 只有一般性赞同，没有数据/复现/具体实验任务 | 保持开放教学作品，停止扩大商业功能 |
-| 评估MPW投入 | 候选provider明确接受exact variant/decks/pins/voltage；取得报价、封装/测试责任；总预算≤用户自定B，silicon测量能回答明确问题 | provider不接受、5V/analog访问不匹配、无bring-up/measurement方案或超B | 不提交；继续模拟或先做board-level电测 |
+| 完成单像素平台 | 补充供电/启动、非理想reference与完整PG预算；至少一组traceable LED动态与温度数据；维持既定±5% current/±2% lowest-code目标或透明重定spec | 模型没有目标pulse/voltage/temperature范围的数据；误差无法定位 | 缩窄声明范围，先测量或修模型 |
+| 进入4×4研究芯片 | 单像素条件闭环；16路实验条件、packet/commit/reset定义；shared bias、simultaneous switching、功耗与面积预算；按同规则做array验证 | 单像素尚未闭环；供电或固定bias功耗已超实验预算 | 保留一像素/分立测试载体，修改reference与架构 |
+| 检查教学与可复现性 | 至少1名外部入门读者从锁定输入复现baseline，并解释至少一个负向对照；记录环境差异和步骤卡点 | 只能读取输出，无法独立运行或解释失败 | 先修复运行入口、说明和错误检查 |
+| 评估MPW实验 | 候选provider明确接受exact variant/decks/pins/voltage；取得报价、封装/测试责任；总预算≤自行确定B；silicon测量能回答明确问题 | provider不接受、5V/analog访问不匹配、无bring-up/measurement方案或超B | 继续模拟或先做board-level电测 |
 
-需求访谈只需围绕五个问题：实际要驱动多少路/多少µA；最短pulse与准确度；电源/温度/LED数据是否已知；现在用什么方法、哪里耗时或失败；若本平台把这个问题解决，愿意如何实际使用/贡献数据/采购。采访数量是本项目建议的最小学习目标，不是统计代表性或客户名单。
+每次实验记录至少包括：研究问题；被改变的因素与保持不变的条件；路数/电流/脉冲/电源/温度；数据与工具版本；测量不确定度；运行前确定的判据；实际结果与失败解释。若结果不符，应保留原始失败与修改理由，再运行新版本。
 
-## 8. 成本账与开放制造入口
+## 8. 实物实验预算与开放制造入口
 
-公开GF180社区shuttle存在；Tiny Tapeout官方[芯片列表](https://www.tinytapeout.com/chips/)在访问日列出GF系列run。其[Analog Specs](https://tinytapeout.com/specs/analog/)的一些限制和报价段落明确标成sky130A，不能套成本项目的GF180、Metal5、5V LED rail或19-port top。Analog page列出的通用PDK名称也不能替代GF run的模板、rails、pin path RC和接受条件。先向实际候选服务确认，公共入口本身不构成可提交资格。
+公开GF180社区shuttle存在；Tiny Tapeout官方[芯片列表](https://www.tinytapeout.com/chips/)在2026-10-05访问时列出GF系列run。其[Analog Specs](https://tinytapeout.com/specs/analog/)的一些限制和报价段落明确标成sky130A，不能套成本项目的GF180、Metal5、5V LED rail或19-port top。Analog page列出的通用PDK名称也不能替代GF run的模板、rails、pin path RC和接受条件。公共入口本身不构成可提交资格。
 
-当前没有匹配本设计的有效制造报价，因此不填一个看似精确的“单芯片成本”。可审阅的预算应为：
+当前没有匹配本设计的有效制造报价。实物实验预算应包含：
 
 \[
 C_{project}=C_{design\ effort}+C_{MPW}+C_{package/PCB}
             +C_{measurement}+C_{logistics}+C_{rework}.
 \]
 
-MPW报价需要注明area/tile、模拟pin、工艺、截止日期和交付数量；measurement要包含电流/脉冲、温度与光学所需设备或使用费。若未来评估销售，单位经济应先写成 `NRE/Nusable + variable cost + support`，其中usable数量由实际交付和测试决定；不能把有限MC样本当成yield，或把一轮shuttle的价格当成量产成本。
+MPW报价需要注明area/tile、模拟pin、工艺、截止日期和交付数量；measurement要包含电流/脉冲、温度与光学所需设备或使用费。预算应服务于明确的研究问题，并记录实际可用样片、可测端口和返工范围。有限MC样本的零超限不能推得制造良率，一轮shuttle费用也不能代表完整实物实验费用。
 
-优先顺序因此很明确：**完成一像素的真实负载与供电闭环 → 让一位外部初学者独立复现 → 获取有实际条件的器件/用户需求 → 决定4×4与共享reference是否值得实现 → 最后评估带明确测量目的的MPW。** 高密度显示与高速VLC保留为将来需要新spec和新证据的研究方向。
+推进顺序为：**完成一像素的真实负载与供电闭环 → 让一位外部初学者独立复现 → 固定下一轮器件与测量条件 → 决定4×4与共享reference实验 → 最后评估带明确测量目的的MPW。** 每次扩大范围都应增加可检验的问题与相应证据。
 
 ## 9. 证据包与复算
 
-- [sources.json](../../evidence/strategy/sources.json)：原始名称、组织、版本/日期、访问状态、locator与public reuse边界。
-- [claim-ledger.json](../../evidence/strategy/claim-ledger.json)：company claim、research experiment、当前project evidence、calculation和direction hypothesis分开记录。
-- [budget.json](../../evidence/strategy/budget.json) / [budget.csv](../../evidence/strategy/budget.csv)：输入hash、精确几何、数据/功耗预算；所有array项标成未实现场景。
+- [研究报告](research-report.md)、[联合PEX](joint-pex.md)与[电气验证](robustness.md)：当前单像素结果、模型与检查范围。
+- [LED model card](measured-led.md)与[bench计划](bench-validation-plan.md)：科学数据来源、许可、适用条件和待测量项目。
+- [budget.json](../../evidence/strategy/budget.json) / [budget.csv](../../evidence/strategy/budget.csv)：冻结输入hash、精确几何、数据/功耗预算；所有array项均为未实现场景。
 - [budget.py](../../scripts/strategy/budget.py)：用标准库Decimal复算，不修改任何模型或已有电气结果。
 
-第三方产品图片、框图和数据手册页面没有在本公开仓库中重发布；本页只整理必要的事实数值、引用与独立计算。Original TI data sheet的本地阅读副本位于ignored `build/strategy/`，不作为本项目自有证据图。可公开复用的LED数值曲线遵循其原NOTICE；本页没有将厂商图片换色后当原创。
+预算保持原有输入与计算版本；本次定位调整不重写已经运行的电气证据。可公开复用的LED数值曲线遵循原NOTICE；独立说明图和计算应标出原始数据、假设与来源。

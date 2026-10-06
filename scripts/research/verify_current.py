@@ -132,10 +132,10 @@ def main():
               'scripts/joint_pex/','scripts/robustness/','scripts/strategy/',
               'evidence/joint-pex/','evidence/robustness/','evidence/strategy/','evidence/teaching/',
               'evidence/characterization/','evidence/digital/','evidence/layout/','evidence/led-fit/',
-              'evidence/physical/','evidence/research/','evidence/automotive/')
+              'evidence/physical/','evidence/research/','evidence/methodology/')
     for name in public:
         if name=='evidence/research/current-manifest.json':continue
-        if name.startswith(prefixes) or name in ['README.md','docs/design.md','docs/environment.md','docs/pwm.md','docs/verification.md','docs/roadmap.md']:
+        if name.startswith(prefixes) or name in ['README.md','AGENTS.md','docs/project-brief.md','docs/design.md','docs/environment.md','docs/pwm.md','docs/verification.md','docs/roadmap.md']:
             selected.append(name)
     data={'date':datetime.now().astimezone().isoformat(),'stage':'one-pixel '+version+' research milestone',
           'passed':True,'checks':checks,'pdf_pages':count,'pdf_visual_pages_reviewed':list(range(1,count+1)),

@@ -1,20 +1,20 @@
 # Open MicroLED Driver ASIC
 
-An independent, open teaching and research platform for digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
+An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
 从 **1 Pixel** 开始，当前研究版本为 **v0.4（2026-10-05）**：在冻结的共同GDS上，实际提取末级`output12/buf_2`、数字输出线、跨宏线与六MOS pixel的联合信号寄生模型；nominal为12MOS、45 signal R、77显式C，另有HRHC／LRHC／HRLC／LRLC四种actual RC提取。模型从真实M3右端接入，整体替换v0.3分块路径。主研究37次transient／12次DC、146项工程guards通过；[电源／控制边界](docs/research/robustness.md)另保留startup假设越界、enable延迟与static LED headroom失效。
 
-项目优先定位为**可复现的 MicroLED 器件电测与驱动共设计教学平台**。先把单像素的真实负载、reference、供电和控制边界讲清楚，再决定4×4是否值得实现。联合模型仍把PG／body电阻及PG-only电容投影到理想rails，邻居按声明的截断条件处理；它不构成完整芯片PEX、制造接受或光学验证。
+项目定位为**实验性研发方法验证与教学**：用独立提出的假设、可复现的实验和可追溯的证据，研究 MicroLED 器件电测与驱动共设计。先把单像素的真实负载、reference、供电和控制边界讲清楚，再由明确的实验问题决定4×4是否值得实现。联合模型仍把PG／body电阻及PG-only电容投影到理想rails，邻居按声明的截断条件处理；它不构成完整芯片PEX、制造接受或光学验证。
 
 ## 先读当前研究报告
 
-- **新增车灯方向（2026-10-06）**：[EVIYOS／画芯对标报告](docs/research/automotive/benchmark-report.md) / [PDF](docs/research/automotive/benchmark-report.pdf) / [HTML](docs/research/automotive/benchmark-report.html)，逐项比较控制、芯片、电子电气与仿真平台。EVIYOS的代际和公开接口与画芯的待核报道分开；本轮未新增车灯ECU、商业兼容协议或阵列硬件。
-- [28页分层研究报告 PDF](docs/research/research-report.pdf) / [HTML](docs/research/research-report.html) / [可检查的文字源](docs/research/research-report.md)：总览 → 初学者基础 → 工程验证 → 技术、价值与市场；同一结果按不同阅读深度解释。
+- **实验方法说明（2026-10-06）**：[研发方法验证报告](docs/research/experimental-methods/report.md) / [PDF](docs/research/experimental-methods/report.pdf) / [HTML](docs/research/experimental-methods/report.html)，从独立假设、控制模型和单像素回放说明如何建立可复现实验；[平台计划](docs/research/experimental-methods/platform-plan.md)明确待实现步骤与验收证据。
+- [分层研究报告 PDF](docs/research/research-report.pdf) / [HTML](docs/research/research-report.html) / [可检查的文字源](docs/research/research-report.md)：总览 → 初学者基础 → 工程验证 → 实验方法与研究价值；同一结果按不同阅读深度解释。
 - [研究资料入口](docs/research/README.md)：完整 source、assumptions、条件、许可、脚本和证据的索引。
 - [v0.2 预设研究指标](docs/specifications/single-pixel-v0.2.md)：100 µA±5%、最低码面积误差±2%，各项验证范围分开定义。
 - [v0.3 集成退出条件](docs/specifications/single-pixel-v0.3.md)：实际金属连接、PG/body ties、负对照、接口负载及抽取范围。
 - [v0.4 联合PEX目标](docs/specifications/joint-pex-v0.4.md) / [电气预设门槛](docs/specifications/electrical-v0.4.md)：冻结模型边界、避免重复寄生、检查电源／reference／控制及失败条件。
-- [实际联合PEX](docs/research/joint-pex.md)、[实测验证计划](docs/research/bench-validation-plan.md)、[技术—价值—市场判断](docs/research/technical-value-market.md)：说明当前能证明什么，以及下一步如何得到更强证据。
+- [实际联合PEX](docs/research/joint-pex.md)、[实测验证计划](docs/research/bench-validation-plan.md)、[实验方法与研究价值](docs/research/technical-value-market.md)：说明当前能证明什么，以及下一步如何得到更强证据。
 
 [教学 PPT](docs/teaching/open-microled-single-pixel-teaching-v2.pptx)、[初版讲义](docs/teaching/open-microled-single-pixel-report.pdf)、[2026-10-03 检阅](docs/review/README.md)、[v0.2历史报告](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/tree/7ad33e16cfc26a8e785061ef1713156d36d97259/docs/research)与[v0.3历史报告](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/tree/f4d478707f055cf1015267e14a2a56e28c3e9991/docs/research)保留各自快照。旧版尺寸、PWM和分块RC结论以当时输入为准；旧run及source hash不被新模型覆盖。
 
@@ -100,7 +100,8 @@ v0.4的实际抽取、私有build复现、端口与原始投影ledger见[joint P
 | [actual interface](docs/research/interface.md) | 真实buf_2输出、charge/AC输入负载、54transient、slew敏感性和部分RC边界 |
 | [v0.4 joint PEX](docs/research/joint-pex.md) / [独立review](evidence/research/v04-review.json) | 实际末级junction／cell metal、joint signal网络、5个RCstyle、端口／multiset／passivity与负对照 |
 | [v0.4 electrical boundary](docs/research/robustness.md) | 同条件pre/post、电源／reference／reset／enable、邻居截断、series-R与真实静态LED失效边界 |
-| [bench plan](docs/research/bench-validation-plan.md) / [direction](docs/research/technical-value-market.md) | 实物测量的具体目的；官方benchmark与可复算预算；用户需求和制造报价均未验证 |
+| [bench plan](docs/research/bench-validation-plan.md) / [研究价值](docs/research/technical-value-market.md) | 实物测量问题、可复算预算及后续实验的进入条件 |
+| [研发方法验证](docs/research/experimental-methods/report.md) / [平台计划](docs/research/experimental-methods/platform-plan.md) | 独立场景、帧提交、单像素回放与故障注入的待实现方案；工程基线仍为v0.4 |
 | [current evidence index](evidence/research/current-manifest.json) | 当前文件hash、历史输入关联与报告验证 |
 
 旧run的input hash保留原样。教学排版、数字config、可选trace logging等变化与当前源码的关系单独核查，不伪造旧source hashes。历史审阅manifest描述旧快照，不能当作当前source inventory。
@@ -109,7 +110,7 @@ GitHub Actions模板保存在[CI instructions](docs/ci/README.md)，尚未启用
 
 ## 下一步
 
-继续单像素：从联合signal PEX推进真实PG／邻居网络、可实现reference及安全上电控制，获取真实LED动态／温度／光学资料并执行[bench验证计划](docs/research/bench-validation-plan.md)。先完成这些需求与预算，再定义4×4的独立协议、register map、pixel memory、shared reference与power distribution。[技术—价值—市场判断](docs/research/technical-value-market.md)中的面积、功耗和带宽均为未实现预算；不能把305×180µm共同macro跨度当成可线性复制的pixel die面积。当前没有完成串行通信、带pad/ESD完整芯片或provider接受；[Roadmap](docs/roadmap.md)保留退出条件。
+继续单像素：从联合signal PEX推进真实PG／邻居网络、可实现reference及安全上电控制，获取真实LED动态／温度／光学资料并执行[bench验证计划](docs/research/bench-validation-plan.md)。独立的frame／mask场景模型将用于研究完整帧提交、错误更新及selected pixel回放，这条新路径尚未实现，具体步骤见[平台计划](docs/research/experimental-methods/platform-plan.md)。完成单像素门槛后，再按实验问题定义4×4的独立协议、register map、pixel memory、shared reference与power distribution。[实验方法与研究价值](docs/research/technical-value-market.md)中的面积、功耗和带宽均为未实现预算；不能把305×180µm共同macro跨度当成可线性复制的pixel die面积。当前没有完成串行通信、带pad/ESD完整芯片或provider接受；[Roadmap](docs/roadmap.md)保留退出条件。
 
 ASIC与FPGA optical-link项目保持独立仓库，不能以另一项目的仿真替代本项目验证。只采用公开来源、公开PDK和独立设计；[原始brief](docs/project-brief.md)保留长期目标。
 

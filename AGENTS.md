@@ -1,5 +1,6 @@
 # Project working rules
 
+- Position this project as experimental R&D methodology validation and teaching. Define independent hypotheses, reproducible experiments and traceable evidence as the basis for scope and research direction.
 - Start from a runnable one-pixel path. Advance to layout before expanding array count.
 - Explain engineering results in Chinese with English technical terms. Keep source, assumptions, evidence and status in this repository.
 - Separate concept, behavioral model, RTL simulation, transistor simulation, synthesis/physical implementation, DRC/LVS/PEX, GDS, silicon and optical measurement. Never upgrade evidence because a neighboring stage passed.
