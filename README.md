@@ -8,6 +8,7 @@ An independent, open teaching and research platform for digital, mixed-signal, t
 
 ## 先读当前研究报告
 
+- **新增车灯方向（2026-10-06）**：[EVIYOS／画芯对标报告](docs/research/automotive/benchmark-report.md) / [PDF](docs/research/automotive/benchmark-report.pdf) / [HTML](docs/research/automotive/benchmark-report.html)，逐项比较控制、芯片、电子电气与仿真平台。EVIYOS的代际和公开接口与画芯的待核报道分开；本轮未新增车灯ECU、商业兼容协议或阵列硬件。
 - [28页分层研究报告 PDF](docs/research/research-report.pdf) / [HTML](docs/research/research-report.html) / [可检查的文字源](docs/research/research-report.md)：总览 → 初学者基础 → 工程验证 → 技术、价值与市场；同一结果按不同阅读深度解释。
 - [研究资料入口](docs/research/README.md)：完整 source、assumptions、条件、许可、脚本和证据的索引。
 - [v0.2 预设研究指标](docs/specifications/single-pixel-v0.2.md)：100 µA±5%、最低码面积误差±2%，各项验证范围分开定义。

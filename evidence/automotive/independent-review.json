@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-06",
+  "reviewer_task": "/root/automotive_platform_audit",
+  "review_type": "static public-source, evidence-applicability and independent arithmetic review",
+  "passed": true,
+  "verdict": "passed_with_explicit_research_boundaries",
+  "scope": "Final four Markdown research documents and two public source ledgers after requested corrections; product identity, generations, parameter conditions, power/interface semantics, secondary-source classification, historical v0.4 denominators, proposed platform status and arithmetic.",
+  "authorship_disclosure": {
+    "independently_reviewed_authors": "Root benchmark report and the two product documents/ledgers were written by other agents.",
+    "reviewer_authored_companion": "platform-gap-analysis.md was originally written by this reviewer; its arithmetic was separately recomputed in this review and its hash is included as a supporting companion, not falsely described as independently authored."
+  },
+  "baseline_commit": "3a9ca422b78b57ef6cd0b5eea163c68321375660",
+  "reviewed_file_sha256": {
+    "docs/research/automotive/benchmark-report.md": "97ce5597fa19777d25d8bfab26bead804ead4b65651eaa54cbf145e9d7b682d1",
+    "docs/research/automotive/headlamp-products.md": "941164eab8730ae9eafecb0fb8ebe3a4785ada2f5f97aec51906c88eea15b0c6",
+    "docs/research/automotive/huaxin-products.md": "3ec1f2b94d581acef83c1467e3488496ab2a6ebf06ecfdefd955f3cbdf256405",
+    "docs/research/automotive/platform-gap-analysis.md": "34c4301c2388f28ec4d2f3b50d8569abd8fed37373ef8a3e3aa42b276a787670",
+    "evidence/automotive/headlamp-sources.json": "7009b5e7394e3d17bcf9c4b08f1cde8a1d8b2e95fa838b80a3c1ac75a9064502",
+    "evidence/automotive/huaxin-sources.json": "56bab008b89c269585f37a6b27b5758b918e8c0f5d2801b3ab28bf980de2b1bd"
+  },
+  "resolved_findings": [
+    {
+      "id": "A01",
+      "location": "benchmark-report.md section 4, gen1 luminance row",
+      "issue": "The historical gen1 PDF table prints EV, while gen2 prints Lv; the report had substituted the gen2 symbol into gen1.",
+      "resolution": "The gen1 row now quotes the unambiguous 1.97 mA table condition without silently changing the historical symbol.",
+      "status": "resolved"
+    },
+    {
+      "id": "A02",
+      "location": "benchmark-report.md section 5, Huaqing No.1 row",
+      "issue": "The common table citation did not directly locate the controller >=200 W/media claim.",
+      "resolution": "The row now links the Gasgoo event report and retains controller-output versus source/ASIC-power separation.",
+      "status": "resolved"
+    },
+    {
+      "id": "A03",
+      "location": "huaxin-products.md section 1 and huaxin-sources.json JH-S4",
+      "issue": "An unread-original syndicated copy appeared within a first-party-source table despite an in-row downgrade.",
+      "resolution": "Moved to a separate original-not-read-back subsection; JH-S4 explicitly states primary_readback_verified=false.",
+      "status": "resolved"
+    },
+    {
+      "id": "A04",
+      "location": "benchmark-report.md section 8; platform-gap-analysis.md file identity row",
+      "issue": "The original 554-file baseline identity statement could be read as applying unchanged to the later augmented worktree.",
+      "resolution": "Both documents limit the 554/554 check to the pre-augmentation baseline. Baseline manifest remains traceable in the baseline commit; the final current artifact index may refresh without rewriting old run/model/input identities.",
+      "status": "resolved"
+    }
+  ],
+  "checks": [
+    {
+      "name": "EVIYOS SKU and generation separation",
+      "passed": true,
+      "details": "Gen1 25600/19200 variants, gen2 25600 ordering context, hybrid versus external Companion and current catalog status are separate. Four official product pages were reread; gen1 Not for new design, 19k Discontinued, gen2 Q65113A6747 Full production and Companion variants match the documents."
+    },
+    {
+      "name": "Official PDF table and interface conditions",
+      "passed": true,
+      "details": "Local gen1/gen2 p3 visual inspection confirms interface-name difference and 75-100/75-110 MNits table ranges with room-temperature/after-correction footnotes. 1.97 mA is not used to infer total current or array power; RGB8 is not treated as emitter RGB or 8-bit PWM."
+    },
+    {
+      "name": "Product power, thermal and architecture semantics",
+      "passed": true,
+      "details": "Developer interview module-power/internal-stream descriptions remain non-SKU context. Tj is not ambient temperature; current topology, frame/memory partition, PWM/frame rate and internal commercial protocols remain unknown. Generation/bin/document anomalies are retained."
+    },
+    {
+      "name": "OEM and Tier1 context separation",
+      "passed": true,
+      "details": "Touareg 19200 central HD plus additional 16-pixel module is not confused with a 25600 product or full-vehicle denominator. Porsche/HELLA pixel, GMSL and recalculation statements are not borrowed as EVIYOS data."
+    },
+    {
+      "name": "Huaxin first-party versus quarantined secondary evidence",
+      "passed": true,
+      "details": "Manufacturer interview is bounded to development/history; issuer cooperation/ADB paragraph is not assigned to a Huaxin SKU. ALE numerical claims and Huaqing controller statements remain secondary leads. September AEC completion is a reported company announcement, not an independently verified reliability pass, ASIL, homologation, production or OEM mapping."
+    },
+    {
+      "name": "Static v0.4 evidence denominators and conditions",
+      "passed": true,
+      "details": "Main 37 transient/12 circuit DC/146 guards; total 66 transient/28 circuit DC plus 3 independent synthetic calibrations; boundary numerical completion is not system qualification. Five RC styles are distinct from MOS envelopes; only nominal three envelopes plus SSxHRHC and FFxLRLC additions are claimed."
+    },
+    {
+      "name": "Selected model and actual-source identity",
+      "passed": true,
+      "details": "All five styles contain selected 12 MOS/45 R/77 C/34 neighbors. Main-summary as-run source hashes remain equal for all 32 listed inputs. PG/body/neighbor cutoffs, preceding-FF exclusion, artificial rails/reference and yellow static versus synthetic dynamic load distinction remain explicit."
+    },
+    {
+      "name": "First runnable platform is still proposed",
+      "passed": true,
+      "details": "Scene/mask, ECU/golden frame, double buffer, atomic commit, commercial frame receiver, fault override, full array and hardware/optical measurements are not described as delivered. The proposal uses selected one-pixel replay and records 10/12-bit command quantization to existing 256-slot PWM."
+    },
+    {
+      "name": "Payload and buffer arithmetic",
+      "passed": true,
+      "details": "10/12-bit packed scenarios, 60/100 Hz update, two-buffer bytes, eta=0.8 illustration and 16-bit memory/container alternative independently recomputed. Assumptions are not asserted as commercial protocol or PWM/optical resolution."
+    },
+    {
+      "name": "Quantization and PWM counter arithmetic",
+      "passed": true,
+      "details": "Exhaustive Decimal recomputation checks every 10-bit and 12-bit input against the 1/512 normalized-duty bound. 1 MHz with 1024/4096 slots gives 976.5625/244.140625 Hz; 4/16 MHz preserves 3906.25 Hz by arithmetic only."
+    },
+    {
+      "name": "Private raw source hashes",
+      "passed": true,
+      "details": "Nine locally retained PDF/HTML/image source artifacts match the two source ledgers. Their existence and hashes do not grant redistribution rights or establish independent product testing."
+    },
+    {
+      "name": "Source index update semantics",
+      "passed": true,
+      "details": "Pre-augmentation baseline manifest has 2504 artifact checks/554 hashes and remains retrievable in the baseline commit. The final current index is an artifact/source inventory, not a new electrical/safety evidence stage. This review deliberately does not freeze the mutable current-manifest file."
+    }
+  ],
+  "arithmetic_recomputed": {
+    "bandwidth_scenarios": [
+      {
+        "N": 256,
+        "bit_width": 10,
+        "packed_frame_bytes": 320,
+        "packed_double_buffer_bytes": 640,
+        "payload_Mbps_at_60Hz": 0.1536,
+        "payload_Mbps_at_100Hz": 0.256
+      },
+      {
+        "N": 256,
+        "bit_width": 12,
+        "packed_frame_bytes": 384,
+        "packed_double_buffer_bytes": 768,
+        "payload_Mbps_at_60Hz": 0.18432,
+        "payload_Mbps_at_100Hz": 0.3072
+      },
+      {
+        "N": 25600,
+        "bit_width": 10,
+        "packed_frame_bytes": 32000,
+        "packed_double_buffer_bytes": 64000,
+        "payload_Mbps_at_60Hz": 15.36,
+        "payload_Mbps_at_100Hz": 25.6
+      },
+      {
+        "N": 25600,
+        "bit_width": 12,
+        "packed_frame_bytes": 38400,
+        "packed_double_buffer_bytes": 76800,
+        "payload_Mbps_at_60Hz": 18.432,
+        "payload_Mbps_at_100Hz": 30.72
+      },
+      {
+        "N": 40000,
+        "bit_width": 10,
+        "packed_frame_bytes": 50000,
+        "packed_double_buffer_bytes": 100000,
+        "payload_Mbps_at_60Hz": 24.0,
+        "payload_Mbps_at_100Hz": 40.0
+      },
+      {
+        "N": 40000,
+        "bit_width": 12,
+        "packed_frame_bytes": 60000,
+        "packed_double_buffer_bytes": 120000,
+        "payload_Mbps_at_60Hz": 28.8,
+        "payload_Mbps_at_100Hz": 48.0
+      }
+    ],
+    "quantization": [
+      {
+        "command_bit_width": 10,
+        "exhaustively_checked_codes": 1024,
+        "rounding": "round_half_up",
+        "maximum_absolute_normalized_duty_error": "0.0019512157869012707722385142",
+        "bound": "1/512",
+        "passed": true
+      },
+      {
+        "command_bit_width": 12,
+        "exhaustively_checked_codes": 4096,
+        "rounding": "round_half_up",
+        "maximum_absolute_normalized_duty_error": "0.001952648046398046398046398046",
+        "bound": "1/512",
+        "passed": true
+      }
+    ],
+    "eta_example": {
+      "N": 25600,
+      "b": 12,
+      "update_Hz": 60,
+      "eta_assumed": 0.8,
+      "payload_Mbps": 18.432,
+      "minimum_wire_budget_Mbps": 23.04
+    },
+    "sixteen_bit_container_example": {
+      "N": 25600,
+      "double_buffer_bytes": 102400,
+      "payload_Mbps_at_60Hz_if_wire_is_also_16bit": 24.576
+    },
+    "huaxin_companion_budget": {
+      "assumed_N": 40000,
+      "assumed_b": 8,
+      "assumed_update_Hz": 60,
+      "single_stream_payload_Mbps": 19.2,
+      "two_stream_payload_Mbps": 38.4,
+      "single_stream_double_buffer_bytes": 80000
+    }
+  },
+  "baseline_identity": {
+    "commit": "3a9ca422b78b57ef6cd0b5eea163c68321375660",
+    "manifest_blob_sha256": "7bb95250b38ce8f891da47951a49dbde3b9e2d9139a65ebea3f3af375e0145bb",
+    "artifact_checks_recorded": 2504,
+    "file_hashes_recorded": 554,
+    "initial_pre_augmentation_hash_check_passed": true,
+    "intentional_later_entry_or_runner_changes": [
+      "README.md",
+      "docs/research/README.md",
+      "docs/roadmap.md",
+      "scripts/research/verify_current.py"
+    ],
+    "current_manifest_frozen_by_this_review": false,
+    "old_run_source_inputs_checked": 32,
+    "old_run_source_inputs_unchanged": true
+  },
+  "private_raw_identity_checks": [
+    {
+      "path": "build/automotive/KEW-GBBMD1U.pdf",
+      "sha256": "6e066e56933150100ee40c11b149a0c5c38ebe479b5c1d1cab667ec364662d3e",
+      "matched_ledger": true
+    },
+    {
+      "path": "build/automotive/KEW-GBBMD2U.pdf",
+      "sha256": "a1a3579d5ae9265091fb74ec85ea1b841af48c45f50d0f5cfbe9c64c780288be",
+      "matched_ledger": true
+    },
+    {
+      "path": "build/automotive/KEW-GBXXD1U.pdf",
+      "sha256": "ab59e92aeed16cf7d17ca843e96b901f78ef7f48491c59570902cb5deadc4b0b",
+      "matched_ledger": true
+    },
+    {
+      "path": "build/automotive/eviyos-layer-structure-2023.jpg",
+      "sha256": "611773f095d84c7b4a0f8341301b8f8980de54507a03678bffc3dad9375e54a1",
+      "matched_ledger": true
+    },
+    {
+      "path": "build/automotive/huaxin/ifal-2025-jinghe-interview.html",
+      "sha256": "ee772ef638ec23d2f46ad0aab90b96ce99959a6d5cca97afb5ec68846dfcb6f0",
+      "matched_ledger": true
+    },
+    {
+      "path": "build/automotive/huaxin/changelight-2026h1.pdf",
+      "sha256": "293dd8946fac0aa1d8deb8e1332f1a3b20dc28912d98cd36987bbdb89066eee7",
+      "matched_ledger": true
+    },
+    {
+      "path": "build/automotive/huaxin/shu-digital-headlamp-wafer-intent-20260930.html",
+      "sha256": "45b5a3d62686900917640bd70d77c3b9f5147a1b86b7656332a05e22b04d832f",
+      "matched_ledger": true
+    },
+    {
+      "path": "build/automotive/huaxin/jinghe-projection-CN114839831B.pdf",
+      "sha256": "ac781cc07e213589f4c4396e4867a32f18cd423a0c6614abaf78478266fe84f8",
+      "matched_ledger": true
+    },
+    {
+      "path": "build/automotive/huaxin/infineon-tld804k-board-ug-rev1.pdf",
+      "sha256": "9d3671c2029f0d8c6adca7a53b276fc822c6eb91b4c1f890ebdcaf8ab5b12eb4",
+      "matched_ledger": true
+    }
+  ],
+  "independently_visual_inspected_source_views": [
+    "build/automotive/eviyos-gen1-p3.png",
+    "build/automotive/eviyos-gen2-p3.png",
+    "build/automotive/huaxin/changelight-pdfpage11.png",
+    "build/automotive/huaxin/tld804k-board-p6.png"
+  ],
+  "not_verified": [
+    "Commercial emitter/ASIC/ECU hardware, supplier protocols or registers",
+    "Original Huaxin manufacturer reliability announcement and BACL report/sample/lot/test denominators",
+    "AEC qualification process, ASIL safety case, lamp homologation or OEM-series-production mapping for Huaxin",
+    "Actual reference/POR/hard-blank/watchdog/full PG, full-array physical/silicon or white-light optics",
+    "Final benchmark HTML/PDF visual layout and export identity; these remain root publishing checks",
+    "No re-execution of large-waveform SPICE, synthesis or physical-flow regressions in this static review"
+  ],
+  "readback_limitations": [
+    "Some secondary media URLs did not return readable content through this review browsing tool; their claims were checked for correct quarantine and ledger/document consistency, not promoted to independently reread primary evidence.",
+    "Public catalog states are 2026-10-06 observations and can change."
+  ],
+  "evidence_upgrade": false,
+  "immutable_review_rule": "This JSON records the exact six reviewed file hashes. If any of those files change, this acceptance must be rerun or explicitly superseded. It does not hash itself or the mutable current artifact index.",
+  "cosmetic_re_reviews": [
+    {
+      "review_date": "2026-10-06",
+      "path": "docs/research/automotive/benchmark-report.md",
+      "lines": [
+        5,
+        6
+      ],
+      "change": "Replace only each line-final Markdown double-space hard break with <br>.",
+      "prior_reviewed_sha256": "cd8d790c5a0a8c680f863e7cbac8eaf9a08a768f520ebac6aa9b8c2c53ef0e30",
+      "updated_reviewed_sha256": "97ce5597fa19777d25d8bfab26bead804ead4b65651eaa54cbf145e9d7b682d1",
+      "reverse_cosmetic_change_sha256": "cd8d790c5a0a8c680f863e7cbac8eaf9a08a768f520ebac6aa9b8c2c53ef0e30",
+      "reverse_change_matches_original_reviewed_bytes": true,
+      "other_five_reviewed_file_hashes_unchanged": true,
+      "facts_wording_and_arithmetic_unchanged": true,
+      "scope": "Cosmetic-only hash identity re-review; no extension of substantive source or engineering review and no PDF visual-review claim.",
+      "passed": true
+    }
+  ]
+}

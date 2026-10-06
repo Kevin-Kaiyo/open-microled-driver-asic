@@ -132,7 +132,7 @@ def main():
               'scripts/joint_pex/','scripts/robustness/','scripts/strategy/',
               'evidence/joint-pex/','evidence/robustness/','evidence/strategy/','evidence/teaching/',
               'evidence/characterization/','evidence/digital/','evidence/layout/','evidence/led-fit/',
-              'evidence/physical/','evidence/research/')
+              'evidence/physical/','evidence/research/','evidence/automotive/')
     for name in public:
         if name=='evidence/research/current-manifest.json':continue
         if name.startswith(prefixes) or name in ['README.md','docs/design.md','docs/environment.md','docs/pwm.md','docs/verification.md','docs/roadmap.md']:

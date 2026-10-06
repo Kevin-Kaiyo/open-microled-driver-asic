@@ -94,6 +94,14 @@ Exit criteria：
 - 明确费用、deadline、package、交付数量和测试责任；真正购买/提交前形成可审阅设计包。
 - 投片与 silicon bring-up 分开报告；电气 measurements、真实 MicroLED drive 和 optical output 均有条件、原始数据及误差边界。
 
+## 2026-10-06：ADB／道路投影应用研究
+
+用户指定主要对标 **ams OSRAM EVIYOS 与上海晶合光电画芯系列**。本轮[对标研究](research/automotive/benchmark-report.md)新增产品身份、控制／芯片分工、公开资料边界与[平台缺口](research/automotive/platform-gap-analysis.md)，工程基线仍为v0.4。画芯报道参数及最新可靠性完成消息尚需原厂资料；EVIYOS公开接口名称不等于已经取得完整协议。没有商业ASIC、车灯ECU、hardware或optical的新验证。
+
+下一实施包建议先做独立synthetic scene／mask→ECU golden frame→完整帧校验／双buffer atomic commit→selected pixel量化→既有RTL／PWL／冻结joint PEX的可复现路径。全logical image仅在functional模型中存在；它不改变上面4×4 physical的进入条件。至少一个正常场景和一个错误更新对照须保留frame／source hashes、分段latency、量化误差和电荷积分；商业接口未知前使用自定义contract，不能宣称兼容。
+
+单像素reference／startup／保护blank、真实PG／邻居及同器件dynamic／optical bench继续是工程优先门槛。取得明确实验需求与可获取器件资料后，再确定硬件平台与后续阵列；不默认拥有FPGA、camera或目标商业产品。完整型号、更新／灰阶、供电／thermal／optical测量条件以及qualification／车型映射是下一次对标决策需要补齐的数据。
+
 ## 与独立 FPGA 项目的关系
 
 ASIC 与 FPGA 保持独立 repositories。长期分工设想是 FPGA 负责 frame / mapping / scheduling / system control，ASIC 负责本地 data reception / pixel state / PWM / current drive。**双方接口当前尚未定义或联调验证**；需要后续共同固定 voltage、physical signals、clocking、protocol、reset/fault behavior 和 throughput budget。

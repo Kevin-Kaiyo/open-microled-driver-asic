@@ -1,0 +1,662 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>车灯 MicroLED 对标研究 · 2026-10-06</title><style>
+    @page { size:A4; margin:20mm; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:#24353c; font:10.7pt/1.62 'Avenir Next','PingFang SC',sans-serif; }
+    h1,h2,h3 { color:#164f5b; font-family:'Avenir Next','PingFang SC',sans-serif; line-height:1.35; }
+    h1 { font-size:26pt; margin:0 0 6mm; }
+    h2 { font-size:19pt; margin:0 0 5mm; padding-bottom:3mm; border-bottom:1.2px solid #bcced1; }
+    h3 { font-size:12.5pt; margin:4mm 0 2mm; }
+    p { margin:0 0 3mm; }
+    strong { color:#183e49; }
+    a { color:#176977; text-decoration:none; overflow-wrap:anywhere; }
+    ul,ol { margin:2mm 0 4mm; padding-left:5.5mm; }
+    li { margin-bottom:1.5mm; }
+    table { border-collapse:collapse; width:100%; margin:3mm 0 4mm; font-size:9.4pt; line-height:1.48; }
+    th { text-align:left; background:#eaf1f1; color:#164f5b; font-weight:600; }
+    th,td { padding:2.2mm 2.4mm; border-bottom:1px solid #d9e1e2; vertical-align:top; overflow-wrap:anywhere; }
+    tr { break-inside:avoid; }
+    code { font-family:'Avenir Next','PingFang SC',sans-serif; font-size:0.94em; }
+    pre { padding:3mm; background:#f0f4f4; white-space:pre-wrap; font-size:9.5pt; line-height:1.5; }
+    blockquote { margin:4mm 0; padding:3.5mm 4mm; border-left:3px solid #397e83; background:#edf4f3; }
+    blockquote p:last-child { margin:0; }
+    .page { break-after:page; }
+    .page:last-child { break-after:auto; }
+    .flow { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm; margin:5mm 0; }
+    .node { border:1px solid #bfd0d2; border-radius:2mm; padding:3mm; background:#f6f9f8; }
+    .node b { display:block; color:#164f5b; margin-bottom:1mm; }
+    .small { font-size:9.1pt; color:#536d74; }
+    @media print { body,.page { width:170mm; } }
+    @media screen { body { background:#edf2f2; } .page { background:white; width:210mm; min-height:297mm; margin:8mm auto; padding:20mm; box-shadow:0 1px 8px #bac9ca; } }
+    </style></head><body><section class="page" data-page="1"><h1>车灯 MicroLED 对标研究</h1>
+<h2>从单像素 ASIC 到 ADB 与道路投影</h2>
+<p><strong>主要对象：ams OSRAM EVIYOS、上海晶合光电「画芯」系列</strong><br>
+研究日期：2026-10-06 · 工程基线：one-pixel v0.4<br>
+基线 commit：<code>3a9ca422b78b57ef6cd0b5eea163c68321375660</code></p>
+<blockquote>
+<p>当前已经跑通单像素的数字逻辑、模拟驱动、版图和局部联合寄生仿真。下一步最有价值的方向，是把它接到一个可检查的独立车灯控制模型，逐步研究帧更新、故障响应、真实供电与光输出。</p>
+</blockquote>
+<p>本报告回答三个问题：现在做到了什么；两家产品公开到什么深度；我们如何建立可验证的平台。先读第2页理解系统，再读产品与差距；工程读者继续核查参数条件、预算和退出判据。</p>
+<table>
+<thead>
+<tr>
+<th>当前已建立的证据</th>
+<th>尚未建立的能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registered PWM、逻辑映射与数字 physical；六 MOS 模拟 pixel layout；共同 GDS 的所执行 DRC/LVS；12-MOS selected signal PEX</td>
+<td>灯具 ECU、视频接收、整阵列缓存与控制、真实 reference／POR／故障关断、完整 PG、白光车灯模型、实物与光学测量</td>
+</tr>
+<tr>
+<td>v0.4 主研究37次 transient／12次 DC、146项预设 guards通过；三批总66 transient／28 circuit DC</td>
+<td>全 PVT×RC 交叉矩阵、整片电气 signoff、pad／ESD／package、制造接受、车规与道路批准</td>
+</tr>
+</tbody>
+</table>
+<p>本轮是<strong>应用对标与方向研究</strong>：查验既有证据和来源身份，新增产品分析与平台路线；没有重跑整套物理流程，也没有把软件方案写成已完成的 ECU 或商业 ASIC。既有28页 v0.4工程报告继续保留。</p></section>
+<section class="page" data-page="2"><h2>1　先理解整体架构</h2>
+<p>ADB（Adaptive Driving Beam，自适应远光）决定哪些方向应照亮、哪些区域应遮光。道路投影还需要生成符号并映射到路面。MicroLED 光源执行像素亮度命令；环境感知和配光计算属于系统上游。</p>
+<div class="flow">
+<div class="node"><b>1 → 场景与车辆状态</b>物体位置、车辆姿态、速度、模式与时间戳</div>
+<div class="node"><b>2 → 灯 ECU／Host</b>遮光 mask、基础光型、投影图、坐标映射与优先级</div>
+<div class="node"><b>3 → 数据控制器</b>帧接收、校验、缓存、提交与诊断管理</div>
+<div class="node"><b>4 → Pixel driver</b>将本地亮度状态转换为 PWM／电流控制</div>
+<div class="node"><b>5 → MicroLED 光源</b>电流产生光；转换层、封装和散热影响性能</div>
+<div class="node"><b>6 → 光学与道路</b>透镜把像素映射到角域；得到光束与投影</div>
+</div>
+
+<p>上图为本项目原创的<strong>功能分层</strong>，不是任一厂商完整内部图；物理接口与责任分配必须逐型号确认。</p>
+<table>
+<thead>
+<tr>
+<th>要分开的三条路径</th>
+<th>需要检查什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据路径：场景 → 帧 → pixel</td>
+<td>帧是否完整、何时生效、是否延迟或过期；camera更新、图像更新、PWM周期各自计时</td>
+</tr>
+<tr>
+<td>能量路径：电池侧 → 转换电源 → LED／logic</td>
+<td>供电余量、同时点亮、启动、热与功耗；具体车载保护及 rail 要由器件条件决定</td>
+</tr>
+<tr>
+<td>反馈／保护路径：温度、供电、诊断 → 控制</td>
+<td>检测到什么故障、何时停止或降级、如何恢复；正常帧更新不代替故障关断</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三个常见误解：</strong>像素数不是光通量；接口名称不是完整协议；PWM carrier不是摄像头或图像 frame rate。像素电流的平均值只是一种电气代理量，要得到照度、亮度与防眩效果还需要真实光学模型和测量。</p></section>
+<section class="page" data-page="3"><h2>2　EVIYOS：先固定产品身份</h2>
+<p>EVIYOS 是产品家族。当前新设计研究应优先核对 <strong>HD25 gen2</strong>；第一代用于理解已商业化路线和历史装车。工业用 EVIYOS Shape 的流明与对比度不能移作车灯 HD25 规格。</p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>官方公开内容</th>
+<th>2026-10-06目录／历史状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HD25 gen1／EVIYOS 2.0，KEW GBBMD1U</td>
+<td>320 columns×80 lines＝25,600 pixels；40 µm pitch</td>
+<td>2023量产公告；当前目录 Not for new design</td>
+</tr>
+<tr>
+<td>gen1，KEW GBCLD1U</td>
+<td>240×80＝19,200可用 pixels</td>
+<td>当前目录 Discontinued；不能以25,600替代有效像素数</td>
+</tr>
+<tr>
+<td>HD25 gen2，KEW GBBMD2U</td>
+<td>25,600 pixels；40 µm pitch；LED／IC hybrid</td>
+<td>当前目录 Full production；Product Information日期2025-10-31</td>
+</tr>
+<tr>
+<td>KEW GBXXD1U Companion ASIC</td>
+<td>产品组合必需的外置 digital ASIC</td>
+<td>专用组合器件；不等于光源内的 pixel driver IC</td>
+</tr>
+</tbody>
+</table>
+<p>来源：<a href="https://ams-osram.com/products/leds/white-leds/osram-eviyos-hd-25-gen1-kew-gbbmd1u">gen1目录</a>、<a href="https://ams-osram.com/products/leds/white-leds/osram-eviyos-hd-25-gen1-kew-gbcld1u">19k目录</a>、<a href="https://ams-osram.com/products/leds/white-leds/osram-eviyos-hd-25-gen2-kew-gbbmd2u">gen2目录</a>、<a href="https://ams-osram.com/products/drivers/led-drivers/osram-eviyos-hd-25-kew-gbxxd1u-companion">Companion目录</a>。目录状态是核查日快照，不能作为长期采购保证。</p>
+<h3>装车案例的分母也必须固定</h3>
+<p><a href="https://www.marelli.com/en/news/marelli-launches-h-digi-microled.html">Marelli 2023公告</a>确认 h-Digi microLED 模组使用 EVIYOS 2.0并已 series production；<a href="https://ams-osram.com/news/blog/launch-of-new-version-of-eviyos-multipixel-led">ams OSRAM后续说明</a>将 Touareg／Tiguan 与 EVIYOS关联。Volkswagen公开的 Touareg 每侧中央 HD module 为 <strong>19,200 pixels</strong>，另有16-pixel module。整灯、整车和光源的像素数不能混用。<a href="https://www.volkswagen-newsroom.com/en/the-new-touareg-world-premiere-16049/the-new-iqlight-hd-matrix-headlights-16052">Volkswagen像素说明</a></p>
+<p>Porsche Cayenne／HELLA 的16,384 pixels/chip属于另一条系统路线；它的灰阶、GMSL或配光重算周期不能借给 EVIYOS。装车案例能证明商业应用存在，不能替代某一订货料号的完整 electrical datasheet。</p></section>
+<section class="page" data-page="4"><h2>3　EVIYOS：芯片与控制的真实边界</h2>
+<p>公开资料支持 <strong>MicroLED array＋集成 CMOS driver IC＋外部 Companion ASIC</strong> 的分工。LED array的 monolithic结构与 LED／CMOS异质集成是不同概念；不应将整套产品写成一颗单片 ASIC。<a href="https://ams-osram.com/innovation/how-ingenuity-and-expertise-led-to-the-development-of-our-multi-pixel-led">原厂集成说明</a></p>
+<table>
+<thead>
+<tr>
+<th>控制层</th>
+<th>已公开</th>
+<th>本轮仍未知</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECU／Host → Companion</td>
+<td>gen1 PI p.3：UART、RGB8、SPI/CSI video option；gen2 PI p.3：UART、RGB8、SPI video interface option</td>
+<td>各接口的准确用途、physical voltage／pinout、clock／有效带宽、packet／register、同步与错误规则</td>
+</tr>
+<tr>
+<td>Companion → 集成 driver</td>
+<td>外置 digital ASIC与光源内 driver的分工</td>
+<td>内部链路、寻址、clock、memory所在位置、缓存与commit机制</td>
+</tr>
+<tr>
+<td>每 pixel 电路</td>
+<td>individually controllable；公开开发者说明有局部电流驱动</td>
+<td>current source／sink极性、MOS拓扑、尺寸、DAC、PWM位数／频率、扫描与失配校正实现</td>
+</tr>
+<tr>
+<td>校正与诊断</td>
+<td>PI注明 brightness correction；公开 package示意有通信／诊断接口</td>
+<td>校正表、写入／温度补偿、open／short判据、fault寄存器、watchdog及保护响应</td>
+</tr>
+</tbody>
+</table>
+<p>接口依据：<a href="https://look.ams-osram.com/m/635ee3453a471790/original/KEW-GBBMD1U.pdf">gen1 Product Information p.3</a>、<a href="https://look.ams-osram.com/asset/b9a583a0-b1d7-4a08-8a3e-184f6eb4f558/KEW-GBBMD2U.pdf">gen2 Product Information p.3</a>。<strong>RGB8是接口名称，不能据此断言白光 emitter是RGB，或pixel PWM恰为8 bit。</strong> 本轮没有取得可绑定型号的灰阶、PWM carrier或video frame rate规格。</p>
+<h3>能复现到哪一层</h3>
+<p>现在可以独立实现帧接收、状态缓存、PWM／电流驱动、错误帧与关断功能，研究同类系统问题。没有合法完整接口与器件验证前，交付名称应为“独立功能模型”；没有原厂RTL、schematic／PDK或同器件测量前，不能称“EVIYOS backplane复刻”或性能等价。</p>
+<p>商业光源的40 µm pitch不能约束本项目 GF180单像素直接达到同面积。我们的模拟 macro为95×37.66 µm，且尚有共享逻辑、PG、pad和封装等成本未完成。</p></section>
+<section class="page" data-page="5"><h2>4　EVIYOS：参数必须带条件</h2>
+<table>
+<thead>
+<tr>
+<th>参数／声明</th>
+<th>可检查的公开条件</th>
+<th>使用限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gen1 luminance</td>
+<td>PI p.3列75…100 MNits</td>
+<td>表中1.97 mA，room temperature，after brightness correction</td>
+</tr>
+<tr>
+<td>gen2 luminance</td>
+<td>2025-10-31 PI p.3列75…110 MNits</td>
+<td>保留同样表条件；电流的完整计量边界与全阵列工作包络仍需补充</td>
+</tr>
+<tr>
+<td>gen2改进宣传</td>
+<td>2024-10-14 blog称 minimum85 MNits</td>
+<td>与后续 PI范围存在差异；bin／revision／条件未闭合前不合并</td>
+</tr>
+<tr>
+<td>温度范围</td>
+<td>PI列 hybrid Tj−40…150°C，Companion Tj−40…125°C</td>
+<td>Tj是结温范围，不是环境温度，也不是完整热模型或本项目验证范围</td>
+</tr>
+<tr>
+<td>AEC声明</td>
+<td>gen2 PI列光源 AEC-Q102 attachment003、Companion AEC-Q100</td>
+<td>文件声明；未提供本轮可审查的qualification原始matrix，不能扩展为ASIL或整灯道路批准</td>
+</tr>
+</tbody>
+</table>
+<p>来源：<a href="https://look.ams-osram.com/m/635ee3453a471790/original/KEW-GBBMD1U.pdf">gen1 PI pp.2–3</a>、<a href="https://look.ams-osram.com/asset/b9a583a0-b1d7-4a08-8a3e-184f6eb4f558/KEW-GBBMD2U.pdf">gen2 PI pp.2–3</a>、<a href="https://ams-osram.com/news/blog/launch-of-new-version-of-eviyos-multipixel-led">gen2改进说明</a>。早期gen1 PI在光源qualification后仍写planned，不能用那份历史文件宣布当时已完成。</p>
+<h3>不同光学量不能直接排名</h3>
+<p><code>nit = cd/m²</code>描述发光面的 luminance；<code>lm</code>描述 luminous flux；<code>lux = lm/m²</code>描述受照面的 illuminance。EVIYOS的MNits与画芯报道的流明不能直接排“谁更亮”；需要统一发光／光机出口位置、点亮比例、温度、电流／duty、光学损耗和测量方法。</p>
+<h3>原厂资料本身也需要检阅</h3>
+<p>Companion页面的“datasheet”链接实际返回2024-07-26 preliminary LED PI，不能当独立 ASIC寄存器手册。gen2网页与PDF的完整type字母拼写不同；PI还列19,200配置，而当前订货说明只明确25,600。这些差异是资料身份问题，尚不能判为器件缺陷。详见<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/automotive/headlamp-products.md">逐项检阅与原文定位</a>。</p></section>
+<section class="page" data-page="6"><h2>5　画芯：型号线索与证据状态</h2>
+<p>研究对象是<strong>上海晶合光电科技有限公司</strong>，与晶合集成／晶合半导体、晶能光电分开。<a href="https://www.ifal-forum.com/nd.jsp?fromColId=2&amp;id=1197">IFAL厂商采访</a>确认公司身份及4万像素、CMOS与封装研发方向；2025年内样片目标属于当时计划。合作存在也由<a href="https://disc.static.szse.cn/disc/disk03/finalpage/2026-08-24/6c91b020-cacf-4c2d-ad96-798be34e283d.PDF">乾照2026半年报，PDF第11页</a>确认，但其ADB段未点名画芯，不能据此指定型号量产。</p>
+<p>下表是<strong>待原厂核实的报道线索</strong>，不是本项目采用的器件规格。来源：<a href="https://finance.sina.com.cn/tech/roll/2026-03-27/doc-inhsmtiq5229790.shtml">2026 ALE新品媒体记录</a>。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>报道陈述</th>
+<th>未闭合的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>画芯一号</td>
+<td>40,000 pixels、40 µm、≥2,500 lm @50 W</td>
+<td>最终料号／行列数；功率输入位置、光学出口、温度与点亮比例；正式保证范围</td>
+</tr>
+<tr>
+<td>画芯二号</td>
+<td>&gt;100,000 pixels；原计划2026 Q3</td>
+<td>是否按期推出、最终型号／接口／性能；不能因日期已过视为已交付</td>
+</tr>
+<tr>
+<td>画芯三号</td>
+<td>主照明、≥3,500 lm @50 W；原计划Q2</td>
+<td>点亮陈述与正式产品交付不同；像素布局／测量条件未知</td>
+</tr>
+<tr>
+<td>画擎一号</td>
+<td><a href="https://m.gasgoo.com/news/70451636.html">联合发布报道</a>：双光机、视频与拼接；总输出≥200 W</td>
+<td>控制器层功率不能当单个光源／ASIC功耗；2025同名模组与2026控制器的版本映射未知</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.ledinside.cn/news/20260928-62681.html">2026-09-28 LEDinside报道</a>转述9月24日画芯一号完成 AEC-Q102可靠性验证的公司公告。<strong>本轮未取得原厂原文或BACL报告编号／结论页／样本与批次，记录为“公告被报道，原始验证待确认”。</strong> 不继续把3月Q2计划当当前状态，也不将该报道升级为独立认证确认、ASIL或量产装车。</p>
+<p>目前没有核实到画芯具体料号与正式车型、年款及灯具版本的官方映射。不能挪用公司既有普通LED模组装车数据。完整身份与来源分层见<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/automotive/huaxin-products.md">画芯专题</a>。</p></section>
+<section class="page" data-page="7"><h2>6　画芯：避免从像素数猜芯片</h2>
+<p>一手访谈和合作资料支持 CMOS驱动、先进封装与高像素数字光源的研发方向。媒体提到数模混合与异质堆叠，可以作为寻找原厂资料的线索；它们尚不构成可复现的晶体管级实现。</p>
+<table>
+<thead>
+<tr>
+<th>要解析的层</th>
+<th>当前可支持的结论</th>
+<th>仍需原厂资料</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MicroLED emitter／光源</td>
+<td>4万像素研发方向有厂商访谈</td>
+<td>最终行列数、active area、转换层、每pixel额定current／Vf、光场与串扰</td>
+</tr>
+<tr>
+<td>CMOS backplane／ASIC</td>
+<td>合作与研发方向可追踪</td>
+<td>node／foundry、memory、clock／scan、PWM／DAC、reference／current拓扑、diagnostic粒度</td>
+</tr>
+<tr>
+<td>光源控制器／画擎</td>
+<td>报道存在视频生成、双光机与拼接</td>
+<td>MCU／SoC／FPGA具体分工、power stage、frame commit、thermal／fault策略</td>
+</tr>
+<tr>
+<td>外部接口</td>
+<td>本轮未取得完整公共接口说明</td>
+<td>电压、pinout、video／control／diagnostic链路、clock、packet、SDK与许可证</td>
+</tr>
+<tr>
+<td>可靠性与装车</td>
+<td>存在最新验证公告的媒体记录</td>
+<td>报告身份／样本／批次、适用料号、真实出货与车型映射</td>
+</tr>
+</tbody>
+</table>
+<h3>“CMOS驱动”不足以决定电路</h3>
+<p>高密度array需要把大量像素连接与局部控制放到集成结构内，避免每pixel都从封装引出。但<strong>是否每pixel储存亮度、按行扫描、采用何种PWM或电流调制</strong>必须逐产品确认。4万像素既不能推出4万个独立counter，也不能推出某种SRAM容量或模拟MOS数量。</p>
+<p>画擎是系统级名字，画芯是光源产品名字。控制器输出≥200 W的报道不支持“ASIC耗电200 W”；50 W÷40,000也不能反推出恒流设定，因为缺少rail、duty、点亮比例、conversion及功耗边界。</p>
+<p>上海大学2026-09采购意向中的150 nm／8英寸流片没有关联画芯型号，不能据此确定画芯制程。公司较早的PCB／分散LED投影专利也不能证明4万像素backplane实现。</p>
+<p><strong>当前可以复现功能问题：</strong>图像到像素状态、帧一致性、电流／PWM、错误更新、供电／热限制。商业寄存器、内部ASIC、封装工艺与可靠性机制继续标为待确认。</p></section>
+<section class="page" data-page="8"><h2>7　两家产品与我们的逐项对照</h2>
+<p>“未知”表示本轮保存的公开资料不足；不表示厂商没有实现该功能。“提议”表示我们可搭建的下一步，不是已有成果。</p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>EVIYOS</th>
+<th>画芯／画擎</th>
+<th>当前仓库／下一步</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>产品成熟度</td>
+<td>官方量产目录与历史装车关联可核实</td>
+<td>研发／合作一手证据；型号参数及最新可靠性主要待原厂核实</td>
+<td>单像素simulation／physical研究，无silicon或装车</td>
+</tr>
+<tr>
+<td>分辨率／pitch</td>
+<td>HD25 gen2公开25,600／40 µm</td>
+<td>一号4万／40 µm为待核报道；一手确认4万研发方向</td>
+<td>1 electrical pixel；模拟macro不等于商业pixel pitch</td>
+</tr>
+<tr>
+<td>LED／driver集成</td>
+<td>hybrid＋集成driver＋外部Companion</td>
+<td>CMOS／封装方向可追踪，实际结构细节未知</td>
+<td>分离PWM与analog macro的共同GDS；无LED bonding／package</td>
+</tr>
+<tr>
+<td>Host与接口</td>
+<td>UART／RGB8／SPI等名称公开；精确协议未知</td>
+<td>画擎功能线索；接口／协议未知</td>
+<td>duty／enable直接输入；提议独立frame contract</td>
+</tr>
+<tr>
+<td>数据／灰阶</td>
+<td>灰阶、carrier、frame rate未绑定型号</td>
+<td>对应数值未知</td>
+<td>256 slots、257状态；无commercial buffer／receiver</td>
+</tr>
+<tr>
+<td>Analog与校准</td>
+<td>individual control；brightness correction条件公开；拓扑未知</td>
+<td>额定current／PWM／校准未知</td>
+<td>六MOS100 µA mirror；真实reference、校准与current feedback未完成</td>
+</tr>
+<tr>
+<td>E/E与保护</td>
+<td>ECU／Companion／光源分层；完整power／fault实现未知</td>
+<td>控制器与光源分层待版本确认；完整E/E未知</td>
+<td>无vehicle bus、DC-DC、POR、hard blank、watchdog或thermal loop</td>
+</tr>
+<tr>
+<td>光学／热</td>
+<td>白光产品与Tj声明公开；具体光机条件须确认</td>
+<td>流明／功率线索未统一测量边界</td>
+<td>黄光static I–V与synthetic dynamics；无光学／thermal测量</td>
+</tr>
+<tr>
+<td>验证与开放深度</td>
+<td>产品PI和系统公告；未获商业ASIC模型</td>
+<td>厂商访谈与合作证据；未获完整datasheet／模型</td>
+<td>开放源码、锁定PDK及selected PEX；可追踪失败与复算</td>
+</tr>
+</tbody>
+</table>
+<p>公开结构可帮助我们确定系统边界；要比较数值性能，必须先取得同一测量节点、同一pattern与温度条件。不能以平台开源程度、局部DRC通过或像素数替代实际车灯性能。</p></section>
+<section class="page" data-page="9"><h2>8　当前工程：已完成到哪一步</h2>
+<p>本轮对既有v0.4文件身份和JSON进行核查。<strong>应用文档增补前</strong>，基线current-manifest的554项文件hash全部一致；其2504项是artifact检查，不是电气样本数或安全覆盖率。随后更新入口、roadmap和文档校验／导出脚本，最终current索引单独刷新；基线manifest仍可从上述commit追溯，旧run身份不改。工程结果应追到各自raw输出、条件及检查分母。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>已有结果</th>
+<th>适用边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTL／mapping</td>
+<td>518完整PWM frames、133159 checks；95 mapped cells、19 FF</td>
+<td>单pixel、同步reset；无视频接收／CDC／大阵列memory</td>
+</tr>
+<tr>
+<td>Analog layout</td>
+<td>W/L20/4 µm mirror；95×37.66 µm macro；所执行DRC/LVS、RC replay通过</td>
+<td>选定公开PDK／decks；不等于全制造规则接受</td>
+</tr>
+<tr>
+<td>Joint top</td>
+<td>305×180 µm span、19ports、共同GDS实际提取与严格LVS</td>
+<td>span不是die面积或pixel pitch；无pad／ESD／完整package</td>
+</tr>
+<tr>
+<td>Selected joint PEX</td>
+<td>五种actual RC style；每种12MOS、45 signal R、77显式C、34neighbor ports</td>
+<td>PG／body与PG-only C投影到理想rail；邻居按合同截断</td>
+</tr>
+<tr>
+<td>主电气研究</td>
+<td>37transient／12DC、146 guards；full-on100.112984…101.423393 µA；最低码最差面积误差0.700133%</td>
+<td>synthetic LED、声明窗口／conditions；nominal三MOS包络＋两组额外RC组合，非完整交叉穷举</td>
+</tr>
+<tr>
+<td>总电气与审查</td>
+<td>66transient／28circuit DC＋3synthetic calibration；独立复算与18项错误对照</td>
+<td>boundary数值完成不表示全部工程通过；不构成system qualification</td>
+</tr>
+<tr>
+<td>真实静态负载</td>
+<td>一条traceable黄色20 µm InGaN/diamond I–V；100 µA时Vf3.767910 V</td>
+<td>原测量温度、dynamic／thermal／white conversion未知；不是车灯额定模型</td>
+</tr>
+</tbody>
+</table>
+<p>我们的信号仿真从真实输出级进入analog pixel，能研究PWM电荷与电流，但没有真实供电网格、邻居全电路、上游logic全部动态功耗或analog→RTL反馈闭环。</p>
+<p>证据入口：<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/joint-pex/summary.json">joint PEX</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/robustness/main-summary.json">主研究</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/robustness/summary.json">总研究</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/research/v04-review.json">独立审查</a>。详读<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/research-report.md">28页工程报告</a>。</p></section>
+<section class="page" data-page="10"><h2>9　已有失败决定研究优先级</h2>
+<p>这些是<strong>本平台的实际发现</strong>，不是对两家商业器件的推断。应先解决它们，再扩大真实阵列。</p>
+<table>
+<thead>
+<tr>
+<th>已观察边界</th>
+<th>工程含义</th>
+<th>下一步验证</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enable在20 µs置0，258.5 µs才关；等待238.5 µs</td>
+<td>现有enable是正常PWM边界更新；不能直接充当紧急blank</td>
+<td>分开正常commit与fault override；先定义允许延迟，再做clock stall／reset／timeout等注入</td>
+</tr>
+<tr>
+<td>LED-first／early理想IREF主动供能1.093095 nJ</td>
+<td>理想源隐藏真实启动与headroom限制；compliant行为源仍不是实际generator</td>
+<td>实现可达到的reference／startup／power-good，DC校准后coupled regression</td>
+</tr>
+<tr>
+<td>真实static LED＋假设10 kΩ供电探针：88.265992 µA</td>
+<td>不满足±5% current target；供电余量影响恒流</td>
+<td>该10k是负对照，不是推荐PDN；采用目标器件rail与阻抗数据重建条件</td>
+</tr>
+<tr>
+<td>TT最低码reference rail持续330 µW；LED branch约1.963 µW</td>
+<td>current很小不意味着总系统低功耗；共享reference值得研究</td>
+<td>完整PG、真实reference及上游logic功耗分账；不能直接乘商业pixel count</td>
+</tr>
+<tr>
+<td>缺少同器件dynamic／optical模型</td>
+<td>current积分不能代表最低灰阶的真实光输出</td>
+<td>I–V(T)、C／charge／pulse、白光转换与光学输出分开校准</td>
+</tr>
+</tbody>
+</table>
+<h3>为什么不能“把现有pixel复制4万次”</h3>
+<p>复制会引入shared reference loading、PG压降、clock／memory／frame distribution、同时切换、热和封装。现有模型只选择12MOS及部分signal RC；没有建立这些全阵列条件。小pixel nominal pass不能自动外推commercial backplane。</p>
+<p>4×4 physical的进入条件继续使用现有roadmap：单像素在可实现reference、选定load和误差／功耗／pulse预算下闭环，并有具体实验任务。另一方面，可以先用轻量软件表示完整logical image，研究帧与mask；这不等于4×4或数万像素ASIC完成。</p>
+<p>来源：<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/robustness.md">边界研究与功耗分账</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/bench-validation-plan.md">bench计划</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/roadmap.md">阶段退出条件</a>。</p></section>
+<section class="page" data-page="11"><h2>10　建议搭建的电子电气架构</h2>
+<p>这是<strong>独立参考架构提议</strong>。每个接口由我们定义并记录，未宣称与EVIYOS或画芯商业协议兼容。</p>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>第一轮实现</th>
+<th>后续硬件／资料条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>场景／ADAS输入</td>
+<td>带时间戳的synthetic物体box／轨迹，姿态假设</td>
+<td>真实camera、识别／tracking与标定数据另行验证</td>
+</tr>
+<tr>
+<td>Vehicle supervisor</td>
+<td>软件消息回放：mode、validity、timestamp、enable、fault</td>
+<td>CAN／LIN／Ethernet等按目标系统条件选择；目前无实际bus</td>
+</tr>
+<tr>
+<td>Host／灯ECU</td>
+<td>mask、基础beam、projection、mapping；golden frame</td>
+<td>MCU／SoC／FPGA选型由算法、带宽和fault要求决定；不默认已拥有硬件</td>
+</tr>
+<tr>
+<td>Frame management</td>
+<td>pending／active双buffer；完整帧校验后atomic commit</td>
+<td>再进入receiver／CDC／buffer RTL与实际transport；控制链与video payload分开</td>
+</tr>
+<tr>
+<td>Pixel execution</td>
+<td>选择一个logical pixel，量化为现有duty，生成原RTL trace</td>
+<td>后续本地状态、current set／calibration、diagnostic feedback；商业灰阶未复现</td>
+</tr>
+<tr>
+<td>Power／protection</td>
+<td>明确ideal假设；继续one-pixel reference／headroom／blank研究</td>
+<td>电池侧保护、DC-DC、logic／LED rails、PG、package和thermal逐步补齐</td>
+</tr>
+</tbody>
+</table>
+<h3>控制权要清楚</h3>
+<p>基础照明、ADB遮光和投影图不能各自覆盖对方而没有优先级；模型应记录是谁产生最终pixel command。帧过期、损坏、重启或输入失可信时，要有可执行状态转移。具体降级光型与允许响应时间需要真实应用需求；本报告不指定ASIL或法规允许的投影内容。</p>
+<p>Vehicle supervisor的数据较小；逐pixel图像是另一条payload链。看到CAN接口不能推出CAN承担全部图像；看到SPI名称也不能推出其有效带宽足够。硬件BOM先由公开electrical constraints与实验任务决定，不能从宣传图猜型号。</p>
+<p>建议第一场景选<strong>可确定box的ADB遮光</strong>，同时保留projection输入；先证明mask、帧一致性和延迟可检查，再加入复杂camera或道路图形。</p></section>
+<section class="page" data-page="12"><h2>11　仿真平台：从一条路径开始</h2>
+<p>第一轮建议执行：<strong>synthetic scene → mask／frame → ECU双buffer／atomic commit → selected pixel →现有RTL／PWL →冻结v0.4 joint PEX →电荷与scope report</strong>。这些上层功能本轮尚未实现。</p>
+<table>
+<thead>
+<tr>
+<th>模型／工具层</th>
+<th>适合回答的问题</th>
+<th>所需交付证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python functional／ECU golden model</td>
+<td>mask位置、优先级、frame hash、更新／提交时刻、完整性与量化</td>
+<td>同输入固定结果；frame ID／时间戳、partial／乱序／坏帧负对照</td>
+</tr>
+<tr>
+<td>RTL／Icarus；映射及timing流程</td>
+<td>receiver、state、CDC、commit／blank在clock下是否正确</td>
+<td>新RTL独立回归和timing；旧单pixel通过不代替新模块</td>
+</tr>
+<tr>
+<td>ngspice＋锁定GF180模型／actual PEX</td>
+<td>current、最低pulse电荷、compliance、startup和局部RC</td>
+<td>DC calibration、predeclared guards、步长／窗口复算及失败raw日志</td>
+</tr>
+<tr>
+<td>Rail／thermal／optical模型</td>
+<td>同时点亮敏感度、热限幅、PSF／mask泄漏</td>
+<td>先明确假设；以后以同器件数据校准，不能先输出“实测流明”</td>
+</tr>
+<tr>
+<td>实物电测／光测／HIL</td>
+<td>真实接口、供电、response、光输出和温度</td>
+<td>可获取器件与实际板卡、instrument／校准、raw数据和误差；目前未执行</td>
+</tr>
+</tbody>
+</table>
+<h3>如何把各层结果连起来</h3>
+<p>每个run保存scene／config hash、frame hash、accept／commit event、selected pixel command、实际PWM edge和analog case ID。同一命令在各层能追踪到同一像素和同一时间。重电气仿真先只运行受选单pixel和必要边界点；全logical image用轻量functional模型。</p>
+<p>最小退出条件：一个正常scene和一个故障对照可用一条命令复现；坏帧不会污染active frame；latency分段记录；off／low／mid／full及mask transition可重放；量化误差与电荷积分并列；所有未测硬件／光学状态明确列出。</p>
+<p>这条路径成功后的名称是“独立ADB／投影functional pipeline＋selected-pixel electrical simulation”。后续再分别升级实际reference／protection、供电网格、实物和阵列physical。详细合同与预算见<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/automotive/platform-gap-analysis.md">平台缺口分析</a>。</p></section>
+<section class="page" data-page="13"><h2>12　计算：带宽、缓存与灰阶</h2>
+<p>以下为<strong>独立预算场景</strong>，不声称商业产品采用12-bit或60 Hz。每pixel一标量、uncompressed full frame、bit-packed；不含packet、blanking、诊断、line coding、retry及仲裁。25,600和40,000只是对标尺度。</p>
+<pre><code class="language-text">payload bits/frame = N × b
+payload bit/s = N × b × f_update
+double buffer bytes = 2 × ceil(N × b / 8)
+wire bit/s ≥ payload bit/s / η       # η 为实际链路有效效率
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">假设N／b=12</th>
+<th style="text-align: right;">单帧bytes</th>
+<th style="text-align: right;">双buffer bytes</th>
+<th style="text-align: right;">60 Hz payload Mbps</th>
+<th style="text-align: right;">100 Hz payload Mbps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">256（16×16 logical模型）</td>
+<td style="text-align: right;">384</td>
+<td style="text-align: right;">768</td>
+<td style="text-align: right;">0.18432</td>
+<td style="text-align: right;">0.3072</td>
+</tr>
+<tr>
+<td style="text-align: right;">25,600</td>
+<td style="text-align: right;">38,400</td>
+<td style="text-align: right;">76,800</td>
+<td style="text-align: right;">18.432</td>
+<td style="text-align: right;">30.72</td>
+</tr>
+<tr>
+<td style="text-align: right;">40,000</td>
+<td style="text-align: right;">60,000</td>
+<td style="text-align: right;">120,000</td>
+<td style="text-align: right;">28.80</td>
+<td style="text-align: right;">48.00</td>
+</tr>
+</tbody>
+</table>
+<p>25,600／12-bit／60 Hz若再假设η=0.8，wire预算至少23.04 Mbps；它不是实际SPI clock规格。若每pixel用16-bit内存容器，双buffer为102,400 bytes；内存表示与wire packing需分开定义。</p>
+<h3>Command位宽与PWM分辨率分开</h3>
+<p>现有1 MHz／256 slots对应PWM3906.25 Hz，duty0…256有257种状态；9-bit输入包含clamp区间，不是9-bit均匀灰阶。b-bit command可先映射：</p>
+<p><code>duty = round_half_up(256 × g / (2^b − 1))</code></p>
+<p>归一化量化误差绝对值≤1/512≈0.195313%，但低码相对误差可能很大，多码映射到同一duty。这只是数学误差，不包含current／pulse／optical误差。</p>
+<p>若以后用uniform slots做10／12-bit PWM，1 MHz下carrier分别976.5625／244.140625 Hz；保持3906.25 Hz的理想clock预算则为4／16 MHz。<strong>这些仅为计数器关系，未完成新RTL、timing或电气／光学验证。</strong> 数值与10-bit预算详见<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/automotive/platform-gap-analysis.md">平台分析</a>。</p></section>
+<section class="page" data-page="14"><h2>13　后续方向与决策门槛</h2>
+<p><strong>判断：优先把项目建成可复现的车灯控制与器件验证平台。</strong> EVIYOS作为公开资料较完整的主参考；画芯作为国内路线持续跟踪。当前直接追求商业pitch／数万像素backplane，会跳过最需要解决的电源、控制与实测问题。</p>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>要完成的工作</th>
+<th>允许升级的结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A：固定benchmark</td>
+<td>按料号／版本补电流、灰阶、frame、rail、thermal／optical条件；画芯补原厂资料及最新qualification身份</td>
+<td>同层、同条件的产品对比；没有数据的项继续未知</td>
+</tr>
+<tr>
+<td>B：独立功能路径</td>
+<td>scene／mask、golden frame、buffer／commit／fault negatives，与既有selected pixel replay连通</td>
+<td>可运行控制模型＋局部电气回放；不称commercial protocol compatible</td>
+</tr>
+<tr>
+<td>C：单pixel工程闭环</td>
+<td>实际reference／startup、保护blank、PG／neighbor、可获取emitter的数据与bench</td>
+<td>逐项current、延迟、功耗和动态／光学实测；根据实际通过范围报告</td>
+</tr>
+<tr>
+<td>D：有需求的4×4</td>
+<td>共享reference、array state、PG／clock、同时切换、physical及coupled regression</td>
+<td>真实小阵列实现；各pixel／whole-array证据独立</td>
+</tr>
+</tbody>
+</table>
+<h3>技术—价值—市场视角</h3>
+<p>技术价值在于把“场景什么时候变成真实电流”追清楚，量化帧一致性、latency、minimum pulse、reference与供电边界。教学价值在于同一问题可从架构、RTL、电路、版图读到证据，而失败也能重现。</p>
+<p>潜在使用者是器件／驱动研究团队、车灯控制开发者和教学实验室。早期可交付物是开放的functional contract、fault与latency测试、器件model card和selected electrical regression。它们是否节省实际开发时间，需由具体任务与外部复现证明；尚未验证付费需求、市场规模、BOM成本优势或量产收益。</p>
+<p>下一次重要决策应基于两项事实：能否取得一个真实产品／emitter的合法数据与可测样品；能否让一个具体ADB控制问题从scene到current可复现。拿到证据后再决定FPGA／板卡、阵列扩展或MPW。无需先采购大型平台或声称商业替代。</p></section>
+<section class="page" data-page="15"><h2>14　阅读、来源与复现入口</h2>
+<table>
+<thead>
+<tr>
+<th>需要深入核查的内容</th>
+<th>入口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EVIYOS版本、接口、装车与条件冲突</td>
+<td><a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/automotive/headlamp-products.md">headlamp-products.md</a>／<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/automotive/headlamp-sources.json">逐claim来源ledger</a></td>
+</tr>
+<tr>
+<td>画芯／画擎、一手与转述、型号状态</td>
+<td><a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/automotive/huaxin-products.md">huaxin-products.md</a>／<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/automotive/huaxin-sources.json">逐claim来源ledger</a></td>
+</tr>
+<tr>
+<td>七层缺口、完整预算与退出判据</td>
+<td><a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/automotive/platform-gap-analysis.md">platform-gap-analysis.md</a></td>
+</tr>
+<tr>
+<td>既有工程源、assumptions、raw定位与失败</td>
+<td><a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/README.md">v0.4研究入口</a>／<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/research-report.md">工程报告</a></td>
+</tr>
+<tr>
+<td>本轮文档、计算与发布核查</td>
+<td><a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/automotive/validation.json">验证记录</a></td>
+</tr>
+</tbody>
+</table>
+<h3>来源等级和公开范围</h3>
+<p>原厂PI／目录、OEM／Tier1公告、厂商直接访谈、合作方财报分别记录支持的窄结论。媒体报道保留为线索，未取得原始证据前不转成设计输入。公开资料的访问时间、型号、页码与不支持的推断保存在ledger；产品目录会变化，研究状态以2026-10-06快照为准。</p>
+<p>厂商PDF与原始页图保留于git-ignored <code>build/automotive/</code>作为私有只读证据，未清权原图不进入public Git。公开报告采用原创文字、功能分层与计算，来源link与hash可追踪；第三方产品资料不是本项目开源资产。</p>
+<h3>报告导出</h3>
+<pre><code class="language-sh">build/layout/venv/bin/python scripts/research/render_automotive.py
+REPORT_PLAYWRIGHT_MODULE=/path/to/playwright \
+REPORT_CHROME_PATH=/path/to/chrome \
+node scripts/research/print_automotive.cjs
+</code></pre>
+<p>导出脚本只重建本报告HTML／PDF，不执行商业器件、ASIC或光学验证。PDF版需核对页数、浏览器geometry和逐页渲染；文字更新后旧hash与视觉审查状态不能直接继承。当前工程v0.4证据不因本轮产品研究而升级。</p></section></body></html>

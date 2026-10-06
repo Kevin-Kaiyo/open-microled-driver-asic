@@ -1,6 +1,8 @@
 # 当前研究资料入口
 
-更新：2026-10-05，单像素 v0.4。
+更新：2026-10-06。工程基线仍为单像素 v0.4（2026-10-05）；新增车灯ADB／道路投影对标，未升级工程实现阶段。
+
+当前应用重点为 **ams OSRAM EVIYOS 与上海晶合光电画芯系列**。先读[15页对标报告](automotive/benchmark-report.md) / [PDF](automotive/benchmark-report.pdf) / [HTML](automotive/benchmark-report.html)：整体架构 → 两家产品／资料边界 → 当前工程 → 电子电气与仿真平台 → 预算与方向。深入材料为[EVIYOS专题](automotive/headlamp-products.md)、[画芯专题](automotive/huaxin-products.md)、[七层平台缺口](automotive/platform-gap-analysis.md)和[本轮验证记录](../../evidence/automotive/validation.json)。所有未取得的商业接口、灰阶、ASIC细节、画芯原厂参数与最新可靠性报告继续保留待确认状态。
 
 先读[28页分层研究报告](research-report.md)，按“总览 → 初学者基础 → 工程验证 → 技术、价值与市场”逐步深入。另有便于阅读的 [PDF](research-report.pdf) / [HTML](research-report.html)。入门读者先理解电流、PWM和MOS；工程读者再核查模型、units、测量分母、失败与寄生；方向判断见[技术—价值—市场](technical-value-market.md)。旧教学 PPT 和检阅保留为历史快照。
 
