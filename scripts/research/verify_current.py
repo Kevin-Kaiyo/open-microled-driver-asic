@@ -119,6 +119,22 @@ def main():
     if version=='v0.4':
         from verify_v04_assets import verify
         verify(check,report)
+    control_path=ROOT/'evidence/control/summary.json'
+    if control_path.exists():
+        control=json.loads(control_path.read_text())
+        audit=json.loads((ROOT/'evidence/control/validation.json').read_text())
+        check('Frame experiment runner guards',control['passed'] is True and all(c['passed'] for c in control['checks']))
+        check('Independent frame and raw numerical audit',audit['passed'] is True and all(c['passed'] for c in audit['checks']))
+        check('Audited exact frame summary',audit['summary_sha256']==digest(control_path))
+        check('Independent validator identity',audit['validator_sha256']==digest(ROOT/'scripts/control/validate.py'))
+        check('Actual frame experiment denominators',control['slot_checks']==audit['actual_RTL_slot_checks']==8192
+              and [control[k] for k in ['transient_runs','circuit_dc_runs','LED_calibrations']]==[3,2,1]
+              and audit['raw_integrated_frames']==22 and audit['quantization_domain_commands']==4096)
+        for name,h in control['source_sha256'].items():check('Current frame experiment source '+name,digest(ROOT/name)==h)
+        check('Frame experiment evidence levels',audit['scope']['functional_receiver_model'] is True
+              and audit['scope']['actual_single_pixel_RTL'] is True
+              and audit['scope']['selected_one_pixel_joint_signal_PEX'] is True
+              and not any(audit['scope'][k] for k in ['receiver_RTL','array_ASIC','full_PG_PEX','silicon','optical_measurement']))
     # PDF page count and visual inspection are distinct from electrical checks.
     result=subprocess.run(['pdfinfo',ROOT/'docs/research/research-report.pdf'],capture_output=True,text=True,check=True)
     count=int(re.search(r'^Pages:\s+(\d+)',result.stdout,re.M).group(1))
@@ -132,13 +148,14 @@ def main():
               'scripts/joint_pex/','scripts/robustness/','scripts/strategy/',
               'evidence/joint-pex/','evidence/robustness/','evidence/strategy/','evidence/teaching/',
               'evidence/characterization/','evidence/digital/','evidence/layout/','evidence/led-fit/',
-              'evidence/physical/','evidence/research/','evidence/methodology/')
+              'evidence/physical/','evidence/research/','evidence/methodology/','scripts/control/','evidence/control/')
     for name in public:
         if name=='evidence/research/current-manifest.json':continue
-        if name.startswith(prefixes) or name in ['README.md','AGENTS.md','docs/project-brief.md','docs/design.md','docs/environment.md','docs/pwm.md','docs/verification.md','docs/roadmap.md']:
+        if name.startswith(prefixes) or name in ['README.md','AGENTS.md','Makefile','tests/test_frame_model.py','docs/project-brief.md','docs/design.md','docs/environment.md','docs/pwm.md','docs/verification.md','docs/roadmap.md']:
             selected.append(name)
     data={'date':datetime.now().astimezone().isoformat(),'stage':'one-pixel '+version+' research milestone',
           'passed':True,'checks':checks,'pdf_pages':count,'pdf_visual_pages_reviewed':list(range(1,count+1)),
+          'frame_experiment_stage':'v0.1 functional receiver / actual one-pixel RTL / frozen v0.4 signal PEX' if control_path.exists() else None,
           'current_file_hashes':{n:digest(ROOT/n) for n in sorted(set(selected))},
           'historical_identity_note':'As-run hashes in older evidence are preserved. Old TB snapshot and default-trace equivalence are public in input-mapping.json. Broad historical source inventories also include subsequently changed presentation/export scripts and independent digital config; these do not rewrite the analog run identity.',
           'project_not_complete_at_chip_level':['complete PG/body/substrate model and full-chip multi-corner electrical and supply sign-off','pads/ESD/package','actual reference generator and startup','real LED dynamic/thermal/optical calibration','provider acceptance','silicon/optical measurements']}

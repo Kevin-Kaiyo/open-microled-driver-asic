@@ -2,13 +2,14 @@
 
 An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
-从 **1 Pixel** 开始，当前研究版本为 **v0.4（2026-10-05）**：在冻结的共同GDS上，实际提取末级`output12/buf_2`、数字输出线、跨宏线与六MOS pixel的联合信号寄生模型；nominal为12MOS、45 signal R、77显式C，另有HRHC／LRHC／HRLC／LRLC四种actual RC提取。模型从真实M3右端接入，整体替换v0.3分块路径。主研究37次transient／12次DC、146项工程guards通过；[电源／控制边界](docs/research/robustness.md)另保留startup假设越界、enable延迟与static LED headroom失效。
+从 **1 Pixel** 开始，电气与物理研究基线为 **v0.4（2026-10-05）**，新增 **frame experiment v0.1（2026-10-07）**。电气基线：在冻结的共同GDS上，实际提取末级`output12/buf_2`、数字输出线、跨宏线与六MOS pixel的联合信号寄生模型；nominal为12MOS、45 signal R、77显式C，另有HRHC／LRHC／HRLC／LRLC四种actual RC提取。模型从真实M3右端接入，整体替换v0.3分块路径。主研究37次transient／12次DC、146项工程guards通过；[电源／控制边界](docs/research/robustness.md)另保留startup假设越界、enable延迟与static LED headroom失效。
 
 项目定位为**实验性研发方法验证与教学**：用独立提出的假设、可复现的实验和可追溯的证据，研究 MicroLED 器件电测与驱动共设计。先把单像素的真实负载、reference、供电和控制边界讲清楚，再由明确的实验问题决定4×4是否值得实现。联合模型仍把PG／body电阻及PG-only电容投影到理想rails，邻居按声明的截断条件处理；它不构成完整芯片PEX、制造接受或光学验证。
 
 ## 先读当前研究报告
 
-- **实验方法说明（2026-10-06）**：[研发方法验证报告](docs/research/experimental-methods/report.md) / [PDF](docs/research/experimental-methods/report.pdf) / [HTML](docs/research/experimental-methods/report.html)，从独立假设、控制模型和单像素回放说明如何建立可复现实验；[平台计划](docs/research/experimental-methods/platform-plan.md)明确待实现步骤与验收证据。
+- **当前进度与控制实验（2026-10-07）**：[6页教学报告](docs/research/control-experiment/progress.md) / [PDF](docs/research/control-experiment/progress.pdf) / [HTML](docs/research/control-experiment/progress.html)，完整帧→atomic commit→selected pixel→实际RTL→冻结joint signal PEX；[证据](evidence/control/README.md)含47笔错误交易、8,192个RTL逐槽检查、3 transient／2 DC／1 LED calibration及独立复算。
+- **实验方法说明历史快照（2026-10-06）**：[研发方法验证报告](docs/research/experimental-methods/report.md) / [PDF](docs/research/experimental-methods/report.pdf) / [HTML](docs/research/experimental-methods/report.html)，从独立假设、控制模型和单像素回放说明如何建立可复现实验；[平台计划](docs/research/experimental-methods/platform-plan.md)跟踪已实现步骤与后续门槛。
 - [分层研究报告 PDF](docs/research/research-report.pdf) / [HTML](docs/research/research-report.html) / [可检查的文字源](docs/research/research-report.md)：总览 → 初学者基础 → 工程验证 → 实验方法与研究价值；同一结果按不同阅读深度解释。
 - [研究资料入口](docs/research/README.md)：完整 source、assumptions、条件、许可、脚本和证据的索引。
 - [v0.2 预设研究指标](docs/specifications/single-pixel-v0.2.md)：100 µA±5%、最低码面积误差±2%，各项验证范围分开定义。
@@ -22,7 +23,9 @@ An independent, open platform for experimental R&D methodology validation and te
 
 ```mermaid
 flowchart LR
-    INPUT[Clock / reset / duty / enable] --> PWM[Registered 256-slot PWM]
+    FRAME[Independent pattern / complete frame] --> MODEL[Python receiver / CRC / atomic commit]
+    MODEL --> INPUT[Selected scalar / quantized duty]
+    INPUT --> PWM[Registered 256-slot PWM]
     PWM --> TRACE[Executed RTL / gate trace]
     TRACE --> BRIDGE[PWL replay]
     BRIDGE --> JOINT[output_pixel_pex / six buffer MOS + six pixel MOS / joint signal RC]
@@ -101,7 +104,7 @@ v0.4的实际抽取、私有build复现、端口与原始投影ledger见[joint P
 | [v0.4 joint PEX](docs/research/joint-pex.md) / [独立review](evidence/research/v04-review.json) | 实际末级junction／cell metal、joint signal网络、5个RCstyle、端口／multiset／passivity与负对照 |
 | [v0.4 electrical boundary](docs/research/robustness.md) | 同条件pre/post、电源／reference／reset／enable、邻居截断、series-R与真实静态LED失效边界 |
 | [bench plan](docs/research/bench-validation-plan.md) / [研究价值](docs/research/technical-value-market.md) | 实物测量问题、可复算预算及后续实验的进入条件 |
-| [研发方法验证](docs/research/experimental-methods/report.md) / [平台计划](docs/research/experimental-methods/platform-plan.md) | 独立场景、帧提交、单像素回放与故障注入的待实现方案；工程基线仍为v0.4 |
+| [控制实验v0.1](docs/research/control-experiment/progress.md) / [证据](evidence/control/README.md) | Python帧模型→实际RTL→单像素PEX；47笔无效交易、8,192slots、3transient；物理后端仍为v0.4 |
 | [current evidence index](evidence/research/current-manifest.json) | 当前文件hash、历史输入关联与报告验证 |
 
 旧run的input hash保留原样。教学排版、数字config、可选trace logging等变化与当前源码的关系单独核查，不伪造旧source hashes。历史审阅manifest描述旧快照，不能当作当前source inventory。
@@ -110,7 +113,7 @@ GitHub Actions模板保存在[CI instructions](docs/ci/README.md)，尚未启用
 
 ## 下一步
 
-继续单像素：从联合signal PEX推进真实PG／邻居网络、可实现reference及安全上电控制，获取真实LED动态／温度／光学资料并执行[bench验证计划](docs/research/bench-validation-plan.md)。独立的frame／mask场景模型将用于研究完整帧提交、错误更新及selected pixel回放，这条新路径尚未实现，具体步骤见[平台计划](docs/research/experimental-methods/platform-plan.md)。完成单像素门槛后，再按实验问题定义4×4的独立协议、register map、pixel memory、shared reference与power distribution。[实验方法与研究价值](docs/research/technical-value-market.md)中的面积、功耗和带宽均为未实现预算；不能把305×180µm共同macro跨度当成可线性复制的pixel die面积。当前没有完成串行通信、带pad/ESD完整芯片或provider接受；[Roadmap](docs/roadmap.md)保留退出条件。
+继续单像素：从联合signal PEX推进真实PG／邻居网络、可实现reference及安全上电控制，获取真实LED动态／温度／光学资料并执行[bench验证计划](docs/research/bench-validation-plan.md)。独立frame／mask功能模型、完整性检查、atomic commit与selected pixel回放已由[frame experiment v0.1](docs/research/control-experiment/progress.md)连接到既有RTL／电气后端；receiver仍是Python模型，硬件接收器、实际bus和反馈尚未实现，后续门槛见[平台计划](docs/research/experimental-methods/platform-plan.md)。完成单像素门槛后，再按实验问题定义4×4的独立协议、register map、pixel memory、shared reference与power distribution。[实验方法与研究价值](docs/research/technical-value-market.md)中的面积、功耗和带宽均为未实现预算；不能把305×180µm共同macro跨度当成可线性复制的pixel die面积。当前没有完成串行通信、带pad/ESD完整芯片或provider接受；[Roadmap](docs/roadmap.md)保留退出条件。
 
 ASIC与FPGA optical-link项目保持独立仓库，不能以另一项目的仿真替代本项目验证。只采用公开来源、公开PDK和独立设计；[原始brief](docs/project-brief.md)保留长期目标。
 

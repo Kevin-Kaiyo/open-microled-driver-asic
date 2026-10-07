@@ -1,6 +1,6 @@
 # 从 1 Pixel 开始的实验性研发方法验证路线
 
-更新日期：2026-10-06。本项目用于**实验性研发方法验证与教学**，从独立假设出发，用可复现实验研究 MicroLED 器件电测与驱动共设计；每次规模扩展均由明确的实验问题决定。v0.4在既有registered PWM、W20/L4 analog layout、公开静态LED数据和共同GDS上，增加实际输出级junction／cell metal与联合signal PEX、五种RCstyle及有预设门槛的电气研究。带pads/ESD完整芯片、实际PG／substrate／邻居驱动网络、real reference、LED动态／温度、provider接受与silicon／optical仍属后续。
+更新日期：2026-10-07。本项目用于**实验性研发方法验证与教学**，从独立假设出发，用可复现实验研究 MicroLED 器件电测与驱动共设计；每次规模扩展均由明确的实验问题决定。v0.4在既有registered PWM、W20/L4 analog layout、公开静态LED数据和共同GDS上，增加实际输出级junction／cell metal与联合signal PEX、五种RCstyle及有预设门槛的电气研究。带pads/ESD完整芯片、实际PG／substrate／邻居驱动网络、real reference、LED动态／温度、provider接受与silicon／optical仍属后续。
 
 每一步先达到明确 exit criteria，再扩展规模；结果始终区分 simulation、layout/physical verification、foundry acceptance 和 silicon measurement。
 
@@ -18,7 +18,7 @@
 | v0.4主研究与失败边界 | 主37 transient／12 DC、146guards通过；总66 transient／28 DC另3calibration；startup、reference、control与实测LED headroom失败分开报告，见[电气研究](research/robustness.md) |
 | 研究方法与教学资料 | [分层报告](research/research-report.md)、[bench计划](research/bench-validation-plan.md)、[实验方法与研究价值](research/technical-value-market.md)；独立实验问题、预算与证据边界 |
 
-当前顺序：**单像素real reference／安全上电控制与PG／邻居网络 → 真实LED动态／温度／光学及bench数据 → 独立复现与实验问题复核 → 4×4共享reference／供电／通信实验 → 按测量需要评估MPW**。独立frame／mask场景可先在functional模型中研究，并将selected pixel接回既有单像素路径；该新模型尚未实现，也不替代物理阵列的进入条件。所有4×4面积、功耗、buffer和packet数字只是场景预算，未实现；MPW／封装尚无实际报价。有限MC和公开deck pass不等于制造yield或foundry acceptance。
+当前顺序：**单像素real reference／安全上电控制与PG／邻居网络 → 真实LED动态／温度／光学及bench数据 → 独立复现与实验问题复核 → 4×4共享reference／供电／通信实验 → 按测量需要评估MPW**。独立frame／mask场景可先在functional模型中研究，并将selected pixel接回既有单像素路径；该最小模型已通过frame experiment v0.1的功能／RTL／单像素电气回放，也不替代物理阵列的进入条件。所有4×4面积、功耗、buffer和packet数字只是场景预算，未实现；MPW／封装尚无实际报价。有限MC和公开deck pass不等于制造yield或foundry acceptance。
 
 ## 1. 1-Pixel simulation baseline
 
@@ -94,7 +94,13 @@ Exit criteria：
 - 明确费用、deadline、package、交付数量和测试责任；真正购买/提交前形成可审阅设计包。
 - 投片与 silicon bring-up 分开报告；电气 measurements、真实 MicroLED drive 和 optical output 均有条件、原始数据及误差边界。
 
-## 2026-10-06：独立控制与电气实验平台
+## 2026-10-07：frame experiment v0.1已闭环
+
+新增独立帧接收Python功能模型、CRC32、partial timeout、身份／时效检查和原子提交；16 logical位置选一个pixel，12-bit command映射现有duty0…256，经实际RTL事件和1 ns PWL回放冻结nominal joint PEX。32完整RTL帧／8,192slots、47笔无效交易、3 transient／2 DC／1 LED校准；独立raw复算见[证据](../evidence/control/README.md)。
+
+receiver与timeout仍为功能模型；物理后端、LED/ref/PG假设保持v0.4。下一重点是单像素可实现reference、独立fault关断及真实PG／neighbor，继续以预声明门槛和失败对照推进。详见[本轮进度](research/control-experiment/progress.md)。
+
+## 2026-10-06：独立控制与电气实验平台（当时计划）
 
 本轮[研发方法验证报告](research/experimental-methods/report.md)与[平台计划](research/experimental-methods/platform-plan.md)围绕独立假设定义控制、芯片、电气与仿真层之间的实验关系。研究对象包括帧更新是否完整、故障是否被检测、量化如何影响单像素电荷，以及reference／供电／保护条件如何改变输出。工程基线仍为v0.4；新的场景模型、帧缓存和控制器联动路径尚未实现。
 

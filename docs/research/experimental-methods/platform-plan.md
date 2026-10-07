@@ -1,10 +1,12 @@
 # 实验性研发方法验证：平台计划
 
-修订：2026-10-06。项目以独立假设、可复现实验、可追溯数据和教学解释为核心。工程基线仍为单像素v0.4，本页所列整帧模型与反馈功能尚未实现。
+修订：2026-10-07。项目以独立假设、可复现实验、可追溯数据和教学解释为核心。物理／电气基线为单像素v0.4；整帧接收、CRC、atomic commit及selected pixel回放已实现为frame experiment v0.1。receiver RTL、实际反馈和硬件接口仍未实现。
+
+本轮结果：[教学进度报告](../control-experiment/progress.md)、[独立帧合同](../../specifications/frame-experiment-v0.1.md)、[运行与独立复算](../../../evidence/control/README.md)。正常7命令、47笔无效交易、timeout对照；32完整PWM帧／8,192slots，3 transient／2 circuit DC／1 independent LED calibration。
 
 ## 研究问题
 
-下一条路径验证：一个完整、带身份和时间戳的命令，能否从功能模型准确映射为单像素PWM事件与电气结果；在数据错误、时序异常和供电边界变化时，结果是否能被解释和复现。
+本轮路径验证的问题：一个完整、带身份和时间戳的命令，能否从功能模型准确映射为单像素PWM事件与电气结果；在数据错误、时序异常和供电边界变化时，结果是否能被解释和复现。
 
 ```mermaid
 flowchart LR
@@ -18,7 +20,7 @@ flowchart LR
   X[错误长度 / 部分帧 / 乱序 / timeout] --> B
 ```
 
-全logical plane是功能模型；重电气计算先保留一个selected pixel。这两种规模分别记录。新的frame代码、receiver RTL、保护控制、实际反馈和实物接口均需单独取得证据。
+全logical plane是功能模型；重电气计算先保留一个selected pixel。这两种规模分别记录。frame代码已获得功能证据；receiver RTL、保护控制、实际反馈和实物接口均需单独取得证据。
 
 ## 输入与输出合同
 
@@ -66,7 +68,7 @@ wire rate >= raw payload / efficiency
 
 ## 后续优先级
 
-1. 完成上述最小功能路径与错误对照，建立一个可重放run ID。
+1. 本轮最小功能路径与错误对照已闭环；按声明合同继续验证有实际研究问题的变化，保留独立run ID。
 2. 继续一个pixel的actual reference、startup／compliance、独立关断和真实PG／neighbor研究。
 3. 用可追溯的同器件dynamic／temperature／optical数据校准模型，报告holdout误差和测量不确定度。
 4. 只有明确实验问题需要多通道且单像素门槛满足后，再进入4×4的共享reference、PG、clock、同时切换与physical验证。

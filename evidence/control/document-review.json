@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-07",
+  "passed": true,
+  "reviewer": "Independent documentation consistency review",
+  "scope": "Read-only review of final source prose, source links, evidence denominators and scope; no PDF visual review or new circuit experiment. Parent owns report export and final publication checks.",
+  "reviewed_file_sha256": {
+    "docs/research/control-experiment/progress.md": "b11c22957b70671045db119e1948f2ccf0d6e267c24ddbbf33973c88f1b0f8d8",
+    "README.md": "cfaeae42b73055387423297d604dcaebf261bf39f9d32bf5ef6c414fd2cc040a",
+    "docs/research/README.md": "ea68e15c123e8e8b182605dcdc36d79309eb5269cddfc2e8b9d8bb1d280a8560",
+    "docs/research/experimental-methods/platform-plan.md": "7c6c4a3e483e46672b35e2e2237b809e45e6832b2a4439a6b896b39092ba1d3c",
+    "docs/roadmap.md": "20eda89462d861d5d6859595c0252e0d7551d7997c9ea9e7b3cba6a27f2abf03",
+    "docs/specifications/frame-experiment-v0.1.md": "97e87c1ce506583045cb532731340ad43124be20ed4ac427999bc0410614a17e",
+    "evidence/control/README.md": "e71c12b607b79bddc3473c8d76f084782dc372adfb7c9e545e98327aeaa51a7f"
+  },
+  "evidence_inputs_sha256": {
+    "evidence/control/summary.json": "8a7ce3b371e76477119de257d2315e248c12d54921ded294a69a2239b685d6f6",
+    "evidence/control/validation.json": "72033d893f6d486812f8156130a7af580273d1415b5f20fc57861c662256928c"
+  },
+  "check_count": 25,
+  "checks": [
+    {
+      "name": "six_page_progress_source",
+      "passed": true,
+      "detail": "Six logical document pages; PDF appearance reviewed separately by parent."
+    },
+    {
+      "name": "no_unfilled_placeholders",
+      "passed": true,
+      "detail": "No remaining result placeholders in the seven reviewed sources."
+    },
+    {
+      "name": "experimental_methods_scope",
+      "passed": true,
+      "detail": "Current report and entries remain experimental methodology validation and teaching."
+    },
+    {
+      "name": "no_commercial_product_target",
+      "passed": true,
+      "detail": "No commercial target/comparison wording in the reviewed active sources."
+    },
+    {
+      "name": "local_source_links",
+      "passed": true,
+      "detail": {
+        "checked_links": 152,
+        "missing_links": [],
+        "includes_exported_progress_PDF": true
+      }
+    },
+    {
+      "name": "RTL_frame_slot_denominator",
+      "passed": true,
+      "detail": {
+        "frames_per_scenario": {
+          "clean": 14,
+          "faults": 14,
+          "timeout": 4
+        },
+        "complete_RTL_frames": 32,
+        "slots_per_frame": 256,
+        "actual_slot_checks": 8192
+      }
+    },
+    {
+      "name": "fault_denominator",
+      "passed": true,
+      "detail": {
+        "complete_transaction_rejections": {
+          "bad_crc": 7,
+          "partial_frame": 7,
+          "duplicate_id": 7,
+          "future_timestamp": 7,
+          "out_of_order_id": 7,
+          "expired_before_commit": 5
+        },
+        "partial_timeout_events": 7,
+        "invalid_transactions_total": 47
+      }
+    },
+    {
+      "name": "matched_clean_fault_state",
+      "passed": true,
+      "detail": "Every active-code/duty state and functional/PWM boundary sample matches the clean scenario."
+    },
+    {
+      "name": "fault_analog_not_duplicated",
+      "passed": true,
+      "detail": "Fault RTL input matches clean and shares its electrical run; no fourth fault transient is claimed."
+    },
+    {
+      "name": "electrical_run_counts",
+      "passed": true,
+      "detail": {
+        "transients": 3,
+        "circuit_DC": 2,
+        "LED_calibration": 1
+      }
+    },
+    {
+      "name": "electrical_frame_denominator",
+      "passed": true,
+      "detail": "22 electrical integrated frames from clean14, fine4 and timeout4; distinct from 32 executed RTL frames."
+    },
+    {
+      "name": "runner_and_independent_checks",
+      "passed": true,
+      "detail": {
+        "runner_guards": 765,
+        "independent_checks": 1113,
+        "independent_validation_passed": true
+      }
+    },
+    {
+      "name": "unit_test_count_scope",
+      "passed": true,
+      "detail": {
+        "test_methods_by_file": {
+          "tests/test_frame_model.py": 15,
+          "tests/test_layout_lvs.py": 4,
+          "tests/test_bridge.py": 7
+        },
+        "total": 26,
+        "new_frame_model_tests": 15,
+        "note": "Count consistency only; parent holds executed unittest logs."
+      }
+    },
+    {
+      "name": "accept_commit_time_range",
+      "passed": true,
+      "detail": {
+        "accept_to_functional_commit_us": [
+          1.0,
+          114.0,
+          126.0,
+          138.0,
+          150.0,
+          162.0,
+          174.0
+        ],
+        "functional_commit_to_PWM_ns": 500
+      }
+    },
+    {
+      "name": "software_and_one_pixel_scope",
+      "passed": true,
+      "detail": "16 logical array positions, software receiver/timeout, actual one-pixel RTL and selected PEX; no hardware receiver, physical array or new extraction."
+    },
+    {
+      "name": "quantization_values",
+      "passed": true,
+      "detail": {
+        "commands": 4096,
+        "PWM_valid_states": 257,
+        "max_normalized_error": "2047/1048320",
+        "max_full_scale_percentage_points": 0.19526480463980464,
+        "first_code_for_duty1": 8
+      }
+    },
+    {
+      "name": "reported_lowest_code_results",
+      "passed": true,
+      "detail": {
+        "lowest_code_frames": [
+          {
+            "frame": 2,
+            "code": 16,
+            "duty": 1,
+            "window_s": [
+              0.0005145,
+              0.0007705
+            ],
+            "charge_c": 1.0048852267659332e-10,
+            "current_uA": 0.3925332917054426,
+            "ideal_quantized_charge_c": 1.0075278750822379e-10,
+            "quantized_area_error_pct": -0.26229034269538154
+          },
+          {
+            "frame": 3,
+            "code": 16,
+            "duty": 1,
+            "window_s": [
+              0.0007705,
+              0.0010265
+            ],
+            "charge_c": 1.0049936977259523e-10,
+            "current_uA": 0.3925756631742,
+            "ideal_quantized_charge_c": 1.0075278750822379e-10,
+            "quantized_area_error_pct": -0.25152429217690786
+          }
+        ],
+        "same_condition_full_DC_uA": 100.75278750822379
+      }
+    },
+    {
+      "name": "timestep_sensitivity_claim",
+      "passed": true,
+      "detail": "Saved 10 ns to 1 ns charge deltas are below 0.000001 percent; this is numerical convergence, not measured physical accuracy."
+    },
+    {
+      "name": "timeout_segment_times",
+      "passed": true,
+      "detail": {
+        "deadline_ns": 400000,
+        "functional_clear_ns": 514000,
+        "RTL_fall_ns": 514500,
+        "PEX_PWM_50pct_after_RTL_ns": 1.0650331743527204,
+        "branch_half_full_after_RTL_ns": 1.9224439875106327,
+        "claim": "Observables from saved waveforms; neither safe-off nor optical extinction qualification."
+      }
+    },
+    {
+      "name": "timeout_off_frame_values",
+      "passed": true,
+      "detail": "First off frame contains switching/charge-release current; subsequent approximately10.20 pA remains a model result. Reference remains continuously100 uA."
+    },
+    {
+      "name": "historic_unimplemented_scope",
+      "passed": true,
+      "detail": "Old frame-path not-implemented statements are reached as a dated historical methods snapshot; current entries and plan identify v0.1 implemented scope. Remaining receiver RTL/hardware statements remain accurate."
+    },
+    {
+      "name": "physical_and_optical_limits",
+      "passed": true,
+      "detail": "Report preserves actual signal-cutout scope and unverified PG/reference, hardware shutdown, silicon and optical stages."
+    },
+    {
+      "name": "current_platform_question_wording",
+      "passed": true,
+      "detail": "Platform plan describes this implemented experiment question; receiver RTL, hardware and actual feedback remain separate unimplemented stages."
+    },
+    {
+      "name": "progress_historical_methods_link",
+      "passed": true,
+      "detail": "The linked methods report with earlier planned-state wording is explicitly dated as a historical snapshot."
+    },
+    {
+      "name": "explicit_total_and_new_test_counts",
+      "passed": true,
+      "detail": "26 is the complete test-suite method count; 15 are new frame-model tests, distinct from runner guards and independent validator checks."
+    }
+  ],
+  "pending_export_links": [],
+  "limitations": [
+    "PDF visual inspection is separately completed by parent; linked PDF file presence is included in this source-link check.",
+    "No hardware, physical array, new PEX, silicon or optical stage is established by this document review."
+  ]
+}

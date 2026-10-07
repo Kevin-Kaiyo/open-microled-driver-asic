@@ -1,4 +1,4 @@
-.PHONY: setup test sim evidence
+.PHONY: setup test sim evidence control
 setup:
 	uv sync --locked
 	uv run python scripts/fetch_models.py
@@ -9,3 +9,6 @@ sim:
 	uv run python scripts/run_phase1.py
 evidence:
 	uv run python scripts/run_phase1.py --publish-evidence
+control:
+	uv run python scripts/control/run.py --publish-evidence
+	uv run python scripts/control/validate.py

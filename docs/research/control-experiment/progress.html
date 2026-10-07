@@ -1,0 +1,262 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MicroLED 控制实验与项目进展 · 2026-10-07</title><style>
+    @page { size:A4; margin:20mm; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:#24353c; font:10.7pt/1.62 'Avenir Next','PingFang SC',sans-serif; }
+    h1,h2,h3 { color:#164f5b; font-family:'Avenir Next','PingFang SC',sans-serif; line-height:1.35; }
+    h1 { font-size:26pt; margin:0 0 6mm; }
+    h2 { font-size:19pt; margin:0 0 5mm; padding-bottom:3mm; border-bottom:1.2px solid #bcced1; }
+    h3 { font-size:12.5pt; margin:4mm 0 2mm; }
+    p { margin:0 0 3mm; }
+    strong { color:#183e49; }
+    a { color:#176977; text-decoration:none; overflow-wrap:anywhere; }
+    ul,ol { margin:2mm 0 4mm; padding-left:5.5mm; }
+    li { margin-bottom:1.5mm; }
+    table { border-collapse:collapse; width:100%; margin:3mm 0 4mm; font-size:9.4pt; line-height:1.48; }
+    th { text-align:left; background:#eaf1f1; color:#164f5b; font-weight:600; }
+    th,td { padding:2.2mm 2.4mm; border-bottom:1px solid #d9e1e2; vertical-align:top; overflow-wrap:anywhere; }
+    tr { break-inside:avoid; }
+    code { font-family:'Avenir Next','PingFang SC',sans-serif; font-size:0.94em; }
+    pre { padding:3mm; background:#f0f4f4; white-space:pre-wrap; font-size:9.5pt; line-height:1.5; }
+    img { display:block; max-width:100%; max-height:45mm; margin:3mm auto; }
+    blockquote { margin:4mm 0; padding:3.5mm 4mm; border-left:3px solid #397e83; background:#edf4f3; }
+    blockquote p:last-child { margin:0; }
+    .page { break-after:page; }
+    .page:last-child { break-after:auto; }
+    .flow { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3mm; margin:5mm 0; }
+    .node { border:1px solid #bfd0d2; border-radius:2mm; padding:3mm; background:#f6f9f8; }
+    .node b { display:block; color:#164f5b; margin-bottom:1mm; }
+    .small { font-size:9.1pt; color:#536d74; }
+    @media print { body,.page { width:170mm; } }
+    @media screen { body { background:#edf2f2; } .page { background:white; width:210mm; min-height:297mm; margin:8mm auto; padding:20mm; box-shadow:0 1px 8px #bac9ca; } }
+    </style></head><body><section class="page" data-page="1"><h1>Open MicroLED Driver ASIC</h1>
+<h2>01　目前做到哪里：从一个像素到可复现实验</h2>
+<p><strong>进度说明 · 2026-10-07 · 实验性研发方法验证与教学</strong></p>
+<p>这个项目研究一条可以逐层检查的路径：<strong>命令决定点亮时间，电路决定导通电流，真实版图带来寄生，实验检查误差与假设边界。</strong> 先让一个像素的结果有来源、可复算，再决定哪些问题需要更多像素。</p>
+<p>现有工程基线为单像素 <strong>v0.4</strong>。已经有 registered PWM、六 MOS 模拟驱动、真实版图和共同 GDS；从共同版图提取了末级数字 buffer 与模拟像素的联合信号寄生模型。新的控制实验围绕完整帧提交、量化和 selected pixel 回放开展。</p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>当前可以检查的内容</th>
+<th>怎样阅读结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数字逻辑</td>
+<td>RTL、自检、标准单元映射与事件记录</td>
+<td>确认输入何时生效、PWM 是否正确</td>
+</tr>
+<tr>
+<td>物理实现</td>
+<td>layout、GDS、所执行 DRC/LVS、真实金属连接</td>
+<td>确认声明规则与电路连接是否一致</td>
+</tr>
+<tr>
+<td>电气研究</td>
+<td>selected signal PEX、晶体管仿真、积分与误差复算</td>
+<td>结论限于所用模型、条件与截断范围</td>
+</tr>
+<tr>
+<td>实物与光学</td>
+<td>后续测量计划</td>
+<td>尚需样品、仪器、原始数据及测量不确定度</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本轮已实现 frame experiment v0.1：</strong> 独立完整帧、CRC32、partial assembly、原子提交、12-bit量化和单像素回放。正常、错误注入、timeout三组共32个完整PWM帧、8,192个逐槽检查；新增3次transient、2次电路DC、1次独立LED校准。receiver仍是Python功能模型，电气后端沿用单像素v0.4。</p>
+<p>初学者先读本说明，电路与版图细节再查<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/research-report.md">分层研究报告</a>；方法背景见<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/experimental-methods/report.md">2026-10-06方法快照</a>。平均支路电流是 electrical brightness proxy，真实亮度、光功率和硅片表现需要各自的测量证据。</p></section>
+<section class="page" data-page="2"><h2>02　已有单像素基础：版图已经做了，范围还要说清</h2>
+<p>PWM 输出经过数字末级 buffer、金属连线、模拟输入开关与电流镜，最终控制 LED 支路。电流镜目标为 100 µA；gate-pass 传递偏置，gate-clamp 在关闭时释放 gate 电荷。外部 reference 目前仍以声明的源模型表示。</p>
+<table>
+<thead>
+<tr>
+<th>已完成研究</th>
+<th>可核查的结果</th>
+<th>主要边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTL 与映射</td>
+<td>518 帧、133,159 项 slot/value 检查；95 mapped cells、19 FF</td>
+<td>功能检查与物理时序分开记录</td>
+</tr>
+<tr>
+<td>模拟版图</td>
+<td>Magic DRC=0、严格 Netgen LVS、GDS roundtrip</td>
+<td>采用锁定公开 PDK/deck 的已执行检查</td>
+</tr>
+<tr>
+<td>共同 physical top</td>
+<td>305×180 µm bbox、19 ports；Magic DRC=0、KLayout item=0；物理错误对照被拒绝</td>
+<td>bbox 是共同宏跨度，不是可直接复制的 pixel die 面积</td>
+</tr>
+<tr>
+<td>v0.4 联合模型</td>
+<td>12 MOS、nominal 45 signal R、77 显式 C、34 邻居端口；5 种 RC 提取</td>
+<td>selected signal-path cutout，PG/body 仍理想化</td>
+</tr>
+<tr>
+<td>v0.4 电气主研究</td>
+<td>37 transient、12 DC、146 项预设 guards；已测矩阵最低码最大面积误差 0.700133%</td>
+<td>部分 MOS×RC 组合；合成 LED 动态模型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DRC 检查几何规则，LVS 检查连接与器件，PEX 描述真实几何的电阻和电容。</strong> 三者回答不同问题。上述检查支持所声明的物理实现，制造接受、完整芯片性能及光学表现需要进一步证据。</p>
+<p>联合模型把 source/body/PG 电阻投影到理想电源；PG-only 电容省略，signal↔PG 电容保留。34 个邻居按明确的 clamp 条件处理，未建立真实活动或浮动状态。五份 RC 模型存在，也不等于五 RC×三 MOS 的全部电气组合已运行。</p>
+<p>来源：<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/digital/summary.json">数字证据</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/layout/summary.json">模拟版图证据</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/integration/summary.json">共同版图证据</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/joint-pex.md">联合 PEX 范围</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/robustness.md">电气结果</a>。</p></section>
+<section class="page" data-page="3"><h2>03　为什么要完整帧提交：先确认数据，再一起生效</h2>
+<p>一帧是一次希望共同生效的数据集合。假设旧帧的 16 个位置均关闭，新帧准备点亮其中一部分。如果收到一个值就立刻改变 active state，接收过程中便可能出现“部分旧帧＋部分新帧”的状态。实验难以确定一次电气变化到底来自哪一帧。</p>
+<p><strong>Partial assembly</strong> 保存接收中的片段；完整性检查确认长度、身份、顺序与内容满足本项目合同后，<strong>pending buffer</strong> 保存完整有效帧；<strong>atomic commit</strong> 在规定边界把完整状态替换为 active frame。这样可以为每次状态变化记录 frame ID、payload hash、accept time 与 commit time。</p>
+<pre><code class="language-text">独立 pattern / mask
+  → 完整 frame
+  → pending buffer / 校验
+  → atomic commit / active frame
+  → selected pixel / 量化
+  → 既有 RTL → PWL → 单像素电气回放
+</code></pre>
+<p>这是本项目独立定义的实验合同。部分帧、错误长度、乱序、重复、过期和 timeout 如何处理，都应先规定预期，再用错误案例验证。只展示一个正常图案不能证明坏帧不会混入 active state。</p>
+<p>整帧 active state 切换与 <code>pixel_pwm</code> 的 PWM 帧边界提交是两个事件，分别记录时间。前者确认“使用哪一组数据”，后者决定“哪一帧脉冲开始使用该 duty”。两段延迟应独立测量。</p>
+<table>
+<thead>
+<tr>
+<th>本轮证据</th>
+<th>成功运行结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>代码与运行入口</td>
+<td><code>scripts/control/run.py --publish-evidence</code>；固定pattern seed=0、4×4 logical geometry、selected index=5</td>
+</tr>
+<tr>
+<td>正常帧与错误处理</td>
+<td>正常7帧命令；注入47笔无效交易，active frame与实际RTL events均与正常路径相同</td>
+</tr>
+<tr>
+<td>命令到输出时序</td>
+<td>accept→functional commit为1–174 µs；functional commit→PWM frame固定0.5 µs</td>
+</tr>
+</tbody>
+</table>
+<p>合同与结果：<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/specifications/frame-experiment-v0.1.md">帧合同</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/control/summary.json">成功运行摘要</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/control/validation.json">独立复算</a>；既有提交行为来源：<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/rtl/pixel_pwm.v">pixel_pwm.v</a>。</p></section>
+<section class="page" data-page="4"><h2>04　两种分辨率、两种规模：命令位宽与电气能力分开</h2>
+<p><strong>12-bit command 能表达 0…4095，共 4096 个命令值。现有 PWM 每帧只有 256 个时间槽，duty 为 0…256，共 257 个有效状态。</strong> 9-bit duty 端口用于同时表达 exact off 与 exact full-on；它不建立 9-bit 或 12-bit 的实测光学灰阶。</p>
+<p>本轮采用最近舍入，并以独立分数算术遍历全部4096个code：</p>
+<pre><code class="language-text">duty = round(256 × command / 4095)
+normalized error = duty / 256 − command / 4095
+</code></pre>
+<p>这种映射的理论误差界为半个时间槽，即 normalized full-scale 误差不超过 <code>1/512</code>，约 0.195313 个百分点。off/full-on 必须保持精确；低码相对误差应另算。例如很小的非零 command 可能量化为 duty=0。实际遍历最大误差为0.1952648个full-scale百分点；最低映射为duty1的code是8。</p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>可以验证什么</th>
+<th>还需要什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16 个 logical positions</td>
+<td>帧结构、位置选择、mask、状态完整性和预算</td>
+<td>其余位置未因此得到晶体管/物理验证</td>
+</tr>
+<tr>
+<td>1 个 selected pixel</td>
+<td>所选命令到 PWM、电荷及电流的可追溯链路</td>
+<td>坐标、duty、事件、模型与窗口都须记录</td>
+</tr>
+<tr>
+<td>真正 4×4 电气/ASIC 阵列</td>
+<td>后续共享 reference、PG、时钟及同时切换研究</td>
+<td>阵列实现、阵列级物理检查与多通道验证</td>
+</tr>
+</tbody>
+</table>
+<p><strong>本轮电气结果：</strong> TT/27°C、3.3V logic、5V LED rail、理想100 µA reference及34个0V邻居下，稳态full-on约100.752788 µA。两个最低码帧为0.392533292／0.392575663 µA，相对同条件full DC分母的面积误差为−0.262290%／−0.251524%；均在预设±2%内。最大步长10→1 ns后电荷改变量小于0.000001%。</p>
+<p><img alt="完整PWM帧平均电流，晶体管仿真" src="frame-current.svg" /></p>
+<p>图中点为每完整帧积分，线为full DC电流×量化duty预算。第一个最低码帧与后续帧略有差别，应逐帧保留状态影响。</p>
+<p>来源：<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/rtl/pixel_pwm.v">现有 PWM 实现</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/experimental-methods/platform-plan.md">独立预算与规模合同</a>。</p></section>
+<section class="page" data-page="5"><h2>05　timeout：模型状态、PWM 与电流响应</h2>
+<p>Timeout 表示一段时间没有收到满足合同的新数据。功能模型可以定义 hold、blank 或其他实验状态；每一种动作都必须有触发时刻、active state 变化和恢复条件。这样才能判断软件/功能行为是否符合预期。</p>
+<p><strong>功能模型进入 blank，只证明模型状态改变。</strong> 若随后把 duty 或 enable 送到现有 PWM，还要等待其时序合同及电气传播。独立硬件 watchdog、fault pin、立即关断与 power-good/POR 都需要实际需求、实现和验证。</p>
+<p>已有 v0.4 实验中，20 µs 输入 enable=0，注册 PWM 在 258.5 µs 变低，等待 238.5 µs；同步 reset 则在下一个上升沿响应。这说明正常帧更新与保护关断是不同研究问题。软件 timeout 的事件记录不能建立硬件立即关闭的能力。</p>
+<p>已有边界研究还发现：早启动 ideal IREF 会在电源未建立时主动提供能量；真实静态 LED 曲线在假设 10 kΩ LED 供电串联阻抗下只得到 88.265992 µA，超过 100 µA±5% 的误差门槛。失败记录帮助确定 reference 与 headroom 的后续研究方向。</p>
+<p><strong>本轮timeout对照：</strong> timestamp=0、deadline=400 µs；功能模型在514 µs边界清零，实际PWM在514.5 µs变低。支路首个off帧平均约0.8477 nA，下一off帧约10.20 pA。前者含切换与电荷释放，不能称持续leakage；后者也是模型值。IREF仍持续100 µA；这项动作不表示reference断电。</p>
+<table>
+<thead>
+<tr>
+<th>timeout分段事件</th>
+<th style="text-align: right;">时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>命令deadline</td>
+<td style="text-align: right;">400 µs</td>
+</tr>
+<tr>
+<td>功能模型clear</td>
+<td style="text-align: right;">514 µs（等待114 µs）</td>
+</tr>
+<tr>
+<td>RTL PWM变低</td>
+<td style="text-align: right;">514.5 µs</td>
+</tr>
+<tr>
+<td>PEX PWM下降穿越1.65 V</td>
+<td style="text-align: right;">RTL后1.065 ns</td>
+</tr>
+<tr>
+<td>支路电流下降穿越50.3764 µA</td>
+<td style="text-align: right;">RTL后1.922 ns</td>
+</tr>
+</tbody>
+</table>
+<p>最后两项是保存波形的线性插值阈值，支路含位移电流；它们不定义安全off或光学响应。新证据由<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/evidence/control/validation.json">独立复算</a>支持。</p>
+<p>来源：<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/robustness.md">控制与供电边界研究</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/specifications/electrical-v0.4.md">预声明电气条件</a>。</p></section>
+<section class="page" data-page="6"><h2>06　后续优先级：让下一次实验消除一个明确缺口</h2>
+<p>下一步继续单像素闭环，以具体问题和退出门槛决定开发。控制实验增加数据完整性与可追溯性；reference、真实电源网络及 LED 参数研究增加物理可信度。两类证据应在各自范围内逐步连接。</p>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>需要解决的问题</th>
+<th>进入下一步的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1　控制实验闭环</td>
+<td>完整帧、错误更新、量化和 selected pixel 能否一致回放</td>
+<td>正常/错误案例、source/frame hash、RTL 比对、电气积分与独立复算</td>
+</tr>
+<tr>
+<td>2　reference 与关断</td>
+<td>可实现 reference 是否有足够 compliance；上电与 fault 如何处理</td>
+<td>实际电路、工作包络、startup/关断条件及失败对照</td>
+</tr>
+<tr>
+<td>3　真实 PG 与邻居</td>
+<td>理想 rails/quiet clamp 省略了哪些电压与耦合变化</td>
+<td>保留实际 PG/body 网络、明确邻居驱动、重新校准与回归</td>
+</tr>
+<tr>
+<td>4　负载与测量</td>
+<td>同一 LED 的动态、温度、低电流和光学参数是什么</td>
+<td>有身份的样品、raw 数据、仪器条件、留出点与不确定度</td>
+</tr>
+<tr>
+<td>5　需要时进入 4×4</td>
+<td>哪个问题必须用多个通道才能检验</td>
+<td>单像素门槛满足；共享 reference/PG/clock、阵列 physical 与电气证据</td>
+</tr>
+</tbody>
+</table>
+<p>真实数据目前支持一条可追溯的静态 I–V 曲线。动态探针采用假设电容，测量温度、同器件动态/光学参数仍不完整。拟合残差、数值收敛和仪器测量误差分别记录，避免把计算一致性写成器件准确度。</p>
+<p>后续硬件与实物测量先明确仪器、测量 floor、连接负载及 LED 身份。带 pads/ESD 的完整芯片、provider 规则接受、silicon bring-up 和光学验证各有独立进入条件；当前资料没有建立这些阶段的完成状态。</p>
+<p><strong>本轮结论：</strong> 完整命令和错误政策已经与实际PWM、单像素电气结果连接，正常/错误路径的对应关系可复算。下一优先开发项是单像素的可实现reference与独立关断：先声明compliance、startup、最低脉冲及fault响应门槛，再实现电路、校准并比较通过与失败条件。当前控制实验不替代这些物理门槛。</p>
+<p>可继续复算的入口：<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/README.md">当前研究索引</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/bench-validation-plan.md">实物验证计划</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/research/measured-led.md">模型/数据研究</a>、<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/main/docs/roadmap.md">完整路线</a>。新 raw 输出留在 <code>build/</code>，成功的紧凑证据与 source hashes 留在 <code>evidence/</code>；旧运行记录保留其原始输入身份。</p>
+<p>复现新路径：<code>uv run python scripts/control/run.py --publish-evidence</code>，再执行<code>uv run python scripts/control/validate.py</code>；本机首次运行需先具备锁定的完整PDK与Icarus/ngspice。报告证据分开记录：全库26项unittest（含15项新增帧模型测试）、765项runner guards、1,113项独立审查；这些计数不等于独立器件样本数。</p></section></body></html>
