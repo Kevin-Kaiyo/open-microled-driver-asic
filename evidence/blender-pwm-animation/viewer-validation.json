@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "range_checks": [
+    {
+      "range": "bytes=1000-2000",
+      "status": 206,
+      "bytes": 1001,
+      "exact_bytes_match": true
+    },
+    {
+      "range": "bytes=-128",
+      "status": 206,
+      "bytes": 128,
+      "exact_bytes_match": true
+    },
+    {
+      "range": "bytes=3621092-",
+      "status": 206,
+      "bytes": 128,
+      "exact_bytes_match": true
+    }
+  ],
+  "browser": "Codex in-app browser",
+  "video_duration_s": 64,
+  "seekable_s": [
+    0,
+    64
+  ],
+  "low_button_observed_s": 40,
+  "low_caption": "14 PWM低电平：LED关断",
+  "high_button_observed_s": 29,
+  "paused_after_high_selection": true,
+  "initial_failure": "Default SimpleHTTP server returned HTTP 200 for Range; browser seekable was [0,0] and chapter seeks returned to the beginning.",
+  "repair": "Local ThreadingHTTPServer with single-range HTTP 206 support. Verified byte content and browser seekable [0,64].",
+  "screenshot_sha256": "191480966bef891d22c9244157c0b20afa62eecfc6ad30c92bb632fa078a4f90"
+}

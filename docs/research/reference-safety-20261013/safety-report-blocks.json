@@ -1,0 +1,10 @@
+{
+  "summary_source_sha256": "3d5c1e5b0238c6bed10e82a64994b1ed2ab54d9b11f32c1fb77aa776a0091d75",
+  "servo_source_sha256": "d28376054b7d6ee3eebe788e680148010e4f4cc9694ceeeeb268d73dea989c8e",
+  "blocks": {
+    "SAFETY_CIRCUIT": "**新实现分两层。** RTL使用异步fault置位的inhibit记忆，只有fault低、显式recover_request和raw PWM低时才在时钟边沿恢复。晶体管层新增10MOS组合门，实现`protected = raw_PWM ∧ permit ∧ ¬fault`，接入原12MOS selected signal PEX。另加2MOS LED端钳位；恢复存储目前只有RTL证据，未做其晶体管与物理实现。",
+    "SAFETY_CONTRACT": "**先验门槛：** 从RTL fault事件、即PWL开始上升的t0计；完整边沿10 ns，50%在t0+5 ns，仅作分账。t0后1 µs内进入1 nA以下，t0+1～2 µs保持；[t0,t0+1 µs]正向尾电荷≤10 pC。钳位新增负向尾电荷20 pC、负峰10 mA及reverse0.5 V教学预算。这些不是真实LED或人身安全认证。FAULT必须在有效供电下有确定电平；1 MΩ外部pull-up研究断线默认关断。",
+    "SAFETY_RESULTS": "| 场景 | 进入并保持1 nA阈值 | 判断 |\n| --- | --- | --- |\n| core TT／停钟，fault直接路径 | 203.82 ns | 原1 µs门槛通过 |\n| core已测相位／TT、SS85、FF0 | 最长302.22 ns | 各声明场景通过 |\n| 实际servo＋停钟＋钳位 | 204.10 ns | 原故障门槛通过 |\n| 停钟，移除保护负对照 | 仍约100.75 µA | 预期失效被检测 |\n\n**TT停钟尾电荷：** Q+=0.413 pC，Q−=-7.331 pC；电容分量signed约-7.551 pC，导电分量约0.634 pC。负支路电荷主要为电容处置；clamp rail约56.516 pC含电阻持续耗流，不能用signed LED电荷代表整个保护负担。",
+    "SAFETY_LIMITATIONS": "**附加全启动守卫仍失败。** 只让reference rail冷启动、逻辑和LED rail已有效、fault保持时，整个启动窗branch峰约5.791 nA；diode导电峰约3.24×10⁻¹⁷ A，电容为主。这个额外“全窗≤1 nA”守卫未通过，极小尾电荷步长变化也未闭环。Core22个transient／141项检查通过；servo联合suite整体passed=false，原正常／fault合同通过，附加startup两项仍失败。启动只有reference rail ramp100 ns，VSET固定0.5 V、logic3.3 V／LED5 V已有效，外部fault保持20 µs。\n\n正常PWM逻辑回归保持原合同；本次servo同fixture最低码面积约-0.032016%。两帧514.5～1026.5 µs，以同fixture DC100.026013 µA×duty/256归一；使用10 ns输入刺激，不能同旧0.700133%或参考源独立回归直接排名。"
+  }
+}

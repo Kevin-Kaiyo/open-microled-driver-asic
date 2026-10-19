@@ -1,0 +1,65 @@
+{
+  "status": "validation_pass",
+  "script_sha256": "739c83f946c08b9febfdb2a6e6c80416e78480ecb3049c4a13edb0f3f0b656c4",
+  "checks": [
+    "Ten reference MOS AD/AS/PD/PS obey the declared geometric hypothesis; all paired sources retain hashes",
+    "Six paired duty1 traces independently integrated; both frame charge and same-geometry DC denominator agree",
+    "All 10 reference MOS signed drain/source junction-current extrema match raw saved model vectors for 6 geometry and 4 zero-area controls",
+    "Three VSET power-sequence cases: final and zero-VSET mean currents independently integrated"
+  ],
+  "pwm": [
+    {
+      "envelope": "tt",
+      "maxstep_s": 1e-08,
+      "charge_error_pct": [
+        -0.2566271645868645,
+        -0.2566271704006806
+      ]
+    },
+    {
+      "envelope": "tt",
+      "maxstep_s": 2e-09,
+      "charge_error_pct": [
+        -0.25662523941689663,
+        -0.25662545346726295
+      ]
+    },
+    {
+      "envelope": "slow",
+      "maxstep_s": 1e-08,
+      "charge_error_pct": [
+        -0.6575668786252042,
+        -0.6575669275750595
+      ]
+    },
+    {
+      "envelope": "slow",
+      "maxstep_s": 2e-09,
+      "charge_error_pct": [
+        -0.6575699793815781,
+        -0.6575699825277059
+      ]
+    },
+    {
+      "envelope": "fast",
+      "maxstep_s": 1e-08,
+      "charge_error_pct": [
+        -0.1998446590573022,
+        -0.19984474396136376
+      ]
+    },
+    {
+      "envelope": "fast",
+      "maxstep_s": 2e-09,
+      "charge_error_pct": [
+        -0.19984687256432432,
+        -0.19984645043615856
+      ]
+    }
+  ],
+  "evidence_sha256": {
+    "junction-sensitivity.json": "2624f04fcbe5a382cafb203b3ea95efc503a3195e7aeaffc397f93730c2359e4",
+    "junction-zero-controls.json": "cf85e4bcd669cc3fec3c9b956b888259a1f1b4244a7b8938cad5f655d73acfcc",
+    "servo-boundaries.json": "cca84cb37ad93fcb54195309d61087add0f169a546e50ba18732d0ca70634b25"
+  }
+}

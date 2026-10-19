@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "scope": "New 39-MOS external-passive test macro, no pad ring/ESD/package/POR",
+  "physical_checks_passed": true,
+  "electrical_checks_passed": "separate analog-v3 report required",
+  "external_signoff": false,
+  "run_directory": "build/layout-v3/r4",
+  "tools": {
+    "magic": "8.3.684",
+    "netgen": "Netgen 1.5.324 compiled on Sat Oct  3 18:46:18 JST 2026",
+    "klayout": "0.30.7 (pinned LibreLane Linux image; see command manifest)"
+  },
+  "checks": [
+    {
+      "name": "magic-generate.log",
+      "passed": true
+    },
+    {
+      "name": "magic-roundtrip-pex.log",
+      "passed": true
+    },
+    {
+      "name": "netgen-lvs.log",
+      "passed": true
+    },
+    {
+      "name": "netgen-roundtrip-lvs.log",
+      "passed": true
+    },
+    {
+      "name": "all nets include PG",
+      "passed": true
+    },
+    {
+      "name": "KLayout independent main deck",
+      "passed": true
+    },
+    {
+      "name": "Actual physical open and PG short rejected",
+      "passed": true
+    },
+    {
+      "name": "39 MOS extracted",
+      "passed": true
+    }
+  ],
+  "extracted_counts": {
+    "mos": 39,
+    "resistors": 354,
+    "capacitors": 564
+  },
+  "rc_nets_extracted": 29,
+  "rc_nets_total": 29,
+  "negative_controls": [
+    {
+      "control": "raw-open",
+      "description": "Real Metal3 gap on RAW_PWM bus, fixed original top port",
+      "magic_exit": 0,
+      "netgen_exit": 0,
+      "final_result": [
+        "Top level cell failed pin matching."
+      ],
+      "rejected": true,
+      "negative_gds_sha256": "bfdc3c25b1b705b80a5106fcd1f9572af9366843c3d6f7c2c3c2437bb5f9b951"
+    },
+    {
+      "control": "vref-ground-short",
+      "description": "Real Metal3 bridge from VREF to VSS",
+      "magic_exit": 0,
+      "netgen_exit": 0,
+      "final_result": [
+        "Top level cell failed pin matching."
+      ],
+      "rejected": true,
+      "negative_gds_sha256": "81d6e5562f7e4217252e752bb36a24b577ca41040d1492c337661efb4202c9f9"
+    }
+  ],
+  "source_sha256": {
+    "scripts/layout_v3/run.py": "8d9bdf212740ce1f5ee3f9b16ae863423a871fce5b899d0ef58106c2ef10b129",
+    "scripts/layout_v3/render.py": "0272e5fbf9775e000964bdb7d8b81b550950d4007029532877c12387838c8e6b",
+    "scripts/layout_v3/generate.py": "ebc4d18ab7e5eaafbd7b4d2169988c0ec4e8af743d77c267e41b5c40ec1e1e54",
+    "scripts/layout_v3/negative_controls.py": "7cdb3172ab7ab91d69c37ec81cc2c008b8fc4d799fd162349465dcfae521f73b",
+    "scripts/layout_v3/extract.tcl": "56eebbbf12d7d48d95a87557c0756adc699afb1b23d71ba2869cf76a4b90d2d8",
+    "scripts/layout_v3/run_klayout.py": "100707e7ed7d4f00f34c9ecfc91067488fcf45e2e3782611552a6e42706de5db",
+    "scripts/layout_v3/publish.py": "6ce073e387e353360fd2b3d7abf9f764ce6fe7237cf33eb812e277ad1862f530",
+    "layout/startup_v3/startup_test_macro.mag": "e37c1cee7ca14834005526ccea03c1050613823703d9dba7980dea8e9379b5bb",
+    "layout/startup_v3/official_buf_2.gds": "ec334a5780c00aa93f6023d0eb00571a8d8ba89c84f4b240c90e75f53743ee0b",
+    "layout/startup_v3/startup_test_macro.spice": "c551abf59f8a1a15f1de9819069f29d24eb9db43f9f3ddf13f02df8a791a01fd",
+    "layout/startup_v3/official_buf_2.spice": "901431501fbc2ebf209cda0893fa72a6f6180805119b885384e5b1a4f69ff6c6",
+    "layout/startup_v3/generate.tcl": "eb07d7255f3e41575f532651e5f0bb2cc760a087e1aeacd9241e9f169655e206",
+    "layout/startup_v3/contract.json": "fe9eef4c1751dd48467dd0a5d09e5b7c00909caea608951c363d3e6eb55823a4",
+    "layout/pdk-lock.json": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+    "build/layout/pdk/gf180mcuD/libs.tech/magic/gf180mcuD.tech": "0db2e5c354a2f7c7749f86df4c995127c1564daf51f936030b4e1a5982ad3210",
+    "build/layout/pdk/gf180mcuD/libs.tech/netgen/gf180mcuD_setup.tcl": "eb6217e33acb2c81680351745bc184a2ee37b31a25d37f4dce423f61ba466fe4",
+    "build/layout/pdk/gf180mcuD/libs.tech/klayout/tech/drc/gf180mcu.drc": "9b986260e1909e9ce2ee97b2d1103dc513836bc6a440e876d66d23c85985c41a",
+    "build/layout/pdk/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/spice/gf180mcu_fd_sc_mcu7t5v0.spice": "0e126c5e10e45e705a83acfa47f6fd2c4ef0357e99c339dec43cdc16bfb13664",
+    "build/layout/pdk/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/gds/gf180mcu_fd_sc_mcu7t5v0.gds": "efa44f076c96508a0dae9afa00448c217d78e1a345b8e04c4f2a9765e79b26c4"
+  },
+  "output_sha256": {
+    "evidence/layout-v3/isolation-detail.png": "5ec8d398607347d7452db204d089bfe52386666742572c07583981b93d028e31",
+    "evidence/layout-v3/geometry.json": "de6ca434754601afae3c533762d4ef5e528af73452dcc8abfe42e1c4e38684c2",
+    "evidence/layout-v3/overview.svg": "0981b75e0eb55b91e8a3c9e1eaa4f1347bed7871c0f5d9f9721263631f6d670e",
+    "evidence/layout-v3/negative-controls.json": "bde8a1af72ae4766fa5b0240e183e50dcbb7ed31a3718e4b272e076d289f4c95",
+    "evidence/layout-v3/klayout-linux.log": "7928341eef0f79af64027010b95495b69c64b66c8e7a6d475c5a20a2efab938f",
+    "evidence/layout-v3/startup_test_macro_rc.spice": "9cea7adeccd0dc9a96bc10d7bf05865a342d5e2467d1baf163d037e00f0b27fc",
+    "evidence/layout-v3/overview.png": "f5668320469add5e1cab6999128324158caf4bedf1d846fce4ae77aa8628641a",
+    "evidence/layout-v3/netgen-lvs.log": "30fa2ea5d100647b47ad527b2b9b1bf58f8dfb0af1110d98cc95ca1bc7488433",
+    "evidence/layout-v3/isolation-detail.svg": "cdbb43f562dd23799bb2217d48b98fa7e927ffb075542beb5270bda2a3df085a",
+    "evidence/layout-v3/startup_test_macro.spice": "0e4c127785ff640041dfb34af598dc3673c7e4bf23c9d8a3f1fa22c9e26ca39d",
+    "evidence/layout-v3/startup_test_macro.gds": "decdf341053c5adde498f7591b85ecc2b03e2f2857916a3cab61d5cdc660884d",
+    "evidence/layout-v3/reference-detail.svg": "1b0b63544eeb7437dd03d9c021b887778bb4652264bc7deb585e28b9002b9706",
+    "evidence/layout-v3/magic-roundtrip-pex.log": "9048ffe9cf958a2e029afb2da31c30e236cc1192c4074aba3623f7cd83ce18a1",
+    "evidence/layout-v3/netgen-roundtrip-lvs.log": "30fa2ea5d100647b47ad527b2b9b1bf58f8dfb0af1110d98cc95ca1bc7488433",
+    "evidence/layout-v3/magic-generate.log": "ab216dc5eeb22499a61ee5023b1cec01b4097a249680c4778839e764eeaaad65",
+    "evidence/layout-v3/fault-buffer-detail.svg": "818907f81934f90673e4cbbdc1c2533766f1e71e44f5b2e5bb6dbc44b2a4043e",
+    "evidence/layout-v3/welltap-detail.png": "8009ed8de3aa8608080ffe29dc599906035389068c5f14901475b352305a7941",
+    "evidence/layout-v3/welltap-detail.svg": "9e753d62a82feeed03cb4d399916886eaf14d10d348d5e44db4a9764f5dfab92",
+    "evidence/layout-v3/fault-buffer-detail.png": "94ba5814dd64c5959a129f042eeff2fa00358d721320594f50024c7ccf0a8900",
+    "evidence/layout-v3/klayout-result.json": "86f3515475803a845b8295a3a6fc090c52885e7617aba56decf50fdfd515c5b1",
+    "evidence/layout-v3/klayout-command.json": "3e780ed461d685ada7f852c021a4ebe6ff5585ff6d07de2e071e1ee7cea16c6c",
+    "evidence/layout-v3/reference-detail.png": "19b7ec1e5891cc53d4bb0fd6ed9c0f4916ea2852d62c9a43d538cc550e33d880"
+  },
+  "failures_preserved": [
+    {
+      "run": "build/layout-v3/r1",
+      "reason": "official buffer M2 power/output columns too close; spaced columns"
+    },
+    {
+      "run": "build/layout-v3/r2",
+      "reason": "official buffer isolated N-well: no body tap, LVS rejected; adjacent official filltie restores VBUF bulk"
+    }
+  ],
+  "lvs_scope": "Connectivity, MOS classes and W/L with PDK property tolerance; AD/AS/PD/PS excluded by pinned Netgen setup; extracted geometry used in PEX",
+  "boundary": "External VSET, RSET, RBIAS, CCOMP and RRELEASE. Full extracted local power/ground. No off-chip pad/ESD/bond/PCB RC or internal POR. DRC KLayout main deck alone does not establish density/antenna/manufacturing acceptance."
+}

@@ -1,0 +1,1358 @@
+{
+  "status": "completed two-period input-window sensitivity check; not BER qualification",
+  "work": "build/highspeed-nrz/window-check-qzbahb4z",
+  "source_work": "build/highspeed-nrz/run-0xqxvspp",
+  "source_manifest_sha256": "ac27fffa1faf430ebaa5b3d9c4a587054ce95421629dcc8fbd5ec6dfcb898ba4",
+  "source_inputs": {
+    "analog/highspeed_nrz/voltage_driver.spice": "a379b2354e69c6745774d27ba8be15c073fdd420228942b149adf49533bd80b4",
+    "analog/highspeed_nrz/steering_driver.spice": "9982e3840add92851e1da20f5053d18257ddd29a1f3f63225494fdada4671265",
+    "analog/models/measured-led/lin2026-yellow20-dc.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+    "analog/models/measured-led/lin2026-yellow20-diamond-iv.csv": "9da8dbac6499c34159da5e3aa0c59cd6de43aad446090181b4c070beba9505ab",
+    "analog/models/measured-led/model-card.json": "83a17ae0ba181d307f7580255934ecc63071689dcc50ff4c9dc519bf24f08201",
+    "analog/models/measured-led/source-lock.json": "7a9210d1af46004469e4e97e5c05001c3004c1c6e828bca02f16e094a9577ba8",
+    "layout/pdk-lock.json": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+    "scripts/highspeed_nrz/run.py": "3a9a78a10f4964bc6ee1de793510a425091014af08989d06043b01b49b2ccea1",
+    "scripts/highspeed_nrz/metrics.py": "07fdffa7ab8eb011a070d018ccf683902471427633170b9e83df697ce525180e",
+    "evidence/highspeed-nrz/voltage-prototype.json": "c50d6f461e678ab8f6faa25ffa2b01b2196db0573d801b433f40973c9fbba01c",
+    "evidence/highspeed-nrz/steering-prototype.json": "6c555a6445c24f298ce17a9035e07d4a943993c43d6dcadf4f27a72ac22208ad",
+    "build/layout/pdk/gf180mcuD/libs.tech/ngspice/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "build/layout/pdk/gf180mcuD/libs.tech/ngspice/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+  },
+  "window_definitions": {
+    "first_period": [
+      2.86e-07,
+      7.97e-07,
+      511
+    ],
+    "second_period": [
+      7.97e-07,
+      1.308e-06,
+      511
+    ],
+    "two_period_average": [
+      2.86e-07,
+      1.308e-06,
+      1022
+    ]
+  },
+  "conditions": {
+    "vled_V": 5.0,
+    "vdd_V": 3.3,
+    "led_C_F": 2e-13,
+    "package_R_ohm": 1.0,
+    "package_L_H": 5e-10,
+    "I0_A": 2.5e-05,
+    "I1_A": 0.0001,
+    "edge_s": 2e-11,
+    "temperature_C": 27,
+    "corner": "typical",
+    "optical_proxy_tau_s": 2e-10,
+    "receiver_bw_Hz": 1000000000.0,
+    "fixed_threshold_A": 6.25e-05,
+    "temperature_caution": "MOS temperature changes only; measured LED DC curve has no temperature model"
+  },
+  "body_geometry": "Both routes: isolated diffusion extension 0.6 um; AD=AS=W*0.6um and PD=PS=2*(W+0.6um), not extracted",
+  "script_sha256": "d975a6fe56a5b0d107e5740b44fddbba91ba56ed9d16630f2cabe3026297f940",
+  "frozen_script": "build/highspeed-nrz/window-check-qzbahb4z/inputs/scripts/highspeed_nrz/window_check.py",
+  "runner_sha256": "3a9a78a10f4964bc6ee1de793510a425091014af08989d06043b01b49b2ccea1",
+  "metrics_sha256": "07fdffa7ab8eb011a070d018ccf683902471427633170b9e83df697ce525180e",
+  "stimulus_sha256": "a801247d27166c7534e66566173ee45d54002594ecf219e0e4c26440d764946f",
+  "runtime": {
+    "python": "3.12.13 (main, Mar 25 2026, 03:16:06) [Clang 22.1.1 ]",
+    "numpy": "2.5.3"
+  },
+  "routes": {
+    "A": {
+      "simulation": {
+        "case": {
+          "route": "A",
+          "rate_Gbps": 1,
+          "corner": "typical",
+          "temp_C": 27,
+          "vdd_V": 3.3,
+          "cap_F": 2e-13,
+          "r_pkg": 1.0,
+          "l_pkg": 5e-10,
+          "edge_s": 2e-11,
+          "steps_per_ui": 40,
+          "reltol": 1e-05,
+          "chgtol": 1e-16,
+          "method": "gear",
+          "kind": "two_period_window",
+          "name": "A-two_period_window-1G-typical-27C-3.3V-C200-L0.5-e20-s40"
+        },
+        "simulation_ok": true,
+        "exit_code": 0,
+        "elapsed_s": 19.714508666889742,
+        "waveform": "build/highspeed-nrz/window-check-qzbahb4z/cases/A-two_period_window-1G-typical-27C-3.3V-C200-L0.5-e20-s40/waveform.dat.gz",
+        "uncompressed_sha256": "ffa5e7ee061b0792b055c906e02e69f8aa57a40ab3d785c7e1fa014c10da8c1f",
+        "waveform_sha256": "b7f79c27272fecc11572f942ce9463cca609ea79764b8c5b14fe85fea95cc9cb",
+        "deck_sha256": "90c7b4b06789ba6d48e957adc0adc149257b7c7fbf75a774ed5c6d2b71efafa4",
+        "vectors": {
+          "data": 1,
+          "out": 2,
+          "led_k": 3,
+          "led_voltage": 4,
+          "iled_cond": 5,
+          "package_current": 6,
+          "vdd": 7,
+          "vh": 8,
+          "vl": 9,
+          "xdrv.ctrl": 10,
+          "xdrv.n1": 11,
+          "vled_current": 12,
+          "vdd_current": 13,
+          "vh_current": 14,
+          "vl_current": 15,
+          "data_current": 16
+        },
+        "devices": [
+          {
+            "instance": "xn1",
+            "nodes": [
+              "xdrv.n1",
+              "data",
+              "0",
+              "0"
+            ],
+            "model": "nfet_03v3",
+            "sizing": "w=1u l=0.28u ad=0.6p as=0.6p pd=3.2u ps=3.2u"
+          },
+          {
+            "instance": "xp1",
+            "nodes": [
+              "xdrv.n1",
+              "data",
+              "vdd",
+              "vdd"
+            ],
+            "model": "pfet_03v3",
+            "sizing": "w=2u l=0.28u ad=1.2p as=1.2p pd=5.2u ps=5.2u"
+          },
+          {
+            "instance": "xn2",
+            "nodes": [
+              "xdrv.ctrl",
+              "xdrv.n1",
+              "0",
+              "0"
+            ],
+            "model": "nfet_03v3",
+            "sizing": "w=4u l=0.28u ad=2.4p as=2.4p pd=9.2u ps=9.2u"
+          },
+          {
+            "instance": "xp2",
+            "nodes": [
+              "xdrv.ctrl",
+              "xdrv.n1",
+              "vdd",
+              "vdd"
+            ],
+            "model": "pfet_03v3",
+            "sizing": "w=8u l=0.28u ad=4.8p as=4.8p pd=17.2u ps=17.2u"
+          },
+          {
+            "instance": "xnout",
+            "nodes": [
+              "out",
+              "xdrv.ctrl",
+              "vl",
+              "0"
+            ],
+            "model": "nfet_03v3",
+            "sizing": "w=4u l=0.28u ad=2.4p as=2.4p pd=9.2u ps=9.2u"
+          },
+          {
+            "instance": "xpout",
+            "nodes": [
+              "out",
+              "xdrv.ctrl",
+              "vh",
+              "vh"
+            ],
+            "model": "pfet_03v3",
+            "sizing": "w=8u l=0.28u ad=4.8p as=4.8p pd=17.2u ps=17.2u"
+          }
+        ],
+        "rails": {
+          "VLED": {
+            "node": "led_a",
+            "voltage_V": 5.0
+          },
+          "VDD": {
+            "node": "vdd",
+            "voltage_V": 3.3
+          },
+          "VH": {
+            "node": "vh",
+            "voltage_V": 1.6110254451423758
+          },
+          "VL": {
+            "node": "vl",
+            "voltage_V": 1.1721543178141975
+          }
+        },
+        "rows": 357261,
+        "warnings": []
+      },
+      "windows": {
+        "first_period": {
+          "start_s": 2.86e-07,
+          "end_s": 7.97e-07,
+          "bits": 511,
+          "rail_energies": {
+            "VLED": {
+              "start_s": 2.86e-07,
+              "end_s": 7.97e-07,
+              "duration_s": 5.11e-07,
+              "n_gross_bits": 511,
+              "net_J": 1.5898515461162408e-10,
+              "positive_draw_J": 1.9570694037084183e-10,
+              "returned_J": 3.6721785759217767e-11,
+              "net_mean_W": 0.0003111255471851744,
+              "positive_draw_mean_W": 0.0003829881416259136,
+              "returned_mean_W": 7.186259444073928e-05,
+              "net_J_per_gross_bit": 3.111255471851743e-13,
+              "positive_draw_J_per_gross_bit": 3.8298814162591354e-13,
+              "returned_J_per_gross_bit": 7.186259444073927e-14,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VDD": {
+              "start_s": 2.86e-07,
+              "end_s": 7.97e-07,
+              "duration_s": 5.11e-07,
+              "n_gross_bits": 511,
+              "net_J": 8.354654070385398e-11,
+              "positive_draw_J": 8.599811270146858e-11,
+              "returned_J": 2.451571997614612e-12,
+              "net_mean_W": 0.00016349616576096673,
+              "positive_draw_mean_W": 0.00016829376262518316,
+              "returned_mean_W": 4.797596864216462e-06,
+              "net_J_per_gross_bit": 1.634961657609667e-13,
+              "positive_draw_J_per_gross_bit": 1.6829376262518312e-13,
+              "returned_J_per_gross_bit": 4.797596864216462e-15,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VH": {
+              "start_s": 2.86e-07,
+              "end_s": 7.97e-07,
+              "duration_s": 5.11e-07,
+              "n_gross_bits": 511,
+              "net_J": 6.6636202120029904e-12,
+              "positive_draw_J": 1.717869246413459e-11,
+              "returned_J": 1.05150722521316e-11,
+              "net_mean_W": 1.3040352665367889e-05,
+              "positive_draw_mean_W": 3.3617793471887655e-05,
+              "returned_mean_W": 2.0577440806519765e-05,
+              "net_J_per_gross_bit": 1.3040352665367888e-14,
+              "positive_draw_J_per_gross_bit": 3.361779347188765e-14,
+              "returned_J_per_gross_bit": 2.0577440806519764e-14,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VL": {
+              "start_s": 2.86e-07,
+              "end_s": 7.97e-07,
+              "duration_s": 5.11e-07,
+              "n_gross_bits": 511,
+              "net_J": -4.2118164598018656e-11,
+              "positive_draw_J": 4.559567403378946e-13,
+              "returned_J": 4.257412133835656e-11,
+              "net_mean_W": -8.242302269670971e-05,
+              "positive_draw_mean_W": 8.922832491935315e-07,
+              "returned_mean_W": 8.331530594590325e-05,
+              "net_J_per_gross_bit": -8.24230226967097e-14,
+              "positive_draw_J_per_gross_bit": 8.922832491935315e-16,
+              "returned_J_per_gross_bit": 8.331530594590324e-14,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            }
+          },
+          "data_source_energy_separate": {
+            "start_s": 2.86e-07,
+            "end_s": 7.97e-07,
+            "duration_s": 5.11e-07,
+            "n_gross_bits": 511,
+            "net_J": 1.0475606455573381e-12,
+            "positive_draw_J": 3.5682809476658247e-12,
+            "returned_J": 2.520720302108487e-12,
+            "net_mean_W": 2.0500208327932256e-06,
+            "positive_draw_mean_W": 6.982937275275587e-06,
+            "returned_mean_W": 4.932916442482362e-06,
+            "net_J_per_gross_bit": 2.0500208327932255e-15,
+            "positive_draw_J_per_gross_bit": 6.9829372752755865e-15,
+            "returned_J_per_gross_bit": 4.932916442482362e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "supply_terminal_total": {
+            "net_J": 2.070771509294624e-10,
+            "positive_draw_J": 2.9933970227678287e-10,
+            "returned_J": 9.226255134732053e-11,
+            "net_J_per_gross_bit": 4.052390429147992e-13,
+            "positive_draw_J_per_gross_bit": 5.857919809721779e-13,
+            "returned_J_per_gross_bit": 1.8055293805737875e-13
+          },
+          "endpoint_values": {
+            "data": [
+              0.0,
+              0.0
+            ],
+            "out": [
+              1.626319556543507,
+              1.638635548882378
+            ],
+            "led_k": [
+              1.626357537710339,
+              1.638660548892203
+            ],
+            "led_voltage": [
+              3.373642462289661,
+              3.361339451107797
+            ],
+            "iled_cond": [
+              2.614256697880767e-05,
+              2.499999877618011e-05
+            ],
+            "vdd": [
+              3.3,
+              3.3
+            ],
+            "vh": [
+              1.611025445142376,
+              1.611025445142376
+            ],
+            "vl": [
+              1.172154317814198,
+              1.172154317814198
+            ],
+            "xdrv.ctrl": [
+              0.0001333220315104696,
+              1.6304766451890608e-09
+            ],
+            "xdrv.n1": [
+              3.29999301099764,
+              3.299999991126663
+            ]
+          },
+          "explicit_CLED_Lpkg_stored_energy_J": [
+            1.1381464014588704e-12,
+            1.1298604468072232e-12
+          ],
+          "explicit_CLED_Lpkg_stored_energy_change_J_per_bit": -1.6215175443536574e-17,
+          "storage_boundary": "CLED and Lpkg only; not total MOS nonlinear stored energy"
+        },
+        "second_period": {
+          "start_s": 7.97e-07,
+          "end_s": 1.308e-06,
+          "bits": 511,
+          "rail_energies": {
+            "VLED": {
+              "start_s": 7.97e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 5.110000000000001e-07,
+              "n_gross_bits": 511,
+              "net_J": 1.5899580932669273e-10,
+              "positive_draw_J": 1.95716278973654e-10,
+              "returned_J": 3.672046964696126e-11,
+              "net_mean_W": 0.00031114639789959434,
+              "positive_draw_mean_W": 0.0003830064167781878,
+              "returned_mean_W": 7.186001887859347e-05,
+              "net_J_per_gross_bit": 3.111463978995944e-13,
+              "positive_draw_J_per_gross_bit": 3.830064167781878e-13,
+              "returned_J_per_gross_bit": 7.186001887859347e-14,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VDD": {
+              "start_s": 7.97e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 5.110000000000001e-07,
+              "n_gross_bits": 511,
+              "net_J": 8.354659150416397e-11,
+              "positive_draw_J": 8.599817248417498e-11,
+              "returned_J": 2.451580980011003e-12,
+              "net_mean_W": 0.00016349626517448917,
+              "positive_draw_mean_W": 0.00016829387961678075,
+              "returned_mean_W": 4.79761444229159e-06,
+              "net_J_per_gross_bit": 1.6349626517448919e-13,
+              "positive_draw_J_per_gross_bit": 1.6829387961678078e-13,
+              "returned_J_per_gross_bit": 4.797614442291591e-15,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VH": {
+              "start_s": 7.97e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 5.110000000000001e-07,
+              "n_gross_bits": 511,
+              "net_J": 6.662226061185178e-12,
+              "positive_draw_J": 1.7178737405580814e-11,
+              "returned_J": 1.0516511344395635e-11,
+              "net_mean_W": 1.3037624385880973e-05,
+              "positive_draw_mean_W": 3.361788141992331e-05,
+              "returned_mean_W": 2.0580257034042338e-05,
+              "net_J_per_gross_bit": 1.3037624385880976e-14,
+              "positive_draw_J_per_gross_bit": 3.3617881419923316e-14,
+              "returned_J_per_gross_bit": 2.058025703404234e-14,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VL": {
+              "start_s": 7.97e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 5.110000000000001e-07,
+              "n_gross_bits": 511,
+              "net_J": -4.211976504894964e-11,
+              "positive_draw_J": 4.559565955566457e-13,
+              "returned_J": 4.257572164450629e-11,
+              "net_mean_W": -8.242615469461768e-05,
+              "positive_draw_mean_W": 8.922829658642772e-07,
+              "returned_mean_W": 8.331843766048196e-05,
+              "net_J_per_gross_bit": -8.242615469461769e-14,
+              "positive_draw_J_per_gross_bit": 8.922829658642774e-16,
+              "returned_J_per_gross_bit": 8.331843766048197e-14,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            }
+          },
+          "data_source_energy_separate": {
+            "start_s": 7.97e-07,
+            "end_s": 1.308e-06,
+            "duration_s": 5.110000000000001e-07,
+            "n_gross_bits": 511,
+            "net_J": 1.047545190464913e-12,
+            "positive_draw_J": 3.5682858372390956e-12,
+            "returned_J": 2.520740646774183e-12,
+            "net_mean_W": 2.0499905879939586e-06,
+            "positive_draw_mean_W": 6.9829468439121235e-06,
+            "returned_mean_W": 4.932956255918165e-06,
+            "net_J_per_gross_bit": 2.049990587993959e-15,
+            "positive_draw_J_per_gross_bit": 6.982946843912125e-15,
+            "returned_J_per_gross_bit": 4.9329562559181665e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "supply_terminal_total": {
+            "net_J": 2.0708486184309224e-10,
+            "positive_draw_J": 2.993491454589664e-10,
+            "returned_J": 9.22642836158742e-11,
+            "net_J_per_gross_bit": 4.0525413276534685e-13,
+            "positive_draw_J_per_gross_bit": 5.858104607807562e-13,
+            "returned_J_per_gross_bit": 1.805563280154094e-13
+          },
+          "endpoint_values": {
+            "data": [
+              0.0,
+              0.0
+            ],
+            "out": [
+              1.638635548882378,
+              1.6386355488806894
+            ],
+            "led_k": [
+              1.638660548892203,
+              1.6386605488905153
+            ],
+            "led_voltage": [
+              3.361339451107797,
+              3.3613394511094845
+            ],
+            "iled_cond": [
+              2.499999877618011e-05,
+              2.4999998776336896e-05
+            ],
+            "vdd": [
+              3.3,
+              3.3
+            ],
+            "vh": [
+              1.611025445142376,
+              1.611025445142376
+            ],
+            "vl": [
+              1.172154317814198,
+              1.172154317814198
+            ],
+            "xdrv.ctrl": [
+              1.6304766451890608e-09,
+              1.6304950227468985e-09
+            ],
+            "xdrv.n1": [
+              3.299999991126663,
+              3.299999991126664
+            ]
+          },
+          "explicit_CLED_Lpkg_stored_energy_J": [
+            1.1298604468072232e-12,
+            1.1298604468083576e-12
+          ],
+          "explicit_CLED_Lpkg_stored_energy_change_J_per_bit": 2.2198514997737072e-27,
+          "storage_boundary": "CLED and Lpkg only; not total MOS nonlinear stored energy"
+        },
+        "two_period_average": {
+          "start_s": 2.86e-07,
+          "end_s": 1.308e-06,
+          "bits": 1022,
+          "rail_energies": {
+            "VLED": {
+              "start_s": 2.86e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 1.0220000000000001e-06,
+              "n_gross_bits": 1022,
+              "net_J": 3.179809639383168e-10,
+              "positive_draw_J": 3.914232193444958e-10,
+              "returned_J": 7.344225540617902e-11,
+              "net_mean_W": 0.00031113597254238433,
+              "positive_draw_mean_W": 0.00038299727920205063,
+              "returned_mean_W": 7.186130665966635e-05,
+              "net_J_per_gross_bit": 3.111359725423844e-13,
+              "positive_draw_J_per_gross_bit": 3.829972792020507e-13,
+              "returned_J_per_gross_bit": 7.186130665966637e-14,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VDD": {
+              "start_s": 2.86e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 1.0220000000000001e-06,
+              "n_gross_bits": 1022,
+              "net_J": 1.6709313220783263e-10,
+              "positive_draw_J": 1.7199628518545826e-10,
+              "returned_J": 4.903152977625615e-12,
+              "net_mean_W": 0.0001634962154675466,
+              "positive_draw_mean_W": 0.0001682938211208006,
+              "returned_mean_W": 4.797605653254026e-06,
+              "net_J_per_gross_bit": 1.6349621546754662e-13,
+              "positive_draw_J_per_gross_bit": 1.6829382112080065e-13,
+              "returned_J_per_gross_bit": 4.797605653254026e-15,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VH": {
+              "start_s": 2.86e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 1.0220000000000001e-06,
+              "n_gross_bits": 1022,
+              "net_J": 1.3325846273188169e-11,
+              "positive_draw_J": 3.4357429869715403e-11,
+              "returned_J": 2.1031583596527234e-11,
+              "net_mean_W": 1.3038988525624429e-05,
+              "positive_draw_mean_W": 3.3617837445905475e-05,
+              "returned_mean_W": 2.0578848920281048e-05,
+              "net_J_per_gross_bit": 1.3038988525624431e-14,
+              "positive_draw_J_per_gross_bit": 3.361783744590548e-14,
+              "returned_J_per_gross_bit": 2.057884892028105e-14,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VL": {
+              "start_s": 2.86e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 1.0220000000000001e-06,
+              "n_gross_bits": 1022,
+              "net_J": -8.42379296469683e-11,
+              "positive_draw_J": 9.119133358945404e-13,
+              "returned_J": 8.514984298286284e-11,
+              "net_mean_W": -8.242458869566369e-05,
+              "positive_draw_mean_W": 8.922831075289044e-07,
+              "returned_mean_W": 8.331687180319258e-05,
+              "net_J_per_gross_bit": -8.24245886956637e-14,
+              "positive_draw_J_per_gross_bit": 8.922831075289045e-16,
+              "returned_J_per_gross_bit": 8.33168718031926e-14,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            }
+          },
+          "data_source_energy_separate": {
+            "start_s": 2.86e-07,
+            "end_s": 1.308e-06,
+            "duration_s": 1.0220000000000001e-06,
+            "n_gross_bits": 1022,
+            "net_J": 2.095105836022251e-12,
+            "positive_draw_J": 7.136566784904921e-12,
+            "returned_J": 5.04146094888267e-12,
+            "net_mean_W": 2.0500057103935917e-06,
+            "positive_draw_mean_W": 6.9829420595938555e-06,
+            "returned_mean_W": 4.9329363492002634e-06,
+            "net_J_per_gross_bit": 2.0500057103935922e-15,
+            "positive_draw_J_per_gross_bit": 6.982942059593856e-15,
+            "returned_J_per_gross_bit": 4.9329363492002646e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "supply_terminal_total": {
+            "net_J": 4.141620127723693e-10,
+            "positive_draw_J": 5.98688847735564e-10,
+            "returned_J": 1.845268349631947e-10,
+            "net_J_per_gross_bit": 4.0524658783989173e-13,
+            "positive_draw_J_per_gross_bit": 5.858012208762857e-13,
+            "returned_J_per_gross_bit": 1.8055463303639404e-13
+          },
+          "endpoint_values": {
+            "data": [
+              0.0,
+              0.0
+            ],
+            "out": [
+              1.626319556543507,
+              1.6386355488806894
+            ],
+            "led_k": [
+              1.626357537710339,
+              1.6386605488905153
+            ],
+            "led_voltage": [
+              3.373642462289661,
+              3.3613394511094845
+            ],
+            "iled_cond": [
+              2.614256697880767e-05,
+              2.4999998776336896e-05
+            ],
+            "vdd": [
+              3.3,
+              3.3
+            ],
+            "vh": [
+              1.611025445142376,
+              1.611025445142376
+            ],
+            "vl": [
+              1.172154317814198,
+              1.172154317814198
+            ],
+            "xdrv.ctrl": [
+              0.0001333220315104696,
+              1.6304950227468985e-09
+            ],
+            "xdrv.n1": [
+              3.29999301099764,
+              3.299999991126664
+            ]
+          },
+          "explicit_CLED_Lpkg_stored_energy_J": [
+            1.1381464014588704e-12,
+            1.1298604468083576e-12
+          ],
+          "explicit_CLED_Lpkg_stored_energy_change_J_per_bit": -8.107587720658361e-18,
+          "storage_boundary": "CLED and Lpkg only; not total MOS nonlinear stored energy"
+        }
+      },
+      "second_period_vs_first": {
+        "VLED": {
+          "net_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 0.02085071442007226,
+            "relative_to_first_percent": 0.00670170437905648
+          },
+          "positive_draw_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 0.01827515227428526,
+            "relative_to_first_percent": 0.004771727969618351
+          },
+          "returned_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -0.002575562145799624,
+            "relative_to_first_percent": -0.0035840094082931198
+          }
+        },
+        "VDD": {
+          "net_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 9.94135224905908e-05,
+            "relative_to_first_percent": 6.080480360373376e-05
+          },
+          "positive_draw_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 0.00011699159765735059,
+            "relative_to_first_percent": 6.951630044537624e-05
+          },
+          "returned_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 1.7578075128894483e-05,
+            "relative_to_first_percent": 0.0003663933345463638
+          }
+        },
+        "VH": {
+          "net_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -0.002728279486911714,
+            "relative_to_first_percent": -0.020921822874908767
+          },
+          "positive_draw_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 8.79480356652911e-05,
+            "relative_to_first_percent": 0.0002616115651339112
+          },
+          "returned_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 0.0028162275225754275,
+            "relative_to_first_percent": 0.013685995012961635
+          }
+        },
+        "VL": {
+          "net_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -0.003131997907995457,
+            "relative_to_first_percent": -0.0037999066347277816
+          },
+          "positive_draw_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -2.8332925408258077e-07,
+            "relative_to_first_percent": -3.175328622818606e-05
+          },
+          "returned_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 0.0031317145787311193,
+            "relative_to_first_percent": 0.0037588706458865392
+          }
+        },
+        "TOTAL_SUPPLIES": {
+          "net_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 0.01508985054763517,
+            "relative_to_first_percent": 0.003723691192017691
+          },
+          "positive_draw_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 0.018479808578274144,
+            "relative_to_first_percent": 0.0031546708009906744
+          },
+          "returned_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 0.0033899580306389725,
+            "relative_to_first_percent": 0.0018775424355385797
+          }
+        },
+        "DATA": {
+          "net_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -3.0244799266530737e-05,
+            "relative_to_first_percent": -0.0014753410688671457
+          },
+          "positive_draw_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 9.568636538188169e-06,
+            "relative_to_first_percent": 0.00013702881983585535
+          },
+          "returned_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 3.9813435804718905e-05,
+            "relative_to_first_percent": 0.0008070973078287909
+          }
+        }
+      },
+      "log": "build/highspeed-nrz/window-check-qzbahb4z/cases/A-two_period_window-1G-typical-27C-3.3V-C200-L0.5-e20-s40/ngspice.log",
+      "log_sha256": "6d937ed685ddb39e7bbf3248849eae810b6245be624d44948860437a2ba330e0"
+    },
+    "B": {
+      "simulation": {
+        "case": {
+          "route": "B",
+          "rate_Gbps": 1,
+          "corner": "typical",
+          "temp_C": 27,
+          "vdd_V": 3.3,
+          "cap_F": 2e-13,
+          "r_pkg": 1.0,
+          "l_pkg": 5e-10,
+          "edge_s": 2e-11,
+          "steps_per_ui": 40,
+          "reltol": 1e-05,
+          "chgtol": 1e-16,
+          "method": "gear",
+          "kind": "two_period_window",
+          "name": "B-two_period_window-1G-typical-27C-3.3V-C200-L0.5-e20-s40"
+        },
+        "simulation_ok": true,
+        "exit_code": 0,
+        "elapsed_s": 43.623709416016936,
+        "waveform": "build/highspeed-nrz/window-check-qzbahb4z/cases/B-two_period_window-1G-typical-27C-3.3V-C200-L0.5-e20-s40/waveform.dat.gz",
+        "uncompressed_sha256": "694e2fae5bf9b9493dd0f1be2b68f270b7e4580286529e63c76021c31fcca870",
+        "waveform_sha256": "a5f73f15e1fe58ba1657d7c8ef600511a80738126fc5a04a8ab0262b5d3be4ac",
+        "deck_sha256": "e9424b4606f4bbaada3434c1a473f50ee6a829b83274739d5baba02dbe74ab87",
+        "vectors": {
+          "data": 1,
+          "out": 2,
+          "led_k": 3,
+          "led_voltage": 4,
+          "iled_cond": 5,
+          "package_current": 6,
+          "vdd": 7,
+          "xdrv.bias": 8,
+          "xdrv.dummy": 9,
+          "xdrv.gb": 10,
+          "xdrv.gp": 11,
+          "xdrv.vx": 12,
+          "vled_current": 13,
+          "vdd_current": 14,
+          "vdummy_current": 15,
+          "data_current": 16
+        },
+        "devices": [
+          {
+            "instance": "xref",
+            "nodes": [
+              "xdrv.bias",
+              "xdrv.bias",
+              "0",
+              "0"
+            ],
+            "model": "nfet_03v3",
+            "sizing": "w=2u l=1u ad=1.2p as=1.2p pd=5.2u ps=5.2u"
+          },
+          {
+            "instance": "xbase",
+            "nodes": [
+              "out",
+              "xdrv.bias",
+              "0",
+              "0"
+            ],
+            "model": "nfet_03v3",
+            "sizing": "w=2u l=1u ad=1.2p as=1.2p pd=5.2u ps=5.2u"
+          },
+          {
+            "instance": "xtail",
+            "nodes": [
+              "xdrv.vx",
+              "xdrv.bias",
+              "0",
+              "0"
+            ],
+            "model": "nfet_03v3",
+            "sizing": "w={WTAIL} l=1u ad={WTAIL*0.6u} as={WTAIL*0.6u} pd={2*(WTAIL+0.6u)} ps={2*(WTAIL+0.6u)}"
+          },
+          {
+            "instance": "xled",
+            "nodes": [
+              "out",
+              "xdrv.gp",
+              "xdrv.vx",
+              "0"
+            ],
+            "model": "nfet_03v3",
+            "sizing": "w=1u l=0.28u ad=0.6p as=0.6p pd=3.2u ps=3.2u"
+          },
+          {
+            "instance": "xdummy",
+            "nodes": [
+              "xdrv.dummy",
+              "xdrv.gb",
+              "xdrv.vx",
+              "0"
+            ],
+            "model": "nfet_03v3",
+            "sizing": "w=1u l=0.28u ad=0.6p as=0.6p pd=3.2u ps=3.2u"
+          },
+          {
+            "instance": "xinv1n",
+            "nodes": [
+              "xdrv.gb",
+              "data",
+              "0",
+              "0"
+            ],
+            "model": "nfet_03v3",
+            "sizing": "w=1u l=0.28u ad=0.6p as=0.6p pd=3.2u ps=3.2u"
+          },
+          {
+            "instance": "xinv1p",
+            "nodes": [
+              "xdrv.gb",
+              "data",
+              "vdd",
+              "vdd"
+            ],
+            "model": "pfet_03v3",
+            "sizing": "w=2u l=0.28u ad=1.2p as=1.2p pd=5.2u ps=5.2u"
+          },
+          {
+            "instance": "xinv2n",
+            "nodes": [
+              "xdrv.gp",
+              "xdrv.gb",
+              "0",
+              "0"
+            ],
+            "model": "nfet_03v3",
+            "sizing": "w=1u l=0.28u ad=0.6p as=0.6p pd=3.2u ps=3.2u"
+          },
+          {
+            "instance": "xinv2p",
+            "nodes": [
+              "xdrv.gp",
+              "xdrv.gb",
+              "vdd",
+              "vdd"
+            ],
+            "model": "pfet_03v3",
+            "sizing": "w=2u l=0.28u ad=1.2p as=1.2p pd=5.2u ps=5.2u"
+          }
+        ],
+        "rails": {
+          "VLED": {
+            "node": "led_a",
+            "voltage_V": 5.0
+          },
+          "VDD": {
+            "node": "vdd",
+            "voltage_V": 3.3
+          },
+          "VDUMMY": {
+            "node": "vdummy",
+            "voltage_V": 3.3
+          }
+        },
+        "rows": 701100,
+        "warnings": []
+      },
+      "windows": {
+        "first_period": {
+          "start_s": 2.86e-07,
+          "end_s": 7.97e-07,
+          "bits": 511,
+          "rail_energies": {
+            "VLED": {
+              "start_s": 2.86e-07,
+              "end_s": 7.97e-07,
+              "duration_s": 5.11e-07,
+              "n_gross_bits": 511,
+              "net_J": 1.6195746377051884e-10,
+              "positive_draw_J": 1.6196767873243015e-10,
+              "returned_J": 1.0214961911323481e-14,
+              "net_mean_W": 0.0003169421991595281,
+              "positive_draw_mean_W": 0.00031696218930025473,
+              "returned_mean_W": 1.9990140726660434e-08,
+              "net_J_per_gross_bit": 3.1694219915952807e-13,
+              "positive_draw_J_per_gross_bit": 3.169621893002547e-13,
+              "returned_J_per_gross_bit": 1.9990140726660432e-17,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VDD": {
+              "start_s": 2.86e-07,
+              "end_s": 7.97e-07,
+              "duration_s": 5.11e-07,
+              "n_gross_bits": 511,
+              "net_J": 6.469026229847271e-11,
+              "positive_draw_J": 6.697584263942534e-11,
+              "returned_J": 2.2855803409526283e-12,
+              "net_mean_W": 0.00012659542524162958,
+              "positive_draw_mean_W": 0.0001310681852043549,
+              "returned_mean_W": 4.472759962725301e-06,
+              "net_J_per_gross_bit": 1.2659542524162958e-13,
+              "positive_draw_J_per_gross_bit": 1.3106818520435487e-13,
+              "returned_J_per_gross_bit": 4.4727599627252996e-15,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VDUMMY": {
+              "start_s": 2.86e-07,
+              "end_s": 7.97e-07,
+              "duration_s": 5.11e-07,
+              "n_gross_bits": 511,
+              "net_J": 6.191897193201064e-11,
+              "positive_draw_J": 6.198325069653941e-11,
+              "returned_J": 6.427876452877925e-14,
+              "net_mean_W": 0.00012117215642272143,
+              "positive_draw_mean_W": 0.00012129794656857029,
+              "returned_mean_W": 1.2579014584888307e-07,
+              "net_J_per_gross_bit": 1.2117215642272142e-13,
+              "positive_draw_J_per_gross_bit": 1.2129794656857028e-13,
+              "returned_J_per_gross_bit": 1.2579014584888306e-16,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            }
+          },
+          "data_source_energy_separate": {
+            "start_s": 2.86e-07,
+            "end_s": 7.97e-07,
+            "duration_s": 5.11e-07,
+            "n_gross_bits": 511,
+            "net_J": 1.1154996194363543e-12,
+            "positive_draw_J": 3.6093607530402263e-12,
+            "returned_J": 2.4938611336038718e-12,
+            "net_mean_W": 2.182973814943942e-06,
+            "positive_draw_mean_W": 7.06332828383606e-06,
+            "returned_mean_W": 4.8803544688921174e-06,
+            "net_J_per_gross_bit": 2.182973814943942e-15,
+            "positive_draw_J_per_gross_bit": 7.063328283836059e-15,
+            "returned_J_per_gross_bit": 4.880354468892117e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "supply_terminal_total": {
+            "net_J": 2.885666980010022e-10,
+            "positive_draw_J": 2.909267720683949e-10,
+            "returned_J": 2.360074067392731e-12,
+            "net_J_per_gross_bit": 5.647097808238791e-13,
+            "positive_draw_J_per_gross_bit": 5.693283210731799e-13,
+            "returned_J_per_gross_bit": 4.618540249300843e-15
+          },
+          "endpoint_values": {
+            "data": [
+              0.0,
+              0.0
+            ],
+            "out": [
+              1.446324601763762,
+              1.5930069265475857
+            ],
+            "led_k": [
+              1.446349800869706,
+              1.5930319761479808
+            ],
+            "led_voltage": [
+              3.553650199130295,
+              3.406968023852018
+            ],
+            "iled_cond": [
+              4.789100547195211e-05,
+              2.935879731259224e-05
+            ],
+            "vdd": [
+              3.3,
+              3.3
+            ],
+            "xdrv.bias": [
+              1.111222639340766,
+              1.111790360576452
+            ],
+            "xdrv.dummy": [
+              1.216783645694301,
+              1.195608162363061
+            ],
+            "xdrv.gb": [
+              3.299838932587199,
+              3.300000936855899
+            ],
+            "xdrv.gp": [
+              1.381592277955516e-05,
+              4.482604171927693e-06
+            ],
+            "xdrv.vx": [
+              1.030475133526633,
+              1.00984947356438
+            ]
+          },
+          "explicit_CLED_Lpkg_stored_energy_J": [
+            1.2628431335922601e-12,
+            1.1607432686378183e-12
+          ],
+          "explicit_CLED_Lpkg_stored_energy_change_J_per_bit": -1.9980404100673549e-16,
+          "storage_boundary": "CLED and Lpkg only; not total MOS nonlinear stored energy"
+        },
+        "second_period": {
+          "start_s": 7.97e-07,
+          "end_s": 1.308e-06,
+          "bits": 511,
+          "rail_energies": {
+            "VLED": {
+              "start_s": 7.97e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 5.110000000000001e-07,
+              "n_gross_bits": 511,
+              "net_J": 1.619566133819007e-10,
+              "positive_draw_J": 1.6196681000379352e-10,
+              "returned_J": 1.0196621892798416e-14,
+              "net_mean_W": 0.0003169405349939348,
+              "positive_draw_mean_W": 0.0003169604892442143,
+              "returned_mean_W": 1.9954250279448952e-08,
+              "net_J_per_gross_bit": 3.169405349939349e-13,
+              "positive_draw_J_per_gross_bit": 3.1696048924421435e-13,
+              "returned_J_per_gross_bit": 1.9954250279448954e-17,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VDD": {
+              "start_s": 7.97e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 5.110000000000001e-07,
+              "n_gross_bits": 511,
+              "net_J": 6.469031364119733e-11,
+              "positive_draw_J": 6.697590521111181e-11,
+              "returned_J": 2.285591569914475e-12,
+              "net_mean_W": 0.0001265955257166288,
+              "positive_draw_mean_W": 0.00013106830765383914,
+              "returned_mean_W": 4.472781937210322e-06,
+              "net_J_per_gross_bit": 1.2659552571662881e-13,
+              "positive_draw_J_per_gross_bit": 1.3106830765383917e-13,
+              "returned_J_per_gross_bit": 4.4727819372103225e-15,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VDUMMY": {
+              "start_s": 7.97e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 5.110000000000001e-07,
+              "n_gross_bits": 511,
+              "net_J": 6.191925399264874e-11,
+              "positive_draw_J": 6.198353225441677e-11,
+              "returned_J": 6.42782617680047e-14,
+              "net_mean_W": 0.00012117270840048676,
+              "positive_draw_mean_W": 0.00012129849756245942,
+              "returned_mean_W": 1.257891619726119e-07,
+              "net_J_per_gross_bit": 1.2117270840048678e-13,
+              "positive_draw_J_per_gross_bit": 1.2129849756245943e-13,
+              "returned_J_per_gross_bit": 1.2578916197261192e-16,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            }
+          },
+          "data_source_energy_separate": {
+            "start_s": 7.97e-07,
+            "end_s": 1.308e-06,
+            "duration_s": 5.110000000000001e-07,
+            "n_gross_bits": 511,
+            "net_J": 1.1154977783632204e-12,
+            "positive_draw_J": 3.6093814487515003e-12,
+            "returned_J": 2.4938836703882802e-12,
+            "net_mean_W": 2.1829702120610965e-06,
+            "positive_draw_mean_W": 7.063368784249511e-06,
+            "returned_mean_W": 4.880398572188415e-06,
+            "net_J_per_gross_bit": 2.1829702120610967e-15,
+            "positive_draw_J_per_gross_bit": 7.063368784249511e-15,
+            "returned_J_per_gross_bit": 4.880398572188415e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "supply_terminal_total": {
+            "net_J": 2.885661810157468e-10,
+            "positive_draw_J": 2.9092624746932207e-10,
+            "returned_J": 2.3600664535752778e-12,
+            "net_J_per_gross_bit": 5.647087691110504e-13,
+            "positive_draw_J_per_gross_bit": 5.693272944605129e-13,
+            "returned_J_per_gross_bit": 4.618525349462383e-15
+          },
+          "endpoint_values": {
+            "data": [
+              0.0,
+              0.0
+            ],
+            "out": [
+              1.5930069265475857,
+              1.5930059540608956
+            ],
+            "led_k": [
+              1.5930319761479808,
+              1.5930310036625537
+            ],
+            "led_voltage": [
+              3.406968023852018,
+              3.4069689963374468
+            ],
+            "iled_cond": [
+              2.935879731259224e-05,
+              2.9358896270885612e-05
+            ],
+            "vdd": [
+              3.3,
+              3.3
+            ],
+            "xdrv.bias": [
+              1.111790360576452,
+              1.1117903618254428
+            ],
+            "xdrv.dummy": [
+              1.195608162363061,
+              1.195608155618152
+            ],
+            "xdrv.gb": [
+              3.300000936855899,
+              3.300000936817273
+            ],
+            "xdrv.gp": [
+              4.482604171927693e-06,
+              4.482701776679498e-06
+            ],
+            "xdrv.vx": [
+              1.00984947356438,
+              1.0098494668440037
+            ]
+          },
+          "explicit_CLED_Lpkg_stored_energy_J": [
+            1.1607432686378183e-12,
+            1.160743931283283e-12
+          ],
+          "explicit_CLED_Lpkg_stored_energy_change_J_per_bit": 1.2967621616767117e-21,
+          "storage_boundary": "CLED and Lpkg only; not total MOS nonlinear stored energy"
+        },
+        "two_period_average": {
+          "start_s": 2.86e-07,
+          "end_s": 1.308e-06,
+          "bits": 1022,
+          "rail_energies": {
+            "VLED": {
+              "start_s": 2.86e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 1.0220000000000001e-06,
+              "n_gross_bits": 1022,
+              "net_J": 3.2391407715241957e-10,
+              "positive_draw_J": 3.239344887362236e-10,
+              "returned_J": 2.0411583804121896e-14,
+              "net_mean_W": 0.0003169413670767314,
+              "positive_draw_mean_W": 0.00031696133927223443,
+              "returned_mean_W": 1.997219550305469e-08,
+              "net_J_per_gross_bit": 3.169413670767315e-13,
+              "positive_draw_J_per_gross_bit": 3.1696133927223447e-13,
+              "returned_J_per_gross_bit": 1.9972195503054692e-17,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VDD": {
+              "start_s": 2.86e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 1.0220000000000001e-06,
+              "n_gross_bits": 1022,
+              "net_J": 1.2938057593967004e-10,
+              "positive_draw_J": 1.3395174785053714e-10,
+              "returned_J": 4.571171910867103e-12,
+              "net_mean_W": 0.00012659547547912918,
+              "positive_draw_mean_W": 0.000131068246429097,
+              "returned_mean_W": 4.472770949967811e-06,
+              "net_J_per_gross_bit": 1.265954754791292e-13,
+              "positive_draw_J_per_gross_bit": 1.31068246429097e-13,
+              "returned_J_per_gross_bit": 4.472770949967811e-15,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            },
+            "VDUMMY": {
+              "start_s": 2.86e-07,
+              "end_s": 1.308e-06,
+              "duration_s": 1.0220000000000001e-06,
+              "n_gross_bits": 1022,
+              "net_J": 1.2383822592465941e-10,
+              "positive_draw_J": 1.239667829509562e-10,
+              "returned_J": 1.2855702629678394e-13,
+              "net_mean_W": 0.00012117243241160411,
+              "positive_draw_mean_W": 0.00012129822206551485,
+              "returned_mean_W": 1.2578965391074748e-07,
+              "net_J_per_gross_bit": 1.211724324116041e-13,
+              "positive_draw_J_per_gross_bit": 1.2129822206551486e-13,
+              "returned_J_per_gross_bit": 1.257896539107475e-16,
+              "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+            }
+          },
+          "data_source_energy_separate": {
+            "start_s": 2.86e-07,
+            "end_s": 1.308e-06,
+            "duration_s": 1.0220000000000001e-06,
+            "n_gross_bits": 1022,
+            "net_J": 2.230997397799575e-12,
+            "positive_draw_J": 7.218742201791727e-12,
+            "returned_J": 4.987744803992152e-12,
+            "net_mean_W": 2.1829720135025194e-06,
+            "positive_draw_mean_W": 7.063348534042785e-06,
+            "returned_mean_W": 4.880376520540266e-06,
+            "net_J_per_gross_bit": 2.1829720135025196e-15,
+            "positive_draw_J_per_gross_bit": 7.063348534042786e-15,
+            "returned_J_per_gross_bit": 4.880376520540266e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "supply_terminal_total": {
+            "net_J": 5.771328790167491e-10,
+            "positive_draw_J": 5.818530195377169e-10,
+            "returned_J": 4.720140520968009e-12,
+            "net_J_per_gross_bit": 5.647092749674648e-13,
+            "positive_draw_J_per_gross_bit": 5.693278077668464e-13,
+            "returned_J_per_gross_bit": 4.618532799381613e-15
+          },
+          "endpoint_values": {
+            "data": [
+              0.0,
+              0.0
+            ],
+            "out": [
+              1.446324601763762,
+              1.5930059540608956
+            ],
+            "led_k": [
+              1.446349800869706,
+              1.5930310036625537
+            ],
+            "led_voltage": [
+              3.553650199130295,
+              3.4069689963374468
+            ],
+            "iled_cond": [
+              4.789100547195211e-05,
+              2.9358896270885612e-05
+            ],
+            "vdd": [
+              3.3,
+              3.3
+            ],
+            "xdrv.bias": [
+              1.111222639340766,
+              1.1117903618254428
+            ],
+            "xdrv.dummy": [
+              1.216783645694301,
+              1.195608155618152
+            ],
+            "xdrv.gb": [
+              3.299838932587199,
+              3.300000936817273
+            ],
+            "xdrv.gp": [
+              1.381592277955516e-05,
+              4.482701776679498e-06
+            ],
+            "xdrv.vx": [
+              1.030475133526633,
+              1.0098494668440037
+            ]
+          },
+          "explicit_CLED_Lpkg_stored_energy_J": [
+            1.2628431335922601e-12,
+            1.160743931283283e-12
+          ],
+          "explicit_CLED_Lpkg_stored_energy_change_J_per_bit": -9.990137212228691e-17,
+          "storage_boundary": "CLED and Lpkg only; not total MOS nonlinear stored energy"
+        }
+      },
+      "second_period_vs_first": {
+        "VLED": {
+          "net_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -0.0016641655931912062,
+            "relative_to_first_percent": -0.0005250691127922583
+          },
+          "positive_draw_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -0.0017000560403473933,
+            "relative_to_first_percent": -0.0005363592560048067
+          },
+          "returned_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -3.589044721147814e-05,
+            "relative_to_first_percent": -0.1795407431204914
+          }
+        },
+        "VDD": {
+          "net_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 0.00010047499923485908,
+            "relative_to_first_percent": 7.936700638517143e-05
+          },
+          "positive_draw_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 0.00012244948430115794,
+            "relative_to_first_percent": 9.342426166215769e-05
+          },
+          "returned_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 2.19744850229115e-05,
+            "relative_to_first_percent": 0.0004912958711408742
+          }
+        },
+        "VDUMMY": {
+          "net_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 0.0005519777653574435,
+            "relative_to_first_percent": 0.000455531849603974
+          },
+          "positive_draw_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 0.0005509938891507226,
+            "relative_to_first_percent": 0.0004542483238487828
+          },
+          "returned_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -9.838762711363056e-07,
+            "relative_to_first_percent": -0.0007821568728589258
+          }
+        },
+        "TOTAL_SUPPLIES": {
+          "net_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -0.0010117128286746342,
+            "relative_to_first_percent": -0.00017915624326509866
+          },
+          "positive_draw_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -0.0010266126669459998,
+            "relative_to_first_percent": -0.000180319971613364
+          },
+          "returned_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -1.489983845990324e-05,
+            "relative_to_first_percent": -0.00032260925867559094
+          }
+        },
+        "DATA": {
+          "net_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": -3.6028828453816186e-06,
+            "relative_to_first_percent": -0.00016504471197581174
+          },
+          "positive_draw_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 4.05004134520637e-05,
+            "relative_to_first_percent": 0.0005733899349510076
+          },
+          "returned_J_per_gross_bit": {
+            "second_minus_first_fJ_per_bit": 4.4103296297839746e-05,
+            "relative_to_first_percent": 0.0009036904302537592
+          }
+        }
+      },
+      "log": "build/highspeed-nrz/window-check-qzbahb4z/cases/B-two_period_window-1G-typical-27C-3.3V-C200-L0.5-e20-s40/ngspice.log",
+      "log_sha256": "141f08132f29a78635763a6849a0264bed2bfc2a6d4ed4648d9e2a42da9e4551"
+    }
+  },
+  "interpretation_boundary": [
+    "Common input windows with no latency shift",
+    "Training sequence unchanged; no receiver retraining is needed for this source-energy check",
+    "Positive supply draw, returned and net energy all retained; DATA is separate",
+    "Finite windows can retain different initial/final nonlinear-device energy; the second period diagnoses that sensitivity",
+    "Explicit stored-energy accounting covers CLED/Lpkg only, not all MOS energy"
+  ]
+}

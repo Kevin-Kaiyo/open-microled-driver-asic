@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "top": "startup_integrated_v3",
+  "run_directory": "build/layout-v3/joint-r2",
+  "physical_checks_passed": true,
+  "checks": [
+    {
+      "name": "Magic full DRC from written GDS",
+      "passed": true
+    },
+    {
+      "name": "netgen-lvs.log",
+      "passed": true
+    },
+    {
+      "name": "netgen-pex-collapse-lvs.log",
+      "passed": true
+    },
+    {
+      "name": "Independent KLayout D deck",
+      "passed": true
+    },
+    {
+      "name": "Real GDS open and PG short rejected",
+      "passed": true
+    },
+    {
+      "name": "6512 of 6512 resistance networks",
+      "passed": true
+    },
+    {
+      "name": "RC collapse to source topology and attribute-only change",
+      "passed": true
+    }
+  ],
+  "electrical_full_top_transient_regression_passed": null,
+  "external_signoff": false,
+  "silicon": false,
+  "bbox_um": [
+    34.0,
+    21.0,
+    950.0,
+    225.0
+  ],
+  "occupied_span_um": [
+    916.0,
+    204.0
+  ],
+  "occupied_area_um2": 186864.0,
+  "area_scope": "Occupied polygon span only; not die area; excludes pads, ESD, seal ring, package and scribe lanes",
+  "extracted_counts": {
+    "mos": 7277,
+    "resistors": 36588,
+    "capacitors": 30230
+  },
+  "extraction": {
+    "total_nets": 6512,
+    "resistance_nets_extracted": 6512,
+    "resistance_nets_output": 6512,
+    "original_default_nets_extracted": 242,
+    "drive_attributes_added": 6270,
+    "all_mos_preserved": true,
+    "all_pg_included": true,
+    "attribute_scope": "The documented res:drive attribute is inserted immediately after each original unexpanded node record. Node name, coordinates and layer come from the unmodified .ext. This changes extraction starting points only; no GDS polygons or circuit elements are changed.",
+    "annotation_integrity": true,
+    "rc_short_topology_lvs": true
+  },
+  "tools": {
+    "magic": "8.3.684",
+    "netgen": "1.5.324",
+    "klayout": "0.30.7 in pinned LibreLane container"
+  },
+  "operating_boundary": {
+    "shared_logic_supply": [
+      "VSAFE",
+      "VBUF",
+      "digital VDD"
+    ],
+    "independent_reference_supply": "VREF",
+    "external_components": [
+      "VSET 0.5 V",
+      "RSET 5 kohm",
+      "RBIAS 100 kohm",
+      "RRELEASE 100 kohm",
+      "CCOMP N2-CTRL configurable; selected 30 pF needs electrical evidence",
+      "REFOUT-VSS 10 Mohm external bleed added in final electrical contract"
+    ],
+    "sense_capacitance_budget": "30 pF candidate; per analog-v3 validation",
+    "required_external_fault": "Valid VLOGIC and asserted FAULT during startup; no internal POR/brownout detector"
+  },
+  "failures_preserved": [
+    {
+      "run": "build/layout-v3/joint-r1",
+      "reason": "Independent KLayout V2.1 rejects 0.28um direct-GDS Via2 cuts; corrected to0.26um"
+    },
+    {
+      "run": "build/layout-v3/joint-r2/pex",
+      "reason": "Default/all extraction retains all devices and C but expands only242/6512 R nets; explicit documented extraction start points needed"
+    },
+    {
+      "run": "build/layout-v3/joint-r2/pex-driven",
+      "reason": "Initial diagnostic appended attrs after all nodes, incompatible with Magic sequential attr parser; rejected due VSS errors. Corrected to adjacent node attributes in pex-driven-final."
+    }
+  ],
+  "limitations": [
+    "Full common-top RC electrical simulation is separate; r5 macro + SDF replay must not be presented as common-top transistor-level signoff.",
+    "KLayout main DRC and connectivity checks do not establish foundry acceptance, antenna, density, reliability, EM/IR, pad/ESD, package or optical performance.",
+    "RC model uses the pinned open PDK extractor; no 3-D field calibration or process-corner RC signoff."
+  ],
+  "source_sha256": {
+    "scripts/layout_v3/joint/lvs.tcl": "ba4381e19c353f200e4639498f1afe1ae2f25cf33305cdbbf4ba45d3c0a5b68d",
+    "scripts/layout_v3/joint/render.py": "6554a8f442121628b51030abc86f80376990456d94f08ed0c19c2fb346db85e3",
+    "scripts/layout_v3/joint/generate.py": "0da073d817a1572cd2d45914f73fd922672464b94a24989f596e064a36f19d99",
+    "scripts/layout_v3/joint/audit_pex.py": "9e5eaacfc5ef9c08664f09e2917b190f7e1c1089e0717185a0a795df4858ede8",
+    "scripts/layout_v3/joint/negative_controls.py": "6570e9d25283a892a9d6017eef719a51a3dcc8cda8eefaa73839142a69f5415d",
+    "scripts/layout_v3/joint/force_pex.py": "f2901bcc11f49f7a7a5a04cbcaf2f5cfabb8f07574b247daa30196f2e2982771",
+    "scripts/layout_v3/joint/run_klayout.py": "6d6731eedc0d37a4e3a3a1cec6db64054b13f1ab9f696ec8194a0d335b4403aa",
+    "scripts/layout_v3/joint/publish.py": "c3a983dde045f42726cf9d13516977602e45fe00fcb4654e3cfebb415b2f6c3c",
+    "layout/startup_v3/startup_test_macro.spice": "c551abf59f8a1a15f1de9819069f29d24eb9db43f9f3ddf13f02df8a791a01fd",
+    "layout/startup_v3/official_buf_2.spice": "901431501fbc2ebf209cda0893fa72a6f6180805119b885384e5b1a4f69ff6c6",
+    "layout/startup_v3/joint/startup_integrated_v3.v": "24c1d88d6adb8fea43133b6c416179f91d9f7e4e5df023131489eee593ab077f",
+    "build/control-v3/physical/final/pnl/pixel_control_v3.pnl.v": "2f5834e0895686227a9a9fbb6259b90f3c365178ef6a36d94ea04ff36855bf4e",
+    "build/control-v3/physical/final/lef/pixel_control_v3.lef": "f689215785801cad15075fc807b2665809db2ddcdbc965b76e7224551b4c2e40",
+    "build/control-v3/physical/final/gds/pixel_control_v3.gds": "f1d7182be11b9c4aa867c100689e3f57798394b9facd6580e7ceba0d8e255f6a",
+    "build/layout-v3/r5/generate/startup_test_macro.gds": "a81c512f302f10b9f2795c465e91536e1fb013f2994f609101f579fca3d920bb",
+    "layout/pdk-lock.json": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+    "build/layout/pdk/gf180mcuD/libs.tech/magic/gf180mcuD.tech": "0db2e5c354a2f7c7749f86df4c995127c1564daf51f936030b4e1a5982ad3210",
+    "build/layout/pdk/gf180mcuD/libs.tech/netgen/gf180mcuD_setup.tcl": "eb6217e33acb2c81680351745bc184a2ee37b31a25d37f4dce423f61ba466fe4",
+    "build/layout/pdk/gf180mcuD/libs.tech/klayout/tech/drc/gf180mcu.drc": "9b986260e1909e9ce2ee97b2d1103dc513836bc6a440e876d66d23c85985c41a",
+    "build/layout-v3/joint-r2/extract.tcl": "125c0fce1a99a365ab4eaf9a99b036dfdada8d059263a9c5a355087044a2b37f",
+    "build/layout-v3/joint-r2/pex.tcl": "17ec64ece3b346b0b62433d6339b26c26eceb975eec2677e917eec0fbf5cbd7c",
+    "build/layout-v3/joint-r2/pex-driven-final/extract-driven.tcl": "b805679b1dc9260d05a80778d97ae165f255a723bbe997c416085175b1355775"
+  },
+  "source_snapshot": "build/layout-v3/joint-r2/source-snapshot",
+  "output_sha256": {
+    "evidence/layout-v3/joint-r2/drive-attributes.json": "b225e158e08f67f77262de8375d8434ec6633dcb3b05c0abc5225ecec2e4ebd9",
+    "evidence/layout-v3/joint-r2/magic-driven-final-pex.log": "45f7baf19158dae6c8359b33080de62b43b60e729089b2296811b5d9f06252db",
+    "evidence/layout-v3/joint-r2/startup_integrated_v3_flat_rc.spice": "2b79f1a22812bb583b5ddebb773b0a7471dccab354d6815feb35a617a3bcf804",
+    "evidence/layout-v3/joint-r2/overview.svg": "fb968e5b9e7f5515cf00b9eb2b2f7c16c4620a809479af424a28eb47083f97d8",
+    "evidence/layout-v3/joint-r2/negative-controls.json": "bdf24bb1beea912ff7ce503816754db6f0254e5f81ecfbb2fc0b4e0854b801be",
+    "evidence/layout-v3/joint-r2/magic-full-pex.log": "2ffb9ccece1eb98e2cae11cdddf68e0d22104bc2765f72a372b5b695b591f434",
+    "evidence/layout-v3/joint-r2/klayout-linux.log": "da192a45416593fb07738523629d5b4827f3051fd05b73b9f5e659dbbf34a501",
+    "evidence/layout-v3/joint-r2/startup_integrated_v3.gds": "85b78345f3355aab7fb7b4cc46166dc3f8d98adcbc0672118b4fbc13f698f0a0",
+    "evidence/layout-v3/joint-r2/overview.png": "077fcc98a09c5ead7f528d7a4952b7c6dcf2d4ffd190bf375d3901e4ba2494c0",
+    "evidence/layout-v3/joint-r2/netgen-lvs.log": "17f96981ee2600cfe18f26b48cffda8123c6874aad682415a0f8c4873174ddaf",
+    "evidence/layout-v3/joint-r2/pex-audit.json": "43ad41e9e63edbdb900eafa3c63b9a24bddd19a548ec6cf5f0d9ecca78071366",
+    "evidence/layout-v3/joint-r2/magic-extract.log": "ea1d70536c5e18ccfb077ad8058a397aff4fa1fa2719fe7508342d2f6d553330",
+    "evidence/layout-v3/joint-r2/klayout-result.json": "5779b08d6a73789a642cd4629aa2a3832aad13f99ff17525d1186f7b4dc21481",
+    "evidence/layout-v3/joint-r2/routing.json": "76b9ce4d227bd9f4536f860c4883ec1501d3c3582c75b5208bc017efb6548c22",
+    "evidence/layout-v3/joint-r2/klayout-command.json": "116076567f4621e5fd19363c3284e5ac12adcfdc199c77d60f558a0105a54870",
+    "evidence/layout-v3/joint-r2/netgen-pex-collapse-lvs.log": "f235e4d5c7c895b8b42bec8c6172072527f440a5c1ca89538894271a553d4ed2",
+    "evidence/layout-v3/joint-r2/geometry-summary.json": "984d91db5c115b544c07ff7b5c28e1058c8e60a6d16158c6fe38d31e262dda54"
+  }
+}

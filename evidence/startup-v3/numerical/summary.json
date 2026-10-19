@@ -1,0 +1,2178 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "stage": "numerical diagnostics of unchanged startup-v2 physical netlist",
+  "source_summary_sha256": "d7aff93d0244c649bebf3181e1e1fada99e5cf08640e0fd85b74c95db83d0208",
+  "source_manifest": {
+    "scripts/startup_v2/run.py": "869ec2a84b87323b8e6072b3f37b0ce5066a588178ff4a064bcba2411a88ea16",
+    "analog/startup_v2/reference_isolator_tg.spice": "5a5fbb5f68b24348aafc228f9934b1982a0c0d1aa359ee9e948445ddd521a2c0",
+    "analog/reference/vset_servo.spice": "fed0b1df836b98c94b603c0e8eaa767a695a227d4d8c29c3cd8684aa573be193",
+    "analog/reference/vset_servo_with_junctions.spice": "81f900f315408864b2583b9ad2dc9a256c0aceb0260f52363a8388d181440216",
+    "analog/safety/fault_gate.spice": "d819b64377e9b59491cee22cd4428cbd78d94bdf4a837f74ad355f6f6b4ea99c",
+    "analog/safety/fault_led_clamp.spice": "5bfb9e910593cfbd3cef9abc1228b1b9df1d87560145bf0390c859a272cc2aaf",
+    "scripts/safety/run.py": "4f52656c2306403bfd7db9aa6909b23777ad525f92d603672fca1b7121da4975",
+    "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+    "rtl/safety/pixel_safety.v": "a6f4ef3f0705dec13d578ef6c0e6a6dd755e2d7b7714d7fb1411fbd078672a93",
+    "sim/safety/tb_safety.v": "76d4f5130d8fefb4769508e074f19213886b3fed55003ea744b7c51482dd20c7",
+    "analog/models/microled.spice": "ce9a3453abb87fc2aea894e7da2eff1448ff90a1432243ea90c747716ed20bba",
+    "evidence/safety/contract.json": "567cae65a7e81455d03a462848832428389820de118789a48060a0e8be57b3cd",
+    "evidence/safety/clamp-contract.json": "61c3ad178a65f30e5927a0c8361bb5bd1942d2bac217a4f8320d15e722185b77",
+    "evidence/robustness/stage-contract.json": "ba3ad7bd6bd1dcdc3fbd9bcdd41e15f5f25fa18b9ddb0cbaf4a8171a87ca9657",
+    "evidence/joint-pex/nominal/output_pixel_pex.spice": "03813e63e64bf505570dbd1f81e6809366e6b4d31bbee129c28022956e1cc623",
+    "layout/pdk-lock.json": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+    "scripts/physical/pdk-lock.json": "50f119ae5e17f0589f0a7a58db4c7a6daa7e6e1b40c85e15cd0d96300f7c3762",
+    "evidence/joint-pex/nominal/summary.json": "9fbfcd0c2c1add8a01b7bdfd6f3f1863333258973ee478aa5e30a7a85d7c86ed",
+    "evidence/joint-pex/nominal/projection-ledger.json.gz": "722cc43dbf004bbce942683b2f26ad215829b3e6de9a0c3127ea051356d17b71",
+    "evidence/joint-pex/hrhc/summary.json": "41d635de7b25c6de51a3b9f0babe91f21889c40ba5e99ff01bc4707575e58673",
+    "evidence/joint-pex/hrhc/projection-ledger.json.gz": "5bc57e731d6d148636053ac8d7d57855630c14e31d038f07b3c0ab18127ac81d",
+    "evidence/joint-pex/lrhc/summary.json": "af357c3b6216936f749513c56f23dcceb18efcb99343343f681ce243c0263edc",
+    "evidence/joint-pex/lrhc/projection-ledger.json.gz": "e4e47c349718b380f7e61b48704437226f032e2787b1de8e8e239f393f8a230a",
+    "evidence/joint-pex/hrlc/summary.json": "d4ec906199560cce22aef09634a2b01d90aae9655bfac73063f0a7c657feb6f8",
+    "evidence/joint-pex/hrlc/projection-ledger.json.gz": "b35b8d14a1cf399ad2a7e35168e1e25ba74590f7520a69cf8ce2945988953a63",
+    "evidence/joint-pex/lrlc/summary.json": "beb892eeac0a8255585b8c378e6d5daa6a12165368d96560740a809fab421191",
+    "evidence/joint-pex/lrlc/projection-ledger.json.gz": "a13c1bfbdeab3be45871331349e72c59534df911fc41f3a1b394164638282836",
+    "evidence/integration/pixel_integrated.gds": "f785cd70e76f6f287159bbb865712a8ed6121ed15dc65a99d78cbc35bed13938"
+  },
+  "script_sha256": "6fbde6e2c75d56b583a39e0325a48f0e3fe8e50e9bf1347a05c9b4bfd49a270e",
+  "ngspice_version": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******\n",
+  "window_s": [
+    0,
+    2e-05
+  ],
+  "branch_source": "i(VLEDLOAD)",
+  "physical_changes": "none",
+  "legacy_relative_limit_pct": 0.2,
+  "legacy_relative_passed": false,
+  "strict_numerical_convergence_resolved": false,
+  "diagnostic_checks_passed": true,
+  "simulation_runs": 54,
+  "solver_completed_runs": 40,
+  "solver_failed_runs": 14,
+  "dc_results": [
+    {
+      "name": "dc_tt_True_True_0",
+      "branch_current_a": 2.252903558153108e-12,
+      "within_5pct_on_or_1nA_off": true,
+      "deck_sha256": "ef3b2723439c8a886668810fa4b4aacdbc650b402ba2705115e4aa02744c13a2",
+      "waveform_sha256": "b6c0ea130b5cf96210c8c0c79e29e0f40a6f1733b40c7f3f4422deee7eaaa4fa",
+      "log_sha256": "7d4b6aeb2e0a598e555a281263b7070513ee8e742a91a6d0203a70661f8e1c4f"
+    },
+    {
+      "name": "dc_tt_True_True_1",
+      "branch_current_a": 9.997692902292591e-05,
+      "within_5pct_on_or_1nA_off": true,
+      "deck_sha256": "81a3ddabb0102269fdf6458b0b98c6698b536f2979def5887805ff7bf841a40c",
+      "waveform_sha256": "6b4d37b2aa57cd393d103bc7fe8b5a31a9a5e946b6e4db2ae3b35e50ef4300d2",
+      "log_sha256": "7d4b6aeb2e0a598e555a281263b7070513ee8e742a91a6d0203a70661f8e1c4f"
+    },
+    {
+      "name": "dc_ss_True_True_0",
+      "branch_current_a": 2.465169526844058e-12,
+      "within_5pct_on_or_1nA_off": true,
+      "deck_sha256": "7bbfe5579985c2e21033cbe32944387864ca18cd80a206f66f8fa2930b2b6900",
+      "waveform_sha256": "d588b80e4b719d45114bd40768d1bc23e8b421f03aa5e190de6549b7db964182",
+      "log_sha256": "fe7769713ca764e7ddb85f1c01b177294164737c38ed855739fbd1b95d9723c2"
+    },
+    {
+      "name": "dc_ss_True_True_1",
+      "branch_current_a": 9.773869386056879e-05,
+      "within_5pct_on_or_1nA_off": true,
+      "deck_sha256": "5b974d57e3697f92200439b3e27dc30c0637161b298ce6f6408d729716e8d510",
+      "waveform_sha256": "6dd44479623b5885aa8e03fe4853739111fbcf74ab1f44ecb93b89e3e8a112e8",
+      "log_sha256": "fe7769713ca764e7ddb85f1c01b177294164737c38ed855739fbd1b95d9723c2"
+    },
+    {
+      "name": "dc_ff_True_True_0",
+      "branch_current_a": 2.519689387692203e-12,
+      "within_5pct_on_or_1nA_off": true,
+      "deck_sha256": "89589f2227cde94d737b5a2deaead7bebe6d21d9b794450555c06564aca13bcd",
+      "waveform_sha256": "9c8eb45ede9b092d8a2b6bfffb5f812620fa9ee6a391d91dbab500fbd446cafb",
+      "log_sha256": "452851903334dc90b3edfe3a42ceefe05fab5a3149a0ba77e5cefac8ce9aa5a2"
+    },
+    {
+      "name": "dc_ff_True_True_1",
+      "branch_current_a": 0.0001008547964093314,
+      "within_5pct_on_or_1nA_off": true,
+      "deck_sha256": "a42dd501c677d5b6b4684ab0b16b1824726ceffd6919f6f7d0c823fc046ee9a6",
+      "waveform_sha256": "ad9e35ee3eeb8f4211785d8bb5ddeb3cdfe08ebb94a31be652122a4f1b60689f",
+      "log_sha256": "452851903334dc90b3edfe3a42ceefe05fab5a3149a0ba77e5cefac8ce9aa5a2"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Independent analytic integration oracle",
+      "passed": true
+    },
+    {
+      "name": "Old summary bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "DC calibration",
+      "passed": true
+    },
+    {
+      "name": "All successful isolated trials below 1nA",
+      "passed": true
+    },
+    {
+      "name": "Matched non-isolated negative controls fail 1nA",
+      "passed": true
+    },
+    {
+      "name": "Zero crossing integration independently agrees",
+      "passed": true
+    }
+  ],
+  "results": [
+    {
+      "name": "base_10ns",
+      "profile": "base",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/base_10ns",
+      "deck_sha256": "a9a665b966e8c8fcc85b8a50de694b5432cdf3e1e5311a8dadf5d265a7ecd6cf",
+      "log_sha256": "0eef028e3ffdd4d96bf9d0ef60ec9f241376a9a8ce9255c022da13e3a9747cd6",
+      "solver_completed": true,
+      "points": 2356,
+      "branch_peak_a": 4.775016285152312e-11,
+      "branch_max_a": 4.775016285152312e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 6.352738236494385e-22,
+        "positive_c": 4.916224115804296e-21,
+        "negative_c": -4.280950292154858e-21
+      },
+      "early_charge": {
+        "signed_c": 8.920000652196646e-22,
+        "positive_c": 2.4256899680506646e-21,
+        "negative_c": -1.533689902831e-21
+      },
+      "late_charge": {
+        "signed_c": -9.091065827327896e-23,
+        "positive_c": 5.395090604958322e-23,
+        "negative_c": -1.4486156432286217e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 6.35273823649438e-22,
+        "positive_c": 4.9162241158042956e-21,
+        "negative_c": -4.280950292154858e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "ca536d5217ce0b3e160c161d4924108b272982e3dbecc5b7f0640919b56f051d",
+      "compact_csv_sha256": "072ebd93ac56c80a269d03135fc494bb88757f1ebd340493156376bb2a1a54c4",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "base_2ns",
+      "profile": "base",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/base_2ns",
+      "deck_sha256": "405c471b6d19ea6f5370d47dd0bf44b19bb9c71373086f90caef322a637a9102",
+      "log_sha256": "55da35294b03ac41db489601c873afc5d504811bbb820db7944fff36f02b7a51",
+      "solver_completed": true,
+      "points": 10251,
+      "branch_peak_a": 4.775016285152312e-11,
+      "branch_max_a": 4.775016285152312e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 8.091050017138245e-22,
+        "positive_c": 5.15756343645503e-21,
+        "negative_c": -4.348458434741208e-21
+      },
+      "early_charge": {
+        "signed_c": 8.920000652196646e-22,
+        "positive_c": 2.4256899680506646e-21,
+        "negative_c": -1.533689902831e-21
+      },
+      "late_charge": {
+        "signed_c": 7.828306794036129e-23,
+        "positive_c": 2.878055447996614e-22,
+        "negative_c": -2.095224768593001e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.09105001713824e-22,
+        "positive_c": 5.1575634364550324e-21,
+        "negative_c": -4.348458434741206e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "44d88b7319b9132709d1ed834f2fa3e517389d8560fb95ddfa565e4c7bd7fe85",
+      "compact_csv_sha256": "e393d358f9cb6a2dd3f0097722f468b4941e9c569ce2f12ca0a0173901acf5d3",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "tight_10ns",
+      "profile": "tight",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-17 vntol=1e-12 method=gear maxord=2 chgtol=1e-22",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/tight_10ns",
+      "deck_sha256": "2e5e9868c90a06fb95618b479e85216a26b4ca2d77787bf9108eee7329f75ef7",
+      "log_sha256": "2cb14ccbe84b3d95211212e627a39b6a0d00e04a199b481d742ed4e34dac5e28",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; time = 1e-10, timestep = 1.25e-20: trouble with node \"vn29#branch\""
+    },
+    {
+      "name": "tight_2ns",
+      "profile": "tight",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-17 vntol=1e-12 method=gear maxord=2 chgtol=1e-22",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/tight_2ns",
+      "deck_sha256": "6d68917a3334c39c6d41240bee860101f26d098caef8811c6f00a51b63218d46",
+      "log_sha256": "6f76c479abf423a82fda7ede969d8a1b2e325c595c9654a3ef7f817366322d17",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; time = 1e-10, timestep = 2.5e-21: trouble with node \"vn29#branch\""
+    },
+    {
+      "name": "tighttrap_10ns",
+      "profile": "tighttrap",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-17 vntol=1e-12 method=trap maxord=2 chgtol=1e-22",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/tighttrap_10ns",
+      "deck_sha256": "9c1594578feac273ef81abdcd46f2db63493ebabe9a2b1105d03452023aaaa94",
+      "log_sha256": "2cb14ccbe84b3d95211212e627a39b6a0d00e04a199b481d742ed4e34dac5e28",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; time = 1e-10, timestep = 1.25e-20: trouble with node \"vn29#branch\""
+    },
+    {
+      "name": "tighttrap_2ns",
+      "profile": "tighttrap",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-17 vntol=1e-12 method=trap maxord=2 chgtol=1e-22",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/tighttrap_2ns",
+      "deck_sha256": "8a9cb6bd4434f6dd389ec0b886544f6d40736a3338db47316879af9617a0e7a7",
+      "log_sha256": "6f76c479abf423a82fda7ede969d8a1b2e325c595c9654a3ef7f817366322d17",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; time = 1e-10, timestep = 2.5e-21: trouble with node \"vn29#branch\""
+    },
+    {
+      "name": "medium_10ns",
+      "profile": "medium",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-7 abstol=1e-15 vntol=1e-10 method=gear maxord=2 chgtol=1e-20",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/medium_10ns",
+      "deck_sha256": "d483ca71b0063ad25d2e60efcf72365e01a6be66d990c71fa6d24ffa0bb2b3f1",
+      "log_sha256": "b2af68afd99a6985fdd9c683bfec8bf3aa2845e5a6eae581ebbb567c274e31bc",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; time = 1e-10, timestep = 1.25e-20: trouble with node \"vfault#branch\""
+    },
+    {
+      "name": "medium_2ns",
+      "profile": "medium",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-7 abstol=1e-15 vntol=1e-10 method=gear maxord=2 chgtol=1e-20",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/medium_2ns",
+      "deck_sha256": "48f9dca773b57b9e8232cfc41bedf4edcc10d8db7a31dfe4407a5386fc6fb4eb",
+      "log_sha256": "ccf55605ad0e181139aaf18420c6e5f24f823dcf1c84884d540398a045896b36",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; time = 1e-10, timestep = 2.5e-21: trouble with node \"vn31#branch\""
+    },
+    {
+      "name": "gear1_10ns",
+      "profile": "gear1",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-17 vntol=1e-12 method=gear maxord=1 chgtol=1e-22",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/gear1_10ns",
+      "deck_sha256": "d8add1a42b4df22139b5c7c3b82cc294afec2359085c1c5d136ba04d47fa05fd",
+      "log_sha256": "2cb14ccbe84b3d95211212e627a39b6a0d00e04a199b481d742ed4e34dac5e28",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; time = 1e-10, timestep = 1.25e-20: trouble with node \"vn29#branch\""
+    },
+    {
+      "name": "gear1_2ns",
+      "profile": "gear1",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-17 vntol=1e-12 method=gear maxord=1 chgtol=1e-22",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/gear1_2ns",
+      "deck_sha256": "408d5ce6cc11a98fb92c305c16e7d5a33890ed7413b0db5228326396ff221a07",
+      "log_sha256": "6f76c479abf423a82fda7ede969d8a1b2e325c595c9654a3ef7f817366322d17",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; time = 1e-10, timestep = 2.5e-21: trouble with node \"vn29#branch\""
+    },
+    {
+      "name": "fine_0.5ns",
+      "profile": "fine",
+      "maxstep_ns": 0.5,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/fine_0.5ns",
+      "deck_sha256": "94e414ac64ea7396e76092bb5bfa74bc773c9a9efc7b3d887116becc5c7b7324",
+      "log_sha256": "634195db1cbc0c6b6ef428b1181751e50078f1eae7d9afc15f9100689ae10829",
+      "solver_completed": true,
+      "points": 40069,
+      "branch_peak_a": 4.695469249527129e-11,
+      "branch_max_a": 4.695469249527129e-11,
+      "branch_min_a": -2.426689613144184e-11,
+      "charge": {
+        "signed_c": 7.599180206276479e-22,
+        "positive_c": 5.19367552847376e-21,
+        "negative_c": -4.433757507846114e-21
+      },
+      "early_charge": {
+        "signed_c": 8.746057049819308e-22,
+        "positive_c": 2.7309106459249836e-21,
+        "negative_c": -1.8563049409430527e-21
+      },
+      "late_charge": {
+        "signed_c": 8.416097878725932e-23,
+        "positive_c": 8.585613037471886e-23,
+        "negative_c": -1.6951515874595327e-24
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 7.599180206276477e-22,
+        "positive_c": 5.19367552847376e-21,
+        "negative_c": -4.433757507846114e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "c3fd6c361a0843724e5645781b9ae2bca71d15341919f70885f3977fc203f2a1",
+      "compact_csv_sha256": "c24a9ca2d9c7c955c3fc33a8af47176759eaed109c55ae0b00044661f906cf24",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "fine_0.1ns",
+      "profile": "fine",
+      "maxstep_ns": 0.1,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/fine_0.1ns",
+      "deck_sha256": "ce446c66b121add5cb1a73fe124d2a83de9776c22509f6b22dc03a2c675b5a8e",
+      "log_sha256": "1df0cc4b1721dc7169c35f6c5cf1109a7f183aaa7325896b34d336eb597785eb",
+      "solver_completed": true,
+      "points": 200011,
+      "branch_peak_a": 4.317814009113796e-11,
+      "branch_max_a": 4.317814009113796e-11,
+      "branch_min_a": -4.216068924534078e-11,
+      "charge": {
+        "signed_c": 3.716504285491494e-22,
+        "positive_c": 5.2062223824541014e-21,
+        "negative_c": -4.834571953904952e-21
+      },
+      "early_charge": {
+        "signed_c": 7.662406828724457e-22,
+        "positive_c": 2.9779824826051503e-21,
+        "negative_c": -2.211741799732705e-21
+      },
+      "late_charge": {
+        "signed_c": 2.2374502860942893e-22,
+        "positive_c": 2.295171865555428e-22,
+        "negative_c": -5.772157946113838e-24
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 3.7165042854914964e-22,
+        "positive_c": 5.206222382454102e-21,
+        "negative_c": -4.834571953904952e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "24d736e6b512095438a150c39e0b66a7f32f039d153e3f3dc225d2c3f8df3d09",
+      "compact_csv_sha256": "6f523280973e1063b3857e51c52b0c02482aefdc301dfabf985677d799e530b1",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "chg_10ns",
+      "profile": "chg",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2 chgtol=1e-20",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/chg_10ns",
+      "deck_sha256": "7ad3e7e10566ec5b2b5769c02ad877dbe2520ed7df3870c34a75a46684afc5d6",
+      "log_sha256": "49e9e21a31e7433d3f1fd35f22e8f7f7e18dea6656bca09042d5368c1f6f206a",
+      "solver_completed": true,
+      "points": 2464,
+      "branch_peak_a": 4.773209730246641e-11,
+      "branch_max_a": 4.773209730246641e-11,
+      "branch_min_a": -1.416029613010572e-11,
+      "charge": {
+        "signed_c": 8.523093787071751e-22,
+        "positive_c": 4.565220039565872e-21,
+        "negative_c": -3.7129106608586975e-21
+      },
+      "early_charge": {
+        "signed_c": 8.1456964199043e-22,
+        "positive_c": 2.1915824681638714e-21,
+        "negative_c": -1.3770128261734416e-21
+      },
+      "late_charge": {
+        "signed_c": -8.981623348518763e-23,
+        "positive_c": 5.400928549172971e-23,
+        "negative_c": -1.4382551897691732e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.52309378707175e-22,
+        "positive_c": 4.5652200395658725e-21,
+        "negative_c": -3.712910660858697e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "8f81a4d5e333f4087211d06633d25fe7697b36b5968739123e1a1ffb8b557261",
+      "compact_csv_sha256": "0229768acce0cd0e3fd4ceabd423148aaf3bd4f412f9229f8d9a6f7ced0fdb5b",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "chg_2ns",
+      "profile": "chg",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2 chgtol=1e-20",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/chg_2ns",
+      "deck_sha256": "2f49d43c8603dfa7b7fc4652015838ff842bdbdae064c1958c5f1b8145e75bce",
+      "log_sha256": "fed0224d6bf60bb88625239e8362f91ee5dfd6faf2bf0601aabffe8ebf852427",
+      "solver_completed": true,
+      "points": 10356,
+      "branch_peak_a": 4.773209730246641e-11,
+      "branch_max_a": 4.773209730246641e-11,
+      "branch_min_a": -1.416029613010572e-11,
+      "charge": {
+        "signed_c": 1.0235790960308286e-21,
+        "positive_c": 4.8052613404059874e-21,
+        "negative_c": -3.781682244375159e-21
+      },
+      "early_charge": {
+        "signed_c": 8.1456964199043e-22,
+        "positive_c": 2.1915824681638714e-21,
+        "negative_c": -1.3770128261734416e-21
+      },
+      "late_charge": {
+        "signed_c": 7.690952481381396e-23,
+        "positive_c": 2.8702682266906727e-22,
+        "negative_c": -2.1011729785525336e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 1.023579096030829e-21,
+        "positive_c": 4.805261340405989e-21,
+        "negative_c": -3.781682244375159e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "9630816a8bc9b3ce574b59e4a2dff345316abce4d514be3f1e641633a8e79694",
+      "compact_csv_sha256": "8f64bda70500faf0c651a87219b6d4eadda5aa6549666189d9f3de5056785042",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "volt_10ns",
+      "profile": "volt",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-9 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/volt_10ns",
+      "deck_sha256": "46ef41061cde141327035fc8b7a779283b5dc3bceebb134af78e2a6a8e67cd00",
+      "log_sha256": "2f3b60febce0b60fd595c3d0cb20900d84f3ad87c101ca9a214e32306ee4ce4b",
+      "solver_completed": true,
+      "points": 2356,
+      "branch_peak_a": 4.775028719650187e-11,
+      "branch_max_a": 4.775028719650187e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 6.35964232793658e-22,
+        "positive_c": 4.9161061249580485e-21,
+        "negative_c": -4.28014189216439e-21
+      },
+      "early_charge": {
+        "signed_c": 8.917723512912817e-22,
+        "positive_c": 2.425445213073115e-21,
+        "negative_c": -1.5336728617818334e-21
+      },
+      "late_charge": {
+        "signed_c": -8.928975145238355e-23,
+        "positive_c": 5.405748923702057e-23,
+        "negative_c": -1.433472406894041e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 6.359642327936576e-22,
+        "positive_c": 4.916106124958048e-21,
+        "negative_c": -4.280141892164391e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "cbb271056def84793bdd5916bb72dffe3859ed5205816c86ff3bc6bf7265a07d",
+      "compact_csv_sha256": "8f6303a5f23fff905f6ba559049aef28f0101f05cffff811d5193710a5f4e00d",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "volt_2ns",
+      "profile": "volt",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-9 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/volt_2ns",
+      "deck_sha256": "0c289c9354a12ec4caa650104bfe300f0c2892d59b8dcafd47132b2c9ef386f4",
+      "log_sha256": "ce94f08476863aabadf79715506d318ca8928b932f53e20fdecf87f3500a3621",
+      "solver_completed": true,
+      "points": 10251,
+      "branch_peak_a": 4.775028719650187e-11,
+      "branch_max_a": 4.775028719650187e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 8.08114480285059e-22,
+        "positive_c": 5.156682476273267e-21,
+        "negative_c": -4.348567995988208e-21
+      },
+      "early_charge": {
+        "signed_c": 8.917723512912817e-22,
+        "positive_c": 2.425445213073115e-21,
+        "negative_c": -1.5336728617818334e-21
+      },
+      "late_charge": {
+        "signed_c": 7.709280938014685e-23,
+        "positive_c": 2.8711655158423492e-22,
+        "negative_c": -2.1002374220408812e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.081144802850591e-22,
+        "positive_c": 5.1566824762732665e-21,
+        "negative_c": -4.348567995988208e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "ca5380cc7a41c921babb2c2c62b49f0a9b58358ac35dffdc244c13872f268540",
+      "compact_csv_sha256": "83b243bfacec81efd45f5bbf017e610ac75f2dbf6cd604ce80119c98522f7214",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "amp_10ns",
+      "profile": "amp",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-15 vntol=1e-7 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/amp_10ns",
+      "deck_sha256": "7b07d1756e2146ab954fafa59f28d02e99a7cbfd9ecd9edab9b8aad8547975f6",
+      "log_sha256": "3fd0038fd67d04348832a9a31bdad8a3389119a3fc04cfc6b0cd0569b8e20f44",
+      "solver_completed": true,
+      "points": 2356,
+      "branch_peak_a": 4.774028630749605e-11,
+      "branch_max_a": 4.774028630749605e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 6.382177821097205e-22,
+        "positive_c": 4.915494615903712e-21,
+        "negative_c": -4.277276833793992e-21
+      },
+      "early_charge": {
+        "signed_c": 8.919856350003839e-22,
+        "positive_c": 2.425464277138981e-21,
+        "negative_c": -1.5334786421385968e-21
+      },
+      "late_charge": {
+        "signed_c": -8.651402239186774e-23,
+        "positive_c": 5.435473054090178e-23,
+        "negative_c": -1.4086875293276952e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 6.382177821097201e-22,
+        "positive_c": 4.9154946159037105e-21,
+        "negative_c": -4.2772768337939915e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "634743420b2a7df5c54a3cf75032f68af2954603522508272fa927653f652f7d",
+      "compact_csv_sha256": "b44ff9abf7ff3b8dc2eff575e4c83ddad4183ca1e58364eb295655bd0f1d074e",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "amp_2ns",
+      "profile": "amp",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-15 vntol=1e-7 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/amp_2ns",
+      "deck_sha256": "7cb7d58f2d2e24f8aa36b218e0263ccf8daed0a62b7cf9b1287caa757f450033",
+      "log_sha256": "ab3d18db1090f7cdf8f621a900720115cbd2c059ba61db266a3e1e662d6bad6d",
+      "solver_completed": true,
+      "points": 10251,
+      "branch_peak_a": 4.774028630749605e-11,
+      "branch_max_a": 4.774028630749605e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 8.07509193585008e-22,
+        "positive_c": 5.156759729548396e-21,
+        "negative_c": -4.349250535963387e-21
+      },
+      "early_charge": {
+        "signed_c": 8.919856350003839e-22,
+        "positive_c": 2.425464277138981e-21,
+        "negative_c": -1.5334786421385968e-21
+      },
+      "late_charge": {
+        "signed_c": 7.699409463451066e-23,
+        "positive_c": 2.8732775409112364e-22,
+        "negative_c": -2.1033365945661298e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.075091935850079e-22,
+        "positive_c": 5.1567597295483936e-21,
+        "negative_c": -4.3492505359633854e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "c35db9c133b9416446e5ee9bc19fbe484640066df2111a8f5e81e90f29e337e6",
+      "compact_csv_sha256": "f90ce3259d3fe2a4552e5fbbde2a2618c46ad86fed6723cb7ac463edda124521",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "rel_10ns",
+      "profile": "rel",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-12 vntol=1e-7 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/rel_10ns",
+      "deck_sha256": "7f6db1e0a64aa0cc32c9318f53539268a12ed05189fe8e9e248ff4c742ca41a2",
+      "log_sha256": "3415a93fc8b6cfb8d2dac5754994b0a7504e0f84b1c57b446d1cfb3559c71b87",
+      "solver_completed": true,
+      "points": 3644,
+      "branch_peak_a": 5.376744730001271e-11,
+      "branch_max_a": 5.376744730001271e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 6.646730985635485e-22,
+        "positive_c": 4.243818386014418e-21,
+        "negative_c": -3.5791452874508696e-21
+      },
+      "early_charge": {
+        "signed_c": 7.330293547566969e-22,
+        "positive_c": 2.1032945129409317e-21,
+        "negative_c": -1.3702651581842353e-21
+      },
+      "late_charge": {
+        "signed_c": -8.837967729592155e-23,
+        "positive_c": 5.49495851903798e-23,
+        "negative_c": -1.4332926248630132e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 6.646730985635487e-22,
+        "positive_c": 4.2438183860144185e-21,
+        "negative_c": -3.5791452874508696e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "11fc71e41195d6c1cd222d6ad22160ca05fa9c2ffb9a991b9dde93d28cd3dfda",
+      "compact_csv_sha256": "5900134adf86075b5aa6fef5ee70651de5bbe953dfffa0474814a7b48238860f",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "rel_2ns",
+      "profile": "rel",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-12 vntol=1e-7 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/rel_2ns",
+      "deck_sha256": "4244e5dfabcce876fd5e5613027a64eb6353c9e397f08a86c0697d408b90e5fc",
+      "log_sha256": "edecbeb9cc5b5be1eecb2b350d00ed5c41fc94965d5a000d11dc49875b02ca9a",
+      "solver_completed": true,
+      "points": 11464,
+      "branch_peak_a": 5.376744730001271e-11,
+      "branch_max_a": 5.376744730001271e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 8.351830604833958e-22,
+        "positive_c": 4.482265068838589e-21,
+        "negative_c": -3.6470820083551945e-21
+      },
+      "early_charge": {
+        "signed_c": 7.330293547566969e-22,
+        "positive_c": 2.1032945129409317e-21,
+        "negative_c": -1.3702651581842353e-21
+      },
+      "late_charge": {
+        "signed_c": 7.745711101756509e-23,
+        "positive_c": 2.8732155570095633e-22,
+        "negative_c": -2.0986444468339125e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.351830604833955e-22,
+        "positive_c": 4.48226506883859e-21,
+        "negative_c": -3.647082008355193e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "ef30a9abc5d9aef6d8442f3d9a89ad9778f84a0a9ab2ccdc82834686a44950ae",
+      "compact_csv_sha256": "4558f098286434cd7fff37bbce81ab23868c940d6a4297513083b09782a601f5",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "moderate_10ns",
+      "profile": "moderate",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-7 abstol=1e-13 vntol=1e-8 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/moderate_10ns",
+      "deck_sha256": "f7e110972c70ad5becfde7d72078cbec3b8393e788d6c3ab56b88f78f581c53b",
+      "log_sha256": "506b4d8a8df70d0bf996342b55860711049f013efdf9e8b6e3d1418a3d5a7486",
+      "solver_completed": true,
+      "points": 2793,
+      "branch_peak_a": 5.3619672174543e-11,
+      "branch_max_a": 5.3619672174543e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 7.023556373083341e-22,
+        "positive_c": 4.370020199450058e-21,
+        "negative_c": -3.667664562141723e-21
+      },
+      "early_charge": {
+        "signed_c": 7.85085461708203e-22,
+        "positive_c": 2.162636032309757e-21,
+        "negative_c": -1.3775505706015545e-21
+      },
+      "late_charge": {
+        "signed_c": -8.856706833915983e-23,
+        "positive_c": 5.333770216124326e-23,
+        "negative_c": -1.4190477050040309e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 7.023556373083342e-22,
+        "positive_c": 4.370020199450058e-21,
+        "negative_c": -3.667664562141723e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "9dc90530b751dd14b7da389e16fbc5843babf3bf5795276c68060dad8a2922ef",
+      "compact_csv_sha256": "e2de673204a0ab0ef209d2041115eada86a1de927b06034e1a1377d3923be851",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "moderate_2ns",
+      "profile": "moderate",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-7 abstol=1e-13 vntol=1e-8 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/moderate_2ns",
+      "deck_sha256": "96a7bef124c57f7cb2e6cf4f1a9681e3346eafb459cbe0e777b71b80beac3141",
+      "log_sha256": "4cd494c729da4be63d605508623b927d168c4f2b68aab15a4fe071fef2405feb",
+      "solver_completed": true,
+      "points": 10639,
+      "branch_peak_a": 5.3619672174543e-11,
+      "branch_max_a": 5.3619672174543e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 8.743956591168182e-22,
+        "positive_c": 4.6113871387971414e-21,
+        "negative_c": -3.736991479680323e-21
+      },
+      "early_charge": {
+        "signed_c": 7.85085461708203e-22,
+        "positive_c": 2.162636032309757e-21,
+        "negative_c": -1.3775505706015545e-21
+      },
+      "late_charge": {
+        "signed_c": 7.865150950394551e-23,
+        "positive_c": 2.8810503388324502e-22,
+        "negative_c": -2.0945352437929954e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.743956591168182e-22,
+        "positive_c": 4.6113871387971414e-21,
+        "negative_c": -3.736991479680323e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "fe1dde0a585283f809ccc9c4a09c356a1d5baac0b0eb39a3fc3724379ea2a4da",
+      "compact_csv_sha256": "73fef209d81589fec7450640261d9bc4c9d4ba61bd8eeade05a2e1fee8747cf2",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "klu_10ns",
+      "profile": "klu",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-7 abstol=1e-13 vntol=1e-8 method=gear maxord=2 klu",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/klu_10ns",
+      "deck_sha256": "aa1212fa257e6c28e02b67ce1e4ae14068d158c4cd689789e2cba7b903e3278f",
+      "log_sha256": "dddc25320d833c6cd06788de91b1356dea70ded4fb7a391f057b00971806a4eb",
+      "solver_completed": true,
+      "points": 2793,
+      "branch_peak_a": 5.361919255819636e-11,
+      "branch_max_a": 5.361919255819636e-11,
+      "branch_min_a": -1.41600652037166e-11,
+      "charge": {
+        "signed_c": 8.589639669552392e-22,
+        "positive_c": 4.431209431116514e-21,
+        "negative_c": -3.572245464161275e-21
+      },
+      "early_charge": {
+        "signed_c": 7.855683355402473e-22,
+        "positive_c": 2.1627057398514436e-21,
+        "negative_c": -1.377137404311196e-21
+      },
+      "late_charge": {
+        "signed_c": 6.556057759124322e-23,
+        "positive_c": 1.14531109693296e-22,
+        "negative_c": -4.897053210205278e-23
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.589639669552393e-22,
+        "positive_c": 4.431209431116515e-21,
+        "negative_c": -3.572245464161275e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "156df3793f357f57f0eb49f03a0dc129422bab594412016f6f0a4e5c11b285ca",
+      "compact_csv_sha256": "50c5bdc892a42767b70b7fa113899a7144a878755dc15de699c07b60f88689d3",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "klu_2ns",
+      "profile": "klu",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-7 abstol=1e-13 vntol=1e-8 method=gear maxord=2 klu",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/klu_2ns",
+      "deck_sha256": "3a6c81aa8f256923582696cc9f7f65f9da94cbed4e17e618312a2873fbc82b86",
+      "log_sha256": "8d3ecdce52f96b6e4eade78d9ce6f00d371cc2007cddbdc815ceba64f8dd5afb",
+      "solver_completed": true,
+      "points": 10639,
+      "branch_peak_a": 5.361919255819636e-11,
+      "branch_max_a": 5.361919255819636e-11,
+      "branch_min_a": -1.41600652037166e-11,
+      "charge": {
+        "signed_c": 8.735613793283454e-22,
+        "positive_c": 4.392578791634878e-21,
+        "negative_c": -3.519017412306531e-21
+      },
+      "early_charge": {
+        "signed_c": 7.855683355402473e-22,
+        "positive_c": 2.1627057398514436e-21,
+        "negative_c": -1.377137404311196e-21
+      },
+      "late_charge": {
+        "signed_c": 7.830373867211135e-23,
+        "positive_c": 7.834465449133849e-23,
+        "negative_c": -4.091581922713939e-26
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.735613793283453e-22,
+        "positive_c": 4.392578791634876e-21,
+        "negative_c": -3.519017412306532e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "ee6dda720322945545d36a4e7dcccb2bc4e8df6fdb04b0bd87d291bd51569d00",
+      "compact_csv_sha256": "aaaee29bf61f7b2479f5867a5ea9be724b32c1353c008a21b9098a23f6651ce6",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "trap_10ns",
+      "profile": "trap",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=trap maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/trap_10ns",
+      "deck_sha256": "75bc8bebd9659f6e99cc8594f325d948ec340e0f1de59756bf5ad1ecb599621f",
+      "log_sha256": "1312786c2429c0415d6299ffc744e3e0015c1dd8426c3fcecb6f99c389dac80c",
+      "solver_completed": true,
+      "points": 2252,
+      "branch_peak_a": 4.699684544307025e-11,
+      "branch_max_a": 4.699684544307025e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 6.769604225172717e-22,
+        "positive_c": 7.542256502432162e-18,
+        "negative_c": -7.541579542009644e-18
+      },
+      "early_charge": {
+        "signed_c": 7.067342438860658e-22,
+        "positive_c": 2.6283679118856606e-21,
+        "negative_c": -1.921633667999595e-21
+      },
+      "late_charge": {
+        "signed_c": 3.1903170262802406e-21,
+        "positive_c": 7.010991122153383e-18,
+        "negative_c": -7.007800805127104e-18
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 6.769604225173789e-22,
+        "positive_c": 7.542256502432162e-18,
+        "negative_c": -7.541579542009644e-18
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "529d80db678cf779b25761ee2c435ca3315c841d6ea8b479b805f72d3f6afee7",
+      "compact_csv_sha256": "734b5283e92365a6a739d06b4627f86ea74f4e2cffc73ba09773c425e61f3403",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "trap_2ns",
+      "profile": "trap",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=trap maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/trap_2ns",
+      "deck_sha256": "3cbdcd032b1e59f8e9104ac757a6c35981955f429921a1e52e3f1c854120f05e",
+      "log_sha256": "9c2658d3ac2a6697ebc958a4e03a67814944c32ef7439e898519a74b4b5d3328",
+      "solver_completed": true,
+      "points": 10160,
+      "branch_peak_a": 4.699684544307025e-11,
+      "branch_max_a": 4.699684544307025e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 6.912226585170204e-22,
+        "positive_c": 1.0236713729400044e-18,
+        "negative_c": -1.0229801502814872e-18
+      },
+      "early_charge": {
+        "signed_c": 7.067342438860658e-22,
+        "positive_c": 2.6283679118856606e-21,
+        "negative_c": -1.921633667999595e-21
+      },
+      "late_charge": {
+        "signed_c": 4.264970245449943e-22,
+        "positive_c": 6.416775048875106e-19,
+        "negative_c": -6.412510078629655e-19
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 6.912226585170302e-22,
+        "positive_c": 1.0236713729400042e-18,
+        "negative_c": -1.0229801502814872e-18
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "938a0ebbd82bf300ef8fc8e971d414d002f2eceed905f088db485032c34eb7cb",
+      "compact_csv_sha256": "f927ad88f214a10cb299fd75ee7ae8112091a36945bc44d035de012bea136903",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "be_10ns",
+      "profile": "be",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=1",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/be_10ns",
+      "deck_sha256": "a002cae94532bd05b7ce941f277a6477fae939abd700cb9c41a443758b06ac5c",
+      "log_sha256": "084240f66f8dd9517b7086b1b3805b63af6a00b77b2f833642e29a6b6e214366",
+      "solver_completed": true,
+      "points": 7467,
+      "branch_peak_a": 4.349621454680098e-11,
+      "branch_max_a": 4.349621454680098e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 7.947820044292761e-22,
+        "positive_c": 4.2851163854139945e-21,
+        "negative_c": -3.490334380984718e-21
+      },
+      "early_charge": {
+        "signed_c": 6.079973962618483e-22,
+        "positive_c": 2.0235047927333196e-21,
+        "negative_c": -1.4155073964714712e-21
+      },
+      "late_charge": {
+        "signed_c": -3.2570220019877597e-23,
+        "positive_c": 6.618703660800873e-23,
+        "negative_c": -9.875725662788632e-23
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 7.947820044292759e-22,
+        "positive_c": 4.285116385413994e-21,
+        "negative_c": -3.490334380984718e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "3068dc4ebe913f550b0bc76b8bcf6786d33d49052cf9b64ce02fb5d0b984bef3",
+      "compact_csv_sha256": "1ccfb7a61f567109cffb49c9ac541db4c3601c416d194e07c6f864fded8c5988",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "be_2ns",
+      "profile": "be",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=1",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/be_2ns",
+      "deck_sha256": "ea9433f11fa7ebcbeb6ab3eafbb1ac3d6af62bef7e29292ce193683d09e8cf92",
+      "log_sha256": "15f81e53fd01caf3dc73797391a266a92cfed6cce7758e5c0038842719d5249f",
+      "solver_completed": true,
+      "points": 15253,
+      "branch_peak_a": 4.349621454680098e-11,
+      "branch_max_a": 4.349621454680098e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 8.953056400702057e-22,
+        "positive_c": 4.2836984594959686e-21,
+        "negative_c": -3.388392819425763e-21
+      },
+      "early_charge": {
+        "signed_c": 6.079973962618483e-22,
+        "positive_c": 2.0235047927333196e-21,
+        "negative_c": -1.4155073964714712e-21
+      },
+      "late_charge": {
+        "signed_c": 6.580009362696472e-23,
+        "positive_c": 6.590811674935643e-23,
+        "negative_c": -1.0802312239170896e-25
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.953056400702055e-22,
+        "positive_c": 4.283698459495968e-21,
+        "negative_c": -3.388392819425762e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "380304348fd50df0f76778978d3a7ed392b3b01aebe35b3b2486c59ab863b6a3",
+      "compact_csv_sha256": "6881d9fec9bc7511f5dac5cf3f6c2d7ec6ecc2faddb6f4bd319e2d8073d08be4",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "be_more_0.5ns",
+      "profile": "be_more",
+      "maxstep_ns": 0.5,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=1",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/be_more_0.5ns",
+      "deck_sha256": "b01171576dccc507a443b77812e300f61b77028aeb8beac00f15a1e031787deb",
+      "log_sha256": "7f06ef44a0691e5ff0f19c607a1353779e4a653fbbc2c4083c4a933d5b9e34b8",
+      "solver_completed": true,
+      "points": 44546,
+      "branch_peak_a": 4.349431384498281e-11,
+      "branch_max_a": 4.349431384498281e-11,
+      "branch_min_a": -2.426689613144184e-11,
+      "charge": {
+        "signed_c": 6.606095588788216e-22,
+        "positive_c": 4.427181684659657e-21,
+        "negative_c": -3.7665721257808355e-21
+      },
+      "early_charge": {
+        "signed_c": 4.202846686664361e-22,
+        "positive_c": 2.177967351565785e-21,
+        "negative_c": -1.7576826828993494e-21
+      },
+      "late_charge": {
+        "signed_c": 2.100488533849022e-23,
+        "positive_c": 5.778932200807132e-23,
+        "negative_c": -3.678443666958109e-23
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 6.606095588788218e-22,
+        "positive_c": 4.427181684659655e-21,
+        "negative_c": -3.7665721257808355e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "7c5f2e8bf65cbf55624f971505b93b4dcb795bdb2750d8213798b58343c3e847",
+      "compact_csv_sha256": "1950a22015bc4ea8eaf6762d7ef66247d57870e0270ab509dbc2ae8bdd8f853d",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "be_more_0.1ns",
+      "profile": "be_more",
+      "maxstep_ns": 0.1,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=1",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/be_more_0.1ns",
+      "deck_sha256": "b0d950b90048a2ed9ad837722c0e0adc1ccc91b176dd83df6380298c31213c02",
+      "log_sha256": "03103a1390802ef084e188ac8674cab988dba121c8c1fa87212bd67e051dd6a8",
+      "solver_completed": true,
+      "points": 202599,
+      "branch_peak_a": 4.317474724957471e-11,
+      "branch_max_a": 4.317474724957471e-11,
+      "branch_min_a": -4.216068924534078e-11,
+      "charge": {
+        "signed_c": -3.728248865194256e-22,
+        "positive_c": 4.4098262290473076e-21,
+        "negative_c": -4.782651115566735e-21
+      },
+      "early_charge": {
+        "signed_c": -1.2392713944819458e-22,
+        "positive_c": 2.251396896753213e-21,
+        "negative_c": -2.3753240362014076e-21
+      },
+      "late_charge": {
+        "signed_c": -4.374592412476182e-22,
+        "positive_c": 4.54443819284553e-26,
+        "negative_c": -4.375046856295467e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": -3.728248865194257e-22,
+        "positive_c": 4.409826229047308e-21,
+        "negative_c": -4.782651115566734e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "9dbbe1920a8f16abdc0a8b0bec83534018813968fe251aae4ec1ab66c440aff5",
+      "compact_csv_sha256": "11e2ebda19a1e09f0bf51f3310b1ecd902fb5b773a28208df5e4ef8c2137d6d3",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "klutight_10ns",
+      "profile": "klutight",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-17 vntol=1e-12 method=gear maxord=2 chgtol=1e-22 klu",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/klutight_10ns",
+      "deck_sha256": "954ab5c035245b9330ab5989fa25fb7a2873f0f7efd73b5c37181888cfc708e9",
+      "log_sha256": "ec765763f35652b646c31f9b324ce1627791040066762b5550c46694adbedb85",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; time = 1.25e-11, timestep = 1.25e-20: trouble with node \"vn31#branch\""
+    },
+    {
+      "name": "klutight_2ns",
+      "profile": "klutight",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-17 vntol=1e-12 method=gear maxord=2 chgtol=1e-22 klu",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/klutight_2ns",
+      "deck_sha256": "717bee1cf90b332335bf29fdbca9d45f8f880db0fe089090e50340fad39126eb",
+      "log_sha256": "1329881ec954b9fe59e35a51af8c8a93f57c6b067b14adbb3dd8a80d15f32f6f",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; time = 1.25e-11, timestep = 2.5e-21: trouble with node \"vn31#branch\""
+    },
+    {
+      "name": "klurel_10ns",
+      "profile": "klurel",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-12 vntol=1e-7 method=gear maxord=2 klu",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/klurel_10ns",
+      "deck_sha256": "16dcff46f8e14277fb859eec9fbf9da47a889807304cb4795856adf5d948a4a4",
+      "log_sha256": "fb21ddc76046d85712fcad4d2990ddb68e17d57f6097f3f9de90d252615a71df",
+      "solver_completed": true,
+      "points": 3644,
+      "branch_peak_a": 5.376771375353861e-11,
+      "branch_max_a": 5.376771375353861e-11,
+      "branch_min_a": -1.41600652037166e-11,
+      "charge": {
+        "signed_c": 8.210408620873616e-22,
+        "positive_c": 4.303144364921445e-21,
+        "negative_c": -3.482103502834084e-21
+      },
+      "early_charge": {
+        "signed_c": 7.335972731857568e-22,
+        "positive_c": 2.103327115637409e-21,
+        "negative_c": -1.369729842451652e-21
+      },
+      "late_charge": {
+        "signed_c": 6.443162749916788e-23,
+        "positive_c": 1.1441625159005408e-22,
+        "negative_c": -4.998462409088622e-23
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.2104086208736175e-22,
+        "positive_c": 4.303144364921446e-21,
+        "negative_c": -3.482103502834084e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "00feba953cfbb7ec0379926e756f8910b33bffef53cf5ce982ae19cfab18aeb0",
+      "compact_csv_sha256": "d768866dc1cab1aa4479b7015354da9031de4a44ebb47a9bbb9e6f7c53bf1c74",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "klurel_2ns",
+      "profile": "klurel",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-12 vntol=1e-7 method=gear maxord=2 klu",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/klurel_2ns",
+      "deck_sha256": "cec4e89f53e4dfb83157afd91ac9235a6a1b5997a20ed35a72cdc89f097ce568",
+      "log_sha256": "66d6f9d9d280eefc83233ee28ce69ff0797c741b0ac74b7242fd30ce73445469",
+      "solver_completed": true,
+      "points": 11464,
+      "branch_peak_a": 5.376771375353861e-11,
+      "branch_max_a": 5.376771375353861e-11,
+      "branch_min_a": -1.41600652037166e-11,
+      "charge": {
+        "signed_c": 8.33979542848464e-22,
+        "positive_c": 4.2634744398400496e-21,
+        "negative_c": -3.429494896991586e-21
+      },
+      "early_charge": {
+        "signed_c": 7.335972731857568e-22,
+        "positive_c": 2.103327115637409e-21,
+        "negative_c": -1.369729842451652e-21
+      },
+      "late_charge": {
+        "signed_c": 7.633998323648385e-23,
+        "positive_c": 7.633998323648385e-23,
+        "negative_c": 0.0
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.339795428484642e-22,
+        "positive_c": 4.263474439840052e-21,
+        "negative_c": -3.429494896991586e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "5d6d1d739a5bfeaf8ee7cafef00dbd9338babc877f322972591e272072538060",
+      "compact_csv_sha256": "32f551a21b74ac2f757a87066443a4c50a20d5ca2cfc29dc96ec10d5865b834f",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "chglight_10ns",
+      "profile": "chglight",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-12 vntol=1e-7 method=gear maxord=2 chgtol=1e-22",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/chglight_10ns",
+      "deck_sha256": "1f02be01b91f325c73410bef5a042e3e01794fe39ac866988fcea1763d5f5206",
+      "log_sha256": "eb1d2f00dcd1e8b20d77f6f3e983c4c07a375e962147ece90796546726c2dda9",
+      "solver_completed": true,
+      "points": 3731,
+      "branch_peak_a": 5.245059844782851e-11,
+      "branch_max_a": 5.245059844782851e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 6.588634004215942e-22,
+        "positive_c": 4.228320598177839e-21,
+        "negative_c": -3.569457197756245e-21
+      },
+      "early_charge": {
+        "signed_c": 7.380574435380224e-22,
+        "positive_c": 2.1081040829048617e-21,
+        "negative_c": -1.3700466393668399e-21
+      },
+      "late_charge": {
+        "signed_c": -8.961179272043051e-23,
+        "positive_c": 5.378053438131346e-23,
+        "negative_c": -1.4339232710174395e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 6.588634004215943e-22,
+        "positive_c": 4.228320598177839e-21,
+        "negative_c": -3.5694571977562445e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "fd7296fc7cfeb2bfbd82d252115e3a7f8268c5f5d2dba3e0ed96809cbd43fc4a",
+      "compact_csv_sha256": "7b4d486bd5685a37c4df643024a84e1af3e01738b2f3ea37f49de6238c1ba071",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "chglight_2ns",
+      "profile": "chglight",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-12 vntol=1e-7 method=gear maxord=2 chgtol=1e-22",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/chglight_2ns",
+      "deck_sha256": "d940c9ed0a7cc77afafe495417ed64bd429b8b5d45eb1a04c9a885d03d57b394",
+      "log_sha256": "c53d07a722fd0e1c65f2b2f37f341105e0213ee5d6d05fc86585c2d48415877f",
+      "solver_completed": true,
+      "points": 11551,
+      "branch_peak_a": 5.245059844782851e-11,
+      "branch_max_a": 5.245059844782851e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 8.313034864023263e-22,
+        "positive_c": 4.46845902208037e-21,
+        "negative_c": -3.6371555356780436e-21
+      },
+      "early_charge": {
+        "signed_c": 7.380574435380224e-22,
+        "positive_c": 2.1081040829048617e-21,
+        "negative_c": -1.3700466393668399e-21
+      },
+      "late_charge": {
+        "signed_c": 7.880694810753585e-23,
+        "positive_c": 2.876645057208092e-22,
+        "negative_c": -2.0885755761327338e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.313034864023265e-22,
+        "positive_c": 4.46845902208037e-21,
+        "negative_c": -3.637155535678043e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "9d9202098d904b383dbbd0ae9794d70a5d0e64264ef9d489a0b5905fec394480",
+      "compact_csv_sha256": "f75630674eab126e8ba6b38e745878b73e695d7b43d9a494256beaf9e918b9e4",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "trtol1_10ns",
+      "profile": "trtol1",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2 trtol=1",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/trtol1_10ns",
+      "deck_sha256": "213cddd236d0220801e13dbad0c145a286063fa7c24832d637403ef54faf04c3",
+      "log_sha256": "2e076c6f890e0d1712869ffd6bfbaf115c58412e3c606221807029cb07286d35",
+      "solver_completed": true,
+      "points": 2706,
+      "branch_peak_a": 5.448557507947705e-11,
+      "branch_max_a": 5.448557507947705e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 7.077667182558034e-22,
+        "positive_c": 4.421717393962714e-21,
+        "negative_c": -3.713950675706911e-21
+      },
+      "early_charge": {
+        "signed_c": 7.978748894795659e-22,
+        "positive_c": 2.179746425982712e-21,
+        "negative_c": -1.3818715365031458e-21
+      },
+      "late_charge": {
+        "signed_c": -9.17506683565332e-23,
+        "positive_c": 5.2701365604826697e-23,
+        "negative_c": -1.4445203396135988e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 7.077667182558038e-22,
+        "positive_c": 4.421717393962714e-21,
+        "negative_c": -3.713950675706911e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "11ca611d3c93dfcf11876d25b8ea49492ff87ab874a894e967c21c2c28cfba97",
+      "compact_csv_sha256": "7766b98506c9d4e139152f7f6ed2fbc5a1e291ba3fcb6b637b058ba4673bef8a",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "trtol1_2ns",
+      "profile": "trtol1",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2 trtol=1",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/trtol1_2ns",
+      "deck_sha256": "c28d9a210b17c569735c64e112e7aca685c70643231b7ef13a2495173492c713",
+      "log_sha256": "c80668119d7beb7036eb7c82a16a6dc7c84c48789df676a3c7acc66c38685f9b",
+      "solver_completed": true,
+      "points": 10561,
+      "branch_peak_a": 5.448557507947705e-11,
+      "branch_max_a": 5.448557507947705e-11,
+      "branch_min_a": -1.416013625799017e-11,
+      "charge": {
+        "signed_c": 8.84145784126013e-22,
+        "positive_c": 4.663564929494563e-21,
+        "negative_c": -3.77941914536855e-21
+      },
+      "early_charge": {
+        "signed_c": 7.978748894795659e-22,
+        "positive_c": 2.179746425982712e-21,
+        "negative_c": -1.3818715365031458e-21
+      },
+      "late_charge": {
+        "signed_c": 8.041267807704385e-23,
+        "positive_c": 2.8858838930876764e-22,
+        "negative_c": -2.0817571123172385e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.841457841260135e-22,
+        "positive_c": 4.663564929494563e-21,
+        "negative_c": -3.7794191453685505e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "246582bb61bdeaa48d8652791b75cf7906fd5700bb304b3504e225a86daf1002",
+      "compact_csv_sha256": "e1aff34f7a2ce3cc1fbd655b29800e16256d604466cd841aae736ae05b05faec",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "tinychg_10ns",
+      "profile": "tinychg",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2 chgtol=1e-24",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/tinychg_10ns",
+      "deck_sha256": "92ca479c0f143155bd54d936a6731e19cb31f660b13eedb0c548b11e3c6275e7",
+      "log_sha256": "52c14154a1cc1e7cc16dae5d92a4de4a60d301082c572e1736b73802763f3527",
+      "solver_completed": true,
+      "points": 2464,
+      "branch_peak_a": 4.773209730246641e-11,
+      "branch_max_a": 4.773209730246641e-11,
+      "branch_min_a": -1.416029613010572e-11,
+      "charge": {
+        "signed_c": 8.523093787071751e-22,
+        "positive_c": 4.565220039565872e-21,
+        "negative_c": -3.7129106608586975e-21
+      },
+      "early_charge": {
+        "signed_c": 8.1456964199043e-22,
+        "positive_c": 2.1915824681638714e-21,
+        "negative_c": -1.3770128261734416e-21
+      },
+      "late_charge": {
+        "signed_c": -8.981623348518763e-23,
+        "positive_c": 5.400928549172971e-23,
+        "negative_c": -1.4382551897691732e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.52309378707175e-22,
+        "positive_c": 4.5652200395658725e-21,
+        "negative_c": -3.712910660858697e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "8f81a4d5e333f4087211d06633d25fe7697b36b5968739123e1a1ffb8b557261",
+      "compact_csv_sha256": "0229768acce0cd0e3fd4ceabd423148aaf3bd4f412f9229f8d9a6f7ced0fdb5b",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "tinychg_2ns",
+      "profile": "tinychg",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2 chgtol=1e-24",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/tinychg_2ns",
+      "deck_sha256": "c82a2cee8754f3efa11a3507213c4372e21f638f145115a1460ced2425aff6e9",
+      "log_sha256": "72c8b63f29021f5fcfd124cf3f46e58959c2cf24b7f715a9a5173b9dd8fc6d58",
+      "solver_completed": true,
+      "points": 10356,
+      "branch_peak_a": 4.773209730246641e-11,
+      "branch_max_a": 4.773209730246641e-11,
+      "branch_min_a": -1.416029613010572e-11,
+      "charge": {
+        "signed_c": 1.0235790960308286e-21,
+        "positive_c": 4.8052613404059874e-21,
+        "negative_c": -3.781682244375159e-21
+      },
+      "early_charge": {
+        "signed_c": 8.1456964199043e-22,
+        "positive_c": 2.1915824681638714e-21,
+        "negative_c": -1.3770128261734416e-21
+      },
+      "late_charge": {
+        "signed_c": 7.690952481381396e-23,
+        "positive_c": 2.8702682266906727e-22,
+        "negative_c": -2.1011729785525336e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 1.023579096030829e-21,
+        "positive_c": 4.805261340405989e-21,
+        "negative_c": -3.781682244375159e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "9630816a8bc9b3ce574b59e4a2dff345316abce4d514be3f1e641633a8e79694",
+      "compact_csv_sha256": "8f64bda70500faf0c651a87219b6d4eadda5aa6549666189d9f3de5056785042",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "be_tight_10ns",
+      "profile": "be_tight",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-13 vntol=1e-8 method=gear maxord=1",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/be_tight_10ns",
+      "deck_sha256": "9905130c82b555d1533ccc5e070033082fd01344ca39a9e19140e4bb3ea1df38",
+      "log_sha256": "34ae8009520e0d338206fecadfa42912a996bab93ad2e9d9b9dbc616a6c452af",
+      "solver_completed": true,
+      "points": 56759,
+      "branch_peak_a": 5.006264194862276e-11,
+      "branch_max_a": 5.006264194862276e-11,
+      "branch_min_a": -1.416042047508448e-11,
+      "charge": {
+        "signed_c": 6.837043348546108e-22,
+        "positive_c": 4.2162596003472744e-21,
+        "negative_c": -3.532555265492663e-21
+      },
+      "early_charge": {
+        "signed_c": 7.061749320866382e-22,
+        "positive_c": 2.0765289154564827e-21,
+        "negative_c": -1.370353983369844e-21
+      },
+      "late_charge": {
+        "signed_c": -3.760969607751178e-23,
+        "positive_c": 6.125383913225533e-23,
+        "negative_c": -9.88635352097671e-23
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 6.837043348546111e-22,
+        "positive_c": 4.216259600347275e-21,
+        "negative_c": -3.532555265492663e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "c0340aac11e0b48926f31c12039bee61617335af96f42d0cd62887cf51ee69e5",
+      "compact_csv_sha256": "3bc487b4ca9de33fbca0627599bd74aae2b8818a1c1252e2286ce97605865a60",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "be_tight_2ns",
+      "profile": "be_tight",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-8 abstol=1e-13 vntol=1e-8 method=gear maxord=1",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/be_tight_2ns",
+      "deck_sha256": "a3f6af494f47b3f8b5c598b72de20b51ceb5ae0e5aec5f9905fb89fade22945b",
+      "log_sha256": "1643fc03a2fd20ace53fe06f8d0189a2d4b942fd6848c02dd4e386196a5b8d2a",
+      "solver_completed": true,
+      "points": 64501,
+      "branch_peak_a": 5.006264194862276e-11,
+      "branch_max_a": 5.006264194862276e-11,
+      "branch_min_a": -1.416042047508448e-11,
+      "charge": {
+        "signed_c": 7.887033203004173e-22,
+        "positive_c": 4.219958325829471e-21,
+        "negative_c": -3.431255005529055e-21
+      },
+      "early_charge": {
+        "signed_c": 7.061749320866382e-22,
+        "positive_c": 2.0765289154564827e-21,
+        "negative_c": -1.370353983369844e-21
+      },
+      "late_charge": {
+        "signed_c": 6.594646649212409e-23,
+        "positive_c": 6.594646649212409e-23,
+        "negative_c": 0.0
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 7.887033203004169e-22,
+        "positive_c": 4.2199583258294705e-21,
+        "negative_c": -3.4312550055290556e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "35dc740fe361bc5c5d17e634a571da152236817e1c343d924038fd56b93660b2",
+      "compact_csv_sha256": "0c27c95993dca90505a43a5960b2d8bd35651c67e7e63e149382d53c88bcb141",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "startsmall_10ns",
+      "profile": "startsmall",
+      "maxstep_ns": 10,
+      "tstep_ns": 0.01,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/startsmall_10ns",
+      "deck_sha256": "a9144595f7a21b7a4fc06595a76a3c6d72affa59214dcdf047bc4be1ceb6c805",
+      "log_sha256": "0b9aa5e9100acc2710e5152462e7ae4906b21702933bea734f2bd5a46d010427",
+      "solver_completed": true,
+      "points": 2363,
+      "branch_peak_a": 5.373768638405885e-11,
+      "branch_max_a": 4.774415876540594e-11,
+      "branch_min_a": -5.373768638405885e-11,
+      "charge": {
+        "signed_c": 2.276915861451218e-22,
+        "positive_c": 5.548719265707582e-21,
+        "negative_c": -5.3210276795624606e-21
+      },
+      "early_charge": {
+        "signed_c": 4.8511882483839005e-22,
+        "positive_c": 3.05962788788879e-21,
+        "negative_c": -2.5745090630504e-21
+      },
+      "late_charge": {
+        "signed_c": -8.951163707283303e-23,
+        "positive_c": 5.31813592061569e-23,
+        "negative_c": -1.426929962789899e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 2.276915861451218e-22,
+        "positive_c": 5.5487192657075825e-21,
+        "negative_c": -5.32102767956246e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "6f1a05d1cd336db795e77067b439cadbd64c894da64a3c77f9d512ac6c0d1d39",
+      "compact_csv_sha256": "f1f6409ea18486ff11f544480007c6b8c8442aff2667fe683c5bc8d348b128f9",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "startsmall_2ns",
+      "profile": "startsmall",
+      "maxstep_ns": 2,
+      "tstep_ns": 0.01,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/startsmall_2ns",
+      "deck_sha256": "76ca0719e5ea88b4c8b057c873d2175d8e38b07326644dcfd93d8ec8ebc336fa",
+      "log_sha256": "9ef04d4ae845986d116b5f72e6caf11bc75d1d0f572e633807ed244ef00ecf1e",
+      "solver_completed": true,
+      "points": 10258,
+      "branch_peak_a": 5.373768638405885e-11,
+      "branch_max_a": 4.774415876540594e-11,
+      "branch_min_a": -5.373768638405885e-11,
+      "charge": {
+        "signed_c": 4.008706785491197e-22,
+        "positive_c": 5.790813592585339e-21,
+        "negative_c": -5.389942914036222e-21
+      },
+      "early_charge": {
+        "signed_c": 4.8511882483839005e-22,
+        "positive_c": 3.05962788788879e-21,
+        "negative_c": -2.5745090630504e-21
+      },
+      "late_charge": {
+        "signed_c": 7.709830520053294e-23,
+        "positive_c": 2.8738770238725756e-22,
+        "negative_c": -2.1028939718672462e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 4.0087067854911935e-22,
+        "positive_c": 5.79081359258534e-21,
+        "negative_c": -5.389942914036221e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "c29ecd9a588b689b8111362e576d54b3bf5753f644f32c39d8f62eb25d6c96df",
+      "compact_csv_sha256": "a017e64a104a9d6bbea07c894faa6743319ba0998360ad32d0bc95fb45dcf11a",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "startstrict_10ns",
+      "profile": "startstrict",
+      "maxstep_ns": 10,
+      "tstep_ns": 0.01,
+      "options": "reltol=1e-8 abstol=1e-17 vntol=1e-12 method=gear maxord=2 chgtol=1e-22",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/startstrict_10ns",
+      "deck_sha256": "a195e7e3741b6a0c832f8e47bb6969e7f89dac88aa5a8b9b33033bfc4d4dec63",
+      "log_sha256": "ffd78fc892b833a2e3da6649184858359ddd67ba20b35eb17f8720c015a5eb6e",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; initial timepoint: trouble with node \"vfault#branch\""
+    },
+    {
+      "name": "startstrict_2ns",
+      "profile": "startstrict",
+      "maxstep_ns": 2,
+      "tstep_ns": 0.01,
+      "options": "reltol=1e-8 abstol=1e-17 vntol=1e-12 method=gear maxord=2 chgtol=1e-22",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/startstrict_2ns",
+      "deck_sha256": "5cacdb2f5101cfe9d8d9913a856944dc50b5afb8753c6d6b851d5f9299af554f",
+      "log_sha256": "6b962e70edac87e88943ecf31791cb001159faf86e2480a6107602b52ca01114",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; initial timepoint: trouble with node \"vn31#branch\""
+    },
+    {
+      "name": "startmedium_10ns",
+      "profile": "startmedium",
+      "maxstep_ns": 10,
+      "tstep_ns": 0.01,
+      "options": "reltol=1e-7 abstol=1e-15 vntol=1e-10 method=gear maxord=2 chgtol=1e-20",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/startmedium_10ns",
+      "deck_sha256": "35e3acfb7486c517c374755efbbc42c174510e39b242c7ad61dd15c741c2a0b1",
+      "log_sha256": "4b11b09393b0446d92e5195993336d8e7d3c480d22c242676c9912cbc66568ec",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; time = 1e-13, timestep = 1.25e-20: trouble with node \"vfault#branch\""
+    },
+    {
+      "name": "startmedium_2ns",
+      "profile": "startmedium",
+      "maxstep_ns": 2,
+      "tstep_ns": 0.01,
+      "options": "reltol=1e-7 abstol=1e-15 vntol=1e-10 method=gear maxord=2 chgtol=1e-20",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/startmedium_2ns",
+      "deck_sha256": "714391d277d50c4f9452bb3792a14fefac58ca016270b2524973ec82f7a56907",
+      "log_sha256": "3981d0ccf1ddeda2a33711c436e2f38e77a4185052cfd59cbc375cacc73b5acb",
+      "solver_completed": false,
+      "failure": "doAnalyses: TRAN:  Timestep too small; time = 1e-13, timestep = 2.5e-21: trouble with node \"vn31#branch\""
+    },
+    {
+      "name": "startklurel_10ns",
+      "profile": "startklurel",
+      "maxstep_ns": 10,
+      "tstep_ns": 0.01,
+      "options": "reltol=1e-8 abstol=1e-12 vntol=1e-7 method=gear maxord=2 klu",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/startklurel_10ns",
+      "deck_sha256": "d07879761c706da52c1d70e69a67abc298aff65b9652b6310812b5afe55ff529",
+      "log_sha256": "90e864abb1c9be6c8ff9ef403e2c856d876b5b30b41ec651c61c17cbaee313ad",
+      "solver_completed": true,
+      "points": 3643,
+      "branch_peak_a": 5.448950082809212e-11,
+      "branch_max_a": 5.448950082809212e-11,
+      "branch_min_a": -5.373653175211324e-11,
+      "charge": {
+        "signed_c": 1.1788528117064045e-22,
+        "positive_c": 4.606845768871023e-21,
+        "negative_c": -4.488960487700382e-21
+      },
+      "early_charge": {
+        "signed_c": 2.86774049030188e-23,
+        "positive_c": 2.4060018899489112e-21,
+        "negative_c": -2.3773244850458926e-21
+      },
+      "late_charge": {
+        "signed_c": 6.575101206494718e-23,
+        "positive_c": 1.1444935631482255e-22,
+        "negative_c": -4.869834424987538e-23
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 1.1788528117064069e-22,
+        "positive_c": 4.606845768871023e-21,
+        "negative_c": -4.488960487700382e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "d7ccf0683ab5d2a7352b8a0b37fa822f8afc5666d4858a1b078ae340547c003c",
+      "compact_csv_sha256": "22a04df829955306392086e1e03d9a1c15f702ad11fde5e5226272df7978112a",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "startklurel_2ns",
+      "profile": "startklurel",
+      "maxstep_ns": 2,
+      "tstep_ns": 0.01,
+      "options": "reltol=1e-8 abstol=1e-12 vntol=1e-7 method=gear maxord=2 klu",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/startklurel_2ns",
+      "deck_sha256": "cf3087e418014c7b0cac3f8676b4245f957366ba326e20af619b8b99555b5016",
+      "log_sha256": "99a20d0297ee7f70df301d80ee700a7edd383ea6efaeec4bc061733b0dfbcc70",
+      "solver_completed": true,
+      "points": 11463,
+      "branch_peak_a": 5.448950082809212e-11,
+      "branch_max_a": 5.448950082809212e-11,
+      "branch_min_a": -5.373653175211324e-11,
+      "charge": {
+        "signed_c": 1.3226901932934242e-22,
+        "positive_c": 4.569212956293367e-21,
+        "negative_c": -4.436943936964026e-21
+      },
+      "early_charge": {
+        "signed_c": 2.86774049030188e-23,
+        "positive_c": 2.4060018899489112e-21,
+        "negative_c": -2.3773244850458926e-21
+      },
+      "late_charge": {
+        "signed_c": 7.844388200240464e-23,
+        "positive_c": 7.844388200240464e-23,
+        "negative_c": 0.0
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 1.322690193293427e-22,
+        "positive_c": 4.5692129562933665e-21,
+        "negative_c": -4.436943936964026e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "a54c34d7d1ad3386c18fd77a179857dfe496c0fa249e10beafdd65f58c7d1e6a",
+      "compact_csv_sha256": "d61c216ec718a043c454ccd1a91e2aa12076c6f87688daeaaec32c3e25b7b2aa",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "startbe_10ns",
+      "profile": "startbe",
+      "maxstep_ns": 10,
+      "tstep_ns": 0.01,
+      "options": "reltol=1e-8 abstol=1e-13 vntol=1e-8 method=gear maxord=1",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/startbe_10ns",
+      "deck_sha256": "185bfc44b88654e3aebec031be12e5f61797a3630f60dd35b0aa5287fb8541cf",
+      "log_sha256": "ebe39481e18392031f2b425e60a8b9a1656e73cd0a1916ca81a4949174e852f5",
+      "solver_completed": true,
+      "points": 56847,
+      "branch_peak_a": 5.00391229840691e-11,
+      "branch_max_a": 5.00391229840691e-11,
+      "branch_min_a": -4.959033725326911e-11,
+      "charge": {
+        "signed_c": -1.3479050810195482e-23,
+        "positive_c": 4.514417436805774e-21,
+        "negative_c": -4.52789648761597e-21
+      },
+      "early_charge": {
+        "signed_c": -1.1853896443996275e-23,
+        "positive_c": 2.3610139473823076e-21,
+        "negative_c": -2.372867843826304e-21
+      },
+      "late_charge": {
+        "signed_c": -1.7490703158769516e-23,
+        "positive_c": 7.478136085419242e-23,
+        "negative_c": -9.227206401296193e-23
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": -1.3479050810195094e-23,
+        "positive_c": 4.514417436805775e-21,
+        "negative_c": -4.527896487615969e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "83b98eb6c483db64dd5604b217ec7a6488d64836e37d79ef3ba71dc5774e07ec",
+      "compact_csv_sha256": "62738dad1a3a2465fbf6608d3ecf212a1a670682bd100ec779830bb436750ca1",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "startbe_2ns",
+      "profile": "startbe",
+      "maxstep_ns": 2,
+      "tstep_ns": 0.01,
+      "options": "reltol=1e-8 abstol=1e-13 vntol=1e-8 method=gear maxord=1",
+      "negative_control": false,
+      "raw_directory": "build/startup-v3/numerical/startbe_2ns",
+      "deck_sha256": "aff6deacba67dddac80eae5aafedff12604971e3c076ebc3dec939dbdf6ca71a",
+      "log_sha256": "b0a4fdc4064b5614716996c3cd1e750dc1fe3999ce470ae40c21aa2faa97f3fa",
+      "solver_completed": true,
+      "points": 64587,
+      "branch_peak_a": 5.00391229840691e-11,
+      "branch_max_a": 5.00391229840691e-11,
+      "branch_min_a": -4.959033725326911e-11,
+      "charge": {
+        "signed_c": 7.069689286652504e-23,
+        "positive_c": 4.504704948318048e-21,
+        "negative_c": -4.434008055451523e-21
+      },
+      "early_charge": {
+        "signed_c": -1.1853896443996275e-23,
+        "positive_c": 2.3610139473823076e-21,
+        "negative_c": -2.372867843826304e-21
+      },
+      "late_charge": {
+        "signed_c": 6.576617950421046e-23,
+        "positive_c": 6.591039105999023e-23,
+        "negative_c": -1.442115557797577e-25
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 7.069689286652655e-23,
+        "positive_c": 4.504704948318048e-21,
+        "negative_c": -4.434008055451522e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "waveform_sha256": "45b3144bbb183f4a8d3260a4e9e4283dca054c29388adba42acb84a744f700d8",
+      "compact_csv_sha256": "3f59bf0f90fd7e204739b169cb82e500a93435cd4e2c928d1fcc536932b9eb3e",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "negative_control_10ns",
+      "profile": "negative_control",
+      "maxstep_ns": 10,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2",
+      "negative_control": true,
+      "raw_directory": "build/startup-v3/numerical/negative_control_10ns",
+      "deck_sha256": "d8ccb3410e208e9eb89a519248da522c31f2778e024e2c1835f00411feb6989d",
+      "log_sha256": "db25f3c7b94fa4719b8b40365d84fd746b95a6fe00472b39e091faffa3c10b78",
+      "solver_completed": true,
+      "points": 2340,
+      "branch_peak_a": 4.837425219422765e-09,
+      "branch_max_a": 4.837425219422765e-09,
+      "branch_min_a": -4.558878231447627e-09,
+      "charge": {
+        "signed_c": 2.4520781212426213e-19,
+        "positive_c": 7.328906111177935e-17,
+        "negative_c": -7.304385329965511e-17
+      },
+      "early_charge": {
+        "signed_c": -5.027144994667913e-17,
+        "positive_c": 1.77802985260152e-17,
+        "negative_c": -6.805174847269434e-17
+      },
+      "late_charge": {
+        "signed_c": -2.4813455156545387e-23,
+        "positive_c": 7.240402299117716e-23,
+        "negative_c": -9.721747814772254e-23
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 2.4520781212426045e-19,
+        "positive_c": 7.328906111177939e-17,
+        "negative_c": -7.30438532996551e-17
+      },
+      "branch_1nA_peak_passed": false,
+      "waveform_sha256": "5bfb88858dd78e38dfabb8ff092fe2caf24c42dd6e4cc07cbdc75afd6430241e",
+      "compact_csv_sha256": "2286d9c622e52d301909066a2293adeef06f9ff5903c1ce17ab7fb4669c64fe2",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    },
+    {
+      "name": "negative_control_2ns",
+      "profile": "negative_control",
+      "maxstep_ns": 2,
+      "tstep_ns": 10,
+      "options": "reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2",
+      "negative_control": true,
+      "raw_directory": "build/startup-v3/numerical/negative_control_2ns",
+      "deck_sha256": "fb48dcd8af04f9be867ee08610b394e64748cf5d7b25195d7899adc5557ff439",
+      "log_sha256": "883ff857282587c147cc007d7d5a28fdda7d772127a34f0c0b77b61ca42b5ea0",
+      "solver_completed": true,
+      "points": 10235,
+      "branch_peak_a": 4.837425219422765e-09,
+      "branch_max_a": 4.837425219422765e-09,
+      "branch_min_a": -4.558878231447627e-09,
+      "charge": {
+        "signed_c": 2.485025227614783e-19,
+        "positive_c": 7.328899693462446e-17,
+        "negative_c": -7.304049441186299e-17
+      },
+      "early_charge": {
+        "signed_c": -5.027144994667913e-17,
+        "positive_c": 1.77802985260152e-17,
+        "negative_c": -6.805174847269434e-17
+      },
+      "late_charge": {
+        "signed_c": 7.819872336143632e-23,
+        "positive_c": 2.7313822926389904e-22,
+        "negative_c": -1.9493950590246273e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 2.4850252276147627e-19,
+        "positive_c": 7.328899693462447e-17,
+        "negative_c": -7.304049441186297e-17
+      },
+      "branch_1nA_peak_passed": false,
+      "waveform_sha256": "f80a2562c5950d05fe26d5f7b8e4ae446853c1a16a4d67c68daeac5979bf04a8",
+      "compact_csv_sha256": "81003d78e118a733504e112294c078a9cd9c23b4d17a43f94cd883cce59c5820",
+      "compact_csv_scope": "All first-us samples; decimated late samples. Metrics use full raw waveform."
+    }
+  ],
+  "comparisons": [
+    {
+      "coarse": "base_10ns",
+      "fine": "base_2ns",
+      "q_positive_change_pct": 4.909038216441242,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 2.4133932065073376e-22,
+      "waveform_max_difference_a": 1.1041445662048589e-16,
+      "waveform_l1_difference_c": 5.536755592278818e-22
+    },
+    {
+      "coarse": "fine_0.5ns",
+      "fine": "fine_0.1ns",
+      "q_positive_change_pct": 0.24157947317953177,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 1.2546853980341255e-23,
+      "waveform_max_difference_a": 3.7307298583755255e-11,
+      "waveform_l1_difference_c": 2.7449114489121774e-21
+    },
+    {
+      "coarse": "chg_10ns",
+      "fine": "chg_2ns",
+      "q_positive_change_pct": 5.258044492044722,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 2.4004130084011567e-22,
+      "waveform_max_difference_a": 1.2085846920522455e-16,
+      "waveform_l1_difference_c": 5.52241274705362e-22
+    },
+    {
+      "coarse": "volt_10ns",
+      "fine": "volt_2ns",
+      "q_positive_change_pct": 4.893636247880462,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 2.4057635131521873e-22,
+      "waveform_max_difference_a": 1.5987211554602254e-16,
+      "waveform_l1_difference_c": 5.539449902843528e-22
+    },
+    {
+      "coarse": "amp_10ns",
+      "fine": "amp_2ns",
+      "q_positive_change_pct": 4.9082571032442734,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 2.412651136446838e-22,
+      "waveform_max_difference_a": 1.0643149769799387e-16,
+      "waveform_l1_difference_c": 5.516414383420766e-22
+    },
+    {
+      "coarse": "rel_10ns",
+      "fine": "rel_2ns",
+      "q_positive_change_pct": 5.61868254329585,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 2.384466828241715e-22,
+      "waveform_max_difference_a": 1.4210854715202002e-16,
+      "waveform_l1_difference_c": 5.487704587934296e-22
+    },
+    {
+      "coarse": "moderate_10ns",
+      "fine": "moderate_2ns",
+      "q_positive_change_pct": 5.523245393178233,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 2.413669393470834e-22,
+      "waveform_max_difference_a": 1.5081699199509574e-16,
+      "waveform_l1_difference_c": 5.531087994183569e-22
+    },
+    {
+      "coarse": "klu_10ns",
+      "fine": "klu_2ns",
+      "q_positive_change_pct": 0.8717854590750584,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 3.8630639481636255e-23,
+      "waveform_max_difference_a": 7.105427357601002e-17,
+      "waveform_l1_difference_c": 1.6554421156996723e-22
+    },
+    {
+      "coarse": "trap_10ns",
+      "fine": "trap_2ns",
+      "q_positive_change_pct": 86.42751844080216,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 6.5185851294921575e-18,
+      "waveform_max_difference_a": 4.6404205238361626e-12,
+      "waveform_l1_difference_c": 1.5301291361168792e-17
+    },
+    {
+      "coarse": "be_10ns",
+      "fine": "be_2ns",
+      "q_positive_change_pct": 0.03308955441332362,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": true,
+      "absolute_positive_difference_c": 1.4179259180258594e-24,
+      "waveform_max_difference_a": 1.138544639547146e-16,
+      "waveform_l1_difference_c": 1.9862115711597588e-22
+    },
+    {
+      "coarse": "be_more_0.5ns",
+      "fine": "be_more_0.1ns",
+      "q_positive_change_pct": 0.3920204059500554,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 1.7355455612349202e-23,
+      "waveform_max_difference_a": 3.7307298583755255e-11,
+      "waveform_l1_difference_c": 1.7705584040820616e-21
+    },
+    {
+      "coarse": "klurel_10ns",
+      "fine": "klurel_2ns",
+      "q_positive_change_pct": 0.921882272990382,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 3.966992508139542e-23,
+      "waveform_max_difference_a": 7.105427357601002e-17,
+      "waveform_l1_difference_c": 1.631140187779675e-22
+    },
+    {
+      "coarse": "chglight_10ns",
+      "fine": "chglight_2ns",
+      "q_positive_change_pct": 5.679286097795333,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 2.401384239025304e-22,
+      "waveform_max_difference_a": 1.0604572503953366e-16,
+      "waveform_l1_difference_c": 5.465505214224069e-22
+    },
+    {
+      "coarse": "trtol1_10ns",
+      "fine": "trtol1_2ns",
+      "q_positive_change_pct": 5.469538506962479,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 2.4184753553184834e-22,
+      "waveform_max_difference_a": 1.5699766418422598e-16,
+      "waveform_l1_difference_c": 5.529732619661298e-22
+    },
+    {
+      "coarse": "tinychg_10ns",
+      "fine": "tinychg_2ns",
+      "q_positive_change_pct": 5.258044492044722,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 2.4004130084011567e-22,
+      "waveform_max_difference_a": 1.2085846920522455e-16,
+      "waveform_l1_difference_c": 5.52241274705362e-22
+    },
+    {
+      "coarse": "be_tight_10ns",
+      "fine": "be_tight_2ns",
+      "q_positive_change_pct": 0.08772527863065704,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": true,
+      "absolute_positive_difference_c": 3.698725482196763e-24,
+      "waveform_max_difference_a": 7.105427357601002e-17,
+      "waveform_l1_difference_c": 1.929300305501444e-22
+    },
+    {
+      "coarse": "startsmall_10ns",
+      "fine": "startsmall_2ns",
+      "q_positive_change_pct": 4.363066777841129,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 2.420943268777576e-22,
+      "waveform_max_difference_a": 1.1940017370432887e-16,
+      "waveform_l1_difference_c": 5.533886781140738e-22
+    },
+    {
+      "coarse": "startklurel_10ns",
+      "fine": "startklurel_2ns",
+      "q_positive_change_pct": 0.8168889184861583,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 3.7632812577655956e-23,
+      "waveform_max_difference_a": 7.105427357601002e-17,
+      "waveform_l1_difference_c": 1.6396237795603014e-22
+    },
+    {
+      "coarse": "startbe_10ns",
+      "fine": "startbe_2ns",
+      "q_positive_change_pct": 0.21514378374805077,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 9.712488487725925e-24,
+      "waveform_max_difference_a": 1.0658141036401504e-16,
+      "waveform_l1_difference_c": 1.918047541743731e-22
+    },
+    {
+      "coarse": "negative_control_10ns",
+      "fine": "negative_control_2ns",
+      "q_positive_change_pct": 8.756716748381521e-05,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": true,
+      "absolute_positive_difference_c": 6.417715489364963e-23,
+      "waveform_max_difference_a": 2.1375123820853783e-13,
+      "waveform_l1_difference_c": 2.0546619859535405e-20
+    },
+    {
+      "coarse": "base_2ns",
+      "fine": "fine_0.5ns",
+      "q_positive_change_pct": 0.70017736986967,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 3.611209201873005e-23,
+      "waveform_max_difference_a": 1.7186820855386037e-11,
+      "waveform_l1_difference_c": 2.2316278676367743e-21
+    },
+    {
+      "coarse": "be_2ns",
+      "fine": "be_more_0.5ns",
+      "q_positive_change_pct": 3.349517397650126,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 1.4348322516368814e-22,
+      "waveform_max_difference_a": 1.7186820855386037e-11,
+      "waveform_l1_difference_c": 1.3717585833723032e-21
+    },
+    {
+      "coarse": "base_10ns",
+      "fine": "be_10ns",
+      "q_positive_change_pct": 12.837244916509515,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 6.311077303903019e-22,
+      "waveform_max_difference_a": 5.405266001005178e-12,
+      "waveform_l1_difference_c": 2.975280499536527e-21
+    },
+    {
+      "coarse": "base_10ns",
+      "fine": "moderate_10ns",
+      "q_positive_change_pct": 11.110232232870432,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 5.462039163542383e-22,
+      "waveform_max_difference_a": 2.6825981467175793e-11,
+      "waveform_l1_difference_c": 1.9094649281504755e-21
+    },
+    {
+      "coarse": "base_10ns",
+      "fine": "startsmall_10ns",
+      "q_positive_change_pct": 12.865466158672234,
+      "legacy_limit_pct": 0.2,
+      "legacy_relative_passed": false,
+      "absolute_positive_difference_c": 6.324951499032854e-22,
+      "waveform_max_difference_a": 5.328454818709361e-11,
+      "waveform_l1_difference_c": 3.423823056837835e-21
+    }
+  ],
+  "findings": [
+    "Legacy splitter already inserts zero crossings; independent analytic triangles agree.",
+    "Near-zero Q+ is unstable under integration order, tolerance, initial time step, and fine step controls. Do not select a passing two-point pair.",
+    "TRAP shows numerical sign-alternating ringing; Gear2 controls reduce it but do not establish strict relative Q+ convergence.",
+    "Tight tolerances cause actual timestep failures; all failure logs preserved.",
+    "Peak guard is robust for successful isolated trials; negative-control circuit fails guard. This does not upgrade strict convergence."
+  ],
+  "proposed_measurement_contract": {
+    "status": "proposal_only_not_original_gate",
+    "absolute_current_error_budget_a": 2e-12,
+    "derivation": "0.2% of existing 1nA off-current peak limit",
+    "absolute_charge_error_budget_c": 4e-17,
+    "derivation_charge": "2pA times unchanged 20us observation window",
+    "condition": "Require both max waveform difference and charge difference across refinement/method controls; keep legacy status alongside. No clipping, zero replacement, or sensor-resolution claim."
+  }
+}

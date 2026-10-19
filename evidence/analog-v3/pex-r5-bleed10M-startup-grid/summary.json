@@ -1,0 +1,618 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "tag": "pex-r5-bleed10M-startup-grid",
+  "raw_directory": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4",
+  "dut_source": "build/layout-v3/r5/roundtrip/startup_test_macro_rc.spice",
+  "dut_sha256": "d6ebc340c5f2096c43e1358b851d68590fefddbf47b5cc6e746ffc3c12851424",
+  "pout_terminal_mapping": [
+    "X28",
+    "VREF.t1",
+    "CTRL.t3",
+    "REFOUT.t2",
+    "VREF.t0",
+    "pfet_06v0"
+  ],
+  "source_sha256": {
+    "build/layout-v3/r5/roundtrip/startup_test_macro_rc.spice": "d6ebc340c5f2096c43e1358b851d68590fefddbf47b5cc6e746ffc3c12851424",
+    "analog/models/microled.spice": "ce9a3453abb87fc2aea894e7da2eff1448ff90a1432243ea90c747716ed20bba",
+    "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+    "rtl/safety/pixel_safety.v": "a6f4ef3f0705dec13d578ef6c0e6a6dd755e2d7b7714d7fb1411fbd078672a93",
+    "sim/safety/tb_safety.v": "76d4f5130d8fefb4769508e074f19213886b3fed55003ea744b7c51482dd20c7",
+    "scripts/safety/run.py": "4f52656c2306403bfd7db9aa6909b23777ad525f92d603672fca1b7121da4975",
+    "scripts/analog_v3/macro.py": "9be84b0ab4acc74c9398efb7654692e66ca613d2f50e1895c8bbbb1e88e419ee",
+    "layout/startup_v3/contract.json": "787c41e4cbcf8e0d7523ed90b74ac71e63a32b4913ad578353a828a1de73f7bc",
+    "build/layout/pdk/gf180mcuD/libs.tech/ngspice/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "build/layout/pdk/gf180mcuD/libs.tech/ngspice/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+  },
+  "cc_pf": 30.0,
+  "csense_pf": 30.0,
+  "bleed_ohm": 10000000.0,
+  "selected_case": null,
+  "selected_kind": "startup",
+  "startup_grid": {
+    "enabled": true,
+    "grid_step_s": 1e-13,
+    "tstep_s": 1e-12,
+    "windows": "0–1ns and ramp_end−1ns to ramp_end+2ns",
+    "same_source_function": true
+  },
+  "dc_results": [
+    {
+      "envelope": "tt",
+      "on": 0,
+      "current_a": 2.888356220867696e-11,
+      "passed": true
+    },
+    {
+      "envelope": "tt",
+      "on": 1,
+      "current_a": 9.973911542012451e-05,
+      "passed": true
+    },
+    {
+      "envelope": "ss",
+      "on": 0,
+      "current_a": 2.634759965760984e-11,
+      "passed": true
+    },
+    {
+      "envelope": "ss",
+      "on": 1,
+      "current_a": 9.72547391093085e-05,
+      "passed": true
+    },
+    {
+      "envelope": "ff",
+      "on": 0,
+      "current_a": 3.177699881010535e-11,
+      "passed": true
+    },
+    {
+      "envelope": "ff",
+      "on": 1,
+      "current_a": 0.0001006162200740218,
+      "passed": true
+    }
+  ],
+  "results": [
+    {
+      "name": "startup_tt_100",
+      "kind": "startup",
+      "envelope": "tt",
+      "ramp_ns": 100,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.275101895047986e-10,
+        "branch_charge": {
+          "signed_c": -1.8785836463665738e-22,
+          "positive_c": 2.0074341847191646e-19,
+          "negative_c": -2.009312768365531e-19
+        },
+        "conduction_max_abs_a": 5.3874938079707575e-20
+      },
+      "release": {
+        "branch_max_abs_a": 4.739361395792313e-06,
+        "branch_charge": {
+          "signed_c": -1.904547669438803e-14,
+          "positive_c": 1.9906267477346075e-17,
+          "negative_c": -1.906538296186537e-14
+        },
+        "conduction_max_abs_a": 9.533221426500292e-15
+      },
+      "recovered_a": 9.97391154251985e-05,
+      "pout_model_ibd_max_a": 4.353181717933744e-15,
+      "pout_model_ibs_max_a": 2.040598446241143e-12,
+      "pout_external_refout_above_vref_v": 4.862876670268448e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true
+    },
+    {
+      "name": "startup_tt_1000",
+      "kind": "startup",
+      "envelope": "tt",
+      "ramp_ns": 1000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.352851036894869e-11,
+        "branch_charge": {
+          "signed_c": -2.670923615030787e-22,
+          "positive_c": 3.272698112543236e-20,
+          "negative_c": -3.299407348693544e-20
+        },
+        "conduction_max_abs_a": 3.921810425842048e-20
+      },
+      "release": {
+        "branch_max_abs_a": 4.739511429679849e-06,
+        "branch_charge": {
+          "signed_c": -1.904541681064541e-14,
+          "positive_c": 1.9900150546558998e-17,
+          "negative_c": -1.906531696119197e-14
+        },
+        "conduction_max_abs_a": 9.533219463076036e-15
+      },
+      "recovered_a": 9.973911542512142e-05,
+      "pout_model_ibd_max_a": 4.353181616585263e-15,
+      "pout_model_ibs_max_a": 2.040598944675085e-12,
+      "pout_external_refout_above_vref_v": 4.862876670268448e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true
+    },
+    {
+      "name": "startup_tt_10000",
+      "kind": "startup",
+      "envelope": "tt",
+      "ramp_ns": 10000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.318682382877583e-12,
+        "branch_charge": {
+          "signed_c": -1.899540279108924e-21,
+          "positive_c": 1.7418273805447485e-20,
+          "negative_c": -1.9317814084556416e-20
+        },
+        "conduction_max_abs_a": 3.499039061868796e-20
+      },
+      "release": {
+        "branch_max_abs_a": 4.739274666501897e-06,
+        "branch_charge": {
+          "signed_c": -1.9045442189312527e-14,
+          "positive_c": 1.9901931546916282e-17,
+          "negative_c": -1.9065344120859442e-14
+        },
+        "conduction_max_abs_a": 9.533219656723137e-15
+      },
+      "recovered_a": 9.973911542516303e-05,
+      "pout_model_ibd_max_a": 4.353178473834923e-15,
+      "pout_model_ibs_max_a": 2.040600938968804e-12,
+      "pout_external_refout_above_vref_v": 4.862876670268448e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true
+    },
+    {
+      "name": "startup_ss_100",
+      "kind": "startup",
+      "envelope": "ss",
+      "ramp_ns": 100,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 5.997387778761132e-10,
+        "branch_charge": {
+          "signed_c": 9.597351259316086e-22,
+          "positive_c": 2.829317799940325e-19,
+          "negative_c": -2.8197204486810094e-19
+        },
+        "conduction_max_abs_a": 8.68049800064691e-20
+      },
+      "release": {
+        "branch_max_abs_a": 3.965675307680758e-06,
+        "branch_charge": {
+          "signed_c": -1.7142993531825998e-14,
+          "positive_c": 2.758098533869712e-17,
+          "negative_c": -1.71705745171647e-14
+        },
+        "conduction_max_abs_a": 8.789510907249723e-15
+      },
+      "recovered_a": 9.725473798062527e-05,
+      "pout_model_ibd_max_a": 1.828571532271459e-14,
+      "pout_model_ibs_max_a": 1.279096988766785e-12,
+      "pout_external_refout_above_vref_v": 4.299817159767066e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true
+    },
+    {
+      "name": "startup_ss_1000",
+      "kind": "startup",
+      "envelope": "ss",
+      "ramp_ns": 1000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.137847043119482e-11,
+        "branch_charge": {
+          "signed_c": -1.863732927633078e-22,
+          "positive_c": 4.107398199504245e-20,
+          "negative_c": -4.126035528780577e-20
+        },
+        "conduction_max_abs_a": 5.860367503050519e-20
+      },
+      "release": {
+        "branch_max_abs_a": 3.965670519883932e-06,
+        "branch_charge": {
+          "signed_c": -1.7143110831784744e-14,
+          "positive_c": 2.7578891935077784e-17,
+          "negative_c": -1.717068972371982e-14
+        },
+        "conduction_max_abs_a": 8.789506364247985e-15
+      },
+      "recovered_a": 9.72547379806425e-05,
+      "pout_model_ibd_max_a": 1.82857131466939e-14,
+      "pout_model_ibs_max_a": 1.143666118581015e-12,
+      "pout_external_refout_above_vref_v": 4.299817159767066e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true
+    },
+    {
+      "name": "startup_ss_10000",
+      "kind": "startup",
+      "envelope": "ss",
+      "ramp_ns": 10000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.124429088871786e-12,
+        "branch_charge": {
+          "signed_c": 1.5895023995354294e-22,
+          "positive_c": 1.1432160680188032e-20,
+          "negative_c": -1.1273210440234487e-20
+        },
+        "conduction_max_abs_a": 5.2460368338110676e-20
+      },
+      "release": {
+        "branch_max_abs_a": 3.965680039184835e-06,
+        "branch_charge": {
+          "signed_c": -1.7143173141495103e-14,
+          "positive_c": 2.7564598592267018e-17,
+          "negative_c": -1.717073774008737e-14
+        },
+        "conduction_max_abs_a": 8.789507393619933e-15
+      },
+      "recovered_a": 9.725473798400691e-05,
+      "pout_model_ibd_max_a": 1.828574754207687e-14,
+      "pout_model_ibs_max_a": 1.369371587945269e-12,
+      "pout_external_refout_above_vref_v": 4.299817159767066e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true
+    },
+    {
+      "name": "startup_ff_100",
+      "kind": "startup",
+      "envelope": "ff",
+      "ramp_ns": 100,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.563377024509931e-10,
+        "branch_charge": {
+          "signed_c": -2.7164809008597137e-22,
+          "positive_c": 1.9063809095090694e-19,
+          "negative_c": -1.9090973904099292e-19
+        },
+        "conduction_max_abs_a": 4.1664656171022915e-20
+      },
+      "release": {
+        "branch_max_abs_a": 5.453099884890692e-06,
+        "branch_charge": {
+          "signed_c": -2.0818873052127914e-14,
+          "positive_c": 1.8853010124279687e-17,
+          "negative_c": -2.0837726062252187e-14
+        },
+        "conduction_max_abs_a": 1.0307611078829813e-14
+      },
+      "recovered_a": 0.00010061622008392427,
+      "pout_model_ibd_max_a": 4.398157000745279e-15,
+      "pout_model_ibs_max_a": 2.578705838103216e-12,
+      "pout_external_refout_above_vref_v": 5.482038909781622e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true
+    },
+    {
+      "name": "startup_ff_1000",
+      "kind": "startup",
+      "envelope": "ff",
+      "ramp_ns": 1000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.605684714500183e-11,
+        "branch_charge": {
+          "signed_c": -2.3222540366925886e-22,
+          "positive_c": 4.8638897044148365e-20,
+          "negative_c": -4.887112244781762e-20
+        },
+        "conduction_max_abs_a": 3.134231219931325e-20
+      },
+      "release": {
+        "branch_max_abs_a": 5.453118551825356e-06,
+        "branch_charge": {
+          "signed_c": -2.0818721351715203e-14,
+          "positive_c": 1.8844190108588672e-17,
+          "negative_c": -2.083756554182379e-14
+        },
+        "conduction_max_abs_a": 1.0307606467830234e-14
+      },
+      "recovered_a": 0.00010061622008398306,
+      "pout_model_ibd_max_a": 4.398155299981444e-15,
+      "pout_model_ibs_max_a": 2.578705796428693e-12,
+      "pout_external_refout_above_vref_v": 5.482038909781622e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true
+    },
+    {
+      "name": "startup_ff_10000",
+      "kind": "startup",
+      "envelope": "ff",
+      "ramp_ns": 10000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.577030517429527e-12,
+        "branch_charge": {
+          "signed_c": -8.120795520687326e-22,
+          "positive_c": 2.6516634058273948e-20,
+          "negative_c": -2.7328713610342685e-20
+        },
+        "conduction_max_abs_a": 2.848749355737166e-20
+      },
+      "release": {
+        "branch_max_abs_a": 5.453130930208119e-06,
+        "branch_charge": {
+          "signed_c": -2.0818725061145804e-14,
+          "positive_c": 1.8853349924829433e-17,
+          "negative_c": -2.0837578411070628e-14
+        },
+        "conduction_max_abs_a": 1.0307612241574336e-14
+      },
+      "recovered_a": 0.00010061622008388533,
+      "pout_model_ibd_max_a": 4.398154539336184e-15,
+      "pout_model_ibs_max_a": 2.57870587808801e-12,
+      "pout_external_refout_above_vref_v": 5.482038909781622e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true
+    },
+    {
+      "name": "startup_tt_vset_late",
+      "kind": "startup",
+      "envelope": "tt",
+      "ramp_ns": 100,
+      "vset_start_ns": 5000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.27724453666767e-10,
+        "branch_charge": {
+          "signed_c": -1.6131632985086193e-21,
+          "positive_c": 2.1202096585695786e-19,
+          "negative_c": -2.1363412915546639e-19
+        },
+        "conduction_max_abs_a": 5.3927951690861864e-20
+      },
+      "release": {
+        "branch_max_abs_a": 4.739269074956892e-06,
+        "branch_charge": {
+          "signed_c": -1.9045480056398034e-14,
+          "positive_c": 1.9903791847045184e-17,
+          "negative_c": -1.906538384824508e-14
+        },
+        "conduction_max_abs_a": 9.53321963311941e-15
+      },
+      "recovered_a": 9.973911542513675e-05,
+      "pout_model_ibd_max_a": 4.353181623474824e-15,
+      "pout_model_ibs_max_a": 2.040598923315544e-12,
+      "pout_external_refout_above_vref_v": 0.007738647369295304,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "limitations": [
+    "39MOS macro only: no pad/ESD/package/other digital cells/POR or optical qualification.",
+    "All external passives and rail ideal-source contracts explicit. Pin-level fault/recovery from actual RTL simulation, not storage transistors in macro.",
+    "Extracted model geometry or distributed R/C scope follows selected DUT file and physical manifest.",
+    "All startup cases assume VSAFE/VBUF/LED prepowered and external fault high."
+  ]
+}

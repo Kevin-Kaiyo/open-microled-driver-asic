@@ -11,3 +11,9 @@
 - Run meaningful checks for timing, integration and transistor behavior. Model/parameter changes require DC calibration and coupled regression. Update docs when assumptions change.
 - Preserve existing work. Avoid reset/reclone/force-push and do not commit credentials, proprietary IP or restricted source material.
 - Physical flow and MPW claims require the matching full PDK, rule decks, tool versions and actual reports. A simulation does not establish tape-out readiness.
+
+## Milestone backup and cross-machine handoff
+
+- After each completed and validated development milestone, review and commit the public project sources, reports and compact evidence, then push to the existing GitHub repository. This is the user-selected cadence; do not schedule blind periodic pushes.
+- Keep large original evidence in versioned GitHub Release assets with per-file and archive SHA-256 manifests. Record scope and exclusions; a Git push is not a backup of ignored build data.
+- Verify the remote commit and read back uploaded archives before considering local removal. Preserve current working inputs, PDK/VM dependencies and failure evidence. Document how another computer restores the same relative paths.

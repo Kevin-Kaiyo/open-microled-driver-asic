@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "scope": "产品开发框架；状态来自当前证据，未执行新的EDA验收",
+  "existing_research_limits": {
+    "full_on_nominal_uA": 100,
+    "full_on_tolerance_percent": 5,
+    "min_pwm_charge_error_percent": 2,
+    "fault_abs_current_guard_nA": 1,
+    "fault_max_delay_us": 1,
+    "legacy_relative_convergence_percent": 0.2
+  },
+  "limits_status": "Existing research contracts only. Product operating ranges, highspeed rate/BER and reliability limits must be frozen separately.",
+  "latest_experiment_overall_passed": false,
+  "gates": [
+    {
+      "id": "G0",
+      "question": "需求与模型",
+      "required_inputs": "接口、电压、温区、LED范围、测量定义",
+      "required_outputs": "冻结需求及模型有效域",
+      "current_status": "partial",
+      "current_boundary": "单像素研究合同已有；完整产品／高速合同待定"
+    },
+    {
+      "id": "G1",
+      "question": "DC与compliance",
+      "required_inputs": "新参考/TG/像素、真实R/C及LED",
+      "required_outputs": "工作点、电流误差、端压与余量",
+      "current_status": "partial",
+      "current_boundary": "新TG仅三包络联测；不能继承旧servo180点为全域通过"
+    },
+    {
+      "id": "G2",
+      "question": "数值可靠性",
+      "required_inputs": "积分定义、容差、步长与求解法",
+      "required_outputs": "相对／绝对误差预算、窗口及失败解释",
+      "current_status": "failed",
+      "current_boundary": "startup Q+4.909%超过既有0.2%；保留overall=false"
+    },
+    {
+      "id": "G3",
+      "question": "环路与噪声",
+      "required_inputs": "新参考负载、补偿、供电、输入误差",
+      "required_outputs": "loop/phase、settling、PSRR、noise",
+      "current_status": "pending",
+      "current_boundary": "新环路完整矩阵未执行"
+    },
+    {
+      "id": "G4",
+      "question": "异常与供电顺序",
+      "required_inputs": "POR/brownout、rails、fault、时钟、开短路",
+      "required_outputs": "默认off、端压、Q+/Q-、恢复与重复fault",
+      "current_status": "partial",
+      "current_boundary": "仅有效logic/LED下reference启动；非完整POR"
+    },
+    {
+      "id": "G5",
+      "question": "失配与均匀性",
+      "required_inputs": "合法MC模型、梯度、PG、LED数据",
+      "required_outputs": "样本数/seed/分布、全域校准残差",
+      "current_status": "partial",
+      "current_boundary": "旧像素失配证据不能代表新参考或阵列"
+    },
+    {
+      "id": "G6",
+      "question": "数字实现",
+      "required_inputs": "PWM、保护存储、receiver、CDC、时钟",
+      "required_outputs": "RTL与门级/等价/STA/SDF，异常测试",
+      "current_status": "partial",
+      "current_boundary": "旧PWM已有物理实现；新安全存储与接收器缺口"
+    },
+    {
+      "id": "G7",
+      "question": "模拟布局及共同top",
+      "required_inputs": "新宏、真实被动、body/well/PG、pins",
+      "required_outputs": "DRC/LVS/ERC/完整PEX及GDS回读",
+      "current_status": "pending",
+      "current_boundary": "新参考/TG/保护未进入旧GDS"
+    },
+    {
+      "id": "G8",
+      "question": "版图后电气闭环",
+      "required_inputs": "RC角、PG/body、pad/ESD、package",
+      "required_outputs": "DC/transient/loop/fault/IR/EM对照",
+      "current_status": "pending",
+      "current_boundary": "旧selected PEX不能替代全新top"
+    },
+    {
+      "id": "G9",
+      "question": "可制造／可靠性",
+      "required_inputs": "被接受PDK/stack/deck/IP与报告",
+      "required_outputs": "density/fill/antenna/端压/ESD/waivers",
+      "current_status": "pending",
+      "current_boundary": "公开旧DRC选项未全覆盖制造要求"
+    },
+    {
+      "id": "G10",
+      "question": "封装及测试",
+      "required_inputs": "pad map/bond/PCB/limits/仪器",
+      "required_outputs": "可观测性、供电时序、测试程序与校准",
+      "current_status": "pending",
+      "current_boundary": "无已选定封装/ATE/光测实现"
+    },
+    {
+      "id": "G11",
+      "question": "制造冻结",
+      "required_inputs": "最终top/GDS/hash、接受版本、签核",
+      "required_outputs": "同版本数据包与接收方审核",
+      "current_status": "pending",
+      "current_boundary": "没有最终提交文件或制造接受"
+    },
+    {
+      "id": "G12",
+      "question": "实物／产品验证",
+      "required_inputs": "真实LED/封装ASIC/板卡/仪器",
+      "required_outputs": "电气和光学关联、温度、失效分析",
+      "current_status": "pending",
+      "current_boundary": "未流片、未测量光学"
+    },
+    {
+      "id": "H1",
+      "question": "高速单通道",
+      "required_inputs": "器件E/O模型、目标速率、I/O与receiver",
+      "required_outputs": "晶体管/PEX/封装、eye/jitter/BER/pJbit",
+      "current_status": "concept",
+      "current_boundary": "本轮两极点教学计算不替代高速电路或测量"
+    }
+  ]
+}

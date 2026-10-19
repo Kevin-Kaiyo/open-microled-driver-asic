@@ -1,0 +1,644 @@
+{
+  "schema_version": 1,
+  "study_date": "2026-10-19",
+  "purpose": "高速MicroLED驱动路线、电路与芯片概念图的证据底座；不是商业产品对标或全球最高速率排名。",
+  "method": "复核既有作者稿并web核对原始publisher/author/official sources。全文与摘要分级；未绕过付费/验证访问限制。",
+  "records": [
+    {
+      "id": "HS19-DLC",
+      "title": "High Speed Integrated Digital to Light Converter for Short Range Visible Light Communication",
+      "authors": "Aravind V. N. Jalajakumari et al.",
+      "date": "2017-01",
+      "primary_url": "https://doi.org/10.1109/LPT.2016.2624281",
+      "checked_on": "2026-10-19",
+      "evidence_class": "measured_integrated_driver_link_fulltext",
+      "process": {
+        "driver": "CMOS，所查作者稿未明确节点",
+        "emitter": "450 nm InGaN/GaN；16颗直径24 µm；共阳极"
+      },
+      "architecture": "LVDS → thermometer code → NMOS恒流源、cascode、差分开关；LED与1.8V dummy支路切换；wire-bond集成。",
+      "operating_points": [
+        {
+          "rate_Mbps": 365,
+          "scope": "one optical DLC channel, 16 emitters are amplitude elements",
+          "modulation": "16-QAM OFDM",
+          "distance_m": 0.05,
+          "BER_criterion": 0.001,
+          "clock_MHz": 200,
+          "LED_supply_V": 8.2,
+          "current_per_cell_mA": 8,
+          "energy_pJ_per_bit": null,
+          "power_boundary": "本文未获得可同口径对比的完整Tx pJ/bit；dummy仍耗电。"
+        },
+        {
+          "switch_capability_MHz": 500,
+          "class": "architecture capability; not measured optical bitrate"
+        }
+      ],
+      "locator": "作者稿PDF pp2–4；Fig2电路，§IV-B与Fig7 BER/速率。",
+      "unresolved": [
+        "有限OFDM序列32 kbits；不是长时低BER认证。",
+        "作者稿70%与机构元数据85%版本存在差异，本轮不采用效率值。"
+      ],
+      "local_private_sources": [
+        "build/highspeed-driver-routes-20261019/sources/jalajakumari-2017.pdf"
+      ],
+      "reuse": "仅引用、转述事实；原图仅本地私人研究，未确认公共再利用许可。",
+      "related_primary_sources": [
+        "https://strathprints.strath.ac.uk/59246/1/Jalajakumari_etal_PTL_2017_High_speed_integrated_digital_to_light_converter_for_short_range_visible_light_communication.pdf"
+      ]
+    },
+    {
+      "id": "HS19-DAC",
+      "title": "A Multi-Gigabit/sec Integrated Multiple-Input Multiple-Output VLC Demonstrator",
+      "authors": "Sujan Rajbhandari et al.",
+      "date": "2017",
+      "primary_url": "https://doi.org/10.1109/JLT.2017.2694486",
+      "checked_on": "2026-10-19",
+      "evidence_class": "measured_integrated_driver_link_fulltext",
+      "process": {
+        "driver": "Austria Micro Systems 0.18 µm CMOS；每芯片4路8-bit current-steering DAC",
+        "emitter": "450 nm GaN；39 µm；wire-bond"
+      },
+      "architecture": "FPGA → CMOS DAC → LED；另有AWG直接驱动对照实验。",
+      "operating_points": [
+        {
+          "aggregate_rate_Gbps": [
+            1.23,
+            1.3
+          ],
+          "lanes": 4,
+          "rate_type": "raw aggregate",
+          "modulation": "4-PAM",
+          "distance_m": 1,
+          "average_LED_current_mA": 45,
+          "BER_criterion": 0.0038,
+          "reported_net_Gbps": [
+            1.14,
+            1.21
+          ],
+          "FEC_overhead_percent": 7,
+          "energy_pJ_per_bit": null,
+          "power_boundary": "完整链路能耗未获得。"
+        },
+        {
+          "aggregate_rate_Gbps": 7.48,
+          "lanes": 9,
+          "modulation": "8-PAM + DFE/MIMO",
+          "distance_m": 0.5,
+          "driver": "AWG, not the CMOS DAC ASIC"
+        }
+      ],
+      "locator": "作者稿PDF p3 §II-A；p6 §IV-C/Fig9；p7 §IV-D。",
+      "unresolved": [
+        "不可把7.48Gb/s归到CMOS DAC或单lane。",
+        "接收离线均衡；AMS180与GF180不可互换。"
+      ],
+      "local_private_sources": [
+        "build/highspeed-driver-routes-20261019/sources/rajbhandari-2017.pdf"
+      ],
+      "reuse": "仅引用、转述事实；原图仅本地私人研究，未确认公共再利用许可。",
+      "related_primary_sources": [
+        "https://pure.coventry.ac.uk/ws/files/7726769/gigabitcomb.pdf"
+      ]
+    },
+    {
+      "id": "HS19-CSM",
+      "title": "Leveraging microLED display technology to solve the chip-to-chip data communication bottleneck",
+      "authors": "Bardia Pezeshki",
+      "date": "2022-05",
+      "primary_url": "https://csmantech.org/wp-content/acfrcwduploads/field_5e8cddf5ddd10/post_6405/7.2_Leveraging_MicroLED_Display_Technology.pdf",
+      "checked_on": "2026-10-19",
+      "evidence_class": "author_conference_measurement_fulltext",
+      "process": {
+        "receiver": "XFAB 130 nm CMOS integrated PD/TIA",
+        "separate_array": "32-channel XFAB 130 nm SOI driver/receiver array",
+        "emitter": "15 µm GaN for 2Gb/s link; GaN-on-silicon hybrid"
+      },
+      "architecture": "NRZ/OOK source + integrated lateral PD/TIA；另展示AuSn bonding/LLO形成的32通道LED/CMOS阵列。",
+      "operating_points": [
+        {
+          "rate_Gbps": 2,
+          "modulation": "OOK PRBS",
+          "LED_drive_mA": 0.7,
+          "LED_diameter_um": 15,
+          "light_source_energy_pJ_per_bit": 1.5,
+          "receive_chain_energy_pJ_per_bit": 0.5,
+          "author_total_energy_pJ_per_bit": "<2",
+          "power_boundary": "文中称包含driver/receiver；明确排除50Ω输出驱动；无板级/主机能耗清单。",
+          "BER": 1e-12,
+          "receiver_sensitivity_dBm": "<-21",
+          "distance_m": null
+        },
+        {
+          "lanes": 32,
+          "class": "separate fabricated array example, not proof of 32 simultaneous 2Gb/s energy test"
+        }
+      ],
+      "locator": "PDF p2实验与Fig2；p3 Fig4a/b为另一个32通道集成样品。",
+      "unresolved": [
+        "没有晶体管级输出级图或已核对的全部供电清单。",
+        "0.1pJ/bit为未来优化预期，非本次测量。"
+      ],
+      "local_private_sources": [
+        "build/highspeed-driver-routes-20261019/sources/csmantech-2022.pdf"
+      ],
+      "reuse": "仅引用、转述事实；原图仅本地私人研究，未确认公共再利用许可。",
+      "related_primary_sources": []
+    },
+    {
+      "id": "HS19-OFC",
+      "title": "304 channel MicroLED based CMOS transceiver IC with aggregate 1 Tbps and sub-pJ per bit capability",
+      "authors": "Bardia Pezeshki et al.",
+      "date": "2024-03",
+      "primary_url": "https://opg.optica.org/abstract.cfm?URI=OFC-2024-M3A.1",
+      "checked_on": "2026-10-19",
+      "evidence_class": "primary_publisher_abstract_only",
+      "process": {
+        "driver": "16 nm CMOS",
+        "emitter": "microLED array",
+        "receiver": "hybrid silicon detector array"
+      },
+      "architecture": "304-channel transceiver；公开摘要未披露输出晶体管级电路。",
+      "operating_points": [
+        {
+          "rate_Gbps_per_lane": 3.3,
+          "channels_on_IC": 304,
+          "aggregate_capability_Tbps": 1,
+          "reported_energy_pJ_per_bit": "about 1",
+          "power_boundary": "transceiver摘要用语；详细计入项未可核阅。",
+          "measurement_scope": "single lane and various configurations; no all-lanes-concurrent proof from abstract"
+        }
+      ],
+      "locator": "OFC2024 M3A.1，publisher Abstract。",
+      "unresolved": [
+        "全文受限；不推断MOS材料、驱动电压、BER、同时测量通道数、完整能耗分母。"
+      ],
+      "local_private_sources": [],
+      "reuse": "仅引用、转述事实；原图仅本地私人研究，未确认公共再利用许可。",
+      "related_primary_sources": []
+    },
+    {
+      "id": "HS19-HOTI",
+      "title": "Micro-LED Data Interconnect for Scale-Up Networks with Record Energy Efficiency",
+      "authors": "Bardia Pezeshki et al.",
+      "date": "2025-08",
+      "primary_url": "https://doi.org/10.1109/HOTI66940.2025.00026",
+      "checked_on": "2026-10-19",
+      "evidence_class": "primary_publisher_abstract_only",
+      "process": {
+        "driver": "CMOS ASIC；该摘要未注明节点",
+        "emitter": "microLED"
+      },
+      "architecture": "NRZ及简单均衡；数组ASIC与高速度单lane为不同实验条件。",
+      "operating_points": [
+        {
+          "rate_Gbps_per_lane": 3.5,
+          "array_lanes": "about 300",
+          "driver": "CMOS ASIC"
+        },
+        {
+          "rate_Gbps_per_lane": 11.2,
+          "scope": "single lane",
+          "driver": "not established from accessible primary abstract"
+        },
+        {
+          "reported_energy_pJ_per_bit": "about 1",
+          "reported_reach_m": "up to 30",
+          "power_boundary": "摘要称inclusive of all elements；全文未核对，不把该范围归给每个速率/距离工作点。"
+        }
+      ],
+      "locator": "IEEE Xplore 11244769搜索可读原始摘要；直接打开页面需人机验证；会议官方program确认文章。",
+      "unresolved": [
+        "未从授权作者库获得全文，11.2G的驱动条件和功耗范围待核。",
+        "不能宣称300×11.2Gb/s、30m、1pJ/bit同条件测得。"
+      ],
+      "local_private_sources": [],
+      "reuse": "仅引用、转述事实；原图仅本地私人研究，未确认公共再利用许可。",
+      "related_primary_sources": [
+        {
+          "url": "https://ieeexplore.ieee.org/document/10930898",
+          "doi": "10.1109/LPT.2025.3552708",
+          "relation": "较早PTL2025独立论文，摘要明确10Gb/s使用sapphire背板+external source、~3Tb/s为extrapolated；Si集成背板另为3.5Gb/s。",
+          "access": "primary abstract"
+        }
+      ]
+    },
+    {
+      "id": "HS19-MOSAIC",
+      "title": "Mosaic: Breaking the Optics versus Copper Trade-off with a Wide-and-Slow Architecture and MicroLEDs",
+      "authors": "K. Benyahya et al.",
+      "date": "2025-09",
+      "primary_url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2025/08/benyahya25mosaic.pdf",
+      "checked_on": "2026-10-19",
+      "evidence_class": "prototype_measurement_plus_separate_modelled_product_power",
+      "process": {
+        "prototype": "HTG-940 FPGA + discrete LED drivers/TIAs；不是完成的量产ASIC",
+        "emitter": "microLED + microlenses + imaging fiber"
+      },
+      "architecture": "并行NRZ + imaging fiber；提出clock forwarding、gearbox和冗余通道。",
+      "operating_points": [
+        {
+          "rate_Gbps_per_lane": 2,
+          "distance_m": 20,
+          "array_channels": 100,
+          "channels_tested_at_a_time": 25,
+          "BER_threshold": 0.0002,
+          "median_BER": "<2e-8",
+          "worst_BER": "<=4e-5",
+          "power_boundary": "此原型实测未给出完整pJ/bit。"
+        },
+        {
+          "rate_Gbps_per_lane": 1.6,
+          "distance_m": 30,
+          "class": "prototype_measured meets FEC criterion"
+        },
+        {
+          "aggregate_target_Gbps": 800,
+          "power_estimate_W_per_endpoint": [
+            3.1,
+            5.3
+          ],
+          "class": "author estimate, not prototype power",
+          "includes": "host interface, gearbox/failure protection, analog Tx/Rx/LED, MCU/DC/DC",
+          "reach_50m": "simulation, not measured"
+        }
+      ],
+      "locator": "§5/Fig8 PDF p7功耗估算；§6 pp7–8原型；§7.1/Fig11–12 p9实测。",
+      "unresolved": [
+        "不能写成100路同时实测200Gb/s。",
+        "两端功耗和单向/双向吞吐分母应另列，避免直接统一成Tx pJ/bit。"
+      ],
+      "local_private_sources": [
+        "build/highspeed-driver-routes-20261019/sources/mosaic-2025.pdf"
+      ],
+      "reuse": "作者稿首页为ACM personal/classroom permission notice，未见CC许可。公共转载/服务器分发需另行许可；本次图仅本地私人研究，保留出处与版权说明。",
+      "related_primary_sources": []
+    },
+    {
+      "id": "HS19-80FJ",
+      "title": "Avicena Advances microLED and Photo Detector Arrays to Enable the World’s Lowest-Power AI Scale-up Optical Interconnects",
+      "authors": "Avicena",
+      "date": "2025-11-17",
+      "primary_url": "https://avicena.tech/avicena-advances-microled-and-photo-detector-arrays-to-enable-the-worlds-lowest-power-ai-scale-up-optical-interconnects/",
+      "checked_on": "2026-10-19",
+      "evidence_class": "company_reported_not_independent_measurement",
+      "process": {
+        "driver": "未披露节点/输出拓扑",
+        "emitter": "microLED",
+        "receiver": "company says image-sensor-derived high-sensitivity PD"
+      },
+      "architecture": "并行直接调制；声明强调高灵敏度接收器降低LED所需电流。",
+      "operating_points": [
+        {
+          "rate_Gbps_per_lane": 4,
+          "current_uA_per_LED": 100,
+          "reported_energy_fJ_per_bit": 80,
+          "raw_BER": 1e-12,
+          "FEC": "none",
+          "power_boundary": "per LED / transmitter part of link；Rx、数字、驱动附加功耗/电源损耗未明确包含。",
+          "distance_m": null
+        }
+      ],
+      "locator": "官方2025-11-17 release首段及chief scientist解释。",
+      "unresolved": [
+        "PRBS长度、统计置信度、距离、温度、通道数、功耗逐项清单未公开。",
+        "不能与56fJ器件DC数据或完整链路pJ/bit直接排名。"
+      ],
+      "local_private_sources": [
+        "build/highspeed-driver-routes-20261019/sources/avicena-80fj-2025.html"
+      ],
+      "reuse": "仅引用、转述事实；原图仅本地私人研究，未确认公共再利用许可。",
+      "related_primary_sources": []
+    },
+    {
+      "id": "HS19-LIN",
+      "title": "Transfer-printed yellow and red InGaN micro-LEDs on diamond for ultra-low-power high-speed optical interconnects",
+      "authors": "Runze Lin et al.",
+      "date": "2026-06-17",
+      "primary_url": "https://www.nature.com/articles/s41467-026-74151-4",
+      "checked_on": "2026-10-19",
+      "evidence_class": "measured_emitter_link_with_instrument_drive_and_calculated_LED_DC_energy",
+      "process": {
+        "driver": "AWG + bias-tee；低功耗OOK省去高功率RF amplifier；不是CMOS driver ASIC",
+        "emitter": "20µm/40µm InGaN黄/红；3-period MQW；transfer-printed passive diamond",
+        "receiver": "1 GHz Hamamatsu C5658 APD for data"
+      },
+      "architecture": "仪器驱动直接调制；低电流OOK与高电流bit-loaded OFDM分别测试。",
+      "operating_points": [
+        {
+          "rate_Gbps": 1.5,
+          "modulation": "OOK",
+          "emitter": "20µm yellow",
+          "current_uA": 25,
+          "DC_voltage_V": 3.36,
+          "RF_voltage_Vpp": 0.65,
+          "distance_m": 1,
+          "fiber": "400µm core, NA0.22 multimode",
+          "BER_measured": 0.0031,
+          "BER_FEC_threshold": 0.0038,
+          "LED_DC_power_uW": 84.0,
+          "LED_DC_energy_pJ_per_bit": 0.056,
+          "power_formula": "I_DC*V_DC / raw bitrate",
+          "power_boundary": "仅LED DC输入；不含AWG/RF驱动、Rx、DSP及DC/DC损耗。",
+          "equalization": "no FFE/DFE or system pre-emphasis"
+        },
+        {
+          "rate_Gbps": 6.35,
+          "modulation": "bit-loaded OFDM",
+          "emitter": "40µm yellow",
+          "current_mA": 80,
+          "distance_m": 1,
+          "BER_FEC_threshold": 0.0038,
+          "class": "different high-current experiment; not the 0.056pJ/bit operating point"
+        },
+        {
+          "reported_EO_bandwidth_MHz": 2850.4,
+          "reported_EE_bandwidth_MHz": 2135.8,
+          "current_density_A_cm2": 6.25,
+          "emitter": "20µm yellow",
+          "caution": "作者E-E/E-O分别标-3/-6dB基准；不可直接当统一电压-3dB带宽。"
+        }
+      ],
+      "locator": "Fig4 bandwidth；PDF p10 Fig5(m) BER,5(n,o)power；p11明确P=DC I×V；Methods使用AWG/APD与VNA30MHz–3GHz/SPD-4。",
+      "unresolved": [
+        "低功耗是FEC门限而非1e-12。",
+        "RF输入动态功耗/阻抗匹配、带宽去嵌与误差未形成ASIC能耗闭环。",
+        "144pixel/216Gb/s为理论扩展，非测得阵列。"
+      ],
+      "local_private_sources": [
+        "build/highspeed-driver-routes-20261019/sources/lin-2026.pdf",
+        "build/highspeed-driver-routes-20261019/sources/lin-2026.html"
+      ],
+      "reuse": "CC BY-NC-ND4.0；非商业未改材料可按许可使用，但不允许共享适配材料；本次仅本地原图，公共内容使用事实表和独立原理图。",
+      "related_primary_sources": [
+        {
+          "url": "https://doi.org/10.5281/zenodo.20034288",
+          "relation": "authors source data; indexed, not downloaded/validated this turn"
+        }
+      ]
+    }
+  ],
+  "asset_ledger": [
+    {
+      "id": "A-DLC",
+      "source_id": "HS19-DLC",
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/a-dlc.png",
+      "locator": "Fig2, PDF p2",
+      "supports": "真实NMOS current source/cascode/dummy拓扑",
+      "evidence_class": "original_source_page_render",
+      "reuse": "private_review_only_this_delivery",
+      "public_rendering_plan": "independent original circuits + attributed factual table; no source image copied to docs",
+      "source_page_render": "build/highspeed-driver-routes-20261019/sources/jalajakumari-2017-p2.png",
+      "render_operation": "rectangular crop only; no content/color/axis changes",
+      "crop_box_pixels": [
+        120,
+        90,
+        548,
+        478
+      ],
+      "sha256": "eb8449e2fdc7775133d0ae634648275fe0f4c1f76cfd2fcb50d117398ce2dee9",
+      "interpretation_zh": "NMOS电流源与cascode提供尾电流，Data/Data-bar控制电流流向LED或dummy。dummy支路导通仍耗电；16发光元件用于一个DLC的光幅度编码。"
+    },
+    {
+      "id": "A-DAC",
+      "source_id": "HS19-DAC",
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/a-dac.png",
+      "locator": "Fig9, PDF p6",
+      "supports": "集成DAC四路总吞吐归属",
+      "evidence_class": "original_source_page_render",
+      "reuse": "private_review_only_this_delivery",
+      "public_rendering_plan": "independent original circuits + attributed factual table; no source image copied to docs",
+      "source_page_render": "build/highspeed-driver-routes-20261019/sources/rajbhandari-2017-p6.png",
+      "render_operation": "rectangular crop only; no content/color/axis changes",
+      "crop_box_pixels": [
+        600,
+        480,
+        1100,
+        786
+      ],
+      "sha256": "0a7da13772fbf258be55e9601ec13505bd6d0f1c5d989ef9dbc111fad88bca4e",
+      "interpretation_zh": "图中横轴为横向位移mm，纵轴是四路总Gb/s，不是单lane。相关实验使用实际CMOS DAC；7.48Gb/s是另外的AWG九路实验。"
+    },
+    {
+      "id": "A-CSM",
+      "source_id": "HS19-CSM",
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/a-csm.png",
+      "locator": "Fig2, PDF p2",
+      "supports": "2Gb/s条件及能耗排除项",
+      "evidence_class": "original_source_page_render",
+      "reuse": "private_review_only_this_delivery",
+      "public_rendering_plan": "independent original circuits + attributed factual table; no source image copied to docs",
+      "source_page_render": "build/highspeed-driver-routes-20261019/sources/csmantech-2022-p2.png",
+      "render_operation": "rectangular crop only; no content/color/axis changes",
+      "crop_box_pixels": [
+        104,
+        994,
+        1074,
+        1380
+      ],
+      "sha256": "3483f18549afda6aa3623e8325b3528706d0aeb15f207444c2d6987e3d40d000",
+      "interpretation_zh": "原图标2Gb/s PRBS31；蓝色实测BER与绿色模型分开。图注明确低于2pJ/bit不含50Ω输出驱动。32路130nm SOI阵列是另一张图、另一展示条件。"
+    },
+    {
+      "id": "A-MOS-PWR",
+      "source_id": "HS19-MOSAIC",
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/a-mos-pwr.png",
+      "locator": "Fig8, PDF p7",
+      "supports": "作者功耗估算与两端边界",
+      "evidence_class": "original_source_page_render",
+      "reuse": "private_review_only_this_delivery",
+      "public_rendering_plan": "independent original circuits + attributed factual table; no source image copied to docs",
+      "source_page_render": "build/highspeed-driver-routes-20261019/sources/mosaic-2025-p7.png",
+      "render_operation": "rectangular crop only; no content/color/axis changes",
+      "crop_box_pixels": [
+        101,
+        174,
+        585,
+        522
+      ],
+      "sha256": "0a74079f4dbf90511e8217ed564d9db737db97eb15da57f889dc77420c874344",
+      "interpretation_zh": "图8为800G一端的作者估算，包含主机接口、数字后端、模拟/光前端、MCU和DC/DC。3.1–5.3W不能冒充FPGA原型测得功率。"
+    },
+    {
+      "id": "A-MOS-BER",
+      "source_id": "HS19-MOSAIC",
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/a-mos-ber.png",
+      "locator": "Fig11–12, PDF p9",
+      "supports": "25通道统计和FEC门限",
+      "evidence_class": "original_source_page_render",
+      "reuse": "private_review_only_this_delivery",
+      "public_rendering_plan": "independent original circuits + attributed factual table; no source image copied to docs",
+      "source_page_render": "build/highspeed-driver-routes-20261019/sources/mosaic-2025-p9.png",
+      "render_operation": "rectangular crop only; no content/color/axis changes",
+      "crop_box_pixels": [
+        613,
+        159,
+        1118,
+        810
+      ],
+      "sha256": "4ff169d7cbcc96c731715e7ed069b5f404e95e293d5be575da10f535618154fc",
+      "interpretation_zh": "图11统计25个通道，在2Gb/s与20m下均满足论文2e-4 FEC门限；图12给不同距离/速率。100通道是原型阵列规模，每次测试25路。"
+    },
+    {
+      "id": "A-LIN",
+      "source_id": "HS19-LIN",
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/a-lin.png",
+      "locator": "Fig5, PDF p10",
+      "supports": "56fJ LED DC口径与BER3.1e-3",
+      "evidence_class": "original_source_page_render",
+      "reuse": "private_review_only_this_delivery",
+      "public_rendering_plan": "independent original circuits + attributed factual table; no source image copied to docs",
+      "source_page_render": "build/highspeed-driver-routes-20261019/sources/lin-2026-p10.png",
+      "render_operation": "rectangular crop only; no content/color/axis changes",
+      "crop_box_pixels": [
+        76,
+        840,
+        1100,
+        1240
+      ],
+      "sha256": "87e4d0a4899e185b408241fd08b93217a183a46ecebf6fda61ecbf8f22d0083d",
+      "interpretation_zh": "只截取Fig5(l–o)低电流OOK相关部分并保留原caption。20µm黄LED、25µA时BER3.1e-3；56fJ/bit=84µW LED DC输入/1.5Gbps，不计AWG/RF驱动和Rx。上方OFDM高电流面板未纳入本片段。"
+    }
+  ],
+  "local_files": [
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/avicena-80fj-2025.html",
+      "sha256": "8738633f173901b130e0b9343c8865fea0efc25970100851bb0a40a560a2ac25",
+      "bytes": 99099
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/csmantech-2022-p2.png",
+      "sha256": "ffebce3cf9489faaa21ddfb15e4198faf4111598e26bcaf7f3c9fc9258c7b61b",
+      "bytes": 546759
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/csmantech-2022.pdf",
+      "sha256": "ba886fb5d1594e95ba7ee7ef5cae965c1a5065ea6e617fa54bdb386a2cd627a9",
+      "bytes": 974038
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/csmantech-2022.txt",
+      "sha256": "a6e073572201e526a35ab528b796f1c6a03edac089809c6f6c871ef73083e062",
+      "bytes": 14385
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/jalajakumari-2017-p2.png",
+      "sha256": "72138815b1e970c0827ba3e00302c6ec459154aca194c029d2ec63324c339724",
+      "bytes": 635139
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/jalajakumari-2017.pdf",
+      "sha256": "b84e88494a564d5482e131fc8405664d6d424edd919413d8bfe94b68a8b068d5",
+      "bytes": 1466941
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/jalajakumari-2017.txt",
+      "sha256": "305f3d458a7416bad64baba1512197eacdd97ffb904ce68b896da32d198c4579",
+      "bytes": 19012
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/lin-2026-p10.png",
+      "sha256": "d1e30cfc4a217eb27b4c7f317fc8193e36ec83ea46592e03a9f3a9a684ecb84b",
+      "bytes": 711468
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/lin-2026-pdf.txt",
+      "sha256": "9326b3a1a12224a5ee4acf2575be4cc6b9505c02fc9571f6ab4c6758a2e16eaf",
+      "bytes": 87945
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/lin-2026.html",
+      "sha256": "a02b460beb63c400b5e1048a62b438342623c10e0869b0ee2e0f3b669fdaecfa",
+      "bytes": 475423
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/lin-2026.pdf",
+      "sha256": "eba1a32aad325f1407541f49201a9224685965408487550bd4f1e9d447bd31b4",
+      "bytes": 6979974
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/lin-2026.txt",
+      "sha256": "582b30936a3ee3ff6c88beccf0e0cc630df5504201f2dfa68446c3f068ea6ecc",
+      "bytes": 171539
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/mosaic-2025-p7.png",
+      "sha256": "2a2b7d202a24cbc8b27889e3c64a11e42d4c6107a587aa9e373e6843e54e61ff",
+      "bytes": 610017
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/mosaic-2025-p9.png",
+      "sha256": "751f519613183ec7be9df257437faa964133c4bf4d9c85bf602db43e802d1fce",
+      "bytes": 545573
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/mosaic-2025-pdf.txt",
+      "sha256": "71b3265660f716c1498323461f37a281dfd93edda088a33696d1945b36d97323",
+      "bytes": 83721
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/mosaic-2025.pdf",
+      "sha256": "6cebdae5445ccbb421abc76d1169dba5b507106baacee836256f5515e2147cba",
+      "bytes": 5788769
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/rajbhandari-2017-p6.png",
+      "sha256": "856fbc3aef0a20224df8a6ec8d097f1454c7d075c1a55e7b8fbd5815df39c9b0",
+      "bytes": 642172
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/rajbhandari-2017.pdf",
+      "sha256": "2fdc289aef006f80697b6c85eb88cea276e78a4e2f8663ef8c2fedb5605f3952",
+      "bytes": 1104254
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/sources/rajbhandari-2017.txt",
+      "sha256": "12c75f3e623a6ae1ac2648fac78dbe87a5cee7f61ce70341dfbbc989832ffc67",
+      "bytes": 38515
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/a-csm.png",
+      "sha256": "3483f18549afda6aa3623e8325b3528706d0aeb15f207444c2d6987e3d40d000",
+      "bytes": 176989
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/a-dac.png",
+      "sha256": "0a7da13772fbf258be55e9601ec13505bd6d0f1c5d989ef9dbc111fad88bca4e",
+      "bytes": 22342
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/a-dlc.png",
+      "sha256": "eb8449e2fdc7775133d0ae634648275fe0f4c1f76cfd2fcb50d117398ce2dee9",
+      "bytes": 34369
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/a-lin.png",
+      "sha256": "87e4d0a4899e185b408241fd08b93217a183a46ecebf6fda61ecbf8f22d0083d",
+      "bytes": 177370
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/a-mos-ber.png",
+      "sha256": "4ff169d7cbcc96c731715e7ed069b5f404e95e293d5be575da10f535618154fc",
+      "bytes": 53991
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/a-mos-pwr.png",
+      "sha256": "0a74079f4dbf90511e8217ed564d9db737db97eb15da57f889dc77420c874344",
+      "bytes": 54768
+    },
+    {
+      "path": "build/highspeed-driver-routes-20261019/private-evidence/index.html",
+      "sha256": "b26d84984a71e2ae5f3c0d83e807e96f6fb06b1b3eb19f01cb5b391635491a04",
+      "bytes": 6689
+    }
+  ],
+  "energy_comparison_rule": "必须同速率、BER、距离/耦合、lane数、编码净吞吐、温度和功率边界才比较；分LED DC、Tx frontend、complete Tx、Tx+Rx/module tiers。",
+  "critical_gaps": [
+    "没有可直接复现的现代低能耗MicroLED CMOS输出级晶体管尺寸/版图/供电完整公开包。",
+    "本项目GF180像素不因其他0.18µm论文而获得Gb/s能力。",
+    "3D外形图不证明热/EM/光场；本轮没有新增硅或光链路测量。"
+  ],
+  "no_new_EDA": true,
+  "private_evidence_viewer": "build/highspeed-driver-routes-20261019/private-evidence/index.html"
+}

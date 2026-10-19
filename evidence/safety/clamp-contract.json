@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "declared_before_clamp_runs": "2026-10-13",
+  "baseline_contract": "evidence/safety/contract.json",
+  "stimulus_conditions": "Actual RTL events are replayed as finite 10 ns 0-to-100 percent analog input edges for raw PWM, fault and permit. Earlier 1 ns edge candidates failed numerical integration and are retained, not overwritten. Input slew is an experimental condition; the original 1 us fault deadline still starts at the RTL fault event, including all of the analog rise time.",
+  "servo_numeric_conditions": "DC uses original strict reltol1e-7/abstol1e-14/vntol1e-9; servo transient uses author-verified reltol1e-6/abstol1e-12/vntol1e-7, Trap. Compare maxstep10ns with2ns without changing circuitry/PEX. Keep strict servo combined-startup/fault numerical failures. The separate cold-start case holds externally asserted fault for20us, measures all startup branch/conduction/cap currents and requires max|ILED|<1nA over that interval; this is a new stricter startup guard, not a POR claim.",
+  "candidate_revision": "W2 passes original fault guards but fails added all-startup branch guard at5.791nA (conduction only3.236e-17A). W20/L1 trial lowers that peak to2.815nA but still fails, so W2 is restored as the original-fault experimental candidate; the stronger startup guard remains open. W20 is not selected or qualified. All trial input bytes are frozen in separate build/safety run identities and no budgets are relaxed.",
+  "reason": "Gate-only experiment fault-gate-4he1rnag passes the logic edge but fails the unchanged 1 nA / 1 us branch-current guard. Test a real high-side PMOS clamp to settle LED cathode capacitance, keeping that failure and the original thresholds.",
+  "scope": "10 schematic safety MOS + 1 schematic 6-V NMOS clamp-control pull-down + 1 schematic 6-V PMOS active clamp + ideal 100k gate-release resistor, coupled to the unmodified selected 12-MOS nominal signal PEX. Junction geometry is an explicit 0.44 um landing hypothesis. Recovery storage remains RTL only; rails and body/PG boundaries are ideal. Previous 4-MOS cross-coupled level-shifter candidate and its recovery-edge numerical failures are retained in build/safety.",
+  "new_teaching_guards": {
+    "negative_tail_charge_abs_c": 2e-11,
+    "negative_LED_current_peak_abs_a": 0.01,
+    "LED_reverse_voltage_peak_abs_v": 0.5,
+    "window_s": 1e-6
+  },
+  "rationale": "2 pF CJO times 2.8 V is 5.6 pC before voltage-dependent junction capacitance, TT and selected-PEX loading. Freeze a 20 pC negative-charge and 10 mA peak experimental budget before running the new candidate. A 0.5 V reverse-voltage teaching guard does not establish any real MicroLED reverse-current or breakdown rating. Never use signed tail to cancel positive and negative charge.",
+  "power": "LED diode current and active-clamp rail current have separate zero-volt meters. Protection is branch-current control, not reference power-off. The 100k resistor draws approximately 50uA from a 5V LED rail while fault is high. Normal protection requires the valid logic rail; the resistor/PMOS clamp additionally requires the LED rail.",
+  "failure_policy": "Any guard failure is retained and requires a new circuit/run identity; no relaxation of the original 1 nA, 1 us or 10 pC positive-tail guards. No new layout, POR, brownout, silicon or optical claims."
+}

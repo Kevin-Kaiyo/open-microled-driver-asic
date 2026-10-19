@@ -1,0 +1,371 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MicroLED晶体管 电路与互连研究</title><style>@page{size:A4;margin:20mm}*{box-sizing:border-box}body{margin:0;color:#24353c;font:10.7pt/1.62 'Avenir Next','PingFang SC',sans-serif}
+    h1,h2,h3{color:#164f5b;line-height:1.35}h1{font-size:24pt;margin:0 0 6mm}h2{font-size:18.5pt;margin:0 0 5mm;padding-bottom:3mm;border-bottom:1px solid #bdced0}h3{font-size:12pt}
+    p{margin:0 0 3mm}strong{color:#183e49}a{color:#176977;text-decoration:none;overflow-wrap:anywhere}table{border-collapse:collapse;width:100%;margin:3mm 0 4mm;font-size:9.5pt;line-height:1.5}
+    th{text-align:left;background:#eaf1f1;color:#164f5b;font-weight:600}th,td{padding:2mm 2.3mm;border-bottom:1px solid #d9e1e2;vertical-align:top;overflow-wrap:anywhere}tr{break-inside:avoid}
+    code{font-family:inherit;font-size:.94em}img{display:block;width:100%;height:auto;margin:3mm 0 4mm}.page{break-after:page}.page:last-child{break-after:auto}
+    @media print{body,.page{width:170mm}}@media screen{body{background:#edf2f2}.page{background:white;width:210mm;min-height:297mm;margin:8mm auto;padding:20mm;box-shadow:0 1px 8px #bac9ca}}
+    </style></head><body><section class="page" data-page="1"><h1>MicroLED驱动电路的晶体管与布线设计</h1>
+<p>2026-10-12 · 实验性研发方法验证与教学 · 电路与图示修订版</p>
+<p><strong>研究方向：保持单像素，先实现参考电流源和独立关断电路，再验证电源、地与信号互连寄生，随后比较匹配版图及电流舵电路。</strong> 选择材料和工艺时，应同时考虑器件耐压、输出电流、动态响应和制造条件。</p>
+<p>本文使用MOSFET、LED、电阻、电容和接地符号说明电路。重点解释四类问题：源极走线电阻改变栅源电压；漏极走线电阻消耗电压余量；栅极RC延迟开启/关闭；多路共用地线产生电气耦合。</p>
+<table>
+<thead>
+<tr>
+<th>阅读顺序</th>
+<th>主要问题</th>
+<th>页码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>入门</td>
+<td>MOS端子、电流镜及六MOS像素</td>
+<td>2–3</td>
+</tr>
+<tr>
+<td>电路</td>
+<td>电流舵、尺寸、耐压和电压余量</td>
+<td>4–6</td>
+</tr>
+<tr>
+<td>布线</td>
+<td>源极、栅极、共用地线、匹配与工艺</td>
+<td>7–11</td>
+</tr>
+<tr>
+<td>研究决策</td>
+<td>已验证结果、下一步实验和价值</td>
+<td>12–14</td>
+</tr>
+</tbody>
+</table>
+<p><strong>证据类型。</strong> 文献实测来自对应论文；项目仿真采用锁定模型与注明的电路；计算来自公式和明确输入；拟采用的电路/版图需要另行验证。示意图不属于新EDA、芯片或光学测量。</p>
+<p>本文选择8篇直接相关研究论文与7条官方/数据来源，共15条，不是穷尽综述或性能排名。<a href="index.html">来源索引</a>保留定位与条件；<a href="calculations.json">计算输入</a>和<a href="figure-ledger.json">图示假设</a>可复核。此前21篇论文的广泛索引继续保留。</p>
+<p>图中带电流标注的青色箭头表示常规电流，LED旁灰色斜箭头表示发光；橙色器件表示走线寄生。原理图省略的体端、线性近似和参考地条件在图注或正文中说明；不要把简化图直接当作提取后电路。</p></section>
+<section class="page" data-page="2"><h2>2　MOS端子与驱动器件选型</h2>
+<p>以NMOS低侧驱动为例：LED连接在正电源与漏极D之间，源极S接地；栅极G控制沟道导电程度。<code>VGS=VG−VS</code>是栅源电压；<code>VDS=VD−VS</code>是漏源电压。两者共同影响电流。MOS还有体端B；图中省略处注明连接。电流镜不能在任意VDS下保持目标值。</p>
+<p>GaN/InGaN等材料可以形成LED发光区，硅CMOS可以构成驱动电路，再经键合与金属互连连接。CMOS是工艺与电路体系，ASIC是用途类别；BCD、SOI并不表示GaN/SiC沟道。SiGe BiCMOS中的高速器件可能是双极型HBT。</p>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>器件或制造特征</th>
+<th>驱动设计需要关注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Si CMOS</td>
+<td>硅NMOS/PMOS，可集成逻辑与模拟电路</td>
+<td>耐压、输出电阻、匹配与寄生</td>
+</tr>
+<tr>
+<td>LTPS / oxide / LTPO</td>
+<td>多晶硅、氧化物薄膜晶体管，或二者结合</td>
+<td>阈值变化、漏电、保持与补偿</td>
+</tr>
+<tr>
+<td>GaN MIS-HEMT</td>
+<td>氮化物电子器件，可与LED单片研究</td>
+<td>常开/常关状态、负压、隔离与接触</td>
+</tr>
+<tr>
+<td>MoS₂ / 有机TFT</td>
+<td>二维或有机沟道与无机LED集成</td>
+<td>界面、过孔、热预算与一致性</td>
+</tr>
+</tbody>
+</table>
+<p>本项目模拟六MOS像素采用GF180MCU的6 V硅MOS，标准单元输出缓冲器属于另一库配置。官方最小绘制沟道长度：3.3 V NMOS/PMOS为0.28/0.28 µm，6 V为0.70/0.55 µm。“180 nm工艺”不是每只MOS的最小L。</p>
+<p>两类器件典型单位面积栅氧电容Cox为4.4/2.3 fF/µm²。Cox不能代替总栅极电容、LED结电容或互连提取电容。选择耐压类别还需检查实际VGS、VGD、VDS、电源顺序及可靠性条件。<a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_07_08.html">G03：尺寸</a> / <a href="https://gf180mcu-pdk.readthedocs.io/en/latest/analog/spice/elec_specs/elec_specs_5_3.html">G04：Cox</a></p></section>
+<section class="page" data-page="3"><h2>3　六MOS像素的连接与动作</h2>
+<p><img alt="六MOS像素原理图" src="figures/architectures.svg" /></p>
+<p>MREF的栅极与漏极短接，外部IREF建立偏置VBIAS。MOUT与MREF均为W=20 µm、L=4 µm，构成1:1电流镜。LED电流从VLED经LED流入MOUT漏极，再由源极流向GND。</p>
+<p>MPASS将VBIAS接到MOUT栅极，MCLAMP在关闭时把栅极拉向地。MP/MN组成反相器。MPASS、MCLAMP和MN为2/1 µm，MP为4/1 µm。图中的M标号对应网表XREF/XOUT/XPASS/XCLAMP/XINV_P/XINV_N的MOS子电路实例。</p>
+<table>
+<thead>
+<tr>
+<th>控制状态</th>
+<th>栅极开关</th>
+<th>MOUT与LED</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PWM高，PWM_B低</td>
+<td>MPASS导通，MCLAMP关断</td>
+<td>栅极接入偏置，LED开启</td>
+</tr>
+<tr>
+<td>PWM低，PWM_B高</td>
+<td>MPASS关断，MCLAMP导通</td>
+<td>栅极下拉，LED关闭</td>
+</tr>
+</tbody>
+</table>
+<p><strong>参考偏置持续建立；PWM充放电的是输出管栅极。</strong> MPASS没有串入LED主电流支路。IREF仍为外部理想源，尚无片上参考电流源。</p>
+<p>理想矩形电流的平均值等于开启电流乘占空比；实际应积分<code>Q=∫ILED(t)dt</code>。上升/下降时间、尾流与瞬态尖峰影响最短点亮脉冲的电荷。电流与电荷是电气指标，不等于测得光输出。</p></section>
+<section class="page" data-page="4"><h2>4　电流舵电路与公开实验</h2>
+<p><img alt="简化NMOS电流舵电路" src="figures/current-steering.svg" /></p>
+<p>电流舵型驱动用MS1/MS2将MI的电流导向LED或旁路负载，减少电流源状态的重复建立。RDUMMY仅表示教学等效负载，不是论文电路复制。共源共栅结构可提高输出电阻，但需要更多漏源电压；旁路支路持续耗电，开关和输出节点仍需充放电。</p>
+<table>
+<thead>
+<tr>
+<th>原研究</th>
+<th>实测条件与结果</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://doi.org/10.1109/LPT.2016.2624281">H05 Jalajakumari 2017</a></td>
+<td>4-bit LVDS→16-bit温度计码；16电流单元。365 Mbit/s，200 MHz时钟，16-QAM OFDM，5 cm，误码率门槛10⁻³；约8 mA/单元，LED电源8.2 V</td>
+<td>16颗LED属于同一转换器，不是16条独立通道</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1109/JLT.2013.2246138">H03 Zhang 2013</a></td>
+<td>四路×375 Mbit/s＝总1.5 Gbit/s；OOK-NRZ，PRBS 2⁷−1，LED偏置6.5 V，作者误码率标准&lt;10⁻¹⁰</td>
+<td>存在实际CMOS高速驱动；不能移作本项目能力</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1109/JLT.2017.2694486">H06 Rajbhandari 2017</a></td>
+<td>AMS 0.18 µm，四个8-bit电流舵DAC；四路总原始速率1.23–1.30 Gbit/s，1 m，约45 mA/LED，门槛3.8×10⁻³</td>
+<td>九路7.48 Gbit/s另用AWG替换DAC，不能归给ASIC</td>
+</tr>
+</tbody>
+</table>
+<p>公平比较要固定外部LED、电流、电源、封装和输入条件，各电路保留自身器件与内部寄生。新增旁路电源及缓冲器功耗单列；电气边沿不能直接换算为已验证通信速率。</p></section>
+<section class="page" data-page="5"><h2>5　器件尺寸 精度与动态响应</h2>
+<p>长沟道、强反型饱和区的教学近似为<code>ID≈½μCox(W/L)(VGS−VTH)²</code>。固定VGS、忽略其它变化时，<code>ΔI/I≈−2ΔVTH/(VGS−VTH)</code>，说明阈值失配会造成电流误差。最终需使用PDK器件模型，不能只靠平方律。</p>
+<p>固定W/L同时增大W和L，可能改善随机失配和输出电阻，也会改变栅极电荷、结电容、面积及互连。输出电阻ro是电流对VDS变化的敏感性指标，不是串入LED的一只实体电阻。</p>
+<table>
+<thead>
+<tr>
+<th>历史仿真</th>
+<th>10/2 µm</th>
+<th>实际20/4 µm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W/L</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>两只镜像管栅极几何面积</td>
+<td>40 µm²</td>
+<td>160 µm²</td>
+</tr>
+<tr>
+<td>输出电流标准差，局部失配各n=256</td>
+<td>0.79380 µA</td>
+<td>0.38428 µA</td>
+</tr>
+<tr>
+<td>模拟单元外接矩形面积</td>
+<td>2532.7 µm²</td>
+<td>3577.7 µm²</td>
+</tr>
+</tbody>
+</table>
+<p>面积增加41.26%，该模型样本电流标准差约降51.6%。结果来自2026-10-04 v0.2模拟电路RC研究，不是当前联合电路MC或制造良率。NMOS模型中的迁移率失配参数<code>par_k=0</code>；空间梯度与实际应力也未被此抽样验证。<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/781ceb266eb1f1dc16780d806cdcd0d5005716ae/docs/research/reference-and-matching.md">原证据</a></p>
+<p><strong>计算：</strong> 典型6 V Cox×单管20×4 µm²＝184 fF，只是栅氧几何电容尺度。真实Cgg由偏置下栅极电荷的微分、重叠区等决定；漏/源与体端结电容另由MOS模型计算。不能将184 fF直接当成完整输入电容。</p>
+<p>尺寸比较应同时观察电流误差、建立时间、最低码电荷误差和面积。较小标准差不自动代表更好的短脉冲性能。</p></section>
+<section class="page" data-page="6"><h2>6　LED支路的电压余量与能量</h2>
+<p><img alt="走线压降与输出NMOS漏源电压" src="figures/headroom.svg" /></p>
+<p>输出管得到的电压为<code>VDS=VLED−VF(ID)−ID(RD+RS)</code>。VF随电流变化，完整工作点要联立求解。VDS不足时，MOUT无法维持目标电流；共源共栅或串联开关还需额外电压。</p>
+<p><strong>静态计算：</strong> 一条20 µm黄光LED曲线在100 µA插值得VF≈3.76791 V；5 V电源剩余约1.23209 V，尚未扣走线压降。曲线温度未确认，不包含可校准动态电容、热模型或光电转换。<a href="https://doi.org/10.5281/zenodo.20034288">Lin 2026数据</a></p>
+<p><strong>项目仿真：</strong> TT/27°C、3.3 V逻辑电源、100 µA理想IREF、标称联合信号寄生及已校准静态LED曲线下，5 V源与LED阳极之间外加0/1/5/10 kΩ，电流为99.8403/99.7142/98.9203/88.2660 µA；10 kΩ误差−11.734%，未达±5%。这是外接电阻扫描，不是实际电源线阻值，也没有改LED内部模型。<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/781ceb266eb1f1dc16780d806cdcd0d5005716ae/docs/research/robustness.md">仿真依据</a></p>
+<p>能量要按各电源积分<code>E=Σ∫Vk(t)Ik(t)dt</code>。LED关闭后，当前理想参考仍从3.3 V取100 µA，即约330 µW；不含真实发生器成本。电流舵还须计旁路电源、输入缓冲和解码功耗，不能按LED占空比缩放整个功耗。</p></section>
+<section class="page" data-page="7"><h2>7　源极走线电阻与源极退化</h2>
+<p><img alt="相同绝对栅极电压下的源极走线电阻影响" src="figures/source-resistance.svg" /></p>
+<p>左图源极直接接GND₀，VS=0；右图在源极串入走线电阻RS，<code>VS=ID·RS</code>，因此<code>VGS=VG−VS</code>。图中VG相对远端GND₀固定，ID是加入RS后的实际自洽电流，没有假定它仍等于目标值。</p>
+<p>在这一条件下，VS抬高使VGS减小，改变输出电流，称为源极退化。若参考管与输出管共用同一源极电位，部分变化可能是共模；如果偏置也跟随本地地，需重新计算栅源电压与镜像电流比。简化图省略体效应。</p>
+<p><strong>版图设计检查：</strong> 检查MREF/MOUT的源极接触、过孔和地线电阻；尽量减少不对称连接。不能只比较栅极和漏极几何尺寸。体端连接也会影响器件电性，应按实际工艺和提取网络验证。</p>
+<p><strong>当前模型缺口：</strong> 项目联合信号模型把电源、地、源极和体端连接电阻理想化，尚不能给出图中RS的实际影响幅度。下一步应恢复这些电阻，在相同LED和参考电流条件下比较电流误差，再与栅极偏置的实际参考点一起分析。</p>
+<p>本图解释因果关系，不给出实际芯片误差百分比，也不是“地线电压上升必然等量造成镜像误差”的通用公式。</p></section>
+<section class="page" data-page="8"><h2>8　栅极走线RC与栅极电压波形</h2>
+<p><img alt="栅极等效RC电路与解析电压波形" src="figures/gate-rc.svg" /></p>
+<p>栅极驱动器经走线电阻RG给节点电容CG充电。输入电压VDRV跳变后，栅极电压VG逐渐上升。图中CG是输出管栅极节点的线性等效电容，不是额外增加的实体电容。</p>
+<p>在理想电压驱动、固定源极电位和单极RC假设下，<code>τ=RG·CG</code>，阶跃响应<code>VG/Vstep=1−exp(−t/τ)</code>，10%到90%上升时间为<code>ln(9)τ</code>。</p>
+<p><strong>教学计算：</strong> CG=1 pF时，RG=100 Ω得到0.220 ns；RG=1 kΩ得到2.20 ns。右图画的是电压，不是LED电流、光功率或眼图。真实CGS/CGD、驱动器输出电阻、开关电阻与LED响应会改变实际波形。</p>
+<p>栅极走线越长，电阻与耦合电容通常越值得关注。加宽金属可降低电阻，但也会改变电容与面积；屏蔽线必须连接到实际可用的参考地。应比较提取后的栅极波形、输出电流和脉冲电荷。</p>
+<p>较快VG不自动等于较短光学脉冲。最低灰阶需要联合检查PWM时序、MOS开启/关断、电流尾巴和LED动态数据。现有1 µs电气测试与假设pF负载不能直接建立通信带宽。</p></section>
+<section class="page" data-page="9"><h2>9　共用地线阻抗与通道耦合</h2>
+<p><img alt="两路输出MOS共用回流电阻与电感" src="figures/shared-ground.svg" /></p>
+<p>I1与I2汇合为IΣ，再经RGND/LGND返回GND₀。GNDL是芯片本地地，GND₀是远端基准地。图中的VG1以GND₀为参考，此时<code>VGS1=VG1−VGNDL</code>。</p>
+<p>近似电压变化为<code>ΔVGNDL≈RGND·ΔIΣ+LGND·d(ΔIΣ)/dt</code>。若VG1固定，邻路电流可通过共同阻抗改变本路VGS，属于共用阻抗耦合与地弹噪声。若驱动器理想跟随GNDL，地变化不直接等于VGS扰动，但仍需检查VDS、供电和外部接口。</p>
+<p><strong>文献实测：</strong> H03四路×375 Mbit/s时，四路相对单路接收功率惩罚2.88 dB，作者讨论电气串扰和地弹噪声；不代表本项目有同样幅度。<a href="https://doi.org/10.1109/JLT.2013.2246138">H03 PDF p5</a></p>
+<p><a href="https://doi.org/10.1109/TED.2015.2416915">C01</a>的0.35 µm CMOS原型采用网格电源线，把LED_VDD/GND电阻降到旧值的1/3、1/4；8.3 V、10 ns、100 Hz实验中，随点亮像素增多，按像素面积归一化的峰值光功率约下降一半。需按其公共LED电极和工作点理解，不能移植数值。</p>
+<p>图示R/L只是简化回流模型。封装电感、焊盘保护、分布电容及实际开关电流要另外建立；恒定尾电流也不保证LED电源和旁路电源电流恒定。</p></section>
+<section class="page" data-page="10"><h2>10　晶体管匹配版图与可靠性</h2>
+<p><img alt="拟采用的单位晶体管共质心排列" src="figures/matching.svg" /></p>
+<p>相同单位管交错、同朝向、相似周围环境和对称连接处理不同误差。图中A/B组的加权质心一致：若参数近似<code>p(x,y)=p0+ax+by</code>，一阶梯度项可在平均值中相消。随机失配、二阶梯度、不同VDS和局部应力仍存在。</p>
+<p>D表示边缘虚设晶体管，用于改善匹配环境；它不同于电流舵的旁路负载，也不同于密度填充导体。添加虚设管后，应重新提取寄生。</p>
+<p>GF180 MP.1–13包含相同尺寸、相同环境、虚设管、交错、相似连接及相同偏置；这些匹配要求不全部由自动DRC覆盖。<a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_10_6_2.html">匹配规则</a></p>
+<p><strong>当前版图：</strong> MREF/MOUT是两个独立参数化单元，位置为(10,26)、(25,26) µm；已做尺寸变更和提取，未实现该共质心排列或周边虚设管。</p>
+<table>
+<thead>
+<tr>
+<th>检查项</th>
+<th>需要验证</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电源/地压降</td>
+<td>实际金属、接触、过孔与各路电流</td>
+</tr>
+<tr>
+<td>电迁移EM</td>
+<td>温度、金属厚度、波形定义和过孔电流</td>
+</tr>
+<tr>
+<td>静电放电ESD/闩锁</td>
+<td>保护器件、指定引脚组合、布局要求及验证方法</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_2.html">EM规则</a>的双向电流不能用正负相消后的零平均替代。DRC、正常PWM仿真也不构成<a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_4.html">ESD验证</a>。</p></section>
+<section class="page" data-page="11"><h2>11　新材料的偏置 接触与过孔</h2>
+<table>
+<thead>
+<tr>
+<th>论文事实</th>
+<th>电路与工艺影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://doi.org/10.1002/pssa.202500044">T03 Furusawa 2025</a>：实际2×2 GaN MIS-HEMT/LED；常开，VDD=7 V默认点亮，row1=−5 V使LED1/2关断；描述布线/缓冲层寄生肖特基漏电</td>
+<td>默认关断状态、负压与隔离需先验证；不是硅MOS直接替换</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1038/s41467-023-42443-8">T04 Han 2023</a>：有机TFT/GaN，48×48、100 µm间距、60 Hz，≤150°C集成</td>
+<td>先过孔后OTFT的刻蚀影响表面；先OTFT后过孔避免先损伤界面</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1038/s41565-021-00966-5">T08 Meng 2021</a>：MoS₂/GaN，32×32、20 µm间距；单像素250 kHz；设备限制的10–90%输入边沿约330 ns；QR图案128个应亮开路、2个短路</td>
+<td>较厚旋涂玻璃层的过孔未刻穿是讨论的原因；不是全1024像素良率分母</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1007/s44469-026-00024-7">T05 Kim 2026</a>：LTPO 14T4C；实测器件拟合后的HSPICE电流下降时间0.3 µs，90→10%；γ=2.2、VTH±0.5 V，平均电流误差&lt;5%覆盖至6G</td>
+<td>反馈建立和低灰阶电压裕量需同时验证；完整像素结果为仿真</td>
+</tr>
+</tbody>
+</table>
+<p>MoS₂另行高温生长后转移，LED后约200°C集成不能称整个材料栈低温生长。有机TFT仍驱动无机LED，并不是OLED。</p>
+<p>保持节点电压误差可先用<code>ΔV≈I漏电·T保持/C存储</code>估算。假设1 pA、100 µs、100 fF得到1 mV；缺少漏电和电容实测时，不能据此声明灰阶精度。</p>
+<p>新材料需要I–V/C–V、接触电阻、漏电、温度/应力、噪声、模型适用范围和过孔/绝缘数据。单只器件曲线不能代替完整阵列的制造与电气验证。</p></section>
+<section class="page" data-page="12"><h2>12　项目仿真的实际范围</h2>
+<p>主线为RTL PWM→3.3 V分段线性电压激励→缓冲器/像素MOS→LED模型。1 µs时隙、256时隙一帧；duty=0…256共257状态。平均支路电流仍是电气亮度代理量。</p>
+<table>
+<thead>
+<tr>
+<th>已保存证据</th>
+<th>条件与结果</th>
+<th>未建立的结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标称RC下满开直流</td>
+<td>TT/27°C/3.3 V逻辑/5 V LED：100.7528 µA；SS/85°C/2.97/4.5 V：100.1130 µA；FF/0°C/3.63/5.5 V：101.4234 µA</td>
+<td>不是同温度/电源的仅器件角扫描，也不是光学均匀性</td>
+</tr>
+<tr>
+<td>联合信号寄生模型</td>
+<td>12 MOS、45信号电阻、77显式电容、34邻近节点</td>
+<td>不是完整电源分配网络、封装或ESD模型</td>
+</tr>
+<tr>
+<td>输出Z到模拟接入点</td>
+<td>17.394804 Ω</td>
+<td>不是LED电源/地阻抗</td>
+</tr>
+<tr>
+<td>显式电容总和</td>
+<td>86.12439 fF</td>
+<td>不是全部接在PWM的一个电容，也不含全部MOS固有电容</td>
+</tr>
+<tr>
+<td>早期上电实验</td>
+<td>理想IREF提前供电时偏置比未上电参考电源高约1.372 V</td>
+<td>安全上电顺序尚未验证完成</td>
+</tr>
+</tbody>
+</table>
+<p>上述直流使用100 µA理想IREF、合成LED和理想0 V邻居。电源、地、源极及体端电阻被省略，只有部分信号与电源之间的电容被保留。34个邻近节点含实际浮动/内部节点，默认0 V不能替代活跃或浮动状态。</p>
+<p>20 pF动态假设的低码积分涉及未测低正向段，不能当成实测LED误差。更改模型必须先校准直流，再重跑联动仿真。工程输入固定于基线781ceb2，hash见provenance。<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/781ceb266eb1f1dc16780d806cdcd0d5005716ae/docs/research/joint-pex.md">联合模型</a> / <a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/781ceb266eb1f1dc16780d806cdcd0d5005716ae/docs/research/reference-and-matching.md">参考与匹配</a></p></section>
+<section class="page" data-page="13"><h2>13　下一步设计与受控实验</h2>
+<p>保持单像素，每次明确改变的器件或寄生；验证要求在仿真前确定。</p>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>方法</th>
+<th>观察与处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A　参考源与关断</td>
+<td>实现参考电流源，扫描供电、温度、最低工作电压与上电顺序；加入独立故障关断</td>
+<td>分开参考误差与镜像比例；记录关断延迟、尾流、正/负电荷与峰值</td>
+</tr>
+<tr>
+<td>B　实际互连</td>
+<td>恢复电源/地、源极/体端电阻，再加入邻近信号、焊盘/保护和封装</td>
+<td>与理想连接比较电流、建立时间、瞬态电压和各电源能量，定位共用阻抗</td>
+</tr>
+<tr>
+<td>C　匹配版图</td>
+<td>保持有效尺寸，采用单位管对称排列/虚设管；做DRC、LVS、PEX与同条件统计</td>
+<td>比较随机误差、空间梯度敏感性、面积和动态，分别报告</td>
+</tr>
+<tr>
+<td>D　驱动拓扑</td>
+<td>栅极偏置切换与电流舵固定同一外部LED、开启电流、电源和封装，各自保留内部寄生</td>
+<td>比较脉冲电荷、建立时间、恒流范围及各电源能量；新增旁路电源单列</td>
+</tr>
+</tbody>
+</table>
+<p>既有v0.4规定1 µs时隙、最低码电荷误差±2%、50%阈值高/低时间≥950 ns。新电路的关断时限、能耗、更短脉冲或通信速率要求需另定；±5%电流误差可作为新实验候选要求。</p>
+<p>每次保存模型/输入hash、版本、波形、图案与积分窗口。正负电荷相消不证明故障关断成功，应同时观察持续关断、正负电荷、峰值和节点电压。</p>
+<p>单像素参考源、关断和实际供电影响解释清楚后，再进入阵列。高速通信另外需要可追踪动态LED模型、输入输出/封装模型、眼图、光学响应和误码率；当前电气平台不继承论文码率。</p></section>
+<section class="page" data-page="14"><h2>14　研究方向与资料索引</h2>
+<p>近期交付参考电流源、独立关断、电源/地寄生及匹配版图对照。中期用同一测得LED数据比较两类驱动电路，形成参数化仿真和测量方法。后期分开研究显示的低灰阶/保持/阵列供电，以及通信的调制/串扰/误码率。</p>
+<p>方法平台的价值是让初学者理解每一只MOS、每段连接和每项电气误差，同时使工程师能够复算、定位失败并选择下一步实验。它可以用于教学、模型校准和驱动设计验证；制造良率、量产成本和市场收益需要另外的实物及需求证据。</p>
+<table>
+<thead>
+<tr>
+<th>阅读问题</th>
+<th>原来源与定位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>器件耐压/匹配</td>
+<td>GF180 Poly2、Cox、MP.1–13、工作条件、EM/ESD</td>
+</tr>
+<tr>
+<td>共用电气连接</td>
+<td>Herrnsdorf 2015 §II-A/Fig2/TableI、§II-D/Fig7；Zhang 2013作者稿PDF p5</td>
+</tr>
+<tr>
+<td>电流舵</td>
+<td>Jalajakumari 2017 §II-A、§IV-B</td>
+</tr>
+<tr>
+<td>速率归属</td>
+<td>Rajbhandari 2017 §IV-C为CMOS，§IV-D为AWG</td>
+</tr>
+<tr>
+<td>工艺与低码</td>
+<td>Furusawa 2025 §2.4；Han 2023 Uniformity/Methods；Meng 2021 p1235/Fig4；Kim 2026 §3/Fig5</td>
+</tr>
+</tbody>
+</table>
+<p><a href="index.html">来源索引</a>提供15条原文入口与条件。<a href="figure-ledger.json">figure-ledger.json</a>记录原理图的参考地、器件映射和RC假设；<a href="calculations.json">calculations.json</a>记录独立计算。所有图均为原创示意或计算，没有复制论文图或源PDF。</p>
+<p>本修订使用行业常用器件和电路术语，补充六MOS、简化电流舵及四类布线原理图；没有改变工程模型、原数据或新增EDA/光学结果。渲染和核查记录见validation.json。原理图用于解释机制，实际误差与版图收益仍需由完整电路和测量验证。</p></section></body></html>

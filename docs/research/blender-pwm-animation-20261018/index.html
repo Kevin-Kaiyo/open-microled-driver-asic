@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="用 Blender 逐层展开真实单像素版图，对照六只 MOS 的原理图，理解 PWM 导通、关断与栅极充放电。">
+  <title>从原理图到实际版图 · MicroLED PWM 逐层动画</title>
+  <style>
+    :root{--ink:#253d47;--muted:#62747d;--line:#dce5e8;--paper:#fff;--wash:#f3f7f8;--teal:#176c70;--led:#d77a1d;--ref:#188b7d;--gate:#8a5ab3}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:#f8fafb;font:16px/1.7 "PingFang SC","Noto Sans CJK SC",Arial,sans-serif}a{color:var(--teal);text-underline-offset:3px}button{font:inherit}button,a{touch-action:manipulation}button:focus-visible,a:focus-visible{outline:3px solid #82bec3;outline-offset:4px}main{width:min(1200px,calc(100% - 48px));margin:0 auto;padding:44px 0 60px}.eyebrow{font-size:13px;letter-spacing:.13em;color:var(--teal);margin:0 0 10px}h1{font-size:clamp(26px,3.5vw,40px);line-height:1.3;font-weight:650;margin:0 0 16px}h2{font-size:24px;line-height:1.4;margin:0 0 16px}h3{font-size:18px;line-height:1.5;margin:0 0 8px}p{margin:0 0 14px}.intro{max-width:900px;color:var(--muted);font-size:17px}.conditions{margin:20px 0 22px;border-left:3px solid var(--teal);padding:10px 16px;background:#edf4f5;font-size:15px}.mono,code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.91em}.player{overflow:hidden;background:#101b23;border-radius:14px;box-shadow:0 12px 32px #14383e12}video{width:100%;display:block;aspect-ratio:16/9;object-fit:contain;background:#101b23}.play-note{font-size:14px;color:var(--muted);margin:12px 0 18px}.chapters{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 18px}.chapters button{border:1px solid #c9dade;background:#fff;color:var(--ink);padding:9px 13px;border-radius:8px;cursor:pointer;font-size:14px;line-height:1.4}.chapters button:hover,.chapters button[aria-current=true]{background:#e6f1f2;border-color:#8eb8bd}.chapters time{display:block;color:var(--teal);font-size:12px;font-variant-numeric:tabular-nums}.caption{border:1px solid var(--line);border-radius:10px;padding:15px 18px;min-height:96px;background:var(--paper)}.caption strong{display:block;margin-bottom:4px;font-size:15px}.caption p{font-size:15px;margin:0;color:var(--muted)}.legend{display:flex;flex-wrap:wrap;gap:10px 24px;margin:18px 0 0;font-size:14px;color:var(--muted)}.legend span{display:flex;align-items:center;gap:8px}.swatch{width:27px;height:4px;border-radius:4px;display:inline-block}.led{background:var(--led)}.ref{background:var(--ref)}.gate{background:var(--gate)}section{margin:42px 0 0}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}.box{padding:23px 25px;background:var(--paper);border:1px solid var(--line);border-radius:12px}.box p:last-child{margin-bottom:0}.box h3 small{font-size:13px;color:var(--muted);font-weight:400;margin-left:6px}.tag{display:inline-block;background:#edf4f5;border:1px solid #d7e7e9;padding:2px 8px;border-radius:5px;font-size:13px;color:var(--teal);margin-bottom:10px}.compact{padding-left:1.3em;margin:8px 0 0}.compact li{margin:6px 0}.schematics{display:grid;grid-template-columns:1fr 1fr;gap:20px}figure{margin:0;border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}figure img{width:100%;height:auto;display:block}figcaption{padding:13px 18px;background:#f5f8f9;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--paper)}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:13px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{background:#eef4f5;font-size:13px;font-weight:600}tr:last-child td{border-bottom:0}.number{color:var(--teal);font-size:22px;line-height:1.3}.netline{white-space:nowrap;line-height:1.9}td strong{font-size:14px}td small{display:block;color:var(--muted);font-size:13px;margin-top:3px}.small{font-size:14px;color:var(--muted)}.layer-chain{display:flex;align-items:stretch;flex-wrap:wrap;gap:8px;margin:18px 0 20px}.layer-chain span{background:#fff;border:1px solid #cddfe1;border-radius:7px;min-width:90px;padding:8px 12px;text-align:center;font-size:14px}.layer-chain i{align-self:center;font-style:normal;color:#779198}.downloads{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}.downloads a{background:#fff;border:1px solid var(--line);padding:9px 14px;border-radius:7px;text-decoration:none;font-size:14px}.downloads a.primary{background:var(--teal);border-color:var(--teal);color:#fff}.foot{margin-top:32px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}.status{color:#916b30;font-size:13px;margin-top:10px}.status:empty{display:none}@media(max-width:760px){main{width:calc(100% - 28px);padding-top:25px}.two-col,.schematics{grid-template-columns:1fr}h2{font-size:21px}.box{padding:19px}th,td{padding:11px 13px}.chapters{gap:7px}.chapters button{padding:8px 10px;font-size:13px}.caption{min-height:120px}section{margin-top:32px}.layer-chain span{min-width:70px;font-size:12px;padding:7px 9px}.legend{gap:8px 16px}.intro{font-size:16px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">OPEN MICROLED DRIVER ASIC · BLENDER 教学动画</p>
+    <h1>从原理图到实际版图</h1>
+    <p class="intro">先把金属层与通孔逐层展开，再找到同一组六只 MOS。最后跟着 PWM 高、低电平，分清 LED 电流、参考电流，以及只在切换时出现的栅极充放电。</p>
+    <p class="conditions">动画演示正常工作条件：<code>FAULT = 0</code>、<code>PERMIT = 1</code>，参考源已经稳定。<code>PWM_DRIVE</code> 是保护逻辑与输出缓冲之后的有效信号；这里的 PWM 低电平不是故障保护关断。</p>
+  </header>
+
+  <div class="player">
+    <video id="film" controls playsinline preload="metadata" poster="./poster.png" aria-label="MicroLED 单像素版图逐层展开与 PWM 电流路径动画">
+      <source src="./animation.mp4" type="video/mp4">
+      浏览器暂时无法播放。请<a href="./animation.mp4">下载 MP4 动画</a>观看。
+    </video>
+  </div>
+  <p class="play-note"><span id="duration">约 64 秒</span> · 点击播放，或用下方按钮从指定章节开始。建议全屏观看，随时暂停核对器件编号。</p>
+  <nav class="chapters" aria-label="动画章节">
+    <button type="button" data-frame="1" aria-current="true"><time>00:00</time>逐层展开</button>
+    <button type="button" data-frame="601"><time>00:25</time>原理图 ↔ 版图编号</button>
+    <button type="button" data-frame="697"><time>00:29</time>PWM 高电平</button>
+    <button type="button" data-frame="937"><time>00:39</time>下降沿 · 放电</button>
+    <button type="button" data-frame="961"><time>00:40</time>PWM 低电平</button>
+    <button type="button" data-frame="1177"><time>00:49</time>上升沿 · 充电</button>
+    <button type="button" data-frame="1201"><time>00:50</time>再次导通</button>
+  </nav>
+  <div class="caption" aria-live="polite" aria-atomic="true">
+    <strong id="chapter-title">01 先看整体</strong>
+    <p id="chapter-caption">当前是 39 MOS 模拟宏。接下来展开图层，再定位其中六只像素 MOS。</p>
+  </div>
+  <div class="legend" aria-label="电流与控制路径颜色">
+    <span><i class="swatch led"></i>橙色：LED 常规电流方向</span>
+    <span><i class="swatch ref"></i>青绿色：参考支路电流</span>
+    <span><i class="swatch gate"></i>紫色：栅极控制及边沿充放电</span>
+  </div>
+  <p class="small" style="margin-top:12px">版图中的紫色 GATE 虚线表示连接；只有边沿时运动的标记表示充放电。BIAS、VSS 向左仍延续到画面之外，不在裁切边缘终止。</p>
+  <p class="status" id="load-status" role="status"></p>
+
+  <section aria-labelledby="operation-heading">
+    <h2 id="operation-heading">PWM 改变导通时间，电流镜设定导通电流</h2>
+    <div class="two-col">
+      <article class="box">
+        <span class="tag">高电平 · 约 29–39 秒</span>
+        <h3>把 BIAS 电压送到输出管的栅极</h3>
+        <p>反相器使 <code>PWM_B</code> 为低电平。③ <code>XP_PASS</code> 导通，④ <code>XP_CLAMP</code> 截止；② <code>XP_OUT</code> 的栅极获得偏置，形成从片外 MicroLED 到 <code>VSS</code> 的电流通路。</p>
+        <p>① <code>XP_REF</code> 与②输出管组成 1∶1 电流镜。图中约 100 µA 是当前设计的标称工作点；实际电流还受参考源、器件和输出电压余量影响。</p>
+      </article>
+      <article class="box">
+        <span class="tag">低电平 · 约 40–49 秒</span>
+        <h3>把 GATE 拉低，关闭输出管</h3>
+        <p>反相器使 <code>PWM_B</code> 为高电平。③传递管截止，④下拉管导通；栅极储存的电荷释放后，②输出管关闭，LED 支路只剩漏电。</p>
+        <p><strong>参考支路仍在工作。</strong>④导通后持续保持低电位，但栅极不是直流负载：紫色运动仅在下降沿放电、上升沿充电时出现，稳态栅极电流近似为零。</p>
+      </article>
+    </div>
+  </section>
+
+  <p class="small">切换片段把栅极充放电放慢演示，并用两张稳态原理图说明切换前后的关系。真实反相器有传播延迟，输出管电流也不会瞬间跳变；传递管与下拉管的重叠导通、LED 尾电流和开关延迟，需要用瞬态仿真波形判断，不能从动画秒数读取。</p>
+
+  <section aria-labelledby="schematic-heading">
+    <h2 id="schematic-heading">暂停动画，对照这两张原理图</h2>
+    <p class="small">六只 MOS 的编号、实例名与动画版图一致。电流源符号等效表示上游参考电路；参考源、隔离级、保护逻辑及缓冲器在这张像素局部图中省略。LED 位于芯片之外。</p>
+    <p class="small">右侧版图在①参考管的左下方，还露出邻近的 LED 保护钳位管 <code>XC_CP</code>。它不属于编号①—⑥；在本动画的正常条件下保持关闭，因此没有画出其导通路径。普通 PWM 低电平与故障保护关断是不同状态。</p>
+    <div class="schematics">
+      <figure>
+        <a href="./figures/pwm-high.svg" target="_blank" rel="noopener" aria-label="打开可放大的 PWM 高电平原理图"><img src="./figures/pwm-high.png" width="1520" height="1800" loading="lazy" alt="PWM高态原理图：参考管持续导通，传递管接通BIAS与GATE，输出管驱动片外LED，下拉管截止。"></a>
+        <figcaption>高电平：橙色 LED 电流与青绿色参考电流同时存在。点击图片查看矢量图。</figcaption>
+      </figure>
+      <figure>
+        <a href="./figures/pwm-low.svg" target="_blank" rel="noopener" aria-label="打开可放大的 PWM 低电平原理图"><img src="./figures/pwm-low.png" width="1520" height="1800" loading="lazy" alt="PWM低态原理图：传递管截止，下拉管把GATE拉至VSS，输出管关闭，参考支路持续工作；紫色虚线仅表示边沿放电。"></a>
+        <figcaption>低电平：输出管关闭，参考支路继续。紫色虚线表示切换瞬间的栅极放电。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="device-heading">
+    <h2 id="device-heading">六只 MOS 在网表中分别连接到哪里？</h2>
+    <p class="small"><code>D</code> 是漏极、<code>G</code> 是栅极、<code>S</code> 是源极、<code>B</code> 是体端。下表遵循实际网表的 D / G / S / B 顺序；同名节点在电气上相连，不要求它们在图上相邻。</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th scope="col">编号</th><th scope="col">器件与作用</th><th scope="col">D / G / S / B</th></tr></thead>
+        <tbody>
+          <tr><td class="number">①</td><td><strong class="mono">XP_REF</strong><small>NMOS · 二极管连接参考管</small></td><td class="mono netline">BIAS / BIAS / VSS / VSS</td></tr>
+          <tr><td class="number">②</td><td><strong class="mono">XP_OUT</strong><small>NMOS · LED 恒流下拉输出管</small></td><td class="mono netline">LED_K / GATE / VSS / VSS</td></tr>
+          <tr><td class="number">③</td><td><strong class="mono">XP_PASS</strong><small>NMOS · 传递栅极偏置，不串在 LED 主电流中</small></td><td class="mono netline">BIAS / PWM_DRIVE / GATE / VSS</td></tr>
+          <tr><td class="number">④</td><td><strong class="mono">XP_CLAMP</strong><small>NMOS · 放掉 GATE 电荷，并保持低电位</small></td><td class="mono netline">GATE / PWM_B / VSS / VSS</td></tr>
+          <tr><td class="number">⑤</td><td><strong class="mono">XP_INV_N</strong><small>NMOS · 反相器下拉管</small></td><td class="mono netline">PWM_B / PWM_DRIVE / VSS / VSS</td></tr>
+          <tr><td class="number">⑥</td><td><strong class="mono">XP_INV_P</strong><small>PMOS · 反相器上拉管</small></td><td class="mono netline">PWM_B / PWM_DRIVE / VBUF / VBUF</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small" style="margin-top:14px">体端也需要真实接触和连线：NMOS 的 P 型体区通过体接触固定到 <code>VSS</code>；PMOS 的 N 阱通过井接触固定到 <code>VBUF</code>。这与 D、S 端的工作电流连接不同。<code>XP_PASS</code> 的 S 接 <code>GATE</code>、B 接 <code>VSS</code>，不能把这两个端子误画成短接。</p>
+  </section>
+
+  <section aria-labelledby="layers-heading">
+    <h2 id="layers-heading">从器件端子，怎样走到上层金属？</h2>
+    <div class="layer-chain" aria-label="器件到金属层的连接顺序">
+      <span>器件端子</span><i>→</i><span>Contact</span><i>→</i><span>M1</span><i>→</i><span>Via1</span><i>→</i><span>M2</span><i>→</i><span>Via2</span><i>→</i><span>M3</span>
+    </div>
+    <div class="two-col">
+      <article class="box">
+        <h3>Contact 与 Via 连接不同对象</h3>
+        <p><strong>Contact（接触孔）</strong>把扩散区或多晶硅栅极连接到第一层金属 M1；两者起始高度不同。井接触也依靠接触孔把体区电位引出来。</p>
+        <p><strong>Via1</strong> 连接 M1 与 M2，<strong>Via2</strong> 连接 M2 与 M3。两条不同层的金属在平面上交叉，不代表已经接通；要看交叉处是否存在对应通孔。</p>
+      </article>
+      <article class="box">
+        <h3>看展开模型时，怎样理解比例？</h3>
+        <p>模型的 X、Y 平面图形来自实际 GDS。垂直方向按名义层高放大 <strong>12 倍</strong>；井、有源区的表现用于辨认图层，不代表掺杂深度。</p>
+        <p>动画又额外拉开了各层，让接触关系更清楚。展开空隙不是真实层间距，也不是空气层。图层颜色用于识别结构；只有叠加的橙、青绿、紫路径承担电流与控制的解释。</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="boundary-heading" class="box">
+    <h2 id="boundary-heading">这个动画说明什么，数据还在哪里？</h2>
+    <p>这是基于实际版图与网表的结构、连接和工作状态演示。运动方向采用<strong>常规电流方向</strong>；箭头的速度、宽度和 64 秒教学时间都不代表真实电子速度、电流大小或 SPICE 时间，也不是电场、热场或制造过程仿真。</p>
+    <p>箭头由实际三维连接中心线投影到固定相机，属于教学标注。编辑 Blender 相机后，需要重新执行投影脚本；现有箭头不能随视角旋转而被当作真实三维流线。</p>
+    <p class="small">复核包含 102 项模型检查：9,074 个多边形与源 GDS 的 X、Y 坐标在 1 nm 量化下相符，并检查全部 1,536 帧的路径显示状态。字体和原理图已打包到 Blender 文件中。这些检查针对模型与动画表达，不是新增电气验证。</p>
+    <p class="small">当前完整对象是 39 MOS 模拟宏，动画重点解释其中六只像素 MOS。实际 DRC、LVS、PEX 与电气结果请结合<a href="../single-pixel-closure-20261015/report.html">单像素研究报告</a>阅读；动画本身不新增硅片或光学实测证据。</p>
+    <div class="downloads">
+      <a class="primary" href="./animation.mp4" download>下载 MP4 动画</a>
+      <a href="./pwm-layer-animation.blend" download>下载可编辑 Blender 模型</a>
+      <a href="./mapping.json">器件与版图映射</a>
+      <a href="./validation.json">核对记录</a>
+      <a href="./timeline.json">逐帧时间表</a>
+    </div>
+    <p class="small">补充核对：<a href="./figures/schematic-check.json">原理图连接与图像检查</a> · <a href="./media-validation.json">视频与文件校验</a> · <a href="./chapters-zh.vtt">中文字幕文本</a> · <a href="./Noto-OFL.txt">动画字体许可</a></p>
+    <details><summary>复现与编辑</summary><p>场景使用 Blender 4.5.11 LTS。打开模型后，按空格播放时间轴；画面含固定相机标注，建议保留相机观看。图层是独立 Mesh，可在 Outliner 中查看。需要自由旋转研究结构时，可打开<a href="../blender-layout-20261018/index.html">前一版三维几何模型</a>。</p><p>仓库中的 <code>scripts/blender_animation/prepare_mapping.py</code> 核对网表及真实几何，<code>schematic.py</code> 生成原理图，<code>build.py</code> 生成动画，<code>validate.py</code> 独立重开模型复核，<code>finalize.py</code> 校验最终视频并打包证据。原始逐帧输出保存在 <code>build/blender-pwm-animation/frames</code>，紧凑证据保存在 <code>evidence/blender-pwm-animation</code>。</p></details>
+  </section>
+  <p class="small">再次启动本地观看服务：在仓库根目录运行 <code>build/layout/venv/bin/python scripts/blender_animation/serve.py</code>，再打开本页的 localhost:8771 地址。该服务支持 MP4 的 HTTP Range 请求，供拖动进度和章节跳转使用。</p>
+  <footer class="foot">实验性研发方法验证与教学 · 2026-10-18 · Open MicroLED Driver ASIC</footer>
+</main>
+<script>
+(() => {
+  const film = document.getElementById('film');
+  const buttons = [...document.querySelectorAll('[data-frame]')];
+  const title = document.getElementById('chapter-title');
+  const caption = document.getElementById('chapter-caption');
+  const status = document.getElementById('load-status');
+  let fps = 24, chapters = [], currentChapter = -1;
+  const secondFor = frame => (frame - 1) / fps;
+  const clock = value => `${String(Math.floor(value / 60)).padStart(2,'0')}:${String(Math.floor(value % 60)).padStart(2,'0')}`;
+  function updateCaption() {
+    const frame = Math.floor(film.currentTime * fps + 0.0001) + 1;
+    const index = chapters.findIndex(c => frame >= c.start_frame && frame <= c.end_frame);
+    if (index >= 0 && index !== currentChapter) {
+      currentChapter = index;
+      title.textContent = chapters[index].title;
+      caption.textContent = chapters[index].caption;
+    }
+    let active = buttons[0];
+    for (const button of buttons) if (frame >= Number(button.dataset.frame)) active = button;
+    for (const button of buttons) button.setAttribute('aria-current', String(button === active));
+  }
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      const seekAndPlay = () => {
+        film.currentTime = secondFor(Number(button.dataset.frame));
+        updateCaption();
+        film.play().catch(() => { status.textContent = '已跳转到所选章节；点击视频播放键开始观看。'; });
+      };
+      if (film.readyState >= 1) seekAndPlay();
+      else { film.addEventListener('loadedmetadata', seekAndPlay, {once:true}); film.load(); }
+    });
+  }
+  film.addEventListener('timeupdate', updateCaption);
+  film.addEventListener('seeked', updateCaption);
+  film.addEventListener('play', () => { status.textContent = ''; });
+  film.addEventListener('error', () => { status.textContent = '当前视频未能加载。请使用本地网页服务打开此页，或下载 MP4 后播放。'; });
+  fetch('./timeline.json')
+    .then(response => { if (!response.ok) throw new Error('timeline unavailable'); return response.json(); })
+    .then(data => {
+      if (!(data.fps > 0) || !Array.isArray(data.chapters)) throw new Error('invalid timeline');
+      fps = data.fps;
+      chapters = data.chapters;
+      document.getElementById('duration').textContent = `${data.duration_s} 秒`;
+      for (const button of buttons) {
+        const frame = Number(button.dataset.frame);
+        const chapter = chapters.find(c => c.start_frame === frame);
+        if (!chapter) throw new Error('chapter frame missing');
+        const seconds = secondFor(chapter.start_frame);
+        button.dataset.seconds = String(seconds);
+        button.querySelector('time').textContent = clock(seconds);
+        button.title = `${chapter.title} · 第 ${frame} 帧 · ${seconds} 秒`;
+      }
+      updateCaption();
+    })
+    .catch(() => { status.textContent = '逐帧说明未加载；章节按钮暂用本片 24 fps 的固定时间。通过本地网页服务打开可读取完整时间表。'; });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+Reference startup isolation v2, declared powered-safety/LED boundary
+.include design.ngspice
+.param sw_stat_global=0 sw_stat_mismatch=0 LED_IS=2.2725351141552272e-20
+.lib sm141064.ngspice typical
+.temp 27
+VSUPSAFE safety_vdd 0 3.3
+VLOGIC vbuffer 0 3.3
+VREFRAIL refrail 0 PWL(0 0 10000n 3.3)
+VSET vset 0 .5
+RSET sense 0 5k
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/startup-v2/isolated-reference-md_hikap/inputs/analog/reference/vset_servo_with_junctions.spice"
+XREF refrail 0 vset sense refout vset_reference_junctions
+VREFLOAD refout isolator_in 0
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/startup-v2/isolated-reference-md_hikap/inputs/analog/startup_v2/reference_isolator_tg.spice"
+XISO isolator_in bias fault_pin safety_vdd 0 reference_isolator_tg
+VLED rail 0 5
+VLEDLOAD rail led_anode 0
+VCLAMPSUP rail clamp_anode 0
+VRAW raw_pwm 0 PWL(
++ 0 0
++ 2.2500000000000001e-05 0
++ 2.2510000000000003e-05 3.2999999999999998
++ 4.0000000000000003e-05 3.2999999999999998
++)
+VPERMIT permit 0 PWL(
++ 0 0
++ 2.1500000000000001e-05 0
++ 2.1510000000000002e-05 3.2999999999999998
++ 4.0000000000000003e-05 3.2999999999999998
++)
+VFAULT fault_pin 0 PWL(
++ 0 3.2999999999999998
++ 2.0000000000000002e-05 3.2999999999999998
++ 2.001e-05 0
++ 4.0000000000000003e-05 0
++)
+RFAULTPULLUP safety_vdd fault_pin 1Meg
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/startup-v2/isolated-reference-md_hikap/inputs/analog/safety/fault_gate.spice"
+XSAFE raw_pwm fault_pin permit input safety_vdd 0 fault_gate
+BUNUSED unused_safe 0 V=v(input)
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/startup-v2/isolated-reference-md_hikap/inputs/analog/safety/fault_led_clamp.spice"
+XCLAMP fault_pin clamp_anode led_k 0 fault_led_clamp
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/startup-v2/isolated-reference-md_hikap/inputs/analog/models/microled.spice"
+XLED led_anode led_k microled
+VN0 nbr_00 0 0
+VN1 nbr_01 0 0
+VN2 nbr_02 0 0
+VN3 nbr_03 0 0
+VN4 nbr_04 0 0
+VN5 nbr_05 0 0
+VN6 nbr_06 0 0
+VN7 nbr_07 0 0
+VN8 nbr_08 0 0
+VN9 nbr_09 0 0
+VN10 nbr_10 0 0
+VN11 nbr_11 0 0
+VN12 nbr_12 0 0
+VN13 nbr_13 0 0
+VN14 nbr_14 0 0
+VN15 nbr_15 0 0
+VN16 nbr_16 0 0
+VN17 nbr_17 0 0
+VN18 nbr_18 0 0
+VN19 nbr_19 0 0
+VN20 nbr_20 0 0
+VN21 nbr_21 0 0
+VN22 nbr_22 0 0
+VN23 nbr_23 0 0
+VN24 nbr_24 0 0
+VN25 nbr_25 0 0
+VN26 nbr_26 0 0
+VN27 nbr_27 0 0
+VN28 nbr_28 0 0
+VN29 nbr_29 0 0
+VN30 nbr_30 0 0
+VN31 nbr_31 0 0
+VN32 nbr_32 0 0
+VN33 nbr_33 0 0
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/startup-v2/isolated-reference-md_hikap/inputs/evidence/joint-pex/nominal/output_pixel_pex.spice"
+XJOINT input vbuffer 0 bias led_k gate pwm_b driver_mon legacy_pwm_monitor pwm nbr_00 nbr_01 nbr_02 nbr_03 nbr_04 nbr_05 nbr_06 nbr_07 nbr_08 nbr_09 nbr_10 nbr_11 nbr_12 nbr_13 nbr_14 nbr_15 nbr_16 nbr_17 nbr_18 nbr_19 nbr_20 nbr_21 nbr_22 nbr_23 nbr_24 nbr_25 nbr_26 nbr_27 nbr_28 nbr_29 nbr_30 nbr_31 nbr_32 nbr_33 output_pixel_pex
+.options reltol=1e-7 abstol=1e-14 vntol=1e-9 method=gear maxord=2
+.control
+set numdgt=15
+set wr_vecnames
+set wr_singlescale
+save all @d.xled.dled[id] @d.xled.dled[capcur] @m.xjoint.x10.m0[id]
+option reltol=1e-6 abstol=1e-12 vntol=1e-7 method=gear maxord=2
+tran 10n 40000n 0 10n
+wrdata waveform.dat v(raw_pwm) v(fault_pin) v(permit) v(input) v(pwm) v(gate) v(bias) v(led_k) i(VLEDLOAD) i(VSUPSAFE) i(VREFRAIL) i(VREFLOAD) v(xsafe.fault_b) v(xsafe.nand_n) v(xsafe.stack1) v(xsafe.stack2) v(xjoint.gate.t2) v(xjoint.led_k.t0) v(xjoint.bias.t1) v(xjoint.bias.t2) v(xjoint.ANALOG_PWM.t6) v(xjoint.pwm_b.t2) v(unused_safe) v(clamp_anode) v(xclamp.fault_hb) i(VCLAMPSUP) @d.xled.dled[id] @d.xled.dled[capcur] @m.xjoint.x10.m0[id] v(refrail) v(refout) v(isolator_in) v(xiso.fault_b) v(vset) v(sense) v(xref.pb) v(xref.tail) v(xref.n1) v(xref.n2) v(xref.ctrl)
+quit
+.endc
+.end

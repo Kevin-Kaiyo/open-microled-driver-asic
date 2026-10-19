@@ -1,0 +1,5144 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "criterion_revision": "startup-off-numerical-v1-20261015",
+  "contract": {
+    "schema_version": 1,
+    "criterion_revision": "startup-off-numerical-v1-20261015",
+    "date": "2026-10-15",
+    "scope": "0-20us off-state startup current through external VLEDLOAD only; powered logic and LED, external fault asserted",
+    "reason": "Near-zero directional charge has an ill-conditioned relative denominator; preserve legacy result and add independently declared absolute error budgets.",
+    "legacy_relative_limit_fraction": 0.002,
+    "legacy_result_must_remain_visible": true,
+    "off_current_guard_a": 1e-09,
+    "absolute_current_difference_limit_a": 2e-12,
+    "absolute_charge_difference_limit_c": 4e-17,
+    "observation_window_s": [
+      0,
+      2e-05
+    ],
+    "charge_switch_scale_c": 2e-14,
+    "switch_derivation": "4e-17C / 0.002 = 2e-14C; absolute and relative budgets agree at crossover",
+    "near_zero_branch": "When max(abs(Qa),abs(Qb)) <= switch scale, require absolute Q difference <= 4e-17C AND max pointwise current difference <= 2pA",
+    "resolved_charge_branch": "Above switch scale require original abs(Qb/Qa-1) <= 0.002; no replacement of established nonzero charge relative tests",
+    "comparison_set": "All pairwise comparisons of two finest local meshes, Gear1/Gear2, global maximum steps 10ns/2ns; tolerance controls included",
+    "waveform_comparison": "Interpolate piecewise linearly on union of all actual solver knots, no smoothing or current clipping",
+    "charge_integration": "Piecewise linear exact zero crossings, report Qpositive, Qnegative, Qsigned separately",
+    "not_claimed": [
+      "original relative startup gate passed",
+      "measurement resolution",
+      "silicon or optical performance",
+      "arbitrary whole-chip power sequencing",
+      "full extracted new macro"
+    ]
+  },
+  "contract_sha256": "393f325111216b3730444ba23b08349b4ba869f5f40e8bebdcaa9968e20e8c32",
+  "script_sha256": "7a7f67e111e1b75bc63044dbe9c2506de7cbfe649dd9c76ee2286186af3e6f9b",
+  "frozen_source_summary_sha256": "d7aff93d0244c649bebf3181e1e1fada99e5cf08640e0fd85b74c95db83d0208",
+  "physical_changes": "none; collinear PWL breakpoints only",
+  "runs": 14,
+  "selected_comparison_runs": 10,
+  "selected_pairwise_comparisons": 45,
+  "legacy_4p909pct_result_passed": false,
+  "revised_numerical_acceptance_passed": true,
+  "selected_maximum_current_difference_a": 1.393285486983587e-12,
+  "selected_maximum_charge_difference_c": 3.4520217992623235e-22,
+  "results": [
+    {
+      "name": "gear1_mesh10tick_s10_r1e-8",
+      "order": 1,
+      "local_mesh_ps": 1.0,
+      "maxstep_ns": 10,
+      "reltol": 1e-08,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 4003,
+      "deck_sha256": "36469f9df1e3c3ebcaa700aaf106f7b36a5d2d393f922143548431c5e502e4bb",
+      "log_sha256": "bec89145aa5de1e74a23add5b81d9cd74f34155d3eaed244b1a7cb8d3768fc4b",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear1_mesh10tick_s10_r1e-8",
+      "reference_ramp_unchanged": true,
+      "points": 74740,
+      "branch_peak_a": 5.135809652556667e-11,
+      "branch_max_a": 5.117890458650187e-11,
+      "branch_min_a": -5.135809652556667e-11,
+      "charge": {
+        "signed_c": -1.8504639340296238e-23,
+        "positive_c": 4.50837111616476e-21,
+        "negative_c": -4.5268757555050564e-21
+      },
+      "early_charge": {
+        "signed_c": 4.474691709443787e-24,
+        "positive_c": 2.3704385473739613e-21,
+        "negative_c": -2.3659638556645174e-21
+      },
+      "late_charge": {
+        "signed_c": -2.610969641908825e-23,
+        "positive_c": 6.967778889023779e-23,
+        "negative_c": -9.578748530932602e-23
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": -1.850463934029626e-23,
+        "positive_c": 4.508371116164761e-21,
+        "negative_c": -4.526875755505057e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "4539ee476ea85fea44b54b6573f06c26ac29ef80f52119e414f5a4ef197e0591",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear1_mesh10tick_s10_r1e-8.csv",
+      "compact_csv_sha256": "4c08eb39c6fa21194f264bb7ec16842bc5b474dc2447b750076777f6e02bb46a"
+    },
+    {
+      "name": "gear1_mesh10tick_s2_r1e-8",
+      "order": 1,
+      "local_mesh_ps": 1.0,
+      "maxstep_ns": 2,
+      "reltol": 1e-08,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 4003,
+      "deck_sha256": "3df24148b91b4f65bb8482076b7e15ed6582a3187ed5cd3d6ec988ed19bf3f57",
+      "log_sha256": "e260b7e7089cc08f2dd9cff44627280ea8145fc305971b3b8119c5cfb70f16ff",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear1_mesh10tick_s2_r1e-8",
+      "reference_ramp_unchanged": true,
+      "points": 82476,
+      "branch_peak_a": 5.135809652556667e-11,
+      "branch_max_a": 5.117890458650187e-11,
+      "branch_min_a": -5.135809652556667e-11,
+      "charge": {
+        "signed_c": 7.542713663382992e-23,
+        "positive_c": 4.5031193377200095e-21,
+        "negative_c": -4.42769220108618e-21
+      },
+      "early_charge": {
+        "signed_c": 4.474691709443787e-24,
+        "positive_c": 2.3704385473739613e-21,
+        "negative_c": -2.3659638556645174e-21
+      },
+      "late_charge": {
+        "signed_c": 6.604054066869311e-23,
+        "positive_c": 6.604054066869311e-23,
+        "negative_c": 0.0
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 7.542713663383039e-23,
+        "positive_c": 4.5031193377200095e-21,
+        "negative_c": -4.4276922010861794e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "5a63dc31fa281965b2072cf63c8e1b63418d4f778aee9de8c6a7bb12001fc942",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear1_mesh10tick_s2_r1e-8.csv",
+      "compact_csv_sha256": "b2468b4ddece6f4ca54a35dc74e4d94d8ecbb26110d532394d3ab8bd5e3df772"
+    },
+    {
+      "name": "gear1_mesh2tick_s10_r1e-8",
+      "order": 1,
+      "local_mesh_ps": 0.2,
+      "maxstep_ns": 10,
+      "reltol": 1e-08,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 20003,
+      "deck_sha256": "843e9bf0d01cc7b194e08ae01bb56ecfcec0ad41d3f3b00dbbf77d483d324492",
+      "log_sha256": "157b7aa5e8e4cca3c78d203aad7d5037c939239a38e359587675dcd83a46eae6",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear1_mesh2tick_s10_r1e-8",
+      "reference_ramp_unchanged": true,
+      "points": 154743,
+      "branch_peak_a": 5.183032322775283e-11,
+      "branch_max_a": 5.167665753647021e-11,
+      "branch_min_a": -5.183032322775283e-11,
+      "charge": {
+        "signed_c": 3.842107243441088e-23,
+        "positive_c": 4.548589670124924e-21,
+        "negative_c": -4.510168597690514e-21
+      },
+      "early_charge": {
+        "signed_c": 3.872295597108231e-23,
+        "positive_c": 2.4050124514125446e-21,
+        "negative_c": -2.3662894954414625e-21
+      },
+      "late_charge": {
+        "signed_c": -3.3821614206036896e-23,
+        "positive_c": 6.5845764479732e-23,
+        "negative_c": -9.966737868576888e-23
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 3.842107243441072e-23,
+        "positive_c": 4.548589670124925e-21,
+        "negative_c": -4.510168597690514e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "8749ca94d4be1d0b30430ebb7e4e4d85f71a95f7a421695e58027045beed2580",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear1_mesh2tick_s10_r1e-8.csv",
+      "compact_csv_sha256": "e4a24a5bae13e249c9f57346a9342545a2ed28a5671dcf0f1580b0c39f809ba2"
+    },
+    {
+      "name": "gear1_mesh2tick_s2_r1e-8",
+      "order": 1,
+      "local_mesh_ps": 0.2,
+      "maxstep_ns": 2,
+      "reltol": 1e-08,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 20003,
+      "deck_sha256": "d2783acf5be6a42421685694a795aaebf0bec0e9135c7facece93a512a25f6a1",
+      "log_sha256": "e58f4db9e0d5587fcf4ccfa2ed4338daf442e14affe1698ad3ec2661163775af",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear1_mesh2tick_s2_r1e-8",
+      "reference_ramp_unchanged": true,
+      "points": 162479,
+      "branch_peak_a": 5.183032322775283e-11,
+      "branch_max_a": 5.167665753647021e-11,
+      "branch_min_a": -5.183032322775283e-11,
+      "charge": {
+        "signed_c": 1.3837901587309862e-22,
+        "positive_c": 4.546171760450287e-21,
+        "negative_c": -4.407792744577189e-21
+      },
+      "early_charge": {
+        "signed_c": 3.872295597108231e-23,
+        "positive_c": 2.4050124514125446e-21,
+        "negative_c": -2.3662894954414625e-21
+      },
+      "late_charge": {
+        "signed_c": 6.599656894235679e-23,
+        "positive_c": 6.599656894235679e-23,
+        "negative_c": 0.0
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 1.3837901587309791e-22,
+        "positive_c": 4.546171760450287e-21,
+        "negative_c": -4.407792744577189e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "f32b3c7d70380d8f3519a3e0c3b4022502d7b77f9f0fb30b6058f6f4df00c833",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear1_mesh2tick_s2_r1e-8.csv",
+      "compact_csv_sha256": "caff8d9de177294f8196beeade4f46e600a1c886adff896c2d629056c8a2cad9"
+    },
+    {
+      "name": "gear1_mesh1tick_s10_r1e-8",
+      "order": 1,
+      "local_mesh_ps": 0.1,
+      "maxstep_ns": 10,
+      "reltol": 1e-08,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 40003,
+      "deck_sha256": "56511da31bd55c860ab73413233fed9711b2dfa6296dce756d8145b46e738bdf",
+      "log_sha256": "5114f10697d558a9544d8b45e039d8a4d4de29f8dcca6d298e517c2d61395e38",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear1_mesh1tick_s10_r1e-8",
+      "reference_ramp_unchanged": true,
+      "points": 254732,
+      "branch_peak_a": 5.192177007784515e-11,
+      "branch_max_a": 5.170401343179698e-11,
+      "branch_min_a": -5.192177007784515e-11,
+      "charge": {
+        "signed_c": -9.112401052686338e-23,
+        "positive_c": 4.485330747627759e-21,
+        "negative_c": -4.576454758154623e-21
+      },
+      "early_charge": {
+        "signed_c": -3.1639900018539183e-23,
+        "positive_c": 2.3606968366092678e-21,
+        "negative_c": -2.3923367366278073e-21
+      },
+      "late_charge": {
+        "signed_c": -3.711192147461344e-23,
+        "positive_c": 6.28175999139588e-23,
+        "negative_c": -9.992952138857224e-23
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": -9.112401052686344e-23,
+        "positive_c": 4.4853307476277595e-21,
+        "negative_c": -4.5764547581546234e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "28cf8c33107990902e788c84e2a4c01d01593e4261792983302366311f507572",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear1_mesh1tick_s10_r1e-8.csv",
+      "compact_csv_sha256": "0617a8a5fdf55aee2bb3a41f5c41d9362bc9eee1a83565ea368ecd3a46ad9481"
+    },
+    {
+      "name": "gear1_mesh1tick_s2_r1e-8",
+      "order": 1,
+      "local_mesh_ps": 0.1,
+      "maxstep_ns": 2,
+      "reltol": 1e-08,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 40003,
+      "deck_sha256": "08bf6ba4679b8a46c0d069d19ac1dc0bba31998fcfe02757bccec54c4d434a62",
+      "log_sha256": "961e76fc35d5fc69f2114fc803bb6c5e601fe4549dbceda6cabe29540f222dd8",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear1_mesh1tick_s2_r1e-8",
+      "reference_ramp_unchanged": true,
+      "points": 262469,
+      "branch_peak_a": 5.192177007784515e-11,
+      "branch_max_a": 5.170401343179698e-11,
+      "branch_min_a": -5.192177007784515e-11,
+      "charge": {
+        "signed_c": 1.2928093420921934e-23,
+        "positive_c": 4.486352184071541e-21,
+        "negative_c": -4.473424090650619e-21
+      },
+      "early_charge": {
+        "signed_c": -3.1639900018539183e-23,
+        "positive_c": 2.3606968366092678e-21,
+        "negative_c": -2.3923367366278073e-21
+      },
+      "late_charge": {
+        "signed_c": 6.595728881302382e-23,
+        "positive_c": 6.595728881302382e-23,
+        "negative_c": 0.0
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 1.2928093420921769e-23,
+        "positive_c": 4.486352184071541e-21,
+        "negative_c": -4.473424090650618e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "4c9f1e5b38991bf5a8433adf037ef82f04af32c98f6da230bf5fca7496162d4c",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear1_mesh1tick_s2_r1e-8.csv",
+      "compact_csv_sha256": "4f47f4d4adf9a39c48be174bf7f77621c6a480d1589e54a0bab4017ff563c9b4"
+    },
+    {
+      "name": "gear2_mesh10tick_s10_r1e-8",
+      "order": 2,
+      "local_mesh_ps": 1.0,
+      "maxstep_ns": 10,
+      "reltol": 1e-08,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 4003,
+      "deck_sha256": "dae95d7c8c00ba376f65c7af8dce5aec543cd829dc6861b3e5a9d62c308b140f",
+      "log_sha256": "05672b9889a993fd88a2c51f4c4035746510cfb3cab541f81711f05e1b802874",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear2_mesh10tick_s10_r1e-8",
+      "reference_ramp_unchanged": true,
+      "points": 23588,
+      "branch_peak_a": 5.203312988810715e-11,
+      "branch_max_a": 5.185523468953513e-11,
+      "branch_min_a": -5.203312988810715e-11,
+      "charge": {
+        "signed_c": -8.499096519110007e-23,
+        "positive_c": 4.487637477733053e-21,
+        "negative_c": -4.572628442924153e-21
+      },
+      "early_charge": {
+        "signed_c": 4.193102372867696e-24,
+        "positive_c": 2.3742560199374117e-21,
+        "negative_c": -2.3700629175645443e-21
+      },
+      "late_charge": {
+        "signed_c": -8.848249976471094e-23,
+        "positive_c": 5.398603709650505e-23,
+        "negative_c": -1.4246853686121598e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": -8.499096519110064e-23,
+        "positive_c": 4.487637477733052e-21,
+        "negative_c": -4.572628442924152e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "df4f5847bab68d3a874bb17fd51c3a3653219288d686fac5ab96c9585a355f57",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear2_mesh10tick_s10_r1e-8.csv",
+      "compact_csv_sha256": "859d980780d995f0ae47aad90b46950abbe9bb01af895194709b917310f53972"
+    },
+    {
+      "name": "gear2_mesh10tick_s2_r1e-8",
+      "order": 2,
+      "local_mesh_ps": 1.0,
+      "maxstep_ns": 2,
+      "reltol": 1e-08,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 4003,
+      "deck_sha256": "c3b93605d29f070b0f8315d5dfdc6061c430d7985eab88af9631674865cd7958",
+      "log_sha256": "bc011b75d8acdde9a3773a2c8dbcd9973721a8eba1fb66e689b55ddc47d73a16",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear2_mesh10tick_s2_r1e-8",
+      "reference_ramp_unchanged": true,
+      "points": 31408,
+      "branch_peak_a": 5.203312988810715e-11,
+      "branch_max_a": 5.185523468953513e-11,
+      "branch_min_a": -5.203312988810715e-11,
+      "charge": {
+        "signed_c": 8.58074108602879e-23,
+        "positive_c": 4.727586320441207e-21,
+        "negative_c": -4.641778909580919e-21
+      },
+      "early_charge": {
+        "signed_c": 4.193102372867696e-24,
+        "positive_c": 2.3742560199374117e-21,
+        "negative_c": -2.3700629175645443e-21
+      },
+      "late_charge": {
+        "signed_c": 7.810613707373775e-23,
+        "positive_c": 2.876707426225764e-22,
+        "negative_c": -2.095646055488387e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 8.580741086028867e-23,
+        "positive_c": 4.727586320441207e-21,
+        "negative_c": -4.6417789095809196e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "da00e4c65eb0d5da5e352d59059a9121f8cba052cf31d6ad40e894166643567f",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear2_mesh10tick_s2_r1e-8.csv",
+      "compact_csv_sha256": "04c7be726877c836feee4756bafb4ac93ceb0b9e7e3749c79853cdf0a7e9377b"
+    },
+    {
+      "name": "gear2_mesh2tick_s10_r1e-8",
+      "order": 2,
+      "local_mesh_ps": 0.2,
+      "maxstep_ns": 10,
+      "reltol": 1e-08,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 20003,
+      "deck_sha256": "404d8ca2fb88b1353029f1737cfd633effcbe99f231308aab1d9de1d17240f81",
+      "log_sha256": "83264bf210b0a6ef26f5f563e2bbd5693b6f94ee043448b74e1f06739286af9a",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear2_mesh2tick_s10_r1e-8",
+      "reference_ramp_unchanged": true,
+      "points": 103590,
+      "branch_peak_a": 5.19743680038598e-11,
+      "branch_max_a": 5.179089504481205e-11,
+      "branch_min_a": -5.19743680038598e-11,
+      "charge": {
+        "signed_c": -1.6401037318382175e-23,
+        "positive_c": 4.535943406247604e-21,
+        "negative_c": -4.552344443565986e-21
+      },
+      "early_charge": {
+        "signed_c": 2.722341659256352e-23,
+        "positive_c": 2.3813810620364234e-21,
+        "negative_c": -2.35415764544386e-21
+      },
+      "late_charge": {
+        "signed_c": -8.816288501259586e-23,
+        "positive_c": 5.365814667716108e-23,
+        "negative_c": -1.4182103168975691e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": -1.6401037318382363e-23,
+        "positive_c": 4.535943406247604e-21,
+        "negative_c": -4.5523444435659855e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "3db21be9c01b34308704fda36eae77baa813d28412bbb6208e79ebbcb641f012",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear2_mesh2tick_s10_r1e-8.csv",
+      "compact_csv_sha256": "bf3f4d36f77f33d389632445de5f82c0ccb5e8242182ed9e824ee2b220f1b74a"
+    },
+    {
+      "name": "gear2_mesh2tick_s2_r1e-8",
+      "order": 2,
+      "local_mesh_ps": 0.2,
+      "maxstep_ns": 2,
+      "reltol": 1e-08,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 20003,
+      "deck_sha256": "a05410f4da70b8323dc8483bfa5eba0fe37ee70fecae5faa74f1c00662255688",
+      "log_sha256": "dd7503cd7acfa40e14a4ef3030df953270b806f930ec26fc3980c4f17c05f42d",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear2_mesh2tick_s2_r1e-8",
+      "reference_ramp_unchanged": true,
+      "points": 111410,
+      "branch_peak_a": 5.19743680038598e-11,
+      "branch_max_a": 5.179089504481205e-11,
+      "branch_min_a": -5.19743680038598e-11,
+      "charge": {
+        "signed_c": 1.5438671426762432e-22,
+        "positive_c": 4.776846754829184e-21,
+        "negative_c": -4.62246004056156e-21
+      },
+      "early_charge": {
+        "signed_c": 2.722341659256352e-23,
+        "positive_c": 2.3813810620364234e-21,
+        "negative_c": -2.35415764544386e-21
+      },
+      "late_charge": {
+        "signed_c": 7.816602218921456e-23,
+        "positive_c": 2.8775703562240615e-22,
+        "negative_c": -2.0959101343319163e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 1.5438671426762432e-22,
+        "positive_c": 4.776846754829184e-21,
+        "negative_c": -4.622460040561559e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "2b1b4c71a15cb43fe608c02fc1f1183aa5b8f6474a1403e0baba883e6fc124d6",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear2_mesh2tick_s2_r1e-8.csv",
+      "compact_csv_sha256": "be2923c65c376d9c9a0f838a7d6dc42b13aa0214b0ecb80b25ba941f045f2f62"
+    },
+    {
+      "name": "gear2_mesh1tick_s10_r1e-8",
+      "order": 2,
+      "local_mesh_ps": 0.1,
+      "maxstep_ns": 10,
+      "reltol": 1e-08,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 40003,
+      "deck_sha256": "3559a0ddf5bb6250fc870d1050238c72345c2abf52c096e2f1c498c7572354b4",
+      "log_sha256": "1f24cd5535b56e7d84872bc31e6d883741150d357db6b0b065d5898bfcabd8c3",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear2_mesh1tick_s10_r1e-8",
+      "reference_ramp_unchanged": true,
+      "points": 203590,
+      "branch_peak_a": 5.197944838442048e-11,
+      "branch_max_a": 5.177655984511809e-11,
+      "branch_min_a": -5.197944838442048e-11,
+      "charge": {
+        "signed_c": -1.9081546565860803e-22,
+        "positive_c": 4.448804319294693e-21,
+        "negative_c": -4.639619784953301e-21
+      },
+      "early_charge": {
+        "signed_c": -5.33612698100986e-23,
+        "positive_c": 2.3553541935072238e-21,
+        "negative_c": -2.408715463317322e-21
+      },
+      "late_charge": {
+        "signed_c": -8.813656876120311e-23,
+        "positive_c": 5.412543632051745e-23,
+        "negative_c": -1.4226200508172056e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": -1.9081546565860822e-22,
+        "positive_c": 4.448804319294693e-21,
+        "negative_c": -4.639619784953301e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "a0889d8deec02e15d250b31d2059ea563367adf9369a9ed00d65052a5242c530",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear2_mesh1tick_s10_r1e-8.csv",
+      "compact_csv_sha256": "6c4c399933d337bfa9e76941302233447cea08648c2bae736fd90bb84a94ef72"
+    },
+    {
+      "name": "gear2_mesh1tick_s2_r1e-8",
+      "order": 2,
+      "local_mesh_ps": 0.1,
+      "maxstep_ns": 2,
+      "reltol": 1e-08,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 40003,
+      "deck_sha256": "2c2f3bca75a3344954134003e1406f04dc5385ccef5254058861f9e8829111d1",
+      "log_sha256": "5f34b5226a8cf8718e800ea623bac275db351426232d35746064f2624ecca25f",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear2_mesh1tick_s2_r1e-8",
+      "reference_ramp_unchanged": true,
+      "points": 211410,
+      "branch_peak_a": 5.197944838442048e-11,
+      "branch_max_a": 5.177655984511809e-11,
+      "branch_min_a": -5.197944838442048e-11,
+      "charge": {
+        "signed_c": -2.20036514872661e-23,
+        "positive_c": 4.687221792712868e-21,
+        "negative_c": -4.709225444200134e-21
+      },
+      "early_charge": {
+        "signed_c": -5.33612698100986e-23,
+        "positive_c": 2.3553541935072238e-21,
+        "negative_c": -2.408715463317322e-21
+      },
+      "late_charge": {
+        "signed_c": 7.643108179758862e-23,
+        "positive_c": 2.8671954396938646e-22,
+        "negative_c": -2.1028846217179788e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": -2.200365148726704e-23,
+        "positive_c": 4.687221792712868e-21,
+        "negative_c": -4.709225444200135e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "6fcd8c6f55c95e223bbfcb3aa15c198580fb05ccb7eb21143c09b96180b7cad1",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear2_mesh1tick_s2_r1e-8.csv",
+      "compact_csv_sha256": "39aa0f26d2573fece727d5aff557516035385c9193e63178e49bc8d84996d40c"
+    },
+    {
+      "name": "gear1_mesh1tick_s2_r1e-7",
+      "order": 1,
+      "local_mesh_ps": 0.1,
+      "maxstep_ns": 2,
+      "reltol": 1e-07,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 40003,
+      "deck_sha256": "2605025ef4706adce94672253adbf1427748ec481665858694358506e0a2681f",
+      "log_sha256": "b896dd0936c3188b2e22d2732743ca86c3779fb57607af6e035c04ee7221538c",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear1_mesh1tick_s2_r1e-7",
+      "reference_ramp_unchanged": true,
+      "points": 226613,
+      "branch_peak_a": 5.192569582646023e-11,
+      "branch_max_a": 5.171309061524632e-11,
+      "branch_min_a": -5.192569582646023e-11,
+      "charge": {
+        "signed_c": 3.0163128155043847e-23,
+        "positive_c": 4.479790187184327e-21,
+        "negative_c": -4.4496270590292835e-21
+      },
+      "early_charge": {
+        "signed_c": -9.371805640198786e-24,
+        "positive_c": 2.3611905094083176e-21,
+        "negative_c": -2.3705623150485162e-21
+      },
+      "late_charge": {
+        "signed_c": 6.587611489814722e-23,
+        "positive_c": 6.591143365700809e-23,
+        "negative_c": -3.5318758860878193e-26
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": 3.0163128155044035e-23,
+        "positive_c": 4.479790187184327e-21,
+        "negative_c": -4.4496270590292835e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "91178ec765abf93b670ba6898b7fd6d198144d7e1da1e3b660d97b820d4f9d01",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear1_mesh1tick_s2_r1e-7.csv",
+      "compact_csv_sha256": "074b88e39165abe52630159bf7e05f05d7e53cec9ddbd755a1f973ab8dec32f2"
+    },
+    {
+      "name": "gear2_mesh1tick_s2_r1e-7",
+      "order": 2,
+      "local_mesh_ps": 0.1,
+      "maxstep_ns": 2,
+      "reltol": 1e-07,
+      "tstep_ns": 0.001,
+      "solver_completed": true,
+      "breakpoint_count": 40003,
+      "deck_sha256": "29f7930bcfcc61e0d62136cb7ab46ae2cd6c4a0fd1fdefb225ce15241b1e13a4",
+      "log_sha256": "de61483d5ce9decae4d3e6d63d311f867fcc67847db23436f6ea153f1112b55d",
+      "raw_directory": "build/startup-v3/numerical/localmesh-final/gear2_mesh1tick_s2_r1e-7",
+      "reference_ramp_unchanged": true,
+      "points": 210632,
+      "branch_peak_a": 5.199854422044403e-11,
+      "branch_max_a": 5.177584930238232e-11,
+      "branch_min_a": -5.199854422044403e-11,
+      "charge": {
+        "signed_c": -1.7830551971305733e-23,
+        "positive_c": 4.6900592439507325e-21,
+        "negative_c": -4.707889795922039e-21
+      },
+      "early_charge": {
+        "signed_c": -4.8763914443649835e-23,
+        "positive_c": 2.3562338569586372e-21,
+        "negative_c": -2.4049977714022872e-21
+      },
+      "late_charge": {
+        "signed_c": 7.778502677462788e-23,
+        "positive_c": 2.8754807826110435e-22,
+        "negative_c": -2.0976305148647646e-22
+      },
+      "legacy_algorithm_charge": {
+        "signed_c": -1.7830551971305545e-23,
+        "positive_c": 4.690059243950733e-21,
+        "negative_c": -4.707889795922039e-21
+      },
+      "branch_1nA_peak_passed": true,
+      "raw_sha256": "0800d5f2a53f48c84a791ec52a48bb5483433e8775f6881e16145c6edcc05ff9",
+      "max_reference_source_function_error_v": 1.3322676295501878e-15,
+      "compact_csv_path": "evidence/startup-v3/numerical/refined-waveforms/gear2_mesh1tick_s2_r1e-7.csv",
+      "compact_csv_sha256": "b95a9c215a0679740096ab13274de20740ffdb49fbb4986a79f8ee5bac2728ac"
+    }
+  ],
+  "selected_comparisons": [
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear1_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.243449787580176e-16,
+      "maximum_difference_time_s": 6.139650631657875e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": 1.3837901587309862e-22,
+          "absolute_difference_c": 9.995794343868773e-23,
+          "relative_difference_fraction": 2.601643762269449,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.546171760450287e-21,
+          "absolute_difference_c": 2.4179096746364752e-24,
+          "relative_difference_fraction": 0.0005315734876059075,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.407792744577189e-21,
+          "absolute_difference_c": 1.023758531133243e-22,
+          "relative_difference_fraction": 0.022698897146715802,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 6.221974047093642e-13,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": -9.112401052686338e-23,
+          "absolute_difference_c": 1.2954508296127427e-22,
+          "relative_difference_fraction": 3.3717195995094196,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.485330747627759e-21,
+          "absolute_difference_c": 6.325892249716503e-23,
+          "relative_difference_fraction": 0.013907370654391848,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.576454758154623e-21,
+          "absolute_difference_c": 6.628616046410905e-23,
+          "relative_difference_fraction": 0.014697047134347052,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 6.221974047093642e-13,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": 1.2928093420921934e-23,
+          "absolute_difference_c": 2.5492979013488948e-23,
+          "relative_difference_fraction": 0.6635155501452581,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.486352184071541e-21,
+          "absolute_difference_c": 6.223748605338305e-23,
+          "relative_difference_fraction": 0.013682809522731376,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.473424090650619e-21,
+          "absolute_difference_c": 3.674450703989473e-23,
+          "relative_difference_fraction": 0.008147036245764738,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.393285486983587e-12,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": -1.6401037318382175e-23,
+          "absolute_difference_c": 5.482210975279306e-23,
+          "relative_difference_fraction": 1.4268760937472686,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.535943406247604e-21,
+          "absolute_difference_c": 1.2646263877319817e-23,
+          "relative_difference_fraction": 0.0027802604311354395,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.552344443565986e-21,
+          "absolute_difference_c": 4.2175845875472634e-23,
+          "relative_difference_fraction": 0.009351279217603814,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.393285486983587e-12,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 1.1596564183321343e-22,
+          "relative_difference_fraction": 3.018282272864192,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.2825708470426053e-22,
+          "relative_difference_fraction": 0.05018194676988563,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 1.122914428710461e-22,
+          "relative_difference_fraction": 0.024897393620395114,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.2150920269959834e-12,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 2.292365380930189e-22,
+          "relative_difference_fraction": 5.9664273683237665,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 9.978535083023052e-23,
+          "relative_difference_fraction": 0.0219376461863815,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 1.294511872627876e-22,
+          "relative_difference_fraction": 0.028702072762662345,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.2150920269959834e-12,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 6.042472392167699e-23,
+          "relative_difference_fraction": 1.5726974832581475,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 1.3863212258794433e-22,
+          "relative_difference_fraction": 0.030478045425481826,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 1.9905684650962014e-22,
+          "relative_difference_fraction": 0.044135123155163214,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 6.214335712684248e-13,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 8.257944279367035e-24,
+          "relative_difference_fraction": 0.21493268553251033,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 6.87994829405968e-23,
+          "relative_difference_fraction": 0.015125453806587807,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 6.054153866123019e-23,
+          "relative_difference_fraction": 0.0134233426866196,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 1.219088829884634e-12,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 5.625162440571662e-23,
+          "relative_difference_fraction": 1.464082620331447,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 1.4146957382580878e-22,
+          "relative_difference_fraction": 0.03110185443962532,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 1.9772119823152573e-22,
+          "relative_difference_fraction": 0.043838981614295225,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 6.221974047093642e-13,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": -9.112401052686338e-23,
+          "absolute_difference_c": 2.29503026399962e-22,
+          "relative_difference_fraction": 1.6585103236348295,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.485330747627759e-21,
+          "absolute_difference_c": 6.084101282252856e-23,
+          "relative_difference_fraction": 0.013382911167549527,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.576454758154623e-21,
+          "absolute_difference_c": 1.6866201357743335e-22,
+          "relative_difference_fraction": 0.038264506375653484,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 6.221974047093642e-13,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": 1.2928093420921934e-23,
+          "absolute_difference_c": 1.2545092245217669e-22,
+          "relative_difference_fraction": 0.9065747552882026,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.486352184071541e-21,
+          "absolute_difference_c": 5.981957637874657e-23,
+          "relative_difference_fraction": 0.013158230601657106,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.473424090650619e-21,
+          "absolute_difference_c": 6.563134607342957e-23,
+          "relative_difference_fraction": 0.014889843937007763,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.393285486983587e-12,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": -1.6401037318382175e-23,
+          "absolute_difference_c": 1.547800531914808e-22,
+          "relative_difference_fraction": 1.1185225752250099,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.535943406247604e-21,
+          "absolute_difference_c": 1.0228354202683342e-23,
+          "relative_difference_fraction": 0.0022498829216409666,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.552344443565986e-21,
+          "absolute_difference_c": 1.4455169898879693e-22,
+          "relative_difference_fraction": 0.03279457709681011,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.393285486983587e-12,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 1.60076983945257e-23,
+          "relative_difference_fraction": 0.1156801000030645,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.30674994378897e-22,
+          "relative_difference_fraction": 0.05074049255808344,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 2.146672959843704e-22,
+          "relative_difference_fraction": 0.0487017671709884,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.2150920269959834e-12,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 3.2919448153170665e-22,
+          "relative_difference_fraction": 2.378933535945917,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 9.736744115559404e-23,
+          "relative_difference_fraction": 0.0214174576514351,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 2.318270403761119e-22,
+          "relative_difference_fraction": 0.05259481418706069,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.2150920269959834e-12,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 1.6038266736036472e-22,
+          "relative_difference_fraction": 1.1590100301583637,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 1.410500322625808e-22,
+          "relative_difference_fraction": 0.031026111571422543,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 3.0143269962294444e-22,
+          "relative_difference_fraction": 0.06838631421447627,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 6.214335712684248e-13,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 1.0821588771805477e-22,
+          "relative_difference_fraction": 0.7820252733788399,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 6.638157326596033e-23,
+          "relative_difference_fraction": 0.014601642164832174,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 4.1834314452094114e-23,
+          "relative_difference_fraction": 0.009490989453522225,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 1.219088829884634e-12,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 1.5620956784440435e-22,
+          "relative_difference_fraction": 1.1288530046178198,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 1.4388748350044526e-22,
+          "relative_difference_fraction": 0.03165025236226304,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 3.0009705134485003e-22,
+          "relative_difference_fraction": 0.06808329445935324,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 9.878763239366682e-17,
+      "maximum_difference_time_s": 5.249947321020326e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": 1.2928093420921934e-23,
+          "absolute_difference_c": 1.0405210394778531e-22,
+          "relative_difference_fraction": 1.1418736219595025,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.486352184071541e-21,
+          "absolute_difference_c": 1.0214364437819851e-24,
+          "relative_difference_fraction": 0.00022772823259953334,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.473424090650619e-21,
+          "absolute_difference_c": 1.0303066750400378e-22,
+          "relative_difference_fraction": 0.02251320573428961,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 8.928752182057963e-13,
+      "maximum_difference_time_s": 1.28e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": -1.6401037318382175e-23,
+          "absolute_difference_c": 7.47229732084812e-23,
+          "relative_difference_fraction": 0.8200140970140121,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.535943406247604e-21,
+          "absolute_difference_c": 5.0612658619845214e-23,
+          "relative_difference_fraction": 0.011284041571876013,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.552344443565986e-21,
+          "absolute_difference_c": 2.4110314588636415e-23,
+          "relative_difference_fraction": 0.0052683388917316165,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 8.928752182057963e-13,
+      "maximum_difference_time_s": 1.28e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 2.455107247944877e-22,
+          "relative_difference_fraction": 2.694248457404221,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.9151600720142556e-22,
+          "relative_difference_fraction": 0.06499320197414771,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 4.600528240693706e-23,
+          "relative_difference_fraction": 0.010052602907296704,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 8.143352658862509e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 9.969145513174465e-23,
+          "relative_difference_fraction": 1.0940196173911332,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 3.6526428333065485e-23,
+          "relative_difference_fraction": 0.008143530630909224,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 6.316502679867856e-23,
+          "relative_difference_fraction": 0.013802174420303626,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 8.143352658862509e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 6.912035903959728e-23,
+          "relative_difference_fraction": 0.7585306950380611,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 2.0189104508510936e-22,
+          "relative_difference_fraction": 0.04501140639224599,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 1.3277068604551109e-22,
+          "relative_difference_fraction": 0.02901168984767777,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 4.094502514817578e-14,
+      "maximum_difference_time_s": 9.925860000000001e-08,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 1.2128713868190723e-22,
+          "relative_difference_fraction": 1.331011859340319,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 5.540560443431773e-24,
+          "relative_difference_fraction": 0.0012352624043081573,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 1.2682769912533924e-22,
+          "relative_difference_fraction": 0.027713089242136446,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.183853594800911e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 7.329345855555765e-23,
+          "relative_difference_fraction": 0.8043265230731994,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 2.0472849632297381e-22,
+          "relative_difference_fraction": 0.04564401330520673,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 1.3143503776741668e-22,
+          "relative_difference_fraction": 0.028719837671992154,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 8.928752182057963e-13,
+      "maximum_difference_time_s": 1.28e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": -1.6401037318382175e-23,
+          "absolute_difference_c": 2.932913073930411e-23,
+          "relative_difference_fraction": 2.2686354270800573,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.535943406247604e-21,
+          "absolute_difference_c": 4.959122217606323e-23,
+          "relative_difference_fraction": 0.011053796077832079,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.552344443565986e-21,
+          "absolute_difference_c": 7.892035291536736e-23,
+          "relative_difference_fraction": 0.017642045850361,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 8.928752182057963e-13,
+      "maximum_difference_time_s": 1.28e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 1.4145862084670239e-22,
+          "relative_difference_fraction": 10.941955340280535,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.9049457075764358e-22,
+          "relative_difference_fraction": 0.06475072817266181,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 1.4903594991094084e-22,
+          "relative_difference_fraction": 0.03331585534723236,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 8.143352658862509e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 2.0374355907952997e-22,
+          "relative_difference_fraction": 15.759753000377106,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 3.754786477684747e-23,
+          "relative_difference_fraction": 0.00836935292555907,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 1.6619569430268233e-22,
+          "relative_difference_fraction": 0.03715178595519886,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 8.143352658862509e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 3.493174490818803e-23,
+          "relative_difference_fraction": 2.7020028221374783,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 2.0086960864132737e-22,
+          "relative_difference_fraction": 0.0447734819737291,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 2.3580135354951486e-22,
+          "relative_difference_fraction": 0.052711602739015095,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 4.094502514817578e-14,
+      "maximum_difference_time_s": 9.925860000000001e-08,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 1.7235034734121913e-23,
+          "relative_difference_fraction": 1.3331458996289371,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 6.561996887213758e-24,
+          "relative_difference_fraction": 0.0014626575484892879,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 2.379703162133546e-23,
+          "relative_difference_fraction": 0.005319645787903449,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.183853594800911e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 3.0758645392227667e-23,
+          "relative_difference_fraction": 2.3792097094881752,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 2.0370705987919183e-22,
+          "relative_difference_fraction": 0.045405944857035196,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 2.3446570527142046e-22,
+          "relative_difference_fraction": 0.05241302870466713,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.0049517229793334e-16,
+      "maximum_difference_time_s": 4.779039574886854e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.6401037318382175e-23,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 1.707877515860065e-22,
+          "relative_difference_fraction": 10.41322864344615,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.535943406247604e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.4090334858158035e-22,
+          "relative_difference_fraction": 0.05310986646124616,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.552344443565986e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 7.011559699557348e-23,
+          "relative_difference_fraction": 0.015402085203519933,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 3.3686831102386893e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.6401037318382175e-23,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 1.7441442834022586e-22,
+          "relative_difference_fraction": 10.634353483528955,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.535943406247604e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 8.71390869529107e-23,
+          "relative_difference_fraction": 0.01921079677336568,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.552344443565986e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 8.727534138731497e-23,
+          "relative_difference_fraction": 0.019171515351977586,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 3.3686831102386893e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.6401037318382175e-23,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 5.602614168883924e-24,
+          "relative_difference_fraction": 0.34160120851652165,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.535943406247604e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 1.5127838646526414e-22,
+          "relative_difference_fraction": 0.03335103040679477,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.552344443565986e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 1.568810006341475e-22,
+          "relative_difference_fraction": 0.034461584042893234,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.951417385105776e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.6401037318382175e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 4.656416547342602e-23,
+          "relative_difference_fraction": 2.8390988063442313,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.535943406247604e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 5.615321906327699e-23,
+          "relative_difference_fraction": 0.012379611920628086,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.552344443565986e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 1.0271738453670282e-22,
+          "relative_difference_fraction": 0.022563623163857405,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 3.3317348879791007e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.6401037318382175e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 1.4295146529235575e-24,
+          "relative_difference_fraction": 0.08716001464866907,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.535943406247604e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 1.541158377031286e-22,
+          "relative_difference_fraction": 0.03397657860784964,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.552344443565986e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 1.555453523560531e-22,
+          "relative_difference_fraction": 0.03416818614766548,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 3.3686831102386893e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.5438671426762432e-22,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 3.4520217992623235e-22,
+          "relative_difference_fraction": 2.235957812586358,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.776846754829184e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 3.2804243553449105e-22,
+          "relative_difference_fraction": 0.068673426712476,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.62246004056156e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 1.7159744391741497e-23,
+          "relative_difference_fraction": 0.003712253700663082,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 3.3686831102386893e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.5438671426762432e-22,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 1.7639036575489042e-22,
+          "relative_difference_fraction": 1.1425229599039428,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.776846754829184e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 8.96249621163162e-23,
+          "relative_difference_fraction": 0.018762369135185142,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.62246004056156e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 8.676540363857403e-23,
+          "relative_difference_fraction": 0.01877039560693161,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.951417385105776e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.5438671426762432e-22,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 1.2422358611258047e-22,
+          "relative_difference_fraction": 0.8046261409336231,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.776846754829184e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 2.9705656764485733e-22,
+          "relative_difference_fraction": 0.06218674847472261,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.62246004056156e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 1.728329815322763e-22,
+          "relative_difference_fraction": 0.037389827065174464,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 3.3317348879791007e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.5438671426762432e-22,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 1.7221726623893005e-22,
+          "relative_difference_fraction": 1.1154927874194995,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.776846754829184e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 8.678751087845175e-23,
+          "relative_difference_fraction": 0.01816836824223289,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.62246004056156e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 8.542975536047962e-23,
+          "relative_difference_fraction": 0.01848144810573671,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.5950537082053495e-16,
+      "maximum_difference_time_s": 3.799041146185764e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.9081546565860803e-22,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 1.6881181417134194e-22,
+          "relative_difference_fraction": 0.8846862259758688,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.448804319294693e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 2.3841747341817484e-22,
+          "relative_difference_fraction": 0.05359135990408603,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.639619784953301e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 6.960565924683253e-23,
+          "relative_difference_fraction": 0.015002449009414498,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh1tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.149747543484408e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.9081546565860803e-22,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 2.209785938136519e-22,
+          "relative_difference_fraction": 1.1580748607086668,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.448804319294693e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 3.098586788963371e-23,
+          "relative_difference_fraction": 0.0069649878182429514,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.639619784953301e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 1.899927259240178e-22,
+          "relative_difference_fraction": 0.040950063740175624,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 6.989964163039986e-14,
+      "maximum_difference_time_s": 1.014751705882353e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.9081546565860803e-22,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 1.729849136873023e-22,
+          "relative_difference_fraction": 0.9065560440304836,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.448804319294693e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 2.412549246560393e-22,
+          "relative_difference_fraction": 0.05422916076791795,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.639619784953301e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 6.827001096873812e-23,
+          "relative_difference_fraction": 0.0147145701874416,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh1tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.149747543484408e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -2.20036514872661e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 5.2166779642309946e-23,
+          "relative_difference_fraction": 2.3708237549799307,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.687221792712868e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 2.0743160552854113e-22,
+          "relative_difference_fraction": 0.04425470240197105,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.709225444200134e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 2.595983851708503e-22,
+          "relative_difference_fraction": 0.05512549531697852,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 6.989964163039986e-14,
+      "maximum_difference_time_s": 1.014751705882353e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -2.20036514872661e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 4.173099515960366e-24,
+          "relative_difference_fraction": 0.18965486334735904,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.687221792712868e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 2.8374512378644564e-24,
+          "relative_difference_fraction": 0.0006053588593302184,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.709225444200134e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 1.335648278094405e-24,
+          "relative_difference_fraction": 0.0002836237708133682,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-7",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.19024847942281e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.0163128155043847e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 4.799368012634958e-23,
+          "relative_difference_fraction": 1.591137360808651,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.479790187184327e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 2.1026905676640559e-22,
+          "relative_difference_fraction": 0.04693725553664052,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.4496270590292835e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 2.582627368927559e-22,
+          "relative_difference_fraction": 0.058041434364411115,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    }
+  ],
+  "all_comparisons": [
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear1_mesh10tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.0180616076353885e-16,
+      "maximum_difference_time_s": 5.195090100475117e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": 7.542713663382992e-23,
+          "absolute_difference_c": 9.393177597412615e-23,
+          "relative_difference_fraction": 5.076120331055446,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.5031193377200095e-21,
+          "absolute_difference_c": 5.2517784447504025e-24,
+          "relative_difference_fraction": 0.001164894883191936,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.42769220108618e-21,
+          "absolute_difference_c": 9.918355441887624e-23,
+          "relative_difference_fraction": 0.021909935190569496,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear1_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.364606359256536e-12,
+      "maximum_difference_time_s": 1.000003411764706e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": 3.842107243441088e-23,
+          "absolute_difference_c": 5.692571177470712e-23,
+          "relative_difference_fraction": 3.076294043231853,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.548589670124924e-21,
+          "absolute_difference_c": 4.0218553960163786e-23,
+          "relative_difference_fraction": 0.008920861420649295,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.510168597690514e-21,
+          "absolute_difference_c": 1.6707157814542784e-23,
+          "relative_difference_fraction": 0.00369065967720128,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear1_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.364606359256536e-12,
+      "maximum_difference_time_s": 1.000003411764706e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": 1.3837901587309862e-22,
+          "absolute_difference_c": 1.5688365521339487e-22,
+          "relative_difference_fraction": 8.478071489443217,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.546171760450287e-21,
+          "absolute_difference_c": 3.780064428552731e-23,
+          "relative_difference_fraction": 0.008384545839625668,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.407792744577189e-21,
+          "absolute_difference_c": 1.1908301092786708e-22,
+          "relative_difference_fraction": 0.02630578291950081,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.6595043560118199e-12,
+      "maximum_difference_time_s": 1.000003176470588e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": -9.112401052686338e-23,
+          "absolute_difference_c": 7.261937118656715e-23,
+          "relative_difference_fraction": 3.9243872766776438,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.485330747627759e-21,
+          "absolute_difference_c": 2.3040368537001246e-23,
+          "relative_difference_fraction": 0.005110574960075942,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.576454758154623e-21,
+          "absolute_difference_c": 4.9579002649566265e-23,
+          "relative_difference_fraction": 0.010952145657912915,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.6595043560118199e-12,
+      "maximum_difference_time_s": 1.000003176470588e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": 1.2928093420921934e-23,
+          "absolute_difference_c": 3.143273276121817e-23,
+          "relative_difference_fraction": 1.6986406588735476,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.486352184071541e-21,
+          "absolute_difference_c": 2.201893209321926e-23,
+          "relative_difference_fraction": 0.004884010549679574,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.473424090650619e-21,
+          "absolute_difference_c": 5.345166485443751e-23,
+          "relative_difference_fraction": 0.011807627984805169,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh10tick_s10_r1e-8",
+      "maximum_current_difference_a": 2.841416606766512e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": -8.499096519110007e-23,
+          "absolute_difference_c": 6.648632585080384e-23,
+          "relative_difference_fraction": 3.592954427705126,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.487637477733053e-21,
+          "absolute_difference_c": 2.0733638431707e-23,
+          "relative_difference_fraction": 0.004598920075005952,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.572628442924153e-21,
+          "absolute_difference_c": 4.575268741909622e-23,
+          "relative_difference_fraction": 0.010106901512253241,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh10tick_s2_r1e-8",
+      "maximum_current_difference_a": 2.841416606766512e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": 8.58074108602879e-23,
+          "absolute_difference_c": 1.0431205020058414e-22,
+          "relative_difference_fraction": 5.637075561555593,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.727586320441207e-21,
+          "absolute_difference_c": 2.1921520427644733e-22,
+          "relative_difference_fraction": 0.048624037069719295,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.641778909580919e-21,
+          "absolute_difference_c": 1.1490315407586243e-22,
+          "relative_difference_fraction": 0.025382440402993423,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 2.126986800422252e-12,
+      "maximum_difference_time_s": 1.000002823529411e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": -1.6401037318382175e-23,
+          "absolute_difference_c": 2.1036020219140624e-24,
+          "relative_difference_fraction": 0.11367970935446425,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.535943406247604e-21,
+          "absolute_difference_c": 2.757229008284397e-23,
+          "relative_difference_fraction": 0.006115798671494366,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.552344443565986e-21,
+          "absolute_difference_c": 2.546868806092985e-23,
+          "relative_difference_fraction": 0.005626107151263771,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 2.126986800422252e-12,
+      "maximum_difference_time_s": 1.000002823529411e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 1.7289135360792057e-22,
+          "relative_difference_fraction": 9.343135547172073,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.684756386644243e-22,
+          "relative_difference_fraction": 0.05955047438348737,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 9.558428505650333e-23,
+          "relative_difference_fraction": 0.021114846136491616,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 2.0082735637789435e-12,
+      "maximum_difference_time_s": 1.000003e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 1.7231082631831179e-22,
+          "relative_difference_fraction": 9.311763560994283,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 5.956679687006673e-23,
+          "relative_difference_fraction": 0.013212487467256229,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 1.1274402944824482e-22,
+          "relative_difference_fraction": 0.0249054835028637,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 2.0082735637789435e-12,
+      "maximum_difference_time_s": 1.000003e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 3.499012146969861e-24,
+          "relative_difference_fraction": 0.1890883730627655,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 1.788506765481081e-22,
+          "relative_difference_fraction": 0.03967079726574396,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 1.8234968869507735e-22,
+          "relative_difference_fraction": 0.04028157575858482,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 1.6710684390363191e-12,
+      "maximum_difference_time_s": 1.000003176470588e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 4.866776749534008e-23,
+          "relative_difference_fraction": 2.6300305885648765,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 2.858092898043302e-23,
+          "relative_difference_fraction": 0.006339524463271462,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 7.724869647577297e-23,
+          "relative_difference_fraction": 0.01706446137423412,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 2.0276003261916233e-12,
+      "maximum_difference_time_s": 1.000003e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.8504639340296238e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 6.740873689905048e-25,
+          "relative_difference_fraction": 0.03642801983838684,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.50837111616476e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 1.8168812778597257e-22,
+          "relative_difference_fraction": 0.0403001711936557,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.5268757555050564e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 1.8101404041698295e-22,
+          "relative_difference_fraction": 0.03998652717536033,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s2_r1e-8",
+      "b": "gear1_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.364606359256536e-12,
+      "maximum_difference_time_s": 1.000003411764706e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 7.542713663382992e-23,
+          "b_c": 3.842107243441088e-23,
+          "absolute_difference_c": 3.700606419941904e-23,
+          "relative_difference_fraction": 0.49062003213869054,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.5031193377200095e-21,
+          "b_c": 4.548589670124924e-21,
+          "absolute_difference_c": 4.547033240491419e-23,
+          "relative_difference_fraction": 0.01009751885188459,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.42769220108618e-21,
+          "b_c": -4.510168597690514e-21,
+          "absolute_difference_c": 8.247639660433346e-23,
+          "relative_difference_fraction": 0.018627400654476656,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh10tick_s2_r1e-8",
+      "b": "gear1_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.364606359256536e-12,
+      "maximum_difference_time_s": 1.000003411764706e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 7.542713663382992e-23,
+          "b_c": 1.3837901587309862e-22,
+          "absolute_difference_c": 6.29518792392687e-23,
+          "relative_difference_fraction": 0.8346051838726976,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.5031193377200095e-21,
+          "b_c": 4.546171760450287e-21,
+          "absolute_difference_c": 4.305242273027771e-23,
+          "relative_difference_fraction": 0.009560577790966418,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.42769220108618e-21,
+          "b_c": -4.407792744577189e-21,
+          "absolute_difference_c": 1.9899456508990845e-23,
+          "relative_difference_fraction": 0.004494317943805837,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh10tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.6595043560118199e-12,
+      "maximum_difference_time_s": 1.000003176470588e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 7.542713663382992e-23,
+          "b_c": -9.112401052686338e-23,
+          "absolute_difference_c": 1.665511471606933e-22,
+          "relative_difference_fraction": 2.208106453374146,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.5031193377200095e-21,
+          "b_c": 4.485330747627759e-21,
+          "absolute_difference_c": 1.7788590092250843e-23,
+          "relative_difference_fraction": 0.0039502817398699985,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.42769220108618e-21,
+          "b_c": -4.576454758154623e-21,
+          "absolute_difference_c": 1.487625570684425e-22,
+          "relative_difference_fraction": 0.033598215574232704,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh10tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.6595043560118199e-12,
+      "maximum_difference_time_s": 1.000003176470588e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 7.542713663382992e-23,
+          "b_c": 1.2928093420921934e-23,
+          "absolute_difference_c": 6.249904321290799e-23,
+          "relative_difference_fraction": 0.8286015617471612,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.5031193377200095e-21,
+          "b_c": 4.486352184071541e-21,
+          "absolute_difference_c": 1.6767153648468858e-23,
+          "relative_difference_fraction": 0.003723453097949303,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.42769220108618e-21,
+          "b_c": -4.473424090650619e-21,
+          "absolute_difference_c": 4.573188956443873e-23,
+          "relative_difference_fraction": 0.010328606300415322,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh10tick_s2_r1e-8",
+      "b": "gear2_mesh10tick_s10_r1e-8",
+      "maximum_current_difference_a": 2.841416606766512e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 7.542713663382992e-23,
+          "b_c": -8.499096519110007e-23,
+          "absolute_difference_c": 1.6041810182493e-22,
+          "relative_difference_fraction": 2.126795593523574,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.5031193377200095e-21,
+          "b_c": 4.487637477733053e-21,
+          "absolute_difference_c": 1.5481859986956596e-23,
+          "relative_difference_fraction": 0.003438030135527237,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.42769220108618e-21,
+          "b_c": -4.572628442924153e-21,
+          "absolute_difference_c": 1.4493624183797246e-22,
+          "relative_difference_fraction": 0.03273403733945579,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s2_r1e-8",
+      "b": "gear2_mesh10tick_s2_r1e-8",
+      "maximum_current_difference_a": 2.841416606766512e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 7.542713663382992e-23,
+          "b_c": 8.58074108602879e-23,
+          "absolute_difference_c": 1.0380274226457983e-23,
+          "relative_difference_fraction": 0.13761988973345596,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.5031193377200095e-21,
+          "b_c": 4.727586320441207e-21,
+          "absolute_difference_c": 2.2446698272119773e-22,
+          "relative_difference_fraction": 0.0498469984663672,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.42769220108618e-21,
+          "b_c": -4.641778909580919e-21,
+          "absolute_difference_c": 2.1408670849473867e-22,
+          "relative_difference_fraction": 0.04835175951079429,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s2_r1e-8",
+      "b": "gear2_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 2.126986800422252e-12,
+      "maximum_difference_time_s": 1.000002823529411e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 7.542713663382992e-23,
+          "b_c": -1.6401037318382175e-23,
+          "absolute_difference_c": 9.18281739522121e-23,
+          "relative_difference_fraction": 1.2174421309137449,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.5031193377200095e-21,
+          "b_c": 4.535943406247604e-21,
+          "absolute_difference_c": 3.282406852759437e-23,
+          "relative_difference_fraction": 0.0072891846886327105,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.42769220108618e-21,
+          "b_c": -4.552344443565986e-21,
+          "absolute_difference_c": 1.246522424798061e-22,
+          "relative_difference_fraction": 0.02815286989669863,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s2_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 2.126986800422252e-12,
+      "maximum_difference_time_s": 1.000002823529411e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 7.542713663382992e-23,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 7.89595776337944e-23,
+          "relative_difference_fraction": 1.0468324950092316,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.5031193377200095e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.737274171091747e-22,
+          "relative_difference_fraction": 0.06078617877530346,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.42769220108618e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 1.9476783947537957e-22,
+          "relative_difference_fraction": 0.043988568001090966,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 2.0082735637789435e-12,
+      "maximum_difference_time_s": 1.000003e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 7.542713663382992e-23,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 2.6624260229243795e-22,
+          "relative_difference_fraction": 3.5297986132622876,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.5031193377200095e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 5.431501842531633e-23,
+          "relative_difference_fraction": 0.012061643130429789,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.42769220108618e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 2.1192758386712106e-22,
+          "relative_difference_fraction": 0.04786411842610283,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 2.0082735637789435e-12,
+      "maximum_difference_time_s": 1.000003e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 7.542713663382992e-23,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 9.743078812109602e-23,
+          "relative_difference_fraction": 1.2917206256162879,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.5031193377200095e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 1.8410245499285851e-22,
+          "relative_difference_fraction": 0.04088331691561886,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.42769220108618e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 2.815332431139536e-22,
+          "relative_difference_fraction": 0.06358464643158546,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh10tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 1.6710684390363191e-12,
+      "maximum_difference_time_s": 1.000003176470588e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 7.542713663382992e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 4.526400847878607e-23,
+          "relative_difference_fraction": 0.6001024365875856,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.5031193377200095e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 2.3329150535682616e-23,
+          "relative_difference_fraction": 0.0051806645096583726,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.42769220108618e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 2.193485794310327e-23,
+          "relative_difference_fraction": 0.00495401598551104,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh10tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 2.0276003261916233e-12,
+      "maximum_difference_time_s": 1.000003e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 7.542713663382992e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 9.325768860513565e-23,
+          "relative_difference_fraction": 1.2363943902294248,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "positive_c": {
+          "a_c": 4.5031193377200095e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 1.8693990623072297e-22,
+          "relative_difference_fraction": 0.04151342485304266,
+          "branch": "near_zero_absolute",
+          "passed": false
+        },
+        "negative_c": {
+          "a_c": -4.42769220108618e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 2.801975948358592e-22,
+          "relative_difference_fraction": 0.0632829885435855,
+          "branch": "near_zero_absolute",
+          "passed": false
+        }
+      },
+      "passed": false
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear1_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.243449787580176e-16,
+      "maximum_difference_time_s": 6.139650631657875e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": 1.3837901587309862e-22,
+          "absolute_difference_c": 9.995794343868773e-23,
+          "relative_difference_fraction": 2.601643762269449,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.546171760450287e-21,
+          "absolute_difference_c": 2.4179096746364752e-24,
+          "relative_difference_fraction": 0.0005315734876059075,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.407792744577189e-21,
+          "absolute_difference_c": 1.023758531133243e-22,
+          "relative_difference_fraction": 0.022698897146715802,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 6.221974047093642e-13,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": -9.112401052686338e-23,
+          "absolute_difference_c": 1.2954508296127427e-22,
+          "relative_difference_fraction": 3.3717195995094196,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.485330747627759e-21,
+          "absolute_difference_c": 6.325892249716503e-23,
+          "relative_difference_fraction": 0.013907370654391848,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.576454758154623e-21,
+          "absolute_difference_c": 6.628616046410905e-23,
+          "relative_difference_fraction": 0.014697047134347052,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 6.221974047093642e-13,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": 1.2928093420921934e-23,
+          "absolute_difference_c": 2.5492979013488948e-23,
+          "relative_difference_fraction": 0.6635155501452581,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.486352184071541e-21,
+          "absolute_difference_c": 6.223748605338305e-23,
+          "relative_difference_fraction": 0.013682809522731376,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.473424090650619e-21,
+          "absolute_difference_c": 3.674450703989473e-23,
+          "relative_difference_fraction": 0.008147036245764738,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh10tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.5991292911433298e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": -8.499096519110007e-23,
+          "absolute_difference_c": 1.2341203762551096e-22,
+          "relative_difference_fraction": 3.2120924744146397,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.487637477733053e-21,
+          "absolute_difference_c": 6.095219239187078e-23,
+          "relative_difference_fraction": 0.013400239813277537,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.572628442924153e-21,
+          "absolute_difference_c": 6.2459845233639e-23,
+          "relative_difference_fraction": 0.013848671924509004,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh10tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.5991292911433298e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": 8.58074108602879e-23,
+          "absolute_difference_c": 4.738633842587702e-23,
+          "relative_difference_fraction": 1.2333424192354565,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.727586320441207e-21,
+          "absolute_difference_c": 1.7899665031628354e-22,
+          "relative_difference_fraction": 0.03935212083251449,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.641778909580919e-21,
+          "absolute_difference_c": 1.316103118904052e-22,
+          "relative_difference_fraction": 0.029180796469071568,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.393285486983587e-12,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": -1.6401037318382175e-23,
+          "absolute_difference_c": 5.482210975279306e-23,
+          "relative_difference_fraction": 1.4268760937472686,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.535943406247604e-21,
+          "absolute_difference_c": 1.2646263877319817e-23,
+          "relative_difference_fraction": 0.0027802604311354395,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.552344443565986e-21,
+          "absolute_difference_c": 4.2175845875472634e-23,
+          "relative_difference_fraction": 0.009351279217603814,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.393285486983587e-12,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 1.1596564183321343e-22,
+          "relative_difference_fraction": 3.018282272864192,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.2825708470426053e-22,
+          "relative_difference_fraction": 0.05018194676988563,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 1.122914428710461e-22,
+          "relative_difference_fraction": 0.024897393620395114,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.2150920269959834e-12,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 2.292365380930189e-22,
+          "relative_difference_fraction": 5.9664273683237665,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 9.978535083023052e-23,
+          "relative_difference_fraction": 0.0219376461863815,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 1.294511872627876e-22,
+          "relative_difference_fraction": 0.028702072762662345,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.2150920269959834e-12,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 6.042472392167699e-23,
+          "relative_difference_fraction": 1.5726974832581475,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 1.3863212258794433e-22,
+          "relative_difference_fraction": 0.030478045425481826,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 1.9905684650962014e-22,
+          "relative_difference_fraction": 0.044135123155163214,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 6.214335712684248e-13,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 8.257944279367035e-24,
+          "relative_difference_fraction": 0.21493268553251033,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 6.87994829405968e-23,
+          "relative_difference_fraction": 0.015125453806587807,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 6.054153866123019e-23,
+          "relative_difference_fraction": 0.0134233426866196,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 1.219088829884634e-12,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.842107243441088e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 5.625162440571662e-23,
+          "relative_difference_fraction": 1.464082620331447,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.548589670124924e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 1.4146957382580878e-22,
+          "relative_difference_fraction": 0.03110185443962532,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.510168597690514e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 1.9772119823152573e-22,
+          "relative_difference_fraction": 0.043838981614295225,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 6.221974047093642e-13,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": -9.112401052686338e-23,
+          "absolute_difference_c": 2.29503026399962e-22,
+          "relative_difference_fraction": 1.6585103236348295,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.485330747627759e-21,
+          "absolute_difference_c": 6.084101282252856e-23,
+          "relative_difference_fraction": 0.013382911167549527,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.576454758154623e-21,
+          "absolute_difference_c": 1.6866201357743335e-22,
+          "relative_difference_fraction": 0.038264506375653484,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 6.221974047093642e-13,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": 1.2928093420921934e-23,
+          "absolute_difference_c": 1.2545092245217669e-22,
+          "relative_difference_fraction": 0.9065747552882026,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.486352184071541e-21,
+          "absolute_difference_c": 5.981957637874657e-23,
+          "relative_difference_fraction": 0.013158230601657106,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.473424090650619e-21,
+          "absolute_difference_c": 6.563134607342957e-23,
+          "relative_difference_fraction": 0.014889843937007763,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh10tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.5991292911433298e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": -8.499096519110007e-23,
+          "absolute_difference_c": 2.233699810641987e-22,
+          "relative_difference_fraction": 1.6141896923811165,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.487637477733053e-21,
+          "absolute_difference_c": 5.853428271723431e-23,
+          "relative_difference_fraction": 0.012875510605748985,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.572628442924153e-21,
+          "absolute_difference_c": 1.648356983469633e-22,
+          "relative_difference_fraction": 0.037396426714880526,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh10tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.5991292911433298e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": 8.58074108602879e-23,
+          "absolute_difference_c": 5.2571605012810716e-23,
+          "relative_difference_fraction": 0.37991023914364186,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.727586320441207e-21,
+          "absolute_difference_c": 1.8141455999092002e-22,
+          "relative_difference_fraction": 0.039904906710553245,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.641778909580919e-21,
+          "absolute_difference_c": 2.339861650037295e-22,
+          "relative_difference_fraction": 0.053084656780107764,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.393285486983587e-12,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": -1.6401037318382175e-23,
+          "absolute_difference_c": 1.547800531914808e-22,
+          "relative_difference_fraction": 1.1185225752250099,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.535943406247604e-21,
+          "absolute_difference_c": 1.0228354202683342e-23,
+          "relative_difference_fraction": 0.0022498829216409666,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.552344443565986e-21,
+          "absolute_difference_c": 1.4455169898879693e-22,
+          "relative_difference_fraction": 0.03279457709681011,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.393285486983587e-12,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 1.60076983945257e-23,
+          "relative_difference_fraction": 0.1156801000030645,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.30674994378897e-22,
+          "relative_difference_fraction": 0.05074049255808344,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 2.146672959843704e-22,
+          "relative_difference_fraction": 0.0487017671709884,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.2150920269959834e-12,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 3.2919448153170665e-22,
+          "relative_difference_fraction": 2.378933535945917,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 9.736744115559404e-23,
+          "relative_difference_fraction": 0.0214174576514351,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 2.318270403761119e-22,
+          "relative_difference_fraction": 0.05259481418706069,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.2150920269959834e-12,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 1.6038266736036472e-22,
+          "relative_difference_fraction": 1.1590100301583637,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 1.410500322625808e-22,
+          "relative_difference_fraction": 0.031026111571422543,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 3.0143269962294444e-22,
+          "relative_difference_fraction": 0.06838631421447627,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 6.214335712684248e-13,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 1.0821588771805477e-22,
+          "relative_difference_fraction": 0.7820252733788399,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 6.638157326596033e-23,
+          "relative_difference_fraction": 0.014601642164832174,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 4.1834314452094114e-23,
+          "relative_difference_fraction": 0.009490989453522225,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 1.219088829884634e-12,
+      "maximum_difference_time_s": 1.724e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.3837901587309862e-22,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 1.5620956784440435e-22,
+          "relative_difference_fraction": 1.1288530046178198,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.546171760450287e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 1.4388748350044526e-22,
+          "relative_difference_fraction": 0.03165025236226304,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.407792744577189e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 3.0009705134485003e-22,
+          "relative_difference_fraction": 0.06808329445935324,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 9.878763239366682e-17,
+      "maximum_difference_time_s": 5.249947321020326e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": 1.2928093420921934e-23,
+          "absolute_difference_c": 1.0405210394778531e-22,
+          "relative_difference_fraction": 1.1418736219595025,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.486352184071541e-21,
+          "absolute_difference_c": 1.0214364437819851e-24,
+          "relative_difference_fraction": 0.00022772823259953334,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.473424090650619e-21,
+          "absolute_difference_c": 1.0303066750400378e-22,
+          "relative_difference_fraction": 0.02251320573428961,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh10tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.4702083294530225e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": -8.499096519110007e-23,
+          "absolute_difference_c": 6.1330453357633074e-24,
+          "relative_difference_fraction": 0.06730438333764166,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.487637477733053e-21,
+          "absolute_difference_c": 2.306730105294247e-24,
+          "relative_difference_fraction": 0.0005142831677495963,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.572628442924153e-21,
+          "absolute_difference_c": 3.826315230470048e-24,
+          "relative_difference_fraction": 0.000836087196896651,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh10tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.4702083294530225e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": 8.58074108602879e-23,
+          "absolute_difference_c": 1.7693142138715128e-22,
+          "relative_difference_fraction": 1.9416553372065626,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.727586320441207e-21,
+          "absolute_difference_c": 2.4225557281344857e-22,
+          "relative_difference_fraction": 0.05401063744107937,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.641778909580919e-21,
+          "absolute_difference_c": 6.532415142629616e-23,
+          "relative_difference_fraction": 0.014273964209937207,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 8.928752182057963e-13,
+      "maximum_difference_time_s": 1.28e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": -1.6401037318382175e-23,
+          "absolute_difference_c": 7.47229732084812e-23,
+          "relative_difference_fraction": 0.8200140970140121,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.535943406247604e-21,
+          "absolute_difference_c": 5.0612658619845214e-23,
+          "relative_difference_fraction": 0.011284041571876013,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.552344443565986e-21,
+          "absolute_difference_c": 2.4110314588636415e-23,
+          "relative_difference_fraction": 0.0052683388917316165,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 8.928752182057963e-13,
+      "maximum_difference_time_s": 1.28e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 2.455107247944877e-22,
+          "relative_difference_fraction": 2.694248457404221,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.9151600720142556e-22,
+          "relative_difference_fraction": 0.06499320197414771,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 4.600528240693706e-23,
+          "relative_difference_fraction": 0.010052602907296704,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 8.143352658862509e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 9.969145513174465e-23,
+          "relative_difference_fraction": 1.0940196173911332,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 3.6526428333065485e-23,
+          "relative_difference_fraction": 0.008143530630909224,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 6.316502679867856e-23,
+          "relative_difference_fraction": 0.013802174420303626,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 8.143352658862509e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 6.912035903959728e-23,
+          "relative_difference_fraction": 0.7585306950380611,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 2.0189104508510936e-22,
+          "relative_difference_fraction": 0.04501140639224599,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 1.3277068604551109e-22,
+          "relative_difference_fraction": 0.02901168984767777,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 4.094502514817578e-14,
+      "maximum_difference_time_s": 9.925860000000001e-08,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 1.2128713868190723e-22,
+          "relative_difference_fraction": 1.331011859340319,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 5.540560443431773e-24,
+          "relative_difference_fraction": 0.0012352624043081573,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 1.2682769912533924e-22,
+          "relative_difference_fraction": 0.027713089242136446,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.183853594800911e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -9.112401052686338e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 7.329345855555765e-23,
+          "relative_difference_fraction": 0.8043265230731994,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.485330747627759e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 2.0472849632297381e-22,
+          "relative_difference_fraction": 0.04564401330520673,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.576454758154623e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 1.3143503776741668e-22,
+          "relative_difference_fraction": 0.028719837671992154,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh10tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.4702083294530225e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": -8.499096519110007e-23,
+          "absolute_difference_c": 9.791905861202201e-23,
+          "relative_difference_fraction": 7.574129875450665,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.487637477733053e-21,
+          "absolute_difference_c": 1.285293661512262e-24,
+          "relative_difference_fraction": 0.0002864896933583161,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.572628442924153e-21,
+          "absolute_difference_c": 9.920435227353373e-23,
+          "relative_difference_fraction": 0.022176379941456714,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh10tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.4702083294530225e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": 8.58074108602879e-23,
+          "absolute_difference_c": 7.287931743936597e-23,
+          "relative_difference_fraction": 5.6372827041474745,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.727586320441207e-21,
+          "absolute_difference_c": 2.412341363696666e-22,
+          "relative_difference_fraction": 0.05377066411017628,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.641778909580919e-21,
+          "absolute_difference_c": 1.6835481893029994e-22,
+          "relative_difference_fraction": 0.037634441876896574,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 8.928752182057963e-13,
+      "maximum_difference_time_s": 1.28e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": -1.6401037318382175e-23,
+          "absolute_difference_c": 2.932913073930411e-23,
+          "relative_difference_fraction": 2.2686354270800573,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.535943406247604e-21,
+          "absolute_difference_c": 4.959122217606323e-23,
+          "relative_difference_fraction": 0.011053796077832079,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.552344443565986e-21,
+          "absolute_difference_c": 7.892035291536736e-23,
+          "relative_difference_fraction": 0.017642045850361,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 8.928752182057963e-13,
+      "maximum_difference_time_s": 1.28e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 1.4145862084670239e-22,
+          "relative_difference_fraction": 10.941955340280535,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.9049457075764358e-22,
+          "relative_difference_fraction": 0.06475072817266181,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 1.4903594991094084e-22,
+          "relative_difference_fraction": 0.03331585534723236,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 8.143352658862509e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 2.0374355907952997e-22,
+          "relative_difference_fraction": 15.759753000377106,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 3.754786477684747e-23,
+          "relative_difference_fraction": 0.00836935292555907,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 1.6619569430268233e-22,
+          "relative_difference_fraction": 0.03715178595519886,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 8.143352658862509e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 3.493174490818803e-23,
+          "relative_difference_fraction": 2.7020028221374783,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 2.0086960864132737e-22,
+          "relative_difference_fraction": 0.0447734819737291,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 2.3580135354951486e-22,
+          "relative_difference_fraction": 0.052711602739015095,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 4.094502514817578e-14,
+      "maximum_difference_time_s": 9.925860000000001e-08,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 1.7235034734121913e-23,
+          "relative_difference_fraction": 1.3331458996289371,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 6.561996887213758e-24,
+          "relative_difference_fraction": 0.0014626575484892879,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 2.379703162133546e-23,
+          "relative_difference_fraction": 0.005319645787903449,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.183853594800911e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.2928093420921934e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 3.0758645392227667e-23,
+          "relative_difference_fraction": 2.3792097094881752,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.486352184071541e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 2.0370705987919183e-22,
+          "relative_difference_fraction": 0.045405944857035196,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.473424090650619e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 2.3446570527142046e-22,
+          "relative_difference_fraction": 0.05241302870466713,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh10tick_s2_r1e-8",
+      "maximum_current_difference_a": 2.309263891220325e-16,
+      "maximum_difference_time_s": 2e-05,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -8.499096519110007e-23,
+          "b_c": 8.58074108602879e-23,
+          "absolute_difference_c": 1.7079837605138798e-22,
+          "relative_difference_fraction": 2.0096062642346992,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.487637477733053e-21,
+          "b_c": 4.727586320441207e-21,
+          "absolute_difference_c": 2.3994884270815433e-22,
+          "relative_difference_fraction": 0.053468856140618026,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.572628442924153e-21,
+          "b_c": -4.641778909580919e-21,
+          "absolute_difference_c": 6.915046665676621e-23,
+          "relative_difference_fraction": 0.015122695298755762,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.2736688445470274e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -8.499096519110007e-23,
+          "b_c": -1.6401037318382175e-23,
+          "absolute_difference_c": 6.85899278727179e-23,
+          "relative_difference_fraction": 0.8070261082280352,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.487637477733053e-21,
+          "b_c": 4.535943406247604e-21,
+          "absolute_difference_c": 4.8305928514550967e-23,
+          "relative_difference_fraction": 0.010764222545657232,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.572628442924153e-21,
+          "b_c": -4.552344443565986e-21,
+          "absolute_difference_c": 2.0283999358166367e-23,
+          "relative_difference_fraction": 0.00443596054465234,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.2736688445470274e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -8.499096519110007e-23,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 2.393776794587244e-22,
+          "relative_difference_fraction": 2.8165073654651365,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.487637477733053e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.892092770961313e-22,
+          "relative_difference_fraction": 0.06444577542886254,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.572628442924153e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 4.983159763740711e-23,
+          "relative_difference_fraction": 0.010897801616599478,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.3242596842905623e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -8.499096519110007e-23,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 1.0582450046750796e-22,
+          "relative_difference_fraction": 1.2451264699672984,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.487637477733053e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 3.883315843835973e-23,
+          "relative_difference_fraction": 0.008653363519456225,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.572628442924153e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 6.69913420291486e-23,
+          "relative_difference_fraction": 0.014650510721642584,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.3242596842905623e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -8.499096519110007e-23,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 6.298731370383397e-23,
+          "relative_difference_fraction": 0.7411059935865956,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.487637477733053e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 1.995843149798151e-22,
+          "relative_difference_fraction": 0.04447425086587775,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.572628442924153e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 1.3659700127598113e-22,
+          "relative_difference_fraction": 0.02987275327112049,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 1.461609307793963e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -8.499096519110007e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 1.1515409334614392e-22,
+          "relative_difference_fraction": 1.3548980540134212,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.487637477733053e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 7.84729054872602e-24,
+          "relative_difference_fraction": 0.0017486462727132057,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.572628442924153e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 1.2300138389486919e-22,
+          "relative_difference_fraction": 0.026899492366410427,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 1.3091091208427342e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -8.499096519110007e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 6.716041321979434e-23,
+          "relative_difference_fraction": 0.7902065009943801,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.487637477733053e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 2.0242176621767957e-22,
+          "relative_difference_fraction": 0.04510653260698172,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.572628442924153e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 1.3526135299788673e-22,
+          "relative_difference_fraction": 0.029580656877379763,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s2_r1e-8",
+      "b": "gear2_mesh2tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.2736688445470274e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 8.58074108602879e-23,
+          "b_c": -1.6401037318382175e-23,
+          "absolute_difference_c": 1.0220844817867008e-22,
+          "relative_difference_fraction": 1.1911377718305292,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.727586320441207e-21,
+          "b_c": 4.535943406247604e-21,
+          "absolute_difference_c": 1.9164291419360336e-22,
+          "relative_difference_fraction": 0.04053715811913894,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.641778909580919e-21,
+          "b_c": -4.552344443565986e-21,
+          "absolute_difference_c": 8.943446601493258e-23,
+          "relative_difference_fraction": 0.01926728259942201,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s2_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.2736688445470274e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 8.58074108602879e-23,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 6.857930340733642e-23,
+          "relative_difference_fraction": 0.7992235486396113,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.727586320441207e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 4.926043438797699e-23,
+          "relative_difference_fraction": 0.010419785287681282,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.641778909580919e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 1.93188690193591e-23,
+          "relative_difference_fraction": 0.004161953724138745,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 1.3242596842905623e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 8.58074108602879e-23,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 2.7662287651889594e-22,
+          "relative_difference_fraction": 3.2237644015304787,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.727586320441207e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 2.7878200114651406e-22,
+          "relative_difference_fraction": 0.05896920378610804,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.641778909580919e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 2.1591246276176036e-24,
+          "relative_difference_fraction": 0.0004651502515902184,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.3242596842905623e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 8.58074108602879e-23,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 1.07811062347554e-22,
+          "relative_difference_fraction": 1.256430665680993,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.727586320441207e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 4.0364527728339217e-23,
+          "relative_difference_fraction": 0.008538083705380561,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.641778909580919e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 6.744653461921493e-23,
+          "relative_difference_fraction": 0.014530320364893212,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 1.461609307793963e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 8.58074108602879e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 5.564428270524406e-23,
+          "relative_difference_fraction": 0.6484787519791779,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.727586320441207e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 2.4779613325688035e-22,
+          "relative_difference_fraction": 0.05241493575388689,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.641778909580919e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 1.921518505516354e-22,
+          "relative_difference_fraction": 0.04139616605931451,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh10tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 1.3091091208427342e-12,
+      "maximum_difference_time_s": 1.000005551030288e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 8.58074108602879e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 1.0363796283159364e-22,
+          "relative_difference_fraction": 1.207797342823192,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.727586320441207e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 3.752707649047476e-23,
+          "relative_difference_fraction": 0.007937893450663092,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.641778909580919e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 6.611088634112052e-23,
+          "relative_difference_fraction": 0.014242575449826766,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh2tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.0049517229793334e-16,
+      "maximum_difference_time_s": 4.779039574886854e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.6401037318382175e-23,
+          "b_c": 1.5438671426762432e-22,
+          "absolute_difference_c": 1.707877515860065e-22,
+          "relative_difference_fraction": 10.41322864344615,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.535943406247604e-21,
+          "b_c": 4.776846754829184e-21,
+          "absolute_difference_c": 2.4090334858158035e-22,
+          "relative_difference_fraction": 0.05310986646124616,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.552344443565986e-21,
+          "b_c": -4.62246004056156e-21,
+          "absolute_difference_c": 7.011559699557348e-23,
+          "relative_difference_fraction": 0.015402085203519933,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 3.3686831102386893e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.6401037318382175e-23,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 1.7441442834022586e-22,
+          "relative_difference_fraction": 10.634353483528955,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.535943406247604e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 8.71390869529107e-23,
+          "relative_difference_fraction": 0.01921079677336568,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.552344443565986e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 8.727534138731497e-23,
+          "relative_difference_fraction": 0.019171515351977586,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 3.3686831102386893e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.6401037318382175e-23,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 5.602614168883924e-24,
+          "relative_difference_fraction": 0.34160120851652165,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.535943406247604e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 1.5127838646526414e-22,
+          "relative_difference_fraction": 0.03335103040679477,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.552344443565986e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 1.568810006341475e-22,
+          "relative_difference_fraction": 0.034461584042893234,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.951417385105776e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.6401037318382175e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 4.656416547342602e-23,
+          "relative_difference_fraction": 2.8390988063442313,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.535943406247604e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 5.615321906327699e-23,
+          "relative_difference_fraction": 0.012379611920628086,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.552344443565986e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 1.0271738453670282e-22,
+          "relative_difference_fraction": 0.022563623163857405,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 3.3317348879791007e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.6401037318382175e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 1.4295146529235575e-24,
+          "relative_difference_fraction": 0.08716001464866907,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.535943406247604e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 1.541158377031286e-22,
+          "relative_difference_fraction": 0.03397657860784964,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.552344443565986e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 1.555453523560531e-22,
+          "relative_difference_fraction": 0.03416818614766548,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s10_r1e-8",
+      "maximum_current_difference_a": 3.3686831102386893e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.5438671426762432e-22,
+          "b_c": -1.9081546565860803e-22,
+          "absolute_difference_c": 3.4520217992623235e-22,
+          "relative_difference_fraction": 2.235957812586358,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.776846754829184e-21,
+          "b_c": 4.448804319294693e-21,
+          "absolute_difference_c": 3.2804243553449105e-22,
+          "relative_difference_fraction": 0.068673426712476,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.62246004056156e-21,
+          "b_c": -4.639619784953301e-21,
+          "absolute_difference_c": 1.7159744391741497e-23,
+          "relative_difference_fraction": 0.003712253700663082,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 3.3686831102386893e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.5438671426762432e-22,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 1.7639036575489042e-22,
+          "relative_difference_fraction": 1.1425229599039428,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.776846754829184e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 8.96249621163162e-23,
+          "relative_difference_fraction": 0.018762369135185142,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.62246004056156e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 8.676540363857403e-23,
+          "relative_difference_fraction": 0.01877039560693161,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.951417385105776e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.5438671426762432e-22,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 1.2422358611258047e-22,
+          "relative_difference_fraction": 0.8046261409336231,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.776846754829184e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 2.9705656764485733e-22,
+          "relative_difference_fraction": 0.06218674847472261,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.62246004056156e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 1.728329815322763e-22,
+          "relative_difference_fraction": 0.037389827065174464,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh2tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 3.3317348879791007e-13,
+      "maximum_difference_time_s": 2e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 1.5438671426762432e-22,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 1.7221726623893005e-22,
+          "relative_difference_fraction": 1.1154927874194995,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.776846754829184e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 8.678751087845175e-23,
+          "relative_difference_fraction": 0.01816836824223289,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.62246004056156e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 8.542975536047962e-23,
+          "relative_difference_fraction": 0.01848144810573671,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-8",
+      "maximum_current_difference_a": 1.5950537082053495e-16,
+      "maximum_difference_time_s": 3.799041146185764e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.9081546565860803e-22,
+          "b_c": -2.20036514872661e-23,
+          "absolute_difference_c": 1.6881181417134194e-22,
+          "relative_difference_fraction": 0.8846862259758688,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.448804319294693e-21,
+          "b_c": 4.687221792712868e-21,
+          "absolute_difference_c": 2.3841747341817484e-22,
+          "relative_difference_fraction": 0.05359135990408603,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.639619784953301e-21,
+          "b_c": -4.709225444200134e-21,
+          "absolute_difference_c": 6.960565924683253e-23,
+          "relative_difference_fraction": 0.015002449009414498,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh1tick_s10_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.149747543484408e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.9081546565860803e-22,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 2.209785938136519e-22,
+          "relative_difference_fraction": 1.1580748607086668,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.448804319294693e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 3.098586788963371e-23,
+          "relative_difference_fraction": 0.0069649878182429514,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.639619784953301e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 1.899927259240178e-22,
+          "relative_difference_fraction": 0.040950063740175624,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh1tick_s10_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 6.989964163039986e-14,
+      "maximum_difference_time_s": 1.014751705882353e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -1.9081546565860803e-22,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 1.729849136873023e-22,
+          "relative_difference_fraction": 0.9065560440304836,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.448804319294693e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 2.412549246560393e-22,
+          "relative_difference_fraction": 0.05422916076791795,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.639619784953301e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 6.827001096873812e-23,
+          "relative_difference_fraction": 0.0147145701874416,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh1tick_s2_r1e-8",
+      "b": "gear1_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.149747543484408e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -2.20036514872661e-23,
+          "b_c": 3.0163128155043847e-23,
+          "absolute_difference_c": 5.2166779642309946e-23,
+          "relative_difference_fraction": 2.3708237549799307,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.687221792712868e-21,
+          "b_c": 4.479790187184327e-21,
+          "absolute_difference_c": 2.0743160552854113e-22,
+          "relative_difference_fraction": 0.04425470240197105,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.709225444200134e-21,
+          "b_c": -4.4496270590292835e-21,
+          "absolute_difference_c": 2.595983851708503e-22,
+          "relative_difference_fraction": 0.05512549531697852,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear2_mesh1tick_s2_r1e-8",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 6.989964163039986e-14,
+      "maximum_difference_time_s": 1.014751705882353e-07,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": -2.20036514872661e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 4.173099515960366e-24,
+          "relative_difference_fraction": 0.18965486334735904,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.687221792712868e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 2.8374512378644564e-24,
+          "relative_difference_fraction": 0.0006053588593302184,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.709225444200134e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 1.335648278094405e-24,
+          "relative_difference_fraction": 0.0002836237708133682,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "a": "gear1_mesh1tick_s2_r1e-7",
+      "b": "gear2_mesh1tick_s2_r1e-7",
+      "maximum_current_difference_a": 8.19024847942281e-13,
+      "maximum_difference_time_s": 1e-13,
+      "charge_comparisons": {
+        "signed_c": {
+          "a_c": 3.0163128155043847e-23,
+          "b_c": -1.7830551971305733e-23,
+          "absolute_difference_c": 4.799368012634958e-23,
+          "relative_difference_fraction": 1.591137360808651,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "positive_c": {
+          "a_c": 4.479790187184327e-21,
+          "b_c": 4.6900592439507325e-21,
+          "absolute_difference_c": 2.1026905676640559e-22,
+          "relative_difference_fraction": 0.04693725553664052,
+          "branch": "near_zero_absolute",
+          "passed": true
+        },
+        "negative_c": {
+          "a_c": -4.4496270590292835e-21,
+          "b_c": -4.707889795922039e-21,
+          "absolute_difference_c": 2.582627368927559e-22,
+          "relative_difference_fraction": 0.058041434364411115,
+          "branch": "near_zero_absolute",
+          "passed": true
+        }
+      },
+      "passed": true
+    }
+  ],
+  "selection_rule": "Two finest local meshes 0.2ps/0.1ps, both Gear1/Gear2 and TMAX10ns/2ns; 1e-7 tolerance controls included. 1ps retained as coarse refinement controls, not deleted.",
+  "scope": "Only frozen startup-v2 circuit and valid logic/LED/external-fault startup envelope; not new physical layout or arbitrary rail sequencing."
+}

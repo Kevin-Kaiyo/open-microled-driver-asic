@@ -1,0 +1,378 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-10-14 Asia/Tokyo",
+  "chapter": "fabrication-chapter.md",
+  "scope": "Design/layout/tapeout education andpublic-sourceverifiedplatformselection. Noactualorder, suppliercontact ormanufacturingrelease performed.",
+  "sources": [
+    {
+      "id": "GFSTATUS",
+      "title": "GF180MCU public PDK README and Experimental Preview",
+      "organization": "GlobalFoundries / public PDK authors",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://github.com/google/gf180mcu-pdk#current-status--experimental-preview",
+      "locator": "README Current Status and Support; web read lines237–244,283–290",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "Bulk silicon 180nm 3.3V/6V process; public PDK still labelled alpha, not intended for production settings",
+      "does_not_support": "No manufacturing acceptance, yield, production sign-off or live commercial support guaranteed",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "GFSCOPE",
+      "title": "GF180MCU Design Manual 2.0 Scope",
+      "organization": "GlobalFoundries / public PDK authors",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_02.html",
+      "locator": "2.8 design-activity metal ordering; 2.10 supported BEOL table",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "Metal layer count and process-option menu; top metal is last numbered metal for product design",
+      "does_not_support": "Menu does not prove all variants/options accepted by a specific MPW",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "OPDK",
+      "title": "open_pdks GF180 Makefile at locked build commit",
+      "organization": "FOSSi open_pdks maintainers",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://github.com/fossi-foundation/open-pdks/blob/54435919abffb937387ec956209f9cf5fd2dfbee/gf180mcu/Makefile.in",
+      "locator": "A_STACK/B_STACK/C_STACK/D_STACK and A_FULLSTACK/B_FULLSTACK/C_FULLSTACK/D_FULLSTACK",
+      "version": "54435919abffb937387ec956209f9cf5fd2dfbee",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "A3LM30K,B4LM11K,C5LM9K,D5LM11K; current D five metals",
+      "does_not_support": "No experimental silicon thickness measurement or release acceptance",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "GFCAP",
+      "title": "GF180 Interconnect Spec 2.1 General conductor Layer Table for simulation",
+      "organization": "GlobalFoundries / public PDK authors",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/analog/layout/inter_specs/inter_specs_2_1.html",
+      "locator": "TM(11KA) typical/best/worst thickness; M1–M4 typical",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "TM11KA capacitance-simulation typical1.25um; ordinary metaltyp0.55um",
+      "does_not_support": "Not local LEF value, as-measured wafer thickness or appropriate source for EM limits",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "GFMIM",
+      "title": "GF180 Interconnect Spec 3.43 1P5M TM11KA MIM-B Structure",
+      "organization": "GlobalFoundries / public PDK authors",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/analog/layout/inter_specs/inter_specs_3_43.html",
+      "locator": "Text below section heading",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "MIM-B between M4 and M5; MIM does not create sixth routing metal",
+      "does_not_support": "No proof current idealCCOMP has been physically implemented",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "GFANA",
+      "title": "GF180 Design Manual 5.4 Essential Guidelines for Analog Design",
+      "organization": "GlobalFoundries / public PDK authors",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_05_4.html",
+      "locator": "items1,3,4,5",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "Device-specific resistor rules, precision components keepout, matching/characterization guidance",
+      "does_not_support": "Common-centroid or guard-ring presence does not establish matching yield/latch-up safety",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "GFVOLT",
+      "title": "GF180 Design Manual 14.1 Chip Operating Conditions",
+      "organization": "GlobalFoundries / public PDK authors",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_1.html",
+      "locator": "14.1.2 and14.1.4 HCI/gate-oxide constraints",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "Supply/device voltage reliability and need for per-device multi-domain review",
+      "does_not_support": "A 6V family name does not give unrestricted node voltage/current or present circuit reliability",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "GFEM",
+      "title": "GF180 Design Manual 14.2 Electro-migration",
+      "organization": "GlobalFoundries / public PDK authors",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_2.html",
+      "locator": "Table14.3 maximum line current density per drawn width,125degC unidirectional; Table14.4 via0.26um,125degC unidirectional",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "Selected normalmetal0.67mA/um;11KA top1.5mA/um;via0.18mA at125degC",
+      "does_not_support": "Arithmetic lowerbounds assume equalvia sharing; no actual wire geometry, current crowding, EM sign-off or circuit7mA certification",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "GFTAPE",
+      "title": "GF180 Design Manual 6.0 Essential Tapeout Checklist",
+      "organization": "GlobalFoundries / public PDK authors",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_06.html",
+      "locator": "items1–3",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "HierarchicalGDSII, all drawn/designer-generated layers, DRC beforetapeout",
+      "does_not_support": "Not complete partner-specific submission list or guarantee functionality",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "GFPAD",
+      "title": "GF180 Design Manual 9.0 Bond Pad",
+      "organization": "GlobalFoundries / public PDK authors",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_09.html",
+      "locator": "section body, assemblyhouse/padpitch and wafersort responsibilities",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "Pad opening/topmetal plusvia connection; packaging andprobe capability affectlayout",
+      "does_not_support": "Illustrative100um pitch/80um width example is not quotedGF rule",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "WSTEMPLATE",
+      "title": "wafer.space gf180mcu project template README",
+      "organization": "wafer.space maintainers",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://github.com/wafer-space/gf180mcu-project-template",
+      "locator": "Prerequisites, Verification and Simulation, Standalone Padring,Precheck",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "Dvariant;Nix/LibreLane,Icarus/cocotb;analog standalonepad ring",
+      "does_not_support": "Latestmain not imported or accepted for presentproject; no supplierconfirmedorder",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "WSPRECHECK",
+      "title": "wafer.space gf180mcu-precheck README",
+      "organization": "wafer.space maintainers",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://github.com/wafer-space/gf180mcu-precheck#gf180mcu-precheck",
+      "locator": "firstchecklistitems;Run Precheck",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "top/origin/dbu/M5/slot/density/antenna/Magic/KLayout;CoBpadmask mode",
+      "does_not_support": "README checklist does not includeLVS,currentaccuracy,startup,stability,optical measurement",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "WSSLOT",
+      "title": "wafer.space GF180 Slot Sizes",
+      "organization": "wafer.space maintainers",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://mith.ro/gf180mcu-project-template/",
+      "locator": "Quarter size table andUnderstanding Slot Dimensions",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "Exampledie1.94x2.53mm,core1.05x1.65mm,sealring26um perside",
+      "does_not_support": "Live servicegeometry is not selected/acceptedprojectdie;rounded webpagearea not exact product;no price/timeline claim",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "WSPACKAGE",
+      "title": "wafer.space process and packaging public page",
+      "organization": "wafer.space maintainers",
+      "source_type": "primary_documentation_or_maintainer_code",
+      "url": "https://wafer.space/",
+      "locator": "EnhanceYourOrder:ChiponBoard;TechnicalSpecifications",
+      "version": "Public current page, checked 2026-10-14",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "PublicGF180five-metal/MIM service andbare/COB distinction",
+      "does_not_support": "No current procurement eligibility, price, schedule, testingquality orprojectacceptance confirmed",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "LEDRAW",
+      "title": "Raw data for the MicroLEDs transfer printed onto diamond",
+      "organization": "LED study authors",
+      "source_type": "primary_research_dataset",
+      "url": "https://doi.org/10.5281/zenodo.20034288",
+      "locator": "Previously fitted20um yellowInGaN I-Vdataset;I-V.xlsxSheet1A3:B102",
+      "version": "Prior repository primary source; DOI live open on 2026-10-14 returned inaccessible; static dataset identity reused, no new measurement",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "source_configuration_or_public_rule",
+      "supports": "ExternalLED material differs fromsilicon driver;authorstaticnumerical dataset",
+      "does_not_support": "No ownLED fabrication, dynamic/temperature/optical ordriver manufacturability evidence",
+      "reuse_status": "Factual selective paraphrase/table extraction with attribution; no source figure republished"
+    },
+    {
+      "id": "GFMIMDENSITY",
+      "title": "GF180MCU Electrical Specifications 6.2 MIM Capacitor",
+      "organization": "GlobalFoundries / public PDK authors",
+      "source_type": "primary_documentation",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/analog/spice/elec_specs/elec_specs_6_4.html",
+      "locator": "opening one-type-per-process note;1.0/1.5fF per um2 zero-bias nominal capacitance tables",
+      "checked_on": "2026-10-14 Asia/Tokyo",
+      "evidence_class": "public_device_specification",
+      "supports": "Conceptual3pF platearea3000um2at1fF/um2or2000um2at1.5fF/um2",
+      "does_not_support": "SpecificacceptedDvariantMIM choice, edge/contact/keepout footprint, finallayout orstable extractedloop",
+      "reuse_status": "Selectivefactualparameter summary withattribution;nooriginalsourcefigure"
+    }
+  ],
+  "local_evidence": [
+    {
+      "path": "layout/pdk-lock.json",
+      "sha256": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+      "locator": "variant,open_pdks_commit,tools",
+      "evidence_class": "local_frozen_configuration_or_generated_geometry",
+      "supports": "Lockedcomplete physicalPDK buildidentity",
+      "limit": "Oldsource/layout evidence retained; doesnotprove newreference/protection physicalrealization"
+    },
+    {
+      "path": "build/layout/pdk/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/techlef/gf180mcu_fd_sc_mcu7t5v0__nom.tlef",
+      "sha256": "1e15a88b384e015e5609a163fb8ce961309e122d450a69e189e57e528d464d65",
+      "locator": "lines20–34 header;lines288–318 Metal5;otherlayersTHICKNESS",
+      "evidence_class": "local_frozen_configuration_or_generated_geometry",
+      "supports": "5LM_1TM_11K; M5THICKNESS1.19um; M1–M4.54um;head warnsparasiticinformationincorrect",
+      "limit": "Oldsource/layout evidence retained; doesnotprove newreference/protection physicalrealization"
+    },
+    {
+      "path": "evidence/characterization/actual-w20-l4-area.json",
+      "sha256": "f509160f0e4d7e0c9060a6fe56a1f9dd474c04bc0d23c76355a61d7bdc6b01e2",
+      "locator": "width_um,height_um,area_um2",
+      "evidence_class": "local_frozen_configuration_or_generated_geometry",
+      "supports": "95x37.66um=3577.7um2 oldanalogbbox",
+      "limit": "Oldsource/layout evidence retained; doesnotprove newreference/protection physicalrealization"
+    },
+    {
+      "path": "evidence/physical/digital/gds-inspection.json",
+      "sha256": "54a5a01f78b7a4325a4f1fc0d9d439a4a2bfa6441ad46a6ad6c8e345195e0665",
+      "locator": "bbox_um",
+      "evidence_class": "local_frozen_configuration_or_generated_geometry",
+      "supports": "180x180um=32400um2 olddigitalfootprint",
+      "limit": "Oldsource/layout evidence retained; doesnotprove newreference/protection physicalrealization"
+    },
+    {
+      "path": "evidence/integration/summary.json",
+      "sha256": "fc664cf8a12004739ac6202aa258774ce95f14492938ea0ea1f4508345c18194",
+      "locator": "bbox_um,bbox_span_area_um2,physical_verification_scope",
+      "evidence_class": "local_frozen_configuration_or_generated_geometry",
+      "supports": "305x180um=54900um2oldtopspan; optionaldensity/antenna notrun",
+      "limit": "Oldsource/layout evidence retained; doesnotprove newreference/protection physicalrealization"
+    },
+    {
+      "path": "evidence/physical/tool-versions.json",
+      "sha256": "662dc05532610041f63b327d110cd265f2df55f064b39f6b83b8bb6e65f0c970",
+      "locator": "tools",
+      "evidence_class": "local_frozen_configuration_or_generated_geometry",
+      "supports": "ActualLinuxdigital/physicaltoolversions",
+      "limit": "Oldsource/layout evidence retained; doesnotprove newreference/protection physicalrealization"
+    },
+    {
+      "path": "evidence/phase1/summary.json",
+      "sha256": "f59e93c6e222200e4bc45f4cd77b0df00767598ec66f4b3a0614cc4e04a484e2",
+      "locator": "tool_versions",
+      "evidence_class": "local_frozen_configuration_or_generated_geometry",
+      "supports": "ngspice47,Icarus13 historicalsimulatoridentity",
+      "limit": "Oldsource/layout evidence retained; doesnotprove newreference/protection physicalrealization"
+    }
+  ],
+  "independent_calculations": [
+    {
+      "id": "AREA_A",
+      "formula": "95*37.66",
+      "result": 3577.7,
+      "unit": "um^2",
+      "conditions": "Actualoldanalogcell boundingbox;notdie"
+    },
+    {
+      "id": "AREA_D",
+      "formula": "180*180",
+      "result": 32400,
+      "unit": "um^2",
+      "conditions": "ActualoldPWMmacro footprint;not cellnetarea"
+    },
+    {
+      "id": "AREA_TOP",
+      "formula": "305*180",
+      "result": 54900,
+      "unit": "um^2",
+      "conditions": "Actualoldjointoccupiedspan;notdie"
+    },
+    {
+      "id": "PAD_EXAMPLE",
+      "formula": "(6-1)*100+80+2*100",
+      "result": 780,
+      "unit": "um",
+      "conditions": "Independentteaching assumptions6pads,100umpitch,80umwidth,100umcornereach;notPDKrule"
+    },
+    {
+      "id": "EM_LOWER",
+      "formula": "7/0.67",
+      "result": 10.44776119402985,
+      "unit": "um",
+      "conditions": "7mADC,125degC,selectednormalmetalunidirectionalrule;no margin"
+    },
+    {
+      "id": "EM_TOP",
+      "formula": "7/1.5",
+      "result": 4.666666666666667,
+      "unit": "um",
+      "conditions": "7mADC,125degC,11KAtopmetalunidirectionalrule;no margin"
+    },
+    {
+      "id": "VIA_LOWER",
+      "formula": "ceil(7/0.18)",
+      "result": 39,
+      "unit": "vias",
+      "conditions": "125degCunidirectional,0.26umvia,equalsharingassumption;no crowding/margin"
+    },
+    {
+      "id": "SLOT_DIE",
+      "formula": "1.94*2.53",
+      "result": 4.9082,
+      "unit": "mm^2",
+      "conditions": "Sourcedexampledimensions;notselectedprojectdie"
+    },
+    {
+      "id": "SLOT_CORE",
+      "formula": "1.05*1.65",
+      "result": 1.7325,
+      "unit": "mm^2",
+      "conditions": "Sourcedexampledefaultpad ring;notselectedprojectcore"
+    },
+    {
+      "id": "MIM_AREA_1",
+      "formula": "3000/1",
+      "result": 3000,
+      "unit": "um^2",
+      "conditions": "3pF at proposed1fF/um2;plateonly,notselectedPCell"
+    },
+    {
+      "id": "MIM_AREA_1P5",
+      "formula": "3000/1.5",
+      "result": 2000,
+      "unit": "um^2",
+      "conditions": "3pF at proposed1.5fF/um2;plateonly,notselectedPCell"
+    }
+  ],
+  "unresolved": [
+    "Actualnewmodulesandchiptoplayoutarea",
+    "Matching/loop/noise/PG/substrate/ESD/PORverification",
+    "AcceptedmanufacturingPDK/ruledeck/precheckversion",
+    "Analogpadcurrent/voltage andpackage/probecompatibility",
+    "Supplierconfirmedquote, schedule,deliverables,testandresponsibility",
+    "ReferenceVSET/RSEThardwareparts andaccuracyspec",
+    "SameLEDdynamic/optical/temperature measurements"
+  ],
+  "reuse_notes": "Onlyselectivefactualtables,publiclinks,andoriginalteachingcalculations.Nooriginalsourcefiguresreproduced;fullprocessrecipe/materialchemistry not inferred."
+}

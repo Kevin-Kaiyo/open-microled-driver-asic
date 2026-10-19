@@ -1,0 +1,14 @@
+* Independent reference output isolation candidate. Actual GF180 6-V MOS.
+* The valid 3.3-V safety rail / external fault contract is unchanged; NOT a POR.
+* Fault high: isolate REFOUT and hold downstream BIAS at VSS. Fault low:
+* parallel N/P transmission gate passes ~1.375-V BIAS (nominal TT), while
+* the discharge NMOS releases BIAS. The P leg prevents SS/low-rail headroom
+* loss observed with the single-NMOS trial, retained in reference_isolator_4mos.
+* 0.44-um diffusion landing per side is a declared pre-layout hypothesis.
+.subckt reference_isolator_tg refout bias fault vdd vss
+XFN fault_b fault vss vss nfet_06v0 w=2u l=1u ad=.88p as=.88p pd=4.88u ps=4.88u
+XFP fault_b fault vdd vdd pfet_06v0 w=4u l=1u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+XISO refout fault_b bias vss nfet_06v0 w=20u l=1u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XPISO bias fault refout vdd pfet_06v0 w=20u l=1u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XDIS bias fault vss vss nfet_06v0 w=2u l=1u ad=.88p as=.88p pd=4.88u ps=4.88u
+.ends reference_isolator_tg

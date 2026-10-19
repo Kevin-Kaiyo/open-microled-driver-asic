@@ -1,0 +1,812 @@
+{
+  "schema": 1,
+  "date": "2026-10-19",
+  "scope": "independent source and visual review of original candidate teaching drawings",
+  "is_lvs": false,
+  "is_circuit_simulation": false,
+  "is_physical_verification": false,
+  "passed": true,
+  "device_count": 16,
+  "d_g_s_lead_count": 48,
+  "method": [
+    "Reviewed every rendered MOS orientation, D/G/S label, body-connection footnote, net line and junction dot against explicit connection tables.",
+    "Independently checked each SVG device D/G/S/B tuple and external lead coordinates against top-level drawn wires; C data gates are declared named input pins.",
+    "Reviewed A common output and gate control, B shared tail and diode-connected reference, C independent tails/common LED bus/common bias/thermometer code.",
+    "Reviewed traditional current directions including LED and supply return in concept floorplans; reviewed Bias-T series C and DC choke L."
+  ],
+  "checks": [
+    {
+      "figure": "route-a.svg",
+      "device_count": 2,
+      "sha256": "2155a119fb5bf2c7fe2ced26a2d9c2f8c1c6f2b21cb2d63046283eb07c2c845d"
+    },
+    {
+      "figure": "route-b.svg",
+      "device_count": 4,
+      "sha256": "ffe1b2f3ac456c7deafa74458cccb88e36940ad559b0df1947ab60dce42dfcba"
+    },
+    {
+      "figure": "route-c.svg",
+      "device_count": 10,
+      "sha256": "1012e94194ebef91b724226893aaaa4423dd0bb5c4ae859a6b7783eadb4101c3"
+    }
+  ],
+  "devices": [
+    {
+      "figure": "route-a.svg",
+      "device": "MP",
+      "type": "PMOS",
+      "d_g_s_b": [
+        "OUT",
+        "CTRL",
+        "V_H",
+        "V_H"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            595,
+            382
+          ],
+          "net": "OUT",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            533,
+            330
+          ],
+          "net": "CTRL",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            595,
+            278
+          ],
+          "net": "V_H",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "V_H",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-a.svg",
+      "device": "MN",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "OUT",
+        "CTRL",
+        "V_L",
+        "V_L"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            595,
+            538
+          ],
+          "net": "OUT",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            533,
+            590
+          ],
+          "net": "CTRL",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            595,
+            642
+          ],
+          "net": "V_L",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "V_L",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-b.svg",
+      "device": "MREF",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "BIAS",
+        "BIAS",
+        "VSS",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            180,
+            648
+          ],
+          "net": "BIAS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            118,
+            700
+          ],
+          "net": "BIAS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            180,
+            752
+          ],
+          "net": "VSS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-b.svg",
+      "device": "ML",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "LED_K",
+        "G+",
+        "VX",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            700,
+            398
+          ],
+          "net": "LED_K",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            638,
+            450
+          ],
+          "net": "G+",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            700,
+            502
+          ],
+          "net": "VX",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-b.svg",
+      "device": "MD",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "DUMMY",
+        "G−",
+        "VX",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            1050,
+            398
+          ],
+          "net": "DUMMY",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            988,
+            450
+          ],
+          "net": "G−",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            1050,
+            502
+          ],
+          "net": "VX",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-b.svg",
+      "device": "MI",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "VX",
+        "BIAS",
+        "VSS",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            875,
+            648
+          ],
+          "net": "VX",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            813,
+            700
+          ],
+          "net": "BIAS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            875,
+            752
+          ],
+          "net": "VSS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-c.svg",
+      "device": "ML1",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "LED_K",
+        "G1+",
+        "VX1",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            230,
+            448
+          ],
+          "net": "LED_K",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            168,
+            500
+          ],
+          "net": "G1+",
+          "lead_connected_to_drawn_wire": false,
+          "named_external_control_pin": true,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            230,
+            552
+          ],
+          "net": "VX1",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-c.svg",
+      "device": "MD1",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "DUMMY1",
+        "G1−",
+        "VX1",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            430,
+            448
+          ],
+          "net": "DUMMY1",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            368,
+            500
+          ],
+          "net": "G1−",
+          "lead_connected_to_drawn_wire": false,
+          "named_external_control_pin": true,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            430,
+            552
+          ],
+          "net": "VX1",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-c.svg",
+      "device": "MI1",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "VX1",
+        "BIAS",
+        "VSS",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            330,
+            678
+          ],
+          "net": "VX1",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            268,
+            730
+          ],
+          "net": "BIAS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            330,
+            782
+          ],
+          "net": "VSS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-c.svg",
+      "device": "ML2",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "LED_K",
+        "G2+",
+        "VX2",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            640,
+            448
+          ],
+          "net": "LED_K",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            578,
+            500
+          ],
+          "net": "G2+",
+          "lead_connected_to_drawn_wire": false,
+          "named_external_control_pin": true,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            640,
+            552
+          ],
+          "net": "VX2",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-c.svg",
+      "device": "MD2",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "DUMMY2",
+        "G2−",
+        "VX2",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            840,
+            448
+          ],
+          "net": "DUMMY2",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            778,
+            500
+          ],
+          "net": "G2−",
+          "lead_connected_to_drawn_wire": false,
+          "named_external_control_pin": true,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            840,
+            552
+          ],
+          "net": "VX2",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-c.svg",
+      "device": "MI2",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "VX2",
+        "BIAS",
+        "VSS",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            740,
+            678
+          ],
+          "net": "VX2",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            678,
+            730
+          ],
+          "net": "BIAS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            740,
+            782
+          ],
+          "net": "VSS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-c.svg",
+      "device": "ML3",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "LED_K",
+        "G3+",
+        "VX3",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            1050,
+            448
+          ],
+          "net": "LED_K",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            988,
+            500
+          ],
+          "net": "G3+",
+          "lead_connected_to_drawn_wire": false,
+          "named_external_control_pin": true,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            1050,
+            552
+          ],
+          "net": "VX3",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-c.svg",
+      "device": "MD3",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "DUMMY3",
+        "G3−",
+        "VX3",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            1250,
+            448
+          ],
+          "net": "DUMMY3",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            1188,
+            500
+          ],
+          "net": "G3−",
+          "lead_connected_to_drawn_wire": false,
+          "named_external_control_pin": true,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            1250,
+            552
+          ],
+          "net": "VX3",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-c.svg",
+      "device": "MI3",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "VX3",
+        "BIAS",
+        "VSS",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            1150,
+            678
+          ],
+          "net": "VX3",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            1088,
+            730
+          ],
+          "net": "BIAS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            1150,
+            782
+          ],
+          "net": "VSS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    },
+    {
+      "figure": "route-c.svg",
+      "device": "MREF",
+      "type": "NMOS",
+      "d_g_s_b": [
+        "BIAS",
+        "BIAS",
+        "VSS",
+        "VSS"
+      ],
+      "svg_device_metadata_matches": true,
+      "terminals": {
+        "D": {
+          "svg_xy": [
+            1460,
+            678
+          ],
+          "net": "BIAS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "G": {
+          "svg_xy": [
+            1398,
+            730
+          ],
+          "net": "BIAS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        },
+        "S": {
+          "svg_xy": [
+            1460,
+            782
+          ],
+          "net": "VSS",
+          "lead_connected_to_drawn_wire": true,
+          "named_external_control_pin": false,
+          "passed": true
+        }
+      },
+      "B": {
+        "net": "VSS",
+        "representation": "explicit common-body connection text; body pin intentionally omitted in three-terminal symbol"
+      }
+    }
+  ],
+  "clarifications": [
+    "Body connections are textual common ties, not body-terminal geometry. A B=V_L requires supported isolation if V_L differs from substrate.",
+    "Reference IREF remains ideal upstream representation, not a completed reference implementation.",
+    "C I_LED=0/1/2/3 Iu is an ideal code explanation with all three tails biased; optical levels require calibration.",
+    "Gate inputs and supplies have no completed transistor pre-driver or rail generation circuit.",
+    "This is not extracted connectivity, LVS, DRC, PEX, timing, reliability or GHz/energy validation."
+  ],
+  "source_generator_sha256": "b164055dddca7c1546def00bf8da5c7e1aaf27a0f4567996817202dfe3516fcc"
+}

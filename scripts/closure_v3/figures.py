@@ -1,0 +1,68 @@
+"""Schematic explanations for the v3 verification report. Not generated layout."""
+from pathlib import Path
+import sys,shutil
+ROOT=Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT/'scripts/research'))
+import reference_architecture_figures as r
+OUT=ROOT/'docs/research/single-pixel-closure-20261015'; r.FIG=OUT/'figures'
+r.FIG.mkdir(parents=True,exist_ok=True)
+D=r.Drawing
+
+def main():
+ d=D(960,610,'单像素闭环：数字控制、参考源、保护与负载','v3 implemented architecture; external fault, reference voltage and passives remain required')
+ d.box(25,85,245,90,['PWM + 恢复存储','clk / duty / enable','FAULT异步置位'])
+ d.box(340,85,245,90,['独立保护门（10 MOS）','RAW × PERMIT × !FAULT'])
+ d.box(650,85,280,90,['实际 buf_2（6 MOS）','05v0 标准单元'])
+ d.arrow(270,125,340,125);d.arrow(585,125,650,125)
+ d.box(25,260,245,90,['参考源（10 MOS）','VSET / RSET','误差放大与PMOS镜像'])
+ d.box(340,260,245,90,['隔离传输门（5 MOS）','FAULT=1：断开参考','并下拉 BIAS'])
+ d.box(650,260,280,90,['像素电流镜（6 MOS）','MREF / MOUT','PWM偏置开关与下拉'])
+ d.arrow(270,305,340,305);d.arrow(585,305,650,305)
+ d.wire([(790,175),(790,260)],r.TEAL);d.arrow(790,222,790,260)
+ d.box(650,425,280,75,['MicroLED（片外）','合成电气模型'])
+ d.box(340,425,245,75,['LED钳位（2 MOS）','FAULT=1：A/K近等势'])
+ d.arrow(790,350,790,425);d.wire([(585,460),(650,460)],r.TEAL)
+ d.text(25,420,'39 MOS 模拟测试宏',22,r.TEAL,bold=True)
+ d.text(25,457,'33只06v0 + 6只05v0',19)
+ d.text(25,492,'数字宏晶体管另计',19)
+ d.text(25,555,'片外：VSET、RSET、RBIAS、CCOMP、RRELEASE、RBLEED；尚无pad/ESD/封装。',18)
+ d.text(25,587,'FAULT既抑制PWM，又隔离参考并钳位LED；PERMIT负责受控恢复。',18)
+ d.save('architecture.svg')
+ d=D(960,530,'版图失效实例：PMOS体端必须有真实井接触','electrical body-contact explanation for LVS failure; not a process cross-section')
+ a=d.mos(220,200,'PMOS','P',dimensions='',body=None)
+ d.text(288,156,'独立buf_2单元',16)
+ d.text(70,90,'首轮：缺少井接触',23,r.ORANGE,bold=True)
+ d.wire([a['S'],(220,120)]);d.text(220,110,'VBUF',18,anchor='middle')
+ d.wire([a['D'],(220,300)]);d.text(220,330,'输出',18,anchor='middle')
+ d.wire([a['G'],(110,200)]);d.text(90,193,'输入',18,anchor='end')
+ d.wire([a['B'],(340,200)]);d.text(300,244,'井区无电源接触',18,r.ORANGE)
+ d.parts.append('<circle cx="340" cy="200" r="5" fill="white" stroke="#b56336" stroke-width="2"/>')
+ b=d.mos(650,200,'PMOS','P',dimensions='',body=None)
+ d.text(718,156,'buf_2 + filltie',16)
+ d.text(520,90,'修复：加入官方井接触单元',23,r.TEAL,bold=True)
+ d.wire([b['S'],(650,120),(820,120),(820,200),b['B']]);d.dot(650,120)
+ d.text(650,110,'VBUF',18,anchor='middle');d.text(760,245,'N-well → VBUF',18)
+ d.wire([b['D'],(650,300)]);d.text(650,330,'输出',18,anchor='middle')
+ d.wire([b['G'],(540,200)]);d.text(520,193,'输入',18,anchor='end')
+ d.text(35,395,'门极、源极、漏极连通，不代表体端已经接好。',22,r.TEAL,bold=True)
+ d.text(35,440,'LVS比较的是实际抽取连接；井接触缺失时，原理图与版图并不等价。',19)
+ d.text(35,482,'增加filltie后重新抽取和LVS；原失败网表、日志保留以便复现。',19)
+ d.save('well-contact.svg')
+ for src,name in [('reference-safety-20261013/figures/architecture-actual-vset-servo.svg','reference.svg'),('reference-safety-20261013/figures/architecture-actual-fault.svg','fault.svg'),('reference-safety-20261013/figures/architecture-actual-led-clamp.svg','clamp.svg'),('startup-tapeout-20261014/figures/reference-isolator.svg','isolator.svg')]:
+  shutil.copyfile(ROOT/'docs/research'/src,r.FIG/name)
+  if name=='reference.svg':
+   q=r.FIG/name;q.write_text(q.read_text().replace('CCOMP = 3 pF','CCOMP = 30 pF'))
+def bleed():
+ d=D(960,480,'新增外部放电电阻：让REFOUT初始电位有确定路径','candidate external 10Mohm bleed; device geometry unchanged; requires full regression')
+ p=d.mos(230,160,'POUT','P',dimensions='100 / 10 µm',body='VREF')
+ d.wire([p['S'],(230,80)]);d.text(230,70,'VREF',19,anchor='middle')
+ d.wire([p['G'],(100,160)]);d.text(100,148,'CTRL',18)
+ d.wire([p['D'],(230,250),(660,250)]);d.dot(230,250);d.text(330,235,'REFOUT',20,r.TEAL)
+ d.resistor(230,320,'RBLEED','10 MΩ，外部元件')
+ d.wire([(230,250),(230,284)]);d.wire([(230,356),(230,385)]);d.ground(230,395)
+ d.box(660,210,245,80,['CMOS传输门','FAULT=1 时关闭'])
+ d.text(610,350,'正常电流损失约 REFOUT / 10 MΩ',19)
+ d.text(610,391,'参考未上电：释放REFOUT电荷',19)
+ d.text(25,459,'该电阻并不替代上电复位、欠压检测或芯片级电源顺序验证。',18)
+ d.save('bleed.svg')
+if __name__=='__main__':main();bleed()

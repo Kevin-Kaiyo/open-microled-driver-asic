@@ -1,0 +1,144 @@
+{
+  "fps": 24,
+  "frames": 1536,
+  "duration_s": 64.0,
+  "chapters": [
+    {
+      "start_frame": 1,
+      "end_frame": 72,
+      "title": "01 先看整体",
+      "caption": "当前是39 MOS模拟宏。接下来展开图层，再定位其中六只像素MOS。"
+    },
+    {
+      "start_frame": 73,
+      "end_frame": 144,
+      "title": "02 第三层金属 M3",
+      "caption": "先抬起M3：这里分配电源与信号总线。颜色代表图层，不代表金属本色。"
+    },
+    {
+      "start_frame": 145,
+      "end_frame": 192,
+      "title": "03 第二层通孔 Via2",
+      "caption": "Via2位于M2与M3之间；只有放置通孔的位置，才有局部垂直连接。"
+    },
+    {
+      "start_frame": 193,
+      "end_frame": 240,
+      "title": "04 第二层金属 M2",
+      "caption": "M2从器件端点接向总线；平面交叉并不自动形成电气连接。"
+    },
+    {
+      "start_frame": 241,
+      "end_frame": 288,
+      "title": "05 第一层通孔 Via1",
+      "caption": "Via1连接M1和M2。展开后的空隙是观察手段，不是真实空气层。"
+    },
+    {
+      "start_frame": 289,
+      "end_frame": 336,
+      "title": "06 第一层金属 M1",
+      "caption": "M1连接器件接触孔，再经Via1接到更高金属层。"
+    },
+    {
+      "start_frame": 337,
+      "end_frame": 384,
+      "title": "07 接触孔 Contact",
+      "caption": "Contact分别连接扩散区或多晶硅栅极；它们的起始高度不同。"
+    },
+    {
+      "start_frame": 385,
+      "end_frame": 432,
+      "title": "08 器件层",
+      "caption": "Poly栅极跨过有源区；井/有源层只作图层示意，不代表掺杂深度。"
+    },
+    {
+      "start_frame": 433,
+      "end_frame": 528,
+      "title": "09 看清上下层关系",
+      "caption": "器件 → Contact → M1 → Via1 → M2 → Via2 → M3。"
+    },
+    {
+      "start_frame": 529,
+      "end_frame": 600,
+      "title": "10 合拢后看像素",
+      "caption": "恢复层叠关系；下一幕左边是原理图，右边是相同器件的真实版图局部。"
+    },
+    {
+      "start_frame": 601,
+      "end_frame": 696,
+      "title": "11 对照相同编号",
+      "caption": "1参考管、2输出管、3传递管、4下拉管、5/6反相器：两图编号一一对应。"
+    },
+    {
+      "start_frame": 697,
+      "end_frame": 936,
+      "title": "12 PWM高电平：LED导通",
+      "caption": "3传递BIAS栅压，4关闭；2吸取LED电流。1的参考支路继续工作。"
+    },
+    {
+      "start_frame": 937,
+      "end_frame": 960,
+      "title": "13 下降沿：栅极放电",
+      "caption": "3关闭，4短暂释放GATE电荷。紫色运动只表示边沿充放电。"
+    },
+    {
+      "start_frame": 961,
+      "end_frame": 1176,
+      "title": "14 PWM低电平：LED关断",
+      "caption": "4把GATE保持在低电位，2关断。参考支路仍有电流；栅极稳态不持续吸流。"
+    },
+    {
+      "start_frame": 1177,
+      "end_frame": 1200,
+      "title": "15 上升沿：重新建立栅压",
+      "caption": "3重新导通，给GATE充电；4关闭。这里是慢放示意，不是实际纳秒波形。"
+    },
+    {
+      "start_frame": 1201,
+      "end_frame": 1392,
+      "title": "16 再次导通",
+      "caption": "栅压稳定后，紫色充电箭头停止；橙色LED电流继续，青绿色参考电流继续。"
+    },
+    {
+      "start_frame": 1393,
+      "end_frame": 1536,
+      "title": "17 把原理与版图连起来",
+      "caption": "PWM控制导通时间；电流镜设定导通电流。参考支路、栅极控制和LED输出是三条不同路径。"
+    }
+  ],
+  "high_steady_ranges": [
+    [
+      697,
+      936
+    ],
+    [
+      1201,
+      1536
+    ]
+  ],
+  "low_steady_ranges": [
+    [
+      961,
+      1176
+    ]
+  ],
+  "reference_ranges": [
+    [
+      697,
+      1536
+    ]
+  ],
+  "gate_discharge_ranges": [
+    [
+      937,
+      960
+    ]
+  ],
+  "gate_charge_ranges": [
+    [
+      1177,
+      1200
+    ]
+  ],
+  "notes": "Teaching seconds do not represent SPICE time; all arrow speed and widths are illustrative."
+}

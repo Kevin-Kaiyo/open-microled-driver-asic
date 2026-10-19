@@ -1,0 +1,93 @@
+{
+  "audit_date": "2026-10-08",
+  "method": "source/log audit and independent rendering only; no EDA simulation, extraction, hardware work, installation or push",
+  "inputs_sha256": {
+    "analog/models/measured-led/lin2026-yellow20-diamond-iv.csv": "9da8dbac6499c34159da5e3aa0c59cd6de43aad446090181b4c070beba9505ab",
+    "analog/models/microled.spice": "ce9a3453abb87fc2aea894e7da2eff1448ff90a1432243ea90c747716ed20bba",
+    "layout/pixel_driver_schematic.spice": "1e7adac7ee856a65a63d81ff25c7dcb538f8802ca553cd34da4de0edef0cf2c9",
+    "evidence/robustness/main-summary.json": "5c962bf85021991085f0d15370d355d0a8a2af02bc7119f257de6cf6d7f20321",
+    "evidence/robustness/boundary-summary.json": "d4bf28fa216a2f5d894e4da0b19f6c647eb71d763b553d49ddad5bc0f71f65ad",
+    "evidence/characterization/measured-load-summary.json": "98d8b3d0bb60b0e27f540fcb6cf44e87eeed2607fa2d5a3786c0f3c91b5c47ca",
+    "evidence/joint-pex/nominal/summary.json": "9fbfcd0c2c1add8a01b7bdfd6f3f1863333258973ee478aa5e30a7a85d7c86ed",
+    "build/robustness/main-mx5nfi8b/tt_post_d1_fine/waveform.dat": "acd8f3b71c4c8bdd768fe3936b06a8eccc2bd69b336e71be69628b1692fe86b9"
+  },
+  "assets": [
+    {
+      "id": "circuit.png",
+      "type": "derived figure; no EDA rerun",
+      "source_paths": [
+        "layout/pixel_driver_schematic.spice",
+        "evidence/joint-pex/nominal/summary.json"
+      ],
+      "method": "Independent functional schematic; distributed parasitics omitted; external versus simulated roles marked.",
+      "sha256": "0ede82ea49daf74df31407a9de7a01c87a7d9476f265fd49610d1bdd8ef31e20"
+    },
+    {
+      "id": "scope.png",
+      "type": "derived figure; no EDA rerun",
+      "source_paths": [
+        "evidence/joint-pex/nominal/summary.json"
+      ],
+      "method": "Independent scope diagram; 44 cutout formal ports versus 19 common-top ports distinguished in report.",
+      "sha256": "d3a8fec9bb4b73c797657814f67130cd6185a8393c0b44e9a1408d7040451a65"
+    },
+    {
+      "id": "iv.png",
+      "type": "derived figure; no EDA rerun",
+      "source_paths": [
+        "analog/models/measured-led/lin2026-yellow20-diamond-iv.csv",
+        "analog/models/microled.spice"
+      ],
+      "method": "Lin et al. 2026 CC-BY-4.0 dataset 100 points plotted unchanged; synthetic curve calculated analytically from configured model and DC anchor, not new simulation.",
+      "sha256": "9031b61eb356ed44fdd929cfeb8017f9c7352ee4f3fb9f2cbb67f3418de32e34"
+    },
+    {
+      "id": "waveform.png",
+      "type": "derived figure; no EDA rerun",
+      "source_paths": [
+        "build/robustness/main-mx5nfi8b/tt_post_d1_fine/waveform.dat",
+        "evidence/robustness/main-summary.json"
+      ],
+      "method": "All saved points in selected windows; unfiltered time-axis zoom; source maxstep 1 ns; no rerun or smoothing.",
+      "sha256": "61db5b8d3f4c10a9603dcbd52e71a3bc8164205e7843b94ad2afdfcc2ae3a943"
+    },
+    {
+      "id": "boundaries.png",
+      "type": "derived figure; no EDA rerun",
+      "source_paths": [
+        "evidence/robustness/boundary-summary.json",
+        "evidence/characterization/measured-load-summary.json"
+      ],
+      "method": "Saved four static joint-PEX RLED results and three analog-RC capacitance probes; separate model paths clearly distinguished; lines only join existing samples.",
+      "sha256": "167b62a30aad3ed39dd9433d908e31c2c21ce0a00954f13bc3804713d9708e59"
+    }
+  ],
+  "render_runtime": {
+    "python": "3.12.13 (main, Mar 25 2026, 03:16:06) [Clang 22.1.1 ]",
+    "numpy": "2.5.3",
+    "matplotlib": "3.11.2"
+  },
+  "outputs_sha256": {
+    "README.md": "36953d5d1124f135991b5421e158e18004da055630d24533644b4e045774eeca",
+    "audit-validation.json": "acad2b8c19814f04d5c13888ae0e77c9ae9a0660add66654ec655c7473206f62",
+    "boundaries.png": "167b62a30aad3ed39dd9433d908e31c2c21ce0a00954f13bc3804713d9708e59",
+    "circuit.png": "0ede82ea49daf74df31407a9de7a01c87a7d9476f265fd49610d1bdd8ef31e20",
+    "iv.png": "9031b61eb356ed44fdd929cfeb8017f9c7352ee4f3fb9f2cbb67f3418de32e34",
+    "questions.md": "cf94fa4dfca0ca7e0c25bea6b53f94fc6526db6378e16eaa403c130ff807a46d",
+    "report.html": "f654fe4518ee48f20d461fd5402424deea5f6430e20c15f7132d4b91f6256669",
+    "report.md": "6242312306e424544402545e4a0cfd68fcbd54bdf23bdc8248b8d3452d62d646",
+    "report.pdf": "4099b3ee69b3cd90ad18016fdd6070462371725df69057863949ee13ab4fc3ef",
+    "scope.png": "d3a8fec9bb4b73c797657814f67130cd6185a8393c0b44e9a1408d7040451a65",
+    "snapshot-inputs.json": "6094be65bd11240d7c1e00de6a9da46619b027ae7c40e98342c2ffd4b7d4efe5",
+    "waveform.png": "61db5b8d3f4c10a9603dcbd52e71a3bc8164205e7843b94ad2afdfcc2ae3a943"
+  },
+  "report_render_runtime": {
+    "markdown": "3.8.2",
+    "Chrome": "154.0.8037.99"
+  },
+  "render_helpers": {
+    "figures": "build/research-audit-20261008/derive_figures.py",
+    "html": "build/research-audit-20261008/render_report.py",
+    "print": "build/research-audit-20261008/print_report.cjs"
+  }
+}

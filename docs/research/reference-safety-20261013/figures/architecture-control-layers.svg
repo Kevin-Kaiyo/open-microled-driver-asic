@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="459.94" viewBox="0 0 960 459.94" role="img" aria-labelledby="title desc" data-evidence="functional architecture comparison; high-speed branch unimplemented">
+<title id="title">PWM 时间码与通信幅度码：数字、前置驱动和模拟输出分别承担任务</title><desc id="desc">functional architecture comparison; high-speed branch unimplemented; independent drawing; no new EDA</desc>
+<style>text{font-family:"Avenir Next","PingFang SC",sans-serif}path,polyline,line,rect{stroke-linejoin:round;stroke-linecap:round}</style>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10" fill="#176e73"/></marker></defs>
+<rect width="960" height="459.94" fill="white"/>
+<g transform="scale(0.7804878048780488)"><text x="26" y="38" font-size="25.0000" fill="#176e73" text-anchor="start" font-weight="600"><tspan x="26.0" y="38.0">PWM 时间码与通信幅度码：数字、前置驱动和模拟输出分别承担任务</tspan></text>
+<text x="285" y="91" font-size="22.0000" fill="#176e73" text-anchor="middle"><tspan x="285.0" y="91.0">当前 PWM 研究路径</tspan></text>
+<text x="925" y="91" font-size="22.0000" fill="#176e73" text-anchor="middle"><tspan x="925.0" y="91.0">独立高速支线（待验证）</tspan></text>
+<rect x="125" y="135" width="320" height="80" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="285.0" y="160" font-size="20.5000" fill="#304b57" text-anchor="middle"><tspan x="285.0" y="160.0">duty / amplitude 寄存器</tspan></text>
+<text x="285.0" y="187" font-size="20.5000" fill="#304b57" text-anchor="middle"><tspan x="285.0" y="187.0">counter 与 comparator</tspan></text>
+<rect x="125" y="263" width="320" height="64" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="285.0" y="288" font-size="20.5000" fill="#304b57" text-anchor="middle"><tspan x="285.0" y="288.0">数字 buffer → PWM / PWM_B</tspan></text>
+<rect x="125" y="380" width="320" height="80" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="285.0" y="405" font-size="20.5000" fill="#304b57" text-anchor="middle"><tspan x="285.0" y="405.0">偏置开关 → 电流镜 → LED</tspan></text>
+<text x="285.0" y="432" font-size="20.5000" fill="#304b57" text-anchor="middle"><tspan x="285.0" y="432.0">采集电流与每帧 Q</tspan></text>
+<rect x="760" y="135" width="330" height="80" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="925.0" y="160" font-size="20.5000" fill="#304b57" text-anchor="middle"><tspan x="925.0" y="160.0">串行数据 / PAM / OFDM samples</tspan></text>
+<text x="925.0" y="187" font-size="20.5000" fill="#304b57" text-anchor="middle"><tspan x="925.0" y="187.0">寄存器、decoder / DAC</tspan></text>
+<rect x="760" y="263" width="330" height="64" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="925.0" y="288" font-size="20.5000" fill="#304b57" text-anchor="middle"><tspan x="925.0" y="288.0">差分 pre-driver / 电平转换</tspan></text>
+<rect x="760" y="380" width="330" height="80" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="925.0" y="405" font-size="20.5000" fill="#304b57" text-anchor="middle"><tspan x="925.0" y="405.0">biased tails + switch → LED</tspan></text>
+<text x="925.0" y="432" font-size="20.5000" fill="#304b57" text-anchor="middle"><tspan x="925.0" y="432.0">采集 settling / 光响应 / BER</tspan></text>
+<path d="M285 215 L285 253" fill="none" stroke="#176e73" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M285 327 L285 370" fill="none" stroke="#176e73" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M925 215 L925 253" fill="none" stroke="#176e73" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M925 327 L925 370" fill="none" stroke="#176e73" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="478" y="285" font-size="20.5000" fill="#b56336" text-anchor="start"><tspan x="478.0" y="285.0">fault / permit</tspan></text>
+<path d="M575 295 L450 295" fill="none" stroke="#b56336" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="500" y="415" font-size="20.5000" fill="#304b57" text-anchor="start"><tspan x="500.0" y="415.0">VBIAS / IREF</tspan></text>
+<path d="M615 429 L452 429" fill="none" stroke="#176e73" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="26" y="507" font-size="20.5000" fill="#304b57" text-anchor="start"><tspan x="26.0" y="507.0">控制箭头不是 LED 主电流；buffer 驱动 gate 负载，电流源管承担 LED 支路电流。</tspan></text>
+<text x="26" y="536" font-size="20.5000" fill="#304b57" text-anchor="start"><tspan x="26.0" y="536.0">通信数据不能直接解释成每帧亮度 PWM；bit、symbol、sample、幅度码与 duty 必须分别定义。</tspan></text>
+</g></svg>

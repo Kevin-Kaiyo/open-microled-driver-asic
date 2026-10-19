@@ -1,0 +1,582 @@
+{
+  "classification": "Original teaching schematics; no new transistor/optical simulation",
+  "date": "2026-10-12",
+  "terminal_order": "D G S B",
+  "pixel_netlist": "analog/driver/pixel_driver.spice",
+  "pixel_netlist_sha256": "376305eafa438e80883320984209d9e193b01e77a047cf131500318b794d9747",
+  "pixel_device_connections": {
+    "MREF": [
+      "bias",
+      "bias",
+      "0",
+      "0"
+    ],
+    "MOUT": [
+      "led_k",
+      "gate",
+      "0",
+      "0"
+    ],
+    "MPASS": [
+      "bias",
+      "pwm",
+      "gate",
+      "0"
+    ],
+    "MCLAMP": [
+      "gate",
+      "pwm_b",
+      "0",
+      "0"
+    ],
+    "MN": [
+      "pwm_b",
+      "pwm",
+      "0",
+      "0"
+    ],
+    "MP": [
+      "pwm_b",
+      "pwm",
+      "vlogic",
+      "vlogic"
+    ]
+  },
+  "current_convention": "Conventional current; solid arrows persistent, dashed arrows transition-only; LED outward arrows indicate emitted light",
+  "switching_qualification": "Endpoint logic states plus qualitative main charging/discharging paths. Finite skew, overlap, feedthrough and remaining parasitic currents are not plotted as validated waveforms.",
+  "high_speed": {
+    "classification": "Independent conceptual current steering cell: 3 NMOS, optional fourth cascode NMOS",
+    "devices": {
+      "MI": [
+        "VX",
+        "VBIAS",
+        "0",
+        "0"
+      ],
+      "ML": [
+        "LED_K",
+        "DATA",
+        "VX",
+        "0"
+      ],
+      "MD": [
+        "DUMMY_K",
+        "DATA_B",
+        "VX",
+        "0"
+      ]
+    },
+    "cascode_variant": {
+      "MC": [
+        "VX",
+        "VCAS",
+        "VI",
+        "0"
+      ],
+      "MI": [
+        "VI",
+        "VBIAS",
+        "0",
+        "0"
+      ]
+    },
+    "omitted": [
+      "differential pre-driver",
+      "bias generator",
+      "LVDS/decoder",
+      "pads/ESD/package/parasitics"
+    ],
+    "dummy_load": "Illustrative resistor; not H05 figure reproduction or actual H05 load",
+    "sizing_voltage_rate": "Not specified or simulated",
+    "primary_source": "https://doi.org/10.1109/LPT.2016.2624281",
+    "locator": "H05 accepted manuscript PDF p2 section II-A/Fig2; actual implementation includes cascode and uses a 1.8 V dummy rail"
+  },
+  "diagrams": [
+    {
+      "file": "figures/six-mos-original.svg",
+      "devices": [
+        {
+          "name": "MREF",
+          "type": "NMOS",
+          "state": "",
+          "nets": [
+            "bias",
+            "bias",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MP",
+          "type": "PMOS",
+          "state": "",
+          "nets": [
+            "pwm_b",
+            "pwm",
+            "vlogic",
+            "vlogic"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MN",
+          "type": "NMOS",
+          "state": "",
+          "nets": [
+            "pwm_b",
+            "pwm",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MPASS",
+          "type": "NMOS",
+          "state": "",
+          "nets": [
+            "bias",
+            "pwm",
+            "gate",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MOUT",
+          "type": "NMOS",
+          "state": "",
+          "nets": [
+            "led_k",
+            "gate",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MCLAMP",
+          "type": "NMOS",
+          "state": "",
+          "nets": [
+            "gate",
+            "pwm_b",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        }
+      ],
+      "current_paths": 0,
+      "charge_paths": 0,
+      "title": "PWM 栅极控制的 NMOS 电流镜：外部条件：Vlogic=3.3 V、VLED=5 V、理想 IREF=100 µA；非新增仿真。"
+    },
+    {
+      "file": "figures/six-mos-charge.svg",
+      "devices": [
+        {
+          "name": "MREF",
+          "type": "NMOS",
+          "state": "偏置建立",
+          "nets": [
+            "bias",
+            "bias",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MP",
+          "type": "PMOS",
+          "state": "过渡",
+          "nets": [
+            "pwm_b",
+            "pwm",
+            "vlogic",
+            "vlogic"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MN",
+          "type": "NMOS",
+          "state": "过渡",
+          "nets": [
+            "pwm_b",
+            "pwm",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MPASS",
+          "type": "NMOS",
+          "state": "过渡",
+          "nets": [
+            "bias",
+            "pwm",
+            "gate",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MOUT",
+          "type": "NMOS",
+          "state": "过渡",
+          "nets": [
+            "led_k",
+            "gate",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MCLAMP",
+          "type": "NMOS",
+          "state": "过渡",
+          "nets": [
+            "gate",
+            "pwm_b",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        }
+      ],
+      "current_paths": 1,
+      "charge_paths": 2,
+      "title": "PWM 栅极控制的 NMOS 电流镜：过渡示意：主要栅极充电路径；不表示严格先后时序，开关可能短暂同时导通。"
+    },
+    {
+      "file": "figures/six-mos-on.svg",
+      "devices": [
+        {
+          "name": "MREF",
+          "type": "NMOS",
+          "state": "偏置建立",
+          "nets": [
+            "bias",
+            "bias",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MP",
+          "type": "PMOS",
+          "state": "截止",
+          "nets": [
+            "pwm_b",
+            "pwm",
+            "vlogic",
+            "vlogic"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MN",
+          "type": "NMOS",
+          "state": "导通",
+          "nets": [
+            "pwm_b",
+            "pwm",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MPASS",
+          "type": "NMOS",
+          "state": "导通",
+          "nets": [
+            "bias",
+            "pwm",
+            "gate",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MOUT",
+          "type": "NMOS",
+          "state": "偏置建立",
+          "nets": [
+            "led_k",
+            "gate",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MCLAMP",
+          "type": "NMOS",
+          "state": "截止",
+          "nets": [
+            "gate",
+            "pwm_b",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        }
+      ],
+      "current_paths": 3,
+      "charge_paths": 0,
+      "title": "PWM 栅极控制的 NMOS 电流镜：稳态：VG 接近 VBIAS；栅极近似无直流电流，IREF 与 LED 电流走不同支路。"
+    },
+    {
+      "file": "figures/six-mos-discharge.svg",
+      "devices": [
+        {
+          "name": "MREF",
+          "type": "NMOS",
+          "state": "偏置建立",
+          "nets": [
+            "bias",
+            "bias",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MP",
+          "type": "PMOS",
+          "state": "过渡",
+          "nets": [
+            "pwm_b",
+            "pwm",
+            "vlogic",
+            "vlogic"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MN",
+          "type": "NMOS",
+          "state": "过渡",
+          "nets": [
+            "pwm_b",
+            "pwm",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MPASS",
+          "type": "NMOS",
+          "state": "过渡",
+          "nets": [
+            "bias",
+            "pwm",
+            "gate",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MOUT",
+          "type": "NMOS",
+          "state": "过渡",
+          "nets": [
+            "led_k",
+            "gate",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MCLAMP",
+          "type": "NMOS",
+          "state": "过渡",
+          "nets": [
+            "gate",
+            "pwm_b",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        }
+      ],
+      "current_paths": 1,
+      "charge_paths": 3,
+      "title": "PWM 栅极控制的 NMOS 电流镜：过渡示意：主要栅极放电路径；不表示严格先后时序，LED 电流逐步衰减。"
+    },
+    {
+      "file": "figures/six-mos-off.svg",
+      "devices": [
+        {
+          "name": "MREF",
+          "type": "NMOS",
+          "state": "偏置建立",
+          "nets": [
+            "bias",
+            "bias",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MP",
+          "type": "PMOS",
+          "state": "导通",
+          "nets": [
+            "pwm_b",
+            "pwm",
+            "vlogic",
+            "vlogic"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MN",
+          "type": "NMOS",
+          "state": "截止",
+          "nets": [
+            "pwm_b",
+            "pwm",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MPASS",
+          "type": "NMOS",
+          "state": "截止",
+          "nets": [
+            "bias",
+            "pwm",
+            "gate",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MOUT",
+          "type": "NMOS",
+          "state": "截止",
+          "nets": [
+            "led_k",
+            "gate",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        },
+        {
+          "name": "MCLAMP",
+          "type": "NMOS",
+          "state": "导通",
+          "nets": [
+            "gate",
+            "pwm_b",
+            "0",
+            "0"
+          ],
+          "terminal_order": "D G S B"
+        }
+      ],
+      "current_paths": 1,
+      "charge_paths": 0,
+      "title": "PWM 栅极控制的 NMOS 电流镜：稳态：VG 接近 0 V，LED 主电流关闭；IREF 仍流过 MREF。"
+    },
+    {
+      "file": "figures/current-steering-one.svg",
+      "devices": [
+        {
+          "name": "ML",
+          "state": "导通"
+        },
+        {
+          "name": "MD",
+          "state": "截止"
+        },
+        {
+          "name": "MI",
+          "state": "导通"
+        }
+      ],
+      "paths": 3
+    },
+    {
+      "file": "figures/current-steering-zero.svg",
+      "devices": [
+        {
+          "name": "ML",
+          "state": "截止"
+        },
+        {
+          "name": "MD",
+          "state": "导通"
+        },
+        {
+          "name": "MI",
+          "state": "导通"
+        }
+      ],
+      "paths": 3
+    },
+    {
+      "file": "figures/current-steering-cascode-one.svg",
+      "devices": [
+        {
+          "name": "ML",
+          "state": "导通"
+        },
+        {
+          "name": "MD",
+          "state": "截止"
+        },
+        {
+          "name": "MC",
+          "state": "导通"
+        },
+        {
+          "name": "MI",
+          "state": "导通"
+        }
+      ],
+      "paths": 4
+    },
+    {
+      "file": "figures/current-steering-cascode-zero.svg",
+      "devices": [
+        {
+          "name": "ML",
+          "state": "截止"
+        },
+        {
+          "name": "MD",
+          "state": "导通"
+        },
+        {
+          "name": "MC",
+          "state": "导通"
+        },
+        {
+          "name": "MI",
+          "state": "导通"
+        }
+      ],
+      "paths": 4
+    }
+  ],
+  "sources": {
+    "analog/driver/pixel_driver.spice": "376305eafa438e80883320984209d9e193b01e77a047cf131500318b794d9747",
+    "scripts/interface/run.py": "baf7708beaed1dd60e0a97aa23b90292824fe5f29a507fbce03a6b645c964d1d",
+    "evidence/interface/dc.csv": "222fa3c6c37dc8adfe5e1e8c6fb9ffc3877a486aecaf47195e68b4aea5eeabd8",
+    "evidence/interface/summary.json": "5117f95afe4cfab4fe88f4e2495fdfeb07fa0eb51c3292c37b2b1a5c02705695"
+  }
+}

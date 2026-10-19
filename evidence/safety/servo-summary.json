@@ -1,0 +1,2703 @@
+{
+  "schema_version": 1,
+  "stage": "safety experiment v0.3 / new pre-layout 12-MOS gate and active LED clamp + frozen one-pixel selected signal PEX",
+  "passed": false,
+  "date": "2026-10-14",
+  "raw_directory": "build/safety/fault-gate-00f_2k2g",
+  "suite": "servo",
+  "contract_sha256": "567cae65a7e81455d03a462848832428389820de118789a48060a0e8be57b3cd",
+  "source_sha256": {
+    "scripts/safety/run.py": "4f52656c2306403bfd7db9aa6909b23777ad525f92d603672fca1b7121da4975",
+    "evidence/safety/contract.json": "567cae65a7e81455d03a462848832428389820de118789a48060a0e8be57b3cd",
+    "rtl/safety/pixel_safety.v": "a6f4ef3f0705dec13d578ef6c0e6a6dd755e2d7b7714d7fb1411fbd078672a93",
+    "sim/safety/tb_safety.v": "76d4f5130d8fefb4769508e074f19213886b3fed55003ea744b7c51482dd20c7",
+    "sim/safety/normal_observer.v": "d09f982cbb1350e29313d793c2c0b719189a0a75966ede10802e0771d1c26223",
+    "analog/safety/fault_gate.spice": "d819b64377e9b59491cee22cd4428cbd78d94bdf4a837f74ad355f6f6b4ea99c",
+    "analog/safety/fault_led_clamp.spice": "5bfb9e910593cfbd3cef9abc1228b1b9df1d87560145bf0390c859a272cc2aaf",
+    "evidence/safety/clamp-contract.json": "61c3ad178a65f30e5927a0c8361bb5bd1942d2bac217a4f8320d15e722185b77",
+    "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+    "sim/rtl/tb_pixel_pwm.v": "f0fc5b991974b79a7a229567ece574da0a052367ccee9ebce69f6e4c41bf2dbe",
+    "analog/models/microled.spice": "ce9a3453abb87fc2aea894e7da2eff1448ff90a1432243ea90c747716ed20bba",
+    "evidence/robustness/stage-contract.json": "ba3ad7bd6bd1dcdc3fbd9bcdd41e15f5f25fa18b9ddb0cbaf4a8171a87ca9657",
+    "evidence/joint-pex/nominal/output_pixel_pex.spice": "03813e63e64bf505570dbd1f81e6809366e6b4d31bbee129c28022956e1cc623",
+    "layout/pdk-lock.json": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+    "scripts/physical/pdk-lock.json": "50f119ae5e17f0589f0a7a58db4c7a6daa7e6e1b40c85e15cd0d96300f7c3762",
+    "evidence/joint-pex/nominal/summary.json": "9fbfcd0c2c1add8a01b7bdfd6f3f1863333258973ee478aa5e30a7a85d7c86ed",
+    "evidence/joint-pex/nominal/projection-ledger.json.gz": "722cc43dbf004bbce942683b2f26ad215829b3e6de9a0c3127ea051356d17b71",
+    "evidence/joint-pex/hrhc/summary.json": "41d635de7b25c6de51a3b9f0babe91f21889c40ba5e99ff01bc4707575e58673",
+    "evidence/joint-pex/hrhc/projection-ledger.json.gz": "5bc57e731d6d148636053ac8d7d57855630c14e31d038f07b3c0ab18127ac81d",
+    "evidence/joint-pex/lrhc/summary.json": "af357c3b6216936f749513c56f23dcceb18efcb99343343f681ce243c0263edc",
+    "evidence/joint-pex/lrhc/projection-ledger.json.gz": "e4e47c349718b380f7e61b48704437226f032e2787b1de8e8e239f393f8a230a",
+    "evidence/joint-pex/hrlc/summary.json": "d4ec906199560cce22aef09634a2b01d90aae9655bfac73063f0a7c657feb6f8",
+    "evidence/joint-pex/hrlc/projection-ledger.json.gz": "b35b8d14a1cf399ad2a7e35168e1e25ba74590f7520a69cf8ce2945988953a63",
+    "evidence/joint-pex/lrlc/summary.json": "beb892eeac0a8255585b8c378e6d5daa6a12165368d96560740a809fab421191",
+    "evidence/joint-pex/lrlc/projection-ledger.json.gz": "a13c1bfbdeab3be45871331349e72c59534df911fc41f3a1b394164638282836",
+    "evidence/integration/pixel_integrated.gds": "f785cd70e76f6f287159bbb865712a8ed6121ed15dc65a99d78cbc35bed13938",
+    "analog/reference/vset_servo.spice": "fed0b1df836b98c94b603c0e8eaa767a695a227d4d8c29c3cd8684aa573be193"
+  },
+  "tools": {
+    "ngspice": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******\n",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)\n\nCopyright (c) 2000-2026 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\nIcarus Verilog Preprocessor version 13.0 (stable) (v13_0)\n\nCopyright (c) 1999-2026 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\nIcarus Verilog Parser/Elaborator version 13.0 (stable) (v13_0)\n\nCopyright (c) 1998-2026 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\n FLAGS DLL vvp.tgt\nvvp.tgt: Icarus Verilog VVP Code Generator 13.0 (stable) (v13_0)\n\nCopyright (c) 2001-2026 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\n"
+  },
+  "checks": [
+    {
+      "name": "Unmodified exhaustive PWM regression plus protected normal observation",
+      "passed": true
+    },
+    {
+      "name": "RTL assertion / hold / recovery servo_normal_d1",
+      "passed": true
+    },
+    {
+      "name": "RTL assertion / hold / recovery servo_normal_d1_fine",
+      "passed": true
+    },
+    {
+      "name": "RTL assertion / hold / recovery servo_stopped_fault",
+      "passed": true
+    },
+    {
+      "name": "RTL assertion / hold / recovery servo_stopped_fault_fine",
+      "passed": true
+    },
+    {
+      "name": "RTL assertion / hold / recovery servo_startup_default_fault",
+      "passed": true
+    },
+    {
+      "name": "RTL assertion / hold / recovery servo_startup_default_fault_fine",
+      "passed": true
+    },
+    {
+      "name": "Unchanged synthetic LED calibrates at 100 uA / 27 C",
+      "passed": true,
+      "voltage_v": 2.799999049141781
+    },
+    {
+      "name": "DC tt servo level 0",
+      "passed": true,
+      "current_a": 2.252903558153108e-12
+    },
+    {
+      "name": "DC tt servo level 1",
+      "passed": true,
+      "current_a": 0.0001000260133401411
+    },
+    {
+      "name": "servo_normal_d1 / Normal same-condition charge area",
+      "passed": true
+    },
+    {
+      "name": "servo_normal_d1 / Normal high width >=950ns",
+      "passed": true
+    },
+    {
+      "name": "servo_normal_d1 / Normal low width >=950ns",
+      "passed": true
+    },
+    {
+      "name": "servo_normal_d1_fine / Normal same-condition charge area",
+      "passed": true
+    },
+    {
+      "name": "servo_normal_d1_fine / Normal high width >=950ns",
+      "passed": true
+    },
+    {
+      "name": "servo_normal_d1_fine / Normal low width >=950ns",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault / Candidate reference produces target current before fault",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault / Fault safe-current deadline",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault / Post-deadline held-fault off guard",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault / Positive fault tail <=10pC",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault / Negative fault tail <=20pC",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault / Negative LED peak <=10mA",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault / Synthetic LED reverse peak <=0.5V",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault_fine / Candidate reference produces target current before fault",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault_fine / Fault safe-current deadline",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault_fine / Post-deadline held-fault off guard",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault_fine / Positive fault tail <=10pC",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault_fine / Negative fault tail <=20pC",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault_fine / Negative LED peak <=10mA",
+      "passed": true
+    },
+    {
+      "name": "servo_stopped_fault_fine / Synthetic LED reverse peak <=0.5V",
+      "passed": true
+    },
+    {
+      "name": "servo_startup_default_fault / External asserted fault blocks reference-startup LED current",
+      "passed": false
+    },
+    {
+      "name": "servo_startup_default_fault_fine / External asserted fault blocks reference-startup LED current",
+      "passed": false
+    },
+    {
+      "name": "Servo normal lowest-code maxstep10->2ns convergence",
+      "passed": true,
+      "change_pct": 2.1198504063235646e-07
+    },
+    {
+      "name": "Servo stopped fault Q+ maxstep10->2ns convergence",
+      "passed": true,
+      "change_pct": 0.002516198773849787
+    },
+    {
+      "name": "Servo startup Q+ maxstep10->2ns convergence",
+      "passed": false,
+      "change_pct": 56.378945650104406
+    },
+    {
+      "name": "Baseline input bytes unchanged",
+      "passed": true
+    }
+  ],
+  "check_count": 36,
+  "transient_runs": 6,
+  "dc_runs": 2,
+  "LED_calibrations": 1,
+  "calibration_v": 2.799999049141781,
+  "results": [
+    {
+      "name": "servo_normal_d1",
+      "conditions": {
+        "name": "servo_normal_d1",
+        "duty": 1,
+        "fault_ns": -1,
+        "stop_ns": -1,
+        "stop_time_ns": 1070000,
+        "envelope": "tt",
+        "reference": "servo"
+      },
+      "dc_full_a": 0.0001000260133401411,
+      "analog_input_slew_s": 1e-08,
+      "average_current_a": 3.906015177519988e-07,
+      "charge_c": 1.9998797708902341e-10,
+      "area_error_pct": -0.03201646707693406,
+      "normal_high_min_s": 1.0023058683725694e-06,
+      "normal_low_min_s": 0.0002549976941316275,
+      "terminal_stress": {
+        "XFN": {
+          "VGS": {
+            "min_v": 0.0,
+            "max_v": 3.3,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.306035510402368,
+            "max_v": 3.299999992409608,
+            "max_abs_v": 3.306035510402368
+          },
+          "VDS": {
+            "min_v": -0.002718406349032243,
+            "max_v": 3.306035510402368,
+            "max_abs_v": 3.306035510402368
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.002718406349032243,
+            "max_v": 3.306035510402368,
+            "max_abs_v": 3.306035510402368
+          }
+        },
+        "XFP": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.306035510402368,
+            "max_v": 3.299999992409608,
+            "max_abs_v": 3.306035510402368
+          },
+          "VDS": {
+            "min_v": -3.3027184063490322,
+            "max_v": 0.0060355104023681605,
+            "max_abs_v": 3.3027184063490322
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.3027184063490322,
+            "max_v": 0.0060355104023681605,
+            "max_abs_v": 3.3027184063490322
+          }
+        },
+        "XNP0": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.322715114576953,
+            "max_v": 3.3000000645487124,
+            "max_abs_v": 3.322715114576953
+          },
+          "VDS": {
+            "min_v": -3.309445318558041,
+            "max_v": 0.022715114576953077,
+            "max_abs_v": 3.309445318558041
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.309445318558041,
+            "max_v": 0.022715114576953077,
+            "max_abs_v": 3.309445318558041
+          }
+        },
+        "XNP1": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.322715114576953,
+            "max_v": 3.309445318558041,
+            "max_abs_v": 3.322715114576953
+          },
+          "VDS": {
+            "min_v": -3.309445318558041,
+            "max_v": 0.022715114576953077,
+            "max_abs_v": 3.309445318558041
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.309445318558041,
+            "max_v": 0.022715114576953077,
+            "max_abs_v": 3.309445318558041
+          }
+        },
+        "XNP2": {
+          "VGS": {
+            "min_v": -3.3027184063490322,
+            "max_v": 0.0060355104023681605,
+            "max_abs_v": 3.3027184063490322
+          },
+          "VGD": {
+            "min_v": -3.3027176764393302,
+            "max_v": 3.309446982119517,
+            "max_abs_v": 3.309446982119517
+          },
+          "VDS": {
+            "min_v": -3.309445318558041,
+            "max_v": 0.022715114576953077,
+            "max_abs_v": 3.309445318558041
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.309445318558041,
+            "max_v": 0.022715114576953077,
+            "max_abs_v": 3.309445318558041
+          }
+        },
+        "XNN0": {
+          "VGS": {
+            "min_v": -0.1030475408569298,
+            "max_v": 3.300000032941846,
+            "max_abs_v": 3.300000032941846
+          },
+          "VGD": {
+            "min_v": -3.322715114576953,
+            "max_v": 3.3000000645487124,
+            "max_abs_v": 3.322715114576953
+          },
+          "VDS": {
+            "min_v": -0.0024002299131946903,
+            "max_v": 3.3152205770127368,
+            "max_abs_v": 3.3152205770127368
+          },
+          "VSB": {
+            "min_v": -0.007103469184600224,
+            "max_v": 0.2015111009784459,
+            "max_abs_v": 0.2015111009784459
+          },
+          "VDB": {
+            "min_v": -0.009445318558041154,
+            "max_v": 3.322715114576953,
+            "max_abs_v": 3.322715114576953
+          }
+        },
+        "XNN1": {
+          "VGS": {
+            "min_v": -0.1199587977617786,
+            "max_v": 3.303554662177482,
+            "max_abs_v": 3.303554662177482
+          },
+          "VGD": {
+            "min_v": -0.007494546067919922,
+            "max_v": 3.3071034691846,
+            "max_abs_v": 3.3071034691846
+          },
+          "VDS": {
+            "min_v": -0.1124642673695378,
+            "max_v": 0.10332063353143689,
+            "max_abs_v": 0.1124642673695378
+          },
+          "VSB": {
+            "min_v": -0.003554662177481977,
+            "max_v": 0.1199587977617786,
+            "max_abs_v": 0.1199587977617786
+          },
+          "VDB": {
+            "min_v": -0.007103469184600224,
+            "max_v": 0.2015111009784459,
+            "max_abs_v": 0.2015111009784459
+          }
+        },
+        "XNN2": {
+          "VGS": {
+            "min_v": -0.002718406349032243,
+            "max_v": 3.306035510402368,
+            "max_abs_v": 3.306035510402368
+          },
+          "VGD": {
+            "min_v": -0.003616611606569703,
+            "max_v": 3.306424782659112,
+            "max_abs_v": 3.306424782659112
+          },
+          "VDS": {
+            "min_v": -0.003554662177481977,
+            "max_v": 0.1199587977617786,
+            "max_abs_v": 0.1199587977617786
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.003554662177481977,
+            "max_v": 0.1199587977617786,
+            "max_abs_v": 0.1199587977617786
+          }
+        },
+        "XON": {
+          "VGS": {
+            "min_v": -0.009445318558041154,
+            "max_v": 3.322715114576953,
+            "max_abs_v": 3.322715114576953
+          },
+          "VGD": {
+            "min_v": -3.309443849925928,
+            "max_v": 3.322648181817024,
+            "max_abs_v": 3.322648181817024
+          },
+          "VDS": {
+            "min_v": -0.01111820980015658,
+            "max_v": 3.33781096642513,
+            "max_abs_v": 3.33781096642513
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.01111820980015658,
+            "max_v": 3.33781096642513,
+            "max_abs_v": 3.33781096642513
+          }
+        },
+        "XOP": {
+          "VGS": {
+            "min_v": -3.309445318558041,
+            "max_v": 0.022715114576953077,
+            "max_abs_v": 3.309445318558041
+          },
+          "VGD": {
+            "min_v": -3.309443849925928,
+            "max_v": 3.322648181817024,
+            "max_abs_v": 3.322648181817024
+          },
+          "VDS": {
+            "min_v": -3.3111182098001564,
+            "max_v": 0.037810966425130044,
+            "max_abs_v": 3.3111182098001564
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.3111182098001564,
+            "max_v": 0.037810966425130044,
+            "max_abs_v": 3.3111182098001564
+          }
+        },
+        "XLN0": {
+          "VGS": {
+            "min_v": 0.0,
+            "max_v": 3.3,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -5.000540377441781,
+            "max_v": 3.1931993268367793,
+            "max_abs_v": 5.000540377441781
+          },
+          "VDS": {
+            "min_v": 0.1053990629104482,
+            "max_v": 5.000540377441781,
+            "max_abs_v": 5.000540377441781
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": 0.1053990629104482,
+            "max_v": 5.000540377441781,
+            "max_abs_v": 5.000540377441781
+          }
+        },
+        "XCP": {
+          "VGS": {
+            "min_v": -4.894600937089551,
+            "max_v": 0.000540377441780926,
+            "max_abs_v": 4.894600937089551
+          },
+          "VGD": {
+            "min_v": -4.89459942919258,
+            "max_v": 2.8006611228181413,
+            "max_abs_v": 4.89459942919258
+          },
+          "VDS": {
+            "min_v": -2.800704870379784,
+            "max_v": 0.006867722700357959,
+            "max_abs_v": 2.800704870379784
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -2.800704870379784,
+            "max_v": 0.006867722700357959,
+            "max_abs_v": 2.800704870379784
+          }
+        },
+        "joint_MOUT_declared_ports": {
+          "VGS": {
+            "min_v": -5.005427117248327,
+            "max_v": -0.8277200019308872,
+            "max_abs_v": 5.005427117248327
+          },
+          "VGD": {
+            "min_v": -0.0007663140034661488,
+            "max_v": 1.370628529491947,
+            "max_abs_v": 1.370628529491947
+          },
+          "VDS": {
+            "min_v": -5.006949283674925,
+            "max_v": -2.197563344440413,
+            "max_abs_v": 5.006949283674925
+          },
+          "VSB": {
+            "min_v": 2.197563344440413,
+            "max_v": 5.006949283674925,
+            "max_abs_v": 5.006949283674925
+          }
+        }
+      },
+      "stress_scope": "New pre-layout 12 MOS declared D/G/S/B plus extracted MOUT declared ports (D/S may be swapped by extraction); capture only, no HCI/TDDB/latch-up qualification.",
+      "checks": [
+        {
+          "name": "Normal same-condition charge area",
+          "passed": true
+        },
+        {
+          "name": "Normal high width >=950ns",
+          "passed": true
+        },
+        {
+          "name": "Normal low width >=950ns",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_waveform_sha256": "3fa3536b32ac1da7fb7882df1adf5a19a143e25fac873cca7685038fe1d9fb2f",
+      "compact_waveform_sha256": "252410ba3814a2b2e52af270126d5cef20a83ca2fe115c909efb70b45b74176b",
+      "deck_sha256": "38d4eb826fc9a34c41edde4808ed2cd854dee40cedad6d49c3220fc5184663b9",
+      "rtl_events_sha256": "6cfdb347265d86e66ac6edf770c8b753d506959daf9e2bae6cbb15857d96b2a2",
+      "csvpath": "evidence/safety/servo-waveforms/servo_normal_d1/waveform.csv",
+      "csv_sha256": "4351007f3e54a54087a9282c1b99ca89bf55c391c2a108203561ed7257bb2dc2",
+      "rtl_csvpath": "evidence/safety/servo-waveforms/servo_normal_d1/rtl-events.csv",
+      "rtl_csv_sha256": "6cfdb347265d86e66ac6edf770c8b753d506959daf9e2bae6cbb15857d96b2a2"
+    },
+    {
+      "name": "servo_normal_d1_fine",
+      "conditions": {
+        "name": "servo_normal_d1_fine",
+        "duty": 1,
+        "fault_ns": -1,
+        "stop_ns": -1,
+        "stop_time_ns": 1070000,
+        "envelope": "tt",
+        "reference": "servo",
+        "maxstep_ns": 2
+      },
+      "dc_full_a": 0.0001000260133401411,
+      "analog_input_slew_s": 1e-08,
+      "average_current_a": 3.9060151692398204e-07,
+      "charge_c": 1.9998797666507882e-10,
+      "area_error_pct": -0.03201667899409566,
+      "normal_high_min_s": 1.002305868317492e-06,
+      "normal_low_min_s": 0.00025499769413168233,
+      "terminal_stress": {
+        "XFN": {
+          "VGS": {
+            "min_v": 0.0,
+            "max_v": 3.3,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.30603551122759,
+            "max_v": 3.299999992409608,
+            "max_abs_v": 3.30603551122759
+          },
+          "VDS": {
+            "min_v": -0.002720579447228154,
+            "max_v": 3.30603551122759,
+            "max_abs_v": 3.30603551122759
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.002720579447228154,
+            "max_v": 3.30603551122759,
+            "max_abs_v": 3.30603551122759
+          }
+        },
+        "XFP": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.30603551122759,
+            "max_v": 3.299999992409608,
+            "max_abs_v": 3.30603551122759
+          },
+          "VDS": {
+            "min_v": -3.302720579447228,
+            "max_v": 0.006035511227590273,
+            "max_abs_v": 3.302720579447228
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.302720579447228,
+            "max_v": 0.006035511227590273,
+            "max_abs_v": 3.302720579447228
+          }
+        },
+        "XNP0": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.322702377354313,
+            "max_v": 3.3000000645543577,
+            "max_abs_v": 3.322702377354313
+          },
+          "VDS": {
+            "min_v": -3.3094461061085183,
+            "max_v": 0.022702377354313352,
+            "max_abs_v": 3.3094461061085183
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.3094461061085183,
+            "max_v": 0.022702377354313352,
+            "max_abs_v": 3.3094461061085183
+          }
+        },
+        "XNP1": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.322702377354313,
+            "max_v": 3.3094461061085183,
+            "max_abs_v": 3.322702377354313
+          },
+          "VDS": {
+            "min_v": -3.3094461061085183,
+            "max_v": 0.022702377354313352,
+            "max_abs_v": 3.3094461061085183
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.3094461061085183,
+            "max_v": 0.022702377354313352,
+            "max_abs_v": 3.3094461061085183
+          }
+        },
+        "XNP2": {
+          "VGS": {
+            "min_v": -3.302720579447228,
+            "max_v": 0.006035511227590273,
+            "max_abs_v": 3.302720579447228
+          },
+          "VGD": {
+            "min_v": -3.302719423233427,
+            "max_v": 3.3094476345806765,
+            "max_abs_v": 3.3094476345806765
+          },
+          "VDS": {
+            "min_v": -3.3094461061085183,
+            "max_v": 0.022702377354313352,
+            "max_abs_v": 3.3094461061085183
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.3094461061085183,
+            "max_v": 0.022702377354313352,
+            "max_abs_v": 3.3094461061085183
+          }
+        },
+        "XNN0": {
+          "VGS": {
+            "min_v": -0.1029268568348393,
+            "max_v": 3.300000032944782,
+            "max_abs_v": 3.300000032944782
+          },
+          "VGD": {
+            "min_v": -3.322702377354313,
+            "max_v": 3.3000000645543577,
+            "max_abs_v": 3.322702377354313
+          },
+          "VDS": {
+            "min_v": -0.002400201038720108,
+            "max_v": 3.315207839821536,
+            "max_abs_v": 3.315207839821536
+          },
+          "VSB": {
+            "min_v": -0.007103013960227437,
+            "max_v": 0.2015114096828547,
+            "max_abs_v": 0.2015114096828547
+          },
+          "VDB": {
+            "min_v": -0.009446106108518445,
+            "max_v": 3.322702377354313,
+            "max_abs_v": 3.322702377354313
+          }
+        },
+        "XNN1": {
+          "VGS": {
+            "min_v": -0.1198070008628797,
+            "max_v": 3.3035543600866415,
+            "max_abs_v": 3.3035543600866415
+          },
+          "VGD": {
+            "min_v": -0.007494546068863262,
+            "max_v": 3.3071030139602273,
+            "max_abs_v": 3.3071030139602273
+          },
+          "VDS": {
+            "min_v": -0.11231247048184453,
+            "max_v": 0.10332063035846557,
+            "max_abs_v": 0.11231247048184453
+          },
+          "VSB": {
+            "min_v": -0.003554360086641784,
+            "max_v": 0.1198070008628797,
+            "max_abs_v": 0.1198070008628797
+          },
+          "VDB": {
+            "min_v": -0.007103013960227437,
+            "max_v": 0.2015114096828547,
+            "max_abs_v": 0.2015114096828547
+          }
+        },
+        "XNN2": {
+          "VGS": {
+            "min_v": -0.002720579447228154,
+            "max_v": 3.30603551122759,
+            "max_abs_v": 3.30603551122759
+          },
+          "VGD": {
+            "min_v": -0.003618518882916546,
+            "max_v": 3.306424785363015,
+            "max_abs_v": 3.306424785363015
+          },
+          "VDS": {
+            "min_v": -0.003554360086641784,
+            "max_v": 0.1198070008628797,
+            "max_abs_v": 0.1198070008628797
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.003554360086641784,
+            "max_v": 0.1198070008628797,
+            "max_abs_v": 0.1198070008628797
+          }
+        },
+        "XON": {
+          "VGS": {
+            "min_v": -0.009446106108518445,
+            "max_v": 3.322702377354313,
+            "max_abs_v": 3.322702377354313
+          },
+          "VGD": {
+            "min_v": -3.3094442714504235,
+            "max_v": 3.322656854099043,
+            "max_abs_v": 3.322656854099043
+          },
+          "VDS": {
+            "min_v": -0.01111346945381603,
+            "max_v": 3.337867822769065,
+            "max_abs_v": 3.337867822769065
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.01111346945381603,
+            "max_v": 3.337867822769065,
+            "max_abs_v": 3.337867822769065
+          }
+        },
+        "XOP": {
+          "VGS": {
+            "min_v": -3.3094461061085183,
+            "max_v": 0.022702377354313352,
+            "max_abs_v": 3.3094461061085183
+          },
+          "VGD": {
+            "min_v": -3.3094442714504235,
+            "max_v": 3.322656854099043,
+            "max_abs_v": 3.322656854099043
+          },
+          "VDS": {
+            "min_v": -3.311113469453816,
+            "max_v": 0.037867822769065196,
+            "max_abs_v": 3.311113469453816
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.311113469453816,
+            "max_v": 0.037867822769065196,
+            "max_abs_v": 3.311113469453816
+          }
+        },
+        "XLN0": {
+          "VGS": {
+            "min_v": 0.0,
+            "max_v": 3.3,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -5.000540377510949,
+            "max_v": 3.1931993268367793,
+            "max_abs_v": 5.000540377510949
+          },
+          "VDS": {
+            "min_v": 0.1054000780342803,
+            "max_v": 5.000540377510949,
+            "max_abs_v": 5.000540377510949
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": 0.1054000780342803,
+            "max_v": 5.000540377510949,
+            "max_abs_v": 5.000540377510949
+          }
+        },
+        "XCP": {
+          "VGS": {
+            "min_v": -4.89459992196572,
+            "max_v": 0.0005403775109487086,
+            "max_abs_v": 4.89459992196572
+          },
+          "VGD": {
+            "min_v": -4.894598058670667,
+            "max_v": 2.8006611277196702,
+            "max_abs_v": 4.894598058670667
+          },
+          "VDS": {
+            "min_v": -2.800704876489511,
+            "max_v": 0.006868290926430376,
+            "max_abs_v": 2.800704876489511
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -2.800704876489511,
+            "max_v": 0.006868290926430376,
+            "max_abs_v": 2.800704876489511
+          }
+        },
+        "joint_MOUT_declared_ports": {
+          "VGS": {
+            "min_v": -5.005426893997095,
+            "max_v": -0.8277183678231559,
+            "max_abs_v": 5.005426893997095
+          },
+          "VGD": {
+            "min_v": -0.0007662602131912733,
+            "max_v": 1.370628529451419,
+            "max_abs_v": 1.370628529451419
+          },
+          "VDS": {
+            "min_v": -5.006949140568914,
+            "max_v": -2.197563343475536,
+            "max_abs_v": 5.006949140568914
+          },
+          "VSB": {
+            "min_v": 2.197563343475536,
+            "max_v": 5.006949140568914,
+            "max_abs_v": 5.006949140568914
+          }
+        }
+      },
+      "stress_scope": "New pre-layout 12 MOS declared D/G/S/B plus extracted MOUT declared ports (D/S may be swapped by extraction); capture only, no HCI/TDDB/latch-up qualification.",
+      "checks": [
+        {
+          "name": "Normal same-condition charge area",
+          "passed": true
+        },
+        {
+          "name": "Normal high width >=950ns",
+          "passed": true
+        },
+        {
+          "name": "Normal low width >=950ns",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_waveform_sha256": "40d3b87f73c4da4330d13fcd4fbb8792205f89c005138d111fac834ab5798ce1",
+      "compact_waveform_sha256": "ea79544562489f115cecdcf9745bad6e7d2853d39d062ea68a89100a0280c7ae",
+      "deck_sha256": "a7d2797c692c3605eeb6115be8c71cbdb07d9664153d95740a9050906e807083",
+      "rtl_events_sha256": "6cfdb347265d86e66ac6edf770c8b753d506959daf9e2bae6cbb15857d96b2a2",
+      "csvpath": "evidence/safety/servo-waveforms/servo_normal_d1_fine/waveform.csv",
+      "csv_sha256": "79bd9ec5b2182814232b883a1905f3c9516b85abbe9572beb3f356ddd1e558fe",
+      "rtl_csvpath": "evidence/safety/servo-waveforms/servo_normal_d1_fine/rtl-events.csv",
+      "rtl_csv_sha256": "6cfdb347265d86e66ac6edf770c8b753d506959daf9e2bae6cbb15857d96b2a2"
+    },
+    {
+      "name": "servo_stopped_fault",
+      "conditions": {
+        "name": "servo_stopped_fault",
+        "duty": 256,
+        "fault_ns": 50125,
+        "stop_ns": 47700,
+        "stop_time_ns": 66125,
+        "envelope": "tt",
+        "reference": "servo"
+      },
+      "dc_full_a": 0.0001000260133401411,
+      "analog_input_slew_s": 1e-08,
+      "fault_input_half_v_time_s": 5.013e-05,
+      "safety_gate_half_fall_s": 5.013128344046048e-05,
+      "joint_pwm_half_fall_s": 5.013168043047304e-05,
+      "LED_half_full_fall_s": 5.013e-05,
+      "stable_safe_current_time_s": 5.032910051591358e-05,
+      "fault_to_safe_current_s": 2.041005159135722e-07,
+      "post_deadline_max_abs_current_a": 5.690953833181745e-11,
+      "tail_charge": {
+        "signed_c": -6.9199287543711e-12,
+        "positive_c": 4.100923660956363e-13,
+        "negative_c": -7.330021120466737e-12
+      },
+      "pre_fault_current_a": 0.00010002596438448466,
+      "reference_current_while_fault_a": 9.92739301460593e-05,
+      "negative_LED_current_peak_a": 0.0002052752753560903,
+      "LED_reverse_voltage_peak_v": 0.0,
+      "model_LED_total_charge": {
+        "signed_c": -6.9199282218737324e-12,
+        "positive_c": 4.1009236613105543e-13,
+        "negative_c": -7.330020588004788e-12
+      },
+      "model_LED_capacitive_charge": {
+        "signed_c": -7.548741521998629e-12,
+        "positive_c": 2.6780304543341387e-16,
+        "negative_c": -7.549009325044063e-12
+      },
+      "model_LED_conduction_charge": {
+        "signed_c": 6.28813300124897e-13,
+        "positive_c": 6.28813300124897e-13,
+        "negative_c": 0.0
+      },
+      "clamp_supply_charge": {
+        "signed_c": 5.65129792880805e-11,
+        "positive_c": 5.651321767010522e-11,
+        "negative_c": -2.3838202472170587e-16
+      },
+      "MOUT_model_drain_charge": {
+        "signed_c": 7.178655679201306e-13,
+        "positive_c": 7.178655679201306e-13,
+        "negative_c": 0.0
+      },
+      "terminal_stress": {
+        "XFN": {
+          "VGS": {
+            "min_v": 0.0,
+            "max_v": 3.3,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.301032406129764,
+            "max_v": 3.2999999925548456,
+            "max_abs_v": 3.301032406129764
+          },
+          "VDS": {
+            "min_v": -0.002720593266806562,
+            "max_v": 3.310052837110064,
+            "max_abs_v": 3.310052837110064
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.002720593266806562,
+            "max_v": 3.310052837110064,
+            "max_abs_v": 3.310052837110064
+          }
+        },
+        "XFP": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.301032406129764,
+            "max_v": 3.2999999925548456,
+            "max_abs_v": 3.301032406129764
+          },
+          "VDS": {
+            "min_v": -3.3027205932668062,
+            "max_v": 0.010052837110064328,
+            "max_abs_v": 3.3027205932668062
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.3027205932668062,
+            "max_v": 0.010052837110064328,
+            "max_abs_v": 3.3027205932668062
+          }
+        },
+        "XNP0": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.322715114576953,
+            "max_v": 3.3061063855432677,
+            "max_abs_v": 3.322715114576953
+          },
+          "VDS": {
+            "min_v": -3.3061063855432677,
+            "max_v": 0.040161411734572994,
+            "max_abs_v": 3.3061063855432677
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.3061063855432677,
+            "max_v": 0.040161411734572994,
+            "max_abs_v": 3.3061063855432677
+          }
+        },
+        "XNP1": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.340161411734573,
+            "max_v": 3.299999981022783,
+            "max_abs_v": 3.340161411734573
+          },
+          "VDS": {
+            "min_v": -3.3061063855432677,
+            "max_v": 0.040161411734572994,
+            "max_abs_v": 3.3061063855432677
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.3061063855432677,
+            "max_v": 0.040161411734572994,
+            "max_abs_v": 3.3061063855432677
+          }
+        },
+        "XNP2": {
+          "VGS": {
+            "min_v": -3.3027205932668062,
+            "max_v": 0.010052837110064328,
+            "max_abs_v": 3.3027205932668062
+          },
+          "VGD": {
+            "min_v": -3.3027183884908036,
+            "max_v": 3.3159902794415332,
+            "max_abs_v": 3.3159902794415332
+          },
+          "VDS": {
+            "min_v": -3.3061063855432677,
+            "max_v": 0.040161411734572994,
+            "max_abs_v": 3.3061063855432677
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.3061063855432677,
+            "max_v": 0.040161411734572994,
+            "max_abs_v": 3.3061063855432677
+          }
+        },
+        "XNN0": {
+          "VGS": {
+            "min_v": -1.815370933664493,
+            "max_v": 3.3060557667834503,
+            "max_abs_v": 3.3060557667834503
+          },
+          "VGD": {
+            "min_v": -3.322715114576953,
+            "max_v": 3.3061063855432677,
+            "max_abs_v": 3.322715114576953
+          },
+          "VDS": {
+            "min_v": -0.00013521238679282607,
+            "max_v": 3.3152205770127368,
+            "max_abs_v": 3.3152205770127368
+          },
+          "VSB": {
+            "min_v": -0.006055766783450361,
+            "max_v": 2.233834412888482,
+            "max_abs_v": 2.233834412888482
+          },
+          "VDB": {
+            "min_v": -0.006106385543267956,
+            "max_v": 3.340161411734573,
+            "max_abs_v": 3.340161411734573
+          }
+        },
+        "XNN1": {
+          "VGS": {
+            "min_v": -0.3021452161462379,
+            "max_v": 3.3000019511544267,
+            "max_abs_v": 3.3000019511544267
+          },
+          "VGD": {
+            "min_v": -2.233834412888482,
+            "max_v": 3.3000000457501812,
+            "max_abs_v": 3.3000000457501812
+          },
+          "VDS": {
+            "min_v": -0.1124642673695378,
+            "max_v": 2.2338344125273886,
+            "max_abs_v": 2.2338344125273886
+          },
+          "VSB": {
+            "min_v": -0.003714802401487981,
+            "max_v": 0.3590452555764714,
+            "max_abs_v": 0.3590452555764714
+          },
+          "VDB": {
+            "min_v": -0.006055766783450361,
+            "max_v": 2.233834412888482,
+            "max_abs_v": 2.233834412888482
+          }
+        },
+        "XNN2": {
+          "VGS": {
+            "min_v": -0.002720593266806562,
+            "max_v": 3.310052837110064,
+            "max_abs_v": 3.310052837110064
+          },
+          "VGD": {
+            "min_v": -0.309054244726222,
+            "max_v": 3.3135814089870603,
+            "max_abs_v": 3.3135814089870603
+          },
+          "VDS": {
+            "min_v": -0.003714802401487981,
+            "max_v": 0.3590452555764714,
+            "max_abs_v": 0.3590452555764714
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.003714802401487981,
+            "max_v": 0.3590452555764714,
+            "max_abs_v": 0.3590452555764714
+          }
+        },
+        "XON": {
+          "VGS": {
+            "min_v": -0.006106385543267956,
+            "max_v": 3.340161411734573,
+            "max_abs_v": 3.340161411734573
+          },
+          "VGD": {
+            "min_v": -3.30610362797633,
+            "max_v": 3.340018207984172,
+            "max_abs_v": 3.340018207984172
+          },
+          "VDS": {
+            "min_v": -0.01111820980015658,
+            "max_v": 3.376640785490049,
+            "max_abs_v": 3.376640785490049
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.01111820980015658,
+            "max_v": 3.376640785490049,
+            "max_abs_v": 3.376640785490049
+          }
+        },
+        "XOP": {
+          "VGS": {
+            "min_v": -3.3061063855432677,
+            "max_v": 0.040161411734572994,
+            "max_abs_v": 3.3061063855432677
+          },
+          "VGD": {
+            "min_v": -3.30610362797633,
+            "max_v": 3.340018207984172,
+            "max_abs_v": 3.340018207984172
+          },
+          "VDS": {
+            "min_v": -3.3111182098001564,
+            "max_v": 0.07664078549004927,
+            "max_abs_v": 3.3111182098001564
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.3111182098001564,
+            "max_v": 0.07664078549004927,
+            "max_abs_v": 3.3111182098001564
+          }
+        },
+        "XLN0": {
+          "VGS": {
+            "min_v": 0.0,
+            "max_v": 3.3,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -5.000148951589182,
+            "max_v": 3.193199327804372,
+            "max_abs_v": 5.000148951589182
+          },
+          "VDS": {
+            "min_v": 0.1053990629104482,
+            "max_v": 5.013022254779642,
+            "max_abs_v": 5.013022254779642
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": 0.1053990629104482,
+            "max_v": 5.013022254779642,
+            "max_abs_v": 5.013022254779642
+          }
+        },
+        "XCP": {
+          "VGS": {
+            "min_v": -4.894600937089551,
+            "max_v": 0.01302225477964214,
+            "max_abs_v": 4.894600937089551
+          },
+          "VGD": {
+            "min_v": -4.89459942919258,
+            "max_v": 2.813042209787827,
+            "max_abs_v": 4.89459942919258
+          },
+          "VDS": {
+            "min_v": -2.800090838296227,
+            "max_v": 0.006867722700357959,
+            "max_abs_v": 2.800090838296227
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -2.800090838296227,
+            "max_v": 0.006867722700357959,
+            "max_abs_v": 2.800090838296227
+          }
+        },
+        "joint_MOUT_declared_ports": {
+          "VGS": {
+            "min_v": -5.005427117248327,
+            "max_v": -0.828714777815841,
+            "max_abs_v": 5.005427117248327
+          },
+          "VGD": {
+            "min_v": -0.0007663140034661488,
+            "max_v": 1.37226217335869,
+            "max_abs_v": 1.37226217335869
+          },
+          "VDS": {
+            "min_v": -5.006949283674925,
+            "max_v": -2.198285328189438,
+            "max_abs_v": 5.006949283674925
+          },
+          "VSB": {
+            "min_v": 2.198285328189438,
+            "max_v": 5.006949283674925,
+            "max_abs_v": 5.006949283674925
+          }
+        }
+      },
+      "stress_scope": "New pre-layout 12 MOS declared D/G/S/B plus extracted MOUT declared ports (D/S may be swapped by extraction); capture only, no HCI/TDDB/latch-up qualification.",
+      "checks": [
+        {
+          "name": "Candidate reference produces target current before fault",
+          "passed": true
+        },
+        {
+          "name": "Fault safe-current deadline",
+          "passed": true
+        },
+        {
+          "name": "Post-deadline held-fault off guard",
+          "passed": true
+        },
+        {
+          "name": "Positive fault tail <=10pC",
+          "passed": true
+        },
+        {
+          "name": "Negative fault tail <=20pC",
+          "passed": true
+        },
+        {
+          "name": "Negative LED peak <=10mA",
+          "passed": true
+        },
+        {
+          "name": "Synthetic LED reverse peak <=0.5V",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_waveform_sha256": "5f933e20c8dd2f99a8963c3da2de584a1be344ce109fe3934edb678826050e9e",
+      "compact_waveform_sha256": "280929cd56c5dc67eccb1b9a5e6a468f25258b26fbad0b8942e3187c902ce67e",
+      "deck_sha256": "6db23ffcf47d085e5c688060883e76f8ea0556c26ee1652d23872ce82bd5bcdd",
+      "rtl_events_sha256": "22b38ba48d9a35fae0e79f02e5d1383de4611f8b410fa6b8627511957c55b319",
+      "csvpath": "evidence/safety/servo-waveforms/servo_stopped_fault/waveform.csv",
+      "csv_sha256": "57c66f4ea646578649d1bcc888211c7a9480c072903e1290555a9a6ec40cd9a0",
+      "rtl_csvpath": "evidence/safety/servo-waveforms/servo_stopped_fault/rtl-events.csv",
+      "rtl_csv_sha256": "22b38ba48d9a35fae0e79f02e5d1383de4611f8b410fa6b8627511957c55b319"
+    },
+    {
+      "name": "servo_stopped_fault_fine",
+      "conditions": {
+        "name": "servo_stopped_fault_fine",
+        "duty": 256,
+        "fault_ns": 50125,
+        "stop_ns": 47700,
+        "stop_time_ns": 66125,
+        "envelope": "tt",
+        "reference": "servo",
+        "maxstep_ns": 2
+      },
+      "dc_full_a": 0.0001000260133401411,
+      "analog_input_slew_s": 1e-08,
+      "fault_input_half_v_time_s": 5.013e-05,
+      "safety_gate_half_fall_s": 5.0131283448771675e-05,
+      "joint_pwm_half_fall_s": 5.013168043869062e-05,
+      "LED_half_full_fall_s": 5.013e-05,
+      "stable_safe_current_time_s": 5.032868949688458e-05,
+      "fault_to_safe_current_s": 2.0368949688457288e-07,
+      "post_deadline_max_abs_current_a": 1.594677066785177e-10,
+      "tail_charge": {
+        "signed_c": -6.919927267049727e-12,
+        "positive_c": 4.1010268483472367e-13,
+        "negative_c": -7.33002995188445e-12
+      },
+      "pre_fault_current_a": 0.00010002601302479516,
+      "reference_current_while_fault_a": 9.927379305226743e-05,
+      "negative_LED_current_peak_a": 0.0002052752819270475,
+      "LED_reverse_voltage_peak_v": 0.0,
+      "model_LED_total_charge": {
+        "signed_c": -6.919926779356398e-12,
+        "positive_c": 4.101026848543512e-13,
+        "negative_c": -7.33002946421075e-12
+      },
+      "model_LED_capacitive_charge": {
+        "signed_c": -7.54874138277107e-12,
+        "positive_c": 2.7635004873789235e-16,
+        "negative_c": -7.549017732819807e-12
+      },
+      "model_LED_conduction_charge": {
+        "signed_c": 6.288146034146726e-13,
+        "positive_c": 6.288146034146726e-13,
+        "negative_c": 0.0
+      },
+      "clamp_supply_charge": {
+        "signed_c": 5.651297815750684e-11,
+        "positive_c": 5.6513216604392286e-11,
+        "negative_c": -2.3844688543982297e-16
+      },
+      "MOUT_model_drain_charge": {
+        "signed_c": 7.178663891392132e-13,
+        "positive_c": 7.178663891392132e-13,
+        "negative_c": 0.0
+      },
+      "terminal_stress": {
+        "XFN": {
+          "VGS": {
+            "min_v": 0.0,
+            "max_v": 3.3,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.301032360522176,
+            "max_v": 3.2999999925499344,
+            "max_abs_v": 3.301032360522176
+          },
+          "VDS": {
+            "min_v": -0.002720579447228154,
+            "max_v": 3.310055572907837,
+            "max_abs_v": 3.310055572907837
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.002720579447228154,
+            "max_v": 3.310055572907837,
+            "max_abs_v": 3.310055572907837
+          }
+        },
+        "XFP": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.301032360522176,
+            "max_v": 3.2999999925499344,
+            "max_abs_v": 3.301032360522176
+          },
+          "VDS": {
+            "min_v": -3.302720579447228,
+            "max_v": 0.010055572907837096,
+            "max_abs_v": 3.302720579447228
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.302720579447228,
+            "max_v": 0.010055572907837096,
+            "max_abs_v": 3.302720579447228
+          }
+        },
+        "XNP0": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.322702377354313,
+            "max_v": 3.306108916791058,
+            "max_abs_v": 3.322702377354313
+          },
+          "VDS": {
+            "min_v": -3.306108916791058,
+            "max_v": 0.04014052523394929,
+            "max_abs_v": 3.306108916791058
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.306108916791058,
+            "max_v": 0.04014052523394929,
+            "max_abs_v": 3.306108916791058
+          }
+        },
+        "XNP1": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.340140525233949,
+            "max_v": 3.299999981981231,
+            "max_abs_v": 3.340140525233949
+          },
+          "VDS": {
+            "min_v": -3.306108916791058,
+            "max_v": 0.04014052523394929,
+            "max_abs_v": 3.306108916791058
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.306108916791058,
+            "max_v": 0.04014052523394929,
+            "max_abs_v": 3.306108916791058
+          }
+        },
+        "XNP2": {
+          "VGS": {
+            "min_v": -3.302720579447228,
+            "max_v": 0.010055572907837096,
+            "max_abs_v": 3.302720579447228
+          },
+          "VGD": {
+            "min_v": -3.302719423233427,
+            "max_v": 3.316007120514106,
+            "max_abs_v": 3.316007120514106
+          },
+          "VDS": {
+            "min_v": -3.306108916791058,
+            "max_v": 0.04014052523394929,
+            "max_abs_v": 3.306108916791058
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.306108916791058,
+            "max_v": 0.04014052523394929,
+            "max_abs_v": 3.306108916791058
+          }
+        },
+        "XNN0": {
+          "VGS": {
+            "min_v": -1.815334431694873,
+            "max_v": 3.30605666427064,
+            "max_abs_v": 3.30605666427064
+          },
+          "VGD": {
+            "min_v": -3.322702377354313,
+            "max_v": 3.306108916791058,
+            "max_abs_v": 3.322702377354313
+          },
+          "VDS": {
+            "min_v": -0.000135138478481997,
+            "max_v": 3.315207839821536,
+            "max_abs_v": 3.315207839821536
+          },
+          "VSB": {
+            "min_v": -0.00605666427064031,
+            "max_v": 2.233834033911789,
+            "max_abs_v": 2.233834033911789
+          },
+          "VDB": {
+            "min_v": -0.006108916791057808,
+            "max_v": 3.340140525233949,
+            "max_abs_v": 3.340140525233949
+          }
+        },
+        "XNN1": {
+          "VGS": {
+            "min_v": -0.3019691191919011,
+            "max_v": 3.3000019257158018,
+            "max_abs_v": 3.3000019257158018
+          },
+          "VGD": {
+            "min_v": -2.233834033911789,
+            "max_v": 3.300000042457378,
+            "max_abs_v": 3.300000042457378
+          },
+          "VDS": {
+            "min_v": -0.11231247048184453,
+            "max_v": 2.233834033896771,
+            "max_abs_v": 2.233834033896771
+          },
+          "VSB": {
+            "min_v": -0.003716679344451938,
+            "max_v": 0.3590434252187405,
+            "max_abs_v": 0.3590434252187405
+          },
+          "VDB": {
+            "min_v": -0.00605666427064031,
+            "max_v": 2.233834033911789,
+            "max_abs_v": 2.233834033911789
+          }
+        },
+        "XNN2": {
+          "VGS": {
+            "min_v": -0.002720579447228154,
+            "max_v": 3.310055572907837,
+            "max_abs_v": 3.310055572907837
+          },
+          "VGD": {
+            "min_v": -0.30905262272792666,
+            "max_v": 3.313585428151598,
+            "max_abs_v": 3.313585428151598
+          },
+          "VDS": {
+            "min_v": -0.003716679344451938,
+            "max_v": 0.3590434252187405,
+            "max_abs_v": 0.3590434252187405
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.003716679344451938,
+            "max_v": 0.3590434252187405,
+            "max_abs_v": 0.3590434252187405
+          }
+        },
+        "XON": {
+          "VGS": {
+            "min_v": -0.006108916791057808,
+            "max_v": 3.340140525233949,
+            "max_abs_v": 3.340140525233949
+          },
+          "VGD": {
+            "min_v": -3.306103160314784,
+            "max_v": 3.3400150996146043,
+            "max_abs_v": 3.3400150996146043
+          },
+          "VDS": {
+            "min_v": -0.01111807914537503,
+            "max_v": 3.376639047651475,
+            "max_abs_v": 3.376639047651475
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.01111807914537503,
+            "max_v": 3.376639047651475,
+            "max_abs_v": 3.376639047651475
+          }
+        },
+        "XOP": {
+          "VGS": {
+            "min_v": -3.306108916791058,
+            "max_v": 0.04014052523394929,
+            "max_abs_v": 3.306108916791058
+          },
+          "VGD": {
+            "min_v": -3.306103160314784,
+            "max_v": 3.3400150996146043,
+            "max_abs_v": 3.3400150996146043
+          },
+          "VDS": {
+            "min_v": -3.3111180791453747,
+            "max_v": 0.07663904765147533,
+            "max_abs_v": 3.3111180791453747
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.3111180791453747,
+            "max_v": 0.07663904765147533,
+            "max_abs_v": 3.3111180791453747
+          }
+        },
+        "XLN0": {
+          "VGS": {
+            "min_v": 0.0,
+            "max_v": 3.3,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -5.000148781040379,
+            "max_v": 3.193199328997623,
+            "max_abs_v": 5.000148781040379
+          },
+          "VDS": {
+            "min_v": 0.1054000780342803,
+            "max_v": 5.013049360688759,
+            "max_abs_v": 5.013049360688759
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": 0.1054000780342803,
+            "max_v": 5.013049360688759,
+            "max_abs_v": 5.013049360688759
+          }
+        },
+        "XCP": {
+          "VGS": {
+            "min_v": -4.89459992196572,
+            "max_v": 0.013049360688759393,
+            "max_abs_v": 4.89459992196572
+          },
+          "VGD": {
+            "min_v": -4.894598058670667,
+            "max_v": 2.8130693015984316,
+            "max_abs_v": 4.894598058670667
+          },
+          "VDS": {
+            "min_v": -2.800090970803114,
+            "max_v": 0.006868290926430376,
+            "max_abs_v": 2.800090970803114
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -2.800090970803114,
+            "max_v": 0.006868290926430376,
+            "max_abs_v": 2.800090970803114
+          }
+        },
+        "joint_MOUT_declared_ports": {
+          "VGS": {
+            "min_v": -5.005426893997095,
+            "max_v": -0.828714640125102,
+            "max_abs_v": 5.005426893997095
+          },
+          "VGD": {
+            "min_v": -0.0007662602131912733,
+            "max_v": 1.372262278293861,
+            "max_abs_v": 1.372262278293861
+          },
+          "VDS": {
+            "min_v": -5.006949140568914,
+            "max_v": -2.198285193711063,
+            "max_abs_v": 5.006949140568914
+          },
+          "VSB": {
+            "min_v": 2.198285193711063,
+            "max_v": 5.006949140568914,
+            "max_abs_v": 5.006949140568914
+          }
+        }
+      },
+      "stress_scope": "New pre-layout 12 MOS declared D/G/S/B plus extracted MOUT declared ports (D/S may be swapped by extraction); capture only, no HCI/TDDB/latch-up qualification.",
+      "checks": [
+        {
+          "name": "Candidate reference produces target current before fault",
+          "passed": true
+        },
+        {
+          "name": "Fault safe-current deadline",
+          "passed": true
+        },
+        {
+          "name": "Post-deadline held-fault off guard",
+          "passed": true
+        },
+        {
+          "name": "Positive fault tail <=10pC",
+          "passed": true
+        },
+        {
+          "name": "Negative fault tail <=20pC",
+          "passed": true
+        },
+        {
+          "name": "Negative LED peak <=10mA",
+          "passed": true
+        },
+        {
+          "name": "Synthetic LED reverse peak <=0.5V",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_waveform_sha256": "30b909fb82617be3e405f9cdbb3b34bf98930e21443bd698a994e9c693d2ee84",
+      "compact_waveform_sha256": "e6db70dd55320b272d4f0f6869f2e30a22a0b5c178ede7da2ab59da30829a1f7",
+      "deck_sha256": "ec168e1c6c4161bbe454b72acdb49f0efca62ae9ef40f9f2668e334dadc2341d",
+      "rtl_events_sha256": "22b38ba48d9a35fae0e79f02e5d1383de4611f8b410fa6b8627511957c55b319",
+      "csvpath": "evidence/safety/servo-waveforms/servo_stopped_fault_fine/waveform.csv",
+      "csv_sha256": "d29c179fc60cec4ada7d71632ac6f38b68709a061c887853cf42c87ccc60d5f4",
+      "rtl_csvpath": "evidence/safety/servo-waveforms/servo_stopped_fault_fine/rtl-events.csv",
+      "rtl_csv_sha256": "22b38ba48d9a35fae0e79f02e5d1383de4611f8b410fa6b8627511957c55b319"
+    },
+    {
+      "name": "servo_startup_default_fault",
+      "conditions": {
+        "name": "servo_startup_default_fault",
+        "duty": 256,
+        "fault_ns": -1,
+        "stop_ns": -1,
+        "stop_time_ns": 40000,
+        "envelope": "tt",
+        "reference": "servo",
+        "reference_ramp": true,
+        "initial_fault_clear_ns": 20000
+      },
+      "dc_full_a": 0.0001000260133401411,
+      "analog_input_slew_s": 1e-08,
+      "startup": {
+        "held_external_fault_until_s": 2e-05,
+        "LED_max_abs_current_a": 5.791403779736859e-09,
+        "LED_charge": {
+          "signed_c": 1.453346314661212e-19,
+          "positive_c": 2.895002557016059e-16,
+          "negative_c": -2.8935492107013977e-16
+        },
+        "model_LED_conduction_max_abs_a": 3.236136119413834e-17,
+        "model_LED_conduction_charge": {
+          "signed_c": -1.2203377663384499e-24,
+          "positive_c": 9.191400069190653e-25,
+          "negative_c": -2.139477773257515e-24
+        },
+        "model_LED_capacitive_charge": {
+          "signed_c": 1.4526413702404135e-19,
+          "positive_c": 2.8950021928361434e-16,
+          "negative_c": -2.8935495514659033e-16
+        },
+        "reference_output_peak_a": 0.000155963700006819,
+        "scope": "Only reference rail ramps 0->3.3V in100ns; logic and LED rails valid. External fault held high; no POR or brownout implementation."
+      },
+      "terminal_stress": {
+        "XFN": {
+          "VGS": {
+            "min_v": 0.0,
+            "max_v": 3.3,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.300285429949982,
+            "max_v": 3.29999999277076,
+            "max_abs_v": 3.300285429949982
+          },
+          "VDS": {
+            "min_v": -0.002720033931982484,
+            "max_v": 3.300285429949982,
+            "max_abs_v": 3.300285429949982
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.002720033931982484,
+            "max_v": 3.300285429949982,
+            "max_abs_v": 3.300285429949982
+          }
+        },
+        "XFP": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.300285429949982,
+            "max_v": 3.29999999277076,
+            "max_abs_v": 3.300285429949982
+          },
+          "VDS": {
+            "min_v": -3.3027200339319824,
+            "max_v": 0.0002854299499821522,
+            "max_abs_v": 3.3027200339319824
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.3027200339319824,
+            "max_v": 0.0002854299499821522,
+            "max_abs_v": 3.3027200339319824
+          }
+        },
+        "XNP0": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.322702032423934,
+            "max_v": 3.299999981022484,
+            "max_abs_v": 3.322702032423934
+          },
+          "VDS": {
+            "min_v": -3.299999981022484,
+            "max_v": 0.022702032423933982,
+            "max_abs_v": 3.299999981022484
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.299999981022484,
+            "max_v": 0.022702032423933982,
+            "max_abs_v": 3.299999981022484
+          }
+        },
+        "XNP1": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.322702032423934,
+            "max_v": 3.299999981022484,
+            "max_abs_v": 3.322702032423934
+          },
+          "VDS": {
+            "min_v": -3.299999981022484,
+            "max_v": 0.022702032423933982,
+            "max_abs_v": 3.299999981022484
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.299999981022484,
+            "max_v": 0.022702032423933982,
+            "max_abs_v": 3.299999981022484
+          }
+        },
+        "XNP2": {
+          "VGS": {
+            "min_v": -3.3027200339319824,
+            "max_v": 0.0002854299499821522,
+            "max_abs_v": 3.3027200339319824
+          },
+          "VGD": {
+            "min_v": -3.3027190590166264,
+            "max_v": 3.299999962975495,
+            "max_abs_v": 3.3027190590166264
+          },
+          "VDS": {
+            "min_v": -3.299999981022484,
+            "max_v": 0.022702032423933982,
+            "max_abs_v": 3.299999981022484
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.299999981022484,
+            "max_v": 0.022702032423933982,
+            "max_abs_v": 3.299999981022484
+          }
+        },
+        "XNN0": {
+          "VGS": {
+            "min_v": -0.1030478693432983,
+            "max_v": 3.299999996445983,
+            "max_abs_v": 3.299999996445983
+          },
+          "VGD": {
+            "min_v": -3.322702032423934,
+            "max_v": 3.299999981022484,
+            "max_abs_v": 3.322702032423934
+          },
+          "VDS": {
+            "min_v": -8.190667342272117e-09,
+            "max_v": 3.315207494892351,
+            "max_abs_v": 3.315207494892351
+          },
+          "VSB": {
+            "min_v": -4.336351645622278e-09,
+            "max_v": 0.2015110672860826,
+            "max_abs_v": 0.2015110672860826
+          },
+          "VDB": {
+            "min_v": 1.897751616278302e-08,
+            "max_v": 3.322702032423934,
+            "max_abs_v": 3.322702032423934
+          }
+        },
+        "XNN1": {
+          "VGS": {
+            "min_v": -0.1199819599464931,
+            "max_v": 3.300001891692105,
+            "max_abs_v": 3.300001891692105
+          },
+          "VGD": {
+            "min_v": -0.007494546068337666,
+            "max_v": 3.3000000043363515,
+            "max_abs_v": 3.3000000043363515
+          },
+          "VDS": {
+            "min_v": -0.11248742955504772,
+            "max_v": 0.10332049215369545,
+            "max_abs_v": 0.11248742955504772
+          },
+          "VSB": {
+            "min_v": -1.89169210530937e-06,
+            "max_v": 0.1199819599464931,
+            "max_abs_v": 0.1199819599464931
+          },
+          "VDB": {
+            "min_v": -4.336351645622278e-09,
+            "max_v": 0.2015110672860826,
+            "max_abs_v": 0.2015110672860826
+          }
+        },
+        "XNN2": {
+          "VGS": {
+            "min_v": -0.002720033931982484,
+            "max_v": 3.300285429949982,
+            "max_abs_v": 3.300285429949982
+          },
+          "VGD": {
+            "min_v": -0.0036180406939376056,
+            "max_v": 3.300003018763729,
+            "max_abs_v": 3.300003018763729
+          },
+          "VDS": {
+            "min_v": -1.89169210530937e-06,
+            "max_v": 0.1199819599464931,
+            "max_abs_v": 0.1199819599464931
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -1.89169210530937e-06,
+            "max_v": 0.1199819599464931,
+            "max_abs_v": 0.1199819599464931
+          }
+        },
+        "XON": {
+          "VGS": {
+            "min_v": 1.897751616278302e-08,
+            "max_v": 3.322702032423934,
+            "max_abs_v": 3.322702032423934
+          },
+          "VGD": {
+            "min_v": -3.299999971030528,
+            "max_v": 3.3226570468064662,
+            "max_abs_v": 3.3226570468064662
+          },
+          "VDS": {
+            "min_v": -0.01111820980606019,
+            "max_v": 3.299999994981564,
+            "max_abs_v": 3.299999994981564
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.01111820980606019,
+            "max_v": 3.299999994981564,
+            "max_abs_v": 3.299999994981564
+          }
+        },
+        "XOP": {
+          "VGS": {
+            "min_v": -3.299999981022484,
+            "max_v": 0.022702032423933982,
+            "max_abs_v": 3.299999981022484
+          },
+          "VGD": {
+            "min_v": -3.299999971030528,
+            "max_v": 3.3226570468064662,
+            "max_abs_v": 3.3226570468064662
+          },
+          "VDS": {
+            "min_v": -3.31111820980606,
+            "max_v": -5.018435889070361e-09,
+            "max_abs_v": 3.31111820980606
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.31111820980606,
+            "max_v": -5.018435889070361e-09,
+            "max_abs_v": 3.31111820980606
+          }
+        },
+        "XLN0": {
+          "VGS": {
+            "min_v": 0.0,
+            "max_v": 3.3,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -5.000148804589275,
+            "max_v": 3.193199363624471,
+            "max_abs_v": 5.000148804589275
+          },
+          "VDS": {
+            "min_v": 0.1053978602662916,
+            "max_v": 5.000148804589275,
+            "max_abs_v": 5.000148804589275
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": 0.1053978602662916,
+            "max_v": 5.000148804589275,
+            "max_abs_v": 5.000148804589275
+          }
+        },
+        "XCP": {
+          "VGS": {
+            "min_v": -4.894602139733708,
+            "max_v": 0.00014880458927457596,
+            "max_abs_v": 4.894602139733708
+          },
+          "VGD": {
+            "min_v": -4.89460044744399,
+            "max_v": 2.8000204783508114,
+            "max_abs_v": 4.89460044744399
+          },
+          "VDS": {
+            "min_v": -2.800020974488831,
+            "max_v": 0.00686746934665905,
+            "max_abs_v": 2.800020974488831
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -2.800020974488831,
+            "max_v": 0.00686746934665905,
+            "max_abs_v": 2.800020974488831
+          }
+        },
+        "joint_MOUT_declared_ports": {
+          "VGS": {
+            "min_v": -5.005426865326699,
+            "max_v": -0.8287813920306513,
+            "max_abs_v": 5.005426865326699
+          },
+          "VGD": {
+            "min_v": -0.0007663140023012831,
+            "max_v": 1.369573775350999,
+            "max_abs_v": 1.369573775350999
+          },
+          "VDS": {
+            "min_v": -5.006949032055334,
+            "max_v": -2.19835516738165,
+            "max_abs_v": 5.006949032055334
+          },
+          "VSB": {
+            "min_v": 2.19835516738165,
+            "max_v": 5.006949032055334,
+            "max_abs_v": 5.006949032055334
+          }
+        }
+      },
+      "stress_scope": "New pre-layout 12 MOS declared D/G/S/B plus extracted MOUT declared ports (D/S may be swapped by extraction); capture only, no HCI/TDDB/latch-up qualification.",
+      "checks": [
+        {
+          "name": "External asserted fault blocks reference-startup LED current",
+          "passed": false
+        }
+      ],
+      "passed": false,
+      "raw_waveform_sha256": "51a9feca59aa3fddb7e0a6b91a196d27356ffd59c09afdf98f61d085fca87af4",
+      "compact_waveform_sha256": "68c415b0a8ad9cbc2eb20d9fa42562ffac58e7f4c11d601b50987705b8865355",
+      "deck_sha256": "e0dd2a7549f087d2c7480aed6d21df635a1b0f3f679a66aea05653f1e4da39e3",
+      "rtl_events_sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b",
+      "csvpath": "evidence/safety/servo-waveforms/servo_startup_default_fault/waveform.csv",
+      "csv_sha256": "b81a270b8a1657287282363dee31051265217963db052288f42b56c7d049d0b9",
+      "rtl_csvpath": "evidence/safety/servo-waveforms/servo_startup_default_fault/rtl-events.csv",
+      "rtl_csv_sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b"
+    },
+    {
+      "name": "servo_startup_default_fault_fine",
+      "conditions": {
+        "name": "servo_startup_default_fault_fine",
+        "duty": 256,
+        "fault_ns": -1,
+        "stop_ns": -1,
+        "stop_time_ns": 40000,
+        "envelope": "tt",
+        "reference": "servo",
+        "reference_ramp": true,
+        "initial_fault_clear_ns": 20000,
+        "maxstep_ns": 2
+      },
+      "dc_full_a": 0.0001000260133401411,
+      "analog_input_slew_s": 1e-08,
+      "startup": {
+        "held_external_fault_until_s": 2e-05,
+        "LED_max_abs_current_a": 5.791403779736859e-09,
+        "LED_charge": {
+          "signed_c": 1.4511550467171256e-19,
+          "positive_c": 1.2628306388268423e-16,
+          "negative_c": -1.2613794837801253e-16
+        },
+        "model_LED_conduction_max_abs_a": 3.236136119413834e-17,
+        "model_LED_conduction_charge": {
+          "signed_c": -1.2203362744774398e-24,
+          "positive_c": 9.191412685879226e-25,
+          "negative_c": -2.1394775430653622e-24
+        },
+        "model_LED_capacitive_charge": {
+          "signed_c": 1.450364975103738e-19,
+          "positive_c": 1.2628303020666556e-16,
+          "negative_c": -1.2613799370915518e-16
+        },
+        "reference_output_peak_a": 0.0001559614490765626,
+        "scope": "Only reference rail ramps 0->3.3V in100ns; logic and LED rails valid. External fault held high; no POR or brownout implementation."
+      },
+      "terminal_stress": {
+        "XFN": {
+          "VGS": {
+            "min_v": 0.0,
+            "max_v": 3.3,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.300283484561806,
+            "max_v": 3.2999999927770878,
+            "max_abs_v": 3.300283484561806
+          },
+          "VDS": {
+            "min_v": -0.002720517912668578,
+            "max_v": 3.300283484561806,
+            "max_abs_v": 3.300283484561806
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.002720517912668578,
+            "max_v": 3.300283484561806,
+            "max_abs_v": 3.300283484561806
+          }
+        },
+        "XFP": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.300283484561806,
+            "max_v": 3.2999999927770878,
+            "max_abs_v": 3.300283484561806
+          },
+          "VDS": {
+            "min_v": -3.302720517912668,
+            "max_v": 0.0002834845618062687,
+            "max_abs_v": 3.302720517912668
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.302720517912668,
+            "max_v": 0.0002834845618062687,
+            "max_abs_v": 3.302720517912668
+          }
+        },
+        "XNP0": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.322715810037661,
+            "max_v": 3.299999981110245,
+            "max_abs_v": 3.322715810037661
+          },
+          "VDS": {
+            "min_v": -3.299999981110245,
+            "max_v": 0.02271581003766121,
+            "max_abs_v": 3.299999981110245
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.299999981110245,
+            "max_v": 0.02271581003766121,
+            "max_abs_v": 3.299999981110245
+          }
+        },
+        "XNP1": {
+          "VGS": {
+            "min_v": -3.3,
+            "max_v": 0.0,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -3.322715810037661,
+            "max_v": 3.299999981110245,
+            "max_abs_v": 3.322715810037661
+          },
+          "VDS": {
+            "min_v": -3.299999981110245,
+            "max_v": 0.02271581003766121,
+            "max_abs_v": 3.299999981110245
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.299999981110245,
+            "max_v": 0.02271581003766121,
+            "max_abs_v": 3.299999981110245
+          }
+        },
+        "XNP2": {
+          "VGS": {
+            "min_v": -3.302720517912668,
+            "max_v": 0.0002834845618062687,
+            "max_abs_v": 3.302720517912668
+          },
+          "VGD": {
+            "min_v": -3.3027194038034335,
+            "max_v": 3.2999999629342973,
+            "max_abs_v": 3.3027194038034335
+          },
+          "VDS": {
+            "min_v": -3.299999981110245,
+            "max_v": 0.02271581003766121,
+            "max_abs_v": 3.299999981110245
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.299999981110245,
+            "max_v": 0.02271581003766121,
+            "max_abs_v": 3.299999981110245
+          }
+        },
+        "XNN0": {
+          "VGS": {
+            "min_v": -0.1029272774000166,
+            "max_v": 3.2999999969831393,
+            "max_abs_v": 3.2999999969831393
+          },
+          "VGD": {
+            "min_v": -3.322715810037661,
+            "max_v": 3.299999981110245,
+            "max_abs_v": 3.322715810037661
+          },
+          "VDS": {
+            "min_v": -8.88828317004755e-09,
+            "max_v": 3.3152212724662617,
+            "max_abs_v": 3.3152212724662617
+          },
+          "VSB": {
+            "min_v": -8.238598738577323e-09,
+            "max_v": 0.2015114091200635,
+            "max_abs_v": 0.2015114091200635
+          },
+          "VDB": {
+            "min_v": 1.88897544804077e-08,
+            "max_v": 3.322715810037661,
+            "max_abs_v": 3.322715810037661
+          }
+        },
+        "XNN1": {
+          "VGS": {
+            "min_v": -0.1199482451569291,
+            "max_v": 3.300001782987739,
+            "max_abs_v": 3.300001782987739
+          },
+          "VGD": {
+            "min_v": -0.007494546068385876,
+            "max_v": 3.3000000082385985,
+            "max_abs_v": 3.3000000082385985
+          },
+          "VDS": {
+            "min_v": -0.11245371477345986,
+            "max_v": 0.10332058549073767,
+            "max_abs_v": 0.11245371477345986
+          },
+          "VSB": {
+            "min_v": -1.78298773908959e-06,
+            "max_v": 0.1199482451569291,
+            "max_abs_v": 0.1199482451569291
+          },
+          "VDB": {
+            "min_v": -8.238598738577323e-09,
+            "max_v": 0.2015114091200635,
+            "max_abs_v": 0.2015114091200635
+          }
+        },
+        "XNN2": {
+          "VGS": {
+            "min_v": -0.002720517912668578,
+            "max_v": 3.300283484561806,
+            "max_abs_v": 3.300283484561806
+          },
+          "VGD": {
+            "min_v": -0.0036184649917096294,
+            "max_v": 3.300003097886941,
+            "max_abs_v": 3.300003097886941
+          },
+          "VDS": {
+            "min_v": -1.78298773908959e-06,
+            "max_v": 0.1199482451569291,
+            "max_abs_v": 0.1199482451569291
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -1.78298773908959e-06,
+            "max_v": 0.1199482451569291,
+            "max_abs_v": 0.1199482451569291
+          }
+        },
+        "XON": {
+          "VGS": {
+            "min_v": 1.88897544804077e-08,
+            "max_v": 3.322715810037661,
+            "max_abs_v": 3.322715810037661
+          },
+          "VGD": {
+            "min_v": -3.299999970745099,
+            "max_v": 3.322651247834853,
+            "max_abs_v": 3.322651247834853
+          },
+          "VDS": {
+            "min_v": -0.01111115841122501,
+            "max_v": 3.299999994575242,
+            "max_abs_v": 3.299999994575242
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -0.01111115841122501,
+            "max_v": 3.299999994575242,
+            "max_abs_v": 3.299999994575242
+          }
+        },
+        "XOP": {
+          "VGS": {
+            "min_v": -3.299999981110245,
+            "max_v": 0.02271581003766121,
+            "max_abs_v": 3.299999981110245
+          },
+          "VGD": {
+            "min_v": -3.299999970745099,
+            "max_v": 3.322651247834853,
+            "max_abs_v": 3.322651247834853
+          },
+          "VDS": {
+            "min_v": -3.311111158411225,
+            "max_v": -5.4247579761579345e-09,
+            "max_abs_v": 3.311111158411225
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -3.311111158411225,
+            "max_v": -5.4247579761579345e-09,
+            "max_abs_v": 3.311111158411225
+          }
+        },
+        "XLN0": {
+          "VGS": {
+            "min_v": 0.0,
+            "max_v": 3.3,
+            "max_abs_v": 3.3
+          },
+          "VGD": {
+            "min_v": -5.000148781092468,
+            "max_v": 3.1931993627568227,
+            "max_abs_v": 5.000148781092468
+          },
+          "VDS": {
+            "min_v": 0.1053990057793624,
+            "max_v": 5.000148781092468,
+            "max_abs_v": 5.000148781092468
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": 0.1053990057793624,
+            "max_v": 5.000148781092468,
+            "max_abs_v": 5.000148781092468
+          }
+        },
+        "XCP": {
+          "VGS": {
+            "min_v": -4.894600994220638,
+            "max_v": 0.00014878109246829752,
+            "max_abs_v": 4.894600994220638
+          },
+          "VGD": {
+            "min_v": -4.894599187603465,
+            "max_v": 2.8000202853625473,
+            "max_abs_v": 4.894599187603465
+          },
+          "VDS": {
+            "min_v": -2.800020788788457,
+            "max_v": 0.006868039301301643,
+            "max_abs_v": 2.800020788788457
+          },
+          "VSB": {
+            "min_v": 0.0,
+            "max_v": 0.0,
+            "max_abs_v": 0.0
+          },
+          "VDB": {
+            "min_v": -2.800020788788457,
+            "max_v": 0.006868039301301643,
+            "max_abs_v": 2.800020788788457
+          }
+        },
+        "joint_MOUT_declared_ports": {
+          "VGS": {
+            "min_v": -5.005426644336992,
+            "max_v": -0.8287817232461048,
+            "max_abs_v": 5.005426644336992
+          },
+          "VGD": {
+            "min_v": -0.0007662602223220254,
+            "max_v": 1.369573719198437,
+            "max_abs_v": 1.369573719198437
+          },
+          "VDS": {
+            "min_v": -5.006948891363296,
+            "max_v": -2.198355336741677,
+            "max_abs_v": 5.006948891363296
+          },
+          "VSB": {
+            "min_v": 2.198355336741677,
+            "max_v": 5.006948891363296,
+            "max_abs_v": 5.006948891363296
+          }
+        }
+      },
+      "stress_scope": "New pre-layout 12 MOS declared D/G/S/B plus extracted MOUT declared ports (D/S may be swapped by extraction); capture only, no HCI/TDDB/latch-up qualification.",
+      "checks": [
+        {
+          "name": "External asserted fault blocks reference-startup LED current",
+          "passed": false
+        }
+      ],
+      "passed": false,
+      "raw_waveform_sha256": "b2a2b749ed098b473a8c214b1e598666242395e31d575a1a3d576195eecac855",
+      "compact_waveform_sha256": "fc688b156a27f47d166f5f5de88460867856f250357f23de35b70adbd63a9e86",
+      "deck_sha256": "e301279a6e08ab48b1daccc80babb3222bd5db362eadf4706befaf705a6aab5e",
+      "rtl_events_sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b",
+      "csvpath": "evidence/safety/servo-waveforms/servo_startup_default_fault_fine/waveform.csv",
+      "csv_sha256": "3733943b944c37576a2864372522316f5a961a7698761972e4e7c7cd8ebfb4c4",
+      "rtl_csvpath": "evidence/safety/servo-waveforms/servo_startup_default_fault_fine/rtl-events.csv",
+      "rtl_csv_sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b"
+    }
+  ],
+  "reference_joint_included": true,
+  "reference_kinds_included": [
+    "servo"
+  ],
+  "limitations": [
+    "power-on reset circuit",
+    "brownout or supply monitor",
+    "fault sensor",
+    "physical recovery flip-flop",
+    "new safety layout/DRC/LVS/PEX",
+    "IO/ESD/package",
+    "silicon/optical extinction",
+    "Only the old 12-MOS signal cutout is layout-extracted; new gate/clamp are 12 schematic MOS and one ideal 100k resistor",
+    "Real PG/body/active neighbors absent; 34 neighbors ideal0V",
+    "Full digital FF transistor path absent; permit/recovery is actual RTL event replay",
+    "No optical extinction or physical fault sensor evidence",
+    "Clock-stop guarantee requires a valid powered safety rail and valid fault-high level",
+    "Reference remains on during fault; branch off is not whole-system power-off"
+  ],
+  "upstream_summary_path": "build/safety/fault-gate-00f_2k2g/summary.json",
+  "upstream_summary_sha256": "696c1c67a8a24586a4097cc75ab20a7974f437141f17aec3e340026e7376e438",
+  "exporter_sha256": "dbc4e7fc963ba8d69ffd8a6367efb16990ece5e017ce9ae377988d354e86546f",
+  "core_contract_passed": true,
+  "extra_startup_guard_failed": true,
+  "extra_startup_charge_convergence_failed": true,
+  "core_contract_scope": "Nominal TT27C, logic3.3V/LED5V, externalVSET0.5V/RSET5k, finite10ns input edges. d1 normal and one stopped-clock fault with10->2ns comparisons. Not all servo PVT, rail startup sequences or optical conditions.",
+  "validation_path": "evidence/safety/servo-validation.json"
+}

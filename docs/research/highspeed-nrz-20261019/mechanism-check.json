@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "classification": "Analytical derivation from public measured-static I-V plus declared constant-C assumption; not transistor, optical, or BER simulation",
+  "source": {
+    "csv": "analog/models/measured-led/lin2026-yellow20-diamond-iv.csv",
+    "sha256": "9da8dbac6499c34159da5e3aa0c59cd6de43aad446090181b4c070beba9505ab",
+    "dataset_doi": "10.5281/zenodo.20034288",
+    "paper_doi": "10.1038/s41467-026-74151-4",
+    "measurement_temperature": "not reported; no temperature scaling applied",
+    "model_card": "analog/models/measured-led/model-card.json"
+  },
+  "assumptions": {
+    "C_LED_F": 2e-13,
+    "C_LED_status": "assumed constant shunt capacitance; not measured from this dataset",
+    "V_anode_V": 5,
+    "targets_A": [
+      2.5e-05,
+      0.0001
+    ],
+    "current_orientation": "LED and capacitor positive anode-to-cathode; I_pkg positive cathode-to-ASIC"
+  },
+  "method": "V(I) linear interpolation; local rd is exact slope of piecewise-linear segment, not a fitted junction resistance",
+  "operating_points": [
+    {
+      "target_current_A": 2.5e-05,
+      "interpolated_Vf_V": 3.361339464285714,
+      "containing_segment": {
+        "lower": {
+          "source_excel_row": 46,
+          "current_A": 2.461e-05,
+          "voltage_V": 3.35714
+        },
+        "upper": {
+          "source_excel_row": 47,
+          "current_A": 2.7969999999999998e-05,
+          "voltage_V": 3.39332
+        },
+        "dV_dI_ohm": 10767.857142857245,
+        "rd_times_assumed_C_s": 2.153571428571449e-09,
+        "isolated_RC_pole_Hz": 73902792.81215633
+      },
+      "previous_segment": {
+        "lower": {
+          "source_excel_row": 45,
+          "current_A": 2.165e-05,
+          "voltage_V": 3.32071
+        },
+        "upper": {
+          "source_excel_row": 46,
+          "current_A": 2.461e-05,
+          "voltage_V": 3.35714
+        },
+        "dV_dI_ohm": 12307.43243243235,
+        "rd_times_assumed_C_s": 2.46148648648647e-09,
+        "isolated_RC_pole_Hz": 64658060.87730077
+      },
+      "next_segment": {
+        "lower": {
+          "source_excel_row": 47,
+          "current_A": 2.7969999999999998e-05,
+          "voltage_V": 3.39332
+        },
+        "upper": {
+          "source_excel_row": 48,
+          "current_A": 3.179e-05,
+          "voltage_V": 3.43086
+        },
+        "dV_dI_ohm": 9827.225130890027,
+        "rd_times_assumed_C_s": 1.9654450261780054e-09,
+        "isolated_RC_pole_Hz": 80976542.70258948
+      }
+    },
+    {
+      "target_current_A": 0.0001,
+      "interpolated_Vf_V": 3.767909545454545,
+      "containing_segment": {
+        "lower": {
+          "source_excel_row": 56,
+          "current_A": 8.855000000000001e-05,
+          "voltage_V": 3.73408
+        },
+        "upper": {
+          "source_excel_row": 57,
+          "current_A": 0.00010065000000000001,
+          "voltage_V": 3.76983
+        },
+        "dV_dI_ohm": 2954.545454545433,
+        "rd_times_assumed_C_s": 5.909090909090867e-10,
+        "isolated_RC_pole_Hz": 269339134.46320945
+      },
+      "previous_segment": {
+        "lower": {
+          "source_excel_row": 55,
+          "current_A": 7.790999999999999e-05,
+          "voltage_V": 3.69762
+        },
+        "upper": {
+          "source_excel_row": 56,
+          "current_A": 8.855000000000001e-05,
+          "voltage_V": 3.73408
+        },
+        "dV_dI_ohm": 3426.691729323296,
+        "rd_times_assumed_C_s": 6.853383458646592e-10,
+        "isolated_RC_pole_Hz": 232228276.80989748
+      },
+      "next_segment": {
+        "lower": {
+          "source_excel_row": 57,
+          "current_A": 0.00010065000000000001,
+          "voltage_V": 3.76983
+        },
+        "upper": {
+          "source_excel_row": 58,
+          "current_A": 0.0001144,
+          "voltage_V": 3.8055
+        },
+        "dV_dI_ohm": 2594.1818181818257,
+        "rd_times_assumed_C_s": 5.188363636363651e-10,
+        "isolated_RC_pole_Hz": 306753639.96545476
+      }
+    }
+  ],
+  "charge_budget": {
+    "delta_Vf_V": 0.4065700811688311,
+    "delta_Q_C": 8.131401623376622e-14,
+    "delta_I_A": 7.500000000000001e-05,
+    "delta_Q_over_delta_I_s": 1.0841868831168828e-09,
+    "interpretation": "charge/current time scale, not a 10-90 rise time; capacitor current decreases as conductive LED current approaches target"
+  },
+  "ideal_current_step_submodel": {
+    "status": "Separate exact analytical ODE under ideal sink-current step; not the nine-MOS circuit",
+    "equation": "C*dVf/dt = I_target - I_LED(Vf)",
+    "excluded": [
+      "MOS finite output resistance",
+      "GP/GB skew",
+      "MOS/junction capacitances",
+      "package R and L",
+      "optical carrier dynamics",
+      "receiver filtering/noise"
+    ],
+    "thresholds_conductive_current_A": [
+      3.2500000000000004e-05,
+      9.250000000000001e-05
+    ],
+    "rise_10_90_s": 1.883959650571093e-09,
+    "fall_90_10_s": 2.744972652865158e-09,
+    "piecewise_integral_terms": [
+      {
+        "current_interval_A": [
+          3.2500000000000004e-05,
+          3.6139999999999996e-05
+        ],
+        "rd_ohm": 8914.9425287357,
+        "rise_10_90_piece_s": 9.883891690813288e-11,
+        "fall_90_10_piece_s": 7.05420170907937e-10
+      },
+      {
+        "current_interval_A": [
+          3.6139999999999996e-05,
+          4.1070000000000005e-05
+        ],
+        "rd_ohm": 7819.472616632818,
+        "rise_10_90_piece_s": 1.2564780321457068e-10,
+        "fall_90_10_piece_s": 5.730296344583518e-10
+      },
+      {
+        "current_interval_A": [
+          4.1070000000000005e-05,
+          4.668e-05
+        ],
+        "rd_ohm": 6802.139037433156,
+        "rise_10_90_piece_s": 1.360955701625749e-10,
+        "fall_90_10_piece_s": 4.0736105663915994e-10
+      },
+      {
+        "current_interval_A": [
+          4.668e-05,
+          5.3060000000000004e-05
+        ],
+        "rd_ohm": 6028.213166144223,
+        "rise_10_90_piece_s": 1.5364867040684294e-10,
+        "fall_90_10_piece_s": 3.1100142260302187e-10
+      },
+      {
+        "current_interval_A": [
+          5.3060000000000004e-05,
+          6.0310000000000004e-05
+        ],
+        "rd_ohm": 5231.724137931006,
+        "rise_10_90_piece_s": 1.755462381574164e-10,
+        "fall_90_10_piece_s": 2.404721561555469e-10
+      },
+      {
+        "current_interval_A": [
+          6.0310000000000004e-05,
+          6.855e-05
+        ],
+        "rd_ohm": 4560.679611650508,
+        "rise_10_90_piece_s": 2.1225428785222298e-10,
+        "fall_90_10_piece_s": 1.9131457476703473e-10
+      },
+      {
+        "current_interval_A": [
+          6.855e-05,
+          7.790999999999999e-05
+        ],
+        "rd_ohm": 3985.0427350427503,
+        "rise_10_90_piece_s": 2.815623701100009e-10,
+        "fall_90_10_piece_s": 1.5516373888747514e-10
+      },
+      {
+        "current_interval_A": [
+          7.790999999999999e-05,
+          8.855000000000001e-05
+        ],
+        "rd_ohm": 3426.691729323296,
+        "rise_10_90_piece_s": 4.5036001089779234e-10,
+        "fall_90_10_piece_s": 1.2557772557575448e-10
+      },
+      {
+        "current_interval_A": [
+          8.855000000000001e-05,
+          9.250000000000001e-05
+        ],
+        "rd_ohm": 2954.5454545454872,
+        "rise_10_90_piece_s": 2.5000578286153896e-10,
+        "fall_90_10_piece_s": 3.563217287087654e-11
+      }
+    ],
+    "formulas": {
+      "rise": "sum C*rd_k*ln((I1-Ia)/(I1-Ib))",
+      "fall": "sum C*rd_k*ln((Ib-I0)/(Ia-I0))"
+    }
+  },
+  "KCL": "I_pkg = I_LED_conductive + C_LED*d(V_anode-V_cathode)/dt",
+  "logic_skew_audit": {
+    "inverters": "GB=INV1(DATA), GP=INV2(GB)",
+    "switches": "ML gate=GP, MD gate=GB; common source=VX",
+    "rising_DATA_logic_sequence": [
+      {
+        "GP": 0,
+        "GB": 1
+      },
+      {
+        "GP": 0,
+        "GB": 0
+      },
+      {
+        "GP": 1,
+        "GB": 0
+      }
+    ],
+    "falling_DATA_logic_sequence": [
+      {
+        "GP": 1,
+        "GB": 0
+      },
+      {
+        "GP": 1,
+        "GB": 1
+      },
+      {
+        "GP": 0,
+        "GB": 1
+      }
+    ],
+    "qualification": "These are ideal Boolean transport-delay sequences, not measured transistor conduction windows. Actual overlap/dead time requires branch-current and VGS/VSB waveforms; thresholds differ and VX moves."
+  },
+  "numeric_checks": {
+    "csv_rows": 100,
+    "currents_strictly_increasing": true,
+    "voltages_strictly_increasing": true,
+    "targets_inside_measured_domain": true,
+    "piecewise_threshold_intervals": 9,
+    "charge_positive": true,
+    "independent_composite_trapezoid_quadrature": {
+      "interval_subdivisions": 10000,
+      "rise_s": 1.883959651106183e-09,
+      "fall_s": 2.74497265333924e-09,
+      "relative_rise_error": 2.840241375423602e-10,
+      "relative_fall_error": 1.7270918029055338e-10,
+      "passed": true
+    }
+  },
+  "no_new_transient_result_claimed": true
+}

@@ -1,0 +1,51 @@
+{
+  "checked_on": "2026-10-13 Asia/Tokyo",
+  "implementation": "Independent schematic netlists, not copied reference IP; GF180 public PDK subcircuits reused under their existing Apache-2.0 source notices.",
+  "pdk_lock": "layout/pdk-lock.json",
+  "primitive_commit": "41918f5a2356b9fb49a897ecc4fb4716b0ab1041",
+  "open_pdks_commit": "54435919abffb937387ec956209f9cf5fd2dfbee",
+  "sources": [
+    {
+      "id": "R1",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/analog/model_parameters/LV/LV_4.html",
+      "locator": "4.0 model list, 4.1 Model Features, 4.3 syntax",
+      "use": "ppolyf_u is a three-terminal unsalicided P+ poly resistor. PDK includes separate body/end temperature coefficients and resistor-to-substrate capacitance; widths/lengths in meters.",
+      "limit": "Online documentation has an unfinished restrictions section; use exact installed model and do not infer a measured accuracy or complete validity range."
+    },
+    {
+      "id": "R2",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/analog/spice/elec_specs/elec_specs_5_1.html",
+      "locator": "5.1 Sheet Resistance, Wide P+ Poly unsalicided row",
+      "use": "280/350/420 ohm/square minimum/typical/maximum; characterization condition width5um, current100uA.",
+      "limit": "Not a guaranteed 2um resistor total resistance. Runner uses width/end corrections from the pinned model."
+    },
+    {
+      "id": "R3",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_10_01.html",
+      "locator": "PRES.1 and PRES.8",
+      "use": "P+ poly resistor minimum width0.8um; maximum current density1mA/um (uncoded rule). 2um chosen width exceeds min; observed beta branch currents remain far below current-density bound.",
+      "limit": "No reference layout or physical DRC/EM signoff is performed."
+    },
+    {
+      "id": "M1",
+      "url": "https://github.com/fossi-foundation/globalfoundries-pdk-libs-gf180mcu_fd_pr/blob/41918f5a2356b9fb49a897ecc4fb4716b0ab1041/models/ngspice/sm141064.ngspice",
+      "locator": "Installed open_pdks output: res_typical/res_ss/res_ff at lines393/424/455; ppolyf_u at38606; nfet_06v0/pfet_06v0 mismatch wrappers at47125/47188",
+      "use": "Exact model content pinned by SHA256677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46. MOS corner does not automatically load resistor corner; ppolyf_u local mismatch mis_r=0 is explicit.",
+      "limit": "Installed open_pdks converted model and upstream file are related but not identical; source hash and toolchain lock identify actual simulation input."
+    },
+    {
+      "id": "T1",
+      "url": "https://cmosedu.com/jbaker/labs/ee420L/lab9/ee420L_lab9.htm",
+      "locator": "EE420L Lab9, beta multiplier startup, supply sweep, loading and resistor-shunt capacitance instructions",
+      "use": "Primary teaching reference for why startup, supply compliance, matching and dynamic behavior require separate tests.",
+      "limit": "CD4007 exercise is conceptual background, not GF180 circuit data or design approval."
+    },
+    {
+      "id": "T2",
+      "url": "https://ieeexplore.ieee.org/document/9314894/",
+      "locator": "Current Reference Circuits: A Tutorial, IEEE TCAS-II68(3),830-836,2021; DOI10.1109/TCSII.2021.3049518",
+      "use": "Authoritative classification separates beta-multiplier and calibration/reference-based approaches.",
+      "limit": "Abstract/metadata consulted; no claim that this independent candidate reproduces any paper's measured performance."
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "boundary": "Failed runs are not silently replaced. Solver-method/rshunt attempts are diagnostics, not selected circuitry. No threshold relaxations. Input and failure logs stay in build. Core original-fault evidence and added-startup guard are separate scopes.",
+  "records": [
+    {
+      "raw_directory": "build/safety/fault-gate-v1w4bist",
+      "interpretation": "Zero-junction-area gate candidate, Trap; numerical switching failure.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "577e65abbbe733b3026ba6577e0a98f6d601ae621f68b927a9d9de3eddd6c8c9",
+      "numerical_failures": [
+        {
+          "path": "build/safety/fault-gate-v1w4bist/fault_d256_early/ngspice.log",
+          "message": "doAnalyses: TRAN:  Timestep too small; time = 2.0126e-05, timestep = 1.25e-20: trouble with node \"vn29#branch\"",
+          "sha256": "75983feaafa2e8912eb459cc129f68c3ef6d560910eeca4fbee56490de23e9c2"
+        }
+      ]
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-bzwmijd0",
+      "interpretation": "Same zero-junction candidate, Gear; solver method alone did not solve it.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "c12ca4a2d2f5d5933bc7906c3d732bb39fa7799557b4bde6b7a55a22b49b5c58",
+      "numerical_failures": [
+        {
+          "path": "build/safety/fault-gate-bzwmijd0/fault_d256_early/ngspice.log",
+          "message": "doAnalyses: TRAN:  Timestep too small; time = 2.0126e-05, timestep = 1.25e-20: trouble with node \"vn31#branch\"",
+          "sha256": "d9000ed42747faca48a73b33c1ee4e52a077e3162fd7d2ffc4ea7a0f9d623c0f"
+        }
+      ]
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-4he1rnag",
+      "interpretation": "Finite hypothetical junction gate only; stable off1nA takes2.638us, original1us deadline failed.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "923e1a25b9a8b83698256952999b54fa6f1141e1f29edf84d7e1444199e82133",
+      "numerical_failures": [],
+      "passed": false,
+      "failed_checks": [
+        {
+          "name": "fault_d256_early / Fault safe-current deadline",
+          "passed": false
+        },
+        {
+          "name": "fault_d256_early / Post-deadline held-fault off guard",
+          "passed": false
+        }
+      ],
+      "summary_sha256": "f30253a120119efaddb28939557c74ef8e9ae4bfd977031b2761caee27e84525"
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-j03z5o60",
+      "interpretation": "4-MOS cross-coupled level shifter + PMOS clamp;1ns inputs; recovery-edge numerical failure.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "0de1d229ed5a0fe81898d396aa5d4ac1c3d68a229135a411c0c8bc0051b6cdad",
+      "numerical_failures": [
+        {
+          "path": "build/safety/fault-gate-j03z5o60/fault_d256_early/ngspice.log",
+          "message": "doAnalyses: TRAN:  Timestep too small; time = 2.5501e-05, timestep = 1.25e-20: trouble with node \"vn29#branch\"",
+          "sha256": "f003a6123eae20e3276ea37c5cd4957de05f53855d1210960d31524721091d03"
+        }
+      ]
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-fwrj4j6j",
+      "interpretation": "Same 4-MOS shifter;1ns maxstep did not remove numerical failure.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "0de1d229ed5a0fe81898d396aa5d4ac1c3d68a229135a411c0c8bc0051b6cdad",
+      "numerical_failures": [
+        {
+          "path": "build/safety/fault-gate-fwrj4j6j/fault_d256_fine/ngspice.log",
+          "message": "doAnalyses: TRAN:  Timestep too small; time = 2.5e-06, timestep = 1.25e-21: trouble with node \"vn29#branch\"",
+          "sha256": "9d5f8675da009a9714c03d8d634b850848352163fbe3c528a4f9cbfb5bf3503f"
+        }
+      ]
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-mz_72x6x",
+      "interpretation": "Diagnostic rshunt1e12 did not solve numerical failure; not selected.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "ad54d09dad9e63fb4cfd7eae4f3dc6074985171ab802c3f4d6b7915268392147",
+      "numerical_failures": [
+        {
+          "path": "build/safety/fault-gate-mz_72x6x/fault_d256_early/ngspice.log",
+          "message": "doAnalyses: TRAN:  Timestep too small; time = 2.5501e-05, timestep = 1.25e-20: trouble with node \"vn29#branch\"",
+          "sha256": "93b0d8f35151602beb9730c8bc74b89f148164f5e855bcb118ff64d0371be5c1"
+        }
+      ]
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-8vww6ozq",
+      "interpretation": "Trap method did not solve same numerical failure.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "57f149642b63c094d695a31d5800d77a5f500893423451ee6ffaefc1ea204e12",
+      "numerical_failures": [
+        {
+          "path": "build/safety/fault-gate-8vww6ozq/fault_d256_early/ngspice.log",
+          "message": "doAnalyses: TRAN:  Timestep too small; time = 1.501e-06, timestep = 1.25e-20: trouble with node \"vn31#branch\"",
+          "sha256": "72cd2f9aca468a64498c48cfc3ca2d6c2f07b86fc7aa287668ef537461ab7414"
+        }
+      ]
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-j7lgc9ot",
+      "interpretation": "2MOS+100k/W2 PMOS;1ns inputs fail numerically on initial permit edge.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "b139b5212e0b73ac4d9b94e2e01c7a22de1c1779bf0225e188c7769b568d79f3",
+      "numerical_failures": [
+        {
+          "path": "build/safety/fault-gate-j7lgc9ot/fault_d256_early/ngspice.log",
+          "message": "doAnalyses: TRAN:  Timestep too small; time = 1.501e-06, timestep = 1.25e-20: trouble with node \"vn29#branch\"",
+          "sha256": "f9bd6af2b285a92683680a019fa302f6a36ed564606f93a6055bee4baa977f81"
+        }
+      ]
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-q8gjh_ht",
+      "interpretation": "All22 analog transients pass; overall false caused by incorrect PASS log substring in harness, fixed without changing thresholds.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "f0b9b265ca3d2b8865a66c1859cd55490cdffc12635a5c7ead8d9c25675a6111",
+      "numerical_failures": [],
+      "passed": false,
+      "failed_checks": [
+        {
+          "name": "Unmodified exhaustive PWM regression plus protected normal observation",
+          "passed": false
+        }
+      ],
+      "summary_sha256": "05e0ab1edbf8dab9b6ffbf447356f05cf504a77f9937ae61098befb31fa66583"
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-zh6xo4kc",
+      "interpretation": "Servo combined cold+secondfault, strict numeric options,10ns maxstep: timestep failure at secondfault.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "b4b0f74da35febe816355761e299dd586d2d68b08ed9f6dab311f8ff128503e2",
+      "numerical_failures": [
+        {
+          "path": "build/safety/fault-gate-zh6xo4kc/servo_startup_default_fault/ngspice.log",
+          "message": "doAnalyses: TRAN:  Timestep too small; time = 5.0125e-05, timestep = 1.25e-20: trouble with node \"vn31#branch\"",
+          "sha256": "f1d36e2bd69bee88a3571e36a492b8c0d9715e72c96f57d2c04c2ef3b7d302a3"
+        }
+      ]
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-_l0hgbl8",
+      "interpretation": "Same strict combined servo case,1ns maxstep: failure retained.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "17c8e95068d61a317ef0af557173740881a3d21b72fa52f2ee62ad5187678ca5",
+      "numerical_failures": [
+        {
+          "path": "build/safety/fault-gate-_l0hgbl8/servo_startup_default_fault/ngspice.log",
+          "message": "doAnalyses: TRAN:  Timestep too small; time = 2.001e-05, timestep = 1.25e-21: trouble with node \"vn31#branch\"",
+          "sha256": "b04caa9ddefdae0052dd652193f06bc5da27078ee9fad9a4fb7d07aead947981"
+        }
+      ]
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-bo1s_l00",
+      "interpretation": "Independent servo cold40us, author numeric options; added full-startup1nA guard failed despite negligible model conduction.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "c3460b68eb0720fdf448a51c65fdd7919fe9565cdaec936129fc047d4891af47",
+      "numerical_failures": [],
+      "passed": false,
+      "failed_checks": [
+        {
+          "name": "servo_startup_default_fault / External asserted fault blocks reference-startup LED current",
+          "passed": false
+        }
+      ],
+      "summary_sha256": "75f4d7897a9708ca2ac19b923512ca36d94b85b2f618c388f63103c5e37bb056"
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-5u15qdng",
+      "interpretation": "W20 PMOS sensitivity trial reduces startup peak to2.815nA but still fails added1nA guard; not selected.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "54193d0140c64c0f7cda8f1e7d12d15c2580b8b4a724822e1f59b90f43e21cd2",
+      "numerical_failures": [],
+      "passed": false,
+      "failed_checks": [
+        {
+          "name": "servo_startup_default_fault / External asserted fault blocks reference-startup LED current",
+          "passed": false
+        }
+      ],
+      "summary_sha256": "7c824aae03d8db6b79d522048950ca51dc6a6f8d555ce754f9030021310382a4"
+    },
+    {
+      "raw_directory": "build/safety/fault-gate-00f_2k2g",
+      "interpretation": "Final W2 servo suite: nominal normal/stoppedfault original contracts pass; additional startup guard and tiny startupQ+ convergence fail.",
+      "preserved_locally": true,
+      "input_manifest_sha256": "659ab2e5f33bd7fcbcc73dcf9a7cef52bf1c225d55f521a12f0aeb85ec1c64d0",
+      "numerical_failures": [],
+      "passed": false,
+      "failed_checks": [
+        {
+          "name": "servo_startup_default_fault / External asserted fault blocks reference-startup LED current",
+          "passed": false
+        },
+        {
+          "name": "servo_startup_default_fault_fine / External asserted fault blocks reference-startup LED current",
+          "passed": false
+        },
+        {
+          "name": "Servo startup Q+ maxstep10->2ns convergence",
+          "passed": false,
+          "change_pct": 56.378945650104406
+        }
+      ],
+      "summary_sha256": "696c1c67a8a24586a4097cc75ab20a7974f437141f17aec3e340026e7376e438"
+    }
+  ]
+}

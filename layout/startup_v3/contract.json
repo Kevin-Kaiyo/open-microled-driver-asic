@@ -1,0 +1,714 @@
+{
+  "top": "startup_test_macro",
+  "ports": [
+    "VSS",
+    "VREF",
+    "VSAFE",
+    "VBUF",
+    "LED_A",
+    "RAW_PWM",
+    "FAULT",
+    "PERMIT",
+    "VSET",
+    "SENSE",
+    "PB",
+    "N2",
+    "CTRL",
+    "FAULT_HB",
+    "LED_K",
+    "REFOUT",
+    "BIAS",
+    "GATE",
+    "PWM_B",
+    "SAFE_OUT",
+    "PWM_DRIVE"
+  ],
+  "buses_um": {
+    "VSS": 0,
+    "VREF": 8,
+    "VSAFE": 11,
+    "VBUF": 14,
+    "LED_A": 17,
+    "RAW_PWM": 20,
+    "FAULT": 23,
+    "PERMIT": 26,
+    "VSET": 29,
+    "SENSE": 32,
+    "PB": 35,
+    "N2": 38,
+    "CTRL": 41,
+    "FAULT_HB": 44,
+    "LED_K": 47,
+    "REFOUT": 50,
+    "BIAS": 53,
+    "GATE": 56,
+    "PWM_B": 59,
+    "SAFE_OUT": 62,
+    "PWM_DRIVE": 65,
+    "R_TAIL": 68,
+    "R_N1": 71,
+    "I_FAULT_B": 74,
+    "F_FAULT_B": 77,
+    "F_NAND_N": 80,
+    "F_STACK1": 83,
+    "F_STACK2": 86
+  },
+  "bus_spans_um": {
+    "VSS": [
+      86.0,
+      640.8
+    ],
+    "VREF": [
+      9.0,
+      205.76
+    ],
+    "VSAFE": [
+      236.0,
+      475.26
+    ],
+    "VBUF": [
+      614.0,
+      644.9
+    ],
+    "LED_A": [
+      506.0,
+      511.26
+    ],
+    "RAW_PWM": [
+      347.5,
+      402.5
+    ],
+    "FAULT": [
+      221.5,
+      492.5
+    ],
+    "PERMIT": [
+      365.5,
+      420.5
+    ],
+    "VSET": [
+      49.5,
+      50.5
+    ],
+    "SENSE": [
+      71.5,
+      173.24
+    ],
+    "PB": [
+      11.24,
+      32.5
+    ],
+    "N2": [
+      66.24,
+      138.5
+    ],
+    "CTRL": [
+      136.74,
+      200.5
+    ],
+    "FAULT_HB": [
+      490.74,
+      510.5
+    ],
+    "LED_K": [
+      508.74,
+      544.24
+    ],
+    "REFOUT": [
+      194.24,
+      277.26
+    ],
+    "BIAS": [
+      258.26,
+      563.74
+    ],
+    "GATE": [
+      545.5,
+      581.74
+    ],
+    "PWM_B": [
+      581.5,
+      617.74
+    ],
+    "SAFE_OUT": [
+      454.74,
+      641.7
+    ],
+    "PWM_DRIVE": [
+      563.5,
+      644.0
+    ],
+    "R_TAIL": [
+      29.240000000000002,
+      77.76
+    ],
+    "R_N1": [
+      44.24,
+      116.5
+    ],
+    "I_FAULT_B": [
+      220.74,
+      258.5
+    ],
+    "F_FAULT_B": [
+      310.74,
+      438.5
+    ],
+    "F_NAND_N": [
+      346.74,
+      474.5
+    ],
+    "F_STACK1": [
+      402.26,
+      419.74
+    ],
+    "F_STACK2": [
+      420.26,
+      437.74
+    ]
+  },
+  "port_anchor_um": {
+    "VSS": 363.4,
+    "VREF": 107.38,
+    "VSAFE": 355.63,
+    "VBUF": 629.45,
+    "LED_A": 508.63,
+    "RAW_PWM": 347.8,
+    "FAULT": 221.8,
+    "PERMIT": 365.8,
+    "VSET": 49.8,
+    "SENSE": 71.8,
+    "PB": 11.540000000000001,
+    "N2": 66.53999999999999,
+    "CTRL": 137.04000000000002,
+    "FAULT_HB": 491.04,
+    "LED_K": 509.04,
+    "REFOUT": 194.54000000000002,
+    "BIAS": 258.56,
+    "GATE": 545.8,
+    "PWM_B": 581.8,
+    "SAFE_OUT": 455.04,
+    "PWM_DRIVE": 563.8
+  },
+  "devices": [
+    {
+      "name": "R_PBIAS",
+      "model": "pfet_06v0",
+      "w": 20.0,
+      "l": 4.0,
+      "nodes": [
+        "PB",
+        "PB",
+        "VREF",
+        "VREF"
+      ],
+      "cx": 14,
+      "cy": 145
+    },
+    {
+      "name": "R_PTAIL",
+      "model": "pfet_06v0",
+      "w": 20.0,
+      "l": 4.0,
+      "nodes": [
+        "R_TAIL",
+        "PB",
+        "VREF",
+        "VREF"
+      ],
+      "cx": 32,
+      "cy": 145
+    },
+    {
+      "name": "R_PD1",
+      "model": "pfet_06v0",
+      "w": 100.0,
+      "l": 10.0,
+      "nodes": [
+        "R_N1",
+        "VSET",
+        "R_TAIL",
+        "VREF"
+      ],
+      "cx": 50,
+      "cy": 145
+    },
+    {
+      "name": "R_PD2",
+      "model": "pfet_06v0",
+      "w": 100.0,
+      "l": 10.0,
+      "nodes": [
+        "N2",
+        "SENSE",
+        "R_TAIL",
+        "VREF"
+      ],
+      "cx": 72.0,
+      "cy": 145
+    },
+    {
+      "name": "R_ND1",
+      "model": "nfet_06v0",
+      "w": 50.0,
+      "l": 10.0,
+      "nodes": [
+        "R_N1",
+        "R_N1",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 94.0,
+      "cy": 145
+    },
+    {
+      "name": "R_ND2",
+      "model": "nfet_06v0",
+      "w": 50.0,
+      "l": 10.0,
+      "nodes": [
+        "N2",
+        "R_N1",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 116.0,
+      "cy": 145
+    },
+    {
+      "name": "R_NSTAGE",
+      "model": "nfet_06v0",
+      "w": 20.0,
+      "l": 1.0,
+      "nodes": [
+        "CTRL",
+        "N2",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 138.0,
+      "cy": 145
+    },
+    {
+      "name": "R_PLOAD",
+      "model": "pfet_06v0",
+      "w": 100.0,
+      "l": 10.0,
+      "nodes": [
+        "CTRL",
+        "CTRL",
+        "VREF",
+        "VREF"
+      ],
+      "cx": 156.0,
+      "cy": 145
+    },
+    {
+      "name": "R_PREG",
+      "model": "pfet_06v0",
+      "w": 100.0,
+      "l": 10.0,
+      "nodes": [
+        "SENSE",
+        "CTRL",
+        "VREF",
+        "VREF"
+      ],
+      "cx": 178.0,
+      "cy": 145
+    },
+    {
+      "name": "R_POUT",
+      "model": "pfet_06v0",
+      "w": 100.0,
+      "l": 10.0,
+      "nodes": [
+        "REFOUT",
+        "CTRL",
+        "VREF",
+        "VREF"
+      ],
+      "cx": 200.0,
+      "cy": 145
+    },
+    {
+      "name": "I_FN",
+      "model": "nfet_06v0",
+      "w": 2.0,
+      "l": 1.0,
+      "nodes": [
+        "I_FAULT_B",
+        "FAULT",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 222.0,
+      "cy": 100
+    },
+    {
+      "name": "I_FP",
+      "model": "pfet_06v0",
+      "w": 4.0,
+      "l": 1.0,
+      "nodes": [
+        "I_FAULT_B",
+        "FAULT",
+        "VSAFE",
+        "VSAFE"
+      ],
+      "cx": 240.0,
+      "cy": 100
+    },
+    {
+      "name": "I_ISO",
+      "model": "nfet_06v0",
+      "w": 20.0,
+      "l": 1.0,
+      "nodes": [
+        "REFOUT",
+        "I_FAULT_B",
+        "BIAS",
+        "VSS"
+      ],
+      "cx": 258.0,
+      "cy": 145
+    },
+    {
+      "name": "I_PISO",
+      "model": "pfet_06v0",
+      "w": 20.0,
+      "l": 1.0,
+      "nodes": [
+        "BIAS",
+        "FAULT",
+        "REFOUT",
+        "VSAFE"
+      ],
+      "cx": 276.0,
+      "cy": 145
+    },
+    {
+      "name": "I_DIS",
+      "model": "nfet_06v0",
+      "w": 2.0,
+      "l": 1.0,
+      "nodes": [
+        "BIAS",
+        "FAULT",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 294.0,
+      "cy": 100
+    },
+    {
+      "name": "F_FN",
+      "model": "nfet_06v0",
+      "w": 2.0,
+      "l": 1.0,
+      "nodes": [
+        "F_FAULT_B",
+        "FAULT",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 312.0,
+      "cy": 100
+    },
+    {
+      "name": "F_FP",
+      "model": "pfet_06v0",
+      "w": 4.0,
+      "l": 1.0,
+      "nodes": [
+        "F_FAULT_B",
+        "FAULT",
+        "VSAFE",
+        "VSAFE"
+      ],
+      "cx": 330.0,
+      "cy": 100
+    },
+    {
+      "name": "F_NP0",
+      "model": "pfet_06v0",
+      "w": 4.0,
+      "l": 1.0,
+      "nodes": [
+        "F_NAND_N",
+        "RAW_PWM",
+        "VSAFE",
+        "VSAFE"
+      ],
+      "cx": 348.0,
+      "cy": 100
+    },
+    {
+      "name": "F_NP1",
+      "model": "pfet_06v0",
+      "w": 4.0,
+      "l": 1.0,
+      "nodes": [
+        "F_NAND_N",
+        "PERMIT",
+        "VSAFE",
+        "VSAFE"
+      ],
+      "cx": 366.0,
+      "cy": 100
+    },
+    {
+      "name": "F_NP2",
+      "model": "pfet_06v0",
+      "w": 4.0,
+      "l": 1.0,
+      "nodes": [
+        "F_NAND_N",
+        "F_FAULT_B",
+        "VSAFE",
+        "VSAFE"
+      ],
+      "cx": 384.0,
+      "cy": 100
+    },
+    {
+      "name": "F_NN0",
+      "model": "nfet_06v0",
+      "w": 6.0,
+      "l": 1.0,
+      "nodes": [
+        "F_NAND_N",
+        "RAW_PWM",
+        "F_STACK1",
+        "VSS"
+      ],
+      "cx": 402.0,
+      "cy": 100
+    },
+    {
+      "name": "F_NN1",
+      "model": "nfet_06v0",
+      "w": 6.0,
+      "l": 1.0,
+      "nodes": [
+        "F_STACK1",
+        "PERMIT",
+        "F_STACK2",
+        "VSS"
+      ],
+      "cx": 420.0,
+      "cy": 100
+    },
+    {
+      "name": "F_NN2",
+      "model": "nfet_06v0",
+      "w": 6.0,
+      "l": 1.0,
+      "nodes": [
+        "F_STACK2",
+        "F_FAULT_B",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 438.0,
+      "cy": 100
+    },
+    {
+      "name": "F_ON",
+      "model": "nfet_06v0",
+      "w": 4.0,
+      "l": 1.0,
+      "nodes": [
+        "SAFE_OUT",
+        "F_NAND_N",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 456.0,
+      "cy": 100
+    },
+    {
+      "name": "F_OP",
+      "model": "pfet_06v0",
+      "w": 8.0,
+      "l": 1.0,
+      "nodes": [
+        "SAFE_OUT",
+        "F_NAND_N",
+        "VSAFE",
+        "VSAFE"
+      ],
+      "cx": 474.0,
+      "cy": 100
+    },
+    {
+      "name": "C_LN0",
+      "model": "nfet_06v0",
+      "w": 2.0,
+      "l": 1.0,
+      "nodes": [
+        "FAULT_HB",
+        "FAULT",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 492.0,
+      "cy": 100
+    },
+    {
+      "name": "C_CP",
+      "model": "pfet_06v0",
+      "w": 2.0,
+      "l": 1.0,
+      "nodes": [
+        "LED_K",
+        "FAULT_HB",
+        "LED_A",
+        "LED_A"
+      ],
+      "cx": 510.0,
+      "cy": 100
+    },
+    {
+      "name": "P_REF",
+      "model": "nfet_06v0",
+      "w": 20.0,
+      "l": 4.0,
+      "nodes": [
+        "BIAS",
+        "BIAS",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 528.0,
+      "cy": 145
+    },
+    {
+      "name": "P_OUT",
+      "model": "nfet_06v0",
+      "w": 20.0,
+      "l": 4.0,
+      "nodes": [
+        "LED_K",
+        "GATE",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 546.0,
+      "cy": 145
+    },
+    {
+      "name": "P_PASS",
+      "model": "nfet_06v0",
+      "w": 2.0,
+      "l": 1.0,
+      "nodes": [
+        "BIAS",
+        "PWM_DRIVE",
+        "GATE",
+        "VSS"
+      ],
+      "cx": 564.0,
+      "cy": 100
+    },
+    {
+      "name": "P_CLAMP",
+      "model": "nfet_06v0",
+      "w": 2.0,
+      "l": 1.0,
+      "nodes": [
+        "GATE",
+        "PWM_B",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 582.0,
+      "cy": 100
+    },
+    {
+      "name": "P_INV_N",
+      "model": "nfet_06v0",
+      "w": 2.0,
+      "l": 1.0,
+      "nodes": [
+        "PWM_B",
+        "PWM_DRIVE",
+        "VSS",
+        "VSS"
+      ],
+      "cx": 600.0,
+      "cy": 100
+    },
+    {
+      "name": "P_INV_P",
+      "model": "pfet_06v0",
+      "w": 4.0,
+      "l": 1.0,
+      "nodes": [
+        "PWM_B",
+        "PWM_DRIVE",
+        "VBUF",
+        "VBUF"
+      ],
+      "cx": 618.0,
+      "cy": 100
+    }
+  ],
+  "buffer": {
+    "cell": "gf180mcu_fd_sc_mcu7t5v0__buf_2",
+    "origin_um": [
+      640.0,
+      100
+    ],
+    "mos": 6
+  },
+  "external_passives": [
+    {
+      "name": "RBIAS",
+      "nodes": [
+        "PB",
+        "VSS"
+      ],
+      "nominal": "100k"
+    },
+    {
+      "name": "CCOMP",
+      "nodes": [
+        "N2",
+        "CTRL"
+      ],
+      "nominal": "3p"
+    },
+    {
+      "name": "RRELEASE",
+      "nodes": [
+        "LED_A",
+        "FAULT_HB"
+      ],
+      "nominal": "100k"
+    },
+    {
+      "name": "RSET",
+      "nodes": [
+        "SENSE",
+        "VSS"
+      ],
+      "nominal": "5k"
+    }
+  ],
+  "external_voltage": {
+    "nodes": [
+      "VSET",
+      "VSS"
+    ],
+    "nominal": 0.5
+  },
+  "source_sha256": {
+    "analog/reference/vset_servo_with_junctions.spice": "81f900f315408864b2583b9ad2dc9a256c0aceb0260f52363a8388d181440216",
+    "analog/startup_v2/reference_isolator_tg.spice": "5a5fbb5f68b24348aafc228f9934b1982a0c0d1aa359ee9e948445ddd521a2c0",
+    "analog/safety/fault_gate.spice": "d819b64377e9b59491cee22cd4428cbd78d94bdf4a837f74ad355f6f6b4ea99c",
+    "analog/safety/fault_led_clamp.spice": "5bfb9e910593cfbd3cef9abc1228b1b9df1d87560145bf0390c859a272cc2aaf",
+    "analog/driver/pixel_driver.spice": "376305eafa438e80883320984209d9e193b01e77a047cf131500318b794d9747"
+  },
+  "physical_claim": "Pre-pad external-passive 39-MOS macro; not a complete ASIC or validated external PCB"
+}

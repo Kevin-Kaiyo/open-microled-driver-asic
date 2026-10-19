@@ -1,0 +1,210 @@
+{
+  "evidence_level": "original conceptual schematics, not transistor/physical validation",
+  "schema": 1,
+  "terminal_order": "D G S B",
+  "connections": [
+    {
+      "file": "route-a.svg",
+      "size": [
+        1600,
+        1120
+      ],
+      "devices": {
+        "MP": {
+          "D": "OUT",
+          "G": "CTRL",
+          "S": "V_H",
+          "B": "V_H",
+          "type": "PMOS"
+        },
+        "MN": {
+          "D": "OUT",
+          "G": "CTRL",
+          "S": "V_L",
+          "B": "V_L",
+          "type": "NMOS"
+        }
+      },
+      "sha256": "2155a119fb5bf2c7fe2ced26a2d9c2f8c1c6f2b21cb2d63046283eb07c2c845d"
+    },
+    {
+      "file": "route-b.svg",
+      "size": [
+        1600,
+        1200
+      ],
+      "devices": {
+        "MREF": {
+          "D": "BIAS",
+          "G": "BIAS",
+          "S": "VSS",
+          "B": "VSS",
+          "type": "NMOS"
+        },
+        "ML": {
+          "D": "LED_K",
+          "G": "G+",
+          "S": "VX",
+          "B": "VSS",
+          "type": "NMOS"
+        },
+        "MD": {
+          "D": "DUMMY",
+          "G": "G−",
+          "S": "VX",
+          "B": "VSS",
+          "type": "NMOS"
+        },
+        "MI": {
+          "D": "VX",
+          "G": "BIAS",
+          "S": "VSS",
+          "B": "VSS",
+          "type": "NMOS"
+        }
+      },
+      "sha256": "ffe1b2f3ac456c7deafa74458cccb88e36940ad559b0df1947ab60dce42dfcba"
+    },
+    {
+      "file": "route-c.svg",
+      "size": [
+        1600,
+        1270
+      ],
+      "devices": {
+        "ML1": {
+          "D": "LED_K",
+          "G": "G1+",
+          "S": "VX1",
+          "B": "VSS",
+          "type": "NMOS"
+        },
+        "MD1": {
+          "D": "DUMMY1",
+          "G": "G1−",
+          "S": "VX1",
+          "B": "VSS",
+          "type": "NMOS"
+        },
+        "MI1": {
+          "D": "VX1",
+          "G": "BIAS",
+          "S": "VSS",
+          "B": "VSS",
+          "type": "NMOS"
+        },
+        "ML2": {
+          "D": "LED_K",
+          "G": "G2+",
+          "S": "VX2",
+          "B": "VSS",
+          "type": "NMOS"
+        },
+        "MD2": {
+          "D": "DUMMY2",
+          "G": "G2−",
+          "S": "VX2",
+          "B": "VSS",
+          "type": "NMOS"
+        },
+        "MI2": {
+          "D": "VX2",
+          "G": "BIAS",
+          "S": "VSS",
+          "B": "VSS",
+          "type": "NMOS"
+        },
+        "ML3": {
+          "D": "LED_K",
+          "G": "G3+",
+          "S": "VX3",
+          "B": "VSS",
+          "type": "NMOS"
+        },
+        "MD3": {
+          "D": "DUMMY3",
+          "G": "G3−",
+          "S": "VX3",
+          "B": "VSS",
+          "type": "NMOS"
+        },
+        "MI3": {
+          "D": "VX3",
+          "G": "BIAS",
+          "S": "VSS",
+          "B": "VSS",
+          "type": "NMOS"
+        },
+        "MREF": {
+          "D": "BIAS",
+          "G": "BIAS",
+          "S": "VSS",
+          "B": "VSS",
+          "type": "NMOS"
+        }
+      },
+      "sha256": "fb5794eacc3bbd68ed1636cc981e5cbd65cbe4ce256ef9bdf89688155778a0a7"
+    },
+    {
+      "file": "floorplan-a.svg",
+      "size": [
+        1600,
+        1080
+      ],
+      "devices": {},
+      "sha256": "fa9d07b20d4038b5014797de4bc2aeec7db97efeaec6c8e07d6a8f964b194d12"
+    },
+    {
+      "file": "floorplan-b.svg",
+      "size": [
+        1600,
+        1080
+      ],
+      "devices": {},
+      "sha256": "ed5283863b847766817cf416c791612bd33a5096db01a6864bb7d9b95e92ceba"
+    },
+    {
+      "file": "floorplan-c.svg",
+      "size": [
+        1600,
+        1080
+      ],
+      "devices": {},
+      "sha256": "45655bc551ef99099f9bd592a956e29cc228eadcdbe4af93dd21719e8155ab36"
+    },
+    {
+      "file": "bench-linear.svg",
+      "size": [
+        1600,
+        1080
+      ],
+      "devices": {},
+      "sha256": "61ca9a919e2b0d9702effb18dbf8d7d0c5f9c3227e955bce56d7487e908053ff"
+    }
+  ],
+  "scope": [
+    "route A voltage-mode limited swing with resistor and required calibration",
+    "route B continuously biased current steering",
+    "route C three unary steering cells explaining PAM4",
+    "bench AC/DC characterization"
+  ],
+  "checks": {
+    "unique_device_names": true,
+    "all_mos_four_terminal_assignments": true,
+    "route_b_dummy_and_led_share_tail": true,
+    "route_c_reference_diode_connected": true,
+    "route_a_complementary_common_output": true,
+    "route_b_mirror_bias_connected": true,
+    "route_c_three_distinct_tails": true,
+    "route_c_led_bus_shared": true,
+    "route_c_mirror_gates_share_bias": true,
+    "route_c_steering_pairs_share_tail": true
+  },
+  "visual_reviewed": true,
+  "visual_review": {
+    "date": "2026-10-19",
+    "scope": "Seven final SVG-derived circuit/floorplan/bench PNGs reviewed for visible labels, symbols, wiring and clipping; not circuit or physical verification.",
+    "raster": "CairoSVG 2.8.2 + installed Cairo + Arial Unicode MS",
+    "amendment": "C unit-index subscript i changed to ASCII i; electrical geometry unchanged."
+  }
+}

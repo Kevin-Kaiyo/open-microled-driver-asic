@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="631.30" viewBox="0 0 960 631.30" role="img" aria-labelledby="title desc" data-evidence="v3 implemented architecture; external fault, reference voltage and passives remain required">
+<title id="title">单像素闭环：数字控制、参考源、保护与负载</title><desc id="desc">v3 implemented architecture; external fault, reference voltage and passives remain required; independent drawing; no new EDA</desc>
+<style>text{font-family:"Avenir Next","PingFang SC",sans-serif}path,polyline,line,rect{stroke-linejoin:round;stroke-linecap:round}</style>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10" fill="#176e73"/></marker></defs>
+<rect width="960" height="631.30" fill="white"/>
+<g transform="scale(1)"><text x="26" y="38" font-size="25.0000" fill="#176e73" text-anchor="start" font-weight="600"><tspan x="26.0" y="38.0">单像素闭环：数字控制、参考源、保护与负载</tspan></text>
+<rect x="25" y="85" width="245" height="90" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="147.5" y="110" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="147.5" y="110.0">PWM + 恢复存储</tspan></text>
+<text x="147.5" y="137" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="147.5" y="137.0">clk / duty / enable</tspan></text>
+<text x="147.5" y="164" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="147.5" y="164.0">FAULT异步置位</tspan></text>
+<rect x="340" y="85" width="245" height="90" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="462.5" y="110" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="462.5" y="110.0">独立保护门（10 MOS）</tspan></text>
+<text x="462.5" y="137" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="462.5" y="137.0">RAW × PERMIT × !FAULT</tspan></text>
+<rect x="650" y="85" width="280" height="90" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="790.0" y="110" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="790.0" y="110.0">实际 buf_2（6 MOS）</tspan></text>
+<text x="790.0" y="137" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="790.0" y="137.0">05v0 标准单元</tspan></text>
+<path d="M270 125 L340 125" fill="none" stroke="#176e73" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M585 125 L650 125" fill="none" stroke="#176e73" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="25" y="260" width="245" height="90" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="147.5" y="285" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="147.5" y="285.0">参考源（10 MOS）</tspan></text>
+<text x="147.5" y="312" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="147.5" y="312.0">VSET / RSET</tspan></text>
+<text x="147.5" y="339" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="147.5" y="339.0">误差放大与PMOS镜像</tspan></text>
+<rect x="340" y="260" width="245" height="90" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="462.5" y="285" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="462.5" y="285.0">隔离传输门（5 MOS）</tspan></text>
+<text x="462.5" y="312" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="462.5" y="312.0">FAULT=1：断开参考</tspan></text>
+<text x="462.5" y="339" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="462.5" y="339.0">并下拉 BIAS</tspan></text>
+<rect x="650" y="260" width="280" height="90" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="790.0" y="285" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="790.0" y="285.0">像素电流镜（6 MOS）</tspan></text>
+<text x="790.0" y="312" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="790.0" y="312.0">MREF / MOUT</tspan></text>
+<text x="790.0" y="339" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="790.0" y="339.0">PWM偏置开关与下拉</tspan></text>
+<path d="M270 305 L340 305" fill="none" stroke="#176e73" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M585 305 L650 305" fill="none" stroke="#176e73" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="790,175 790,260" fill="none" stroke="#176e73" stroke-width="2.2"/>
+<path d="M790 222 L790 260" fill="none" stroke="#176e73" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="650" y="425" width="280" height="75" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="790.0" y="450" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="790.0" y="450.0">MicroLED（片外）</tspan></text>
+<text x="790.0" y="477" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="790.0" y="477.0">合成电气模型</tspan></text>
+<rect x="340" y="425" width="245" height="75" rx="4" fill="#f4f8f8" stroke="#304b57" stroke-width="1.7"/>
+<text x="462.5" y="450" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="462.5" y="450.0">LED钳位（2 MOS）</tspan></text>
+<text x="462.5" y="477" font-size="19.0000" fill="#304b57" text-anchor="middle"><tspan x="462.5" y="477.0">FAULT=1：A/K近等势</tspan></text>
+<path d="M790 350 L790 425" fill="none" stroke="#176e73" stroke-width="2.5" marker-end="url(#arrow)"/>
+<polyline points="585,460 650,460" fill="none" stroke="#176e73" stroke-width="2.2"/>
+<text x="25" y="420" font-size="22.0000" fill="#176e73" text-anchor="start" font-weight="600"><tspan x="25.0" y="420.0">39 MOS 模拟测试宏</tspan></text>
+<text x="25" y="457" font-size="19.0000" fill="#304b57" text-anchor="start"><tspan x="25.0" y="457.0">33只06v0 + 6只05v0</tspan></text>
+<text x="25" y="492" font-size="19.0000" fill="#304b57" text-anchor="start"><tspan x="25.0" y="492.0">数字宏晶体管另计</tspan></text>
+<text x="25" y="555" font-size="18.0000" fill="#304b57" text-anchor="start"><tspan x="25.0" y="555.0">片外：VSET、RSET、RBIAS、CCOMP、RRELEASE、RBLEED；尚无pad/ESD/封装。</tspan></text>
+<text x="25" y="587" font-size="18.0000" fill="#304b57" text-anchor="start"><tspan x="25.0" y="587.0">FAULT既抑制PWM，又隔离参考并钳位LED；PERMIT负责受控恢复。</tspan></text>
+</g></svg>

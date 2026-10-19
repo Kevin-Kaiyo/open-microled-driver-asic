@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "passed": true,
+  "top": "pixel_control_v3",
+  "die_um": [
+    200,
+    200
+  ],
+  "rtl_cases": 10,
+  "gate_cases": 10,
+  "sdf_corners": 9,
+  "sdf_checks_per_corner": 4108,
+  "sdf_fault_monitor_off_ns": [
+    0.767,
+    2.429
+  ],
+  "r2r_setup_min_ns": 986.059082,
+  "r2r_hold_min_ns": 0.441845,
+  "metrics": {
+    "magic__drc_error__count": 0,
+    "design__lvs_error__count": 0,
+    "design__xor_difference__count": 0,
+    "design__max_slew_violation__count": 0,
+    "design__max_cap_violation__count": 0,
+    "design__max_fanout_violation__count": 0,
+    "timing__setup_vio__count": 0,
+    "timing__hold_vio__count": 0
+  },
+  "artifacts": {
+    "gds/pixel_control_v3.gds": "f1d7182be11b9c4aa867c100689e3f57798394b9facd6580e7ceba0d8e255f6a",
+    "lef/pixel_control_v3.lef": "f689215785801cad15075fc807b2665809db2ddcdbc965b76e7224551b4c2e40",
+    "nl/pixel_control_v3.nl.v": "27acad59fdf700337a5a5b1e8febecb0d85ebfcbe407b509e6d91c0302bfaba2",
+    "pnl/pixel_control_v3.pnl.v": "2f5834e0895686227a9a9fbb6259b90f3c365178ef6a36d94ea04ff36855bf4e",
+    "sdc/pixel_control_v3.sdc": "5769f88fba4c8f03e6a7edcb3521e4e7667c731a34c4c99873f28f9459881bbb",
+    "metrics.json": "0863555684176aff6412aadebc462cbcd49e24c17f2f8392696d2d59a3a68fe9"
+  },
+  "implemented_sources": {
+    "pixel_safety.v": "a6f4ef3f0705dec13d578ef6c0e6a6dd755e2d7b7714d7fb1411fbd078672a93",
+    "pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+    "pixel_control_v3.v": "a2975cf19839a0711cdd1a1aeb59be1430e8d6537172ae87eb924b47a50435db"
+  },
+  "validation_sources": {
+    "scripts/control_v3/run.py": "3704eb236b77528e3dc09817b34f03460152a4abf99a801e28aeb4958d0346f4",
+    "scripts/control_v3/sdf.py": "3245c2c6da76a99c915c0f1dcac73b573ba3e3a9567e67db01f417a96323caa9",
+    "scripts/control_v3/tb_sdf.v": "86e203fed2fc68dcef31a0934208013798c1262739fe80a9c439df869f29fac8",
+    "scripts/control_v3/verify.py": "3bf28d61619d42f01f91279de66247e1b46ed657e42ee4853f3a00540210b817",
+    "scripts/control_v3/sta.tcl": "e3715890d2ff3fcf8fc06afd74aba4174fd059e1bcb2ee2e37a3f08d854b8826",
+    "scripts/control_v3/tb_control.v": "70e392fb9dc60ea2cc61d37717b75a620cb0206c95ddc3ac9cb374f1ea836847",
+    "scripts/control_v3/publish.py": "b926b565cd6ac78ef4fba7075e03364a0889830f2419a9a2aa9fa1a35fc713f2",
+    "scripts/control_v3/coupled.py": "2295ec1e5c9d96aaa849402c26f403f05ba26f711830feb432ae81ad82adb5cc"
+  },
+  "physical_scope": "Digital PWM and recovery macro with routed nets, 9-corner extracted STA and SDF. No pads, ESD or whole-chip power-up proof.",
+  "limitations": [
+    "KLayout DRC skipped by LibreLane; independent common-top KLayout planned separately.",
+    "Fault release recovery/removal STA uses 200 ns SDC input-arrival assumption. Arbitrary asynchronous release and metastability remain unresolved.",
+    "Icarus conditional XOR ModPath arcs and timing checks unsupported; static checks retained.",
+    "Power/IR estimates lack actual package source locations and are not signoff.",
+    "External fault must start asserted while safety supply is valid.",
+    "Output load72.91fF assumed; common-top intermacro RC not back-annotated into this STA."
+  ]
+}

@@ -1,0 +1,12 @@
+* Independent experimental active LED-node clamp, NOT a layout/extracted cell.
+* All MOS use pinned GF180 6-V wrappers. Fault high selects cathode->anode.
+* Fault NMOS pulls the PMOS gate low; the resistor restores it to the LED rail.
+* driving its gate with a 3.3-V complement would not turn it off at a 5-V rail.
+* Explicit junction geometry is a 0.44-um landing hypothesis, not extraction.
+.subckt fault_led_clamp fault anode cathode vss
+RRELEASE anode fault_hb 100k
+XLN0 fault_hb fault vss vss nfet_06v0 w=2u l=1u ad=.88p as=.88p pd=4.88u ps=4.88u
+* Selected experimental W2 candidate; W20 trial reduced startup capacitive
+* current but still failed the new all-startup guard and is not selected.
+XCP cathode fault_hb anode anode pfet_06v0 w=2u l=1u ad=.88p as=.88p pd=4.88u ps=4.88u
+.ends fault_led_clamp

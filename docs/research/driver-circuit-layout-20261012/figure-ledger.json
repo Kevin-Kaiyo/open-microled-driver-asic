@@ -1,0 +1,60 @@
+{
+  "classification": "Original teaching schematics and analytical RC calculation; no new EDA or measurement",
+  "pixel_driver_netlist": "analog/driver/pixel_driver.spice",
+  "pixel_devices": {
+    "MREF": [
+      "bias",
+      "bias",
+      "0",
+      "0"
+    ],
+    "MOUT": [
+      "led_k",
+      "gate",
+      "0",
+      "0"
+    ],
+    "MPASS": [
+      "bias",
+      "pwm",
+      "gate",
+      "0"
+    ],
+    "MCLAMP": [
+      "gate",
+      "pwm_b",
+      "0",
+      "0"
+    ],
+    "MN": [
+      "pwm_b",
+      "pwm",
+      "0",
+      "0"
+    ],
+    "MP": [
+      "pwm_b",
+      "pwm",
+      "vlogic",
+      "vlogic"
+    ]
+  },
+  "terminal_order": "D G S B",
+  "interconnect_assumptions": {
+    "source_resistance": "Gate voltage fixed to GND0, current solved self-consistently; body effect omitted",
+    "headroom": "VF depends on ID; MPASS is a gate switch, not a series LED switch",
+    "gate_RC": "Ideal voltage drive, fixed source potential, linear equivalent CG, voltage waveform only",
+    "shared_ground": "VG referenced to remote GND0; local-tracking driver is explicitly distinguished"
+  },
+  "RC_waveform": {
+    "CG_pF": 1,
+    "RG_ohm": [
+      100,
+      1000
+    ],
+    "t10_90_ns": [
+      0.21972245773362195,
+      2.1972245773362196
+    ]
+  }
+}

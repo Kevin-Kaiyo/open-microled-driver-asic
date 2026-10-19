@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "study_date": "2026-10-14",
+  "scope": "Independent high-speed framework; no transistor, EM or optical measurement added",
+  "records": [
+    {
+      "id": "H05",
+      "title": "High Speed Integrated Digital to Light Converter for Short Range Visible Light Communication",
+      "authors": "Aravind V. N. Jalajakumari et al.",
+      "year": 2017,
+      "doi": "10.1109/LPT.2016.2624281",
+      "url": "https://www.research.ed.ac.uk/en/publications/high-speed-integrated-digital-to-light-converter-for-short-range-/",
+      "open_fulltext_url": "https://strathprints.strath.ac.uk/59246/1/Jalajakumari_etal_PTL_2017_High_speed_integrated_digital_to_light_converter_for_short_range_visible_light_communication.pdf",
+      "source_type": "peer_reviewed_paper_author_manuscript",
+      "access_level": "fulltext_reviewed",
+      "topic_tags": [
+        "MicroLED",
+        "CMOS",
+        "NMOS",
+        "current_steering",
+        "cascode",
+        "DLC",
+        "OFDM",
+        "ASIC"
+      ],
+      "process": {
+        "driver": "CMOS; process node not directly stated in reviewed manuscript",
+        "LED": "16 common-anode 450 nm InGaN/GaN MicroLEDs, 24 um diameter; individual cathodes; wire bonded to CMOS driver"
+      },
+      "architecture": "4-bit LVDS input to 16-bit thermometer code; 16 NMOS current-source/cascode/differential-switch cells steer current between LED main branch and dummy branch. Each cell adjustable 1-16 mA; dummy rail 1.8 V.",
+      "evidence_class": "measured_hybrid_CMOS_MicroLED_DLC_link",
+      "data": [
+        {
+          "label": "Reported input/current-cell switching capability",
+          "value": 500,
+          "unit": "MHz",
+          "conditions": "Section II-A architecture capability; not a 500 Mbit/s optical BER result"
+        },
+        {
+          "label": "Measured OFDM link data rate",
+          "value": 365,
+          "unit": "Mbit/s",
+          "conditions": "SEG2 contact scheme; 200 MHz chip clock, 16-QAM OFDM, CP=10, FFT=128, 5 cm link, BER threshold 1e-3; APD/TIA and offline scope/Matlab processing"
+        },
+        {
+          "label": "SEG2 link bias per cell",
+          "value": 8,
+          "unit": "mA",
+          "conditions": "Section III setup, external LED supply 8.2 V; this paper's load and optical setup, not present repository's 100 uA design point"
+        }
+      ],
+      "locator": "4-page accepted manuscript: p2 sections II-A/B/C and III architecture, 24 um LED and supplies; p3 setup receiver/data handling; p4 IV-B data transmission and finite stream length. Journal 29(1), 118-121; online Nov 2016, issue Jan 2017.",
+      "supports": [
+        "CMOS NMOS cells can implement differential current steering and cascode for a MicroLED transmitter",
+        "Switching clock, optical bandwidth and communication rate are different observables",
+        "Dummy-branch current remains relevant to energy accounting"
+      ],
+      "does_not_support": [
+        "Six-MOS low-rate pixel topology already supports this waveform",
+        "16 emitting elements equal 16 independent communication lanes",
+        "500 MHz architecture capability equals measured 500 MHz optical bandwidth",
+        "BER=0 or a long-run BER claim"
+      ],
+      "notes": [
+        "Institution metadata variants state 85% efficiency while reviewed manuscript computes 70%; efficiency omitted from this index's data pending version reconciliation. Manuscript states 32 kbits for its OFDM stream; keep finite sampling limits."
+      ],
+      "priority": "read_first_current_steering_topology",
+      "checked_on": "2026-10-14",
+      "cn_guide": "优先学current steering、dummy与cascode；16颗LED属于同一DLC而非16个lane。",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": true,
+      "group": "高速通信",
+      "reverification": "Primary text newly downloaded/reviewed this turn; official GF page opened with web tool.",
+      "local_private_original": "build/product-framework-20261014/highspeed-sources/jalajakumari-2017.pdf",
+      "original_sha256": "b84e88494a564d5482e131fc8405664d6d424edd919413d8bfe94b68a8b068d5"
+    },
+    {
+      "id": "H06",
+      "title": "A Multi-Gigabit/sec Integrated Multiple-Input Multiple-Output VLC Demonstrator",
+      "authors": "Sujan Rajbhandari et al.",
+      "year": 2017,
+      "doi": "10.1109/JLT.2017.2694486",
+      "url": "https://ora.ox.ac.uk/objects/uuid%3Addefaf94-717e-41e8-b1d7-55b2a8fa7c18",
+      "open_fulltext_url": "https://pure.coventry.ac.uk/ws/files/7726769/gigabitcomb.pdf",
+      "source_type": "peer_reviewed_paper_author_manuscript",
+      "access_level": "fulltext_reviewed",
+      "topic_tags": [
+        "MicroLED",
+        "CMOS",
+        "current_steering_DAC",
+        "parallel",
+        "ASIC_link",
+        "AWG_comparison"
+      ],
+      "process": {
+        "driver": "Austria Micro Systems 0.18 um CMOS, four 8-bit current-steering DAC channels per chip; two chips for four-channel experiment",
+        "LED": "450 nm GaN; 39 um MicroLEDs, common p-contact and individual n-contact, nine clusters with 750 um cluster spacing"
+      },
+      "architecture": "CMOS DAC/FPGA-driven four-channel setup and independent AWG-driven four/nine-channel setups. A 3 x 3 CMOS APD/TIA receiver and imaging optics complete the link.",
+      "evidence_class": "measured_CMOS_MicroLED_four_channel_link_plus_separate_AWG_maxima",
+      "data": [
+        {
+          "label": "CMOS-DAC four-channel aggregate raw rate range",
+          "value": [
+            1.23,
+            1.3
+          ],
+          "unit": "Gbit/s",
+          "conditions": "Section IV-C; 4-PAM, 1 m link, approximately 45 mA average per LED, varying horizontal displacement; FPGA/sample-rate limitations and offline filtering/equalization/decoding"
+        },
+        {
+          "label": "CMOS-DAC four-channel aggregate net rate range",
+          "value": [
+            1.14,
+            1.21
+          ],
+          "unit": "Gbit/s",
+          "conditions": "Author-reported approximate rates after 7% FEC overhead; not per lane"
+        },
+        {
+          "label": "AWG-driven nine-channel aggregate raw rate",
+          "value": 7.48,
+          "unit": "Gbit/s",
+          "conditions": "Sections III and IV-D; DAC driver replaced by Agilent 81150A AWG; 0.5 m; 8-PAM with DFE and joint MIMO decoding; not CMOS ASIC throughput"
+        },
+        {
+          "label": "AWG-driven maximum per-channel rate",
+          "value": 890,
+          "unit": "Mbit/s/lane",
+          "conditions": "Nine-channel instrument-driven link; heterogeneous channel results summed to 7.48 Gbit/s"
+        },
+        {
+          "label": "Rate-evaluation BER threshold",
+          "value": 0.0038,
+          "unit": "BER",
+          "conditions": "Section IV; criterion used to report achievable rates, not an uncoded zero-error criterion"
+        }
+      ],
+      "locator": "Coventry PDF 8 pages including cover: p3 II-A driver process; p4 II-B/C LED/APD; p5 III expressly separates CMOS and AWG systems, IV-A frequency response; p6 IV-C CMOS-DAC results/Fig9; p7 IV-D nine-channel AWG result. Journal 35(20), 4358-4365.",
+      "supports": [
+        "A 0.18 um CMOS MicroLED driver was used in measured aggregate Gbit/s operation",
+        "Independent stimulus and receiver bottlenecks must be separated from emitter/ASIC limits",
+        "Full-text setup can change the interpretation of abstract maxima"
+      ],
+      "does_not_support": [
+        "7.48 Gbit/s is the CMOS DAC driver throughput",
+        "7.48 Gbit/s is single lane",
+        "An optical data rate can be inferred from CMOS feature size alone",
+        "The 0.18 um AMS ASIC and GF180 are interchangeable"
+      ],
+      "notes": [
+        "This paper is the key retained misattribution example. The highest title/abstract rate belongs to a different drive path from the integrated CMOS-DAC four-lane case."
+      ],
+      "priority": "read_first_Gbps_CMOS_and_evidence_boundaries",
+      "checked_on": "2026-10-14",
+      "cn_guide": "优先学系统约束：CMOS-DAC四路和AWG九路是两套实验，不可混归速率。",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": true,
+      "group": "高速通信",
+      "reverification": "Primary text newly downloaded/reviewed this turn; official GF page opened with web tool.",
+      "local_private_original": "build/product-framework-20261014/highspeed-sources/rajbhandari-2017.pdf",
+      "original_sha256": "2fdc289aef006f80697b6c85eb88cea276e78a4e2f8663ef8c2fedb5605f3952"
+    },
+    {
+      "id": "G05",
+      "title": "GF180MCU Design Manual 14.1 — Chip operating conditions and thin/thick gate-oxide reliability limits",
+      "authors": "GlobalFoundries PDK Authors",
+      "year": 2022,
+      "doi": null,
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_1.html",
+      "open_fulltext_url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_1.html",
+      "source_type": "official_public_PDK_documentation",
+      "access_level": "official_documentation",
+      "topic_tags": [
+        "thin_oxide",
+        "thick_oxide",
+        "HCI",
+        "TDDB",
+        "voltage_stress"
+      ],
+      "process": "GF180MCU 3.3 V LV thin oxide and 5 V/6 V higher-voltage thick gate",
+      "architecture": "Reliability depends on terminal-to-terminal stress, exposure time/duty and operating conditions; nominal supply class is not a universal terminal rating",
+      "evidence_class": "official_reliability_design_guidance",
+      "data": [
+        {
+          "label": "Thin-oxide DC gate-to-other-node absolute limit",
+          "value": 3.63,
+          "unit": "V",
+          "conditions": "Section 14.1.4.2; applies between gate and any other FET node, not simply chip supply voltage."
+        },
+        {
+          "label": "Nominal voltage classes",
+          "value": [
+            3.3,
+            5,
+            6
+          ],
+          "unit": "V",
+          "conditions": "Section 14.1.2: 3.3 V LV, 5/6 V HV; drain HCI and gate-oxide constraints must both be satisfied."
+        }
+      ],
+      "locator": "Sections 14.1.2, 14.1.4.1 and 14.1.4.2.",
+      "supports": "6 V vs 3.3 V is a voltage/gate-oxide device choice within silicon CMOS; startup and coupled-node overshoot need terminal stress review.",
+      "does_not_support": "Do not treat a model solving at a voltage as proof of long-term reliability; 3.3 V thin-oxide devices cannot simply replace our 6 V output without a voltage-domain design.",
+      "notes": "Public text lists a thick-gate DC value as 6.5V/6V for the 5V/6V process; avoid rearranging those into a universal 6.6 V gate rating. HCI and TDDB lifetime/duty constraints are separate. No unpublished material stack inferred.",
+      "priority": 1,
+      "checked_on": "2026-10-14",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": false,
+      "group": "PDK与工艺",
+      "reverification": "Primary text newly downloaded/reviewed this turn; official GF page opened with web tool."
+    },
+    {
+      "id": "HS-IHP",
+      "title": "IHP Open Source PDK — README: current status, SG13G2 process, PDK contents",
+      "organization": "IHP GmbH",
+      "source_type": "official_PDK_repository",
+      "url": "https://github.com/IHP-GmbH/IHP-Open-PDK",
+      "checked_on": "2026-10-14",
+      "locator": "Current status -- Preview; SG13G2 Process Node; PDK Contents",
+      "evidence_class": "official_process_and_tool_documentation",
+      "supports": [
+        "130 nm CMOS with SiGe:C HBT; 1.2 V and 3.3 V MOS options",
+        "5 thin metals plus 2 thick metals, separate from GF180 stack",
+        "KLayout XSection/2.5D configuration, ngspice/Xyce, OpenEMS tools exist in PDK",
+        "Public release preview status remains manufacturing-acceptance boundary"
+      ],
+      "does_not_support": [
+        "Our project uses IHP",
+        "HBT fT equals optical data rate",
+        "Current public content automatically production accepted"
+      ],
+      "reuse": "Attribution and limited factual paraphrase only; no source figure reproduced"
+    },
+    {
+      "id": "HS-EMS",
+      "title": "openEMS Numerical Method",
+      "organization": "openEMS",
+      "source_type": "official_tool_documentation",
+      "url": "https://docs.openems.de/en/latest/concepts/numerical_method.html",
+      "checked_on": "2026-10-14",
+      "locator": "FDTD in a Nutshell; Why FDTD? Pros and Cons",
+      "evidence_class": "tool_numerical_method_documentation",
+      "supports": [
+        "3D full-wave EC-FDTD; time response to S-parameters and impedance",
+        "Spatial mesh, smallest cell/timestep and domain size affect resource cost and results"
+      ],
+      "does_not_support": [
+        "A field simulation was run in this project",
+        "2.5D geometry view is a field solution",
+        "An uncalibrated model is signoff-quality"
+      ],
+      "reuse": "Attribution and limited factual paraphrase only; no source figure reproduced"
+    }
+  ],
+  "asset_ledger": [
+    {
+      "id": "HS-A01",
+      "source": "H05",
+      "locator": "Accepted manuscript PDF p2 Fig.2",
+      "evidence_class": "published_architecture_figure_for_fabricated_link",
+      "local_path": "build/product-framework-20261014/highspeed-sources/jalajakumari-2017-fig2.png",
+      "conditions": "LVDS to thermometer code; source/cascode/steering; 16 emitting elements in one DLC",
+      "supports": "Actual published circuit architecture, not a copied implementation in our ASIC",
+      "reuse": "Local private reading evidence only; public figure reuse not confirmed; excluded from docs publication assets"
+    },
+    {
+      "id": "HS-A02",
+      "source": "H06",
+      "locator": "Author manuscript PDF p6 Fig.9 with adjacent text",
+      "evidence_class": "published_measured_system_result",
+      "local_path": "build/product-framework-20261014/highspeed-sources/rajbhandari-2017-fig9.png",
+      "conditions": "Four lanes, CMOS DAC driver, 1 m, 4-PAM, ~45mA per LED; aggregate raw vs horizontal displacement",
+      "supports": "1.23–1.30 Gb/s belongs to integrated four-channel experiment",
+      "reuse": "Local private reading evidence only; public figure reuse not confirmed; excluded from docs publication assets"
+    },
+    {
+      "id": "HS-C01",
+      "source": "independent_calculation",
+      "locator": "scripts/research/product_framework_highspeed.py",
+      "evidence_class": "synthetic_calculated",
+      "local_path": "docs/research/product-framework-20261014/figures/highspeed-eye.svg",
+      "conditions": "PRBS9; exact two-pole linear normalized model; fixed 0.5 UI; no noise, jitter, CDR or BER",
+      "supports": "Compare chosen bandwidth and symbol time; smaller C need not remove carrier limit",
+      "does_not_support": "Foundry process speed, LED optical measurement, bit rate ceiling or BER",
+      "reuse": "Original project calculation/figure"
+    }
+  ],
+  "local_inputs": [
+    {
+      "path": "scripts/research/product_framework_highspeed.py",
+      "sha256": "5553be6912c245b112bbbcac0012463887356df019c16212770f5cc6584bfa8f"
+    },
+    {
+      "path": "docs/research/product-framework-20261014/highspeed-calculations.json",
+      "sha256": "2f2a6f745746c237d7e012fb562c203a5040eb9f69ba026dbb926d126ed95d36"
+    },
+    {
+      "path": "docs/research/product-framework-20261014/highspeed-samples.csv",
+      "sha256": "b22db9b33f6ce0403ad7312693d0211cc502972b79b29fd2342d022be723a9c1"
+    },
+    {
+      "path": "docs/research/driver-circuit-layout-20261012/sources.json",
+      "sha256": "05b88347018fcb12ce27f76ca7abf2f6d5b8606c341c66680f9ec22382338fc2"
+    },
+    {
+      "path": "docs/research/reference-safety-20261013/report.md",
+      "sha256": "cc6430831f8b6640b7aa55b23092a8e19c5378a7b17a56eeb3d9dec7498ee817"
+    }
+  ],
+  "independent_calculations": [
+    {
+      "label": "Illustrative displacement current",
+      "formula": "C*dV/dt",
+      "inputs": {
+        "C_F": 2e-12,
+        "dV_V": 1,
+        "dt_s": 2e-10
+      },
+      "result_A": 0.01
+    },
+    {
+      "label": "Illustrative inductive bounce",
+      "formula": "L*dI/dt",
+      "inputs": {
+        "L_H": 1e-09,
+        "dI_A": 0.01,
+        "dt_s": 2e-10
+      },
+      "result_V": 0.05
+    },
+    {
+      "label": "Zero-error binomial one-sided 95 percent bound",
+      "formula": "p_upper=1-0.05**(1/N), N≈-ln(0.05)/target",
+      "inputs": {
+        "target_BER": 1e-12,
+        "rate_bps": 1000000000.0
+      },
+      "required_bits_approx": 2995732273553.9907,
+      "time_s_approx": 2995.7322735539906,
+      "conditions": "independent stationary trials, zero errors; not a claim for this project"
+    }
+  ]
+}

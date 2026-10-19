@@ -1,0 +1,661 @@
+{
+  "schema_version": 1,
+  "study_date": "2026-10-12",
+  "scope": "15 selected sources directly relevant to circuit/layout decisions; not exhaustive or a performance ranking",
+  "records": [
+    {
+      "id": "C01",
+      "title": "Active-Matrix GaN Micro Light-Emitting Diode Display With Unprecedented Brightness",
+      "authors": "Johannes Herrnsdorf et al.",
+      "year": 2015,
+      "doi": "10.1109/TED.2015.2416915",
+      "url": "https://doi.org/10.1109/TED.2015.2416915",
+      "open_fulltext_url": "https://eprints.gla.ac.uk/105682/7/105682.pdf",
+      "source_type": "primary_research_paper",
+      "access_level": "fulltext_reviewed",
+      "topic_tags": [
+        "silicon_CMOS",
+        "active_matrix",
+        "power_grid",
+        "hybrid_integration",
+        "multi_pixel_coupling"
+      ],
+      "process": "0.35 µm silicon CMOS driver; sapphire-grown 450 nm InGaN/GaN LED array",
+      "architecture": "Pitch-matched CMOS switching drivers, separate LED_VDD/GND/LED_GND terminals, bump bonding; grid power rails and larger drive devices studied against prior linear rails",
+      "evidence_class": "fabricated_CMOS_LED_assembly_with_electrical_optical_measurements_and_LED_physical_simulations",
+      "data": [
+        {
+          "label": "Array luminance",
+          "value": 1000000,
+          "unit": "cd/m²",
+          "conditions": "Device B patterns/full-array section at 3.6 V, approximately 7.7 mA/pixel; pixel pitch 100 µm. This is not our 20 µm/100 µA operating point."
+        },
+        {
+          "label": "Realized single-pixel current",
+          "value": 300,
+          "unit": "mA",
+          "conditions": "Approximately 300 mA in the generation-2 assembly, limited by LED; NOT demonstrated for all pixels simultaneously."
+        },
+        {
+          "label": "Simultaneously operated array section",
+          "value": [
+            10,
+            10
+          ],
+          "unit": "pixels",
+          "conditions": "1×1 mm² section operated at total current 900 mA; different operating point from 300 mA single pixel."
+        }
+      ],
+      "locator": "IEEE TED 62(6), pp.1918–1925; Section II.A CMOS Layout pp.1919–1920; Fig.2 and Table I; Fig.3 pp.1920; Section II.D/Fig.7 p.1922.",
+      "supports": "Silicon CMOS can drive GaN LEDs; physical PG and LED n-contact geometry alter simultaneous-pixel behavior and voltage headroom.",
+      "does_not_support": "No proof of our mirror precision, our model validity, 20 µm pixel behavior, or a generally applicable current/rate ceiling.",
+      "notes": "Official author-university full text reviewed. PDF includes a cover sheet: journal p.1919 is PDF page 3. High brightness is conditioned on a large 100 µm-pitch device. Avoid converting 10 ns pulse operation into a communication BER claim.",
+      "priority": 1,
+      "checked_on": "2026-10-12",
+      "cn_guide": "看CMOS与LED如何连接；高亮度和单pixel大电流不是全阵列同时工作的证明。",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": true,
+      "group": "CMOS背板"
+    },
+    {
+      "id": "G03",
+      "title": "GF180MCU Design Manual 7.7 Poly2 — minimum channel lengths for 3.3 V, 5 V and 6 V CMOS",
+      "authors": "GlobalFoundries PDK Authors",
+      "year": 2022,
+      "doi": null,
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_07_08.html",
+      "open_fulltext_url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_07_08.html",
+      "source_type": "official_public_PDK_documentation",
+      "access_level": "official_documentation",
+      "topic_tags": [
+        "minimum_L",
+        "Poly2",
+        "voltage_class"
+      ],
+      "process": "GF180MCU planar silicon CMOS design rules",
+      "architecture": "Poly2 gate geometry under each voltage class",
+      "evidence_class": "official_layout_rule",
+      "data": [
+        {
+          "label": "3.3 V NMOS/PMOS minimum drawn channel lengths",
+          "value": [
+            0.28,
+            0.28
+          ],
+          "unit": "µm",
+          "conditions": "Poly2 rule PL.2 and opening paragraph; both LV devices."
+        },
+        {
+          "label": "6 V NMOS/PMOS minimum drawn channel lengths",
+          "value": [
+            0.7,
+            0.55
+          ],
+          "unit": "µm",
+          "conditions": "Poly2 rule PL.2 and note 1; 6 V operating class, not the 5 V variant."
+        },
+        {
+          "label": "5 V NMOS/PMOS minimum drawn channel lengths",
+          "value": [
+            0.6,
+            0.5
+          ],
+          "unit": "µm",
+          "conditions": "Poly2 rule PL.2; do not mistake wider model geometry coverage for 6 V layout allowance."
+        }
+      ],
+      "locator": "Opening paragraph; Poly2 RULES PL.2; note 1.",
+      "supports": "Same silicon process has distinct voltage-dependent device geometries; our 4 µm mirrors and 1 µm switches are intentionally longer than minimum.",
+      "does_not_support": "180 nm process name is not the Lmin of our 6 V MOS; shrinking L is not automatically an improvement in mirror precision or reliability.",
+      "notes": "Official public page spells NNMOS; interpretation NMOS is unambiguous in its rule table. W/L in a FET call must use drawn design dimensions, not effective channel dimensions.",
+      "priority": 1,
+      "checked_on": "2026-10-12",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": false,
+      "group": "PDK与工艺"
+    },
+    {
+      "id": "G04",
+      "title": "GF180MCU Electrical Specifications 5.3 — Gate oxide capacitance",
+      "authors": "GlobalFoundries PDK Authors",
+      "year": 2022,
+      "doi": null,
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/analog/spice/elec_specs/elec_specs_5_3.html",
+      "open_fulltext_url": "https://gf180mcu-pdk.readthedocs.io/en/latest/analog/spice/elec_specs/elec_specs_5_3.html",
+      "source_type": "official_public_PDK_documentation",
+      "access_level": "official_documentation",
+      "topic_tags": [
+        "Cox",
+        "thin_thick_gate",
+        "charge_tradeoff"
+      ],
+      "process": "3.3 V and 6 V GF180MCU gate oxide specifications",
+      "architecture": "Unit-area oxide capacitance specification; not total gate/input/pixel capacitance",
+      "evidence_class": "official_electrical_parameter_specification",
+      "data": [
+        {
+          "label": "Typical 3.3 V gate Cox",
+          "value": 4.4,
+          "unit": "fF/µm²",
+          "conditions": "Both N and P gate poly; min/max 3.4/5.4 fF/µm²."
+        },
+        {
+          "label": "Typical 6 V gate Cox",
+          "value": 2.3,
+          "unit": "fF/µm²",
+          "conditions": "Both N and P gate poly; min/max 1.8/2.8 fF/µm²."
+        }
+      ],
+      "locator": "Section 5.3 table, COX (Poly) 3.3V and COX (Poly) 6V rows.",
+      "supports": "Thicker-gate category has lower unit-area Cox; total transistor charge depends on area, bias, overlap and junctions as well.",
+      "does_not_support": "Lower Cox by itself does not establish faster driver speed; do not claim thick oxide inherently gives larger unit-area capacitance.",
+      "notes": "No inference of exact chemical gate dielectric/material stack is needed or made. Speed comparisons require actual gm/charge/voltage/loading and models.",
+      "priority": 1,
+      "checked_on": "2026-10-12",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": false,
+      "group": "PDK与工艺"
+    },
+    {
+      "id": "G05",
+      "title": "GF180MCU Design Manual 14.1 — Chip operating conditions and thin/thick gate-oxide reliability limits",
+      "authors": "GlobalFoundries PDK Authors",
+      "year": 2022,
+      "doi": null,
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_1.html",
+      "open_fulltext_url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_1.html",
+      "source_type": "official_public_PDK_documentation",
+      "access_level": "official_documentation",
+      "topic_tags": [
+        "thin_oxide",
+        "thick_oxide",
+        "HCI",
+        "TDDB",
+        "voltage_stress"
+      ],
+      "process": "GF180MCU 3.3 V LV thin oxide and 5 V/6 V higher-voltage thick gate",
+      "architecture": "Reliability depends on terminal-to-terminal stress, exposure time/duty and operating conditions; nominal supply class is not a universal terminal rating",
+      "evidence_class": "official_reliability_design_guidance",
+      "data": [
+        {
+          "label": "Thin-oxide DC gate-to-other-node absolute limit",
+          "value": 3.63,
+          "unit": "V",
+          "conditions": "Section 14.1.4.2; applies between gate and any other FET node, not simply chip supply voltage."
+        },
+        {
+          "label": "Nominal voltage classes",
+          "value": [
+            3.3,
+            5,
+            6
+          ],
+          "unit": "V",
+          "conditions": "Section 14.1.2: 3.3 V LV, 5/6 V HV; drain HCI and gate-oxide constraints must both be satisfied."
+        }
+      ],
+      "locator": "Sections 14.1.2, 14.1.4.1 and 14.1.4.2.",
+      "supports": "6 V vs 3.3 V is a voltage/gate-oxide device choice within silicon CMOS; startup and coupled-node overshoot need terminal stress review.",
+      "does_not_support": "Do not treat a model solving at a voltage as proof of long-term reliability; 3.3 V thin-oxide devices cannot simply replace our 6 V output without a voltage-domain design.",
+      "notes": "Public text lists a thick-gate DC value as 6.5V/6V for the 5V/6V process; avoid rearranging those into a universal 6.6 V gate rating. HCI and TDDB lifetime/duty constraints are separate. No unpublished material stack inferred.",
+      "priority": 1,
+      "checked_on": "2026-10-12",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": false,
+      "group": "PDK与工艺"
+    },
+    {
+      "id": "T03",
+      "title": "All-GaN-Based Monolithic MIS-HEMT Integrated Micro-LED Pixels for Active-Matrix Displays",
+      "authors": "Yuta Furusawa, Wentao Cai, Heajong Cheong, Yoshio Honda and Hiroshi Amano",
+      "year": 2025,
+      "doi": "10.1002/pssa.202500044",
+      "url": "https://doi.org/10.1002/pssa.202500044",
+      "open_fulltext_url": "https://onlinelibrary.wiley.com/doi/full/10.1002/pssa.202500044",
+      "source_type": "peer-reviewed research article",
+      "access_level": "fulltext_reviewed",
+      "topic_tags": [
+        "GaN",
+        "AlGaN/GaN MIS-HEMT",
+        "monolithic integration",
+        "2DEG",
+        "normally-on",
+        "prototype"
+      ],
+      "process": "Single MOVPE growth on sapphire; AlGaN/GaN 2DEG injects directly into LED quantum wells; 4-nm ALD Al2O3 MIS gate; carbon-doped GaN buffer in matrix version.",
+      "architecture": "Two MIS-HEMTs + one LED per pixel, select and drive; fabricated 2×2 matrix. Drive is normally-on; negative row/column biases needed for selective off.",
+      "evidence_class": "fabricated electrical and optical prototype; photodiode-derived optical estimate and assumed-pitch normalization",
+      "data": [
+        {
+          "label": "maximum optical output estimate",
+          "value": 50,
+          "unit": "µW",
+          "conditions": "§2.1/Fig.4b linear LED-HEMT; photodiode area 100 mm² at 10 mm below device; finite collection solid angle ~1 sr; not integrating-sphere total power."
+        },
+        {
+          "label": "calculated pixel-area power density",
+          "value": 0.5,
+          "unit": "W/cm²",
+          "conditions": "§2.1: 50 µW divided by assumed 100 µm×100 µm pixel pitch, not by 18 µm×15 µm LED active area; not photometric luminance."
+        }
+      ],
+      "locator": "HTML §2 Experimental Section; §2.1/Figs.2–4; §2.3–2.4/Figs.9–13.",
+      "supports": "GaN-based transistor and LED can share an epitaxial/material platform; individual devices in a monolithic 2×2 matrix can be addressed.",
+      "does_not_support": "Does not prove mature GaN display manufacturing, low-voltage normally-off operation, storage-capacitor retention, array uniformity or communication data rate.",
+      "notes": "§2.4 describes parasitic Schottky leakage through wiring/buffer, and proposes added insulation before useful 2T1C retention/large-array scaling. Gate negative-off requirements materially differ from silicon CMOS logic.",
+      "priority": "read_first",
+      "checked_on": "2026-10-12",
+      "cn_guide": "了解真正的GaN driver原型；normally-on、负压关断与布线漏电改变系统要求。",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": true,
+      "group": "TFT与新材料"
+    },
+    {
+      "id": "T04",
+      "title": "Wafer-scale organic-on-III-V monolithic heterogeneous integration for active-matrix micro-LED displays",
+      "authors": "Lei Han et al.",
+      "year": 2023,
+      "doi": "10.1038/s41467-023-42443-8",
+      "url": "https://doi.org/10.1038/s41467-023-42443-8",
+      "open_fulltext_url": "https://www.nature.com/articles/s41467-023-42443-8.pdf",
+      "source_type": "peer-reviewed research article",
+      "access_level": "fulltext_reviewed",
+      "topic_tags": [
+        "organic TFT",
+        "2T1C",
+        "organic-last integration",
+        "low-temperature integration",
+        "prototype"
+      ],
+      "process": "Solution-processed organic semiconductor small-molecule/polymer blend; top-gate bottom-contact OTFT, polymer dielectric; organic-last process on GaN LED plane with post-OTFT vias, ≤150°C integration.",
+      "architecture": "2T1C active matrix with switch TFT, drive TFT and storage capacitor; 48×48 panel fabricated.",
+      "evidence_class": "measured TFTs, fabricated pixel/panel and dynamic optical display",
+      "data": [
+        {
+          "label": "panel resolution",
+          "value": 254,
+          "unit": "PPI",
+          "conditions": "Fig.4b–e; 100 µm×100 µm pitch; LED 28 µm×26 µm; 48×48 demonstration."
+        },
+        {
+          "label": "demonstrated dynamic frame rate",
+          "value": 60,
+          "unit": "Hz",
+          "conditions": "§Display integration/Fig.4e and Supplementary Movie1, words/firework display."
+        }
+      ],
+      "locator": "PDF pp.2–3 integration/electrical performance; pp.5–6 Fig.4/display integration; p.6 Methods material stack.",
+      "supports": "MicroLED light-emitter material and transistor channel material can differ; low-temperature integration/interconnect quality can matter more than the highest mobility.",
+      "does_not_support": "Does not establish GHz links, industrial lifetime/yield or equivalence to CMOS/TFTs under matched biases and pixel area.",
+      "notes": "OTFT is not OLED. The demonstrated light emitter remains inorganic GaN. Separate high-current stress geometry from the small pixel geometry; do not transfer wide-device reliability measurements to all pixels.",
+      "priority": "recommended",
+      "checked_on": "2026-10-12",
+      "cn_guide": "organic TFT不是OLED：电子驱动层为有机材料，发光器件仍是GaN LED。",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": true,
+      "group": "TFT与新材料"
+    },
+    {
+      "id": "T05",
+      "title": "A Micro-LED PWM pixel circuit achieving stable ultra-low-gray expression through drain-reservoir feedback",
+      "authors": "Jaybum Kim et al.",
+      "year": 2026,
+      "doi": "10.1007/s44469-026-00024-7",
+      "url": "https://doi.org/10.1007/s44469-026-00024-7",
+      "open_fulltext_url": "https://link.springer.com/article/10.1007/s44469-026-00024-7",
+      "source_type": "peer-reviewed research article",
+      "access_level": "fulltext_reviewed",
+      "topic_tags": [
+        "LTPO",
+        "p-LTPS",
+        "a-IGZO",
+        "14T4C",
+        "feedback",
+        "low gray"
+      ],
+      "process": "Coplanar top-gate p-LTPS and a-IGZO TFT measured transfer/output curves; HSPICE RPI models fitted with TFT parasitics included.",
+      "architecture": "14T4C: 4T1C CCG, 6T1C PWM, 3T1C feedback, 1T1C drain reservoir; separates PWM drain node from current-source gate during feedback delay.",
+      "evidence_class": "individual TFT characteristics measured; complete pixel operation and nominal layout simulated/designed",
+      "data": [
+        {
+          "label": "simulated LED-current fall time",
+          "value": 0.3,
+          "unit": "µs",
+          "conditions": "Fig.5; 90%→10% of peak current; HSPICE, 640×360 target at 120 Hz; not measured optical fall time."
+        },
+        {
+          "label": "simulated average-current error",
+          "value": "<5",
+          "unit": "%",
+          "conditions": "γ=2.2 8-bit mapping, down to gray 6G, driving-TFT VTH shifts ±0.5 V; lower codes not established."
+        }
+      ],
+      "locator": "HTML §§2–3/Figs.2–6/Table1; §3/Fig.10 layout; §4 conclusion. Published 2026-10-08.",
+      "supports": "Fast edges alone are insufficient: PWM delay, feedback activation and low-gray voltage margin need joint compensation.",
+      "does_not_support": "Does not show an 8-bit measured display, reliable codes below 6G, optical validation, physical DRC/LVS or high-speed communication.",
+      "notes": "Proposed layout area/PPI is design evidence only. This is a useful near-project question: distinguish edge fall time from pulse-area error and data-to-time conversion error.",
+      "priority": "recommended",
+      "checked_on": "2026-10-12",
+      "cn_guide": "学习短脉冲下降与低灰阶积分误差；所报动态结果是拟合器件模型后的HSPICE。",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": true,
+      "group": "TFT与新材料"
+    },
+    {
+      "id": "T08",
+      "title": "Three-dimensional monolithic micro-LED display driven by atomically thin transistor matrix",
+      "authors": "Wanqing Meng et al.",
+      "year": 2021,
+      "doi": "10.1038/s41565-021-00966-5",
+      "url": "https://doi.org/10.1038/s41565-021-00966-5",
+      "open_fulltext_url": "https://light.nju.edu.cn/upload/file/20250514/140_202505141925471077.pdf",
+      "source_type": "peer-reviewed research article; author institutional PDF",
+      "access_level": "fulltext_reviewed",
+      "topic_tags": [
+        "MoS2",
+        "2D semiconductor",
+        "1T1D",
+        "BEOL integration",
+        "prototype",
+        "response time"
+      ],
+      "process": "Monolayer CVD MoS2 grown separately then transferred onto GaN LED plane; backgate/Al2O3 stack, ultraclean Au-supported transfer; low-temperature BEOL integration, not low-temperature MoS2 growth.",
+      "architecture": "1T1D pixel; one MoS2 driving FET and one LED, independently addressed gate/data lines with progressive FPGA scanning; fabricated 32×32 array.",
+      "evidence_class": "measured FETs, single-pixel electrical/optical tests and display prototype; bandwidth and maximum scan-rate potential partly inferred/designed",
+      "data": [
+        {
+          "label": "prototype pixel density",
+          "value": 1270,
+          "unit": "PPI",
+          "conditions": "32×32 array; 20 µm pitch; 10 µm LED; FPGA progressive scan. Resolution is geometric, not full-array yield."
+        },
+        {
+          "label": "measured single-pixel pulse operation",
+          "value": 250,
+          "unit": "kHz",
+          "conditions": "Fig.3e; synchronized Vdata/Vg; equipment-limited 330 ns voltage edges; electrical delay components 240 ns rising +170 ns falling."
+        }
+      ],
+      "locator": "PDF journal pp.1233–1235 Figs.2–4; Methods appended PDFp.7, integration/material characterization.",
+      "supports": "A non-silicon channel can drive an inorganic LED with a monolithic BEOL architecture; clean transfer/contact and interconnect quality are crucial.",
+      "does_not_support": "Does not demonstrate Gbit/s data link, measured 2.4 MHz optical −3dB bandwidth, high production yield or an entire low-temperature-grown material stack.",
+      "notes": "2.4 MHz is inferred from inverse 410 ns total delay, not measured link bandwidth. MoS2 growth typically1000°C; post-LED integration about200°C. QR demonstration identifies128 should-lit open pixels and2 short pixels, then repairs failed pixels in image for QR decode; these are not a 1024-pixel global-yield denominator.",
+      "priority": "read_first",
+      "checked_on": "2026-10-12",
+      "cn_guide": "学习MoS₂与GaN三维集成；实测频率、delay推算、失败pixel和制造温度分开。",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": true,
+      "group": "TFT与新材料"
+    },
+    {
+      "id": "H03",
+      "title": "1.5 Gbit/s Multi-Channel Visible Light Communications Using CMOS-Controlled GaN-Based LEDs",
+      "authors": "Shuailong Zhang et al.",
+      "year": 2013,
+      "doi": "10.1109/JLT.2013.2246138",
+      "url": "https://strathprints.strath.ac.uk/43161/",
+      "open_fulltext_url": "https://research-repository.griffith.edu.au/bitstreams/618f0b69-fb1c-524c-921b-e3d48ba37e73/download",
+      "source_type": "peer_reviewed_paper_author_manuscript",
+      "access_level": "fulltext_reviewed",
+      "topic_tags": [
+        "MicroLED",
+        "CMOS",
+        "OOK_NRZ",
+        "parallel",
+        "ASIC",
+        "ground_bounce"
+      ],
+      "process": {
+        "driver": "16 x 16 CMOS driver cells, 100 x 100 um cells; foundry/node not explicitly established in reviewed text",
+        "LED": "Blue 450 nm GaN, 16 x 16 array; 99 x 99 um square pixels, 100 um pitch, common n-contact/individual p-contact; flip-chip bonded"
+      },
+      "architecture": "Each CMOS cell is a high-speed digitally triggered switch applying LED bias. Four independent data inputs with a shared clock; source data instruments feed actual CMOS driver cells. It is not direct instrument drive of the LED.",
+      "evidence_class": "measured_hybrid_MicroLED_CMOS_four_channel_link",
+      "data": [
+        {
+          "label": "Simultaneous per-channel rate",
+          "value": 375,
+          "unit": "Mbit/s/lane",
+          "conditions": "Four simultaneously modulated pixels; OOK-NRZ PRBS 2^7-1; input trigger 0-2 V; applied LED bias 6.5 V"
+        },
+        {
+          "label": "Measured aggregate rate",
+          "value": 1.5,
+          "unit": "Gbit/s",
+          "conditions": "Four x 375 Mbit/s; distinct from a single-lane 1.5 Gbit/s result"
+        },
+        {
+          "label": "Author-defined error-free criterion",
+          "value": 1e-10,
+          "unit": "BER",
+          "conditions": "Paper defines error-free as BER less than this bound; zero observed errors must not be rewritten as BER=0"
+        },
+        {
+          "label": "Four-channel received-power penalty",
+          "value": 2.88,
+          "unit": "dB",
+          "conditions": "Compared with one-channel operation at the stated rate/error-free criterion"
+        }
+      ],
+      "locator": "Griffith PDF 7 pages including cover. PDF p3: device and CMOS cells; p4: frequency response, OOK setup and Fig4; p5: BER/Fig5 and electrical crosstalk/ground bounce; p6: conclusion. Journal pages 1211-1216.",
+      "supports": [
+        "Actual CMOS driver parallel operation can reach aggregate Gbit/s",
+        "Supply routing can couple otherwise independent channels",
+        "Parallel rate must state channel denominator"
+      ],
+      "does_not_support": [
+        "Proposed 16 x 375 Mbit/s = 6 Gbit/s scaling was measured",
+        "This driver architecture has 1.5 Gbit/s single-lane capability",
+        "The paper's LED bias or driver implementation can be adopted without its own voltage/safety model"
+      ],
+      "notes": [
+        "Full PDF obtained read-only in memory using public repository; no source PDF copied into this project. Optical crosstalk controlled by selecting separated pixels; electrical coupling still observed."
+      ],
+      "priority": "read_first_parallel_power_coupling",
+      "checked_on": "2026-10-12",
+      "cn_guide": "优先看四路并发与ground bounce；1.5 Gbit/s是四路总值。",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": true,
+      "group": "高速通信"
+    },
+    {
+      "id": "H05",
+      "title": "High Speed Integrated Digital to Light Converter for Short Range Visible Light Communication",
+      "authors": "Aravind V. N. Jalajakumari et al.",
+      "year": 2017,
+      "doi": "10.1109/LPT.2016.2624281",
+      "url": "https://www.research.ed.ac.uk/en/publications/high-speed-integrated-digital-to-light-converter-for-short-range-/",
+      "open_fulltext_url": "https://strathprints.strath.ac.uk/59246/1/Jalajakumari_etal_PTL_2017_High_speed_integrated_digital_to_light_converter_for_short_range_visible_light_communication.pdf",
+      "source_type": "peer_reviewed_paper_author_manuscript",
+      "access_level": "fulltext_reviewed",
+      "topic_tags": [
+        "MicroLED",
+        "CMOS",
+        "NMOS",
+        "current_steering",
+        "cascode",
+        "DLC",
+        "OFDM",
+        "ASIC"
+      ],
+      "process": {
+        "driver": "CMOS; process node not directly stated in reviewed manuscript",
+        "LED": "16 common-anode 450 nm InGaN/GaN MicroLEDs, 24 um diameter; individual cathodes; wire bonded to CMOS driver"
+      },
+      "architecture": "4-bit LVDS input to 16-bit thermometer code; 16 NMOS current-source/cascode/differential-switch cells steer current between LED main branch and dummy branch. Each cell adjustable 1-16 mA; dummy rail 1.8 V.",
+      "evidence_class": "measured_hybrid_CMOS_MicroLED_DLC_link",
+      "data": [
+        {
+          "label": "Reported input/current-cell switching capability",
+          "value": 500,
+          "unit": "MHz",
+          "conditions": "Section II-A architecture capability; not a 500 Mbit/s optical BER result"
+        },
+        {
+          "label": "Measured OFDM link data rate",
+          "value": 365,
+          "unit": "Mbit/s",
+          "conditions": "SEG2 contact scheme; 200 MHz chip clock, 16-QAM OFDM, CP=10, FFT=128, 5 cm link, BER threshold 1e-3; APD/TIA and offline scope/Matlab processing"
+        },
+        {
+          "label": "SEG2 link bias per cell",
+          "value": 8,
+          "unit": "mA",
+          "conditions": "Section III setup, external LED supply 8.2 V; this paper's load and optical setup, not present repository's 100 uA design point"
+        }
+      ],
+      "locator": "4-page accepted manuscript: p2 sections II-A/B/C and III architecture, 24 um LED and supplies; p3 setup receiver/data handling; p4 IV-B data transmission and finite stream length. Journal 29(1), 118-121; online Nov 2016, issue Jan 2017.",
+      "supports": [
+        "CMOS NMOS cells can implement differential current steering and cascode for a MicroLED transmitter",
+        "Switching clock, optical bandwidth and communication rate are different observables",
+        "Dummy-branch current remains relevant to energy accounting"
+      ],
+      "does_not_support": [
+        "Six-MOS low-rate pixel topology already supports this waveform",
+        "16 emitting elements equal 16 independent communication lanes",
+        "500 MHz architecture capability equals measured 500 MHz optical bandwidth",
+        "BER=0 or a long-run BER claim"
+      ],
+      "notes": [
+        "Institution metadata variants state 85% efficiency while reviewed manuscript computes 70%; efficiency omitted from this index's data pending version reconciliation. Manuscript states 32 kbits for its OFDM stream; keep finite sampling limits."
+      ],
+      "priority": "read_first_current_steering_topology",
+      "checked_on": "2026-10-12",
+      "cn_guide": "优先学current steering、dummy与cascode；16颗LED属于同一DLC而非16个lane。",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": true,
+      "group": "高速通信"
+    },
+    {
+      "id": "H06",
+      "title": "A Multi-Gigabit/sec Integrated Multiple-Input Multiple-Output VLC Demonstrator",
+      "authors": "Sujan Rajbhandari et al.",
+      "year": 2017,
+      "doi": "10.1109/JLT.2017.2694486",
+      "url": "https://ora.ox.ac.uk/objects/uuid%3Addefaf94-717e-41e8-b1d7-55b2a8fa7c18",
+      "open_fulltext_url": "https://pure.coventry.ac.uk/ws/files/7726769/gigabitcomb.pdf",
+      "source_type": "peer_reviewed_paper_author_manuscript",
+      "access_level": "fulltext_reviewed",
+      "topic_tags": [
+        "MicroLED",
+        "CMOS",
+        "current_steering_DAC",
+        "parallel",
+        "ASIC_link",
+        "AWG_comparison"
+      ],
+      "process": {
+        "driver": "Austria Micro Systems 0.18 um CMOS, four 8-bit current-steering DAC channels per chip; two chips for four-channel experiment",
+        "LED": "450 nm GaN; 39 um MicroLEDs, common p-contact and individual n-contact, nine clusters with 750 um cluster spacing"
+      },
+      "architecture": "CMOS DAC/FPGA-driven four-channel setup and independent AWG-driven four/nine-channel setups. A 3 x 3 CMOS APD/TIA receiver and imaging optics complete the link.",
+      "evidence_class": "measured_CMOS_MicroLED_four_channel_link_plus_separate_AWG_maxima",
+      "data": [
+        {
+          "label": "CMOS-DAC four-channel aggregate raw rate range",
+          "value": [
+            1.23,
+            1.3
+          ],
+          "unit": "Gbit/s",
+          "conditions": "Section IV-C; 4-PAM, 1 m link, approximately 45 mA average per LED, varying horizontal displacement; FPGA/sample-rate limitations and offline filtering/equalization/decoding"
+        },
+        {
+          "label": "CMOS-DAC four-channel aggregate net rate range",
+          "value": [
+            1.14,
+            1.21
+          ],
+          "unit": "Gbit/s",
+          "conditions": "Author-reported approximate rates after 7% FEC overhead; not per lane"
+        },
+        {
+          "label": "AWG-driven nine-channel aggregate raw rate",
+          "value": 7.48,
+          "unit": "Gbit/s",
+          "conditions": "Sections III and IV-D; DAC driver replaced by Agilent 81150A AWG; 0.5 m; 8-PAM with DFE and joint MIMO decoding; not CMOS ASIC throughput"
+        },
+        {
+          "label": "AWG-driven maximum per-channel rate",
+          "value": 890,
+          "unit": "Mbit/s/lane",
+          "conditions": "Nine-channel instrument-driven link; heterogeneous channel results summed to 7.48 Gbit/s"
+        },
+        {
+          "label": "Rate-evaluation BER threshold",
+          "value": 0.0038,
+          "unit": "BER",
+          "conditions": "Section IV; criterion used to report achievable rates, not an uncoded zero-error criterion"
+        }
+      ],
+      "locator": "Coventry PDF 8 pages including cover: p3 II-A driver process; p4 II-B/C LED/APD; p5 III expressly separates CMOS and AWG systems, IV-A frequency response; p6 IV-C CMOS-DAC results/Fig9; p7 IV-D nine-channel AWG result. Journal 35(20), 4358-4365.",
+      "supports": [
+        "A 0.18 um CMOS MicroLED driver was used in measured aggregate Gbit/s operation",
+        "Independent stimulus and receiver bottlenecks must be separated from emitter/ASIC limits",
+        "Full-text setup can change the interpretation of abstract maxima"
+      ],
+      "does_not_support": [
+        "7.48 Gbit/s is the CMOS DAC driver throughput",
+        "7.48 Gbit/s is single lane",
+        "An optical data rate can be inferred from CMOS feature size alone",
+        "The 0.18 um AMS ASIC and GF180 are interchangeable"
+      ],
+      "notes": [
+        "This paper is the key retained misattribution example. The highest title/abstract rate belongs to a different drive path from the integrated CMOS-DAC four-lane case."
+      ],
+      "priority": "read_first_Gbps_CMOS_and_evidence_boundaries",
+      "checked_on": "2026-10-12",
+      "cn_guide": "优先学系统约束：CMOS-DAC四路和AWG九路是两套实验，不可混归速率。",
+      "reuse": "Link/cite bibliographic identity and factual values with attribution; no source figures reproduced",
+      "is_paper": true,
+      "group": "高速通信"
+    },
+    {
+      "id": "G-MATCH",
+      "title": "GF180 matched pair layout guidelines",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_10_6_2.html",
+      "locator": "MP.1–MP.13; not-coded guidelines",
+      "supports": "Matched devices, dummy, symmetry, same environment, similar interconnect and DC bias; current common-centroid drawing is our proposed interpretation",
+      "source_type": "official_public_PDK_documentation",
+      "access_level": "official_documentation",
+      "checked_on": "2026-10-12",
+      "reuse": "Source link and factual summary only; no source figure/PDF reproduced"
+    },
+    {
+      "id": "G-EM",
+      "title": "GF180 electro-migration",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_2.html",
+      "locator": "§14.2.1 / Tables14.3–14.4",
+      "supports": "Temperature and material/geometry dependent line/contact/via currents; bidirectional definition is not signed cancellation",
+      "source_type": "official_public_PDK_documentation",
+      "access_level": "official_documentation",
+      "checked_on": "2026-10-12",
+      "reuse": "Source link and factual summary only; no source figure/PDF reproduced"
+    },
+    {
+      "id": "G-ESD",
+      "title": "GF180 ESD layout guidelines",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_4.html",
+      "locator": "§14.4",
+      "supports": "Protection structures and layout; normal functional transients do not qualify ESD",
+      "source_type": "official_public_PDK_documentation",
+      "access_level": "official_documentation",
+      "checked_on": "2026-10-12",
+      "reuse": "Source link and factual summary only; no source figure/PDF reproduced"
+    },
+    {
+      "id": "D-LED",
+      "title": "Lin 2026 public yellow LED static curve",
+      "url": "https://doi.org/10.5281/zenodo.20034288",
+      "locator": "One 20 um yellow LED, independently interpolated I–V point",
+      "supports": "Vf at 100 uA; temperature not confirmed; no calibrated dynamic C/thermal/optical model",
+      "source_type": "public_dataset",
+      "access_level": "local_data_independently_calibrated",
+      "checked_on": "2026-10-12",
+      "reuse": "Source link and factual summary only; no source figure/PDF reproduced"
+    }
+  ],
+  "research_papers": 8,
+  "new_EDA_runs": 0,
+  "original_figures": 8
+}

@@ -1,0 +1,4 @@
+module startup_integrated_v3(inout VSS, VREF, LED_A, RAW_PWM, FAULT, PERMIT, VSET, SENSE, PB, N2, CTRL, FAULT_HB, LED_K, REFOUT, BIAS, GATE, PWM_B, SAFE_OUT, PWM_DRIVE, VLOGIC, input clk, rst, enable, recover_request, input [8:0] duty, output protected_monitor);
+pixel_control_v3 digital (.clk(clk),.rst(rst),.enable(enable),.duty(duty),.fault(FAULT),.recover_request(recover_request),.raw_pwm(RAW_PWM),.permit(PERMIT),.protected_monitor(protected_monitor),.VDD(VLOGIC),.VSS(VSS));
+startup_test_macro analog (.VSS(VSS), .VREF(VREF), .VSAFE(VLOGIC), .VBUF(VLOGIC), .LED_A(LED_A), .RAW_PWM(RAW_PWM), .FAULT(FAULT), .PERMIT(PERMIT), .VSET(VSET), .SENSE(SENSE), .PB(PB), .N2(N2), .CTRL(CTRL), .FAULT_HB(FAULT_HB), .LED_K(LED_K), .REFOUT(REFOUT), .BIAS(BIAS), .GATE(GATE), .PWM_B(PWM_B), .SAFE_OUT(SAFE_OUT), .PWM_DRIVE(PWM_DRIVE));
+endmodule

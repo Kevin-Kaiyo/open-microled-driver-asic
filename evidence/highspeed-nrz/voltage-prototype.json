@@ -1,0 +1,576 @@
+{
+  "status": "transistor prototype; no optical/BER validation",
+  "interface": "hs_voltage_driver data out vdd vh vl vss",
+  "logic": "DATA=1 => CTRL=1 => OUT low => LED current high",
+  "internal_nodes": [
+    "n1",
+    "ctrl"
+  ],
+  "rails": {
+    "VLED_V": 5,
+    "VDD_V": 3.3,
+    "VH_V": 1.6110254451423758,
+    "VL_V": 1.1721543178141975
+  },
+  "device_sizing": {
+    "L_um": 0.28,
+    "XN1_W_um": 1,
+    "XP1_W_um": 2,
+    "XN2_W_um": 4,
+    "XP2_W_um": 8,
+    "XNOUT_W_um": 4,
+    "XPOUT_W_um": 8,
+    "diffusion_extension_um": 0.6
+  },
+  "assumptions": [
+    "TT 27 C only",
+    "Measured static LED I-V, assumed 200 fF capacitance; no carrier model in this prototype",
+    "Rpackage=1 ohm, Lpackage=0.5 nH are assumptions",
+    "Ideal VLED, VDD, VH and VL sources. VH/VL can absorb current; regulator loss and implementation excluded.",
+    "20 ps ideal DATA edge; input source driver energy excluded, input current waveform retained",
+    "Positive delivered rail power is summed per rail per time sample and gives no credit for rail absorption; it still excludes actual regulator loss",
+    "Transient alternation is an initial functional check, not PRBS eye or maximum data-rate evidence",
+    "Nonzero device diffusion capacitance uses isolated rectangles, not PEX"
+  ],
+  "dc": {
+    "0": {
+      "op_scale": 3.3,
+      "data": 0.0,
+      "out": 1.638635559990612,
+      "led_k": 1.638660559988357,
+      "n1": 3.299999991133075,
+      "ctrl": 1.508565235805221e-09,
+      "iled": 2.499999774569155e-05,
+      "ivled": -2.499999774569155e-05,
+      "ivdd": -7.784442381446334e-12,
+      "ivh": 2.49999961068745e-05,
+      "ivl": -1.172156610727455e-12,
+      "idata": 0.0
+    },
+    "1": {
+      "op_scale": 3.3,
+      "data": 3.3,
+      "out": 1.231990454665699,
+      "led_k": 1.232090454665659,
+      "n1": 5.42768265118813e-09,
+      "ctrl": 3.29999999637307,
+      "iled": 9.999999995931556e-05,
+      "ivled": -9.999999995931556e-05,
+      "ivdd": -1.001081495480683e-11,
+      "ivh": -3.792219896304633e-13,
+      "ivl": 9.999999793433066e-05,
+      "idata": 0.0
+    }
+  },
+  "calibration_trace": [
+    {
+      "bit": 0,
+      "iteration": 0,
+      "vh_V": 1.63,
+      "vl_V": 1.2,
+      "iled_A": 2.357007289950674e-05
+    },
+    {
+      "bit": 0,
+      "iteration": 1,
+      "vh_V": 1.6104437392119957,
+      "vl_V": 1.2,
+      "iled_A": 2.504789053484467e-05
+    },
+    {
+      "bit": 0,
+      "iteration": 2,
+      "vh_V": 1.6110254451423758,
+      "vl_V": 1.2,
+      "iled_A": 2.499999774569146e-05
+    },
+    {
+      "bit": 1,
+      "iteration": 0,
+      "vh_V": 1.6110254451423758,
+      "vl_V": 1.2,
+      "iled_A": 9.196304992644083e-05
+    },
+    {
+      "bit": 1,
+      "iteration": 1,
+      "vh_V": 1.6110254451423758,
+      "vl_V": 1.1721083231532048,
+      "iled_A": 0.0001000132965768
+    },
+    {
+      "bit": 1,
+      "iteration": 2,
+      "vh_V": 1.6110254451423758,
+      "vl_V": 1.1721543178141975,
+      "iled_A": 9.999999995931556e-05
+    }
+  ],
+  "prototype_cases": [
+    {
+      "rate_bps": 100000000.0,
+      "pattern": "1010, 10 UI, power window 2 UI through 10 UI",
+      "rows": 26797,
+      "rail_powers": {
+        "VLED": {
+          "signed_delivered_W": 0.00031215980663437323,
+          "positive_delivered_W": 0.0003264771802703684,
+          "absorbed_W": 1.4317373636000183e-05
+        },
+        "VDD": {
+          "signed_delivered_W": 3.263932078073969e-05,
+          "positive_delivered_W": 3.483377553188341e-05,
+          "absorbed_W": 2.1944547511416893e-06
+        },
+        "VH": {
+          "signed_delivered_W": -1.3459191779677123e-05,
+          "positive_delivered_W": 7.1047337456347985e-06,
+          "absorbed_W": 2.0563925525314004e-05
+        },
+        "VL": {
+          "signed_delivered_W": -6.338721665551529e-05,
+          "positive_delivered_W": 2.5241828513224604e-07,
+          "absorbed_W": 6.363963494064218e-05
+        }
+      },
+      "signed_power_W": 0.00026795271897992053,
+      "positive_delivered_power_W": 0.00036866810783301883,
+      "signed_energy_J_per_bit": 2.6795271897992054e-12,
+      "positive_delivered_energy_J_per_bit": 3.686681078330188e-12,
+      "led_current_min_A": 2.106459023542663e-05,
+      "led_current_max_A": 0.0001068272184998813,
+      "out_min_V": 1.212211599736557,
+      "out_max_V": 1.69352217076597,
+      "terminal_stresses": {
+        "XN1": {
+          "gs": {
+            "min_V": 0.0,
+            "max_V": 3.3,
+            "max_abs_V": 3.3
+          },
+          "gd": {
+            "min_V": -3.299999991133092,
+            "max_V": 3.299999994572321,
+            "max_abs_V": 3.299999994572321
+          },
+          "gb": {
+            "min_V": 0.0,
+            "max_V": 3.3,
+            "max_abs_V": 3.3
+          },
+          "ds": {
+            "min_V": -0.1147639706271675,
+            "max_V": 3.446764707108673,
+            "max_abs_V": 3.446764707108673
+          },
+          "db": {
+            "min_V": -0.1147639706271675,
+            "max_V": 3.446764707108673,
+            "max_abs_V": 3.446764707108673
+          },
+          "sb": {
+            "min_V": 0,
+            "max_V": 0,
+            "max_abs_V": 0
+          }
+        },
+        "XP1": {
+          "gs": {
+            "min_V": -3.3,
+            "max_V": 0.0,
+            "max_abs_V": 3.3
+          },
+          "gd": {
+            "min_V": -3.299999991133092,
+            "max_V": 3.299999994572321,
+            "max_abs_V": 3.299999994572321
+          },
+          "gb": {
+            "min_V": -3.3,
+            "max_V": 0.0,
+            "max_abs_V": 3.3
+          },
+          "ds": {
+            "min_V": -3.4147639706271673,
+            "max_V": 0.14676470710867306,
+            "max_abs_V": 3.4147639706271673
+          },
+          "db": {
+            "min_V": -3.4147639706271673,
+            "max_V": 0.14676470710867306,
+            "max_abs_V": 3.4147639706271673
+          },
+          "sb": {
+            "min_V": 0.0,
+            "max_V": 0.0,
+            "max_abs_V": 0.0
+          }
+        },
+        "XN2": {
+          "gs": {
+            "min_V": -0.1147639706271675,
+            "max_V": 3.446764707108673,
+            "max_abs_V": 3.446764707108673
+          },
+          "gd": {
+            "min_V": -3.4015099394342183,
+            "max_V": 3.437487082299737,
+            "max_abs_V": 3.437487082299737
+          },
+          "gb": {
+            "min_V": -0.1147639706271675,
+            "max_V": 3.446764707108673,
+            "max_abs_V": 3.446764707108673
+          },
+          "ds": {
+            "min_V": -0.06156184112796499,
+            "max_V": 3.378608565310848,
+            "max_abs_V": 3.378608565310848
+          },
+          "db": {
+            "min_V": -0.06156184112796499,
+            "max_V": 3.378608565310848,
+            "max_abs_V": 3.378608565310848
+          },
+          "sb": {
+            "min_V": 0,
+            "max_V": 0,
+            "max_abs_V": 0
+          }
+        },
+        "XP2": {
+          "gs": {
+            "min_V": -3.4147639706271673,
+            "max_V": 0.14676470710867306,
+            "max_abs_V": 3.4147639706271673
+          },
+          "gd": {
+            "min_V": -3.4015099394342183,
+            "max_V": 3.437487082299737,
+            "max_abs_V": 3.437487082299737
+          },
+          "gb": {
+            "min_V": -3.4147639706271673,
+            "max_V": 0.14676470710867306,
+            "max_abs_V": 3.4147639706271673
+          },
+          "ds": {
+            "min_V": -3.3615618411279646,
+            "max_V": 0.07860856531084837,
+            "max_abs_V": 3.3615618411279646
+          },
+          "db": {
+            "min_V": -3.3615618411279646,
+            "max_V": 0.07860856531084837,
+            "max_abs_V": 3.3615618411279646
+          },
+          "sb": {
+            "min_V": 0.0,
+            "max_V": 0.0,
+            "max_abs_V": 0.0
+          }
+        },
+        "XNOUT": {
+          "gs": {
+            "min_V": -1.2337161589421626,
+            "max_V": 2.2064542474966506,
+            "max_abs_V": 2.2064542474966506
+          },
+          "gd": {
+            "min_V": -1.6992893833349059,
+            "max_V": 2.146299034113074,
+            "max_abs_V": 2.146299034113074
+          },
+          "gb": {
+            "min_V": -0.06156184112796499,
+            "max_V": 3.378608565310848,
+            "max_abs_V": 3.378608565310848
+          },
+          "ds": {
+            "min_V": 0.04005728192235947,
+            "max_V": 0.5213678529517725,
+            "max_abs_V": 0.5213678529517725
+          },
+          "db": {
+            "min_V": 1.212211599736557,
+            "max_V": 1.69352217076597,
+            "max_abs_V": 1.69352217076597
+          },
+          "sb": {
+            "min_V": 1.1721543178141975,
+            "max_V": 1.1721543178141975,
+            "max_abs_V": 1.1721543178141975
+          }
+        },
+        "XPOUT": {
+          "gs": {
+            "min_V": -1.6725872862703408,
+            "max_V": 1.7675831201684724,
+            "max_abs_V": 1.7675831201684724
+          },
+          "gd": {
+            "min_V": -1.6992893833349059,
+            "max_V": 2.146299034113074,
+            "max_abs_V": 2.146299034113074
+          },
+          "gb": {
+            "min_V": -1.6725872862703408,
+            "max_V": 1.7675831201684724,
+            "max_abs_V": 1.7675831201684724
+          },
+          "ds": {
+            "min_V": -0.39881384540581877,
+            "max_V": 0.08249672562359422,
+            "max_abs_V": 0.39881384540581877
+          },
+          "db": {
+            "min_V": -0.39881384540581877,
+            "max_V": 0.08249672562359422,
+            "max_abs_V": 0.39881384540581877
+          },
+          "sb": {
+            "min_V": 0.0,
+            "max_V": 0.0,
+            "max_abs_V": 0.0
+          }
+        }
+      }
+    },
+    {
+      "rate_bps": 1000000000.0,
+      "pattern": "1010, 10 UI, power window 2 UI through 10 UI",
+      "rows": 4309,
+      "rail_powers": {
+        "VLED": {
+          "signed_delivered_W": 0.00030935612866012145,
+          "positive_delivered_W": 0.00045311897663592016,
+          "absorbed_W": 0.00014376284797579825
+        },
+        "VDD": {
+          "signed_delivered_W": 0.00032630467792359446,
+          "positive_delivered_W": 0.0003360761023752627,
+          "absorbed_W": 9.771424451669008e-06
+        },
+        "VH": {
+          "signed_delivered_W": 4.544649829449985e-05,
+          "positive_delivered_W": 6.726684084283656e-05,
+          "absorbed_W": 2.1820342548336787e-05
+        },
+        "VL": {
+          "signed_delivered_W": -0.00010558878086163138,
+          "positive_delivered_W": 1.8220065241842782e-06,
+          "absorbed_W": 0.00010741078738581572
+        }
+      },
+      "signed_power_W": 0.0005755185240165844,
+      "positive_delivered_power_W": 0.0008582839263782038,
+      "signed_energy_J_per_bit": 5.755185240165843e-13,
+      "positive_delivered_energy_J_per_bit": 8.582839263782038e-13,
+      "led_current_min_A": 2.161455972166906e-05,
+      "led_current_max_A": 0.0001067724878530291,
+      "out_min_V": 1.21238152506915,
+      "out_max_V": 1.685876356259141,
+      "terminal_stresses": {
+        "XN1": {
+          "gs": {
+            "min_V": 0.0,
+            "max_V": 3.3,
+            "max_abs_V": 3.3
+          },
+          "gd": {
+            "min_V": -3.299999991133092,
+            "max_V": 3.29999851524188,
+            "max_abs_V": 3.299999991133092
+          },
+          "gb": {
+            "min_V": 0.0,
+            "max_V": 3.3,
+            "max_abs_V": 3.3
+          },
+          "ds": {
+            "min_V": -0.1147641031002859,
+            "max_V": 3.446742507788876,
+            "max_abs_V": 3.446742507788876
+          },
+          "db": {
+            "min_V": -0.1147641031002859,
+            "max_V": 3.446742507788876,
+            "max_abs_V": 3.446742507788876
+          },
+          "sb": {
+            "min_V": 0,
+            "max_V": 0,
+            "max_abs_V": 0
+          }
+        },
+        "XP1": {
+          "gs": {
+            "min_V": -3.3,
+            "max_V": 0.0,
+            "max_abs_V": 3.3
+          },
+          "gd": {
+            "min_V": -3.299999991133092,
+            "max_V": 3.29999851524188,
+            "max_abs_V": 3.299999991133092
+          },
+          "gb": {
+            "min_V": -3.3,
+            "max_V": 0.0,
+            "max_abs_V": 3.3
+          },
+          "ds": {
+            "min_V": -3.4147641031002856,
+            "max_V": 0.146742507788876,
+            "max_abs_V": 3.4147641031002856
+          },
+          "db": {
+            "min_V": -3.4147641031002856,
+            "max_V": 0.146742507788876,
+            "max_abs_V": 3.4147641031002856
+          },
+          "sb": {
+            "min_V": 0.0,
+            "max_V": 0.0,
+            "max_abs_V": 0.0
+          }
+        },
+        "XN2": {
+          "gs": {
+            "min_V": -0.1147641031002859,
+            "max_V": 3.446742507788876,
+            "max_abs_V": 3.446742507788876
+          },
+          "gd": {
+            "min_V": -3.4015004507924447,
+            "max_V": 3.4374870822997177,
+            "max_abs_V": 3.4374870822997177
+          },
+          "gb": {
+            "min_V": -0.1147641031002859,
+            "max_V": 3.446742507788876,
+            "max_abs_V": 3.446742507788876
+          },
+          "ds": {
+            "min_V": -0.06156184112795413,
+            "max_V": 3.37857586820203,
+            "max_abs_V": 3.37857586820203
+          },
+          "db": {
+            "min_V": -0.06156184112795413,
+            "max_V": 3.37857586820203,
+            "max_abs_V": 3.37857586820203
+          },
+          "sb": {
+            "min_V": 0,
+            "max_V": 0,
+            "max_abs_V": 0
+          }
+        },
+        "XP2": {
+          "gs": {
+            "min_V": -3.4147641031002856,
+            "max_V": 0.146742507788876,
+            "max_abs_V": 3.4147641031002856
+          },
+          "gd": {
+            "min_V": -3.4015004507924447,
+            "max_V": 3.4374870822997177,
+            "max_abs_V": 3.4374870822997177
+          },
+          "gb": {
+            "min_V": -3.4147641031002856,
+            "max_V": 0.146742507788876,
+            "max_abs_V": 3.4147641031002856
+          },
+          "ds": {
+            "min_V": -3.361561841127954,
+            "max_V": 0.07857586820203011,
+            "max_abs_V": 3.361561841127954
+          },
+          "db": {
+            "min_V": -3.361561841127954,
+            "max_V": 0.07857586820203011,
+            "max_abs_V": 3.361561841127954
+          },
+          "sb": {
+            "min_V": 0.0,
+            "max_V": 0.0,
+            "max_abs_V": 0.0
+          }
+        },
+        "XNOUT": {
+          "gs": {
+            "min_V": -1.2337161589421517,
+            "max_V": 2.2064215503878324,
+            "max_abs_V": 2.2064215503878324
+          },
+          "gd": {
+            "min_V": -1.6992731741329241,
+            "max_V": 2.145969914680501,
+            "max_abs_V": 2.145969914680501
+          },
+          "gb": {
+            "min_V": -0.06156184112795413,
+            "max_V": 3.37857586820203,
+            "max_abs_V": 3.37857586820203
+          },
+          "ds": {
+            "min_V": 0.040227207254952546,
+            "max_V": 0.5213569617357054,
+            "max_abs_V": 0.5213569617357054
+          },
+          "db": {
+            "min_V": 1.21238152506915,
+            "max_V": 1.693511279549903,
+            "max_abs_V": 1.693511279549903
+          },
+          "sb": {
+            "min_V": 1.1721543178141975,
+            "max_V": 1.1721543178141975,
+            "max_abs_V": 1.1721543178141975
+          }
+        },
+        "XPOUT": {
+          "gs": {
+            "min_V": -1.67258728627033,
+            "max_V": 1.7675504230596542,
+            "max_abs_V": 1.7675504230596542
+          },
+          "gd": {
+            "min_V": -1.6992731741329241,
+            "max_V": 2.145969914680501,
+            "max_abs_V": 2.145969914680501
+          },
+          "gb": {
+            "min_V": -1.67258728627033,
+            "max_V": 1.7675504230596542,
+            "max_abs_V": 1.7675504230596542
+          },
+          "ds": {
+            "min_V": -0.3986439200732257,
+            "max_V": 0.08248583440752721,
+            "max_abs_V": 0.3986439200732257
+          },
+          "db": {
+            "min_V": -0.3986439200732257,
+            "max_V": 0.08248583440752721,
+            "max_abs_V": 0.3986439200732257
+          },
+          "sb": {
+            "min_V": 0.0,
+            "max_V": 0.0,
+            "max_abs_V": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "source_sha256": {
+    "analog/highspeed_nrz/voltage_driver.spice": "a379b2354e69c6745774d27ba8be15c073fdd420228942b149adf49533bd80b4",
+    "analog/models/measured-led/lin2026-yellow20-dc.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+    "scripts/highspeed_nrz/probe_voltage.py": "9618168b51250f836d12f01ddeb3bab24bd05f98470f6aa32d839aa53a4536d8",
+    "build/layout/pdk/gf180mcuD/libs.tech/ngspice/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "build/layout/pdk/gf180mcuD/libs.tech/ngspice/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+  }
+}

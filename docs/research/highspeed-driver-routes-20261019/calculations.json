@@ -1,0 +1,694 @@
+{
+  "schema": "microled-highspeed-teaching-budget-v1",
+  "evidence_level": "Independent analytical assumptions; not SPICE, silicon, measured optical or BER evidence",
+  "created_for": "2026-10-19 research diagrams",
+  "assumptions_SI": {
+    "probability_one": 0.5,
+    "probability_zero_to_one": 0.25,
+    "gross_rate_per_lane_bps": 4000000000.0,
+    "net_to_gross_efficiency": 0.9,
+    "led_supply_V": 3.2,
+    "led_zero_current_A": 0.0,
+    "led_one_current_A": 0.0001,
+    "steering_tail_current_A": 0.0001,
+    "effective_switched_capacitance_F": 8e-14,
+    "effective_switched_supply_swing_V": 1.0,
+    "per_lane_predriver_bias_clock_power_W": 0.0002,
+    "shared_tx_logic_power_W": 0.001,
+    "lane_counts": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ]
+  },
+  "conditions": {
+    "NRZ": "Independent equiprobable bits: p(1)=0.5, p(0->1)=0.25; total transition probability=0.5.",
+    "efficiency": "eta=Rnet/Rgross=0.9; includes an assumed aggregate framing/coding loss. This is not a claim that FEC overhead is 10% of payload.",
+    "cap_model": "An equivalent capacitance is switched between 0 and a dedicated supply DeltaV, fully settling each time, without energy recovery. Supply energy per 0->1 is C*DeltaV^2. Ecap=0.25*C*DeltaV^2. Nonzero bias, voltage-dependent LED C, finite settling and extra nodes require circuit integration.",
+    "no_double_counting": "Equivalent switching power is an additional AC supply budget; static LED branch supply power excludes capacitive charging. The 0.2mW auxiliary budget excludes the explicit capacitor term.",
+    "same_supply_steering": "The ideal tail current always flows from the same 3.2V rail, through LED or dummy branch. Total static power=Vrail*Itail, not only VLED*ILED. Tail-source compliance is assumed, not demonstrated.",
+    "cross_route_comparison": "Both hypothetical routes use the same LED current levels (0/100uA), p(1), switching-C budget, and other per-lane budget solely to isolate continuous tail-current cost. This does not establish equal OMA, actual swing, BER, maximum rate or implementation quality.",
+    "throughput": "4Gb/s/lane is a selected budget input; N lanes scale only if each complete optical link attains that rate and there are independent channels and adequate receiver/serializer capacity.",
+    "power_boundary": "Illustrative TX-side LED supply + driver switching + per-lane predriver/bias/clock allowance + separately declared shared TX logic. Excludes RX/TIA/CDR, regulator loss, fiber/coupling loss, cooling and host-system power.",
+    "bandwidth": "Two independent first-order poles, constant R and C, no inductive peaking, diffusion nonlinearity, relaxation, bias dependence or feedback. -3dB is not a maximum bit rate and proves no eye or BER."
+  },
+  "route_budgets": {
+    "direct_switching_budget": {
+      "parts_W": {
+        "led_branch_supply_dc_W": 0.00016,
+        "dummy_branch_supply_dc_W": 0.0,
+        "equivalent_capacitor_switching_W": 8e-05,
+        "predriver_bias_clock_other_W": 0.0002
+      },
+      "total_lane_power_W": 0.00044000000000000007,
+      "energy_per_gross_bit_J": 1.1000000000000002e-13,
+      "energy_per_net_bit_J": 1.2222222222222224e-13
+    },
+    "current_steering_same_supply_budget": {
+      "parts_W": {
+        "led_branch_supply_dc_W": 0.00016,
+        "dummy_branch_supply_dc_W": 0.00016,
+        "equivalent_capacitor_switching_W": 8e-05,
+        "predriver_bias_clock_other_W": 0.0002
+      },
+      "total_lane_power_W": 0.0006000000000000001,
+      "energy_per_gross_bit_J": 1.5000000000000002e-13,
+      "energy_per_net_bit_J": 1.6666666666666667e-13
+    }
+  },
+  "parallel_scaling": [
+    {
+      "lanes": 1,
+      "gross_rate_bps": 4000000000.0,
+      "net_rate_bps": 3600000000.0,
+      "direct_switching_budget": {
+        "total_tx_power_W": 0.00144,
+        "energy_per_net_bit_J": 4e-13
+      },
+      "current_steering_same_supply_budget": {
+        "total_tx_power_W": 0.0016,
+        "energy_per_net_bit_J": 4.4444444444444444e-13
+      }
+    },
+    {
+      "lanes": 2,
+      "gross_rate_bps": 8000000000.0,
+      "net_rate_bps": 7200000000.0,
+      "direct_switching_budget": {
+        "total_tx_power_W": 0.0018800000000000002,
+        "energy_per_net_bit_J": 2.611111111111111e-13
+      },
+      "current_steering_same_supply_budget": {
+        "total_tx_power_W": 0.0022,
+        "energy_per_net_bit_J": 3.055555555555556e-13
+      }
+    },
+    {
+      "lanes": 4,
+      "gross_rate_bps": 16000000000.0,
+      "net_rate_bps": 14400000000.0,
+      "direct_switching_budget": {
+        "total_tx_power_W": 0.0027600000000000003,
+        "energy_per_net_bit_J": 1.916666666666667e-13
+      },
+      "current_steering_same_supply_budget": {
+        "total_tx_power_W": 0.0034000000000000002,
+        "energy_per_net_bit_J": 2.361111111111111e-13
+      }
+    },
+    {
+      "lanes": 8,
+      "gross_rate_bps": 32000000000.0,
+      "net_rate_bps": 28800000000.0,
+      "direct_switching_budget": {
+        "total_tx_power_W": 0.004520000000000001,
+        "energy_per_net_bit_J": 1.5694444444444445e-13
+      },
+      "current_steering_same_supply_budget": {
+        "total_tx_power_W": 0.0058000000000000005,
+        "energy_per_net_bit_J": 2.013888888888889e-13
+      }
+    },
+    {
+      "lanes": 16,
+      "gross_rate_bps": 64000000000.0,
+      "net_rate_bps": 57600000000.0,
+      "direct_switching_budget": {
+        "total_tx_power_W": 0.008040000000000002,
+        "energy_per_net_bit_J": 1.3958333333333336e-13
+      },
+      "current_steering_same_supply_budget": {
+        "total_tx_power_W": 0.010600000000000002,
+        "energy_per_net_bit_J": 1.8402777777777782e-13
+      }
+    },
+    {
+      "lanes": 32,
+      "gross_rate_bps": 128000000000.0,
+      "net_rate_bps": 115200000000.0,
+      "direct_switching_budget": {
+        "total_tx_power_W": 0.015080000000000003,
+        "energy_per_net_bit_J": 1.309027777777778e-13
+      },
+      "current_steering_same_supply_budget": {
+        "total_tx_power_W": 0.020200000000000003,
+        "energy_per_net_bit_J": 1.7534722222222226e-13
+      }
+    },
+    {
+      "lanes": 64,
+      "gross_rate_bps": 256000000000.0,
+      "net_rate_bps": 230400000000.0,
+      "direct_switching_budget": {
+        "total_tx_power_W": 0.029160000000000005,
+        "energy_per_net_bit_J": 1.2656250000000002e-13
+      },
+      "current_steering_same_supply_budget": {
+        "total_tx_power_W": 0.039400000000000004,
+        "energy_per_net_bit_J": 1.7100694444444445e-13
+      }
+    }
+  ],
+  "cap_sweep": [
+    {
+      "C_F": 0.0,
+      "swing_V": 0.2,
+      "energy_J": 0.0
+    },
+    {
+      "C_F": 2.0000000000000003e-14,
+      "swing_V": 0.2,
+      "energy_J": 2.0000000000000007e-16
+    },
+    {
+      "C_F": 4.0000000000000006e-14,
+      "swing_V": 0.2,
+      "energy_J": 4.0000000000000014e-16
+    },
+    {
+      "C_F": 8.000000000000001e-14,
+      "swing_V": 0.2,
+      "energy_J": 8.000000000000003e-16
+    },
+    {
+      "C_F": 1.2000000000000002e-13,
+      "swing_V": 0.2,
+      "energy_J": 1.2000000000000004e-15
+    },
+    {
+      "C_F": 1.6000000000000003e-13,
+      "swing_V": 0.2,
+      "energy_J": 1.6000000000000006e-15
+    },
+    {
+      "C_F": 2e-13,
+      "swing_V": 0.2,
+      "energy_J": 2.0000000000000005e-15
+    },
+    {
+      "C_F": 0.0,
+      "swing_V": 0.5,
+      "energy_J": 0.0
+    },
+    {
+      "C_F": 2.0000000000000003e-14,
+      "swing_V": 0.5,
+      "energy_J": 1.2500000000000002e-15
+    },
+    {
+      "C_F": 4.0000000000000006e-14,
+      "swing_V": 0.5,
+      "energy_J": 2.5000000000000004e-15
+    },
+    {
+      "C_F": 8.000000000000001e-14,
+      "swing_V": 0.5,
+      "energy_J": 5.000000000000001e-15
+    },
+    {
+      "C_F": 1.2000000000000002e-13,
+      "swing_V": 0.5,
+      "energy_J": 7.500000000000001e-15
+    },
+    {
+      "C_F": 1.6000000000000003e-13,
+      "swing_V": 0.5,
+      "energy_J": 1.0000000000000002e-14
+    },
+    {
+      "C_F": 2e-13,
+      "swing_V": 0.5,
+      "energy_J": 1.25e-14
+    },
+    {
+      "C_F": 0.0,
+      "swing_V": 1.0,
+      "energy_J": 0.0
+    },
+    {
+      "C_F": 2.0000000000000003e-14,
+      "swing_V": 1.0,
+      "energy_J": 5.000000000000001e-15
+    },
+    {
+      "C_F": 4.0000000000000006e-14,
+      "swing_V": 1.0,
+      "energy_J": 1.0000000000000002e-14
+    },
+    {
+      "C_F": 8.000000000000001e-14,
+      "swing_V": 1.0,
+      "energy_J": 2.0000000000000003e-14
+    },
+    {
+      "C_F": 1.2000000000000002e-13,
+      "swing_V": 1.0,
+      "energy_J": 3.0000000000000005e-14
+    },
+    {
+      "C_F": 1.6000000000000003e-13,
+      "swing_V": 1.0,
+      "energy_J": 4.0000000000000006e-14
+    },
+    {
+      "C_F": 2e-13,
+      "swing_V": 1.0,
+      "energy_J": 5e-14
+    },
+    {
+      "C_F": 0.0,
+      "swing_V": 1.8,
+      "energy_J": 0.0
+    },
+    {
+      "C_F": 2.0000000000000003e-14,
+      "swing_V": 1.8,
+      "energy_J": 1.6200000000000003e-14
+    },
+    {
+      "C_F": 4.0000000000000006e-14,
+      "swing_V": 1.8,
+      "energy_J": 3.2400000000000006e-14
+    },
+    {
+      "C_F": 8.000000000000001e-14,
+      "swing_V": 1.8,
+      "energy_J": 6.480000000000001e-14
+    },
+    {
+      "C_F": 1.2000000000000002e-13,
+      "swing_V": 1.8,
+      "energy_J": 9.720000000000002e-14
+    },
+    {
+      "C_F": 1.6000000000000003e-13,
+      "swing_V": 1.8,
+      "energy_J": 1.2960000000000002e-13
+    },
+    {
+      "C_F": 2e-13,
+      "swing_V": 1.8,
+      "energy_J": 1.6200000000000002e-13
+    }
+  ],
+  "two_pole_bandwidth": [
+    {
+      "carrier_lifetime_s": 5e-11,
+      "effective_resistance_ohm": 100.0,
+      "effective_capacitance_F": 5e-14,
+      "carrier_pole_Hz": 3183098861.8379064,
+      "RC_pole_Hz": 31830988618.379063,
+      "combined_amplitude_minus_3dB_Hz": 3152037610.5840387
+    },
+    {
+      "carrier_lifetime_s": 5e-11,
+      "effective_resistance_ohm": 100.0,
+      "effective_capacitance_F": 2e-13,
+      "carrier_pole_Hz": 3183098861.8379064,
+      "RC_pole_Hz": 7957747154.594766,
+      "combined_amplitude_minus_3dB_Hz": 2808494030.977529
+    },
+    {
+      "carrier_lifetime_s": 5e-11,
+      "effective_resistance_ohm": 100.0,
+      "effective_capacitance_F": 1e-12,
+      "carrier_pole_Hz": 3183098861.8379064,
+      "RC_pole_Hz": 1591549430.9189532,
+      "combined_amplitude_minus_3dB_Hz": 1333070743.311982
+    },
+    {
+      "carrier_lifetime_s": 2e-10,
+      "effective_resistance_ohm": 100.0,
+      "effective_capacitance_F": 5e-14,
+      "carrier_pole_Hz": 795774715.4594766,
+      "RC_pole_Hz": 31830988618.379063,
+      "combined_amplitude_minus_3dB_Hz": 795278131.7387139
+    },
+    {
+      "carrier_lifetime_s": 2e-10,
+      "effective_resistance_ohm": 100.0,
+      "effective_capacitance_F": 2e-13,
+      "carrier_pole_Hz": 795774715.4594766,
+      "RC_pole_Hz": 7957747154.594766,
+      "combined_amplitude_minus_3dB_Hz": 788009402.6460097
+    },
+    {
+      "carrier_lifetime_s": 2e-10,
+      "effective_resistance_ohm": 100.0,
+      "effective_capacitance_F": 1e-12,
+      "carrier_pole_Hz": 795774715.4594766,
+      "RC_pole_Hz": 1591549430.9189532,
+      "combined_amplitude_minus_3dB_Hz": 666535371.655991
+    },
+    {
+      "carrier_lifetime_s": 1e-09,
+      "effective_resistance_ohm": 100.0,
+      "effective_capacitance_F": 5e-14,
+      "carrier_pole_Hz": 159154943.09189534,
+      "RC_pole_Hz": 31830988618.379063,
+      "combined_amplitude_minus_3dB_Hz": 159150964.46697652
+    },
+    {
+      "carrier_lifetime_s": 1e-09,
+      "effective_resistance_ohm": 100.0,
+      "effective_capacitance_F": 2e-13,
+      "carrier_pole_Hz": 159154943.09189534,
+      "RC_pole_Hz": 7957747154.594766,
+      "combined_amplitude_minus_3dB_Hz": 159091344.69019127
+    },
+    {
+      "carrier_lifetime_s": 1e-09,
+      "effective_resistance_ohm": 100.0,
+      "effective_capacitance_F": 1e-12,
+      "carrier_pole_Hz": 159154943.09189534,
+      "RC_pole_Hz": 1591549430.9189532,
+      "combined_amplitude_minus_3dB_Hz": 157601880.52920195
+    }
+  ],
+  "inductive_scale": [
+    {
+      "L_H": 5e-10,
+      "delta_I_A": 0.0001,
+      "edge_time_s": 1e-10,
+      "L_di_dt_V": 0.0005
+    },
+    {
+      "L_H": 5e-10,
+      "delta_I_A": 0.005,
+      "edge_time_s": 1e-10,
+      "L_di_dt_V": 0.025
+    }
+  ],
+  "current_definition_example": {
+    "V_V": 3.2,
+    "R_bps": 4000000000.0,
+    "specified_current_A": 0.0001,
+    "if_current_is_time_average_supply_energy_J_per_gross_bit": 8.000000000000001e-14,
+    "if_current_is_one_level_with_zero_off_p1_half_J_per_gross_bit": 4.0000000000000006e-14,
+    "interpretation": "80fJ/bit vs 40fJ/bit are conditional arithmetic only; the meaning of 100uA must be known. Neither includes the whole driver automatically."
+  },
+  "self_checks": [
+    {
+      "name": "NRZ p01=p0*p1=0.25",
+      "pass": true
+    },
+    {
+      "name": "80fF*1V^2*0.25=20fJ",
+      "pass": true
+    },
+    {
+      "name": "doubling swing quadruples energy",
+      "pass": true
+    },
+    {
+      "name": "zero C has zero switching energy",
+      "pass": true
+    },
+    {
+      "name": "zero swing has zero switching energy",
+      "pass": true
+    },
+    {
+      "name": "direct average LED supply = 0.16mW",
+      "pass": true
+    },
+    {
+      "name": "steering LED plus dummy = Vrail Itail",
+      "pass": true
+    },
+    {
+      "name": "direct lane total = 0.44mW",
+      "pass": true
+    },
+    {
+      "name": "steering lane total = 0.60mW",
+      "pass": true
+    },
+    {
+      "name": "direct_switching_budget power sum",
+      "pass": true
+    },
+    {
+      "name": "direct_switching_budget E gross=P/R",
+      "pass": true
+    },
+    {
+      "name": "direct_switching_budget E net=E gross/eta",
+      "pass": true
+    },
+    {
+      "name": "current_steering_same_supply_budget power sum",
+      "pass": true
+    },
+    {
+      "name": "current_steering_same_supply_budget E gross=P/R",
+      "pass": true
+    },
+    {
+      "name": "current_steering_same_supply_budget E net=E gross/eta",
+      "pass": true
+    },
+    {
+      "name": "N=1 net/gross efficiency",
+      "pass": true
+    },
+    {
+      "name": "N=1 direct_switching_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=1 direct_switching_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=1 current_steering_same_supply_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=1 current_steering_same_supply_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=2 net/gross efficiency",
+      "pass": true
+    },
+    {
+      "name": "N=2 direct_switching_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=2 direct_switching_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=2 current_steering_same_supply_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=2 current_steering_same_supply_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=4 net/gross efficiency",
+      "pass": true
+    },
+    {
+      "name": "N=4 direct_switching_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=4 direct_switching_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=4 current_steering_same_supply_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=4 current_steering_same_supply_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=8 net/gross efficiency",
+      "pass": true
+    },
+    {
+      "name": "N=8 direct_switching_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=8 direct_switching_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=8 current_steering_same_supply_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=8 current_steering_same_supply_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=16 net/gross efficiency",
+      "pass": true
+    },
+    {
+      "name": "N=16 direct_switching_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=16 direct_switching_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=16 current_steering_same_supply_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=16 current_steering_same_supply_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=32 net/gross efficiency",
+      "pass": true
+    },
+    {
+      "name": "N=32 direct_switching_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=32 direct_switching_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=32 current_steering_same_supply_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=32 current_steering_same_supply_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=64 net/gross efficiency",
+      "pass": true
+    },
+    {
+      "name": "N=64 direct_switching_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=64 direct_switching_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "N=64 current_steering_same_supply_budget shared power counted once",
+      "pass": true
+    },
+    {
+      "name": "N=64 current_steering_same_supply_budget E net=P/R net",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 0: power response=0.5",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 0: below both poles",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 1: power response=0.5",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 1: below both poles",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 2: power response=0.5",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 2: below both poles",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 3: power response=0.5",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 3: below both poles",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 4: power response=0.5",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 4: below both poles",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 5: power response=0.5",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 5: below both poles",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 6: power response=0.5",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 6: below both poles",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 7: power response=0.5",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 7: below both poles",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 8: power response=0.5",
+      "pass": true
+    },
+    {
+      "name": "bandwidth case 8: below both poles",
+      "pass": true
+    },
+    {
+      "name": "equal poles analytic identity",
+      "pass": true
+    },
+    {
+      "name": "wide pole separation tends to lower pole",
+      "pass": true
+    },
+    {
+      "name": "100uA average gives 80fJ",
+      "pass": true
+    },
+    {
+      "name": "100uA on gives 40fJ with p1=.5",
+      "pass": true
+    },
+    {
+      "name": "0.5nH 5mA/100ps gives 25mV",
+      "pass": true
+    }
+  ],
+  "generator_sha256": "69f96e14245f46bdbca5b69691ea8e8e6a40b3c3c026f8887d191c9b6af55f76",
+  "artifact_sha256": {
+    "energy-budget.svg": "e52fa2c7055c479100d33afe02901aaa045e56401869cf81388e9802bb0ed538",
+    "parallel-throughput-power.svg": "369c89f8a1fe3e46ccfa688b1fa4e122ccbc5ebbc6e405456dcc34966668e9b8",
+    "numerical-notes.md": "0ddf8a3476962e5c1aaa90690d91269b86289abbbc4b9c888d78eb7687ffa93f"
+  }
+}

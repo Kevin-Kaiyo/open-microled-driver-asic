@@ -1,0 +1,21 @@
+* Experimental one-lane NRZ current-steering output. Not a tape-out design.
+* GF180MCU public PDK nfet_03v3 / pfet_03v3, dimensions in metres.
+* External VDD=VDUMMY=3.3 V; LED anode 5 V is outside this subcircuit.
+* Resistor-fed diode-connected reference: not a regulated precision reference.
+* DATA=1 selects LED branch; DATA=0 selects dummy. Baseline sink stays on.
+* GP and GB come from two successive real CMOS inverters: skew is included.
+* Diffusions assume isolated width x 0.6um rectangles, not extracted layout.
+* RREF and WTAIL are DC-calibrated at TT, 27C, to 25uA / 100uA LED current.
+.subckt hs_nrz_steering data out vdd vdummy vss params: RREF=88386.1064910889 WTAIL=5.75895881652832u
+RREF vdd bias {RREF}
+XREF bias bias vss vss nfet_03v3 w=2u l=1u ad=1.2p as=1.2p pd=5.2u ps=5.2u
+XBASE out bias vss vss nfet_03v3 w=2u l=1u ad=1.2p as=1.2p pd=5.2u ps=5.2u
+XTAIL vx bias vss vss nfet_03v3 w={WTAIL} l=1u ad={WTAIL*0.6u} as={WTAIL*0.6u} pd={2*(WTAIL+0.6u)} ps={2*(WTAIL+0.6u)}
+XLED out gp vx vss nfet_03v3 w=1u l=0.28u ad=0.6p as=0.6p pd=3.2u ps=3.2u
+XDUMMY dummy gb vx vss nfet_03v3 w=1u l=0.28u ad=0.6p as=0.6p pd=3.2u ps=3.2u
+RDUMMY vdummy dummy 28k
+XINV1N gb data vss vss nfet_03v3 w=1u l=0.28u ad=0.6p as=0.6p pd=3.2u ps=3.2u
+XINV1P gb data vdd vdd pfet_03v3 w=2u l=0.28u ad=1.2p as=1.2p pd=5.2u ps=5.2u
+XINV2N gp gb vss vss nfet_03v3 w=1u l=0.28u ad=0.6p as=0.6p pd=3.2u ps=3.2u
+XINV2P gp gb vdd vdd pfet_03v3 w=2u l=0.28u ad=1.2p as=1.2p pd=5.2u ps=5.2u
+.ends hs_nrz_steering

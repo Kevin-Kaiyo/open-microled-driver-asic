@@ -1,0 +1,76 @@
+{
+  "study_date": "2026-10-14",
+  "completed": true,
+  "scope": "Matched10ns source fixture, only clamp control input changes; new modules remain pre-layout.",
+  "source_core": "build/safety/fault-gate-fyj2rqc2",
+  "raw_directory": "build/research-reference-safety-20261013/clamp-ab-phej23f2",
+  "source_hashes": {
+    "evidence/safety/summary.json": "3d5c1e5b0238c6bed10e82a64994b1ed2ab54d9b11f32c1fb77aa776a0091d75",
+    "scripts/research/check_clamp_ab.py": "56afd979381da10aa7d2fb125009f1b0a22888abb44f4ae9d6640446df590ec7",
+    "source_deck": "361e0ccd23b60e18690827a1a48afb0ac85dc0addae574dd66121fc9e25c29b8"
+  },
+  "fault_origin": "RTL event/PWL start t0=20125ns",
+  "results": [
+    {
+      "name": "clamp0_step10",
+      "clamp_action_enabled": false,
+      "maxstep_ns": 10,
+      "input_slew_ns": 10,
+      "pre_fault_current_A": 0.00010075278454583912,
+      "fault_to_stable_1nA_s": 2.762334405310844e-06,
+      "after_deadline_max_abs_current_A": 2.777819027161011e-09,
+      "original_fault_contract_passed": false,
+      "Qpositive_first_us_C": 7.682417161023385e-13,
+      "Qnegative_first_us_C": 0.0,
+      "source_deck_sha256": "9f9a2f603155f0ab88b2779faf7e09c0184779868d48b06d11381059ef07b4e9",
+      "waveform_path": "evidence/safety-clamp-ab/clamp0_step10.csv",
+      "waveform_sha256": "6880acf1a79f130f8d48fc78f0ef904a531bf2054283a7025d3d4f181d63cba6"
+    },
+    {
+      "name": "clamp0_step2",
+      "clamp_action_enabled": false,
+      "maxstep_ns": 2,
+      "input_slew_ns": 10,
+      "pre_fault_current_A": 0.00010075278454631497,
+      "fault_to_stable_1nA_s": 2.762949049846128e-06,
+      "after_deadline_max_abs_current_A": 2.782867451062154e-09,
+      "original_fault_contract_passed": false,
+      "Qpositive_first_us_C": 7.682470613700689e-13,
+      "Qnegative_first_us_C": 0.0,
+      "source_deck_sha256": "5fec1ba351f72a97e409f9ee4b04a46e00973041022e054471f8474fe871c224",
+      "waveform_path": "evidence/safety-clamp-ab/clamp0_step2.csv",
+      "waveform_sha256": "d09e3ca3bad8bc7d33b3215b43cd738c0ebde8bd0843baef498b09bac2985acd"
+    },
+    {
+      "name": "clamp1_step10",
+      "clamp_action_enabled": true,
+      "maxstep_ns": 10,
+      "input_slew_ns": 10,
+      "pre_fault_current_A": 0.00010075278454578946,
+      "fault_to_stable_1nA_s": 2.0381940445812215e-07,
+      "after_deadline_max_abs_current_A": 2.123301534595612e-17,
+      "original_fault_contract_passed": true,
+      "Qpositive_first_us_C": 4.1343295230729554e-13,
+      "Qnegative_first_us_C": -7.331017465937016e-12,
+      "source_deck_sha256": "361e0ccd23b60e18690827a1a48afb0ac85dc0addae574dd66121fc9e25c29b8",
+      "waveform_path": "evidence/safety-clamp-ab/clamp1_step10.csv",
+      "waveform_sha256": "015d643e320066332bcfb02aa2f3f84a9d20a23689eb3abfc259cba884a63617"
+    },
+    {
+      "name": "clamp1_step2",
+      "clamp_action_enabled": true,
+      "maxstep_ns": 2,
+      "input_slew_ns": 10,
+      "pre_fault_current_A": 0.00010075278454632549,
+      "fault_to_stable_1nA_s": 2.0389617644372792e-07,
+      "after_deadline_max_abs_current_A": 6.75848266240564e-17,
+      "original_fault_contract_passed": true,
+      "Qpositive_first_us_C": 4.134329301894043e-13,
+      "Qnegative_first_us_C": -7.331017647767468e-12,
+      "source_deck_sha256": "b27974a4d8ff5276cc7b31a403e6bbc8efb18c5556a18f2117439c97880e2a89",
+      "waveform_path": "evidence/safety-clamp-ab/clamp1_step2.csv",
+      "waveform_sha256": "29a8864806cb40cfed56e61ad6f6e0ae6b81925fa0276f6ee0924ce80c848c44"
+    }
+  ],
+  "qualification": "Control correctness plus step sensitivity; not optical/SOA/full-chip validation."
+}

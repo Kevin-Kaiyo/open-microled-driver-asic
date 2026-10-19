@@ -1,0 +1,135 @@
+{
+  "study_date": "2026-10-11",
+  "engineering_baseline": "781ceb266eb1f1dc16780d806cdcd0d5005716ae",
+  "new_EDA_runs": 0,
+  "engineering_inputs_modified": false,
+  "evidence": [
+    {
+      "id": "E1",
+      "class": "physical extraction",
+      "path": "evidence/joint-pex/nominal/summary.json",
+      "locator": "counts; scope; metrics",
+      "supports": "Selected signal PEX has actual GDS provenance",
+      "does_not_support": "Not full PG/body/neighbor/silicon"
+    },
+    {
+      "id": "E2",
+      "class": "conditional simulation",
+      "path": "evidence/robustness/main-summary.json",
+      "locator": "conditions; results; checks; source_hashes",
+      "supports": "Current full current and pulse area contract",
+      "does_not_support": "Not all RC/PVT cross-product or real LED dynamics"
+    },
+    {
+      "id": "E3",
+      "class": "published static data and same-curve interpolation",
+      "path": "evidence/led-fit/lin2026-yellow20-fit.json",
+      "locator": "selected_source; interpolation_at_100uA_V; held_out_interpolation",
+      "supports": "One static curve changes headroom",
+      "does_not_support": "Not temperature/dynamic/cross-device evidence"
+    },
+    {
+      "id": "E4",
+      "class": "boundary simulation",
+      "path": "evidence/robustness/boundary-summary.json",
+      "locator": "dc_results",
+      "supports": "Existing 10k series R fails full current",
+      "does_not_support": "Assumed series R, not measured PDN"
+    },
+    {
+      "id": "E5",
+      "class": "startup simulation",
+      "path": "evidence/robustness/boundary-summary.json",
+      "locator": "results: startup timing and reference power/energy",
+      "supports": "Ideal reference can supply active energy before rail exists",
+      "does_not_support": "Not implemented reference or complete power network"
+    },
+    {
+      "id": "E6",
+      "class": "independent control calculation",
+      "path": "evidence/control/validation.json",
+      "locator": "timeout_timing; scope; source_sha256",
+      "supports": "Event timings, quantization and selected one-pixel scope",
+      "does_not_support": "Not receiver RTL/hardware watchdog/optical extinction"
+    },
+    {
+      "id": "E7",
+      "class": "assumed dynamic model-domain probe",
+      "path": "evidence/characterization/measured-load-summary.json",
+      "locator": "assumed_capacitance_transients: measured_domain",
+      "supports": "Signed conduction charge dependence on unmeasured extension",
+      "does_not_support": "Different v0.2 path; not actual dynamic accuracy"
+    }
+  ],
+  "sources_sha256": {
+    "analog/driver/pixel_driver.spice": "376305eafa438e80883320984209d9e193b01e77a047cf131500318b794d9747",
+    "analog/models/measured-led/model-card.json": "83a17ae0ba181d307f7580255934ecc63071689dcc50ff4c9dc519bf24f08201",
+    "analog/models/measured-led/source-lock.json": "7a9210d1af46004469e4e97e5c05001c3004c1c6e828bca02f16e094a9577ba8",
+    "analog/models/microled.spice": "ce9a3453abb87fc2aea894e7da2eff1448ff90a1432243ea90c747716ed20bba",
+    "docs/specifications/electrical-v0.4.md": "e538fa005c0f97e05929d64825c84551434a0447a9e5709c4ff4a56be553a78c",
+    "evidence/characterization/measured-load-summary.json": "98d8b3d0bb60b0e27f540fcb6cf44e87eeed2607fa2d5a3786c0f3c91b5c47ca",
+    "evidence/control/summary.json": "8a7ce3b371e76477119de257d2315e248c12d54921ded294a69a2239b685d6f6",
+    "evidence/control/validation.json": "72033d893f6d486812f8156130a7af580273d1415b5f20fc57861c662256928c",
+    "evidence/integration/summary.json": "fc664cf8a12004739ac6202aa258774ce95f14492938ea0ea1f4508345c18194",
+    "evidence/joint-pex/nominal/summary.json": "9fbfcd0c2c1add8a01b7bdfd6f3f1863333258973ee478aa5e30a7a85d7c86ed",
+    "evidence/layout/summary.json": "f85067a0a227825cd57dbf93618910be2bac040370aa906e35fff12823cd9668",
+    "evidence/led-fit/lin2026-yellow20-fit.json": "e467e289306d4c997c7e8c8817a15b7c541cf81cc1b88c140d29129fe648fd3f",
+    "evidence/physical/summary.json": "eaebcfe18d122a16d249a4bf6baf19a7772c36b7a59b31b46b6d8044b807f071",
+    "evidence/research/input-mapping.json": "f96871508970c9de7181df822c20acb7a6f3139ebf351c88b1205ec7c44e909b",
+    "evidence/robustness/boundary-summary.json": "d4bf28fa216a2f5d894e4da0b19f6c647eb71d763b553d49ddad5bc0f71f65ad",
+    "evidence/robustness/main-summary.json": "5c962bf85021991085f0d15370d355d0a8a2af02bc7119f257de6cf6d7f20321",
+    "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+    "scripts/control/run.py": "172d273b58a444079803e4ad91fa1ec1fb8ca77b9f059a59b53f0d8192d1f72f",
+    "scripts/robustness/run.py": "81a8b32aa7374ea091f2aa4c185d3f429aa8098a645690b96058db389f4e9eff"
+  },
+  "calculations": {
+    "vf100_uA_v": 3.767909545454545,
+    "available_headroom_at_5V_v": 1.232090454545455,
+    "R10k_error_percent_vs_100uA": -11.734007514850276,
+    "ideal_Q1_C": 1e-10,
+    "ideal_average_duty1_A": 3.90625e-07,
+    "reference_rail_nominal_power_W": 0.00033,
+    "main_max_abs_area_error_pct": 0.7001333742800875,
+    "cap_duty1_outside_domain_signed_charge_percent": [
+      0.5639434957816162,
+      4.9048570612715485,
+      18.454773900948307
+    ]
+  },
+  "figures": {
+    "headroom.svg": {
+      "source": "E4",
+      "method": "Unchanged four saved DC points; connecting line is not prediction",
+      "sha256": "d19721ee17fd9f0e071e1ac696c5a8ff41fa90fdfe0c00645bac7529f50df1fb"
+    },
+    "model-domain.svg": {
+      "source": "E7",
+      "method": "Saved signed conduction charge ratios for assumed C; no new simulation",
+      "sha256": "74e4694e05f40dde2c15c2bf92da4da101fdc5ea2295a97360b424527d051cef"
+    }
+  },
+  "external_sources": [
+    {
+      "url": "https://www.nature.com/articles/s41467-026-74151-4",
+      "checked_on": "2026-10-11",
+      "publication_date": "2026-06-17"
+    },
+    {
+      "url": "https://zenodo.org/records/20034288",
+      "checked_on": "2026-10-11",
+      "license": "CC-BY-4.0",
+      "use": "Existing repository static-data provenance; no paper figure copied"
+    }
+  ],
+  "future_experiments": {
+    "status": "proposed_not_executed",
+    "order": [
+      "output/source compliance separation",
+      "implemented reference and independent fault",
+      "incremental PG/body/neighbors"
+    ],
+    "parallel": "same-device LED measurement preparation",
+    "1us_fault_target": "candidate only; remaining thresholds must be specified before run"
+  },
+  "render_script_sha256": "07c29785bb764ab8c402fa3a2cabfb172c60ab89a9b26f1b14be1a15dfb1a378"
+}

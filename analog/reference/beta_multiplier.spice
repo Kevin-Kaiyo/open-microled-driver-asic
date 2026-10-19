@@ -1,0 +1,22 @@
+* Independently implemented teaching candidate; schematic only, no layout.
+* Output is a PMOS sourcing current: connect iout to pixel bias/MREF drain-gate.
+* Needs locked GF180 nfet_06v0/pfet_06v0 and ppolyf_u resistor libraries.
+* No ideal internal sources, op-amp, B source, or forced startup pulse.
+* Separate res_typical/res_ff/res_ss corner must be loaded explicitly.
+* Geometry uses SI meters; RL calibrated only at TT/27 C/3.3 V.
+.subckt beta_reference vdd vss iout params: RL=13.5u START=1
+* Core: equal PMOS branch currents; N2 has four times N1 W/L.
+XP1 pg pg vdd vdd pfet_06v0 w=40u l=4u
+XP2 nb pg vdd vdd pfet_06v0 w=40u l=4u
+XN1 nb nb vss vss nfet_06v0 w=20u l=4u
+XN2 pg nb rs vss nfet_06v0 w=80u l=4u
+XRSET rs vss vss ppolyf_u r_width=2u r_length={RL}
+* Third mirror leg supplies the existing pixel's diode-connected MREF.
+XPOUT iout pg vdd vdd pfet_06v0 w=40u l=4u
+* Startup: weak pull-up raises su while nb is low; NKICK pulls pg down.
+* As nb rises, NSENSE pulls su low and NKICK switches off.
+* PUP/NSENSE retain a small quiescent current: startup is not zero-power.
+XPUP su vss vdd vdd pfet_06v0 w=1u l=10u
+XNSENSE su nb vss vss nfet_06v0 w=10u l=1u
+XNKICK pg su vss vss nfet_06v0 w=2u l=1u m={START}
+.ends beta_reference

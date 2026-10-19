@@ -1,0 +1,21 @@
+* Independently designed GF180 safety-gate candidate; no extracted layout.
+* Uses full-PDK 6-V primitive wrappers and SI W/L. Junction hypothesis:
+* rectangular 0.44-um diffusion landing per side, AD/AS=W*0.44um,
+* PD/PS=2*(W+0.44um); NOT geometry-extracted. These finite junctions avoid
+* treating NAND intermediate diffusions as zero-area nodes. Its private nodes
+* support explicit terminal-stress audit. Final layout must replace this estimate.
+* Powered 3.3-V safety rail is assumed valid. No POR/brownout detector/ESD.
+* fault-high disables output even if permit remains stale-high after clock stop.
+* External/testbench 1-Mohm pull-up establishes default-off on disconnected fault.
+.subckt fault_gate raw fault permit out vdd vss
+XFN fault_b fault vss vss nfet_06v0 w=2u l=1u ad=.88p as=.88p pd=4.88u ps=4.88u
+XFP fault_b fault vdd vdd pfet_06v0 w=4u l=1u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+XNP0 nand_n raw vdd vdd pfet_06v0 w=4u l=1u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+XNP1 nand_n permit vdd vdd pfet_06v0 w=4u l=1u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+XNP2 nand_n fault_b vdd vdd pfet_06v0 w=4u l=1u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+XNN0 nand_n raw stack1 vss nfet_06v0 w=6u l=1u ad=2.64p as=2.64p pd=12.88u ps=12.88u
+XNN1 stack1 permit stack2 vss nfet_06v0 w=6u l=1u ad=2.64p as=2.64p pd=12.88u ps=12.88u
+XNN2 stack2 fault_b vss vss nfet_06v0 w=6u l=1u ad=2.64p as=2.64p pd=12.88u ps=12.88u
+XON out nand_n vss vss nfet_06v0 w=4u l=1u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+XOP out nand_n vdd vdd pfet_06v0 w=8u l=1u ad=3.52p as=3.52p pd=16.88u ps=16.88u
+.ends fault_gate

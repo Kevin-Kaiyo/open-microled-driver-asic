@@ -1,0 +1,1329 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "tag": "selected-r5-cc30-csense30-bleed10M",
+  "raw_directory": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t",
+  "dut_source": "build/layout-v3/r5/roundtrip/startup_test_macro_rc.spice",
+  "dut_sha256": "d6ebc340c5f2096c43e1358b851d68590fefddbf47b5cc6e746ffc3c12851424",
+  "pout_terminal_mapping": [
+    "X28",
+    "VREF.t1",
+    "CTRL.t3",
+    "REFOUT.t2",
+    "VREF.t0",
+    "pfet_06v0"
+  ],
+  "source_sha256": {
+    "build/layout-v3/r5/roundtrip/startup_test_macro_rc.spice": "d6ebc340c5f2096c43e1358b851d68590fefddbf47b5cc6e746ffc3c12851424",
+    "analog/models/microled.spice": "ce9a3453abb87fc2aea894e7da2eff1448ff90a1432243ea90c747716ed20bba",
+    "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+    "rtl/safety/pixel_safety.v": "a6f4ef3f0705dec13d578ef6c0e6a6dd755e2d7b7714d7fb1411fbd078672a93",
+    "sim/safety/tb_safety.v": "76d4f5130d8fefb4769508e074f19213886b3fed55003ea744b7c51482dd20c7",
+    "scripts/safety/run.py": "4f52656c2306403bfd7db9aa6909b23777ad525f92d603672fca1b7121da4975",
+    "scripts/analog_v3/macro.py": "ee66efc47e4596f8a67b3818cfc60f7cb1a975df226ab87b302c78ed22423050",
+    "layout/startup_v3/contract.json": "787c41e4cbcf8e0d7523ed90b74ac71e63a32b4913ad578353a828a1de73f7bc",
+    "build/layout/pdk/gf180mcuD/libs.tech/ngspice/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "build/layout/pdk/gf180mcuD/libs.tech/ngspice/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+  },
+  "cc_pf": 30.0,
+  "csense_pf": 30.0,
+  "bleed_ohm": 10000000.0,
+  "selected_case": null,
+  "dc_results": [
+    {
+      "envelope": "tt",
+      "on": 0,
+      "current_a": 2.888356220867696e-11,
+      "passed": true
+    },
+    {
+      "envelope": "tt",
+      "on": 1,
+      "current_a": 9.973911542012451e-05,
+      "passed": true
+    },
+    {
+      "envelope": "ss",
+      "on": 0,
+      "current_a": 2.634759965760984e-11,
+      "passed": true
+    },
+    {
+      "envelope": "ss",
+      "on": 1,
+      "current_a": 9.72547391093085e-05,
+      "passed": true
+    },
+    {
+      "envelope": "ff",
+      "on": 0,
+      "current_a": 3.177699881010535e-11,
+      "passed": true
+    },
+    {
+      "envelope": "ff",
+      "on": 1,
+      "current_a": 0.0001006162200740218,
+      "passed": true
+    }
+  ],
+  "results": [
+    {
+      "name": "startup_tt_100",
+      "kind": "startup",
+      "envelope": "tt",
+      "ramp_ns": 100,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.275101895047986e-10,
+        "branch_charge": {
+          "signed_c": -1.8785836463665738e-22,
+          "positive_c": 2.0074341847191646e-19,
+          "negative_c": -2.009312768365531e-19
+        },
+        "conduction_max_abs_a": 5.3874938079707575e-20
+      },
+      "release": {
+        "branch_max_abs_a": 4.739361395792313e-06,
+        "branch_charge": {
+          "signed_c": -1.904547669438803e-14,
+          "positive_c": 1.9906267477346075e-17,
+          "negative_c": -1.906538296186537e-14
+        },
+        "conduction_max_abs_a": 9.533221426500292e-15
+      },
+      "recovered_a": 9.97391154251985e-05,
+      "pout_model_ibd_max_a": 4.353181717933744e-15,
+      "pout_model_ibs_max_a": 2.040598446241143e-12,
+      "pout_external_refout_above_vref_v": 4.862876670268448e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-bleed10M-startup-grid/summary.json",
+      "source_summary_sha256": "094b61dc9acdda879f03eb1b861c409627386f0586b4a5c07b1c93b80b2fc907",
+      "source_raw_directory": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_100",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_100/testbench.spice",
+          "sha256": "4635eef06749f8c7d9429f81fc524f1aaeb85e01dd05469209b96c4218333319"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_100/waveform.dat",
+          "sha256": "2894adc4175fcc6c3141886bee5670f26cbc53372e49893506e5ed42c160acbb"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_100/rtl-events.csv",
+          "sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_100/ngspice.log",
+          "sha256": "b68961d9f4ab7bb24e9686083b445ecf56f6b4bf4ffdddf79f95d3e103560853"
+        }
+      },
+      "selected_solver_reason": "Same source PWL function with integer-tick collinear local grid and1ps TSTEP; dense first-step/corner resolution."
+    },
+    {
+      "name": "startup_tt_1000",
+      "kind": "startup",
+      "envelope": "tt",
+      "ramp_ns": 1000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.352851036894869e-11,
+        "branch_charge": {
+          "signed_c": -2.670923615030787e-22,
+          "positive_c": 3.272698112543236e-20,
+          "negative_c": -3.299407348693544e-20
+        },
+        "conduction_max_abs_a": 3.921810425842048e-20
+      },
+      "release": {
+        "branch_max_abs_a": 4.739511429679849e-06,
+        "branch_charge": {
+          "signed_c": -1.904541681064541e-14,
+          "positive_c": 1.9900150546558998e-17,
+          "negative_c": -1.906531696119197e-14
+        },
+        "conduction_max_abs_a": 9.533219463076036e-15
+      },
+      "recovered_a": 9.973911542512142e-05,
+      "pout_model_ibd_max_a": 4.353181616585263e-15,
+      "pout_model_ibs_max_a": 2.040598944675085e-12,
+      "pout_external_refout_above_vref_v": 4.862876670268448e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-bleed10M-startup-grid/summary.json",
+      "source_summary_sha256": "094b61dc9acdda879f03eb1b861c409627386f0586b4a5c07b1c93b80b2fc907",
+      "source_raw_directory": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_1000",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_1000/testbench.spice",
+          "sha256": "9ae6c74354c119008016cf76d99844ec12931af46ddba5e4c38e154a50c0492b"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_1000/waveform.dat",
+          "sha256": "9a2963d6ff7f02cc8d776f797b3571264220383e90a373d0dfd23dfec9131242"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_1000/rtl-events.csv",
+          "sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_1000/ngspice.log",
+          "sha256": "2fd5ef870460c044987ef43ff24767b737923b6e8c0ecaeef0dc06f9666c064f"
+        }
+      },
+      "selected_solver_reason": "Same source PWL function with integer-tick collinear local grid and1ps TSTEP; dense first-step/corner resolution."
+    },
+    {
+      "name": "startup_tt_10000",
+      "kind": "startup",
+      "envelope": "tt",
+      "ramp_ns": 10000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.318682382877583e-12,
+        "branch_charge": {
+          "signed_c": -1.899540279108924e-21,
+          "positive_c": 1.7418273805447485e-20,
+          "negative_c": -1.9317814084556416e-20
+        },
+        "conduction_max_abs_a": 3.499039061868796e-20
+      },
+      "release": {
+        "branch_max_abs_a": 4.739274666501897e-06,
+        "branch_charge": {
+          "signed_c": -1.9045442189312527e-14,
+          "positive_c": 1.9901931546916282e-17,
+          "negative_c": -1.9065344120859442e-14
+        },
+        "conduction_max_abs_a": 9.533219656723137e-15
+      },
+      "recovered_a": 9.973911542516303e-05,
+      "pout_model_ibd_max_a": 4.353178473834923e-15,
+      "pout_model_ibs_max_a": 2.040600938968804e-12,
+      "pout_external_refout_above_vref_v": 4.862876670268448e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-bleed10M-startup-grid/summary.json",
+      "source_summary_sha256": "094b61dc9acdda879f03eb1b861c409627386f0586b4a5c07b1c93b80b2fc907",
+      "source_raw_directory": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_10000",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_10000/testbench.spice",
+          "sha256": "c13ed98b59aa8e9fba3831faf507b4bc49b753b94c433ece0b8ae1d68af107de"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_10000/waveform.dat",
+          "sha256": "25796e6582fd4bdcc0089c13a711a6f23fbc12c3e5188696498669dedc36eb96"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_10000/rtl-events.csv",
+          "sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_10000/ngspice.log",
+          "sha256": "6a25788b73b65df48745fed9913574237037154222ff31d57471ddf95c5b8d6f"
+        }
+      },
+      "selected_solver_reason": "Same source PWL function with integer-tick collinear local grid and1ps TSTEP; dense first-step/corner resolution."
+    },
+    {
+      "name": "fault_tt",
+      "kind": "fault",
+      "envelope": "tt",
+      "fault_ns": 50125,
+      "clock_stop_ns": 47700,
+      "stop_ns": 66125,
+      "duty": 256,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "fault": {
+        "branch_max_abs_a": 0.0002043840848174093,
+        "branch_charge": {
+          "signed_c": -6.858825236959096e-12,
+          "positive_c": 5.045828436001702e-13,
+          "negative_c": -7.363408080559266e-12
+        },
+        "conduction_max_abs_a": 0.00010156065214214073
+      },
+      "fault_to_safe_s": 2.0570914601080256e-07,
+      "held_fault": {
+        "branch_max_abs_a": 1.59196267279782e-14,
+        "branch_charge": {
+          "signed_c": 4.0230024440638535e-23,
+          "positive_c": 4.575322573902105e-22,
+          "negative_c": -4.1730223294957206e-22
+        },
+        "conduction_max_abs_a": 3.39481768866867e-20
+      },
+      "release_stopped": {
+        "branch_max_abs_a": 4.739392325166931e-06,
+        "branch_charge": {
+          "signed_c": -1.9042904579999704e-14,
+          "positive_c": 2.2343309476396605e-17,
+          "negative_c": -1.9065247889476102e-14
+        },
+        "conduction_max_abs_a": 9.533221288619623e-15
+      },
+      "recovered_a": 9.973911542716052e-05,
+      "pout_model_ibd_max_a": 6.335884806862991e-15,
+      "pout_model_ibs_max_a": 2.040610572498015e-12,
+      "pout_external_refout_above_vref_v": -0.0032725991869559934,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Fault shutdown under1us",
+          "passed": true
+        },
+        {
+          "name": "Fault Q+ under10pC",
+          "passed": true
+        },
+        {
+          "name": "Fault Q- under20pC",
+          "passed": true
+        },
+        {
+          "name": "Held fault under1nA",
+          "passed": true
+        },
+        {
+          "name": "No conduction on stopped-clock release",
+          "passed": true
+        },
+        {
+          "name": "Recovered within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-final-bleed10M/summary.json",
+      "source_summary_sha256": "3d812c1982af71cb2364eb843a7b3b0b44bdafa20987efa0c7faa450773ea940",
+      "source_raw_directory": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_tt",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_tt/testbench.spice",
+          "sha256": "9548b67447e55fdfb8e7e10c9fb87a77b588576272b060dd8580517196429a0c"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_tt/waveform.dat",
+          "sha256": "ba6cddfdcf1e58b7bbc727090a0881a5bcdba4b384702a5152b24498fd7e320e"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_tt/rtl-events.csv",
+          "sha256": "22b38ba48d9a35fae0e79f02e5d1383de4611f8b410fa6b8627511957c55b319"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_tt/ngspice.log",
+          "sha256": "b7aeba6253afa78645fc9afeeefb26e80160c0a51b97a313a0c10dcc375c368d"
+        }
+      },
+      "selected_solver_reason": "Ordinary full-window solver; waveform convergence checked on d1 fine/coarse pair."
+    },
+    {
+      "name": "startup_ss_100",
+      "kind": "startup",
+      "envelope": "ss",
+      "ramp_ns": 100,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 5.997387778761132e-10,
+        "branch_charge": {
+          "signed_c": 9.597351259316086e-22,
+          "positive_c": 2.829317799940325e-19,
+          "negative_c": -2.8197204486810094e-19
+        },
+        "conduction_max_abs_a": 8.68049800064691e-20
+      },
+      "release": {
+        "branch_max_abs_a": 3.965675307680758e-06,
+        "branch_charge": {
+          "signed_c": -1.7142993531825998e-14,
+          "positive_c": 2.758098533869712e-17,
+          "negative_c": -1.71705745171647e-14
+        },
+        "conduction_max_abs_a": 8.789510907249723e-15
+      },
+      "recovered_a": 9.725473798062527e-05,
+      "pout_model_ibd_max_a": 1.828571532271459e-14,
+      "pout_model_ibs_max_a": 1.279096988766785e-12,
+      "pout_external_refout_above_vref_v": 4.299817159767066e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-bleed10M-startup-grid/summary.json",
+      "source_summary_sha256": "094b61dc9acdda879f03eb1b861c409627386f0586b4a5c07b1c93b80b2fc907",
+      "source_raw_directory": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_100",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_100/testbench.spice",
+          "sha256": "1224e6cd97dcb3ad3f8cf93e66a1d6184497e66fd98455e9abc7f1bf6b5fe5ff"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_100/waveform.dat",
+          "sha256": "6f6616f61728af3fb159db07f47f191267dd40a4bbcf93389510e3788b03bd70"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_100/rtl-events.csv",
+          "sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_100/ngspice.log",
+          "sha256": "ecfaebcd2119abff68b2f51b5d5b0f5c6494f822312b432ace3bac0dff519211"
+        }
+      },
+      "selected_solver_reason": "Same source PWL function with integer-tick collinear local grid and1ps TSTEP; dense first-step/corner resolution."
+    },
+    {
+      "name": "startup_ss_1000",
+      "kind": "startup",
+      "envelope": "ss",
+      "ramp_ns": 1000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.137847043119482e-11,
+        "branch_charge": {
+          "signed_c": -1.863732927633078e-22,
+          "positive_c": 4.107398199504245e-20,
+          "negative_c": -4.126035528780577e-20
+        },
+        "conduction_max_abs_a": 5.860367503050519e-20
+      },
+      "release": {
+        "branch_max_abs_a": 3.965670519883932e-06,
+        "branch_charge": {
+          "signed_c": -1.7143110831784744e-14,
+          "positive_c": 2.7578891935077784e-17,
+          "negative_c": -1.717068972371982e-14
+        },
+        "conduction_max_abs_a": 8.789506364247985e-15
+      },
+      "recovered_a": 9.72547379806425e-05,
+      "pout_model_ibd_max_a": 1.82857131466939e-14,
+      "pout_model_ibs_max_a": 1.143666118581015e-12,
+      "pout_external_refout_above_vref_v": 4.299817159767066e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-bleed10M-startup-grid/summary.json",
+      "source_summary_sha256": "094b61dc9acdda879f03eb1b861c409627386f0586b4a5c07b1c93b80b2fc907",
+      "source_raw_directory": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_1000",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_1000/testbench.spice",
+          "sha256": "920a33585537f62fa7473c609038378b940dc958bbcc4e6ca8b200fe76db5e92"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_1000/waveform.dat",
+          "sha256": "1d2f05e393e66567e1fc0f59e70cb556819db3fb1488158ebe10bdf9b59e6374"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_1000/rtl-events.csv",
+          "sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_1000/ngspice.log",
+          "sha256": "1616ae3b113e6b8c08ebd9d7d52d4c5de3de52e896e7cfe6d3f1ff12f1e22010"
+        }
+      },
+      "selected_solver_reason": "Same source PWL function with integer-tick collinear local grid and1ps TSTEP; dense first-step/corner resolution."
+    },
+    {
+      "name": "startup_ss_10000",
+      "kind": "startup",
+      "envelope": "ss",
+      "ramp_ns": 10000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.124429088871786e-12,
+        "branch_charge": {
+          "signed_c": 1.5895023995354294e-22,
+          "positive_c": 1.1432160680188032e-20,
+          "negative_c": -1.1273210440234487e-20
+        },
+        "conduction_max_abs_a": 5.2460368338110676e-20
+      },
+      "release": {
+        "branch_max_abs_a": 3.965680039184835e-06,
+        "branch_charge": {
+          "signed_c": -1.7143173141495103e-14,
+          "positive_c": 2.7564598592267018e-17,
+          "negative_c": -1.717073774008737e-14
+        },
+        "conduction_max_abs_a": 8.789507393619933e-15
+      },
+      "recovered_a": 9.725473798400691e-05,
+      "pout_model_ibd_max_a": 1.828574754207687e-14,
+      "pout_model_ibs_max_a": 1.369371587945269e-12,
+      "pout_external_refout_above_vref_v": 4.299817159767066e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-bleed10M-startup-grid/summary.json",
+      "source_summary_sha256": "094b61dc9acdda879f03eb1b861c409627386f0586b4a5c07b1c93b80b2fc907",
+      "source_raw_directory": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_10000",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_10000/testbench.spice",
+          "sha256": "34cd6a51dc54e44f068429d8d64498a11bcf18d5bb09326aead6e5ad2c011dec"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_10000/waveform.dat",
+          "sha256": "f28703f8b7e4d768fc0bb0b14b5b3f2ed4e313c7819dccb6815b0e89a1a9aa85"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_10000/rtl-events.csv",
+          "sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ss_10000/ngspice.log",
+          "sha256": "005dc9c338cbabd144490c3143409f2389c85c04a51505621b6fc9ea13cd147a"
+        }
+      },
+      "selected_solver_reason": "Same source PWL function with integer-tick collinear local grid and1ps TSTEP; dense first-step/corner resolution."
+    },
+    {
+      "name": "fault_ss",
+      "kind": "fault",
+      "envelope": "ss",
+      "fault_ns": 50125,
+      "clock_stop_ns": 47700,
+      "stop_ns": 66125,
+      "duty": 256,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "fault": {
+        "branch_max_abs_a": 0.0001187774196322574,
+        "branch_charge": {
+          "signed_c": -6.3974911585765675e-12,
+          "positive_c": 5.531452766844315e-13,
+          "negative_c": -6.9506364352609985e-12
+        },
+        "conduction_max_abs_a": 9.725473917724807e-05
+      },
+      "fault_to_safe_s": 3.0338981375768254e-07,
+      "held_fault": {
+        "branch_max_abs_a": 8.79817052545917e-15,
+        "branch_charge": {
+          "signed_c": -5.483192947979863e-23,
+          "positive_c": 3.105809935348314e-23,
+          "negative_c": -8.589002883328176e-23
+        },
+        "conduction_max_abs_a": 5.068040602073887e-20
+      },
+      "release_stopped": {
+        "branch_max_abs_a": 3.96568532940643e-06,
+        "branch_charge": {
+          "signed_c": -1.7140926896403476e-14,
+          "positive_c": 2.9910325844027426e-17,
+          "negative_c": -1.71708372222475e-14
+        },
+        "conduction_max_abs_a": 8.789524092812417e-15
+      },
+      "recovered_a": 9.725473577660146e-05,
+      "pout_model_ibd_max_a": 1.914402211179167e-14,
+      "pout_model_ibs_max_a": 1.139504205788865e-12,
+      "pout_external_refout_above_vref_v": -0.0033352134093700414,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Fault shutdown under1us",
+          "passed": true
+        },
+        {
+          "name": "Fault Q+ under10pC",
+          "passed": true
+        },
+        {
+          "name": "Fault Q- under20pC",
+          "passed": true
+        },
+        {
+          "name": "Held fault under1nA",
+          "passed": true
+        },
+        {
+          "name": "No conduction on stopped-clock release",
+          "passed": true
+        },
+        {
+          "name": "Recovered within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-final-bleed10M/summary.json",
+      "source_summary_sha256": "3d812c1982af71cb2364eb843a7b3b0b44bdafa20987efa0c7faa450773ea940",
+      "source_raw_directory": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_ss",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_ss/testbench.spice",
+          "sha256": "e9756bd88c573dac41df04381405ef2055cc2dde4c0013053d131427addb1194"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_ss/waveform.dat",
+          "sha256": "be16a87b4c1909f7a45ff5d65cb9d033d8655c37a2b0f23849e7e1f94e252a42"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_ss/rtl-events.csv",
+          "sha256": "22b38ba48d9a35fae0e79f02e5d1383de4611f8b410fa6b8627511957c55b319"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_ss/ngspice.log",
+          "sha256": "b763c8b0538cfe86b102e99ed3aff0d2623424986bbfc920f5a91239654b566f"
+        }
+      },
+      "selected_solver_reason": "Ordinary full-window solver; waveform convergence checked on d1 fine/coarse pair."
+    },
+    {
+      "name": "startup_ff_100",
+      "kind": "startup",
+      "envelope": "ff",
+      "ramp_ns": 100,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.563377024509931e-10,
+        "branch_charge": {
+          "signed_c": -2.7164809008597137e-22,
+          "positive_c": 1.9063809095090694e-19,
+          "negative_c": -1.9090973904099292e-19
+        },
+        "conduction_max_abs_a": 4.1664656171022915e-20
+      },
+      "release": {
+        "branch_max_abs_a": 5.453099884890692e-06,
+        "branch_charge": {
+          "signed_c": -2.0818873052127914e-14,
+          "positive_c": 1.8853010124279687e-17,
+          "negative_c": -2.0837726062252187e-14
+        },
+        "conduction_max_abs_a": 1.0307611078829813e-14
+      },
+      "recovered_a": 0.00010061622008392427,
+      "pout_model_ibd_max_a": 4.398157000745279e-15,
+      "pout_model_ibs_max_a": 2.578705838103216e-12,
+      "pout_external_refout_above_vref_v": 5.482038909781622e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-bleed10M-startup-grid/summary.json",
+      "source_summary_sha256": "094b61dc9acdda879f03eb1b861c409627386f0586b4a5c07b1c93b80b2fc907",
+      "source_raw_directory": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_100",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_100/testbench.spice",
+          "sha256": "0d276575680c2d4181ad2f2172ff032e1ccdc1bf5d4d99e16c520ffc2644ad3e"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_100/waveform.dat",
+          "sha256": "ead57474533c87f1074aa2df726a5e4dd87b9338f51b934c29580f3fd00ed03b"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_100/rtl-events.csv",
+          "sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_100/ngspice.log",
+          "sha256": "e182b006ad932e1217d5525c86fd8466222794b9cacc72347f20aa0c9eef3aba"
+        }
+      },
+      "selected_solver_reason": "Same source PWL function with integer-tick collinear local grid and1ps TSTEP; dense first-step/corner resolution."
+    },
+    {
+      "name": "startup_ff_1000",
+      "kind": "startup",
+      "envelope": "ff",
+      "ramp_ns": 1000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.605684714500183e-11,
+        "branch_charge": {
+          "signed_c": -2.3222540366925886e-22,
+          "positive_c": 4.8638897044148365e-20,
+          "negative_c": -4.887112244781762e-20
+        },
+        "conduction_max_abs_a": 3.134231219931325e-20
+      },
+      "release": {
+        "branch_max_abs_a": 5.453118551825356e-06,
+        "branch_charge": {
+          "signed_c": -2.0818721351715203e-14,
+          "positive_c": 1.8844190108588672e-17,
+          "negative_c": -2.083756554182379e-14
+        },
+        "conduction_max_abs_a": 1.0307606467830234e-14
+      },
+      "recovered_a": 0.00010061622008398306,
+      "pout_model_ibd_max_a": 4.398155299981444e-15,
+      "pout_model_ibs_max_a": 2.578705796428693e-12,
+      "pout_external_refout_above_vref_v": 5.482038909781622e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-bleed10M-startup-grid/summary.json",
+      "source_summary_sha256": "094b61dc9acdda879f03eb1b861c409627386f0586b4a5c07b1c93b80b2fc907",
+      "source_raw_directory": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_1000",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_1000/testbench.spice",
+          "sha256": "2dcd309450a274ca8aae31e9befe752b09c968cb2a5814c439433d6cef7cac90"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_1000/waveform.dat",
+          "sha256": "f8ec214d85ba821774d2e4e92d38add7d0607cc973480f513c8f38f848cabb80"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_1000/rtl-events.csv",
+          "sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_1000/ngspice.log",
+          "sha256": "8e79557a9f572f5d8080ea24b3544d7b4ada9f115f2c14a0810fc2a0b6446403"
+        }
+      },
+      "selected_solver_reason": "Same source PWL function with integer-tick collinear local grid and1ps TSTEP; dense first-step/corner resolution."
+    },
+    {
+      "name": "startup_ff_10000",
+      "kind": "startup",
+      "envelope": "ff",
+      "ramp_ns": 10000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.577030517429527e-12,
+        "branch_charge": {
+          "signed_c": -8.120795520687326e-22,
+          "positive_c": 2.6516634058273948e-20,
+          "negative_c": -2.7328713610342685e-20
+        },
+        "conduction_max_abs_a": 2.848749355737166e-20
+      },
+      "release": {
+        "branch_max_abs_a": 5.453130930208119e-06,
+        "branch_charge": {
+          "signed_c": -2.0818725061145804e-14,
+          "positive_c": 1.8853349924829433e-17,
+          "negative_c": -2.0837578411070628e-14
+        },
+        "conduction_max_abs_a": 1.0307612241574336e-14
+      },
+      "recovered_a": 0.00010061622008388533,
+      "pout_model_ibd_max_a": 4.398154539336184e-15,
+      "pout_model_ibs_max_a": 2.57870587808801e-12,
+      "pout_external_refout_above_vref_v": 5.482038909781622e-05,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-bleed10M-startup-grid/summary.json",
+      "source_summary_sha256": "094b61dc9acdda879f03eb1b861c409627386f0586b4a5c07b1c93b80b2fc907",
+      "source_raw_directory": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_10000",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_10000/testbench.spice",
+          "sha256": "931b592830325dc840c61c64b838b34c972bd4ad7d562ed4da712190ad39160a"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_10000/waveform.dat",
+          "sha256": "459fecabe81e02a810ad9ff62a3e1092d482c926fdf735fb35c387e5ad0bae4d"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_10000/rtl-events.csv",
+          "sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_ff_10000/ngspice.log",
+          "sha256": "47d379c24b084412a6a444e981ab5c890edffae33e8ec4143aae43bad179f155"
+        }
+      },
+      "selected_solver_reason": "Same source PWL function with integer-tick collinear local grid and1ps TSTEP; dense first-step/corner resolution."
+    },
+    {
+      "name": "fault_ff",
+      "kind": "fault",
+      "envelope": "ff",
+      "fault_ns": 50125,
+      "clock_stop_ns": 47700,
+      "stop_ns": 66125,
+      "duty": 256,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "fault": {
+        "branch_max_abs_a": 0.0002986944659405228,
+        "branch_charge": {
+          "signed_c": -7.155361937006987e-12,
+          "positive_c": 4.047965366723113e-13,
+          "negative_c": -7.560158473679297e-12
+        },
+        "conduction_max_abs_a": 0.00010245902922807014
+      },
+      "fault_to_safe_s": 1.5684813574208783e-07,
+      "held_fault": {
+        "branch_max_abs_a": 1.728568677084041e-14,
+        "branch_charge": {
+          "signed_c": -7.213004677287224e-24,
+          "positive_c": 6.117182617769565e-22,
+          "negative_c": -6.189312664542436e-22
+        },
+        "conduction_max_abs_a": 2.7841175653757743e-20
+      },
+      "release_stopped": {
+        "branch_max_abs_a": 5.453196996649326e-06,
+        "branch_charge": {
+          "signed_c": -2.0816136983486246e-14,
+          "positive_c": 2.159179077640721e-17,
+          "negative_c": -2.0837728774262654e-14
+        },
+        "conduction_max_abs_a": 1.0307615339440047e-14
+      },
+      "recovered_a": 0.0001006162200842594,
+      "pout_model_ibd_max_a": 6.408029549128882e-15,
+      "pout_model_ibs_max_a": 2.654562971300424e-12,
+      "pout_external_refout_above_vref_v": -0.0032664808538109824,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Fault shutdown under1us",
+          "passed": true
+        },
+        {
+          "name": "Fault Q+ under10pC",
+          "passed": true
+        },
+        {
+          "name": "Fault Q- under20pC",
+          "passed": true
+        },
+        {
+          "name": "Held fault under1nA",
+          "passed": true
+        },
+        {
+          "name": "No conduction on stopped-clock release",
+          "passed": true
+        },
+        {
+          "name": "Recovered within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-final-bleed10M/summary.json",
+      "source_summary_sha256": "3d812c1982af71cb2364eb843a7b3b0b44bdafa20987efa0c7faa450773ea940",
+      "source_raw_directory": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_ff",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_ff/testbench.spice",
+          "sha256": "93800ab22df22be1abea74807d407c7fc67c079e19f395d3427645dfe11c5676"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_ff/waveform.dat",
+          "sha256": "8699ab8f118ab14ab0ab578d26013e2c64fdf015c817f34190c33daa62e4f51e"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_ff/rtl-events.csv",
+          "sha256": "22b38ba48d9a35fae0e79f02e5d1383de4611f8b410fa6b8627511957c55b319"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/fault_ff/ngspice.log",
+          "sha256": "853dc4bfcccc49c967e192eecceb679979058aefe66f1edd0ac0ea6052ec23b9"
+        }
+      },
+      "selected_solver_reason": "Ordinary full-window solver; waveform convergence checked on d1 fine/coarse pair."
+    },
+    {
+      "name": "startup_tt_vset_late",
+      "kind": "startup",
+      "envelope": "tt",
+      "ramp_ns": 100,
+      "vset_start_ns": 5000,
+      "stop_ns": 40000,
+      "duty": 256,
+      "initial_fault_clear_ns": 20000,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "startup": {
+        "branch_max_abs_a": 6.27724453666767e-10,
+        "branch_charge": {
+          "signed_c": -1.6131632985086193e-21,
+          "positive_c": 2.1202096585695786e-19,
+          "negative_c": -2.1363412915546639e-19
+        },
+        "conduction_max_abs_a": 5.3927951690861864e-20
+      },
+      "release": {
+        "branch_max_abs_a": 4.739269074956892e-06,
+        "branch_charge": {
+          "signed_c": -1.9045480056398034e-14,
+          "positive_c": 1.9903791847045184e-17,
+          "negative_c": -1.906538384824508e-14
+        },
+        "conduction_max_abs_a": 9.53321963311941e-15
+      },
+      "recovered_a": 9.973911542513675e-05,
+      "pout_model_ibd_max_a": 4.353181623474824e-15,
+      "pout_model_ibs_max_a": 2.040598923315544e-12,
+      "pout_external_refout_above_vref_v": 0.007738647369295304,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "Startup held-fault 1nA guard",
+          "passed": true
+        },
+        {
+          "name": "No conduction before permission",
+          "passed": true
+        },
+        {
+          "name": "Recovered current within5pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-bleed10M-startup-grid/summary.json",
+      "source_summary_sha256": "094b61dc9acdda879f03eb1b861c409627386f0586b4a5c07b1c93b80b2fc907",
+      "source_raw_directory": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_vset_late",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_vset_late/testbench.spice",
+          "sha256": "b5e460b7883f344eb02c14db86c73e80ef31c226785071b89f0b94194e5f4d70"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_vset_late/waveform.dat",
+          "sha256": "5502cc0e322c5fe89725f72075ec1c3a721f91fc603ab0a04d1a32ffb03a0d4e"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_vset_late/rtl-events.csv",
+          "sha256": "3fab5310a0c4dd54909cd7b709b36d48a4172e56e6299e4e6f32adf60802708b"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-bleed10M-startup-grid-dp8634q4/startup_tt_vset_late/ngspice.log",
+          "sha256": "501f8d3bcdac8606c6d7fbd4d62901f9a93ad53a993b0d0d04812ddbc20d6d95"
+        }
+      },
+      "selected_solver_reason": "Same source PWL function with integer-tick collinear local grid and1ps TSTEP; dense first-step/corner resolution."
+    },
+    {
+      "name": "normal_tt_d1",
+      "kind": "normal",
+      "envelope": "tt",
+      "stop_ns": 1070000,
+      "duty": 1,
+      "maxstep_ns": 5,
+      "rtl_pass": true,
+      "charge_c": 1.993540470866523e-10,
+      "d1_error_pct": -0.06225428863771976,
+      "pout_model_ibd_max_a": 4.353743307811357e-15,
+      "pout_model_ibs_max_a": 2.040738014994067e-12,
+      "pout_external_refout_above_vref_v": -0.0032768140266599133,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "d1 charge error within2pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-final-bleed10M/summary.json",
+      "source_summary_sha256": "3d812c1982af71cb2364eb843a7b3b0b44bdafa20987efa0c7faa450773ea940",
+      "source_raw_directory": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_tt_d1",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_tt_d1/testbench.spice",
+          "sha256": "01a8e751ece810aa5518f2a0abcd975b92c15660954ce980483b838d6f1ab655"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_tt_d1/waveform.dat",
+          "sha256": "fe87e32513d70bb595873d3ee0be7a037f5b36162901ff73da4dd51c06f5e444"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_tt_d1/rtl-events.csv",
+          "sha256": "6cfdb347265d86e66ac6edf770c8b753d506959daf9e2bae6cbb15857d96b2a2"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_tt_d1/ngspice.log",
+          "sha256": "48afb3cb5bdc5956ddc3c9dbad5a807e7106d155a0d05d08516f9d5fb341b895"
+        }
+      },
+      "selected_solver_reason": "Ordinary full-window solver; waveform convergence checked on d1 fine/coarse pair."
+    },
+    {
+      "name": "normal_ss_d1",
+      "kind": "normal",
+      "envelope": "ss",
+      "stop_ns": 1070000,
+      "duty": 1,
+      "maxstep_ns": 5,
+      "rtl_pass": true,
+      "charge_c": 1.9357323846540335e-10,
+      "d1_error_pct": -0.48133374362424597,
+      "pout_model_ibd_max_a": 1.829137009349193e-14,
+      "pout_model_ibs_max_a": 1.139503397672088e-12,
+      "pout_external_refout_above_vref_v": -0.0033377607701972067,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "d1 charge error within2pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-final-bleed10M/summary.json",
+      "source_summary_sha256": "3d812c1982af71cb2364eb843a7b3b0b44bdafa20987efa0c7faa450773ea940",
+      "source_raw_directory": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_ss_d1",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_ss_d1/testbench.spice",
+          "sha256": "a6b114a45f9a97f36d648bc0bfd7232a206b14b4fd85b810031367a8cf963cbf"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_ss_d1/waveform.dat",
+          "sha256": "cecf5d16fdafde5985d77c7368f8bab7067174d4b61b111a870887ec1d322097"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_ss_d1/rtl-events.csv",
+          "sha256": "6cfdb347265d86e66ac6edf770c8b753d506959daf9e2bae6cbb15857d96b2a2"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_ss_d1/ngspice.log",
+          "sha256": "03906a47c70d776829166d63c8bf6fdfa3207f28735731a0b55243deabd0ab72"
+        }
+      },
+      "selected_solver_reason": "Ordinary full-window solver; waveform convergence checked on d1 fine/coarse pair."
+    },
+    {
+      "name": "normal_ff_d1",
+      "kind": "normal",
+      "envelope": "ff",
+      "stop_ns": 1070000,
+      "duty": 1,
+      "maxstep_ns": 5,
+      "rtl_pass": true,
+      "charge_c": 2.0128633075500535e-10,
+      "d1_error_pct": 0.026780278031779403,
+      "pout_model_ibd_max_a": 4.398495559534154e-15,
+      "pout_model_ibs_max_a": 2.578828995347077e-12,
+      "pout_external_refout_above_vref_v": -0.003272577669698684,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "d1 charge error within2pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-final-bleed10M/summary.json",
+      "source_summary_sha256": "3d812c1982af71cb2364eb843a7b3b0b44bdafa20987efa0c7faa450773ea940",
+      "source_raw_directory": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_ff_d1",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_ff_d1/testbench.spice",
+          "sha256": "a34270c4688e22e1d61f02a39bab57aac60843d30f1fc494c3268ca1b14f08d1"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_ff_d1/waveform.dat",
+          "sha256": "101ea9860e52ca172dba2a97301a5738d80947551a91b9f4ea9b7579099fc77e"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_ff_d1/rtl-events.csv",
+          "sha256": "6cfdb347265d86e66ac6edf770c8b753d506959daf9e2bae6cbb15857d96b2a2"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_ff_d1/ngspice.log",
+          "sha256": "1145d4ce9e36f6eaea389edba2476b2d35c94af2f6e2b64bfb543f2bbbf0b202"
+        }
+      },
+      "selected_solver_reason": "Ordinary full-window solver; waveform convergence checked on d1 fine/coarse pair."
+    },
+    {
+      "name": "normal_tt_d1_fine",
+      "kind": "normal",
+      "envelope": "tt",
+      "stop_ns": 1070000,
+      "duty": 1,
+      "maxstep_ns": 2,
+      "rtl_pass": true,
+      "charge_c": 1.9935405564852305e-10,
+      "d1_error_pct": -0.06224999650482621,
+      "pout_model_ibd_max_a": 4.353747869024159e-15,
+      "pout_model_ibs_max_a": 2.040735968761174e-12,
+      "pout_external_refout_above_vref_v": -0.0032768140488519393,
+      "checks": [
+        {
+          "name": "Actual RTL assertions",
+          "passed": true
+        },
+        {
+          "name": "d1 charge error within2pct",
+          "passed": true
+        }
+      ],
+      "simulation_completed": true,
+      "passed": true,
+      "source_summary_path": "evidence/analog-v3/pex-r5-final-bleed10M/summary.json",
+      "source_summary_sha256": "3d812c1982af71cb2364eb843a7b3b0b44bdafa20987efa0c7faa450773ea940",
+      "source_raw_directory": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_tt_d1_fine",
+      "source_artifacts": {
+        "testbench.spice": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_tt_d1_fine/testbench.spice",
+          "sha256": "7d3ba247d9f2f28ea12953a45ec5d9d3862fccaaabe8d359df35d8693bba616a"
+        },
+        "waveform.dat": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_tt_d1_fine/waveform.dat",
+          "sha256": "3874e5be98cc9dd8885ac6e8c0b38747e32eec99ca5e0cda2f0eb3f0f25d1967"
+        },
+        "rtl-events.csv": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_tt_d1_fine/rtl-events.csv",
+          "sha256": "6cfdb347265d86e66ac6edf770c8b753d506959daf9e2bae6cbb15857d96b2a2"
+        },
+        "ngspice.log": {
+          "path": "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/normal_tt_d1_fine/ngspice.log",
+          "sha256": "42276bdf9beae765934bf121dff3d59bf52f87284eb049dca66746adcc179122"
+        }
+      },
+      "selected_solver_reason": "Ordinary full-window solver; waveform convergence checked on d1 fine/coarse pair."
+    }
+  ],
+  "passed": true,
+  "limitations": [
+    "39MOS macro only: no pad/ESD/package/other digital cells/POR or optical qualification.",
+    "All external passives and rail ideal-source contracts explicit. Pin-level fault/recovery from actual RTL simulation, not storage transistors in macro.",
+    "Extracted model geometry or distributed R/C scope follows selected DUT file and physical manifest.",
+    "All startup cases assume VSAFE/VBUF/LED prepowered and external fault high."
+  ],
+  "selected_solver_rules": {
+    "startup": "All10 startup cases are from the full40us integer-tick0.1ps local-grid run, not a mixture cherry-picked per passing result. Linear rail function unchanged.",
+    "normal_fault": "All3 fault and4normal cases are from original full17case run. Their circuit, rail, resistor and capacitor inputs are identical to startup-grid run.",
+    "scope": "Actual39MOS fullRC macro+actualRTL pin replay; not full system silicon qualification.",
+    "failed_runs_preserved": [
+      "evidence/analog-v3/pex-r5-final-bleed10M/summary.json",
+      "evidence/analog-v3/pex-r4-cc3/summary.json",
+      "evidence/analog-v3/pex-r5-bleed10M-fftrial/summary.json"
+    ]
+  },
+  "source_runs": {
+    "evidence/analog-v3/pex-r5-final-bleed10M/summary.json": "3d812c1982af71cb2364eb843a7b3b0b44bdafa20987efa0c7faa450773ea940",
+    "evidence/analog-v3/pex-r5-bleed10M-startup-grid/summary.json": "094b61dc9acdda879f03eb1b861c409627386f0586b4a5c07b1c93b80b2fc907"
+  },
+  "raw_directory_note": "Default raw_directory is original full suite; use each row source_raw_directory for selected startup waves.",
+  "selection_script_sha256": "d72bcda304eac7ad6794cb1c8412bf754ed367a13e99ffebb9abd49fe85b90a0"
+}

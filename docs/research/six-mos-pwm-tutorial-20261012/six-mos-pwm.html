@@ -1,0 +1,173 @@
+<div id="six-mos-pwm-20261012">
+  <h3>PWM 栅极控制的 NMOS 电流镜驱动</h3>
+  <div class="viz-controls" aria-label="电路状态">
+    <button type="button" class="btn" data-mode="original" aria-pressed="true">完整原理图</button>
+    <button type="button" class="btn" data-mode="charge" aria-pressed="false">高：栅极充电</button>
+    <button type="button" class="btn" data-mode="on" aria-pressed="false">高：稳态点亮</button>
+    <button type="button" class="btn" data-mode="discharge" aria-pressed="false">低：栅极放电</button>
+    <button type="button" class="btn" data-mode="off" aria-pressed="false">低：稳态关闭</button>
+  </div>
+  <div class="viz-row text-small" aria-label="图例">
+    <span><span class="six-current">━▶</span> 持续电流</span>
+    <span><span class="six-charge">┄▶</span> 仅切换时充放电</span>
+    <span>同名网络相连；D 漏极 / G 栅极 / S 源极 / B 体端</span>
+  </div>
+  <div class="six-schematic" role="img" aria-label="按实际网表绘制的六MOS原理图"></div>
+  <div class="text-small" data-state-detail aria-live="polite"></div>
+  <style>
+    #six-mos-pwm-20261012 .six-current {color:var(--viz-series-1)}
+    #six-mos-pwm-20261012 .six-charge {color:var(--viz-series-2)}
+    #six-mos-pwm-20261012 .six-schematic {width:100%}
+    #six-mos-pwm-20261012 .six-schematic svg {width:100%;height:auto;display:block;color:var(--foreground)}
+    #six-mos-pwm-20261012 .six-schematic text {fill:var(--foreground);font-family:'PingFang SC','Avenir Next',sans-serif;font-size:var(--six-font-size,14px);font-weight:400}
+    #six-mos-pwm-20261012 .six-schematic .heading {font-size:var(--six-heading-size,16px);font-weight:500}
+    #six-mos-pwm-20261012 .six-schematic .device-name {font-weight:500}
+    #six-mos-pwm-20261012 .six-schematic .structure {fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+    #six-mos-pwm-20261012 .six-schematic .active-channel {stroke:var(--viz-series-1)}
+    #six-mos-pwm-20261012 .six-schematic .off-channel {stroke:var(--muted-foreground)}
+    #six-mos-pwm-20261012 .six-schematic .current-path {fill:none;stroke:var(--viz-series-1);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+    #six-mos-pwm-20261012 .six-schematic .charge-path {fill:none;stroke:var(--viz-series-2);stroke-width:2;stroke-dasharray:5 4;stroke-linejoin:round;stroke-linecap:round}
+  </style>
+  <script>
+  (() => {
+    const root = document.getElementById('six-mos-pwm-20261012');
+    const host = root.querySelector('.six-schematic');
+    const detail = root.querySelector('[data-state-detail]');
+    const valid = ['original','charge','on','discharge','off'];
+    const nets = {
+      MREF:['bias','bias','0','0'], MOUT:['led_k','gate','0','0'],
+      MPASS:['bias','pwm','gate','0'], MCLAMP:['gate','pwm_b','0','0'],
+      MN:['pwm_b','pwm','0','0'], MP:['pwm_b','pwm','vlogic','vlogic']
+    };
+    const descriptions = {
+      original:'外部条件：Vlogic=3.3 V、VLED=5 V、理想 IREF=100 µA；非新增仿真。',
+      charge:'过渡示意：主要栅极充电路径；不表示严格先后时序，开关可能短暂同时导通。',
+      on:'稳态：VG 接近 VBIAS；栅极近似无直流电流，IREF 与 LED 电流走不同支路。',
+      discharge:'过渡示意：主要栅极放电路径；不表示严格先后时序，LED 电流逐步衰减。',
+      off:'稳态：VG 接近 0 V，LED 主电流关闭；IREF 仍流过 MREF。'
+    };
+    let mode = valid.includes(window.openai?.widgetState?.modelContent?.sixMosMode)
+      ? window.openai.widgetState.modelContent.sixMosMode : 'original';
+    const escape = v => String(v).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    function draw() {
+      const w = Math.max(300, Math.round(host.getBoundingClientRect().width || 736));
+      const wide = w >= 660;
+      const scale = wide ? 1 : Math.min(1,w/360);
+      const pieces = [];
+      const high = mode==='on'||mode==='charge';
+      const low = mode==='off'||mode==='discharge';
+      const transient = mode==='charge'||mode==='discharge';
+      const state = on => mode==='original'?'':transient?'过渡':on?'导通':'截止';
+      function text(x,y,value,cls='',anchor='start') { pieces.push(`<text x="${x}" y="${y}" class="${cls}" text-anchor="${anchor}">${escape(value)}</text>`); }
+      function wire(points,cls='structure') { pieces.push(`<polyline points="${points.map(p=>p.join(',')).join(' ')}" class="${cls}"/>`); }
+      function dot(x,y) {pieces.push(`<circle cx="${x}" cy="${y}" r="2.8" fill="currentColor"/>`);}
+      function arrow(points,charge=false) {pieces.push(`<polyline points="${points.map(p=>p.join(',')).join(' ')}" class="${charge?'charge-path':'current-path'}" marker-end="url(#six-${charge?'charge':'current'}-arrow)"/>`);}
+      function ground(x,y) {wire([[x,y-9],[x,y]]);[12,8,4].forEach((a,i)=>wire([[x-a,y+i*4],[x+a,y+i*4]]));text(x,y+30,'GND','','middle');}
+      function net(x,y,value,up=false) {wire([[x,y],[x,y+(up?-15:15)]]);text(x,y+(up?-21:34),value,'','middle');}
+      function mos(cx,cy,name,role,p=false,state='') {
+        const ch=cx-6,gx=cx-17,tx=cx+18,bx=cx+48;
+        const channelClass = state==='截止'?'off-channel':state==='导通'||state==='偏置建立'?'active-channel':'';
+        for(const [a,b] of [[-18,-8],[-4,4],[8,18]]) wire([[ch,cy+a],[ch,cy+b]],'structure '+channelClass);
+        wire([[gx,cy-20],[gx,cy+20]]);
+        wire([[tx,cy-36],[tx,cy-17],[ch,cy-17]]);
+        wire([[ch,cy+17],[tx,cy+17],[tx,cy+36]]);
+        wire([[cx-40,cy],[gx,cy]]);
+        wire([[ch,cy],[bx,cy]]);
+        const ap = p ? `${cx+13},${cy-4} ${cx+20},${cy} ${cx+13},${cy+4}` : `${cx+9},${cy-4} ${cx+2},${cy} ${cx+9},${cy+4}`;
+        pieces.push(`<polygon points="${ap}" fill="currentColor"/>`);
+        wire([[bx,cy],[bx+13,cy]]);
+        text(bx+17,cy+5,p?'Vlogic':'GND');
+        text(cx-48,cy-9,'G');text(tx+6,cy-25,p?'S':'D');text(tx+6,cy+48,p?'D':'S');text(bx-4,cy-9,'B');
+        pieces.push(`<g data-device="${name}" data-type="${p?'PMOS':'NMOS'}" data-state="${escape(state)}" data-role="${escape(role)}" data-nets="${nets[name].join(' ')}" data-terminal-order="D G S B"></g>`);
+        return {D:[tx,cy+(p?36:-36)],G:[cx-40,cy],S:[tx,cy+(p?-36:36)],B:[bx,cy]};
+      }
+      function label(x,y,name,role,state) {text(x,y,name,'device-name');text(x,y+26,role);if(state)text(x,y+52,state);}
+      function ref(ox,oy) {
+        pieces.push(`<g transform="translate(${ox} ${oy}) scale(${scale})">`);
+        text(10,24,'① 参考支路','heading');
+        text(106,51,'Vlogic','','middle');wire([[106,58],[106,80]]);
+        pieces.push('<circle cx="106" cy="102" r="22" class="structure"/>');
+        wire([[106,124],[106,160],[106,204]]);
+        pieces.push('<path d="M106 89 V114" class="structure" marker-end="url(#six-neutral-arrow)"/>');
+        text(143,95,'外部 IREF');text(143,126,'100 µA');
+        mos(88,240,'MREF','参考管',false,mode==='original'?'':'偏置建立');
+        wire([[48,240],[28,240],[28,160],[106,160],[174,160]]);dot(106,160);text(184,165,'VBIAS');
+        label(160,190,'MREF','栅漏短接','');
+        wire([[106,276],[106,300]]);ground(106,300);
+        if(mode!=='original') {arrow([[260,90],[260,280]]);text(245,315,'IREF 始终存在','','middle');}
+        pieces.push('</g>');
+      }
+      function inverter(ox,oy) {
+        pieces.push(`<g transform="translate(${ox} ${oy}) scale(${scale})">`);
+        text(10,24,'② CMOS 反相器','heading');text(163,51,'Vlogic','','middle');wire([[163,58],[163,74]]);
+        mos(145,110,'MP','反相器上拉',true,state(low));
+        mos(145,250,'MN','反相器下拉',false,state(high));
+        wire([[163,146],[163,180],[163,214]]);dot(163,180);wire([[163,180],[243,180]]);
+        text(248,167,'PWM_B');text(248,196,transient?'变化中':high?'≈ 0 V':low?'≈ 3.3 V':'输出');
+        wire([[105,110],[55,110],[55,250],[105,250]]);dot(55,180);wire([[55,180],[8,180]]);text(8,165,'PWM');
+        label(270,85,'MP','PMOS',state(low));
+        label(270,225,'MN','NMOS',state(high));
+        wire([[163,286],[163,307]]);ground(163,307);
+        if(transient) {
+          if(high) arrow([[226,193],[193,193],[193,282]],true);
+          else arrow([[186,62],[186,156],[230,156]],true);
+        }
+        pieces.push('</g>');
+      }
+      function pixel(ox,oy,pw) {
+        pieces.push(`<g transform="translate(${ox} ${oy}) scale(${scale})">`);
+        const large=pw>=660, px=large?175:88, out=large?500:252, join=large?355:190;
+        const dx=px+18,lx=out+18;
+        text(10,24,'③ 栅极控制与 LED 主支路','heading');
+        text(dx,132,'VBIAS','','middle');wire([[dx,140],[dx,144]]);
+        mos(px,180,'MPASS','栅极开关',false,state(high));
+        wire([[px-40,180],[14,180]]);text(14,148,'PWM');
+        label(px-73,65,'MPASS','接入偏置',state(high));
+        wire([[dx,216],[join,216],[join,345],[out-40,345]]);dot(join,300);text(join-12,320,'VG','','end');
+        text(lx,62,'VLED = 5 V','','middle');wire([[lx,70],[lx,95]]);
+        wire([[lx,95],[lx,108]]);pieces.push(`<path d="M${lx-12} 108 H${lx+12} L${lx} 131 Z M${lx-15} 135 H${lx+15}" class="structure"/>`);wire([[lx,135],[lx,150],[lx,309]]);
+        text(lx-21,105,'A','','end');text(lx-21,150,'K','','end');text(lx+40,124,'LED');
+        text(lx+25,190,'LED_K');
+        pieces.push(`<path d="M${lx+18} 114 l16 -17 M${lx+25} 124 l16 -17" class="structure" marker-end="url(#six-neutral-arrow)"/>`);
+        mos(out,345,'MOUT','输出电流管',false,mode==='original'?'':transient?'过渡':high?'偏置建立':'截止');
+        label(out-90,365,'MOUT',mode==='original'?'输出电流管':high?mode==='charge'?'逐步开启':'偏置建立':mode==='discharge'?'逐步关闭':'截止','');
+        wire([[lx,381],[lx,466]]);ground(lx,466);
+        mos(px,420,'MCLAMP','栅极下拉',false,state(low));
+        wire([[dx,384],[dx,300],[join,300]]);wire([[px-40,420],[14,420]]);text(14,388,'PWM_B');
+        label(px-73,305,'MCLAMP','栅极下拉',state(low));
+        wire([[dx,456],[dx,490]]);ground(dx,490);
+        if(mode==='on') {arrow([[lx-32,155],[lx-32,212]]);text(lx-40,163,'ILED','','end');arrow([[lx-32,391],[lx-32,447]]);}
+        if(mode==='charge') {arrow([[dx+10,225],[join-13,225],[join-13,336],[out-43,336]],true);text(px-70,270,'栅极充电');}
+        if(mode==='discharge') {arrow([[join-10,334],[join-10,311],[dx-12,311],[dx-12,381]],true);arrow([[dx-28,437],[dx-28,483]],true);text(px-70,270,'栅极放电');}
+        if(mode==='off') text(join,565,'LED 主电流关闭','','middle');
+        if(mode==='on') text(join,565,'VG ≈ VBIAS；稳态栅极电流 ≈ 0','','middle');
+        if(mode==='original') text(join,565,'MPASS 不串入 LED 主电流支路','','middle');
+        pieces.push('</g>');
+      }
+      let height;
+      if(wide) {
+        const each=w/2;
+        ref((each-330)/2,0);inverter(each+(each-350)/2,0);
+        pixel((w-700)/2,365,700);height=955;
+      } else {
+        ref((w-330*scale)/2,0);inverter((w-350*scale)/2,350*scale);
+        pixel((w-360*scale)/2,710*scale,360);height=1300*scale;
+      }
+      const defs='<defs><marker id="six-current-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10" fill="var(--viz-series-1)"/></marker><marker id="six-charge-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10" fill="var(--viz-series-2)"/></marker><marker id="six-neutral-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L10 5 L0 10" fill="currentColor"/></marker></defs>';
+      host.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${height}" style="--six-font-size:${14/scale}px;--six-heading-size:${16/scale}px" data-mode="${mode}" role="img" aria-labelledby="six-title six-desc"><title id="six-title">PWM 栅极控制的 NMOS 电流镜：${escape(descriptions[mode])}</title><desc id="six-desc">MREF栅漏短接，MPASS将VBIAS接入MOUT栅极，MCLAMP下拉该栅极，MP和MN产生PWM_B。所有NMOS体端接GND；PMOS体端与源极接Vlogic。LED主电流只经MOUT。同名网络相连。</desc>${defs}${pieces.join('')}</svg>`;
+      detail.textContent=descriptions[mode];
+      root.querySelectorAll('[data-mode]').forEach(b=> {if(b.tagName==='BUTTON')b.setAttribute('aria-pressed',String(b.dataset.mode===mode));});
+      root.dataset.selectedMode=mode;
+    }
+    root.querySelectorAll('button[data-mode]').forEach(b=>b.addEventListener('click',()=>{
+      mode=b.dataset.mode;draw();
+      window.openai?.setWidgetState?.({modelContent:{sixMosMode:mode},privateContent:null}).catch(()=>{});
+    }));
+    window.addEventListener('openai:set_globals',event=>{
+      const incoming=event.detail?.globals?.widgetState?.modelContent?.sixMosMode;
+      if(valid.includes(incoming)){mode=incoming;draw();}
+    });
+    new ResizeObserver(draw).observe(host);draw();
+  })();
+  </script>
+</div>

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "declared_before_runs": "2026-10-13",
+  "purpose": "Independent fault assertion and controlled recovery, without modifying the baseline frame PWM",
+  "scope": "New 10-MOS GF180 6-V safety gate is pre-layout; it feeds the unmodified 12-MOS nominal selected-signal PEX. Recovery storage is RTL only. Safety rail, PG/body and neighbors retain ideal declared boundaries.",
+  "fault": {
+    "assertion": "fault high directly suppresses output without waiting for clock/frame; asynchronous RTL inhibit keeps fault memory",
+    "default": "initial asserted external fault; independent testbench 1-Mohm pull-up gives high on a disconnected fault input while safety rail is valid",
+    "recovery": "fault low plus explicit recover_request on a rising clock edge with pre-edge raw PWM low; fault deassertion alone cannot recover",
+    "stopped_clock": "fault assertion works while powered safety logic remains valid; recovery cannot proceed without a clock",
+    "not_implemented": ["power-on reset circuit", "brownout or supply monitor", "fault sensor", "physical recovery flip-flop", "new safety layout/DRC/LVS/PEX", "IO/ESD/package", "silicon/optical extinction"]
+  },
+  "thresholds": {
+    "full_current_target_a": 0.0001,
+    "full_current_relative_error": 0.05,
+    "normal_lowest_code_charge_relative_error": 0.02,
+    "fault_deadline_s": 0.000001,
+    "fault_safe_current_abs_a": 0.000000001,
+    "fault_positive_tail_charge_c": 0.00000000001,
+    "fault_tail_window_s": 0.000001,
+    "off_measurement_after_deadline_s": 0.000001,
+    "convergence_change_pct": 0.2,
+    "normal_pwm_high_low_min_s": 0.00000095
+  },
+  "threshold_rationale": "1 us uses one existing slot as a teaching deadline; 1 nA is the inherited numerical off guard, not a measured leakage/optical safety limit. 10 pC positive post-fault tail is a predeclared teaching ceiling of 10 percent of the ideal 100 uA x 1 us code charge. Signed tail and negative charge are reported separately. Fault interruption can deliberately shorten a pulse; the 950 ns normal-pulse guard is not applied to that interruption.",
+  "failure_policy": "Keep raw failures. Adjust circuitry only with a recorded reason and new run identity; never silently change thresholds or overwrite earlier failures. Stopped-clock no-protection and synchronous-only protection are expected negative controls."
+}

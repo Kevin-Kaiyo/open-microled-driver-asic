@@ -6,8 +6,24 @@ An independent, open platform for experimental R&D methodology validation and te
 
 项目定位为**实验性研发方法验证与教学**：用独立提出的假设、可复现的实验和可追溯的证据，研究 MicroLED 器件电测与驱动共设计。先把单像素的真实负载、reference、供电和控制边界讲清楚，再由明确的实验问题决定4×4是否值得实现。联合模型仍把PG／body电阻及PG-only电容投影到理想rails，邻居按声明的截断条件处理；它不构成完整芯片PEX、制造接受或光学验证。
 
+## GitHub 备份与跨机开发
+
+每个已验证阶段完成后同步。代码、报告、最终 Blender 场景和紧凑证据保存在 Git；大型原始数据采用有 SHA-256 清单的 Release 附件。阅读 [跨机接续说明](docs/development-handoff.md)，按需恢复指定实验。普通 `git clone` 不包含被忽略的全部 `build/`、PDK 或虚拟机。
+
 ## 先读当前研究报告
 
+- **单通道 NRZ 晶体管比较（2026-10-19）：[中文研究报告](docs/research/highspeed-nrz-20261019/index.html) / [网表、数据与复现](docs/research/highspeed-nrz-20261019/README.md)。** 实现 GF180 电压驱动与电流转向两版电路，统一静态 LED 曲线、动态负载假设、数据序列与接收条件，检查速率、逐电源取能/回灌、MOS 角落、电容敏感性及数值收敛。属于 pre-layout 电气与接收代理实验；真实光学 BER、完整高速版图和流片验证仍未完成。
+
+- **最新实作（2026-10-15）**：[18页启动、保护与版图验证报告](docs/research/single-pixel-closure-20261015/report.pdf) / [HTML](docs/research/single-pixel-closure-20261015/report.html) / [复现入口](docs/research/single-pixel-closure-20261015/README.md)。已新增参考/保护完整39MOS版图、PWM与恢复存储数字宏及共同顶层；两套DRC、LVS、完整PEX通过。最终模拟宏270点DC和17组瞬态通过，启动最大0.656338 nA。旧相对收敛失败保留，新数值判据独立验证；共同顶层全晶体管动态、供电扰动过冲及流片签核仍待后续。
+
+以下2026-10-14及以前资料保留各自的历史状态；本轮新增结果以上述入口为准。
+
+- **总框架：从研究平台到产品开发（2026-10-14）**：[28页研究报告](docs/research/product-framework-20261014/report.pdf) / [带目录HTML](docs/research/product-framework-20261014/report.html) / [真实二维与三维分层版图](docs/research/product-framework-20261014/layout/viewer.html)。从架构、数字、buffer、像素、电流控制和LED模型，到工艺、布局、验证及交付晶圆厂；另对照高速光通信架构和教学眼图，配套验证计划与未完成流片包模板。真实旧GDS、新前仿真电路、合成链路与制造接受分层说明；本轮无新EDA签核，原启动严格收敛失败保留。
+- **单像素启动修复与ASIC流片路线（2026-10-14）**：[18页新报告](docs/research/startup-tapeout-20261014/report.md) / [PDF](docs/research/startup-tapeout-20261014/report.pdf) / [完整制造教学](docs/research/startup-tapeout-20261014/fabrication-chapter.md)。保留原启动与单NMOS隔离失败，新增CMOS传输门、正常／停钟／恢复回归；功能合同通过，极小启动Q+严格相对收敛仍失败。解释硅CMOS、五层金属、实际GDS面积、布局与签核、交付厂家及回片测试；新增模块仍无新版layout/PEX，没有制造接受。
+- **参考源、保护关断与驱动架构（2026-10-13）**：[新研究报告](docs/research/reference-safety-20261013/report.md) / [PDF](docs/research/reference-safety-20261013/report.pdf) / [详细教学章节](docs/research/reference-safety-20261013/architecture-notes.md)。解释IREF→电流镜→LED、0.1～7 mA电流设定、阵列一致性、PWM与高速数据控制，并新增实际GF180参考源和独立保护的晶体管实验。新模块仍为pre-layout；既有版图与信号PEX作为冻结对照，失败、外部基准依赖及未验证范围分别记录。
+- **MicroLED驱动器材料与论文研究（2026-10-12）**：[10页研究报告](docs/research/driver-literature-20261012/report.md) / [PDF](docs/research/driver-literature-20261012/report.pdf) / [可搜索论文索引](docs/research/driver-literature-20261012/index.html)。覆盖Si CMOS、LTPS/oxide/LTPO、GaN/MoS₂/organic TFT及高速current-steering；21篇研究论文按关键全文/摘要核查分级，保留数据条件、DOI和精确定位。µPLS/EVIYOS仅作本轮公开材料身份辨识，不作为商业性能对标或项目复现目标；本轮没有新EDA结果。
+- **从事实到研究决策（2026-10-11）**：[9页研究报告](docs/research/decision-review-20261011/report.md) / [PDF](docs/research/decision-review-20261011/report.pdf) / [HTML](docs/research/decision-review-20261011/report.html)。按“问题→方法与依据→条件/数据→解释→下一实验”展开；先掌握当前证据，再用headroom失败、reference/startup与模型域依赖选择投入方向。工程基线仍为`781ceb2`，本轮没有新EDA run；[证据与复算清单](docs/research/decision-review-20261011/evidence-ledger.json)区分既有结果与待执行A/B/C实验。
+- **模型、方法与结论的可读说明（2026-10-08，只读审查当前 checkout）**：[研究说明](docs/research/readable-audit/report.md) / [PDF](docs/research/readable-audit/report.pdf) / [HTML](docs/research/readable-audit/report.html)，先回答实际证明了什么，再解释电路偏置、I–V来源、动态假设、软件配置、RC提取范围、失败与修正；[技术疑点与下一验证](docs/research/readable-audit/questions.md)。[实际操作与当前状态（2026-10-10）](docs/research/readable-audit/process-status.md)说明审查做过什么、任务在哪以及未解决项。基线`781ceb2`；没有重新运行实验或修改电路／仿真代码。旧报告保留各自历史。
 - **当前进度与控制实验（2026-10-07）**：[6页教学报告](docs/research/control-experiment/progress.md) / [PDF](docs/research/control-experiment/progress.pdf) / [HTML](docs/research/control-experiment/progress.html)，完整帧→atomic commit→selected pixel→实际RTL→冻结joint signal PEX；[证据](evidence/control/README.md)含47笔错误交易、8,192个RTL逐槽检查、3 transient／2 DC／1 LED calibration及独立复算。
 - **实验方法说明历史快照（2026-10-06）**：[研发方法验证报告](docs/research/experimental-methods/report.md) / [PDF](docs/research/experimental-methods/report.pdf) / [HTML](docs/research/experimental-methods/report.html)，从独立假设、控制模型和单像素回放说明如何建立可复现实验；[平台计划](docs/research/experimental-methods/platform-plan.md)跟踪已实现步骤与后续门槛。
 - [分层研究报告 PDF](docs/research/research-report.pdf) / [HTML](docs/research/research-report.html) / [可检查的文字源](docs/research/research-report.md)：总览 → 初学者基础 → 工程验证 → 实验方法与研究价值；同一结果按不同阅读深度解释。

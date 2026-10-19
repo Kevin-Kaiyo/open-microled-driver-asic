@@ -1,0 +1,25 @@
+* Sensitivity only: EACH source/drain diffusion assumed W x 0.44um; not extracted.
+* Independent transistor V-to-I servo candidate. No ideal internal amplifier.
+* EXTERNAL boundaries: VSET=0.5V, RSET=5k from sense to vss; neither is a bandgap.
+* External nominal RBIAS=100k and compensation Cc are included here as passive
+* schematic components; no layout/junction/routing extraction for this circuit.
+* Pin order: supply, ground, external voltage setpoint, sense/RSET, sourced output.
+.subckt vset_reference_junctions vdd vss vset sense iout params: RBIAS=100k CC=3p
+* Actual diode PMOS/resistor tail bias (accuracy not used to set current).
+XPBIAS pb pb vdd vdd pfet_06v0 w=20u l=4u ad=8.8e-12 as=8.8e-12 pd=4.088e-05 ps=4.088e-05
+RBIAS pb vss {RBIAS}
+XPTAIL tail pb vdd vdd pfet_06v0 w=20u l=4u ad=8.8e-12 as=8.8e-12 pd=4.088e-05 ps=4.088e-05
+* PMOS input pair and NMOS mirror load; VSET>VSENSE raises n2.
+XPD1 n1 vset tail vdd pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XPD2 n2 sense tail vdd pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XND1 n1 n1 vss vss nfet_06v0 w=50u l=10u ad=2.2e-11 as=2.2e-11 pd=0.00010088 ps=0.00010088
+XND2 n2 n1 vss vss nfet_06v0 w=50u l=10u ad=2.2e-11 as=2.2e-11 pd=0.00010088 ps=0.00010088
+* NMOS common-source second stage with diode PMOS load.
+XNSTAGE ctrl n2 vss vss nfet_06v0 w=20u l=1u ad=8.8e-12 as=8.8e-12 pd=4.088e-05 ps=4.088e-05
+XPLOAD ctrl ctrl vdd vdd pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+* Matched long-channel PMOS source legs: REG closes loop, OUT supplies pixel.
+XPREG sense ctrl vdd vdd pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XPOUT iout ctrl vdd vdd pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+* Explicit schematic Miller compensation, not an extracted physical capacitor.
+CCOMP n2 ctrl {CC}
+.ends vset_reference_junctions

@@ -1,0 +1,1273 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "stage": "Reference/TG v3 pre-layout validation with frozen old selected joint PEX",
+  "raw_directory": "build/analog-v3/reference-tg-6izap25z",
+  "source_sha256": {
+    "scripts/analog_v3/run.py": "60de79fc2bac29f4a59cec1883f4ab1784f396c5b3283830df142e149f98e60f",
+    "analog/reference/vset_servo_with_junctions.spice": "81f900f315408864b2583b9ad2dc9a256c0aceb0260f52363a8388d181440216",
+    "analog/startup_v2/reference_isolator_tg.spice": "5a5fbb5f68b24348aafc228f9934b1982a0c0d1aa359ee9e948445ddd521a2c0",
+    "analog/safety/fault_gate.spice": "d819b64377e9b59491cee22cd4428cbd78d94bdf4a837f74ad355f6f6b4ea99c",
+    "analog/safety/fault_led_clamp.spice": "5bfb9e910593cfbd3cef9abc1228b1b9df1d87560145bf0390c859a272cc2aaf",
+    "analog/models/microled.spice": "ce9a3453abb87fc2aea894e7da2eff1448ff90a1432243ea90c747716ed20bba",
+    "evidence/joint-pex/nominal/output_pixel_pex.spice": "03813e63e64bf505570dbd1f81e6809366e6b4d31bbee129c28022956e1cc623",
+    "evidence/robustness/stage-contract.json": "ba3ad7bd6bd1dcdc3fbd9bcdd41e15f5f25fa18b9ddb0cbaf4a8171a87ca9657",
+    "layout/pdk-lock.json": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+    "scripts/physical/pdk-lock.json": "50f119ae5e17f0589f0a7a58db4c7a6daa7e6e1b40c85e15cd0d96300f7c3762",
+    "PDK/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "PDK/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+  },
+  "dc_count": 270,
+  "dc_failed_count": 0,
+  "dc_on_min_a": 9.773869386056879e-05,
+  "dc_on_max_a": 0.0001008547964093314,
+  "ac_results": [
+    {
+      "name": "ac_000",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 1e-12,
+      "csense": 0,
+      "cbias": 0,
+      "dc_loop_gain_db": 56.218258979673976,
+      "crossings": [
+        {
+          "frequency_hz": 5008099.729956573,
+          "phase_margin_deg": 47.76355882139558
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_001",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 0,
+      "dc_loop_gain_db": 56.21825856650834,
+      "crossings": [
+        {
+          "frequency_hz": 1931342.7971134672,
+          "phase_margin_deg": 70.95545648920638
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_002",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 1e-11,
+      "csense": 0,
+      "cbias": 0,
+      "dc_loop_gain_db": 56.2182539453061,
+      "crossings": [
+        {
+          "frequency_hz": 597637.8286670196,
+          "phase_margin_deg": 81.6006291649251
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_003",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 3e-12,
+      "csense": 2e-12,
+      "cbias": 0,
+      "dc_loop_gain_db": 56.21825856650656,
+      "crossings": [
+        {
+          "frequency_hz": 1903888.3544111708,
+          "phase_margin_deg": 64.51069005947609
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_004",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 3e-12,
+      "csense": 1e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 56.218258566506634,
+      "crossings": [
+        {
+          "frequency_hz": 1677997.128643863,
+          "phase_margin_deg": 46.52900174376228
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_005",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 3e-12,
+      "csense": 3e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 56.21825856650194,
+      "crossings": [
+        {
+          "frequency_hz": 1244088.6135372205,
+          "phase_margin_deg": 29.793139570682712
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": false
+    },
+    {
+      "name": "ac_006",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 2e-12,
+      "dc_loop_gain_db": 56.21825856650709,
+      "crossings": [
+        {
+          "frequency_hz": 1931304.7055604917,
+          "phase_margin_deg": 70.95610142719545
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_007",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 1e-11,
+      "dc_loop_gain_db": 56.21825856650834,
+      "crossings": [
+        {
+          "frequency_hz": 1931191.243546592,
+          "phase_margin_deg": 70.959827890394
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_008",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 3e-11,
+      "dc_loop_gain_db": 56.21825856650834,
+      "crossings": [
+        {
+          "frequency_hz": 1931169.4185032004,
+          "phase_margin_deg": 70.96652647533372
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_009",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 1e-11,
+      "csense": 1e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 56.21825394530475,
+      "crossings": [
+        {
+          "frequency_hz": 585687.6053500961,
+          "phase_margin_deg": 71.42237101993655
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_010",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 1e-11,
+      "csense": 3e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 56.218253945299494,
+      "crossings": [
+        {
+          "frequency_hz": 530869.3843172124,
+          "phase_margin_deg": 56.27405708258807
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_011",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 3e-11,
+      "csense": 1e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 56.218213526754596,
+      "crossings": [
+        {
+          "frequency_hz": 199760.88141015603,
+          "phase_margin_deg": 81.2292076734697
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_012",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "cc": 3e-11,
+      "csense": 3e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 56.21821352675176,
+      "crossings": [
+        {
+          "frequency_hz": 196651.5863508996,
+          "phase_margin_deg": 74.43641330253192
+        }
+      ],
+      "dc_injection_agreement_max_abs": 0.0,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_013",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 1e-12,
+      "csense": 0,
+      "cbias": 0,
+      "dc_loop_gain_db": 54.17831079230805,
+      "crossings": [
+        {
+          "frequency_hz": 3324991.3235997525,
+          "phase_margin_deg": 56.68757758709637
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_014",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 0,
+      "dc_loop_gain_db": 54.178310160393586,
+      "crossings": [
+        {
+          "frequency_hz": 1243087.4592083641,
+          "phase_margin_deg": 75.49904594697891
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_015",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 1e-11,
+      "csense": 0,
+      "cbias": 0,
+      "dc_loop_gain_db": 54.1783031081274,
+      "crossings": [
+        {
+          "frequency_hz": 382478.99205486855,
+          "phase_margin_deg": 83.5716604087465
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_016",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 3e-12,
+      "csense": 2e-12,
+      "cbias": 0,
+      "dc_loop_gain_db": 54.1783101603951,
+      "crossings": [
+        {
+          "frequency_hz": 1235548.1340900795,
+          "phase_margin_deg": 71.18675802899183
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_017",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 3e-12,
+      "csense": 1e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 54.178310160394375,
+      "crossings": [
+        {
+          "frequency_hz": 1156282.1106864358,
+          "phase_margin_deg": 56.90843283252734
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_018",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 3e-12,
+      "csense": 3e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 54.17831016038995,
+      "crossings": [
+        {
+          "frequency_hz": 927937.2621996338,
+          "phase_margin_deg": 38.95140755099851
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": false
+    },
+    {
+      "name": "ac_019",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 2e-12,
+      "dc_loop_gain_db": 54.178310160394076,
+      "crossings": [
+        {
+          "frequency_hz": 1243054.2554946083,
+          "phase_margin_deg": 75.49974634474586
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_020",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 1e-11,
+      "dc_loop_gain_db": 54.178310160394076,
+      "crossings": [
+        {
+          "frequency_hz": 1242943.3604778508,
+          "phase_margin_deg": 75.50402809689983
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_021",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 3e-11,
+      "dc_loop_gain_db": 54.17831016039408,
+      "crossings": [
+        {
+          "frequency_hz": 1242868.6042706284,
+          "phase_margin_deg": 75.51485219467403
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_022",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 1e-11,
+      "csense": 1e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 54.178303108124084,
+      "crossings": [
+        {
+          "frequency_hz": 379233.106386151,
+          "phase_margin_deg": 76.86864981203846
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_023",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 1e-11,
+      "csense": 3e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 54.178303108121824,
+      "crossings": [
+        {
+          "frequency_hz": 360877.4257981147,
+          "phase_margin_deg": 65.29848282002621
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_024",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 3e-11,
+      "csense": 1e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 54.1782414686375,
+      "crossings": [
+        {
+          "frequency_hz": 127991.49589660257,
+          "phase_margin_deg": 83.67093181142559
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_025",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "cc": 3e-11,
+      "csense": 3e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 54.178241468632464,
+      "crossings": [
+        {
+          "frequency_hz": 127145.22693007506,
+          "phase_margin_deg": 79.1864107110322
+        }
+      ],
+      "dc_injection_agreement_max_abs": 7.409628466348295e-13,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_026",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 1e-12,
+      "csense": 0,
+      "cbias": 0,
+      "dc_loop_gain_db": 57.30942881926944,
+      "crossings": [
+        {
+          "frequency_hz": 6555300.992851175,
+          "phase_margin_deg": 39.75419502506526
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": false
+    },
+    {
+      "name": "ac_027",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 0,
+      "dc_loop_gain_db": 57.30942853396038,
+      "crossings": [
+        {
+          "frequency_hz": 2613541.5971451662,
+          "phase_margin_deg": 66.52276845625289
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_028",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 1e-11,
+      "csense": 0,
+      "cbias": 0,
+      "dc_loop_gain_db": 57.30942533908863,
+      "crossings": [
+        {
+          "frequency_hz": 814942.5829790083,
+          "phase_margin_deg": 79.67777823626834
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_029",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 3e-12,
+      "csense": 2e-12,
+      "cbias": 0,
+      "dc_loop_gain_db": 57.30942853396046,
+      "crossings": [
+        {
+          "frequency_hz": 2548084.1465693465,
+          "phase_margin_deg": 58.24229836439886
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_030",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 3e-12,
+      "csense": 1e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 57.30942853396046,
+      "crossings": [
+        {
+          "frequency_hz": 2123972.2837132444,
+          "phase_margin_deg": 38.73213660248004
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": false
+    },
+    {
+      "name": "ac_031",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 3e-12,
+      "csense": 3e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 57.309428533958084,
+      "crossings": [
+        {
+          "frequency_hz": 1502528.789778192,
+          "phase_margin_deg": 23.949780421780247
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": false
+    },
+    {
+      "name": "ac_032",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 2e-12,
+      "dc_loop_gain_db": 57.30942853396038,
+      "crossings": [
+        {
+          "frequency_hz": 2613488.921177123,
+          "phase_margin_deg": 66.52357409041183
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_033",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 1e-11,
+      "dc_loop_gain_db": 57.30942853396038,
+      "crossings": [
+        {
+          "frequency_hz": 2613350.2533703805,
+          "phase_margin_deg": 66.52783113013088
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_034",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 3e-11,
+      "dc_loop_gain_db": 57.30942853396038,
+      "crossings": [
+        {
+          "frequency_hz": 2613369.2752338927,
+          "phase_margin_deg": 66.5334735903046
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_035",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 1e-11,
+      "csense": 1e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 57.30942533908464,
+      "crossings": [
+        {
+          "frequency_hz": 786097.1552885061,
+          "phase_margin_deg": 66.32192722847294
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_036",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 1e-11,
+      "csense": 3e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 57.309425339085465,
+      "crossings": [
+        {
+          "frequency_hz": 679392.7422579284,
+          "phase_margin_deg": 49.29510897596131
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_037",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 3e-11,
+      "csense": 1e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 57.309397385574115,
+      "crossings": [
+        {
+          "frequency_hz": 271999.1780914154,
+          "phase_margin_deg": 78.8505494451143
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": true
+    },
+    {
+      "name": "ac_038",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "cc": 3e-11,
+      "csense": 3e-11,
+      "cbias": 0,
+      "dc_loop_gain_db": 57.309397385569916,
+      "crossings": [
+        {
+          "frequency_hz": 264512.18079479405,
+          "phase_margin_deg": 69.96898286215131
+        }
+      ],
+      "dc_injection_agreement_max_abs": 1.9060308886764687e-12,
+      "phase_margin_guard_pass": true
+    }
+  ],
+  "ac_waveforms": {
+    "ac_000": "build/analog-v3/reference-tg-6izap25z/ac_000.csv",
+    "ac_001": "build/analog-v3/reference-tg-6izap25z/ac_001.csv",
+    "ac_002": "build/analog-v3/reference-tg-6izap25z/ac_002.csv",
+    "ac_003": "build/analog-v3/reference-tg-6izap25z/ac_003.csv",
+    "ac_004": "build/analog-v3/reference-tg-6izap25z/ac_004.csv",
+    "ac_005": "build/analog-v3/reference-tg-6izap25z/ac_005.csv",
+    "ac_006": "build/analog-v3/reference-tg-6izap25z/ac_006.csv",
+    "ac_007": "build/analog-v3/reference-tg-6izap25z/ac_007.csv",
+    "ac_008": "build/analog-v3/reference-tg-6izap25z/ac_008.csv",
+    "ac_009": "build/analog-v3/reference-tg-6izap25z/ac_009.csv",
+    "ac_010": "build/analog-v3/reference-tg-6izap25z/ac_010.csv",
+    "ac_011": "build/analog-v3/reference-tg-6izap25z/ac_011.csv",
+    "ac_012": "build/analog-v3/reference-tg-6izap25z/ac_012.csv",
+    "ac_013": "build/analog-v3/reference-tg-6izap25z/ac_013.csv",
+    "ac_014": "build/analog-v3/reference-tg-6izap25z/ac_014.csv",
+    "ac_015": "build/analog-v3/reference-tg-6izap25z/ac_015.csv",
+    "ac_016": "build/analog-v3/reference-tg-6izap25z/ac_016.csv",
+    "ac_017": "build/analog-v3/reference-tg-6izap25z/ac_017.csv",
+    "ac_018": "build/analog-v3/reference-tg-6izap25z/ac_018.csv",
+    "ac_019": "build/analog-v3/reference-tg-6izap25z/ac_019.csv",
+    "ac_020": "build/analog-v3/reference-tg-6izap25z/ac_020.csv",
+    "ac_021": "build/analog-v3/reference-tg-6izap25z/ac_021.csv",
+    "ac_022": "build/analog-v3/reference-tg-6izap25z/ac_022.csv",
+    "ac_023": "build/analog-v3/reference-tg-6izap25z/ac_023.csv",
+    "ac_024": "build/analog-v3/reference-tg-6izap25z/ac_024.csv",
+    "ac_025": "build/analog-v3/reference-tg-6izap25z/ac_025.csv",
+    "ac_026": "build/analog-v3/reference-tg-6izap25z/ac_026.csv",
+    "ac_027": "build/analog-v3/reference-tg-6izap25z/ac_027.csv",
+    "ac_028": "build/analog-v3/reference-tg-6izap25z/ac_028.csv",
+    "ac_029": "build/analog-v3/reference-tg-6izap25z/ac_029.csv",
+    "ac_030": "build/analog-v3/reference-tg-6izap25z/ac_030.csv",
+    "ac_031": "build/analog-v3/reference-tg-6izap25z/ac_031.csv",
+    "ac_032": "build/analog-v3/reference-tg-6izap25z/ac_032.csv",
+    "ac_033": "build/analog-v3/reference-tg-6izap25z/ac_033.csv",
+    "ac_034": "build/analog-v3/reference-tg-6izap25z/ac_034.csv",
+    "ac_035": "build/analog-v3/reference-tg-6izap25z/ac_035.csv",
+    "ac_036": "build/analog-v3/reference-tg-6izap25z/ac_036.csv",
+    "ac_037": "build/analog-v3/reference-tg-6izap25z/ac_037.csv",
+    "ac_038": "build/analog-v3/reference-tg-6izap25z/ac_038.csv"
+  },
+  "transient_results": [
+    {
+      "name": "startup_tt",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "kind": "startup",
+      "simulation_completed": true,
+      "led_min_a": -2.135057187208397e-05,
+      "led_max_a": 9.997728154889876e-05,
+      "pout_drain_above_bulk_max_v": 0.2167392692997491,
+      "pout_ibd_max_abs_a": 2.103874062050685e-12,
+      "pout_ibs_max_abs_a": 2.223469627775231e-28,
+      "pout_ibd_integral_c": -5.590679796194323e-17,
+      "final_current_a": 9.997692902348057e-05,
+      "held_fault_peak_a": 5.514417714125308e-11,
+      "held_fault_1na_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/startup_tt.csv"
+    },
+    {
+      "name": "ref_step_tt",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "kind": "ref_step",
+      "simulation_completed": true,
+      "led_min_a": 7.195959910959351e-05,
+      "led_max_a": 0.0001307437941533997,
+      "pout_drain_above_bulk_max_v": -1.5341023369914522,
+      "pout_ibd_max_abs_a": 1.863897672721562e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -8.824862746048293e-17,
+      "final_current_a": 9.997692902339782e-05,
+      "return_settle_s": 1.906961953870284e-07,
+      "last_5us_pp_a": 5.328989203037815e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/ref_step_tt.csv"
+    },
+    {
+      "name": "led_step_tt",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "kind": "led_step",
+      "simulation_completed": true,
+      "led_min_a": 9.928547677588475e-05,
+      "led_max_a": 0.0001002298880605003,
+      "pout_drain_above_bulk_max_v": -1.8636980149911109,
+      "pout_ibd_max_abs_a": 1.864006060652511e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -9.319344575880322e-17,
+      "final_current_a": 9.997692902336542e-05,
+      "return_settle_s": 0.0,
+      "last_5us_pp_a": 6.927780831639252e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/led_step_tt.csv"
+    },
+    {
+      "name": "vset_step_tt",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "kind": "vset_step",
+      "simulation_completed": true,
+      "led_min_a": 9.997659583993359e-05,
+      "led_max_a": 0.0001009697635629649,
+      "pout_drain_above_bulk_max_v": -1.8590264447262959,
+      "pout_ibd_max_abs_a": 1.863870529296824e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -9.312136686913559e-17,
+      "final_current_a": 9.997692902339499e-05,
+      "return_settle_s": 2.5000000000010772e-08,
+      "last_5us_pp_a": 5.151315572021753e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/vset_step_tt.csv"
+    },
+    {
+      "name": "fault_cycle_tt",
+      "envelope": "tt",
+      "corner": "typical",
+      "temp": 27,
+      "logic": 3.3,
+      "led": 5,
+      "kind": "fault_cycle",
+      "simulation_completed": false,
+      "failure_log": "/Users/kimmy/Projects/open-microled-driver-asic/build/analog-v3/reference-tg-6izap25z/fault_cycle_tt/ngspice.log",
+      "limitation": "Failed runs retained; do not count as a functional pass."
+    },
+    {
+      "name": "startup_ss",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "kind": "startup",
+      "simulation_completed": false,
+      "failure_log": "/Users/kimmy/Projects/open-microled-driver-asic/build/analog-v3/reference-tg-6izap25z/startup_ss/ngspice.log",
+      "limitation": "Failed runs retained; do not count as a functional pass."
+    },
+    {
+      "name": "ref_step_ss",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "kind": "ref_step",
+      "simulation_completed": true,
+      "led_min_a": 7.419329916538521e-05,
+      "led_max_a": 0.0001158869792832588,
+      "pout_drain_above_bulk_max_v": -0.6642924776658901,
+      "pout_ibd_max_abs_a": 1.01147117270981e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -4.703388413390213e-17,
+      "final_current_a": 9.773869386384039e-05,
+      "return_settle_s": 3.650226261370114e-07,
+      "last_5us_pp_a": 6.394895463862627e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/ref_step_ss.csv"
+    },
+    {
+      "name": "led_step_ss",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "kind": "led_step",
+      "simulation_completed": true,
+      "led_min_a": 9.651045349603038e-05,
+      "led_max_a": 9.842356662516685e-05,
+      "pout_drain_above_bulk_max_v": -0.9008117138613452,
+      "pout_ibd_max_abs_a": 1.011626517115292e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -5.057355865594001e-17,
+      "final_current_a": 9.773869386384388e-05,
+      "return_settle_s": 5.871859842701121e-10,
+      "last_5us_pp_a": 5.862010096086001e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/led_step_ss.csv"
+    },
+    {
+      "name": "vset_step_ss",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "kind": "vset_step",
+      "simulation_completed": true,
+      "led_min_a": 9.773851153569358e-05,
+      "led_max_a": 9.859563826510799e-05,
+      "pout_drain_above_bulk_max_v": -0.8946397677343603,
+      "pout_ibd_max_abs_a": 1.011473362609643e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -5.0478720546957835e-17,
+      "final_current_a": 9.773869386384268e-05,
+      "return_settle_s": 5.4992429141229894e-08,
+      "last_5us_pp_a": 7.460801724687438e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/vset_step_ss.csv"
+    },
+    {
+      "name": "fault_cycle_ss",
+      "envelope": "ss",
+      "corner": "ss",
+      "temp": 85,
+      "logic": 2.97,
+      "led": 4.5,
+      "kind": "fault_cycle",
+      "simulation_completed": false,
+      "failure_log": "/Users/kimmy/Projects/open-microled-driver-asic/build/analog-v3/reference-tg-6izap25z/fault_cycle_ss/ngspice.log",
+      "limitation": "Failed runs retained; do not count as a functional pass."
+    },
+    {
+      "name": "startup_ff",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "kind": "startup",
+      "simulation_completed": false,
+      "failure_log": "/Users/kimmy/Projects/open-microled-driver-asic/build/analog-v3/reference-tg-6izap25z/startup_ff/ngspice.log",
+      "limitation": "Failed runs retained; do not count as a functional pass."
+    },
+    {
+      "name": "ref_step_ff",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "kind": "ref_step",
+      "simulation_completed": true,
+      "led_min_a": 7.10592326413622e-05,
+      "led_max_a": 0.0001329629511910096,
+      "pout_drain_above_bulk_max_v": -2.034731483851085,
+      "pout_ibd_max_abs_a": 2.400746860199884e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -1.1451271019619465e-16,
+      "final_current_a": 0.00010085479640909726,
+      "return_settle_s": 1.0665859086973862e-07,
+      "last_5us_pp_a": 5.507069409868559e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/ref_step_ff.csv"
+    },
+    {
+      "name": "led_step_ff",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "kind": "led_step",
+      "simulation_completed": true,
+      "led_min_a": 0.000100217012628029,
+      "led_max_a": 0.0001010712945003416,
+      "pout_drain_above_bulk_max_v": -2.398992855935192,
+      "pout_ibd_max_abs_a": 2.399183874812395e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -1.1995442404316595e-16,
+      "final_current_a": 0.0001008547964091116,
+      "return_settle_s": 0.0,
+      "last_5us_pp_a": 4.972964314647887e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/led_step_ff.csv"
+    },
+    {
+      "name": "vset_step_ff",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "kind": "vset_step",
+      "simulation_completed": true,
+      "led_min_a": 0.0001008437463323535,
+      "led_max_a": 0.0001018661402020431,
+      "pout_drain_above_bulk_max_v": -2.395441192058291,
+      "pout_ibd_max_abs_a": 2.399128416525818e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -1.1990033237088302e-16,
+      "final_current_a": 0.00010085479640910206,
+      "return_settle_s": 8.999999999999406e-09,
+      "last_5us_pp_a": 5.683929889255257e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/vset_step_ff.csv"
+    },
+    {
+      "name": "fault_cycle_ff",
+      "envelope": "ff",
+      "corner": "ff",
+      "temp": 0,
+      "logic": 3.63,
+      "led": 5.5,
+      "kind": "fault_cycle",
+      "simulation_completed": false,
+      "failure_log": "/Users/kimmy/Projects/open-microled-driver-asic/build/analog-v3/reference-tg-6izap25z/fault_cycle_ff/ngspice.log",
+      "limitation": "Failed runs retained; do not count as a functional pass."
+    },
+    {
+      "name": "sensitivity_15",
+      "envelope": "tt",
+      "kind": "vset_step",
+      "cc": 1e-12,
+      "csense": 0,
+      "cbias": 0,
+      "simulation_completed": true,
+      "led_min_a": 9.98819750338277e-05,
+      "led_max_a": 0.0001010649077463945,
+      "pout_drain_above_bulk_max_v": -1.8585655255293578,
+      "pout_ibd_max_abs_a": 1.864328986118824e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -9.31213668632424e-17,
+      "final_current_a": 9.99769290233856e-05,
+      "return_settle_s": 0.0,
+      "last_5us_pp_a": 4.973777466277252e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/sensitivity_15.csv"
+    },
+    {
+      "name": "sensitivity_16",
+      "envelope": "tt",
+      "kind": "vset_step",
+      "cc": 1e-11,
+      "csense": 0,
+      "cbias": 0,
+      "simulation_completed": true,
+      "led_min_a": 9.997363880561841e-05,
+      "led_max_a": 0.0001009726538943879,
+      "pout_drain_above_bulk_max_v": -1.8590123649821029,
+      "pout_ibd_max_abs_a": 1.863884925974027e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -9.312136680143941e-17,
+      "final_current_a": 9.997692902338122e-05,
+      "return_settle_s": 1.4900000000006922e-07,
+      "last_5us_pp_a": 4.973777466277252e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/sensitivity_16.csv"
+    },
+    {
+      "name": "sensitivity_17",
+      "envelope": "tt",
+      "kind": "vset_step",
+      "cc": 3e-12,
+      "csense": 1e-11,
+      "cbias": 0,
+      "simulation_completed": true,
+      "led_min_a": 9.969684563552753e-05,
+      "led_max_a": 0.0001012512667782274,
+      "pout_drain_above_bulk_max_v": -1.857663254665692,
+      "pout_ibd_max_abs_a": 1.865225426047959e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -9.312136692982494e-17,
+      "final_current_a": 9.997692902338194e-05,
+      "return_settle_s": 1.8979942516549097e-08,
+      "last_5us_pp_a": 4.79623936053275e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/sensitivity_17.csv"
+    },
+    {
+      "name": "sensitivity_18",
+      "envelope": "tt",
+      "kind": "vset_step",
+      "cc": 3e-12,
+      "csense": 3e-11,
+      "cbias": 0,
+      "simulation_completed": true,
+      "led_min_a": 9.918152482411804e-05,
+      "led_max_a": 0.000101769791363754,
+      "pout_drain_above_bulk_max_v": -1.8551528439563578,
+      "pout_ibd_max_abs_a": 1.867720926382623e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -9.312136719562207e-17,
+      "final_current_a": 9.997692902338228e-05,
+      "return_settle_s": 3.2700000000016136e-07,
+      "last_5us_pp_a": 4.973777466277252e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/sensitivity_18.csv"
+    },
+    {
+      "name": "sensitivity_19",
+      "envelope": "tt",
+      "kind": "vset_step",
+      "cc": 3e-12,
+      "csense": 0,
+      "cbias": 3e-11,
+      "simulation_completed": true,
+      "led_min_a": 9.997690578277832e-05,
+      "led_max_a": 0.0001009694066436352,
+      "pout_drain_above_bulk_max_v": -1.8590279709830089,
+      "pout_ibd_max_abs_a": 1.86386923009195e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -9.312136678801916e-17,
+      "final_current_a": 9.997692902334972e-05,
+      "return_settle_s": 1.1500000000005904e-07,
+      "last_5us_pp_a": 3.3751213629473753e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/sensitivity_19.csv"
+    },
+    {
+      "name": "sensitivity_20",
+      "envelope": "tt",
+      "kind": "vset_step",
+      "cc": 1e-11,
+      "csense": 3e-11,
+      "cbias": 0,
+      "simulation_completed": true,
+      "led_min_a": 9.981071628351393e-05,
+      "led_max_a": 0.0001011367018045951,
+      "pout_drain_above_bulk_max_v": -1.8582182078330838,
+      "pout_ibd_max_abs_a": 1.864673770620105e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -9.312136694689587e-17,
+      "final_current_a": 9.997692902338534e-05,
+      "return_settle_s": 1.2500000000006064e-07,
+      "last_5us_pp_a": 5.151315572021753e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/sensitivity_20.csv"
+    },
+    {
+      "name": "sensitivity_21",
+      "envelope": "tt",
+      "kind": "vset_step",
+      "cc": 3e-11,
+      "csense": 3e-11,
+      "cbias": 0,
+      "simulation_completed": true,
+      "led_min_a": 9.996217251782361e-05,
+      "led_max_a": 0.0001009841004475155,
+      "pout_drain_above_bulk_max_v": -1.8589569747198729,
+      "pout_ibd_max_abs_a": 1.863940421205039e-12,
+      "pout_ibs_max_abs_a": 0.0,
+      "pout_ibd_integral_c": -9.312136666082208e-17,
+      "final_current_a": 9.997692902337654e-05,
+      "return_settle_s": 4.550000000002286e-07,
+      "last_5us_pp_a": 5.151315572021753e-16,
+      "settle_5us_guard_pass": true,
+      "waveform": "build/analog-v3/reference-tg-6izap25z/sensitivity_21.csv"
+    }
+  ],
+  "method": {
+    "ac": "Sense feedback input double injection; voltage source DC0 retains operating point; current source DC0 open. Tv=-V(sense)/V(fb), Ti=I(VRETURN)/I(VFORWARD), T=(Tv*Ti-1)/(Tv+Ti+2). All other sources AC0.",
+    "ac_limits": "Local linear feedback-loop metric. No exhaustive global stability or mismatch/PEX/package guarantee. Requires review against closed-loop transient and pole/reverse-transmission concerns.",
+    "ac_primary_sources": [
+      "https://www.analog.com/jp/lp/003/jp-web-lab/tnj-055.html",
+      "https://iic-jku.github.io/analog-circuit-design/slides/middlebrook_method.html"
+    ]
+  },
+  "limitations": [
+    "External ideal VSET .5V and RSET5k remain accuracy boundary. RBIAS and CCOMP ideal schematic passives; sweep is sensitivity, not package extraction.",
+    "MOS sw_stat_global/mismatch=0; corners are deterministic, no yield estimate. Reference/TG/safety geometry uses declared finite junction hypothesis, not final layout.",
+    "Old joint PEX excludes full PG resistance/capacitance, pads, ESD, package, substrate impedance and optical measurement.",
+    "Startup assumes pre-powered logic/LED rails and asserted external fault. Fault cycle is explicit voltage-pin stimulus; actual RTL storage qualification remains startup-v2/root v3 tests.",
+    "Model ibd/ibs are BSIM junction current outputs, not measured substrate current or latch-up qualification."
+  ]
+}

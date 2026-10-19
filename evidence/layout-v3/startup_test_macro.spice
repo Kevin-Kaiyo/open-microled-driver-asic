@@ -1,0 +1,45 @@
+* NGSPICE file created from startup_test_macro.ext - technology: gf180mcuD
+
+.subckt startup_test_macro VSS VREF VSAFE VBUF LED_A RAW_PWM FAULT PERMIT VSET SENSE
++ PB N2 CTRL FAULT_HB LED_K REFOUT BIAS GATE PWM_B SAFE_OUT PWM_DRIVE
+X0 VSS a_128036_20068# PWM_DRIVE VSS nfet_05v0 ad=0.3608p pd=2.52u as=0.2132p ps=1.34u w=0.82u l=0.6u
+X1 VSS R_N1 R_N1 VSS nfet_06v0 ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u
+X2 VSS SAFE_OUT a_128036_20068# VSS nfet_05v0 ad=0.2911p pd=1.53u as=0.3608p ps=2.52u w=0.82u l=0.6u
+X3 VSS FAULT BIAS VSS nfet_06v0 ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u
+X4 VSAFE RAW_PWM F_NAND_N VSAFE pfet_06v0 ad=1.76p pd=8.88u as=1.76p ps=8.88u w=4u l=1u
+X5 VSS F_FAULT_B F_STACK2 VSS nfet_06v0 ad=2.64p pd=12.88u as=2.64p ps=12.88u w=6u l=1u
+X6 R_TAIL SENSE N2 VREF pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X7 BIAS I_FAULT_B REFOUT VSS nfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=1u
+X8 VSAFE F_FAULT_B F_NAND_N VSAFE pfet_06v0 ad=1.76p pd=8.88u as=1.76p ps=8.88u w=4u l=1u
+X9 VSS BIAS BIAS VSS nfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u
+X10 VSS F_NAND_N SAFE_OUT VSS nfet_06v0 ad=1.76p pd=8.88u as=1.76p ps=8.88u w=4u l=1u
+X11 PWM_DRIVE a_128036_20068# VBUF VBUF pfet_05v0 ad=0.3782p pd=1.84u as=0.4941p ps=2.03u w=1.22u l=0.5u
+X12 VSS FAULT FAULT_HB VSS nfet_06v0 ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u
+X13 GATE PWM_DRIVE BIAS VSS nfet_06v0 ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u
+X14 VBUF PWM_DRIVE PWM_B VBUF pfet_06v0 ad=1.76p pd=8.88u as=1.76p ps=8.88u w=4u l=1u
+X15 VSS FAULT I_FAULT_B VSS nfet_06v0 ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u
+X16 VREF CTRL SENSE VREF pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X17 VSAFE FAULT I_FAULT_B VSAFE pfet_06v0 ad=1.76p pd=8.88u as=1.76p ps=8.88u w=4u l=1u
+X18 R_TAIL VSET R_N1 VREF pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X19 VSS N2 CTRL VSS nfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=1u
+X20 REFOUT FAULT BIAS VSAFE pfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=1u
+X21 VREF PB PB VREF pfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u
+X22 F_STACK1 RAW_PWM F_NAND_N VSS nfet_06v0 ad=2.64p pd=12.88u as=2.64p ps=12.88u w=6u l=1u
+X23 VBUF SAFE_OUT a_128036_20068# VBUF pfet_05v0 ad=0.4941p pd=2.03u as=0.5368p ps=3.32u w=1.22u l=0.5u
+X24 VBUF a_128036_20068# PWM_DRIVE VBUF pfet_05v0 ad=0.5368p pd=3.32u as=0.3782p ps=1.84u w=1.22u l=0.5u
+X25 VSS GATE LED_K VSS nfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u
+X26 VSS PWM_B GATE VSS nfet_06v0 ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u
+X27 VREF PB R_TAIL VREF pfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u
+X28 VREF CTRL REFOUT VREF pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X29 VSS FAULT F_FAULT_B VSS nfet_06v0 ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u
+X30 PWM_DRIVE a_128036_20068# VSS VSS nfet_05v0 ad=0.2132p pd=1.34u as=0.2911p ps=1.53u w=0.82u l=0.6u
+X31 VREF CTRL CTRL VREF pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X32 VSAFE FAULT F_FAULT_B VSAFE pfet_06v0 ad=1.76p pd=8.88u as=1.76p ps=8.88u w=4u l=1u
+X33 VSAFE PERMIT F_NAND_N VSAFE pfet_06v0 ad=1.76p pd=8.88u as=1.76p ps=8.88u w=4u l=1u
+X34 F_STACK2 PERMIT F_STACK1 VSS nfet_06v0 ad=2.64p pd=12.88u as=2.64p ps=12.88u w=6u l=1u
+X35 VSAFE F_NAND_N SAFE_OUT VSAFE pfet_06v0 ad=3.52p pd=16.88u as=3.52p ps=16.88u w=8u l=1u
+X36 VSS R_N1 N2 VSS nfet_06v0 ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u
+X37 LED_A FAULT_HB LED_K LED_A pfet_06v0 ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u
+X38 VSS PWM_DRIVE PWM_B VSS nfet_06v0 ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u
+.ends
+

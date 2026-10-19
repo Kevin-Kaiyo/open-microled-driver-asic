@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "source": "layout/startup_v3/startup_test_macro.spice",
+  "source_sha256": "c551abf59f8a1a15f1de9819069f29d24eb9db43f9f3ddf13f02df8a791a01fd",
+  "devices_d_g_s_b": {
+    "XP_REF": [
+      "BIAS",
+      "BIAS",
+      "VSS",
+      "VSS"
+    ],
+    "XP_OUT": [
+      "LED_K",
+      "GATE",
+      "VSS",
+      "VSS"
+    ],
+    "XP_PASS": [
+      "BIAS",
+      "PWM_DRIVE",
+      "GATE",
+      "VSS"
+    ],
+    "XP_CLAMP": [
+      "GATE",
+      "PWM_B",
+      "VSS",
+      "VSS"
+    ],
+    "XP_INV_N": [
+      "PWM_B",
+      "PWM_DRIVE",
+      "VSS",
+      "VSS"
+    ],
+    "XP_INV_P": [
+      "PWM_B",
+      "PWM_DRIVE",
+      "VBUF",
+      "VBUF"
+    ]
+  },
+  "source_checked_device_count": 6,
+  "numbering": {
+    "1": "XP_REF",
+    "2": "XP_OUT",
+    "3": "XP_PASS",
+    "4": "XP_CLAMP",
+    "5": "XP_INV_N",
+    "6": "XP_INV_P"
+  },
+  "colors": {
+    "led_current": "#d77a1d",
+    "reference_current": "#188b7d",
+    "gate_control": "#8a5ab3"
+  },
+  "assumptions": [
+    "FAULT=0",
+    "PERMIT=1",
+    "reference_settled",
+    "LED_off_chip",
+    "upstream_reference_and_safety_buffer_omitted"
+  ],
+  "high": {
+    "XP_PASS": "on",
+    "XP_CLAMP": "off",
+    "XP_OUT": "on",
+    "XP_REF": "on",
+    "XP_INV_N": "on",
+    "XP_INV_P": "off",
+    "PWM_B": "VSS"
+  },
+  "low": {
+    "XP_PASS": "off",
+    "XP_CLAMP": "on",
+    "XP_OUT": "off",
+    "XP_REF": "on",
+    "XP_INV_N": "off",
+    "XP_INV_P": "on",
+    "PWM_B": "VBUF"
+  },
+  "steady_gate_current_arrows": false,
+  "low_state_dashed_arrow": "gate-charge discharge during switching only",
+  "pixel_dimensions": [
+    760,
+    900
+  ],
+  "raster_dimensions": [
+    1520,
+    1800
+  ],
+  "visual_reviewed": true,
+  "evidence_level": "source-checked explanatory drawing, not new electrical simulation",
+  "svg_metadata_matches_source": true,
+  "png_dimensions_checked": true,
+  "unique_device_numbers_checked": true,
+  "visual_review_notes": "Both final panels rendered and visually inspected. Explanation uses bullets; circled numbers 1–6 appear only once each on matching MOS instances.",
+  "output_sha256": {
+    "pwm-high.svg": "5628b0e84a790e1c42bcb365115d90fd96094f539c74bf9b61b2af0431a8b205",
+    "pwm-low.svg": "fdb5cff51612ec5c280501abc9700ad565de0f395f7ae1c778be47125530e4a7",
+    "pwm-high.png": "619e5500d63f545376262467894539f04d3bf8156fd3dded8b2aed8db1ebac82",
+    "pwm-low.png": "f4be5c8d27e5b4ca577f3091f4b0a8da3b8c750653dce8cdc09713ccdc1eccb7"
+  }
+}

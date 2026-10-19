@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "criterion_revision": "startup-off-numerical-v1-20261015",
+  "date": "2026-10-15",
+  "scope": "0-20us off-state startup current through external VLEDLOAD only; powered logic and LED, external fault asserted",
+  "reason": "Near-zero directional charge has an ill-conditioned relative denominator; preserve legacy result and add independently declared absolute error budgets.",
+  "legacy_relative_limit_fraction": 0.002,
+  "legacy_result_must_remain_visible": true,
+  "off_current_guard_a": 1e-9,
+  "absolute_current_difference_limit_a": 2e-12,
+  "absolute_charge_difference_limit_c": 4e-17,
+  "observation_window_s": [0, 2e-5],
+  "charge_switch_scale_c": 2e-14,
+  "switch_derivation": "4e-17C / 0.002 = 2e-14C; absolute and relative budgets agree at crossover",
+  "near_zero_branch": "When max(abs(Qa),abs(Qb)) <= switch scale, require absolute Q difference <= 4e-17C AND max pointwise current difference <= 2pA",
+  "resolved_charge_branch": "Above switch scale require original abs(Qb/Qa-1) <= 0.002; no replacement of established nonzero charge relative tests",
+  "comparison_set": "All pairwise comparisons of two finest local meshes, Gear1/Gear2, global maximum steps 10ns/2ns; tolerance controls included",
+  "waveform_comparison": "Interpolate piecewise linearly on union of all actual solver knots, no smoothing or current clipping",
+  "charge_integration": "Piecewise linear exact zero crossings, report Qpositive, Qnegative, Qsigned separately",
+  "not_claimed": ["original relative startup gate passed", "measurement resolution", "silicon or optical performance", "arbitrary whole-chip power sequencing", "full extracted new macro"]
+}

@@ -1,0 +1,18 @@
+* Limited-output-swing NRZ voltage driver, experimental pre-layout circuit.
+* GF180MCU 3.3 V BSIM subcircuits; W/L and diffusion geometry use metres.
+* Interface: DATA OUT VDD VH VL VSS. DATA=1 => lower OUT => larger LED current.
+* Two full-swing CMOS inverters create CTRL=DATA. Output-rail swing does NOT
+* set gate swing; gates must exceed MOS thresholds, including NMOS body effect.
+* Upstream VH/VL are ideal bidirectional rails in the first experiment.
+* Both can absorb LED current; this is not a realizable regulator implementation.
+* Output NMOS body remains VSS; PMOS well/body is VH.
+* AD=AS=W*0.6um, PD=PS=2*(W+0.6um), an explicit isolated-diffusion estimate.
+* These estimates are nonzero but are NOT layout-extracted parasitics.
+.subckt hs_voltage_driver data out vdd vh vl vss
+XN1 n1 data vss vss nfet_03v3 w=1u l=0.28u ad=0.6p as=0.6p pd=3.2u ps=3.2u
+XP1 n1 data vdd vdd pfet_03v3 w=2u l=0.28u ad=1.2p as=1.2p pd=5.2u ps=5.2u
+XN2 ctrl n1 vss vss nfet_03v3 w=4u l=0.28u ad=2.4p as=2.4p pd=9.2u ps=9.2u
+XP2 ctrl n1 vdd vdd pfet_03v3 w=8u l=0.28u ad=4.8p as=4.8p pd=17.2u ps=17.2u
+XNOUT out ctrl vl vss nfet_03v3 w=4u l=0.28u ad=2.4p as=2.4p pd=9.2u ps=9.2u
+XPOUT out ctrl vh vh pfet_03v3 w=8u l=0.28u ad=4.8p as=4.8p pd=17.2u ps=17.2u
+.ends hs_voltage_driver

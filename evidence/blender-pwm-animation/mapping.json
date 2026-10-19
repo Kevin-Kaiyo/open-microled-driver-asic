@@ -1,0 +1,2990 @@
+{
+  "schema": 1,
+  "scope": "r5 模拟测试宏中的六只像素MOS；真实XY/层连接+概念电流方向，可视化不产生新电气验证",
+  "gds_sha256": "a81c512f302f10b9f2795c465e91536e1fb013f2994f609101f579fca3d920bb",
+  "units": "XY and unscaled nominal Z: micrometres",
+  "terminal_order": "D G S B as in SPICE source; layout D/S naming follows source and placement",
+  "source_sha256": {
+    "layout/startup_v3/contract.json": "787c41e4cbcf8e0d7523ed90b74ac71e63a32b4913ad578353a828a1de73f7bc",
+    "layout/startup_v3/startup_test_macro.spice": "c551abf59f8a1a15f1de9819069f29d24eb9db43f9f3ddf13f02df8a791a01fd",
+    "scripts/layout_v3/generate.py": "05ec2dcfcfe41e7b8cfced5bbff7364f3bfbb02c1bb594e780d845b57e1956fc",
+    "scripts/layout/generate_pixel.tcl": "f08fcb59c5f0f836ff7390a9c93ce22cbb99ce3313173de0734fe512a61764f1",
+    "analog/driver/pixel_driver.spice": "376305eafa438e80883320984209d9e193b01e77a047cf131500318b794d9747",
+    "analog/startup_v2/reference_isolator_tg.spice": "5a5fbb5f68b24348aafc228f9934b1982a0c0d1aa359ee9e948445ddd521a2c0",
+    "analog/safety/fault_gate.spice": "d819b64377e9b59491cee22cd4428cbd78d94bdf4a837f74ad355f6f6b4ea99c",
+    "analog/safety/fault_led_clamp.spice": "5bfb9e910593cfbd3cef9abc1228b1b9df1d87560145bf0390c859a272cc2aaf",
+    "layout/startup_v3/external-circuit-v3.json": "9885d4c88b36804af9f8697d300740dcaa207245a4a8429754200ef2e681b414",
+    "evidence/layout-v3/r5/startup_test_macro.gds": "a81c512f302f10b9f2795c465e91536e1fb013f2994f609101f579fca3d920bb",
+    "evidence/layout-v3/r5/summary.json": "9c3e21a9dc221fc40b057cc6ee341f54fcb6d57dbcc7fcc386618fbb4abe708a",
+    "build/blender-demo/geometry-3d.json": "55a558b1b8d70ac86ea9de3bf0e648cb69f2817dccf21a7e4244af715f1a838b",
+    "build/blender-demo/stack-audit.json": "c42bb6aa2b30a27f772f964a309b805c505c8389c41876465a6f54ddaf5e08cd",
+    "build/layout/pdk/gf180mcuD/libs.tech/magic/gf180mcuD.tech": "0db2e5c354a2f7c7749f86df4c995127c1564daf51f936030b4e1a5982ad3210"
+  },
+  "source_integrity": {
+    "contract_generator_schematic_match_r5_snapshot": true,
+    "gds_matches_geometry3d": true
+  },
+  "six_mos_is_not_an_industry_standard_topology_name": true,
+  "devices": {
+    "P_REF": {
+      "instance": "XP_REF",
+      "layout_name": "P_REF",
+      "schematic_label": "MREF",
+      "label_zh": "参考镜像管",
+      "type": "NMOS",
+      "role_zh": "二极管连接，D 与 G 同接 BIAS；把参考支路电流转换成栅源电压。",
+      "model": "nfet_06v0",
+      "w_um": 20.0,
+      "l_um": 4.0,
+      "center_um": [
+        528.0,
+        145
+      ],
+      "terminals": {
+        "D": {
+          "net": "BIAS",
+          "metal1_via1_xy_um": [
+            525.74,
+            145
+          ],
+          "metal2_via2_xy_um": [
+            525.74,
+            53
+          ],
+          "metal3_port_xy_um": [
+            258.56,
+            53
+          ],
+          "nearest_actual_contact": {
+            "x_um": 525.74,
+            "y_um": 145.235,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 289,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                525.74,
+                145
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                525.74,
+                145
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                525.74,
+                145
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                525.74,
+                53
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                525.74,
+                53
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                525.74,
+                53
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "G": {
+          "net": "BIAS",
+          "metal1_via1_xy_um": [
+            528.0,
+            134.72
+          ],
+          "metal2_via2_xy_um": [
+            528.0,
+            53
+          ],
+          "metal3_port_xy_um": [
+            258.56,
+            53
+          ],
+          "nearest_actual_contact": {
+            "x_um": 527.765,
+            "y_um": 134.72000000000003,
+            "layer": 33,
+            "landing_layer": 30,
+            "source_polygon_index": 1003,
+            "z_nominal_um": 0.52,
+            "thickness_nominal_um": 0.71
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                528.0,
+                134.72
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                528.0,
+                134.72
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                528.0,
+                134.72
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                528.0,
+                53
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                528.0,
+                53
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                528.0,
+                53
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "S": {
+          "net": "VSS",
+          "metal1_via1_xy_um": [
+            530.26,
+            145
+          ],
+          "metal2_via2_xy_um": [
+            530.26,
+            0
+          ],
+          "metal3_port_xy_um": [
+            363.4,
+            0
+          ],
+          "nearest_actual_contact": {
+            "x_um": 530.26,
+            "y_um": 145.235,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 404,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                530.26,
+                145
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                530.26,
+                145
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                530.26,
+                145
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                530.26,
+                0
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                530.26,
+                0
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                530.26,
+                0
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "B": {
+          "net": "VSS",
+          "metal1_via1_xy_um": [
+            523.5,
+            145
+          ],
+          "metal2_via2_xy_um": [
+            523.5,
+            0
+          ],
+          "metal3_port_xy_um": [
+            363.4,
+            0
+          ],
+          "nearest_actual_contact": {
+            "x_um": 525.02,
+            "y_um": 145.0,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 244,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                523.5,
+                145
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                523.5,
+                145
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                523.5,
+                145
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                523.5,
+                0
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                523.5,
+                0
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                523.5,
+                0
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        }
+      }
+    },
+    "P_OUT": {
+      "instance": "XP_OUT",
+      "layout_name": "P_OUT",
+      "schematic_label": "MOUT",
+      "label_zh": "LED 恒流下拉管",
+      "type": "NMOS",
+      "role_zh": "D 接 LED_K；G 接 GATE；栅压与 MREF 相同时近似复制参考电流，需满足饱和区与电压余量。",
+      "model": "nfet_06v0",
+      "w_um": 20.0,
+      "l_um": 4.0,
+      "center_um": [
+        546.0,
+        145
+      ],
+      "terminals": {
+        "D": {
+          "net": "LED_K",
+          "metal1_via1_xy_um": [
+            543.74,
+            145
+          ],
+          "metal2_via2_xy_um": [
+            543.74,
+            47
+          ],
+          "metal3_port_xy_um": [
+            509.04,
+            47
+          ],
+          "nearest_actual_contact": {
+            "x_um": 543.74,
+            "y_um": 145.235,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 405,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                543.74,
+                145
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                543.74,
+                145
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                543.74,
+                145
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                543.74,
+                47
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                543.74,
+                47
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                543.74,
+                47
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "G": {
+          "net": "GATE",
+          "metal1_via1_xy_um": [
+            546.0,
+            134.72
+          ],
+          "metal2_via2_xy_um": [
+            546.0,
+            56
+          ],
+          "metal3_port_xy_um": [
+            545.8,
+            56
+          ],
+          "nearest_actual_contact": {
+            "x_um": 545.765,
+            "y_um": 134.72000000000003,
+            "layer": 33,
+            "landing_layer": 30,
+            "source_polygon_index": 1013,
+            "z_nominal_um": 0.52,
+            "thickness_nominal_um": 0.71
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                546.0,
+                134.72
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                546.0,
+                134.72
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                546.0,
+                134.72
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                546.0,
+                56
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                546.0,
+                56
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                546.0,
+                56
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "S": {
+          "net": "VSS",
+          "metal1_via1_xy_um": [
+            548.26,
+            145
+          ],
+          "metal2_via2_xy_um": [
+            548.26,
+            0
+          ],
+          "metal3_port_xy_um": [
+            363.4,
+            0
+          ],
+          "nearest_actual_contact": {
+            "x_um": 548.26,
+            "y_um": 145.235,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 431,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                548.26,
+                145
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                548.26,
+                145
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                548.26,
+                145
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                548.26,
+                0
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                548.26,
+                0
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                548.26,
+                0
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "B": {
+          "net": "VSS",
+          "metal1_via1_xy_um": [
+            541.5,
+            145
+          ],
+          "metal2_via2_xy_um": [
+            541.5,
+            0
+          ],
+          "metal3_port_xy_um": [
+            363.4,
+            0
+          ],
+          "nearest_actual_contact": {
+            "x_um": 543.02,
+            "y_um": 145.0,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 246,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                541.5,
+                145
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                541.5,
+                145
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                541.5,
+                145
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                541.5,
+                0
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                541.5,
+                0
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                541.5,
+                0
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        }
+      }
+    },
+    "P_PASS": {
+      "instance": "XP_PASS",
+      "layout_name": "P_PASS",
+      "schematic_label": "MPASS",
+      "label_zh": "栅压传递开关",
+      "type": "NMOS",
+      "role_zh": "PWM_DRIVE 高电平时把 BIAS 接到 GATE；承载栅极充放电瞬态，不是 LED 主电流串联开关。",
+      "model": "nfet_06v0",
+      "w_um": 2.0,
+      "l_um": 1.0,
+      "center_um": [
+        564.0,
+        100
+      ],
+      "terminals": {
+        "D": {
+          "net": "BIAS",
+          "metal1_via1_xy_um": [
+            563.24,
+            100
+          ],
+          "metal2_via2_xy_um": [
+            563.24,
+            53
+          ],
+          "metal3_port_xy_um": [
+            258.56,
+            53
+          ],
+          "nearest_actual_contact": {
+            "x_um": 563.24,
+            "y_um": 100.235,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 1107,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                563.24,
+                100
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                563.24,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                563.24,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                563.24,
+                53
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                563.24,
+                53
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                563.24,
+                53
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "G": {
+          "net": "PWM_DRIVE",
+          "metal1_via1_xy_um": [
+            564.0,
+            98.72
+          ],
+          "metal2_via2_xy_um": [
+            564.0,
+            65
+          ],
+          "metal3_port_xy_um": [
+            563.8,
+            65
+          ],
+          "nearest_actual_contact": {
+            "x_um": 563.765,
+            "y_um": 98.72,
+            "layer": 33,
+            "landing_layer": 30,
+            "source_polygon_index": 1158,
+            "z_nominal_um": 0.52,
+            "thickness_nominal_um": 0.71
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                564.0,
+                98.72
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                564.0,
+                98.72
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                564.0,
+                98.72
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                564.0,
+                65
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                564.0,
+                65
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                564.0,
+                65
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "S": {
+          "net": "GATE",
+          "metal1_via1_xy_um": [
+            564.76,
+            100
+          ],
+          "metal2_via2_xy_um": [
+            564.76,
+            56
+          ],
+          "metal3_port_xy_um": [
+            545.8,
+            56
+          ],
+          "nearest_actual_contact": {
+            "x_um": 564.76,
+            "y_um": 100.235,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 1120,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                564.76,
+                100
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                564.76,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                564.76,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                564.76,
+                56
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                564.76,
+                56
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                564.76,
+                56
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "B": {
+          "net": "VSS",
+          "metal1_via1_xy_um": [
+            560.5,
+            100
+          ],
+          "metal2_via2_xy_um": [
+            560.5,
+            0
+          ],
+          "metal3_port_xy_um": [
+            363.4,
+            0
+          ],
+          "nearest_actual_contact": {
+            "x_um": 562.52,
+            "y_um": 100.0,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 1112,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                560.5,
+                100
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                560.5,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                560.5,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                560.5,
+                0
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                560.5,
+                0
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                560.5,
+                0
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        }
+      }
+    },
+    "P_CLAMP": {
+      "instance": "XP_CLAMP",
+      "layout_name": "P_CLAMP",
+      "schematic_label": "MCLAMP",
+      "label_zh": "栅极放电管",
+      "type": "NMOS",
+      "role_zh": "PWM_B 高电平时把 GATE 拉到 VSS，使 MOUT 关断。",
+      "model": "nfet_06v0",
+      "w_um": 2.0,
+      "l_um": 1.0,
+      "center_um": [
+        582.0,
+        100
+      ],
+      "terminals": {
+        "D": {
+          "net": "GATE",
+          "metal1_via1_xy_um": [
+            581.24,
+            100
+          ],
+          "metal2_via2_xy_um": [
+            581.24,
+            56
+          ],
+          "metal3_port_xy_um": [
+            545.8,
+            56
+          ],
+          "nearest_actual_contact": {
+            "x_um": 581.24,
+            "y_um": 100.235,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 1216,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                581.24,
+                100
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                581.24,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                581.24,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                581.24,
+                56
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                581.24,
+                56
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                581.24,
+                56
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "G": {
+          "net": "PWM_B",
+          "metal1_via1_xy_um": [
+            582.0,
+            98.72
+          ],
+          "metal2_via2_xy_um": [
+            582.0,
+            59
+          ],
+          "metal3_port_xy_um": [
+            581.8,
+            59
+          ],
+          "nearest_actual_contact": {
+            "x_um": 581.765,
+            "y_um": 98.72,
+            "layer": 33,
+            "landing_layer": 30,
+            "source_polygon_index": 1209,
+            "z_nominal_um": 0.52,
+            "thickness_nominal_um": 0.71
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                582.0,
+                98.72
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                582.0,
+                98.72
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                582.0,
+                98.72
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                582.0,
+                59
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                582.0,
+                59
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                582.0,
+                59
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "S": {
+          "net": "VSS",
+          "metal1_via1_xy_um": [
+            582.76,
+            100
+          ],
+          "metal2_via2_xy_um": [
+            582.76,
+            0
+          ],
+          "metal3_port_xy_um": [
+            363.4,
+            0
+          ],
+          "nearest_actual_contact": {
+            "x_um": 582.76,
+            "y_um": 100.235,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 1217,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                582.76,
+                100
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                582.76,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                582.76,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                582.76,
+                0
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                582.76,
+                0
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                582.76,
+                0
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "B": {
+          "net": "VSS",
+          "metal1_via1_xy_um": [
+            578.5,
+            100
+          ],
+          "metal2_via2_xy_um": [
+            578.5,
+            0
+          ],
+          "metal3_port_xy_um": [
+            363.4,
+            0
+          ],
+          "nearest_actual_contact": {
+            "x_um": 580.52,
+            "y_um": 100.0,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 1190,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                578.5,
+                100
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                578.5,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                578.5,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                578.5,
+                0
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                578.5,
+                0
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                578.5,
+                0
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        }
+      }
+    },
+    "P_INV_N": {
+      "instance": "XP_INV_N",
+      "layout_name": "P_INV_N",
+      "schematic_label": "MINV_N",
+      "label_zh": "反相器下拉管",
+      "type": "NMOS",
+      "role_zh": "PWM_DRIVE 高时拉低 PWM_B，关闭 MCLAMP。",
+      "model": "nfet_06v0",
+      "w_um": 2.0,
+      "l_um": 1.0,
+      "center_um": [
+        600.0,
+        100
+      ],
+      "terminals": {
+        "D": {
+          "net": "PWM_B",
+          "metal1_via1_xy_um": [
+            599.24,
+            100
+          ],
+          "metal2_via2_xy_um": [
+            599.24,
+            59
+          ],
+          "metal3_port_xy_um": [
+            581.8,
+            59
+          ],
+          "nearest_actual_contact": {
+            "x_um": 599.24,
+            "y_um": 100.235,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 1218,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                599.24,
+                100
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                599.24,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                599.24,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                599.24,
+                59
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                599.24,
+                59
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                599.24,
+                59
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "G": {
+          "net": "PWM_DRIVE",
+          "metal1_via1_xy_um": [
+            600.0,
+            98.72
+          ],
+          "metal2_via2_xy_um": [
+            600.0,
+            65
+          ],
+          "metal3_port_xy_um": [
+            563.8,
+            65
+          ],
+          "nearest_actual_contact": {
+            "x_um": 599.765,
+            "y_um": 98.72,
+            "layer": 33,
+            "landing_layer": 30,
+            "source_polygon_index": 1213,
+            "z_nominal_um": 0.52,
+            "thickness_nominal_um": 0.71
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                600.0,
+                98.72
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                600.0,
+                98.72
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                600.0,
+                98.72
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                600.0,
+                65
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                600.0,
+                65
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                600.0,
+                65
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "S": {
+          "net": "VSS",
+          "metal1_via1_xy_um": [
+            600.76,
+            100
+          ],
+          "metal2_via2_xy_um": [
+            600.76,
+            0
+          ],
+          "metal3_port_xy_um": [
+            363.4,
+            0
+          ],
+          "nearest_actual_contact": {
+            "x_um": 600.76,
+            "y_um": 100.235,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 1219,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                600.76,
+                100
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                600.76,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                600.76,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                600.76,
+                0
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                600.76,
+                0
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                600.76,
+                0
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "B": {
+          "net": "VSS",
+          "metal1_via1_xy_um": [
+            596.5,
+            100
+          ],
+          "metal2_via2_xy_um": [
+            596.5,
+            0
+          ],
+          "metal3_port_xy_um": [
+            363.4,
+            0
+          ],
+          "nearest_actual_contact": {
+            "x_um": 598.52,
+            "y_um": 100.0,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 1200,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                596.5,
+                100
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                596.5,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                596.5,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                596.5,
+                0
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                596.5,
+                0
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                596.5,
+                0
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        }
+      }
+    },
+    "P_INV_P": {
+      "instance": "XP_INV_P",
+      "layout_name": "P_INV_P",
+      "schematic_label": "MINV_P",
+      "label_zh": "反相器上拉管",
+      "type": "PMOS",
+      "role_zh": "PWM_DRIVE 低时拉高 PWM_B，打开 MCLAMP。",
+      "model": "pfet_06v0",
+      "w_um": 4.0,
+      "l_um": 1.0,
+      "center_um": [
+        618.0,
+        100
+      ],
+      "terminals": {
+        "D": {
+          "net": "PWM_B",
+          "metal1_via1_xy_um": [
+            617.24,
+            100
+          ],
+          "metal2_via2_xy_um": [
+            617.24,
+            59
+          ],
+          "metal3_port_xy_um": [
+            581.8,
+            59
+          ],
+          "nearest_actual_contact": {
+            "x_um": 617.24,
+            "y_um": 100.235,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 1274,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                617.24,
+                100
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                617.24,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                617.24,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                617.24,
+                59
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                617.24,
+                59
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                617.24,
+                59
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "G": {
+          "net": "PWM_DRIVE",
+          "metal1_via1_xy_um": [
+            618.0,
+            97.72
+          ],
+          "metal2_via2_xy_um": [
+            618.0,
+            65
+          ],
+          "metal3_port_xy_um": [
+            563.8,
+            65
+          ],
+          "nearest_actual_contact": {
+            "x_um": 617.765,
+            "y_um": 97.72,
+            "layer": 33,
+            "landing_layer": 30,
+            "source_polygon_index": 1238,
+            "z_nominal_um": 0.52,
+            "thickness_nominal_um": 0.71
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                618.0,
+                97.72
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                618.0,
+                97.72
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                618.0,
+                97.72
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                618.0,
+                65
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                618.0,
+                65
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                618.0,
+                65
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "S": {
+          "net": "VBUF",
+          "metal1_via1_xy_um": [
+            618.76,
+            100
+          ],
+          "metal2_via2_xy_um": [
+            618.76,
+            14
+          ],
+          "metal3_port_xy_um": [
+            629.45,
+            14
+          ],
+          "nearest_actual_contact": {
+            "x_um": 618.76,
+            "y_um": 100.235,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 1251,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                618.76,
+                100
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                618.76,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                618.76,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                618.76,
+                14
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                618.76,
+                14
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                618.76,
+                14
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        },
+        "B": {
+          "net": "VBUF",
+          "metal1_via1_xy_um": [
+            614.5,
+            100
+          ],
+          "metal2_via2_xy_um": [
+            614.5,
+            14
+          ],
+          "metal3_port_xy_um": [
+            629.45,
+            14
+          ],
+          "nearest_actual_contact": {
+            "x_um": 616.52,
+            "y_um": 100.0,
+            "layer": 33,
+            "landing_layer": 22,
+            "source_polygon_index": 1232,
+            "z_nominal_um": 0.3145,
+            "thickness_nominal_um": 0.9155
+          },
+          "route_from_device_to_bus": [
+            {
+              "layer": 34,
+              "xy_um": [
+                614.5,
+                100
+              ]
+            },
+            {
+              "layer": 35,
+              "xy_um": [
+                614.5,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                614.5,
+                100
+              ]
+            },
+            {
+              "layer": 36,
+              "xy_um": [
+                614.5,
+                14
+              ]
+            },
+            {
+              "layer": 38,
+              "xy_um": [
+                614.5,
+                14
+              ]
+            },
+            {
+              "layer": 42,
+              "xy_um": [
+                614.5,
+                14
+              ]
+            }
+          ],
+          "metal1_to_contact_caution": "M1 金属面内连接到选定实际 Contact；动画采用中心线示意，不代表全部并联接触孔电流密度。"
+        }
+      }
+    }
+  },
+  "ports": {
+    "LED_A": {
+      "x_um": 508.63,
+      "y_um": 17,
+      "layer": 42,
+      "z_nominal_um": 3.8049999999999997
+    },
+    "LED_K": {
+      "x_um": 509.04,
+      "y_um": 47,
+      "layer": 42,
+      "z_nominal_um": 3.8049999999999997
+    },
+    "VSS": {
+      "x_um": 363.4,
+      "y_um": 0,
+      "layer": 42,
+      "z_nominal_um": 3.8049999999999997
+    },
+    "BIAS": {
+      "x_um": 258.56,
+      "y_um": 53,
+      "layer": 42,
+      "z_nominal_um": 3.8049999999999997
+    },
+    "GATE": {
+      "x_um": 545.8,
+      "y_um": 56,
+      "layer": 42,
+      "z_nominal_um": 3.8049999999999997
+    },
+    "PWM_B": {
+      "x_um": 581.8,
+      "y_um": 59,
+      "layer": 42,
+      "z_nominal_um": 3.8049999999999997
+    },
+    "PWM_DRIVE": {
+      "x_um": 563.8,
+      "y_um": 65,
+      "layer": 42,
+      "z_nominal_um": 3.8049999999999997
+    },
+    "VBUF": {
+      "x_um": 629.45,
+      "y_um": 14,
+      "layer": 42,
+      "z_nominal_um": 3.8049999999999997
+    }
+  },
+  "paths": {
+    "led_high": {
+      "label_zh": "PWM 高：LED 常规电流",
+      "active_when": "FAULT=0, PERMIT=1, PWM_DRIVE=1; reference settled; adequate LED headroom",
+      "points": [
+        {
+          "x_um": 509.04,
+          "y_um": 47,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": "LED_K 端口"
+        },
+        {
+          "x_um": 543.74,
+          "y_um": 47,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": ""
+        },
+        {
+          "x_um": 543.74,
+          "y_um": 47,
+          "layer": 38,
+          "z_nominal_um": 3.23,
+          "label_zh": "Via2"
+        },
+        {
+          "x_um": 543.74,
+          "y_um": 47,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 543.74,
+          "y_um": 145,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 543.74,
+          "y_um": 145,
+          "layer": 35,
+          "z_nominal_um": 2.08,
+          "label_zh": "Via1"
+        },
+        {
+          "x_um": 543.74,
+          "y_um": 145,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 543.74,
+          "y_um": 145,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 543.74,
+          "y_um": 145.235,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 543.74,
+          "y_um": 145.235,
+          "layer": 33,
+          "z_nominal_um": 0.77225,
+          "label_zh": "接触孔 Contact"
+        },
+        {
+          "x_um": 543.74,
+          "y_um": 145.235,
+          "layer": 22,
+          "z_nominal_um": 0.1645,
+          "label_zh": "D 端"
+        },
+        {
+          "x_um": 546.0,
+          "y_um": 145.235,
+          "layer": 22,
+          "z_nominal_um": 0.1645,
+          "label_zh": "MOUT 沟道（示意）"
+        },
+        {
+          "x_um": 548.26,
+          "y_um": 145.235,
+          "layer": 22,
+          "z_nominal_um": 0.1645,
+          "label_zh": "S 端"
+        },
+        {
+          "x_um": 548.26,
+          "y_um": 145.235,
+          "layer": 33,
+          "z_nominal_um": 0.77225,
+          "label_zh": "接触孔 Contact"
+        },
+        {
+          "x_um": 548.26,
+          "y_um": 145.235,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 548.26,
+          "y_um": 145,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 548.26,
+          "y_um": 145,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 548.26,
+          "y_um": 145,
+          "layer": 35,
+          "z_nominal_um": 2.08,
+          "label_zh": "Via1"
+        },
+        {
+          "x_um": 548.26,
+          "y_um": 145,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 548.26,
+          "y_um": 0,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 548.26,
+          "y_um": 0,
+          "layer": 38,
+          "z_nominal_um": 3.23,
+          "label_zh": "Via2"
+        },
+        {
+          "x_um": 548.26,
+          "y_um": 0,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": ""
+        },
+        {
+          "x_um": 363.4,
+          "y_um": 0,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": "VSS 端口"
+        }
+      ],
+      "start_net": "LED_K",
+      "end_net": "VSS",
+      "conventional_direction": "LED_A → 片外 MicroLED → LED_K → MOUT 漏极 → 导通沟道 → 源极 → VSS",
+      "scope": "points 仅描述 LED_K 端口之后的实际片内路径；LED_A→片外LED→LED_K 必须单独画成片外示意引线，不属于 GDS。"
+    },
+    "reference": {
+      "label_zh": "高、低电平均有参考支路电流",
+      "active_when": "FAULT=0; reference settled; PWM_DRIVE may be 0 or 1",
+      "points": [
+        {
+          "x_um": 258.56,
+          "y_um": 53,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": "BIAS 端口"
+        },
+        {
+          "x_um": 525.74,
+          "y_um": 53,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": ""
+        },
+        {
+          "x_um": 525.74,
+          "y_um": 53,
+          "layer": 38,
+          "z_nominal_um": 3.23,
+          "label_zh": "Via2"
+        },
+        {
+          "x_um": 525.74,
+          "y_um": 53,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 525.74,
+          "y_um": 145,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 525.74,
+          "y_um": 145,
+          "layer": 35,
+          "z_nominal_um": 2.08,
+          "label_zh": "Via1"
+        },
+        {
+          "x_um": 525.74,
+          "y_um": 145,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 525.74,
+          "y_um": 145,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 525.74,
+          "y_um": 145.235,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 525.74,
+          "y_um": 145.235,
+          "layer": 33,
+          "z_nominal_um": 0.77225,
+          "label_zh": "接触孔 Contact"
+        },
+        {
+          "x_um": 525.74,
+          "y_um": 145.235,
+          "layer": 22,
+          "z_nominal_um": 0.1645,
+          "label_zh": "D 端"
+        },
+        {
+          "x_um": 528.0,
+          "y_um": 145.235,
+          "layer": 22,
+          "z_nominal_um": 0.1645,
+          "label_zh": "MREF 沟道（示意）"
+        },
+        {
+          "x_um": 530.26,
+          "y_um": 145.235,
+          "layer": 22,
+          "z_nominal_um": 0.1645,
+          "label_zh": "S 端"
+        },
+        {
+          "x_um": 530.26,
+          "y_um": 145.235,
+          "layer": 33,
+          "z_nominal_um": 0.77225,
+          "label_zh": "接触孔 Contact"
+        },
+        {
+          "x_um": 530.26,
+          "y_um": 145.235,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 530.26,
+          "y_um": 145,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 530.26,
+          "y_um": 145,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 530.26,
+          "y_um": 145,
+          "layer": 35,
+          "z_nominal_um": 2.08,
+          "label_zh": "Via1"
+        },
+        {
+          "x_um": 530.26,
+          "y_um": 145,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 530.26,
+          "y_um": 0,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 530.26,
+          "y_um": 0,
+          "layer": 38,
+          "z_nominal_um": 3.23,
+          "label_zh": "Via2"
+        },
+        {
+          "x_um": 530.26,
+          "y_um": 0,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": ""
+        },
+        {
+          "x_um": 363.4,
+          "y_um": 0,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": "VSS 端口"
+        }
+      ],
+      "start_net": "BIAS",
+      "end_net": "VSS",
+      "conventional_direction": "VREF → 参考电流源 → REFOUT → 导通隔离传输门 → BIAS → MREF → VSS",
+      "scope": "points 从 BIAS 总线到 MREF，未绘制上游参考源与隔离传输门完整路径。"
+    },
+    "gate_discharge_low_edge": {
+      "label_zh": "下降沿：GATE 栅极电容放电",
+      "active_when": "transition to PWM_DRIVE=0 only, not steady DC",
+      "points": [
+        {
+          "x_um": 545.8,
+          "y_um": 56,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": "GATE 端口"
+        },
+        {
+          "x_um": 581.24,
+          "y_um": 56,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": ""
+        },
+        {
+          "x_um": 581.24,
+          "y_um": 56,
+          "layer": 38,
+          "z_nominal_um": 3.23,
+          "label_zh": "Via2"
+        },
+        {
+          "x_um": 581.24,
+          "y_um": 56,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 581.24,
+          "y_um": 100,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 581.24,
+          "y_um": 100,
+          "layer": 35,
+          "z_nominal_um": 2.08,
+          "label_zh": "Via1"
+        },
+        {
+          "x_um": 581.24,
+          "y_um": 100,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 581.24,
+          "y_um": 100,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 581.24,
+          "y_um": 100.235,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 581.24,
+          "y_um": 100.235,
+          "layer": 33,
+          "z_nominal_um": 0.77225,
+          "label_zh": "接触孔 Contact"
+        },
+        {
+          "x_um": 581.24,
+          "y_um": 100.235,
+          "layer": 22,
+          "z_nominal_um": 0.1645,
+          "label_zh": "D 端"
+        },
+        {
+          "x_um": 582.0,
+          "y_um": 100.235,
+          "layer": 22,
+          "z_nominal_um": 0.1645,
+          "label_zh": "MCLAMP 沟道（示意）"
+        },
+        {
+          "x_um": 582.76,
+          "y_um": 100.235,
+          "layer": 22,
+          "z_nominal_um": 0.1645,
+          "label_zh": "S 端"
+        },
+        {
+          "x_um": 582.76,
+          "y_um": 100.235,
+          "layer": 33,
+          "z_nominal_um": 0.77225,
+          "label_zh": "接触孔 Contact"
+        },
+        {
+          "x_um": 582.76,
+          "y_um": 100.235,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 582.76,
+          "y_um": 100,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 582.76,
+          "y_um": 100,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 582.76,
+          "y_um": 100,
+          "layer": 35,
+          "z_nominal_um": 2.08,
+          "label_zh": "Via1"
+        },
+        {
+          "x_um": 582.76,
+          "y_um": 100,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 582.76,
+          "y_um": 0,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 582.76,
+          "y_um": 0,
+          "layer": 38,
+          "z_nominal_um": 3.23,
+          "label_zh": "Via2"
+        },
+        {
+          "x_um": 582.76,
+          "y_um": 0,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": ""
+        },
+        {
+          "x_um": 363.4,
+          "y_um": 0,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": "VSS 端口"
+        }
+      ],
+      "start_net": "GATE",
+      "end_net": "VSS",
+      "scope": "有界瞬态电荷移动，必须在低电平稳定阶段停止粒子；不表示 LED 稳态电流。"
+    },
+    "pass_gate_charge_high_edge": {
+      "label_zh": "上升沿：BIAS 经 MPASS 给 GATE 充电",
+      "active_when": "transition to PWM_DRIVE=1 only, not steady DC",
+      "points": [
+        {
+          "x_um": 258.56,
+          "y_um": 53,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": "BIAS 端口"
+        },
+        {
+          "x_um": 563.24,
+          "y_um": 53,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": ""
+        },
+        {
+          "x_um": 563.24,
+          "y_um": 53,
+          "layer": 38,
+          "z_nominal_um": 3.23,
+          "label_zh": "Via2"
+        },
+        {
+          "x_um": 563.24,
+          "y_um": 53,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 563.24,
+          "y_um": 100,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 563.24,
+          "y_um": 100,
+          "layer": 35,
+          "z_nominal_um": 2.08,
+          "label_zh": "Via1"
+        },
+        {
+          "x_um": 563.24,
+          "y_um": 100,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 563.24,
+          "y_um": 100,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 563.24,
+          "y_um": 100.235,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 563.24,
+          "y_um": 100.235,
+          "layer": 33,
+          "z_nominal_um": 0.77225,
+          "label_zh": "接触孔 Contact"
+        },
+        {
+          "x_um": 563.24,
+          "y_um": 100.235,
+          "layer": 22,
+          "z_nominal_um": 0.1645,
+          "label_zh": "D 端"
+        },
+        {
+          "x_um": 564.0,
+          "y_um": 100.235,
+          "layer": 22,
+          "z_nominal_um": 0.1645,
+          "label_zh": "MPASS 沟道（示意）"
+        },
+        {
+          "x_um": 564.76,
+          "y_um": 100.235,
+          "layer": 22,
+          "z_nominal_um": 0.1645,
+          "label_zh": "S 端"
+        },
+        {
+          "x_um": 564.76,
+          "y_um": 100.235,
+          "layer": 33,
+          "z_nominal_um": 0.77225,
+          "label_zh": "接触孔 Contact"
+        },
+        {
+          "x_um": 564.76,
+          "y_um": 100.235,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 564.76,
+          "y_um": 100,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 564.76,
+          "y_um": 100,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 564.76,
+          "y_um": 100,
+          "layer": 35,
+          "z_nominal_um": 2.08,
+          "label_zh": "Via1"
+        },
+        {
+          "x_um": 564.76,
+          "y_um": 100,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 564.76,
+          "y_um": 56,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 564.76,
+          "y_um": 56,
+          "layer": 38,
+          "z_nominal_um": 3.23,
+          "label_zh": "Via2"
+        },
+        {
+          "x_um": 564.76,
+          "y_um": 56,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": ""
+        },
+        {
+          "x_um": 545.8,
+          "y_um": 56,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": "GATE 端口"
+        }
+      ],
+      "start_net": "BIAS",
+      "end_net": "GATE",
+      "scope": "P_PASS 的导通通道传递栅压，稳态MOS栅极近似无直流电流；不能持续画电流进入MOUT栅极。"
+    },
+    "gate_voltage_control": {
+      "label_zh": "GATE 电压控制 MOUT",
+      "points": [
+        {
+          "x_um": 545.8,
+          "y_um": 56,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": "GATE 端口"
+        },
+        {
+          "x_um": 546.0,
+          "y_um": 56,
+          "layer": 42,
+          "z_nominal_um": 3.8049999999999997,
+          "label_zh": ""
+        },
+        {
+          "x_um": 546.0,
+          "y_um": 56,
+          "layer": 38,
+          "z_nominal_um": 3.23,
+          "label_zh": "Via2"
+        },
+        {
+          "x_um": 546.0,
+          "y_um": 56,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 546.0,
+          "y_um": 134.72,
+          "layer": 36,
+          "z_nominal_um": 2.655,
+          "label_zh": ""
+        },
+        {
+          "x_um": 546.0,
+          "y_um": 134.72,
+          "layer": 35,
+          "z_nominal_um": 2.08,
+          "label_zh": "Via1"
+        },
+        {
+          "x_um": 546.0,
+          "y_um": 134.72,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 545.765,
+          "y_um": 134.72,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 545.765,
+          "y_um": 134.72000000000003,
+          "layer": 34,
+          "z_nominal_um": 1.505,
+          "label_zh": ""
+        },
+        {
+          "x_um": 545.765,
+          "y_um": 134.72000000000003,
+          "layer": 33,
+          "z_nominal_um": 0.875,
+          "label_zh": "接触孔 Contact"
+        },
+        {
+          "x_um": 545.765,
+          "y_um": 134.72000000000003,
+          "layer": 30,
+          "z_nominal_um": 0.42000000000000004,
+          "label_zh": "G 端"
+        }
+      ],
+      "start_net": "GATE",
+      "end_net": "P_OUT.G",
+      "kind": "voltage-only dashed line; no DC-flow particles"
+    }
+  },
+  "states": {
+    "high": {
+      "condition": "FAULT=0, PERMIT=1, reference settled, PWM_DRIVE=VBUF≈3.3V",
+      "PWM_B": "≈0 V",
+      "GATE": "≈BIAS",
+      "device_states": {
+        "P_REF": "导通（二极管连接）",
+        "P_OUT": "导通，设计目标约100µA；有限电压余量决定实际值",
+        "P_PASS": "导通/栅压连通；稳态近似无栅极直流",
+        "P_CLAMP": "关断",
+        "P_INV_N": "导通，PWM_B≈0V；稳定后不表示持续大电流",
+        "P_INV_P": "关断"
+      },
+      "active_dc_paths": [
+        "led_high",
+        "reference"
+      ],
+      "brief_transition_paths": [
+        "pass_gate_charge_high_edge"
+      ]
+    },
+    "low": {
+      "condition": "FAULT=0, PERMIT=1, reference settled, PWM_DRIVE≈0V",
+      "PWM_B": "≈VBUF",
+      "GATE": "≈0 V",
+      "device_states": {
+        "P_REF": "仍导通，参考偏置保持",
+        "P_OUT": "关断，仅漏电/寄生瞬态",
+        "P_PASS": "关断，隔离BIAS和GATE",
+        "P_CLAMP": "导通，将GATE保持在VSS；放电结束后近似无直流",
+        "P_INV_N": "关断",
+        "P_INV_P": "导通，PWM_B≈VBUF；稳定后不表示持续大电流"
+      },
+      "active_dc_paths": [
+        "reference"
+      ],
+      "brief_transition_paths": [
+        "gate_discharge_low_edge"
+      ]
+    },
+    "fault_caveat": {
+      "condition": "FAULT=1 或 PERMIT=0 与普通 PWM 低电平不同",
+      "description": "实际上游保护使 SAFE_OUT=RAW_PWM AND PERMIT AND NOT FAULT，经 buf_2 得 PWM_DRIVE。FAULT=1 还关断参考隔离传输门、释放BIAS并打开LED端保护钳位；普通 PWM=0 不关闭参考支路。动画本轮正常高低电平必须显示 FAULT=0、PERMIT=1。"
+    }
+  },
+  "layer_stack": {
+    "21": {
+      "name": "N-well",
+      "color": "#dae6ee",
+      "gds_layer": 21,
+      "gds_datatype": 0,
+      "z_nominal_um": 0.0,
+      "thickness_nominal_um": 0.0145,
+      "source_line": 3269,
+      "magic_type": "nwell,pwell"
+    },
+    "204": {
+      "name": "P-well",
+      "color": "#d8eadd",
+      "gds_layer": 204,
+      "gds_datatype": 0,
+      "z_nominal_um": 0.0,
+      "thickness_nominal_um": 0.0145,
+      "source_line": 3269,
+      "magic_type": "nwell,pwell"
+    },
+    "22": {
+      "name": "Active",
+      "color": "#95b5a1",
+      "gds_layer": 22,
+      "gds_datatype": 0,
+      "z_nominal_um": 0.0145,
+      "thickness_nominal_um": 0.3,
+      "source_line": 3270,
+      "magic_type": "alldiff"
+    },
+    "30": {
+      "name": "Poly gate",
+      "color": "#c16c45",
+      "gds_layer": 30,
+      "gds_datatype": 0,
+      "z_nominal_um": 0.32,
+      "thickness_nominal_um": 0.2,
+      "source_line": 3271,
+      "magic_type": "allpoly"
+    },
+    "33": {
+      "name": "Contact",
+      "color": "#30383d",
+      "gds_layer": 33,
+      "gds_datatype": 0,
+      "variants": {
+        "diffusion_contact": {
+          "z_nominal_um": 0.3145,
+          "thickness_nominal_um": 0.9155,
+          "source_line": 3272,
+          "magic_type": "alldiffcont"
+        },
+        "poly_contact": {
+          "z_nominal_um": 0.52,
+          "thickness_nominal_um": 0.71,
+          "source_line": 3273,
+          "magic_type": "pc"
+        }
+      }
+    },
+    "34": {
+      "name": "Metal1",
+      "color": "#738ab4",
+      "gds_layer": 34,
+      "gds_datatype": 0,
+      "z_nominal_um": 1.23,
+      "thickness_nominal_um": 0.55,
+      "source_line": 3274,
+      "magic_type": "allm1"
+    },
+    "35": {
+      "name": "Via1",
+      "color": "#293b50",
+      "gds_layer": 35,
+      "gds_datatype": 0,
+      "z_nominal_um": 1.78,
+      "thickness_nominal_um": 0.6,
+      "source_line": 3275,
+      "magic_type": "via"
+    },
+    "36": {
+      "name": "Metal2",
+      "color": "#427f9e",
+      "gds_layer": 36,
+      "gds_datatype": 0,
+      "z_nominal_um": 2.38,
+      "thickness_nominal_um": 0.55,
+      "source_line": 3276,
+      "magic_type": "allm2"
+    },
+    "38": {
+      "name": "Via2",
+      "color": "#233c4a",
+      "gds_layer": 38,
+      "gds_datatype": 0,
+      "z_nominal_um": 2.93,
+      "thickness_nominal_um": 0.6,
+      "source_line": 3277,
+      "magic_type": "via2"
+    },
+    "42": {
+      "name": "Metal3",
+      "color": "#7c678f",
+      "gds_layer": 42,
+      "gds_datatype": 0,
+      "z_nominal_um": 3.53,
+      "thickness_nominal_um": 0.55,
+      "source_line": 3278,
+      "magic_type": "allm3"
+    }
+  },
+  "checks": [
+    {
+      "device": "P_REF",
+      "pin": "D",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_REF",
+      "pin": "G",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_REF",
+      "pin": "S",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_REF",
+      "pin": "B",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_OUT",
+      "pin": "D",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_OUT",
+      "pin": "G",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_OUT",
+      "pin": "S",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_OUT",
+      "pin": "B",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_PASS",
+      "pin": "D",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_PASS",
+      "pin": "G",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_PASS",
+      "pin": "S",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_PASS",
+      "pin": "B",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_CLAMP",
+      "pin": "D",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_CLAMP",
+      "pin": "G",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_CLAMP",
+      "pin": "S",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_CLAMP",
+      "pin": "B",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_INV_N",
+      "pin": "D",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_INV_N",
+      "pin": "G",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_INV_N",
+      "pin": "S",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_INV_N",
+      "pin": "B",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_INV_P",
+      "pin": "D",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_INV_P",
+      "pin": "G",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_INV_P",
+      "pin": "S",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    },
+    {
+      "device": "P_INV_P",
+      "pin": "B",
+      "via1_landing": true,
+      "via2_landing": true,
+      "metal2_centerline_covered": true,
+      "metal3_to_port_covered": true,
+      "contact_in_same_metal1_component": true
+    }
+  ],
+  "limitations": [
+    "Blender 中层展开间距与垂直夸张只为教学，不能称为真实制造厚度。名义高度来自锁定 Magic technology height 注释，不是经晶圆厂认证的截面。",
+    "GDS XY、实际 Contact 与 Via 布置有来源；电流动画采用导线中心线和单个代表接触孔，不是 PEX 电流密度、TCAD、EM、电热或电磁场仿真。",
+    "栅极电压传递不等于栅极持续直流；PWM 高低的静态模型忽略传播延迟和过渡重叠，瞬态数值以已有SPICE报告为准。",
+    "LED_A 片上端口还接故障保护钳位；正常 FAULT=0 时该钳位关断。LED 光输出、LED实物、封装与供电引线均不在此GDS中。",
+    "六管指这次独立像素电路的6只MOS，r5模拟测试宏共39只MOS（另有参考、保护和6MOS缓冲器）。",
+    "contract.json 的历史external_passives字段写CCOMP=3pF；最终电气合同以 external-circuit-v3.json 的30pF+10Mohm为准，均不在GDS。"
+  ]
+}

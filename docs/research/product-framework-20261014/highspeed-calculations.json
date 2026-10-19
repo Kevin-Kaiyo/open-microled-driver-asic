@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "evidence_class": "independent_synthetic_two_pole_calculation",
+  "generated_from_script": "scripts/research/product_framework_highspeed.py",
+  "script_sha256": "5553be6912c245b112bbbcac0012463887356df019c16212770f5cc6584bfa8f",
+  "transfer_function": "H(s)=1/[(1+s*R_eff*C_total)*(1+s*tau_carrier)]",
+  "solver": "Exact piecewise-constant analytic state transition, compared with 50 substeps to 0.5 UI",
+  "stimulus": "PRBS9, b[n+9]=b[n+4] xor b[n], all-ones seed, period 511; second full period evaluated",
+  "sampling": "Fixed 0.5 UI from original bit boundary; no CDR or latency/phase optimization",
+  "raw_waveforms": "build/product-framework-20261014/highspeed/highspeed-waveforms.csv",
+  "compact_samples": "docs/research/product-framework-20261014/highspeed-samples.csv",
+  "assumptions": [
+    "R_eff=100 ohm assumed illustrative Thevenin resistance, not GF180 output resistance",
+    "C_total and tau_carrier chosen for sensitivity, not fitted measurements",
+    "Normalized linear response about an unspecified bias; no absolute current or optical watt conversion",
+    "The full 0-to-1 swing is teaching normalization; large-signal LED nonlinearity excluded",
+    "No MOS switching, LED IV, receiver, additive noise, jitter, package resonances, equalization or BER model"
+  ],
+  "metric": "signed eye opening = minimum 1 sample minus maximum 0 sample at 0.5 UI; negative means overlap at that phase",
+  "does_not_establish": [
+    "GF180 transistor performance",
+    "measured optical bandwidth",
+    "a bit rate limit",
+    "BER",
+    "foundry readiness"
+  ],
+  "scenarios": [
+    {
+      "label": "A: 100 Mb/s, C=2 pF, tau=1 ns",
+      "bit_rate_bps": 100000000.0,
+      "ui_s": 1e-08,
+      "effective_resistance_ohm": 100.0,
+      "total_capacitance_F": 2e-12,
+      "electrical_tau_s": 2e-10,
+      "carrier_tau_s": 1e-09,
+      "f3dB_Hz": 153350415.00104076,
+      "sample_phase_UI": 0.5,
+      "minimum_one_at_sample": 0.9915775662546151,
+      "maximum_zero_at_sample": 0.008422433745384848,
+      "signed_eye_opening_at_fixed_sample": 0.9831551325092303,
+      "repeated_substep_max_difference": 2.220446049250313e-16
+    },
+    {
+      "label": "B: 1 Gb/s, C=2 pF, tau=1 ns",
+      "bit_rate_bps": 1000000000.0,
+      "ui_s": 1e-09,
+      "effective_resistance_ohm": 100.0,
+      "total_capacitance_F": 2e-12,
+      "electrical_tau_s": 2e-10,
+      "carrier_tau_s": 1e-09,
+      "f3dB_Hz": 153350415.00104076,
+      "sample_phase_UI": 0.5,
+      "minimum_one_at_sample": 0.26252171509531463,
+      "maximum_zero_at_sample": 0.7375502034886678,
+      "signed_eye_opening_at_fixed_sample": -0.4750284883933532,
+      "repeated_substep_max_difference": 2.886579864025407e-15
+    },
+    {
+      "label": "C: 1 Gb/s, C=0.2 pF, tau=1 ns",
+      "bit_rate_bps": 1000000000.0,
+      "ui_s": 1e-09,
+      "effective_resistance_ohm": 100.0,
+      "total_capacitance_F": 2e-13,
+      "electrical_tau_s": 2.0000000000000002e-11,
+      "carrier_tau_s": 1e-09,
+      "f3dB_Hz": 159091344.69019127,
+      "sample_phase_UI": 0.5,
+      "minimum_one_at_sample": 0.38122486974668346,
+      "maximum_zero_at_sample": 0.6188338393014655,
+      "signed_eye_opening_at_fixed_sample": -0.23760896955478206,
+      "repeated_substep_max_difference": 2.220446049250313e-15
+    },
+    {
+      "label": "D: 1 Gb/s, C=2 pF, tau=0.1 ns",
+      "bit_rate_bps": 1000000000.0,
+      "ui_s": 1e-09,
+      "effective_resistance_ohm": 100.0,
+      "total_capacitance_F": 2e-12,
+      "electrical_tau_s": 2e-10,
+      "carrier_tau_s": 1e-10,
+      "f3dB_Hz": 666535371.655991,
+      "sample_phase_UI": 0.5,
+      "minimum_one_at_sample": 0.8425679497512879,
+      "maximum_zero_at_sample": 0.15743205024871215,
+      "signed_eye_opening_at_fixed_sample": 0.6851358995025758,
+      "repeated_substep_max_difference": 1.1102230246251565e-15
+    }
+  ]
+}

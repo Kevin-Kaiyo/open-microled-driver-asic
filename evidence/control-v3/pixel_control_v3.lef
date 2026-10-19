@@ -1,0 +1,227 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO pixel_control_v3
+  CLASS BLOCK ;
+  FOREIGN pixel_control_v3 ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 200.000 BY 200.000 ;
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER Metal4 ;
+        RECT 22.240 15.380 23.840 184.540 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 175.840 15.380 177.440 184.540 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 6.720 31.530 193.200 33.130 ;
+    END
+  END VDD
+  PIN VSS
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER Metal4 ;
+        RECT 25.540 15.380 27.140 184.540 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 179.140 15.380 180.740 184.540 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 6.720 34.830 193.200 36.430 ;
+    END
+  END VSS
+  PIN clk
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 4.738000 ;
+    PORT
+      LAYER Metal2 ;
+        RECT 129.920 199.440 130.480 200.000 ;
+    END
+  END clk
+  PIN duty[0]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 89.600 0.560 90.160 ;
+    END
+  END duty[0]
+  PIN duty[1]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 87.360 0.560 87.920 ;
+    END
+  END duty[1]
+  PIN duty[2]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 88.480 0.560 89.040 ;
+    END
+  END duty[2]
+  PIN duty[3]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 95.200 0.560 95.760 ;
+    END
+  END duty[3]
+  PIN duty[4]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 97.440 0.560 98.000 ;
+    END
+  END duty[4]
+  PIN duty[5]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 99.680 0.560 100.240 ;
+    END
+  END duty[5]
+  PIN duty[6]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 114.240 0.560 114.800 ;
+    END
+  END duty[6]
+  PIN duty[7]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 120.960 0.560 121.520 ;
+    END
+  END duty[7]
+  PIN duty[8]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 109.760 0.560 110.320 ;
+    END
+  END duty[8]
+  PIN enable
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal2 ;
+        RECT 84.000 199.440 84.560 200.000 ;
+    END
+  END enable
+  PIN fault
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal2 ;
+        RECT 137.760 199.440 138.320 200.000 ;
+    END
+  END fault
+  PIN permit
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 1.182800 ;
+    PORT
+      LAYER Metal2 ;
+        RECT 138.880 199.440 139.440 200.000 ;
+    END
+  END permit
+  PIN protected_monitor
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 1.182800 ;
+    PORT
+      LAYER Metal2 ;
+        RECT 140.000 199.440 140.560 200.000 ;
+    END
+  END protected_monitor
+  PIN raw_pwm
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 1.182800 ;
+    PORT
+      LAYER Metal2 ;
+        RECT 131.040 199.440 131.600 200.000 ;
+    END
+  END raw_pwm
+  PIN recover_request
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal2 ;
+        RECT 133.280 199.440 133.840 200.000 ;
+    END
+  END recover_request
+  PIN rst
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 1.102000 ;
+    PORT
+      LAYER Metal2 ;
+        RECT 117.600 199.440 118.160 200.000 ;
+    END
+  END rst
+  OBS
+      LAYER Nwell ;
+        RECT 6.290 15.250 193.630 184.670 ;
+      LAYER Metal1 ;
+        RECT 6.720 15.380 193.200 184.540 ;
+      LAYER Metal2 ;
+        RECT 8.540 199.140 83.700 199.440 ;
+        RECT 84.860 199.140 117.300 199.440 ;
+        RECT 118.460 199.140 129.620 199.440 ;
+        RECT 131.900 199.140 132.980 199.440 ;
+        RECT 134.140 199.140 137.460 199.440 ;
+        RECT 140.860 199.140 180.600 199.440 ;
+        RECT 8.540 15.490 180.600 199.140 ;
+      LAYER Metal3 ;
+        RECT 0.560 121.820 180.650 184.380 ;
+        RECT 0.860 120.660 180.650 121.820 ;
+        RECT 0.560 115.100 180.650 120.660 ;
+        RECT 0.860 113.940 180.650 115.100 ;
+        RECT 0.560 110.620 180.650 113.940 ;
+        RECT 0.860 109.460 180.650 110.620 ;
+        RECT 0.560 100.540 180.650 109.460 ;
+        RECT 0.860 99.380 180.650 100.540 ;
+        RECT 0.560 98.300 180.650 99.380 ;
+        RECT 0.860 97.140 180.650 98.300 ;
+        RECT 0.560 96.060 180.650 97.140 ;
+        RECT 0.860 94.900 180.650 96.060 ;
+        RECT 0.560 90.460 180.650 94.900 ;
+        RECT 0.860 87.060 180.650 90.460 ;
+        RECT 0.560 15.540 180.650 87.060 ;
+  END
+END pixel_control_v3
+END LIBRARY
+

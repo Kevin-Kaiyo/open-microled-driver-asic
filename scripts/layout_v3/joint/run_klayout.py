@@ -1,0 +1,7 @@
+from pathlib import Path
+import os,json,subprocess,hashlib,xml.etree.ElementTree as ET
+ROOT=Path(__file__).resolve().parents[3];out=ROOT/'build/layout-v3/joint-r2';gds=out/'startup_integrated_v3.gds';pdk=ROOT/'build/layout/pdk';deck=pdk/'gf180mcuD/libs.tech/klayout/tech/drc/run_drc.py';image='ghcr.io/librelane/librelane@sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f'
+cmd=['limactl','shell','asic','nerdctl','run','--rm','-v',f'{ROOT}:{ROOT}','-w',str(out),'-e','QT_QPA_PLATFORM=offscreen','-e',f'PYTHONPATH={ROOT}/build/physical-flow/linux-python','-e',f'PDK_ROOT={pdk}',image,'python3',str(deck),f'--path={gds}','--variant=D','--topcell=startup_integrated_v3','--mp=1','--thr=4',f'--run_dir={out}/klayout']
+with (out/'klayout-linux.log').open('w')as f:r=subprocess.run(cmd,env=os.environ|{'LIMA_HOME':str(ROOT/'build/physical-flow/lima')},stdout=f,stderr=subprocess.STDOUT)
+(out/'klayout-command.json').write_text(json.dumps(dict(argv=cmd,exit_code=r.returncode,image=image,sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()for p in [Path(__file__),gds,deck,deck.parent/'gf180mcu.drc']}),indent=2)+'\n');assert r.returncode==0
+items=ET.parse(out/'klayout/startup_integrated_v3_main.lyrdb').findall('.//item');v=dict(item_count=len(items),passed=len(items)==0);(out/'klayout-result.json').write_text(json.dumps(v,indent=2)+'\n');print(v);assert not items

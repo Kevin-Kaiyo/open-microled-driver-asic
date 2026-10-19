@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "scope": "External components for the final electrical validation contract; not polygons or manufactured elements in the GDS",
+  "components": [
+    {"name":"VSET", "nodes":["VSET","VSS"], "value":"0.5 V external voltage reference"},
+    {"name":"RSET", "nodes":["SENSE","VSS"], "value":"5 kohm"},
+    {"name":"RBIAS", "nodes":["PB","VSS"], "value":"100 kohm"},
+    {"name":"RRELEASE", "nodes":["LED_A","FAULT_HB"], "value":"100 kohm"},
+    {"name":"CCOMP", "nodes":["N2","CTRL"], "value":"30 pF candidate, replaced original 3 pF for load stability"},
+    {"name":"RREFBLEED", "nodes":["REFOUT","VSS"], "value":"10 Mohm, removes floating unpowered REFOUT node"}
+  ],
+  "sense_total_capacitance_budget_pf": 30,
+  "required_fault_contract": "Valid logic/safety rail and external fault asserted during reference startup; no on-chip POR is implemented",
+  "validation_authority": "evidence/analog-v3 and evidence/startup-v3, with exact case conditions and pass/failure state; this wiring record alone is not a validation result",
+  "not_included": ["pad ESD leakage or capacitance", "bond/package/PCB loop inductance", "resistor tolerance and thermal drift", "external reference accuracy", "foundry signoff"]
+}

@@ -1,0 +1,63 @@
+{
+  "scope": "独立教学计算，不是新GF180仿真、光学测量或工艺额定值",
+  "pwm": {
+    "clock_hz": 1000000.0,
+    "slots": 256,
+    "frame_s": 0.000256,
+    "frame_hz": 3906.25,
+    "d1_high_s": 1e-06,
+    "nominal_current_a": 0.0001,
+    "d1_ideal_charge_c": 1e-10,
+    "d64_average_a": 2.5e-05
+  },
+  "driver_scale": {
+    "assumed_C_F": 1e-12,
+    "assumed_delta_v_V": 1,
+    "assumed_edge_s": 1e-10,
+    "charge_C": 1e-12,
+    "average_edge_current_A": 0.01
+  },
+  "link_scale": {
+    "bitrate_bps": 1000000000.0,
+    "UI_s": 1e-09,
+    "assumed_edge_UI": 0.2,
+    "edge_s": 2e-10,
+    "single_pole_bw_Hz": 1749999999.9999998,
+    "note": "single pole 10-90 approximation, not arbitrary complete link rate requirement"
+  },
+  "bondwire_scale": {
+    "assumed_L_H": 1e-09,
+    "delta_I_A": 0.007,
+    "edge_s": 1e-10,
+    "Ldi_dt_V": 0.07
+  },
+  "zero_error_binomial": {
+    "target_BER": 1e-12,
+    "confidence": 0.95,
+    "bits_approx": 2995732273553.9907,
+    "time_s_at_1Gbps": 2995.7322735539906,
+    "note": "independent Bernoulli stationary errors, zero errors; approximate one-sided confidence upper bound"
+  },
+  "sense": {
+    "R_ohm": 100,
+    "vset_low_V": 0.01,
+    "vset_high_V": 0.7,
+    "min_A": 0.0001,
+    "max_A": 0.007,
+    "power_at_max_W": 0.0049,
+    "offset_V": 0.0001,
+    "offset_error_A": 1e-06
+  },
+  "mim": {
+    "assumed_C_fF": 3000,
+    "assumed_density_fF_um2": [
+      1,
+      1.5
+    ],
+    "plate_area_um2": [
+      3000,
+      2000
+    ],
+    "not_included": "edge,contacts,keepout,accepted-device selection"
+  }
+}

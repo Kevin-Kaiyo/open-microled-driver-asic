@@ -1,0 +1,13 @@
+* Independent schematic-only current range experiment, not a programmable DAC.
+* UNIT_COUNT is a netlist geometry parameter, NOT an implemented digital register.
+* Each output unit has the existing W20/L4 geometry; m replicates its electrical
+* model. Junction geometry is borrowed from the single-pixel extraction. No new
+* bank routing, selector, gradient, or package parasitics are established.
+.subckt pixel_bank led_k pwm vlogic bias gate pwm_b params: UNIT_COUNT=1 SWITCH_SCALE=1
+XREF bias bias 0 0 nfet_06v0 w=20u l=4u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XOUT led_k gate 0 0 nfet_06v0 w=20u l=4u ad=8.8p as=8.8p pd=40.88u ps=40.88u m={UNIT_COUNT}
+XPASS bias pwm gate 0 nfet_06v0 w=2u l=1u ad=.88p as=.88p pd=4.88u ps=4.88u m={SWITCH_SCALE}
+XCLAMP gate pwm_b 0 0 nfet_06v0 w=2u l=1u ad=.88p as=.88p pd=4.88u ps=4.88u m={SWITCH_SCALE}
+XINV_N pwm_b pwm 0 0 nfet_06v0 w=2u l=1u ad=.88p as=.88p pd=4.88u ps=4.88u
+XINV_P pwm_b pwm vlogic vlogic pfet_06v0 w=4u l=1u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+.ends pixel_bank

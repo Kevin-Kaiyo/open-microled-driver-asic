@@ -1,5 +1,33 @@
 # 当前研究资料入口
 
+**单通道 NRZ 晶体管比较（2026-10-19）：[中文研究报告](highspeed-nrz-20261019/index.html) / [网表、数据与复现](highspeed-nrz-20261019/README.md)。** 实现 GF180 电压驱动与电流转向两版电路，统一静态 LED 曲线、动态负载假设、数据序列与接收条件，检查速率、逐电源取能/回灌、MOS 角落、电容敏感性及数值收敛。属于 pre-layout 电气与接收代理实验；真实光学 BER、完整高速版图和流片验证仍未完成。
+
+**高速通信驱动路线（2026-10-19）：[中文交互研究报告](highspeed-driver-routes-20261019/index.html) / [来源与复现](highspeed-driver-routes-20261019/README.md) / [Blender 封装概念](highspeed-driver-routes-20261019/package-concept.blend)。** 原创绘制受限摆幅电压驱动、恒流转向 OOK、分段电流 DAC/PAM4 三套 MOS 电路与芯片功能分区，加入器件表征平台、8 条原始文献索引和速率—能耗解析预算。本轮属于概念设计与可复算研究；没有新增高速 SPICE、DRC/LVS/PEX 或光链路 BER 证据。
+
+**逐层展开与 PWM 动画（2026-10-18）：[64秒中文教学动画与逐步讲解](blender-pwm-animation-20261018/index.html) / [MP4](blender-pwm-animation-20261018/animation.mp4) / [可编辑 Blender 场景](blender-pwm-animation-20261018/pwm-layer-animation.blend)。** 从金属层、Contact、Via1/Via2，进入六只像素 MOS 的原理图与实际版图编号对应，再展示 PWM 高、低电平及栅极充放电。9,074 个 GDS 多边形、图层展开和全帧路径状态通过 102 项可视化检查；动画箭头是工作原理示意，不是电流密度或新电路仿真。
+
+**三维可视化尝试（2026-10-18）：[Blender 模型与三幅教学渲染图](blender-layout-20261018/index.html) / [可编辑场景](blender-layout-20261018/single-pixel-r5.blend)。** 使用当前 r5 模拟宏真实 GDS 平面图形与锁定 Magic 名义层高，Z 放大12倍；包括器件接触孔和跨层通孔。可视化不新增电气或制造验证。
+
+**最新实作（2026-10-15）：[18页研究报告](single-pixel-closure-20261015/report.pdf) / [HTML](single-pixel-closure-20261015/report.html) / [继续开发入口](single-pixel-closure-20261015/README.md)。** 启动数值判据与完整窗口回归、39MOS参考/保护新版图、数字恢复存储物理实现、共同顶层DRC/LVS/6512网络PEX已经完成对应检查。模拟宏启动最大0.656338 nA，DC/保护/最低PWM码通过；全共同顶层动态、电源扰动抑制和制造签核仍待完成。
+
+以下较早资料是历史快照；其中“新模块未入版图”的状态已由本轮推进，但旧失败证据不改写。
+
+**最新总框架（2026-10-14）：[28页研究报告](product-framework-20261014/report.pdf) / [带目录HTML](product-framework-20261014/report.html) / [完整资料入口](product-framework-20261014/README.md) / [真实二维及三维分层版图](product-framework-20261014/layout/viewer.html)。** 按架构→数字逻辑→buffer→像素／电流控制→LED→保护→版图／材料→高速通信→验证→流片／测试组织；有验证计划、流片包模板、逐层证据与教学眼图。三维仅为实际XY和相对Z投影；新参考／保护未入旧GDS，原启动收敛失败仍保留，无新晶体管或物理签核批次。
+
+**最新单像素开发与流片教学（2026-10-14）：[启动修复与ASIC流片路线](startup-tapeout-20261014/report.md) / [18页PDF](startup-tapeout-20261014/report.pdf) / [完整制造教学](startup-tapeout-20261014/fabrication-chapter.md)。** 实际修改参考输出隔离，保留四MOS失效和严格电荷收敛失败；新TG方案的启动峰、正常最低码、停钟fault和恢复分别验证。补充工艺材料、五层金属、面积算法、hard macro布局、厂家交付及回片测试，明确新模块的pre-layout和制造接受缺口。
+
+**最新研发与教学报告（2026-10-13）：[参考源、保护关断与驱动架构](reference-safety-20261013/report.md) / [PDF](reference-safety-20261013/report.pdf) / [详细架构章节](reference-safety-20261013/architecture-notes.md)。** 从理想IREF走到真实参考电路，再连接LED电流、PWM与独立保护；解释0.1～7 mA的输出余量、栅极电荷和电流DAC方案，区分电气一致性与光学均匀性，并分层讲解高速OOK／DAC的数据路径。新增晶体管及RTL实验保留失败与输入hash，旧布局/PEX不被新模块仿真升级。
+
+**原理图入门：[PWM 栅极控制的 NMOS 电流镜](six-mos-pwm-tutorial-20261012/README.md) / [可切换电路与电流路径](six-mos-pwm-tutorial-20261012/tutorial.html) / [高速通信驱动技术路线详解](six-mos-pwm-tutorial-20261012/high-speed-notes.md)。** 按实际网表标清六只晶体管的 D/G/S/B、PWM 两种稳态及主要栅极充放电路径；另画独立电流舵教学电路和可选 cascode。“六 MOS”只是器件数量，不是行业统一架构名称。本资料不新增 EDA、速率或光学验证结果。
+
+**晶体管、电路与布线设计：[2026-10-12深入研究](driver-circuit-layout-20261012/report.md) / [14页PDF](driver-circuit-layout-20261012/report.pdf) / [来源与数据](driver-circuit-layout-20261012/index.html)。** 从器件职责、gate-bias PWM与current steering，推进到尺寸/匹配、headroom、PG/return及via/工艺；保留15条直接相关来源、独立计算和现有工程证据范围，给出单像素受控实验顺序。无新增EDA或测量；设计示意不代表已实施。
+
+**材料与驱动技术先读：[2026-10-12研究报告](driver-literature-20261012/report.md) / [PDF](driver-literature-20261012/report.pdf) / [可搜索索引](driver-literature-20261012/index.html)。** 新10页解释MOS/CMOS、材料/工艺、显示/通信架构和公开产品身份边界；21篇研究论文（13篇关键全文、8篇仅摘要）及官方资料共35条来源，含原数据条件、DOI/作者稿与定位。检索按研究问题选取，不是穷尽综述、市场占比或性能排名。它是资料研究，无新电路/EDA/测量结果。
+
+**先掌握方向：[从事实到研究决策（2026-10-11）](decision-review-20261011/report.md) / [PDF](decision-review-20261011/report.pdf) / [HTML](decision-review-20261011/report.html)。** 新9页报告按问题、方法、依据、条件/数据和决策组织：第2页讲架构，第3–6页核查证据与边界，第7–8页给出受控实验顺序和失败分支，第9页追溯来源。保留单像素；先定位source/output compliance，再实现reference/fault，随后复验实际PG/body/邻居；同器件LED测量准备并行。该报告是既有结果复核与研究判断，没有新增EDA或升级silicon/光学证据。[复现与验收](decision-review-20261011/README.md)
+
+**建议先读：[模型、方法与实际结论（2026-10-08）](readable-audit/report.md) / [PDF](readable-audit/report.pdf) / [HTML](readable-audit/report.html)。** 以当前checkout为基线的只读研究说明：从问题与证据等级，连到电路、参数、实际配置、波形解释、失败／修正与待验证建议。配套[10项技术疑点](readable-audit/questions.md)、[快照／附件说明](readable-audit/README.md)和[实际操作与当前状态（2026-10-10）](readable-audit/process-status.md)。旧报告与既有run保留；这次文档审查没有新EDA实验。
+
 更新：2026-10-07。项目以实验性研发方法验证与教学为定位。物理／电气后端为单像素v0.4，新增frame experiment v0.1。
 
 先读[当前进度与控制实验](control-experiment/progress.md) / [PDF](control-experiment/progress.pdf) / [HTML](control-experiment/progress.html)：已有阶段 → 完整帧提交 → 量化 → 电气回放 → 后续缺口。已实现Python帧接收模型与单像素RTL／PEX联动；[帧合同](../specifications/frame-experiment-v0.1.md)、[证据及独立复算](../../evidence/control/README.md)可逐层核查。

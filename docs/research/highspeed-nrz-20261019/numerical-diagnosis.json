@@ -1,0 +1,1421 @@
+{
+  "status": "numerical diagnosis completed; preferred tolerance check retains physical model",
+  "original_failure": {
+    "log": "build/highspeed-nrz/run-7bl7j0yj/cases/A-nominal-1G-typical-27C-3.3V-C200-L0.5-e20-s40/ngspice.log",
+    "log_sha256": "fb75e7835941b4c8fedf4dca787c35397d449eb7e4b6fb14008f935eb5388306",
+    "deck": "build/highspeed-nrz/run-7bl7j0yj/cases/A-nominal-1G-typical-27C-3.3V-C200-L0.5-e20-s40/testbench.spice",
+    "deck_sha256": "51f3934aff29141e7792ac5250f2de5121c7bc15f6a5838c7aa697dfcf06199a",
+    "error": "Timestep too small at approximately 127 ns; source vdata#branch; timestep 3.125e-23 s",
+    "ngspice_exit_code_caveat": "ngspice returned zero and wrote a partial trace; endpoint and error-text checks are required"
+  },
+  "common_conditions": {
+    "driver": "frozen original A or B prototype in run-7bl7j0yj",
+    "MOS": "GF180 3.3 V TT 27 C",
+    "LED": "same measured static curve plus assumed C=200 fF",
+    "Rpkg_ohm": 1,
+    "Lpkg_H": 5e-10,
+    "edge_s": 2e-11,
+    "reltol": 1e-06,
+    "abstol_A": 1e-13,
+    "vntol_V": 1e-07,
+    "chgtol_C": 1e-18
+  },
+  "variants": {
+    "original": "A, original trap, 16-digit PWL, maxstep25ps, stop140ns",
+    "gear": "A, only method=gear (default maxord2), stop140ns",
+    "precise_decimal": "A, only PWL timestamps formatted to 12 significant digits, stop140ns",
+    "maxstep5p": "A, only maximum time step reduced to5ps, stop140ns",
+    "A-full-gear": "A, method=gear maxord=2; original16-digit PWL; original829ns stop",
+    "A-full-rounded-trap": "A, trap; 12-digit PWL; original829ns stop",
+    "B-short-trap": "B, trap; original frozen geometry0.35um; stop200ns",
+    "B-short-gear": "B, only method=gear maxord=2; stop200ns"
+  },
+  "runs": {
+    "A-full-gear": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 8.29e-07,
+      "last_output_s": 8.289999999999999e-07,
+      "rows": 494764,
+      "options": ".options reltol=1e-06 abstol=1e-13 vntol=1e-7 chgtol=1e-18 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A-full-gear/testbench.spice",
+          "sha256": "300b622800c637651842f1355cd5d2094bb973f6edae4e4ad54d81dd8aa88f9d"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A-full-gear/run.log",
+          "sha256": "34100b9904f46d69442d8cbeaadd4a3857cfde3c1d67392257820a268d97c20f"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A-full-gear/waveform.dat",
+          "sha256": "e27d088e1b0061e65cdcb40c6a27e9bce4f240d68ba4459b1e9ea0ffec3e3fd8",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A-full-gear/waveform.dat.gz",
+          "archive_sha256": "4eb57a488a3bf13f80f8564e79e24b83c1db5903885d5b60847139d49fe5c17b",
+          "uncompressed_bytes": 193947880,
+          "archive_bytes": 59169681,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A-full-rounded-trap": {
+      "successful_to_requested_stop": false,
+      "requested_stop_s": 8.29e-07,
+      "last_output_s": 2.02000000013856e-07,
+      "rows": 94693,
+      "options": ".options reltol=1e-06 abstol=1e-13 vntol=1e-7 chgtol=1e-18 method=trap",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A-full-rounded-trap/testbench.spice",
+          "sha256": "298b144e108f22827a44071156c3f74c05569ebeb702f4650178809c8d6420d4"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A-full-rounded-trap/run.log",
+          "sha256": "7c195dd3e8783a61f4ac20207e18086c1966db307ab17c6d444c987ef2f21524"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A-full-rounded-trap/waveform.dat",
+          "sha256": "35f1e78987b8656e4b340cd7c54884d89bc43a98512046c4e723c20918abc629",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A-full-rounded-trap/waveform.dat.gz",
+          "archive_sha256": "2a93d11ad09e8f2bfb573ae08f434d13da7a22bcf98db9475e67c62f008be4df",
+          "uncompressed_bytes": 37120048,
+          "archive_bytes": 11372926,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A1-rel1e5-c1e16": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 8.29e-07,
+      "last_output_s": 8.29e-07,
+      "rows": 225995,
+      "options": ".options reltol=1e-5 abstol=1e-13 vntol=1e-7 chgtol=1e-16 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A1-rel1e5-c1e16/testbench.spice",
+          "sha256": "8e58949868d66a14ea8bd67c6f2f951d408b28f21c603234d3842648104e1148"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A1-rel1e5-c1e16/run.log",
+          "sha256": "fa04cebea8797933eda4e8759631945af18d182d38bc40cb6642b2dce744b49b"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A1-rel1e5-c1e16/waveform.dat",
+          "sha256": "9df0bde440ae66cb766a6f3c44b2b00205e12235a994b1ef011295b93a7622e3",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A1-rel1e5-c1e16/waveform.dat.gz",
+          "archive_sha256": "8c894f434a700607c797cb7b3e822c7dd174f0d2b996fe75a1cbaf50df5bb0cc",
+          "uncompressed_bytes": 88590432,
+          "archive_bytes": 27228067,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A2-rel1e5-c1e16": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 4.145e-07,
+      "last_output_s": 4.145e-07,
+      "rows": 201029,
+      "options": ".options reltol=1e-5 abstol=1e-13 vntol=1e-7 chgtol=1e-16 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A2-rel1e5-c1e16/testbench.spice",
+          "sha256": "097eac20c65ab42fb3c1e8e390b5e80af01a89059d360c69427a84ee5429fad8"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A2-rel1e5-c1e16/run.log",
+          "sha256": "ca0d11d242b5a685a30d04dbfb54e219b81ec4b5ceb8d8561d6033db52589de8"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A2-rel1e5-c1e16/waveform.dat",
+          "sha256": "ce0795fabd2c7937681539d4951efa82109a7b822212d256c1ff48892ba035ce",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A2-rel1e5-c1e16/waveform.dat.gz",
+          "archive_sha256": "01413daca8d3bb54639f0d9ebb818935ea7e5d8b76446513cbfa0188baf92958",
+          "uncompressed_bytes": 78803760,
+          "archive_bytes": 24439522,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A4-abstol1e12": {
+      "successful_to_requested_stop": false,
+      "requested_stop_s": 2.0725e-07,
+      "last_output_s": 1.750000082601557e-09,
+      "rows": 4414,
+      "options": ".options reltol=1e-06 abstol=1e-12 vntol=1e-7 chgtol=1e-18 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-abstol1e12/testbench.spice",
+          "sha256": "a3303f7157f61db78e9bee894301121a616293138af73edcd7e901e54465176f"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-abstol1e12/run.log",
+          "sha256": "85c0436cc9c2d46fd400fd525631559a47c8553ce307c7c7f18a78cbcdeff512"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-abstol1e12/waveform.dat",
+          "sha256": "1da593a548278740c4c44f910d09b4286134eaf71f43f45ef85cbe02c718db73",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A4-abstol1e12/waveform.dat.gz",
+          "archive_sha256": "120d4aa961572363cb34de02709fc0b9cb8dba5c2d97a8ba4f414499508ffc20",
+          "uncompressed_bytes": 1730680,
+          "archive_bytes": 532722,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A4-chgtol1e16": {
+      "successful_to_requested_stop": false,
+      "requested_stop_s": 2.0725e-07,
+      "last_output_s": 2.027500000215109e-07,
+      "rows": 344905,
+      "options": ".options reltol=1e-06 abstol=1e-13 vntol=1e-7 chgtol=1e-16 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-chgtol1e16/testbench.spice",
+          "sha256": "916135fd8fdb79225d160a46eb3711089e9e390d40b240706e25beaa73775742"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-chgtol1e16/run.log",
+          "sha256": "2e54424949d05aeed5f3303514691c26937f25f4bc303366b2a00c46f170722b"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-chgtol1e16/waveform.dat",
+          "sha256": "3c59e04d2136e639b051423d249d095edc8acc62bcf5a9264f82687536fc0c7c",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A4-chgtol1e16/waveform.dat.gz",
+          "archive_sha256": "6f1f5d6d0d58e308c64d13bcfd7124ad96f9cbcf7def2a60c00c8da06b03128d",
+          "uncompressed_bytes": 135203152,
+          "archive_bytes": 41567956,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A4-defaulttol": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 2.0725e-07,
+      "last_output_s": 2.0725e-07,
+      "rows": 40432,
+      "options": ".options reltol=1e-3 abstol=1e-12 vntol=1e-6 chgtol=1e-14 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-defaulttol/testbench.spice",
+          "sha256": "ca15f4cf83378bcbcdd846189bb6c708a7afd6f412840617bb2bc23896319fcf"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-defaulttol/run.log",
+          "sha256": "9548572b17c28c85f79c2f4bab1a1b200d54e6fe876c938075c13681fc977ec3"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-defaulttol/waveform.dat",
+          "sha256": "ed98d949699b311aca0637a10459cf71b4c2753c01d86d1f66db6d652fc2cf02",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A4-defaulttol/waveform.dat.gz",
+          "archive_sha256": "732cd48c59d05256b39bd6705690f0070d31b685ac25979194e94be676cce5c4",
+          "uncompressed_bytes": 15849736,
+          "archive_bytes": 4906924,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A4-rel1e4-c1e16": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 2.0725e-07,
+      "last_output_s": 2.0725e-07,
+      "rows": 77773,
+      "options": ".options reltol=1e-4 abstol=1e-13 vntol=1e-7 chgtol=1e-16 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-rel1e4-c1e16/testbench.spice",
+          "sha256": "6d0d9381ac779e3ed1acd02d7a8323ed4faf6fc3ab731255615a1f4f87643047"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-rel1e4-c1e16/run.log",
+          "sha256": "02595060fdc4428e6f6d3f3686cdde2877c70034bf9207cfa2413f232e86f96b"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-rel1e4-c1e16/waveform.dat",
+          "sha256": "ef20bf15202ea7132ee53aec7afcb7d14393c48453b47e5820e6bb4d608b0b09",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A4-rel1e4-c1e16/waveform.dat.gz",
+          "archive_sha256": "bba037cd13a49d12c4882fcd8fab7e9354d9e57ac8f3093e1631c6013503c470",
+          "uncompressed_bytes": 30487408,
+          "archive_bytes": 9569799,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A4-rel1e4-c1e18": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 2.0725e-07,
+      "last_output_s": 2.0725e-07,
+      "rows": 79234,
+      "options": ".options reltol=1e-4 abstol=1e-13 vntol=1e-7 chgtol=1e-18 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-rel1e4-c1e18/testbench.spice",
+          "sha256": "90d596e29c703ec818148f9932ce37c4e8e0f1538ea9b484ab2ef9cd7afef86d"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-rel1e4-c1e18/run.log",
+          "sha256": "1f32b30432c828154100e521b9835f1e0954d38a05281cb535b642916b079ce8"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-rel1e4-c1e18/waveform.dat",
+          "sha256": "70c8f3594a1e37ec8081159d78b89f0a33ee3fc85d67765591d2467ebe37c6cf",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A4-rel1e4-c1e18/waveform.dat.gz",
+          "archive_sha256": "e9ea02f63e743a28086b379470a101a405bfa985ef3a525764970872bfec3000",
+          "uncompressed_bytes": 31060120,
+          "archive_bytes": 9750503,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A4-rel1e5-c1e16": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 2.0725e-07,
+      "last_output_s": 2.0725e-07,
+      "rows": 171810,
+      "options": ".options reltol=1e-5 abstol=1e-13 vntol=1e-7 chgtol=1e-16 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-rel1e5-c1e16/testbench.spice",
+          "sha256": "0e37f15122ae815cb76323b3c6934d189ebec0aa1c9506a2561608c537c86665"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-rel1e5-c1e16/run.log",
+          "sha256": "d5a650ddb41999294f2ad0c7fb8e76be4caf17b7cc92209ed21d4305a2c28d68"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-rel1e5-c1e16/waveform.dat",
+          "sha256": "ca23834f8ce4f4fdd26441532531bc9a023020a088f45019dfacd26f242ae3f0",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A4-rel1e5-c1e16/waveform.dat.gz",
+          "archive_sha256": "c63b737bfa7cb5a4ca9835a047a995ec7b66aee35d701e2a078ae49215da2df6",
+          "uncompressed_bytes": 67349912,
+          "archive_bytes": 20969075,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A4-rel1e5-c1e16-step1ps": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 2.0725e-07,
+      "last_output_s": 2.0725e-07,
+      "rows": 256111,
+      "options": ".options reltol=1e-5 abstol=1e-13 vntol=1e-7 chgtol=1e-16 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-rel1e5-c1e16-step1ps/testbench.spice",
+          "sha256": "508fcdd804d52586cc3fa95209792661e5420dcee90744dbd0796c3702910e88"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-rel1e5-c1e16-step1ps/run.log",
+          "sha256": "f29a1ca14545926ed35aefa4f8279386b6696a704c90ac9d9a8f1f0ca4e80cd6"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-rel1e5-c1e16-step1ps/waveform.dat",
+          "sha256": "a43e8e3c551272afbb4862a5cd34299b52ba93fc58bae2c9d1a18ad442e637fa",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A4-rel1e5-c1e16-step1ps/waveform.dat.gz",
+          "archive_sha256": "cf2a4dd313c0a5f977b84011951f0f265ef4e80d2e83022a18986d94180ccaf0",
+          "uncompressed_bytes": 100395904,
+          "archive_bytes": 30061258,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A4-source1ohm": {
+      "successful_to_requested_stop": false,
+      "requested_stop_s": 2.0725e-07,
+      "last_output_s": 1.020000039420267e-09,
+      "rows": 2504,
+      "options": ".options reltol=1e-06 abstol=1e-13 vntol=1e-7 chgtol=1e-18 method=gear maxord=2",
+      "source_resistance_added": true,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-source1ohm/testbench.spice",
+          "sha256": "de5deb0d5b6e673e919c70544c6f1a7fb29776939d9d3c01406a3a0246226ac0"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-source1ohm/run.log",
+          "sha256": "605ad1d616d6a01e9f29526aa9f4510cf9549a5eb9b6f36b6466219135c1ed8f"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-source1ohm/waveform.dat",
+          "sha256": "510225a825174b377e58b9e3e8b690a8ec041620f61dbb662fbeb75d78b36449",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A4-source1ohm/waveform.dat.gz",
+          "archive_sha256": "f853628d4467fa5fbd9b801b5576f0305de1527f2d63a554c9fa7d9acb804373",
+          "uncompressed_bytes": 981960,
+          "archive_bytes": 311769,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A4-step1ps": {
+      "successful_to_requested_stop": false,
+      "requested_stop_s": 2.0725e-07,
+      "last_output_s": 5.200000019509505e-10,
+      "rows": 1233,
+      "options": ".options reltol=1e-06 abstol=1e-13 vntol=1e-7 chgtol=1e-18 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-step1ps/testbench.spice",
+          "sha256": "8a4dea22350b78449f70ba6cfd2b0b7c3655d7329771291e7eb8acdf79c36e26"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-step1ps/run.log",
+          "sha256": "3177c45f725d8c67382665af9434f7d7ee4b7035ac30e6264341fa8936f23b1e"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A4-step1ps/waveform.dat",
+          "sha256": "850c7177eae4098d18e956d5144562b2916878a2c23e227396cbee869a7fbda1",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A4-step1ps/waveform.dat.gz",
+          "archive_sha256": "4d526c6088102dacb2db786c685af137679187dc36421e8075c10526f0580e43",
+          "uncompressed_bytes": 483728,
+          "archive_bytes": 130156,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "A8-rel1e5-c1e16": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 1.03625e-07,
+      "last_output_s": 1.03625e-07,
+      "rows": 134255,
+      "options": ".options reltol=1e-5 abstol=1e-13 vntol=1e-7 chgtol=1e-16 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/A8-rel1e5-c1e16/testbench.spice",
+          "sha256": "5125b986eaf2d9ca60719b92820aac26f396eb4ee4ee3caca8c90ff513671184"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/A8-rel1e5-c1e16/run.log",
+          "sha256": "49f7efd2c0ed5b49c8eef77da33d4c9d42d462094c05bb5141c8281411b93b38"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/A8-rel1e5-c1e16/waveform.dat",
+          "sha256": "7490faeed35a23353e179b4f00f530159e67051fe20e4ab791a28384b929aeab",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/A8-rel1e5-c1e16/waveform.dat.gz",
+          "archive_sha256": "7d45c50933542118ea0c18e885e05e5dffa2b4d31c2b6b5bd3584b6a33c8dba1",
+          "uncompressed_bytes": 52628352,
+          "archive_bytes": 16423072,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "B-short-gear": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 2e-07,
+      "last_output_s": 2e-07,
+      "rows": 303779,
+      "options": ".options reltol=1e-06 abstol=1e-13 vntol=1e-7 chgtol=1e-18 method=gear maxord=2",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/B-short-gear/testbench.spice",
+          "sha256": "c83898962f2c2faa28ff3ee40221568c9acdb0f502a7c969f08f4da04ac12ff3"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/B-short-gear/run.log",
+          "sha256": "f11fce2d85203c98b32ae272969fc756ab0fac6e8ac57f6240c93377d1f985e0"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/B-short-gear/waveform.dat",
+          "sha256": "f9fc7d8fd580e2c3cf531827ef0e01e76278b110e1b554dc6abff9178d2d9658",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/B-short-gear/waveform.dat.gz",
+          "archive_sha256": "65812c58a986fa0388a595af8c05992a2c2dedf9a3835b1d4f8b804a37ab5834",
+          "uncompressed_bytes": 119081760,
+          "archive_bytes": 38867619,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "B-short-trap": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 2e-07,
+      "last_output_s": 2e-07,
+      "rows": 315703,
+      "options": ".options reltol=1e-06 abstol=1e-13 vntol=1e-7 chgtol=1e-18 method=trap",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/B-short-trap/testbench.spice",
+          "sha256": "26d0e12392abc34789cbf6892442fb1763ff1a7a31cc97a1f02612a5236ad558"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/B-short-trap/run.log",
+          "sha256": "a7eab9b4b0c3375904317734cd6389858b2d9a81deaa84ccdb3310181445d744"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/B-short-trap/waveform.dat",
+          "sha256": "21a573508dcb9b9411515c2362f8c87ed6b53ddc7818a37e053ddb5e3dfebd8e",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/B-short-trap/waveform.dat.gz",
+          "archive_sha256": "c78b40a555df191f67901c5fdd766741d4013c4144391934ed0edc458a318c68",
+          "uncompressed_bytes": 123755968,
+          "archive_bytes": 39992211,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "gear": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 1.4e-07,
+      "last_output_s": 1.4e-07,
+      "rows": 90802,
+      "options": ".options reltol=1e-06 abstol=1e-13 vntol=1e-7 chgtol=1e-18 method=gear",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/gear/testbench.spice",
+          "sha256": "42d3391811295c96334a6b0425ff718294394ee55eac97905d350aaa4dbc7599"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/gear/run.log",
+          "sha256": "429e3e2426b3cc0bd07c49669e91c5dce1a6feea01ab1a459e752d8c5daa4f4d"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/gear/waveform.dat",
+          "sha256": "2af3a2f117efa8340535e6744fe5514bbc29397905b2a3245843b1fb83a1f462",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/gear/waveform.dat.gz",
+          "archive_sha256": "758e6c205eed3cc2c5bb7168cfaf8c1becd0b84d7211a8f35d40d36c0baaa17d",
+          "uncompressed_bytes": 35594776,
+          "archive_bytes": 10888127,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "maxstep5p": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 1.4e-07,
+      "last_output_s": 1.4e-07,
+      "rows": 82253,
+      "options": ".options reltol=1e-06 abstol=1e-13 vntol=1e-7 chgtol=1e-18 method=trap",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/maxstep5p/testbench.spice",
+          "sha256": "387e7f18d37942a92789191ba8d3ad171d8717eb2894933fa90605a08af4d6e9"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/maxstep5p/run.log",
+          "sha256": "6c25362983daa93e41c12381027d3854b73052a8880948bc7e256a746b48d1ab"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/maxstep5p/waveform.dat",
+          "sha256": "a6e02420416b4826c1f3fda59694694d152c892ae479ed6da7ca9fc2545dbf12",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/maxstep5p/waveform.dat.gz",
+          "archive_sha256": "8bffa4ff4069febea9c4125d2145b284a4320350eeb56664818bd7690e262351",
+          "uncompressed_bytes": 32243568,
+          "archive_bytes": 9518718,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "original": {
+      "successful_to_requested_stop": false,
+      "requested_stop_s": 1.4e-07,
+      "last_output_s": 1.270000000426668e-07,
+      "rows": 63396,
+      "options": ".options reltol=1e-06 abstol=1e-13 vntol=1e-7 chgtol=1e-18 method=trap",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/original/testbench.spice",
+          "sha256": "6a62768b89c60fddc8afd392127a9544214c3d9fc1eca0e00f40b658b622fb9c"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/original/run.log",
+          "sha256": "df5e2a896ec844d7fa2d9d43063f095ca1b87ea93454f1e6289b89dbf6730ec5"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/original/waveform.dat",
+          "sha256": "8a86471184f838746a9dd0cede8535fc1b25e2ea0bf9c616199cd110b45fb227",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/original/waveform.dat.gz",
+          "archive_sha256": "b8cc914216aaf25de9b566f5fbfd413d7f6314103d72dd6cad584b7d54949941",
+          "uncompressed_bytes": 24851624,
+          "archive_bytes": 7628190,
+          "round_trip_sha256_verified": true
+        }
+      }
+    },
+    "precise_decimal": {
+      "successful_to_requested_stop": true,
+      "requested_stop_s": 1.4e-07,
+      "last_output_s": 1.4e-07,
+      "rows": 70201,
+      "options": ".options reltol=1e-06 abstol=1e-13 vntol=1e-7 chgtol=1e-18 method=trap",
+      "source_resistance_added": false,
+      "files": {
+        "testbench.spice": {
+          "path": "build/highspeed-nrz/pwl-debug/precise_decimal/testbench.spice",
+          "sha256": "e8279a0c44e9d70d284b892779bdaa7d796bd78fd162caf423280dfc3aedede6"
+        },
+        "run.log": {
+          "path": "build/highspeed-nrz/pwl-debug/precise_decimal/run.log",
+          "sha256": "4d75a62da86866756a86e3f77cfedd2a0e43dea172a0305eae40f4d5339de8b0"
+        },
+        "waveform.dat": {
+          "path": "build/highspeed-nrz/pwl-debug/precise_decimal/waveform.dat",
+          "sha256": "48da6c0604cd65a9fa08d4061b331d5c1912c487736a0091564b2261f96dfd5e",
+          "availability": "lossless_gzip_archive_only",
+          "archive_path": "build/highspeed-nrz/pwl-debug/precise_decimal/waveform.dat.gz",
+          "archive_sha256": "f5108e234fb175f6a83b382b5b75c8a2e00367807f3d1b55ae9dc207b2b1ca33",
+          "uncompressed_bytes": 27519184,
+          "archive_bytes": 8447162,
+          "round_trip_sha256_verified": true
+        }
+      }
+    }
+  },
+  "A_comparison": {
+    "precise_decimal": {
+      "window_s": [
+        3.2e-08,
+        1.2e-07
+      ],
+      "bits_in_window": 88,
+      "rows": 70201,
+      "signed_fJ_per_bit": 382.3939523830351,
+      "positive_draw_fJ_per_bit": 552.6058416313466,
+      "iled_min_uA": 21.06709150075832,
+      "iled_max_uA": 106.83960667059189,
+      "power_boundary": "sum of external supply terminals; ideal DATA source and upstream regulators excluded",
+      "rail_energies": {
+        "VLED": {
+          "start_s": 3.2e-08,
+          "end_s": 1.2e-07,
+          "duration_s": 8.8e-08,
+          "n_gross_bits": 88,
+          "net_J": 2.6618120073795886e-11,
+          "positive_draw_J": 3.235395307230804e-11,
+          "returned_J": 5.73583299851216e-12,
+          "net_mean_W": 0.000302478637202226,
+          "positive_draw_mean_W": 0.00036765855763986417,
+          "returned_mean_W": 6.517992043763818e-05,
+          "net_J_per_gross_bit": 3.02478637202226e-13,
+          "positive_draw_J_per_gross_bit": 3.676585576398641e-13,
+          "returned_J_per_gross_bit": 6.517992043763818e-14,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VDD": {
+          "start_s": 3.2e-08,
+          "end_s": 1.2e-07,
+          "duration_s": 8.8e-08,
+          "n_gross_bits": 88,
+          "net_J": 1.3054893447933511e-11,
+          "positive_draw_J": 1.3507820122335506e-11,
+          "returned_J": 4.5292667440199554e-13,
+          "net_mean_W": 0.00014835106190833535,
+          "positive_draw_mean_W": 0.00015349795593563075,
+          "returned_mean_W": 5.146894027295404e-06,
+          "net_J_per_gross_bit": 1.4835106190833534e-13,
+          "positive_draw_J_per_gross_bit": 1.5349795593563073e-13,
+          "returned_J_per_gross_bit": 5.146894027295404e-15,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VH": {
+          "start_s": 3.2e-08,
+          "end_s": 1.2e-07,
+          "duration_s": 8.8e-08,
+          "n_gross_bits": 88,
+          "net_J": 7.993557481621185e-13,
+          "positive_draw_J": 2.692142153893483e-12,
+          "returned_J": 1.8927864057313644e-12,
+          "net_mean_W": 9.083588047296801e-06,
+          "positive_draw_mean_W": 3.0592524476062306e-05,
+          "returned_mean_W": 2.1508936428765505e-05,
+          "net_J_per_gross_bit": 9.083588047296801e-15,
+          "positive_draw_J_per_gross_bit": 3.059252447606231e-14,
+          "returned_J_per_gross_bit": 2.1508936428765504e-14,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VL": {
+          "start_s": 3.2e-08,
+          "end_s": 1.2e-07,
+          "duration_s": 8.8e-08,
+          "n_gross_bits": 88,
+          "net_J": -6.82170146018442e-12,
+          "positive_draw_J": 7.539871502147166e-14,
+          "returned_J": 6.897100175205892e-12,
+          "net_mean_W": -7.751933477482296e-05,
+          "positive_draw_mean_W": 8.568035797894507e-07,
+          "returned_mean_W": 7.837613835461242e-05,
+          "net_J_per_gross_bit": -7.751933477482296e-14,
+          "positive_draw_J_per_gross_bit": 8.568035797894506e-16,
+          "returned_J_per_gross_bit": 7.83761383546124e-14,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        }
+      },
+      "iled_rms_difference_vs_trap_5ps_uA": 0.0013023923622974061
+    },
+    "gear": {
+      "window_s": [
+        3.2e-08,
+        1.2e-07
+      ],
+      "bits_in_window": 88,
+      "rows": 90802,
+      "signed_fJ_per_bit": 382.37513565860274,
+      "positive_draw_fJ_per_bit": 551.6614517250823,
+      "iled_min_uA": 21.06658851948108,
+      "iled_max_uA": 106.8368493969479,
+      "power_boundary": "sum of external supply terminals; ideal DATA source and upstream regulators excluded",
+      "rail_energies": {
+        "VLED": {
+          "start_s": 3.2e-08,
+          "end_s": 1.2e-07,
+          "duration_s": 8.8e-08,
+          "n_gross_bits": 88,
+          "net_J": 2.661612335067412e-11,
+          "positive_draw_J": 3.2352038416729176e-11,
+          "returned_J": 5.735915066055052e-12,
+          "net_mean_W": 0.00030245594716675137,
+          "positive_draw_mean_W": 0.0003676368001901043,
+          "returned_mean_W": 6.518085302335288e-05,
+          "net_J_per_gross_bit": 3.0245594716675135e-13,
+          "positive_draw_J_per_gross_bit": 3.676368001901043e-13,
+          "returned_J_per_gross_bit": 6.518085302335287e-14,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VDD": {
+          "start_s": 3.2e-08,
+          "end_s": 1.2e-07,
+          "duration_s": 8.8e-08,
+          "n_gross_bits": 88,
+          "net_J": 1.3054805289638255e-11,
+          "positive_draw_J": 1.3437827387554907e-11,
+          "returned_J": 3.830220979166498e-13,
+          "net_mean_W": 0.00014835006010952565,
+          "positive_draw_mean_W": 0.0001527025839494876,
+          "returned_mean_W": 4.3525238399619304e-06,
+          "net_J_per_gross_bit": 1.4835006010952563e-13,
+          "positive_draw_J_per_gross_bit": 1.5270258394948757e-13,
+          "returned_J_per_gross_bit": 4.35252383996193e-15,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VH": {
+          "start_s": 3.2e-08,
+          "end_s": 1.2e-07,
+          "duration_s": 8.8e-08,
+          "n_gross_bits": 88,
+          "net_J": 7.990892956943749e-13,
+          "positive_draw_J": 2.6851374511567638e-12,
+          "returned_J": 1.886048155462389e-12,
+          "net_mean_W": 9.08056017834517e-06,
+          "positive_draw_mean_W": 3.0512925581326862e-05,
+          "returned_mean_W": 2.1432365402981697e-05,
+          "net_J_per_gross_bit": 9.08056017834517e-15,
+          "positive_draw_J_per_gross_bit": 3.051292558132686e-14,
+          "returned_J_per_gross_bit": 2.1432365402981695e-14,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VL": {
+          "start_s": 3.2e-08,
+          "end_s": 1.2e-07,
+          "duration_s": 8.8e-08,
+          "n_gross_bits": 88,
+          "net_J": -6.821005998049708e-12,
+          "positive_draw_J": 7.120449636639276e-14,
+          "returned_J": 6.892210494416101e-12,
+          "net_mean_W": -7.751143179601941e-05,
+          "positive_draw_mean_W": 8.091420041635541e-07,
+          "returned_mean_W": 7.832057380018297e-05,
+          "net_J_per_gross_bit": -7.751143179601941e-14,
+          "positive_draw_J_per_gross_bit": 8.091420041635541e-16,
+          "returned_J_per_gross_bit": 7.832057380018296e-14,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        }
+      },
+      "iled_rms_difference_vs_trap_5ps_uA": 0.004148196291893222
+    },
+    "maxstep5p": {
+      "window_s": [
+        3.2e-08,
+        1.2e-07
+      ],
+      "bits_in_window": 88,
+      "rows": 82253,
+      "signed_fJ_per_bit": 382.3937118019207,
+      "positive_draw_fJ_per_bit": 552.7944473603235,
+      "iled_min_uA": 21.06709384505463,
+      "iled_max_uA": 106.8394781480131,
+      "power_boundary": "sum of external supply terminals; ideal DATA source and upstream regulators excluded",
+      "rail_energies": {
+        "VLED": {
+          "start_s": 3.2e-08,
+          "end_s": 1.2e-07,
+          "duration_s": 8.8e-08,
+          "n_gross_bits": 88,
+          "net_J": 2.6618108382273466e-11,
+          "positive_draw_J": 3.235392713144341e-11,
+          "returned_J": 5.735818749169942e-12,
+          "net_mean_W": 0.00030247850434401665,
+          "positive_draw_mean_W": 0.0003676582628573115,
+          "returned_mean_W": 6.51797585132948e-05,
+          "net_J_per_gross_bit": 3.0247850434401667e-13,
+          "positive_draw_J_per_gross_bit": 3.6765826285731146e-13,
+          "returned_J_per_gross_bit": 6.51797585132948e-14,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VDD": {
+          "start_s": 3.2e-08,
+          "end_s": 1.2e-07,
+          "duration_s": 8.8e-08,
+          "n_gross_bits": 88,
+          "net_J": 1.305488771631664e-11,
+          "positive_draw_J": 1.3523772001343122e-11,
+          "returned_J": 4.688842850264828e-13,
+          "net_mean_W": 0.00014835099677632546,
+          "positive_draw_mean_W": 0.00015367922728799004,
+          "returned_mean_W": 5.328230511664577e-06,
+          "net_J_per_gross_bit": 1.4835099677632545e-13,
+          "positive_draw_J_per_gross_bit": 1.5367922728799002e-13,
+          "returned_J_per_gross_bit": 5.328230511664577e-15,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VH": {
+          "start_s": 3.2e-08,
+          "end_s": 1.2e-07,
+          "duration_s": 8.8e-08,
+          "n_gross_bits": 88,
+          "net_J": 7.993459185075132e-13,
+          "positive_draw_J": 2.6917708680089046e-12,
+          "returned_J": 1.892424949501391e-12,
+          "net_mean_W": 9.083476346676287e-06,
+          "positive_draw_mean_W": 3.058830531828301e-05,
+          "returned_mean_W": 2.150482897160672e-05,
+          "net_J_per_gross_bit": 9.083476346676286e-15,
+          "positive_draw_J_per_gross_bit": 3.0588305318283004e-14,
+          "returned_J_per_gross_bit": 2.1504828971606717e-14,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VL": {
+          "start_s": 3.2e-08,
+          "end_s": 1.2e-07,
+          "duration_s": 8.8e-08,
+          "n_gross_bits": 88,
+          "net_J": -6.821695378528599e-12,
+          "positive_draw_J": 7.644136691302589e-14,
+          "returned_J": 6.898136745441625e-12,
+          "net_mean_W": -7.751926566509772e-05,
+          "positive_draw_mean_W": 8.686518967389306e-07,
+          "returned_mean_W": 7.838791756183664e-05,
+          "net_J_per_gross_bit": -7.751926566509771e-14,
+          "positive_draw_J_per_gross_bit": 8.686518967389305e-16,
+          "returned_J_per_gross_bit": 7.838791756183664e-14,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        }
+      },
+      "iled_rms_difference_vs_trap_5ps_uA": 0.0
+    }
+  },
+  "B_comparison": {
+    "B-short-trap": {
+      "window_s": [
+        6.4e-08,
+        2e-07
+      ],
+      "bits_in_window": 68,
+      "rows": 315703,
+      "signed_fJ_per_bit": 1063.808190444461,
+      "positive_draw_fJ_per_bit": 1067.616221084838,
+      "iled_min_uA": 24.9506554067048,
+      "iled_max_uA": 100.0699708832488,
+      "power_boundary": "sum of external supply terminals; ideal DATA source and upstream regulators excluded",
+      "rail_energies": {
+        "VLED": {
+          "start_s": 6.4e-08,
+          "end_s": 2e-07,
+          "duration_s": 1.36e-07,
+          "n_gross_bits": 68,
+          "net_J": 4.119009744717999e-11,
+          "positive_draw_J": 4.1191673343214075e-11,
+          "returned_J": 1.5758960340836189e-15,
+          "net_mean_W": 0.0003028683635822058,
+          "positive_draw_mean_W": 0.0003028799510530447,
+          "returned_mean_W": 1.1587470838850138e-08,
+          "net_J_per_gross_bit": 6.057367271644116e-13,
+          "positive_draw_J_per_gross_bit": 6.057599021060894e-13,
+          "returned_J_per_gross_bit": 2.317494167770028e-17,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VDD": {
+          "start_s": 6.4e-08,
+          "end_s": 2e-07,
+          "duration_s": 1.36e-07,
+          "n_gross_bits": 68,
+          "net_J": 1.3412112955922919e-11,
+          "positive_draw_J": 1.3661879102573543e-11,
+          "returned_J": 2.4976614665062534e-13,
+          "net_mean_W": 9.861847761708028e-05,
+          "positive_draw_mean_W": 0.00010045499340127606,
+          "returned_mean_W": 1.8365157841957745e-06,
+          "net_J_per_gross_bit": 1.9723695523416057e-13,
+          "positive_draw_J_per_gross_bit": 2.009099868025521e-13,
+          "returned_J_per_gross_bit": 3.673031568391549e-15,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VDUMMY": {
+          "start_s": 6.4e-08,
+          "end_s": 2e-07,
+          "duration_s": 1.36e-07,
+          "n_gross_bits": 68,
+          "net_J": 1.773674654712043e-11,
+          "positive_draw_J": 1.7744350587981365e-11,
+          "returned_J": 7.604040860934865e-15,
+          "net_mean_W": 0.00013041725402294436,
+          "positive_draw_mean_W": 0.00013047316608809828,
+          "returned_mean_W": 5.591206515393283e-08,
+          "net_J_per_gross_bit": 2.608345080458887e-13,
+          "positive_draw_J_per_gross_bit": 2.6094633217619653e-13,
+          "returned_J_per_gross_bit": 1.1182413030786567e-16,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        }
+      }
+    },
+    "B-short-gear": {
+      "window_s": [
+        6.4e-08,
+        2e-07
+      ],
+      "bits_in_window": 68,
+      "rows": 303779,
+      "signed_fJ_per_bit": 1063.8035302113838,
+      "positive_draw_fJ_per_bit": 1067.6113509255597,
+      "iled_min_uA": 24.95077318818842,
+      "iled_max_uA": 100.0695702441859,
+      "power_boundary": "sum of external supply terminals; ideal DATA source and upstream regulators excluded",
+      "rail_energies": {
+        "VLED": {
+          "start_s": 6.4e-08,
+          "end_s": 2e-07,
+          "duration_s": 1.36e-07,
+          "n_gross_bits": 68,
+          "net_J": 4.1189748677483816e-11,
+          "positive_draw_J": 4.1191310612207405e-11,
+          "returned_J": 1.5619347235843582e-15,
+          "net_mean_W": 0.0003028657990991457,
+          "positive_draw_mean_W": 0.00030287728391328975,
+          "returned_mean_W": 1.1484814144002634e-08,
+          "net_J_per_gross_bit": 6.057315981982914e-13,
+          "positive_draw_J_per_gross_bit": 6.057545678265795e-13,
+          "returned_J_per_gross_bit": 2.2969628288005268e-17,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VDD": {
+          "start_s": 6.4e-08,
+          "end_s": 2e-07,
+          "duration_s": 1.36e-07,
+          "n_gross_bits": 68,
+          "net_J": 1.3412135007659035e-11,
+          "positive_draw_J": 1.3661901235301695e-11,
+          "returned_J": 2.497662276426574e-13,
+          "net_mean_W": 9.86186397621988e-05,
+          "positive_draw_mean_W": 0.00010045515614192423,
+          "returned_mean_W": 1.8365163797254222e-06,
+          "net_J_per_gross_bit": 1.9723727952439756e-13,
+          "positive_draw_J_per_gross_bit": 2.0091031228384845e-13,
+          "returned_J_per_gross_bit": 3.673032759450845e-15,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        },
+        "VDUMMY": {
+          "start_s": 6.4e-08,
+          "end_s": 2e-07,
+          "duration_s": 1.36e-07,
+          "n_gross_bits": 68,
+          "net_J": 1.7736756369231256e-11,
+          "positive_draw_J": 1.7744360015428955e-11,
+          "returned_J": 7.603646197700436e-15,
+          "net_mean_W": 0.00013041732624434748,
+          "positive_draw_mean_W": 0.00013047323540756585,
+          "returned_mean_W": 5.590916321838556e-08,
+          "net_J_per_gross_bit": 2.608346524886949e-13,
+          "positive_draw_J_per_gross_bit": 2.609464708151317e-13,
+          "returned_J_per_gross_bit": 1.1181832643677112e-16,
+          "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+        }
+      }
+    },
+    "iled_rms_gear_vs_trap_uA": 0.005007231783158905
+  },
+  "highrate_tolerance_comparison": {
+    "1000000000.0": {
+      "A-full-gear": {
+        "window_s": [
+          2.86e-07,
+          7.97e-07
+        ],
+        "bits_in_window": 511,
+        "rows": 494764,
+        "signed_fJ_per_bit": 405.2895853269,
+        "positive_draw_fJ_per_bit": 585.875325814711,
+        "iled_min_uA": 21.06659073805639,
+        "iled_max_uA": 106.8369592634717,
+        "power_boundary": "sum of external supply terminals; ideal DATA source and upstream regulators excluded",
+        "rail_energies": {
+          "VLED": {
+            "start_s": 2.86e-07,
+            "end_s": 7.97e-07,
+            "duration_s": 5.11e-07,
+            "n_gross_bits": 511,
+            "net_J": 1.5901419280552794e-10,
+            "positive_draw_J": 1.9574227198495933e-10,
+            "returned_J": 3.672807917943138e-11,
+            "net_mean_W": 0.0003111823733963365,
+            "positive_draw_mean_W": 0.0003830572837279048,
+            "returned_mean_W": 7.187491033156826e-05,
+            "net_J_per_gross_bit": 3.1118237339633646e-13,
+            "positive_draw_J_per_gross_bit": 3.830572837279048e-13,
+            "returned_J_per_gross_bit": 7.187491033156826e-14,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VDD": {
+            "start_s": 2.86e-07,
+            "end_s": 7.97e-07,
+            "duration_s": 5.11e-07,
+            "n_gross_bits": 511,
+            "net_J": 8.354851716672585e-11,
+            "positive_draw_J": 8.599985301405298e-11,
+            "returned_J": 2.4513358473271298e-12,
+            "net_mean_W": 0.00016350003359437545,
+            "positive_draw_mean_W": 0.00016829716832495692,
+            "returned_mean_W": 4.7971347305814676e-06,
+            "net_J_per_gross_bit": 1.6350003359437544e-13,
+            "positive_draw_J_per_gross_bit": 1.682971683249569e-13,
+            "returned_J_per_gross_bit": 4.797134730581468e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VH": {
+            "start_s": 2.86e-07,
+            "end_s": 7.97e-07,
+            "duration_s": 5.11e-07,
+            "n_gross_bits": 511,
+            "net_J": 6.672517317998437e-12,
+            "positive_draw_J": 1.718443686848822e-11,
+            "returned_J": 1.0511919550489784e-11,
+            "net_mean_W": 1.3057763831699485e-05,
+            "positive_draw_mean_W": 3.362903496768732e-05,
+            "returned_mean_W": 2.0571271135987838e-05,
+            "net_J_per_gross_bit": 1.3057763831699484e-14,
+            "positive_draw_J_per_gross_bit": 3.362903496768732e-14,
+            "returned_J_per_gross_bit": 2.0571271135987834e-14,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VL": {
+            "start_s": 2.86e-07,
+            "end_s": 7.97e-07,
+            "duration_s": 5.11e-07,
+            "n_gross_bits": 511,
+            "net_J": -4.2132249188206324e-11,
+            "positive_draw_J": 4.55729623816781e-13,
+            "returned_J": 4.2587978812023104e-11,
+            "net_mean_W": -8.24505854955114e-05,
+            "positive_draw_mean_W": 8.918387941619982e-07,
+            "returned_mean_W": 8.33424242896734e-05,
+            "net_J_per_gross_bit": -8.24505854955114e-14,
+            "positive_draw_J_per_gross_bit": 8.918387941619981e-16,
+            "returned_J_per_gross_bit": 8.334242428967339e-14,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          }
+        },
+        "Iled_rms_difference_uA": 0.0,
+        "RX_proxy_rms_difference_uA": 0.0,
+        "signed_fJ_per_bit_relative_change_pct": 0.0,
+        "positive_draw_fJ_per_bit_relative_change_pct": 0.0
+      },
+      "A1-rel1e5-c1e16": {
+        "window_s": [
+          2.86e-07,
+          7.97e-07
+        ],
+        "bits_in_window": 511,
+        "rows": 225995,
+        "signed_fJ_per_bit": 405.2390429147982,
+        "positive_draw_fJ_per_bit": 585.7919809721765,
+        "iled_min_uA": 21.063364987897412,
+        "iled_max_uA": 106.82290521843089,
+        "power_boundary": "sum of external supply terminals; ideal DATA source and upstream regulators excluded",
+        "rail_energies": {
+          "VLED": {
+            "start_s": 2.86e-07,
+            "end_s": 7.97e-07,
+            "duration_s": 5.11e-07,
+            "n_gross_bits": 511,
+            "net_J": 1.589851546116233e-10,
+            "positive_draw_J": 1.957069403708411e-10,
+            "returned_J": 3.6721785759217767e-11,
+            "net_mean_W": 0.00031112554718517286,
+            "positive_draw_mean_W": 0.0003829881416259122,
+            "returned_mean_W": 7.186259444073928e-05,
+            "net_J_per_gross_bit": 3.111255471851728e-13,
+            "positive_draw_J_per_gross_bit": 3.829881416259121e-13,
+            "returned_J_per_gross_bit": 7.186259444073927e-14,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VDD": {
+            "start_s": 2.86e-07,
+            "end_s": 7.97e-07,
+            "duration_s": 5.11e-07,
+            "n_gross_bits": 511,
+            "net_J": 8.354654070385398e-11,
+            "positive_draw_J": 8.599811270146858e-11,
+            "returned_J": 2.451571997614612e-12,
+            "net_mean_W": 0.00016349616576096673,
+            "positive_draw_mean_W": 0.00016829376262518316,
+            "returned_mean_W": 4.797596864216462e-06,
+            "net_J_per_gross_bit": 1.634961657609667e-13,
+            "positive_draw_J_per_gross_bit": 1.6829376262518312e-13,
+            "returned_J_per_gross_bit": 4.797596864216462e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VH": {
+            "start_s": 2.86e-07,
+            "end_s": 7.97e-07,
+            "duration_s": 5.11e-07,
+            "n_gross_bits": 511,
+            "net_J": 6.663620212003244e-12,
+            "positive_draw_J": 1.717869246413459e-11,
+            "returned_J": 1.0515072252131346e-11,
+            "net_mean_W": 1.3040352665368385e-05,
+            "positive_draw_mean_W": 3.3617793471887655e-05,
+            "returned_mean_W": 2.057744080651927e-05,
+            "net_J_per_gross_bit": 1.3040352665368383e-14,
+            "positive_draw_J_per_gross_bit": 3.361779347188765e-14,
+            "returned_J_per_gross_bit": 2.057744080651927e-14,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VL": {
+            "start_s": 2.86e-07,
+            "end_s": 7.97e-07,
+            "duration_s": 5.11e-07,
+            "n_gross_bits": 511,
+            "net_J": -4.2118164598018656e-11,
+            "positive_draw_J": 4.559567403378946e-13,
+            "returned_J": 4.257412133835656e-11,
+            "net_mean_W": -8.242302269670971e-05,
+            "positive_draw_mean_W": 8.922832491935315e-07,
+            "returned_mean_W": 8.331530594590325e-05,
+            "net_J_per_gross_bit": -8.24230226967097e-14,
+            "positive_draw_J_per_gross_bit": 8.922832491935315e-16,
+            "returned_J_per_gross_bit": 8.331530594590324e-14,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          }
+        },
+        "Iled_rms_difference_uA": 0.01685079823307226,
+        "RX_proxy_rms_difference_uA": 0.009622912986298516,
+        "signed_fJ_per_bit_relative_change_pct": -0.012470691064281336,
+        "positive_draw_fJ_per_bit_relative_change_pct": -0.014225695956493478
+      }
+    },
+    "4000000000.0": {
+      "A4-rel1e5-c1e16": {
+        "window_s": [
+          7.15e-08,
+          1.9925e-07
+        ],
+        "bits_in_window": 511,
+        "rows": 171810,
+        "signed_fJ_per_bit": 224.70832537490938,
+        "positive_draw_fJ_per_bit": 322.65109162860153,
+        "iled_min_uA": 21.06737989121709,
+        "iled_max_uA": 106.8220311771516,
+        "power_boundary": "sum of external supply terminals; ideal DATA source and upstream regulators excluded",
+        "rail_energies": {
+          "VLED": {
+            "start_s": 7.15e-08,
+            "end_s": 1.9925e-07,
+            "duration_s": 1.2775e-07,
+            "n_gross_bits": 511,
+            "net_J": 3.930359419046693e-11,
+            "positive_draw_J": 6.64658373291867e-11,
+            "returned_J": 2.7162243138719764e-11,
+            "net_mean_W": 0.0003076602284968057,
+            "positive_draw_mean_W": 0.0005202805270386434,
+            "returned_mean_W": 0.00021262029854183772,
+            "net_J_per_gross_bit": 7.691505712420142e-14,
+            "positive_draw_J_per_gross_bit": 1.3007013175966086e-13,
+            "returned_J_per_gross_bit": 5.315507463545942e-14,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VDD": {
+            "start_s": 7.15e-08,
+            "end_s": 1.9925e-07,
+            "duration_s": 1.2775e-07,
+            "n_gross_bits": 511,
+            "net_J": 8.24364022201407e-11,
+            "positive_draw_J": 8.480072391574682e-11,
+            "returned_J": 2.3643216956061256e-12,
+            "net_mean_W": 0.0006452947336214537,
+            "positive_draw_mean_W": 0.000663802144154574,
+            "returned_mean_W": 1.8507410533120357e-05,
+            "net_J_per_gross_bit": 1.613236834053634e-13,
+            "positive_draw_J_per_gross_bit": 1.6595053603864348e-13,
+            "returned_J_per_gross_bit": 4.626852633280089e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VH": {
+            "start_s": 7.15e-08,
+            "end_s": 1.9925e-07,
+            "duration_s": 1.2775e-07,
+            "n_gross_bits": 511,
+            "net_J": 8.428813758194231e-12,
+            "positive_draw_J": 1.3212602697246644e-11,
+            "returned_J": 4.783788939052413e-12,
+            "net_mean_W": 6.597897266688245e-05,
+            "positive_draw_mean_W": 0.00010342546142658822,
+            "returned_mean_W": 3.7446488759705784e-05,
+            "net_J_per_gross_bit": 1.6494743166720608e-14,
+            "positive_draw_J_per_gross_bit": 2.5856365356647052e-14,
+            "returned_J_per_gross_bit": 9.361622189926444e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VL": {
+            "start_s": 7.15e-08,
+            "end_s": 1.9925e-07,
+            "duration_s": 1.2775e-07,
+            "n_gross_bits": 511,
+            "net_J": -1.5342855902223157e-11,
+            "positive_draw_J": 3.9554388003523263e-13,
+            "returned_J": 1.573839978225839e-11,
+            "net_mean_W": -0.00012010063328550417,
+            "positive_draw_mean_W": 3.096233894600647e-06,
+            "returned_mean_W": 0.00012319686718010483,
+            "net_J_per_gross_bit": -3.0025158321376045e-14,
+            "positive_draw_J_per_gross_bit": 7.740584736501617e-16,
+            "returned_J_per_gross_bit": 3.07992167950262e-14,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          }
+        },
+        "Iled_rms_difference_uA": 0.0,
+        "RX_proxy_rms_difference_uA": 0.0,
+        "signed_fJ_per_bit_relative_change_pct": 0.0,
+        "positive_draw_fJ_per_bit_relative_change_pct": 0.0
+      },
+      "A4-rel1e5-c1e16-step1ps": {
+        "window_s": [
+          7.15e-08,
+          1.9925e-07
+        ],
+        "bits_in_window": 511,
+        "rows": 256111,
+        "signed_fJ_per_bit": 224.71339572945467,
+        "positive_draw_fJ_per_bit": 322.65904191572207,
+        "iled_min_uA": 21.06704213515781,
+        "iled_max_uA": 106.8256083907994,
+        "power_boundary": "sum of external supply terminals; ideal DATA source and upstream regulators excluded",
+        "rail_energies": {
+          "VLED": {
+            "start_s": 7.15e-08,
+            "end_s": 1.9925e-07,
+            "duration_s": 1.2775e-07,
+            "n_gross_bits": 511,
+            "net_J": 3.930578124313209e-11,
+            "positive_draw_J": 6.646890684925254e-11,
+            "returned_J": 2.7163125606120453e-11,
+            "net_mean_W": 0.0003076773482828344,
+            "positive_draw_mean_W": 0.0005203045545929749,
+            "returned_mean_W": 0.00021262720631014056,
+            "net_J_per_gross_bit": 7.69193370707086e-14,
+            "positive_draw_J_per_gross_bit": 1.3007613864824372e-13,
+            "returned_J_per_gross_bit": 5.3156801577535134e-14,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VDD": {
+            "start_s": 7.15e-08,
+            "end_s": 1.9925e-07,
+            "duration_s": 1.2775e-07,
+            "n_gross_bits": 511,
+            "net_J": 8.243711307868251e-11,
+            "positive_draw_J": 8.480150079368644e-11,
+            "returned_J": 2.364387715003932e-12,
+            "net_mean_W": 0.0006453002980718788,
+            "positive_draw_mean_W": 0.0006638082253908919,
+            "returned_mean_W": 1.8507927319013167e-05,
+            "net_J_per_gross_bit": 1.613250745179697e-13,
+            "positive_draw_J_per_gross_bit": 1.6595205634772297e-13,
+            "returned_J_per_gross_bit": 4.6269818297532914e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VH": {
+            "start_s": 7.15e-08,
+            "end_s": 1.9925e-07,
+            "duration_s": 1.2775e-07,
+            "n_gross_bits": 511,
+            "net_J": 8.429157947753727e-12,
+            "positive_draw_J": 1.3212863885922644e-11,
+            "returned_J": 4.783705938168918e-12,
+            "net_mean_W": 6.598166691000962e-05,
+            "positive_draw_mean_W": 0.00010342750595634164,
+            "returned_mean_W": 3.744583904633204e-05,
+            "net_J_per_gross_bit": 1.6495416727502402e-14,
+            "positive_draw_J_per_gross_bit": 2.585687648908541e-14,
+            "returned_J_per_gross_bit": 9.36145976158301e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VL": {
+            "start_s": 7.15e-08,
+            "end_s": 1.9925e-07,
+            "duration_s": 1.2775e-07,
+            "n_gross_bits": 511,
+            "net_J": -1.5343507051816998e-11,
+            "positive_draw_J": 3.9549889007235727e-13,
+            "returned_J": 1.5739005941889354e-11,
+            "net_mean_W": -0.0001201057303469041,
+            "positive_draw_mean_W": 3.0958817226799005e-06,
+            "returned_mean_W": 0.00012320161206958398,
+            "net_J_per_gross_bit": -3.0026432586726025e-14,
+            "positive_draw_J_per_gross_bit": 7.739704306699751e-16,
+            "returned_J_per_gross_bit": 3.0800403017395994e-14,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          }
+        },
+        "Iled_rms_difference_uA": 0.003744305349401069,
+        "RX_proxy_rms_difference_uA": 0.0019769633699392823,
+        "signed_fJ_per_bit_relative_change_pct": 0.0022564159724902666,
+        "positive_draw_fJ_per_bit_relative_change_pct": 0.0024640508979656417
+      },
+      "A4-rel1e4-c1e16": {
+        "window_s": [
+          7.15e-08,
+          1.9925e-07
+        ],
+        "bits_in_window": 511,
+        "rows": 77773,
+        "signed_fJ_per_bit": 224.7186077487848,
+        "positive_draw_fJ_per_bit": 322.6089356122246,
+        "iled_min_uA": 21.058480573266728,
+        "iled_max_uA": 106.8069830292333,
+        "power_boundary": "sum of external supply terminals; ideal DATA source and upstream regulators excluded",
+        "rail_energies": {
+          "VLED": {
+            "start_s": 7.15e-08,
+            "end_s": 1.9925e-07,
+            "duration_s": 1.2775e-07,
+            "n_gross_bits": 511,
+            "net_J": 3.932661868764171e-11,
+            "positive_draw_J": 6.646808853205029e-11,
+            "returned_J": 2.7141469844408563e-11,
+            "net_mean_W": 0.0003078404593944557,
+            "positive_draw_mean_W": 0.0005202981489788672,
+            "returned_mean_W": 0.00021245768958441148,
+            "net_J_per_gross_bit": 7.696011484861392e-14,
+            "positive_draw_J_per_gross_bit": 1.300745372447168e-13,
+            "returned_J_per_gross_bit": 5.311442239610286e-14,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VDD": {
+            "start_s": 7.15e-08,
+            "end_s": 1.9925e-07,
+            "duration_s": 1.2775e-07,
+            "n_gross_bits": 511,
+            "net_J": 8.241565929269378e-11,
+            "positive_draw_J": 8.478098304943887e-11,
+            "returned_J": 2.3653237567450848e-12,
+            "net_mean_W": 0.000645132362369423,
+            "positive_draw_mean_W": 0.0006636476168253533,
+            "returned_mean_W": 1.8515254455930215e-05,
+            "net_J_per_gross_bit": 1.6128309059235574e-13,
+            "positive_draw_J_per_gross_bit": 1.659119042063383e-13,
+            "returned_J_per_gross_bit": 4.628813613982554e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VH": {
+            "start_s": 7.15e-08,
+            "end_s": 1.9925e-07,
+            "duration_s": 1.2775e-07,
+            "n_gross_bits": 511,
+            "net_J": 8.429529652665994e-12,
+            "positive_draw_J": 1.3207433219123461e-11,
+            "returned_J": 4.777903566457468e-12,
+            "net_mean_W": 6.598457653750289e-05,
+            "positive_draw_mean_W": 0.00010338499584441066,
+            "returned_mean_W": 3.740041930690777e-05,
+            "net_J_per_gross_bit": 1.649614413437572e-14,
+            "positive_draw_J_per_gross_bit": 2.5846248961102665e-14,
+            "returned_J_per_gross_bit": 9.350104826726943e-15,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          },
+          "VL": {
+            "start_s": 7.15e-08,
+            "end_s": 1.9925e-07,
+            "duration_s": 1.2775e-07,
+            "n_gross_bits": 511,
+            "net_J": -1.5340599073372464e-11,
+            "positive_draw_J": 3.9666129723414986e-13,
+            "returned_J": 1.5737260370606616e-11,
+            "net_mean_W": -0.00012008296730624238,
+            "positive_draw_mean_W": 3.1049808002673182e-06,
+            "returned_mean_W": 0.00012318794810650972,
+            "net_J_per_gross_bit": -3.0020741826560593e-14,
+            "positive_draw_J_per_gross_bit": 7.762452000668295e-16,
+            "returned_J_per_gross_bit": 3.079698702662743e-14,
+            "boundary": "this source's electrical terminals only; upstream regulator/recovery loss excluded"
+          }
+        },
+        "Iled_rms_difference_uA": 0.019679170434364148,
+        "RX_proxy_rms_difference_uA": 0.007244399518460942,
+        "signed_fJ_per_bit_relative_change_pct": 0.004575875797319107,
+        "positive_draw_fJ_per_bit_relative_change_pct": -0.013065511777476946
+      }
+    }
+  },
+  "interpretation": [
+    "Original failure is reproducible; numerical method, timestep, or tiny timestamp rounding changes move/remove it without modifying circuit conditions.",
+    "Decimal rounding alone is insufficient: full rounded-trap run fails later around202ns.",
+    "Gear2 reaches829ns; short-window conduction and energy agree closely with successful fine-step Trap.",
+    "Evidence supports a numerical convergence issue around PWL slope changes; it does not identify a specific ngspice implementation defect.",
+    "Gear2 alone does not guarantee high-rate convergence. At1/2/4/8Gbps Gear2 plus reltol1e-5 and chgtol1e-16 completed all original durations without physical changes.",
+    "Higher-rate trials are named A{rate}-rel1e5-c1e16; A4 fine-step control uses maxstep1ps. Other trial names expose their sole option/source changes; exact decks are hashed.",
+    "B still needs many steps with Gear2; no claim that B step count is solely trapezoidal numerical ringing.",
+    "These diagnostic B results retain the earlier0.35um diffusion recipe and are not the final matched-geometry architecture comparison."
+  ],
+  "reproduction": {
+    "command": "build/layout/venv/bin/python build/highspeed-nrz/pwl-debug/diagnose.py --rerun",
+    "script": "build/highspeed-nrz/pwl-debug/diagnose.py",
+    "script_sha256": "d6d993d7563554762b2012c856c64483d9a7105c9e207a414fa603a07fbe8733",
+    "frozen_metrics": "build/highspeed-nrz/pwl-debug/inputs/metrics.py",
+    "metrics_sha256": "07fdffa7ab8eb011a070d018ccf683902471427633170b9e83df697ce525180e",
+    "numpy_version": "2.5.3",
+    "python_version": "3.12.13 (main, Mar 25 2026, 03:16:06) [Clang 22.1.1 ]",
+    "analysis_script_sha256_before_archive_support": "ea6c8339f0dac2af771ac7d96f77f7fc2371fc44e1414747bd1791953e0dc78b"
+  },
+  "limitations": [
+    "pre-layout numerical experiment",
+    "no optical bandwidth, measured BER, silicon or PEX claim",
+    "positive draw excludes actual regulator loss"
+  ],
+  "raw_archive": {
+    "receipt": "build/highspeed-nrz/pwl-debug/waveform-archive.json",
+    "receipt_sha256": "a60c5eb0c572f468f98b6ffdbde5400e7a2a5bf82940817d2fa18d1535856b8d",
+    "archive_script": "build/highspeed-nrz/pwl-debug/archive_raw.py",
+    "archive_script_sha256": "bfc22704ee58695672dca8439cabade2b638ca74efbca644df1917998cf73b9b",
+    "file_count": 20,
+    "released_bytes": 825904495,
+    "verification": "Every archive decompressed to same original byte SHA256 before original raw was removed; no other work directories touched"
+  }
+}

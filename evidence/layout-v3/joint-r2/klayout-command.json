@@ -1,0 +1,37 @@
+{
+  "argv": [
+    "limactl",
+    "shell",
+    "asic",
+    "nerdctl",
+    "run",
+    "--rm",
+    "-v",
+    "/Users/kimmy/Projects/open-microled-driver-asic:/Users/kimmy/Projects/open-microled-driver-asic",
+    "-w",
+    "/Users/kimmy/Projects/open-microled-driver-asic/build/layout-v3/joint-r2",
+    "-e",
+    "QT_QPA_PLATFORM=offscreen",
+    "-e",
+    "PYTHONPATH=/Users/kimmy/Projects/open-microled-driver-asic/build/physical-flow/linux-python",
+    "-e",
+    "PDK_ROOT=/Users/kimmy/Projects/open-microled-driver-asic/build/layout/pdk",
+    "ghcr.io/librelane/librelane@sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f",
+    "python3",
+    "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/pdk/gf180mcuD/libs.tech/klayout/tech/drc/run_drc.py",
+    "--path=/Users/kimmy/Projects/open-microled-driver-asic/build/layout-v3/joint-r2/startup_integrated_v3.gds",
+    "--variant=D",
+    "--topcell=startup_integrated_v3",
+    "--mp=1",
+    "--thr=4",
+    "--run_dir=/Users/kimmy/Projects/open-microled-driver-asic/build/layout-v3/joint-r2/klayout"
+  ],
+  "exit_code": 0,
+  "image": "ghcr.io/librelane/librelane@sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f",
+  "sha256": {
+    "scripts/layout_v3/joint/run_klayout.py": "6d6731eedc0d37a4e3a3a1cec6db64054b13f1ab9f696ec8194a0d335b4403aa",
+    "build/layout-v3/joint-r2/startup_integrated_v3.gds": "85b78345f3355aab7fb7b4cc46166dc3f8d98adcbc0672118b4fbc13f698f0a0",
+    "build/layout/pdk/gf180mcuD/libs.tech/klayout/tech/drc/run_drc.py": "6eed310882152bdf837e958301afcc75bc86e64ab2b27158fa931188466dc61f",
+    "build/layout/pdk/gf180mcuD/libs.tech/klayout/tech/drc/gf180mcu.drc": "9b986260e1909e9ce2ee97b2d1103dc513836bc6a440e876d66d23c85985c41a"
+  }
+}
