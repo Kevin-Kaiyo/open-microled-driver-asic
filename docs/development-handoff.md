@@ -16,6 +16,18 @@
 
 备份范围以 [`evidence/backups/research-20261019.json`](../evidence/backups/research-20261019.json) 的实际文件清单、长度和 SHA-256 为准。**这不是整个工作空间、全部历史 `build/`、虚拟机或全部 PDK 的备份。** 未列入清单的历史实验仍需保留在原机器，或另行完整归档。忽略列表中的大 CSV 若再次修改，也必须更新归档清单并发布新的阶段附件，不能仅检查 `git status`。上传成功也不自动删除本地副本；应先核对远端附件、恢复并校验，再依据当前开发依赖决定是否移走历史数据。
 
+## 本阶段实际恢复检查
+
+研究快照：[research-20261019](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/research-20261019)，源提交 `ee9cd265d7f3221b428d60cb5283a952e4ef0993`。后续验证回执另加在主分支和 Release 附件，保持该标签不变。
+
+- [本地归档校验](../evidence/backups/research-20261019-local.json)：31 个归档、3,784 个普通文件；原始 12,299,538,316 字节，归档 6,274,853,490 字节；归档及逐文件 SHA-256 均通过。恢复工具 12 项测试通过。
+- [GitHub 回读核验](../evidence/backups/research-20261019-remote.json)：31 个归档全部上传后重新下载，长度和 SHA-256 与本地已逐文件校验的归档一致。恢复测试使用这些本地归档；远端文件与其字节等价由该回执单独记录。
+- [恢复与复算记录](../evidence/backups/research-20261019-recovery.json)：从 GitHub 新检出该提交，在另一个目录恢复 NRZ 与建模输入共 1,419 个文件；15 项算法自检和 472 项交付一致性检查通过。
+- 重新分析正式 NRZ 批次的 36 组 DC 和 60 组瞬态；完整 `analysis.json` 与汇总 `summary.json` 均与归档逐字节一致，Git 跟踪文件没有因复算产生变化。该检查未重新运行 ngspice。
+- 首次验证脚本把虚拟环境 Python 的符号链接解析成裸解释器，导致 NumPy 导入失败；改为调用虚拟环境原路径后通过。修正仅涉及临时验证脚本，未改动电路或分析方法。
+
+这些检查发生在**同一台 macOS ARM 主机的独立检出目录**，没有验证 Windows／Linux 安装，也没有重跑单像素全部物理流程。它们证明指定文件可恢复且现有 NRZ 数据可复算，不构成硅片或光链路验证。
+
 ## 获取资料与恢复指定证据
 
 需要 Git、GitHub CLI（`gh`）和 Python 3。以下命令在项目目录执行；Windows 可在 WSL2 终端执行同样的下载与恢复操作。Release 标签表示一个研究快照，开发时应另外检查当前分支是否已有更新。

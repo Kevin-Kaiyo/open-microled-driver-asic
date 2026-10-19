@@ -1,0 +1,72 @@
+{
+  "status": "passed",
+  "repository_commit": "ee9cd265d7f3221b428d60cb5283a952e4ef0993",
+  "commands": [
+    {
+      "command": [
+        "python",
+        "scripts/highspeed_nrz/metrics.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "f7933857661235080e306cd3e0976021156d770e37fd54945da5e9f4588b6c6c"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/highspeed_nrz/validate_delivery.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "8879c39ec84e5dcef5279560c11cd8e5266a7206069ce2395bf53e454417c55a"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/highspeed_nrz/analyze.py",
+        "--work",
+        "build/highspeed-nrz/run-0xqxvspp",
+        "--output-dir",
+        "build/recovery-check/reanalysis"
+      ],
+      "exit_code": 0,
+      "log_sha256": "c30ad3acbfc7c9487db0e561e05c96fff3e4e84c7440ae4aebd3f34943a0b78d"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/highspeed_nrz/validate_delivery.py"
+      ],
+      "exit_code": 0,
+      "log_sha256": "8879c39ec84e5dcef5279560c11cd8e5266a7206069ce2395bf53e454417c55a"
+    }
+  ],
+  "analytical_unit_checks": 15,
+  "delivery_consistency_checks": 472,
+  "recomputed_cases": 96,
+  "counts": {
+    "case_results_found": 96,
+    "simulation_failures": 0,
+    "analysis_failures": 0,
+    "analyzed_DC": 36,
+    "analyzed_transient": 60
+  },
+  "recomputed_full_analysis_byte_identical": true,
+  "recomputed_summary_byte_identical": true,
+  "analysis_sha256": "865b4a4d195ab00bdec4e539c10877260369e8f2e9f36b93c72dde7725256a68",
+  "restoration_scope": [
+    "nrz-evidence",
+    "blender-support"
+  ],
+  "boundary": "Fresh GitHub checkout at a different directory on the same macOS ARM machine. Restored archive bytes and reanalyzed saved waveforms; no new SPICE simulation, full physical PDK bootstrap, Windows/Linux validation or optical measurement.",
+  "manifest_sha256": "dacdb161797f8769e395847ea05469f6b0dfa0c047735f4290e3800e3e762050",
+  "restored_files": 1419,
+  "restore_output": "RESTORED 1419 files; SKIPPED 0 identical files",
+  "tracked_checkout_clean_after_reanalysis": true,
+  "archive_source": "Locally member-verified archives; the separate remote receipt verifies GitHub download byte equality to these same archive hashes.",
+  "initial_validation_runner_issue": {
+    "error": "ModuleNotFoundError: numpy",
+    "cause": "The temporary recovery runner resolved the virtualenv Python symlink to the base interpreter, bypassing its packages.",
+    "repair": "Invoke the original virtualenv executable path without resolving its symlink.",
+    "rerun": "All four verification commands exited 0 after correction; no project analysis or electrical model changed."
+  },
+  "log_directory": "evidence/backups/research-20261019-recovery-logs"
+}

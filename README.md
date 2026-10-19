@@ -10,6 +10,8 @@ An independent, open platform for experimental R&D methodology validation and te
 
 每个已验证阶段完成后同步。代码、报告、最终 Blender 场景和紧凑证据保存在 Git；大型原始数据采用有 SHA-256 清单的 Release 附件。阅读 [跨机接续说明](docs/development-handoff.md)，按需恢复指定实验。普通 `git clone` 不包含被忽略的全部 `build/`、PDK 或虚拟机。
 
+[2026-10-19 研究快照与原始附件](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/research-20261019)：31 个归档的上传后回读核验通过；独立检出恢复并复算 96 组 NRZ 数据，完整分析和汇总文件与归档逐字节一致。此次使用同一台 Mac 的不同目录，跨操作系统完整流程仍待验证。
+
 ## 先读当前研究报告
 
 - **单通道 NRZ 晶体管比较（2026-10-19）：[中文研究报告](docs/research/highspeed-nrz-20261019/index.html) / [网表、数据与复现](docs/research/highspeed-nrz-20261019/README.md)。** 实现 GF180 电压驱动与电流转向两版电路，统一静态 LED 曲线、动态负载假设、数据序列与接收条件，检查速率、逐电源取能/回灌、MOS 角落、电容敏感性及数值收敛。属于 pre-layout 电气与接收代理实验；真实光学 BER、完整高速版图和流片验证仍未完成。
