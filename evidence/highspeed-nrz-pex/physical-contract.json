@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "physical_work": "build/highspeed-nrz-layout/r3",
+  "routes": {
+    "A": {
+      "variants": {
+        "GEOM": {
+          "path": "build/highspeed-nrz-layout/r3/A/geometry-only.spice",
+          "subckt": "hs_nrz_voltage_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vh",
+            "vl",
+            "vss"
+          ],
+          "sha256": "6644157bd5cfb8b97cc2d326358a90632ffd637079e78141adb21e51e9092601"
+        },
+        "C": {
+          "path": "build/highspeed-nrz-layout/r3/A/capacitance-only.spice",
+          "subckt": "hs_nrz_voltage_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vh",
+            "vl",
+            "vss"
+          ],
+          "sha256": "14a076d345d8428cfc6f7dbb67612bb4b4e0229a5a8bb0f4b28b2634be18e161"
+        },
+        "RC": {
+          "path": "build/highspeed-nrz-layout/r3/A/full-rc/hs_nrz_voltage_core_rc.spice",
+          "subckt": "hs_nrz_voltage_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vh",
+            "vl",
+            "vss"
+          ],
+          "sha256": "4c58a33ead7847a98ca3cc24ed7212145b8cb5e09f4c117f96e2de254ec04ced"
+        }
+      },
+      "metadata_files": {
+        "contract": "build/highspeed-nrz-layout/r3/A/physical-contract.json",
+        "pex-audit": "build/highspeed-nrz-layout/r3/A/pex-audit.json",
+        "coverage": "build/highspeed-nrz-layout/r3/A/full-rc/coverage.json"
+      },
+      "external_components": [
+        {
+          "name": "VH",
+          "kind": "ideal bidirectional rail"
+        },
+        {
+          "name": "VL",
+          "kind": "ideal bidirectional rail"
+        }
+      ],
+      "dimension_change": []
+    },
+    "B": {
+      "variants": {
+        "GEOM": {
+          "path": "build/highspeed-nrz-layout/r3/B/geometry-only.spice",
+          "subckt": "hs_nrz_steering_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vss",
+            "bias",
+            "dummy"
+          ],
+          "sha256": "8369eb5960ed814b6784e7bfb08756a508c668cb3550644016309be6a74cf21d"
+        },
+        "C": {
+          "path": "build/highspeed-nrz-layout/r3/B/capacitance-only.spice",
+          "subckt": "hs_nrz_steering_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vss",
+            "bias",
+            "dummy"
+          ],
+          "sha256": "7eb67769e3e080b632bebeae22f3f28407b8aff0f3bde408a37a06492552620b"
+        },
+        "RC": {
+          "path": "build/highspeed-nrz-layout/r3/B/full-rc/hs_nrz_steering_core_rc.spice",
+          "subckt": "hs_nrz_steering_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vss",
+            "bias",
+            "dummy"
+          ],
+          "sha256": "f7b635c46cd7a5f403ff4334fbd16b3b81b3d924acc103d3d9337caf19bc7549"
+        }
+      },
+      "metadata_files": {
+        "contract": "build/highspeed-nrz-layout/r3/B/physical-contract.json",
+        "pex-audit": "build/highspeed-nrz-layout/r3/B/pex-audit.json",
+        "coverage": "build/highspeed-nrz-layout/r3/B/full-rc/coverage.json"
+      },
+      "external_components": [
+        {
+          "name": "RREF",
+          "nodes": [
+            "VDD",
+            "BIAS"
+          ],
+          "ohm": 88386.1064910889
+        },
+        {
+          "name": "RDUMMY",
+          "nodes": [
+            "VDUMMY",
+            "DUMMY"
+          ],
+          "ohm": 28000
+        }
+      ],
+      "dimension_change": [
+        {
+          "device": "TAIL",
+          "parameter": "W",
+          "original_um": 5.75895881652832,
+          "physical_um": 5.76,
+          "reason": "GF180 0.005um manufacturing grid"
+        }
+      ]
+    }
+  },
+  "retune": false,
+  "junction_capacitance": "extracted AD/AS/PD/PS replace old schematic estimate; no manual junction capacitor",
+  "scope": "flat transistor core; full extracted PG/body R nodes retained; lumped/distributed capacitance as emitted by Magic, no EM/package extraction"
+}

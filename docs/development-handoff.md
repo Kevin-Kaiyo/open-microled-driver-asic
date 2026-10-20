@@ -1,6 +1,28 @@
 # GitHub 备份与另一台电脑接续开发
 
-更新：2026-10-19。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
+更新：2026-10-20。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
+
+## 新增阶段：单通道 NRZ 版图与寄生比较
+
+[研究报告](research/highspeed-nrz-pex-20261020/index.html)、[分层版图](research/highspeed-nrz-pex-20261020/layout-viewer.html)和[复现说明](research/highspeed-nrz-pex-20261020/README.md)为当前入口。正式运行是 `build/highspeed-nrz-pex/run-0m3zyewc`；物理几何在 `r3` 冻结，修正电容模型在 `build/highspeed-nrz-layout/r4`。本阶段完成预声明的实验及独立核验，仍保留 PVT 失败和模型边界，未完成产品验证。
+
+新增 Release 为 [`nrz-pex-20261020`](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/nrz-pex-20261020)，[归档清单](../evidence/backups/nrz-pex-20261020.json)和[范围/排除项](../evidence/backups/nrz-pex-20261020-scope.json)记录全部普通文件。包含新增仿真、物理过程、失败诊断和报告字体输入；不重复归档上一阶段只读引用的 SCHEM 波形，不包含完整 PDK、工具或虚拟机。
+
+在新的检出目录中，先按本文后续步骤恢复 `research-20261019` 的 `nrz-evidence` 组，再恢复本轮增量：
+
+```sh
+gh release download nrz-pex-20261020 \
+  --repo Kevin-Kaiyo/open-microled-driver-asic \
+  --pattern 'nrz-pex-20261020-*.tar.gz' \
+  --dir build/github-download-nrz-pex
+python3 scripts/backup/release_bundle.py restore \
+  --manifest evidence/backups/nrz-pex-20261020.json \
+  --asset-dir build/github-download-nrz-pex --root .
+```
+
+恢复路径不能扁平化。正式仿真有 279 条分析记录，包含 74 条 SCHEM 基线及 GEOM/SNAP 控制复用；它不等于 279 次新仿真。`finalization.json` 固定最终哈希，`final-raw-inventory.json` 记录逐条波形核验，`integration-method-audit.json` 解释理想 DATA 取能/回灌的方法敏感性。重复分析先在独立目录进行，保留归档结果。
+
+准备匹配的 Python/NumPy 环境后，可运行 `scripts/highspeed_nrz_pex/validate.py --work build/highspeed-nrz-pex/run-0m3zyewc` 和 `scripts/highspeed_nrz_layout/validate_delivery.py`。实际重跑物理流程还需固定完整 PDK、Magic、Netgen、KLayout 与独立 DRC 容器，安装入口见后文。此阶段的归档与恢复回执会分别记录文件完整性和实际执行的检查，不把恢复成功当作再次完成全部 EDA。
 
 ## 同步规则与存储分工
 

@@ -1,0 +1,70 @@
+--- build/highspeed-nrz-layout/r4/source_scripts/correct_capacitance.py
++++ scripts/highspeed_nrz_layout/correct_capacitance.py
+@@ -5,9 +5,10 @@
+ coupling C into each endpoint's substrate C; retained original node names add
+ that split C again. The hierarchical writer also applies resistor pi handling
+ to MOS subcircuits. We retain the complete R/MOS network and use original .ext
+-capacitances once. Ground C is allocated using Magic's normalized resistor-tile
+-area weights; coupling C stays at original net names. This is an approximation
+-of spatial C placement, not a field-solved local coupling network.
++capacitances once. Ground C uses Magic's normalized allocation weights after
++resistor-network simplification; coupling C stays at original net names. These
++weights originate in tile areas but may move during resistor-weighted merging.
++They are not independent measured geometry or field-solved local capacitance.
+ """
+ from pathlib import Path
+ import argparse
+@@ -29,7 +30,9 @@
+         "ResReadCapacitor: ResOpt_Signal adds each coupling C to both nodes' capacitance."],
+     "resis/ResRex.c": ["CmdExtResis unconditionally enables ResOpt_Signal."],
+     "resis/ResSimple.c": [
+-        "ResDistributeCapacitance scales node geometric areas by totalcap/totalarea."],
++        "ResDistributeCapacitance scales node geometric areas by totalcap/totalarea.",
++        "Subsequent resistor simplification/merging may relocate capacitance with R weighting; "
++        "final rnode ratios are post-simplification allocation weights, not raw tile-area ratios."],
+     "resis/ResMakeRes.c": [
+         "ResMakeRes adds geometric tile height*width area to rn_area at segment endpoints.",
+         "Between breakpoints each resistor endpoint receives half the physical tile segment area."],
+@@ -119,7 +122,8 @@
+         total_weight = sum(values.values())
+         assert total_weight > 0, "No weights: cannot invent capacitance placement"
+         # Independent causal check: rnode values are coupled-C copies, rather
+-        # than the actual node-to-substrate C. Recover only their area ratios.
++        # than the actual node-to-substrate C. Recover only the normalized
++        # allocation ratios left after Magic resistor-network simplification.
+         assert math.isclose(total_weight*1e-18, incident[net], rel_tol=1e-4, abs_tol=1e-23)
+         total_ground = nodes[net]
+         allocated = {}
+@@ -138,7 +142,7 @@
+     caps.extend(couplings)
+     assembled = [f"* Audited RC model assembly from {extraction.relative_to(ROOT)}.",
+                  "* Original Magic RC preserved in ../unmodified-full-rc/.",
+-                 "* R/MOS unchanged; C counted once with explicit area-weight allocation.",
++                 "* R/MOS unchanged; C counted once with post-simplification allocation weights.",
+                  "* Coupling remains at original logical nodes; no EM claim.", portline]
+     assembled.extend(mos_r)
+     assembled.extend(f"C{i} {a} {b} {v:.17g}" for i, (a, b, v) in enumerate(caps))
+@@ -189,7 +193,8 @@
+     assert max(map(abs, native_errors.values())) < 1.01e-18
+     result = dict(
+         schema_version=1, passed=True, method="Explicit .ext-ground-C assembly using "
+-        "normalized Magic resistor-tile area weights; original coupling C retained once.",
++        "normalized allocation weights retained after Magic resistor-network simplification; "
++        "original coupling C retained once.",
+         not_unmodified_magic_output=True, geometry_changed=False, r_or_mos_changed=False,
+         original_rc_sha256=flow.sha(raw_rc), assembled_rc_sha256=flow.sha(rc),
+         authoritative_ext_sha256=flow.sha(extraction),
+@@ -208,8 +213,12 @@
+         native_flat_sha256=flow.sha(flat/"flat-c.spice"),
+         source_code_evidence={p: dict(sha256=flow.sha(MAGIC_SOURCE/p), findings=notes)
+                               for p, notes in SOURCE_LOCATORS.items()},
+-        limitations=["Ground C allocation follows Magic's area-weight approximation.",
++        limitations=["Ground C weights originate in tile areas but are changed by "
++                     "resistor-network simplification and R-weighted merging; "
++                     "they are not independent physical-area measurements.",
+                      "Coupling C is lumped at original named nets, not local spatial coupling.",
++                     "C-matrix conservation establishes bookkeeping, not high-frequency spatial accuracy; "
++                     "RCLUMP control is required to assess placement sensitivity.",
+                      "PDK/Magic/GDS and complete extracted R/MOS network unchanged.",
+                      "No intrinsic BSIM junction/gate capacitance is added or removed."])
+     result["rc_lumped_capacitance_control"] = lumped_control(route_dir)

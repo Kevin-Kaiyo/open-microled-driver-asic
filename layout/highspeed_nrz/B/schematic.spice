@@ -1,0 +1,13 @@
+* Independently derived from analog/highspeed_nrz/steering_driver.spice
+* External resistors excluded; B WTAIL snapped to 5.760 um.
+.subckt hs_nrz_steering_core DATA OUT VDD VSS BIAS DUMMY
+XREF BIAS BIAS VSS VSS nfet_03v3 w=2u l=1u
+XBASE OUT BIAS VSS VSS nfet_03v3 w=2u l=1u
+XTAIL VX BIAS VSS VSS nfet_03v3 w=5.76u l=1u
+XLED OUT GP VX VSS nfet_03v3 w=1u l=0.28u
+XDUMMY DUMMY GB VX VSS nfet_03v3 w=1u l=0.28u
+XINV1N GB DATA VSS VSS nfet_03v3 w=1u l=0.28u
+XINV1P GB DATA VDD VDD pfet_03v3 w=2u l=0.28u
+XINV2N GP GB VSS VSS nfet_03v3 w=1u l=0.28u
+XINV2P GP GB VDD VDD pfet_03v3 w=2u l=0.28u
+.ends hs_nrz_steering_core

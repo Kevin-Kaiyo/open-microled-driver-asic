@@ -1,0 +1,169 @@
+{
+  "schema_version": 2,
+  "physical_work": "build/highspeed-nrz-layout/r4",
+  "routes": {
+    "A": {
+      "variants": {
+        "GEOM": {
+          "path": "build/highspeed-nrz-layout/r4/A/geometry-only.spice",
+          "subckt": "hs_nrz_voltage_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vh",
+            "vl",
+            "vss"
+          ],
+          "sha256": "6644157bd5cfb8b97cc2d326358a90632ffd637079e78141adb21e51e9092601"
+        },
+        "C": {
+          "path": "build/highspeed-nrz-layout/r4/A/capacitance-only.spice",
+          "subckt": "hs_nrz_voltage_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vh",
+            "vl",
+            "vss"
+          ],
+          "sha256": "de8db3ce060c558f2d96f47e722545ba6b8813bb113147f3dcb94ed868434bb1"
+        },
+        "RC": {
+          "path": "build/highspeed-nrz-layout/r4/A/full-rc/hs_nrz_voltage_core_rc.spice",
+          "subckt": "hs_nrz_voltage_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vh",
+            "vl",
+            "vss"
+          ],
+          "sha256": "a09bdb32f6b0cdcd254d81b7ca42c6b8e441a5ebe930f66dbb4b49442e4808f6"
+        },
+        "RCLUMP": {
+          "path": "build/highspeed-nrz-layout/r4/A/rc-lumped-capacitance.spice",
+          "subckt": "hs_nrz_voltage_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vh",
+            "vl",
+            "vss"
+          ],
+          "sha256": "8bc6cd69b49c6745d96be264a8718201bffeefba683f7a0f7ff8d673f4b3efcf"
+        }
+      },
+      "metadata_files": {
+        "contract": "build/highspeed-nrz-layout/r4/A/physical-contract.json",
+        "pex-audit": "build/highspeed-nrz-layout/r4/A/pex-audit.json",
+        "coverage": "build/highspeed-nrz-layout/r4/A/full-rc/coverage.json"
+      },
+      "external_components": [
+        {
+          "name": "VH",
+          "kind": "ideal bidirectional rail"
+        },
+        {
+          "name": "VL",
+          "kind": "ideal bidirectional rail"
+        }
+      ],
+      "dimension_change": []
+    },
+    "B": {
+      "variants": {
+        "GEOM": {
+          "path": "build/highspeed-nrz-layout/r4/B/geometry-only.spice",
+          "subckt": "hs_nrz_steering_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vss",
+            "bias",
+            "dummy"
+          ],
+          "sha256": "8369eb5960ed814b6784e7bfb08756a508c668cb3550644016309be6a74cf21d"
+        },
+        "C": {
+          "path": "build/highspeed-nrz-layout/r4/B/capacitance-only.spice",
+          "subckt": "hs_nrz_steering_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vss",
+            "bias",
+            "dummy"
+          ],
+          "sha256": "0c17cffbd1d017c2763a5d98a41175e93338a8d3d79f170a99c105030d502c89"
+        },
+        "RC": {
+          "path": "build/highspeed-nrz-layout/r4/B/full-rc/hs_nrz_steering_core_rc.spice",
+          "subckt": "hs_nrz_steering_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vss",
+            "bias",
+            "dummy"
+          ],
+          "sha256": "8979254a2617a39ddc555dfdbd02125974c9667784c5ec36335b42ff6a1b7602"
+        },
+        "RCLUMP": {
+          "path": "build/highspeed-nrz-layout/r4/B/rc-lumped-capacitance.spice",
+          "subckt": "hs_nrz_steering_core",
+          "ports": [
+            "data",
+            "out",
+            "vdd",
+            "vss",
+            "bias",
+            "dummy"
+          ],
+          "sha256": "0bb2957dadbf07e07b48a693556eb660aa4341b598b4f940e0c2c609511721de"
+        }
+      },
+      "metadata_files": {
+        "contract": "build/highspeed-nrz-layout/r4/B/physical-contract.json",
+        "pex-audit": "build/highspeed-nrz-layout/r4/B/pex-audit.json",
+        "coverage": "build/highspeed-nrz-layout/r4/B/full-rc/coverage.json"
+      },
+      "external_components": [
+        {
+          "name": "RREF",
+          "nodes": [
+            "VDD",
+            "BIAS"
+          ],
+          "ohm": 88386.1064910889
+        },
+        {
+          "name": "RDUMMY",
+          "nodes": [
+            "VDUMMY",
+            "DUMMY"
+          ],
+          "ohm": 28000
+        }
+      ],
+      "dimension_change": [
+        {
+          "device": "TAIL",
+          "parameter": "W",
+          "original_um": 5.75895881652832,
+          "physical_um": 5.76,
+          "reason": "GF180 0.005um manufacturing grid"
+        }
+      ]
+    }
+  },
+  "retune": false,
+  "junction_capacitance": "extracted AD/AS/PD/PS replace old schematic estimate; no manual junction capacitor",
+  "scope": "Flat transistor core. Retain all extracted PG/body R; corrected C assembly conserves original ext net-pair matrix. Distributed shunt weights are normalized from Magic simplified network; not physical precise positions or raw unchanged output. RCLUMP controls ground capacitance placement."
+}

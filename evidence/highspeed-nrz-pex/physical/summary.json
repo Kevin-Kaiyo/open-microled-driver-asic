@@ -1,0 +1,750 @@
+{
+  "schema_version": 1,
+  "raw_run": "build/highspeed-nrz-layout/r4",
+  "routes": {
+    "A": {
+      "top": "hs_nrz_voltage_core",
+      "ports": [
+        "DATA",
+        "OUT",
+        "VDD",
+        "VH",
+        "VL",
+        "VSS"
+      ],
+      "dimensions_um": [
+        34.43,
+        24.51
+      ],
+      "core_area_um2": 843.8793000000001,
+      "gds_sha256": "2e645132256af70123bfed750bad1e33d3ecc419426ff745edd8c1190bdab258",
+      "counts": {
+        "mos": 6,
+        "resistors": 52,
+        "capacitors": 58,
+        "zero_valued_capacitors": 0
+      },
+      "extracted_nets": 8,
+      "explicit_capacitance_sum_fF": 36.233081776,
+      "checks": {
+        "magic_drc": {
+          "passed": true,
+          "counts": [
+            "0"
+          ]
+        },
+        "lvs": {
+          "passed": true,
+          "final_result": [
+            "Circuits match uniquely."
+          ],
+          "log": "build/highspeed-nrz-layout/r3/A/lvs.log"
+        },
+        "readback_drc": {
+          "passed": true,
+          "counts": [
+            "0"
+          ]
+        },
+        "readback_lvs": {
+          "passed": true,
+          "final_result": [
+            "Circuits match uniquely."
+          ],
+          "log": "build/highspeed-nrz-layout/r3/A/readback-lvs.log"
+        },
+        "pex_coverage": {
+          "node_count": 7,
+          "extracted_nodes": [
+            "N1",
+            "CTRL",
+            "VSS",
+            "VDD",
+            "VH",
+            "DATA",
+            "OUT",
+            "VL"
+          ],
+          "extracted_count": 8,
+          "extraction_statistics": [
+            [
+              "8",
+              "1.000000"
+            ]
+          ],
+          "only_attributes_added": true,
+          "original_ext_nodes": [
+            "VL",
+            "OUT",
+            "CTRL",
+            "N1",
+            "DATA",
+            "VH",
+            "VDD"
+          ]
+        },
+        "klayout_drc": {
+          "passed": true,
+          "item_count": 0,
+          "categories": {}
+        }
+      },
+      "negative_controls_passed": true,
+      "full_rc_sha256": "a09bdb32f6b0cdcd254d81b7ca42c6b8e441a5ebe930f66dbb4b49442e4808f6",
+      "capacitor_scope": "Original GDS-readback .ext ground C distributed by normalized allocation weights retained after Magic resistor-network simplification; original .ext coupling C retained once at logical net nodes. All R/MOS unchanged. After shorting extracted R, the full C matrix matches .ext. Weights originate in geometric tile area but may move during R-weighted merging; conservation does not establish high-frequency spatial accuracy. This is an explicit spatial-C approximation, not a 3D field solution. Native r3 export is an invalid numerical control.",
+      "external_components": [
+        {
+          "name": "VH",
+          "kind": "ideal bidirectional rail"
+        },
+        {
+          "name": "VL",
+          "kind": "ideal bidirectional rail"
+        }
+      ]
+    },
+    "B": {
+      "top": "hs_nrz_steering_core",
+      "ports": [
+        "DATA",
+        "OUT",
+        "VDD",
+        "VSS",
+        "BIAS",
+        "DUMMY"
+      ],
+      "dimensions_um": [
+        52.75,
+        23.35
+      ],
+      "core_area_um2": 1231.7125,
+      "gds_sha256": "950cd7303f8ada09740ba9e8b9cde82f12d23b191e3e475eef3981695576626d",
+      "counts": {
+        "mos": 9,
+        "resistors": 99,
+        "capacitors": 73,
+        "zero_valued_capacitors": 0
+      },
+      "extracted_nets": 9,
+      "explicit_capacitance_sum_fF": 35.985334096,
+      "checks": {
+        "magic_drc": {
+          "passed": true,
+          "counts": [
+            "0"
+          ]
+        },
+        "lvs": {
+          "passed": true,
+          "final_result": [
+            "Circuits match uniquely."
+          ],
+          "log": "build/highspeed-nrz-layout/r3/B/lvs.log"
+        },
+        "readback_drc": {
+          "passed": true,
+          "counts": [
+            "0"
+          ]
+        },
+        "readback_lvs": {
+          "passed": true,
+          "final_result": [
+            "Circuits match uniquely."
+          ],
+          "log": "build/highspeed-nrz-layout/r3/B/readback-lvs.log"
+        },
+        "pex_coverage": {
+          "node_count": 8,
+          "extracted_nodes": [
+            "GB",
+            "GP",
+            "VX",
+            "VSS",
+            "VDD",
+            "DATA",
+            "OUT",
+            "DUMMY",
+            "BIAS"
+          ],
+          "extracted_count": 9,
+          "extraction_statistics": [
+            [
+              "9",
+              "1.000000"
+            ]
+          ],
+          "only_attributes_added": true,
+          "original_ext_nodes": [
+            "BIAS",
+            "DUMMY",
+            "VX",
+            "OUT",
+            "GP",
+            "GB",
+            "DATA",
+            "VDD"
+          ]
+        },
+        "klayout_drc": {
+          "passed": true,
+          "item_count": 0,
+          "categories": {}
+        }
+      },
+      "negative_controls_passed": true,
+      "full_rc_sha256": "8979254a2617a39ddc555dfdbd02125974c9667784c5ec36335b42ff6a1b7602",
+      "capacitor_scope": "Original GDS-readback .ext ground C distributed by normalized allocation weights retained after Magic resistor-network simplification; original .ext coupling C retained once at logical net nodes. All R/MOS unchanged. After shorting extracted R, the full C matrix matches .ext. Weights originate in geometric tile area but may move during R-weighted merging; conservation does not establish high-frequency spatial accuracy. This is an explicit spatial-C approximation, not a 3D field solution. Native r3 export is an invalid numerical control.",
+      "external_components": [
+        {
+          "name": "RREF",
+          "nodes": [
+            "VDD",
+            "BIAS"
+          ],
+          "ohm": 88386.1064910889
+        },
+        {
+          "name": "RDUMMY",
+          "nodes": [
+            "VDUMMY",
+            "DUMMY"
+          ],
+          "ohm": 28000
+        }
+      ]
+    }
+  },
+  "evidence_level": "Routed transistor core GDS; DRC/LVS and Magic extraction; not silicon.",
+  "rc_model_source": "Audited assembly with exact .ext C matrix; not unmodified Magic export.",
+  "wording_revision": "Simulation input snapshot may contain prior explanatory wording. All 10 frozen model/GDS hashes are unchanged; before/after metadata hashes retained.",
+  "publishing_script_sha256": "ef388248d769dcfdae9ffd0fff365ac0834ad21bccaa33200f287357cbdcdcb8",
+  "pdk": {
+    "schema_version": 1,
+    "variant": "gf180mcuD",
+    "open_pdks_commit": "54435919abffb937387ec956209f9cf5fd2dfbee",
+    "open_pdks_version": "1.0.572",
+    "ciel_version": "3.0.0",
+    "primitive_commit": "41918f5a2356b9fb49a897ecc4fb4716b0ab1041",
+    "verification_commit": "50cc2fe338c81925e24a6ac4907ddaab534c1312",
+    "wafer_space_klayout_commit": "fb4b8f59451d248ef5b310a593759f946a8f6ae8",
+    "license": "Apache-2.0 for GF sources; preserve all packaged source notices",
+    "build_origin": "https://fossi-foundation.github.io/ciel-releases",
+    "selection_source": "https://github.com/librelane/librelane/blob/main/librelane/pdk_hashes.yaml",
+    "checked_on": "2026-10-03 Asia/Tokyo",
+    "tools": {
+      "magic": {
+        "version": "8.3.684",
+        "repository": "https://github.com/RTimothyEdwards/magic",
+        "commit": "4f53bb3091d1e4a9b2009a58f157a8a4331d4c84"
+      },
+      "netgen": {
+        "version": "1.5.324",
+        "repository": "https://github.com/RTimothyEdwards/netgen",
+        "commit": "3cb047bd6b55ae09c8eefeb479b4fe746cfdb948"
+      },
+      "klayout_python": {
+        "version": "0.30.12",
+        "verified": "GDS read and teaching polygon rendering"
+      },
+      "klayout_native": {
+        "version": "0.30.12",
+        "status": "installed but execution unverified; macOS assessment rejected; no independent DRC result"
+      },
+      "ngspice": {
+        "version": "47"
+      },
+      "tcl_tk": {
+        "version": "8.6.18"
+      },
+      "sdk": {
+        "version": "MacOSX26.5.sdk",
+        "selection": "Xcode SDK explicitly selected; default CLT27 linker failed"
+      }
+    },
+    "files": {
+      "SOURCES": "5bd56473e8dd0c5306c36aec0be20729ddf563aaa20c1e43f1ac9e558d24d3c2",
+      "libs.tech/magic/gf180mcuD.tech": "0db2e5c354a2f7c7749f86df4c995127c1564daf51f936030b4e1a5982ad3210",
+      "libs.tech/magic/gf180mcuD.tcl": "295f2d746020a206128de088a3685db7e679a6fa0d2f83dfde15fba9c95dd17a",
+      "libs.tech/magic/gf180mcuD.magicrc": "840e96ab01b44d85a20742ebff1d378a5857bd032b0f70ea5a3315a82dc6bd0e",
+      "libs.tech/netgen/gf180mcuD_setup.tcl": "eb6217e33acb2c81680351745bc184a2ee37b31a25d37f4dce423f61ba466fe4",
+      "libs.tech/ngspice/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+      "libs.tech/ngspice/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46",
+      "libs.tech/klayout/tech/drc/gf180mcu.drc": "9b986260e1909e9ce2ee97b2d1103dc513836bc6a440e876d66d23c85985c41a",
+      "libs.tech/klayout/tech/drc/run_drc.py": "6eed310882152bdf837e958301afcc75bc86e64ab2b27158fa931188466dc61f"
+    }
+  },
+  "actual_tool_versions": {
+    "magic": "8.3.684",
+    "netgen": "1.5.324",
+    "independent_klayout": "0.30.7",
+    "geometry_python_klayout": "0.30.12"
+  },
+  "klayout_scope": {
+    "variant": "D",
+    "metal_stack": "5LM",
+    "metal_top": "11K",
+    "FEOL": true,
+    "BEOL": true,
+    "offgrid": true,
+    "connectivity": true,
+    "DUMMY": false,
+    "SLOW_VIA": false
+  },
+  "limitations": [
+    "Core only: no pads, ESD, power generation, physical reference/dummy resistors or package.",
+    "Layout is not area/performance optimized; gate is contacted from one end.",
+    "All body/supply R/C retained in main model, no signal-only projection.",
+    "Magic extraction is not EM/3D/inductive extraction or foundry signoff.",
+    "Ground C placement uses allocation weights after Magic R-network simplification; matrix conservation does not prove spatial accuracy. RCLUMP is the placement control.",
+    "Dummy fill, full-chip density, antenna/EM/IR and reliability closure not established.",
+    "A ideal VH/VL rails can absorb current; regulators are not implemented.",
+    "B WTAIL snapped from 5.75895881652832 to 5.760um on 5nm grid."
+  ],
+  "published_files": [
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/physical-contract.json",
+      "published": "evidence/highspeed-nrz-pex/physical/A/physical-contract.json",
+      "size": 19048,
+      "sha256": "cecaba855a18da1f5e8c9b20915b70cec3789580d2ec8a851f5e548d5e88d8e7"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/pex-audit.json",
+      "published": "evidence/highspeed-nrz-pex/physical/A/pex-audit.json",
+      "size": 41808,
+      "sha256": "b86b783c319a97f962df20345c404d0bd39d4f0b7b2f13e43b6af6912c4030bb"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/negative-controls.json",
+      "published": "evidence/highspeed-nrz-pex/physical/A/negative-controls.json",
+      "size": 1115,
+      "sha256": "6ff348e28a1ceb7f546382fb2737ed39760cb051f6c4f9a8589021fb33036ce2"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/geometry-only.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/A/geometry-only.spice",
+      "size": 615,
+      "sha256": "6644157bd5cfb8b97cc2d326358a90632ffd637079e78141adb21e51e9092601"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/capacitance-only.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/A/capacitance-only.spice",
+      "size": 2236,
+      "sha256": "de8db3ce060c558f2d96f47e722545ba6b8813bb113147f3dcb94ed868434bb1"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/lvs.log",
+      "published": "evidence/highspeed-nrz-pex/physical/A/lvs.log",
+      "size": 3524,
+      "sha256": "37880ebf6e4d82bb49708a8f9aca9002c11627ec77327ceb570e19f1794c5195"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/capacitance-correction.json",
+      "published": "evidence/highspeed-nrz-pex/physical/A/capacitance-correction.json",
+      "size": 15669,
+      "sha256": "a6cb719a60d01adbf192672bd1a7f6ded97ff93f9d6f29e6f9e7d362cf8d7c83"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/rc-lumped-capacitance.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/A/rc-lumped-capacitance.spice",
+      "size": 2752,
+      "sha256": "8bc6cd69b49c6745d96be264a8718201bffeefba683f7a0f7ff8d673f4b3efcf"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/readback-lvs.log",
+      "published": "evidence/highspeed-nrz-pex/physical/A/readback-lvs.log",
+      "size": 3524,
+      "sha256": "37880ebf6e4d82bb49708a8f9aca9002c11627ec77327ceb570e19f1794c5195"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/rc-collapse-lvs.log",
+      "published": "evidence/highspeed-nrz-pex/physical/A/rc-collapse-lvs.log",
+      "size": 3524,
+      "sha256": "37880ebf6e4d82bb49708a8f9aca9002c11627ec77327ceb570e19f1794c5195"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/klayout-result.json",
+      "published": "evidence/highspeed-nrz-pex/physical/A/klayout-result.json",
+      "size": 60,
+      "sha256": "7d4eaf306a6a5bcb56e3bdbb0a03a26eb3b7da034ffabdb9026edbb8da79f83d"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/klayout-command.json",
+      "published": "evidence/highspeed-nrz-pex/physical/A/klayout-command.json",
+      "size": 1416,
+      "sha256": "4cd62c32aaa0b384ee6b4c48c14ce03c9c5c4d6eaba1d7c80e11095974b167e2"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/klayout.log",
+      "published": "evidence/highspeed-nrz-pex/physical/A/klayout.log",
+      "size": 57085,
+      "sha256": "a621ebe07a7fb802e28424b31e453e384fab0ccfadb35a6a14f058612a5118bc"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/generate/hs_nrz_voltage_core.gds",
+      "published": "evidence/highspeed-nrz-pex/physical/A/hs_nrz_voltage_core.gds",
+      "size": 36164,
+      "sha256": "2e645132256af70123bfed750bad1e33d3ecc419426ff745edd8c1190bdab258"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/generate/hs_nrz_voltage_core.mag",
+      "published": "evidence/highspeed-nrz-pex/physical/A/hs_nrz_voltage_core.mag",
+      "size": 20596,
+      "sha256": "b343a6248360c8ef20dfc6856891b93ac028d7d15cc0f8b9969a418fcca612f9"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/full-rc/hs_nrz_voltage_core_rc.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/A/hs_nrz_voltage_core_rc.spice",
+      "size": 4291,
+      "sha256": "a09bdb32f6b0cdcd254d81b7ca42c6b8e441a5ebe930f66dbb4b49442e4808f6"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/full-rc/coverage.json",
+      "published": "evidence/highspeed-nrz-pex/physical/A/coverage.json",
+      "size": 373,
+      "sha256": "8c0af1687d88d7ccdb65f1127fcdfbb48c3ee44053bc39fc8b0b73143d290d83"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/full-rc/drive-attributes.json",
+      "published": "evidence/highspeed-nrz-pex/physical/A/drive-attributes.json",
+      "size": 947,
+      "sha256": "d07e41e8825cf80022be2845b80157a9c18b25ea3847e28340fb7ed40df8d3f7"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/full-rc/magic.log",
+      "published": "evidence/highspeed-nrz-pex/physical/A/full-rc-magic.log",
+      "size": 1662,
+      "sha256": "cb2bbd3fb00e2506c2c7041138c1896c3531ed68fec6baa4fa579add7bc63399"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/readback/magic.log",
+      "published": "evidence/highspeed-nrz-pex/physical/A/readback-magic.log",
+      "size": 2361,
+      "sha256": "4a3175aa0085378180b996e835428a63daf06c74e092c49b54ed2b097b26be68"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/generate/magic.log",
+      "published": "evidence/highspeed-nrz-pex/physical/A/generate-magic.log",
+      "size": 1855,
+      "sha256": "8cee5242c3a7a03b360c20c231186a7fc7896490624d721441fd33df6cb972a7"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/klayout/hs_nrz_voltage_core_main.lyrdb",
+      "published": "evidence/highspeed-nrz-pex/physical/A/independent-drc.lyrdb",
+      "size": 120974,
+      "sha256": "64f0698adc2169da17b1a3f303f0f3d1e78146d7f3bbcb25ae720c4ef38e0c82"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/source/schematic.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/A/schematic.spice",
+      "size": 469,
+      "sha256": "2cdfc9e85d913206d43b16af80c7543b54bc80fa1125a0b00b93cdbd4e764108"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/unmodified-full-rc/hs_nrz_voltage_core_rc.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/A/invalid-native-control.spice",
+      "size": 3359,
+      "sha256": "4c58a33ead7847a98ca3cc24ed7212145b8cb5e09f4c117f96e2de254ec04ced"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/readback/hs_nrz_voltage_core.ext",
+      "published": "evidence/highspeed-nrz-pex/physical/A/authoritative-readback.ext",
+      "size": 3266,
+      "sha256": "a494ab8adc2a0cb8e5c92ca7b63e830c64ea25b3fb992752989b23e76cf21742"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/unmodified-full-rc/hs_nrz_voltage_core.res.ext",
+      "published": "evidence/highspeed-nrz-pex/physical/A/weights-and-r-network.res.ext",
+      "size": 4307,
+      "sha256": "6597cdfd98a64851f04ff029e1365ca0e22a3301d885cb4f0e8a30ea6ad7356f"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/flat-c-control/flat-c.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/A/native-flat-c-control.spice",
+      "size": 1028,
+      "sha256": "b5f7f98d8a7a6f541faf1da526ebc7d31a51d791022b142c20d9e1b327374b81"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/controls/input-gate-open/lvs.log",
+      "published": "evidence/highspeed-nrz-pex/physical/A/controls/input-gate-open/lvs.log",
+      "size": 3858,
+      "sha256": "57fc8365bd71e2026f6f7ddd6355d8338326cdc81648da5848d4099b4cf7c39f"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/controls/vdd-vss-short/lvs.log",
+      "published": "evidence/highspeed-nrz-pex/physical/A/controls/vdd-vss-short/lvs.log",
+      "size": 4750,
+      "sha256": "811867523ac28b627de4d147076da20009c8f59e2826740592e024468f57b1a0"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/A/physical-contract.json",
+      "published": "layout/highspeed_nrz/A/physical-contract.json",
+      "size": 19048,
+      "sha256": "cecaba855a18da1f5e8c9b20915b70cec3789580d2ec8a851f5e548d5e88d8e7"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/physical-contract.json",
+      "published": "evidence/highspeed-nrz-pex/physical/B/physical-contract.json",
+      "size": 26428,
+      "sha256": "b35a085eafa5fbca04dfeba56fb4c7971d89b2f6eaffca2a9ba8419fcaa0e0da"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/pex-audit.json",
+      "published": "evidence/highspeed-nrz-pex/physical/B/pex-audit.json",
+      "size": 56247,
+      "sha256": "c5c4ee27c7bd813feb8b83f05205be0f1968391f013087fdd82c4c5a02c19ef9"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/negative-controls.json",
+      "published": "evidence/highspeed-nrz-pex/physical/B/negative-controls.json",
+      "size": 1115,
+      "sha256": "c1cf94a5e10adde240bf543ef57b22860ed5b9cb8f89c5491a965ec1756dba2d"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/geometry-only.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/B/geometry-only.spice",
+      "size": 848,
+      "sha256": "8369eb5960ed814b6784e7bfb08756a508c668cb3550644016309be6a74cf21d"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/capacitance-only.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/B/capacitance-only.spice",
+      "size": 2882,
+      "sha256": "0c17cffbd1d017c2763a5d98a41175e93338a8d3d79f170a99c105030d502c89"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/lvs.log",
+      "published": "evidence/highspeed-nrz-pex/physical/B/lvs.log",
+      "size": 3526,
+      "sha256": "0bb7195b0a8d5c7412e00ef40d58fdfc9980d5a8de9b7283acd15b93d686c5a5"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/capacitance-correction.json",
+      "published": "evidence/highspeed-nrz-pex/physical/B/capacitance-correction.json",
+      "size": 18739,
+      "sha256": "41e47e548f8e89d1af1a8344c5d434dd6e7e07520c00665b06ecbd39f2b4bdf2"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/rc-lumped-capacitance.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/B/rc-lumped-capacitance.spice",
+      "size": 4494,
+      "sha256": "0bb2957dadbf07e07b48a693556eb660aa4341b598b4f940e0c2c609511721de"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/readback-lvs.log",
+      "published": "evidence/highspeed-nrz-pex/physical/B/readback-lvs.log",
+      "size": 3526,
+      "sha256": "0bb7195b0a8d5c7412e00ef40d58fdfc9980d5a8de9b7283acd15b93d686c5a5"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/rc-collapse-lvs.log",
+      "published": "evidence/highspeed-nrz-pex/physical/B/rc-collapse-lvs.log",
+      "size": 3526,
+      "sha256": "0bb7195b0a8d5c7412e00ef40d58fdfc9980d5a8de9b7283acd15b93d686c5a5"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/klayout-result.json",
+      "published": "evidence/highspeed-nrz-pex/physical/B/klayout-result.json",
+      "size": 60,
+      "sha256": "7d4eaf306a6a5bcb56e3bdbb0a03a26eb3b7da034ffabdb9026edbb8da79f83d"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/klayout-command.json",
+      "published": "evidence/highspeed-nrz-pex/physical/B/klayout-command.json",
+      "size": 1418,
+      "sha256": "f7dd8ad8c5fa968dc6b3dcc74bdf6183b91b7c44bc793395e4da57c2ec1aaefd"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/klayout.log",
+      "published": "evidence/highspeed-nrz-pex/physical/B/klayout.log",
+      "size": 57099,
+      "sha256": "ea61bb99cb99f9f3eb1a0ced149fb3a35966c086279982aca66f0bab4ba58536"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/generate/hs_nrz_steering_core.gds",
+      "published": "evidence/highspeed-nrz-pex/physical/B/hs_nrz_steering_core.gds",
+      "size": 43182,
+      "sha256": "950cd7303f8ada09740ba9e8b9cde82f12d23b191e3e475eef3981695576626d"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/generate/hs_nrz_steering_core.mag",
+      "published": "evidence/highspeed-nrz-pex/physical/B/hs_nrz_steering_core.mag",
+      "size": 30671,
+      "sha256": "75c9f369123ea32fbe947361688c9fb148b24d8c564fd18e5d779288b39389b0"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/full-rc/hs_nrz_steering_core_rc.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/B/hs_nrz_steering_core_rc.spice",
+      "size": 6356,
+      "sha256": "8979254a2617a39ddc555dfdbd02125974c9667784c5ec36335b42ff6a1b7602"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/full-rc/coverage.json",
+      "published": "evidence/highspeed-nrz-pex/physical/B/coverage.json",
+      "size": 399,
+      "sha256": "e02a97e9efb8034316c806ce846389b12ab979dc18b6f8d39145e967f5434945"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/full-rc/drive-attributes.json",
+      "published": "evidence/highspeed-nrz-pex/physical/B/drive-attributes.json",
+      "size": 1040,
+      "sha256": "a275f20a939b4dd735e347e453cf4cf3f2766f92b9659e5fe1bc517c28d5cdb9"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/full-rc/magic.log",
+      "published": "evidence/highspeed-nrz-pex/physical/B/full-rc-magic.log",
+      "size": 1680,
+      "sha256": "2c650e811b9d1d23f90a0e8e98b085fb093e4e0427a6d90b8b1d92d85ab8908a"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/readback/magic.log",
+      "published": "evidence/highspeed-nrz-pex/physical/B/readback-magic.log",
+      "size": 2289,
+      "sha256": "30e2be5fe93a6e6cbaefb324c3d2a576d836aa92b8c9f329c1dd10c9c226719a"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/generate/magic.log",
+      "published": "evidence/highspeed-nrz-pex/physical/B/generate-magic.log",
+      "size": 2101,
+      "sha256": "642676092ecee85fc43741909437c04fe8afcc305261b794390c8eb52632b751"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/klayout/hs_nrz_steering_core_main.lyrdb",
+      "published": "evidence/highspeed-nrz-pex/physical/B/independent-drc.lyrdb",
+      "size": 120976,
+      "sha256": "67e83a08173652b04331e269692f36f0e71fc1b1696a8e22e74251298cc0501b"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/source/schematic.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/B/schematic.spice",
+      "size": 615,
+      "sha256": "5a25b291b20849aafb044321da94cebdfaa84ad6e14a2a630af3d6add550beaf"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/unmodified-full-rc/hs_nrz_steering_core_rc.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/B/invalid-native-control.spice",
+      "size": 5239,
+      "sha256": "f7b635c46cd7a5f403ff4334fbd16b3b81b3d924acc103d3d9337caf19bc7549"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/readback/hs_nrz_steering_core.ext",
+      "published": "evidence/highspeed-nrz-pex/physical/B/authoritative-readback.ext",
+      "size": 3879,
+      "sha256": "02afcc06f32a47e3be716f2d78029291e3757c37078b1a491d607fb8bd893292"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/unmodified-full-rc/hs_nrz_steering_core.res.ext",
+      "published": "evidence/highspeed-nrz-pex/physical/B/weights-and-r-network.res.ext",
+      "size": 7480,
+      "sha256": "abb34d50e3f92868e8921634f40d17d1d915ca9788996f4c697491bc967d4c8d"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/flat-c-control/flat-c.spice",
+      "published": "evidence/highspeed-nrz-pex/physical/B/native-flat-c-control.spice",
+      "size": 1387,
+      "sha256": "bf88c39378a55f5fd8cd69a2bdbe12b6611a182f8945532e448adcce264ed218"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/controls/input-gate-open/lvs.log",
+      "published": "evidence/highspeed-nrz-pex/physical/B/controls/input-gate-open/lvs.log",
+      "size": 3860,
+      "sha256": "3e480919dd802a1520570e2580ac0fe0dff9d95467d30ea77d82622f041c3f49"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/controls/vdd-vss-short/lvs.log",
+      "published": "evidence/highspeed-nrz-pex/physical/B/controls/vdd-vss-short/lvs.log",
+      "size": 4754,
+      "sha256": "5bdac171d03e8d202d91506af9948980ddaf59bea08088139385ce981f7c6ac4"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/B/physical-contract.json",
+      "published": "layout/highspeed_nrz/B/physical-contract.json",
+      "size": 26428,
+      "sha256": "b35a085eafa5fbca04dfeba56fb4c7971d89b2f6eaffca2a9ba8419fcaa0e0da"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/status.json",
+      "published": "evidence/highspeed-nrz-pex/physical/status.json",
+      "size": 2321,
+      "sha256": "250c51a019d2f4929881644c29ba3496990043c2b1ef17490da3a9187d883a08"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/correction-provenance.json",
+      "published": "evidence/highspeed-nrz-pex/physical/correction-provenance.json",
+      "size": 266,
+      "sha256": "51bce286009b0def7d39fc44e7635e0a41270bc0d9620915e6a6df8b1b335e4a"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/artifact-manifest.json",
+      "published": "evidence/highspeed-nrz-pex/physical/initial-artifact-manifest.json",
+      "size": 36075,
+      "sha256": "d6a6d5c2be01b6e822e389ba3145e6ce66278048dee990312329265859d45a74"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/wording-revision.json",
+      "published": "evidence/highspeed-nrz-pex/physical/wording-revision.json",
+      "size": 4138,
+      "sha256": "406abed6fab848558c08981010de26cb57edd1507b911b1cc2d6289bec3ecdbe"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/metadata-before-wording-revision/A/capacitance-correction.json",
+      "published": "evidence/highspeed-nrz-pex/physical/metadata-before-wording-revision/A/capacitance-correction.json",
+      "size": 15187,
+      "sha256": "1314f054af386b0b52b32a07aec93b8dd30a12f1a0125d503258436285cd8f47"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/metadata-before-wording-revision/A/pex-audit.json",
+      "published": "evidence/highspeed-nrz-pex/physical/metadata-before-wording-revision/A/pex-audit.json",
+      "size": 41137,
+      "sha256": "b0ae68614277136ebced26dee97bc94497668a357b2ab6f6fdb72c54ae9af554"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/metadata-before-wording-revision/B/capacitance-correction.json",
+      "published": "evidence/highspeed-nrz-pex/physical/metadata-before-wording-revision/B/capacitance-correction.json",
+      "size": 18257,
+      "sha256": "605d9fd0a959e71fe2df147ca31bcad6a1cec1794e396faf94f6371ed178cf7d"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/metadata-before-wording-revision/B/pex-audit.json",
+      "published": "evidence/highspeed-nrz-pex/physical/metadata-before-wording-revision/B/pex-audit.json",
+      "size": 55576,
+      "sha256": "ed4eb64e567760ad139dd888627bd4e9479c23339c5f40ddd7de9b752529cfe8"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/source_scripts/correct_capacitance.py",
+      "published": "evidence/highspeed-nrz-pex/physical/scripts/correct_capacitance.executed.py",
+      "size": 11432,
+      "sha256": "b6945805e4400701b98a88cdee62890aeb27e49394ed5ef4929983cb628f92d5"
+    },
+    {
+      "source": "scripts/highspeed_nrz_layout/correct_capacitance.py",
+      "published": "evidence/highspeed-nrz-pex/physical/scripts/correct_capacitance.wording-revision.py",
+      "size": 12193,
+      "sha256": "b325f57c5b0f7745ba8c413e0f8894ac1c17d70cc80fa020159717a6c12cffa6"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/correct-capacitance-wording.diff",
+      "published": "evidence/highspeed-nrz-pex/physical/scripts/correct_capacitance.wording.diff",
+      "size": 4789,
+      "sha256": "a0dd235f3fe73c08acc3db49923eda6d0882e56efa1d90eaffd0e082d2f2327f"
+    },
+    {
+      "source": "build/highspeed-nrz-layout/r4/current-artifact-manifest.json",
+      "published": "evidence/highspeed-nrz-pex/physical/artifact-manifest.json",
+      "size": 33882,
+      "sha256": "97e85cb3e80d6b195462e61af60fb1f385aec5d934ad6239342d296d999e2bcb"
+    },
+    {
+      "source": "layout/pdk-lock.json",
+      "published": "evidence/highspeed-nrz-pex/physical/pdk-lock.json",
+      "size": 2539,
+      "sha256": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e"
+    },
+    {
+      "source": "layout/highspeed_nrz/NOTICE.md",
+      "published": "evidence/highspeed-nrz-pex/physical/NOTICE.md",
+      "size": 1610,
+      "sha256": "140b6e79b1ace9e320994fdfb3ec648a57d4e50533ebe2c3f0aae1677bac9270"
+    }
+  ]
+}

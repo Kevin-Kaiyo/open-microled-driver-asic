@@ -1,0 +1,97 @@
+{
+  "method": "1 A injected between selected endpoints of wire-only extracted R graph; all other endpoints open. MOS conductance excluded. This is not total driver output resistance.",
+  "analytic_checks": [
+    "10+20 series = 30 ohm",
+    "10 || 20 = 6.666666667 ohm"
+  ],
+  "routes": {
+    "A": {
+      "audit_sha256": "b86b783c319a97f962df20345c404d0bd39d4f0b7b2f13e43b6af6912c4030bb",
+      "paths": [
+        {
+          "label": "DATA→N1.G",
+          "from": "DATA",
+          "to": "DATA.t1",
+          "effective_R_ohm": 55.85640000000048
+        },
+        {
+          "label": "N1.D→N2.G",
+          "from": "N1.t1",
+          "to": "N1.t3",
+          "effective_R_ohm": 112.89780000000458
+        },
+        {
+          "label": "N2.D→NOUT.G",
+          "from": "CTRL.t1",
+          "to": "CTRL.t3",
+          "effective_R_ohm": 108.73830000000126
+        },
+        {
+          "label": "OUT→NOUT.D",
+          "from": "OUT",
+          "to": "OUT.t1",
+          "effective_R_ohm": 14.503799999999988
+        },
+        {
+          "label": "VSS→N1.S",
+          "from": "VSS",
+          "to": "VSS.t1",
+          "effective_R_ohm": 17.610666638715937
+        },
+        {
+          "label": "VSS→N1.B",
+          "from": "VSS",
+          "to": "VSS.t0",
+          "effective_R_ohm": 256.31467898633605
+        }
+      ]
+    },
+    "B": {
+      "audit_sha256": "c5c4ee27c7bd813feb8b83f05205be0f1968391f013087fdd82c4c5a02c19ef9",
+      "paths": [
+        {
+          "label": "DATA→INV1N.G",
+          "from": "DATA",
+          "to": "DATA.t1",
+          "effective_R_ohm": 55.85640000000048
+        },
+        {
+          "label": "INV1N.D→INV2N.G",
+          "from": "GB.t1",
+          "to": "GB.t4",
+          "effective_R_ohm": 73.43540000000318
+        },
+        {
+          "label": "INV2N.D→LED.G",
+          "from": "GP.t0",
+          "to": "GP.t2",
+          "effective_R_ohm": 72.86640000000284
+        },
+        {
+          "label": "INV1N.D→DUMMY.G",
+          "from": "GB.t1",
+          "to": "GB.t2",
+          "effective_R_ohm": 77.48580000000365
+        },
+        {
+          "label": "OUT→LED.D",
+          "from": "OUT",
+          "to": "OUT.t1",
+          "effective_R_ohm": 18.094799999999868
+        },
+        {
+          "label": "VSS→TAIL.S",
+          "from": "VSS",
+          "to": "VSS.t3",
+          "effective_R_ohm": 22.36870948829457
+        },
+        {
+          "label": "VSS→TAIL.B",
+          "from": "VSS",
+          "to": "VSS.t2",
+          "effective_R_ohm": 136.88488269383507
+        }
+      ]
+    }
+  }
+}

@@ -14,6 +14,8 @@ An independent, open platform for experimental R&D methodology validation and te
 
 ## 先读当前研究报告
 
+- **单通道 NRZ 版图与寄生验证（2026-10-20）：[中文研究报告](docs/research/highspeed-nrz-pex-20261020/index.html) / [真实 GDS 分层查看器](docs/research/highspeed-nrz-pex-20261020/layout-viewer.html) / [证据与复现](docs/research/highspeed-nrz-pex-20261020/README.md)。** 两版 GF180 核心完成固定公开规则下的 DRC/LVS、全网 R 提取与审计后的 C 组装；279 条结果包含既有基线复用。相同负载和接收代理下，RC 典型最高离散通过点为 A 2 Gb/s、B 0.5 Gb/s；同为 0.5 Gb/s 时正向取能较原理图增加约 5.00% / 3.95%。慢热接收失败、快冷过冲、电容空间近似和理想电源依赖仍是明确限制，不代表生产签核或实测 BER。
+
 - **单通道 NRZ 晶体管比较（2026-10-19）：[中文研究报告](docs/research/highspeed-nrz-20261019/index.html) / [网表、数据与复现](docs/research/highspeed-nrz-20261019/README.md)。** 实现 GF180 电压驱动与电流转向两版电路，统一静态 LED 曲线、动态负载假设、数据序列与接收条件，检查速率、逐电源取能/回灌、MOS 角落、电容敏感性及数值收敛。属于 pre-layout 电气与接收代理实验；真实光学 BER、完整高速版图和流片验证仍未完成。
 
 - **最新实作（2026-10-15）**：[18页启动、保护与版图验证报告](docs/research/single-pixel-closure-20261015/report.pdf) / [HTML](docs/research/single-pixel-closure-20261015/report.html) / [复现入口](docs/research/single-pixel-closure-20261015/README.md)。已新增参考/保护完整39MOS版图、PWM与恢复存储数字宏及共同顶层；两套DRC、LVS、完整PEX通过。最终模拟宏270点DC和17组瞬态通过，启动最大0.656338 nA。旧相对收敛失败保留，新数值判据独立验证；共同顶层全晶体管动态、供电扰动过冲及流片签核仍待后续。
