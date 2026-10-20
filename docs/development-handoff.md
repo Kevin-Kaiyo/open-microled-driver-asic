@@ -24,6 +24,14 @@ python3 scripts/backup/release_bundle.py restore \
 
 准备匹配的 Python/NumPy 环境后，可运行 `scripts/highspeed_nrz_pex/validate.py --work build/highspeed-nrz-pex/run-0m3zyewc` 和 `scripts/highspeed_nrz_layout/validate_delivery.py`。实际重跑物理流程还需固定完整 PDK、Magic、Netgen、KLayout 与独立 DRC 容器，安装入口见后文。此阶段的归档与恢复回执会分别记录文件完整性和实际执行的检查，不把恢复成功当作再次完成全部 EDA。
 
+本轮源码标签固定在 `409c56a9da6c0d42f805cd87c6e0f79e96b03cba`；归档校验及恢复回执随后进入主分支，标签保持不变。
+
+- [本地归档校验](../evidence/backups/nrz-pex-20261020-local.json)：15 个归档、3,000 个普通文件；原始 6,270,372,528 字节，归档 6,227,394,952 字节，归档及每个成员的 SHA-256 和大小均通过。
+- [GitHub 回读核验](../evidence/backups/nrz-pex-20261020-remote.json)：15 个归档和 4 份清单全部从公开 Release URL 流式下载，长度及 SHA-256 均一致。此前本地逐成员验证的归档与远端字节相同。
+- [独立恢复检查](../evidence/backups/nrz-pex-20261020-recovery.json)：从 GitHub 新检出上述提交，恢复 `nrz-physical-evidence` 和 `report-font-inputs` 两组共 483 个文件；重新核验 74 个精简物理交付文件、GDS/网表身份及电容矩阵，跟踪文件保持干净。
+- 恢复检查发生在同一台 macOS ARM 主机的独立目录，没有重新恢复全部 6 GB 仿真数据、重跑 SPICE/DRC/LVS、重新分析所有波形或验证 Windows/Linux。全量归档的逐成员字节完整性由第一项验证，实际恢复范围由第二项验证，两者分别记录。
+- [本次暂存副本清理](../evidence/backups/nrz-pex-20261020-cleanup.json)：远端回读通过后，再次计算全部 3,000 个保留原文件的 SHA-256；仅删除新生成的归档副本、独立恢复副本和临时检出目录，共 6,545,106,365 逻辑字节。活动原始数据、失败证据、PDK、虚拟机和工具均保留；APFS 实际可用空间变化不等同于逻辑字节数。
+
 ## 同步规则与存储分工
 
 每个**已经验证的阶段完成后同步一次**：检查变更、更新报告、保存紧凑结果及来源哈希，然后推送 Git 提交与对应证据附件。采用阶段触发，不设置定时上传。正在运行、结果未检查的实验不作为新的已验证阶段发布。
