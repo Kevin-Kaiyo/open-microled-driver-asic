@@ -30,7 +30,13 @@ build/layout/venv/bin/python scripts/highspeed_nrz_pvt/validate.py \
 
 物理交付的独立校验器检查 123 个紧凑文件、实际 GDS 几何、四个开短路反例与 C 矩阵。这个回读检查不重新执行 DRC/LVS/PEX；完整重跑需按 `layout/pdk-lock.json` 及新增物理 README 准备匹配的环境。仅 Git 克隆可以阅读报告和查看紧凑版图，不能读取忽略的全部波形。
 
-<!-- NRZ_PVT_BACKUP_RECEIPTS -->
+本轮源标签固定在 `136a1cc6e0659a28f2e9d37089e3252985e3c789`；后续备份回执进入主分支，标签保持不变。
+
+- [本地归档核验](../evidence/backups/nrz-pvt-20261023-local.json)：17 个归档、2,400 个普通文件；原文件 7,182,890,437 字节，归档 7,142,581,572 字节。全部归档与逐成员 SHA-256/长度通过。
+- [GitHub 回读](../evidence/backups/nrz-pvt-20261023-remote.json)：17 个归档及 4 份首批清单已全部流式回读，长度和 SHA-256 一致；3 份补充回执另见[补充回读记录](../evidence/backups/nrz-pvt-20261023-receipt-readback.json)。
+- [独立恢复](../evidence/backups/nrz-pvt-20261023-recovery.json)：从 GitHub 新检出源标签，恢复 933 个物理过程文件；4 份相同的许可/NOTICE 原样跳过。核对 206 个源文件/精简证据及 123 个物理交付文件，通过实际 GDS 几何、负例和电容矩阵复核。
+- 恢复检查使用同一台 macOS ARM 主机的独立目录，没有重跑 SPICE、DRC/LVS/PEX，也没有在该目录恢复与复算全部波形。全量归档字节和限定恢复执行范围分别记录。
+- 再次核对全部 2,400 个原件哈希后，仅移除已核验的归档和独立检出副本，共 7,435,655,820 逻辑字节，见[清理回执](../evidence/backups/nrz-pvt-20261023-cleanup.json)。活动实验原件、失败证据、完整 PDK、VM 和工具均保留；APFS 可用空间约 12 GiB，不能将逻辑删除量当作等量的实际释放空间。
 
 ## 前一阶段：单通道 NRZ 版图与寄生比较
 

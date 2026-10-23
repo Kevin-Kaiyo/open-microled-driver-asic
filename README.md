@@ -10,6 +10,8 @@ An independent, open platform for experimental R&D methodology validation and te
 
 每个已验证阶段完成后同步。代码、报告、最终 Blender 场景和紧凑证据保存在 Git；大型原始数据采用有 SHA-256 清单的 Release 附件。阅读 [跨机接续说明](docs/development-handoff.md)，按需恢复指定实验。普通 `git clone` 不包含被忽略的全部 `build/`、PDK 或虚拟机。
 
+[2026-10-23 慢热/快冷修复快照](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/nrz-pvt-20261023)：17 个增量归档、2,400 个文件；跨机依赖、逐文件清单、远端回读和限定恢复记录见[交接说明](docs/development-handoff.md)。完整物理 PDK 和旧版基线按各自清单恢复。
+
 [2026-10-20 NRZ 版图与寄生快照](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/nrz-pex-20261020)：15 个增量归档、3,000 个文件已完成逐成员校验和上传后回读。独立 GitHub 检出目录恢复 483 个版图及字体文件，并复核 74 个物理交付文件；没有重新运行全部仿真或物理工具。SCHEM 原始数据依赖下方前一阶段附件。
 
 [2026-10-19 研究快照与原始附件](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/research-20261019)：31 个归档的上传后回读核验通过；独立检出恢复并复算 96 组 NRZ 数据，完整分析和汇总文件与归档逐字节一致。此次使用同一台 Mac 的不同目录，跨操作系统完整流程仍待验证。

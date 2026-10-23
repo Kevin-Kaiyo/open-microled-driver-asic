@@ -1,0 +1,70 @@
+{
+  "tag": "nrz-pvt-20261023",
+  "source_commit": "136a1cc6e0659a28f2e9d37089e3252985e3c789",
+  "passed": true,
+  "git_checkout": "Fresh shallow clone from GitHub, same macOS ARM host",
+  "groups": [
+    "nrz-pvt-physical",
+    "dependency-notices"
+  ],
+  "archive_member_scope": 937,
+  "restore_stdout": "RESTORED 933 files; SKIPPED 4 identical files",
+  "source_scan_files_checked": 206,
+  "physical_delivery_validation": {
+    "passed": true,
+    "scope": "Archived hashes, actual GDS polygons, check logs and independent C-matrix bookkeeping; no new EDA/signoff run",
+    "files_checked": 123,
+    "summary_sha256": "f8f027f909d6b2f005c9cb71c05405dedb957e0006979f77f752708cba9d5bf9",
+    "routes": {
+      "A": {
+        "mos": 6,
+        "designed_resistors": 1,
+        "interconnect_resistors": 84,
+        "explicit_capacitors": 61,
+        "total_explicit_C_fF": 35.879755426,
+        "collapsed_matrix_max_error_F": {
+          "RC": 7.888609052210118e-31,
+          "C": 9.598859494729272e-27,
+          "RCLUMP": 0.0
+        },
+        "actual_gds_geometry": {
+          "mos_channels": 6,
+          "resistor_body_um2": 48.0,
+          "negative_polygon_delta_um2": {
+            "input-gate-open": 0.22799999999999998,
+            "vdd-vss-short": 1.28
+          }
+        }
+      },
+      "B": {
+        "mos": 9,
+        "designed_resistors": 1,
+        "interconnect_resistors": 127,
+        "explicit_capacitors": 76,
+        "total_explicit_C_fF": 35.65508812,
+        "collapsed_matrix_max_error_F": {
+          "RC": 7.888609052210118e-31,
+          "C": 6.699795668042053e-27,
+          "RCLUMP": 0.0
+        },
+        "actual_gds_geometry": {
+          "mos_channels": 9,
+          "resistor_body_um2": 58.0,
+          "negative_polygon_delta_um2": {
+            "input-gate-open": 0.22799999999999998,
+            "vdd-vss-short": 0.32
+          }
+        }
+      }
+    }
+  },
+  "tracked_checkout_unchanged": true,
+  "scope": "Restored selected physical raw files and notices from locally member-verified archives into a fresh GitHub checkout. Remote archive byte equality is checked separately by the readback receipt. No environment reinstallation or EDA rerun.",
+  "not_executed": [
+    "Full transient waveform restore or reanalysis in fresh checkout",
+    "New SPICE simulations",
+    "Physical tool reruns",
+    "Windows/Linux setup"
+  ],
+  "manifest_sha256": "20e5287c1b6e4e49d2174a951b6806e98c86ec8fd1c7374496f75c8e1d0e3c06"
+}
