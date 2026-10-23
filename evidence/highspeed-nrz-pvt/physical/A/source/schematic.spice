@@ -1,0 +1,10 @@
+* Independent electrical reference: analog/highspeed_nrz_pvt/voltage_driver.spice
+.subckt hs_voltage_pvt DATA OUT VDD VH VL VSS
+XRIN DATA DI VSS ppolyf_u_1k_6p0 r_width=1u r_length=48u
+XN1 N1 DI VSS VSS nfet_03v3 w=1u l=0.28u
+XP1 N1 DI VDD VDD pfet_03v3 w=2u l=0.28u
+XN2 CTRL N1 VSS VSS nfet_03v3 w=4u l=0.28u
+XP2 CTRL N1 VDD VDD pfet_03v3 w=8u l=0.28u
+XNOUT OUT CTRL VL VSS nfet_03v3 w=4u l=0.28u
+XPOUT OUT CTRL VH VH pfet_03v3 w=8u l=0.28u
+.ends hs_voltage_pvt

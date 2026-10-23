@@ -1,5 +1,7 @@
 # 当前研究资料入口
 
+当前新增阶段：[2026-10-23 单通道 NRZ 慢热接收与快冷端电压修正](highspeed-nrz-pvt-20261023/index.html)，附[真实 GDS 查看器](highspeed-nrz-pvt-20261023/layout-viewer.html)与[复现说明](highspeed-nrz-pvt-20261023/README.md)。本轮限定在冻结负载与接收代理下的实际版图 RC 实验，未完成光学或生产签核。
+
 **单通道 NRZ 版图与寄生验证（2026-10-20）：[中文研究报告](highspeed-nrz-pex-20261020/index.html) / [真实 GDS 分层查看器](highspeed-nrz-pex-20261020/layout-viewer.html) / [证据与复现](highspeed-nrz-pex-20261020/README.md)。** 从实际电路、器件几何和金属层，逐步解释 GEOM/C/RC 控制、提取器电容问题、波形、接收余量与逐电源能耗。两版核心通过固定公开规则下的 DRC/LVS；279 条结果包含既有基线复用。典型 RC 最高离散通过点 A 2 Gb/s、B 0.5 Gb/s；慢热接收失败和快冷过冲尚待解决。电容模型经过审计组装，空间分配仍为近似；没有制造签核或光学 BER 测量。
 
 **单通道 NRZ 晶体管比较（2026-10-19）：[中文研究报告](highspeed-nrz-20261019/index.html) / [网表、数据与复现](highspeed-nrz-20261019/README.md)。** 实现 GF180 电压驱动与电流转向两版电路，统一静态 LED 曲线、动态负载假设、数据序列与接收条件，检查速率、逐电源取能/回灌、MOS 角落、电容敏感性及数值收敛。属于 pre-layout 电气与接收代理实验；真实光学 BER、完整高速版图和流片验证仍未完成。

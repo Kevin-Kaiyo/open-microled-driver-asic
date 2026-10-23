@@ -1,0 +1,148 @@
+{
+  "script": "scripts/highspeed_nrz_pvt_body_bounce.py",
+  "script_sha256": "a907b185a34926de1cce30de33ebaea26ccb4d6fdc8eb61bca3bcb1b9417545d",
+  "records": [
+    {
+      "label": "r1 原版图",
+      "work": "build/highspeed-nrz-pvt/formal-poly58-r1",
+      "source": {
+        "result_json": "build/highspeed-nrz-pvt/formal-poly58-r1/cases/AFTER-A-fast_cold-1G-ff--40C-3.6V-C200-L0.5-e20-s40/result.json",
+        "result_sha256": "f14cc3bf86532b1affdbea99eec49269a71f77561bce2168b7818946456face3",
+        "waveform": "build/highspeed-nrz-pvt/formal-poly58-r1/cases/AFTER-A-fast_cold-1G-ff--40C-3.6V-C200-L0.5-e20-s40/waveform.dat.gz",
+        "waveform_sha256": "428dbdf9c204087ec948f289c51ba11ee668aaea747d1fed686f8b9e586d83aa",
+        "uncompressed_sha256": "7b1c8889dc2a65b53494433fd1db7138da3c7c2e9433f7d9c3162bf5fe0a8bbf",
+        "deck_sha256": "c602a95238f116031dcacf4edd6523c285a5de300ce003a67b845045c89c746e",
+        "rows": 186715,
+        "hash_checks": "passed",
+        "duplicates_removed": 0
+      },
+      "edge_full_stimulus_index": 793,
+      "edge_validation_index": 507,
+      "edge_s": 7.930000000000001e-07,
+      "pattern_5_before_5_after": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "terminal_order_note": "The extracted transistor swaps D/S relative to the schematic; extracted VSB here corresponds to schematic drain-to-body voltage.",
+      "actual_nodes": {
+        "ctrl": "xdrv.ctrl.t1",
+        "second_inverter_body": "xdrv.vss.t3",
+        "poly_substrate": "xdrv.vss.t0",
+        "DI": "xdrv.di.t0"
+      },
+      "window_peak": {
+        "time_s": 7.93020415891431e-07,
+        "time_after_edge_ps": 20.41589143096612,
+        "CTRL_V": 3.595125098723622,
+        "NMOS_body_V": -0.1115415773993375,
+        "resistor_substrate_V": -0.7531454350095654,
+        "VSB_V": 3.7066666761229596
+      },
+      "window_extrema": {
+        "resistor_substrate_min_V": -0.7841247581121062,
+        "second_NMOS_body_min_V": -0.1116806435712047
+      },
+      "global_stress": {
+        "max_abs_terminal_V": 3.7066666761229596,
+        "worst_instance": "x1",
+        "worst_pair": "VSB"
+      },
+      "model_boundary": "Substrate/body resistance and capacitance are from the public extraction deck and model. No wafer measurement or field-solver validation of this impedance is claimed.",
+      "at_identical_baseline_peak_time": {
+        "time_after_edge_ps": 20.41589143096612,
+        "data": 0.0,
+        "di": 3.344607890485549,
+        "ctrl": 3.595125098723622,
+        "body": -0.1115415773993375,
+        "resbody": -0.7531454350095654,
+        "stress": 3.7066666761229596,
+        "method": "Linear interpolation at the baseline sampled peak timestamp; waveform peak searches remain separately reported."
+      }
+    },
+    {
+      "label": "r4 修改后版图",
+      "work": "build/highspeed-nrz-pvt/final-r4",
+      "source": {
+        "result_json": "build/highspeed-nrz-pvt/final-r4/cases/AFTER-A-fast_cold-1G-ff--40C-3.6V-C200-L0.5-e20-s40/result.json",
+        "result_sha256": "60fe4ead38d64230807f84ac236190d7281e0ce6251df979d4a7452e83150fc6",
+        "waveform": "build/highspeed-nrz-pvt/final-r4/cases/AFTER-A-fast_cold-1G-ff--40C-3.6V-C200-L0.5-e20-s40/waveform.dat.gz",
+        "waveform_sha256": "72c2d4a1232d7a5b30bae9c193fc6626cdead27c95571f473e09a8b7c3f9846a",
+        "uncompressed_sha256": "c0ba9d84590d8c0508e5c872028372508524f5231e8c617a97b818791f5c69e5",
+        "deck_sha256": "44e1db7a7aab5ff1da897db0464f983edc68a1c4086d534345990fc365a8edf6",
+        "rows": 164254,
+        "hash_checks": "passed",
+        "duplicates_removed": 0
+      },
+      "edge_full_stimulus_index": 793,
+      "edge_validation_index": 507,
+      "edge_s": 7.930000000000001e-07,
+      "pattern_5_before_5_after": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "terminal_order_note": "The extracted transistor swaps D/S relative to the schematic; extracted VSB here corresponds to schematic drain-to-body voltage.",
+      "actual_nodes": {
+        "ctrl": "xdrv.ctrl.t1",
+        "second_inverter_body": "xdrv.vss.t3",
+        "poly_substrate": "xdrv.vss.t0",
+        "DI": "xdrv.di.t0"
+      },
+      "window_peak": {
+        "time_s": 7.9317758574436e-07,
+        "time_after_edge_ps": 177.58574435997434,
+        "CTRL_V": 3.604462381892394,
+        "NMOS_body_V": 0.0004760240709123145,
+        "resistor_substrate_V": -0.0002539893278235839,
+        "VSB_V": 3.6039863578214817
+      },
+      "window_extrema": {
+        "resistor_substrate_min_V": -0.008190252615345122,
+        "second_NMOS_body_min_V": -0.0001130712152110202
+      },
+      "global_stress": {
+        "max_abs_terminal_V": 3.6206229291383303,
+        "worst_instance": "x2",
+        "worst_pair": "VGB"
+      },
+      "model_boundary": "Substrate/body resistance and capacitance are from the public extraction deck and model. No wafer measurement or field-solver validation of this impedance is claimed.",
+      "at_identical_baseline_peak_time": {
+        "time_after_edge_ps": 20.41589143096612,
+        "data": 0.0,
+        "di": 3.4844583352602227,
+        "ctrl": 3.5995577754050805,
+        "body": -8.307001769557502e-05,
+        "resbody": -0.0006196300445054206,
+        "stress": 3.599640845422776,
+        "method": "Linear interpolation at the baseline sampled peak timestamp; waveform peak searches remain separately reported."
+      }
+    }
+  ],
+  "figures": [
+    {
+      "path": "docs/research/highspeed-nrz-pvt-20261023/figures/layout-body-bounce-before-after.svg",
+      "sha256": "8789b1ff82ff55736ae9b78885b2eaf1e2ce09d96816f3c89c8f9dcd3f7ea0e2"
+    },
+    {
+      "path": "docs/research/highspeed-nrz-pvt-20261023/figures/layout-body-bounce-before-after.png",
+      "sha256": "4b7053baa8dc3177ed091061b9408dc2625a9181d3a2e67e337293b3ca48dce4"
+    }
+  ]
+}

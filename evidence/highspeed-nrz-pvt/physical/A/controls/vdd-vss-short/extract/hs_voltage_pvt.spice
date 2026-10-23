@@ -1,0 +1,12 @@
+* NGSPICE file created from hs_voltage_pvt.ext - technology: gf180mcuD
+
+.subckt hs_voltage_pvt DATA OUT VH VL VSS
+X0 VL a_3084_3600# OUT VSS nfet_03v3 ad=1.76p pd=8.88u as=1.76p ps=8.88u w=4u l=0.28u
+X1 a_n1100_4414# DATA VSS ppolyf_u_1k_6p0 r_width=1u r_length=48u
+X2 VSS a_684_3900# a_3084_3600# VSS nfet_03v3 ad=1.76p pd=8.88u as=1.76p ps=8.88u w=4u l=0.28u
+X3 VSS a_n1100_4414# a_684_3900# VSS nfet_03v3 ad=0.44p pd=2.88u as=0.44p ps=2.88u w=1u l=0.28u
+X4 VH a_3084_3600# OUT VH pfet_03v3 ad=3.52p pd=16.88u as=3.52p ps=16.88u w=8u l=0.28u
+X5 VSS a_n1100_4414# a_684_3900# VSS pfet_03v3 ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=0.28u
+X6 VSS a_684_3900# a_3084_3600# VSS pfet_03v3 ad=3.52p pd=16.88u as=3.52p ps=16.88u w=8u l=0.28u
+.ends
+

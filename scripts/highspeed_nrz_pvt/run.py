@@ -1,0 +1,244 @@
+#!/usr/bin/env python3
+"""PVT repair experiment engine; frozen original load/RX, actual MOS and resistor terminals.
+Entry points: explore.py for immutable candidates, formal.py for selected-layout regression.
+All legacy data remains read-only. Cache mismatches reject instead of overwriting.
+"""
+from pathlib import Path
+from datetime import datetime
+import argparse
+import gzip
+import hashlib
+import importlib.util
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+import time
+import traceback
+import numpy as np
+
+ROOT=Path(__file__).resolve().parents[2]
+BUILD=ROOT/'build/highspeed-nrz-pvt'
+EVIDENCE=ROOT/'evidence/highspeed-nrz-pvt'
+BASE=ROOT/'build/highspeed-nrz/run-0xqxvspp'
+RATES=[.1,.25,.5,1,2,4,8]
+MAX_INCREMENTAL_BYTES=8*1024**3
+RUNNER_SOURCE_BYTES=Path(__file__).read_bytes()
+RUNNER_SOURCE_SHA256=hashlib.sha256(RUNNER_SOURCE_BYTES).hexdigest()
+
+def sha(path):
+    h=hashlib.sha256()
+    with Path(path).open('rb') as f:
+        for b in iter(lambda:f.read(1024**2),b''):h.update(b)
+    return h.hexdigest()
+
+def rel(path):
+    try:return str(Path(path).resolve().relative_to(ROOT))
+    except ValueError:return str(Path(path).resolve())
+
+def module(path,name):
+    spec=importlib.util.spec_from_file_location(name,path)
+    m=importlib.util.module_from_spec(spec);sys.modules[name]=m;spec.loader.exec_module(m)
+    return m
+
+def legacy(work=None):
+    path=(work/'inputs/legacy/run.py') if work else BASE/'inputs/scripts/highspeed_nrz/run.py'
+    m=module(path,'nrz_legacy_runner');m.ROOT=ROOT
+    return m
+
+def emit(path,obj):
+    path.parent.mkdir(parents=True,exist_ok=True)
+    payload=json.dumps(obj,ensure_ascii=False,indent=2,allow_nan=False)+'\n'
+    with tempfile.NamedTemporaryFile(mode='w',dir=path.parent,prefix=path.name+'.',suffix='.tmp',delete=False) as f:
+        f.write(payload);name=f.name
+    os.replace(name,path)
+
+def parse_core(path):
+    txt=re.sub(r'\n\s*\+\s*',' ',path.read_text())
+    sub=None;ports=[];devices=[]
+    for line in txt.splitlines():
+        s=line.strip()
+        if s.lower().startswith('.subckt'):
+            if sub is not None:raise ValueError('Require a single flat physical core')
+            p=s.split();sub=p[1].lower();ports=[n.lower() for n in p[2:]]
+            if 'params:' in ports:ports=ports[:ports.index('params:')]
+        elif re.match(r'^[Xx]\S+\s',s):
+            p=s.split()
+            if len(p)>4 and p[4].lower()=='ppolyf_u_1k_6p0':continue
+            if p[5].lower() not in ['nfet_03v3','pfet_03v3']:
+                raise ValueError('Unsupported nested core/model: '+s)
+            devices.append({'instance':p[0].lower(),'nodes':[n.lower() for n in p[1:5]],
+                            'model':p[5].lower(),'sizing':' '.join(p[6:])})
+    if not sub or not devices:raise ValueError('Missing core or MOS devices')
+    return sub,ports,devices
+
+def parse_passives(path):
+    text=re.sub(r'\n\s*\+\s*',' ',path.read_text());out=[]
+    for line in text.splitlines():
+        p=line.split()
+        if len(p)>4 and p[0].lower().startswith('x') and p[4].lower()=='ppolyf_u_1k_6p0':
+            out.append({'instance':p[0].lower(),'nodes':[n.lower() for n in p[1:4]],'model':p[4].lower(),'sizing':' '.join(p[5:])})
+    return out
+
+def case_spec(work,route,variant,rate=1,**kwargs):
+    c=legacy(work).case_spec(route,rate,**kwargs)
+    c['variant']=variant;c['name']=variant+'-'+c['name']
+    return c
+
+def build_deck(work,case):
+    m=json.loads((work/'manifest.json').read_text());frozen=work/'inputs'
+    definition=m['variants'][case['route']][case['variant']]
+    core=frozen/definition['path']
+    if definition.get('sha256') and sha(core)!=definition['sha256']:raise ValueError('core hash drift')
+    sub,ports,devices=parse_core(core)
+    portmap={n:('0' if n=='vss' else n) for n in ports}
+    def node(n):return portmap.get(n,'xdrv.'+n)
+    passives=parse_passives(core)
+    nodes=sorted(set(node(n) for d in devices+passives for n in d['nodes'])-{'0'})
+    devices=[d|{'nodes':[node(n) for n in d['nodes']]} for d in devices]
+    mapping_file=frozen/'physical'/f'{case["route"]}-contract.json'
+    if case['variant'] in ['GEOM','C','RC','AFTER'] and mapping_file.exists():
+        mapping={d['extracted_instance'].lower():d for d in json.loads(mapping_file.read_text()).get('extracted_device_mapping',[])}
+        devices=[d|({'original_instance':mapping[d['instance']]['original_instance'],
+                     'extracted_D_S_swapped_from_original':mapping[d['instance']]['drain_source_swapped']}
+                    if d['instance'] in mapping else {}) for d in devices]
+    rails={'VLED':('led_a',5.),'VDD':('vdd',case['vdd_V'])}
+    if case['route']=='A':
+        rails.update({'VH':('vh',definition.get('rails',m['route_a_rails'])['VH_V']),'VL':('vl',definition.get('rails',m['route_a_rails'])['VL_V'])})
+    else:rails['VDUMMY']=('vdummy',3.3)
+    vectors=[('data','v(data)'),('out','v(out)'),('led_k','v(led_k)'),('led_voltage','v(led_a,led_k)'),
+             ('iled_cond','i(VSENSE)'),('package_current','i(LPKG)')]
+    vectors += [(n,f'v({n})') for n in nodes if n not in ['data','out']]
+    vectors += [(k.lower()+'_current',f'i({k})') for k in rails]+[('data_current','i(VDATA)')]
+    lg=legacy(work);st=lg.stimulus();ui=1/(case['rate_Gbps']*1e9);stop=len(st['bits'])*ui
+    vdata=str(case['dc_bit']*case['vdd_V']) if 'dc_bit' in case else lg.pwl(st['bits'],ui,case['vdd_V'],case['edge_s'])
+    control='op' if 'dc_bit' in case else f'tran {ui/80:.16g} {stop:.16g} 0 {ui/case["steps_per_ui"]:.16g}'
+    paras=' WTAIL=5.76u' if case['variant']=='SNAP' else ''
+    external=('RREF_EXT '+definition.get('rref_source','vdd')+' bias '+str(definition.get('rref_ohm',88386.1064910889))+'\nRDUMMY_EXT vdummy dummy 28k') if 'bias' in ports and 'dummy' in ports else ''
+    # Only observed MOS-terminal and source vectors are saved; no signal/PG/body
+    # projection or de-duplication of electrically distinct nodes is performed.
+    deck=f'''Frozen NRZ PEX comparison {case['name']}
+.include "{frozen/'pdk/design.ngspice'}"
+.param sw_stat_global=0 sw_stat_mismatch=0
+.lib "{frozen/'pdk/sm141064.ngspice'}" {case['corner']}
+.lib "{frozen/'pdk/sm141064.ngspice'}" res_{case['corner'] if case['corner'] in ['ss','ff'] else 'typical'}
+.temp {case['temp_C']}
+.include "{core}"
+.include "{frozen/'led.spice'}"
+{chr(10).join(k+' '+n+' 0 '+str(v) for k,(n,v) in rails.items())}
+VDATA data 0 {vdata}
+XDRV {' '.join(portmap[n] for n in ports)} {sub}{paras}
+{external}
+XLED led_a led_dc_k lin2026_yellow20_dc
+VSENSE led_dc_k led_k 0
+CLED led_a led_k {case['cap_F']:.16g}
+RPKG led_k pkg {case['r_pkg']:.16g}
+LPKG pkg out {case['l_pkg']:.16g}
+.options reltol={case['reltol']} abstol=1e-13 vntol=1e-7 chgtol={case['chgtol']} method={case['method']} maxord=2
+.control
+set numdgt=15
+set wr_singlescale
+set wr_vecnames
+{control}
+wrdata waveform.dat {' '.join(v for _,v in vectors)}
+quit
+.endc
+.end
+'''
+    return deck,vectors,devices,rails
+
+def compress_new(raw):
+    """Archive this newly generated trace, verify original bytes before unlink."""
+    initial=sha(raw);gz=raw.with_suffix(raw.suffix+'.gz')
+    with raw.open('rb') as src,gzip.open(gz,'wb',compresslevel=1) as dst:shutil.copyfileobj(src,dst)
+    h=hashlib.sha256()
+    with gzip.open(gz,'rb') as f:
+        for b in iter(lambda:f.read(1024**2),b''):h.update(b)
+    if initial!=h.hexdigest():raise AssertionError('gzip round trip differs')
+    before=raw.stat().st_size;raw.unlink()
+    return {'waveform':rel(gz),'waveform_sha256':sha(gz),'uncompressed_sha256':initial,
+            'uncompressed_bytes':before,'compressed_bytes':gz.stat().st_size,'roundtrip_verified':True}
+
+def current_bytes():
+    return sum(p.stat().st_size for p in BUILD.rglob('*') if p.is_file() and not p.is_symlink())
+
+def run_case(work,case,timeout=240):
+    folder=work/'cases'/case['name'];folder.mkdir(parents=True,exist_ok=True);cached=folder/'result.json'
+    if cached.exists():
+        old=json.loads(cached.read_text())
+        if not old.get('input_identity'):raise ValueError('Legacy cached result lacks original input identity; use read-only audit or a new run')
+        for source,expected in old['input_identity'].items():
+            if sha(work/'inputs'/source)!=expected:raise ValueError('Cached included input changed: '+source)
+        if old.get('stimulus_sha256')!=sha(work/'stimulus.json'):raise ValueError('Cached stimulus changed')
+        definition=json.loads((work/'manifest.json').read_text())['variants'][case['route']][case['variant']]
+        dh=hashlib.sha256(json.dumps(definition,sort_keys=True).encode()).hexdigest()
+        if old.get('candidate_definition_sha256') and old['candidate_definition_sha256']!=dh:raise ValueError('Cached candidate definition identity changed')
+        proposed=build_deck(work,case)[0]
+        if old['case']!=case or old.get('deck_sha256')!=hashlib.sha256(proposed.encode()).hexdigest():
+            raise ValueError('Cached case identity changed; use a new immutable run/label')
+        return old
+    source_hash=RUNNER_SOURCE_SHA256
+    source_copy=work/'execution-sources'/f'{source_hash}.py'
+    if not source_copy.exists():
+        source_copy.parent.mkdir(parents=True,exist_ok=True);source_copy.write_bytes(RUNNER_SOURCE_BYTES)
+    start=time.monotonic();result={'case':case,'simulation_ok':False,'exit_code':None,
+                                  'runner_source':rel(source_copy),'runner_source_sha256':source_hash}
+    raw=folder/'waveform.dat'
+    try:
+        used=current_bytes()
+        if used>MAX_INCREMENTAL_BYTES or shutil.disk_usage(ROOT).free<4*1024**3:
+            raise RuntimeError('storage budget guard: no simulation started')
+        deck,vectors,devices,rails=build_deck(work,case)
+        m=json.loads((work/'manifest.json').read_text());definition=m['variants'][case['route']][case['variant']]
+        core=work/'inputs'/definition['path'];ports=parse_core(core)[1]
+        result['passives']=[p|{'nodes':[('0' if n=='vss' else n) if n in ports else 'xdrv.'+n for n in p['nodes']]} for p in parse_passives(core)]
+        result['candidate_definition']=definition
+        result['candidate_definition_sha256']=hashlib.sha256(json.dumps(definition,sort_keys=True).encode()).hexdigest()
+        result['input_identity']={k:sha(work/'inputs'/k) for k in ['legacy/run.py','legacy/metrics.py','legacy/analyze.py','led.spice','pdk/design.ngspice','pdk/sm141064.ngspice']}
+        result['stimulus_sha256']=sha(work/'stimulus.json')
+        (folder/'testbench.spice').write_text(deck);emit(folder/'case.json',case)
+        for name in ['design.ngspice','sm141064.ngspice']:
+            link=folder/name
+            if not link.exists():link.symlink_to(work/'inputs/pdk'/name)
+        with (folder/'ngspice.log').open('w') as log:
+            proc=subprocess.Popen(['ngspice','-b','testbench.spice'],cwd=folder,stdout=log,stderr=subprocess.STDOUT)
+            reason=None
+            while proc.poll() is None:
+                if time.monotonic()-start>timeout:reason='runtime budget timeout'
+                if raw.exists() and raw.stat().st_size>1600*1024**2:reason='single raw trace storage guard'
+                if reason:
+                    proc.terminate()
+                    try:proc.wait(5)
+                    except subprocess.TimeoutExpired:proc.kill();proc.wait()
+                    break
+                time.sleep(.25)
+        output=(folder/'ngspice.log').read_text();result['exit_code']=proc.returncode
+        result.update({'deck_sha256':sha(folder/'testbench.spice'),'log':rel(folder/'ngspice.log'),
+                       'log_sha256':sha(folder/'ngspice.log'),'vectors':{k:i+1 for i,(k,v) in enumerate(vectors)},
+                       'devices':devices,'rails':{k:{'node':n,'voltage_V':v} for k,(n,v) in rails.items()}})
+        if reason:raise RuntimeError(reason)
+        if proc.returncode or re.search(r'(?im)^Error:|timestep too small|simulation interrupted|fatal error',output):
+            raise RuntimeError('ngspice failure (see retained log)')
+        a=np.atleast_2d(np.loadtxt(raw,skiprows=1))
+        if a.shape[1]!=len(vectors)+1 or not np.isfinite(a).all():raise ValueError('invalid or nonfinite trace')
+        if 'dc_bit' not in case:
+            if not np.all(np.diff(a[:,0])>0):raise ValueError('non-increasing time; no silent repair')
+            stop=len(legacy(work).stimulus()['bits'])/(case['rate_Gbps']*1e9)
+            if not np.isclose(a[-1,0],stop,rtol=1e-10,atol=1e-18):raise ValueError('incomplete transient')
+        result.update({'simulation_ok':True,'rows':len(a),
+                       'warnings':[s for s in output.splitlines() if 'warning' in s.lower()]})
+        if 'dc_bit' in case:result['dc_values']={k:float(a[-1,i+1]) for i,(k,v) in enumerate(vectors)}
+        del a
+    except Exception as exc:
+        result['error']=f'{type(exc).__name__}: {exc}'
+        (folder/'pipeline-error.log').write_text(traceback.format_exc())
+    finally:
+        if raw.exists() and raw.stat().st_size:
+            try:result.update(compress_new(raw))
+            except Exception as exc:
+                result['simulation_ok']=False;result['archive_error']=str(exc)
+        result['elapsed_s']=time.monotonic()-start;emit(cached,result)
+    return result

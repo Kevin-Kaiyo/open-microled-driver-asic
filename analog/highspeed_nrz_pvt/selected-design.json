@@ -1,0 +1,38 @@
+{
+  "status": "Final-r4 actual DRC/LVS/PEX and frozen 130-case electrical regression complete; targets A1Gb/s and B0.5Gb/s pass selected TT/SS/FF combined screen; no silicon or optical qualification",
+  "route_A": {
+    "core": "analog/highspeed_nrz_pvt/voltage_driver.spice",
+    "input_resistor": {
+      "model": "ppolyf_u_1k_6p0",
+      "w_um": 1,
+      "l_um": 48
+    },
+    "nominal_target_rate_Gbps": 1,
+    "unchanged_MOS": true,
+    "VH_V": 1.6110254451423758,
+    "VL_V": 1.1721543178141975
+  },
+  "route_B": {
+    "core": "analog/highspeed_nrz_pvt/steering_driver.spice",
+    "input_resistor": {
+      "model": "ppolyf_u_1k_6p0",
+      "w_um": 1,
+      "l_um": 58
+    },
+    "nominal_target_rate_Gbps": 0.5,
+    "unchanged_MOS": true,
+    "RREF_ohm": 88386.1064910889,
+    "RREF_source": "VDUMMY",
+    "VDUMMY_V": 3.3,
+    "RDUMMY_ohm": 28000
+  },
+  "shared": "Original frozen LED load,20ps external data edge,optical andreceiver proxy,threshold andalgorithm. No newidealrail. Input filter changes internal slew only.",
+  "bias_caution": "B reconnects reference resistor to existing ideal fixed3.3V analog VDUMMY source; it is not a designed regulator, precision reference ortemperaturecompensation circuit.",
+  "formal_evidence": "evidence/highspeed-nrz-pvt/summary.json",
+  "validation": "evidence/highspeed-nrz-pvt/validation.json",
+  "limits": [
+    "A2Gb/s remains unsupported in final design; speed is deliberately derated to1Gb/s in the tested grid",
+    "3.63V is a project MOS-terminal screen, not a foundry reliability limit",
+    "LED dynamic and receiver model remain assumptions; selected joint PVT corners only"
+  ]
+}

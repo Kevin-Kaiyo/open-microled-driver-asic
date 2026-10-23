@@ -1,0 +1,14 @@
+* Selected PVT repair candidate. Verification status lives in evidence/highspeed-nrz-pvt.
+* Candidate: isolated diffusion geometry estimate 0.44um, not PEX.
+.subckt hs_steering_pvt DATA OUT VDD VSS BIAS DUMMY
+XRIN DATA DI VSS ppolyf_u_1k_6p0 r_width=1u r_length=58u
+XREF BIAS BIAS VSS VSS nfet_03v3 w=2u l=1u ad=0.88p as=0.88p pd=4.88u ps=4.88u
+XBASE OUT BIAS VSS VSS nfet_03v3 w=2u l=1u ad=0.88p as=0.88p pd=4.88u ps=4.88u
+XTAIL VX BIAS VSS VSS nfet_03v3 w=5.76u l=1u ad=2.5344p as=2.5344p pd=12.4u ps=12.4u
+XLED OUT GP VX VSS nfet_03v3 w=1u l=0.28u ad=0.44p as=0.44p pd=2.88u ps=2.88u
+XDUMMY DUMMY GB VX VSS nfet_03v3 w=1u l=0.28u ad=0.44p as=0.44p pd=2.88u ps=2.88u
+XINV1N GB DI VSS VSS nfet_03v3 w=1u l=0.28u ad=0.44p as=0.44p pd=2.88u ps=2.88u
+XINV1P GB DI VDD VDD pfet_03v3 w=2u l=0.28u ad=0.88p as=0.88p pd=4.88u ps=4.88u
+XINV2N GP GB VSS VSS nfet_03v3 w=1u l=0.28u ad=0.44p as=0.44p pd=2.88u ps=2.88u
+XINV2P GP GB VDD VDD pfet_03v3 w=2u l=0.28u ad=0.88p as=0.88p pd=4.88u ps=4.88u
+.ends hs_steering_pvt

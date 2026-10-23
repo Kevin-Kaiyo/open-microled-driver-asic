@@ -1,0 +1,1343 @@
+{
+  "schema_version": 1,
+  "route": "A",
+  "top": "hs_voltage_pvt",
+  "ports": [
+    "DATA",
+    "OUT",
+    "VDD",
+    "VH",
+    "VL",
+    "VSS"
+  ],
+  "grid_um": 0.005,
+  "devices": [
+    {
+      "name": "N1",
+      "model": "nfet_03v3",
+      "w_um": 1,
+      "l_um": 0.28,
+      "cx": 4,
+      "cy": 20,
+      "nodes": [
+        "N1",
+        "DI",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          3.6,
+          20
+        ],
+        "G": [
+          4,
+          21.0
+        ],
+        "S": [
+          4.4,
+          20
+        ],
+        "B": [
+          1.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "P1",
+      "model": "pfet_03v3",
+      "w_um": 2,
+      "l_um": 0.28,
+      "cx": 10,
+      "cy": 20,
+      "nodes": [
+        "N1",
+        "DI",
+        "VDD",
+        "VDD"
+      ],
+      "pins_um": {
+        "D": [
+          9.6,
+          20
+        ],
+        "G": [
+          10,
+          21.5
+        ],
+        "S": [
+          10.4,
+          20
+        ],
+        "B": [
+          7.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "N2",
+      "model": "nfet_03v3",
+      "w_um": 4,
+      "l_um": 0.28,
+      "cx": 16,
+      "cy": 20,
+      "nodes": [
+        "CTRL",
+        "N1",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          15.6,
+          20
+        ],
+        "G": [
+          16,
+          22.5
+        ],
+        "S": [
+          16.4,
+          20
+        ],
+        "B": [
+          13.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "P2",
+      "model": "pfet_03v3",
+      "w_um": 8,
+      "l_um": 0.28,
+      "cx": 22,
+      "cy": 20,
+      "nodes": [
+        "CTRL",
+        "N1",
+        "VDD",
+        "VDD"
+      ],
+      "pins_um": {
+        "D": [
+          21.6,
+          20
+        ],
+        "G": [
+          22,
+          24.5
+        ],
+        "S": [
+          22.4,
+          20
+        ],
+        "B": [
+          19.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "NOUT",
+      "model": "nfet_03v3",
+      "w_um": 4,
+      "l_um": 0.28,
+      "cx": 28,
+      "cy": 20,
+      "nodes": [
+        "OUT",
+        "CTRL",
+        "VL",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          27.6,
+          20
+        ],
+        "G": [
+          28,
+          22.5
+        ],
+        "S": [
+          28.4,
+          20
+        ],
+        "B": [
+          25.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "POUT",
+      "model": "pfet_03v3",
+      "w_um": 8,
+      "l_um": 0.28,
+      "cx": 34,
+      "cy": 20,
+      "nodes": [
+        "OUT",
+        "CTRL",
+        "VH",
+        "VH"
+      ],
+      "pins_um": {
+        "D": [
+          33.6,
+          20
+        ],
+        "G": [
+          34,
+          24.5
+        ],
+        "S": [
+          34.4,
+          20
+        ],
+        "B": [
+          31.5,
+          20
+        ]
+      }
+    }
+  ],
+  "buses_um": {
+    "DI": 1.0,
+    "OUT": 2.2,
+    "VDD": 3.4,
+    "VH": 4.6,
+    "VL": 5.8,
+    "VSS": 7.0,
+    "N1": 8.2,
+    "CTRL": 9.4,
+    "DATA": 10.6
+  },
+  "bus_spans_um": {
+    "DI": [
+      -5.5,
+      10.5
+    ],
+    "OUT": [
+      27.1,
+      34.1
+    ],
+    "VDD": [
+      7.0,
+      22.9
+    ],
+    "VH": [
+      31.0,
+      34.9
+    ],
+    "VL": [
+      27.9,
+      28.9
+    ],
+    "VSS": [
+      -6.88,
+      26.0
+    ],
+    "N1": [
+      3.1,
+      22.5
+    ],
+    "CTRL": [
+      15.1,
+      34.5
+    ],
+    "DATA": [
+      -5.5,
+      -4.5
+    ]
+  },
+  "port_anchor_um": {
+    "OUT": [
+      27.3,
+      2.2
+    ],
+    "VDD": [
+      7.2,
+      3.4
+    ],
+    "VH": [
+      31.2,
+      4.6
+    ],
+    "VL": [
+      28.099999999999998,
+      5.8
+    ],
+    "VSS": [
+      1.2,
+      7.0
+    ],
+    "DATA": [
+      -5.3,
+      10.6
+    ]
+  },
+  "routes": [
+    {
+      "net": "DI",
+      "layer": "metal3",
+      "rect_um": [
+        3.5,
+        0.8,
+        10.5,
+        1.2
+      ]
+    },
+    {
+      "net": "OUT",
+      "layer": "metal3",
+      "rect_um": [
+        27.1,
+        2.0,
+        34.1,
+        2.4
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal3",
+      "rect_um": [
+        7.0,
+        3.2,
+        22.9,
+        3.6
+      ]
+    },
+    {
+      "net": "VH",
+      "layer": "metal3",
+      "rect_um": [
+        31.0,
+        4.4,
+        34.9,
+        4.8
+      ]
+    },
+    {
+      "net": "VL",
+      "layer": "metal3",
+      "rect_um": [
+        27.9,
+        5.6,
+        28.9,
+        6.0
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        1.0,
+        6.8,
+        26.0,
+        7.2
+      ]
+    },
+    {
+      "net": "N1",
+      "layer": "metal3",
+      "rect_um": [
+        3.1,
+        8.0,
+        22.5,
+        8.4
+      ]
+    },
+    {
+      "net": "CTRL",
+      "layer": "metal3",
+      "rect_um": [
+        15.1,
+        9.2,
+        34.5,
+        9.6
+      ]
+    },
+    {
+      "net": "DI",
+      "layer": "metal1",
+      "rect_um": [
+        3.81,
+        18.81,
+        4.19,
+        19.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        1.5,
+        19.81,
+        3.03,
+        20.19
+      ]
+    },
+    {
+      "net": "N1",
+      "layer": "metal2",
+      "rect_um": [
+        3.41,
+        8.01,
+        3.79,
+        20.19
+      ]
+    },
+    {
+      "net": "DI",
+      "layer": "metal4",
+      "rect_um": [
+        3.81,
+        0.81,
+        4.19,
+        21.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        4.21,
+        6.81,
+        4.59,
+        20.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        1.31,
+        6.81,
+        1.69,
+        20.19
+      ]
+    },
+    {
+      "net": "DI",
+      "layer": "metal1",
+      "rect_um": [
+        9.81,
+        18.31,
+        10.19,
+        18.69
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal1",
+      "rect_um": [
+        7.5,
+        19.81,
+        9.03,
+        20.19
+      ]
+    },
+    {
+      "net": "N1",
+      "layer": "metal2",
+      "rect_um": [
+        9.41,
+        8.01,
+        9.79,
+        20.19
+      ]
+    },
+    {
+      "net": "DI",
+      "layer": "metal4",
+      "rect_um": [
+        9.81,
+        0.81,
+        10.19,
+        21.69
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal2",
+      "rect_um": [
+        10.21,
+        3.21,
+        10.59,
+        20.19
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal2",
+      "rect_um": [
+        7.31,
+        3.21,
+        7.69,
+        20.19
+      ]
+    },
+    {
+      "net": "N1",
+      "layer": "metal1",
+      "rect_um": [
+        15.81,
+        17.31,
+        16.19,
+        17.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        13.5,
+        19.81,
+        15.03,
+        20.19
+      ]
+    },
+    {
+      "net": "CTRL",
+      "layer": "metal2",
+      "rect_um": [
+        15.41,
+        9.21,
+        15.79,
+        20.19
+      ]
+    },
+    {
+      "net": "N1",
+      "layer": "metal4",
+      "rect_um": [
+        15.81,
+        8.01,
+        16.19,
+        22.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        16.21,
+        6.81,
+        16.59,
+        20.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        13.31,
+        6.81,
+        13.69,
+        20.19
+      ]
+    },
+    {
+      "net": "N1",
+      "layer": "metal1",
+      "rect_um": [
+        21.81,
+        15.31,
+        22.19,
+        15.69
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal1",
+      "rect_um": [
+        19.5,
+        19.81,
+        21.03,
+        20.19
+      ]
+    },
+    {
+      "net": "CTRL",
+      "layer": "metal2",
+      "rect_um": [
+        21.41,
+        9.21,
+        21.79,
+        20.19
+      ]
+    },
+    {
+      "net": "N1",
+      "layer": "metal4",
+      "rect_um": [
+        21.81,
+        8.01,
+        22.19,
+        24.69
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal2",
+      "rect_um": [
+        22.21,
+        3.21,
+        22.59,
+        20.19
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal2",
+      "rect_um": [
+        19.31,
+        3.21,
+        19.69,
+        20.19
+      ]
+    },
+    {
+      "net": "CTRL",
+      "layer": "metal1",
+      "rect_um": [
+        27.81,
+        17.31,
+        28.19,
+        17.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        25.5,
+        19.81,
+        27.03,
+        20.19
+      ]
+    },
+    {
+      "net": "OUT",
+      "layer": "metal2",
+      "rect_um": [
+        27.41,
+        2.01,
+        27.79,
+        20.19
+      ]
+    },
+    {
+      "net": "CTRL",
+      "layer": "metal4",
+      "rect_um": [
+        27.81,
+        9.21,
+        28.19,
+        22.69
+      ]
+    },
+    {
+      "net": "VL",
+      "layer": "metal2",
+      "rect_um": [
+        28.21,
+        5.61,
+        28.59,
+        20.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        25.31,
+        6.81,
+        25.69,
+        20.19
+      ]
+    },
+    {
+      "net": "CTRL",
+      "layer": "metal1",
+      "rect_um": [
+        33.81,
+        15.31,
+        34.19,
+        15.69
+      ]
+    },
+    {
+      "net": "VH",
+      "layer": "metal1",
+      "rect_um": [
+        31.5,
+        19.81,
+        33.03,
+        20.19
+      ]
+    },
+    {
+      "net": "OUT",
+      "layer": "metal2",
+      "rect_um": [
+        33.41,
+        2.01,
+        33.79,
+        20.19
+      ]
+    },
+    {
+      "net": "CTRL",
+      "layer": "metal4",
+      "rect_um": [
+        33.81,
+        9.21,
+        34.19,
+        24.69
+      ]
+    },
+    {
+      "net": "VH",
+      "layer": "metal2",
+      "rect_um": [
+        34.21,
+        4.41,
+        34.59,
+        20.19
+      ]
+    },
+    {
+      "net": "VH",
+      "layer": "metal2",
+      "rect_um": [
+        31.31,
+        4.41,
+        31.69,
+        20.19
+      ]
+    },
+    {
+      "net": "DI",
+      "layer": "metal3",
+      "rect_um": [
+        -5.5,
+        0.8,
+        10.5,
+        1.2
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        -6.88,
+        6.8,
+        26.0,
+        7.2
+      ]
+    },
+    {
+      "net": "DATA",
+      "layer": "metal3",
+      "rect_um": [
+        -5.5,
+        10.4,
+        -4.5,
+        10.8
+      ]
+    },
+    {
+      "net": "DATA",
+      "layer": "metal4",
+      "rect_um": [
+        -5.19,
+        10.41,
+        -4.81,
+        61.05
+      ]
+    },
+    {
+      "net": "DI",
+      "layer": "metal2",
+      "rect_um": [
+        -5.19,
+        0.81,
+        -4.81,
+        2.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        -6.57,
+        6.81,
+        -6.19,
+        31.62
+      ]
+    }
+  ],
+  "external_components": [
+    {
+      "name": "VH",
+      "kind": "ideal bidirectional rail"
+    },
+    {
+      "name": "VL",
+      "kind": "ideal bidirectional rail"
+    }
+  ],
+  "dimension_change": [],
+  "source_sha256": {
+    "build/highspeed-nrz-pvt/explore/inputs/candidates/A-POLY58.spice": "b80b8789750eaad5c16943372659e4478cd0f31d8014b776779d5fbe1a75e6d3",
+    "build/highspeed-nrz-pvt-layout/poly58-r1/sources/A/schematic.spice": "275a6da7562718a0dae25904cb02c50d8820343e56da2f6e1b23d70283951529"
+  },
+  "pcell_parameters": {
+    "full_metal": 0,
+    "gate_to_polycont_um": 0.5,
+    "guard": 1,
+    "glc": 1,
+    "grc": 1,
+    "topc": 1,
+    "botc": 1
+  },
+  "note": "Transistor core only; no pads/ESD/regulators/external resistor implementation. Use extraction results for junction areas/perimeters, not schematic estimates.",
+  "resistors": [
+    {
+      "name": "RIN",
+      "model": "ppolyf_u_1k_6p0",
+      "r_width_um": 1,
+      "r_length_um": 58,
+      "nodes": [
+        "DATA",
+        "DI",
+        "VSS"
+      ],
+      "cx": -5.0,
+      "cy": 31.43,
+      "pins_um": {
+        "1": [
+          -5.0,
+          60.86
+        ],
+        "2": [
+          -5.0,
+          1.9999999999999998
+        ],
+        "B": [
+          -6.38,
+          31.43
+        ]
+      }
+    }
+  ],
+  "design_changes": [
+    "6 V high-R-poly DATA-to-DI slew conditioning resistor, 58 x 1 um",
+    "Original MOS geometry preserved"
+  ],
+  "electrical_physical_independence": "Physical D/G/S/B is hand-authored in selected specification; LVS gold is independently read from selected SPICE. No netlist-to-placement parser is used.",
+  "gds_sha256": "e4090ade043159f9206d68d7f6bc457077522f0c08c1a93fb0f49296687ed3c9",
+  "bbox_um": [
+    -6.88,
+    0.52,
+    35.43,
+    62.34
+  ],
+  "width_um": 42.31,
+  "height_um": 61.82,
+  "area_um2": 2615.6042,
+  "drawn_layers": [
+    {
+      "gds_layer": 21,
+      "datatype": 0,
+      "name": "N-well",
+      "area_um2": 71.22359999999999
+    },
+    {
+      "gds_layer": 204,
+      "datatype": 0,
+      "name": "P-well",
+      "area_um2": 258.31399999999996
+    },
+    {
+      "gds_layer": 22,
+      "datatype": 0,
+      "name": "Active",
+      "area_um2": 114.4512
+    },
+    {
+      "gds_layer": 110,
+      "datatype": 5,
+      "name": "PDK marker",
+      "area_um2": 90.47999999999999
+    },
+    {
+      "gds_layer": 49,
+      "datatype": 0,
+      "name": "PDK marker",
+      "area_um2": 90.792
+    },
+    {
+      "gds_layer": 32,
+      "datatype": 0,
+      "name": "N+ implant",
+      "area_um2": 53.6832
+    },
+    {
+      "gds_layer": 31,
+      "datatype": 0,
+      "name": "P+ implant",
+      "area_um2": 101.6708
+    },
+    {
+      "gds_layer": 55,
+      "datatype": 0,
+      "name": "PDK marker",
+      "area_um2": 222.552
+    },
+    {
+      "gds_layer": 30,
+      "datatype": 0,
+      "name": "Poly",
+      "area_um2": 69.4104
+    },
+    {
+      "gds_layer": 33,
+      "datatype": 0,
+      "name": "Contact",
+      "area_um2": 25.5552
+    },
+    {
+      "gds_layer": 34,
+      "datatype": 0,
+      "name": "Metal1",
+      "area_um2": 63.991
+    },
+    {
+      "gds_layer": 35,
+      "datatype": 0,
+      "name": "Via1",
+      "area_um2": 1.8252
+    },
+    {
+      "gds_layer": 36,
+      "datatype": 0,
+      "name": "Metal2",
+      "area_um2": 111.1462
+    },
+    {
+      "gds_layer": 38,
+      "datatype": 0,
+      "name": "Via2",
+      "area_um2": 1.8252
+    },
+    {
+      "gds_layer": 42,
+      "datatype": 0,
+      "name": "Metal3",
+      "area_um2": 47.602799999999995
+    },
+    {
+      "gds_layer": 40,
+      "datatype": 0,
+      "name": "Via3",
+      "area_um2": 0.9463999999999999
+    },
+    {
+      "gds_layer": 46,
+      "datatype": 0,
+      "name": "Metal4",
+      "area_um2": 57.843599999999995
+    },
+    {
+      "gds_layer": 62,
+      "datatype": 0,
+      "name": "PDK marker",
+      "area_um2": 108.036
+    },
+    {
+      "gds_layer": 42,
+      "datatype": 10,
+      "name": "Metal3",
+      "area_um2": 0.24
+    }
+  ],
+  "routed_metal_layers": [
+    "Metal1",
+    "Metal2",
+    "Metal3",
+    "Metal4"
+  ],
+  "pdk_available_metal_layers": 5,
+  "extracted_device_mapping": [
+    {
+      "original_instance": "XN1",
+      "extracted_instance": "X3",
+      "original_nodes": {
+        "D": "N1",
+        "G": "DI",
+        "S": "VSS",
+        "B": "VSS"
+      },
+      "rc_nodes": {
+        "D": "N1.t0",
+        "G": "DI.t2",
+        "S": "VSS.t2",
+        "B": "VSS.t1"
+      },
+      "extracted_spice_nodes": {
+        "D": "VSS.t2",
+        "G": "DI.t2",
+        "S": "N1.t0",
+        "B": "VSS.t1"
+      },
+      "drain_source_swapped": true,
+      "params_si": {
+        "ad": 4.4e-13,
+        "pd": 2.88e-06,
+        "as": 4.4e-13,
+        "ps": 2.88e-06,
+        "w": 1e-06,
+        "l": 2.8e-07
+      },
+      "multiplicity": 1,
+      "fingers": 1,
+      "cx_um": 4,
+      "cy_um": 20,
+      "pin_coordinate_um": {
+        "D": [
+          3.6,
+          20
+        ],
+        "G": [
+          4,
+          21.0
+        ],
+        "S": [
+          4.4,
+          20
+        ],
+        "B": [
+          1.5,
+          20
+        ]
+      }
+    },
+    {
+      "original_instance": "XP1",
+      "extracted_instance": "X5",
+      "original_nodes": {
+        "D": "N1",
+        "G": "DI",
+        "S": "VDD",
+        "B": "VDD"
+      },
+      "rc_nodes": {
+        "D": "N1.t1",
+        "G": "DI.t1",
+        "S": "VDD.t1",
+        "B": "VDD.t0"
+      },
+      "extracted_spice_nodes": {
+        "D": "VDD.t1",
+        "G": "DI.t1",
+        "S": "N1.t1",
+        "B": "VDD.t0"
+      },
+      "drain_source_swapped": true,
+      "params_si": {
+        "ad": 8.8e-13,
+        "pd": 4.88e-06,
+        "as": 8.8e-13,
+        "ps": 4.88e-06,
+        "w": 2e-06,
+        "l": 2.8e-07
+      },
+      "multiplicity": 1,
+      "fingers": 1,
+      "cx_um": 10,
+      "cy_um": 20,
+      "pin_coordinate_um": {
+        "D": [
+          9.6,
+          20
+        ],
+        "G": [
+          10,
+          21.5
+        ],
+        "S": [
+          10.4,
+          20
+        ],
+        "B": [
+          7.5,
+          20
+        ]
+      }
+    },
+    {
+      "original_instance": "XN2",
+      "extracted_instance": "X1",
+      "original_nodes": {
+        "D": "CTRL",
+        "G": "N1",
+        "S": "VSS",
+        "B": "VSS"
+      },
+      "rc_nodes": {
+        "D": "CTRL.t1",
+        "G": "N1.t3",
+        "S": "VSS.t4",
+        "B": "VSS.t3"
+      },
+      "extracted_spice_nodes": {
+        "D": "VSS.t4",
+        "G": "N1.t3",
+        "S": "CTRL.t1",
+        "B": "VSS.t3"
+      },
+      "drain_source_swapped": true,
+      "params_si": {
+        "ad": 1.76e-12,
+        "pd": 8.88e-06,
+        "as": 1.76e-12,
+        "ps": 8.88e-06,
+        "w": 4e-06,
+        "l": 2.8e-07
+      },
+      "multiplicity": 1,
+      "fingers": 1,
+      "cx_um": 16,
+      "cy_um": 20,
+      "pin_coordinate_um": {
+        "D": [
+          15.6,
+          20
+        ],
+        "G": [
+          16,
+          22.5
+        ],
+        "S": [
+          16.4,
+          20
+        ],
+        "B": [
+          13.5,
+          20
+        ]
+      }
+    },
+    {
+      "original_instance": "XP2",
+      "extracted_instance": "X6",
+      "original_nodes": {
+        "D": "CTRL",
+        "G": "N1",
+        "S": "VDD",
+        "B": "VDD"
+      },
+      "rc_nodes": {
+        "D": "CTRL.t0",
+        "G": "N1.t2",
+        "S": "VDD.t3",
+        "B": "VDD.t2"
+      },
+      "extracted_spice_nodes": {
+        "D": "VDD.t3",
+        "G": "N1.t2",
+        "S": "CTRL.t0",
+        "B": "VDD.t2"
+      },
+      "drain_source_swapped": true,
+      "params_si": {
+        "ad": 3.52e-12,
+        "pd": 1.6879999999999998e-05,
+        "as": 3.52e-12,
+        "ps": 1.6879999999999998e-05,
+        "w": 8e-06,
+        "l": 2.8e-07
+      },
+      "multiplicity": 1,
+      "fingers": 1,
+      "cx_um": 22,
+      "cy_um": 20,
+      "pin_coordinate_um": {
+        "D": [
+          21.6,
+          20
+        ],
+        "G": [
+          22,
+          24.5
+        ],
+        "S": [
+          22.4,
+          20
+        ],
+        "B": [
+          19.5,
+          20
+        ]
+      }
+    },
+    {
+      "original_instance": "XNOUT",
+      "extracted_instance": "X0",
+      "original_nodes": {
+        "D": "OUT",
+        "G": "CTRL",
+        "S": "VL",
+        "B": "VSS"
+      },
+      "rc_nodes": {
+        "D": "OUT.t1",
+        "G": "CTRL.t3",
+        "S": "VL.t0",
+        "B": "VSS.t5"
+      },
+      "extracted_spice_nodes": {
+        "D": "VL.t0",
+        "G": "CTRL.t3",
+        "S": "OUT.t1",
+        "B": "VSS.t5"
+      },
+      "drain_source_swapped": true,
+      "params_si": {
+        "ad": 1.76e-12,
+        "pd": 8.88e-06,
+        "as": 1.76e-12,
+        "ps": 8.88e-06,
+        "w": 4e-06,
+        "l": 2.8e-07
+      },
+      "multiplicity": 1,
+      "fingers": 1,
+      "cx_um": 28,
+      "cy_um": 20,
+      "pin_coordinate_um": {
+        "D": [
+          27.6,
+          20
+        ],
+        "G": [
+          28,
+          22.5
+        ],
+        "S": [
+          28.4,
+          20
+        ],
+        "B": [
+          25.5,
+          20
+        ]
+      }
+    },
+    {
+      "original_instance": "XPOUT",
+      "extracted_instance": "X4",
+      "original_nodes": {
+        "D": "OUT",
+        "G": "CTRL",
+        "S": "VH",
+        "B": "VH"
+      },
+      "rc_nodes": {
+        "D": "OUT.t0",
+        "G": "CTRL.t2",
+        "S": "VH.t1",
+        "B": "VH.t0"
+      },
+      "extracted_spice_nodes": {
+        "D": "VH.t1",
+        "G": "CTRL.t2",
+        "S": "OUT.t0",
+        "B": "VH.t0"
+      },
+      "drain_source_swapped": true,
+      "params_si": {
+        "ad": 3.52e-12,
+        "pd": 1.6879999999999998e-05,
+        "as": 3.52e-12,
+        "ps": 1.6879999999999998e-05,
+        "w": 8e-06,
+        "l": 2.8e-07
+      },
+      "multiplicity": 1,
+      "fingers": 1,
+      "cx_um": 34,
+      "cy_um": 20,
+      "pin_coordinate_um": {
+        "D": [
+          33.6,
+          20
+        ],
+        "G": [
+          34,
+          24.5
+        ],
+        "S": [
+          34.4,
+          20
+        ],
+        "B": [
+          31.5,
+          20
+        ]
+      }
+    }
+  ],
+  "extracted_resistor_mapping": [
+    {
+      "original_instance": "XRIN",
+      "extracted_instance": "X2",
+      "original_nodes": {
+        "1": "DATA",
+        "2": "DI",
+        "B": "VSS"
+      },
+      "rc_nodes": {
+        "1": "DATA.t0",
+        "2": "DI.t0",
+        "B": "VSS.t0"
+      },
+      "params_si": {
+        "r_width": 1e-06,
+        "r_length": 5.8e-05
+      },
+      "pin_coordinate_um": {
+        "1": [
+          -5.0,
+          60.86
+        ],
+        "2": [
+          -5.0,
+          1.9999999999999998
+        ],
+        "B": [
+          -6.38,
+          31.43
+        ]
+      }
+    }
+  ],
+  "manufacturing_grid_check": {
+    "grid_um": 0.005,
+    "polygon_vertex_violations": 0
+  },
+  "pex_port_order": [
+    "DATA",
+    "OUT",
+    "VDD",
+    "VH",
+    "VL",
+    "VSS"
+  ]
+}

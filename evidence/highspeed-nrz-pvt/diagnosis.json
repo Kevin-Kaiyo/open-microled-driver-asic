@@ -1,0 +1,1912 @@
+{
+  "schema_version": 1,
+  "scope": "Independent read-only diagnosis of immutable baseline RC waveform data.",
+  "script": "scripts/highspeed_nrz_pvt_diagnosis.py",
+  "script_sha256": "59077b9b577d5a8f830458a0da0ed15b909cb69fa8e027fd7366622c06af45fe",
+  "baseline_analysis": "build/highspeed-nrz-pex/run-0m3zyewc/analysis.json",
+  "baseline_analysis_sha256": "173128943ae86fee0cfba7284640c011db7b7b3ad8a8c52edf898e46f9517eb4",
+  "stimulus_sha256": "deaf1d197e63fd56f75b2681e6032a8402673cd9ff7e642a5cc6675db4609bf1",
+  "records": [
+    {
+      "case": {
+        "route": "A",
+        "rate_Gbps": 2,
+        "corner": "ff",
+        "temp_C": -40,
+        "vdd_V": 3.6,
+        "cap_F": 2e-13,
+        "r_pkg": 1.0,
+        "l_pkg": 5e-10,
+        "edge_s": 2e-11,
+        "steps_per_ui": 40,
+        "reltol": 1e-05,
+        "chgtol": 1e-16,
+        "method": "gear",
+        "kind": "fast_cold",
+        "name": "RC-A-fast_cold-2G-ff--40C-3.6V-C200-L0.5-e20-s40",
+        "variant": "RC"
+      },
+      "source": {
+        "result_json": "build/highspeed-nrz-pex/run-0m3zyewc/cases/RC-A-fast_cold-2G-ff--40C-3.6V-C200-L0.5-e20-s40/result.json",
+        "result_sha256": "4ee2cecd622e8f652e4ff921672ab47d3463ba20856c9682ff73f6db808ff543",
+        "waveform": "build/highspeed-nrz-pex/run-0m3zyewc/cases/RC-A-fast_cold-2G-ff--40C-3.6V-C200-L0.5-e20-s40/waveform.dat.gz",
+        "waveform_sha256": "76406a80a92071416105d6d8ba9377bc75be1bd2dcde36f0005096516dc5269c",
+        "uncompressed_sha256": "ee72f3620f4025c9ddbc95b80422748df67273dee0662dcda1d0952281f47321",
+        "deck_sha256": "175b6463d8c08552028e1f943d7d66be34c261b47845f9d0d5b8e463bb037cea",
+        "rows": 185366,
+        "hash_checks": "passed",
+        "duplicates_removed": 0
+      },
+      "stress": {
+        "device": {
+          "instance": "x1",
+          "nodes": [
+            "xdrv.vss.t3",
+            "xdrv.n1.t3",
+            "xdrv.ctrl.t1",
+            "xdrv.vss.t2"
+          ],
+          "model": "nfet_03v3",
+          "sizing": "ad=1.76p pd=8.88u as=1.76p ps=8.88u w=4u l=0.28u",
+          "original_instance": "XN2",
+          "extracted_D_S_swapped_from_original": true,
+          "terminal_differences": {
+            "VGS": {
+              "min_V": -3.6944838174774066,
+              "max_V": 3.717798520336419,
+              "max_abs_V": 3.717798520336419,
+              "at_max_abs_signed_V": 3.717798520336419,
+              "at_max_abs_time_s": 2.251256476416237e-08
+            },
+            "VGD": {
+              "min_V": -0.10645506490842796,
+              "max_V": 3.7243734998430154,
+              "max_abs_V": 3.7243734998430154,
+              "at_max_abs_signed_V": 3.7243734998430154,
+              "at_max_abs_time_s": 1.850120836853486e-07
+            },
+            "VGB": {
+              "min_V": -0.1053973944819907,
+              "max_V": 3.725269211866621,
+              "max_abs_V": 3.725269211866621,
+              "at_max_abs_signed_V": 3.725269211866621,
+              "at_max_abs_time_s": 2.551214519110412e-08
+            },
+            "VDS": {
+              "min_V": -3.665661865949367,
+              "max_V": 0.05080508685594289,
+              "max_abs_V": 3.665661865949367,
+              "at_max_abs_signed_V": -3.665661865949367,
+              "at_max_abs_time_s": 1.350418747563018e-07
+            },
+            "VDB": {
+              "min_V": -0.043431496252855875,
+              "max_V": 0.0784095139115568,
+              "max_abs_V": 0.0784095139115568,
+              "at_max_abs_signed_V": 0.0784095139115568,
+              "at_max_abs_time_s": 2.226491796227271e-07
+            },
+            "VSB": {
+              "min_V": -0.05341147659033898,
+              "max_V": 3.662093274750385,
+              "max_abs_V": 3.662093274750385,
+              "at_max_abs_signed_V": 3.662093274750385,
+              "at_max_abs_time_s": 4.654259921821097e-08
+            }
+          },
+          "worst_pair": "VGB",
+          "max_abs_terminal_V": 3.725269211866621,
+          "above_3p63V_screen": true,
+          "body_junction_forward": {
+            "VBS": {
+              "max_forward_V": 0.05341147659033898,
+              "max_signed_V": 0.05341147659033898
+            },
+            "VBD": {
+              "max_forward_V": 0.043431496252855875,
+              "max_signed_V": 0.043431496252855875
+            }
+          },
+          "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+        },
+        "peak_index": 13395,
+        "peak_node_values_V": {
+          "data": 2.186134398742163,
+          "out": 1.62987079469158,
+          "xdrv.vss.t3": 0.0007389486948109181,
+          "xdrv.n1.t3": 3.725108626987022,
+          "xdrv.ctrl.t1": 0.00747870629267243,
+          "xdrv.vss.t2": -0.0001605848795990148,
+          "xdrv.vdd.t0": 3.600518981079068,
+          "xdrv.vdd.t1": 3.604879677383967,
+          "xdrv.vdd.t2": 3.601230004499052,
+          "xdrv.vdd.t3": 3.600183015883175
+        },
+        "input_edge_time_s": 2.55e-08,
+        "time_into_edge_ps": 12.145191104119526,
+        "interpretation": "First inverter output voltage rises above VDD during the rising DATA edge; capacitive feedthrough is a mechanism inference, not isolated by this read-only waveform analysis.",
+        "focus_csv": {
+          "path": "build/highspeed-nrz-pvt/diagnosis/RC-A-fast_cold-2G-ff--40C-3.6V-C200-L0.5-e20-s40-feedthrough.csv",
+          "sha256": "865af24d8a9da36353b762e6463674a00773b57b8c1feb3f3168e052c7d19795"
+        }
+      }
+    },
+    {
+      "case": {
+        "route": "A",
+        "rate_Gbps": 2,
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "cap_F": 2e-13,
+        "r_pkg": 1.0,
+        "l_pkg": 5e-10,
+        "edge_s": 2e-11,
+        "steps_per_ui": 40,
+        "reltol": 1e-05,
+        "chgtol": 1e-16,
+        "method": "gear",
+        "kind": "nominal",
+        "name": "RC-A-nominal-2G-typical-27C-3.3V-C200-L0.5-e20-s40",
+        "variant": "RC"
+      },
+      "source": {
+        "result_json": "build/highspeed-nrz-pex/run-0m3zyewc/cases/RC-A-nominal-2G-typical-27C-3.3V-C200-L0.5-e20-s40/result.json",
+        "result_sha256": "59ca19201e27a7b83a6b372e06d1147aaedfeaeb2e30e2de6693e9f054ba5568",
+        "waveform": "build/highspeed-nrz-pex/run-0m3zyewc/cases/RC-A-nominal-2G-typical-27C-3.3V-C200-L0.5-e20-s40/waveform.dat.gz",
+        "waveform_sha256": "cda1086ae52b652517fb730e9638e326f2760a0cb98429452ee77553b13f15ad",
+        "uncompressed_sha256": "119453843f6193b0f92497eb648abdcfa704ebf44d10e42c550894a3d6a7e378",
+        "deck_sha256": "edce77025a56516c4921eadfe261c2776c07d68f434afd78f8016c1cb4f230ed",
+        "rows": 172115,
+        "hash_checks": "passed",
+        "duplicates_removed": 0
+      },
+      "receiver": {
+        "deterministic_errors": 0,
+        "min_one_A": 7.116755716738892e-05,
+        "max_zero_A": 4.925887710422503e-05,
+        "threshold_margin_normalized": 0.11556742889851888,
+        "timing_min_margin_ui": 0.2890625,
+        "sample_delay_ui": 1.8125,
+        "error_bits": [],
+        "patterns": {
+          "00100": {
+            "count": 16,
+            "min_sample_rx_uA": 71.16755716738892,
+            "max_sample_rx_uA": 71.85333738241341,
+            "selected_validation_bit_index": 138,
+            "selected_window_start_s": 2.1200000000000002e-07,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-A-nominal-2G-typical-27C-3.3V-C200-L0.5-e20-s40-00100.csv",
+              "sha256": "21c8dc8171d07723dd092d75eaff9de2010f204458fa1fafe2d6a5c0445bbb12"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 98.15546228676291,
+            "within_0_to_3p5UI_RX_peak_uA": 71.16777944141089,
+            "CTRL_crossings_50percent_VDD": [
+              {
+                "time_from_input_edge_ps": 180.19809877753715,
+                "direction": "rising"
+              },
+              {
+                "time_from_input_edge_ps": 686.4031602208776,
+                "direction": "falling"
+              }
+            ],
+            "CTRL_crossings_90percent_VDD": [
+              {
+                "time_from_input_edge_ps": 236.69867209181186,
+                "direction": "rising"
+              },
+              {
+                "time_from_input_edge_ps": 631.7043766105024,
+                "direction": "falling"
+              }
+            ]
+          },
+          "01110": {
+            "count": 16,
+            "min_sample_rx_uA": 96.17190700781273,
+            "max_sample_rx_uA": 96.82468784315834,
+            "selected_validation_bit_index": 427,
+            "selected_window_start_s": 3.565e-07,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-A-nominal-2G-typical-27C-3.3V-C200-L0.5-e20-s40-01110.csv",
+              "sha256": "4a1ed4b85d817bac824dbaea8a269f869c84fe3082d208bd1a56d53a720483ed"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 104.7095771715044,
+            "within_0_to_3p5UI_RX_peak_uA": 99.30372726008059
+          },
+          "00000": {
+            "count": 15,
+            "min_sample_rx_uA": 24.940623253132905,
+            "max_sample_rx_uA": 25.44214515758935,
+            "selected_validation_bit_index": 11,
+            "selected_window_start_s": 1.485e-07,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-A-nominal-2G-typical-27C-3.3V-C200-L0.5-e20-s40-00000.csv",
+              "sha256": "ed18d433d2ada8bcf487a4aa5a617a93064f6713ae39ad194385a3137998dff9"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 26.47683677044506,
+            "within_0_to_3p5UI_RX_peak_uA": 39.90762651181312
+          },
+          "11111": {
+            "count": 14,
+            "min_sample_rx_uA": 98.90236947380488,
+            "max_sample_rx_uA": 99.20688858493148,
+            "selected_validation_bit_index": 334,
+            "selected_window_start_s": 3.1e-07,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-A-nominal-2G-typical-27C-3.3V-C200-L0.5-e20-s40-11111.csv",
+              "sha256": "a939cbeddf1bb270bd22a73ef35e4967eedcb45ee8255fc0d3a73765b2f8a948"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 104.7108129067481,
+            "within_0_to_3p5UI_RX_peak_uA": 99.79416951977707
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "route": "A",
+        "rate_Gbps": 2,
+        "corner": "ss",
+        "temp_C": 125,
+        "vdd_V": 3.0,
+        "cap_F": 2e-13,
+        "r_pkg": 1.0,
+        "l_pkg": 5e-10,
+        "edge_s": 2e-11,
+        "steps_per_ui": 40,
+        "reltol": 1e-05,
+        "chgtol": 1e-16,
+        "method": "gear",
+        "kind": "slow_hot",
+        "name": "RC-A-slow_hot-2G-ss-125C-3V-C200-L0.5-e20-s40",
+        "variant": "RC"
+      },
+      "source": {
+        "result_json": "build/highspeed-nrz-pex/run-0m3zyewc/cases/RC-A-slow_hot-2G-ss-125C-3V-C200-L0.5-e20-s40/result.json",
+        "result_sha256": "794754388822cd3895588e26886b9bca54b8de0b003c7bfb1787bdc79f296114",
+        "waveform": "build/highspeed-nrz-pex/run-0m3zyewc/cases/RC-A-slow_hot-2G-ss-125C-3V-C200-L0.5-e20-s40/waveform.dat.gz",
+        "waveform_sha256": "9fa42561f9364bd3f2202adb9d1906a66d7c75f1c18a2b75a8025960bfe761a0",
+        "uncompressed_sha256": "f12a1645c7a9baf68c5564c455f7373894ab14a59f2ea9aec5b4846237f83671",
+        "deck_sha256": "179087de3bfe101a1b9f61f76067c272f1c04f4dff0168bafd0d539adb8d9662",
+        "rows": 152647,
+        "hash_checks": "passed",
+        "duplicates_removed": 0
+      },
+      "receiver": {
+        "deterministic_errors": 64,
+        "min_one_A": 4.5172084965367e-05,
+        "max_zero_A": 4.626105483806002e-05,
+        "threshold_margin_normalized": -0.23103886712844002,
+        "timing_min_margin_ui": 0,
+        "sample_delay_ui": 2.3515625,
+        "error_bits": [
+          {
+            "index": 27,
+            "bit": 1,
+            "rx_uA": 45.49609148158559,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 38,
+            "bit": 1,
+            "rx_uA": 46.68984268100331,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 44,
+            "bit": 1,
+            "rx_uA": 45.18066007320143,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 47,
+            "bit": 1,
+            "rx_uA": 46.243279410580904,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 49,
+            "bit": 1,
+            "rx_uA": 50.93159583645947,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 59,
+            "bit": 1,
+            "rx_uA": 53.104155311164284,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 84,
+            "bit": 1,
+            "rx_uA": 45.49009403549987,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 86,
+            "bit": 1,
+            "rx_uA": 50.84842540970459,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 88,
+            "bit": 1,
+            "rx_uA": 51.478932811058236,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 91,
+            "bit": 1,
+            "rx_uA": 46.38511287069295,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 107,
+            "bit": 1,
+            "rx_uA": 53.11219253812631,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 109,
+            "bit": 1,
+            "rx_uA": 51.71207482850705,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 117,
+            "bit": 1,
+            "rx_uA": 45.48345827790062,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 125,
+            "bit": 1,
+            "rx_uA": 45.475436724999945,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 129,
+            "bit": 1,
+            "rx_uA": 45.38612192188633,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 138,
+            "bit": 1,
+            "rx_uA": 45.172084965367,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 143,
+            "bit": 1,
+            "rx_uA": 45.2147003593866,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 153,
+            "bit": 1,
+            "rx_uA": 45.23255179402687,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 161,
+            "bit": 1,
+            "rx_uA": 46.7425100800364,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 163,
+            "bit": 1,
+            "rx_uA": 50.99838195881155,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 165,
+            "bit": 1,
+            "rx_uA": 51.50465501726378,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 181,
+            "bit": 1,
+            "rx_uA": 53.256585708115935,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 192,
+            "bit": 1,
+            "rx_uA": 46.732977028752366,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 196,
+            "bit": 1,
+            "rx_uA": 45.4040940935581,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 198,
+            "bit": 1,
+            "rx_uA": 50.82896735833852,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 203,
+            "bit": 1,
+            "rx_uA": 45.23223940445124,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 205,
+            "bit": 1,
+            "rx_uA": 50.81728391059146,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 210,
+            "bit": 1,
+            "rx_uA": 53.085445573633145,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 224,
+            "bit": 1,
+            "rx_uA": 46.70483153757854,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 227,
+            "bit": 1,
+            "rx_uA": 46.270197299774956,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 230,
+            "bit": 1,
+            "rx_uA": 46.270582314826626,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 243,
+            "bit": 1,
+            "rx_uA": 46.73655146435225,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 249,
+            "bit": 1,
+            "rx_uA": 53.023366299417425,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 251,
+            "bit": 1,
+            "rx_uA": 51.693549187425326,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 276,
+            "bit": 1,
+            "rx_uA": 46.6954018284205,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 278,
+            "bit": 1,
+            "rx_uA": 50.983031716641435,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 285,
+            "bit": 1,
+            "rx_uA": 53.00042993404434,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 288,
+            "bit": 1,
+            "rx_uA": 46.42778204453528,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 298,
+            "bit": 1,
+            "rx_uA": 53.258215733014715,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 302,
+            "bit": 1,
+            "rx_uA": 45.434372205606216,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 313,
+            "bit": 1,
+            "rx_uA": 53.24187224586705,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 319,
+            "bit": 1,
+            "rx_uA": 46.713333501146195,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 342,
+            "bit": 1,
+            "rx_uA": 53.24241940620578,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 351,
+            "bit": 1,
+            "rx_uA": 53.00694662496871,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 370,
+            "bit": 1,
+            "rx_uA": 45.196381623709016,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 375,
+            "bit": 1,
+            "rx_uA": 53.086937054717154,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 383,
+            "bit": 1,
+            "rx_uA": 53.268130501021616,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 385,
+            "bit": 1,
+            "rx_uA": 51.72519376417847,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 387,
+            "bit": 1,
+            "rx_uA": 51.57799381796416,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 389,
+            "bit": 1,
+            "rx_uA": 51.55424116421633,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 396,
+            "bit": 1,
+            "rx_uA": 45.18636291976973,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 398,
+            "bit": 1,
+            "rx_uA": 50.8021738303684,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 401,
+            "bit": 1,
+            "rx_uA": 46.382619391634066,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 403,
+            "bit": 1,
+            "rx_uA": 50.95747291567184,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 411,
+            "bit": 1,
+            "rx_uA": 46.747468748210196,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 435,
+            "bit": 1,
+            "rx_uA": 53.23556592344253,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 438,
+            "bit": 1,
+            "rx_uA": 46.42035896388594,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 446,
+            "bit": 1,
+            "rx_uA": 53.26563646989648,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 452,
+            "bit": 1,
+            "rx_uA": 53.25091526395639,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 454,
+            "bit": 1,
+            "rx_uA": 51.7148511912029,
+            "pattern_5_before_5_after": [
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "index": 458,
+            "bit": 1,
+            "rx_uA": 45.41833603729495,
+            "pattern_5_before_5_after": [
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "index": 461,
+            "bit": 1,
+            "rx_uA": 46.237437174669274,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 477,
+            "bit": 1,
+            "rx_uA": 45.24597984977837,
+            "pattern_5_before_5_after": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "index": 494,
+            "bit": 1,
+            "rx_uA": 53.01919138181626,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "patterns": {
+          "00100": {
+            "count": 16,
+            "min_sample_rx_uA": 45.172084965367,
+            "max_sample_rx_uA": 46.73655146435225,
+            "selected_validation_bit_index": 138,
+            "selected_window_start_s": 2.1200000000000002e-07,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-A-slow_hot-2G-ss-125C-3V-C200-L0.5-e20-s40-00100.csv",
+              "sha256": "ab3812e5247443b7dfcf03e4ab560794cd07d924d00d641acffd30dfdff12a1e"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 58.64858322799058,
+            "within_0_to_3p5UI_RX_peak_uA": 46.28153205858451,
+            "CTRL_crossings_50percent_VDD": [
+              {
+                "time_from_input_edge_ps": 269.0924567640026,
+                "direction": "rising"
+              },
+              {
+                "time_from_input_edge_ps": 771.3567050159573,
+                "direction": "falling"
+              }
+            ],
+            "CTRL_crossings_90percent_VDD": [
+              {
+                "time_from_input_edge_ps": 351.25487924812074,
+                "direction": "rising"
+              },
+              {
+                "time_from_input_edge_ps": 694.6873361679183,
+                "direction": "falling"
+              }
+            ]
+          },
+          "01110": {
+            "count": 16,
+            "min_sample_rx_uA": 80.79429311690714,
+            "max_sample_rx_uA": 82.5510956551216,
+            "selected_validation_bit_index": 427,
+            "selected_window_start_s": 3.565e-07,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-A-slow_hot-2G-ss-125C-3V-C200-L0.5-e20-s40-01110.csv",
+              "sha256": "85847800d711708c6874edde8eedc719af3e6c965742eac31e5626585df57df9"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 87.10557316806472,
+            "within_0_to_3p5UI_RX_peak_uA": 83.6023831603248
+          },
+          "00000": {
+            "count": 15,
+            "min_sample_rx_uA": 24.05923863607189,
+            "max_sample_rx_uA": 24.6382797436221,
+            "selected_validation_bit_index": 11,
+            "selected_window_start_s": 1.485e-07,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-A-slow_hot-2G-ss-125C-3V-C200-L0.5-e20-s40-00000.csv",
+              "sha256": "fb1beaa985f9c93257409180c9571874e4536453c77d9c29a15015e55df90b4c"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 28.76608643353313,
+            "within_0_to_3p5UI_RX_peak_uA": 45.69907861729473
+          },
+          "11111": {
+            "count": 14,
+            "min_sample_rx_uA": 84.88900052258028,
+            "max_sample_rx_uA": 85.60166227187776,
+            "selected_validation_bit_index": 334,
+            "selected_window_start_s": 3.1e-07,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-A-slow_hot-2G-ss-125C-3V-C200-L0.5-e20-s40-11111.csv",
+              "sha256": "291b599130c8a2c85b0d71baee3588572275a019b250eea188e450bae34365db"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 87.4416888686497,
+            "within_0_to_3p5UI_RX_peak_uA": 85.65101396136812
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "route": "B",
+        "rate_Gbps": 0.5,
+        "corner": "ff",
+        "temp_C": -40,
+        "vdd_V": 3.6,
+        "cap_F": 2e-13,
+        "r_pkg": 1.0,
+        "l_pkg": 5e-10,
+        "edge_s": 2e-11,
+        "steps_per_ui": 40,
+        "reltol": 1e-05,
+        "chgtol": 1e-16,
+        "method": "gear",
+        "kind": "fast_cold",
+        "name": "RC-B-fast_cold-0.5G-ff--40C-3.6V-C200-L0.5-e20-s40",
+        "variant": "RC"
+      },
+      "source": {
+        "result_json": "build/highspeed-nrz-pex/run-0m3zyewc/cases/RC-B-fast_cold-0.5G-ff--40C-3.6V-C200-L0.5-e20-s40/result.json",
+        "result_sha256": "f7bed872f08dd65191dde3d1d631ab09f5b23794baad65a36088a2dac2fb81cf",
+        "waveform": "build/highspeed-nrz-pex/run-0m3zyewc/cases/RC-B-fast_cold-0.5G-ff--40C-3.6V-C200-L0.5-e20-s40/waveform.dat.gz",
+        "waveform_sha256": "34b579b4df568fa43dfd3fe0166a8364aa28e6717021d3d55f3c96d09ec31930",
+        "uncompressed_sha256": "721fbc642c91d3255870cf06c697591bd966d5cfe32a54b7177dab452a37841e",
+        "deck_sha256": "d6b86424102393e5bc7c908cd806f2288e92ca634ae730f512b9fcbe3a52fe60",
+        "rows": 251938,
+        "hash_checks": "passed",
+        "duplicates_removed": 0
+      },
+      "stress": {
+        "device": {
+          "instance": "x2",
+          "nodes": [
+            "xdrv.vss.t10",
+            "xdrv.gb.t4",
+            "xdrv.gp.t0",
+            "xdrv.vss.t9"
+          ],
+          "model": "nfet_03v3",
+          "sizing": "ad=0.44p pd=2.88u as=0.44p ps=2.88u w=1u l=0.28u",
+          "original_instance": "XINV2N",
+          "extracted_D_S_swapped_from_original": true,
+          "terminal_differences": {
+            "VGS": {
+              "min_V": -3.726385540601692,
+              "max_V": 3.746141238961482,
+              "max_abs_V": 3.746141238961482,
+              "at_max_abs_signed_V": 3.746141238961482,
+              "at_max_abs_time_s": 3.800125230548117e-07
+            },
+            "VGD": {
+              "min_V": -0.15123051653526903,
+              "max_V": 3.76298961004967,
+              "max_abs_V": 3.76298961004967,
+              "at_max_abs_signed_V": 3.76298961004967,
+              "at_max_abs_time_s": 1.17601172020199e-06
+            },
+            "VGB": {
+              "min_V": -0.15114640783994857,
+              "max_V": 3.7635904865945675,
+              "max_abs_V": 3.7635904865945675,
+              "at_max_abs_signed_V": 3.7635904865945675,
+              "at_max_abs_time_s": 1.064011755172461e-06
+            },
+            "VDS": {
+              "min_V": -3.729337307489516,
+              "max_V": 0.10945762557092581,
+              "max_abs_V": 3.729337307489516,
+              "at_max_abs_signed_V": -3.729337307489516,
+              "at_max_abs_time_s": 5.48038586876327e-07
+            },
+            "VDB": {
+              "min_V": -0.011911545457301019,
+              "max_V": 0.02553592241118762,
+              "max_abs_V": 0.02553592241118762,
+              "at_max_abs_signed_V": 0.02553592241118762,
+              "at_max_abs_time_s": 1.598116558113738e-06
+            },
+            "VSB": {
+              "min_V": -0.11085263999687701,
+              "max_V": 3.7281455948803077,
+              "max_abs_V": 3.7281455948803077,
+              "at_max_abs_signed_V": 3.7281455948803077,
+              "at_max_abs_time_s": 1.254038958091024e-06
+            }
+          },
+          "worst_pair": "VGB",
+          "max_abs_terminal_V": 3.7635904865945675,
+          "above_3p63V_screen": true,
+          "body_junction_forward": {
+            "VBS": {
+              "max_forward_V": 0.11085263999687701,
+              "max_signed_V": 0.11085263999687701
+            },
+            "VBD": {
+              "max_forward_V": 0.011911545457301019,
+              "max_signed_V": 0.011911545457301019
+            }
+          },
+          "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+        },
+        "peak_index": 158072,
+        "peak_node_values_V": {
+          "data": 2.115931042905759,
+          "out": 1.556078650647865,
+          "xdrv.vss.t10": 0.001186395721572323,
+          "xdrv.gb.t4": 3.76417347888572,
+          "xdrv.gp.t0": 0.01862744836303941,
+          "xdrv.vss.t9": 0.0005829922911523611,
+          "xdrv.vdd.t0": 3.601126308589057,
+          "xdrv.vdd.t1": 3.605091904719341,
+          "xdrv.vdd.t2": 3.600242479212251,
+          "xdrv.vdd.t3": 3.600221094172701
+        },
+        "input_edge_time_s": 1.064e-06,
+        "time_into_edge_ps": 11.755172460962163,
+        "interpretation": "First inverter output voltage rises above VDD during the rising DATA edge; capacitive feedthrough is a mechanism inference, not isolated by this read-only waveform analysis.",
+        "focus_csv": {
+          "path": "build/highspeed-nrz-pvt/diagnosis/RC-B-fast_cold-0.5G-ff--40C-3.6V-C200-L0.5-e20-s40-feedthrough.csv",
+          "sha256": "e0fe7ae52e78d414ec6cf57b320f4304ae183d39817077dc1c88182f00e62c70"
+        }
+      }
+    },
+    {
+      "case": {
+        "route": "B",
+        "rate_Gbps": 0.5,
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "cap_F": 2e-13,
+        "r_pkg": 1.0,
+        "l_pkg": 5e-10,
+        "edge_s": 2e-11,
+        "steps_per_ui": 40,
+        "reltol": 1e-05,
+        "chgtol": 1e-16,
+        "method": "gear",
+        "kind": "nominal",
+        "name": "RC-B-nominal-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40",
+        "variant": "RC"
+      },
+      "source": {
+        "result_json": "build/highspeed-nrz-pex/run-0m3zyewc/cases/RC-B-nominal-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40/result.json",
+        "result_sha256": "4ae5c33c1c398ff30512eafc96fe0f4a4214d0e20447f39c6110537311ab8f90",
+        "waveform": "build/highspeed-nrz-pex/run-0m3zyewc/cases/RC-B-nominal-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40/waveform.dat.gz",
+        "waveform_sha256": "1722b70bf6a93344b568688f84df76f55e9c1eaf0e847a06af1edd785ba31128",
+        "uncompressed_sha256": "7fe913f4110e12554df0b591d3ac1ee453fd3325a2a7fdc16736537b830f1289",
+        "deck_sha256": "d496ee7e6b2b32cbdb7ffc182b50c6bf780d300daced8545d7583d4b9b0c2211",
+        "rows": 205280,
+        "hash_checks": "passed",
+        "duplicates_removed": 0
+      },
+      "receiver": {
+        "deterministic_errors": 0,
+        "min_one_A": 8.399445903327769e-05,
+        "max_zero_A": 4.007776508301518e-05,
+        "threshold_margin_normalized": 0.2865927871103692,
+        "timing_min_margin_ui": 0.34375,
+        "sample_delay_ui": 1.1328125,
+        "error_bits": [],
+        "patterns": {
+          "00100": {
+            "count": 16,
+            "min_sample_rx_uA": 83.99445903327769,
+            "max_sample_rx_uA": 86.37871037920998,
+            "selected_validation_bit_index": 138,
+            "selected_window_start_s": 8.480000000000001e-07,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-B-nominal-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-00100.csv",
+              "sha256": "6bf2d1e940d3f9838d3ea9fe289fc695a692e5622ab0c3feb20ad7e85d62b4f6"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 88.33776153880099,
+            "within_0_to_3p5UI_RX_peak_uA": 83.9972496997527,
+            "reference_node_V_at_input_edge": 1.113275203181891,
+            "estimated_RREF_current_uA_using_internal_bias_node": 24.740594236251088,
+            "reference_current_note": "Estimate uses the saved internal reference gate node; the small unsaved external-port-to-gate parasitic voltage drop is omitted."
+          },
+          "01110": {
+            "count": 16,
+            "min_sample_rx_uA": 98.86920347773605,
+            "max_sample_rx_uA": 99.23163345468537,
+            "selected_validation_bit_index": 427,
+            "selected_window_start_s": 1.426e-06,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-B-nominal-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-01110.csv",
+              "sha256": "913da5bf4899abc9769d70d7aa4751af60879a604c0bcfafdc654274d5555c15"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 99.7736600344999,
+            "within_0_to_3p5UI_RX_peak_uA": 99.64691814447065,
+            "reference_node_V_at_input_edge": 1.1119598430056434,
+            "estimated_RREF_current_uA_using_internal_bias_node": 24.7554762152008,
+            "reference_current_note": "Estimate uses the saved internal reference gate node; the small unsaved external-port-to-gate parasitic voltage drop is omitted."
+          },
+          "00000": {
+            "count": 15,
+            "min_sample_rx_uA": 25.110628012532754,
+            "max_sample_rx_uA": 26.89517282807104,
+            "selected_validation_bit_index": 11,
+            "selected_window_start_s": 5.94e-07,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-B-nominal-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-00000.csv",
+              "sha256": "c4c518692accb021e8bf7c937dda35a1c4f8a9e8cbef9b48f3a6e6983c712021"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 60.299058366573675,
+            "within_0_to_3p5UI_RX_peak_uA": 47.03488637229503,
+            "reference_node_V_at_input_edge": 1.1134016814100383,
+            "estimated_RREF_current_uA_using_internal_bias_node": 24.739163262162872,
+            "reference_current_note": "Estimate uses the saved internal reference gate node; the small unsaved external-port-to-gate parasitic voltage drop is omitted."
+          },
+          "11111": {
+            "count": 14,
+            "min_sample_rx_uA": 99.66694511453524,
+            "max_sample_rx_uA": 99.70946853398681,
+            "selected_validation_bit_index": 334,
+            "selected_window_start_s": 1.24e-06,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-B-nominal-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-11111.csv",
+              "sha256": "dbaf1e78a85c897a0f156744e9db287f1c6b5f70cdd46df8ad03ec9d05bbfe5f"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 99.80967156437464,
+            "within_0_to_3p5UI_RX_peak_uA": 99.71013890363852,
+            "reference_node_V_at_input_edge": 1.113186086419587,
+            "estimated_RREF_current_uA_using_internal_bias_node": 24.741602502887577,
+            "reference_current_note": "Estimate uses the saved internal reference gate node; the small unsaved external-port-to-gate parasitic voltage drop is omitted."
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "route": "B",
+        "rate_Gbps": 0.5,
+        "corner": "ss",
+        "temp_C": 125,
+        "vdd_V": 3.0,
+        "cap_F": 2e-13,
+        "r_pkg": 1.0,
+        "l_pkg": 5e-10,
+        "edge_s": 2e-11,
+        "steps_per_ui": 40,
+        "reltol": 1e-05,
+        "chgtol": 1e-16,
+        "method": "gear",
+        "kind": "slow_hot",
+        "name": "RC-B-slow_hot-0.5G-ss-125C-3V-C200-L0.5-e20-s40",
+        "variant": "RC"
+      },
+      "source": {
+        "result_json": "build/highspeed-nrz-pex/run-0m3zyewc/cases/RC-B-slow_hot-0.5G-ss-125C-3V-C200-L0.5-e20-s40/result.json",
+        "result_sha256": "642c3d19402ffdbd93537babd54b4f0d01629046b08830abd3792730b8b9be71",
+        "waveform": "build/highspeed-nrz-pex/run-0m3zyewc/cases/RC-B-slow_hot-0.5G-ss-125C-3V-C200-L0.5-e20-s40/waveform.dat.gz",
+        "waveform_sha256": "ed32eb7b0cf0a7388abcccff60c8e40d2c676411272553c7be3c26f8e138a011",
+        "uncompressed_sha256": "b05e8c9d58754cff659ac28c832f62e4da2de6a169d68dd2aa8cc5182279c8d7",
+        "deck_sha256": "4ab56a874bd036535c4d123d11d96739d058da19dc5409ce01ad96c6e554b947",
+        "rows": 195676,
+        "hash_checks": "passed",
+        "duplicates_removed": 0
+      },
+      "receiver": {
+        "deterministic_errors": 2,
+        "min_one_A": 6.226729864590952e-05,
+        "max_zero_A": 3.551438844897383e-05,
+        "threshold_margin_normalized": -0.0031026847212064,
+        "timing_min_margin_ui": 0,
+        "sample_delay_ui": 1.1875,
+        "error_bits": [
+          {
+            "index": 138,
+            "bit": 1,
+            "rx_uA": 62.26729864590952,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "index": 396,
+            "bit": 1,
+            "rx_uA": 62.40447735719802,
+            "pattern_5_before_5_after": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1
+            ]
+          }
+        ],
+        "patterns": {
+          "00100": {
+            "count": 16,
+            "min_sample_rx_uA": 62.26729864590952,
+            "max_sample_rx_uA": 65.53763104578324,
+            "selected_validation_bit_index": 138,
+            "selected_window_start_s": 8.480000000000001e-07,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-B-slow_hot-0.5G-ss-125C-3V-C200-L0.5-e20-s40-00100.csv",
+              "sha256": "963763b425fae886553ba0e56b2483057bd4e779de3e6084f4800221e15248d1"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 65.81563933339982,
+            "within_0_to_3p5UI_RX_peak_uA": 62.26829637806285,
+            "reference_node_V_at_input_edge": 1.184864564989395,
+            "estimated_RREF_current_uA_using_internal_bias_node": 20.536433915590653,
+            "reference_current_note": "Estimate uses the saved internal reference gate node; the small unsaved external-port-to-gate parasitic voltage drop is omitted."
+          },
+          "01110": {
+            "count": 16,
+            "min_sample_rx_uA": 78.67907251882974,
+            "max_sample_rx_uA": 79.64635328221017,
+            "selected_validation_bit_index": 427,
+            "selected_window_start_s": 1.426e-06,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-B-slow_hot-0.5G-ss-125C-3V-C200-L0.5-e20-s40-01110.csv",
+              "sha256": "92a23cc33ab44eea37376fafc49053fba447136e8d30f04a3eb90f07994f0d4c"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 80.51796476031586,
+            "within_0_to_3p5UI_RX_peak_uA": 80.35453073069799,
+            "reference_node_V_at_input_edge": 1.1827841961153718,
+            "estimated_RREF_current_uA_using_internal_bias_node": 20.559971199408363,
+            "reference_current_note": "Estimate uses the saved internal reference gate node; the small unsaved external-port-to-gate parasitic voltage drop is omitted."
+          },
+          "00000": {
+            "count": 15,
+            "min_sample_rx_uA": 20.955130974794507,
+            "max_sample_rx_uA": 23.06612042538184,
+            "selected_validation_bit_index": 11,
+            "selected_window_start_s": 5.94e-07,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-B-slow_hot-0.5G-ss-125C-3V-C200-L0.5-e20-s40-00000.csv",
+              "sha256": "44bfa68ad01dc44128de9aab1332c461756e0b197661a5e2193cb09163a44150"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 42.34032145665387,
+            "within_0_to_3p5UI_RX_peak_uA": 33.391474168243484,
+            "reference_node_V_at_input_edge": 1.185134578569363,
+            "estimated_RREF_current_uA_using_internal_bias_node": 20.53337898319587,
+            "reference_current_note": "Estimate uses the saved internal reference gate node; the small unsaved external-port-to-gate parasitic voltage drop is omitted."
+          },
+          "11111": {
+            "count": 14,
+            "min_sample_rx_uA": 80.4439044903677,
+            "max_sample_rx_uA": 80.58530897020124,
+            "selected_validation_bit_index": 334,
+            "selected_window_start_s": 1.24e-06,
+            "focus_csv": {
+              "path": "build/highspeed-nrz-pvt/diagnosis/RC-B-slow_hot-0.5G-ss-125C-3V-C200-L0.5-e20-s40-11111.csv",
+              "sha256": "064d93d775dfd21d3ad5e4573e33a8a4f36cbd802186034cd6dc72b7630c7dfc"
+            },
+            "within_0_to_3p5UI_LED_peak_uA": 80.66576716935447,
+            "within_0_to_3p5UI_RX_peak_uA": 80.58475394188777,
+            "reference_node_V_at_input_edge": 1.1845229485721256,
+            "estimated_RREF_current_uA_using_internal_bias_node": 20.54029896215545,
+            "reference_current_note": "Estimate uses the saved internal reference gate node; the small unsaved external-port-to-gate parasitic voltage drop is omitted."
+          }
+        }
+      }
+    }
+  ],
+  "figures": [
+    {
+      "path": "docs/research/highspeed-nrz-pvt-20261023/figures/baseline-fast-cold-feedthrough.svg",
+      "sha256": "f755fd055a72b5ab9ae5785534fd9883fa3cc50f362da672bc9c606161d2ebda"
+    },
+    {
+      "path": "docs/research/highspeed-nrz-pvt-20261023/figures/baseline-fast-cold-feedthrough.png",
+      "sha256": "4b80e03d1d0c12fd335daf8352b31933f05c49bc668749fabc20abe2ff82811c"
+    },
+    {
+      "path": "docs/research/highspeed-nrz-pvt-20261023/figures/baseline-slow-hot-isolated-one.svg",
+      "sha256": "cba07808af97017f9297cca04b0f3bb9904727a4c5b32230ea7dd2de12c17a17"
+    },
+    {
+      "path": "docs/research/highspeed-nrz-pvt-20261023/figures/baseline-slow-hot-isolated-one.png",
+      "sha256": "dd2baff642826da4b2244d4bfea296c0d16e4d563372de832aa8424c5efbc196"
+    }
+  ],
+  "claims": {
+    "observed": "FF peak is first-inverter output voltage above VDD, with body voltage near ground. SS isolated-one conductive-current and receiver peaks are substantially reduced.",
+    "inference": "Fast DATA-edge capacitive feedthrough is consistent with first-stage overshoot; intrinsic versus extracted coupling contributions require an intervention.",
+    "not_proved": "This diagnosis neither certifies a reliability limit nor changes the receiver/LED contract or proves a fix."
+  }
+}

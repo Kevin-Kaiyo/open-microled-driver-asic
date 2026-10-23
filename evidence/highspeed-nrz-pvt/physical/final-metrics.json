@@ -1,0 +1,479 @@
+{
+  "definitions": {
+    "di_incident_sum_fF": "Ground C plus each extracted coupling incident on DI once; excludes intrinsic MOS and compact resistor C. It is not a fixed small-signal effective capacitance under arbitrary neighbor transitions.",
+    "rc_estimate_ps": "Rpoly(SS,125C) multiplied by this added interconnect capacitance sum. Order of magnitude only; nonlinear inverter Miller effects and coupled-node movement prevent interpreting it as an exact time constant."
+  },
+  "routes": {
+    "A": {
+      "failed_poly58_r1": {
+        "directory": "build/highspeed-nrz-pvt-layout/poly58-r1/A",
+        "bbox_um": [
+          -6.88,
+          0.52,
+          35.43,
+          62.34
+        ],
+        "dimensions_um": [
+          42.31,
+          61.82
+        ],
+        "area_um2": 2615.6042,
+        "counts": {
+          "mos": 6,
+          "device_resistors": 1,
+          "resistors": 54,
+          "capacitors": 65,
+          "zero_valued_capacitors": 0
+        },
+        "di_ground_fF": 3.5559600000000002,
+        "di_incident_pairs": [
+          {
+            "nodes": [
+              "CTRL",
+              "DI"
+            ],
+            "fF": 0.008681330000000001
+          },
+          {
+            "nodes": [
+              "DATA",
+              "DI"
+            ],
+            "fF": 8.48458e-06
+          },
+          {
+            "nodes": [
+              "DI",
+              "N1"
+            ],
+            "fF": 0.408144
+          },
+          {
+            "nodes": [
+              "DI",
+              "VDD"
+            ],
+            "fF": 0.6121070000000001
+          },
+          {
+            "nodes": [
+              "DI",
+              "VSS"
+            ],
+            "fF": 3.5559600000000002
+          }
+        ],
+        "di_incident_sum_fF": 4.58490081458,
+        "explicit_capacitance_total_fF": 40.70936912738001,
+        "transfer_resistance": {
+          "directory": "build/highspeed-nrz-pvt-layout/poly58-r1/A",
+          "source": "VSS.t0",
+          "self_ohm": 1900.2739506360856,
+          "logic_body_transfer_ohm": {
+            "XN1": 2.740347089339799,
+            "XN2": 280.59395063608537,
+            "XNOUT": 22.542042781433466
+          },
+          "max_residual_A": 3.3306690738754696e-16,
+          "rc_sha256": "1ab3e993473c73f3c436cf48db7f22ccf71684988ea6284ba81e5da3863164c2"
+        },
+        "compact_resistor": {
+          "name": "RIN",
+          "model": "ppolyf_u_1k_6p0",
+          "r_width_um": 1,
+          "r_length_um": 58,
+          "nodes": [
+            "DATA",
+            "DI",
+            "VSS"
+          ],
+          "cx": -5.0,
+          "cy": 31.43,
+          "pins_um": {
+            "1": [
+              -5.0,
+              60.86
+            ],
+            "2": [
+              -5.0,
+              1.9999999999999998
+            ],
+            "B": [
+              -6.38,
+              31.43
+            ]
+          }
+        },
+        "compact_resistor_substrate_capacitance_total_fF": 4.9810565872092,
+        "rc_estimate_ps": 306.729173061428
+      },
+      "final": {
+        "directory": "build/highspeed-nrz-pvt-layout/final-r4/A",
+        "bbox_um": [
+          -6.88,
+          -28.48,
+          35.43,
+          29.12
+        ],
+        "dimensions_um": [
+          42.31,
+          57.6
+        ],
+        "area_um2": 2437.056,
+        "counts": {
+          "mos": 6,
+          "device_resistors": 1,
+          "resistors": 84,
+          "capacitors": 61,
+          "zero_valued_capacitors": 0
+        },
+        "di_ground_fF": 2.0986100000000003,
+        "di_incident_pairs": [
+          {
+            "nodes": [
+              "CTRL",
+              "DI"
+            ],
+            "fF": 0.00112268
+          },
+          {
+            "nodes": [
+              "DI",
+              "N1"
+            ],
+            "fF": 0.07786430000000001
+          },
+          {
+            "nodes": [
+              "DI",
+              "VDD"
+            ],
+            "fF": 0.35077100000000005
+          },
+          {
+            "nodes": [
+              "DI",
+              "VSS"
+            ],
+            "fF": 2.0986100000000003
+          }
+        ],
+        "di_incident_sum_fF": 2.5283679800000005,
+        "explicit_capacitance_total_fF": 35.879755426,
+        "transfer_resistance": {
+          "directory": "build/highspeed-nrz-pvt-layout/final-r4/A",
+          "source": "VSS.t0",
+          "self_ohm": 20.81960937918704,
+          "logic_body_transfer_ohm": {
+            "XN1": 0.08207216093941808,
+            "XN2": 0.013707045979630732,
+            "XNOUT": 0.057922704872551
+          },
+          "max_residual_A": 2.7977620220553945e-14,
+          "rc_sha256": "62bb55e56c1426f1a3b3f60b72c11821b25edb5a06cfa4cd6c64d8da38abd3d3"
+        },
+        "compact_resistor": {
+          "name": "RIN",
+          "model": "ppolyf_u_1k_6p0",
+          "r_width_um": 1,
+          "r_length_um": 48,
+          "nodes": [
+            "DATA",
+            "DI",
+            "VSS"
+          ],
+          "short_di": true,
+          "substrate_screen": true,
+          "guard_all_sides": true,
+          "cx": -5.0,
+          "cy": -1.93,
+          "pins_um": {
+            "1": [
+              -5.0,
+              -26.36
+            ],
+            "2": [
+              -5.0,
+              22.5
+            ],
+            "B": [
+              -6.38,
+              -1.93
+            ]
+          },
+          "substrate_screen_geometry": {
+            "center_x_um": 0.0,
+            "bottom_um": -28.36,
+            "top_um": 29,
+            "diffusion_width_um": 0.36,
+            "contact_width_um": 0.23,
+            "metal_width_um": 0.38
+          }
+        },
+        "compact_resistor_substrate_capacitance_total_fF": 4.1222525872092,
+        "substrate_screen_contact_cuts": 122,
+        "substrate_screen_contact_area_um2": 5.9048,
+        "resistor_dc": [
+          {
+            "corner": "typical",
+            "temp_C": 27,
+            "test_voltage_V": 3.6,
+            "test_current_A": 7.26611943138813e-05,
+            "resistance_ohm": 49545.01552023418
+          },
+          {
+            "corner": "ss",
+            "temp_C": 125,
+            "test_voltage_V": 3.6,
+            "test_current_A": 6.50000206955653e-05,
+            "resistance_ohm": 55384.59775052985
+          },
+          {
+            "corner": "ff",
+            "temp_C": -40,
+            "test_voltage_V": 3.6,
+            "test_current_A": 8.43002084220284e-05,
+            "resistance_ohm": 42704.52075251676
+          }
+        ],
+        "rc_estimate_ps": 140.03264353761975
+      }
+    },
+    "B": {
+      "failed_poly58_r1": {
+        "directory": "build/highspeed-nrz-pvt-layout/poly58-r1/B",
+        "bbox_um": [
+          -6.88,
+          0.52,
+          53.75,
+          62.34
+        ],
+        "dimensions_um": [
+          60.63,
+          61.82
+        ],
+        "area_um2": 3748.1466,
+        "counts": {
+          "mos": 9,
+          "device_resistors": 1,
+          "resistors": 99,
+          "capacitors": 79,
+          "zero_valued_capacitors": 0
+        },
+        "di_ground_fF": 3.5716200000000002,
+        "di_incident_pairs": [
+          {
+            "nodes": [
+              "DI",
+              "GB"
+            ],
+            "fF": 0.41597000000000006
+          },
+          {
+            "nodes": [
+              "DI",
+              "GP"
+            ],
+            "fF": 0.00728146
+          },
+          {
+            "nodes": [
+              "DI",
+              "VDD"
+            ],
+            "fF": 0.6048540000000001
+          },
+          {
+            "nodes": [
+              "DI",
+              "VSS"
+            ],
+            "fF": 3.5716200000000002
+          }
+        ],
+        "di_incident_sum_fF": 4.59972546,
+        "explicit_capacitance_total_fF": 40.378902962800005,
+        "transfer_resistance": {
+          "directory": "build/highspeed-nrz-pvt-layout/poly58-r1/B",
+          "source": "VSS.t6",
+          "self_ohm": 1617.8434421396619,
+          "logic_body_transfer_ohm": {
+            "XINV1N": 1.5021461628201258,
+            "XINV2N": 146.9134421396618,
+            "XLED": 3.3385897877436843,
+            "XDUMMY": 2.162172778166797,
+            "XTAIL": 3.23709537251033,
+            "XBASE": 2.1971224149835753,
+            "XREF": 2.1738255873521473
+          },
+          "max_residual_A": 1.915134717478395e-15,
+          "rc_sha256": "58bfb0f610721da3dc72709480a42e1ca94cb03a2fcb8d7e9d7bbea55892f798"
+        },
+        "compact_resistor": {
+          "name": "RIN",
+          "model": "ppolyf_u_1k_6p0",
+          "r_width_um": 1,
+          "r_length_um": 58,
+          "nodes": [
+            "DATA",
+            "DI",
+            "VSS"
+          ],
+          "cx": -5.0,
+          "cy": 31.43,
+          "pins_um": {
+            "1": [
+              -5.0,
+              60.86
+            ],
+            "2": [
+              -5.0,
+              1.9999999999999998
+            ],
+            "B": [
+              -6.38,
+              31.43
+            ]
+          }
+        },
+        "compact_resistor_substrate_capacitance_total_fF": 4.9810565872092,
+        "rc_estimate_ps": 307.72093960436945
+      },
+      "final": {
+        "directory": "build/highspeed-nrz-pvt-layout/final-r4/B",
+        "bbox_um": [
+          -6.88,
+          -38.480000000000004,
+          53.75,
+          29.12
+        ],
+        "dimensions_um": [
+          60.63,
+          67.60000000000001
+        ],
+        "area_um2": 4098.588000000001,
+        "counts": {
+          "mos": 9,
+          "device_resistors": 1,
+          "resistors": 127,
+          "capacitors": 76,
+          "zero_valued_capacitors": 0
+        },
+        "di_ground_fF": 2.1259400000000004,
+        "di_incident_pairs": [
+          {
+            "nodes": [
+              "DI",
+              "GB"
+            ],
+            "fF": 0.0658538
+          },
+          {
+            "nodes": [
+              "DI",
+              "GP"
+            ],
+            "fF": 0.00011668400000000001
+          },
+          {
+            "nodes": [
+              "DI",
+              "VDD"
+            ],
+            "fF": 0.35077100000000005
+          },
+          {
+            "nodes": [
+              "DI",
+              "VSS"
+            ],
+            "fF": 2.1259400000000004
+          }
+        ],
+        "di_incident_sum_fF": 2.5426814840000005,
+        "explicit_capacitance_total_fF": 35.65508812,
+        "transfer_resistance": {
+          "directory": "build/highspeed-nrz-pvt-layout/final-r4/B",
+          "source": "VSS.t6",
+          "self_ohm": 21.74566629347726,
+          "logic_body_transfer_ohm": {
+            "XINV1N": 0.026209701355358137,
+            "XINV2N": 0.16702078419307512,
+            "XLED": 0.003549104525628038,
+            "XDUMMY": 0.0036360591775940897,
+            "XTAIL": 0.0060676010655987085,
+            "XBASE": 0.003764037278456473,
+            "XREF": 0.0037417507771865988
+          },
+          "max_residual_A": 1.1368683772161603e-13,
+          "rc_sha256": "a4b5740b18032ddd332bc0e9e7c63862e53fb3d91a373de6e0442b47a97e042c"
+        },
+        "compact_resistor": {
+          "name": "RIN",
+          "model": "ppolyf_u_1k_6p0",
+          "r_width_um": 1,
+          "r_length_um": 58,
+          "nodes": [
+            "DATA",
+            "DI",
+            "VSS"
+          ],
+          "short_di": true,
+          "substrate_screen": true,
+          "guard_all_sides": true,
+          "cx": -5.0,
+          "cy": -6.93,
+          "pins_um": {
+            "1": [
+              -5.0,
+              -36.36
+            ],
+            "2": [
+              -5.0,
+              22.5
+            ],
+            "B": [
+              -6.38,
+              -6.93
+            ]
+          },
+          "substrate_screen_geometry": {
+            "center_x_um": 0.0,
+            "bottom_um": -38.36,
+            "top_um": 29,
+            "diffusion_width_um": 0.36,
+            "contact_width_um": 0.23,
+            "metal_width_um": 0.38
+          }
+        },
+        "compact_resistor_substrate_capacitance_total_fF": 4.9810565872092,
+        "substrate_screen_contact_cuts": 143,
+        "substrate_screen_contact_area_um2": 6.9212,
+        "resistor_dc": [
+          {
+            "corner": "typical",
+            "temp_C": 27,
+            "test_voltage_V": 3.6,
+            "test_current_A": 6.01696835291039e-05,
+            "resistance_ohm": 59830.794992609364
+          },
+          {
+            "corner": "ss",
+            "temp_C": 125,
+            "test_voltage_V": 3.6,
+            "test_current_A": 5.38117804959571e-05,
+            "resistance_ohm": 66899.84919325369
+          },
+          {
+            "corner": "ff",
+            "temp_C": -40,
+            "test_voltage_V": 3.6,
+            "test_current_A": 6.98498218896714e-05,
+            "resistance_ohm": 51539.14358845814
+          }
+        ],
+        "rc_estimate_ps": 170.10500782607852
+      }
+    }
+  }
+}

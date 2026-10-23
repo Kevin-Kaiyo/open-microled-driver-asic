@@ -1,0 +1,287 @@
+{
+  "routes": {
+    "A": {
+      "top": "hs_voltage_pvt",
+      "ports": [
+        "DATA",
+        "OUT",
+        "VDD",
+        "VH",
+        "VL",
+        "VSS"
+      ],
+      "devices": [
+        {
+          "name": "N1",
+          "polarity": "n",
+          "w_um": 1,
+          "l_um": 0.28,
+          "nodes": [
+            "N1",
+            "DI",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "P1",
+          "polarity": "p",
+          "w_um": 2,
+          "l_um": 0.28,
+          "nodes": [
+            "N1",
+            "DI",
+            "VDD",
+            "VDD"
+          ]
+        },
+        {
+          "name": "N2",
+          "polarity": "n",
+          "w_um": 4,
+          "l_um": 0.28,
+          "nodes": [
+            "CTRL",
+            "N1",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "P2",
+          "polarity": "p",
+          "w_um": 8,
+          "l_um": 0.28,
+          "nodes": [
+            "CTRL",
+            "N1",
+            "VDD",
+            "VDD"
+          ]
+        },
+        {
+          "name": "NOUT",
+          "polarity": "n",
+          "w_um": 4,
+          "l_um": 0.28,
+          "nodes": [
+            "OUT",
+            "CTRL",
+            "VL",
+            "VSS"
+          ]
+        },
+        {
+          "name": "POUT",
+          "polarity": "p",
+          "w_um": 8,
+          "l_um": 0.28,
+          "nodes": [
+            "OUT",
+            "CTRL",
+            "VH",
+            "VH"
+          ]
+        }
+      ],
+      "schematic_source": "analog/highspeed_nrz_pvt/voltage_driver.spice",
+      "resistors": [
+        {
+          "name": "RIN",
+          "model": "ppolyf_u_1k_6p0",
+          "r_width_um": 1,
+          "r_length_um": 48,
+          "nodes": [
+            "DATA",
+            "DI",
+            "VSS"
+          ],
+          "short_di": true,
+          "substrate_screen": true,
+          "guard_all_sides": true
+        }
+      ],
+      "external_components": [
+        {
+          "name": "VH",
+          "kind": "ideal bidirectional rail"
+        },
+        {
+          "name": "VL",
+          "kind": "ideal bidirectional rail"
+        }
+      ],
+      "design_changes": [
+        "6 V high-R-poly DATA-to-DI conditioning resistor, 48 x 1 um",
+        "DI shortened to local first-inverter gate bus",
+        "Continuous VSS-connected substrate contact strip between resistor and MOS row",
+        "Four-sided resistor substrate contacts",
+        "Original MOS geometry preserved"
+      ]
+    },
+    "B": {
+      "top": "hs_steering_pvt",
+      "ports": [
+        "DATA",
+        "OUT",
+        "VDD",
+        "VSS",
+        "BIAS",
+        "DUMMY"
+      ],
+      "devices": [
+        {
+          "name": "INV1N",
+          "polarity": "n",
+          "w_um": 1,
+          "l_um": 0.28,
+          "nodes": [
+            "GB",
+            "DI",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "INV1P",
+          "polarity": "p",
+          "w_um": 2,
+          "l_um": 0.28,
+          "nodes": [
+            "GB",
+            "DI",
+            "VDD",
+            "VDD"
+          ]
+        },
+        {
+          "name": "INV2N",
+          "polarity": "n",
+          "w_um": 1,
+          "l_um": 0.28,
+          "nodes": [
+            "GP",
+            "GB",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "INV2P",
+          "polarity": "p",
+          "w_um": 2,
+          "l_um": 0.28,
+          "nodes": [
+            "GP",
+            "GB",
+            "VDD",
+            "VDD"
+          ]
+        },
+        {
+          "name": "LED",
+          "polarity": "n",
+          "w_um": 1,
+          "l_um": 0.28,
+          "nodes": [
+            "OUT",
+            "GP",
+            "VX",
+            "VSS"
+          ]
+        },
+        {
+          "name": "DUMMY",
+          "polarity": "n",
+          "w_um": 1,
+          "l_um": 0.28,
+          "nodes": [
+            "DUMMY",
+            "GB",
+            "VX",
+            "VSS"
+          ]
+        },
+        {
+          "name": "TAIL",
+          "polarity": "n",
+          "w_um": 5.76,
+          "l_um": 1,
+          "nodes": [
+            "VX",
+            "BIAS",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "BASE",
+          "polarity": "n",
+          "w_um": 2,
+          "l_um": 1,
+          "nodes": [
+            "OUT",
+            "BIAS",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "REF",
+          "polarity": "n",
+          "w_um": 2,
+          "l_um": 1,
+          "nodes": [
+            "BIAS",
+            "BIAS",
+            "VSS",
+            "VSS"
+          ]
+        }
+      ],
+      "schematic_source": "analog/highspeed_nrz_pvt/steering_driver.spice",
+      "resistors": [
+        {
+          "name": "RIN",
+          "model": "ppolyf_u_1k_6p0",
+          "r_width_um": 1,
+          "r_length_um": 58,
+          "nodes": [
+            "DATA",
+            "DI",
+            "VSS"
+          ],
+          "short_di": true,
+          "substrate_screen": true,
+          "guard_all_sides": true
+        }
+      ],
+      "external_components": [
+        {
+          "name": "RREF",
+          "nodes": [
+            "VDUMMY",
+            "BIAS"
+          ],
+          "ohm": 88386.1064910889
+        },
+        {
+          "name": "RDUMMY",
+          "nodes": [
+            "VDUMMY",
+            "DUMMY"
+          ],
+          "ohm": 28000
+        }
+      ],
+      "design_changes": [
+        "6 V high-R-poly DATA-to-DI conditioning resistor, 58 x 1 um",
+        "DI shortened to local first-inverter gate bus",
+        "Continuous VSS-connected substrate contact strip between resistor and MOS row",
+        "Four-sided resistor substrate contacts",
+        "RREF connected to existing fixed3.3V VDUMMY rail",
+        "Original MOS geometry preserved"
+      ]
+    }
+  }
+}

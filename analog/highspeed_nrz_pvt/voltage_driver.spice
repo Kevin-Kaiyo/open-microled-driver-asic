@@ -1,0 +1,11 @@
+* Selected PVT repair candidate. Verification status lives in evidence/highspeed-nrz-pvt.
+* Candidate: isolated diffusion geometry estimate 0.44um, not PEX.
+.subckt hs_voltage_pvt DATA OUT VDD VH VL VSS
+XRIN DATA DI VSS ppolyf_u_1k_6p0 r_width=1u r_length=48u
+XN1 N1 DI VSS VSS nfet_03v3 w=1u l=0.28u ad=0.44p as=0.44p pd=2.88u ps=2.88u
+XP1 N1 DI VDD VDD pfet_03v3 w=2u l=0.28u ad=0.88p as=0.88p pd=4.88u ps=4.88u
+XN2 CTRL N1 VSS VSS nfet_03v3 w=4u l=0.28u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+XP2 CTRL N1 VDD VDD pfet_03v3 w=8u l=0.28u ad=3.52p as=3.52p pd=16.88u ps=16.88u
+XNOUT OUT CTRL VL VSS nfet_03v3 w=4u l=0.28u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+XPOUT OUT CTRL VH VH pfet_03v3 w=8u l=0.28u ad=3.52p as=3.52p pd=16.88u ps=16.88u
+.ends hs_voltage_pvt

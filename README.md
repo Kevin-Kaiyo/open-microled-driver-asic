@@ -16,6 +16,8 @@ An independent, open platform for experimental R&D methodology validation and te
 
 ## 先读当前研究报告
 
+- **慢热接收与快冷端电压修正（2026-10-23）：[中文研究报告](docs/research/highspeed-nrz-pvt-20261023/index.html) / [新版真实 GDS](docs/research/highspeed-nrz-pvt-20261023/layout-viewer.html) / [复现入口](docs/research/highspeed-nrz-pvt-20261023/README.md)。** 两路线新增工艺输入电阻与低阻衬底返回连接，B 另调整参考供电。相同负载与接收条件下，实际 RC 在三组联合条件的最高离散通过点为 A 1 Gb/s、B 0.5 Gb/s；A 的 2 Gb/s 接收仍失败。130 条主记录包含 42 条只读基线引用，另有 4 条电容分配控制。实际新 GDS 的两套 DRC、LVS、PEX 审计通过；快冷端电压筛查余量约 9–11 mV，尚非产品可靠性余量。
+
 - **单通道 NRZ 版图与寄生验证（2026-10-20）：[中文研究报告](docs/research/highspeed-nrz-pex-20261020/index.html) / [真实 GDS 分层查看器](docs/research/highspeed-nrz-pex-20261020/layout-viewer.html) / [证据与复现](docs/research/highspeed-nrz-pex-20261020/README.md)。** 两版 GF180 核心完成固定公开规则下的 DRC/LVS、全网 R 提取与审计后的 C 组装；279 条结果包含既有基线复用。相同负载和接收代理下，RC 典型最高离散通过点为 A 2 Gb/s、B 0.5 Gb/s；同为 0.5 Gb/s 时正向取能较原理图增加约 5.00% / 3.95%。慢热接收失败、快冷过冲、电容空间近似和理想电源依赖仍是明确限制，不代表生产签核或实测 BER。
 
 - **单通道 NRZ 晶体管比较（2026-10-19）：[中文研究报告](docs/research/highspeed-nrz-20261019/index.html) / [网表、数据与复现](docs/research/highspeed-nrz-20261019/README.md)。** 实现 GF180 电压驱动与电流转向两版电路，统一静态 LED 曲线、动态负载假设、数据序列与接收条件，检查速率、逐电源取能/回灌、MOS 角落、电容敏感性及数值收敛。属于 pre-layout 电气与接收代理实验；真实光学 BER、完整高速版图和流片验证仍未完成。

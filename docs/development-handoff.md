@@ -1,10 +1,40 @@
 # GitHub 备份与另一台电脑接续开发
 
-更新：2026-10-20。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
+更新：2026-10-23。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
 
-## 新增阶段：单通道 NRZ 版图与寄生比较
+## 当前阶段：慢热接收与快冷端电压修正（2026-10-23）
 
-[研究报告](research/highspeed-nrz-pex-20261020/index.html)、[分层版图](research/highspeed-nrz-pex-20261020/layout-viewer.html)和[复现说明](research/highspeed-nrz-pex-20261020/README.md)为当前入口。正式运行是 `build/highspeed-nrz-pex/run-0m3zyewc`；物理几何在 `r3` 冻结，修正电容模型在 `build/highspeed-nrz-layout/r4`。本阶段完成预声明的实验及独立核验，仍保留 PVT 失败和模型边界，未完成产品验证。
+[新版中文研究报告](research/highspeed-nrz-pvt-20261023/index.html)、[真实新版 GDS 查看器](research/highspeed-nrz-pvt-20261023/layout-viewer.html)与[复现说明](research/highspeed-nrz-pvt-20261023/README.md)是当前入口。最终实际物理目录为 `build/highspeed-nrz-pvt-layout/final-r4`，仿真目录为 `build/highspeed-nrz-pvt/final-r4`。旧版模型与报告保留。
+
+A 新增 48 × 1 µm、B 新增 58 × 1 µm 工艺输入电阻，并修改 DI 连线和衬底接地；B 的参考电阻改接已有固定 3.3 V 电源。相同 LED、输入码型和接收条件下，三组联合条件的最高离散通过点为 A 1 Gb/s、B 0.5 Gb/s。A 的 2 Gb/s 仍失败，快冷电压筛查余量约 9–11 mV，不能视为量产可靠性结论。
+
+主表有 130 条记录（42 条只读基线引用、88 条本次正式运行的新仿真），另有 4 条寄生电容位置控制。整个探索与修复阶段新增 160 份波形，不应把 270 个引用/实际 case 目录当作 270 次新仿真。[阶段清单](../evidence/highspeed-nrz-pvt/phase-inventory.json)与[全部 186 份新旧唯一波形核验](../evidence/highspeed-nrz-pvt/phase-raw-validation.json)记录真实范围。
+
+增量 Release：[`nrz-pvt-20261023`](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/nrz-pvt-20261023)。[逐文件清单](../evidence/backups/nrz-pvt-20261023.json)与[范围/排除项](../evidence/backups/nrz-pvt-20261023-scope.json)包含本轮仿真、候选失败、真实版图和诊断证据，以及公开依赖许可文本；不包含完整 PDK、工具、VM 或所有历史 build。原始日志中的本机路径属于环境溯源；跨机重新仿真应建立新 run，不能修改冻结输入来绕过身份核验。
+
+先恢复上一阶段 `nrz-pex-20261020` 的基线原始结果与报告字体输入，再恢复本轮增量，保持相对路径。若要继续查看更早的 SCHEM 原始对照，还需下文 `research-20261019` 的 NRZ 组。
+
+```sh
+gh release download nrz-pvt-20261023 \
+  --repo Kevin-Kaiyo/open-microled-driver-asic \
+  --pattern 'nrz-pvt-20261023-*.tar.gz' \
+  --dir build/github-download-nrz-pvt
+python3 scripts/backup/release_bundle.py restore \
+  --manifest evidence/backups/nrz-pvt-20261023.json \
+  --asset-dir build/github-download-nrz-pvt --root .
+
+build/layout/venv/bin/python scripts/highspeed_nrz_pvt_layout/validate_delivery.py
+build/layout/venv/bin/python scripts/highspeed_nrz_pvt/validate.py \
+  --work build/highspeed-nrz-pvt/final-r4
+```
+
+物理交付的独立校验器检查 123 个紧凑文件、实际 GDS 几何、四个开短路反例与 C 矩阵。这个回读检查不重新执行 DRC/LVS/PEX；完整重跑需按 `layout/pdk-lock.json` 及新增物理 README 准备匹配的环境。仅 Git 克隆可以阅读报告和查看紧凑版图，不能读取忽略的全部波形。
+
+<!-- NRZ_PVT_BACKUP_RECEIPTS -->
+
+## 前一阶段：单通道 NRZ 版图与寄生比较
+
+[研究报告](research/highspeed-nrz-pex-20261020/index.html)、[分层版图](research/highspeed-nrz-pex-20261020/layout-viewer.html)和[复现说明](research/highspeed-nrz-pex-20261020/README.md)为上一阶段入口。正式运行是 `build/highspeed-nrz-pex/run-0m3zyewc`；物理几何在 `r3` 冻结，修正电容模型在 `build/highspeed-nrz-layout/r4`。本阶段完成预声明的实验及独立核验，仍保留 PVT 失败和模型边界，未完成产品验证。
 
 新增 Release 为 [`nrz-pex-20261020`](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/nrz-pex-20261020)，[归档清单](../evidence/backups/nrz-pex-20261020.json)和[范围/排除项](../evidence/backups/nrz-pex-20261020-scope.json)记录全部普通文件。包含新增仿真、物理过程、失败诊断和报告字体输入；不重复归档上一阶段只读引用的 SCHEM 波形，不包含完整 PDK、工具或虚拟机。
 

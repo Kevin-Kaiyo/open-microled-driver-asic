@@ -1,0 +1,13 @@
+* Independent electrical reference: analog/highspeed_nrz_pvt/steering_driver.spice
+.subckt hs_steering_pvt DATA OUT VDD VSS BIAS DUMMY
+XRIN DATA DI VSS ppolyf_u_1k_6p0 r_width=1u r_length=58u
+XREF BIAS BIAS VSS VSS nfet_03v3 w=2u l=1u
+XBASE OUT BIAS VSS VSS nfet_03v3 w=2u l=1u
+XTAIL VX BIAS VSS VSS nfet_03v3 w=5.76u l=1u
+XLED OUT GP VX VSS nfet_03v3 w=1u l=0.28u
+XDUMMY DUMMY GB VX VSS nfet_03v3 w=1u l=0.28u
+XINV1N GB DI VSS VSS nfet_03v3 w=1u l=0.28u
+XINV1P GB DI VDD VDD pfet_03v3 w=2u l=0.28u
+XINV2N GP GB VSS VSS nfet_03v3 w=1u l=0.28u
+XINV2P GP GB VDD VDD pfet_03v3 w=2u l=0.28u
+.ends hs_steering_pvt
