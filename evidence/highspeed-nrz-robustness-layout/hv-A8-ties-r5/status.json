@@ -1,0 +1,225 @@
+{
+  "A": {
+    "magic_drc": {
+      "passed": true,
+      "counts": [
+        "0"
+      ]
+    },
+    "lvs": {
+      "passed": true,
+      "final_result": [
+        "Circuits match uniquely."
+      ],
+      "log": "build/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/lvs.log"
+    },
+    "readback_drc": {
+      "passed": true,
+      "counts": [
+        "0"
+      ]
+    },
+    "readback_lvs": {
+      "passed": true,
+      "final_result": [
+        "Circuits match uniquely."
+      ],
+      "log": "build/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/readback-lvs.log"
+    },
+    "pex_coverage": {
+      "node_count": 8,
+      "extracted_nodes": [
+        "DI",
+        "N1",
+        "CTRL",
+        "VSS",
+        "VDD",
+        "VH",
+        "DATA",
+        "OUT",
+        "VL"
+      ],
+      "extraction_statistics": [
+        [
+          "9",
+          "1.000000"
+        ]
+      ],
+      "excluded_compact_resistor_body_nodes": [
+        "a_n1100_2814#"
+      ],
+      "exclusion_reason": "Nonterminal resistor device marker; zero .ext C; PDK X resistor retained",
+      "only_attributes_added": true
+    },
+    "klayout_drc": {
+      "passed": true,
+      "item_count": 0,
+      "categories": {}
+    },
+    "pex_audit": {
+      "passed": true,
+      "full_rc_sha256": "eb4dcab821c1bd55a5c89bf5b3e1ac6194976a3bda74b202f96666e3cb5eb623",
+      "counts": {
+        "mos": 6,
+        "device_resistors": 1,
+        "resistors": 95,
+        "capacitors": 64,
+        "zero_valued_capacitors": 0
+      },
+      "all_nets_extracted": true
+    },
+    "gds_geometry": {
+      "passed": true,
+      "gds_sha256": "61bf1932e1c265420cd9d338bf263ea9bdf01a3260db47ec2f5dce33e49cbbec",
+      "devices": [
+        {
+          "device": "N1",
+          "w_um": 2.5,
+          "l_um": 0.7000000000000001,
+          "diffusion_areas_um2": [
+            1.0999999999999999,
+            1.0999999999999999
+          ],
+          "diffusion_perimeters_um": [
+            5.88,
+            5.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "P1",
+          "w_um": 3.93,
+          "l_um": 0.55,
+          "diffusion_areas_um2": [
+            1.7291999999999998,
+            1.7291999999999998
+          ],
+          "diffusion_perimeters_um": [
+            8.74,
+            8.74
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "N2",
+          "w_um": 10.0,
+          "l_um": 0.7000000000000001,
+          "diffusion_areas_um2": [
+            4.3999999999999995,
+            4.3999999999999995
+          ],
+          "diffusion_perimeters_um": [
+            20.88,
+            20.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "P2",
+          "w_um": 15.72,
+          "l_um": 0.55,
+          "diffusion_areas_um2": [
+            6.916799999999999,
+            6.916799999999999
+          ],
+          "diffusion_perimeters_um": [
+            32.32,
+            32.32
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "NOUT",
+          "w_um": 10.0,
+          "l_um": 0.7000000000000001,
+          "diffusion_areas_um2": [
+            4.3999999999999995,
+            4.3999999999999995
+          ],
+          "diffusion_perimeters_um": [
+            20.88,
+            20.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "POUT",
+          "w_um": 15.72,
+          "l_um": 0.55,
+          "diffusion_areas_um2": [
+            6.916799999999999,
+            6.916799999999999
+          ],
+          "diffusion_perimeters_um": [
+            32.32,
+            32.32
+          ],
+          "extracted_geometry_matches": true
+        }
+      ],
+      "device_resistors": [
+        {
+          "device": "RIN",
+          "w_um": 1.0,
+          "l_um": 8.0,
+          "method": "Intersection of actual GDS HRPOLY 110/5 and POLY 30/0"
+        }
+      ],
+      "method": "Boolean intersection/difference of final GDS active and poly polygons; isolated channel window excludes surrounding body contacts."
+    },
+    "negative_controls": [
+      {
+        "control": "input-gate-open",
+        "passed": true,
+        "expected_lvs_match": false,
+        "gds_sha256": "b8f31583ab0579d2505c76aaa85f5fa16b48c8bdc9e8959c6a4e75d07111b402",
+        "edit_rect_um": [
+          3.7,
+          21.825,
+          4.3,
+          22.425
+        ],
+        "changed_polygon_area_um2": 0.22799999999999998,
+        "drc": {
+          "passed": false,
+          "counts": [
+            "12"
+          ]
+        },
+        "lvs": {
+          "passed": false,
+          "final_result": [
+            "Netlists do not match."
+          ],
+          "log": "build/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/controls/input-gate-open/lvs.log"
+        }
+      },
+      {
+        "control": "vdd-vss-short",
+        "passed": true,
+        "expected_lvs_match": false,
+        "gds_sha256": "45b6405d2bdfc7a48c0ef74d8d55968c5d6c7c5436da67acf31370583292cc60",
+        "edit_rect_um": [
+          14.82,
+          3.1999999999999997,
+          15.219999999999999,
+          7.2
+        ],
+        "changed_polygon_area_um2": 1.28,
+        "drc": {
+          "passed": true,
+          "counts": [
+            "0"
+          ]
+        },
+        "lvs": {
+          "passed": false,
+          "final_result": [
+            "Top level cell failed pin matching."
+          ],
+          "log": "build/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/controls/vdd-vss-short/lvs.log"
+        }
+      }
+    ]
+  }
+}

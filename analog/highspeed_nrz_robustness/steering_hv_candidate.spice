@@ -1,0 +1,14 @@
+* Independent electrical reference, selected from HV-r1 circuit hypotheses.
+* W/L and connectivity only; junction geometry is independently measured from actual GDS.
+.subckt hs_steering_robust DATA OUT VDD VSS BIAS DUMMY
+XRIN DATA DI VSS ppolyf_u_1k_6p0 r_width=1u r_length=58u
+XREF BIAS BIAS VSS VSS nfet_03v3 w=2u l=1u
+XBASE OUT BIAS VSS VSS nfet_03v3 w=2u l=1u
+XTAIL VX BIAS VSS VSS nfet_03v3 w=5.76u l=1u
+XLED OUT GP VX VSS nfet_06v0 w=2.5u l=0.7u
+XDUMMY DUMMY GB VX VSS nfet_06v0 w=2.5u l=0.7u
+XINV1N GB DI VSS VSS nfet_06v0 w=2.5u l=0.7u
+XINV1P GB DI VDD VDD pfet_06v0 w=3.93u l=0.55u
+XINV2N GP GB VSS VSS nfet_06v0 w=2.5u l=0.7u
+XINV2P GP GB VDD VDD pfet_06v0 w=3.93u l=0.55u
+.ends hs_steering_robust

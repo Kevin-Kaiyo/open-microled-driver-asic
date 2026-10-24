@@ -2,9 +2,11 @@
 
 An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
-从 **1 Pixel** 开始，电气与物理研究基线为 **v0.4（2026-10-05）**，新增 **frame experiment v0.1（2026-10-07）**。电气基线：在冻结的共同GDS上，实际提取末级`output12/buf_2`、数字输出线、跨宏线与六MOS pixel的联合信号寄生模型；nominal为12MOS、45 signal R、77显式C，另有HRHC／LRHC／HRLC／LRLC四种actual RC提取。模型从真实M3右端接入，整体替换v0.3分块路径。主研究37次transient／12次DC、146项工程guards通过；[电源／控制边界](docs/research/robustness.md)另保留startup假设越界、enable延迟与static LED headroom失效。
+**当前阶段（2026-10-24）**：显示方向为单像素39MOS参考/保护/PWM宏，正在核查供电、封装与滤波回流；高速方向为单通道NRZ的电压驱动与电流转向两版实际GDS/PEX。新阶段的失败、修订及证据边界见下方当前报告；尚无硅片或实测光链路证据。
 
-项目定位为**实验性研发方法验证与教学**：用独立提出的假设、可复现的实验和可追溯的证据，研究 MicroLED 器件电测与驱动共设计。先把单像素的真实负载、reference、供电和控制边界讲清楚，再由明确的实验问题决定4×4是否值得实现。联合模型仍把PG／body电阻及PG-only电容投影到理想rails，邻居按声明的截断条件处理；它不构成完整芯片PEX、制造接受或光学验证。
+**早期基础路径（历史状态，2026-10-05–07）**：从1 Pixel开始，电气与物理研究基线为 **v0.4（2026-10-05）**，新增 **frame experiment v0.1（2026-10-07）**。电气基线：在冻结的共同GDS上，实际提取末级`output12/buf_2`、数字输出线、跨宏线与六MOS pixel的联合信号寄生模型；nominal为12MOS、45 signal R、77显式C，另有HRHC／LRHC／HRLC／LRLC四种actual RC提取。模型从真实M3右端接入，整体替换v0.3分块路径。主研究37次transient／12次DC、146项工程guards通过；[电源／控制边界](docs/research/robustness.md)另保留startup假设越界、enable延迟与static LED headroom失效。
+
+项目定位为**实验性研发方法验证与教学**：用独立提出的假设、可复现的实验和可追溯的证据，研究 MicroLED 器件电测与驱动共设计。先把单像素的真实负载、reference、供电和控制边界讲清楚，再由明确的实验问题决定4×4是否值得实现。早期v0.4联合模型仍把PG／body电阻及PG-only电容投影到理想rails，邻居按声明的截断条件处理；它不构成完整芯片PEX、制造接受或光学验证。
 
 ## GitHub 备份与跨机开发
 
@@ -17,6 +19,8 @@ An independent, open platform for experimental R&D methodology validation and te
 [2026-10-19 研究快照与原始附件](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/research-20261019)：31 个归档的上传后回读核验通过；独立检出恢复并复算 96 组 NRZ 数据，完整分析和汇总文件与归档逐字节一致。此次使用同一台 Mac 的不同目录，跨操作系统完整流程仍待验证。
 
 ## 先读当前研究报告
+
+- **供电、电阻角与封装扰动（2026-10-24）：[中文研究报告](docs/research/driver-robustness-20261024/index.html) / [实际GDS分层查看器](docs/research/driver-robustness-20261024/layout-viewer.html) / [证据与复现](docs/research/driver-robustness-20261024/README.md)。** 显示PWM和高速NRZ分开整理。旧9–11 mV余量不能覆盖+50 mV或声明的供电/回地封装阻抗；新的实际厚栅氧核心完成DRC/LVS/PEX与电气复验。A在固定辅助电源三条件的0.4 Gb/s点通过，但辅助电源扰动仍失败；B在0.5 Gb/s的本轮所测扰动条件下通过。PWM板侧参考滤波显著减小扰动，恢复时间和启动数值一致性仍未闭合。报告保留失败、同速率能量比较及原始证据边界。
 
 - **慢热接收与快冷端电压修正（2026-10-23）：[中文研究报告](docs/research/highspeed-nrz-pvt-20261023/index.html) / [新版真实 GDS](docs/research/highspeed-nrz-pvt-20261023/layout-viewer.html) / [复现入口](docs/research/highspeed-nrz-pvt-20261023/README.md)。** 两路线新增工艺输入电阻与低阻衬底返回连接，B 另调整参考供电。相同负载与接收条件下，实际 RC 在三组联合条件的最高离散通过点为 A 1 Gb/s、B 0.5 Gb/s；A 的 2 Gb/s 接收仍失败。130 条主记录包含 42 条只读基线引用，另有 4 条电容分配控制。实际新 GDS 的两套 DRC、LVS、PEX 审计通过；快冷端电压筛查余量约 9–11 mV，尚非产品可靠性余量。
 
@@ -45,7 +49,7 @@ An independent, open platform for experimental R&D methodology validation and te
 
 [教学 PPT](docs/teaching/open-microled-single-pixel-teaching-v2.pptx)、[初版讲义](docs/teaching/open-microled-single-pixel-report.pdf)、[2026-10-03 检阅](docs/review/README.md)、[v0.2历史报告](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/tree/7ad33e16cfc26a8e785061ef1713156d36d97259/docs/research)与[v0.3历史报告](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/tree/f4d478707f055cf1015267e14a2a56e28c3e9991/docs/research)保留各自快照。旧版尺寸、PWM和分块RC结论以当时输入为准；旧run及source hash不被新模型覆盖。
 
-## 当前实现与主要结果
+## 历史基础路径与结果（保留各自模型和日期）
 
 ```mermaid
 flowchart LR

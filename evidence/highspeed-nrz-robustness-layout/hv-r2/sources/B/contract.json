@@ -1,0 +1,1210 @@
+{
+  "schema_version": 1,
+  "route": "B",
+  "top": "hs_steering_robust",
+  "ports": [
+    "DATA",
+    "OUT",
+    "VDD",
+    "VSS",
+    "BIAS",
+    "DUMMY"
+  ],
+  "grid_um": 0.005,
+  "devices": [
+    {
+      "name": "INV1N",
+      "model": "nfet_06v0",
+      "w_um": 2.5,
+      "l_um": 0.7,
+      "cx": 4,
+      "cy": 20,
+      "nodes": [
+        "GB",
+        "DI",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          3.39,
+          20
+        ],
+        "G": [
+          4,
+          21.75
+        ],
+        "S": [
+          4.61,
+          20
+        ],
+        "B": [
+          1.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "INV1P",
+      "model": "pfet_06v0",
+      "w_um": 3.93,
+      "l_um": 0.55,
+      "cx": 10,
+      "cy": 20,
+      "nodes": [
+        "GB",
+        "DI",
+        "VDD",
+        "VDD"
+      ],
+      "pins_um": {
+        "D": [
+          9.465,
+          20
+        ],
+        "G": [
+          10,
+          22.465
+        ],
+        "S": [
+          10.535,
+          20
+        ],
+        "B": [
+          7.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "INV2N",
+      "model": "nfet_06v0",
+      "w_um": 2.5,
+      "l_um": 0.7,
+      "cx": 16,
+      "cy": 20,
+      "nodes": [
+        "GP",
+        "GB",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          15.39,
+          20
+        ],
+        "G": [
+          16,
+          21.75
+        ],
+        "S": [
+          16.61,
+          20
+        ],
+        "B": [
+          13.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "INV2P",
+      "model": "pfet_06v0",
+      "w_um": 3.93,
+      "l_um": 0.55,
+      "cx": 22,
+      "cy": 20,
+      "nodes": [
+        "GP",
+        "GB",
+        "VDD",
+        "VDD"
+      ],
+      "pins_um": {
+        "D": [
+          21.465,
+          20
+        ],
+        "G": [
+          22,
+          22.465
+        ],
+        "S": [
+          22.535,
+          20
+        ],
+        "B": [
+          19.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "LED",
+      "model": "nfet_06v0",
+      "w_um": 2.5,
+      "l_um": 0.7,
+      "cx": 28,
+      "cy": 20,
+      "nodes": [
+        "OUT",
+        "GP",
+        "VX",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          27.39,
+          20
+        ],
+        "G": [
+          28,
+          21.75
+        ],
+        "S": [
+          28.61,
+          20
+        ],
+        "B": [
+          25.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "DUMMY",
+      "model": "nfet_06v0",
+      "w_um": 2.5,
+      "l_um": 0.7,
+      "cx": 34,
+      "cy": 20,
+      "nodes": [
+        "DUMMY",
+        "GB",
+        "VX",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          33.39,
+          20
+        ],
+        "G": [
+          34,
+          21.75
+        ],
+        "S": [
+          34.61,
+          20
+        ],
+        "B": [
+          31.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "TAIL",
+      "model": "nfet_03v3",
+      "w_um": 5.76,
+      "l_um": 1,
+      "cx": 40,
+      "cy": 20,
+      "nodes": [
+        "VX",
+        "BIAS",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          39.24,
+          20
+        ],
+        "G": [
+          40,
+          23.38
+        ],
+        "S": [
+          40.76,
+          20
+        ],
+        "B": [
+          37.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "BASE",
+      "model": "nfet_03v3",
+      "w_um": 2,
+      "l_um": 1,
+      "cx": 46,
+      "cy": 20,
+      "nodes": [
+        "OUT",
+        "BIAS",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          45.24,
+          20
+        ],
+        "G": [
+          46,
+          21.5
+        ],
+        "S": [
+          46.76,
+          20
+        ],
+        "B": [
+          43.5,
+          20
+        ]
+      }
+    },
+    {
+      "name": "REF",
+      "model": "nfet_03v3",
+      "w_um": 2,
+      "l_um": 1,
+      "cx": 52,
+      "cy": 20,
+      "nodes": [
+        "BIAS",
+        "BIAS",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          51.24,
+          20
+        ],
+        "G": [
+          52,
+          21.5
+        ],
+        "S": [
+          52.76,
+          20
+        ],
+        "B": [
+          49.5,
+          20
+        ]
+      }
+    }
+  ],
+  "buses_um": {
+    "DI": 22.5,
+    "OUT": 2.2,
+    "VDD": 3.4,
+    "VSS": 4.6,
+    "BIAS": 5.8,
+    "DUMMY": 7.0,
+    "GB": 8.2,
+    "GP": 9.4,
+    "VX": 10.6,
+    "DATA": -37.36
+  },
+  "bus_spans_um": {
+    "DI": [
+      -5.5,
+      10.5
+    ],
+    "OUT": [
+      26.89,
+      45.74
+    ],
+    "VDD": [
+      7.0,
+      23.035
+    ],
+    "VSS": [
+      -6.88,
+      53.26
+    ],
+    "BIAS": [
+      39.5,
+      52.5
+    ],
+    "DUMMY": [
+      32.89,
+      33.89
+    ],
+    "GB": [
+      2.89,
+      34.5
+    ],
+    "GP": [
+      14.89,
+      28.5
+    ],
+    "VX": [
+      28.11,
+      39.74
+    ],
+    "DATA": [
+      -5.5,
+      -4.5
+    ]
+  },
+  "port_anchor_um": {
+    "OUT": [
+      27.09,
+      2.2
+    ],
+    "VDD": [
+      7.2,
+      3.4
+    ],
+    "VSS": [
+      1.2,
+      4.6
+    ],
+    "BIAS": [
+      39.7,
+      5.8
+    ],
+    "DUMMY": [
+      33.09,
+      7.0
+    ],
+    "DATA": [
+      -5.3,
+      -37.36
+    ]
+  },
+  "routes": [
+    {
+      "net": "DI",
+      "layer": "metal3",
+      "rect_um": [
+        3.5,
+        22.3,
+        10.5,
+        22.7
+      ]
+    },
+    {
+      "net": "OUT",
+      "layer": "metal3",
+      "rect_um": [
+        26.89,
+        2.0,
+        45.74,
+        2.4
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal3",
+      "rect_um": [
+        7.0,
+        3.2,
+        23.035,
+        3.6
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        1.0,
+        4.4,
+        53.26,
+        4.8
+      ]
+    },
+    {
+      "net": "BIAS",
+      "layer": "metal3",
+      "rect_um": [
+        39.5,
+        5.6,
+        52.5,
+        6.0
+      ]
+    },
+    {
+      "net": "DUMMY",
+      "layer": "metal3",
+      "rect_um": [
+        32.89,
+        6.8,
+        33.89,
+        7.2
+      ]
+    },
+    {
+      "net": "GB",
+      "layer": "metal3",
+      "rect_um": [
+        2.89,
+        8.0,
+        34.5,
+        8.4
+      ]
+    },
+    {
+      "net": "GP",
+      "layer": "metal3",
+      "rect_um": [
+        14.89,
+        9.2,
+        28.5,
+        9.6
+      ]
+    },
+    {
+      "net": "VX",
+      "layer": "metal3",
+      "rect_um": [
+        28.11,
+        10.4,
+        39.74,
+        10.8
+      ]
+    },
+    {
+      "net": "DI",
+      "layer": "metal1",
+      "rect_um": [
+        3.81,
+        18.06,
+        4.19,
+        18.44
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        1.5,
+        19.81,
+        2.82,
+        20.19
+      ]
+    },
+    {
+      "net": "GB",
+      "layer": "metal2",
+      "rect_um": [
+        3.2,
+        8.01,
+        3.58,
+        20.19
+      ]
+    },
+    {
+      "net": "DI",
+      "layer": "metal4",
+      "rect_um": [
+        3.81,
+        21.56,
+        4.19,
+        22.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        4.42,
+        4.41,
+        4.8,
+        20.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        1.31,
+        4.41,
+        1.69,
+        20.19
+      ]
+    },
+    {
+      "net": "DI",
+      "layer": "metal1",
+      "rect_um": [
+        9.81,
+        17.345,
+        10.19,
+        17.725
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal1",
+      "rect_um": [
+        7.5,
+        19.81,
+        8.895,
+        20.19
+      ]
+    },
+    {
+      "net": "GB",
+      "layer": "metal2",
+      "rect_um": [
+        9.275,
+        8.01,
+        9.655,
+        20.19
+      ]
+    },
+    {
+      "net": "DI",
+      "layer": "metal4",
+      "rect_um": [
+        9.81,
+        22.275,
+        10.19,
+        22.69
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal2",
+      "rect_um": [
+        10.345,
+        3.21,
+        10.725,
+        20.19
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal2",
+      "rect_um": [
+        7.31,
+        3.21,
+        7.69,
+        20.19
+      ]
+    },
+    {
+      "net": "GB",
+      "layer": "metal1",
+      "rect_um": [
+        15.81,
+        18.06,
+        16.19,
+        18.44
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        13.5,
+        19.81,
+        14.82,
+        20.19
+      ]
+    },
+    {
+      "net": "GP",
+      "layer": "metal2",
+      "rect_um": [
+        15.2,
+        9.21,
+        15.58,
+        20.19
+      ]
+    },
+    {
+      "net": "GB",
+      "layer": "metal4",
+      "rect_um": [
+        15.81,
+        8.01,
+        16.19,
+        21.94
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        16.42,
+        4.41,
+        16.8,
+        20.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        13.31,
+        4.41,
+        13.69,
+        20.19
+      ]
+    },
+    {
+      "net": "GB",
+      "layer": "metal1",
+      "rect_um": [
+        21.81,
+        17.345,
+        22.19,
+        17.725
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal1",
+      "rect_um": [
+        19.5,
+        19.81,
+        20.895,
+        20.19
+      ]
+    },
+    {
+      "net": "GP",
+      "layer": "metal2",
+      "rect_um": [
+        21.275,
+        9.21,
+        21.655,
+        20.19
+      ]
+    },
+    {
+      "net": "GB",
+      "layer": "metal4",
+      "rect_um": [
+        21.81,
+        8.01,
+        22.19,
+        22.655
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal2",
+      "rect_um": [
+        22.345,
+        3.21,
+        22.725,
+        20.19
+      ]
+    },
+    {
+      "net": "VDD",
+      "layer": "metal2",
+      "rect_um": [
+        19.31,
+        3.21,
+        19.69,
+        20.19
+      ]
+    },
+    {
+      "net": "GP",
+      "layer": "metal1",
+      "rect_um": [
+        27.81,
+        18.06,
+        28.19,
+        18.44
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        25.5,
+        19.81,
+        26.82,
+        20.19
+      ]
+    },
+    {
+      "net": "OUT",
+      "layer": "metal2",
+      "rect_um": [
+        27.2,
+        2.01,
+        27.58,
+        20.19
+      ]
+    },
+    {
+      "net": "GP",
+      "layer": "metal4",
+      "rect_um": [
+        27.81,
+        9.21,
+        28.19,
+        21.94
+      ]
+    },
+    {
+      "net": "VX",
+      "layer": "metal2",
+      "rect_um": [
+        28.42,
+        10.41,
+        28.8,
+        20.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        25.31,
+        4.41,
+        25.69,
+        20.19
+      ]
+    },
+    {
+      "net": "GB",
+      "layer": "metal1",
+      "rect_um": [
+        33.81,
+        18.06,
+        34.19,
+        18.44
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        31.5,
+        19.81,
+        32.82,
+        20.19
+      ]
+    },
+    {
+      "net": "DUMMY",
+      "layer": "metal2",
+      "rect_um": [
+        33.2,
+        6.81,
+        33.58,
+        20.19
+      ]
+    },
+    {
+      "net": "GB",
+      "layer": "metal4",
+      "rect_um": [
+        33.81,
+        8.01,
+        34.19,
+        21.94
+      ]
+    },
+    {
+      "net": "VX",
+      "layer": "metal2",
+      "rect_um": [
+        34.42,
+        10.41,
+        34.8,
+        20.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        31.31,
+        4.41,
+        31.69,
+        20.19
+      ]
+    },
+    {
+      "net": "BIAS",
+      "layer": "metal1",
+      "rect_um": [
+        39.81,
+        16.43,
+        40.19,
+        16.81
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        37.5,
+        19.81,
+        38.67,
+        20.19
+      ]
+    },
+    {
+      "net": "VX",
+      "layer": "metal2",
+      "rect_um": [
+        39.05,
+        10.41,
+        39.43,
+        20.19
+      ]
+    },
+    {
+      "net": "BIAS",
+      "layer": "metal4",
+      "rect_um": [
+        39.81,
+        5.61,
+        40.19,
+        23.57
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        40.57,
+        4.41,
+        40.95,
+        20.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        37.31,
+        4.41,
+        37.69,
+        20.19
+      ]
+    },
+    {
+      "net": "BIAS",
+      "layer": "metal1",
+      "rect_um": [
+        45.81,
+        18.31,
+        46.19,
+        18.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        43.5,
+        19.81,
+        44.67,
+        20.19
+      ]
+    },
+    {
+      "net": "OUT",
+      "layer": "metal2",
+      "rect_um": [
+        45.05,
+        2.01,
+        45.43,
+        20.19
+      ]
+    },
+    {
+      "net": "BIAS",
+      "layer": "metal4",
+      "rect_um": [
+        45.81,
+        5.61,
+        46.19,
+        21.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        46.57,
+        4.41,
+        46.95,
+        20.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        43.31,
+        4.41,
+        43.69,
+        20.19
+      ]
+    },
+    {
+      "net": "BIAS",
+      "layer": "metal1",
+      "rect_um": [
+        51.81,
+        18.31,
+        52.19,
+        18.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        49.5,
+        19.81,
+        50.67,
+        20.19
+      ]
+    },
+    {
+      "net": "BIAS",
+      "layer": "metal2",
+      "rect_um": [
+        51.05,
+        5.61,
+        51.43,
+        20.19
+      ]
+    },
+    {
+      "net": "BIAS",
+      "layer": "metal4",
+      "rect_um": [
+        51.81,
+        5.61,
+        52.19,
+        21.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        52.57,
+        4.41,
+        52.95,
+        20.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        49.31,
+        4.41,
+        49.69,
+        20.19
+      ]
+    },
+    {
+      "net": "DI",
+      "layer": "metal3",
+      "rect_um": [
+        -5.5,
+        22.3,
+        10.5,
+        22.7
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        -6.88,
+        4.4,
+        53.26,
+        4.8
+      ]
+    },
+    {
+      "net": "DATA",
+      "layer": "metal3",
+      "rect_um": [
+        -5.5,
+        -37.56,
+        -4.5,
+        -37.16
+      ]
+    },
+    {
+      "net": "DATA",
+      "layer": "metal2",
+      "rect_um": [
+        -5.19,
+        -37.55,
+        -4.81,
+        -36.17
+      ]
+    },
+    {
+      "net": "DI",
+      "layer": "metal2",
+      "rect_um": [
+        -5.19,
+        22.31,
+        -4.81,
+        22.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        -6.57,
+        -7.12,
+        -6.19,
+        4.79
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "pwell",
+      "rect_um": [
+        -0.3,
+        -38.48,
+        0.3,
+        29.12
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "psd",
+      "rect_um": [
+        -0.18,
+        -38.36,
+        0.18,
+        29
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "psc",
+      "rect_um": [
+        -0.115,
+        -38.295,
+        0.115,
+        28.935
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        -0.19,
+        -38.295,
+        0.19,
+        28.935
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        -0.19,
+        -38.295,
+        0.19,
+        28.935
+      ]
+    }
+  ],
+  "external_components": [
+    {
+      "name": "RREF",
+      "nodes": [
+        "VDUMMY",
+        "BIAS"
+      ],
+      "ohm": 88386.1064910889
+    },
+    {
+      "name": "RDUMMY",
+      "nodes": [
+        "VDUMMY",
+        "DUMMY"
+      ],
+      "ohm": 28000
+    }
+  ],
+  "dimension_change": [],
+  "source_sha256": {
+    "layout/highspeed_nrz_robustness/steering_driver-reference.spice": "b88b8f021f903c9c0c3c47516426d783a5e6520df581241d5ca0db792bab0d70",
+    "build/highspeed-nrz-robustness-layout/hv-r2/sources/B/schematic.spice": "366575f58850cade385057f1c445a1b6d299aa6270deed4678d1dc197ac486bb"
+  },
+  "pcell_parameters": {
+    "full_metal": 0,
+    "gate_to_polycont_um": 0.5,
+    "guard": 1,
+    "glc": 1,
+    "grc": 1,
+    "topc": 1,
+    "botc": 1
+  },
+  "note": "Transistor core only; no pads/ESD/regulators/external resistor implementation. Use extraction results for junction areas/perimeters, not schematic estimates.",
+  "resistors": [
+    {
+      "name": "RIN",
+      "model": "ppolyf_u_1k_6p0",
+      "r_width_um": 1,
+      "r_length_um": 58,
+      "nodes": [
+        "DATA",
+        "DI",
+        "VSS"
+      ],
+      "short_di": true,
+      "substrate_screen": true,
+      "guard_all_sides": true,
+      "cx": -5.0,
+      "cy": -6.93,
+      "pins_um": {
+        "1": [
+          -5.0,
+          -36.36
+        ],
+        "2": [
+          -5.0,
+          22.5
+        ],
+        "B": [
+          -6.38,
+          -6.93
+        ]
+      },
+      "substrate_screen_geometry": {
+        "center_x_um": 0.0,
+        "bottom_um": -38.36,
+        "top_um": 29,
+        "diffusion_width_um": 0.36,
+        "contact_width_um": 0.23,
+        "metal_width_um": 0.38
+      }
+    }
+  ],
+  "design_changes": [
+    "6 V high-R-poly DATA-to-DI conditioning resistor, 58 x 1 um",
+    "DI shortened to local first-inverter gate bus",
+    "Continuous VSS-connected substrate contact strip between resistor and MOS row",
+    "Four-sided resistor substrate contacts",
+    "RREF connected to existing fixed3.3V VDUMMY rail",
+    "Original MOS geometry preserved",
+    "Full-swing INV1N/P, INV2N/P, LED/DUMMY are actual public 6 V MOS PCells; REF/BASE/TAIL retain 3.3 V devices",
+    "6 V W/L: NMOS 2.50/0.70 um, PMOS 3.93/0.55 um; original connectivity unchanged"
+  ],
+  "electrical_physical_independence": "Physical D/G/S/B is hand-authored in selected specification; LVS gold is independently read from selected SPICE. No netlist-to-placement parser is used."
+}

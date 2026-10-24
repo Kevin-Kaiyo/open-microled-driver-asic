@@ -1,0 +1,149 @@
+{
+  "routes": {
+    "A": {
+      "top": "hs_voltage_robust",
+      "ports": [
+        "DATA",
+        "OUT",
+        "VDD",
+        "VH",
+        "VL",
+        "VSS"
+      ],
+      "devices": [
+        {
+          "name": "N1",
+          "polarity": "n",
+          "w_um": 2.5,
+          "l_um": 0.7,
+          "nodes": [
+            "N1",
+            "DI",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nfet_06v0"
+        },
+        {
+          "name": "P1",
+          "polarity": "p",
+          "w_um": 3.93,
+          "l_um": 0.55,
+          "nodes": [
+            "N1",
+            "DI",
+            "VDD",
+            "VDD"
+          ],
+          "model": "pfet_06v0"
+        },
+        {
+          "name": "N2",
+          "polarity": "n",
+          "w_um": 10,
+          "l_um": 0.7,
+          "nodes": [
+            "CTRL",
+            "N1",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nfet_06v0"
+        },
+        {
+          "name": "P2",
+          "polarity": "p",
+          "w_um": 15.72,
+          "l_um": 0.55,
+          "nodes": [
+            "CTRL",
+            "N1",
+            "VDD",
+            "VDD"
+          ],
+          "model": "pfet_06v0"
+        },
+        {
+          "name": "NOUT",
+          "polarity": "n",
+          "w_um": 10,
+          "l_um": 0.7,
+          "nodes": [
+            "OUT",
+            "CTRL",
+            "VL",
+            "VSS"
+          ],
+          "model": "nfet_06v0"
+        },
+        {
+          "name": "POUT",
+          "polarity": "p",
+          "w_um": 15.72,
+          "l_um": 0.55,
+          "nodes": [
+            "OUT",
+            "CTRL",
+            "VH",
+            "VH"
+          ],
+          "model": "pfet_06v0"
+        }
+      ],
+      "schematic_source": "layout/highspeed_nrz_robustness/voltage_driver-A8-reference.spice",
+      "resistors": [
+        {
+          "name": "RIN",
+          "model": "ppolyf_u_1k_6p0",
+          "r_width_um": 1,
+          "r_length_um": 8,
+          "nodes": [
+            "DATA",
+            "DI",
+            "VSS"
+          ],
+          "short_di": true,
+          "substrate_screen": true,
+          "guard_all_sides": true
+        }
+      ],
+      "external_components": [
+        {
+          "name": "VH",
+          "kind": "ideal bidirectional rail"
+        },
+        {
+          "name": "VL",
+          "kind": "ideal bidirectional rail"
+        }
+      ],
+      "design_changes": [
+        "6 V high-R-poly DATA-to-DI conditioning resistor, 8 x 1 um",
+        "DI shortened to local first-inverter gate bus",
+        "Continuous VSS-connected substrate contact strip between resistor and MOS row",
+        "Four-sided resistor substrate contacts",
+        "Original MOS geometry preserved",
+        "All six full-swing MOS replaced by actual public 6 V MOS PCells",
+        "6 V channel lengths NMOS 0.70 um / PMOS 0.55 um; approximate original W/L ratio",
+        "P2/POUT W rounded from pre-layout 15.715 to 15.72 um for centered geometry on 0.005 um grid",
+        "Reduce physical input high-R-poly length from 48 to 8 um after actual A48 RC slow-hot receiver margin failure; retain all HV MOS geometry"
+      ],
+      "dimension_change": [
+        {
+          "device": "P2",
+          "parameter": "W",
+          "prelayout_hv_um": 15.715,
+          "physical_um": 15.72,
+          "reason": "Keep symmetric PCell pins on 0.005 um manufacturing grid"
+        },
+        {
+          "device": "POUT",
+          "parameter": "W",
+          "prelayout_hv_um": 15.715,
+          "physical_um": 15.72,
+          "reason": "Keep symmetric PCell pins on 0.005 um manufacturing grid"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "raw_run": "build/highspeed-nrz-robustness-layout/hv-A8-r3",
+  "manifest_files": 105,
+  "method": "Rehash every frozen artifact, parse full LVS and independent KLayout report, intersect actual channel polygons with Dualgate 55/0, and compare actual negative-control polygons.",
+  "routes": {
+    "A": {
+      "gds_sha256": "5c6bedfd663f33feefe1ee0d1821dbbe5cacfc528526fb00f88d51673b211bb6",
+      "rc_sha256": "f26ca7a4a66baf61ccef9b3625a1e8234bf10edcf65d4adcc30117db1b72a1c0",
+      "dualgate_checks": [
+        {
+          "instance": "N1",
+          "model": "nfet_06v0",
+          "channel_um2": 1.75,
+          "dualgate_overlap_um2": 1.75,
+          "passed": true
+        },
+        {
+          "instance": "P1",
+          "model": "pfet_06v0",
+          "channel_um2": 2.1615,
+          "dualgate_overlap_um2": 2.1614999999999998,
+          "passed": true
+        },
+        {
+          "instance": "N2",
+          "model": "nfet_06v0",
+          "channel_um2": 7.0,
+          "dualgate_overlap_um2": 7.0,
+          "passed": true
+        },
+        {
+          "instance": "P2",
+          "model": "pfet_06v0",
+          "channel_um2": 8.646,
+          "dualgate_overlap_um2": 8.645999999999999,
+          "passed": true
+        },
+        {
+          "instance": "NOUT",
+          "model": "nfet_06v0",
+          "channel_um2": 7.0,
+          "dualgate_overlap_um2": 7.0,
+          "passed": true
+        },
+        {
+          "instance": "POUT",
+          "model": "pfet_06v0",
+          "channel_um2": 8.646,
+          "dualgate_overlap_um2": 8.645999999999999,
+          "passed": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "control": "input-gate-open",
+          "actual_changed_area_um2": 0.22799999999999998,
+          "lvs_rejected": true
+        },
+        {
+          "control": "vdd-vss-short",
+          "actual_changed_area_um2": 1.28,
+          "lvs_rejected": true
+        }
+      ],
+      "counts": {
+        "mos": 6,
+        "device_resistors": 1,
+        "resistors": 79,
+        "capacitors": 64,
+        "zero_valued_capacitors": 0
+      },
+      "all_nets_extracted": true
+    }
+  }
+}

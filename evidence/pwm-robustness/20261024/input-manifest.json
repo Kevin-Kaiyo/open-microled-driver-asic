@@ -1,0 +1,409 @@
+{
+  "date": "2026-10-24",
+  "selected_old_summary": "evidence/analog-v3/final/summary.json",
+  "selected_old_summary_sha256": "d081f6065237958faedebdbef96c493d1e89eb66a4d38d2ea550575d7df14dbe",
+  "inputs": {
+    "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/inputs/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/inputs/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46",
+    "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/inputs/dut.spice": "d6ebc340c5f2096c43e1358b851d68590fefddbf47b5cc6e746ffc3c12851424",
+    "build/analog-v3/pex-r5-final-bleed10M-4ii_gn5t/inputs/microled.spice": "ce9a3453abb87fc2aea894e7da2eff1448ff90a1432243ea90c747716ed20bba",
+    "rtl/pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+    "rtl/safety/pixel_safety.v": "a6f4ef3f0705dec13d578ef6c0e6a6dd755e2d7b7714d7fb1411fbd078672a93",
+    "sim/safety/tb_safety.v": "76d4f5130d8fefb4769508e074f19213886b3fed55003ea744b7c51482dd20c7",
+    "scripts/safety/run.py": "4f52656c2306403bfd7db9aa6909b23777ad525f92d603672fca1b7121da4975"
+  },
+  "devices": [
+    {
+      "name": "X0",
+      "terminals_DGSB": [
+        "VSS.t33",
+        "a_128036_20068.t2",
+        "PWM_DRIVE.t0",
+        "VSS.t32"
+      ],
+      "model": "nfet_05v0"
+    },
+    {
+      "name": "X1",
+      "terminals_DGSB": [
+        "VSS.t24",
+        "R_N1.t1",
+        "R_N1.t2",
+        "VSS.t23"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X2",
+      "terminals_DGSB": [
+        "VSS.t6",
+        "SAFE_OUT.t2",
+        "a_128036_20068.t1",
+        "VSS.t5"
+      ],
+      "model": "nfet_05v0"
+    },
+    {
+      "name": "X3",
+      "terminals_DGSB": [
+        "VSS.t12",
+        "FAULT.t3",
+        "BIAS.t1",
+        "VSS.t11"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X4",
+      "terminals_DGSB": [
+        "VSAFE.t3",
+        "RAW_PWM.t1",
+        "F_NAND_N.t1",
+        "VSAFE.t2"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X5",
+      "terminals_DGSB": [
+        "VSS.t29",
+        "F_FAULT_B.t2",
+        "F_STACK2.t1",
+        "VSS.t28"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X6",
+      "terminals_DGSB": [
+        "R_TAIL.t0",
+        "SENSE.t1",
+        "N2.t1",
+        "VREF.t6"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X7",
+      "terminals_DGSB": [
+        "BIAS.t5",
+        "I_FAULT_B.t2",
+        "REFOUT.t1",
+        "VSS.t25"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X8",
+      "terminals_DGSB": [
+        "VSAFE.t10",
+        "F_FAULT_B.t3",
+        "F_NAND_N.t3",
+        "VSAFE.t9"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X9",
+      "terminals_DGSB": [
+        "VSS.t20",
+        "BIAS.t3",
+        "BIAS.t4",
+        "VSS.t19"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X10",
+      "terminals_DGSB": [
+        "VSS.t31",
+        "F_NAND_N.t5",
+        "SAFE_OUT.t0",
+        "VSS.t30"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X11",
+      "terminals_DGSB": [
+        "PWM_DRIVE.t3",
+        "a_128036_20068.t5",
+        "VBUF.t7",
+        "VBUF.t6"
+      ],
+      "model": "pfet_05v0"
+    },
+    {
+      "name": "X12",
+      "terminals_DGSB": [
+        "VSS.t14",
+        "FAULT.t0",
+        "FAULT_HB.t0",
+        "VSS.t13"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X13",
+      "terminals_DGSB": [
+        "GATE.t1",
+        "PWM_DRIVE.t6",
+        "BIAS.t0",
+        "VSS.t2"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X14",
+      "terminals_DGSB": [
+        "VBUF.t1",
+        "PWM_DRIVE.t4",
+        "PWM_B.t0",
+        "VBUF.t0"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X15",
+      "terminals_DGSB": [
+        "VSS.t18",
+        "FAULT.t5",
+        "I_FAULT_B.t1",
+        "VSS.t17"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X16",
+      "terminals_DGSB": [
+        "VREF.t5",
+        "CTRL.t4",
+        "SENSE.t0",
+        "VREF.t4"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X17",
+      "terminals_DGSB": [
+        "VSAFE.t5",
+        "FAULT.t4",
+        "I_FAULT_B.t0",
+        "VSAFE.t4"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X18",
+      "terminals_DGSB": [
+        "R_TAIL.t1",
+        "VSET.t0",
+        "R_N1.t0",
+        "VREF.t7"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X19",
+      "terminals_DGSB": [
+        "VSS.t22",
+        "N2.t2",
+        "CTRL.t2",
+        "VSS.t21"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X20",
+      "terminals_DGSB": [
+        "REFOUT.t0",
+        "FAULT.t6",
+        "BIAS.t2",
+        "VSAFE.t8"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X21",
+      "terminals_DGSB": [
+        "VREF.t11",
+        "PB.t0",
+        "PB.t1",
+        "VREF.t10"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X22",
+      "terminals_DGSB": [
+        "F_STACK1.t1",
+        "RAW_PWM.t0",
+        "F_NAND_N.t2",
+        "VSS.t8"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X23",
+      "terminals_DGSB": [
+        "VBUF.t3",
+        "SAFE_OUT.t3",
+        "a_128036_20068.t0",
+        "VBUF.t2"
+      ],
+      "model": "pfet_05v0"
+    },
+    {
+      "name": "X24",
+      "terminals_DGSB": [
+        "VBUF.t5",
+        "a_128036_20068.t4",
+        "PWM_DRIVE.t2",
+        "VBUF.t4"
+      ],
+      "model": "pfet_05v0"
+    },
+    {
+      "name": "X25",
+      "terminals_DGSB": [
+        "VSS.t10",
+        "GATE.t2",
+        "LED_K.t1",
+        "VSS.t9"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X26",
+      "terminals_DGSB": [
+        "VSS.t1",
+        "PWM_B.t2",
+        "GATE.t0",
+        "VSS.t0"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X27",
+      "terminals_DGSB": [
+        "VREF.t9",
+        "PB.t2",
+        "R_TAIL.t2",
+        "VREF.t8"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X28",
+      "terminals_DGSB": [
+        "VREF.t1",
+        "CTRL.t3",
+        "REFOUT.t2",
+        "VREF.t0"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X29",
+      "terminals_DGSB": [
+        "VSS.t16",
+        "FAULT.t2",
+        "F_FAULT_B.t1",
+        "VSS.t15"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X30",
+      "terminals_DGSB": [
+        "PWM_DRIVE.t1",
+        "a_128036_20068.t3",
+        "VSS.t35",
+        "VSS.t34"
+      ],
+      "model": "nfet_05v0"
+    },
+    {
+      "name": "X31",
+      "terminals_DGSB": [
+        "VREF.t3",
+        "CTRL.t0",
+        "CTRL.t1",
+        "VREF.t2"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X32",
+      "terminals_DGSB": [
+        "VSAFE.t7",
+        "FAULT.t1",
+        "F_FAULT_B.t0",
+        "VSAFE.t6"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X33",
+      "terminals_DGSB": [
+        "VSAFE.t1",
+        "PERMIT.t1",
+        "F_NAND_N.t0",
+        "VSAFE.t0"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X34",
+      "terminals_DGSB": [
+        "F_STACK2.t0",
+        "PERMIT.t0",
+        "F_STACK1.t0",
+        "VSS.t7"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X35",
+      "terminals_DGSB": [
+        "VSAFE.t12",
+        "F_NAND_N.t4",
+        "SAFE_OUT.t1",
+        "VSAFE.t11"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X36",
+      "terminals_DGSB": [
+        "VSS.t27",
+        "R_N1.t3",
+        "N2.t0",
+        "VSS.t26"
+      ],
+      "model": "nfet_06v0"
+    },
+    {
+      "name": "X37",
+      "terminals_DGSB": [
+        "LED_A.t1",
+        "FAULT_HB.t1",
+        "LED_K.t0",
+        "LED_A.t0"
+      ],
+      "model": "pfet_06v0"
+    },
+    {
+      "name": "X38",
+      "terminals_DGSB": [
+        "VSS.t4",
+        "PWM_DRIVE.t5",
+        "PWM_B.t1",
+        "VSS.t3"
+      ],
+      "model": "nfet_06v0"
+    }
+  ],
+  "old_evidence_reused_only_as_provenance": true,
+  "script_sha256": "8b5dfb7b00de12192f4aa8c2fbab4abc9e300aff9c4c081ff1594021fc6f0996"
+}

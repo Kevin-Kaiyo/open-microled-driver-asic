@@ -1,0 +1,589 @@
+{
+  "schema_version": 1,
+  "physical_pdk_lock": {
+    "schema_version": 1,
+    "variant": "gf180mcuD",
+    "open_pdks_commit": "54435919abffb937387ec956209f9cf5fd2dfbee",
+    "open_pdks_version": "1.0.572",
+    "ciel_version": "3.0.0",
+    "primitive_commit": "41918f5a2356b9fb49a897ecc4fb4716b0ab1041",
+    "verification_commit": "50cc2fe338c81925e24a6ac4907ddaab534c1312",
+    "wafer_space_klayout_commit": "fb4b8f59451d248ef5b310a593759f946a8f6ae8",
+    "license": "Apache-2.0 for GF sources; preserve all packaged source notices",
+    "build_origin": "https://fossi-foundation.github.io/ciel-releases",
+    "selection_source": "https://github.com/librelane/librelane/blob/main/librelane/pdk_hashes.yaml",
+    "checked_on": "2026-10-03 Asia/Tokyo",
+    "tools": {
+      "magic": {
+        "version": "8.3.684",
+        "repository": "https://github.com/RTimothyEdwards/magic",
+        "commit": "4f53bb3091d1e4a9b2009a58f157a8a4331d4c84"
+      },
+      "netgen": {
+        "version": "1.5.324",
+        "repository": "https://github.com/RTimothyEdwards/netgen",
+        "commit": "3cb047bd6b55ae09c8eefeb479b4fe746cfdb948"
+      },
+      "klayout_python": {
+        "version": "0.30.12",
+        "verified": "GDS read and teaching polygon rendering"
+      },
+      "klayout_native": {
+        "version": "0.30.12",
+        "status": "installed but execution unverified; macOS assessment rejected; no independent DRC result"
+      },
+      "ngspice": {
+        "version": "47"
+      },
+      "tcl_tk": {
+        "version": "8.6.18"
+      },
+      "sdk": {
+        "version": "MacOSX26.5.sdk",
+        "selection": "Xcode SDK explicitly selected; default CLT27 linker failed"
+      }
+    },
+    "files": {
+      "SOURCES": "5bd56473e8dd0c5306c36aec0be20729ddf563aaa20c1e43f1ac9e558d24d3c2",
+      "libs.tech/magic/gf180mcuD.tech": "0db2e5c354a2f7c7749f86df4c995127c1564daf51f936030b4e1a5982ad3210",
+      "libs.tech/magic/gf180mcuD.tcl": "295f2d746020a206128de088a3685db7e679a6fa0d2f83dfde15fba9c95dd17a",
+      "libs.tech/magic/gf180mcuD.magicrc": "840e96ab01b44d85a20742ebff1d378a5857bd032b0f70ea5a3315a82dc6bd0e",
+      "libs.tech/netgen/gf180mcuD_setup.tcl": "eb6217e33acb2c81680351745bc184a2ee37b31a25d37f4dce423f61ba466fe4",
+      "libs.tech/ngspice/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+      "libs.tech/ngspice/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46",
+      "libs.tech/klayout/tech/drc/gf180mcu.drc": "9b986260e1909e9ce2ee97b2d1103dc513836bc6a440e876d66d23c85985c41a",
+      "libs.tech/klayout/tech/drc/run_drc.py": "6eed310882152bdf837e958301afcc75bc86e64ab2b27158fa931188466dc61f"
+    }
+  },
+  "tools": {
+    "build/layout/tools/install/bin/magic": "aef2fb7da2837c6e41da4b2dba2505897cd238d1d76c36a91414b448019d5292",
+    "build/layout/tools/install/bin/netgen": "148f86519ed2e2f5c76907215726d01c49770376b48143dbea9a0e6706bfe055"
+  },
+  "artifacts": [
+    {
+      "path": "A/capacitance-correction.json",
+      "size": 18083,
+      "sha256": "f8ca89196fdb801fa3900a66e52c9f64b0da48612f00988688b42475219e26cc"
+    },
+    {
+      "path": "A/capacitance-only.spice",
+      "size": 2457,
+      "sha256": "8b8747525f318dec5b4e2d18d01b3d0c229bdc647c5a6ef3dcbff7b1db5b347b"
+    },
+    {
+      "path": "A/controls/input-gate-open/extract/extract.tcl",
+      "size": 967,
+      "sha256": "e9155b488a82f8e9c1b567214549e8b5692a15e167d412d4c3f1196dc1638ebf"
+    },
+    {
+      "path": "A/controls/input-gate-open/extract/hs_voltage_robust.ext",
+      "size": 4125,
+      "sha256": "34a66bfcd60e7a82301a922448f8dc1e1e9fbe63d915fc695164f3688f0cd3ce"
+    },
+    {
+      "path": "A/controls/input-gate-open/extract/hs_voltage_robust.mag",
+      "size": 27853,
+      "sha256": "4ebc3961eeec065a2df83940972bcf92223cde7de681553724f5f21348652089"
+    },
+    {
+      "path": "A/controls/input-gate-open/extract/hs_voltage_robust.spice",
+      "size": 683,
+      "sha256": "1ead7b4e984df0965510530807bb8eb1e76ef1783a22ddf11eef8e0870ecbcb6"
+    },
+    {
+      "path": "A/controls/input-gate-open/extract/magic.log",
+      "size": 1479,
+      "sha256": "16e69028c37138f01936d9bec311e6009c0775f8ae7345399347d3982ced7de4"
+    },
+    {
+      "path": "A/controls/input-gate-open/extract/magic.log.command.json",
+      "size": 593,
+      "sha256": "1285d52843f25b59fd504ce041b75afbbdb06770653f6f0ec92bb01a6dd9205e"
+    },
+    {
+      "path": "A/controls/input-gate-open/hs_voltage_robust.gds",
+      "size": 72806,
+      "sha256": "b8f31583ab0579d2505c76aaa85f5fa16b48c8bdc9e8959c6a4e75d07111b402"
+    },
+    {
+      "path": "A/controls/input-gate-open/lvs-stdout.log",
+      "size": 5984,
+      "sha256": "cdaaccfd16916e3b60ea8e5ce68fe87536aec2b63bfaa4113784334238b4d0e1"
+    },
+    {
+      "path": "A/controls/input-gate-open/lvs-stdout.log.command.json",
+      "size": 889,
+      "sha256": "12d1cd616431f40529299e76c5887d84789e04d1b4e11f8e6ee01adbe9089cd6"
+    },
+    {
+      "path": "A/controls/input-gate-open/lvs.log",
+      "size": 5546,
+      "sha256": "f613a5fae661de5b6f26a25debff3e10d90f1df670c19e7ed91820fa28b610ca"
+    },
+    {
+      "path": "A/controls/vdd-vss-short/extract/extract.tcl",
+      "size": 965,
+      "sha256": "809d4443026f8fdca6ac631240539b1ef477fdced580ade1dc645552d9525073"
+    },
+    {
+      "path": "A/controls/vdd-vss-short/extract/hs_voltage_robust.ext",
+      "size": 3778,
+      "sha256": "af1f3f09c0f3feaa7e35db114710c68666d202fc245fac96b61a0ac78b8ef44a"
+    },
+    {
+      "path": "A/controls/vdd-vss-short/extract/hs_voltage_robust.mag",
+      "size": 27495,
+      "sha256": "901031bf8ca48f5a66a6aea1173a537e4592f2fe48ea27d01e0934428808cb4f"
+    },
+    {
+      "path": "A/controls/vdd-vss-short/extract/hs_voltage_robust.spice",
+      "size": 771,
+      "sha256": "c307dca68bec5e116f34fb7830290c96ace11ce5f487bb04632caacba1b0f15b"
+    },
+    {
+      "path": "A/controls/vdd-vss-short/extract/magic.log",
+      "size": 1534,
+      "sha256": "c53c17e69724c344258eea1b98708c7849e977ee535396d5ba826f2f88931f34"
+    },
+    {
+      "path": "A/controls/vdd-vss-short/extract/magic.log.command.json",
+      "size": 589,
+      "sha256": "1d64445fb951abb6daf47014e08b3f98d19928ecf45a2e1873b3cd71193d0e24"
+    },
+    {
+      "path": "A/controls/vdd-vss-short/hs_voltage_robust.gds",
+      "size": 72594,
+      "sha256": "45b6405d2bdfc7a48c0ef74d8d55968c5d6c7c5436da67acf31370583292cc60"
+    },
+    {
+      "path": "A/controls/vdd-vss-short/lvs-stdout.log",
+      "size": 5935,
+      "sha256": "6c44ccd4102a8acbd12fcfb60f7d918d2e04d31e1b57a3801474d66b8bbf5946"
+    },
+    {
+      "path": "A/controls/vdd-vss-short/lvs-stdout.log.command.json",
+      "size": 883,
+      "sha256": "cacbe073fd357ddf35fee3a42c835def5122022def308924ab2d900677ab42c9"
+    },
+    {
+      "path": "A/controls/vdd-vss-short/lvs.log",
+      "size": 5818,
+      "sha256": "13f1c817ce18b58cf0e8bd2e2488004e0aeb12290bb59dbdd2ceb07e9eea20ab"
+    },
+    {
+      "path": "A/flat-c-control/export.tcl",
+      "size": 190,
+      "sha256": "662285727a9c528df11bc0fcdc46686dad99618602c884e48ef273059bb747b4"
+    },
+    {
+      "path": "A/flat-c-control/flat-c.spice",
+      "size": 1152,
+      "sha256": "cf14dc4f4460444df5009bf8cee966e1c681dd8531c62e0b93baae082ba672a1"
+    },
+    {
+      "path": "A/flat-c-control/hs_voltage_robust.ext",
+      "size": 3862,
+      "sha256": "ee6e5084b34f7b3e526392a2f2bd3e633bb94b0d0f0f8cc48e23d741f82a02f3"
+    },
+    {
+      "path": "A/flat-c-control/hs_voltage_robust.mag",
+      "size": 27586,
+      "sha256": "a7c13e8fe407d4517a035956721c87a851ff132eac89007edf1a099359634c75"
+    },
+    {
+      "path": "A/flat-c-control/magic.log",
+      "size": 1493,
+      "sha256": "a0ce24daaa5713ae99536942a84e8b1c3a2e1f345ce838792516d73a09afff79"
+    },
+    {
+      "path": "A/flat-c-control/magic.log.command.json",
+      "size": 556,
+      "sha256": "f45466d600f281b6700cc2c5a3c5de4dc4dd3bfe65b8c54bec89f3429cab964b"
+    },
+    {
+      "path": "A/full-rc/coverage.json",
+      "size": 420,
+      "sha256": "66751a535aeb0c99456aced6b530fca7d0e7a18d61203b5df0967e7c7e75b3ad"
+    },
+    {
+      "path": "A/full-rc/drive-attributes.json",
+      "size": 1031,
+      "sha256": "d9b07db5f2811b4b76a6248649fc663e3d12723794a8c5fef6d5b2420452a4e6"
+    },
+    {
+      "path": "A/full-rc/extract-driven.tcl",
+      "size": 304,
+      "sha256": "712b469fe200a4ae3a9aeb27965ee472b1d16242d45f122eeaab18aba6eb09aa"
+    },
+    {
+      "path": "A/full-rc/hs_voltage_robust.ext",
+      "size": 4231,
+      "sha256": "683be49ff9245054964218db67d9ebdbc35800ba6b1f1e703240a758d38deffc"
+    },
+    {
+      "path": "A/full-rc/hs_voltage_robust.mag",
+      "size": 27586,
+      "sha256": "a7c13e8fe407d4517a035956721c87a851ff132eac89007edf1a099359634c75"
+    },
+    {
+      "path": "A/full-rc/hs_voltage_robust.res.ext",
+      "size": 6823,
+      "sha256": "56f023c4b6d77108a02021427ea1277b15e7d59b4c22c4229d4fb6c968f949a4"
+    },
+    {
+      "path": "A/full-rc/hs_voltage_robust_rc.spice",
+      "size": 5757,
+      "sha256": "eb4dcab821c1bd55a5c89bf5b3e1ac6194976a3bda74b202f96666e3cb5eb623"
+    },
+    {
+      "path": "A/full-rc/magic.log",
+      "size": 1696,
+      "sha256": "ca8987ee47715ee2e94fddafb9dd52dfa18ad7c3d01c62b9df4c1a5b4e8b6917"
+    },
+    {
+      "path": "A/full-rc/magic.log.command.json",
+      "size": 550,
+      "sha256": "7d1cbc8af74609f039741191f05090e5191d6d0119680a524fc5f52cc63e3f36"
+    },
+    {
+      "path": "A/gds-geometry-audit.json",
+      "size": 2187,
+      "sha256": "2cd588efddfae41d2df3d3b7e2eb4cee88d400210de62e803c5e753c54f711b7"
+    },
+    {
+      "path": "A/generate/hs_voltage_robust.ext",
+      "size": 3850,
+      "sha256": "b81b0cdc9203e5bf0f2e8968dbcb92546adc0958caf6c84f8a3f25157f479783"
+    },
+    {
+      "path": "A/generate/hs_voltage_robust.gds",
+      "size": 72742,
+      "sha256": "61bf1932e1c265420cd9d338bf263ea9bdf01a3260db47ec2f5dce33e49cbbec"
+    },
+    {
+      "path": "A/generate/hs_voltage_robust.mag",
+      "size": 27220,
+      "sha256": "4254313406361ccb95cfce1c14e42a47cff13d2de4d695caaebca5259e0d151a"
+    },
+    {
+      "path": "A/generate/hs_voltage_robust.spice",
+      "size": 674,
+      "sha256": "02ba6946472a8d0a2dbdaeff307a468d019d47861bc3f120fcd14387e6c78e25"
+    },
+    {
+      "path": "A/generate/magic.log",
+      "size": 1945,
+      "sha256": "e616abe21869c58cfeeb39f2aa3a5dbf323629c60b7a99e24682368bdbbbe26c"
+    },
+    {
+      "path": "A/generate/magic.log.command.json",
+      "size": 544,
+      "sha256": "665a4e5dbf336f4704492ba2d974faef384ac7dfe6eb5ea732ad070ecdc16888"
+    },
+    {
+      "path": "A/generate/pcell_N1.mag",
+      "size": 1598,
+      "sha256": "88d987aa2519b505985fc877272531788f28ed27735b2b34f34d11d15fd1aede"
+    },
+    {
+      "path": "A/generate/pcell_N2.mag",
+      "size": 1692,
+      "sha256": "bbee9e88d05f439b7d1fa37ca9571ead74e2c60e8b4718677906adc8563c4b55"
+    },
+    {
+      "path": "A/generate/pcell_NOUT.mag",
+      "size": 1692,
+      "sha256": "bbee9e88d05f439b7d1fa37ca9571ead74e2c60e8b4718677906adc8563c4b55"
+    },
+    {
+      "path": "A/generate/pcell_P1.mag",
+      "size": 1322,
+      "sha256": "b10e5bf7f84839046e3451a8fbd5806640eaf23e16c2784c8241dfffef5f897a"
+    },
+    {
+      "path": "A/generate/pcell_P2.mag",
+      "size": 1416,
+      "sha256": "f9e309ad586c8eb49bb4fb69d213ddd7bfa8d825246465695ac7bbc03b38d8ae"
+    },
+    {
+      "path": "A/generate/pcell_POUT.mag",
+      "size": 1416,
+      "sha256": "f9e309ad586c8eb49bb4fb69d213ddd7bfa8d825246465695ac7bbc03b38d8ae"
+    },
+    {
+      "path": "A/generate/pcell_RIN.mag",
+      "size": 1339,
+      "sha256": "2d64e37a81abb7d07b5da07bcf12edafc2c5984669a92bdeb7c880af865eefc4"
+    },
+    {
+      "path": "A/geometry-only.spice",
+      "size": 683,
+      "sha256": "107291e3a5c9644e83c39af16fb6e0d012f5015e8c0e0dd3979617c94e10931e"
+    },
+    {
+      "path": "A/klayout/drc_run_2026_10_24_08_13_27.log",
+      "size": 1632,
+      "sha256": "c248bd0882a9bf9c07339c55a2c06c75676ea3262c0037f8a05541a139c4cc52"
+    },
+    {
+      "path": "A/klayout/hs_voltage_robust_main.lyrdb",
+      "size": 120992,
+      "sha256": "9b4a18c86b84e62cbe970461dda8463f52864568bffb06b1d9094ccda1036b63"
+    },
+    {
+      "path": "A/klayout/layers_def.drc",
+      "size": 17316,
+      "sha256": "5122a9179ad810c29c3c3afb2500990cbbd3dcae27aebca55b13aaeef181155e"
+    },
+    {
+      "path": "A/klayout/main.drc",
+      "size": 393698,
+      "sha256": "1c683e80a80d068c047184780b1feea630c46fe59c25cf527d5e40ba5151b3c7"
+    },
+    {
+      "path": "A/klayout-command.json",
+      "size": 1478,
+      "sha256": "c69d6076ef2b04c302c433894b09b62fcfc9c70d1dc0726efba4821e5a08a591"
+    },
+    {
+      "path": "A/klayout-result.json",
+      "size": 60,
+      "sha256": "7d4eaf306a6a5bcb56e3bdbb0a03a26eb3b7da034ffabdb9026edbb8da79f83d"
+    },
+    {
+      "path": "A/klayout.log",
+      "size": 57176,
+      "sha256": "c7440a2c5bbec6c6874461d4f0cad86861df0440485e409586de108df16a14bd"
+    },
+    {
+      "path": "A/lvs-stdout.log",
+      "size": 5795,
+      "sha256": "4800acb5eba843406e038841a3ec8fb308e981c3491a2273cb4b6f730607e0fb"
+    },
+    {
+      "path": "A/lvs-stdout.log.command.json",
+      "size": 815,
+      "sha256": "d3dcdccd71923c5568edd5a4eb8aea6d7355ce931249962d56f31d4cdfcc9ca0"
+    },
+    {
+      "path": "A/lvs.log",
+      "size": 4508,
+      "sha256": "3a0486961ee9461d066dc99457eec4fa2e3b461d1d1984e60c202a5bab2d401a"
+    },
+    {
+      "path": "A/negative-controls.json",
+      "size": 1231,
+      "sha256": "0018d608f5d380d7baf26c5e650a19a07c0a83f58e382144b82e953e1e897438"
+    },
+    {
+      "path": "A/pex-audit.json",
+      "size": 51863,
+      "sha256": "305179b653500527c9826c29a4288967b8ccd45496b52724851d60bab79c2723"
+    },
+    {
+      "path": "A/physical-contract.json",
+      "size": 24531,
+      "sha256": "ca658b7c49c89b222576b022178ce612b4388ad7b5d25671ad4b32dc3b882bc3"
+    },
+    {
+      "path": "A/rc-collapse-lvs-stdout.log",
+      "size": 5805,
+      "sha256": "60768f43fa91ce560dc777cdad2467bb2eb20af4846bd9c9af670341c961c758"
+    },
+    {
+      "path": "A/rc-collapse-lvs-stdout.log.command.json",
+      "size": 814,
+      "sha256": "d724d06689184e5f2887157fa0b1a1376e7cc79e4a29a2fa3d9e56f11dd68efb"
+    },
+    {
+      "path": "A/rc-collapse-lvs.log",
+      "size": 4508,
+      "sha256": "3a0486961ee9461d066dc99457eec4fa2e3b461d1d1984e60c202a5bab2d401a"
+    },
+    {
+      "path": "A/rc-lumped-capacitance.spice",
+      "size": 4090,
+      "sha256": "2cc3927e7ebf90a88d968901c42fd12efb929aa8a0a24fa2fd346816fa0e3d6d"
+    },
+    {
+      "path": "A/readback/extract.tcl",
+      "size": 1308,
+      "sha256": "fa49303a4265e663fa0186c5eb710d8fa5dabbd41e3aa69aef74e964417e3032"
+    },
+    {
+      "path": "A/readback/hs_voltage_robust.ext",
+      "size": 3862,
+      "sha256": "ee6e5084b34f7b3e526392a2f2bd3e633bb94b0d0f0f8cc48e23d741f82a02f3"
+    },
+    {
+      "path": "A/readback/hs_voltage_robust.mag",
+      "size": 27586,
+      "sha256": "a7c13e8fe407d4517a035956721c87a851ff132eac89007edf1a099359634c75"
+    },
+    {
+      "path": "A/readback/hs_voltage_robust.res.ext",
+      "size": 6181,
+      "sha256": "3e7c3c42f5be277c4be349ae4f2f1f3558c94b8c0380c3e33bfba62c21dc233a"
+    },
+    {
+      "path": "A/readback/hs_voltage_robust.spice",
+      "size": 674,
+      "sha256": "02ba6946472a8d0a2dbdaeff307a468d019d47861bc3f120fcd14387e6c78e25"
+    },
+    {
+      "path": "A/readback/hs_voltage_robust_c.spice",
+      "size": 1107,
+      "sha256": "2a8d048d09ca01677ff97a1d0e15c0e9615ca0b8aa6b959045c7edf8cff26d19"
+    },
+    {
+      "path": "A/readback/hs_voltage_robust_rc.spice",
+      "size": 4106,
+      "sha256": "e30d95cde56e5f6642e31f4b204c0b0310d32ddf52e9608c3840364d6ea30e4b"
+    },
+    {
+      "path": "A/readback/magic.log",
+      "size": 2443,
+      "sha256": "0ca7d9261017a00c87f5c96778f3a170760ea30fe9b867dc9efc6670e3481007"
+    },
+    {
+      "path": "A/readback/magic.log.command.json",
+      "size": 545,
+      "sha256": "9bee5fbea0bf09d0e3e29b7e673a618341a042d7902780e4b95272ac98ce5f03"
+    },
+    {
+      "path": "A/readback-lvs-stdout.log",
+      "size": 5822,
+      "sha256": "dbfeef13e2ccef791401e28439fa21c24b415bdbb490f8e24d9e4950726bea2b"
+    },
+    {
+      "path": "A/readback-lvs-stdout.log.command.json",
+      "size": 824,
+      "sha256": "08cfa5af40d499f50fa2dcab762d8cf6c3e4275529cc8479e3e59b72f457100b"
+    },
+    {
+      "path": "A/readback-lvs.log",
+      "size": 4508,
+      "sha256": "3a0486961ee9461d066dc99457eec4fa2e3b461d1d1984e60c202a5bab2d401a"
+    },
+    {
+      "path": "A/selected-electrical-source.spice",
+      "size": 564,
+      "sha256": "ab57f8582bdc54975e9f472472e3dd5d1b788323aed5e26abdb225cedeab02d9"
+    },
+    {
+      "path": "A/source/contract.json",
+      "size": 14988,
+      "sha256": "5fa60d9df66d7da42ab069aec62fd65d2da184342ed7cb80cdcbfe2fdb338855"
+    },
+    {
+      "path": "A/source/generate.tcl",
+      "size": 6954,
+      "sha256": "664f68965998d81c4b7571861d7b9732ecf1049a4d30e59d38b271c35f90bb7c"
+    },
+    {
+      "path": "A/source/schematic.spice",
+      "size": 500,
+      "sha256": "161232113ba8a253b7d99ed02da961710253fbe485688a3344aeb23b89baae76"
+    },
+    {
+      "path": "A/unmodified-full-rc/coverage.json",
+      "size": 420,
+      "sha256": "66751a535aeb0c99456aced6b530fca7d0e7a18d61203b5df0967e7c7e75b3ad"
+    },
+    {
+      "path": "A/unmodified-full-rc/drive-attributes.json",
+      "size": 1031,
+      "sha256": "d9b07db5f2811b4b76a6248649fc663e3d12723794a8c5fef6d5b2420452a4e6"
+    },
+    {
+      "path": "A/unmodified-full-rc/extract-driven.tcl",
+      "size": 304,
+      "sha256": "712b469fe200a4ae3a9aeb27965ee472b1d16242d45f122eeaab18aba6eb09aa"
+    },
+    {
+      "path": "A/unmodified-full-rc/hs_voltage_robust.ext",
+      "size": 4231,
+      "sha256": "683be49ff9245054964218db67d9ebdbc35800ba6b1f1e703240a758d38deffc"
+    },
+    {
+      "path": "A/unmodified-full-rc/hs_voltage_robust.mag",
+      "size": 27586,
+      "sha256": "a7c13e8fe407d4517a035956721c87a851ff132eac89007edf1a099359634c75"
+    },
+    {
+      "path": "A/unmodified-full-rc/hs_voltage_robust.res.ext",
+      "size": 6823,
+      "sha256": "56f023c4b6d77108a02021427ea1277b15e7d59b4c22c4229d4fb6c968f949a4"
+    },
+    {
+      "path": "A/unmodified-full-rc/hs_voltage_robust_rc.spice",
+      "size": 4748,
+      "sha256": "882ead2630ad5fbf7e79c8a97e18c0660ad16b99abd251ad19bc556e02f70377"
+    },
+    {
+      "path": "A/unmodified-full-rc/magic.log",
+      "size": 1696,
+      "sha256": "ca8987ee47715ee2e94fddafb9dd52dfa18ad7c3d01c62b9df4c1a5b4e8b6917"
+    },
+    {
+      "path": "A/unmodified-full-rc/magic.log.command.json",
+      "size": 550,
+      "sha256": "7d1cbc8af74609f039741191f05090e5191d6d0119680a524fc5f52cc63e3f36"
+    },
+    {
+      "path": "correction-provenance.json",
+      "size": 863,
+      "sha256": "54b9b28b8c2bc3e4eef79a6e7cb6445e15577bf80b2ca241f315a3213f7b3c1b"
+    },
+    {
+      "path": "selected-spec.json",
+      "size": 3996,
+      "sha256": "9e97379310aaeb416ebbd3a802c8e8afa846e451ee1065662a5f32fb51facc3c"
+    },
+    {
+      "path": "source_scripts/legacy_run.py",
+      "size": 9022,
+      "sha256": "75976fd0cd474318dc9defe2718ba5f67ee4f40af81380b3c8a88a8447194b63"
+    },
+    {
+      "path": "source_scripts/robustness_audit.py",
+      "size": 16866,
+      "sha256": "f3a1e52ea33a06a16bdcba32645c286dd6c3fc6f3a05bd61cf285c8708b51c08"
+    },
+    {
+      "path": "source_scripts/robustness_correct_capacitance.py",
+      "size": 13296,
+      "sha256": "a37b4e50c8fbd099ecc03006bdd64036da2e18d1e436f015a3f532034ecd9b89"
+    },
+    {
+      "path": "source_scripts/robustness_generate.py",
+      "size": 7270,
+      "sha256": "3f441b7ee332ab83af57f43fc1fdb446415f8ad214b63b7ff983be47ffd776d1"
+    },
+    {
+      "path": "source_scripts/robustness_run.py",
+      "size": 24471,
+      "sha256": "760a191832ce8a692964e4dbbb6b81eafe7c5f04faeec9c3ed0b4fcbdbd7a765"
+    },
+    {
+      "path": "sources/A/contract.json",
+      "size": 14988,
+      "sha256": "5fa60d9df66d7da42ab069aec62fd65d2da184342ed7cb80cdcbfe2fdb338855"
+    },
+    {
+      "path": "sources/A/generate.tcl",
+      "size": 6954,
+      "sha256": "664f68965998d81c4b7571861d7b9732ecf1049a4d30e59d38b271c35f90bb7c"
+    },
+    {
+      "path": "sources/A/schematic.spice",
+      "size": 500,
+      "sha256": "161232113ba8a253b7d99ed02da961710253fbe485688a3344aeb23b89baae76"
+    },
+    {
+      "path": "status.json",
+      "size": 5621,
+      "sha256": "22bcab485c6acc0981cdfd117dd994645deac6efd338530c98e51e21a83e7f41"
+    }
+  ]
+}

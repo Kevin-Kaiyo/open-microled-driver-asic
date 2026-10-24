@@ -1,0 +1,10 @@
+* Independent electrical reference: layout/highspeed_nrz_robustness/voltage_driver-reference.spice
+.subckt hs_voltage_robust DATA OUT VDD VH VL VSS
+XRIN DATA DI VSS ppolyf_u_1k_6p0 r_width=1u r_length=48u
+XN1 N1 DI VSS VSS nfet_06v0 w=2.5u l=0.7u
+XP1 N1 DI VDD VDD pfet_06v0 w=3.93u l=0.55u
+XN2 CTRL N1 VSS VSS nfet_06v0 w=10u l=0.7u
+XP2 CTRL N1 VDD VDD pfet_06v0 w=15.72u l=0.55u
+XNOUT OUT CTRL VL VSS nfet_06v0 w=10u l=0.7u
+XPOUT OUT CTRL VH VH pfet_06v0 w=15.72u l=0.55u
+.ends hs_voltage_robust

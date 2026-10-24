@@ -1,0 +1,124 @@
+{
+  "at": "2026-10-24T17:57:13.172896",
+  "final_authoritative_execution_log": "build/highspeed-nrz-robustness/final-completion.log",
+  "historical_interrupt_logs": [
+    {
+      "path": "build/highspeed-nrz-robustness/selected-a8-b58-r4-execution.log",
+      "reason": "A.25 timing failure prompted explicit .4 discrete-point scope amendment; retained KeyboardInterrupt marks control-process stop, not solver error."
+    },
+    {
+      "path": "build/highspeed-nrz-robustness/selected-final-matrix.log",
+      "reason": "Safe between-case restart to honor authorized8GiB budget; final-completion.log resumes remaining planned cases."
+    }
+  ],
+  "actual_failed_cases": [
+    {
+      "work": "hv-r1",
+      "case": "HV-A-SS_gear80-1G-ss-125C-3V-C200-L0.5-e20-s80",
+      "error": "RuntimeError: ngspice failure (see retained log)",
+      "log": "build/highspeed-nrz-robustness/hv-r1/cases/HV-A-SS_gear80-1G-ss-125C-3V-C200-L0.5-e20-s80/ngspice.log"
+    },
+    {
+      "work": "hv-r1",
+      "case": "HV-A-SS-1G-ss-125C-3V-C200-L0.5-e20-s40",
+      "error": "RuntimeError: ngspice failure (see retained log)",
+      "log": "build/highspeed-nrz-robustness/hv-r1/cases/HV-A-SS-1G-ss-125C-3V-C200-L0.5-e20-s40/ngspice.log"
+    },
+    {
+      "work": "hv-r1",
+      "case": "HV-A-SS_trap-1G-ss-125C-3V-C200-L0.5-e20-s100",
+      "error": "RuntimeError: ngspice failure (see retained log)",
+      "log": "build/highspeed-nrz-robustness/hv-r1/cases/HV-A-SS_trap-1G-ss-125C-3V-C200-L0.5-e20-s100/ngspice.log"
+    }
+  ],
+  "administrative_case_records": [
+    {
+      "work": "baseline-r1",
+      "case": "AFTER-A-VDDpulse_fixed-1G-ff--40C-3.6V-C200-L0.5-e20-s40",
+      "exit_code": null,
+      "scope": "No completed solver result; pending old lock or superseded plan interruption. Original record retained."
+    },
+    {
+      "work": "final-hv-r1",
+      "case": "AFTER-A-SS_1G-1G-ss-125C-3V-C200-L0.5-e20-s40",
+      "exit_code": null,
+      "scope": "No completed solver result; pending old lock or superseded plan interruption. Original record retained."
+    },
+    {
+      "work": "final-hv-r1",
+      "case": "AFTER-A-SSminus50_DC-0.25G-ss-125C-2.95V-C200-L0.5-e20-s40-bit1",
+      "exit_code": null,
+      "scope": "No completed solver result; pending old lock or superseded plan interruption. Original record retained."
+    },
+    {
+      "work": "final-hv-r1",
+      "case": "AFTER-A-SSminus50_rate1-1G-ss-125C-2.95V-C200-L0.5-e20-s40",
+      "exit_code": null,
+      "scope": "No completed solver result; pending old lock or superseded plan interruption. Original record retained."
+    },
+    {
+      "work": "final-hv-a8-b58-r2",
+      "case": "AFTER-A-SSminus50_common025-0.25G-ss-125C-2.95V-C200-L0.5-e20-s40",
+      "exit_code": null,
+      "scope": "No completed solver result; pending old lock or superseded plan interruption. Original record retained."
+    },
+    {
+      "work": "final-hv-a8-b58-r2",
+      "case": "AFTER-A-FFplus50-0.5G-ff--40C-3.65V-C200-L0.5-e20-s40",
+      "exit_code": null,
+      "scope": "No completed solver result; pending old lock or superseded plan interruption. Original record retained."
+    },
+    {
+      "work": "final-hv-ties-r3",
+      "case": "AFTER-A-SSminus50_pilot-0.5G-ss-125C-2.95V-C200-L0.5-e20-s40",
+      "exit_code": null,
+      "scope": "No completed solver result; pending old lock or superseded plan interruption. Original record retained."
+    }
+  ],
+  "counts": {
+    "baseline-r1": {
+      "result_records": 43,
+      "successful_simulations": 42,
+      "actual_solver_or_pipeline_failures": 0,
+      "administrative_interruptions": 1
+    },
+    "hv-r1": {
+      "result_records": 10,
+      "successful_simulations": 7,
+      "actual_solver_or_pipeline_failures": 3,
+      "administrative_interruptions": 0
+    },
+    "hv-short-r2": {
+      "result_records": 6,
+      "successful_simulations": 6,
+      "actual_solver_or_pipeline_failures": 0,
+      "administrative_interruptions": 0
+    },
+    "final-hv-r1": {
+      "result_records": 13,
+      "successful_simulations": 10,
+      "actual_solver_or_pipeline_failures": 0,
+      "administrative_interruptions": 3
+    },
+    "final-hv-a8-b58-r2": {
+      "result_records": 4,
+      "successful_simulations": 2,
+      "actual_solver_or_pipeline_failures": 0,
+      "administrative_interruptions": 2
+    },
+    "final-hv-ties-r3": {
+      "result_records": 3,
+      "successful_simulations": 2,
+      "actual_solver_or_pipeline_failures": 0,
+      "administrative_interruptions": 1
+    },
+    "selected-a8-b58-r4": {
+      "result_records": 65,
+      "successful_simulations": 65,
+      "actual_solver_or_pipeline_failures": 0,
+      "administrative_interruptions": 0
+    }
+  },
+  "final_scope": "Final selected65/65 active planned cases complete; historical superseded plans are not claimed complete. All retained actual solver failures are earlyprelayoutA SS numerics.",
+  "identity_note": "Original analysis provenance weakness in early baseline fixed by independent rawreadback toanalysis-verified.json, not by rewriting original analyses."
+}

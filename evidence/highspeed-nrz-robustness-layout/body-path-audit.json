@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "method": "Independent nodal 1 A DC solution of unchanged extracted VSS resistor graph; no MOS current or capacitance, no substrate field solver.",
+  "runs": [
+    {
+      "folder": "build/highspeed-nrz-robustness-layout/hv-A8-r3/A",
+      "rc_sha256": "f26ca7a4a66baf61ccef9b3625a1e8234bf10edcf65d4adcc30117db1b72a1c0",
+      "res_ext_sha256": "5bd4507ce17f77a652bcbf0c1958ce21f991afc07d744527635289096dff360d",
+      "gds_sha256": "5c6bedfd663f33feefe1ee0d1821dbbe5cacfc528526fb00f88d51673b211bb6",
+      "source_node": "VSS.t0",
+      "target_node": "VSS.t3",
+      "source_coord_um": [
+        -5.0,
+        18.07
+      ],
+      "target_coord_um": [
+        16.0,
+        20.0
+      ],
+      "actual_gds_resistor_center_um": [
+        -5.0,
+        18.07
+      ],
+      "actual_gds_n2_channel_center_um": [
+        16.0,
+        20.0
+      ],
+      "distinct_nodes_and_actual_positions": true,
+      "target_degree": 1,
+      "target_single_resistor": {
+        "name": "R24",
+        "nodes": [
+          "VSS.t0",
+          "VSS.t3"
+        ],
+        "resistance_ohm": 229.888,
+        "current_A": -2.472657070434647e-16,
+        "power_W": 1.405542815538551e-29,
+        "voltage_drop_V": -5.684341886080802e-14
+      },
+      "self_ohm": 339.4921689084695,
+      "target_transfer_ohm": 339.4921689084696,
+      "total_network_power_W": 339.4921689084693,
+      "dominant_resistors": [
+        {
+          "name": "R25",
+          "nodes": [
+            "VSS.n2",
+            "VSS.t0"
+          ],
+          "resistance_ohm": 182.839,
+          "current_A": -0.9999999999999993,
+          "power_W": 182.83899999999974,
+          "voltage_drop_V": -182.83899999999988
+        },
+        {
+          "name": "R20",
+          "nodes": [
+            "VSS.n20",
+            "VSS.n2"
+          ],
+          "resistance_ohm": 361.509,
+          "current_A": -0.42523058014265397,
+          "power_W": 65.36843562269418,
+          "voltage_drop_V": -153.7246817967907
+        },
+        {
+          "name": "R19",
+          "nodes": [
+            "VSS.n4",
+            "VSS.n2"
+          ],
+          "resistance_ohm": 484.017,
+          "current_A": -0.314794488956561,
+          "power_W": 47.96394063896716,
+          "voltage_drop_V": -152.36588416128777
+        },
+        {
+          "name": "R18",
+          "nodes": [
+            "VSS.n12",
+            "VSS.n2"
+          ],
+          "resistance_ohm": 1109.94,
+          "current_A": -0.1389231643099928,
+          "power_W": 21.421448617175482,
+          "voltage_drop_V": -154.19637699423342
+        },
+        {
+          "name": "R17",
+          "nodes": [
+            "VSS.n7",
+            "VSS.n2"
+          ],
+          "resistance_ohm": 1278.23,
+          "current_A": -0.12105176659079159,
+          "power_W": 18.730581900837194,
+          "voltage_drop_V": -154.73199960934753
+        },
+        {
+          "name": "R35",
+          "nodes": [
+            "VSS.n5",
+            "VSS.n0"
+          ],
+          "resistance_ohm": 12.9343,
+          "current_A": 0.31435119799230166,
+          "power_W": 1.278124528237415,
+          "voltage_drop_V": 4.065912700191827
+        },
+        {
+          "name": "R38",
+          "nodes": [
+            "VSS.n21",
+            "VSS.n20"
+          ],
+          "resistance_ohm": 6.65765,
+          "current_A": -0.41887554980198766,
+          "power_W": 1.1681294733313488,
+          "voltage_drop_V": -2.7887268041392033
+        },
+        {
+          "name": "R34",
+          "nodes": [
+            "VSS.n21",
+            "VSS.n1"
+          ],
+          "resistance_ohm": 13.0578,
+          "current_A": -0.14467407737438545,
+          "power_W": 0.2733074406584724,
+          "voltage_drop_V": -1.8891251675392504
+        }
+      ],
+      "source_incident_resistors": [
+        {
+          "name": "R24",
+          "nodes": [
+            "VSS.t0",
+            "VSS.t3"
+          ],
+          "resistance_ohm": 229.888,
+          "current_A": -2.472657070434647e-16,
+          "power_W": 1.405542815538551e-29,
+          "voltage_drop_V": -5.684341886080802e-14
+        },
+        {
+          "name": "R25",
+          "nodes": [
+            "VSS.n2",
+            "VSS.t0"
+          ],
+          "resistance_ohm": 182.839,
+          "current_A": -0.9999999999999993,
+          "power_W": 182.83899999999974,
+          "voltage_drop_V": -182.83899999999988
+        }
+      ],
+      "native_device_records": [
+        "device msubckt nfet_06v0 3130 3000 3131 3001 l=140 w=2000 \"VSS\" \"N1\" 280 0 \"CTRL\" 2000 176000,4176 \"VSS\" 2000 176000,4176",
+        "device rsubckt ppolyf_u_1k_6p0 -1100 2814 -1099 2815 l=1600 w=200 \"VSS\" \"a_n1100_2814#\" 0 0 \"DI\" 200 24400,644 \"DATA\" 200 24400,644"
+      ],
+      "conclusion": "Exact equality is the open-circuit DC voltage of a degree-one target body node connected only to the source body node; it is not node merging and not a MOS/substrate field result."
+    },
+    {
+      "folder": "build/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A",
+      "rc_sha256": "eb4dcab821c1bd55a5c89bf5b3e1ac6194976a3bda74b202f96666e3cb5eb623",
+      "res_ext_sha256": "56f023c4b6d77108a02021427ea1277b15e7d59b4c22c4229d4fb6c968f949a4",
+      "gds_sha256": "61bf1932e1c265420cd9d338bf263ea9bdf01a3260db47ec2f5dce33e49cbbec",
+      "source_node": "VSS.t0",
+      "target_node": "VSS.t3",
+      "source_coord_um": [
+        -5.0,
+        18.07
+      ],
+      "target_coord_um": [
+        16.0,
+        20.0
+      ],
+      "actual_gds_resistor_center_um": [
+        -5.0,
+        18.07
+      ],
+      "actual_gds_n2_channel_center_um": [
+        16.0,
+        20.0
+      ],
+      "distinct_nodes_and_actual_positions": true,
+      "target_degree": 1,
+      "target_single_resistor": {
+        "name": "R27",
+        "nodes": [
+          "VSS.t0",
+          "VSS.t3"
+        ],
+        "resistance_ohm": 229.888,
+        "current_A": 0.0,
+        "power_W": 0.0,
+        "voltage_drop_V": 0.0
+      },
+      "self_ohm": 342.90063647985477,
+      "target_transfer_ohm": 342.90063647985477,
+      "total_network_power_W": 342.90063647985465,
+      "dominant_resistors": [
+        {
+          "name": "R28",
+          "nodes": [
+            "VSS.n24",
+            "VSS.t0"
+          ],
+          "resistance_ohm": 182.839,
+          "current_A": -0.9999999999999997,
+          "power_W": 182.83899999999988,
+          "voltage_drop_V": -182.83899999999994
+        },
+        {
+          "name": "R25",
+          "nodes": [
+            "VSS.n24",
+            "VSS.n23"
+          ],
+          "resistance_ohm": 321.01,
+          "current_A": 0.4176747226484612,
+          "power_W": 56.000892356308945,
+          "voltage_drop_V": 134.07776271738254
+        },
+        {
+          "name": "R21",
+          "nodes": [
+            "VSS.n24",
+            "VSS.n13"
+          ],
+          "resistance_ohm": 484.017,
+          "current_A": 0.32156516917104805,
+          "power_W": 50.049370354304706,
+          "voltage_drop_V": 155.64300848666315
+        },
+        {
+          "name": "R19",
+          "nodes": [
+            "VSS.n24",
+            "VSS.n22"
+          ],
+          "resistance_ohm": 1109.94,
+          "current_A": 0.14034078952102014,
+          "power_W": 21.860864563523233,
+          "voltage_drop_V": 155.7698559209611
+        },
+        {
+          "name": "R18",
+          "nodes": [
+            "VSS.n25",
+            "VSS.n24"
+          ],
+          "resistance_ohm": 1278.23,
+          "current_A": -0.12041931865947064,
+          "power_W": 18.535373314423904,
+          "voltage_drop_V": -153.92358569009517
+        },
+        {
+          "name": "R29",
+          "nodes": [
+            "VSS.n23",
+            "VSS.n2"
+          ],
+          "resistance_ohm": 150.083,
+          "current_A": 0.1432740877882946,
+          "power_W": 3.080823414266412,
+          "voltage_drop_V": 21.503004917530617
+        },
+        {
+          "name": "R32",
+          "nodes": [
+            "VSS.n26",
+            "VSS.n5"
+          ],
+          "resistance_ohm": 142.139,
+          "current_A": -0.1374885495907902,
+          "power_W": 2.686867911214576,
+          "voltage_drop_V": -19.54248495028533
+        },
+        {
+          "name": "R31",
+          "nodes": [
+            "VSS.n7",
+            "VSS.n5"
+          ],
+          "resistance_ohm": 142.139,
+          "current_A": -0.13691208526937473,
+          "power_W": 2.6643840549327127,
+          "voltage_drop_V": -19.460546888103657
+        }
+      ],
+      "source_incident_resistors": [
+        {
+          "name": "R27",
+          "nodes": [
+            "VSS.t0",
+            "VSS.t3"
+          ],
+          "resistance_ohm": 229.888,
+          "current_A": 0.0,
+          "power_W": 0.0,
+          "voltage_drop_V": 0.0
+        },
+        {
+          "name": "R28",
+          "nodes": [
+            "VSS.n24",
+            "VSS.t0"
+          ],
+          "resistance_ohm": 182.839,
+          "current_A": -0.9999999999999997,
+          "power_W": 182.83899999999988,
+          "voltage_drop_V": -182.83899999999994
+        }
+      ],
+      "native_device_records": [
+        "device msubckt nfet_06v0 3130 3000 3131 3001 l=140 w=2000 \"VSS\" \"N1\" 280 0 \"CTRL\" 2000 176000,4176 \"VSS\" 2000 176000,4176",
+        "device rsubckt ppolyf_u_1k_6p0 -1100 2814 -1099 2815 l=1600 w=200 \"VSS\" \"a_n1100_2814#\" 0 0 \"DI\" 200 24400,644 \"DATA\" 200 24400,644"
+      ],
+      "conclusion": "Exact equality is the open-circuit DC voltage of a degree-one target body node connected only to the source body node; it is not node merging and not a MOS/substrate field result."
+    }
+  ],
+  "source_locators": {
+    "build/layout/tools/magic/resis/ResUtils.c": {
+      "sha256": "371902b0ce99fcb58e4071bbfc19bbd78f60fd37c4bd2aef85854c5f00175177",
+      "role": "ResEachTile records substrate tile from lower-left device position; lines 970-999"
+    },
+    "build/layout/tools/magic/resis/ResBasic.c": {
+      "sha256": "7185544b0eacbd341ee96d112b509c4619113d67255bd734834f15fd156d6f2e",
+      "role": "Device substrate terminal breakpoint is placed at device tile center; lines 370-384"
+    },
+    "build/layout/tools/magic/resis/ResJunct.c": {
+      "sha256": "ef19349336270bd27c10f9bf53c827ada8501181dc680b664003fc250896cb5c",
+      "role": "ResNewSubDevice creates substrate breakpoint in tile; lines 124-169"
+    }
+  },
+  "limitations": [
+    "This proves the topology exported by pinned Magic. It does not prove physical substrate transfer resistance or a particular extraction bug.",
+    "Adding body contacts changed real GDS but did not change the degree-one XN2 body link, so this network cannot establish local collection improvement.",
+    "Both original/native .res.ext and capacitance-corrected RC retain these same R/device body connections. C bookkeeping does not create the topology.",
+    "Further local body-return claims require independently validated substrate extraction or field solution. No further speculative layout edits are justified."
+  ]
+}

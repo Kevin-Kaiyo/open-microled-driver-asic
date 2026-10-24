@@ -1,0 +1,1415 @@
+{
+  "schema_version": 1,
+  "physical_validation": {
+    "schema_version": 1,
+    "passed": true,
+    "raw_run": "build/highspeed-nrz-robustness-layout/hv-r2",
+    "manifest_files": 205,
+    "method": "Rehash every frozen artifact, parse full LVS and independent KLayout report, intersect actual channel polygons with Dualgate 55/0, and compare actual negative-control polygons.",
+    "routes": {
+      "A": {
+        "gds_sha256": "6355b837a3c4e4e3a0ef7a1dce8284e3129e0b1dfbd2e14496f7d93e149f96f0",
+        "rc_sha256": "c8c7d00cdf3db51df2b02afaa6790728809f4092669e655991bd8a16071ff978",
+        "dualgate_checks": [
+          {
+            "instance": "N1",
+            "model": "nfet_06v0",
+            "channel_um2": 1.75,
+            "dualgate_overlap_um2": 1.75,
+            "passed": true
+          },
+          {
+            "instance": "P1",
+            "model": "pfet_06v0",
+            "channel_um2": 2.1615,
+            "dualgate_overlap_um2": 2.1614999999999998,
+            "passed": true
+          },
+          {
+            "instance": "N2",
+            "model": "nfet_06v0",
+            "channel_um2": 7.0,
+            "dualgate_overlap_um2": 7.0,
+            "passed": true
+          },
+          {
+            "instance": "P2",
+            "model": "pfet_06v0",
+            "channel_um2": 8.646,
+            "dualgate_overlap_um2": 8.645999999999999,
+            "passed": true
+          },
+          {
+            "instance": "NOUT",
+            "model": "nfet_06v0",
+            "channel_um2": 7.0,
+            "dualgate_overlap_um2": 7.0,
+            "passed": true
+          },
+          {
+            "instance": "POUT",
+            "model": "pfet_06v0",
+            "channel_um2": 8.646,
+            "dualgate_overlap_um2": 8.645999999999999,
+            "passed": true
+          }
+        ],
+        "negative_controls": [
+          {
+            "control": "input-gate-open",
+            "actual_changed_area_um2": 0.22799999999999998,
+            "lvs_rejected": true
+          },
+          {
+            "control": "vdd-vss-short",
+            "actual_changed_area_um2": 1.28,
+            "lvs_rejected": true
+          }
+        ],
+        "counts": {
+          "mos": 6,
+          "device_resistors": 1,
+          "resistors": 79,
+          "capacitors": 62,
+          "zero_valued_capacitors": 0
+        },
+        "all_nets_extracted": true
+      },
+      "B": {
+        "gds_sha256": "d2e32ac286d208e2d74485b4d2650ffbbf4cd25cd57c86c5f7cd9cb97e3256af",
+        "rc_sha256": "fcb457660f238ee402237378a48b06496109b101d51ee85e8a7257224e7ee6ae",
+        "dualgate_checks": [
+          {
+            "instance": "INV1N",
+            "model": "nfet_06v0",
+            "channel_um2": 1.75,
+            "dualgate_overlap_um2": 1.75,
+            "passed": true
+          },
+          {
+            "instance": "INV1P",
+            "model": "pfet_06v0",
+            "channel_um2": 2.1615,
+            "dualgate_overlap_um2": 2.1614999999999998,
+            "passed": true
+          },
+          {
+            "instance": "INV2N",
+            "model": "nfet_06v0",
+            "channel_um2": 1.75,
+            "dualgate_overlap_um2": 1.75,
+            "passed": true
+          },
+          {
+            "instance": "INV2P",
+            "model": "pfet_06v0",
+            "channel_um2": 2.1615,
+            "dualgate_overlap_um2": 2.1614999999999998,
+            "passed": true
+          },
+          {
+            "instance": "LED",
+            "model": "nfet_06v0",
+            "channel_um2": 1.75,
+            "dualgate_overlap_um2": 1.75,
+            "passed": true
+          },
+          {
+            "instance": "DUMMY",
+            "model": "nfet_06v0",
+            "channel_um2": 1.75,
+            "dualgate_overlap_um2": 1.75,
+            "passed": true
+          },
+          {
+            "instance": "TAIL",
+            "model": "nfet_03v3",
+            "channel_um2": 5.76,
+            "dualgate_overlap_um2": 0.0,
+            "passed": true
+          },
+          {
+            "instance": "BASE",
+            "model": "nfet_03v3",
+            "channel_um2": 2,
+            "dualgate_overlap_um2": 0.0,
+            "passed": true
+          },
+          {
+            "instance": "REF",
+            "model": "nfet_03v3",
+            "channel_um2": 2,
+            "dualgate_overlap_um2": 0.0,
+            "passed": true
+          }
+        ],
+        "negative_controls": [
+          {
+            "control": "input-gate-open",
+            "actual_changed_area_um2": 0.22799999999999998,
+            "lvs_rejected": true
+          },
+          {
+            "control": "vdd-vss-short",
+            "actual_changed_area_um2": 0.32,
+            "lvs_rejected": true
+          }
+        ],
+        "counts": {
+          "mos": 9,
+          "device_resistors": 1,
+          "resistors": 127,
+          "capacitors": 76,
+          "zero_valued_capacitors": 0
+        },
+        "all_nets_extracted": true
+      }
+    }
+  },
+  "source_run": "build/highspeed-nrz-robustness-layout/hv-r2",
+  "scope": "Actual experimental transistor-core GDS, DRC, LVS, PEX and fault controls; electrical performance validated separately.",
+  "exclusions": [
+    "Full PDK",
+    "Tool binaries",
+    "Transient waveform data",
+    "Package/EM/IR/ESD/pad/full-chip/silicon signoff"
+  ],
+  "copied_files": [
+    {
+      "path": "A/capacitance-correction.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/capacitance-correction.json",
+      "sha256": "bbca08f40d44fd122330785a50595b86702b53c705d24dbcabebcee97cbbe96b",
+      "size": 17665
+    },
+    {
+      "path": "A/capacitance-only.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/capacitance-only.spice",
+      "sha256": "3149e9184bad12a336d9459ac17338914c8b21a5218fe8116f775dd53d1e33fb",
+      "size": 2392
+    },
+    {
+      "path": "A/controls/input-gate-open/extract/extract.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/input-gate-open/extract/extract.tcl",
+      "sha256": "b8127ad7b5fafdb800bed0a7789ec8a72e3b4b21c6708c948a31c8f3be87028a",
+      "size": 961
+    },
+    {
+      "path": "A/controls/input-gate-open/extract/hs_voltage_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/input-gate-open/extract/hs_voltage_robust.ext",
+      "sha256": "abf1a79a30c68dfc364b198a0ab14ff693828d28cebbadc926ad86aea62db17b",
+      "size": 4108
+    },
+    {
+      "path": "A/controls/input-gate-open/extract/hs_voltage_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/input-gate-open/extract/hs_voltage_robust.mag",
+      "sha256": "28d5e0ec5f03294dda650781fa5547f9d341319a18adf696d3cb19447a949120",
+      "size": 27061
+    },
+    {
+      "path": "A/controls/input-gate-open/extract/hs_voltage_robust.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/input-gate-open/extract/hs_voltage_robust.spice",
+      "sha256": "ebde014fb38e97b1c4a235b6032c5cd3a364e50bc4f5b772a8e660ca71890b95",
+      "size": 684
+    },
+    {
+      "path": "A/controls/input-gate-open/extract/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/input-gate-open/extract/magic.log",
+      "sha256": "2a0402e884f02aad73f4210c1bc42e89a12f869a72926517453dd24b7c71e3d7",
+      "size": 1471
+    },
+    {
+      "path": "A/controls/input-gate-open/extract/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/input-gate-open/extract/magic.log.command.json",
+      "sha256": "df325c48e4b24d03d48390e63b62d3a89da87e1f5a7e767b31c0e552945f187d",
+      "size": 577
+    },
+    {
+      "path": "A/controls/input-gate-open/hs_voltage_robust.gds",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/input-gate-open/hs_voltage_robust.gds",
+      "sha256": "51384a17034ec0dedf4beb9c0f7dc5e479a80e054f4fcc13c73db4a8965655cc",
+      "size": 81382
+    },
+    {
+      "path": "A/controls/input-gate-open/lvs-stdout.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/input-gate-open/lvs-stdout.log",
+      "sha256": "99b76649721eeec6c11cb34e70f5627115f9180e868587f2629f104ab716332d",
+      "size": 5928
+    },
+    {
+      "path": "A/controls/input-gate-open/lvs-stdout.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/input-gate-open/lvs-stdout.log.command.json",
+      "sha256": "c90af2639769599bdae1ff9269cb47d9a6f630adc863edc4720f2bee0895a5c1",
+      "size": 857
+    },
+    {
+      "path": "A/controls/input-gate-open/lvs.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/input-gate-open/lvs.log",
+      "sha256": "7ded78eefd08b81f18ee74c991980431c8f714644553b18e4fbc63f1df35f497",
+      "size": 5546
+    },
+    {
+      "path": "A/controls/vdd-vss-short/extract/extract.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/vdd-vss-short/extract/extract.tcl",
+      "sha256": "04a18235db1e07dec2e911071c5626c9d44590b6a399a56d0cbb9340d495e124",
+      "size": 959
+    },
+    {
+      "path": "A/controls/vdd-vss-short/extract/hs_voltage_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/vdd-vss-short/extract/hs_voltage_robust.ext",
+      "sha256": "2e648ebad2a57f23a26ead7c748ad3bae495d952d72d13926087100052697121",
+      "size": 3751
+    },
+    {
+      "path": "A/controls/vdd-vss-short/extract/hs_voltage_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/vdd-vss-short/extract/hs_voltage_robust.mag",
+      "sha256": "0c4105d505d3c1124665619f78977f0474420e79e54a0fca8096255b7d4dab69",
+      "size": 26703
+    },
+    {
+      "path": "A/controls/vdd-vss-short/extract/hs_voltage_robust.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/vdd-vss-short/extract/hs_voltage_robust.spice",
+      "sha256": "108027f8268a9e3c1cc3b6b16d6ede002024cbf7664809f6ea1113c824463b3a",
+      "size": 772
+    },
+    {
+      "path": "A/controls/vdd-vss-short/extract/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/vdd-vss-short/extract/magic.log",
+      "sha256": "6f0082e5588aaca8bf775e5e70107fea0c2e57536127c1dfc3fd6278523a4cd8",
+      "size": 1526
+    },
+    {
+      "path": "A/controls/vdd-vss-short/extract/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/vdd-vss-short/extract/magic.log.command.json",
+      "sha256": "65cfcf58167719490a1321fb0b175b0378514f77a23b0ebcde4d658ed9729cf0",
+      "size": 573
+    },
+    {
+      "path": "A/controls/vdd-vss-short/hs_voltage_robust.gds",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/vdd-vss-short/hs_voltage_robust.gds",
+      "sha256": "428418da3602094c70ec04ff071e9359955869b1bf52ac13c53936a0edb2f649",
+      "size": 81170
+    },
+    {
+      "path": "A/controls/vdd-vss-short/lvs-stdout.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/vdd-vss-short/lvs-stdout.log",
+      "sha256": "637b7b833c80737c746634d513684d11b35883a07457cdbb318c1a569c57d14e",
+      "size": 5879
+    },
+    {
+      "path": "A/controls/vdd-vss-short/lvs-stdout.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/vdd-vss-short/lvs-stdout.log.command.json",
+      "sha256": "c0eee470cb6ee87cb3943bdf930614ca1e13b697f3f29efa62d8d50756ec9a79",
+      "size": 851
+    },
+    {
+      "path": "A/controls/vdd-vss-short/lvs.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/controls/vdd-vss-short/lvs.log",
+      "sha256": "4326566cec8147572b3fd0bd14ce779f6d8a7d144900bb01c346b710964ddd00",
+      "size": 5818
+    },
+    {
+      "path": "A/flat-c-control/export.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/flat-c-control/export.tcl",
+      "sha256": "662285727a9c528df11bc0fcdc46686dad99618602c884e48ef273059bb747b4",
+      "size": 190
+    },
+    {
+      "path": "A/flat-c-control/flat-c.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/flat-c-control/flat-c.spice",
+      "sha256": "6cbf9479a661e6670839866ca8404b1dfbd107dfb61b4c31c932c27b57de2739",
+      "size": 1136
+    },
+    {
+      "path": "A/flat-c-control/hs_voltage_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/flat-c-control/hs_voltage_robust.ext",
+      "sha256": "25ce9772d9c3531a828ace96e9244f4f3a6be3ce28b0e6acd508a0592e60ee5a",
+      "size": 3844
+    },
+    {
+      "path": "A/flat-c-control/hs_voltage_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/flat-c-control/hs_voltage_robust.mag",
+      "sha256": "8acc8f445994f784692f6cf42f6a49f16e99910e124d2adeeef0bcfb2865c7ab",
+      "size": 26794
+    },
+    {
+      "path": "A/flat-c-control/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/flat-c-control/magic.log",
+      "sha256": "82ce500088180e271656f697679e0106473643f7ca2ddc6f555b9d0bcf421a6d",
+      "size": 1485
+    },
+    {
+      "path": "A/flat-c-control/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/flat-c-control/magic.log.command.json",
+      "sha256": "893d5d408869f60b698c205f8219bc2408430b982e79b5a48477d6d3f9fea350",
+      "size": 540
+    },
+    {
+      "path": "A/full-rc/coverage.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/full-rc/coverage.json",
+      "sha256": "25c37e5bed8d1aa781c359a0199f55de5168cad03c130b24217a8a7da6874e99",
+      "size": 421
+    },
+    {
+      "path": "A/full-rc/drive-attributes.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/full-rc/drive-attributes.json",
+      "sha256": "88101f7b761c43abb94c15fefec614e398a232a8eb6cac65af4dff98348cb74d",
+      "size": 1033
+    },
+    {
+      "path": "A/full-rc/extract-driven.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/full-rc/extract-driven.tcl",
+      "sha256": "c891e8c0bab543088877cb92179422b446dbda15fc0faf222f3d991c7e08c72e",
+      "size": 305
+    },
+    {
+      "path": "A/full-rc/hs_voltage_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/full-rc/hs_voltage_robust.ext",
+      "sha256": "d1849888f1aa38a688c83352b8cbff81904fd7103a9b2fbc18ef4958e101e93f",
+      "size": 4215
+    },
+    {
+      "path": "A/full-rc/hs_voltage_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/full-rc/hs_voltage_robust.mag",
+      "sha256": "8acc8f445994f784692f6cf42f6a49f16e99910e124d2adeeef0bcfb2865c7ab",
+      "size": 26794
+    },
+    {
+      "path": "A/full-rc/hs_voltage_robust.res.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/full-rc/hs_voltage_robust.res.ext",
+      "sha256": "7e76e86aac4c5638f3b90ecf1c9bb3a79ab3f65214228fad030b996cadd0b733",
+      "size": 5983
+    },
+    {
+      "path": "A/full-rc/hs_voltage_robust_rc.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/full-rc/hs_voltage_robust_rc.spice",
+      "sha256": "c8c7d00cdf3db51df2b02afaa6790728809f4092669e655991bd8a16071ff978",
+      "size": 5243
+    },
+    {
+      "path": "A/full-rc/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/full-rc/magic.log",
+      "sha256": "f22887d16b8344f23f7b8341fee014ad298ef9c8770c64cbda47b76ec564c106",
+      "size": 1688
+    },
+    {
+      "path": "A/full-rc/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/full-rc/magic.log.command.json",
+      "sha256": "d041138b4739f5b88b33b0828e17dc86cd8025475572530462bf601dce44d02a",
+      "size": 534
+    },
+    {
+      "path": "A/gds-geometry-audit.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/gds-geometry-audit.json",
+      "sha256": "398fa39d21c421158c1c68a1e9844d6998b5483204d6a392da031685a5c99ff6",
+      "size": 2188
+    },
+    {
+      "path": "A/generate/hs_voltage_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/hs_voltage_robust.ext",
+      "sha256": "6e2896ef7b8f8e2c38a8d6aab2ff588f37600531d9475ba4d6603474ebb834a7",
+      "size": 3830
+    },
+    {
+      "path": "A/generate/hs_voltage_robust.gds",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/hs_voltage_robust.gds",
+      "sha256": "6355b837a3c4e4e3a0ef7a1dce8284e3129e0b1dfbd2e14496f7d93e149f96f0",
+      "size": 81318
+    },
+    {
+      "path": "A/generate/hs_voltage_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/hs_voltage_robust.mag",
+      "sha256": "50acaae49b38d6bd50e576661be4e44e5498e521bfe2cab62a02445f5fdda6cd",
+      "size": 26428
+    },
+    {
+      "path": "A/generate/hs_voltage_robust.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/hs_voltage_robust.spice",
+      "sha256": "5bd10ca33ab2d50f1a596712e10a44e387f3a7b95b7bfce13f43eb69e994dc5e",
+      "size": 675
+    },
+    {
+      "path": "A/generate/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/magic.log",
+      "sha256": "40780d23f5edd7c0e771ab5c9af133d614360c878d47eff66532ebea51d4fd25",
+      "size": 1937
+    },
+    {
+      "path": "A/generate/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/magic.log.command.json",
+      "sha256": "558272883da9301a5e225f991de8bd8b2754439f6c0ce74a893fbf14e2d74cb9",
+      "size": 528
+    },
+    {
+      "path": "A/generate/pcell_N1.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/pcell_N1.mag",
+      "sha256": "fbff20cd27016262f06b2930f25f9ba2596a76a7668d188aad0d6b47c6e8f5ca",
+      "size": 1322
+    },
+    {
+      "path": "A/generate/pcell_N2.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/pcell_N2.mag",
+      "sha256": "303a439d2b117063dcaf32d2f360647bda20734c6633a83bb13d73f55ada8b32",
+      "size": 1392
+    },
+    {
+      "path": "A/generate/pcell_NOUT.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/pcell_NOUT.mag",
+      "sha256": "303a439d2b117063dcaf32d2f360647bda20734c6633a83bb13d73f55ada8b32",
+      "size": 1392
+    },
+    {
+      "path": "A/generate/pcell_P1.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/pcell_P1.mag",
+      "sha256": "302b3e84fbac402784ca6793e77e6b0f83a76675c127c2da8a8366af0991ae23",
+      "size": 1322
+    },
+    {
+      "path": "A/generate/pcell_P2.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/pcell_P2.mag",
+      "sha256": "5636fd3895ad593bb1ad63fe49106843fd389f7fe01a113818c88f331f0549ee",
+      "size": 1416
+    },
+    {
+      "path": "A/generate/pcell_POUT.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/pcell_POUT.mag",
+      "sha256": "5636fd3895ad593bb1ad63fe49106843fd389f7fe01a113818c88f331f0549ee",
+      "size": 1416
+    },
+    {
+      "path": "A/generate/pcell_RIN.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/generate/pcell_RIN.mag",
+      "sha256": "14957f212b2575870d30921f35476246dc5c72bb43690b89653d720f39194164",
+      "size": 1369
+    },
+    {
+      "path": "A/geometry-only.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/geometry-only.spice",
+      "sha256": "36352805eac1531ee891a9b5aacb4458693606466228e60973b8d67f40bf5373",
+      "size": 684
+    },
+    {
+      "path": "A/klayout/drc_run_2026_10_24_08_05_34.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/klayout/drc_run_2026_10_24_08_05_34.log",
+      "sha256": "d2cc1e99d427ce08c702b6481965ee4f066f33557f9d0e14b4da51e198386545",
+      "size": 1616
+    },
+    {
+      "path": "A/klayout/hs_voltage_robust_main.lyrdb",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/klayout/hs_voltage_robust_main.lyrdb",
+      "sha256": "bc2e37479f66d5f22da5d8f9463cfcdd101bacc8b06d59a67fd2372ef1219cbb",
+      "size": 120984
+    },
+    {
+      "path": "A/klayout/layers_def.drc",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/klayout/layers_def.drc",
+      "sha256": "5122a9179ad810c29c3c3afb2500990cbbd3dcae27aebca55b13aaeef181155e",
+      "size": 17316
+    },
+    {
+      "path": "A/klayout/main.drc",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/klayout/main.drc",
+      "sha256": "1c683e80a80d068c047184780b1feea630c46fe59c25cf527d5e40ba5151b3c7",
+      "size": 393698
+    },
+    {
+      "path": "A/klayout-command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/klayout-command.json",
+      "sha256": "af85ddd10dda7c7bd90d053293adeb47d15c6ce42713719a8c76b795316d641a",
+      "size": 1454
+    },
+    {
+      "path": "A/klayout-result.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/klayout-result.json",
+      "sha256": "7d4eaf306a6a5bcb56e3bdbb0a03a26eb3b7da034ffabdb9026edbb8da79f83d",
+      "size": 60
+    },
+    {
+      "path": "A/klayout.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/klayout.log",
+      "sha256": "49d7493e43e678e265c9c27aa9e8dfe99b2c4c9f8490b31c5ce35762cc5c5925",
+      "size": 57145
+    },
+    {
+      "path": "A/lvs-stdout.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/lvs-stdout.log",
+      "sha256": "da6cdeead6058f781201d0a8cef23b31ae08b85f20297f66fcc5825f691fba55",
+      "size": 5739
+    },
+    {
+      "path": "A/lvs-stdout.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/lvs-stdout.log.command.json",
+      "sha256": "6d5808f45cf535675b4d734a693ddc231b5a4ae652b0f62c33eba1381802a6e3",
+      "size": 783
+    },
+    {
+      "path": "A/lvs.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/lvs.log",
+      "sha256": "6990e2b4a375e10054cc8e6d970dc94f8ac55c921726e8b149b091fe49136c54",
+      "size": 4508
+    },
+    {
+      "path": "A/negative-controls.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/negative-controls.json",
+      "sha256": "26ecc3daf537c884fef9dffa2fb6b9f3165ec09f616c734179a71f2effb7cd1b",
+      "size": 1215
+    },
+    {
+      "path": "A/pex-audit.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/pex-audit.json",
+      "sha256": "757b411e18fbf7b346293b6dd16e674dec40a969461abc58164ceddc613c0e92",
+      "size": 49055
+    },
+    {
+      "path": "A/physical-contract.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/physical-contract.json",
+      "sha256": "e5576337de13d913b085f70d61021213b15495d2134340cf40c6d162da891e0c",
+      "size": 23982
+    },
+    {
+      "path": "A/rc-collapse-lvs-stdout.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/rc-collapse-lvs-stdout.log",
+      "sha256": "5fdd953786ffeac5ba60c2dc91a04629fadcd2297d426f33643997f88da77337",
+      "size": 5749
+    },
+    {
+      "path": "A/rc-collapse-lvs-stdout.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/rc-collapse-lvs-stdout.log.command.json",
+      "sha256": "cd6724b57bc25dcac811bddd84efea58043b578fca14d85806aaf861eab2ea4b",
+      "size": 782
+    },
+    {
+      "path": "A/rc-collapse-lvs.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/rc-collapse-lvs.log",
+      "sha256": "3a0486961ee9461d066dc99457eec4fa2e3b461d1d1984e60c202a5bab2d401a",
+      "size": 4508
+    },
+    {
+      "path": "A/rc-lumped-capacitance.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/rc-lumped-capacitance.spice",
+      "sha256": "bcca8fea5e931dd0aac1e640872fb516ab150c9cb9a57bb32c66313d1d4fa3da",
+      "size": 3628
+    },
+    {
+      "path": "A/readback/extract.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/readback/extract.tcl",
+      "sha256": "1f665a5d26637442ffc8903dcd8ca4efe8949e594496601b9300175ee9485ae6",
+      "size": 1302
+    },
+    {
+      "path": "A/readback/hs_voltage_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/readback/hs_voltage_robust.ext",
+      "sha256": "25ce9772d9c3531a828ace96e9244f4f3a6be3ce28b0e6acd508a0592e60ee5a",
+      "size": 3844
+    },
+    {
+      "path": "A/readback/hs_voltage_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/readback/hs_voltage_robust.mag",
+      "sha256": "8acc8f445994f784692f6cf42f6a49f16e99910e124d2adeeef0bcfb2865c7ab",
+      "size": 26794
+    },
+    {
+      "path": "A/readback/hs_voltage_robust.res.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/readback/hs_voltage_robust.res.ext",
+      "sha256": "f34fc40eb154d45b998fdd021d21ce1ac0b6b78b4db8470233d69f3c53dec591",
+      "size": 5338
+    },
+    {
+      "path": "A/readback/hs_voltage_robust.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/readback/hs_voltage_robust.spice",
+      "sha256": "5bd10ca33ab2d50f1a596712e10a44e387f3a7b95b7bfce13f43eb69e994dc5e",
+      "size": 675
+    },
+    {
+      "path": "A/readback/hs_voltage_robust_c.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/readback/hs_voltage_robust_c.spice",
+      "sha256": "666e91c770093f8bc33d0f0d0e1df68779e93db1ac842152c8ea56c0b90de737",
+      "size": 1092
+    },
+    {
+      "path": "A/readback/hs_voltage_robust_rc.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/readback/hs_voltage_robust_rc.spice",
+      "sha256": "ad96a41acb1c7834afa4712bac9f3af6300108070e8cdb0a613e1a36dc176b0a",
+      "size": 3636
+    },
+    {
+      "path": "A/readback/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/readback/magic.log",
+      "sha256": "5f99681ca5fd3679276bcfb11cbd808425fa42f7d4b56ad0446bc5cd94a4b516",
+      "size": 2451
+    },
+    {
+      "path": "A/readback/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/readback/magic.log.command.json",
+      "sha256": "d5bd8d798b914f36eac55b7ebba487ddd11eb66f0dc6bc8133d4e37cfd3db1d2",
+      "size": 529
+    },
+    {
+      "path": "A/readback-lvs-stdout.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/readback-lvs-stdout.log",
+      "sha256": "b9e2884fde5f97a0b66369255f9d24d1f0b77fbb957365a36f4f6e39a358b6b3",
+      "size": 5766
+    },
+    {
+      "path": "A/readback-lvs-stdout.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/readback-lvs-stdout.log.command.json",
+      "sha256": "903a5c9e1531348621cadd45ec5dcb8e4ddcbb319427ad5949f61619cc057342",
+      "size": 792
+    },
+    {
+      "path": "A/readback-lvs.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/readback-lvs.log",
+      "sha256": "6990e2b4a375e10054cc8e6d970dc94f8ac55c921726e8b149b091fe49136c54",
+      "size": 4508
+    },
+    {
+      "path": "A/selected-electrical-source.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/selected-electrical-source.spice",
+      "sha256": "e2c79629d773e7a7cf8ebb5690fd6883321f61bf26c90b1ec286ba4405ee93cf",
+      "size": 565
+    },
+    {
+      "path": "A/source/contract.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/source/contract.json",
+      "sha256": "2bc064c2ccc56530aa58229640ccaa7a57e81482b4729963747920fda8a78613",
+      "size": 14449
+    },
+    {
+      "path": "A/source/generate.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/source/generate.tcl",
+      "sha256": "d6844f3c356233f859d9107da67c1fc8a2e33f3a894b8df967dcdb79817c006b",
+      "size": 6879
+    },
+    {
+      "path": "A/source/schematic.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/source/schematic.spice",
+      "sha256": "e79b6de4839004ac487e1b62ed7e810ffc4c556519d90bbdeb015ad73761279a",
+      "size": 498
+    },
+    {
+      "path": "A/unmodified-full-rc/coverage.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/unmodified-full-rc/coverage.json",
+      "sha256": "25c37e5bed8d1aa781c359a0199f55de5168cad03c130b24217a8a7da6874e99",
+      "size": 421
+    },
+    {
+      "path": "A/unmodified-full-rc/drive-attributes.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/unmodified-full-rc/drive-attributes.json",
+      "sha256": "88101f7b761c43abb94c15fefec614e398a232a8eb6cac65af4dff98348cb74d",
+      "size": 1033
+    },
+    {
+      "path": "A/unmodified-full-rc/extract-driven.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/unmodified-full-rc/extract-driven.tcl",
+      "sha256": "c891e8c0bab543088877cb92179422b446dbda15fc0faf222f3d991c7e08c72e",
+      "size": 305
+    },
+    {
+      "path": "A/unmodified-full-rc/hs_voltage_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/unmodified-full-rc/hs_voltage_robust.ext",
+      "sha256": "d1849888f1aa38a688c83352b8cbff81904fd7103a9b2fbc18ef4958e101e93f",
+      "size": 4215
+    },
+    {
+      "path": "A/unmodified-full-rc/hs_voltage_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/unmodified-full-rc/hs_voltage_robust.mag",
+      "sha256": "8acc8f445994f784692f6cf42f6a49f16e99910e124d2adeeef0bcfb2865c7ab",
+      "size": 26794
+    },
+    {
+      "path": "A/unmodified-full-rc/hs_voltage_robust.res.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/unmodified-full-rc/hs_voltage_robust.res.ext",
+      "sha256": "7e76e86aac4c5638f3b90ecf1c9bb3a79ab3f65214228fad030b996cadd0b733",
+      "size": 5983
+    },
+    {
+      "path": "A/unmodified-full-rc/hs_voltage_robust_rc.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/unmodified-full-rc/hs_voltage_robust_rc.spice",
+      "sha256": "afb1ce1b2944a29a6940b634d51cf552bc2b70f8dcb8aa0a1b53658ca1821918",
+      "size": 4278
+    },
+    {
+      "path": "A/unmodified-full-rc/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/unmodified-full-rc/magic.log",
+      "sha256": "f22887d16b8344f23f7b8341fee014ad298ef9c8770c64cbda47b76ec564c106",
+      "size": 1688
+    },
+    {
+      "path": "A/unmodified-full-rc/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/A/unmodified-full-rc/magic.log.command.json",
+      "sha256": "d041138b4739f5b88b33b0828e17dc86cd8025475572530462bf601dce44d02a",
+      "size": 534
+    },
+    {
+      "path": "B/capacitance-correction.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/capacitance-correction.json",
+      "sha256": "98585b2700d6b585a619431b230273a077a902f949cef2d50ef787a6be170b93",
+      "size": 20299
+    },
+    {
+      "path": "B/capacitance-only.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/capacitance-only.spice",
+      "sha256": "011e39aaa2870a6f6bd06891a36a037992f10207154b0a9bce271beff47b299c",
+      "size": 3014
+    },
+    {
+      "path": "B/controls/input-gate-open/extract/extract.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/input-gate-open/extract/extract.tcl",
+      "sha256": "080443778ee5e8f1b2ebcc1f176c34f32e8a58363aa106862a0f6ea5ba99e775",
+      "size": 956
+    },
+    {
+      "path": "B/controls/input-gate-open/extract/hs_steering_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/input-gate-open/extract/hs_steering_robust.ext",
+      "sha256": "28c659db7a0547361860ac88eaf599966abed89b05d01372c7ea36c8e453fb49",
+      "size": 4854
+    },
+    {
+      "path": "B/controls/input-gate-open/extract/hs_steering_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/input-gate-open/extract/hs_steering_robust.mag",
+      "sha256": "360c90ff2d9b8960d2b5bc609de0a600f745c8585c8b235b8db40a24b5057aa7",
+      "size": 37656
+    },
+    {
+      "path": "B/controls/input-gate-open/extract/hs_steering_robust.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/input-gate-open/extract/hs_steering_robust.spice",
+      "sha256": "b7f9d99a78d7897d6553595496e42a5122b127e4b7f3cb978ff89ea9a29db58e",
+      "size": 905
+    },
+    {
+      "path": "B/controls/input-gate-open/extract/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/input-gate-open/extract/magic.log",
+      "sha256": "dfac5119fa7cd98d00f893e5812df0246be708e9dd60a672040af0ea02729659",
+      "size": 1476
+    },
+    {
+      "path": "B/controls/input-gate-open/extract/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/input-gate-open/extract/magic.log.command.json",
+      "sha256": "33dfac30b7789d3c8fd35b7938513bc047634c544b06a0898b4cfd03d2538cb5",
+      "size": 577
+    },
+    {
+      "path": "B/controls/input-gate-open/hs_steering_robust.gds",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/input-gate-open/hs_steering_robust.gds",
+      "sha256": "54a88641da717e6b826f17fb31bf85ce1b56a97c75b6ac0bf5fbedc7c5d362d6",
+      "size": 80784
+    },
+    {
+      "path": "B/controls/input-gate-open/lvs-stdout.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/input-gate-open/lvs-stdout.log",
+      "sha256": "5367f38bb5d6b90e99c893e766af1e00b01963a05d0199a721844d0498839177",
+      "size": 7559
+    },
+    {
+      "path": "B/controls/input-gate-open/lvs-stdout.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/input-gate-open/lvs-stdout.log.command.json",
+      "sha256": "c7bdff68cca33ef8de51b46faf007177870943ef0a1f7a917ff1ee84973adaa8",
+      "size": 860
+    },
+    {
+      "path": "B/controls/input-gate-open/lvs.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/input-gate-open/lvs.log",
+      "sha256": "4f920acbc35838b5dc5a3bf2ad7f673762c6f64d05e5987b98ae7cc2085de29e",
+      "size": 6588
+    },
+    {
+      "path": "B/controls/vdd-vss-short/extract/extract.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/vdd-vss-short/extract/extract.tcl",
+      "sha256": "1e7e013707daf2aad2e2cfde03b95977db52a942ea12e617c692afdd4ad7f30d",
+      "size": 954
+    },
+    {
+      "path": "B/controls/vdd-vss-short/extract/hs_steering_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/vdd-vss-short/extract/hs_steering_robust.ext",
+      "sha256": "4d31514640c4e2db7528ce5c16095d9c52109ac1d9ee1c7b90af7013768504b0",
+      "size": 4652
+    },
+    {
+      "path": "B/controls/vdd-vss-short/extract/hs_steering_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/vdd-vss-short/extract/hs_steering_robust.mag",
+      "sha256": "3db6e54390e09727a3fe45eb65b91788f141419550b5674e7e7fb15ddad29029",
+      "size": 37260
+    },
+    {
+      "path": "B/controls/vdd-vss-short/extract/hs_steering_robust.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/vdd-vss-short/extract/hs_steering_robust.spice",
+      "sha256": "fbb039bc8341d15511e9f02350bb8032d02264448bbfeedbdeba06c071cc6a73",
+      "size": 1030
+    },
+    {
+      "path": "B/controls/vdd-vss-short/extract/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/vdd-vss-short/extract/magic.log",
+      "sha256": "029d6d61473d37dc86ab8fb193b396dd14255cc5fdebfe5c9f2d91d2e9ab93f5",
+      "size": 1531
+    },
+    {
+      "path": "B/controls/vdd-vss-short/extract/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/vdd-vss-short/extract/magic.log.command.json",
+      "sha256": "83a7f0aa27c0c11e16a4444a063d08a1d8dde51e35f8f15369a7875cd1e2b5ae",
+      "size": 573
+    },
+    {
+      "path": "B/controls/vdd-vss-short/hs_steering_robust.gds",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/vdd-vss-short/hs_steering_robust.gds",
+      "sha256": "765932260cdbf420cf27b35852e9cfd61550d4e25acf34f6448b805bd5895d8f",
+      "size": 80536
+    },
+    {
+      "path": "B/controls/vdd-vss-short/lvs-stdout.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/vdd-vss-short/lvs-stdout.log",
+      "sha256": "28deb75aa1ef7cbf72cfab24444d0becc8d4babf80c9e2f4761af4e3de26e3eb",
+      "size": 7510
+    },
+    {
+      "path": "B/controls/vdd-vss-short/lvs-stdout.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/vdd-vss-short/lvs-stdout.log.command.json",
+      "sha256": "ee113eda5c6ef30d133722c4c598ac965c09b3cf33bfeb026ba62483a2fb2178",
+      "size": 854
+    },
+    {
+      "path": "B/controls/vdd-vss-short/lvs.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/controls/vdd-vss-short/lvs.log",
+      "sha256": "3c5e4a5d52ec297ebf0d57ffc1db6a0b83dde12e8af921fed1b93420d5b99193",
+      "size": 7038
+    },
+    {
+      "path": "B/flat-c-control/export.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/flat-c-control/export.tcl",
+      "sha256": "992e86aef97e7ccbb8175559760106cd8572f6b889d4232cfa0ad994f5469773",
+      "size": 191
+    },
+    {
+      "path": "B/flat-c-control/flat-c.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/flat-c-control/flat-c.spice",
+      "sha256": "dda191677bd4cf5fc8da50ccc6bf0417f4392bd3cba8d0ab8105621cd41393a0",
+      "size": 1467
+    },
+    {
+      "path": "B/flat-c-control/hs_steering_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/flat-c-control/hs_steering_robust.ext",
+      "sha256": "83b10d285a24b1c63c3ac902dc8f373bb9201fd05549e373dcde5e9ef6439f3b",
+      "size": 4591
+    },
+    {
+      "path": "B/flat-c-control/hs_steering_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/flat-c-control/hs_steering_robust.mag",
+      "sha256": "3d203f87065133494e436296024b73c122dd0a2e51750c52109f2c41291e1bef",
+      "size": 37389
+    },
+    {
+      "path": "B/flat-c-control/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/flat-c-control/magic.log",
+      "sha256": "c6bb7ce09e73d4096f1112674a0eeb11033024625e42c5e2eaf17571c8215cf8",
+      "size": 1486
+    },
+    {
+      "path": "B/flat-c-control/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/flat-c-control/magic.log.command.json",
+      "sha256": "ad93aeea3e0a1e12cc202362573f9312ebca55bd0166390c8895f8cb276dc330",
+      "size": 540
+    },
+    {
+      "path": "B/full-rc/coverage.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/coverage.json",
+      "sha256": "a6d17dab7f1e41f56417d07ee53f193ead6ac139d72b154581cd53723540cf47",
+      "size": 435
+    },
+    {
+      "path": "B/full-rc/drive-attributes.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/drive-attributes.json",
+      "sha256": "a51646911b664bec904f402fd1aecf877c6032b9daee6f59cdfcb1d421fed596",
+      "size": 1128
+    },
+    {
+      "path": "B/full-rc/extract-driven.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/extract-driven.tcl",
+      "sha256": "2486ce479293e8c99313573765b2c1a6a9d85175e9c2c461bf84ad8b0f2a0909",
+      "size": 307
+    },
+    {
+      "path": "B/full-rc/hs_steering_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/hs_steering_robust.ext",
+      "sha256": "36ff3bab2867bac263d4e27f61e931f9aaed1c3461c6417718cad8370320fbce",
+      "size": 5016
+    },
+    {
+      "path": "B/full-rc/hs_steering_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/hs_steering_robust.mag",
+      "sha256": "3d203f87065133494e436296024b73c122dd0a2e51750c52109f2c41291e1bef",
+      "size": 37389
+    },
+    {
+      "path": "B/full-rc/hs_steering_robust.res.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/hs_steering_robust.res.ext",
+      "sha256": "944a10aea326d7d296caf012a54ae28c7c620e2aeaec539048e9d71da10fdb64",
+      "size": 9211
+    },
+    {
+      "path": "B/full-rc/hs_steering_robust_rc.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/hs_steering_robust_rc.spice",
+      "sha256": "fcb457660f238ee402237378a48b06496109b101d51ee85e8a7257224e7ee6ae",
+      "size": 7321
+    },
+    {
+      "path": "B/full-rc/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/magic.log",
+      "sha256": "73d9b43583b600fd3c85dde790c82a84b90d95c3a417a26aaa9d07b3f126078c",
+      "size": 1709
+    },
+    {
+      "path": "B/full-rc/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/magic.log.command.json",
+      "sha256": "d93fff651d417ab5de0d1f2ce796ea5a3b6e4cf86f4fbfac136f84ff4f296518",
+      "size": 534
+    },
+    {
+      "path": "B/gds-geometry-audit.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/gds-geometry-audit.json",
+      "sha256": "4f76ceeb319e80496d958ebd4a22790871cd8c4871deb7ad41de58cc5562adf4",
+      "size": 2995
+    },
+    {
+      "path": "B/generate/hs_steering_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/hs_steering_robust.ext",
+      "sha256": "fd285bcea6fdbdc218c20291394960ee1087042f330e864e84e6b9774f4a6145",
+      "size": 4577
+    },
+    {
+      "path": "B/generate/hs_steering_robust.gds",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/hs_steering_robust.gds",
+      "sha256": "d2e32ac286d208e2d74485b4d2650ffbbf4cd25cd57c86c5f7cd9cb97e3256af",
+      "size": 80720
+    },
+    {
+      "path": "B/generate/hs_steering_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/hs_steering_robust.mag",
+      "sha256": "7cd5734fb31a7a8cce2b8bdc04db84a3f58f86076e3cb3433ece39451f11f1f9",
+      "size": 37023
+    },
+    {
+      "path": "B/generate/hs_steering_robust.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/hs_steering_robust.spice",
+      "sha256": "08efbefc31b00353e07d899e3bbc66808f5f13df9d267c421109b2fb77c79efb",
+      "size": 896
+    },
+    {
+      "path": "B/generate/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/magic.log",
+      "sha256": "81e742bd576f8b13f518fe23697be8aaaa229c38138d0b0fdbab807d619444f0",
+      "size": 2183
+    },
+    {
+      "path": "B/generate/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/magic.log.command.json",
+      "sha256": "d7d31c2e06079e74668a5c0b1aa2c631aa36e6ad3c44de7e3c0ca6f1090ed8ac",
+      "size": 528
+    },
+    {
+      "path": "B/generate/pcell_BASE.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/pcell_BASE.mag",
+      "sha256": "261be921f4a2db5dad36b17d7571fecad6f1363b966410ca8f55eea18468fcaf",
+      "size": 1340
+    },
+    {
+      "path": "B/generate/pcell_DUMMY.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/pcell_DUMMY.mag",
+      "sha256": "87146d6a4fe375415b27104cd9e97c141cc149cc16ccac7860e2790790e6329e",
+      "size": 1322
+    },
+    {
+      "path": "B/generate/pcell_INV1N.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/pcell_INV1N.mag",
+      "sha256": "87146d6a4fe375415b27104cd9e97c141cc149cc16ccac7860e2790790e6329e",
+      "size": 1322
+    },
+    {
+      "path": "B/generate/pcell_INV1P.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/pcell_INV1P.mag",
+      "sha256": "c74a1469fc3e1c943591860d3b30073713a16708bd75f1cb9cbd5cb56849c1da",
+      "size": 1322
+    },
+    {
+      "path": "B/generate/pcell_INV2N.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/pcell_INV2N.mag",
+      "sha256": "87146d6a4fe375415b27104cd9e97c141cc149cc16ccac7860e2790790e6329e",
+      "size": 1322
+    },
+    {
+      "path": "B/generate/pcell_INV2P.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/pcell_INV2P.mag",
+      "sha256": "c74a1469fc3e1c943591860d3b30073713a16708bd75f1cb9cbd5cb56849c1da",
+      "size": 1322
+    },
+    {
+      "path": "B/generate/pcell_LED.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/pcell_LED.mag",
+      "sha256": "87146d6a4fe375415b27104cd9e97c141cc149cc16ccac7860e2790790e6329e",
+      "size": 1322
+    },
+    {
+      "path": "B/generate/pcell_REF.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/pcell_REF.mag",
+      "sha256": "261be921f4a2db5dad36b17d7571fecad6f1363b966410ca8f55eea18468fcaf",
+      "size": 1340
+    },
+    {
+      "path": "B/generate/pcell_RIN.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/pcell_RIN.mag",
+      "sha256": "4d15df59d48900f9c405bf01b7ce2840f386990b50066e8422b7a8c84a9dd5b5",
+      "size": 1369
+    },
+    {
+      "path": "B/generate/pcell_TAIL.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/generate/pcell_TAIL.mag",
+      "sha256": "aa23c5fcd73d32da1ead6c95f24db7fda58ed5556111b24b4aa417b03b4ba1e1",
+      "size": 1340
+    },
+    {
+      "path": "B/geometry-only.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/geometry-only.spice",
+      "sha256": "19f4cb48fd6088713fcf8a0e23acef4e1c690054c5080dcc66de32679bc1443e",
+      "size": 905
+    },
+    {
+      "path": "B/klayout/drc_run_2026_10_24_08_05_43.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/klayout/drc_run_2026_10_24_08_05_43.log",
+      "sha256": "22e4d6836dc577f1711ac91e4c0187a1ee3615aa7e9323c49cef7af45d40e58f",
+      "size": 1618
+    },
+    {
+      "path": "B/klayout/hs_steering_robust_main.lyrdb",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/klayout/hs_steering_robust_main.lyrdb",
+      "sha256": "6150cd8f93b5a58bd99c516e1051376bbba2ba2fb86ff9e43748c7da1a9ef99d",
+      "size": 120986
+    },
+    {
+      "path": "B/klayout/layers_def.drc",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/klayout/layers_def.drc",
+      "sha256": "5122a9179ad810c29c3c3afb2500990cbbd3dcae27aebca55b13aaeef181155e",
+      "size": 17316
+    },
+    {
+      "path": "B/klayout/main.drc",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/klayout/main.drc",
+      "sha256": "1c683e80a80d068c047184780b1feea630c46fe59c25cf527d5e40ba5151b3c7",
+      "size": 393698
+    },
+    {
+      "path": "B/klayout-command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/klayout-command.json",
+      "sha256": "5d9c9fc942a861b7d99bcbe466372d4fbaa5d825ec602df27032dd294d26e939",
+      "size": 1456
+    },
+    {
+      "path": "B/klayout-result.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/klayout-result.json",
+      "sha256": "7d4eaf306a6a5bcb56e3bdbb0a03a26eb3b7da034ffabdb9026edbb8da79f83d",
+      "size": 60
+    },
+    {
+      "path": "B/klayout.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/klayout.log",
+      "sha256": "e788fdf65c309cad41cf5799eec538d1e704eeb238edea043fbc84bb520ec3ea",
+      "size": 57140
+    },
+    {
+      "path": "B/lvs-stdout.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/lvs-stdout.log",
+      "sha256": "789e82c60a68562504c69de379031f1e3fa54f5a74596606cf0ae24bc12519be",
+      "size": 7372
+    },
+    {
+      "path": "B/lvs-stdout.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/lvs-stdout.log.command.json",
+      "sha256": "2cf02352039e74708122c1905766ef1c560d1bc0e6f396dc6ab4ce153276947e",
+      "size": 786
+    },
+    {
+      "path": "B/lvs.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/lvs.log",
+      "sha256": "86ad50d7eb4b150e71eaa4300ee202a36bc32ddecf3646c6fc125d9f7c9f2917",
+      "size": 5550
+    },
+    {
+      "path": "B/negative-controls.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/negative-controls.json",
+      "sha256": "a52eb60c3863bafb71bd9016f3df39c399798696e4dc3affd5b88ba8fae424d1",
+      "size": 1215
+    },
+    {
+      "path": "B/pex-audit.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/pex-audit.json",
+      "sha256": "43bf2efca8aa22837ca14416652ab7607ebe62d6fe51462e2f8f3fac30cea10c",
+      "size": 62976
+    },
+    {
+      "path": "B/physical-contract.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/physical-contract.json",
+      "sha256": "c12431238cce6d27b9422f38af6e9be1885c8e15e5530eb05e53f0f3929cd79d",
+      "size": 30801
+    },
+    {
+      "path": "B/rc-collapse-lvs-stdout.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/rc-collapse-lvs-stdout.log",
+      "sha256": "ba9ad1b80557aa852b7fe35db7e372bc62e8abe052223cc30cf356c19c1fa1b2",
+      "size": 7380
+    },
+    {
+      "path": "B/rc-collapse-lvs-stdout.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/rc-collapse-lvs-stdout.log.command.json",
+      "sha256": "255b2dd39d5bd22737d06966c260b6e353461bd4e37c4b69c60991be6e636fc0",
+      "size": 784
+    },
+    {
+      "path": "B/rc-collapse-lvs.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/rc-collapse-lvs.log",
+      "sha256": "ddc4210f98f899d5fce55038bcee12273f6b8de5fd7dbb3cd406f130f565e270",
+      "size": 5550
+    },
+    {
+      "path": "B/rc-lumped-capacitance.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/rc-lumped-capacitance.spice",
+      "sha256": "ca88a26bfc31edec923d49431c0f13966075e0e7350e67bce4d3d3411b6d4284",
+      "size": 5375
+    },
+    {
+      "path": "B/readback/extract.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/readback/extract.tcl",
+      "sha256": "a04ed94f95f86dab20aceb69e7d437490e6c3e9dfc3d55a82190d4bf9b346cc0",
+      "size": 1299
+    },
+    {
+      "path": "B/readback/hs_steering_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/readback/hs_steering_robust.ext",
+      "sha256": "83b10d285a24b1c63c3ac902dc8f373bb9201fd05549e373dcde5e9ef6439f3b",
+      "size": 4591
+    },
+    {
+      "path": "B/readback/hs_steering_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/readback/hs_steering_robust.mag",
+      "sha256": "3d203f87065133494e436296024b73c122dd0a2e51750c52109f2c41291e1bef",
+      "size": 37389
+    },
+    {
+      "path": "B/readback/hs_steering_robust.res.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/readback/hs_steering_robust.res.ext",
+      "sha256": "a97f6977853dc1df8acb8f0b6a531360252e69e0bb5e6653c9501e9ce4db9aef",
+      "size": 8586
+    },
+    {
+      "path": "B/readback/hs_steering_robust.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/readback/hs_steering_robust.spice",
+      "sha256": "08efbefc31b00353e07d899e3bbc66808f5f13df9d267c421109b2fb77c79efb",
+      "size": 896
+    },
+    {
+      "path": "B/readback/hs_steering_robust_c.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/readback/hs_steering_robust_c.spice",
+      "sha256": "edd00749f8931c9e0c0e13177a92cde9eacbe51d1e837e145fa2af5e5b3d5e94",
+      "size": 1395
+    },
+    {
+      "path": "B/readback/hs_steering_robust_rc.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/readback/hs_steering_robust_rc.spice",
+      "sha256": "a5a5e9ede31b9197c5bfe7353985a5414da7ecbf13c7204b19ebc94f56d197a0",
+      "size": 5509
+    },
+    {
+      "path": "B/readback/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/readback/magic.log",
+      "sha256": "ddb31088df24e65811dee7a7c46592cee3904dbf1b18e78e94dce7d9fdda8ce6",
+      "size": 2366
+    },
+    {
+      "path": "B/readback/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/readback/magic.log.command.json",
+      "sha256": "96659d2a9d02b041a02c8967ef4974ca8a43a296667a709a91165c0e42c64deb",
+      "size": 529
+    },
+    {
+      "path": "B/readback-lvs-stdout.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/readback-lvs-stdout.log",
+      "sha256": "92a8a2ec95b5f05591f7428cd745fabe042da14f6a48fb956c0939734e4bae31",
+      "size": 7399
+    },
+    {
+      "path": "B/readback-lvs-stdout.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/readback-lvs-stdout.log.command.json",
+      "sha256": "02221cd30637d2dea0f0ab045fa9d18742b5d433813f95d6b2835f0a8000e89f",
+      "size": 795
+    },
+    {
+      "path": "B/readback-lvs.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/readback-lvs.log",
+      "sha256": "86ad50d7eb4b150e71eaa4300ee202a36bc32ddecf3646c6fc125d9f7c9f2917",
+      "size": 5550
+    },
+    {
+      "path": "B/selected-electrical-source.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/selected-electrical-source.spice",
+      "sha256": "b88b8f021f903c9c0c3c47516426d783a5e6520df581241d5ca0db792bab0d70",
+      "size": 708
+    },
+    {
+      "path": "B/source/contract.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/source/contract.json",
+      "sha256": "08aef3f27c0de2b248ddadd18f1b8330a9ec544543e1087a00f1d7c3ff22d0bc",
+      "size": 18338
+    },
+    {
+      "path": "B/source/generate.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/source/generate.tcl",
+      "sha256": "07bebe05e39b8d5fe1e4c23d132c0ac314f0ca830023d09a7eca75aeb7960bf4",
+      "size": 8784
+    },
+    {
+      "path": "B/source/schematic.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/source/schematic.spice",
+      "sha256": "366575f58850cade385057f1c445a1b6d299aa6270deed4678d1dc197ac486bb",
+      "size": 642
+    },
+    {
+      "path": "B/unmodified-full-rc/coverage.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/unmodified-full-rc/coverage.json",
+      "sha256": "a6d17dab7f1e41f56417d07ee53f193ead6ac139d72b154581cd53723540cf47",
+      "size": 435
+    },
+    {
+      "path": "B/unmodified-full-rc/drive-attributes.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/unmodified-full-rc/drive-attributes.json",
+      "sha256": "a51646911b664bec904f402fd1aecf877c6032b9daee6f59cdfcb1d421fed596",
+      "size": 1128
+    },
+    {
+      "path": "B/unmodified-full-rc/extract-driven.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/unmodified-full-rc/extract-driven.tcl",
+      "sha256": "2486ce479293e8c99313573765b2c1a6a9d85175e9c2c461bf84ad8b0f2a0909",
+      "size": 307
+    },
+    {
+      "path": "B/unmodified-full-rc/hs_steering_robust.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/unmodified-full-rc/hs_steering_robust.ext",
+      "sha256": "36ff3bab2867bac263d4e27f61e931f9aaed1c3461c6417718cad8370320fbce",
+      "size": 5016
+    },
+    {
+      "path": "B/unmodified-full-rc/hs_steering_robust.mag",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/unmodified-full-rc/hs_steering_robust.mag",
+      "sha256": "3d203f87065133494e436296024b73c122dd0a2e51750c52109f2c41291e1bef",
+      "size": 37389
+    },
+    {
+      "path": "B/unmodified-full-rc/hs_steering_robust.res.ext",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/unmodified-full-rc/hs_steering_robust.res.ext",
+      "sha256": "944a10aea326d7d296caf012a54ae28c7c620e2aeaec539048e9d71da10fdb64",
+      "size": 9211
+    },
+    {
+      "path": "B/unmodified-full-rc/hs_steering_robust_rc.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/unmodified-full-rc/hs_steering_robust_rc.spice",
+      "sha256": "c8c8365b42bbc254375c30acb08be05f2590d68599596a7f753664ea29455557",
+      "size": 6182
+    },
+    {
+      "path": "B/unmodified-full-rc/magic.log",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/unmodified-full-rc/magic.log",
+      "sha256": "73d9b43583b600fd3c85dde790c82a84b90d95c3a417a26aaa9d07b3f126078c",
+      "size": 1709
+    },
+    {
+      "path": "B/unmodified-full-rc/magic.log.command.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/unmodified-full-rc/magic.log.command.json",
+      "sha256": "d93fff651d417ab5de0d1f2ce796ea5a3b6e4cf86f4fbfac136f84ff4f296518",
+      "size": 534
+    },
+    {
+      "path": "artifact-manifest.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/artifact-manifest.json",
+      "sha256": "2941b5c8f6f0c894de45913dc986ad17c6b01106a30387a28ef3d684e1755909",
+      "size": 37151
+    },
+    {
+      "path": "correction-provenance.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/correction-provenance.json",
+      "sha256": "755a28f0e2278a8cdd38e785e6bf2f5f8e49637a6a716cb03d3bd637d3d11877",
+      "size": 863
+    },
+    {
+      "path": "selected-spec.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/selected-spec.json",
+      "sha256": "d15bb422de865ba9292d0890550bfdd8419abbd2ebe2716065a21c21d21ea1c8",
+      "size": 7538
+    },
+    {
+      "path": "source_scripts/legacy_run.py",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/source_scripts/legacy_run.py",
+      "sha256": "75976fd0cd474318dc9defe2718ba5f67ee4f40af81380b3c8a88a8447194b63",
+      "size": 9022
+    },
+    {
+      "path": "source_scripts/robustness_audit.py",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/source_scripts/robustness_audit.py",
+      "sha256": "f3a1e52ea33a06a16bdcba32645c286dd6c3fc6f3a05bd61cf285c8708b51c08",
+      "size": 16866
+    },
+    {
+      "path": "source_scripts/robustness_correct_capacitance.py",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/source_scripts/robustness_correct_capacitance.py",
+      "sha256": "a37b4e50c8fbd099ecc03006bdd64036da2e18d1e436f015a3f532034ecd9b89",
+      "size": 13296
+    },
+    {
+      "path": "source_scripts/robustness_generate.py",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/source_scripts/robustness_generate.py",
+      "sha256": "3f441b7ee332ab83af57f43fc1fdb446415f8ad214b63b7ff983be47ffd776d1",
+      "size": 7270
+    },
+    {
+      "path": "source_scripts/robustness_run.py",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/source_scripts/robustness_run.py",
+      "sha256": "8fd437eb039b244579d12c7c141d8119d98cde0e788c18c1a01359663157b49b",
+      "size": 23815
+    },
+    {
+      "path": "sources/A/contract.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/sources/A/contract.json",
+      "sha256": "2bc064c2ccc56530aa58229640ccaa7a57e81482b4729963747920fda8a78613",
+      "size": 14449
+    },
+    {
+      "path": "sources/A/generate.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/sources/A/generate.tcl",
+      "sha256": "d6844f3c356233f859d9107da67c1fc8a2e33f3a894b8df967dcdb79817c006b",
+      "size": 6879
+    },
+    {
+      "path": "sources/A/schematic.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/sources/A/schematic.spice",
+      "sha256": "e79b6de4839004ac487e1b62ed7e810ffc4c556519d90bbdeb015ad73761279a",
+      "size": 498
+    },
+    {
+      "path": "sources/B/contract.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/sources/B/contract.json",
+      "sha256": "08aef3f27c0de2b248ddadd18f1b8330a9ec544543e1087a00f1d7c3ff22d0bc",
+      "size": 18338
+    },
+    {
+      "path": "sources/B/generate.tcl",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/sources/B/generate.tcl",
+      "sha256": "07bebe05e39b8d5fe1e4c23d132c0ac314f0ca830023d09a7eca75aeb7960bf4",
+      "size": 8784
+    },
+    {
+      "path": "sources/B/schematic.spice",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/sources/B/schematic.spice",
+      "sha256": "366575f58850cade385057f1c445a1b6d299aa6270deed4678d1dc197ac486bb",
+      "size": 642
+    },
+    {
+      "path": "status.json",
+      "source": "build/highspeed-nrz-robustness-layout/hv-r2/status.json",
+      "sha256": "fd2e1fa5f57fc61c8f189a00afee9e48a8a56e509c16475994d7057fbbec15e8",
+      "size": 12173
+    }
+  ]
+}

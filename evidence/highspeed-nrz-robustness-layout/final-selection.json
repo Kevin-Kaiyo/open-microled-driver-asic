@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "status": "physical_checks_passed_electrical_status_separate",
+  "selected_spec": "layout/highspeed_nrz_robustness/selected-design.json",
+  "selected_spec_sha256": "723b759ec36f7cf837785bd5ea6dddbbabceb3fa4931b126c76ad483aa390977",
+  "routes": {
+    "A": {
+      "raw_directory": "build/highspeed-nrz-robustness-layout/hv-A8-r3/A",
+      "public_directory": "evidence/highspeed-nrz-robustness-layout/hv-A8-r3/A",
+      "top": "hs_voltage_robust",
+      "gds_sha256": "5c6bedfd663f33feefe1ee0d1821dbbe5cacfc528526fb00f88d51673b211bb6",
+      "rc_sha256": "f26ca7a4a66baf61ccef9b3625a1e8234bf10edcf65d4adcc30117db1b72a1c0",
+      "geometry_source": "build/highspeed-nrz-robustness-layout/hv-A8-r3/A/geometry-only.spice",
+      "geometry_sha256": "107291e3a5c9644e83c39af16fb6e0d012f5015e8c0e0dd3979617c94e10931e",
+      "independent_reference": "layout/highspeed_nrz_robustness/voltage_driver-A8-reference.spice",
+      "reference_sha256": "ab57f8582bdc54975e9f472472e3dd5d1b788323aed5e26abdb225cedeab02d9",
+      "counts": {
+        "mos": 6,
+        "device_resistors": 1,
+        "resistors": 79,
+        "capacitors": 64,
+        "zero_valued_capacitors": 0
+      },
+      "full_electrical_networks": 9,
+      "physical_checks_passed": true,
+      "selected_analog_geometry_source": "analog/highspeed_nrz_robustness/voltage_hv_selected_geometry.spice",
+      "selected_analog_geometry_sha256": "107291e3a5c9644e83c39af16fb6e0d012f5015e8c0e0dd3979617c94e10931e"
+    },
+    "B": {
+      "raw_directory": "build/highspeed-nrz-robustness-layout/hv-r2/B",
+      "public_directory": "evidence/highspeed-nrz-robustness-layout/hv-r2/B",
+      "top": "hs_steering_robust",
+      "gds_sha256": "d2e32ac286d208e2d74485b4d2650ffbbf4cd25cd57c86c5f7cd9cb97e3256af",
+      "rc_sha256": "fcb457660f238ee402237378a48b06496109b101d51ee85e8a7257224e7ee6ae",
+      "geometry_source": "build/highspeed-nrz-robustness-layout/hv-r2/B/geometry-only.spice",
+      "geometry_sha256": "19f4cb48fd6088713fcf8a0e23acef4e1c690054c5080dcc66de32679bc1443e",
+      "independent_reference": "layout/highspeed_nrz_robustness/steering_driver-reference.spice",
+      "reference_sha256": "b88b8f021f903c9c0c3c47516426d783a5e6520df581241d5ca0db792bab0d70",
+      "counts": {
+        "mos": 9,
+        "device_resistors": 1,
+        "resistors": 127,
+        "capacitors": 76,
+        "zero_valued_capacitors": 0
+      },
+      "full_electrical_networks": 10,
+      "physical_checks_passed": true,
+      "selected_analog_geometry_source": "analog/highspeed_nrz_robustness/steering_hv_selected_geometry.spice",
+      "selected_analog_geometry_sha256": "19f4cb48fd6088713fcf8a0e23acef4e1c690054c5080dcc66de32679bc1443e"
+    }
+  },
+  "limits": [
+    "Experimental transistor core only",
+    "Package and receiver matrix are separate electrical evidence",
+    "C matrix conservation does not establish field accuracy",
+    "A8 pure VSS graph has independently identified degree-one XN2 body terminal; substrate return requires independent validation",
+    "No pad/ESD, EM/IR, full-chip, lifetime, silicon or optical signoff"
+  ]
+}

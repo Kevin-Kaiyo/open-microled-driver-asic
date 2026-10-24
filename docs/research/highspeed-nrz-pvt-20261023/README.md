@@ -55,3 +55,7 @@ build/layout/venv/bin/python scripts/highspeed_nrz_pvt_report/build_report.py
 ## 尚待验证
 
 独立电阻角与 MOS 角组合、失配、LED 动态/温度实测、供电扰动、封装和衬底模型、真实稳压器、完整收发链路、pad/ESD、制造规则接受和硅后光学测试均未完成。本轮约 9–11 mV 的快冷端电压筛查余量不能解释为量产可靠性余量。
+
+## 2026-10-24 依据补正
+
+[公开 DRM14.1.4.2](https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_1.html) 明确给出薄栅氧栅极到其他端子的绝对直流3.63V上限。旧正文仅引用Ioff测试表，现补全依据。历史模拟数据和当时覆盖不变；全部端对瞬态筛查仍不能代替可靠性签核。供电、独立电阻角与封装后续实验见[新章节](../driver-robustness-20261024/index.html)。

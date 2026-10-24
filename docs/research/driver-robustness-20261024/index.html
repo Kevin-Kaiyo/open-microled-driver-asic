@@ -1,0 +1,609 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MicroLED驱动器：供电、电阻角与封装扰动验证</title><link rel="stylesheet" href="report.css"></head><body><main><p class="eyebrow">OPEN MICROLED DRIVER ASIC / 2026-10-24 / 实验性研发方法验证与教学</p><h1 id="microled">MicroLED 驱动器：供电、电阻角与封装扰动验证</h1>
+<p><strong>结论：原9–11 mV电压余量不足。</strong> 电源仅增加50 mV，或仅加入声明的供电与回地封装阻抗，旧核心就超过电压筛查线。我们更换实际MOS器件、修改输入电阻和版图并重新提取寄生，已经增大相对器件筛查限值的电压余量；但接收与供电扰动仍必须独立验证。</p>
+<p>本报告把<strong>显示PWM</strong>与<strong>高速光通信</strong>分开。先看失败的物理原因，再看实际修改和同条件数据；“仿真成功”“接收通过”“电压筛查通过”“版图检查通过”各有证据，不能互相代替。当前成果属于实验性研发方法验证，尚不是产品规格或流片签核。</p>
+<nav><a href="#split">两种应用</a><a href="#voltage">电压余量</a><a href="#nrz">高速电路与版图</a><a href="#nrzresults">高速数据</a><a href="#pwm">PWM显示驱动</a><a href="#limits">验证边界与方向</a><a href="#appendix">原始依据</a></nav>
+
+<h2 id="split">1. 先把显示PWM与高速光通信分开</h2>
+
+<p>两者都需要建立 LED 电流，但优化目标不同。PWM 显示用一个较稳定的导通电流乘以导通时间来控制平均电流；高速 NRZ 则必须让每个数据位在有限时间内形成接收器能够区分的两个光强状态。本项目的“光强”仍是电流经过动态模型后的代理量，没有实测光功率或 BER。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>像素显示 PWM</th>
+<th>高速光通信 NRZ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>当前电路</td>
+<td>39 MOS 模拟宏：参考源、独立保护、缓冲、像素镜像、LED钳位；另有RTL控制</td>
+<td>A：6 MOS受限输出摆幅；B：9 MOS基线电流＋电流转向</td>
+</tr>
+<tr>
+<td>主要控制量</td>
+<td>导通电流约100 µA；PWM码控制亮灯时间</td>
+<td>目标电平25/100 µA；PRBS数据控制两电平切换</td>
+</tr>
+<tr>
+<td>工作尺度</td>
+<td>1 MHz时钟，256 µs帧，最小码约1 µs脉冲</td>
+<td>本章实际测试0.25/0.4/0.5/1 Gb/s点；0.4 Gb/s的UI为2.5 ns</td>
+</tr>
+<tr>
+<td>需要检查</td>
+<td>电流准确性、积分电荷、启动、故障关断、恢复时间</td>
+<td>接收错误、眼图余量、采样时序、端电压、每比特能量</td>
+</tr>
+<tr>
+<td>本轮主要风险</td>
+<td>参考供电扰动、设置电阻误差、滤波电容的回流路径</td>
+<td>薄栅氧余量太小、独立电源变化、输入RC、供电与回地寄生</td>
+</tr>
+<tr>
+<td>LED模型</td>
+<td>合成模型，100 µA/27°C时约2.8 V，CJO=2 pF、TT=1 ns</td>
+<td>同一公开20 µm黄色LED静态I–V拟合；外加200 fF及动态代理</td>
+</tr>
+</tbody>
+</table>
+<p><strong>两种应用内部保持各自的原负载；没有在两种应用之间共用同一LED模型。</strong> 因此不能把PWM的电流精度与NRZ的误码结果直接横向排序。39 MOS是本项目具体测试宏的器件数量，“六MOS”也只是早期像素实现的数量描述，均不是行业标准架构名称。</p>
+<p>PWM完整连接与历史版图见<a href="../single-pixel-closure-20261015/report.html">单像素闭环研究报告</a>；高速旧版见<a href="../highspeed-nrz-pvt-20261023/index.html">2026-10-23报告</a>。本章聚焦新增扰动、失败复现和修订证据。</p>
+<h2 id="voltage">2. 原9–11 mV余量不能承担本轮扰动</h2>
+
+<p>原真实RC核心在FF/−40°C、VDD=3.6 V时，A的最大端差为3.620623 V，B为3.618943 V。与3.63 V相减仅余9.377/11.057 mV。现在只把逻辑供电与DATA高电平提高到3.65 V，A/B的端电压均超过原筛查线；A在1 Gb/s仍为0/511错误，但端差已达3.670677 V。接收通过与器件电压通过必须分别判断。</p>
+<figure><a href="figures/nrz-voltage-budget.svg"><img src="figures/nrz-voltage-budget.svg" alt="旧薄栅氧核心供电扫描；3.600 V点引用10月23日原证据，其余为本轮；各路线用原目标速率。" loading="lazy"></a><figcaption>旧薄栅氧核心供电扫描；3.600 V点引用10月23日原证据，其余为本轮；各路线用原目标速率。 点击查看完整 SVG。</figcaption></figure>
+
+<p>近似预算可以写成：<strong>电压预算 = 器件允许的边界 − 直流工作电压 − 动态过冲 − 电源误差 − 回地扰动</strong>。各项并非一定独立；最终用局部D/G/S/B波形检查，不能机械相加当作签核。对于3.6 V工作点，持续+50 mV偏移本身已使满摆幅达到3.65 V，输入电阻再大也不能消除这个直流事实。</p>
+<p>另一项独立控制在外部电源仍为3.600 V时，仅向VDD和VSS路径各加入1 Ω、2 nH。旧A的最大端差升到3.721199 V，所有MOS中最大栅极到其他端子的差为3.687489 V。此时仍是0/511错误。这些R/L是声明的集总敏感度参数，尚非某个真实封装的提取值；它们证明现有余量不能覆盖这一明确案例，不证明芯片已发生实际击穿。</p>
+<p><img alt="供电与回地回路原理图" src="figures/supply-return-circuit.svg" /></p>
+<p><img alt="从真实仿真提取的供电回路波形" src="figures/nrz-package-return.svg" /></p>
+<p><a href="../../../evidence/highspeed-nrz-robustness/baseline-A-supply-return-window.csv">该窗口CSV与所有节点电压</a> · <a href="../../../evidence/highspeed-nrz-robustness/baseline-A-supply-return-window.json">原始波形与器件映射</a></p>
+<h3 id="_1">补全可靠性依据</h3>
+<p>公开<a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_1.html">GF180 DRM 14.1</a>规定薄栅氧栅极到其他端子的绝对直流电压上限为3.63 V。此前报告仅引用Ioff电气测试表，依据不完整，现已补正。周期性超限还涉及占空比、TDDB寿命与HCI等条件；本研究对全部六组端对的瞬态统一筛查，不等同晶圆厂的完整可靠性签核。</p>
+<h2 id="nrz">3. 高速方向：换器件必须同时重做电路与版图</h2>
+
+<p>本轮试验采用同一GF180硅CMOS工艺中的06v0厚栅氧器件，未引入GaN或SiGe等新半导体材料。A的六只MOS均替换；B仅替换四只反相器MOS和两只转向MOS，三只低电压偏置MOS保留03v3。后者仍单独受3.63 V项目筛查，不能因为同一电路里有6 V器件就放宽所有管子的判断。</p>
+<p>真实6 V NMOS/PMOS的最小沟道长度为0.70/0.55 µm，原3.3 V器件为0.28 µm。初始宽度按原W/L比例放大并对齐制造网格；这是起点，不能据此推断驱动能力、速度或电容完全相同。<a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_07_08.html">GF180 Poly2规则</a></p>
+<p>本轮对实际06v0器件采用6.0 V全端对保守筛查，对03v3继续采用3.63 V。不是把旧器件的门限放宽，而是更换实际PDK模型、实际器件层结构并重新提取。也没有根据6 V名称直接采用6.6 V统一门限；上述公开DRM对6 V工艺的栅节点直流限制写为6 V。</p>
+<figure><a href="figures/voltage-schematic.svg"><img src="figures/voltage-schematic.svg" alt="A 的实际候选连接：全摆幅 MOS 改为06v0，输入阻尼与局部体接触分别设计。图中未展开互连寄生。" loading="lazy"></a><figcaption>A 的实际候选连接：全摆幅 MOS 改为06v0，输入阻尼与局部体接触分别设计。图中未展开互连寄生。 点击查看完整 SVG。</figcaption></figure>
+
+<figure><a href="figures/steering-schematic.svg"><img src="figures/steering-schematic.svg" alt="B 的实际候选连接：全摆幅反相器与转向管采用06v0，3只偏置MOS保留03v3。" loading="lazy"></a><figcaption>B 的实际候选连接：全摆幅反相器与转向管采用06v0，3只偏置MOS保留03v3。 点击查看完整 SVG。</figcaption></figure>
+
+<p>A仍依赖VH=1.611025 V、VL=1.172154 V两条理想可吸收电流的电源轨；B的RREF=88.386106 kΩ仍接已有VDUMMY=3.3 V，RDUMMY=28 kΩ。本轮不在PEX后重新校准这些值。电源生成、闭环稳压及其损耗尚未包含在核心设计中。</p>
+<h3 id="_2">电阻长度与体接触是两个独立设计问题</h3>
+<p>厚栅氧器件增加了实际器件尺寸和输入负载。保留旧A的48 µm电阻时，新RC在SS/125°C、2.95 V、0.5 Gb/s虽然没有比特错误，垂直余量只有0.06716，小于0.1。将实际电阻改短到8 µm并重新生成版图后，余量提高到0.09787，<strong>仍然不通过</strong>；不得四舍五入成0.1。</p>
+<p>短电阻还改变了提取的局部衬底返回网络。后续增加体接触的版图试验没有改善该网络的关键电阻，不能称为成功修复。对提取图逐条分析发现，RIN衬底端与XN2体端是不同节点，但后者是无其他DC负载的叶节点；这解释了单位电流诊断中两者电位相同。该结果描述当前提取电阻图，不能据此确定真实晶圆里的三维衬底耦合。</p>
+<h3 id="_3">实际版图与几何代价</h3>
+<table>
+<thead>
+<tr>
+<th>核心</th>
+<th>外框 / µm</th>
+<th style="text-align: right;">外框面积 / µm²</th>
+<th>MOS＋工艺电阻</th>
+<th style="text-align: right;">提取互连R / 显式C</th>
+<th style="text-align: right;">显式C总和 / fF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>旧A，03v3＋RIN48</td>
+<td>42.31×57.60</td>
+<td style="text-align: right;">2437.06</td>
+<td>6＋1</td>
+<td style="text-align: right;">84 / 61</td>
+<td style="text-align: right;">35.880</td>
+</tr>
+<tr>
+<td>新A，06v0＋RIN48</td>
+<td>42.555×57.92</td>
+<td style="text-align: right;">2464.79</td>
+<td>6＋1</td>
+<td style="text-align: right;">79 / 62</td>
+<td style="text-align: right;">49.069</td>
+</tr>
+<tr>
+<td>选定A，06v0＋RIN8</td>
+<td>42.555×31.56</td>
+<td style="text-align: right;">1343.04</td>
+<td>6＋1</td>
+<td style="text-align: right;">79 / 64</td>
+<td style="text-align: right;">49.055</td>
+</tr>
+<tr>
+<td>旧B，03v3＋RIN58</td>
+<td>60.63×67.60</td>
+<td style="text-align: right;">4098.59</td>
+<td>9＋1</td>
+<td style="text-align: right;">127 / 76</td>
+<td style="text-align: right;">35.655</td>
+</tr>
+<tr>
+<td>选定B，混合06/03＋RIN58</td>
+<td>60.63×67.60</td>
+<td style="text-align: right;">4098.59</td>
+<td>9＋1</td>
+<td style="text-align: right;">127 / 76</td>
+<td style="text-align: right;">39.252</td>
+</tr>
+</tbody>
+</table>
+<p>A的外框变小主要来自直条电阻缩短，不能据此得出厚栅氧晶体管更小。显式C不含MOS和工艺电阻模型内部电容；上述总和不是一个可直接代入带宽公式的集中负载。</p>
+<p><img alt="A8最终实际GDS" src="figures/layout-A.svg" /></p>
+<p><img alt="B58最终实际GDS" src="figures/layout-B.svg" /></p>
+<p><a href="layout-viewer.html">打开可切换层和网络的实际GDS查看器</a>。图中Dualgate层及真实抽取型号共同确认6 V器件，不能靠网表改名替代工艺结构。所选核心已完成原生/回读Magic DRC、独立KLayout DRC、LVS、全网R提取、C矩阵检查与RC折叠LVS；实际GDS开路/短路反例也被LVS拒绝。<a href="../../../evidence/highspeed-nrz-robustness-layout/final-selection.json">最终物理来源与哈希</a></p>
+<p>所有面积仅是实验核心包围盒，尚无pad、ESD、电源生成、封装和全芯片填充签核。</p>
+<h2 id="nrzresults">4. 高速仿真：把接收、应力和能量分别列出</h2>
+
+<p>共同条件保持不变：静态LED模型、CLED=200 fF、20 ps数据边沿；32位预热、254位PRBS7训练、511位PRBS9验证及32位尾部；光学代理时间常数200 ps、接收一阶带宽1 GHz、阈值62.5 µA，归一化跨度75 µA。训练确定采样位置，验证段不再调参。温度只作用于有温度模型的MOS与电阻，没有给LED静态曲线捏造温度特性。</p>
+<p>联合通过要求：零错误、垂直余量≥0.1（7.5 µA判决距离）、最小水平余量≥0.1 UI，以及每一器件的电压筛查均通过。输入码长、噪声模型和接收代理限制了证据范围，不能把0/511说成产品BER。</p>
+<div class="scroll"><table><thead><tr><th>路线</th><th>实验条件</th><th>Gb/s</th><th>MOS / °C / VDD(V)</th><th>电阻角</th><th>错误/511</th><th>垂直余量</th><th>水平/UI</th><th>最大端差/V</th><th>器件最小余量/mV</th><th>fJ/gross bit</th><th>联合判定</th></tr></thead><tbody><tr><td>A</td><td>FFplus50_rate04</td><td>0.4</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4950</td><td>0.1250</td><td>3.7142</td><td>2285.84</td><td>1547.28</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>SSminus50_rate04</td><td>0.4</td><td>ss / 125 / 2.95</td><td>ss</td><td>0</td><td>0.1402</td><td>0.1250</td><td>3.0342</td><td>2965.81</td><td>986.32</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>TT_rate04</td><td>0.4</td><td>typical / 27 / 3.3</td><td>typical</td><td>0</td><td>0.4702</td><td>0.1484</td><td>3.3738</td><td>2626.17</td><td>1308.23</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>FFplus50</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.2357</td><td>0.2812</td><td>3.6761</td><td>2002.91</td><td>1516.01</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>SSminus50</td><td>0.5</td><td>ss / 125 / 2.95</td><td>ss</td><td>0</td><td>0.1961</td><td>0.2266</td><td>3.3547</td><td>1968.75</td><td>1110.79</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>TT</td><td>0.5</td><td>typical / 27 / 3.3</td><td>typical</td><td>0</td><td>0.2483</td><td>0.2891</td><td>3.3836</td><td>1987.92</td><td>1279.09</td><td><span class="pass">通过</span></td></tr></tbody></table></div>
+
+<h3 id="_4">换用厚栅氧后，速度与辅助电源成为主要限制</h3>
+<p>A的RIN从48 µm缩到8 µm后，在固定辅助电源的TT/27°C/3.3 V、SS/125°C/2.95 V、FF/−40°C/3.65 V三个条件下，<strong>0.4 Gb/s离散点通过</strong>。SS/2.95 V下，0.5 Gb/s垂直余量0.09787未通过；0.25 Gb/s水平余量0.078125 UI也未通过。不能把这三个点拟合成一个“最高带宽”。</p>
+<p><img alt="冻结接收器下的离散速率点" src="figures/sampler-discrete-points.svg" /></p>
+<p>原因之一是接收算法在训练段以垂直判决距离选定采样相位，并未联合优化水平余量。0.25 Gb/s与0.4 Gb/s的右侧零错误时间约312.5 ps，换算成UI后分别是0.078125与0.125。减慢发送不必然使这个冻结判据单调改善；本轮没有为通过而修改接收器。</p>
+<p><strong>A的辅助电源扰动包络没有闭合。</strong> FF/3.65 V时，仅VLED增加50 mV，或仅VH/VL共同降低50 mV，虽均为0/511错误，水平余量都只有0.09375 UI，低于0.1。SS下VDD=2.95 V、VLED=4.95 V、VH/VL共同增加50 mV的联合控制出现256/511错误；器件端电压仍合格。该联合条件的DC检查进一步得到A的I0=16.541 µA、I1=57.196 µA：连稳态高电平都低于62.5 µA判决阈值，单纯降速不能修复。B相应I0=23.148 µA、I1=89.960 µA。电压型输出直接由电源轨决定LED两端电压，电源差值变化会经LED非线性I–V改变电流，安全电压不能保证接收光强代理足够。</p>
+<p>B在同类联合慢热控制下（VDD=2.95 V、VLED=4.95 V、VDUMMY=3.25 V），0.5 Gb/s为0/511，垂直余量0.16475、水平余量0.24219 UI。恒流偏置降低了供电差值变化对电流的影响，但仍受参考源、转向管余量和实际负载限制。</p>
+<h3 id="50-mv">静态+50 mV条件：耐压余量增加，但峰值和取能没有下降</h3>
+<div class="scroll"><table><thead><tr><th>FF/−40°C，VDD与DATA高均3.65 V</th><th>最大端差/V</th><th>器件最小余量/V</th><th>垂直余量</th><th>水平/UI</th><th>正向 fJ/bit</th><th>联合判定</th></tr></thead><tbody><tr><td>A / 1G / 旧03v3</td><td>3.670677</td><td>-0.040677</td><td>0.4228</td><td>0.3203</td><td>912.77</td><td>电压未通过</td></tr><tr><td>A / 1G / 新实际器件</td><td>3.714158</td><td>2.285842</td><td>0.4171</td><td>0.2812</td><td>1044.81</td><td>通过</td></tr><tr><td>B / 0.5G / 旧03v3</td><td>3.669023</td><td>-0.039023</td><td>0.2712</td><td>0.3281</td><td>1391.05</td><td>电压未通过</td></tr><tr><td>B / 0.5G / 新实际器件</td><td>3.676086</td><td>2.002913</td><td>0.2357</td><td>0.2812</td><td>1516.01</td><td>通过</td></tr></tbody></table></div>
+
+<p>这是相同FF温度、同一路线相同速率、相同LED与RX的对照。A的峰值由3.670677 V升到3.714158 V，B也略升；<strong>修复来自实际厚栅氧器件的更高电压承受范围，不是消除了过冲</strong>。两路线的输入RC、器件电容与切换过程变化，也使这个条件下的正向取能分别增加约14.47%与8.98%。A在快冷1 Gb/s通过不能推广到慢热1 Gb/s：后者仍有75/511错误。</p>
+<p>B的“最小器件余量”须逐只计算后取最小，不能用6 V减去全电路最大端差；它保留的03v3偏置器件仍使用3.63 V筛查。两类限值分别绑定实际器件型号。</p>
+<h3 id="_5">新版供电和回流封装复测</h3>
+<p>在VDD与VSS各1 Ω/2 nH的假设下，新增A/0.4 Gb/s、B/0.5 Gb/s快冷3.65 V测试均通过接收与器件电压筛查。最大端差分别为3.716228 V、3.780691 V，逐器件最小余量分别为2.283772 V、1.865131 V。封装引起的过冲仍然存在。</p>
+<p>另外专门把新A恢复到旧封装反例的<strong>同3.600 V、同1 Gb/s、同FF/−40°C</strong>，得到最大端差3.666489 V，旧版为3.721199 V；这一特定封装条件下峰值确实下降。不能将它与前面3.65 V无供电封装的结果混成同一比较，也不能凭快冷1 Gb/s通过声称慢热1 Gb/s通过。</p>
+<p><img alt="同一时间窗口的修改前后供电与栅端电压" src="figures/nrz-package-before-after.svg" /></p>
+<p>该图两个电路使用相同绝对时间窗口；它用于观察同一数据事件，整个仿真中的最大值仍以上表/完整CSV为准。<a href="../../../evidence/highspeed-nrz-robustness/final-A-supply-return-window-matched.json">窗口数据与哈希</a></p>
+<h3 id="04-gbs">同为0.4 Gb/s时的能量与时序取舍</h3>
+<p><img alt="相同速率的能量与时序余量" src="figures/nrz-common-energy.svg" /></p>
+<div class="scroll"><table><thead><tr><th>条件，均0.4 Gb/s</th><th>A正向 fJ/bit</th><th>B正向 fJ/bit</th><th>B相对A取能增幅</th><th>A/B水平余量/UI</th></tr></thead><tbody><tr><td>TT / 3.3 V</td><td>1308.23</td><td>1540.52</td><td>17.76%</td><td>0.1484 / 0.2812</td></tr><tr><td>SS / 2.95 V</td><td>986.32</td><td>1354.74</td><td>37.35%</td><td>0.1250 / 0.2812</td></tr><tr><td>FF / 3.65 V</td><td>1547.28</td><td>1796.33</td><td>16.10%</td><td>0.1250 / 0.2734</td></tr></tbody></table></div>
+
+<p>以上六个点均通过本轮接收与端电压筛查。A在这些固定辅助电源的条件下取能较低，B有更大的水平余量；A在其他辅助电源扰动点失败，所以不能单凭这张能量表选出完整系统方案。回灌能量单独保存，未假定实际电源一定能把它回收。</p>
+<h3 id="pex">直流电流没有在PEX后重新校准</h3>
+<div class="scroll"><table><thead><tr><th>路线</th><th>条件</th><th>MOS / 温度</th><th>VDD/V</th><th>数据位</th><th>LED/uA</th><th>相对原目标误差/%</th></tr></thead><tbody><tr><td>A</td><td>FFplus50_DC</td><td>ff / -40°C</td><td>3.65</td><td>0</td><td>25.3658</td><td>1.463</td></tr><tr><td>A</td><td>FFplus50_DC</td><td>ff / -40°C</td><td>3.65</td><td>1</td><td>108.5661</td><td>8.566</td></tr><tr><td>A</td><td>SSminus50_DC</td><td>ss / 125°C</td><td>2.95</td><td>0</td><td>22.4150</td><td>-10.340</td></tr><tr><td>A</td><td>SSminus50_DC</td><td>ss / 125°C</td><td>2.95</td><td>1</td><td>74.1753</td><td>-25.825</td></tr><tr><td>A</td><td>TT_DC</td><td>typical / 27°C</td><td>3.3</td><td>0</td><td>24.1417</td><td>-3.433</td></tr><tr><td>A</td><td>TT_DC</td><td>typical / 27°C</td><td>3.3</td><td>1</td><td>97.7724</td><td>-2.228</td></tr><tr><td>A</td><td>joint_SSmin_VLEDaux_DC</td><td>ss / 125°C</td><td>2.95</td><td>0</td><td>16.5410</td><td>-33.836</td></tr><tr><td>A</td><td>joint_SSmin_VLEDaux_DC</td><td>ss / 125°C</td><td>2.95</td><td>1</td><td>57.1957</td><td>-42.804</td></tr><tr><td>B</td><td>FFplus50_DC</td><td>ff / -40°C</td><td>3.65</td><td>0</td><td>26.3427</td><td>5.371</td></tr><tr><td>B</td><td>FFplus50_DC</td><td>ff / -40°C</td><td>3.65</td><td>1</td><td>107.7141</td><td>7.714</td></tr><tr><td>B</td><td>SSminus50_DC</td><td>ss / 125°C</td><td>2.95</td><td>0</td><td>23.6558</td><td>-5.377</td></tr><tr><td>B</td><td>SSminus50_DC</td><td>ss / 125°C</td><td>2.95</td><td>1</td><td>91.9447</td><td>-8.055</td></tr><tr><td>B</td><td>TT_DC</td><td>typical / 27°C</td><td>3.3</td><td>0</td><td>24.9863</td><td>-0.055</td></tr><tr><td>B</td><td>TT_DC</td><td>typical / 27°C</td><td>3.3</td><td>1</td><td>99.7067</td><td>-0.293</td></tr><tr><td>B</td><td>joint_SSmin_VLEDaux_DC</td><td>ss / 125°C</td><td>2.95</td><td>0</td><td>23.1475</td><td>-7.410</td></tr><tr><td>B</td><td>joint_SSmin_VLEDaux_DC</td><td>ss / 125°C</td><td>2.95</td><td>1</td><td>89.9603</td><td>-10.040</td></tr></tbody></table></div>
+
+<p>同一负载和电源设定不保证不同电路、温度下实际电流相同。这里保留25/100 µA原目标并列出偏差，不能把供能差异自动换算成相同实测光功率的能效。</p>
+<h3 id="_6">为什么单独扫描电阻角</h3>
+<p>电阻的res_typical/res_ss/res_ff分别由PDK独立选择；不能假定“慢MOS必然配高阻、快MOS必然配低阻”。完整三端poly模型包括端部、本体温度系数和衬底电容。本轮既运行电阻独立DC校准，也将交叉电阻角放回真实RC电路。<strong>高速部分的独立电阻角仅覆盖工艺RIN；B的RREF与RDUMMY仍是固定理想电阻，没有把它们的容差纳入本轮角落结果。</strong>片电阻的800/1000/1200 Ω/□只是模型参数的一部分，不等于完整器件在所有温度下的电阻。</p>
+<p>独立DC校准共27点（A48、A8、B58各9点），完整模型与解析计算一致。选定A8在所测温度/电阻角组合下为6.253–10.900 kΩ，B58为44.637–77.160 kΩ。电阻最大值出现在高阻角/冷端，不能只检查慢MOS/热端；实际动态影响仍由全RC瞬态决定。</p>
+<p>本模型的公开器件表未提供该高阻poly的局部统计失配模型；角落扫描不构成阵列均匀性或良率证明。<a href="https://gf180mcu-pdk.readthedocs.io/en/latest/analog/model_parameters/LV/LV_4.html">电阻模型</a> · <a href="https://gf180mcu-pdk.readthedocs.io/en/latest/analog/model_parameters/LV/LV_1_4_4.html">器件支持范围</a></p>
+<h3 id="_7">动态电源的能量必须重新积分</h3>
+<p>每条电源及DATA均以实际端口电压和源电流计算 <strong>P(t)=−V(t)I源(t)</strong>，在同一511个输入UI窗口积分。正向取能、返回能量和净能量分别保存。加入供电封装R/L后，供电功率在阻抗之前取样，片内VDD和VSS另存，避免漏算供电回路损耗。理想电源轨、数据源及核心取能不包含尚未实现的稳压器、串行器、接收器或实际光电效率。</p>
+<p>速率不相同的fJ/bit不能直接用于“同条件胜负”排序；失败点的取能也不能称作成功传输能效。下方完整表保留所有完成的正式实验，另提供<a href="nrz-final-data.csv">CSV</a>与输入身份。</p>
+<details><summary>展开最终候选的全部正式数据（含失败点）</summary>
+
+<div class="scroll"><table><thead><tr><th>路线</th><th>实验条件</th><th>Gb/s</th><th>MOS / °C / VDD(V)</th><th>电阻角</th><th>错误/511</th><th>垂直余量</th><th>水平/UI</th><th>最大端差/V</th><th>器件最小余量/mV</th><th>fJ/gross bit</th><th>联合判定</th></tr></thead><tbody><tr><td>A</td><td>FFplus50</td><td>0.25</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4951</td><td>0.1016</td><td>3.7142</td><td>2285.84</td><td>2050.14</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>FFplus50_1G</td><td>1</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4171</td><td>0.2812</td><td>3.7142</td><td>2285.84</td><td>1044.81</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>FFplus50_gear80</td><td>0.4</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4950</td><td>0.1250</td><td>3.7142</td><td>2285.84</td><td>1547.28</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>FFplus50_rate04</td><td>0.4</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4950</td><td>0.1250</td><td>3.7142</td><td>2285.84</td><td>1547.28</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>FFplus50_res_ss</td><td>0.4</td><td>ff / -40 / 3.65</td><td>ss</td><td>0</td><td>0.4950</td><td>0.1172</td><td>3.7048</td><td>2295.16</td><td>1558.81</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>FFplus50_res_typical</td><td>0.4</td><td>ff / -40 / 3.65</td><td>typical</td><td>0</td><td>0.4950</td><td>0.1250</td><td>3.7089</td><td>2291.11</td><td>1552.80</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>FFplus50_trap</td><td>0.4</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4950</td><td>0.1250</td><td>3.7142</td><td>2285.82</td><td>1547.50</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>SS</td><td>0.25</td><td>ss / 125 / 3</td><td>ss</td><td>0</td><td>0.1842</td><td>0.0781</td><td>3.0845</td><td>2915.49</td><td>1391.68</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>SS_1G</td><td>1</td><td>ss / 125 / 3</td><td>ss</td><td>75</td><td>-0.2433</td><td>0.0000</td><td>3.0845</td><td>2915.49</td><td>622.96</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>SS_rate04</td><td>0.4</td><td>ss / 125 / 3</td><td>ss</td><td>0</td><td>0.1753</td><td>0.1328</td><td>3.0845</td><td>2915.49</td><td>1021.06</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>SSminus50</td><td>0.25</td><td>ss / 125 / 2.95</td><td>ss</td><td>0</td><td>0.1554</td><td>0.0781</td><td>3.0342</td><td>2965.81</td><td>1348.91</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>SSminus50_gear80</td><td>0.4</td><td>ss / 125 / 2.95</td><td>ss</td><td>0</td><td>0.1400</td><td>0.1250</td><td>3.0342</td><td>2965.81</td><td>986.35</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>SSminus50_rate04</td><td>0.4</td><td>ss / 125 / 2.95</td><td>ss</td><td>0</td><td>0.1402</td><td>0.1250</td><td>3.0342</td><td>2965.81</td><td>986.32</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>SSminus50_rate05</td><td>0.5</td><td>ss / 125 / 2.95</td><td>ss</td><td>0</td><td>0.0979</td><td>0.1328</td><td>3.0342</td><td>2965.81</td><td>864.76</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>SSminus50_res_ff</td><td>0.4</td><td>ss / 125 / 2.95</td><td>ff</td><td>0</td><td>0.1402</td><td>0.1250</td><td>3.0456</td><td>2954.36</td><td>986.68</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>SSminus50_res_typical</td><td>0.4</td><td>ss / 125 / 2.95</td><td>typical</td><td>0</td><td>0.1406</td><td>0.1172</td><td>3.0392</td><td>2960.82</td><td>986.48</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>TT</td><td>0.25</td><td>typical / 27 / 3.3</td><td>typical</td><td>0</td><td>0.4703</td><td>0.1484</td><td>3.3738</td><td>2626.17</td><td>1765.95</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>TT_rate04</td><td>0.4</td><td>typical / 27 / 3.3</td><td>typical</td><td>0</td><td>0.4702</td><td>0.1484</td><td>3.3738</td><td>2626.17</td><td>1308.23</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>VDDVSSpkg_R1_L2</td><td>0.4</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4950</td><td>0.1250</td><td>3.7162</td><td>2283.77</td><td>1547.82</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>VDDVSSpkg_R1_L2_matched</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.4192</td><td>0.2969</td><td>3.6665</td><td>2333.51</td><td>1025.40</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>VDDpulse_tracking</td><td>0.4</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.4950</td><td>0.1250</td><td>3.7141</td><td>2285.86</td><td>1530.80</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>VLED_-0.05</td><td>0.4</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4011</td><td>0.1094</td><td>3.7142</td><td>2285.84</td><td>1424.60</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>VLED_0.05</td><td>0.4</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4360</td><td>0.0938</td><td>3.7142</td><td>2285.84</td><td>1690.62</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>aux_-0.05</td><td>0.4</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4377</td><td>0.0938</td><td>3.7142</td><td>2285.84</td><td>1681.33</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>aux_0.05</td><td>0.4</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.3969</td><td>0.1094</td><td>3.7142</td><td>2285.84</td><td>1432.65</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>joint_SSmin_VLEDaux</td><td>0.4</td><td>ss / 125 / 2.95</td><td>ss</td><td>256</td><td>-0.0902</td><td>0.0000</td><td>3.0342</td><td>2965.81</td><td>863.19</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>package_R4_L2</td><td>0.4</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4951</td><td>0.1250</td><td>3.7142</td><td>2285.84</td><td>1549.16</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>FFplus50</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.2357</td><td>0.2812</td><td>3.6761</td><td>2002.91</td><td>1516.01</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>FFplus50_common04</td><td>0.4</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.3105</td><td>0.2734</td><td>3.6761</td><td>2002.91</td><td>1796.33</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>FFplus50_gear80</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.2357</td><td>0.2812</td><td>3.6761</td><td>2002.91</td><td>1516.01</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>FFplus50_res_ss</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ss</td><td>0</td><td>0.1714</td><td>0.2188</td><td>3.6693</td><td>2003.09</td><td>1617.49</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>FFplus50_res_typical</td><td>0.5</td><td>ff / -40 / 3.65</td><td>typical</td><td>0</td><td>0.2103</td><td>0.2578</td><td>3.6722</td><td>2003.01</td><td>1567.02</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>FFplus50_trap</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.2356</td><td>0.2812</td><td>3.6761</td><td>2002.92</td><td>1516.08</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>SS</td><td>0.5</td><td>ss / 125 / 3</td><td>ss</td><td>0</td><td>0.1974</td><td>0.2266</td><td>3.3568</td><td>1968.92</td><td>1119.40</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>SSminus50</td><td>0.5</td><td>ss / 125 / 2.95</td><td>ss</td><td>0</td><td>0.1961</td><td>0.2266</td><td>3.3547</td><td>1968.75</td><td>1110.79</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>SSminus50_common04</td><td>0.4</td><td>ss / 125 / 2.95</td><td>ss</td><td>0</td><td>0.2900</td><td>0.2812</td><td>3.3547</td><td>1968.75</td><td>1354.74</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>SSminus50_gear80</td><td>0.5</td><td>ss / 125 / 2.95</td><td>ss</td><td>0</td><td>0.1962</td><td>0.2266</td><td>3.3547</td><td>1968.75</td><td>1110.80</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>SSminus50_res_ff</td><td>0.5</td><td>ss / 125 / 2.95</td><td>ff</td><td>0</td><td>0.2118</td><td>0.3047</td><td>3.3668</td><td>1969.27</td><td>1109.34</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>SSminus50_res_typical</td><td>0.5</td><td>ss / 125 / 2.95</td><td>typical</td><td>0</td><td>0.2071</td><td>0.2891</td><td>3.3601</td><td>1968.99</td><td>1109.88</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>TT</td><td>0.5</td><td>typical / 27 / 3.3</td><td>typical</td><td>0</td><td>0.2483</td><td>0.2891</td><td>3.3836</td><td>1987.92</td><td>1279.09</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>TT_common04</td><td>0.4</td><td>typical / 27 / 3.3</td><td>typical</td><td>0</td><td>0.3258</td><td>0.2812</td><td>3.3836</td><td>1987.92</td><td>1540.52</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>VDDVSSpkg_R1_L2</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.2358</td><td>0.2812</td><td>3.7807</td><td>1865.13</td><td>1548.50</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>VDDpulse_tracking</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2357</td><td>0.2734</td><td>3.6761</td><td>2002.97</td><td>1502.78</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>VLED_-0.05</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.2355</td><td>0.2891</td><td>3.6761</td><td>2052.63</td><td>1508.20</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>VLED_0.05</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.2360</td><td>0.2734</td><td>3.6761</td><td>1953.19</td><td>1523.82</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>aux_-0.05</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.2423</td><td>0.2891</td><td>3.6761</td><td>1997.27</td><td>1487.83</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>aux_0.05</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.2291</td><td>0.2656</td><td>3.6761</td><td>2008.56</td><td>1544.45</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>joint_SSmin_VLEDaux</td><td>0.5</td><td>ss / 125 / 2.95</td><td>ss</td><td>0</td><td>0.1647</td><td>0.2422</td><td>3.3054</td><td>2012.58</td><td>1079.73</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>package_R4_L2</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.2357</td><td>0.2812</td><td>3.6761</td><td>2000.31</td><td>1516.04</td><td><span class="pass">通过</span></td></tr></tbody></table></div>
+
+</details>
+
+<details><summary>展开原薄栅氧核心的扰动数据</summary>
+
+<div class="scroll"><table><thead><tr><th>路线</th><th>实验条件</th><th>Gb/s</th><th>MOS / °C / VDD(V)</th><th>电阻角</th><th>错误/511</th><th>垂直余量</th><th>水平/UI</th><th>最大端差/V</th><th>器件最小余量/mV</th><th>fJ/gross bit</th><th>联合判定</th></tr></thead><tbody><tr><td>A</td><td>FF_res_ss</td><td>1</td><td>ff / -40 / 3.6</td><td>ss</td><td>0</td><td>0.3862</td><td>0.3125</td><td>3.6157</td><td>14.34</td><td>977.47</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>FF_res_typical</td><td>1</td><td>ff / -40 / 3.6</td><td>typical</td><td>0</td><td>0.4093</td><td>0.3203</td><td>3.6178</td><td>12.19</td><td>935.13</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>FFplus50_fixed</td><td>1</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4262</td><td>0.3203</td><td>3.6705</td><td>-40.47</td><td>913.52</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>FFplus50_tracking</td><td>1</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.4228</td><td>0.3203</td><td>3.6707</td><td>-40.68</td><td>912.77</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>FFvdd_-0.025</td><td>1</td><td>ff / -40 / 3.575</td><td>ff</td><td>0</td><td>0.4237</td><td>0.3281</td><td>3.5956</td><td>34.41</td><td>882.12</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>FFvdd_-0.05</td><td>1</td><td>ff / -40 / 3.55</td><td>ff</td><td>0</td><td>0.4240</td><td>0.3203</td><td>3.5706</td><td>59.43</td><td>872.15</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>FFvdd_0.025</td><td>1</td><td>ff / -40 / 3.625</td><td>ff</td><td>0</td><td>0.4231</td><td>0.3281</td><td>3.6457</td><td>-15.65</td><td>902.43</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>SS_res_ff</td><td>1</td><td>ss / 125 / 3</td><td>ff</td><td>0</td><td>0.1504</td><td>0.2578</td><td>3.0324</td><td>597.63</td><td>547.94</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>SS_res_typical</td><td>1</td><td>ss / 125 / 3</td><td>typical</td><td>0</td><td>0.1396</td><td>0.2500</td><td>3.0287</td><td>601.25</td><td>552.54</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>VDDVSSpkg_R1_L2</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.4235</td><td>0.3281</td><td>3.7212</td><td>-91.20</td><td>910.87</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>VDDpulse_fixed</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.4235</td><td>0.3281</td><td>3.6705</td><td>-40.45</td><td>897.68</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>VDDpulse_tracking</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.4228</td><td>0.3203</td><td>3.6707</td><td>-40.66</td><td>897.48</td><td><span class="fail">未通过</span></td></tr><tr><td>A</td><td>VLED_-0.05</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.3482</td><td>0.2969</td><td>3.6206</td><td>9.38</td><td>847.69</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>VLED_0.05</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.3564</td><td>0.2578</td><td>3.6206</td><td>9.38</td><td>944.15</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>aux_-0.05</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.3527</td><td>0.2578</td><td>3.6206</td><td>9.38</td><td>938.90</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>aux_0.05</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.3454</td><td>0.2891</td><td>3.6206</td><td>9.38</td><td>852.39</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>aux_ripple</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.4201</td><td>0.3203</td><td>3.6206</td><td>9.38</td><td>892.04</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>pkg_R0.25_L0.1</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.4233</td><td>0.3281</td><td>3.6206</td><td>9.39</td><td>891.76</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>pkg_R1_L2</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.4239</td><td>0.3281</td><td>3.6206</td><td>9.38</td><td>893.12</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>pkg_R4_L0.5</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.4235</td><td>0.3281</td><td>3.6206</td><td>9.38</td><td>891.76</td><td><span class="pass">通过</span></td></tr><tr><td>A</td><td>pkg_R4_L2</td><td>1</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.4239</td><td>0.3281</td><td>3.6206</td><td>9.38</td><td>892.66</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>FF_res_ss</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ss</td><td>0</td><td>0.2624</td><td>0.3125</td><td>3.6135</td><td>16.47</td><td>1455.88</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>FF_res_typical</td><td>0.5</td><td>ff / -40 / 3.6</td><td>typical</td><td>0</td><td>0.2676</td><td>0.3203</td><td>3.6158</td><td>14.18</td><td>1417.48</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>FFplus50_fixed</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.2732</td><td>0.3203</td><td>3.6688</td><td>-38.79</td><td>1391.93</td><td><span class="fail">未通过</span></td></tr><tr><td>B</td><td>FFplus50_tracking</td><td>0.5</td><td>ff / -40 / 3.65</td><td>ff</td><td>0</td><td>0.2712</td><td>0.3281</td><td>3.6690</td><td>-39.02</td><td>1391.05</td><td><span class="fail">未通过</span></td></tr><tr><td>B</td><td>FFvdd_-0.025</td><td>0.5</td><td>ff / -40 / 3.575</td><td>ff</td><td>0</td><td>0.2712</td><td>0.3281</td><td>3.5939</td><td>36.10</td><td>1373.08</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>FFvdd_-0.05</td><td>0.5</td><td>ff / -40 / 3.55</td><td>ff</td><td>0</td><td>0.2712</td><td>0.3203</td><td>3.5689</td><td>61.14</td><td>1367.27</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>FFvdd_0.025</td><td>0.5</td><td>ff / -40 / 3.625</td><td>ff</td><td>0</td><td>0.2712</td><td>0.3281</td><td>3.6440</td><td>-13.98</td><td>1384.97</td><td><span class="fail">未通过</span></td></tr><tr><td>B</td><td>SS_res_ff</td><td>0.5</td><td>ss / 125 / 3</td><td>ff</td><td>0</td><td>0.1945</td><td>0.2812</td><td>3.3565</td><td>273.52</td><td>1070.38</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>SS_res_typical</td><td>0.5</td><td>ss / 125 / 3</td><td>typical</td><td>0</td><td>0.1963</td><td>0.2812</td><td>3.3500</td><td>279.98</td><td>1075.77</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>VDDVSSpkg_R1_L2</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2711</td><td>0.3281</td><td>3.7750</td><td>-145.03</td><td>1406.12</td><td><span class="fail">未通过</span></td></tr><tr><td>B</td><td>VDDpulse_fixed</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2712</td><td>0.3281</td><td>3.6688</td><td>-38.79</td><td>1382.30</td><td><span class="fail">未通过</span></td></tr><tr><td>B</td><td>VDDpulse_tracking</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2712</td><td>0.3281</td><td>3.6690</td><td>-39.02</td><td>1382.07</td><td><span class="fail">未通过</span></td></tr><tr><td>B</td><td>VLED_-0.05</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2714</td><td>0.3281</td><td>3.6189</td><td>11.06</td><td>1371.25</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>VLED_0.05</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2710</td><td>0.3203</td><td>3.6189</td><td>11.06</td><td>1386.71</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>aux_-0.05</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2774</td><td>0.3438</td><td>3.6189</td><td>11.05</td><td>1350.73</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>aux_0.05</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2649</td><td>0.3125</td><td>3.6189</td><td>11.06</td><td>1407.50</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>aux_ripple</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2650</td><td>0.3047</td><td>3.6189</td><td>11.06</td><td>1378.51</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>pkg_R0.25_L0.1</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2712</td><td>0.3281</td><td>3.6189</td><td>11.07</td><td>1378.98</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>pkg_R1_L2</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2712</td><td>0.3281</td><td>3.6189</td><td>11.05</td><td>1379.01</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>pkg_R4_L0.5</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2712</td><td>0.3281</td><td>3.6189</td><td>11.06</td><td>1378.97</td><td><span class="pass">通过</span></td></tr><tr><td>B</td><td>pkg_R4_L2</td><td>0.5</td><td>ff / -40 / 3.6</td><td>ff</td><td>0</td><td>0.2712</td><td>0.3281</td><td>3.6189</td><td>11.05</td><td>1379.00</td><td><span class="pass">通过</span></td></tr></tbody></table></div>
+
+</details>
+
+<h2 id="pwm">5. 显示PWM方向：参考电流、保护与滤波回路</h2>
+
+<p><strong>结论：</strong>39MOS原有完整PEX单像素可以作为本轮研究基线。精密片外RSET的确定性角落、供电扰动和封装R/L已补测；参考轨快速变化仍是主要电流扰动源。100Ω+100nF参考供电滤波可明显抑制瞬变，电容回流位置必须单独处理，代价是更长恢复时间。8.2nF名义点较快，但容差点越过本轮研究预算，不能宣布鲁棒性闭合。</p>
+<p><strong>启动边界：</strong>新增每路1Ω/5nH后，无滤波启动位移电流约626.7nA，原1nA支路门槛失败。PCB侧滤波的启动求解/数值闭合状态另列；供电幅度、故障和PWM通过不能替代启动结论。</p>
+<h3 id="1">1. 路线、负载与证据范围</h3>
+<p>本章只讨论显示PWM的100µA单像素。1MHz逻辑时钟、256µs帧和duty=1最小码电荷，与高速NRZ眼图、UI、接收门限无关。VSET=0.5V，RSET=5kΩ；误差放大器使SENSE跟随VSET，PREG/POUT形成参考电流，隔离传输门连接MREF/BIAS，MOUT控制LED支路。10管独立保护门、真实buf_2、参考隔离和LED钳位共同工作。FAULT可在停钟时切断PWM，恢复仍需实际RTL的许可序列。</p>
+<p>负载保持原合成LED：Vf(100µA,27°C)=2.8V，N=3、RS=50Ω、CJO=2pF、TT=1ns。电气支路电流和电荷不是光功率。片外RBIAS/RRELEASE=100kΩ、RBLEED=10MΩ，CCOMP/CSENSE各30pF。模拟宏仍为r5实际39MOS/345R/288C名义提取网表；本轮没有重新布局或新增DRC/LVS/PEX结论。</p>
+<p>原有证据来自2026-10-15最终套件：270点DC/PVT、10组启动、3组故障、4组PWM以及物理报告。这些是历史证据。本轮新增的每个仿真及失败候选另存于<code>evidence/pwm-robustness/20261024/</code>，没有将旧6MOS或0.1–7mA扫描借来作为39MOS证据。</p>
+<h3 id="2">2. 独立片外电阻与温度角落</h3>
+<p>RSET按±1%及±100ppm/°C；RBIAS、RRELEASE、RBLEED按±5%及±200ppm/°C。温度基准27°C，使用R(T)=Rnom·(1+tol)·[1+TC·(T−27)]。这是独立、确定性的工程试验范围，不是foundry片上电阻统计模型，也不是采购元件或良率保证。</p>
+<p>TT/85°C下四个电阻的16个独立顶点；RSET两个同号tol/TC方向与TT/SS/FF、0/27/85°C的18点交叉，并补0°C三个MOS角的反号tol/TC六点以覆盖冷端真正极值（R/Rnom=0.987327和1.012727）；其余电阻逐一变化；另用原SS/FF供电包络作组合护栏。RSET±5%/±200ppm保留为精度失败对照。</p>
+<table>
+<thead>
+<tr>
+<th>新实验</th>
+<th>电流/误差结果</th>
+<th>判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RSET独立MOS/温度交叉（18点）</td>
+<td>-2.3432% ～ +1.5710%</td>
+<td>所测点均在±5%</td>
+</tr>
+<tr>
+<td>冷端独立tol/TC反号（6点）</td>
+<td>-1.8267% ～ +1.4428%</td>
+<td>所测点均在±5%</td>
+</tr>
+<tr>
+<td>四电阻独立16顶点（16点）</td>
+<td>-1.9330% ～ +1.2003%</td>
+<td>所测点均在±5%</td>
+</tr>
+<tr>
+<td>±5% RSET反例（2点）</td>
+<td>-6.5365% ～ +5.4977%</td>
+<td>保留失败</td>
+</tr>
+<tr>
+<td>SS/FF包络+封装护栏（2点）</td>
+<td>-4.0573% ～ +1.3456%</td>
+<td>所测点均在±5%</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="独立电阻与MOS温度扫描" src="pwm-figures/pwm-independent-resistor.svg" /></p>
+<p>单看MOS角会漏掉设定电阻误差：RSET的变化直接进入I≈VSET/RSET。RRELEASE在正常DC下几乎不改变电流，但不能因此推导其故障释放动态无关。VSET仍是理想0.5V，尚未加入其精度、温漂或噪声。所有供电、温度、元件组合尚未全笛卡尔交叉；本轮没有统计失配、热耦合或RC提取工艺角。</p>
+<h3 id="3">3. 供电变化与真实片外滤波候选</h3>
+<p>10%跌落发生于10µs，25µs恢复；分别扫描参考轨、LED轨、所有四条供电，10ns/100ns边沿。VSET和数字输入高电平仍以板级地为参考。新提出的“峰值偏离≤20%、恢复±0.5%≤5µs”均以同一试验扰动前/恢复后的DC电流为基准，静态100µA精度另算；这些线仅用于显示设计折衷；它不是用户给定或已经建立的产品规格。</p>
+<table>
+<thead>
+<tr>
+<th>电路/条件</th>
+<th style="text-align: right;">LED支路范围 / µA</th>
+<th style="text-align: right;">最大偏离</th>
+<th style="text-align: right;">恢复 / µs</th>
+<th>两项研究预算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原r5，参考轨100ns</td>
+<td style="text-align: right;">60.161–147.240</td>
+<td style="text-align: right;">47.625%</td>
+<td style="text-align: right;">2.490</td>
+<td>未同时满足</td>
+</tr>
+<tr>
+<td>原r5，参考轨10ns</td>
+<td style="text-align: right;">60.025–147.467</td>
+<td style="text-align: right;">47.852%</td>
+<td style="text-align: right;">2.532</td>
+<td>未同时满足</td>
+</tr>
+<tr>
+<td>原r5，LED轨10ns</td>
+<td style="text-align: right;">96.557–102.412</td>
+<td style="text-align: right;">3.191%</td>
+<td style="text-align: right;">0.001</td>
+<td>均满足</td>
+</tr>
+<tr>
+<td>原r5，全部轨10ns+封装</td>
+<td style="text-align: right;">59.749–147.419</td>
+<td style="text-align: right;">47.805%</td>
+<td style="text-align: right;">2.535</td>
+<td>未同时满足</td>
+</tr>
+<tr>
+<td>die端100Ω+100nF</td>
+<td style="text-align: right;">96.736–102.056</td>
+<td style="text-align: right;">3.006%</td>
+<td style="text-align: right;">17.743</td>
+<td>未同时满足</td>
+</tr>
+<tr>
+<td>die端100nF，R−5%/C−10%</td>
+<td style="text-align: right;">96.299–102.584</td>
+<td style="text-align: right;">3.444%</td>
+<td style="text-align: right;">17.223</td>
+<td>未同时满足</td>
+</tr>
+<tr>
+<td>die端100nF，R+5%/C+10%</td>
+<td style="text-align: right;">97.093–101.637</td>
+<td style="text-align: right;">2.647%</td>
+<td style="text-align: right;">17.840</td>
+<td>未同时满足</td>
+</tr>
+<tr>
+<td>100Ω+10nF，已否决折衷点</td>
+<td style="text-align: right;">83.237–117.019</td>
+<td style="text-align: right;">17.332%</td>
+<td style="text-align: right;">5.270</td>
+<td>未同时满足</td>
+</tr>
+<tr>
+<td>die端100Ω+8.2nF</td>
+<td style="text-align: right;">81.411–119.028</td>
+<td style="text-align: right;">19.346%</td>
+<td style="text-align: right;">4.727</td>
+<td>均满足</td>
+</tr>
+<tr>
+<td>die端8.2nF，R−5%/C−10%</td>
+<td style="text-align: right;">79.938–120.676</td>
+<td style="text-align: right;">20.998%</td>
+<td style="text-align: right;">4.359</td>
+<td>未同时满足</td>
+</tr>
+<tr>
+<td>die端8.2nF，R+5%/C+10%</td>
+<td style="text-align: right;">82.743–117.559</td>
+<td style="text-align: right;">17.873%</td>
+<td style="text-align: right;">5.117</td>
+<td>未同时满足</td>
+</tr>
+<tr>
+<td>PCB侧100Ω+100nF</td>
+<td style="text-align: right;">96.681–102.124</td>
+<td style="text-align: right;">3.061%</td>
+<td style="text-align: right;">17.713</td>
+<td>未同时满足</td>
+</tr>
+<tr>
+<td>PCB侧100nF，全部轨10ns</td>
+<td style="text-align: right;">91.574–106.276</td>
+<td style="text-align: right;">8.182%</td>
+<td style="text-align: right;">17.714</td>
+<td>未同时满足</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="参考供电扰动波形" src="pwm-figures/pwm-reference-step.svg" /></p>
+<p>100ns参考轨旧扰动重现约60.16–147.24µA及2.49µs恢复，与旧报告一致。10ns扰动中SENSE在约0.4166–0.5820V之间变化；有限带宽的参考环路不能瞬时维持0.5V，镜像电流随之下冲和上冲。封装R/L不是这一主要幅度的来源。</p>
+<p>第一批候选是宏端口侧100Ω串联电阻、电容接die-VSS，属于die端口/封装内局部电容假设，不能称为真实PCB片外放置。后续board100n候选保持100Ω/100nF数值，把R和C都移到封装R/L之前、C回板级地。39MOS及其PEX均不变。电阻DC压降、滤波启动及数字故障回放重新计算。100nF强抑制方案可以继续作为研究候选，但是否容许其恢复时间需由系统要求决定。容差扫描对应早期die端口拓扑，不能当作PCB侧拓扑的容差验证；8.2nF的名义通过无法覆盖所测元件容差。未为使候选通过而修改20%/5µs比较线。</p>
+<p><img alt="片外滤波的幅度与恢复折衷" src="pwm-figures/pwm-filter-tradeoff.svg" /></p>
+<h3 id="4-pwm">4. 封装、启动、故障和最小PWM码</h3>
+<p>封装用五条独立串联R/L路径：VREF、VSAFE、VBUF、LED_A和共用VSS回流。名义每条0.2Ω/2nH，应力每条1Ω/5nH。这里没有pad/ESD、引脚互感、LED_K/SENSE/VSET等信号脚的串联寄生、封装场求解、完整板级网络或阵列共用回流；参数是试验假设。SENSE原有30pF预算、片外电阻及外部VSET参考点均保留。</p>
+<p>启动仍预先供好安全/缓冲/LED电源，参考轨100ns上升，外部FAULT保持20µs；不是任意顺序或同时上电验证。故障在50.125µs施加，时钟47.7µs停止，使用实际RTL事件及10ns模拟引脚边沿。前期duty=1对完整两帧积分；板侧100nF确认采用258.5–514.5µs单个完整帧，已远离10µs参考滤波时间常数的初始过程。两者均与相同网络的DC电流比较，具体窗口记录在case和结果中。</p>
+<table>
+<thead>
+<tr>
+<th>本轮耦合复验</th>
+<th>主要数据</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startup_package_stress</code></td>
+<td>启动保持峰值 627.2691nA；恢复 99.7384µA</td>
+<td>失败：startup_held_fault_1nA</td>
+</tr>
+<tr>
+<td><code>fault_package_stress</code></td>
+<td>关闭 205.784ns；Q+ 0.5048pC；Q− -7.3635pC</td>
+<td>所列门槛通过</td>
+</tr>
+<tr>
+<td><code>pwm_package_stress</code></td>
+<td>duty=1电荷误差 -0.07132%</td>
+<td>所列门槛通过</td>
+</tr>
+<tr>
+<td><code>startup_filtered8p2n</code></td>
+<td>启动保持峰值 381.4308nA；恢复 99.7335µA</td>
+<td>失败：startup_held_fault_1nA</td>
+</tr>
+<tr>
+<td><code>fault_filtered8p2n</code></td>
+<td>关闭 205.801ns；Q+ 0.5047pC；Q− -7.3635pC</td>
+<td>所列门槛通过</td>
+</tr>
+<tr>
+<td><code>pwm_filtered8p2n</code></td>
+<td>duty=1电荷误差 -0.06674%</td>
+<td>所列门槛通过</td>
+</tr>
+<tr>
+<td><code>startup_filtered</code></td>
+<td>启动保持峰值 377.5422nA；恢复 99.7573µA</td>
+<td>失败：startup_held_fault_1nA</td>
+</tr>
+<tr>
+<td><code>fault_filtered</code></td>
+<td>关闭 205.778ns；Q+ 0.5047pC；Q− -7.3635pC</td>
+<td>所列门槛通过</td>
+</tr>
+<tr>
+<td><code>pwm_filtered</code></td>
+<td>duty=1电荷误差 -0.06297%</td>
+<td>所列门槛通过</td>
+</tr>
+<tr>
+<td><code>startup_board100n</code></td>
+<td>doAnalyses: TRAN:  Timestep too small; time = 6.14467e-11, timestep = 2.5e-21: trouble with node "vpermit#branch"</td>
+<td>求解未完成，不能验收</td>
+</tr>
+<tr>
+<td><code>fault_board100n</code></td>
+<td>关闭 205.793ns；Q+ 0.5047pC；Q− -7.3635pC</td>
+<td>所列门槛通过</td>
+</tr>
+<tr>
+<td><code>pwm_board100n</code></td>
+<td>duty=1电荷误差 -0.07135%</td>
+<td>所列门槛通过</td>
+</tr>
+<tr>
+<td><code>startup_board100n_gear1</code></td>
+<td>doAnalyses: TRAN:  Timestep too small; time = 2.727e-10, timestep = 2.5e-21: trouble with node "vpermit#branch"</td>
+<td>求解未完成，不能验收</td>
+</tr>
+<tr>
+<td><code>startup_board100n_wide</code></td>
+<td>启动保持峰值 0.0283nA；恢复 99.7546µA</td>
+<td>单一wide配置的功能门槛通过；数值一致性未闭合</td>
+</tr>
+<tr>
+<td><code>startup_package_stress_refined</code></td>
+<td>启动保持峰值 626.7084nA；恢复 99.7384µA</td>
+<td>失败：startup_held_fault_1nA</td>
+</tr>
+<tr>
+<td><code>startup_filtered_refined</code></td>
+<td>doAnalyses: TRAN:  Timestep too small; time = 1.01695e-07, timestep = 2.5e-21: trouble with node "vpermit#branch"</td>
+<td>求解未完成，不能验收</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="同值RC的两种接地点" src="pwm-figures/pwm-filter-topology.svg" /></p>
+<p><img alt="回流位置与启动波形" src="pwm-figures/pwm-ground-return.svg" /></p>
+<p>同一R/C值的回流路径是本轮新增的重要边界。die端电容的充电电流经过共同封装VSS阻抗，会抬高局部地；PCB侧电容先在板级地闭合充电回路。以下使用完整局部网格的20µs窗口；未收敛数据不画成有效波形，PCB侧只显示wide诊断配置。图中PCB曲线的求解容差与严格基线不同，不能作为同数值设置下的修复闭合证明：</p>
+<table>
+<thead>
+<tr>
+<th>完整网格启动</th>
+<th style="text-align: right;">支路峰值 / nA</th>
+<th style="text-align: right;">导电峰值 / nA</th>
+<th style="text-align: right;">位移峰值 / nA</th>
+<th style="text-align: right;">die-GND峰值 / mV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startup_package_stress_refined</code></td>
+<td style="text-align: right;">626.708443</td>
+<td style="text-align: right;">&lt;0.001（近零数值量）</td>
+<td style="text-align: right;">626.708496</td>
+<td style="text-align: right;">2.083238</td>
+</tr>
+<tr>
+<td><code>startup_board100n_wide</code></td>
+<td style="text-align: right;">0.028308</td>
+<td style="text-align: right;">&lt;0.001（近零数值量）</td>
+<td style="text-align: right;">0.028308</td>
+<td style="text-align: right;">0.174542</td>
+</tr>
+</tbody>
+</table>
+<p>无滤波的约627nA峰在完整网格下仍为约626.7nA，因此新封装下的启动暗态支路失败不能归零为数值伪影。板侧启动的Gear2/Gear1严格求解失败均保留；wide组合为同电路的数值诊断（reltol=1e−8、abstol=1pA、vntol=100nV）。即使单个wide配置能完成，也没有独立细化一致性闭合，不能据此宣称startup验证完成。网格变化与回流拓扑变化分开记录。</p>
+<p>关断判断包含LED总支路1nA门槛、正负电荷分别积分、停止时钟时的释放导电电流和恢复电流。端口位移电流不能被当成实测发光，正负电荷不能抵消后宣布安全。</p>
+<h3 id="5">5. 端电压与数值可信度</h3>
+<p>r5含33只06v0器件、6只05v0 buf_2器件；没有高速NRZ对照路线中的3.3V薄氧核心器件，因此不能套用3.63V筛查。新瞬态记录每只MOS实际分布式RC端点的|VGS|、|VGD|、|VGB|、|VDS|、|VBS|、|VBD|。前期DC及早期候选仅记录5对（未含VGB），摘要明确保留其195项与新234项的区别，不能相减峰值补出VGB。它们是terminal-voltage inventory，不是foundry绝对额定、寿命、ESD或可靠性验收。</p>
+<ul>
+<li>完整六对记录中，05v0最大端点差：3.629276V，<code>dc_guard_ff</code> / <code>s_x24_gd</code>。</li>
+<li>完整六对记录中，06v0最大端点差：5.499898V，<code>dc_guard_ff</code> / <code>s_x12_gs</code>。</li>
+</ul>
+<p>最大步长2ns与1ns代表对照：</p>
+<ul>
+<li><code>step_ref_10ns</code>：最大插值电流差4.50518nA，恢复时间差0.17217ns。</li>
+<li><code>step_all_10ns_package_stress</code>：最大插值电流差1.73780nA，恢复时间差0.58178ns。</li>
+<li><code>step_ref_10ns_filtered8p2n</code>：最大插值电流差0.63917nA，恢复时间差0.68517ns。</li>
+</ul>
+<p>全部指标从完整波形计算；CSV只用于绘图。每份raw先计算SHA-256，再gzip压缩，解压回读哈希相符后才移除未压缩副本。失败、旧instrumentation尝试及ngspice日志保留在build，未把图形降采样当作数值验证。</p>
+<h3 id="6">6. 可继续的研究与复现</h3>
+<p>优先确认显示系统对瞬时电流、暗态位移电荷和恢复时间的真实要求，再决定是否采用强滤波片外方案；随后完成任意上电/掉电、POR/欠压及pad/ESD和封装网络。统计失配、电阻实际料号与TC、电容偏压效应、真实LED标定及阵列回流仍未覆盖。</p>
+<pre><code class="language-sh">.venv/bin/python scripts/pwm_robustness/run.py --suite dc --reuse
+.venv/bin/python scripts/pwm_robustness/run.py --suite transient --reuse
+.venv/bin/python scripts/pwm_robustness/run.py --suite selected --reuse
+.venv/bin/python scripts/pwm_robustness/run.py --suite strong --reuse
+.venv/bin/python scripts/pwm_robustness/run.py --suite board --reuse
+.venv/bin/python scripts/pwm_robustness/run.py --suite summarize
+.venv/bin/python scripts/pwm_robustness/report.py
+.venv/bin/python scripts/pwm_robustness/topology_figure.py
+</code></pre>
+<p>主证据：<code>evidence/pwm-robustness/20261024/summary.json</code>、<code>compact-metrics.csv</code>、<code>validation.json</code>与<code>input-manifest.json</code>。完整原始波形/冻结模型/输入网表位于<code>build/pwm-robustness/20261024/</code>。本轮未建立光学、硅片、整芯片、MPW或foundry可靠性结论。</p>
+<h2 id="limits">6. 如何据此决定下一步</h2>
+
+<ol>
+<li><strong>显示PWM：先收敛参考供电与保护的动态设计。</strong> 电流设置电阻的精度与温漂须形成独立预算；滤波器应明确放在板侧还是芯片侧，并核查启动位移电流、积分电荷及恢复时间。单一RC同时满足扰动抑制和快速恢复的证据尚不足，下一步应比较参考源PSRR、缓冲驱动能力与有控上电，而非继续盲目增大电容。</li>
+<li><strong>高速：优先继续B电流转向的供电和真实参考设计；A保留为对照。</strong> B本轮扰动表现较稳健，但尚有固定理想RREF/RDUMMY、电源生成和模型边界。A首先需要实际可调、可吸收电流的VH/VL控制，稳定LED两端的电压差；仅缩短输入电阻或提高MOS耐压不能解决辅助电源导致的接收失效。实际电源环路引入后再用相同RX复查。</li>
+<li><strong>物理验证：从集总假设推进可测的封装/PCB模型。</strong> 本轮已证明供电与回地的R/L会改变局部D/G/S/B电压。下一阶段须以选定封装的引脚、键合/凸点、走线和去耦位置建立提取或测量模型，并补全pad/ESD、电源网和电源调节器，再讨论全芯片余量。</li>
+</ol>
+<p>本轮没有完成实测LED温度/动态拟合、噪声与随机抖动BER、MOS失配统计、完整封装/PCB电磁提取、ESD、pad ring、EM/IR、HCI/TDDB寿命签核或硅后光学测量。这里的GDS是实验核心；DRC/LVS/PEX分别证明对应规则、连接与所声明提取模型的工作，不能把它们升级为整芯片可流片或可销售的证据。</p>
+<h2 id="appendix">7. 复现、审计与技术依据</h2>
+
+<p>本轮高速正式旧核心扰动矩阵为42个有效实验；最终候选矩阵为65个，全部完成求解和分析，最终候选保留7个接收筛查失败，器件电压筛查失败为0。65个包含DC、速率探针、供电/电阻/封装扰动与数值对照；不是65个独立统计样本，也不代表所有工艺和系统扰动已穷举。早期候选与管理中止另列于阶段执行清单。</p>
+<p>6组高速数值控制均满足预先声明的对照容差：最大端压变化约62.93 µV、垂直余量变化0.0001661、水平余量变化0 UI，正向能量相对变化约0.0140%。数值稳定不能修复电路自身失败。</p>
+<p>PWM共有101个运行身份（59 DC、26供电阶跃、8启动、4故障、4 PWM），98完成、3未收敛；其中包含5个仅扩充端电压观测的重复，不能作为额外独立样本。已完成每个case的输入、网表、日志、压缩及解压波形哈希核验，并保留旧5端对与新6端对观测范围的区别。</p>
+<ul>
+<li><a href="../../../evidence/highspeed-nrz-robustness/summary-verified.json">NRZ原始留存重分析与最终摘要</a></li>
+<li><a href="../../../evidence/highspeed-nrz-robustness/numerical-audit.json">NRZ数值控制</a></li>
+<li><a href="../../../evidence/highspeed-nrz-robustness/independent-selected-audit.json">独立端电压与能量复算</a></li>
+<li><a href="../../../evidence/pwm-robustness/20261024/final-audit.json">PWM最终审计</a></li>
+<li><a href="../../../evidence/driver-robustness-audit/physical-A.json">A实际GDS独立复核</a> / <a href="../../../evidence/driver-robustness-audit/physical-AB-first.json">A48与B实际GDS独立复核</a></li>
+</ul>
+<p>新目录的小输入复跑也已实测：NRZ只恢复本轮inputs/stimulus/manifest，PWM只恢复8个冻结输入及case清单，即可重新生成新路径网表并完成DC检查；这不替代在另一操作系统上跑完全部矩阵。详细命令见<a href="README.md">本轮README</a>。</p>
+<p>实验幅度和研究预算先于相应用例声明，结果没有全部通过。被替代候选的未运行计划与真正仿真失败分别记录；仿真失败不赋予接收性能值。早期分析器执行来源记录的问题由独立重分析补救，历史文件保留，补救记录不冒充当时就正确冻结了来源。</p>
+<p><a href="experiment-design.md">实验设计</a> · <a href="report-provenance.json">报告输入与图形SHA-256</a> · <a href="../../development-handoff.md">跨机器恢复说明</a></p>
+<details><summary>展开PDK、版图规则、电阻角与提取方法的详细依据</summary>
+
+### PDK 约束、独立电阻角与物理实现边界
+
+#### 3.63 V 的依据和含义
+
+2026-10-24 核对 GF180 官方公开 DRM 14.1。3.3 V 薄氧器件的最大 **DC 栅极对任何其他端子电压绝对值**是 3.63 V；LV 标称供电 3.3 V，供电过冲容差为 10%。周期性超额涉及占空比和 TDDB 寿命，但该页未给可直接用于本项目的数值寿命包络。将所有端子对的瞬态峰值统一限制在 3.63 V，是项目的保守电学筛查，不等同完整 foundry reliability signoff。此前仅强调“项目筛查线”的表述应补上此公开 DC 栅氧约束，亦不能把 Ioff 测试偏置当成全部可靠性规定。
+
+因此在 3.6 V rail 上施加 +50 mV 后，理想静态满摆幅就可能达到 3.65 V，已经比 3.63 V 高 20 mV；原 9–11 mV 动态余量不足以容纳这一供电扰动，串联输入电阻不能改变该静态事实。降低输入边沿速度只对动态注入有效，且过慢切换本身还需考虑 HCI。后续仿真必须分别给出 DC rail、动态过冲和每种器件的电压预算。
+
+6 V 器件不能直接采用 6.6 V 的统一判断线。该公开条款的厚氧 DC 栅节点限制写为 5 V / 6 V 工艺对应 6.5 V / 6 V；本研究对实际 `*_06v0` 器件先采用更明确的 **6.0 V 保守筛查**，仍保留 3.63 V 旧线的比较结果。门限通过不代表已完成 TDDB、HCI、EM、温度寿命或流片签核。
+
+依据：[GF180 DRM 14.1 Chip Operating Conditions](https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_1.html)，访问 2026-10-24；具体定位 14.1.2、14.1.4.1、14.1.4.2。
+
+#### 真实 6 V 器件的尺寸与层结构
+
+实际 6 V NMOS/PMOS 的最小沟道长度分别为 0.70 / 0.55 µm。模型实例参数表中出现的 0.60 / 0.50 µm 同时覆盖 5 V 选项，不能替代 6 V 版图规则。以原 W/L 为起点时，NMOS 宽度乘 2.5，PMOS 乘 0.55/0.28，并对齐 0.005 µm 制造网格；这种缩放仅是初始驱动能力假设，因为阈值、氧化层和寄生电容不同，不能据此宣称保持原速率。
+
+本次先调用固定的公开 Magic 6 V PCell 做独立探针：`nfet_06v0 W=2.50/L=0.70` 的每侧扩散面积为 1.10 µm²、周长 5.88 µm；`pfet_06v0 W=3.93/L=0.55` 对应 1.7292 µm²、8.74 µm。它们仍满足当前直条结构的每侧扩散长度 0.44 µm；6 V PCell 的 Dualgate 和扩散/保护环规则与 3.3 V 不同，最终必须重新生成 GDS 并运行 DRC/LVS/PEX，不能靠网表改名完成物理验证。
+
+依据：[GF180 DRM 7.7 Poly2](https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_07_08.html)，PL.2、PL.9 和注释 1，访问 2026-10-24；固定本地 `gf180mcuD.tcl` 的 `nfet_06v0_defaults/draw`、`pfet_06v0_defaults/draw`；探针原件在 `build/highspeed-nrz-robustness-layout/pcell-probe/`。
+
+#### 电阻角必须与 MOS 工艺角分开
+
+固定 `sm141064.ngspice` 中，`res_typical` / `res_ss` / `res_ff` 独立选择 `ppolyf_u_1k_6p0` 的片电阻 1000 / 1200 / 800 Ω/□。此前只做 MOS SS 配电阻 SS、MOS FF 配电阻 FF 的联合条件，不能覆盖交叉组合。完整三端模型还包含端部电阻、独立温度系数及端点—衬底电容；不应将它替换成一个理想 ±20% 电阻。
+
+本次独立校准覆盖 A 的 48×1 µm、B 的 58×1 µm，各取 3 个电阻角×3 个温度（−40、27、125°C），并用完整 PDK DC 结果对照本体和端部电阻公式。输入电阻的电容仍由完整器件模型保留。公开器件表列出该高阻电阻支持 global statistical，但无 local statistical；角落扫查不能称为局部 mismatch 良率证明。
+
+依据：[GF180 Resistor Models](https://gf180mcu-pdk.readthedocs.io/en/latest/analog/model_parameters/LV/LV_4.html) 和 [GF180 Resistor Device List](https://gf180mcu-pdk.readthedocs.io/en/latest/analog/model_parameters/LV/LV_1_4_4.html)，访问 2026-10-24；本地模型 SHA-256 `677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46`，res 角块第 394–486 行、完整电阻子电路第 38842–38884 行。
+
+
+独立 DC 校准共 18 点通过，完整模型与公式的最大相对差为 2.1×10⁻¹³。结果如下（kΩ；列为 res_ff / res_typical / res_ss）：
+
+| 版图电阻 | 温度 | res_ff | res_typical | res_ss |
+|---|---:|---:|---:|---:|
+| A 48×1 µm | −40°C | 42.704521 | 53.306051 | 63.907582 |
+| A 48×1 µm | 27°C | 39.670683 | 49.545016 | 59.419348 |
+| A 48×1 µm | 125°C | 36.960225 | 46.172411 | 55.384598 |
+| B 58×1 µm | −40°C | 51.539144 | 64.349330 | 77.159516 |
+| B 58×1 µm | 27°C | 47.899307 | 59.830795 | 71.762283 |
+| B 58×1 µm | 125°C | 44.637059 | 55.768454 | 66.899849 |
+
+电阻最大值出现在 res_ss/−40°C，而非旧的 MOS SS/125°C 配对；最小值则在 res_ff/125°C。模型本体负一阶温度系数与端部温度项都影响结果，最终转换时间仍需完整瞬态判断。原始 18 份 DC netlist/log 和结果哈希保留在 `build/highspeed-nrz-robustness-layout/resistor-independent-r1/`。
+
+#### 本次真实 GDS 与提取结果
+
+本阶段保留原 `final-r4` 不变。新增 A 路的 6 个 MOS 均使用真实 6 V PCell；B 路的两级反相器和 LED/DUMMY 转向开关共 6 个 MOS 使用 6 V PCell，REF、BASE、TAIL 3 个偏置器件保持 3.3 V。独立只读校验器用实际 GDS 的 Poly∩Active 沟道多边形与 Dualgate（55/0）做交集，确认每个 6 V 沟道完整位于 Dualgate 内，B 的 3 个 3.3 V 沟道不在该层内；同时独立 LVS 验证模型与连接，排除仅改 SPICE 型号的假实现。
+
+| 真实核心 | 物理目录 | 外框面积（µm²） | 互连 R / 显式 C | 显式 C 总和（fF） | DI 入射显式 C（fF） |
+|---|---|---:|---:|---:|---:|
+| 原 LV A48 | `final-r4/A` | 2437.056 | 84 / 61 | 35.8798 | 2.52837 |
+| HV A48 | `hv-r2/A` | 2464.7856 | 79 / 62 | 49.0695 | 2.77794 |
+| HV A8 | `hv-A8-r3/A` | 1343.0358 | 79 / 64 | 49.0548 | 2.77794 |
+| HV A8 接触增强 | `hv-A8-ties-r5/A` | 2464.7856 | 95 / 64 | 49.3202 | 2.82905 |
+| 原 LV B58 | `final-r4/B` | 4098.588 | 127 / 76 | 35.6551 | 2.54268 |
+| HV B58 | `hv-r2/B` | 4098.588 | 127 / 76 | 39.2521 | 2.78179 |
+
+新物理目录均位于 `build/highspeed-nrz-robustness-layout/`；原 LV 目录位于 `build/highspeed-nrz-pvt-layout/`。DI 入射 C 是对地 C 加全部与 DI 相连的显式耦合支路之和，不含 MOS 本征电容和 PDK 电阻内部 C，也不是固定的一阶极点。RIN 内部总衬底 C 从 A48 的 4.122253 fF 降为 A8 的 0.687037 fF，完整模型仍保留，不重复加入显式 PEX C。
+
+以上 4 个新核心实例（A48、B58、A8、A8 接触增强）均通过原生 Magic DRC、独立 LVS、GDS 回读 DRC/LVS、独立 KLayout DRC（0 项）、全网络 R 提取、C 矩阵记账检查、RC 折叠 LVS 和实际 GDS 器件几何核对。A 覆盖 9/9、B 覆盖 10/10 电气网络。每个实例均真正修改 GDS 做断栅和 VDD–VSS 短接反例，两者均被 LVS 拒绝；断栅反例同时产生 12 个 Magic DRC 计数，电源短接反例的 DRC 仍为 0，说明 DRC 不能替代连接检查。
+
+原始 `hv-r1` 在独立 DRC 前因现有 Lima VM 停止而中断，记录为环境失败；`hv-A8-ties-r4` 因新 Tcl 字符串括号错误未完成生成，记录为脚本失败。后续新目录重新运行，没有覆盖这些日志。它们不是器件物理规则失败，也没有被统计为通过的物理结果。
+
+C 模型沿用已审计的显式记账方法：以实际 GDS 回读 `.ext` 为对地/耦合 C 权威，完整保留提取的所有 R 和器件，原始未校正 RC 也保留。对地 C 使用 Magic 简化后的归一化分配权重，耦合 C 保留在逻辑网节点；RCLUMP 仅检验 C 位置敏感性。矩阵守恒证明记账，不证明空间分布、衬底传播或封装 EM 精度。封装 R/L/C 必须与这一 on-chip PEX 分开标注。
+
+#### A8 体端接触实验与提取网络诊断
+
+A8 首次版图缩短 RIN 后，连续 VSS 衬底接触条也随其包围框缩短。为检验局部体端收集，后续保持所有 MOS、RIN=8 µm 和电气连接不变，同时恢复原 A48 接触条纵向范围 −28.36…29 µm，并为 3 个 NMOS 启用上、下保护环接触。这是两项同属体端接触增强的版图改动，不是只改变单个接触孔。
+
+| 实际 GDS / 纯 VSS R 网络指标 | A8 首次 r3 | A8 接触增强 r5 |
+|---|---:|---:|
+| 连续接触条 contact 切孔 | 66 | 122 |
+| N1 / N2 / NOUT 的 P+ 体接触切孔 | 18 / 50 / 50 | 26 / 58 / 58 |
+| 全核心 contact 切孔 | 666 | 746 |
+| RIN.SUB 对外 VSS 自阻（Ω） | 339.4922 | 342.9006 |
+| RIN.SUB→XN2.B 转移阻（Ω） | 339.4922 | 342.9006 |
+
+新增接触孔在真实 GDS 中存在，但该纯电阻网络的结果没有改善，不能宣称体端问题已经修复。进一步独立追踪证实，自阻与转移阻相等并非把两只器件映射到同一个节点：RIN.SUB 是 `VSS.t0`，位置 (−5.00,18.07) µm；XN2.B 是 `VSS.t3`，位置 (16.00,20.00) µm。两者分别与实际 GDS 的电阻中心和 N2 沟道中心一致。
+
+在原始 `.res.ext` 和最终 RC 中，XN2.B 都是只连一条 229.888 Ω 电阻的叶节点，另一端恰为 RIN.SUB。诊断只向 RIN.SUB 注入 1 A、外部 VSS 钳为 0 V，不包含 MOS 体电流或电容，因此这条叶支路电流为 0，两个节点电压必然相同；这不是物理短接。RIN.SUB 返回其余 VSS 网络的入口电阻为 182.839 Ω，承载全部归一化注入电流，约占自阻的 54%。接触增强前后，这两个关键支路没有变化。
+
+固定 Magic 源码显示，器件衬底端以平面 tile 上的器件中心断点进入电阻网络（`ResUtils.c`、`ResBasic.c`、`ResJunct.c`）。这一证据能解释导出的网络，不能据此确认真实三维衬底转移阻，也不足以断言某一个具体提取 bug。C 记账校正没有创建这些 R/器件体端连接。由于新增局部接触没有改变该叶节点关系，本模型尚不足以证明局部衬底收集改善；完整暂态结论仍应标注此提取边界，后续需独立衬底提取或场解验证。相关原始坐标、1 A 网络解、支路功率和源码哈希见 `evidence/highspeed-nrz-robustness-layout/body-path-audit.json`。
+
+A8 后续增加独立 9 点 DC 校准，仍使用完整固定 PDK，公式与 SPICE 最大相对差小于 1.0×10⁻¹⁴。三个温度下 res_ff / res_typical / res_ss 电阻分别为：−40°C：7.366029 / 9.132937 / 10.899845 kΩ；27°C：6.756189 / 8.401898 / 10.047607 kΩ；125°C：6.252888 / 7.788240 / 9.323592 kΩ。该结果在 `evidence/highspeed-nrz-robustness-layout/resistor-A8-r3/`，与 A48/B58 的 18 点合计为 27 点独立电阻校准。
+
+
+最终物理选择为 **A8 原版 `hv-A8-r3/A` 与 B58 `hv-r2/B`**。接触增强版保留为未支持改善假设的实验，不替换最终核心。最终配置和 GEOM/RC/GDS 身份集中在 `evidence/highspeed-nrz-robustness-layout/final-selection.json`；电气接受速率与压力矩阵另按独立 NRZ 仿真记录报告，不由物理检查代替。
+
+
+</details></main></body></html>

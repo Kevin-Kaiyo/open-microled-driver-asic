@@ -1,8 +1,18 @@
 # GitHub 备份与另一台电脑接续开发
 
-更新：2026-10-23。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
+更新：2026-10-24。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
 
-## 当前阶段：慢热接收与快冷端电压修正（2026-10-23）
+## 当前阶段：显示PWM与高速NRZ的扰动验证（2026-10-24）
+
+[中文研究报告](research/driver-robustness-20261024/index.html)与[本轮复现说明](research/driver-robustness-20261024/README.md)为当前入口。两种应用保留不同的冻结负载和判据，不能混用电流精度与高速RX结果。
+
+- 高速旧核心的9–11mV余量已被本轮+50mV与供电/回地封装R/L反例否定。最终真实物理选择是 `build/highspeed-nrz-robustness-layout/hv-A8-r3/A` 和 `hv-r2/B`；电气矩阵在 `build/highspeed-nrz-robustness/selected-a8-b58-r4`。A在固定辅助电源下0.4Gb/s离散点通过，但辅助电源扰动仍失败；不能称整个速率包络已闭合。
+- PWM仍用r5实际39MOS/345R/288C和原合成LED，原始输入/实验在 `build/pwm-robustness/20261024`。PCB侧100Ω/100nF滤波是外部网络修订，没有虚构新版芯片版图；恢复时间与启动的跨数值设置一致性仍待解决。
+- 本轮小输入恢复入口不再依赖旧历史raw目录：NRZ `scripts/highspeed_nrz_robustness/reproduce.py`，PWM `scripts/pwm_robustness/reproduce.py`。两者按新机器路径生成新的deck，原冻结证据保持字节不变。完整物理重跑仍需固定full PDK及工具。
+
+<!-- ROBUSTNESS_BACKUP_RECEIPTS -->
+
+## 历史阶段：慢热接收与快冷端电压修正（2026-10-23）
 
 [新版中文研究报告](research/highspeed-nrz-pvt-20261023/index.html)、[真实新版 GDS 查看器](research/highspeed-nrz-pvt-20261023/layout-viewer.html)与[复现说明](research/highspeed-nrz-pvt-20261023/README.md)是当前入口。最终实际物理目录为 `build/highspeed-nrz-pvt-layout/final-r4`，仿真目录为 `build/highspeed-nrz-pvt/final-r4`。旧版模型与报告保留。
 

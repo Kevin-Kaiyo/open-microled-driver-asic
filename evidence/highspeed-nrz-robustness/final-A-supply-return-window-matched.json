@@ -1,0 +1,128 @@
+{
+  "source": {
+    "result_json": "build/highspeed-nrz-robustness/selected-a8-b58-r4/cases/AFTER-A-VDDVSSpkg_R1_L2_matched-1G-ff--40C-3.6V-C200-L0.5-e20-s40/result.json",
+    "result_sha256": "13f7cf6a53717bc84c02ede08144aaee76fd3ebed7dba07e81d72000f4ddeae4",
+    "waveform": "build/highspeed-nrz-robustness/selected-a8-b58-r4/cases/AFTER-A-VDDVSSpkg_R1_L2_matched-1G-ff--40C-3.6V-C200-L0.5-e20-s40/waveform.dat.gz",
+    "waveform_sha256": "702ad1f17994c968a51c6cb3a43db16790081fec0204d1147d27a3a74dd7e459",
+    "uncompressed_sha256": "4f3c301acfd398b308cfb0c8f72e7c690c842a6661abd45aa9b13857ec9cd0b5",
+    "deck_sha256": "d9fe3c73423dbfcd744978cf39ee782267dfcec5ce368696a45bc240caeaaa3f",
+    "rows": 409836,
+    "hash_checks": "passed",
+    "duplicates_removed": 0
+  },
+  "case": {
+    "route": "A",
+    "rate_Gbps": 1,
+    "corner": "ff",
+    "temp_C": -40,
+    "vdd_V": 3.6,
+    "cap_F": 2e-13,
+    "r_pkg": 1.0,
+    "l_pkg": 5e-10,
+    "edge_s": 2e-11,
+    "steps_per_ui": 40,
+    "reltol": 1e-05,
+    "chgtol": 1e-16,
+    "method": "gear",
+    "kind": "VDDVSSpkg_R1_L2_matched",
+    "supply_package": {
+      "r_vdd_ohm": 1.0,
+      "l_vdd_H": 2e-09,
+      "r_vss_ohm": 1.0,
+      "l_vss_H": 2e-09
+    },
+    "data_mode": "fixed",
+    "data_high_V": 3.6,
+    "name": "AFTER-A-VDDVSSpkg_R1_L2_matched-1G-ff--40C-3.6V-C200-L0.5-e20-s40",
+    "variant": "AFTER",
+    "res_corner": "ff"
+  },
+  "csv": "evidence/highspeed-nrz-robustness/final-A-supply-return-window-matched.csv",
+  "csv_sha256": "c8ea7573d152a5078af92bd45565300e6491a76a05430796e6a6a54cabe22c70",
+  "rows": 2006,
+  "center_time_s": 1.490407364007132e-07,
+  "half_width_ns": 2.0,
+  "worst_device": {
+    "instance": "x5",
+    "nodes": [
+      "xdrv.vss.t4",
+      "xdrv.n1.t3",
+      "xdrv.ctrl.t1",
+      "xdrv.vss.t3"
+    ],
+    "model": "nfet_06v0",
+    "sizing": "ad=4.4p pd=20.88u as=4.4p ps=20.88u w=10u l=0.7u",
+    "original_instance": "XN2",
+    "extracted_D_S_swapped_from_original": true,
+    "terminal_differences": {
+      "VGS": {
+        "min_V": -3.6390953853805934,
+        "max_V": 3.6630427234428042,
+        "max_abs_V": 3.6630427234428042,
+        "at_max_abs_signed_V": 3.6630427234428042,
+        "at_max_abs_time_s": 4.390513819507273e-07
+      },
+      "VGD": {
+        "min_V": -0.06935628111301619,
+        "max_V": 3.666488720626967,
+        "max_abs_V": 3.666488720626967,
+        "at_max_abs_signed_V": 3.666488720626967,
+        "at_max_abs_time_s": 3.810496980992056e-07
+      },
+      "VGB": {
+        "min_V": -0.05893972242807889,
+        "max_V": 3.6639617902601005,
+        "max_abs_V": 3.6639617902601005,
+        "at_max_abs_signed_V": 3.6639617902601005,
+        "at_max_abs_time_s": 4.330507113229851e-07
+      },
+      "VDS": {
+        "min_V": -3.650553669431272,
+        "max_V": 0.042170596439883835,
+        "max_abs_V": 3.650553669431272,
+        "at_max_abs_signed_V": -3.650553669431272,
+        "at_max_abs_time_s": 5.701805268371067e-07
+      },
+      "VDB": {
+        "min_V": -0.09518217997913453,
+        "max_V": 0.15777935358130118,
+        "max_abs_V": 0.15777935358130118,
+        "at_max_abs_signed_V": 0.15777935358130118,
+        "at_max_abs_time_s": 6.034246765516872e-07
+      },
+      "VSB": {
+        "min_V": -0.0446317294686625,
+        "max_V": 3.6464638125623674,
+        "max_abs_V": 3.6464638125623674,
+        "at_max_abs_signed_V": 3.6464638125623674,
+        "at_max_abs_time_s": 5.70020034932282e-07
+      }
+    },
+    "worst_pair": "VGD",
+    "max_abs_terminal_V": 3.666488720626967,
+    "above_3p63V_screen": true,
+    "body_junction_forward": {
+      "VBS": {
+        "max_forward_V": 0.0446317294686625,
+        "max_signed_V": 0.0446317294686625
+      },
+      "VBD": {
+        "max_forward_V": 0.09518217997913453,
+        "max_signed_V": 0.09518217997913453
+      }
+    },
+    "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+  },
+  "overall_gate_peak": {
+    "instance": "x5",
+    "model": "nfet_06v0",
+    "pair": "VGD",
+    "min_V": -0.06935628111301619,
+    "max_V": 3.666488720626967,
+    "max_abs_V": 3.666488720626967,
+    "at_max_abs_signed_V": 3.666488720626967,
+    "at_max_abs_time_s": 3.810496980992056e-07
+  },
+  "waveform_columns": "worst D/G/S/B are the single worst all-terminal device; max_abs_gate_pair is this same device at each point. Global gate peak separately identified; all_MOS gate/VDS columns are per-time envelopes over every device.",
+  "interpretation": "Sampled node values; project screen, not physical breakdown or reliability signoff."
+}

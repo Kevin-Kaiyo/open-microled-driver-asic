@@ -1,0 +1,66 @@
+{
+  "public_sources": [
+    {
+      "id": "GF180-DRM14.1",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_1.html",
+      "title": "Chip Operating Conditions",
+      "locator": "14.1.2, 14.1.4.1, 14.1.4.2",
+      "checked": "2026-10-24",
+      "use": "DC gate-terminal limits, duty/lifetime distinction; project transient six-pair screen is not full reliability signoff"
+    },
+    {
+      "id": "GF180-Poly2",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_07_08.html",
+      "title": "Poly2 rules",
+      "locator": "PL.2, PL.9, note1",
+      "checked": "2026-10-24",
+      "use": "06v0 actual Lmin and Dualgate routing constraints"
+    },
+    {
+      "id": "GF180-res-model",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/analog/model_parameters/LV/LV_4.html",
+      "title": "Resistor Models",
+      "checked": "2026-10-24",
+      "use": "three-terminal scalable model and temperature terms"
+    },
+    {
+      "id": "GF180-res-list",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/analog/model_parameters/LV/LV_1_4_4.html",
+      "title": "Resistor device list",
+      "checked": "2026-10-24",
+      "use": "ppolyf_u_1k_6p0 global vs local statistical coverage"
+    },
+    {
+      "id": "NRZ-load-contract",
+      "path": "analog/models/measured-led/lin2026-yellow20-dc.spice",
+      "use": "unchanged public static I-V fit; no measured dynamic or temperature response"
+    },
+    {
+      "id": "physical-selection",
+      "path": "evidence/highspeed-nrz-robustness-layout/final-selection.json",
+      "use": "actual selected GDS/GEOM/RC source identities"
+    },
+    {
+      "id": "baseline",
+      "path": "evidence/highspeed-nrz-robustness/baseline-r1-summary.json",
+      "use": "42 current baseline cases, all old-core stress failures preserved"
+    },
+    {
+      "id": "final",
+      "path": "evidence/highspeed-nrz-robustness/summary-verified.json",
+      "use": "final declared matrix, including failing points; read final identity/coverage audits"
+    },
+    {
+      "id": "PWM",
+      "path": "evidence/pwm-robustness/20261024/summary.json",
+      "use": "independent display model, PCB/die filter placement, startup and fault evidence"
+    }
+  ],
+  "evidence_levels": [
+    "public PDK rule",
+    "model assumption",
+    "transistor simulation",
+    "real-core GDS/DRC/LVS/PEX",
+    "not silicon or optical measurement"
+  ]
+}

@@ -1,0 +1,13 @@
+Independent PDK resistor corner DC calibration
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/pdk/gf180mcuD/libs.tech/ngspice/design.ngspice"
+.lib "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/pdk/gf180mcuD/libs.tech/ngspice/sm141064.ngspice" res_ss
+.temp -40
+VTEST a 0 3.6
+XR a 0 0 ppolyf_u_1k_6p0 r_width=1u r_length=48u
+.control
+set numdgt=15
+op
+print i(VTEST)
+quit
+.endc
+.end
