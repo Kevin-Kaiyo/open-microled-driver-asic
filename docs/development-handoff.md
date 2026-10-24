@@ -13,11 +13,47 @@ PWM 复用原 r5 39 MOS / 345 R / 288 C，修改片外补偿与 100 Ω / 15 nF �
 - 物理重跑环境与顺序见[物理恢复说明](../evidence/reference-v2-layout/RESTORE.md)。报告重建依赖中英文字体；字体与许可随该阶段 report-support 分组提供。
 - 高速仍依赖外部精密基准和 DISABLE 时序；提前释放存在端压失败，残余电源重启存在约 0.747 V 体结正向偏置，不能当作生产就绪设计。
 
-本阶段原始附件与远端回读/新目录恢复记录随 `reference-v2-20261024` Release 的验收回执补齐；下列旧 Release 保持不可变，按依赖范围恢复。
+本轮增量 Release：[reference-v2-20261024](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/reference-v2-20261024)，源标签固定在 `29266d9758894e87bc08a77a3ddf4f86f7b502e1`，源树 `67aae915d64a76c5a20e963c464f010e70fc83c0`。备份验收回执另入主分支，标签不移动。
+
+- [清单](../evidence/backups/reference-v2-20261024.json)与[范围/排除项](../evidence/backups/reference-v2-20261024-scope.json)：22 个归档、5,760 个普通文件；原始 5,060,468,194 字节、归档 4,933,879,962 字节。576 个内部链接单独记录；完整 PDK、VM、Python 环境和其它历史实验不在本次增量内。
+- [本地逐成员核验](../evidence/backups/reference-v2-20261024-local.json)与[全部远端回读](../evidence/backups/reference-v2-20261024-remote.json)：22 个归档、5 份 JSON 与2个恢复助手，共29个资产的长度和 SHA-256 均一致。清单 SHA 为 `ff5dc9f3946b7ccdd95619ea50e7ea388ba882b9b5e43203545e59da2dd2c132`。
+- [新目录恢复回执](../evidence/backups/reference-v2-20261024-recovery.json)与[紧凑复跑日志](../evidence/backups/reference-v2-20261024-recovery/README.md)：从 GitHub 新检出源提交，下载六个小分组，实际恢复4,801文件、576相对链接。NRZ/PWM两个DC点分别 **100.395162236404 / 99.733511411711 µA**，与归档原结果均差0 A；PWM重新编译RTL。实际联通版图及12 MOS模块分别123/114文件的既有物理证据回读通过。
+- 验证发生在同一 macOS ARM 主机的不同目录，复用已有Python/ngspice/Icarus；没有在全新电脑安装工具、恢复全部大波形、重跑全矩阵或DRC/LVS/PEX，也没有其他操作系统结论。
+- 首次DC因可用空间不足5 GiB在仿真前被阻止，失败日志保留。全部远端回读与小文件恢复再核验后，仅清理22个已验证的压缩暂存副本，随后用retry1新目录复跑通过。[清理回执](../evidence/backups/reference-v2-20261024-cleanup.json)准确记录当时为`files_restored_DC_pending`；最终DC成功见恢复回执。原始活动输入/波形/失败、PDK、恢复检出与下载副本均保留。删除约4.93 GB逻辑暂存字节，APFS实际可用空间另记，二者不等同。
+
+仅复跑小输入，不需要下载全部大型波形。准备 README 所列依赖，在该源标签的项目根目录执行：
+
+```sh
+gh release download reference-v2-20261024 \
+  --repo Kevin-Kaiyo/open-microled-driver-asic \
+  --pattern 'reference-v2-20261024.json' \
+  --pattern 'reference-v2-20261024-scope.json' \
+  --pattern 'restore_symlinks.py' --pattern 'backup_common.py' \
+  --pattern '*-inputs-*.tar.gz' --pattern '*-metadata-*.tar.gz' \
+  --pattern '*-physical-evidence-*.tar.gz' --pattern '*-report-support-*.tar.gz' \
+  --dir build/github-download-reference-v2
+python3 scripts/backup/release_bundle.py restore \
+  --manifest build/github-download-reference-v2/reference-v2-20261024.json \
+  --asset-dir build/github-download-reference-v2 --root . \
+  --group nrz-inputs --group nrz-metadata \
+  --group pwm-inputs --group pwm-metadata \
+  --group physical-evidence --group report-support
+python3 build/github-download-reference-v2/restore_symlinks.py \
+  --root . --scope build/github-download-reference-v2/reference-v2-20261024-scope.json --execute
+
+build/layout/venv/bin/python scripts/nrz_reference_v2/reproduce.py \
+  --source-work build/nrz-reference-v2/selected-final-r2 \
+  --out build/nrz-reference-v2/new-machine-smoke --smoke-dc
+build/layout/venv/bin/python scripts/pwm_reference_v2/reproduce.py \
+  --source build/pwm-reference-v2/20261024 --case c15_dc \
+  --destination build/pwm-reference-v2/new-machine-smoke
+```
+
+解释器路径是项目约定，需要先安装；新输出目录必须不存在。所有restore拒绝覆盖不同字节，复跑入口重新生成新路径，不直接运行含旧绝对路径的冻结deck。上述通配符还会下载很小的audit-metadata归档，但restore只选六组。全波形复算另下载相应waveforms组；完整物理重跑按物理恢复说明准备固定完整PDK及工具。下列旧Release保持不可变。
 
 ## 历史阶段：显示PWM与高速NRZ的扰动验证（2026-10-24）
 
-[中文研究报告](research/driver-robustness-20261024/index.html)与[本轮复现说明](research/driver-robustness-20261024/README.md)为当前入口。两种应用保留不同的冻结负载和判据，不能混用电流精度与高速RX结果。
+[中文研究报告](research/driver-robustness-20261024/index.html)与[该阶段复现说明](research/driver-robustness-20261024/README.md)为历史入口。两种应用保留不同的冻结负载和判据，不能混用电流精度与高速RX结果。
 
 - 高速旧核心的9–11mV余量已被本轮+50mV与供电/回地封装R/L反例否定。最终真实物理选择是 `build/highspeed-nrz-robustness-layout/hv-A8-r3/A` 和 `hv-r2/B`；电气矩阵在 `build/highspeed-nrz-robustness/selected-a8-b58-r4`。A在固定辅助电源下0.4Gb/s离散点通过，但辅助电源扰动仍失败；不能称整个速率包络已闭合。
 - PWM仍用r5实际39MOS/345R/288C和原合成LED，原始输入/实验在 `build/pwm-robustness/20261024`。PCB侧100Ω/100nF滤波是外部网络修订，没有虚构新版芯片版图；恢复时间与启动的跨数值设置一致性仍待解决。

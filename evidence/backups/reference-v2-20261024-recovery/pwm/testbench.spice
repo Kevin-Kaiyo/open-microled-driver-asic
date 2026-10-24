@@ -1,0 +1,59 @@
+r5 39MOS robustness: c15_dc
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/repository/build/pwm-reference-v2/github-recovery-c15-dc/inputs/design.ngspice"
+.lib "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/repository/build/pwm-reference-v2/github-recovery-c15-dc/inputs/sm141064.ngspice" typical
+.temp 27
+.param sw_stat_global=0 sw_stat_mismatch=0 LED_IS=2.2725351141552272e-20
+VREFRAIL refrail_board 0 3.3
+RFILTER refrail_board ref_filtered_board 100
+CFILTER ref_filtered_board 0 15.0n
+RPK_ref ref_filtered_board refrail_pkg 1.0
+LPK_ref refrail_pkg refrail_pre 5e-09
+VLINK_ref refrail_pre refrail 0
+VSAFE saferail_board 0 3.3
+RPK_safe saferail_board saferail_pkg 1.0
+LPK_safe saferail_pkg saferail_pre 5e-09
+VLINK_safe saferail_pre saferail 0
+VBUF bufrail_board 0 3.3
+RPK_buf bufrail_board bufrail_pkg 1.0
+LPK_buf bufrail_pkg bufrail_pre 5e-09
+VLINK_buf bufrail_pre bufrail 0
+VLED rail_board 0 5.0
+RPK_led rail_board rail_pkg 1.0
+LPK_led rail_pkg rail_pre 5e-09
+VLINK_led rail_pre rail 0
+RPK_gnd 0 return_pkg 1.0
+LPK_gnd return_pkg diegnd 5e-09
+VLEDLOAD rail led_anode 0
+VSET vset 0 .5
+VRAW raw_pwm_driver 0 3.3
+VFAULT fault_driver 0 0
+VPERMIT permit_driver 0 3.3
+RFAULTPULLUP saferail fault 1Meg
+RSET sense 0 5000
+RBIAS pb 0 100000
+RRELEASE rail fault_hb 100000
+RBLEED refout 0 10000000
+RPK_N2 n2 n2_pin_r 1
+LPK_N2 n2_pin_r n2_board 5n
+RESR_N2 n2_board n2_damp 0.5
+RDAMP_N2 n2_damp n2_cap 10
+CCOMP n2_cap 0 150p
+CSENSE sense 0 30p
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/repository/build/pwm-reference-v2/github-recovery-c15-dc/inputs/dut.spice"
+XDUT diegnd refrail saferail bufrail rail raw_pwm fault permit vset sense pb n2 ctrl fault_hb led_k refout bias gate pwm_b safe_out pwm_drive startup_test_macro
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/repository/build/pwm-reference-v2/github-recovery-c15-dc/inputs/microled.spice"
+XLED led_anode led_k microled
+.options reltol=1e-7 abstol=1e-14 vntol=1e-9 method=gear maxord=2
+RDRV_raw_pwm raw_pwm_driver raw_pwm 10
+RDRV_fault fault_driver fault 10
+RDRV_permit permit_driver permit 10
+.control
+set numdgt=15
+set wr_vecnames
+set wr_singlescale
+save @d.xled.dled[capcur] @d.xled.dled[id] i(VBUF) i(VLEDLOAD) i(VREFRAIL) i(VSAFE) v(bias) v(ctrl) v(diegnd) v(fault) v(gate) v(led_k) v(n2) v(permit) v(pwm_drive) v(rail) v(raw_pwm) v(refout) v(refrail) v(refrail_board) v(sense) v(xdut.ctrl.t3) v(xdut.vref.t1)
+op
+wrdata waveform.dat i(VLEDLOAD) v(refrail,diegnd) v(refrail_board) v(ctrl,diegnd) v(sense,diegnd) v(n2,diegnd) v(refout,diegnd) v(bias,diegnd) v(led_k) v(rail) v(diegnd) v(raw_pwm,diegnd) v(fault,diegnd) v(permit,diegnd) v(pwm_drive,diegnd) v(gate,diegnd) i(VREFRAIL) @d.xled.dled[id] @d.xled.dled[capcur] v(xdut.ctrl.t3,xdut.vref.t1) i(VSAFE) i(VBUF)
+quit
+.endc
+.end

@@ -1,0 +1,165 @@
+{
+  "commands": [
+    {
+      "name": "download",
+      "command": [
+        "gh",
+        "release",
+        "download",
+        "reference-v2-20261024",
+        "--repo",
+        "Kevin-Kaiyo/open-microled-driver-asic",
+        "--dir",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads",
+        "--pattern",
+        "reference-v2-20261024.json",
+        "--pattern",
+        "reference-v2-20261024-scope.json",
+        "--pattern",
+        "restore_symlinks.py",
+        "--pattern",
+        "backup_common.py",
+        "--pattern",
+        "reference-v2-20261024-nrz-inputs-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-nrz-metadata-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-physical-evidence-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-pwm-inputs-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-pwm-metadata-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-report-support-001.tar.gz"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "restore",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/backup/release_bundle.py",
+        "restore",
+        "--manifest",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads/reference-v2-20261024.json",
+        "--asset-dir",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads",
+        "--root",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/repository",
+        "--group",
+        "nrz-inputs",
+        "--group",
+        "nrz-metadata",
+        "--group",
+        "pwm-inputs",
+        "--group",
+        "pwm-metadata",
+        "--group",
+        "physical-evidence",
+        "--group",
+        "report-support"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "cb35f99b0cdbfd8104e226f2e58358eb47a8d21f96f49a33a6076317229c53da"
+    },
+    {
+      "name": "restore-links",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads/restore_symlinks.py",
+        "--root",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/repository",
+        "--scope",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads/reference-v2-20261024-scope.json",
+        "--execute"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "366485e218c481ad9c65305b8c8962a253790d8c0c8b81b4cf5db3c832c8baff"
+    },
+    {
+      "name": "nrz-dc",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/nrz_reference_v2/reproduce.py",
+        "--source-work",
+        "build/nrz-reference-v2/selected-final-r2",
+        "--out",
+        "build/nrz-reference-v2/github-recovery-smoke-dc",
+        "--smoke-dc"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 1,
+      "log_sha256": "374db0d84a732748dd10a8c6deab3978db1565cfd484c52cd294815829a686ed"
+    },
+    {
+      "name": "nrz-dc-retry1",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/nrz_reference_v2/reproduce.py",
+        "--source-work",
+        "build/nrz-reference-v2/selected-final-r2",
+        "--out",
+        "build/nrz-reference-v2/github-recovery-smoke-dc-retry1",
+        "--smoke-dc"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "adb7b9e53c94197c344dde5dcbf4977a5493097d56227fe8e51a4db24082df53"
+    },
+    {
+      "name": "pwm-dc",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/pwm_reference_v2/reproduce.py",
+        "--source",
+        "build/pwm-reference-v2/20261024",
+        "--case",
+        "c15_dc",
+        "--destination",
+        "build/pwm-reference-v2/github-recovery-c15-dc"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "f990307bfeb300190c6b234d183ee111af191ccfc850c39e0fb58b690fdfb3f6"
+    },
+    {
+      "name": "physical-joint",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/reference_v2_layout/validate.py",
+        "--run",
+        "build/reference-v2-layout/nrz-switched-keeper-joint-r1",
+        "--out",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/check-evidence/physical-joint.json"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "3ef5ae051165a140a1439d17f6950e5c008d10ca2c5f046dff2a519af4ecf728"
+    },
+    {
+      "name": "physical-module",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/reference_v2_layout/validate.py",
+        "--run",
+        "build/reference-v2-layout/vi-switched-keeper-pg-r1b",
+        "--out",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/check-evidence/physical-module.json"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "9d484debd3ccfd242494bc7a87e3ab5909fad6eb406d17954b1fbc9aa76afa60"
+    }
+  ]
+}

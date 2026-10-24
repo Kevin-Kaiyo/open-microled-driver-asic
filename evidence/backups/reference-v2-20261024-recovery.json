@@ -1,0 +1,417 @@
+{
+  "passed": true,
+  "scope": "GitHub fresh shallow checkout on same macOS host using existing Python/ngspice/Icarus. Downloaded six small groups; no full waveform restore, no new EDA run, no other-OS qualification. Physical validators read existing reports and geometry.",
+  "source_commit": "29266d9758894e87bc08a77a3ddf4f86f7b502e1",
+  "tree": "67aae915d64a76c5a20e963c464f010e70fc83c0",
+  "manifest_sha256": "ff5dc9f3946b7ccdd95619ea50e7ea388ba882b9b5e43203545e59da2dd2c132",
+  "upload_index_sha256": "9441ea2559da1252790a93169c8b92d04b03458b46c263ac9fd5ba92cd6ae364",
+  "selected_archives": 6,
+  "planned_regular_files": 4801,
+  "restored_regular_files": 4801,
+  "skipped_identical_files": 0,
+  "current_restored_file_hashes_verified": 4801,
+  "internal_relative_links_verified": 576,
+  "download_hash_checks": [
+    {
+      "name": "reference-v2-20261024.json",
+      "size": 1534784,
+      "sha256": "ff5dc9f3946b7ccdd95619ea50e7ea388ba882b9b5e43203545e59da2dd2c132",
+      "passed": true
+    },
+    {
+      "name": "reference-v2-20261024-scope.json",
+      "size": 261587,
+      "sha256": "9e87a50978c767ae8a840bd197eee0dffe356fced81125792dbfe21a221a026d",
+      "passed": true
+    },
+    {
+      "name": "restore_symlinks.py",
+      "size": 2398,
+      "sha256": "c90ec6127b5dd31c90d8bc686c20dd4f43a3d0dc4f610153d359ca530d97428a",
+      "passed": true
+    },
+    {
+      "name": "backup_common.py",
+      "size": 8402,
+      "sha256": "01994295731ffdd0469c49ed415a57fd516417835060f1ac16ce2f25b90b34c0",
+      "passed": true
+    },
+    {
+      "name": "reference-v2-20261024-nrz-inputs-001.tar.gz",
+      "size": 2410096,
+      "sha256": "4a0ef82160c373a6527f8eda218ebb6c08d5168afb4f6585558707ab0fc98cae",
+      "passed": true
+    },
+    {
+      "name": "reference-v2-20261024-nrz-metadata-001.tar.gz",
+      "size": 4409359,
+      "sha256": "d30f6e845f1c98a9a16caf8486a9fccc41897dae81070523bb54252c9878b2ee",
+      "passed": true
+    },
+    {
+      "name": "reference-v2-20261024-physical-evidence-001.tar.gz",
+      "size": 7552261,
+      "sha256": "b75f04c4f9b196fad2389cd53a396413ec0b8504059e72fc87dd0ee97c87f02b",
+      "passed": true
+    },
+    {
+      "name": "reference-v2-20261024-pwm-inputs-001.tar.gz",
+      "size": 14203497,
+      "sha256": "d8c79bb69a2bcfbeee4c0457dbf7017e8776241303600e45d50349e1673818c3",
+      "passed": true
+    },
+    {
+      "name": "reference-v2-20261024-pwm-metadata-001.tar.gz",
+      "size": 3809376,
+      "sha256": "7d6f3cc38bae8626ba390dec845f2392f39ca3f779c0f799d0a108859bbeb8fc",
+      "passed": true
+    },
+    {
+      "name": "reference-v2-20261024-report-support-001.tar.gz",
+      "size": 13593165,
+      "sha256": "2220243be0b025e0a405fd8a69e94d796fb7dc941ef7ecb5ea0b2f4295c1e939",
+      "passed": true
+    }
+  ],
+  "commands_verified": [
+    {
+      "name": "download",
+      "command": [
+        "gh",
+        "release",
+        "download",
+        "reference-v2-20261024",
+        "--repo",
+        "Kevin-Kaiyo/open-microled-driver-asic",
+        "--dir",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads",
+        "--pattern",
+        "reference-v2-20261024.json",
+        "--pattern",
+        "reference-v2-20261024-scope.json",
+        "--pattern",
+        "restore_symlinks.py",
+        "--pattern",
+        "backup_common.py",
+        "--pattern",
+        "reference-v2-20261024-nrz-inputs-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-nrz-metadata-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-physical-evidence-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-pwm-inputs-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-pwm-metadata-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-report-support-001.tar.gz"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "restore",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/backup/release_bundle.py",
+        "restore",
+        "--manifest",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads/reference-v2-20261024.json",
+        "--asset-dir",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads",
+        "--root",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/repository",
+        "--group",
+        "nrz-inputs",
+        "--group",
+        "nrz-metadata",
+        "--group",
+        "pwm-inputs",
+        "--group",
+        "pwm-metadata",
+        "--group",
+        "physical-evidence",
+        "--group",
+        "report-support"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "cb35f99b0cdbfd8104e226f2e58358eb47a8d21f96f49a33a6076317229c53da"
+    },
+    {
+      "name": "restore-links",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads/restore_symlinks.py",
+        "--root",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/repository",
+        "--scope",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads/reference-v2-20261024-scope.json",
+        "--execute"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "366485e218c481ad9c65305b8c8962a253790d8c0c8b81b4cf5db3c832c8baff"
+    }
+  ],
+  "created_at_utc": "2026-10-24T13:28:17.142838+00:00",
+  "restored_groups": [
+    "nrz-inputs",
+    "nrz-metadata",
+    "pwm-inputs",
+    "pwm-metadata",
+    "physical-evidence",
+    "report-support"
+  ],
+  "commands": [
+    {
+      "name": "download",
+      "command": [
+        "gh",
+        "release",
+        "download",
+        "reference-v2-20261024",
+        "--repo",
+        "Kevin-Kaiyo/open-microled-driver-asic",
+        "--dir",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads",
+        "--pattern",
+        "reference-v2-20261024.json",
+        "--pattern",
+        "reference-v2-20261024-scope.json",
+        "--pattern",
+        "restore_symlinks.py",
+        "--pattern",
+        "backup_common.py",
+        "--pattern",
+        "reference-v2-20261024-nrz-inputs-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-nrz-metadata-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-physical-evidence-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-pwm-inputs-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-pwm-metadata-001.tar.gz",
+        "--pattern",
+        "reference-v2-20261024-report-support-001.tar.gz"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "restore",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/backup/release_bundle.py",
+        "restore",
+        "--manifest",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads/reference-v2-20261024.json",
+        "--asset-dir",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads",
+        "--root",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/repository",
+        "--group",
+        "nrz-inputs",
+        "--group",
+        "nrz-metadata",
+        "--group",
+        "pwm-inputs",
+        "--group",
+        "pwm-metadata",
+        "--group",
+        "physical-evidence",
+        "--group",
+        "report-support"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "cb35f99b0cdbfd8104e226f2e58358eb47a8d21f96f49a33a6076317229c53da"
+    },
+    {
+      "name": "restore-links",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads/restore_symlinks.py",
+        "--root",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/repository",
+        "--scope",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/downloads/reference-v2-20261024-scope.json",
+        "--execute"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "366485e218c481ad9c65305b8c8962a253790d8c0c8b81b4cf5db3c832c8baff"
+    },
+    {
+      "name": "nrz-dc",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/nrz_reference_v2/reproduce.py",
+        "--source-work",
+        "build/nrz-reference-v2/selected-final-r2",
+        "--out",
+        "build/nrz-reference-v2/github-recovery-smoke-dc",
+        "--smoke-dc"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 1,
+      "log_sha256": "374db0d84a732748dd10a8c6deab3978db1565cfd484c52cd294815829a686ed"
+    },
+    {
+      "name": "nrz-dc-retry1",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/nrz_reference_v2/reproduce.py",
+        "--source-work",
+        "build/nrz-reference-v2/selected-final-r2",
+        "--out",
+        "build/nrz-reference-v2/github-recovery-smoke-dc-retry1",
+        "--smoke-dc"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "adb7b9e53c94197c344dde5dcbf4977a5493097d56227fe8e51a4db24082df53"
+    },
+    {
+      "name": "pwm-dc",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/pwm_reference_v2/reproduce.py",
+        "--source",
+        "build/pwm-reference-v2/20261024",
+        "--case",
+        "c15_dc",
+        "--destination",
+        "build/pwm-reference-v2/github-recovery-c15-dc"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "f990307bfeb300190c6b234d183ee111af191ccfc850c39e0fb58b690fdfb3f6"
+    },
+    {
+      "name": "physical-joint",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/reference_v2_layout/validate.py",
+        "--run",
+        "build/reference-v2-layout/nrz-switched-keeper-joint-r1",
+        "--out",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/check-evidence/physical-joint.json"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "3ef5ae051165a140a1439d17f6950e5c008d10ca2c5f046dff2a519af4ecf728"
+    },
+    {
+      "name": "physical-module",
+      "command": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "scripts/reference_v2_layout/validate.py",
+        "--run",
+        "build/reference-v2-layout/vi-switched-keeper-pg-r1b",
+        "--out",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-reference-v2-20261024/check-evidence/physical-module.json"
+      ],
+      "cwd": "build/github-recovery-reference-v2-20261024/repository",
+      "exit_code": 0,
+      "log_sha256": "9d484debd3ccfd242494bc7a87e3ab5909fad6eb406d17954b1fbc9aa76afa60"
+    }
+  ],
+  "nrz_reproduction": {
+    "source_manifest_sha256": "d93c6d942b00bd01705089898d9e76e2fcbf37791a124a6e6cfcacc144cc384b",
+    "new_manifest_sha256": "2d20ec13a2e2b30e9c8501abbdd8226a180c463f2e58119937ca2d418fae7eb3",
+    "copied_files": 31,
+    "case": {
+      "route": "B",
+      "rate_Gbps": 0.5,
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "cap_F": 2e-13,
+      "r_pkg": 1.0,
+      "l_pkg": 5e-10,
+      "edge_s": 2e-11,
+      "steps_per_ui": 40,
+      "reltol": 1e-05,
+      "chgtol": 1e-16,
+      "method": "gear",
+      "kind": "DC_TT",
+      "compensation": "shunt",
+      "vi_comp_F": 1.5e-10,
+      "dc_bit": 1,
+      "name": "REFERENCE-B-DC_TT-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-bit1",
+      "variant": "REFERENCE",
+      "res_corner": "typical",
+      "data_mode": "tracking",
+      "data_high_V": 3.3
+    },
+    "source_analysis_sha256": "dc58217c82967174379be563d35ffaecbca01aad67e8844dbb85f5f25f7f76d2",
+    "new_analysis_sha256": "f3f2682a3eac366efdfbe22da8d2a62078ccd8c845046c1cd5124707ca879091",
+    "source_current_A": 0.0001003951622364039,
+    "new_current_A": 0.0001003951622364039,
+    "current_difference_A": 0.0,
+    "reproduction_passed": true,
+    "scope": "Samehost frozen-input DC smoke; not new fullmatrix/EDA/optical test",
+    "entry_source_sha256": "7f9f9528794f673e082827f72710f615cc0d1e29cf56f58a56d3ac20e75d39c0"
+  },
+  "pwm_reproduction": {
+    "case": "c15_dc",
+    "original_deck_sha256": "3b8ae1efa956bfddf40881372b2c62b143ada2456cee5a93ef08f1e0521fa568",
+    "relocated_deck_sha256": "f795c732c58cc5d094e2f2775a98c9ee62db9d5ff0c43c282e365d8b719d61d9",
+    "source_manifest_sha256": "7f47c994582d91177fc9de8228cedf009fea5ba15395e4f14e0f2e0c6e977337",
+    "executed_runner_sha256": "dca36f92884d3c6ab335c9b44d2c0a00f7c0dbb0ab63ce992b404b6af301b668",
+    "verified_inputs": {
+      "design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+      "sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46",
+      "dut.spice": "d6ebc340c5f2096c43e1358b851d68590fefddbf47b5cc6e746ffc3c12851424",
+      "microled.spice": "ce9a3453abb87fc2aea894e7da2eff1448ff90a1432243ea90c747716ed20bba",
+      "pixel_pwm.v": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+      "pixel_safety.v": "a6f4ef3f0705dec13d578ef6c0e6a6dd755e2d7b7714d7fb1411fbd078672a93",
+      "tb_safety.v": "76d4f5130d8fefb4769508e074f19213886b3fed55003ea744b7c51482dd20c7",
+      "math.py": "4f52656c2306403bfd7db9aa6909b23777ad525f92d603672fca1b7121da4975",
+      "legacy_runner_original.py": "8b5dfb7b00de12192f4aa8c2fbab4abc9e300aff9c4c081ff1594021fc6f0996",
+      "old_loop_runner.py": "f50aab6c625557dffe8a705f8d30c9d6c33b72bc6dd2af0babe85ede4bab0a81",
+      "scope.json": "97c479f6329d876032266c6dd3c46de95d0d86c99f26f77b7484104fb7af36af",
+      "damped-network.json": "c459240e377e950b3cddae15319417dab4822ca1c4ffddea56df250463b0a73d",
+      "experiment-02.json": "2732eb89f3e492ce90c101799d2cd1e5d35df03226b1cfa198baee02e7cb2194",
+      "experiment-03.json": "d379d29102e0449f27f730383be3221177c04c0d547bf02def7bb2bca513014d",
+      "experiment-04.json": "2cfb2134999d5cdf35f89aa564fcc7a39ea030f259e94f40ca35451c11276535",
+      "experiment-05-damping.json": "b4b03fade4aa0019d9bc2b198c2c3e9daf5652573d0ff669757c2c4b7877a454",
+      "experiment-06-numerics.json": "6b75b211c08fa91b8abfc8ed2953fbede8978c66a875066df67d608e877b0d35",
+      "experiment-07-startup-headroom.json": "3f0fe27e3913fc2915de263724c9246854ca39e84c8bb335a2509f175c5d0d4a",
+      "experiment-08-ss-recovery.json": "58bb945efa2acac927378f182746b409af36d7ba8c556cce10ce7eeccafbeaa4",
+      "final-network-0cd4714c7f768fc6.json": "0cd4714c7f768fc6bbf57133f9e163aa333591f3f30a96c2fd77b6c7e133c2ec",
+      "softstart_v1.spice": "180ef4bf0c066f6950e390b1a48075a4ae00fa330f3be94a7bf4a830bf7a81a2",
+      "legacy_runner_relocated.py": "21715993d9799c29aca2ab731d3dbc2f2e352a035620c88f1857ebc6a12be143"
+    },
+    "ngspice_version": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******\n",
+    "elapsed_s": 0.15768814086914062,
+    "elapsed_ngspice_s": 0.13835906982421875,
+    "lock_wait_s": 9.822845458984375e-05,
+    "reproducer_sha256": "4376dbd53910d9b763851c3fff3a909f568590c61ee45ddd5c3d79853bab2c17",
+    "rtl_recompiled": true,
+    "rtl_event_bytes_match": null,
+    "raw_sha256": "7c1ef22521fed7948f2a1516d99adabf782a45b501b46b014f295938bddf7e11",
+    "raw_byte_identity_to_original": true,
+    "gzip_sha256": "a7a5acb38983abd4edc9f20c9c898ea55fed8299ef701f6fbfc6b9a5dbebaf93",
+    "log_sha256": "4f51ac95018dae4dd2452ec0633f7c268633593bf3d3f4c202cca587c920a3bd",
+    "rows": 1,
+    "boundary": "Includes relocated only; no previous-round files read. Cross-platform numerical equivalence may need metrics comparison even when byte identity differs.",
+    "current_a": 9.97335114117108e-05,
+    "dc_error_pct": -0.2664885882891932,
+    "current_delta_from_original_a": 0.0
+  },
+  "prior_failure": "Initial NRZ run stopped before simulation by minimum 5 GiB free-space guard; failed run and logs preserved. Verified staging archives removed after full remote readback and file restoration; original data retained; no solver guard bypass."
+}

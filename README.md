@@ -12,6 +12,8 @@ An independent, open platform for experimental R&D methodology validation and te
 
 每个已验证阶段完成后同步。代码、报告、最终 Blender 场景和紧凑证据保存在 Git；大型原始数据采用有 SHA-256 清单的 Release 附件。阅读 [跨机接续说明](docs/development-handoff.md)，按需恢复指定实验。普通 `git clone` 不包含被忽略的全部 `build/`、PDK 或虚拟机。
 
+[2026-10-24 参考源与受控启动快照](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/reference-v2-20261024)：22 个归档、5,760 个文件，29 份远端资产均完成 SHA-256 回读。新检出恢复4,801文件与576相对链接；PWM和NRZ两个DC点复跑与原结果均差0。仅清理本轮已验证的压缩暂存副本，保留原始实验和失败证据；恢复边界见[交接说明](docs/development-handoff.md)。
+
 [2026-10-24 显示PWM与高速NRZ扰动快照](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/driver-robustness-20261024)：25 个归档、2,302 个文件，32 份远端资产均完成 SHA-256 回读。新检出恢复 2,057 个小输入/物理文件，PWM和NRZ各一个DC点复跑与原结果差0；完整矩阵及跨操作系统验证范围见[交接说明](docs/development-handoff.md)。
 
 [2026-10-23 慢热/快冷修复快照](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/nrz-pvt-20261023)：17 个增量归档、2,400 个文件；跨机依赖、逐文件清单、远端回读和限定恢复记录见[交接说明](docs/development-handoff.md)。完整物理 PDK 和旧版基线按各自清单恢复。

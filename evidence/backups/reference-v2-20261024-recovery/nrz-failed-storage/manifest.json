@@ -1,0 +1,129 @@
+{
+  "created": "2026-10-24T21:00:24.744288",
+  "base_commit": "112ba95969ac6a2141c305324ea694e7b96c0765",
+  "parent_manifest_sha256": "188384a3866aaf2f903997d37375d6e2ac90152bf94edf7aff28dd7ea36a1a4b",
+  "common": {
+    "vled_V": 5.0,
+    "vdd_V": 3.3,
+    "led_C_F": 2e-13,
+    "package_R_ohm": 1.0,
+    "package_L_H": 5e-10,
+    "I0_A": 2.5e-05,
+    "I1_A": 0.0001,
+    "edge_s": 2e-11,
+    "temperature_C": 27,
+    "corner": "typical",
+    "optical_proxy_tau_s": 2e-10,
+    "receiver_bw_Hz": 1000000000.0,
+    "fixed_threshold_A": 6.25e-05,
+    "temperature_caution": "MOS temperature changes only; measured LED DC curve has no temperature model"
+  },
+  "variants": {
+    "B": {
+      "BASELINE": {
+        "path": "physical/B-AFTER.spice",
+        "sha256": "fcb457660f238ee402237378a48b06496109b101d51ee85e8a7257224e7ee6ae",
+        "subckt": "hs_steering_robust",
+        "ports": [
+          "data",
+          "out",
+          "vdd",
+          "vss",
+          "bias",
+          "dummy"
+        ],
+        "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/hs_steering_robust_rc.spice",
+        "rref_source": "vdummy",
+        "rref_ohm": 88386.1064910889
+      },
+      "REFERENCE": {
+        "path": "physical/B-reference-RC.spice",
+        "sha256": "925b0e98ede116b7d3dc0c0f326aa1704fd08b84dd8cabe39cf03ae4ac4f3d6a",
+        "reference_v2": true,
+        "direct_raw": true,
+        "disable_clamp": true,
+        "switched_keeper": true,
+        "keeper_ohm": 1800000.0,
+        "rdummy_ohm": 50000,
+        "reference_control": "12MOS VI, external DISABLE clamp and conditional keeper, integrated with old B in real GDS/fullRC",
+        "source_blocks": [
+          {
+            "path": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/full-rc/nrz_reference_integrated_rc.spice",
+            "sha256": "925b0e98ede116b7d3dc0c0f326aa1704fd08b84dd8cabe39cf03ae4ac4f3d6a"
+          },
+          {
+            "path": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/physical-contract.json",
+            "sha256": "d3f1edef031658c48a63a1257feb215b083976d906c68115ee90558d7bd6f844"
+          }
+        ],
+        "top_level_interconnect": "Actual routed integrated top, all extracted R/C retained"
+      }
+    }
+  },
+  "stimulus_sha256": "deaf1d197e63fd56f75b2681e6032a8402673cd9ff7e642a5cc6675db4609bf1",
+  "source_hashes": {
+    "led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+    "pipeline/pilot.py": "9bf574b906f34fccc822c95fc1fe19c91b8d29684cb0a26803e92104809d6831",
+    "pipeline/clamped_refinement.py": "aae6b8d97fdfe2f75dee79260e4d1b257278a7a6f9c36178f038014e9452ac44",
+    "pipeline/run.py": "3d1c6a296af7dd813540a97aceb20436b2802cdf93f4ae4dbb2949c30d0f5dec",
+    "pipeline/geometry_control.py": "656655bd056a4e3dc3b6d870fd82fc03d7bd3b9bf366aeb334d8443db643657a",
+    "pipeline/ac_loop.py": "cacac222358c50441317b518f8ced27302a2fd9dd3b8c4305bc03a6e4f44457e",
+    "pipeline/startup_pilot.py": "e0520c6fa65859fab49e4c4021053a3d69f12296bc37e4b33bf00e40e33b9e7f",
+    "pipeline/compensation.py": "5584b530613025598a8bc27bf210e14273280b5870a331bbc2ea8c4d2e20f61e",
+    "pipeline/final_v2.py": "d11659bd7b52802a27dd55109d90124466a0084d8ded308519ea8a33717e51d7",
+    "pipeline/stability_diagnostics.py": "13fa161ee902760a01b384b065880ada54c32615080947ebc4d10665a1cc6206",
+    "pipeline/clamp_dc.py": "bc3960120c5e7f8ff2587db88677191bbddc7b3fd61bd6b9ef1c28e278e6917d",
+    "pipeline/vi_loop.py": "1cc5d662ab2534c3f2280753df7590ab26cb94d660522aa441ee2fb5c079c764",
+    "pipeline/experiment.py": "d8ef9cca559047c42c576ed96f6418cff99236b8cf87aedd93c0372297c334f0",
+    "pipeline/switched_keeper.py": "1a807c4a1ed3d252d35caa25e3a1c5cc891fa1f8b9ea73816342e5d5ca292fa7",
+    "pipeline/validate.py": "1dc13876b56cadab6f1f95132b82f9618c627e85874ab3e2f59602b3fd2acb73",
+    "pipeline/direct_raw.py": "3c7c0599e4e318e26129e3ce363c44f953a610e91720ced30da227558a493081",
+    "pipeline/vi_startup.py": "6287feceee654b49b4ce3c72a050116549e7cae95669ad94c24e1a37426e818e",
+    "pipeline/test_pipeline.py": "c6df4fe6b12cc59ec3581f94f85a9c72154fba2bb15f3ca158e2a437f09f0f6e",
+    "pipeline/clamped_pilot.py": "0fb44b36591aea4d666ad0017e3aea6b38f31c3f6ca3932b21ea58ba7508006a",
+    "pipeline/startup_full.py": "44a6039739e79f301cf90a3b8d0ecfce097f6f26a58242f6ea5047846c930c90",
+    "pipeline/startup_metrics.py": "a2dbb9d70a148d65bdbf8d4ed3e46f0d41bb51756a7ecdad79b39e6dbabf3b1b",
+    "physical/B-reference-RC.spice": "925b0e98ede116b7d3dc0c0f326aa1704fd08b84dd8cabe39cf03ae4ac4f3d6a",
+    "physical/B-AFTER.spice": "fcb457660f238ee402237378a48b06496109b101d51ee85e8a7257224e7ee6ae",
+    "physical/integrated-contract.json": "d3f1edef031658c48a63a1257feb215b083976d906c68115ee90558d7bd6f844",
+    "physical/B-contract.json": "c12431238cce6d27b9422f38af6e9be1885c8e15e5530eb05e53f0f3929cd79d",
+    "legacy/metrics.py": "07fdffa7ab8eb011a070d018ccf683902471427633170b9e83df697ce525180e",
+    "legacy/run.py": "3a9a78a10f4964bc6ee1de793510a425091014af08989d06043b01b49b2ccea1",
+    "legacy/analyze.py": "ef4a96fd06d7d7ec7a252fbed74eb143f8e1990f86a333d9284526fb8e292c22",
+    "pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+  },
+  "scope": {
+    "rate_Gbps": 0.5,
+    "receiver": "Original PRBS/training/validation and62.5uA fixedthreshold unchanged",
+    "LED": "Original measuredstatic model,200fF; no temperature fit",
+    "energy": "Actual all source v(t)*i(t) plus DATA, including RAW,VREF and DISABLE; external reference internalIq separately budgeted",
+    "terminal_screen": "03v3 sixpairs3.63V and06v0 sixpairs6.0V; gatepairs separately, not SOA signoff",
+    "board_boundary": "External2.5V anchor,200k/50k divider,RSET20k,RIBIAS100k,RDUMMY50k,RKEEP1.8M,IN2-to-boardGND150pF,VINinput100nF ESR.2,RAWinput.25ohm/.5nH,GPIO100ohm. Not onchipPEX.",
+    "startup_contract": "ExternalDISABLE3.3V asserted before supplies; release20us after1us anchor ramp begins; holdLED<=2uA, reach100uA±5% within2us afterrelease. Not autonomousPOR or zero-current off.",
+    "tolerance": "Deterministic independent resistor initialerror and signedlinearTC; genericanchor initialerror/linearTC are engineering assumptions, not a vendor boxTC guarantee",
+    "resources": {
+      "retained_build_budget_GiB": 2,
+      "free_floor_GiB": 5
+    },
+    "component_selection": {
+      "RSET_nominal_ohm": 20000,
+      "RSET_initial_error": 0.001,
+      "RSET_signed_linear_TC_ppm_per_C": 25,
+      "RDUMMY_nominal_ohm": 50000,
+      "RDUMMY_initial_error": 0.01,
+      "RDUMMY_signed_linear_TC_ppm_per_C": 100,
+      "RSET_recalibration": "none; nominal20kunchanged",
+      "anchor_initial_error": 0.0005,
+      "anchor_signed_linear_TC_ppm_per_C": 30,
+      "divider_initial_error_independent": 0.001
+    },
+    "keeper_interface": "RKEEP OUT-to-KRET1.8Mohm external; onchip06MOS KRET-to-VSS controlled byDISABLE. Conducts duringhold, disconnected duringnormalNRZ."
+  },
+  "reproduction": {
+    "created": "2026-10-24T22:20:50.699323",
+    "source_work": "build/nrz-reference-v2/selected-final-r2",
+    "parent_manifest_sha256": "d93c6d942b00bd01705089898d9e76e2fcbf37791a124a6e6cfcacc144cc384b",
+    "copied": "inputs+stimulus only; no oldcases/raw"
+  }
+}

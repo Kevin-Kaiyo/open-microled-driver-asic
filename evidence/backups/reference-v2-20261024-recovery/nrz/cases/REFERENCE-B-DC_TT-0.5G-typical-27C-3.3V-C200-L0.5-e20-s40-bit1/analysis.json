@@ -1,0 +1,1926 @@
+{
+  "case": {
+    "route": "B",
+    "rate_Gbps": 0.5,
+    "corner": "typical",
+    "temp_C": 27,
+    "vdd_V": 3.3,
+    "cap_F": 2e-13,
+    "r_pkg": 1.0,
+    "l_pkg": 5e-10,
+    "edge_s": 2e-11,
+    "steps_per_ui": 40,
+    "reltol": 1e-05,
+    "chgtol": 1e-16,
+    "method": "gear",
+    "kind": "DC_TT",
+    "compensation": "shunt",
+    "vi_comp_F": 1.5e-10,
+    "dc_bit": 1,
+    "name": "REFERENCE-B-DC_TT-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-bit1",
+    "variant": "REFERENCE",
+    "res_corner": "typical",
+    "data_mode": "tracking",
+    "data_high_V": 3.3
+  },
+  "simulation_ok": true,
+  "analysis_ok": true,
+  "analysis_identity": {
+    "analyzer_source": "build/nrz-reference-v2/github-recovery-smoke-dc-retry1/execution-sources/analysis-1dc13876b56cadab6f1f95132b82f9618c627e85874ab3e2f59602b3fd2acb73.py",
+    "result_sha256": "b369533addd4aacdcb35761b5587f1fb33e2e152f43ca9b8f69c01b003db7111",
+    "custom_analyzer_sha256": "1dc13876b56cadab6f1f95132b82f9618c627e85874ab3e2f59602b3fd2acb73",
+    "legacy_metrics_sha256": "07fdffa7ab8eb011a070d018ccf683902471427633170b9e83df697ce525180e",
+    "legacy_analyze_sha256": "ef4a96fd06d7d7ec7a252fbed74eb143f8e1990f86a333d9284526fb8e292c22"
+  },
+  "sources": {
+    "result_json": "build/nrz-reference-v2/github-recovery-smoke-dc-retry1/cases/REFERENCE-B-DC_TT-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-bit1/result.json",
+    "result_sha256": "b369533addd4aacdcb35761b5587f1fb33e2e152f43ca9b8f69c01b003db7111",
+    "waveform": "build/nrz-reference-v2/github-recovery-smoke-dc-retry1/cases/REFERENCE-B-DC_TT-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-bit1/waveform.dat.gz",
+    "waveform_sha256": "ead0043c87d172fc75e450ea66618cfee28315bf0821cd34953739c820702509",
+    "uncompressed_sha256": "fc5a5a2a176015a83a7d873ce1616e4183e97d27fab240c5cf09defebb25d9db",
+    "deck_sha256": "960514e147dcf12cd0d0b4ce4d305628d699f9d111cadf495b47e3d72fb4b432",
+    "rows": 1,
+    "hash_checks": "passed",
+    "duplicates_removed": 0
+  },
+  "stress": {
+    "scope": "DC operating point",
+    "screen_voltage_V": 3.63,
+    "screen_caution": "sampled-waveform maxima, uniform absolute-difference screening only; not foundry reliability sign-off",
+    "all_devices": [
+      {
+        "instance": "x0",
+        "nodes": [
+          "xdrv.vss.t14",
+          "xdrv.di.t2",
+          "xdrv.gb.t1",
+          "xdrv.vss.t13"
+        ],
+        "model": "nfet_06v0",
+        "sizing": "ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": 3.2985147612772687,
+            "max_V": 3.2985147612772687,
+            "max_abs_V": 3.2985147612772687,
+            "at_max_abs_signed_V": 3.2985147612772687,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": 3.298514765547943,
+            "max_V": 3.298514765547943,
+            "max_abs_V": 3.298514765547943,
+            "at_max_abs_signed_V": 3.298514765547943,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": 3.298596563449215,
+            "max_V": 3.298596563449215,
+            "max_abs_V": 3.298596563449215,
+            "at_max_abs_signed_V": 3.298596563449215,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": -4.270674256942608e-09,
+            "max_V": -4.270674256942608e-09,
+            "max_abs_V": 4.270674256942608e-09,
+            "at_max_abs_signed_V": -4.270674256942608e-09,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": 8.179790127218903e-05,
+            "max_V": 8.179790127218903e-05,
+            "max_abs_V": 8.179790127218903e-05,
+            "at_max_abs_signed_V": 8.179790127218903e-05,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": 8.180217194644597e-05,
+            "max_V": 8.180217194644597e-05,
+            "max_abs_V": 8.180217194644597e-05,
+            "at_max_abs_signed_V": 8.180217194644597e-05,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGB",
+        "max_abs_terminal_V": 3.298596563449215,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VBS": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -8.180217194644597e-05
+          },
+          "VBD": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -8.179790127218903e-05
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x1",
+        "nodes": [
+          "xdrv.vin.t3",
+          "xdrv.ictrl.t0",
+          "xdrv.ictrl.t1",
+          "xdrv.vin.t2"
+        ],
+        "model": "pfet_06v0",
+        "sizing": "ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": -0.0010052716345669843,
+            "max_V": -0.0010052716345669843,
+            "max_abs_V": 0.0010052716345669843,
+            "at_max_abs_signed_V": -0.0010052716345669843,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": -1.3946749946644168,
+            "max_V": -1.3946749946644168,
+            "max_abs_V": 1.3946749946644168,
+            "at_max_abs_signed_V": -1.3946749946644168,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": -1.3950081042277827,
+            "max_V": -1.3950081042277827,
+            "max_abs_V": 1.3950081042277827,
+            "at_max_abs_signed_V": -1.3950081042277827,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": 1.3936697230298498,
+            "max_V": 1.3936697230298498,
+            "max_abs_V": 1.3936697230298498,
+            "at_max_abs_signed_V": 1.3936697230298498,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": -0.00033310956336585207,
+            "max_V": -0.00033310956336585207,
+            "max_abs_V": 0.00033310956336585207,
+            "at_max_abs_signed_V": -0.00033310956336585207,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": -1.3940028325932157,
+            "max_V": -1.3940028325932157,
+            "max_abs_V": 1.3940028325932157,
+            "at_max_abs_signed_V": -1.3940028325932157,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGB",
+        "max_abs_terminal_V": 1.3950081042277827,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VSB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -1.3940028325932157
+          },
+          "VDB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.00033310956336585207
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x2",
+        "nodes": [
+          "xdrv.vin.t1",
+          "xdrv.ictrl.t3",
+          "xdrv.bias.t3",
+          "xdrv.vin.t0"
+        ],
+        "model": "pfet_06v0",
+        "sizing": "ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": 2.487567461376099,
+            "max_V": 2.487567461376099,
+            "max_abs_V": 2.487567461376099,
+            "at_max_abs_signed_V": 2.487567461376099,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": -1.394655898997537,
+            "max_V": -1.394655898997537,
+            "max_abs_V": 1.394655898997537,
+            "at_max_abs_signed_V": -1.394655898997537,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": -1.3949888870090197,
+            "max_V": -1.3949888870090197,
+            "max_abs_V": 1.3949888870090197,
+            "at_max_abs_signed_V": -1.3949888870090197,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": 3.882223360373636,
+            "max_V": 3.882223360373636,
+            "max_abs_V": 3.882223360373636,
+            "at_max_abs_signed_V": 3.882223360373636,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": -0.0003329880114826267,
+            "max_V": -0.0003329880114826267,
+            "max_abs_V": 0.0003329880114826267,
+            "at_max_abs_signed_V": -0.0003329880114826267,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": -3.8825563483851186,
+            "max_V": -3.8825563483851186,
+            "max_abs_V": 3.8825563483851186,
+            "at_max_abs_signed_V": -3.8825563483851186,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VSB",
+        "max_abs_terminal_V": 3.8825563483851186,
+        "above_3p63V_screen": true,
+        "body_junction_forward": {
+          "VSB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -3.8825563483851186
+          },
+          "VDB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.0003329880114826267
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x4",
+        "nodes": [
+          "xdrv.vx.t1",
+          "xdrv.gb.t2",
+          "xdrv.dummy.t0",
+          "xdrv.vss.t19"
+        ],
+        "model": "nfet_06v0",
+        "sizing": "ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": -4.99847946676316,
+            "max_V": -4.99847946676316,
+            "max_abs_V": 4.99847946676316,
+            "at_max_abs_signed_V": -4.99847946676316,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": -1.03636113445588,
+            "max_V": -1.03636113445588,
+            "max_abs_V": 1.03636113445588,
+            "at_max_abs_signed_V": -1.03636113445588,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": -0.0007690694940581161,
+            "max_V": -0.0007690694940581161,
+            "max_abs_V": 0.0007690694940581161,
+            "at_max_abs_signed_V": -0.0007690694940581161,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": -3.96211833230728,
+            "max_V": -3.96211833230728,
+            "max_abs_V": 3.96211833230728,
+            "at_max_abs_signed_V": -3.96211833230728,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": 1.035592064961822,
+            "max_V": 1.035592064961822,
+            "max_abs_V": 1.035592064961822,
+            "at_max_abs_signed_V": 1.035592064961822,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": 4.997710397269102,
+            "max_V": 4.997710397269102,
+            "max_abs_V": 4.997710397269102,
+            "at_max_abs_signed_V": 4.997710397269102,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGS",
+        "max_abs_terminal_V": 4.99847946676316,
+        "above_3p63V_screen": true,
+        "body_junction_forward": {
+          "VBS": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -4.997710397269102
+          },
+          "VBD": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -1.035592064961822
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x5",
+        "nodes": [
+          "xdrv.vin.t11",
+          "xdrv.ipb.t0",
+          "xdrv.ipb.t1",
+          "xdrv.vin.t10"
+        ],
+        "model": "pfet_06v0",
+        "sizing": "ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": -0.001070381790166941,
+            "max_V": -0.001070381790166941,
+            "max_abs_V": 0.001070381790166941,
+            "at_max_abs_signed_V": -0.001070381790166941,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": -1.7222420574734931,
+            "max_V": -1.7222420574734931,
+            "max_abs_V": 1.7222420574734931,
+            "at_max_abs_signed_V": -1.7222420574734931,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": -1.7226307515149557,
+            "max_V": -1.7226307515149557,
+            "max_abs_V": 1.7226307515149557,
+            "at_max_abs_signed_V": -1.7226307515149557,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": 1.7211716756833262,
+            "max_V": 1.7211716756833262,
+            "max_abs_V": 1.7211716756833262,
+            "at_max_abs_signed_V": 1.7211716756833262,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": -0.00038869404146257835,
+            "max_V": -0.00038869404146257835,
+            "max_abs_V": 0.00038869404146257835,
+            "at_max_abs_signed_V": -0.00038869404146257835,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": -1.7215603697247888,
+            "max_V": -1.7215603697247888,
+            "max_abs_V": 1.7215603697247888,
+            "at_max_abs_signed_V": -1.7215603697247888,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGB",
+        "max_abs_terminal_V": 1.7226307515149557,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VSB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -1.7215603697247888
+          },
+          "VDB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.00038869404146257835
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x6",
+        "nodes": [
+          "xdrv.vss.t1",
+          "xdrv.disable.t1",
+          "xdrv.bias.t0",
+          "xdrv.vss.t0"
+        ],
+        "model": "nfet_06v0",
+        "sizing": "ad=4.4p pd=20.88u as=4.4p ps=20.88u w=10u l=0.7u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": -1.116699546613212,
+            "max_V": -1.116699546613212,
+            "max_abs_V": 1.116699546613212,
+            "at_max_abs_signed_V": -1.116699546613212,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": -0.0001748255859978962,
+            "max_V": -0.0001748255859978962,
+            "max_abs_V": 0.0001748255859978962,
+            "at_max_abs_signed_V": -0.0001748255859978962,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": -0.0001762914339618691,
+            "max_V": -0.0001762914339618691,
+            "max_abs_V": 0.0001762914339618691,
+            "at_max_abs_signed_V": -0.0001762914339618691,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": -1.116524721027214,
+            "max_V": -1.116524721027214,
+            "max_abs_V": 1.116524721027214,
+            "at_max_abs_signed_V": -1.116524721027214,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": -1.4658479639728834e-06,
+            "max_V": -1.4658479639728834e-06,
+            "max_abs_V": 1.4658479639728834e-06,
+            "at_max_abs_signed_V": -1.4658479639728834e-06,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": 1.11652325517925,
+            "max_V": 1.11652325517925,
+            "max_abs_V": 1.11652325517925,
+            "at_max_abs_signed_V": 1.11652325517925,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGS",
+        "max_abs_terminal_V": 1.116699546613212,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VBS": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -1.11652325517925
+          },
+          "VBD": {
+            "max_forward_V": 1.4658479639728834e-06,
+            "max_signed_V": 1.4658479639728834e-06
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x7",
+        "nodes": [
+          "xdrv.itail.t0",
+          "xdrv.sense.t1",
+          "xdrv.in2.t1",
+          "xdrv.vin.t6"
+        ],
+        "model": "pfet_06v0",
+        "sizing": "ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": -0.3440981463279539,
+            "max_V": -0.3440981463279539,
+            "max_abs_V": 0.3440981463279539,
+            "at_max_abs_signed_V": -0.3440981463279539,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": -2.1624101744801867,
+            "max_V": -2.1624101744801867,
+            "max_abs_V": 2.1624101744801867,
+            "at_max_abs_signed_V": -2.1624101744801867,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": -4.499239141361531,
+            "max_V": -4.499239141361531,
+            "max_abs_V": 4.499239141361531,
+            "at_max_abs_signed_V": -4.499239141361531,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": 1.8183120281522327,
+            "max_V": 1.8183120281522327,
+            "max_abs_V": 1.8183120281522327,
+            "at_max_abs_signed_V": 1.8183120281522327,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": -2.3368289668813444,
+            "max_V": -2.3368289668813444,
+            "max_abs_V": 2.3368289668813444,
+            "at_max_abs_signed_V": -2.3368289668813444,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": -4.155140995033577,
+            "max_V": -4.155140995033577,
+            "max_abs_V": 4.155140995033577,
+            "at_max_abs_signed_V": -4.155140995033577,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGB",
+        "max_abs_terminal_V": 4.499239141361531,
+        "above_3p63V_screen": true,
+        "body_junction_forward": {
+          "VSB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -4.155140995033577
+          },
+          "VDB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -2.3368289668813444
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x8",
+        "nodes": [
+          "xdrv.vss.t11",
+          "xdrv.in2.t2",
+          "xdrv.ictrl.t2",
+          "xdrv.vss.t10"
+        ],
+        "model": "nfet_06v0",
+        "sizing": "ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=1u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": -2.760074740931836,
+            "max_V": -2.760074740931836,
+            "max_abs_V": 2.760074740931836,
+            "at_max_abs_signed_V": -2.760074740931836,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": 0.8432093870634377,
+            "max_V": 0.8432093870634377,
+            "max_abs_V": 0.8432093870634377,
+            "at_max_abs_signed_V": 0.8432093870634377,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": 0.8434282042007963,
+            "max_V": 0.8434282042007963,
+            "max_abs_V": 0.8434282042007963,
+            "at_max_abs_signed_V": 0.8434282042007963,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": -3.6032841279952734,
+            "max_V": -3.6032841279952734,
+            "max_abs_V": 3.6032841279952734,
+            "at_max_abs_signed_V": -3.6032841279952734,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": 0.00021881713735864491,
+            "max_V": 0.00021881713735864491,
+            "max_abs_V": 0.00021881713735864491,
+            "at_max_abs_signed_V": 0.00021881713735864491,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": 3.6035029451326324,
+            "max_V": 3.6035029451326324,
+            "max_abs_V": 3.6035029451326324,
+            "at_max_abs_signed_V": 3.6035029451326324,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VSB",
+        "max_abs_terminal_V": 3.6035029451326324,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VBS": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -3.6035029451326324
+          },
+          "VBD": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.00021881713735864491
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x9",
+        "nodes": [
+          "xdrv.itail.t1",
+          "xdrv.vset.t0",
+          "xdrv.in1.t0",
+          "xdrv.vin.t7"
+        ],
+        "model": "pfet_06v0",
+        "sizing": "ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": -0.44407577738324683,
+            "max_V": -0.44407577738324683,
+            "max_abs_V": 0.44407577738324683,
+            "at_max_abs_signed_V": -0.44407577738324683,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": -2.1628431869650036,
+            "max_V": -2.1628431869650036,
+            "max_abs_V": 2.1628431869650036,
+            "at_max_abs_signed_V": -2.1628431869650036,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": -4.499607443503776,
+            "max_V": -4.499607443503776,
+            "max_abs_V": 4.499607443503776,
+            "at_max_abs_signed_V": -4.499607443503776,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": 1.7187674095817569,
+            "max_V": 1.7187674095817569,
+            "max_abs_V": 1.7187674095817569,
+            "at_max_abs_signed_V": 1.7187674095817569,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": -2.336764256538772,
+            "max_V": -2.336764256538772,
+            "max_abs_V": 2.336764256538772,
+            "at_max_abs_signed_V": -2.336764256538772,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": -4.055531666120529,
+            "max_V": -4.055531666120529,
+            "max_abs_V": 4.055531666120529,
+            "at_max_abs_signed_V": -4.055531666120529,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGB",
+        "max_abs_terminal_V": 4.499607443503776,
+        "above_3p63V_screen": true,
+        "body_junction_forward": {
+          "VSB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -4.055531666120529
+          },
+          "VDB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -2.336764256538772
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x10",
+        "nodes": [
+          "xdrv.vin.t9",
+          "xdrv.ipb.t2",
+          "xdrv.itail.t2",
+          "xdrv.vin.t8"
+        ],
+        "model": "pfet_06v0",
+        "sizing": "ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": 0.61239560318102,
+            "max_V": 0.61239560318102,
+            "max_abs_V": 0.61239560318102,
+            "at_max_abs_signed_V": 0.61239560318102,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": -1.722210543423805,
+            "max_V": -1.722210543423805,
+            "max_abs_V": 1.722210543423805,
+            "at_max_abs_signed_V": -1.722210543423805,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": -1.7225445332099225,
+            "max_V": -1.7225445332099225,
+            "max_abs_V": 1.7225445332099225,
+            "at_max_abs_signed_V": -1.7225445332099225,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": 2.334606146604825,
+            "max_V": 2.334606146604825,
+            "max_abs_V": 2.334606146604825,
+            "at_max_abs_signed_V": 2.334606146604825,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": -0.0003339897861174279,
+            "max_V": -0.0003339897861174279,
+            "max_abs_V": 0.0003339897861174279,
+            "at_max_abs_signed_V": -0.0003339897861174279,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": -2.3349401363909426,
+            "max_V": -2.3349401363909426,
+            "max_abs_V": 2.3349401363909426,
+            "at_max_abs_signed_V": -2.3349401363909426,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VSB",
+        "max_abs_terminal_V": 2.3349401363909426,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VSB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -2.3349401363909426
+          },
+          "VDB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.0003339897861174279
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x11",
+        "nodes": [
+          "xdrv.vss.t5",
+          "xdrv.bias.t4",
+          "xdrv.out.t1",
+          "xdrv.vss.t4"
+        ],
+        "model": "nfet_03v3",
+        "sizing": "ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": -0.11401471053729995,
+            "max_V": -0.11401471053729995,
+            "max_abs_V": 0.11401471053729995,
+            "at_max_abs_signed_V": -0.11401471053729995,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": 1.1133873278715218,
+            "max_V": 1.1133873278715218,
+            "max_abs_V": 1.1133873278715218,
+            "at_max_abs_signed_V": 1.1133873278715218,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": 1.1138054286462007,
+            "max_V": 1.1138054286462007,
+            "max_abs_V": 1.1138054286462007,
+            "at_max_abs_signed_V": 1.1138054286462007,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": -1.2274020384088218,
+            "max_V": -1.2274020384088218,
+            "max_abs_V": 1.2274020384088218,
+            "at_max_abs_signed_V": -1.2274020384088218,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": 0.00041810077467864916,
+            "max_V": 0.00041810077467864916,
+            "max_abs_V": 0.00041810077467864916,
+            "at_max_abs_signed_V": 0.00041810077467864916,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": 1.2278201391835006,
+            "max_V": 1.2278201391835006,
+            "max_abs_V": 1.2278201391835006,
+            "at_max_abs_signed_V": 1.2278201391835006,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VSB",
+        "max_abs_terminal_V": 1.2278201391835006,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VBS": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -1.2278201391835006
+          },
+          "VBD": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.00041810077467864916
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x12",
+        "nodes": [
+          "xdrv.vin.t5",
+          "xdrv.ictrl.t4",
+          "xdrv.sense.t0",
+          "xdrv.vin.t4"
+        ],
+        "model": "pfet_06v0",
+        "sizing": "ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": 3.102537804103613,
+            "max_V": 3.102537804103613,
+            "max_abs_V": 3.102537804103613,
+            "at_max_abs_signed_V": 3.102537804103613,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": -1.394659476642528,
+            "max_V": -1.394659476642528,
+            "max_abs_V": 1.394659476642528,
+            "at_max_abs_signed_V": -1.394659476642528,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": -1.3949946343350712,
+            "max_V": -1.3949946343350712,
+            "max_abs_V": 1.3949946343350712,
+            "at_max_abs_signed_V": -1.3949946343350712,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": 4.497197280746141,
+            "max_V": 4.497197280746141,
+            "max_abs_V": 4.497197280746141,
+            "at_max_abs_signed_V": 4.497197280746141,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": -0.0003351576925432198,
+            "max_V": -0.0003351576925432198,
+            "max_abs_V": 0.0003351576925432198,
+            "at_max_abs_signed_V": -0.0003351576925432198,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": -4.497532438438684,
+            "max_V": -4.497532438438684,
+            "max_abs_V": 4.497532438438684,
+            "at_max_abs_signed_V": -4.497532438438684,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VSB",
+        "max_abs_terminal_V": 4.497532438438684,
+        "above_3p63V_screen": true,
+        "body_junction_forward": {
+          "VSB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -4.497532438438684
+          },
+          "VDB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.0003351576925432198
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x13",
+        "nodes": [
+          "xdrv.vss.t3",
+          "xdrv.disable.t0",
+          "xdrv.kret.t0",
+          "xdrv.vss.t2"
+        ],
+        "model": "nfet_06v0",
+        "sizing": "ad=0.44p pd=2.88u as=0.44p ps=2.88u w=1u l=0.7u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": -1.230820298092489,
+            "max_V": -1.230820298092489,
+            "max_abs_V": 1.230820298092489,
+            "at_max_abs_signed_V": -1.230820298092489,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": -0.0001749174145156249,
+            "max_V": -0.0001749174145156249,
+            "max_abs_V": 0.0001749174145156249,
+            "at_max_abs_signed_V": -0.0001749174145156249,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": -0.0001750084843183462,
+            "max_V": -0.0001750084843183462,
+            "max_abs_V": 0.0001750084843183462,
+            "at_max_abs_signed_V": -0.0001750084843183462,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": -1.2306453806779734,
+            "max_V": -1.2306453806779734,
+            "max_abs_V": 1.2306453806779734,
+            "at_max_abs_signed_V": -1.2306453806779734,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": -9.1069802721325e-08,
+            "max_V": -9.1069802721325e-08,
+            "max_abs_V": 9.1069802721325e-08,
+            "at_max_abs_signed_V": -9.1069802721325e-08,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": 1.2306452896081705,
+            "max_V": 1.2306452896081705,
+            "max_abs_V": 1.2306452896081705,
+            "at_max_abs_signed_V": 1.2306452896081705,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGS",
+        "max_abs_terminal_V": 1.230820298092489,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VBS": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -1.2306452896081705
+          },
+          "VBD": {
+            "max_forward_V": 9.1069802721325e-08,
+            "max_signed_V": 9.1069802721325e-08
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x14",
+        "nodes": [
+          "xdrv.vx.t2",
+          "xdrv.gp.t2",
+          "xdrv.out.t0",
+          "xdrv.vss.t22"
+        ],
+        "model": "nfet_06v0",
+        "sizing": "ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": 2.070327791122766,
+            "max_V": 2.070327791122766,
+            "max_abs_V": 2.070327791122766,
+            "at_max_abs_signed_V": 2.070327791122766,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": 2.261060564040039,
+            "max_V": 2.261060564040039,
+            "max_abs_V": 2.261060564040039,
+            "at_max_abs_signed_V": 2.261060564040039,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": 3.297899837499853,
+            "max_V": 3.297899837499853,
+            "max_abs_V": 3.297899837499853,
+            "at_max_abs_signed_V": 3.297899837499853,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": -0.19073277291727297,
+            "max_V": -0.19073277291727297,
+            "max_abs_V": 0.19073277291727297,
+            "at_max_abs_signed_V": -0.19073277291727297,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": 1.036839273459814,
+            "max_V": 1.036839273459814,
+            "max_abs_V": 1.036839273459814,
+            "at_max_abs_signed_V": 1.036839273459814,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": 1.227572046377087,
+            "max_V": 1.227572046377087,
+            "max_abs_V": 1.227572046377087,
+            "at_max_abs_signed_V": 1.227572046377087,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGB",
+        "max_abs_terminal_V": 3.297899837499853,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VBS": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -1.227572046377087
+          },
+          "VBD": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -1.036839273459814
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x15",
+        "nodes": [
+          "xdrv.vdd.t1",
+          "xdrv.di.t1",
+          "xdrv.gb.t0",
+          "xdrv.vdd.t0"
+        ],
+        "model": "pfet_06v0",
+        "sizing": "ad=1.7292p pd=8.74u as=1.7292p ps=8.74u w=3.93u l=0.55u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": 3.2985147611740153,
+            "max_V": 3.2985147611740153,
+            "max_abs_V": 3.2985147611740153,
+            "at_max_abs_signed_V": 3.2985147611740153,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": 3.0836888598173573e-10,
+            "max_V": 3.0836888598173573e-10,
+            "max_abs_V": 3.0836888598173573e-10,
+            "at_max_abs_signed_V": 3.0836888598173573e-10,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": 7.481739672243748e-10,
+            "max_V": 7.481739672243748e-10,
+            "max_abs_V": 7.481739672243748e-10,
+            "at_max_abs_signed_V": 7.481739672243748e-10,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": 3.2985147608656464,
+            "max_V": 3.2985147608656464,
+            "max_abs_V": 3.2985147608656464,
+            "at_max_abs_signed_V": 3.2985147608656464,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": 4.3980508124263906e-10,
+            "max_V": 4.3980508124263906e-10,
+            "max_abs_V": 4.3980508124263906e-10,
+            "at_max_abs_signed_V": 4.3980508124263906e-10,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": -3.2985147604258414,
+            "max_V": -3.2985147604258414,
+            "max_abs_V": 3.2985147604258414,
+            "at_max_abs_signed_V": -3.2985147604258414,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGS",
+        "max_abs_terminal_V": 3.2985147611740153,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VSB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -3.2985147604258414
+          },
+          "VDB": {
+            "max_forward_V": 4.3980508124263906e-10,
+            "max_signed_V": 4.3980508124263906e-10
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x16",
+        "nodes": [
+          "xdrv.vss.t18",
+          "xdrv.in1.t3",
+          "xdrv.in2.t0",
+          "xdrv.vss.t17"
+        ],
+        "model": "nfet_06v0",
+        "sizing": "ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": 0.10025002500274305,
+            "max_V": 0.10025002500274305,
+            "max_abs_V": 0.10025002500274305,
+            "at_max_abs_signed_V": 0.10025002500274305,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": 0.9429304802058425,
+            "max_V": 0.9429304802058425,
+            "max_abs_V": 0.9429304802058425,
+            "at_max_abs_signed_V": 0.9429304802058425,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": 0.9430315285200886,
+            "max_V": 0.9430315285200886,
+            "max_abs_V": 0.9430315285200886,
+            "at_max_abs_signed_V": 0.9430315285200886,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": -0.8426804552030994,
+            "max_V": -0.8426804552030994,
+            "max_abs_V": 0.8426804552030994,
+            "at_max_abs_signed_V": -0.8426804552030994,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": 0.0001010483142462212,
+            "max_V": 0.0001010483142462212,
+            "max_abs_V": 0.0001010483142462212,
+            "at_max_abs_signed_V": 0.0001010483142462212,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": 0.8427815035173456,
+            "max_V": 0.8427815035173456,
+            "max_abs_V": 0.8427815035173456,
+            "at_max_abs_signed_V": 0.8427815035173456,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGB",
+        "max_abs_terminal_V": 0.9430315285200886,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VBS": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.8427815035173456
+          },
+          "VBD": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.0001010483142462212
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x17",
+        "nodes": [
+          "xdrv.vss.t7",
+          "xdrv.bias.t5",
+          "xdrv.vx.t0",
+          "xdrv.vss.t6"
+        ],
+        "model": "nfet_03v3",
+        "sizing": "ad=2.5344p pd=12.4u as=2.5344p ps=12.4u w=5.76u l=1u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": 0.07954267825118788,
+            "max_V": 0.07954267825118788,
+            "max_abs_V": 0.07954267825118788,
+            "at_max_abs_signed_V": 0.07954267825118788,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": 1.1129065926207842,
+            "max_V": 1.1129065926207842,
+            "max_abs_V": 1.1129065926207842,
+            "at_max_abs_signed_V": 1.1129065926207842,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": 1.1139979757722318,
+            "max_V": 1.1139979757722318,
+            "max_abs_V": 1.1139979757722318,
+            "at_max_abs_signed_V": 1.1139979757722318,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": -1.0333639143695963,
+            "max_V": -1.0333639143695963,
+            "max_abs_V": 1.0333639143695963,
+            "at_max_abs_signed_V": -1.0333639143695963,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": 0.001091383151447644,
+            "max_V": 0.001091383151447644,
+            "max_abs_V": 0.001091383151447644,
+            "at_max_abs_signed_V": 0.001091383151447644,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": 1.034455297521044,
+            "max_V": 1.034455297521044,
+            "max_abs_V": 1.034455297521044,
+            "at_max_abs_signed_V": 1.034455297521044,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGB",
+        "max_abs_terminal_V": 1.1139979757722318,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VBS": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -1.034455297521044
+          },
+          "VBD": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.001091383151447644
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x18",
+        "nodes": [
+          "xdrv.vss.t9",
+          "xdrv.bias.t1",
+          "xdrv.bias.t2",
+          "xdrv.vss.t8"
+        ],
+        "model": "nfet_03v3",
+        "sizing": "ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": 0.0003675760915280435,
+            "max_V": 0.0003675760915280435,
+            "max_abs_V": 0.0003675760915280435,
+            "at_max_abs_signed_V": 0.0003675760915280435,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": 1.1133263353462988,
+            "max_V": 1.1133263353462988,
+            "max_abs_V": 1.1133263353462988,
+            "at_max_abs_signed_V": 1.1133263353462988,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": 1.1137560867046885,
+            "max_V": 1.1137560867046885,
+            "max_abs_V": 1.1137560867046885,
+            "at_max_abs_signed_V": 1.1137560867046885,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": -1.1129587592547707,
+            "max_V": -1.1129587592547707,
+            "max_abs_V": 1.1129587592547707,
+            "at_max_abs_signed_V": -1.1129587592547707,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": 0.00042975135838970715,
+            "max_V": 0.00042975135838970715,
+            "max_abs_V": 0.00042975135838970715,
+            "at_max_abs_signed_V": 0.00042975135838970715,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": 1.1133885106131605,
+            "max_V": 1.1133885106131605,
+            "max_abs_V": 1.1133885106131605,
+            "at_max_abs_signed_V": 1.1133885106131605,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGB",
+        "max_abs_terminal_V": 1.1137560867046885,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VBS": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -1.1133885106131605
+          },
+          "VBD": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.00042975135838970715
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x19",
+        "nodes": [
+          "xdrv.vss.t21",
+          "xdrv.gb.t4",
+          "xdrv.gp.t0",
+          "xdrv.vss.t20"
+        ],
+        "model": "nfet_06v0",
+        "sizing": "ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": -3.2985147522837543,
+            "max_V": -3.2985147522837543,
+            "max_abs_V": 3.2985147522837543,
+            "at_max_abs_signed_V": -3.2985147522837543,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": -0.0003304360574188361,
+            "max_V": -0.0003304360574188361,
+            "max_abs_V": 0.0003304360574188361,
+            "at_max_abs_signed_V": -0.0003304360574188361,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": 2.750114541681301e-05,
+            "max_V": 2.750114541681301e-05,
+            "max_abs_V": 2.750114541681301e-05,
+            "at_max_abs_signed_V": 2.750114541681301e-05,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": -3.2981843162263353,
+            "max_V": -3.2981843162263353,
+            "max_abs_V": 3.2981843162263353,
+            "at_max_abs_signed_V": -3.2981843162263353,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": 0.0003579372028356491,
+            "max_V": 0.0003579372028356491,
+            "max_abs_V": 0.0003579372028356491,
+            "at_max_abs_signed_V": 0.0003579372028356491,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": 3.2985422534291713,
+            "max_V": 3.2985422534291713,
+            "max_abs_V": 3.2985422534291713,
+            "at_max_abs_signed_V": 3.2985422534291713,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VSB",
+        "max_abs_terminal_V": 3.2985422534291713,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VBS": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -3.2985422534291713
+          },
+          "VBD": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.0003579372028356491
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x20",
+        "nodes": [
+          "xdrv.vss.t16",
+          "xdrv.in1.t1",
+          "xdrv.in1.t2",
+          "xdrv.vss.t15"
+        ],
+        "model": "nfet_06v0",
+        "sizing": "ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": 0.0005485460297394162,
+            "max_V": 0.0005485460297394162,
+            "max_abs_V": 0.0005485460297394162,
+            "at_max_abs_signed_V": 0.0005485460297394162,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": 0.942943826588583,
+            "max_V": 0.942943826588583,
+            "max_abs_V": 0.942943826588583,
+            "at_max_abs_signed_V": 0.942943826588583,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": 0.9431349586413291,
+            "max_V": 0.9431349586413291,
+            "max_abs_V": 0.9431349586413291,
+            "at_max_abs_signed_V": 0.9431349586413291,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": -0.9423952805588436,
+            "max_V": -0.9423952805588436,
+            "max_abs_V": 0.9423952805588436,
+            "at_max_abs_signed_V": -0.9423952805588436,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": 0.0001911320527462194,
+            "max_V": 0.0001911320527462194,
+            "max_abs_V": 0.0001911320527462194,
+            "at_max_abs_signed_V": 0.0001911320527462194,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": 0.9425864126115897,
+            "max_V": 0.9425864126115897,
+            "max_abs_V": 0.9425864126115897,
+            "at_max_abs_signed_V": 0.9425864126115897,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGB",
+        "max_abs_terminal_V": 0.9431349586413291,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VBS": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.9425864126115897
+          },
+          "VBD": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -0.0001911320527462194
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      },
+      {
+        "instance": "x21",
+        "nodes": [
+          "xdrv.vdd.t3",
+          "xdrv.gb.t3",
+          "xdrv.gp.t1",
+          "xdrv.vdd.t2"
+        ],
+        "model": "pfet_06v0",
+        "sizing": "ad=1.7292p pd=8.74u as=1.7292p ps=8.74u w=3.93u l=0.55u",
+        "terminal_differences": {
+          "VGS": {
+            "min_V": -3.2985147523754663,
+            "max_V": -3.2985147523754663,
+            "max_abs_V": 3.2985147523754663,
+            "at_max_abs_signed_V": -3.2985147523754663,
+            "at_max_abs_time_s": null
+          },
+          "VGD": {
+            "min_V": -3.2985147608572514,
+            "max_V": -3.2985147608572514,
+            "max_abs_V": 3.2985147608572514,
+            "at_max_abs_signed_V": -3.2985147608572514,
+            "at_max_abs_time_s": null
+          },
+          "VGB": {
+            "min_V": -3.298514760906526,
+            "max_V": -3.298514760906526,
+            "max_abs_V": 3.298514760906526,
+            "at_max_abs_signed_V": -3.298514760906526,
+            "at_max_abs_time_s": null
+          },
+          "VDS": {
+            "min_V": 8.481785052083524e-09,
+            "max_V": 8.481785052083524e-09,
+            "max_abs_V": 8.481785052083524e-09,
+            "at_max_abs_signed_V": 8.481785052083524e-09,
+            "at_max_abs_time_s": null
+          },
+          "VDB": {
+            "min_V": -4.92748064573334e-11,
+            "max_V": -4.92748064573334e-11,
+            "max_abs_V": 4.92748064573334e-11,
+            "at_max_abs_signed_V": -4.92748064573334e-11,
+            "at_max_abs_time_s": null
+          },
+          "VSB": {
+            "min_V": -8.531059858540857e-09,
+            "max_V": -8.531059858540857e-09,
+            "max_abs_V": 8.531059858540857e-09,
+            "at_max_abs_signed_V": -8.531059858540857e-09,
+            "at_max_abs_time_s": null
+          }
+        },
+        "worst_pair": "VGB",
+        "max_abs_terminal_V": 3.298514760906526,
+        "above_3p63V_screen": false,
+        "body_junction_forward": {
+          "VSB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -8.531059858540857e-09
+          },
+          "VDB": {
+            "max_forward_V": 0.0,
+            "max_signed_V": -4.92748064573334e-11
+          }
+        },
+        "body_junction_interpretation": "record only; no diode-current or reliability pass criterion"
+      }
+    ],
+    "max_abs_terminal_V": 4.99847946676316,
+    "worst_instance": "x4",
+    "worst_pair": "VGS",
+    "above_3p63V_screen": true,
+    "maximum_recorded_body_forward_V": 1.4658479639728834e-06
+  },
+  "dc": {
+    "target_LED_current_A": 0.0001,
+    "LED_current_A": 0.0001003951622364039,
+    "LED_current_error_A": 3.951622364038889e-07,
+    "LED_current_error_percent": 0.39516223640388887,
+    "LED_voltage_V": 3.76907707024392,
+    "output_voltage_V": 1.230822534593846,
+    "bias_node_voltages_V": {
+      "xdrv.bias.t0": 1.116699546613212,
+      "xdrv.bias.t1": 1.116279224965817,
+      "xdrv.bias.t2": 1.115911648874289,
+      "xdrv.bias.t3": 1.116962884749801,
+      "xdrv.bias.t4": 1.11630860325647,
+      "xdrv.bias.t5": 1.116402690003233
+    },
+    "rail_ports": {
+      "VLED": {
+        "voltage_V": 5.0,
+        "delivered_power_W": 0.0005019758111820194
+      },
+      "VDD": {
+        "voltage_V": 3.3,
+        "delivered_power_W": 2.3227681288502412e-11
+      },
+      "VRAW": {
+        "voltage_V": 5.0,
+        "delivered_power_W": 0.0007008838613487001
+      },
+      "VREF": {
+        "voltage_V": 2.5,
+        "delivered_power_W": 2.4999979997275545e-05
+      },
+      "VDISABLE": {
+        "voltage_V": 0.0,
+        "delivered_power_W": -0.0
+      }
+    },
+    "rail_net_power_W": 0.0012278596757556764,
+    "rail_positive_draw_power_W": 0.0012278596757556764,
+    "rail_returned_power_W": 0,
+    "ideal_data_delivered_power_W": -1.6835400178014297e-14,
+    "all_saved_DC_vectors": {
+      "data": 3.3,
+      "out": 1.230822534593846,
+      "led_k": 1.23092292975608,
+      "led_voltage": 3.76907707024392,
+      "iled_cond": 0.0001003951622364039,
+      "package_current": 0.0001003951622363464,
+      "xdrv.bias.t0": 1.116699546613212,
+      "xdrv.bias.t1": 1.116279224965817,
+      "xdrv.bias.t2": 1.115911648874289,
+      "xdrv.bias.t3": 1.116962884749801,
+      "xdrv.bias.t4": 1.11630860325647,
+      "xdrv.bias.t5": 1.116402690003233,
+      "xdrv.data.t0": 3.300000000000084,
+      "xdrv.di.t0": 3.300000000305369,
+      "xdrv.di.t1": 3.300000000305437,
+      "xdrv.di.t2": 3.300000000305437,
+      "xdrv.disable.t0": 0.0,
+      "xdrv.disable.t1": 0.0,
+      "xdrv.dummy.t0": 4.999964705846958,
+      "xdrv.gb.t0": 0.001485239131421701,
+      "xdrv.gb.t1": 0.001485239028167974,
+      "xdrv.gb.t2": 0.001485239083797819,
+      "xdrv.gb.t3": 0.001485239083797819,
+      "xdrv.gb.t4": 0.001485239083797819,
+      "xdrv.gp.t0": 3.299999991367552,
+      "xdrv.gp.t1": 3.299999991459264,
+      "xdrv.gp.t2": 3.299999991417028,
+      "xdrv.ictrl.t0": 3.6045303461259,
+      "xdrv.ictrl.t1": 3.605535617760467,
+      "xdrv.ictrl.t2": 3.603678166120801,
+      "xdrv.ictrl.t3": 3.6045303461259,
+      "xdrv.ictrl.t4": 3.604530346125899,
+      "xdrv.in1.t0": 0.944075377383564,
+      "xdrv.in1.t1": 0.9432666272595766,
+      "xdrv.in1.t2": 0.9427180812298371,
+      "xdrv.in1.t3": 0.9432666272595766,
+      "xdrv.in2.t0": 0.8430166022568335,
+      "xdrv.in2.t1": 0.8444500917799975,
+      "xdrv.in2.t2": 0.8436034251889651,
+      "xdrv.ipb.t0": 3.277079846207422,
+      "xdrv.ipb.t1": 3.278150227997589,
+      "xdrv.ipb.t2": 3.277079846207423,
+      "xdrv.itail.t0": 2.66276211993223,
+      "xdrv.itail.t1": 2.662842786965321,
+      "xdrv.itail.t2": 2.664684243026403,
+      "xdrv.kret.t0": 1.230820298092489,
+      "xdrv.out.t0": 1.229672200294262,
+      "xdrv.out.t1": 1.23032331379377,
+      "xdrv.sense.t0": 0.5019925420222864,
+      "xdrv.sense.t1": 0.5003519454520436,
+      "xdrv.vdd.t0": 3.299999999557263,
+      "xdrv.vdd.t1": 3.299999999997068,
+      "xdrv.vdd.t2": 3.299999999990324,
+      "xdrv.vdd.t3": 3.299999999941049,
+      "xdrv.vin.t0": 4.99951923313492,
+      "xdrv.vin.t1": 4.999186245123437,
+      "xdrv.vin.t10": 4.999710597722378,
+      "xdrv.vin.t11": 4.999321903680915,
+      "xdrv.vin.t2": 4.999538450353683,
+      "xdrv.vin.t3": 4.999205340790317,
+      "xdrv.vin.t4": 4.99952498046097,
+      "xdrv.vin.t5": 4.999189822768427,
+      "xdrv.vin.t6": 4.999591086813575,
+      "xdrv.vin.t7": 4.999607043504093,
+      "xdrv.vin.t8": 4.999624379417345,
+      "xdrv.vin.t9": 4.999290389631228,
+      "xdrv.vset.t0": 0.4999996000003171,
+      "xdrv.vss.t0": 0.0001762914339618691,
+      "xdrv.vss.t1": 0.0001748255859978962,
+      "xdrv.vss.t10": 0.000175220988168791,
+      "xdrv.vss.t11": 0.0003940381255274359,
+      "xdrv.vss.t12": 0.001421218160348994,
+      "xdrv.vss.t13": 0.001403436856221528,
+      "xdrv.vss.t14": 0.001485234757493717,
+      "xdrv.vss.t15": 0.0001316686182473855,
+      "xdrv.vss.t16": 0.0003228006709936049,
+      "xdrv.vss.t17": 0.0002350987394878913,
+      "xdrv.vss.t18": 0.0003361470537341125,
+      "xdrv.vss.t19": 0.002254308577855935,
+      "xdrv.vss.t2": 0.0001750084843183462,
+      "xdrv.vss.t20": 0.001457737938381006,
+      "xdrv.vss.t21": 0.001815675141216655,
+      "xdrv.vss.t22": 0.002100153917174928,
+      "xdrv.vss.t3": 0.0001749174145156249,
+      "xdrv.vss.t4": 0.002503174610269378,
+      "xdrv.vss.t5": 0.002921275384948027,
+      "xdrv.vss.t6": 0.002404714231001086,
+      "xdrv.vss.t7": 0.00349609738244873,
+      "xdrv.vss.t8": 0.00252313826112862,
+      "xdrv.vss.t9": 0.002952889619518327,
+      "xdrv.vx.t0": 1.036860011752045,
+      "xdrv.vx.t1": 1.037846373539678,
+      "xdrv.vx.t2": 1.038939427376989,
+      "vled_voltage": 5.0,
+      "vdd_voltage": 3.3,
+      "vraw_voltage": 5.0,
+      "vref_voltage": 2.5,
+      "vdisable_voltage": 0.0,
+      "vled_current": -0.0001003951622364039,
+      "vdd_current": -7.038691299546185e-12,
+      "vraw_current": -0.00014017677226974,
+      "vref_current": -9.999991998910218e-06,
+      "vdisable_current": 0.0,
+      "data_current": 5.10163641758009e-15,
+      "iset_current": 2.501748406848677e-05,
+      "dummy_supply_voltage": 4.999964955806933,
+      "vset_voltage": 0.4999996000003171,
+      "vin_die_voltage": 4.999964955806933
+    }
+  },
+  "device_specific_screen": {
+    "definition": "03v3 all-six-pair3.63V; 06v0 all-six-pair6.0V conservative project screen motivated by public DC gate limits; not reliability signoff",
+    "devices": [
+      {
+        "instance": "x0",
+        "model": "nfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 3.298596563449215,
+        "margin_V": 2.701403436550785,
+        "passed": true
+      },
+      {
+        "instance": "x1",
+        "model": "pfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 1.3950081042277827,
+        "margin_V": 4.604991895772217,
+        "passed": true
+      },
+      {
+        "instance": "x2",
+        "model": "pfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 3.8825563483851186,
+        "margin_V": 2.1174436516148814,
+        "passed": true
+      },
+      {
+        "instance": "x4",
+        "model": "nfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 4.99847946676316,
+        "margin_V": 1.0015205332368398,
+        "passed": true
+      },
+      {
+        "instance": "x5",
+        "model": "pfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 1.7226307515149557,
+        "margin_V": 4.277369248485044,
+        "passed": true
+      },
+      {
+        "instance": "x6",
+        "model": "nfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 1.116699546613212,
+        "margin_V": 4.883300453386788,
+        "passed": true
+      },
+      {
+        "instance": "x7",
+        "model": "pfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 4.499239141361531,
+        "margin_V": 1.5007608586384693,
+        "passed": true
+      },
+      {
+        "instance": "x8",
+        "model": "nfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 3.6035029451326324,
+        "margin_V": 2.3964970548673676,
+        "passed": true
+      },
+      {
+        "instance": "x9",
+        "model": "pfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 4.499607443503776,
+        "margin_V": 1.500392556496224,
+        "passed": true
+      },
+      {
+        "instance": "x10",
+        "model": "pfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 2.3349401363909426,
+        "margin_V": 3.6650598636090574,
+        "passed": true
+      },
+      {
+        "instance": "x11",
+        "model": "nfet_03v3",
+        "limit_V": 3.63,
+        "max_abs_terminal_V": 1.2278201391835006,
+        "margin_V": 2.4021798608164993,
+        "passed": true
+      },
+      {
+        "instance": "x12",
+        "model": "pfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 4.497532438438684,
+        "margin_V": 1.502467561561316,
+        "passed": true
+      },
+      {
+        "instance": "x13",
+        "model": "nfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 1.230820298092489,
+        "margin_V": 4.769179701907511,
+        "passed": true
+      },
+      {
+        "instance": "x14",
+        "model": "nfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 3.297899837499853,
+        "margin_V": 2.702100162500147,
+        "passed": true
+      },
+      {
+        "instance": "x15",
+        "model": "pfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 3.2985147611740153,
+        "margin_V": 2.7014852388259847,
+        "passed": true
+      },
+      {
+        "instance": "x16",
+        "model": "nfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 0.9430315285200886,
+        "margin_V": 5.0569684714799115,
+        "passed": true
+      },
+      {
+        "instance": "x17",
+        "model": "nfet_03v3",
+        "limit_V": 3.63,
+        "max_abs_terminal_V": 1.1139979757722318,
+        "margin_V": 2.516002024227768,
+        "passed": true
+      },
+      {
+        "instance": "x18",
+        "model": "nfet_03v3",
+        "limit_V": 3.63,
+        "max_abs_terminal_V": 1.1137560867046885,
+        "margin_V": 2.5162439132953116,
+        "passed": true
+      },
+      {
+        "instance": "x19",
+        "model": "nfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 3.2985422534291713,
+        "margin_V": 2.7014577465708287,
+        "passed": true
+      },
+      {
+        "instance": "x20",
+        "model": "nfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 0.9431349586413291,
+        "margin_V": 5.056865041358671,
+        "passed": true
+      },
+      {
+        "instance": "x21",
+        "model": "pfet_06v0",
+        "limit_V": 6.0,
+        "max_abs_terminal_V": 3.298514760906526,
+        "margin_V": 2.701485239093474,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "reference_observed": {
+    "iset_current": {
+      "min": 2.501748406848677e-05,
+      "max": 2.501748406848677e-05,
+      "mean": 2.501748406848677e-05
+    },
+    "dummy_supply_voltage": {
+      "min": 4.999964955806933,
+      "max": 4.999964955806933,
+      "mean": 4.999964955806933
+    },
+    "vset_voltage": {
+      "min": 0.4999996000003171,
+      "max": 0.4999996000003171,
+      "mean": 0.4999996000003171
+    },
+    "vin_die_voltage": {
+      "min": 4.999964955806933,
+      "max": 4.999964955806933,
+      "mean": 4.999964955806933
+    }
+  },
+  "row": {
+    "name": "REFERENCE-B-DC_TT-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-bit1",
+    "route": "B",
+    "kind": "DC_TT",
+    "rate_Gbps": 0.5,
+    "corner": "typical",
+    "temp_C": 27,
+    "vdd_V": 3.3,
+    "cap_F": 2e-13,
+    "r_pkg": 1.0,
+    "l_pkg": 5e-10,
+    "edge_s": 2e-11,
+    "steps_per_ui": 40,
+    "method": "gear",
+    "reltol": 1e-05,
+    "simulation_ok": true,
+    "analysis_ok": true,
+    "max_abs_terminal_V": 4.99847946676316,
+    "above_3p63V_screen": true,
+    "maximum_body_forward_V": 1.4658479639728834e-06,
+    "dc_bit": 1,
+    "LED_current_A": 0.0001003951622364039,
+    "LED_current_error_percent": 0.39516223640388887,
+    "rail_net_power_W": 0.0012278596757556764,
+    "res_corner": "typical",
+    "data_mode": "tracking",
+    "data_high_V": 3.3,
+    "rail_offsets_V": null,
+    "rail_profiles": null,
+    "supply_package": null,
+    "variant": "REFERENCE",
+    "resistor_errors": null,
+    "resistor_tc_ppm": null,
+    "anchor_error": null,
+    "anchor_tc_ppm": null,
+    "anchor_rout_ohm": null,
+    "vin_V": null,
+    "result_json": "build/nrz-reference-v2/github-recovery-smoke-dc-retry1/cases/REFERENCE-B-DC_TT-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-bit1/result.json",
+    "analysis_json": "build/nrz-reference-v2/github-recovery-smoke-dc-retry1/cases/REFERENCE-B-DC_TT-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-bit1/analysis.json",
+    "worst_instance": "x4",
+    "worst_pair": "VGS",
+    "terminal_screen_margin_V": -1.3684794667631603,
+    "max_abs_gate_pair_V": 4.99847946676316,
+    "worst_gate_instance": "x4",
+    "worst_gate_pair": "VGS",
+    "device_specific_screen_passed": true,
+    "minimum_device_specific_margin_V": 1.0015205332368398,
+    "combined_screen_passed": true,
+    "reference_observed": {
+      "iset_current": {
+        "min": 2.501748406848677e-05,
+        "max": 2.501748406848677e-05,
+        "mean": 2.501748406848677e-05
+      },
+      "dummy_supply_voltage": {
+        "min": 4.999964955806933,
+        "max": 4.999964955806933,
+        "mean": 4.999964955806933
+      },
+      "vset_voltage": {
+        "min": 0.4999996000003171,
+        "max": 0.4999996000003171,
+        "mean": 0.4999996000003171
+      },
+      "vin_die_voltage": {
+        "min": 4.999964955806933,
+        "max": 4.999964955806933,
+        "mean": 4.999964955806933
+      }
+    }
+  }
+}
