@@ -1,0 +1,10532 @@
+{
+  "schema_version": 1,
+  "route": "V",
+  "top": "nrz_vi_reference",
+  "ports": [
+    "VIN",
+    "VSS",
+    "VSET",
+    "SENSE",
+    "IOUT",
+    "IPB",
+    "IN2",
+    "ICTRL"
+  ],
+  "grid_um": 0.005,
+  "devices": [
+    {
+      "name": "IPBIAS",
+      "model": "pfet_06v0",
+      "w_um": 20,
+      "l_um": 4,
+      "cx": 14.0,
+      "cy": 110.0,
+      "nodes": [
+        "IPB",
+        "IPB",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          11.74,
+          110.0
+        ],
+        "G": [
+          14.0,
+          120.5
+        ],
+        "S": [
+          16.259999999999998,
+          110.0
+        ],
+        "B": [
+          9.5,
+          110.0
+        ]
+      }
+    },
+    {
+      "name": "IPTAIL",
+      "model": "pfet_06v0",
+      "w_um": 20,
+      "l_um": 4,
+      "cx": 32.0,
+      "cy": 110.0,
+      "nodes": [
+        "ITAIL",
+        "IPB",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          29.740000000000002,
+          110.0
+        ],
+        "G": [
+          32.0,
+          120.5
+        ],
+        "S": [
+          34.26,
+          110.0
+        ],
+        "B": [
+          27.5,
+          110.0
+        ]
+      }
+    },
+    {
+      "name": "IPD1",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 50.0,
+      "cy": 150.0,
+      "nodes": [
+        "IN1",
+        "VSET",
+        "ITAIL",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          44.74,
+          150.0
+        ],
+        "G": [
+          50.0,
+          200.5
+        ],
+        "S": [
+          55.26,
+          150.0
+        ],
+        "B": [
+          42.5,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "IPD2",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 72.0,
+      "cy": 150.0,
+      "nodes": [
+        "IN2",
+        "SENSE",
+        "ITAIL",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          66.74,
+          150.0
+        ],
+        "G": [
+          72.0,
+          200.5
+        ],
+        "S": [
+          77.26,
+          150.0
+        ],
+        "B": [
+          64.5,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "IND1",
+      "model": "nfet_06v0",
+      "w_um": 50,
+      "l_um": 10,
+      "cx": 94.0,
+      "cy": 125.0,
+      "nodes": [
+        "IN1",
+        "IN1",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          88.74,
+          125.0
+        ],
+        "G": [
+          94.0,
+          150.5
+        ],
+        "S": [
+          99.26,
+          125.0
+        ],
+        "B": [
+          86.5,
+          125.0
+        ]
+      },
+      "guard_all_sides": true
+    },
+    {
+      "name": "IND2",
+      "model": "nfet_06v0",
+      "w_um": 50,
+      "l_um": 10,
+      "cx": 116.0,
+      "cy": 125.0,
+      "nodes": [
+        "IN2",
+        "IN1",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          110.74,
+          125.0
+        ],
+        "G": [
+          116.0,
+          150.5
+        ],
+        "S": [
+          121.26,
+          125.0
+        ],
+        "B": [
+          108.5,
+          125.0
+        ]
+      },
+      "guard_all_sides": true
+    },
+    {
+      "name": "INSTAGE",
+      "model": "nfet_06v0",
+      "w_um": 20,
+      "l_um": 1,
+      "cx": 138.0,
+      "cy": 110.0,
+      "nodes": [
+        "ICTRL",
+        "IN2",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          137.24,
+          110.0
+        ],
+        "G": [
+          138.0,
+          120.5
+        ],
+        "S": [
+          138.76,
+          110.0
+        ],
+        "B": [
+          134.5,
+          110.0
+        ]
+      },
+      "guard_all_sides": true
+    },
+    {
+      "name": "IPLOAD",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 156.0,
+      "cy": 150.0,
+      "nodes": [
+        "ICTRL",
+        "ICTRL",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          150.74,
+          150.0
+        ],
+        "G": [
+          156.0,
+          200.5
+        ],
+        "S": [
+          161.26,
+          150.0
+        ],
+        "B": [
+          148.5,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "IPREG",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 178.0,
+      "cy": 150.0,
+      "nodes": [
+        "SENSE",
+        "ICTRL",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          172.74,
+          150.0
+        ],
+        "G": [
+          178.0,
+          200.5
+        ],
+        "S": [
+          183.26,
+          150.0
+        ],
+        "B": [
+          170.5,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "IPOUT",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 200.0,
+      "cy": 150.0,
+      "nodes": [
+        "IOUT",
+        "ICTRL",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          194.74,
+          150.0
+        ],
+        "G": [
+          200.0,
+          200.5
+        ],
+        "S": [
+          205.26,
+          150.0
+        ],
+        "B": [
+          192.5,
+          150.0
+        ]
+      }
+    }
+  ],
+  "buses_um": {
+    "VIN": 1,
+    "VSS": 3,
+    "VSET": 5,
+    "SENSE": 7,
+    "IOUT": 9,
+    "IPB": 11,
+    "IN2": 13,
+    "ICTRL": 15,
+    "ITAIL": 17,
+    "IN1": 19
+  },
+  "bus_spans_um": {
+    "VIN": [
+      9.0,
+      205.76
+    ],
+    "VSS": [
+      86.0,
+      139.26
+    ],
+    "VSET": [
+      49.5,
+      50.5
+    ],
+    "SENSE": [
+      71.5,
+      173.24
+    ],
+    "IOUT": [
+      194.24,
+      195.24
+    ],
+    "IPB": [
+      11.24,
+      32.5
+    ],
+    "IN2": [
+      66.24,
+      138.5
+    ],
+    "ICTRL": [
+      136.74,
+      200.5
+    ],
+    "ITAIL": [
+      29.240000000000002,
+      77.76
+    ],
+    "IN1": [
+      44.24,
+      116.5
+    ]
+  },
+  "port_anchor_um": {
+    "VIN": [
+      9.2,
+      1
+    ],
+    "VSS": [
+      86.2,
+      3
+    ],
+    "VSET": [
+      49.7,
+      5
+    ],
+    "SENSE": [
+      71.7,
+      7
+    ],
+    "IOUT": [
+      194.44,
+      9
+    ],
+    "IPB": [
+      11.44,
+      11
+    ],
+    "IN2": [
+      66.44,
+      13
+    ],
+    "ICTRL": [
+      136.94,
+      15
+    ]
+  },
+  "routes": [
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        9.0,
+        0.8,
+        205.76,
+        1.2
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        86.0,
+        2.8,
+        139.26,
+        3.2
+      ]
+    },
+    {
+      "net": "VSET",
+      "layer": "metal3",
+      "rect_um": [
+        49.5,
+        4.8,
+        50.5,
+        5.2
+      ]
+    },
+    {
+      "net": "SENSE",
+      "layer": "metal3",
+      "rect_um": [
+        71.5,
+        6.8,
+        173.24,
+        7.2
+      ]
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        194.24,
+        8.8,
+        195.24,
+        9.2
+      ]
+    },
+    {
+      "net": "IPB",
+      "layer": "metal3",
+      "rect_um": [
+        11.24,
+        10.8,
+        32.5,
+        11.2
+      ]
+    },
+    {
+      "net": "IN2",
+      "layer": "metal3",
+      "rect_um": [
+        66.24,
+        12.8,
+        138.5,
+        13.2
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal3",
+      "rect_um": [
+        136.74,
+        14.8,
+        200.5,
+        15.2
+      ]
+    },
+    {
+      "net": "ITAIL",
+      "layer": "metal3",
+      "rect_um": [
+        29.24,
+        16.8,
+        77.76,
+        17.2
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal3",
+      "rect_um": [
+        44.24,
+        18.8,
+        116.5,
+        19.2
+      ]
+    },
+    {
+      "net": "IPB",
+      "layer": "metal1",
+      "rect_um": [
+        13.81,
+        99.31,
+        14.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        9.5,
+        109.81,
+        11.17,
+        110.19
+      ]
+    },
+    {
+      "net": "IPB",
+      "layer": "metal2",
+      "rect_um": [
+        11.55,
+        10.81,
+        11.93,
+        110.19
+      ]
+    },
+    {
+      "net": "IPB",
+      "layer": "metal4",
+      "rect_um": [
+        13.81,
+        10.81,
+        14.19,
+        120.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        16.07,
+        0.81,
+        16.45,
+        110.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        9.31,
+        0.81,
+        9.69,
+        110.19
+      ]
+    },
+    {
+      "net": "IPB",
+      "layer": "metal1",
+      "rect_um": [
+        31.81,
+        99.31,
+        32.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        27.5,
+        109.81,
+        29.17,
+        110.19
+      ]
+    },
+    {
+      "net": "ITAIL",
+      "layer": "metal2",
+      "rect_um": [
+        29.55,
+        16.81,
+        29.93,
+        110.19
+      ]
+    },
+    {
+      "net": "IPB",
+      "layer": "metal4",
+      "rect_um": [
+        31.81,
+        10.81,
+        32.19,
+        120.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        34.07,
+        0.81,
+        34.45,
+        110.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        27.31,
+        0.81,
+        27.69,
+        110.19
+      ]
+    },
+    {
+      "net": "VSET",
+      "layer": "metal1",
+      "rect_um": [
+        49.81,
+        99.31,
+        50.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        42.5,
+        149.81,
+        44.17,
+        150.19
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal2",
+      "rect_um": [
+        44.55,
+        18.81,
+        44.93,
+        150.19
+      ]
+    },
+    {
+      "net": "VSET",
+      "layer": "metal4",
+      "rect_um": [
+        49.81,
+        4.81,
+        50.19,
+        200.69
+      ]
+    },
+    {
+      "net": "ITAIL",
+      "layer": "metal2",
+      "rect_um": [
+        55.07,
+        16.81,
+        55.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        42.31,
+        0.81,
+        42.69,
+        150.19
+      ]
+    },
+    {
+      "net": "SENSE",
+      "layer": "metal1",
+      "rect_um": [
+        71.81,
+        99.31,
+        72.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        64.5,
+        149.81,
+        66.17,
+        150.19
+      ]
+    },
+    {
+      "net": "IN2",
+      "layer": "metal2",
+      "rect_um": [
+        66.55,
+        12.81,
+        66.93,
+        150.19
+      ]
+    },
+    {
+      "net": "SENSE",
+      "layer": "metal4",
+      "rect_um": [
+        71.81,
+        6.81,
+        72.19,
+        200.69
+      ]
+    },
+    {
+      "net": "ITAIL",
+      "layer": "metal2",
+      "rect_um": [
+        77.07,
+        16.81,
+        77.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        64.31,
+        0.81,
+        64.69,
+        150.19
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal1",
+      "rect_um": [
+        93.81,
+        99.31,
+        94.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        86.5,
+        124.81,
+        88.17,
+        125.19
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal2",
+      "rect_um": [
+        88.55,
+        18.81,
+        88.93,
+        125.19
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal4",
+      "rect_um": [
+        93.81,
+        18.81,
+        94.19,
+        150.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        99.07,
+        2.81,
+        99.45,
+        125.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        86.31,
+        2.81,
+        86.69,
+        125.19
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal1",
+      "rect_um": [
+        115.81,
+        99.31,
+        116.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        108.5,
+        124.81,
+        110.17,
+        125.19
+      ]
+    },
+    {
+      "net": "IN2",
+      "layer": "metal2",
+      "rect_um": [
+        110.55,
+        12.81,
+        110.93,
+        125.19
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal4",
+      "rect_um": [
+        115.81,
+        18.81,
+        116.19,
+        150.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        121.07,
+        2.81,
+        121.45,
+        125.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        108.31,
+        2.81,
+        108.69,
+        125.19
+      ]
+    },
+    {
+      "net": "IN2",
+      "layer": "metal1",
+      "rect_um": [
+        137.81,
+        99.31,
+        138.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        134.5,
+        109.81,
+        136.67,
+        110.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal2",
+      "rect_um": [
+        137.05,
+        14.81,
+        137.43,
+        110.19
+      ]
+    },
+    {
+      "net": "IN2",
+      "layer": "metal4",
+      "rect_um": [
+        137.81,
+        12.81,
+        138.19,
+        120.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        138.57,
+        2.81,
+        138.95,
+        110.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        134.31,
+        2.81,
+        134.69,
+        110.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal1",
+      "rect_um": [
+        155.81,
+        99.31,
+        156.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        148.5,
+        149.81,
+        150.17,
+        150.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal2",
+      "rect_um": [
+        150.55,
+        14.81,
+        150.93,
+        150.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal4",
+      "rect_um": [
+        155.81,
+        14.81,
+        156.19,
+        200.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        161.07,
+        0.81,
+        161.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        148.31,
+        0.81,
+        148.69,
+        150.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal1",
+      "rect_um": [
+        177.81,
+        99.31,
+        178.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        170.5,
+        149.81,
+        172.17,
+        150.19
+      ]
+    },
+    {
+      "net": "SENSE",
+      "layer": "metal2",
+      "rect_um": [
+        172.55,
+        6.81,
+        172.93,
+        150.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal4",
+      "rect_um": [
+        177.81,
+        14.81,
+        178.19,
+        200.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        183.07,
+        0.81,
+        183.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        170.31,
+        0.81,
+        170.69,
+        150.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal1",
+      "rect_um": [
+        199.81,
+        99.31,
+        200.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        192.5,
+        149.81,
+        194.17,
+        150.19
+      ]
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal2",
+      "rect_um": [
+        194.55,
+        8.81,
+        194.93,
+        150.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal4",
+      "rect_um": [
+        199.81,
+        14.81,
+        200.19,
+        200.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        205.07,
+        0.81,
+        205.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        192.31,
+        0.81,
+        192.69,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        4.2,
+        57,
+        206.76,
+        63
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        8.4,
+        0.81,
+        10.0,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        4.4,
+        59.2,
+        10.0,
+        60.8
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        8.41,
+        0.81,
+        9.99,
+        1.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        8.41,
+        0.81,
+        8.79,
+        1.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        8.41,
+        0.81,
+        8.79,
+        1.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        8.46,
+        0.86,
+        8.74,
+        1.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        4.41,
+        59.81,
+        4.79,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        4.41,
+        59.81,
+        4.79,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        4.46,
+        59.86,
+        4.74,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        9.01,
+        0.81,
+        9.39,
+        1.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        9.01,
+        0.81,
+        9.39,
+        1.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        9.06,
+        0.86,
+        9.34,
+        1.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        5.01,
+        59.81,
+        5.39,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        5.01,
+        59.81,
+        5.39,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        5.06,
+        59.86,
+        5.34,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        9.61,
+        0.81,
+        9.99,
+        1.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        9.61,
+        0.81,
+        9.99,
+        1.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        9.66,
+        0.86,
+        9.94,
+        1.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        5.61,
+        59.81,
+        5.99,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        5.61,
+        59.81,
+        5.99,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        5.66,
+        59.86,
+        5.94,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        15.76,
+        59.21,
+        16.76,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        16.07,
+        109.21,
+        16.45,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        16.07,
+        59.21,
+        16.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        16.07,
+        59.21,
+        16.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        16.07,
+        109.21,
+        16.45,
+        109.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        16.07,
+        109.21,
+        16.45,
+        109.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        16.13,
+        109.27,
+        16.39,
+        109.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        16.07,
+        59.21,
+        16.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        16.07,
+        59.21,
+        16.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        16.12,
+        59.26,
+        16.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        16.07,
+        59.21,
+        16.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        16.07,
+        59.21,
+        16.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        16.12,
+        59.26,
+        16.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        16.07,
+        59.21,
+        16.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        16.07,
+        59.21,
+        16.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        16.12,
+        59.26,
+        16.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        16.07,
+        109.81,
+        16.45,
+        110.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        16.07,
+        109.81,
+        16.45,
+        110.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        16.13,
+        109.87,
+        16.39,
+        110.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        16.07,
+        59.81,
+        16.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        16.07,
+        59.81,
+        16.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        16.12,
+        59.86,
+        16.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        16.07,
+        59.81,
+        16.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        16.07,
+        59.81,
+        16.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        16.12,
+        59.86,
+        16.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        16.07,
+        59.81,
+        16.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        16.07,
+        59.81,
+        16.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        16.12,
+        59.86,
+        16.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        16.07,
+        110.41,
+        16.45,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        16.07,
+        110.41,
+        16.45,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        16.13,
+        110.47,
+        16.39,
+        110.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        16.07,
+        60.41,
+        16.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        16.07,
+        60.41,
+        16.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        16.12,
+        60.46,
+        16.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        16.07,
+        60.41,
+        16.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        16.07,
+        60.41,
+        16.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        16.12,
+        60.46,
+        16.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        16.07,
+        60.41,
+        16.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        16.07,
+        60.41,
+        16.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        16.12,
+        60.46,
+        16.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        9.0,
+        59.21,
+        10.0,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        9.31,
+        109.21,
+        11.17,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        9.31,
+        59.21,
+        9.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        9.31,
+        59.21,
+        9.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        9.31,
+        109.21,
+        9.69,
+        109.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        9.31,
+        109.21,
+        9.69,
+        109.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        9.37,
+        109.27,
+        9.63,
+        109.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        9.31,
+        59.21,
+        9.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        9.31,
+        59.21,
+        9.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        9.36,
+        59.26,
+        9.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        9.31,
+        59.21,
+        9.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        9.31,
+        59.21,
+        9.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        9.36,
+        59.26,
+        9.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        9.31,
+        59.21,
+        9.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        9.31,
+        59.21,
+        9.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        9.36,
+        59.26,
+        9.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        9.31,
+        109.81,
+        9.69,
+        110.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        9.31,
+        109.81,
+        9.69,
+        110.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        9.37,
+        109.87,
+        9.63,
+        110.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        9.31,
+        59.81,
+        9.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        9.31,
+        59.81,
+        9.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        9.36,
+        59.86,
+        9.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        9.31,
+        59.81,
+        9.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        9.31,
+        59.81,
+        9.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        9.36,
+        59.86,
+        9.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        9.31,
+        59.81,
+        9.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        9.31,
+        59.81,
+        9.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        9.36,
+        59.86,
+        9.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        9.31,
+        110.41,
+        9.69,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        9.31,
+        110.41,
+        9.69,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        9.37,
+        110.47,
+        9.63,
+        110.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        9.31,
+        60.41,
+        9.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        9.31,
+        60.41,
+        9.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        9.36,
+        60.46,
+        9.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        9.31,
+        60.41,
+        9.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        9.31,
+        60.41,
+        9.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        9.36,
+        60.46,
+        9.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        9.31,
+        60.41,
+        9.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        9.31,
+        60.41,
+        9.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        9.36,
+        60.46,
+        9.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        33.76,
+        59.21,
+        34.76,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        34.07,
+        109.21,
+        34.45,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        34.07,
+        59.21,
+        34.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        34.07,
+        59.21,
+        34.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        34.07,
+        109.21,
+        34.45,
+        109.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        34.07,
+        109.21,
+        34.45,
+        109.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        34.13,
+        109.27,
+        34.39,
+        109.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        34.07,
+        59.21,
+        34.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        34.07,
+        59.21,
+        34.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        34.12,
+        59.26,
+        34.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        34.07,
+        59.21,
+        34.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        34.07,
+        59.21,
+        34.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        34.12,
+        59.26,
+        34.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        34.07,
+        59.21,
+        34.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        34.07,
+        59.21,
+        34.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        34.12,
+        59.26,
+        34.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        34.07,
+        109.81,
+        34.45,
+        110.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        34.07,
+        109.81,
+        34.45,
+        110.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        34.13,
+        109.87,
+        34.39,
+        110.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        34.07,
+        59.81,
+        34.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        34.07,
+        59.81,
+        34.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        34.12,
+        59.86,
+        34.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        34.07,
+        59.81,
+        34.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        34.07,
+        59.81,
+        34.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        34.12,
+        59.86,
+        34.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        34.07,
+        59.81,
+        34.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        34.07,
+        59.81,
+        34.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        34.12,
+        59.86,
+        34.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        34.07,
+        110.41,
+        34.45,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        34.07,
+        110.41,
+        34.45,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        34.13,
+        110.47,
+        34.39,
+        110.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        34.07,
+        60.41,
+        34.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        34.07,
+        60.41,
+        34.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        34.12,
+        60.46,
+        34.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        34.07,
+        60.41,
+        34.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        34.07,
+        60.41,
+        34.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        34.12,
+        60.46,
+        34.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        34.07,
+        60.41,
+        34.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        34.07,
+        60.41,
+        34.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        34.12,
+        60.46,
+        34.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        27.0,
+        59.21,
+        28.0,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        27.31,
+        109.21,
+        29.17,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        27.31,
+        59.21,
+        27.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        27.31,
+        59.21,
+        27.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        27.31,
+        109.21,
+        27.69,
+        109.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        27.31,
+        109.21,
+        27.69,
+        109.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        27.37,
+        109.27,
+        27.63,
+        109.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        27.31,
+        59.21,
+        27.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        27.31,
+        59.21,
+        27.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        27.36,
+        59.26,
+        27.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        27.31,
+        59.21,
+        27.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        27.31,
+        59.21,
+        27.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        27.36,
+        59.26,
+        27.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        27.31,
+        59.21,
+        27.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        27.31,
+        59.21,
+        27.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        27.36,
+        59.26,
+        27.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        27.31,
+        109.81,
+        27.69,
+        110.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        27.31,
+        109.81,
+        27.69,
+        110.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        27.37,
+        109.87,
+        27.63,
+        110.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        27.31,
+        59.81,
+        27.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        27.31,
+        59.81,
+        27.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        27.36,
+        59.86,
+        27.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        27.31,
+        59.81,
+        27.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        27.31,
+        59.81,
+        27.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        27.36,
+        59.86,
+        27.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        27.31,
+        59.81,
+        27.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        27.31,
+        59.81,
+        27.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        27.36,
+        59.86,
+        27.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        27.31,
+        110.41,
+        27.69,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        27.31,
+        110.41,
+        27.69,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        27.37,
+        110.47,
+        27.63,
+        110.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        27.31,
+        60.41,
+        27.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        27.31,
+        60.41,
+        27.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        27.36,
+        60.46,
+        27.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        27.31,
+        60.41,
+        27.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        27.31,
+        60.41,
+        27.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        27.36,
+        60.46,
+        27.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        27.31,
+        60.41,
+        27.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        27.31,
+        60.41,
+        27.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        27.36,
+        60.46,
+        27.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        42.0,
+        59.21,
+        43.0,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        42.31,
+        149.21,
+        44.17,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        42.31,
+        59.21,
+        42.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        42.31,
+        59.21,
+        42.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        42.31,
+        149.21,
+        42.69,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        42.31,
+        149.21,
+        42.69,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        42.37,
+        149.27,
+        42.63,
+        149.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        42.31,
+        59.21,
+        42.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        42.31,
+        59.21,
+        42.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        42.36,
+        59.26,
+        42.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        42.31,
+        59.21,
+        42.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        42.31,
+        59.21,
+        42.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        42.36,
+        59.26,
+        42.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        42.31,
+        59.21,
+        42.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        42.31,
+        59.21,
+        42.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        42.36,
+        59.26,
+        42.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        42.31,
+        149.81,
+        42.69,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        42.31,
+        149.81,
+        42.69,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        42.37,
+        149.87,
+        42.63,
+        150.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        42.31,
+        59.81,
+        42.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        42.31,
+        59.81,
+        42.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        42.36,
+        59.86,
+        42.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        42.31,
+        59.81,
+        42.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        42.31,
+        59.81,
+        42.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        42.36,
+        59.86,
+        42.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        42.31,
+        59.81,
+        42.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        42.31,
+        59.81,
+        42.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        42.36,
+        59.86,
+        42.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        42.31,
+        150.41,
+        42.69,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        42.31,
+        150.41,
+        42.69,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        42.37,
+        150.47,
+        42.63,
+        150.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        42.31,
+        60.41,
+        42.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        42.31,
+        60.41,
+        42.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        42.36,
+        60.46,
+        42.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        42.31,
+        60.41,
+        42.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        42.31,
+        60.41,
+        42.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        42.36,
+        60.46,
+        42.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        42.31,
+        60.41,
+        42.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        42.31,
+        60.41,
+        42.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        42.36,
+        60.46,
+        42.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        64.0,
+        59.21,
+        65.0,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        64.31,
+        149.21,
+        66.17,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        64.31,
+        59.21,
+        64.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        64.31,
+        59.21,
+        64.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        64.31,
+        149.21,
+        64.69,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        64.31,
+        149.21,
+        64.69,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        64.37,
+        149.27,
+        64.63,
+        149.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        64.31,
+        59.21,
+        64.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        64.31,
+        59.21,
+        64.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        64.36,
+        59.26,
+        64.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        64.31,
+        59.21,
+        64.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        64.31,
+        59.21,
+        64.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        64.36,
+        59.26,
+        64.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        64.31,
+        59.21,
+        64.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        64.31,
+        59.21,
+        64.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        64.36,
+        59.26,
+        64.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        64.31,
+        149.81,
+        64.69,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        64.31,
+        149.81,
+        64.69,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        64.37,
+        149.87,
+        64.63,
+        150.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        64.31,
+        59.81,
+        64.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        64.31,
+        59.81,
+        64.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        64.36,
+        59.86,
+        64.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        64.31,
+        59.81,
+        64.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        64.31,
+        59.81,
+        64.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        64.36,
+        59.86,
+        64.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        64.31,
+        59.81,
+        64.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        64.31,
+        59.81,
+        64.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        64.36,
+        59.86,
+        64.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        64.31,
+        150.41,
+        64.69,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        64.31,
+        150.41,
+        64.69,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        64.37,
+        150.47,
+        64.63,
+        150.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        64.31,
+        60.41,
+        64.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        64.31,
+        60.41,
+        64.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        64.36,
+        60.46,
+        64.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        64.31,
+        60.41,
+        64.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        64.31,
+        60.41,
+        64.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        64.36,
+        60.46,
+        64.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        64.31,
+        60.41,
+        64.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        64.31,
+        60.41,
+        64.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        64.36,
+        60.46,
+        64.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        160.76,
+        59.21,
+        161.76,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        161.07,
+        149.21,
+        161.45,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        161.07,
+        59.21,
+        161.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        161.07,
+        59.21,
+        161.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        161.07,
+        149.21,
+        161.45,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        161.07,
+        149.21,
+        161.45,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        161.13,
+        149.27,
+        161.39,
+        149.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        161.07,
+        59.21,
+        161.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        161.07,
+        59.21,
+        161.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        161.12,
+        59.26,
+        161.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        161.07,
+        59.21,
+        161.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        161.07,
+        59.21,
+        161.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        161.12,
+        59.26,
+        161.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        161.07,
+        59.21,
+        161.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        161.07,
+        59.21,
+        161.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        161.12,
+        59.26,
+        161.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        161.07,
+        149.81,
+        161.45,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        161.07,
+        149.81,
+        161.45,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        161.13,
+        149.87,
+        161.39,
+        150.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        161.07,
+        59.81,
+        161.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        161.07,
+        59.81,
+        161.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        161.12,
+        59.86,
+        161.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        161.07,
+        59.81,
+        161.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        161.07,
+        59.81,
+        161.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        161.12,
+        59.86,
+        161.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        161.07,
+        59.81,
+        161.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        161.07,
+        59.81,
+        161.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        161.12,
+        59.86,
+        161.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        161.07,
+        150.41,
+        161.45,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        161.07,
+        150.41,
+        161.45,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        161.13,
+        150.47,
+        161.39,
+        150.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        161.07,
+        60.41,
+        161.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        161.07,
+        60.41,
+        161.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        161.12,
+        60.46,
+        161.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        161.07,
+        60.41,
+        161.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        161.07,
+        60.41,
+        161.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        161.12,
+        60.46,
+        161.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        161.07,
+        60.41,
+        161.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        161.07,
+        60.41,
+        161.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        161.12,
+        60.46,
+        161.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        148.0,
+        59.21,
+        149.0,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        148.31,
+        149.21,
+        150.17,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        148.31,
+        59.21,
+        148.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        148.31,
+        59.21,
+        148.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        148.31,
+        149.21,
+        148.69,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        148.31,
+        149.21,
+        148.69,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        148.37,
+        149.27,
+        148.63,
+        149.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        148.31,
+        59.21,
+        148.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        148.31,
+        59.21,
+        148.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        148.36,
+        59.26,
+        148.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        148.31,
+        59.21,
+        148.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        148.31,
+        59.21,
+        148.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        148.36,
+        59.26,
+        148.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        148.31,
+        59.21,
+        148.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        148.31,
+        59.21,
+        148.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        148.36,
+        59.26,
+        148.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        148.31,
+        149.81,
+        148.69,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        148.31,
+        149.81,
+        148.69,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        148.37,
+        149.87,
+        148.63,
+        150.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        148.31,
+        59.81,
+        148.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        148.31,
+        59.81,
+        148.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        148.36,
+        59.86,
+        148.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        148.31,
+        59.81,
+        148.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        148.31,
+        59.81,
+        148.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        148.36,
+        59.86,
+        148.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        148.31,
+        59.81,
+        148.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        148.31,
+        59.81,
+        148.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        148.36,
+        59.86,
+        148.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        148.31,
+        150.41,
+        148.69,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        148.31,
+        150.41,
+        148.69,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        148.37,
+        150.47,
+        148.63,
+        150.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        148.31,
+        60.41,
+        148.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        148.31,
+        60.41,
+        148.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        148.36,
+        60.46,
+        148.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        148.31,
+        60.41,
+        148.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        148.31,
+        60.41,
+        148.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        148.36,
+        60.46,
+        148.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        148.31,
+        60.41,
+        148.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        148.31,
+        60.41,
+        148.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        148.36,
+        60.46,
+        148.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        182.76,
+        59.21,
+        183.76,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        183.07,
+        149.21,
+        183.45,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        183.07,
+        59.21,
+        183.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        183.07,
+        59.21,
+        183.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        183.07,
+        149.21,
+        183.45,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        183.07,
+        149.21,
+        183.45,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        183.13,
+        149.27,
+        183.39,
+        149.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        183.07,
+        59.21,
+        183.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        183.07,
+        59.21,
+        183.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        183.12,
+        59.26,
+        183.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        183.07,
+        59.21,
+        183.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        183.07,
+        59.21,
+        183.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        183.12,
+        59.26,
+        183.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        183.07,
+        59.21,
+        183.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        183.07,
+        59.21,
+        183.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        183.12,
+        59.26,
+        183.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        183.07,
+        149.81,
+        183.45,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        183.07,
+        149.81,
+        183.45,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        183.13,
+        149.87,
+        183.39,
+        150.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        183.07,
+        59.81,
+        183.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        183.07,
+        59.81,
+        183.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        183.12,
+        59.86,
+        183.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        183.07,
+        59.81,
+        183.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        183.07,
+        59.81,
+        183.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        183.12,
+        59.86,
+        183.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        183.07,
+        59.81,
+        183.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        183.07,
+        59.81,
+        183.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        183.12,
+        59.86,
+        183.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        183.07,
+        150.41,
+        183.45,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        183.07,
+        150.41,
+        183.45,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        183.13,
+        150.47,
+        183.39,
+        150.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        183.07,
+        60.41,
+        183.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        183.07,
+        60.41,
+        183.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        183.12,
+        60.46,
+        183.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        183.07,
+        60.41,
+        183.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        183.07,
+        60.41,
+        183.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        183.12,
+        60.46,
+        183.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        183.07,
+        60.41,
+        183.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        183.07,
+        60.41,
+        183.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        183.12,
+        60.46,
+        183.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        170.0,
+        59.21,
+        171.0,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        170.31,
+        149.21,
+        172.17,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        170.31,
+        59.21,
+        170.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        170.31,
+        59.21,
+        170.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        170.31,
+        149.21,
+        170.69,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        170.31,
+        149.21,
+        170.69,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        170.37,
+        149.27,
+        170.63,
+        149.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        170.31,
+        59.21,
+        170.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        170.31,
+        59.21,
+        170.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        170.36,
+        59.26,
+        170.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        170.31,
+        59.21,
+        170.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        170.31,
+        59.21,
+        170.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        170.36,
+        59.26,
+        170.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        170.31,
+        59.21,
+        170.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        170.31,
+        59.21,
+        170.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        170.36,
+        59.26,
+        170.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        170.31,
+        149.81,
+        170.69,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        170.31,
+        149.81,
+        170.69,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        170.37,
+        149.87,
+        170.63,
+        150.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        170.31,
+        59.81,
+        170.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        170.31,
+        59.81,
+        170.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        170.36,
+        59.86,
+        170.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        170.31,
+        59.81,
+        170.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        170.31,
+        59.81,
+        170.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        170.36,
+        59.86,
+        170.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        170.31,
+        59.81,
+        170.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        170.31,
+        59.81,
+        170.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        170.36,
+        59.86,
+        170.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        170.31,
+        150.41,
+        170.69,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        170.31,
+        150.41,
+        170.69,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        170.37,
+        150.47,
+        170.63,
+        150.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        170.31,
+        60.41,
+        170.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        170.31,
+        60.41,
+        170.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        170.36,
+        60.46,
+        170.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        170.31,
+        60.41,
+        170.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        170.31,
+        60.41,
+        170.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        170.36,
+        60.46,
+        170.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        170.31,
+        60.41,
+        170.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        170.31,
+        60.41,
+        170.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        170.36,
+        60.46,
+        170.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        204.76,
+        59.21,
+        205.76,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        205.07,
+        149.21,
+        205.45,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        205.07,
+        59.21,
+        205.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        205.07,
+        59.21,
+        205.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        205.07,
+        149.21,
+        205.45,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        205.07,
+        149.21,
+        205.45,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        205.13,
+        149.27,
+        205.39,
+        149.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        205.07,
+        59.21,
+        205.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        205.07,
+        59.21,
+        205.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        205.12,
+        59.26,
+        205.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        205.07,
+        59.21,
+        205.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        205.07,
+        59.21,
+        205.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        205.12,
+        59.26,
+        205.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        205.07,
+        59.21,
+        205.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        205.07,
+        59.21,
+        205.45,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        205.12,
+        59.26,
+        205.4,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        205.07,
+        149.81,
+        205.45,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        205.07,
+        149.81,
+        205.45,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        205.13,
+        149.87,
+        205.39,
+        150.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        205.07,
+        59.81,
+        205.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        205.07,
+        59.81,
+        205.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        205.12,
+        59.86,
+        205.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        205.07,
+        59.81,
+        205.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        205.07,
+        59.81,
+        205.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        205.12,
+        59.86,
+        205.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        205.07,
+        59.81,
+        205.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        205.07,
+        59.81,
+        205.45,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        205.12,
+        59.86,
+        205.4,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        205.07,
+        150.41,
+        205.45,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        205.07,
+        150.41,
+        205.45,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        205.13,
+        150.47,
+        205.39,
+        150.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        205.07,
+        60.41,
+        205.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        205.07,
+        60.41,
+        205.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        205.12,
+        60.46,
+        205.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        205.07,
+        60.41,
+        205.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        205.07,
+        60.41,
+        205.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        205.12,
+        60.46,
+        205.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        205.07,
+        60.41,
+        205.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        205.07,
+        60.41,
+        205.45,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        205.12,
+        60.46,
+        205.4,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        192.0,
+        59.21,
+        193.0,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        192.31,
+        149.21,
+        194.17,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        192.31,
+        59.21,
+        192.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        192.31,
+        59.21,
+        192.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        192.31,
+        149.21,
+        192.69,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        192.31,
+        149.21,
+        192.69,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        192.37,
+        149.27,
+        192.63,
+        149.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        192.31,
+        59.21,
+        192.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        192.31,
+        59.21,
+        192.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        192.36,
+        59.26,
+        192.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        192.31,
+        59.21,
+        192.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        192.31,
+        59.21,
+        192.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        192.36,
+        59.26,
+        192.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        192.31,
+        59.21,
+        192.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        192.31,
+        59.21,
+        192.69,
+        59.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        192.36,
+        59.26,
+        192.64,
+        59.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        192.31,
+        149.81,
+        192.69,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        192.31,
+        149.81,
+        192.69,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        192.37,
+        149.87,
+        192.63,
+        150.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        192.31,
+        59.81,
+        192.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        192.31,
+        59.81,
+        192.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        192.36,
+        59.86,
+        192.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        192.31,
+        59.81,
+        192.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        192.31,
+        59.81,
+        192.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        192.36,
+        59.86,
+        192.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        192.31,
+        59.81,
+        192.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        192.31,
+        59.81,
+        192.69,
+        60.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        192.36,
+        59.86,
+        192.64,
+        60.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        192.31,
+        150.41,
+        192.69,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        192.31,
+        150.41,
+        192.69,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via1",
+      "rect_um": [
+        192.37,
+        150.47,
+        192.63,
+        150.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        192.31,
+        60.41,
+        192.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        192.31,
+        60.41,
+        192.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via2",
+      "rect_um": [
+        192.36,
+        60.46,
+        192.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        192.31,
+        60.41,
+        192.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        192.31,
+        60.41,
+        192.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via3",
+      "rect_um": [
+        192.36,
+        60.46,
+        192.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal4",
+      "rect_um": [
+        192.31,
+        60.41,
+        192.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "metal5",
+      "rect_um": [
+        192.31,
+        60.41,
+        192.69,
+        60.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VIN",
+      "layer": "via4",
+      "rect_um": [
+        192.36,
+        60.46,
+        192.64,
+        60.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        81.2,
+        67,
+        140.26,
+        73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        85.4,
+        2.81,
+        87.0,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        81.4,
+        69.2,
+        87.0,
+        70.8
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        85.41,
+        2.81,
+        86.99,
+        3.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        85.41,
+        2.81,
+        85.79,
+        3.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        85.41,
+        2.81,
+        85.79,
+        3.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        85.46,
+        2.86,
+        85.74,
+        3.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        81.41,
+        69.81,
+        81.79,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        81.41,
+        69.81,
+        81.79,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        81.46,
+        69.86,
+        81.74,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        86.01,
+        2.81,
+        86.39,
+        3.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        86.01,
+        2.81,
+        86.39,
+        3.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        86.06,
+        2.86,
+        86.34,
+        3.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        82.01,
+        69.81,
+        82.39,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        82.01,
+        69.81,
+        82.39,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        82.06,
+        69.86,
+        82.34,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        86.61,
+        2.81,
+        86.99,
+        3.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        86.61,
+        2.81,
+        86.99,
+        3.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        86.66,
+        2.86,
+        86.94,
+        3.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        82.61,
+        69.81,
+        82.99,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        82.61,
+        69.81,
+        82.99,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        82.66,
+        69.86,
+        82.94,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        98.76,
+        69.21,
+        99.76,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        99.07,
+        124.21,
+        99.45,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        99.07,
+        69.21,
+        99.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        99.07,
+        69.21,
+        99.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        99.07,
+        124.21,
+        99.45,
+        124.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        99.07,
+        124.21,
+        99.45,
+        124.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        99.13,
+        124.27,
+        99.39,
+        124.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        99.07,
+        69.21,
+        99.45,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        99.07,
+        69.21,
+        99.45,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        99.12,
+        69.26,
+        99.4,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        99.07,
+        69.21,
+        99.45,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        99.07,
+        69.21,
+        99.45,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        99.12,
+        69.26,
+        99.4,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        99.07,
+        69.21,
+        99.45,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        99.07,
+        69.21,
+        99.45,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        99.12,
+        69.26,
+        99.4,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        99.07,
+        124.81,
+        99.45,
+        125.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        99.07,
+        124.81,
+        99.45,
+        125.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        99.13,
+        124.87,
+        99.39,
+        125.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        99.07,
+        69.81,
+        99.45,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        99.07,
+        69.81,
+        99.45,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        99.12,
+        69.86,
+        99.4,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        99.07,
+        69.81,
+        99.45,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        99.07,
+        69.81,
+        99.45,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        99.12,
+        69.86,
+        99.4,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        99.07,
+        69.81,
+        99.45,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        99.07,
+        69.81,
+        99.45,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        99.12,
+        69.86,
+        99.4,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        99.07,
+        125.41,
+        99.45,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        99.07,
+        125.41,
+        99.45,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        99.13,
+        125.47,
+        99.39,
+        125.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        99.07,
+        70.41,
+        99.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        99.07,
+        70.41,
+        99.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        99.12,
+        70.46,
+        99.4,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        99.07,
+        70.41,
+        99.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        99.07,
+        70.41,
+        99.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        99.12,
+        70.46,
+        99.4,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        99.07,
+        70.41,
+        99.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        99.07,
+        70.41,
+        99.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        99.12,
+        70.46,
+        99.4,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        86.0,
+        69.21,
+        87.0,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        86.31,
+        124.21,
+        88.17,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        86.31,
+        69.21,
+        86.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        86.31,
+        69.21,
+        86.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        86.31,
+        124.21,
+        86.69,
+        124.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        86.31,
+        124.21,
+        86.69,
+        124.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        86.37,
+        124.27,
+        86.63,
+        124.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        86.31,
+        69.21,
+        86.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        86.31,
+        69.21,
+        86.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        86.36,
+        69.26,
+        86.64,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        86.31,
+        69.21,
+        86.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        86.31,
+        69.21,
+        86.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        86.36,
+        69.26,
+        86.64,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        86.31,
+        69.21,
+        86.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        86.31,
+        69.21,
+        86.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        86.36,
+        69.26,
+        86.64,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        86.31,
+        124.81,
+        86.69,
+        125.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        86.31,
+        124.81,
+        86.69,
+        125.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        86.37,
+        124.87,
+        86.63,
+        125.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        86.31,
+        69.81,
+        86.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        86.31,
+        69.81,
+        86.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        86.36,
+        69.86,
+        86.64,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        86.31,
+        69.81,
+        86.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        86.31,
+        69.81,
+        86.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        86.36,
+        69.86,
+        86.64,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        86.31,
+        69.81,
+        86.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        86.31,
+        69.81,
+        86.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        86.36,
+        69.86,
+        86.64,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        86.31,
+        125.41,
+        86.69,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        86.31,
+        125.41,
+        86.69,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        86.37,
+        125.47,
+        86.63,
+        125.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        86.31,
+        70.41,
+        86.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        86.31,
+        70.41,
+        86.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        86.36,
+        70.46,
+        86.64,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        86.31,
+        70.41,
+        86.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        86.31,
+        70.41,
+        86.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        86.36,
+        70.46,
+        86.64,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        86.31,
+        70.41,
+        86.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        86.31,
+        70.41,
+        86.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        86.36,
+        70.46,
+        86.64,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        120.76,
+        69.21,
+        121.76,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        121.07,
+        124.21,
+        121.45,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        121.07,
+        69.21,
+        121.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        121.07,
+        69.21,
+        121.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        121.07,
+        124.21,
+        121.45,
+        124.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        121.07,
+        124.21,
+        121.45,
+        124.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        121.13,
+        124.27,
+        121.39,
+        124.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        121.07,
+        69.21,
+        121.45,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        121.07,
+        69.21,
+        121.45,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        121.12,
+        69.26,
+        121.4,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        121.07,
+        69.21,
+        121.45,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        121.07,
+        69.21,
+        121.45,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        121.12,
+        69.26,
+        121.4,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        121.07,
+        69.21,
+        121.45,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        121.07,
+        69.21,
+        121.45,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        121.12,
+        69.26,
+        121.4,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        121.07,
+        124.81,
+        121.45,
+        125.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        121.07,
+        124.81,
+        121.45,
+        125.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        121.13,
+        124.87,
+        121.39,
+        125.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        121.07,
+        69.81,
+        121.45,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        121.07,
+        69.81,
+        121.45,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        121.12,
+        69.86,
+        121.4,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        121.07,
+        69.81,
+        121.45,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        121.07,
+        69.81,
+        121.45,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        121.12,
+        69.86,
+        121.4,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        121.07,
+        69.81,
+        121.45,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        121.07,
+        69.81,
+        121.45,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        121.12,
+        69.86,
+        121.4,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        121.07,
+        125.41,
+        121.45,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        121.07,
+        125.41,
+        121.45,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        121.13,
+        125.47,
+        121.39,
+        125.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        121.07,
+        70.41,
+        121.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        121.07,
+        70.41,
+        121.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        121.12,
+        70.46,
+        121.4,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        121.07,
+        70.41,
+        121.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        121.07,
+        70.41,
+        121.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        121.12,
+        70.46,
+        121.4,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        121.07,
+        70.41,
+        121.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        121.07,
+        70.41,
+        121.45,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        121.12,
+        70.46,
+        121.4,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        108.0,
+        69.21,
+        109.0,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        108.31,
+        124.21,
+        110.17,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        108.31,
+        69.21,
+        108.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        108.31,
+        69.21,
+        108.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        108.31,
+        124.21,
+        108.69,
+        124.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        108.31,
+        124.21,
+        108.69,
+        124.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        108.37,
+        124.27,
+        108.63,
+        124.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        108.31,
+        69.21,
+        108.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        108.31,
+        69.21,
+        108.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        108.36,
+        69.26,
+        108.64,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        108.31,
+        69.21,
+        108.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        108.31,
+        69.21,
+        108.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        108.36,
+        69.26,
+        108.64,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        108.31,
+        69.21,
+        108.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        108.31,
+        69.21,
+        108.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        108.36,
+        69.26,
+        108.64,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        108.31,
+        124.81,
+        108.69,
+        125.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        108.31,
+        124.81,
+        108.69,
+        125.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        108.37,
+        124.87,
+        108.63,
+        125.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        108.31,
+        69.81,
+        108.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        108.31,
+        69.81,
+        108.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        108.36,
+        69.86,
+        108.64,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        108.31,
+        69.81,
+        108.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        108.31,
+        69.81,
+        108.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        108.36,
+        69.86,
+        108.64,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        108.31,
+        69.81,
+        108.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        108.31,
+        69.81,
+        108.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        108.36,
+        69.86,
+        108.64,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        108.31,
+        125.41,
+        108.69,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        108.31,
+        125.41,
+        108.69,
+        125.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        108.37,
+        125.47,
+        108.63,
+        125.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        108.31,
+        70.41,
+        108.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        108.31,
+        70.41,
+        108.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        108.36,
+        70.46,
+        108.64,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        108.31,
+        70.41,
+        108.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        108.31,
+        70.41,
+        108.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        108.36,
+        70.46,
+        108.64,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        108.31,
+        70.41,
+        108.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        108.31,
+        70.41,
+        108.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        108.36,
+        70.46,
+        108.64,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        138.26,
+        69.21,
+        139.26,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        138.57,
+        109.21,
+        138.95,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        138.57,
+        69.21,
+        138.95,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        138.57,
+        69.21,
+        138.95,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        138.57,
+        109.21,
+        138.95,
+        109.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        138.57,
+        109.21,
+        138.95,
+        109.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        138.63,
+        109.27,
+        138.89,
+        109.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        138.57,
+        69.21,
+        138.95,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        138.57,
+        69.21,
+        138.95,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        138.62,
+        69.26,
+        138.9,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        138.57,
+        69.21,
+        138.95,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        138.57,
+        69.21,
+        138.95,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        138.62,
+        69.26,
+        138.9,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        138.57,
+        69.21,
+        138.95,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        138.57,
+        69.21,
+        138.95,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        138.62,
+        69.26,
+        138.9,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        138.57,
+        109.81,
+        138.95,
+        110.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        138.57,
+        109.81,
+        138.95,
+        110.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        138.63,
+        109.87,
+        138.89,
+        110.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        138.57,
+        69.81,
+        138.95,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        138.57,
+        69.81,
+        138.95,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        138.62,
+        69.86,
+        138.9,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        138.57,
+        69.81,
+        138.95,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        138.57,
+        69.81,
+        138.95,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        138.62,
+        69.86,
+        138.9,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        138.57,
+        69.81,
+        138.95,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        138.57,
+        69.81,
+        138.95,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        138.62,
+        69.86,
+        138.9,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        138.57,
+        110.41,
+        138.95,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        138.57,
+        110.41,
+        138.95,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        138.63,
+        110.47,
+        138.89,
+        110.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        138.57,
+        70.41,
+        138.95,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        138.57,
+        70.41,
+        138.95,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        138.62,
+        70.46,
+        138.9,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        138.57,
+        70.41,
+        138.95,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        138.57,
+        70.41,
+        138.95,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        138.62,
+        70.46,
+        138.9,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        138.57,
+        70.41,
+        138.95,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        138.57,
+        70.41,
+        138.95,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        138.62,
+        70.46,
+        138.9,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        134.0,
+        69.21,
+        135.0,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        134.31,
+        109.21,
+        136.67,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        134.31,
+        69.21,
+        134.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        134.31,
+        69.21,
+        134.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        134.31,
+        109.21,
+        134.69,
+        109.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        134.31,
+        109.21,
+        134.69,
+        109.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        134.37,
+        109.27,
+        134.63,
+        109.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        134.31,
+        69.21,
+        134.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        134.31,
+        69.21,
+        134.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        134.36,
+        69.26,
+        134.64,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        134.31,
+        69.21,
+        134.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        134.31,
+        69.21,
+        134.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        134.36,
+        69.26,
+        134.64,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        134.31,
+        69.21,
+        134.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        134.31,
+        69.21,
+        134.69,
+        69.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        134.36,
+        69.26,
+        134.64,
+        69.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        134.31,
+        109.81,
+        134.69,
+        110.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        134.31,
+        109.81,
+        134.69,
+        110.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        134.37,
+        109.87,
+        134.63,
+        110.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        134.31,
+        69.81,
+        134.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        134.31,
+        69.81,
+        134.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        134.36,
+        69.86,
+        134.64,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        134.31,
+        69.81,
+        134.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        134.31,
+        69.81,
+        134.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        134.36,
+        69.86,
+        134.64,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        134.31,
+        69.81,
+        134.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        134.31,
+        69.81,
+        134.69,
+        70.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        134.36,
+        69.86,
+        134.64,
+        70.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        134.31,
+        110.41,
+        134.69,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        134.31,
+        110.41,
+        134.69,
+        110.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via1",
+      "rect_um": [
+        134.37,
+        110.47,
+        134.63,
+        110.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        134.31,
+        70.41,
+        134.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        134.31,
+        70.41,
+        134.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via2",
+      "rect_um": [
+        134.36,
+        70.46,
+        134.64,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        134.31,
+        70.41,
+        134.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        134.31,
+        70.41,
+        134.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via3",
+      "rect_um": [
+        134.36,
+        70.46,
+        134.64,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal4",
+      "rect_um": [
+        134.31,
+        70.41,
+        134.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "metal5",
+      "rect_um": [
+        134.31,
+        70.41,
+        134.69,
+        70.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "VSS",
+      "layer": "via4",
+      "rect_um": [
+        134.36,
+        70.46,
+        134.64,
+        70.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal5",
+      "rect_um": [
+        189.44,
+        77,
+        196.24,
+        83
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        193.64,
+        8.81,
+        195.24,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        189.64,
+        79.2,
+        195.24,
+        80.8
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        193.65,
+        8.81,
+        195.23,
+        9.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        193.65,
+        8.81,
+        194.03,
+        9.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        193.65,
+        8.81,
+        194.03,
+        9.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via3",
+      "rect_um": [
+        193.7,
+        8.86,
+        193.98,
+        9.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        189.65,
+        79.81,
+        190.03,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal5",
+      "rect_um": [
+        189.65,
+        79.81,
+        190.03,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via4",
+      "rect_um": [
+        189.7,
+        79.86,
+        189.98,
+        80.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        194.25,
+        8.81,
+        194.63,
+        9.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        194.25,
+        8.81,
+        194.63,
+        9.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via3",
+      "rect_um": [
+        194.3,
+        8.86,
+        194.58,
+        9.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        190.25,
+        79.81,
+        190.63,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal5",
+      "rect_um": [
+        190.25,
+        79.81,
+        190.63,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via4",
+      "rect_um": [
+        190.3,
+        79.86,
+        190.58,
+        80.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        194.85,
+        8.81,
+        195.23,
+        9.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        194.85,
+        8.81,
+        195.23,
+        9.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via3",
+      "rect_um": [
+        194.9,
+        8.86,
+        195.18,
+        9.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        190.85,
+        79.81,
+        191.23,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal5",
+      "rect_um": [
+        190.85,
+        79.81,
+        191.23,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via4",
+      "rect_um": [
+        190.9,
+        79.86,
+        191.18,
+        80.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal2",
+      "rect_um": [
+        194.24,
+        79.21,
+        195.24,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal1",
+      "rect_um": [
+        194.55,
+        149.21,
+        194.93,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        194.55,
+        79.21,
+        194.93,
+        80.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        194.55,
+        79.21,
+        194.93,
+        80.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal1",
+      "rect_um": [
+        194.55,
+        149.21,
+        194.93,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal2",
+      "rect_um": [
+        194.55,
+        149.21,
+        194.93,
+        149.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via1",
+      "rect_um": [
+        194.61,
+        149.27,
+        194.87,
+        149.53
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal2",
+      "rect_um": [
+        194.55,
+        79.21,
+        194.93,
+        79.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        194.55,
+        79.21,
+        194.93,
+        79.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via2",
+      "rect_um": [
+        194.6,
+        79.26,
+        194.88,
+        79.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        194.55,
+        79.21,
+        194.93,
+        79.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        194.55,
+        79.21,
+        194.93,
+        79.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via3",
+      "rect_um": [
+        194.6,
+        79.26,
+        194.88,
+        79.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        194.55,
+        79.21,
+        194.93,
+        79.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal5",
+      "rect_um": [
+        194.55,
+        79.21,
+        194.93,
+        79.59
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via4",
+      "rect_um": [
+        194.6,
+        79.26,
+        194.88,
+        79.54
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal1",
+      "rect_um": [
+        194.55,
+        149.81,
+        194.93,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal2",
+      "rect_um": [
+        194.55,
+        149.81,
+        194.93,
+        150.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via1",
+      "rect_um": [
+        194.61,
+        149.87,
+        194.87,
+        150.13
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal2",
+      "rect_um": [
+        194.55,
+        79.81,
+        194.93,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        194.55,
+        79.81,
+        194.93,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via2",
+      "rect_um": [
+        194.6,
+        79.86,
+        194.88,
+        80.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        194.55,
+        79.81,
+        194.93,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        194.55,
+        79.81,
+        194.93,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via3",
+      "rect_um": [
+        194.6,
+        79.86,
+        194.88,
+        80.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        194.55,
+        79.81,
+        194.93,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal5",
+      "rect_um": [
+        194.55,
+        79.81,
+        194.93,
+        80.19
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via4",
+      "rect_um": [
+        194.6,
+        79.86,
+        194.88,
+        80.14
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal1",
+      "rect_um": [
+        194.55,
+        150.41,
+        194.93,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal2",
+      "rect_um": [
+        194.55,
+        150.41,
+        194.93,
+        150.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via1",
+      "rect_um": [
+        194.61,
+        150.47,
+        194.87,
+        150.73
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal2",
+      "rect_um": [
+        194.55,
+        80.41,
+        194.93,
+        80.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        194.55,
+        80.41,
+        194.93,
+        80.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via2",
+      "rect_um": [
+        194.6,
+        80.46,
+        194.88,
+        80.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        194.55,
+        80.41,
+        194.93,
+        80.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        194.55,
+        80.41,
+        194.93,
+        80.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via3",
+      "rect_um": [
+        194.6,
+        80.46,
+        194.88,
+        80.74
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal4",
+      "rect_um": [
+        194.55,
+        80.41,
+        194.93,
+        80.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal5",
+      "rect_um": [
+        194.55,
+        80.41,
+        194.93,
+        80.79
+      ],
+      "purpose": "supply-only additional strap"
+    },
+    {
+      "net": "IOUT",
+      "layer": "via4",
+      "rect_um": [
+        194.6,
+        80.46,
+        194.88,
+        80.74
+      ],
+      "purpose": "supply-only additional strap"
+    }
+  ],
+  "external_components": [
+    {
+      "name": "VIN",
+      "nodes": [
+        "VIN",
+        "VSS"
+      ],
+      "kind": "external nonideal 5V supply; also supplies external RDUMMY",
+      "nominal_v": 5
+    },
+    {
+      "name": "ANCHOR",
+      "kind": "external 2.5V precision anchor, 200k/50k VSET divider",
+      "nodes": [
+        "VSET",
+        "VSS"
+      ]
+    },
+    {
+      "name": "RSET",
+      "kind": "external resistor",
+      "nodes": [
+        "SENSE",
+        "VSS"
+      ],
+      "ohm": 20000
+    },
+    {
+      "name": "RIBIAS",
+      "kind": "external resistor",
+      "nodes": [
+        "IPB",
+        "VSS"
+      ],
+      "ohm": 100000
+    },
+    {
+      "name": "COMP",
+      "kind": "external compensation; selected experiment defines value and topology",
+      "nodes": [
+        "IN2",
+        "ICTRL",
+        "VSS"
+      ]
+    },
+    {
+      "name": "CIN",
+      "kind": "external 100nF ESR0.2ohm",
+      "nodes": [
+        "VIN",
+        "VSS"
+      ]
+    },
+    {
+      "name": "RDUMMY",
+      "kind": "external 50k from rawVIN to B.DUMMY",
+      "nodes": [
+        "VIN",
+        "DUMMY"
+      ],
+      "ohm": 50000
+    }
+  ],
+  "dimension_change": [],
+  "source_sha256": {
+    "layout/reference_v2/vi_reference-reference.spice": "71908fcbe01b0fd6c9ec4179d378b9552e27ee3aba0f6e214fdca6a50d472202",
+    "build/reference-v2-layout/vi-pg-r2d/sources/V/schematic.spice": "6a6a2e1775d7011159fd45529f8d066a20e138f59eb81e27efc1f7ecddbd23e7"
+  },
+  "pcell_parameters": {
+    "full_metal": 0,
+    "gate_to_polycont_um": 0.5,
+    "guard": 1,
+    "glc": 1,
+    "grc": 1,
+    "topc": 1,
+    "botc": 1
+  },
+  "note": "Reference and regulator transistor module only; no pads/ESD, precision voltage anchor or external R/C implementation. Use extracted junction geometry.",
+  "resistors": [],
+  "design_changes": [
+    "10MOS VI only; 9MOS LDO removed. No startup clamp.",
+    "Supply-only actual geometry improvement versus same 10MOS thin route control; all MOS, signals and original copper retained."
+  ],
+  "negative_control_gate": "VSET",
+  "supply_port": "VIN",
+  "nmos_guard_all_sides": true,
+  "electrical_physical_independence": "Physical D/G/S/B independently authored in JSON; gold independently parsed from electrical MOS source. No netlist-to-placement parser.",
+  "power_routing": {
+    "kind": "additional actual copper and via arrays",
+    "trunks": [
+      {
+        "net": "VIN",
+        "layer": "metal5",
+        "width_um": 6,
+        "y_um": 60,
+        "span_um": [
+          4.199999999999999,
+          206.76
+        ],
+        "feed_layer": "metal4",
+        "feed_width_um": 1.6,
+        "source_body_leg_layer": "metal2",
+        "source_body_leg_width_um": 1,
+        "terminals": [
+          {
+            "instance": "IPBIAS",
+            "pin": "S",
+            "coordinate_um": [
+              16.259999999999998,
+              110.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IPBIAS",
+            "pin": "B",
+            "coordinate_um": [
+              9.5,
+              110.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IPTAIL",
+            "pin": "S",
+            "coordinate_um": [
+              34.26,
+              110.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IPTAIL",
+            "pin": "B",
+            "coordinate_um": [
+              27.5,
+              110.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IPD1",
+            "pin": "B",
+            "coordinate_um": [
+              42.5,
+              150.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IPD2",
+            "pin": "B",
+            "coordinate_um": [
+              64.5,
+              150.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IPLOAD",
+            "pin": "S",
+            "coordinate_um": [
+              161.26,
+              150.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IPLOAD",
+            "pin": "B",
+            "coordinate_um": [
+              148.5,
+              150.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IPREG",
+            "pin": "S",
+            "coordinate_um": [
+              183.26,
+              150.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IPREG",
+            "pin": "B",
+            "coordinate_um": [
+              170.5,
+              150.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IPOUT",
+            "pin": "S",
+            "coordinate_um": [
+              205.26,
+              150.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IPOUT",
+            "pin": "B",
+            "coordinate_um": [
+              192.5,
+              150.0
+            ],
+            "via_rows": 3
+          }
+        ]
+      },
+      {
+        "net": "VSS",
+        "layer": "metal5",
+        "width_um": 6,
+        "y_um": 70,
+        "span_um": [
+          81.2,
+          140.26
+        ],
+        "feed_layer": "metal4",
+        "feed_width_um": 1.6,
+        "source_body_leg_layer": "metal2",
+        "source_body_leg_width_um": 1,
+        "terminals": [
+          {
+            "instance": "IND1",
+            "pin": "S",
+            "coordinate_um": [
+              99.26,
+              125.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IND1",
+            "pin": "B",
+            "coordinate_um": [
+              86.5,
+              125.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IND2",
+            "pin": "S",
+            "coordinate_um": [
+              121.26,
+              125.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "IND2",
+            "pin": "B",
+            "coordinate_um": [
+              108.5,
+              125.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "INSTAGE",
+            "pin": "S",
+            "coordinate_um": [
+              138.76,
+              110.0
+            ],
+            "via_rows": 3
+          },
+          {
+            "instance": "INSTAGE",
+            "pin": "B",
+            "coordinate_um": [
+              134.5,
+              110.0
+            ],
+            "via_rows": 3
+          }
+        ]
+      },
+      {
+        "net": "IOUT",
+        "layer": "metal5",
+        "width_um": 6,
+        "y_um": 80,
+        "span_um": [
+          189.44,
+          196.24
+        ],
+        "feed_layer": "metal4",
+        "feed_width_um": 1.6,
+        "source_body_leg_layer": "metal2",
+        "source_body_leg_width_um": 1,
+        "terminals": [
+          {
+            "instance": "IPOUT",
+            "pin": "D",
+            "coordinate_um": [
+              194.74,
+              150.0
+            ],
+            "via_rows": 3
+          }
+        ]
+      }
+    ],
+    "original_geometry_removed": false,
+    "devices_changed": false,
+    "original_thin_power_rails_retained": true,
+    "all_added_geometry_extracted": true
+  }
+}

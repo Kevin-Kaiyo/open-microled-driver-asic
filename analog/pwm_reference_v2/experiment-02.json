@@ -1,0 +1,7 @@
+{
+ "hypothesis": "60pF attenuates above10MHz but leaves0.1–1MHz supply error. A1000pF diagnostic should move capacitive supply tracking into the observed error band; it may worsen loop phase and must not be selected without the two-injection check.",
+ "basis": "Measured1MHz CTRL/VREF=0.501 and ILED/I0 perV=1.323 with60pF; no-CFF=0.117 and1.529/V. Current overshoot still44.42% at260ns after edge.",
+ "bounded_next": "Exactly1000pF step and loop measurement; if it destabilizes or remains outside budget, change architecture rather than a dense C sweep.",
+ "change_class": "Explicit external feedforward capacitor, same original compensation and LED contract; not extracted on-chip capacitance.",
+ "acceptance": "Retain20%/5us, >=60deg diagnostic local phase-margin target, no changed LED or current limits."
+}

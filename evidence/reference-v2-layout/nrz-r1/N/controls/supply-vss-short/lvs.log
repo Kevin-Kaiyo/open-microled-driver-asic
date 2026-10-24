@@ -1,0 +1,77 @@
+
+Circuit 1 cell pfet_06v0 and Circuit 2 cell pfet_06v0 are black boxes.
+Warning: Equate pins:  cell pfet_06v0 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell pfet_06v0 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: pfet_06v0                       |Circuit 2: pfet_06v0                       
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes pfet_06v0 and pfet_06v0 are equivalent.
+
+Circuit 1 cell nfet_06v0 and Circuit 2 cell nfet_06v0 are black boxes.
+Warning: Equate pins:  cell nfet_06v0 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell nfet_06v0 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: nfet_06v0                       |Circuit 2: nfet_06v0                       
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes nfet_06v0 and nfet_06v0 are equivalent.
+
+Subcircuit summary:
+Circuit 1: nrz_bias_power                  |Circuit 2: nrz_bias_power                  
+-------------------------------------------|-------------------------------------------
+pfet_06v0 (13)                             |pfet_06v0 (13)                             
+nfet_06v0 (6)                              |nfet_06v0 (6)                              
+Number of devices: 19                      |Number of devices: 19                      
+Number of nets: 16 **Mismatch**            |Number of nets: 17 **Mismatch**            
+---------------------------------------------------------------------------------------
+NET mismatches: Class fragments follow (with fanout counts):
+Circuit 1: nrz_bias_power                  |Circuit 2: nrz_bias_power                  
+
+---------------------------------------------------------------------------------------
+Net: VSS                                   |Net: VSS                                   
+  nfet_06v0/(1|3) = 6                      |  nfet_06v0/(1|3) = 6                      
+  nfet_06v0/4 = 6                          |  nfet_06v0/4 = 6                          
+  pfet_06v0/(1|3) = 9                      |                                           
+  pfet_06v0/4 = 13                         |                                           
+                                           |                                           
+(no matching net)                          |Net: VIN                                   
+                                           |  pfet_06v0/(1|3) = 9                      
+                                           |  pfet_06v0/4 = 13                         
+---------------------------------------------------------------------------------------
+Netlists do not match.
+Port matching may fail to disambiguate symmetries.
+
+Subcircuit pins:
+Circuit 1: nrz_bias_power                  |Circuit 2: nrz_bias_power                  
+-------------------------------------------|-------------------------------------------
+VSS                                        |VIN **Mismatch**                           
+VSET                                       |VSET                                       
+SENSE                                      |SENSE                                      
+ICTRL                                      |ICTRL                                      
+IOUT                                       |IOUT                                       
+REGFB                                      |REGFB                                      
+VREG                                       |VREG                                       
+LCTRL                                      |LCTRL                                      
+IN2                                        |IN2                                        
+IPB                                        |IPB                                        
+LPB                                        |LPB                                        
+LN2                                        |LN2                                        
+(no pin, node is VSS)                      |VSS                                        
+---------------------------------------------------------------------------------------
+Cell pin lists for nrz_bias_power and nrz_bias_power altered to match.
+Device classes nrz_bias_power and nrz_bias_power are equivalent.
+
+Final result: Top level cell failed pin matching.

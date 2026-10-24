@@ -1,0 +1,54 @@
+{
+  "created_before_execution": "2026-10-24T20:05:22.215625",
+  "base_commit": "112ba95969ac6a2141c305324ea694e7b96c0765",
+  "hypotheses": [
+    "Real 06v0 OTA current servo removes first-order VDUMMY and reference-MOS VGS dependence of IREF; remaining mirror compliance/PVT and servo offset must be measured.",
+    "Real06v0 OTA/PMOS LDO derives VDUMMY3.3 fromVIN5, never fromlow2.95logicVDD. External precision2.5V anchor is explicitly outside implemented transistor circuit.",
+    "RREF(old)/RSET(new) andRDUMMY independent tolerance/TC influence current andreceiver; no per-corner recalibration."
+  ],
+  "architecture": {
+    "raw_VIN_V": 5.0,
+    "logic_VDD": "Keep prior2.95/3.3/3.65V externallogic rail forlike-for-like",
+    "precision_anchor_V": 2.5,
+    "setpoint_divider_ohm": [
+      200000,
+      50000
+    ],
+    "RSET_ohm": 20000,
+    "RDUMMY_ohm": 28000,
+    "regulator_divider_ohm": [
+      56000,
+      10000
+    ],
+    "OTA_RBIAS_ohm": 100000,
+    "external_CCOMP_F": 3e-12,
+    "external_output_C_F": 1e-08,
+    "external_output_ESR_ohm": 0.2,
+    "anchor_output_R_ohm": 0.2,
+    "anchor_boundary": "Actual external voltage reference not implemented internally; voltage tolerance/TC/outputZ deterministic assumptions. Terminal outputenergycounted; externalreferencequiescentupstreamlossnotmodeled."
+  },
+  "stages": {
+    "pilot": "3PVT x DCbit0/1, stable25uAoneTTcalibrationonly; LDO/currentservo standaloneif needed. Startup3conditions1us/100ns ramp plusdelayedanchor; retainfailedtrial.",
+    "baseline_resistors": "oldactualfullRC,TT independentRREF/RDUMMY \u00b11% and \u00b1100ppm/C testedatSS125/FF-40;\u00b15%negativecontrol",
+    "final": "selectedactualnewRC:3PVT DC+0.5G,independentworstpassive/anchor corners,\u00b150mVrawlogic/LED perturbations,supply-returnpackage, startup, two numericalconfigs; phase planwrittenbeforeexecution"
+  },
+  "frozen": [
+    "LED measuredstaticlin2026 model",
+    "CLED200fF",
+    "LED Rpkg1ohmLpkg.5nH",
+    "DATA20ps",
+    "RXtau200ps/1GHz/62.5uA",
+    "originalPRBS trainingvalidation",
+    "allsourceactualv(t)*i(t) plusDATA"
+  ],
+  "scope_limits": [
+    "No fullPVTcrossproduct,MonteCarlo,mismatchyield,temperatureLEDfit,opticmeasurement,tapeoutorSOAclaim",
+    "ExternalprecisionanchorandboardR/Careexplicitinterfaces; fullselfbiasedbandgapnotimplemented"
+  ],
+  "resources": {
+    "raw_budget_GiB": 2,
+    "free_floor_GiB": 5,
+    "concurrent_ngspice": 1,
+    "lock": "/tmp/open-microled-nrz-ngspice.lock"
+  }
+}

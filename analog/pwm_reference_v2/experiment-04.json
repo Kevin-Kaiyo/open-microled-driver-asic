@@ -1,0 +1,8 @@
+{
+ "rejected_case":"softstart_v1_comp150_startup_shortmesh",
+ "evidence":"At100.137ns, held branch displacement is328.19nA even with pass gate off; raw rail capacitive injection and package return persist. Solver also fails at20us FAULT edge. Neither is a pass.",
+ "next_minimal_combination":"Fixed150pF N2–VSS compensation + original PCB100ohm100nF rail network +10ohm GPIO output impedance; no new MOS needed if this passes.",
+ "reason":"The old17.7us current recovery was not itself equal to the input RC time constant. Improved PSRR may reduce error under the entire RC slope so the same current5us criterion can pass, while the established PCB rail ramp bounds startup displacement.",
+ "controlled_start_boundary":"Raw reference supply0–3.3V in100ns; passive PCB filter controls delivered reference rise. Existing external FAULT held20us and RTL PERMIT sequence unchanged. No autonomous POR, bandgap, or new on-chip hardware claim.",
+ "fixed_contract":"No parameter sweep, no altered LED or statistical window, unchanged20%/5us and1nA criteria."
+}

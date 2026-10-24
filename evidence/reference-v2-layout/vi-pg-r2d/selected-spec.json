@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "status": "electrical_topology_and_dimensions_frozen",
+  "electrical_freeze": {
+    "source": "analog/nrz_reference_v2/vi_reference_selected.spice",
+    "sha256": "71908fcbe01b0fd6c9ec4179d378b9552e27ee3aba0f6e214fdca6a50d472202"
+  },
+  "routes": {
+    "V": {
+      "top": "nrz_vi_reference",
+      "schematic_source": "layout/reference_v2/vi_reference-reference.spice",
+      "ports": [
+        "VIN",
+        "VSS",
+        "VSET",
+        "SENSE",
+        "IOUT",
+        "IPB",
+        "IN2",
+        "ICTRL"
+      ],
+      "negative_control_gate": "VSET",
+      "supply_port": "VIN",
+      "devices": [
+        {
+          "name": "IPBIAS",
+          "model": "pfet_06v0",
+          "w_um": 20,
+          "l_um": 4,
+          "nodes": [
+            "IPB",
+            "IPB",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPTAIL",
+          "model": "pfet_06v0",
+          "w_um": 20,
+          "l_um": 4,
+          "nodes": [
+            "ITAIL",
+            "IPB",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPD1",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "IN1",
+            "VSET",
+            "ITAIL",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPD2",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "IN2",
+            "SENSE",
+            "ITAIL",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IND1",
+          "model": "nfet_06v0",
+          "w_um": 50,
+          "l_um": 10,
+          "nodes": [
+            "IN1",
+            "IN1",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "IND2",
+          "model": "nfet_06v0",
+          "w_um": 50,
+          "l_um": 10,
+          "nodes": [
+            "IN2",
+            "IN1",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "INSTAGE",
+          "model": "nfet_06v0",
+          "w_um": 20,
+          "l_um": 1,
+          "nodes": [
+            "ICTRL",
+            "IN2",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "IPLOAD",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "ICTRL",
+            "ICTRL",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPREG",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "SENSE",
+            "ICTRL",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPOUT",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "IOUT",
+            "ICTRL",
+            "VIN",
+            "VIN"
+          ]
+        }
+      ],
+      "external_components": [
+        {
+          "name": "VIN",
+          "nodes": [
+            "VIN",
+            "VSS"
+          ],
+          "kind": "external nonideal 5V supply; also supplies external RDUMMY",
+          "nominal_v": 5
+        },
+        {
+          "name": "ANCHOR",
+          "kind": "external 2.5V precision anchor, 200k/50k VSET divider",
+          "nodes": [
+            "VSET",
+            "VSS"
+          ]
+        },
+        {
+          "name": "RSET",
+          "kind": "external resistor",
+          "nodes": [
+            "SENSE",
+            "VSS"
+          ],
+          "ohm": 20000
+        },
+        {
+          "name": "RIBIAS",
+          "kind": "external resistor",
+          "nodes": [
+            "IPB",
+            "VSS"
+          ],
+          "ohm": 100000
+        },
+        {
+          "name": "COMP",
+          "kind": "external compensation; selected experiment defines value and topology",
+          "nodes": [
+            "IN2",
+            "ICTRL",
+            "VSS"
+          ]
+        },
+        {
+          "name": "CIN",
+          "kind": "external 100nF ESR0.2ohm",
+          "nodes": [
+            "VIN",
+            "VSS"
+          ]
+        },
+        {
+          "name": "RDUMMY",
+          "kind": "external 50k from rawVIN to B.DUMMY",
+          "nodes": [
+            "VIN",
+            "DUMMY"
+          ],
+          "ohm": 50000
+        }
+      ],
+      "design_changes": [
+        "10MOS VI only; 9MOS LDO removed. No startup clamp.",
+        "Supply-only actual geometry improvement versus same 10MOS thin route control; all MOS, signals and original copper retained."
+      ],
+      "power_trunk_nets": [
+        "VIN",
+        "VSS",
+        "IOUT"
+      ]
+    }
+  }
+}

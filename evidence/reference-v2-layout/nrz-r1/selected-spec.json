@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "purpose": "19MOS real reference and regulator module for existing B core",
+  "electrical_freeze": {
+    "source": "analog/nrz_reference_v2/bias_power_pilot.spice",
+    "sha256": "7e205c7405db507ded0fc9dd799e98663ef373f03e42cdd9b21e05483bc5999d",
+    "note": "Agent froze topology/dimensions; external compensation may change without GDS changes"
+  },
+  "routes": {
+    "N": {
+      "top": "nrz_bias_power",
+      "schematic_source": "layout/reference_v2/nrz_bias_power-reference.spice",
+      "ports": [
+        "VIN",
+        "VSS",
+        "VSET",
+        "SENSE",
+        "IOUT",
+        "REGFB",
+        "VREG",
+        "IPB",
+        "IN2",
+        "ICTRL",
+        "LPB",
+        "LN2",
+        "LCTRL"
+      ],
+      "negative_control_gate": "VSET",
+      "supply_port": "VIN",
+      "devices": [
+        {
+          "name": "IPBIAS",
+          "model": "pfet_06v0",
+          "w_um": 20,
+          "l_um": 4,
+          "nodes": [
+            "IPB",
+            "IPB",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPTAIL",
+          "model": "pfet_06v0",
+          "w_um": 20,
+          "l_um": 4,
+          "nodes": [
+            "ITAIL",
+            "IPB",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPD1",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "IN1",
+            "VSET",
+            "ITAIL",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPD2",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "IN2",
+            "SENSE",
+            "ITAIL",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IND1",
+          "model": "nfet_06v0",
+          "w_um": 50,
+          "l_um": 10,
+          "nodes": [
+            "IN1",
+            "IN1",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "IND2",
+          "model": "nfet_06v0",
+          "w_um": 50,
+          "l_um": 10,
+          "nodes": [
+            "IN2",
+            "IN1",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "INSTAGE",
+          "model": "nfet_06v0",
+          "w_um": 20,
+          "l_um": 1,
+          "nodes": [
+            "ICTRL",
+            "IN2",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "IPLOAD",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "ICTRL",
+            "ICTRL",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPREG",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "SENSE",
+            "ICTRL",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPOUT",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "IOUT",
+            "ICTRL",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "LPBIAS",
+          "model": "pfet_06v0",
+          "w_um": 20,
+          "l_um": 4,
+          "nodes": [
+            "LPB",
+            "LPB",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "LPTAIL",
+          "model": "pfet_06v0",
+          "w_um": 20,
+          "l_um": 4,
+          "nodes": [
+            "LTAIL",
+            "LPB",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "LPD1",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "LN1",
+            "VSET",
+            "LTAIL",
+            "VIN"
+          ]
+        },
+        {
+          "name": "LPD2",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "LN2",
+            "REGFB",
+            "LTAIL",
+            "VIN"
+          ]
+        },
+        {
+          "name": "LND1",
+          "model": "nfet_06v0",
+          "w_um": 50,
+          "l_um": 10,
+          "nodes": [
+            "LN1",
+            "LN1",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "LND2",
+          "model": "nfet_06v0",
+          "w_um": 50,
+          "l_um": 10,
+          "nodes": [
+            "LN2",
+            "LN1",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "LNSTAGE",
+          "model": "nfet_06v0",
+          "w_um": 20,
+          "l_um": 1,
+          "nodes": [
+            "LCTRL",
+            "LN2",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "LPLOAD",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "LCTRL",
+            "LCTRL",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "LPREG",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "VREG",
+            "LCTRL",
+            "VIN",
+            "VIN"
+          ]
+        }
+      ],
+      "external_components": [
+        {
+          "name": "VSET",
+          "nodes": [
+            "VSET",
+            "VSS"
+          ],
+          "kind": "external precision-voltage anchor",
+          "nominal_v": 0.5
+        },
+        {
+          "name": "RSET",
+          "nodes": [
+            "SENSE",
+            "VSS"
+          ],
+          "kind": "external set resistor",
+          "ohm": 20000
+        },
+        {
+          "name": "RBIAS_I",
+          "nodes": [
+            "IPB",
+            "VSS"
+          ],
+          "kind": "external bias resistor",
+          "ohm": 100000
+        },
+        {
+          "name": "RBIAS_L",
+          "nodes": [
+            "LPB",
+            "VSS"
+          ],
+          "kind": "external bias resistor",
+          "ohm": 100000
+        },
+        {
+          "name": "RFB_H",
+          "nodes": [
+            "VREG",
+            "REGFB"
+          ],
+          "kind": "external feedback resistor",
+          "ohm": 56000
+        },
+        {
+          "name": "RFB_L",
+          "nodes": [
+            "REGFB",
+            "VSS"
+          ],
+          "kind": "external feedback resistor",
+          "ohm": 10000
+        },
+        {
+          "name": "CCOMP_I",
+          "nodes": [
+            "IN2",
+            "ICTRL"
+          ],
+          "kind": "external compensation capacitor",
+          "value": "electrical experiment parameter"
+        },
+        {
+          "name": "CCOMP_L",
+          "nodes": [
+            "LN2",
+            "LCTRL"
+          ],
+          "kind": "external compensation capacitor",
+          "value": "electrical experiment parameter"
+        },
+        {
+          "name": "COUT_L",
+          "nodes": [
+            "VREG",
+            "VSS"
+          ],
+          "kind": "external regulator output capacitor",
+          "value": "electrical experiment parameter"
+        },
+        {
+          "name": "VIN",
+          "nodes": [
+            "VIN",
+            "VSS"
+          ],
+          "kind": "external supply input",
+          "nominal_v": 5
+        },
+        {
+          "name": "OLD_B_CORE",
+          "nodes": [
+            "IOUT",
+            "VREG",
+            "VSS"
+          ],
+          "kind": "old separately extracted hv-r2/B core; intermodule connections external"
+        }
+      ],
+      "design_changes": [
+        "New true transistor current servo and LDO module; original B core unchanged.",
+        "Shared VIN/VSS/VSET routes within this new module extracted. No pads or intermodule package routes."
+      ]
+    }
+  }
+}

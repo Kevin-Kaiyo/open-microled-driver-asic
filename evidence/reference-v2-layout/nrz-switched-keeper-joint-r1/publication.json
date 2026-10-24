@@ -1,0 +1,944 @@
+{
+  "schema_version": 1,
+  "physical_validation": {
+    "schema_version": 1,
+    "passed": true,
+    "raw_run": "build/reference-v2-layout/nrz-switched-keeper-joint-r1",
+    "manifest_files": 123,
+    "method": "Rehash every frozen artifact, parse full LVS and independent KLayout report, intersect actual channel polygons with Dualgate 55/0, and compare actual negative-control polygons.",
+    "routes": {
+      "J": {
+        "gds_sha256": "363e51112c60692538da2130c99664d22a24c15fa0ca9327c244494938b4065c",
+        "rc_sha256": "925b0e98ede116b7d3dc0c0f326aa1704fd08b84dd8cabe39cf03ae4ac4f3d6a",
+        "dualgate_checks": [
+          {
+            "instance": "C_INV1N",
+            "model": "nfet_06v0",
+            "channel_um2": 1.75,
+            "dualgate_overlap_um2": 1.75,
+            "passed": true
+          },
+          {
+            "instance": "C_INV1P",
+            "model": "pfet_06v0",
+            "channel_um2": 2.1615,
+            "dualgate_overlap_um2": 2.1614999999999998,
+            "passed": true
+          },
+          {
+            "instance": "C_INV2N",
+            "model": "nfet_06v0",
+            "channel_um2": 1.75,
+            "dualgate_overlap_um2": 1.75,
+            "passed": true
+          },
+          {
+            "instance": "C_INV2P",
+            "model": "pfet_06v0",
+            "channel_um2": 2.1615,
+            "dualgate_overlap_um2": 2.1614999999999998,
+            "passed": true
+          },
+          {
+            "instance": "C_LED",
+            "model": "nfet_06v0",
+            "channel_um2": 1.75,
+            "dualgate_overlap_um2": 1.75,
+            "passed": true
+          },
+          {
+            "instance": "C_DUMMY",
+            "model": "nfet_06v0",
+            "channel_um2": 1.75,
+            "dualgate_overlap_um2": 1.75,
+            "passed": true
+          },
+          {
+            "instance": "C_TAIL",
+            "model": "nfet_03v3",
+            "channel_um2": 5.76,
+            "dualgate_overlap_um2": 0.0,
+            "passed": true
+          },
+          {
+            "instance": "C_BASE",
+            "model": "nfet_03v3",
+            "channel_um2": 2,
+            "dualgate_overlap_um2": 0.0,
+            "passed": true
+          },
+          {
+            "instance": "C_REF",
+            "model": "nfet_03v3",
+            "channel_um2": 2,
+            "dualgate_overlap_um2": 0.0,
+            "passed": true
+          },
+          {
+            "instance": "R_IPBIAS",
+            "model": "pfet_06v0",
+            "channel_um2": 80,
+            "dualgate_overlap_um2": 80.0,
+            "passed": true
+          },
+          {
+            "instance": "R_IPTAIL",
+            "model": "pfet_06v0",
+            "channel_um2": 80,
+            "dualgate_overlap_um2": 80.0,
+            "passed": true
+          },
+          {
+            "instance": "R_IPD1",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "R_IPD2",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "R_IND1",
+            "model": "nfet_06v0",
+            "channel_um2": 500,
+            "dualgate_overlap_um2": 500.0,
+            "passed": true
+          },
+          {
+            "instance": "R_IND2",
+            "model": "nfet_06v0",
+            "channel_um2": 500,
+            "dualgate_overlap_um2": 500.0,
+            "passed": true
+          },
+          {
+            "instance": "R_INSTAGE",
+            "model": "nfet_06v0",
+            "channel_um2": 20,
+            "dualgate_overlap_um2": 20.0,
+            "passed": true
+          },
+          {
+            "instance": "R_IPLOAD",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "R_IPREG",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "R_IPOUT",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "R_DIS",
+            "model": "nfet_06v0",
+            "channel_um2": 7.0,
+            "dualgate_overlap_um2": 7.0,
+            "passed": true
+          },
+          {
+            "instance": "R_KEEP",
+            "model": "nfet_06v0",
+            "channel_um2": 0.7,
+            "dualgate_overlap_um2": 0.7,
+            "passed": true
+          }
+        ],
+        "negative_controls": [
+          {
+            "control": "reference-gate-open",
+            "actual_changed_area_um2": 0.22799999999999998,
+            "lvs_rejected": true
+          },
+          {
+            "control": "supply-vss-short",
+            "actual_changed_area_um2": 0.64,
+            "lvs_rejected": true
+          },
+          {
+            "control": "bridge-BIAS-open",
+            "actual_changed_area_um2": 6.0,
+            "lvs_rejected": true
+          }
+        ],
+        "counts": {
+          "mos": 21,
+          "device_resistors": 1,
+          "resistors": 638,
+          "capacitors": 322,
+          "zero_valued_capacitors": 0
+        },
+        "all_nets_extracted": true
+      }
+    }
+  },
+  "source_run": "build/reference-v2-layout/nrz-switched-keeper-joint-r1",
+  "scope": "Actual experimental transistor-core GDS, DRC, LVS, PEX and fault controls; electrical performance validated separately.",
+  "exclusions": [
+    "Full PDK",
+    "Tool binaries",
+    "Transient waveform data",
+    "Package/EM/IR/ESD/pad/full-chip/silicon signoff"
+  ],
+  "copied_files": [
+    {
+      "path": "J/capacitance-correction.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/capacitance-correction.json",
+      "sha256": "2ed683ce36da2d40ef97a5f953a008ce165103c04fa4e1708626b4f77ac7c297",
+      "size": 65743
+    },
+    {
+      "path": "J/capacitance-only.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/capacitance-only.spice",
+      "sha256": "37239bf667a707106e49b009ddf09a54a3cff1f92c618fe7215e6f643217b33c",
+      "size": 11634
+    },
+    {
+      "path": "J/controls/bridge-BIAS-open/extract/extract.tcl",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/bridge-BIAS-open/extract/extract.tcl",
+      "sha256": "a27cafb074dd13126fc57a44212962567376d1afc4fadc0690d00ae25bb7156e",
+      "size": 1910
+    },
+    {
+      "path": "J/controls/bridge-BIAS-open/extract/magic.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/bridge-BIAS-open/extract/magic.log",
+      "sha256": "b52992262429aea1d5d5da32765f302a707b00736814a121f1235c7bd5f95acc",
+      "size": 1957
+    },
+    {
+      "path": "J/controls/bridge-BIAS-open/extract/magic.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/bridge-BIAS-open/extract/magic.log.command.json",
+      "sha256": "bdd60567ed65c78ff931cd28b45a6dcf0d0d01d19438c06b7b803433bcedead4",
+      "size": 601
+    },
+    {
+      "path": "J/controls/bridge-BIAS-open/extract/nrz_reference_integrated.ext",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/bridge-BIAS-open/extract/nrz_reference_integrated.ext",
+      "sha256": "282e5e199e2da3133f8dea65894d5e70d92c512870f74fdab9c6e2893f2e1b4e",
+      "size": 9463
+    },
+    {
+      "path": "J/controls/bridge-BIAS-open/extract/nrz_reference_integrated.mag",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/bridge-BIAS-open/extract/nrz_reference_integrated.mag",
+      "sha256": "3d635e86a255efd0581bc9e7608405c1963635fb76e14da46d0a26cc3a0ebe65",
+      "size": 131277
+    },
+    {
+      "path": "J/controls/bridge-BIAS-open/extract/nrz_reference_integrated.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/bridge-BIAS-open/extract/nrz_reference_integrated.spice",
+      "sha256": "b5cec32d6d109945708d37b61c616afb3568dcfe964f86701e93b08c4276928b",
+      "size": 1969
+    },
+    {
+      "path": "J/controls/bridge-BIAS-open/lvs-stdout.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/bridge-BIAS-open/lvs-stdout.log",
+      "sha256": "9034d4cae9567e4c791bbf77133a4843e859ef5cd364a00d682dbee3a742016a",
+      "size": 7689
+    },
+    {
+      "path": "J/controls/bridge-BIAS-open/lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/bridge-BIAS-open/lvs-stdout.log.command.json",
+      "sha256": "eee92bcdcbbd82ec74d387d1269dd91b1ca2b0791b3563e1a575c98f3b4e85cf",
+      "size": 925
+    },
+    {
+      "path": "J/controls/bridge-BIAS-open/lvs.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/bridge-BIAS-open/lvs.log",
+      "sha256": "9697e7f52b043397add68a0b1824b55839d67d1603c8dad86555e8921b07a4f5",
+      "size": 7480
+    },
+    {
+      "path": "J/controls/bridge-BIAS-open/nrz_reference_integrated.gds",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/bridge-BIAS-open/nrz_reference_integrated.gds",
+      "sha256": "a311c309aba9c0bc82d706e53335b15d8cee2e859e06686ce5229f8f1fcf98f2",
+      "size": 550710
+    },
+    {
+      "path": "J/controls/reference-gate-open/extract/extract.tcl",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/reference-gate-open/extract/extract.tcl",
+      "sha256": "ed17e44e35279c6773c012d60abe1aea2d531405aaf62a97945dd779452535c5",
+      "size": 1913
+    },
+    {
+      "path": "J/controls/reference-gate-open/extract/magic.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/reference-gate-open/extract/magic.log",
+      "sha256": "5e1247c134c2b7468149c715fe9372cb1947f3dd374e978869c90c93ba36b217",
+      "size": 1960
+    },
+    {
+      "path": "J/controls/reference-gate-open/extract/magic.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/reference-gate-open/extract/magic.log.command.json",
+      "sha256": "56ce174f67517a6924c69d880aab339fda8c5a39ba9e24e0e3727e3cf48e84a3",
+      "size": 607
+    },
+    {
+      "path": "J/controls/reference-gate-open/extract/nrz_reference_integrated.ext",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/reference-gate-open/extract/nrz_reference_integrated.ext",
+      "sha256": "1bdf6b9989ec76882574b44725e6c2f374d77cd4df262210ea84061a7e9834d4",
+      "size": 9497
+    },
+    {
+      "path": "J/controls/reference-gate-open/extract/nrz_reference_integrated.mag",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/reference-gate-open/extract/nrz_reference_integrated.mag",
+      "sha256": "88b096e3ef3cc63c939a061b9814feccb2c62a2d87cac559159901ba3b47de7c",
+      "size": 131219
+    },
+    {
+      "path": "J/controls/reference-gate-open/extract/nrz_reference_integrated.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/reference-gate-open/extract/nrz_reference_integrated.spice",
+      "sha256": "31a2e07882656783de3159fe2f47a1670eed52b82494f948e31ce80e53ccc2b2",
+      "size": 1947
+    },
+    {
+      "path": "J/controls/reference-gate-open/lvs-stdout.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/reference-gate-open/lvs-stdout.log",
+      "sha256": "fcc76f82d6983b40d6c0bfae087b291f2c4069c25463932f1e6faad8c253bac2",
+      "size": 7743
+    },
+    {
+      "path": "J/controls/reference-gate-open/lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/reference-gate-open/lvs-stdout.log.command.json",
+      "sha256": "b298b7198a0afd13a85f47ff9b71a12d56224262ff56f5516db618d4ec5bc4b3",
+      "size": 934
+    },
+    {
+      "path": "J/controls/reference-gate-open/lvs.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/reference-gate-open/lvs.log",
+      "sha256": "93ef97812494c1f6cb3bf749731ed4fa39cbc88993667a718753f11d3cd15225",
+      "size": 6800
+    },
+    {
+      "path": "J/controls/reference-gate-open/nrz_reference_integrated.gds",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/reference-gate-open/nrz_reference_integrated.gds",
+      "sha256": "3ba57294ebaa94de9ff9c9260722fae96fb3adf402bbeec085cd12c6a46d999b",
+      "size": 550566
+    },
+    {
+      "path": "J/controls/supply-vss-short/extract/extract.tcl",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/supply-vss-short/extract/extract.tcl",
+      "sha256": "8985e314273d819ec4b0b26489cc1d607a93cb2f44cf940ae617deeaf93ad5f7",
+      "size": 1910
+    },
+    {
+      "path": "J/controls/supply-vss-short/extract/magic.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/supply-vss-short/extract/magic.log",
+      "sha256": "604e4dc790f6de0dc4d9ebe2a744e11a5c7cfb16ed49fa3fd315d1c174f8efb9",
+      "size": 2015
+    },
+    {
+      "path": "J/controls/supply-vss-short/extract/magic.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/supply-vss-short/extract/magic.log.command.json",
+      "sha256": "c781780670d61a9841d31f2289d35cc88d27300daad2cd21549aff8302e7c79a",
+      "size": 601
+    },
+    {
+      "path": "J/controls/supply-vss-short/extract/nrz_reference_integrated.ext",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/supply-vss-short/extract/nrz_reference_integrated.ext",
+      "sha256": "922c929551141d755bfc57e0abebfc626b6cedf019fa1bd7720405827cbd0faf",
+      "size": 9358
+    },
+    {
+      "path": "J/controls/supply-vss-short/extract/nrz_reference_integrated.mag",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/supply-vss-short/extract/nrz_reference_integrated.mag",
+      "sha256": "f41c48eee2921aefbbba5d55e88a4aef2f2603063c54ef79093a64633efe2220",
+      "size": 130973
+    },
+    {
+      "path": "J/controls/supply-vss-short/extract/nrz_reference_integrated.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/supply-vss-short/extract/nrz_reference_integrated.spice",
+      "sha256": "509d7b0d4c942f672289813fc742b4bcd5b74066995600acc9856743c22374cb",
+      "size": 2142
+    },
+    {
+      "path": "J/controls/supply-vss-short/lvs-stdout.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/supply-vss-short/lvs-stdout.log",
+      "sha256": "6bb13ef769a497b60bc2e7ec146457c3951cb8f7c725908a85814448be1fef6e",
+      "size": 7652
+    },
+    {
+      "path": "J/controls/supply-vss-short/lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/supply-vss-short/lvs-stdout.log.command.json",
+      "sha256": "0b2215a299bd6c4ae9336e57a47f3a455947768267d4556c5869bd23317eef18",
+      "size": 925
+    },
+    {
+      "path": "J/controls/supply-vss-short/lvs.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/supply-vss-short/lvs.log",
+      "sha256": "e70c92dd65f43675c852fcee977bd8bc90556c42f2ef4261e73020c7c0fcba69",
+      "size": 7766
+    },
+    {
+      "path": "J/controls/supply-vss-short/nrz_reference_integrated.gds",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/controls/supply-vss-short/nrz_reference_integrated.gds",
+      "sha256": "bdddbae8b517b00a7cbfb3149597ced852e55b9ddd7dbfc7a77e9965d9f3f67e",
+      "size": 549996
+    },
+    {
+      "path": "J/flat-c-control/export.tcl",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/flat-c-control/export.tcl",
+      "sha256": "abb00bec783fed720376088eba890e23f97c7713b8aac50cdfba54890b1c944e",
+      "size": 197
+    },
+    {
+      "path": "J/flat-c-control/flat-c.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/flat-c-control/flat-c.spice",
+      "sha256": "f3015582e80aea2a8b8b9494722c1a4ea66e39c92a75cf75861774e722edd0ac",
+      "size": 3217
+    },
+    {
+      "path": "J/flat-c-control/magic.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/flat-c-control/magic.log",
+      "sha256": "62ebde1e290ea75e199e816f91eace8ff601f456fe4cc0dec8d8328fd417a75e",
+      "size": 1503
+    },
+    {
+      "path": "J/flat-c-control/magic.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/flat-c-control/magic.log.command.json",
+      "sha256": "758432114901a001e07043071c1b056de6fff191869d040ec7408ccbfea501dd",
+      "size": 562
+    },
+    {
+      "path": "J/flat-c-control/nrz_reference_integrated.ext",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/flat-c-control/nrz_reference_integrated.ext",
+      "sha256": "ee98402038072f33a915edc0b8be95c814cad141d36d91d55a243e8953f9a886",
+      "size": 9191
+    },
+    {
+      "path": "J/flat-c-control/nrz_reference_integrated.mag",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/flat-c-control/nrz_reference_integrated.mag",
+      "sha256": "2707fbbbc42ade7bf591cc9b8a44049ed0d43ceb692695d6e42b8d0b70fb700f",
+      "size": 131190
+    },
+    {
+      "path": "J/full-rc/coverage.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/full-rc/coverage.json",
+      "sha256": "6d9461ceec54f67b5a90c2a02db7fe50df3f84f0b12fef21b8fcfb0a417589aa",
+      "size": 558
+    },
+    {
+      "path": "J/full-rc/drive-attributes.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/full-rc/drive-attributes.json",
+      "sha256": "a1c083468c5afd8f6ee244f905856a268dbe762ef5925039bd38d1af2f795825",
+      "size": 2051
+    },
+    {
+      "path": "J/full-rc/extract-driven.tcl",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/full-rc/extract-driven.tcl",
+      "sha256": "6c77a427c7fb7685650c2cb67314e2834cd8fe92f9860b7a566d9566a4663dd8",
+      "size": 319
+    },
+    {
+      "path": "J/full-rc/magic.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/full-rc/magic.log",
+      "sha256": "884551f81b1d641671479e73a60352e7e5f05977140c97ef29a277406630d17f",
+      "size": 1888
+    },
+    {
+      "path": "J/full-rc/magic.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/full-rc/magic.log.command.json",
+      "sha256": "27d59feff6cccce7e61865fcdd286cc414fcc5bf6195e7741ad61c53ec5481cf",
+      "size": 556
+    },
+    {
+      "path": "J/full-rc/nrz_reference_integrated.ext",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/full-rc/nrz_reference_integrated.ext",
+      "sha256": "f907ac734cf2867aa284072a1fcf9577a43fdc3062ae2a67ee232332dc0bdc71",
+      "size": 10140
+    },
+    {
+      "path": "J/full-rc/nrz_reference_integrated.mag",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/full-rc/nrz_reference_integrated.mag",
+      "sha256": "2707fbbbc42ade7bf591cc9b8a44049ed0d43ceb692695d6e42b8d0b70fb700f",
+      "size": 131190
+    },
+    {
+      "path": "J/full-rc/nrz_reference_integrated.res.ext",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/full-rc/nrz_reference_integrated.res.ext",
+      "sha256": "9c9a7ebf810ba14b17866035a61aa09659f446761994de93cebb31968d585aff",
+      "size": 42311
+    },
+    {
+      "path": "J/full-rc/nrz_reference_integrated_rc.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/full-rc/nrz_reference_integrated_rc.spice",
+      "sha256": "925b0e98ede116b7d3dc0c0f326aa1704fd08b84dd8cabe39cf03ae4ac4f3d6a",
+      "size": 33331
+    },
+    {
+      "path": "J/gds-geometry-audit.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/gds-geometry-audit.json",
+      "sha256": "21695f4db6d52d08458075d8d27e83f0d93207f3cdcec9eb4a3debe2c9190616",
+      "size": 6292
+    },
+    {
+      "path": "J/gds-source-preservation.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/gds-source-preservation.json",
+      "sha256": "65c6d0ed3ef7a4d89b4d01f30026ad01b7f6d1109e5b4f43a4d4d7370771620b",
+      "size": 593
+    },
+    {
+      "path": "J/generate/magic.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/generate/magic.log",
+      "sha256": "ac0ef971c8d54f6ce3df31ee46e76f36435001d7f908d097660fba0a5c52f474",
+      "size": 2004
+    },
+    {
+      "path": "J/generate/magic.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/generate/magic.log.command.json",
+      "sha256": "19c279ce9e66f45a514645f745b1f39856b4957e1b919530a69b686500daf173",
+      "size": 550
+    },
+    {
+      "path": "J/generate/nrz_reference_integrated.ext",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/generate/nrz_reference_integrated.ext",
+      "sha256": "a3f03e5fd5e725c0bd6fba794e0d6a6de6decf8675a77edd5132da776b67eea4",
+      "size": 9177
+    },
+    {
+      "path": "J/generate/nrz_reference_integrated.gds",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/generate/nrz_reference_integrated.gds",
+      "sha256": "363e51112c60692538da2130c99664d22a24c15fa0ca9327c244494938b4065c",
+      "size": 550646
+    },
+    {
+      "path": "J/generate/nrz_reference_integrated.mag",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/generate/nrz_reference_integrated.mag",
+      "sha256": "de5921c4e3f6303fd5b4a70a1ff6a7e92c3524679c6f9173f5aec309bf24dd1a",
+      "size": 131063
+    },
+    {
+      "path": "J/generate/nrz_reference_integrated.magic-roundtrip.gds",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/generate/nrz_reference_integrated.magic-roundtrip.gds",
+      "sha256": "b6bf5bf6e4458651910fd7917221bbe5d481b46d2db9b0128ec00298fc9959cc",
+      "size": 545590
+    },
+    {
+      "path": "J/generate/nrz_reference_integrated.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/generate/nrz_reference_integrated.spice",
+      "sha256": "6fbc6d27709d02f8218f5b1076e5c6b66617cfff881f8ae7d838d9dd7d1be934",
+      "size": 1937
+    },
+    {
+      "path": "J/geometry-only.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/geometry-only.spice",
+      "sha256": "e048469d6335e45df0ca01fb49bfe2da3bb2ff0cf67a1705770e1737d1115898",
+      "size": 1944
+    },
+    {
+      "path": "J/klayout/drc_run_2026_10_24_11_59_06.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/klayout/drc_run_2026_10_24_11_59_06.log",
+      "sha256": "f0de591ea5af7ebd37229165b34e38dee5e83d8d155fdd4b435ea45a3450e1e4",
+      "size": 1652
+    },
+    {
+      "path": "J/klayout/layers_def.drc",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/klayout/layers_def.drc",
+      "sha256": "5122a9179ad810c29c3c3afb2500990cbbd3dcae27aebca55b13aaeef181155e",
+      "size": 17316
+    },
+    {
+      "path": "J/klayout/main.drc",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/klayout/main.drc",
+      "sha256": "1c683e80a80d068c047184780b1feea630c46fe59c25cf527d5e40ba5151b3c7",
+      "size": 393698
+    },
+    {
+      "path": "J/klayout/nrz_reference_integrated_main.lyrdb",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/klayout/nrz_reference_integrated_main.lyrdb",
+      "sha256": "a6e74d226e69fc6cefeb9d1c8b9b26469c52e96a854c96173f56a8c29bec7567",
+      "size": 121009
+    },
+    {
+      "path": "J/klayout-command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/klayout-command.json",
+      "sha256": "df0011cbcfd58bd519a00c5eee3a00eb4189626d7075e39b4e9633120b84e81a",
+      "size": 1501
+    },
+    {
+      "path": "J/klayout-result.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/klayout-result.json",
+      "sha256": "7d4eaf306a6a5bcb56e3bdbb0a03a26eb3b7da034ffabdb9026edbb8da79f83d",
+      "size": 60
+    },
+    {
+      "path": "J/klayout.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/klayout.log",
+      "sha256": "ae6d53fd839ac7fb50d0defb4b9ea6b44e0404de214f496f15fb7ed2f99003d3",
+      "size": 57222
+    },
+    {
+      "path": "J/lvs-stdout.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/lvs-stdout.log",
+      "sha256": "4bfce56384b97b581d72137b7583b279c9d56cfe03bf1deda03b01dba2e73a07",
+      "size": 7493
+    },
+    {
+      "path": "J/lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/lvs-stdout.log.command.json",
+      "sha256": "efe35469809594941675abd68d6ee4b8479e6f030a8422f8b3d6000055ced94f",
+      "size": 846
+    },
+    {
+      "path": "J/lvs.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/lvs.log",
+      "sha256": "a416083b3e5222ed27c60af07e06f1f69ea44fc26c894afe3f65e8258f48862a",
+      "size": 6266
+    },
+    {
+      "path": "J/macro-geometry-preservation.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/macro-geometry-preservation.json",
+      "sha256": "dd05f162c9489b0b0b52ed86e4c7ec62a24bd8f282c0b135be66d084b8df8bf8",
+      "size": 736
+    },
+    {
+      "path": "J/native/extract.tcl",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/native/extract.tcl",
+      "sha256": "6a44d2933ede6a9cf14035426a5c7effba7a7de42d3cfb0c92ca5156e30f0151",
+      "size": 1893
+    },
+    {
+      "path": "J/native/magic.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/native/magic.log",
+      "sha256": "153a651da166637d53ccee00316d41bc4c43fe1905414bf001621099f4a967bb",
+      "size": 1930
+    },
+    {
+      "path": "J/native/magic.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/native/magic.log.command.json",
+      "sha256": "ed7dc999fabb91339c44f3702a804f0f15e5f9b227511eae17f754fbc4cd83ed",
+      "size": 547
+    },
+    {
+      "path": "J/native/nrz_reference_integrated.ext",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/native/nrz_reference_integrated.ext",
+      "sha256": "afd3296f81bdb91a7a23937ef546103c93ffa60dc646ac78f7333431accc8dba",
+      "size": 9177
+    },
+    {
+      "path": "J/native/nrz_reference_integrated.mag",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/native/nrz_reference_integrated.mag",
+      "sha256": "687d1f3c65cbc0044fae5020c726ed08efb2e3c5e6fd9a038563e030ee19656e",
+      "size": 131190
+    },
+    {
+      "path": "J/native/nrz_reference_integrated.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/native/nrz_reference_integrated.spice",
+      "sha256": "6fbc6d27709d02f8218f5b1076e5c6b66617cfff881f8ae7d838d9dd7d1be934",
+      "size": 1937
+    },
+    {
+      "path": "J/negative-controls.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/negative-controls.json",
+      "sha256": "db48b088e02166d5d6d8898c1f943c21c0723eb2f2f72dd99193b520fbadbcbf",
+      "size": 1850
+    },
+    {
+      "path": "J/pex-audit.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/pex-audit.json",
+      "sha256": "d8a074755663ed4bd66f9c08713abf61ea34f6609c7cc4673ee806b26ae3c0e6",
+      "size": 227419
+    },
+    {
+      "path": "J/physical-contract.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/physical-contract.json",
+      "sha256": "d3f1edef031658c48a63a1257feb215b083976d906c68115ee90558d7bd6f844",
+      "size": 277479
+    },
+    {
+      "path": "J/rc-collapse-lvs-stdout.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/rc-collapse-lvs-stdout.log",
+      "sha256": "848cade53091033f14104f02b2a65751f71901e71e1d230eb475bf0af6df7082",
+      "size": 7493
+    },
+    {
+      "path": "J/rc-collapse-lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/rc-collapse-lvs-stdout.log.command.json",
+      "sha256": "c66f7a0c8964687a0957a75f1f321820defc7f9169823e5d3c364fb02696b170",
+      "size": 840
+    },
+    {
+      "path": "J/rc-collapse-lvs.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/rc-collapse-lvs.log",
+      "sha256": "24286cc2b327421c097ed4361898fb453dc88ccf4278428bc4923e8a5f7a2b1d",
+      "size": 6266
+    },
+    {
+      "path": "J/rc-lumped-capacitance.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/rc-lumped-capacitance.spice",
+      "sha256": "813562475af6fe36b6ab2f6a1d1e6dc4cceb010a62c64f159c69956183890ad3",
+      "size": 22764
+    },
+    {
+      "path": "J/readback/extract.tcl",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/readback/extract.tcl",
+      "sha256": "00e4a5c9c7549c02cce840078b534585eb777b8ea2c26c810cd9119ccf019118",
+      "size": 2264
+    },
+    {
+      "path": "J/readback/magic.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/readback/magic.log",
+      "sha256": "0b7791e0d1c53c118fa7d21f5ea6996ae5ac74a3dd90e7731dd5a9e649028ec4",
+      "size": 3116
+    },
+    {
+      "path": "J/readback/magic.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/readback/magic.log.command.json",
+      "sha256": "0c7810610328b168aeb0aa5c6260548bccb901d7565f80a6dc722d61f02bc919",
+      "size": 551
+    },
+    {
+      "path": "J/readback/nrz_reference_integrated.ext",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/readback/nrz_reference_integrated.ext",
+      "sha256": "ee98402038072f33a915edc0b8be95c814cad141d36d91d55a243e8953f9a886",
+      "size": 9191
+    },
+    {
+      "path": "J/readback/nrz_reference_integrated.mag",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/readback/nrz_reference_integrated.mag",
+      "sha256": "2707fbbbc42ade7bf591cc9b8a44049ed0d43ceb692695d6e42b8d0b70fb700f",
+      "size": 131190
+    },
+    {
+      "path": "J/readback/nrz_reference_integrated.res.ext",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/readback/nrz_reference_integrated.res.ext",
+      "sha256": "6d4aef25641d36fa865102b54d0d2dc34f31feddf4a289b951fa4218227a431e",
+      "size": 41324
+    },
+    {
+      "path": "J/readback/nrz_reference_integrated.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/readback/nrz_reference_integrated.spice",
+      "sha256": "6fbc6d27709d02f8218f5b1076e5c6b66617cfff881f8ae7d838d9dd7d1be934",
+      "size": 1937
+    },
+    {
+      "path": "J/readback/nrz_reference_integrated_c.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/readback/nrz_reference_integrated_c.spice",
+      "sha256": "99dcb6ece1697da8cc10a10794acb892d89c179a06b87c969eadec1c1c76a907",
+      "size": 3063
+    },
+    {
+      "path": "J/readback/nrz_reference_integrated_rc.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/readback/nrz_reference_integrated_rc.spice",
+      "sha256": "39909e4f99dd023dc636abf22399de0116df5cf07f7e991b3b5a955c55a12318",
+      "size": 27643
+    },
+    {
+      "path": "J/readback-lvs-stdout.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/readback-lvs-stdout.log",
+      "sha256": "eadd9a60e9524a09ffa210aa91560dc9e3639c3d9eb15884fb5c89867584027c",
+      "size": 7524
+    },
+    {
+      "path": "J/readback-lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/readback-lvs-stdout.log.command.json",
+      "sha256": "dfd58fc4eb785d8db1e697aaa2617af831049457620b5bfee4ac260c823f8dbc",
+      "size": 857
+    },
+    {
+      "path": "J/readback-lvs.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/readback-lvs.log",
+      "sha256": "a416083b3e5222ed27c60af07e06f1f69ea44fc26c894afe3f65e8258f48862a",
+      "size": 6266
+    },
+    {
+      "path": "J/source/C-electrical.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/source/C-electrical.spice",
+      "sha256": "b88b8f021f903c9c0c3c47516426d783a5e6520df581241d5ca0db792bab0d70",
+      "size": 708
+    },
+    {
+      "path": "J/source/C-physical-contract.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/source/C-physical-contract.json",
+      "sha256": "c12431238cce6d27b9422f38af6e9be1885c8e15e5530eb05e53f0f3929cd79d",
+      "size": 30801
+    },
+    {
+      "path": "J/source/C.gds",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/source/C.gds",
+      "sha256": "d2e32ac286d208e2d74485b4d2650ffbbf4cd25cd57c86c5f7cd9cb97e3256af",
+      "size": 80720
+    },
+    {
+      "path": "J/source/R-electrical.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/source/R-electrical.spice",
+      "sha256": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8",
+      "size": 1329
+    },
+    {
+      "path": "J/source/R-physical-contract.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/source/R-physical-contract.json",
+      "sha256": "2a3587c8c0743d41581aa63faa113a2137f9acf3c2e918777a6ca0f3dda71ab7",
+      "size": 248418
+    },
+    {
+      "path": "J/source/R.gds",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/source/R.gds",
+      "sha256": "e5ceebf548dbf42c8208e550e2b63b326ffd3793a6f0a932e6c293e55cd6c0dc",
+      "size": 463660
+    },
+    {
+      "path": "J/source/contract.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/source/contract.json",
+      "sha256": "b433df85a99b74af4c6ebd465ff28923d9874c0dee593cc8df06b9c8f3181ace",
+      "size": 251445
+    },
+    {
+      "path": "J/source/generate.tcl",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/source/generate.tcl",
+      "sha256": "87ed31d75c06228c71143f5775605c50712eaaa76342f0424e05b640331d23c7",
+      "size": 3928
+    },
+    {
+      "path": "J/source/schematic.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/source/schematic.spice",
+      "sha256": "86d8ce04a901cb9a83c3ff7bf2f81adba291e8710dada6b40624a5cac25a3441",
+      "size": 1292
+    },
+    {
+      "path": "J/unmodified-full-rc/coverage.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/unmodified-full-rc/coverage.json",
+      "sha256": "6d9461ceec54f67b5a90c2a02db7fe50df3f84f0b12fef21b8fcfb0a417589aa",
+      "size": 558
+    },
+    {
+      "path": "J/unmodified-full-rc/drive-attributes.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/unmodified-full-rc/drive-attributes.json",
+      "sha256": "a1c083468c5afd8f6ee244f905856a268dbe762ef5925039bd38d1af2f795825",
+      "size": 2051
+    },
+    {
+      "path": "J/unmodified-full-rc/extract-driven.tcl",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/unmodified-full-rc/extract-driven.tcl",
+      "sha256": "6c77a427c7fb7685650c2cb67314e2834cd8fe92f9860b7a566d9566a4663dd8",
+      "size": 319
+    },
+    {
+      "path": "J/unmodified-full-rc/magic.log",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/unmodified-full-rc/magic.log",
+      "sha256": "884551f81b1d641671479e73a60352e7e5f05977140c97ef29a277406630d17f",
+      "size": 1888
+    },
+    {
+      "path": "J/unmodified-full-rc/magic.log.command.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/unmodified-full-rc/magic.log.command.json",
+      "sha256": "27d59feff6cccce7e61865fcdd286cc414fcc5bf6195e7741ad61c53ec5481cf",
+      "size": 556
+    },
+    {
+      "path": "J/unmodified-full-rc/nrz_reference_integrated.ext",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/unmodified-full-rc/nrz_reference_integrated.ext",
+      "sha256": "f907ac734cf2867aa284072a1fcf9577a43fdc3062ae2a67ee232332dc0bdc71",
+      "size": 10140
+    },
+    {
+      "path": "J/unmodified-full-rc/nrz_reference_integrated.mag",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/unmodified-full-rc/nrz_reference_integrated.mag",
+      "sha256": "2707fbbbc42ade7bf591cc9b8a44049ed0d43ceb692695d6e42b8d0b70fb700f",
+      "size": 131190
+    },
+    {
+      "path": "J/unmodified-full-rc/nrz_reference_integrated.res.ext",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/unmodified-full-rc/nrz_reference_integrated.res.ext",
+      "sha256": "9c9a7ebf810ba14b17866035a61aa09659f446761994de93cebb31968d585aff",
+      "size": 42311
+    },
+    {
+      "path": "J/unmodified-full-rc/nrz_reference_integrated_rc.spice",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/unmodified-full-rc/nrz_reference_integrated_rc.spice",
+      "sha256": "9abd3de71c3a61f03757a4105ec3be3e1cb53d70c640aac973e4337cdf9a1dba",
+      "size": 28896
+    },
+    {
+      "path": "artifact-manifest.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/artifact-manifest.json",
+      "sha256": "63043ec8b451b4486f9f8ad236cee9c583f90d24c6fce109078c35f7dd50fdbd",
+      "size": 23729
+    },
+    {
+      "path": "correction-provenance.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/correction-provenance.json",
+      "sha256": "2523c49fbf2228f8bb9973cf550c95439cbbfd088d8860f03191c644cc55bbd1",
+      "size": 1279
+    },
+    {
+      "path": "selected-spec.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/selected-spec.json",
+      "sha256": "f8ae63ecf2782ee4c11e8537b3eba21049a2dd699f2fd042333901bee9ca01c2",
+      "size": 3749
+    },
+    {
+      "path": "source_scripts/0-compose.py",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/source_scripts/0-compose.py",
+      "sha256": "d611fc9f2d249dd84830426395fb9b4ea960f708ecc23ec9e6ecb60cfd785ffa",
+      "size": 17440
+    },
+    {
+      "path": "source_scripts/1-run.py",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/source_scripts/1-run.py",
+      "sha256": "2a0d07addd3c18b491e0252b24789d0b6b59d31d20793519bd65a182504aa0bc",
+      "size": 10110
+    },
+    {
+      "path": "source_scripts/2-correct_capacitance.py",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/source_scripts/2-correct_capacitance.py",
+      "sha256": "5120ab6d32273be8504d4ac2a8bd2939de1b76fc909afe82fa81889322256966",
+      "size": 14370
+    },
+    {
+      "path": "source_scripts/3-power_routes.py",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/source_scripts/3-power_routes.py",
+      "sha256": "e4fe46864c67d56947fb7e38cf26b29edb32405e89f03cae1bd80514c423ec21",
+      "size": 4645
+    },
+    {
+      "path": "source_scripts/4-generate.py",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/source_scripts/4-generate.py",
+      "sha256": "c67a024ccd23494aaea59b24d3fd4e156ae7fed4cc686f625ac21d83bd723c52",
+      "size": 6979
+    },
+    {
+      "path": "source_scripts/5-run.py",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/source_scripts/5-run.py",
+      "sha256": "760a191832ce8a692964e4dbbb6b81eafe7c5f04faeec9c3ed0b4fcbdbd7a765",
+      "size": 24471
+    },
+    {
+      "path": "source_scripts/6-audit.py",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/source_scripts/6-audit.py",
+      "sha256": "f3a1e52ea33a06a16bdcba32645c286dd6c3fc6f3a05bd61cf285c8708b51c08",
+      "size": 16866
+    },
+    {
+      "path": "source_scripts/7-correct_capacitance.py",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/source_scripts/7-correct_capacitance.py",
+      "sha256": "a37b4e50c8fbd099ecc03006bdd64036da2e18d1e436f015a3f532034ecd9b89",
+      "size": 13296
+    },
+    {
+      "path": "source_scripts/8-run.py",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/source_scripts/8-run.py",
+      "sha256": "75976fd0cd474318dc9defe2718ba5f67ee4f40af81380b3c8a88a8447194b63",
+      "size": 9022
+    },
+    {
+      "path": "status.json",
+      "source": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/status.json",
+      "sha256": "3f68075a398d19c7b99f61abdabe737ca256d860c7068b3f37316fe4bb117606",
+      "size": 13115
+    }
+  ]
+}

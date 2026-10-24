@@ -1,0 +1,45 @@
+Frozen NRZ PEX comparison REFERENCE-B-DC_TT-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-bit1
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/nrz-reference-v2/reproduction-smoke-r1/inputs/pdk/design.ngspice"
+.param sw_stat_global=0 sw_stat_mismatch=0
+.lib "/Users/kimmy/Projects/open-microled-driver-asic/build/nrz-reference-v2/reproduction-smoke-r1/inputs/pdk/sm141064.ngspice" typical
+.lib "/Users/kimmy/Projects/open-microled-driver-asic/build/nrz-reference-v2/reproduction-smoke-r1/inputs/pdk/sm141064.ngspice" res_typical
+.temp 27
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/nrz-reference-v2/reproduction-smoke-r1/inputs/physical/B-reference-RC.spice"
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/nrz-reference-v2/reproduction-smoke-r1/inputs/led.spice"
+VLED led_a 0 5.0
+VDD vdd 0 3.3
+VRAW vin_source 0 5.0
+VREF ref_source 0 2.5
+VDISABLE disable_source 0 0.0
+VDATA data 0 3.3
+
+XDRV data out vdd 0 bias dummy vin vset sense ipb in2 ictrl disable kret nrz_reference_integrated
+RVIN vin_source pvin 0.25
+LVIN pvin vin 5e-10
+RANCHOR ref_source vref 0.2
+RDIVH vref vset 200000.0
+RDIVL vset 0 50000.0
+RIBIAS ipb 0 100000.0
+CICOMP in2 0 1.5e-10
+RSET sense rsetmon 20000.0
+VRSETMON rsetmon 0 0
+RCAP vin vcap 0.2
+CIN vcap 0 1e-07
+RDUMMY_EXT vin dummy 50000.0
+RGPIO disable_source disable 100
+RKEEP out kret 1800000.0
+XLED led_a led_dc_k lin2026_yellow20_dc
+VSENSE led_dc_k led_k 0
+CLED led_a led_k 2e-13
+RPKG led_k pkg 1
+LPKG pkg out 5e-10
+.options reltol=1e-05 abstol=1e-13 vntol=1e-7 chgtol=1e-16 method=gear maxord=2
+.control
+set numdgt=15
+set wr_singlescale
+set wr_vecnames
+op
+wrdata waveform.dat v(data) v(out) v(led_k) v(led_a,led_k) i(VSENSE) i(LPKG) v(xdrv.bias.t0) v(xdrv.bias.t1) v(xdrv.bias.t2) v(xdrv.bias.t3) v(xdrv.bias.t4) v(xdrv.bias.t5) v(xdrv.data.t0) v(xdrv.di.t0) v(xdrv.di.t1) v(xdrv.di.t2) v(xdrv.disable.t0) v(xdrv.disable.t1) v(xdrv.dummy.t0) v(xdrv.gb.t0) v(xdrv.gb.t1) v(xdrv.gb.t2) v(xdrv.gb.t3) v(xdrv.gb.t4) v(xdrv.gp.t0) v(xdrv.gp.t1) v(xdrv.gp.t2) v(xdrv.ictrl.t0) v(xdrv.ictrl.t1) v(xdrv.ictrl.t2) v(xdrv.ictrl.t3) v(xdrv.ictrl.t4) v(xdrv.in1.t0) v(xdrv.in1.t1) v(xdrv.in1.t2) v(xdrv.in1.t3) v(xdrv.in2.t0) v(xdrv.in2.t1) v(xdrv.in2.t2) v(xdrv.ipb.t0) v(xdrv.ipb.t1) v(xdrv.ipb.t2) v(xdrv.itail.t0) v(xdrv.itail.t1) v(xdrv.itail.t2) v(xdrv.kret.t0) v(xdrv.out.t0) v(xdrv.out.t1) v(xdrv.sense.t0) v(xdrv.sense.t1) v(xdrv.vdd.t0) v(xdrv.vdd.t1) v(xdrv.vdd.t2) v(xdrv.vdd.t3) v(xdrv.vin.t0) v(xdrv.vin.t1) v(xdrv.vin.t10) v(xdrv.vin.t11) v(xdrv.vin.t2) v(xdrv.vin.t3) v(xdrv.vin.t4) v(xdrv.vin.t5) v(xdrv.vin.t6) v(xdrv.vin.t7) v(xdrv.vin.t8) v(xdrv.vin.t9) v(xdrv.vset.t0) v(xdrv.vss.t0) v(xdrv.vss.t1) v(xdrv.vss.t10) v(xdrv.vss.t11) v(xdrv.vss.t12) v(xdrv.vss.t13) v(xdrv.vss.t14) v(xdrv.vss.t15) v(xdrv.vss.t16) v(xdrv.vss.t17) v(xdrv.vss.t18) v(xdrv.vss.t19) v(xdrv.vss.t2) v(xdrv.vss.t20) v(xdrv.vss.t21) v(xdrv.vss.t22) v(xdrv.vss.t3) v(xdrv.vss.t4) v(xdrv.vss.t5) v(xdrv.vss.t6) v(xdrv.vss.t7) v(xdrv.vss.t8) v(xdrv.vss.t9) v(xdrv.vx.t0) v(xdrv.vx.t1) v(xdrv.vx.t2) v(led_a) v(vdd) v(vin_source) v(ref_source) v(disable_source) i(VLED) i(VDD) i(VRAW) i(VREF) i(VDISABLE) i(VDATA) i(VRSETMON) v(vin) v(vset) v(vin)
+quit
+.endc
+.end

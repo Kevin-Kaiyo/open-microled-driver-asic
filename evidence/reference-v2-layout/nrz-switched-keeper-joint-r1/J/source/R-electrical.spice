@@ -1,0 +1,15 @@
+* Independent10MOS V-to-I reference. Raw5V/RDUMMY and all compensation/bias/RSET are external.
+.subckt nrz_vi_reference VIN VSS VSET SENSE IOUT IPB IN2 ICTRL DISABLE KRET
+XIPBIAS IPB IPB VIN VIN pfet_06v0 w=20u l=4u ad=8.8e-12 as=8.8e-12 pd=4.088e-05 ps=4.088e-05
+XIPTAIL ITAIL IPB VIN VIN pfet_06v0 w=20u l=4u ad=8.8e-12 as=8.8e-12 pd=4.088e-05 ps=4.088e-05
+XIPD1 IN1 VSET ITAIL VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XIPD2 IN2 SENSE ITAIL VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XIND1 IN1 IN1 VSS VSS nfet_06v0 w=50u l=10u ad=2.2e-11 as=2.2e-11 pd=0.00010088 ps=0.00010088
+XIND2 IN2 IN1 VSS VSS nfet_06v0 w=50u l=10u ad=2.2e-11 as=2.2e-11 pd=0.00010088 ps=0.00010088
+XINSTAGE ICTRL IN2 VSS VSS nfet_06v0 w=20u l=1u ad=8.8e-12 as=8.8e-12 pd=4.088e-05 ps=4.088e-05
+XIPLOAD ICTRL ICTRL VIN VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XIPREG SENSE ICTRL VIN VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XIPOUT IOUT ICTRL VIN VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XDIS IOUT DISABLE VSS VSS nfet_06v0 w=10u l=.7u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+XKEEP KRET DISABLE VSS VSS nfet_06v0 w=1u l=.7u ad=.44p as=.44p pd=2.88u ps=2.88u
+.ends nrz_vi_reference

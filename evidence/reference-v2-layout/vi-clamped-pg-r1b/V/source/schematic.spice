@@ -1,0 +1,14 @@
+* Independent electrical reference: layout/reference_v2/vi_reference_clamped-reference.spice
+.subckt nrz_vi_reference VIN VSS VSET SENSE IOUT IPB IN2 ICTRL DISABLE
+XIPBIAS IPB IPB VIN VIN pfet_06v0 w=20u l=4u
+XIPTAIL ITAIL IPB VIN VIN pfet_06v0 w=20u l=4u
+XIPD1 IN1 VSET ITAIL VIN pfet_06v0 w=100u l=10u
+XIPD2 IN2 SENSE ITAIL VIN pfet_06v0 w=100u l=10u
+XIND1 IN1 IN1 VSS VSS nfet_06v0 w=50u l=10u
+XIND2 IN2 IN1 VSS VSS nfet_06v0 w=50u l=10u
+XINSTAGE ICTRL IN2 VSS VSS nfet_06v0 w=20u l=1u
+XIPLOAD ICTRL ICTRL VIN VIN pfet_06v0 w=100u l=10u
+XIPREG SENSE ICTRL VIN VIN pfet_06v0 w=100u l=10u
+XIPOUT IOUT ICTRL VIN VIN pfet_06v0 w=100u l=10u
+XDIS IOUT DISABLE VSS VSS nfet_06v0 w=10u l=.7u
+.ends nrz_vi_reference

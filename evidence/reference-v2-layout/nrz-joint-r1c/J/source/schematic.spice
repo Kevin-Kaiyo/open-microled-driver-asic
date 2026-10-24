@@ -1,0 +1,24 @@
+* Independently composed frozen electrical sources; no physical netlist parsing.
+.subckt nrz_reference_integrated DATA OUT VDD VSS BIAS DUMMY VIN VSET SENSE IPB IN2 ICTRL DISABLE
+XC_RIN DATA DI VSS ppolyf_u_1k_6p0 r_width=1u r_length=58u
+XC_REF BIAS BIAS VSS VSS nfet_03v3 w=2u l=1u
+XC_BASE OUT BIAS VSS VSS nfet_03v3 w=2u l=1u
+XC_TAIL VX BIAS VSS VSS nfet_03v3 w=5.76u l=1u
+XC_LED OUT GP VX VSS nfet_06v0 w=2.5u l=0.7u
+XC_DUMMY DUMMY GB VX VSS nfet_06v0 w=2.5u l=0.7u
+XC_INV1N GB DI VSS VSS nfet_06v0 w=2.5u l=0.7u
+XC_INV1P GB DI VDD VDD pfet_06v0 w=3.93u l=0.55u
+XC_INV2N GP GB VSS VSS nfet_06v0 w=2.5u l=0.7u
+XC_INV2P GP GB VDD VDD pfet_06v0 w=3.93u l=0.55u
+XR_IPBIAS IPB IPB VIN VIN pfet_06v0 w=20u l=4u
+XR_IPTAIL ITAIL IPB VIN VIN pfet_06v0 w=20u l=4u
+XR_IPD1 IN1 VSET ITAIL VIN pfet_06v0 w=100u l=10u
+XR_IPD2 IN2 SENSE ITAIL VIN pfet_06v0 w=100u l=10u
+XR_IND1 IN1 IN1 VSS VSS nfet_06v0 w=50u l=10u
+XR_IND2 IN2 IN1 VSS VSS nfet_06v0 w=50u l=10u
+XR_INSTAGE ICTRL IN2 VSS VSS nfet_06v0 w=20u l=1u
+XR_IPLOAD ICTRL ICTRL VIN VIN pfet_06v0 w=100u l=10u
+XR_IPREG SENSE ICTRL VIN VIN pfet_06v0 w=100u l=10u
+XR_IPOUT BIAS ICTRL VIN VIN pfet_06v0 w=100u l=10u
+XR_DIS BIAS DISABLE VSS VSS nfet_06v0 w=10u l=.7u
+.ends nrz_reference_integrated

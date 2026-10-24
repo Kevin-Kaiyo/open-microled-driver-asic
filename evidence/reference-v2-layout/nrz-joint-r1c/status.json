@@ -1,0 +1,500 @@
+{
+  "J": {
+    "preliminary_magic_drc": {
+      "passed": true,
+      "counts": [
+        "0"
+      ]
+    },
+    "gds_source_preservation": {
+      "method": "Exact original source GDS polygon union, only documented N+ import/export corner losses; final file is re-extracted and independently checked.",
+      "preliminary_sha256": "da8e8872958fff19f46e282adc367abc9fe3a793e4d5678232f3063506509657",
+      "final_sha256": "abec81a846d50758d227b3c6c85c6c4a19b047fdb84702a3b4cfea01d8078d88",
+      "restorations": [
+        {
+          "module": "C",
+          "layer": 31,
+          "datatype": 0,
+          "restored_source_area_um2": 0.0326
+        },
+        {
+          "module": "R",
+          "layer": 31,
+          "datatype": 0,
+          "restored_source_area_um2": 0.0156
+        }
+      ]
+    },
+    "macro_geometry_preservation": {
+      "passed": true,
+      "method": "Independent KLayout region difference on every manufacturing source layer after translation; routing can add polygons, but no original fabrication geometry may disappear. Datatype10 port/text metadata is re-authored at top level and excluded.",
+      "modules": [
+        {
+          "tag": "C",
+          "input_gds_sha256": "d2e32ac286d208e2d74485b4d2650ffbbf4cd25cd57c86c5f7cd9cb97e3256af",
+          "original_polygon_area_sum_um2": 1974.7972999999995,
+          "lost_polygon_area_um2": 0.0
+        },
+        {
+          "tag": "R",
+          "input_gds_sha256": "fca9c35303db526d858e5472d3d2e4ebcfc3ed990e44131f97f82c7b030b1f7f",
+          "original_polygon_area_sum_um2": 45276.3508,
+          "lost_polygon_area_um2": 0.0
+        }
+      ]
+    },
+    "magic_drc": {
+      "passed": true,
+      "counts": [
+        "0"
+      ]
+    },
+    "lvs": {
+      "passed": true,
+      "final_result": [
+        "Circuits match uniquely."
+      ],
+      "log": "build/reference-v2-layout/nrz-joint-r1c/J/lvs.log"
+    },
+    "readback_drc": {
+      "passed": true,
+      "counts": [
+        "0"
+      ]
+    },
+    "readback_lvs": {
+      "passed": true,
+      "final_result": [
+        "Circuits match uniquely."
+      ],
+      "log": "build/reference-v2-layout/nrz-joint-r1c/J/readback-lvs.log"
+    },
+    "pex_coverage": {
+      "node_count": 18,
+      "extracted_nodes": [
+        "ITAIL",
+        "IN1",
+        "DI",
+        "GB",
+        "GP",
+        "VX",
+        "VSS",
+        "VIN",
+        "VDD",
+        "IPB",
+        "VSET",
+        "SENSE",
+        "IN2",
+        "ICTRL",
+        "BIAS",
+        "DISABLE",
+        "DATA",
+        "OUT",
+        "DUMMY"
+      ],
+      "extraction_statistics": [
+        [
+          "19",
+          "1.000000"
+        ]
+      ],
+      "excluded_compact_resistor_body_nodes": [
+        "a_n1100_n7186#"
+      ],
+      "exclusion_reason": "Nonterminal resistor device marker; zero .ext C; PDK X resistor retained",
+      "only_attributes_added": true
+    },
+    "klayout_drc": {
+      "passed": true,
+      "item_count": 0,
+      "categories": {}
+    },
+    "pex_audit": {
+      "passed": true,
+      "full_rc_sha256": "b497c0d439475250a9a7c6cb15efad8e1fe8b4afce14b736a5317f024ee867f6",
+      "counts": {
+        "mos": 20,
+        "device_resistors": 1,
+        "resistors": 589,
+        "capacitors": 317,
+        "zero_valued_capacitors": 0
+      },
+      "all_nets_extracted": true
+    },
+    "gds_geometry": {
+      "passed": true,
+      "gds_sha256": "abec81a846d50758d227b3c6c85c6c4a19b047fdb84702a3b4cfea01d8078d88",
+      "devices": [
+        {
+          "device": "C_INV1N",
+          "w_um": 2.5,
+          "l_um": 0.7000000000000001,
+          "diffusion_areas_um2": [
+            1.0999999999999999,
+            1.0999999999999999
+          ],
+          "diffusion_perimeters_um": [
+            5.88,
+            5.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "C_INV1P",
+          "w_um": 3.93,
+          "l_um": 0.55,
+          "diffusion_areas_um2": [
+            1.7291999999999998,
+            1.7291999999999998
+          ],
+          "diffusion_perimeters_um": [
+            8.74,
+            8.74
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "C_INV2N",
+          "w_um": 2.5,
+          "l_um": 0.7000000000000001,
+          "diffusion_areas_um2": [
+            1.0999999999999999,
+            1.0999999999999999
+          ],
+          "diffusion_perimeters_um": [
+            5.88,
+            5.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "C_INV2P",
+          "w_um": 3.93,
+          "l_um": 0.55,
+          "diffusion_areas_um2": [
+            1.7291999999999998,
+            1.7291999999999998
+          ],
+          "diffusion_perimeters_um": [
+            8.74,
+            8.74
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "C_LED",
+          "w_um": 2.5,
+          "l_um": 0.7000000000000001,
+          "diffusion_areas_um2": [
+            1.0999999999999999,
+            1.0999999999999999
+          ],
+          "diffusion_perimeters_um": [
+            5.88,
+            5.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "C_DUMMY",
+          "w_um": 2.5,
+          "l_um": 0.7000000000000001,
+          "diffusion_areas_um2": [
+            1.0999999999999999,
+            1.0999999999999999
+          ],
+          "diffusion_perimeters_um": [
+            5.88,
+            5.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "C_TAIL",
+          "w_um": 5.76,
+          "l_um": 1.0,
+          "diffusion_areas_um2": [
+            2.5343999999999998,
+            2.5343999999999998
+          ],
+          "diffusion_perimeters_um": [
+            12.4,
+            12.4
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "C_BASE",
+          "w_um": 2.0,
+          "l_um": 1.0,
+          "diffusion_areas_um2": [
+            0.88,
+            0.88
+          ],
+          "diffusion_perimeters_um": [
+            4.88,
+            4.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "C_REF",
+          "w_um": 2.0,
+          "l_um": 1.0,
+          "diffusion_areas_um2": [
+            0.88,
+            0.88
+          ],
+          "diffusion_perimeters_um": [
+            4.88,
+            4.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "R_IPBIAS",
+          "w_um": 20.0,
+          "l_um": 4.0,
+          "diffusion_areas_um2": [
+            8.799999999999999,
+            8.799999999999999
+          ],
+          "diffusion_perimeters_um": [
+            40.88,
+            40.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "R_IPTAIL",
+          "w_um": 20.0,
+          "l_um": 4.0,
+          "diffusion_areas_um2": [
+            8.799999999999999,
+            8.799999999999999
+          ],
+          "diffusion_perimeters_um": [
+            40.88,
+            40.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "R_IPD1",
+          "w_um": 100.0,
+          "l_um": 10.0,
+          "diffusion_areas_um2": [
+            44.0,
+            44.0
+          ],
+          "diffusion_perimeters_um": [
+            200.88,
+            200.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "R_IPD2",
+          "w_um": 100.0,
+          "l_um": 10.0,
+          "diffusion_areas_um2": [
+            44.0,
+            44.0
+          ],
+          "diffusion_perimeters_um": [
+            200.88,
+            200.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "R_IND1",
+          "w_um": 50.0,
+          "l_um": 10.0,
+          "diffusion_areas_um2": [
+            22.0,
+            22.0
+          ],
+          "diffusion_perimeters_um": [
+            100.88,
+            100.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "R_IND2",
+          "w_um": 50.0,
+          "l_um": 10.0,
+          "diffusion_areas_um2": [
+            22.0,
+            22.0
+          ],
+          "diffusion_perimeters_um": [
+            100.88,
+            100.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "R_INSTAGE",
+          "w_um": 20.0,
+          "l_um": 1.0,
+          "diffusion_areas_um2": [
+            8.799999999999999,
+            8.799999999999999
+          ],
+          "diffusion_perimeters_um": [
+            40.88,
+            40.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "R_IPLOAD",
+          "w_um": 100.0,
+          "l_um": 10.0,
+          "diffusion_areas_um2": [
+            44.0,
+            44.0
+          ],
+          "diffusion_perimeters_um": [
+            200.88,
+            200.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "R_IPREG",
+          "w_um": 100.0,
+          "l_um": 10.0,
+          "diffusion_areas_um2": [
+            44.0,
+            44.0
+          ],
+          "diffusion_perimeters_um": [
+            200.88,
+            200.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "R_IPOUT",
+          "w_um": 100.0,
+          "l_um": 10.0,
+          "diffusion_areas_um2": [
+            44.0,
+            44.0
+          ],
+          "diffusion_perimeters_um": [
+            200.88,
+            200.88
+          ],
+          "extracted_geometry_matches": true
+        },
+        {
+          "device": "R_DIS",
+          "w_um": 10.0,
+          "l_um": 0.7000000000000001,
+          "diffusion_areas_um2": [
+            4.3999999999999995,
+            4.3999999999999995
+          ],
+          "diffusion_perimeters_um": [
+            20.88,
+            20.88
+          ],
+          "extracted_geometry_matches": true
+        }
+      ],
+      "device_resistors": [
+        {
+          "device": "C_RIN",
+          "w_um": 1.0,
+          "l_um": 58.0,
+          "method": "Intersection of actual GDS HRPOLY 110/5 and POLY 30/0"
+        }
+      ],
+      "method": "Boolean intersection/difference of final GDS active and poly polygons; isolated channel window excludes surrounding body contacts."
+    },
+    "negative_controls": [
+      {
+        "control": "reference-gate-open",
+        "passed": true,
+        "expected_lvs_match": false,
+        "gds_sha256": "36daadd19d69fceac33b17d80cbc4f47b371e38d91eb438f77ac4d1eb7898b01",
+        "edit_rect_um": [
+          149.7,
+          202.45,
+          150.3,
+          203.05
+        ],
+        "changed_polygon_area_um2": 0.22799999999999998,
+        "drc": {
+          "passed": true,
+          "counts": [
+            "0"
+          ]
+        },
+        "lvs": {
+          "passed": false,
+          "final_result": [
+            "Top level cell failed pin matching."
+          ],
+          "log": "build/reference-v2-layout/nrz-joint-r1c/J/controls/reference-gate-open/lvs.log"
+        }
+      },
+      {
+        "control": "supply-vss-short",
+        "passed": true,
+        "expected_lvs_match": false,
+        "gds_sha256": "b4e0dd78f564a894ceff51ddcfef95e631fc665343fd2ef16ae8969cd9311a0e",
+        "edit_rect_um": [
+          245.68,
+          100.8,
+          246.07999999999998,
+          103.2
+        ],
+        "changed_polygon_area_um2": 0.64,
+        "drc": {
+          "passed": true,
+          "counts": [
+            "0"
+          ]
+        },
+        "lvs": {
+          "passed": false,
+          "final_result": [
+            "Top level cell failed pin matching."
+          ],
+          "log": "build/reference-v2-layout/nrz-joint-r1c/J/controls/supply-vss-short/lvs.log"
+        }
+      },
+      {
+        "control": "bridge-BIAS-open",
+        "passed": true,
+        "expected_lvs_match": false,
+        "gds_sha256": "cbe3941ac7a31ab82011fe3cf087ea8549f27a81f46a1e1e105e829df16072b4",
+        "edit_rect_um": [
+          166.72,
+          56.8,
+          167.72,
+          63.2
+        ],
+        "changed_polygon_area_um2": 6.0,
+        "drc": {
+          "passed": true,
+          "counts": [
+            "0"
+          ]
+        },
+        "lvs": {
+          "passed": false,
+          "final_result": [
+            "Netlists do not match."
+          ],
+          "log": "build/reference-v2-layout/nrz-joint-r1c/J/controls/bridge-BIAS-open/lvs.log"
+        }
+      }
+    ]
+  }
+}

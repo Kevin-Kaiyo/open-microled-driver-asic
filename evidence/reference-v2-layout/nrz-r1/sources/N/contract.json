@@ -1,0 +1,2217 @@
+{
+  "schema_version": 1,
+  "route": "N",
+  "top": "nrz_bias_power",
+  "ports": [
+    "VIN",
+    "VSS",
+    "VSET",
+    "SENSE",
+    "IOUT",
+    "REGFB",
+    "VREG",
+    "IPB",
+    "IN2",
+    "ICTRL",
+    "LPB",
+    "LN2",
+    "LCTRL"
+  ],
+  "grid_um": 0.005,
+  "devices": [
+    {
+      "name": "IPBIAS",
+      "model": "pfet_06v0",
+      "w_um": 20,
+      "l_um": 4,
+      "cx": 14.0,
+      "cy": 110.0,
+      "nodes": [
+        "IPB",
+        "IPB",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          11.74,
+          110.0
+        ],
+        "G": [
+          14.0,
+          120.5
+        ],
+        "S": [
+          16.259999999999998,
+          110.0
+        ],
+        "B": [
+          9.5,
+          110.0
+        ]
+      }
+    },
+    {
+      "name": "IPTAIL",
+      "model": "pfet_06v0",
+      "w_um": 20,
+      "l_um": 4,
+      "cx": 32.0,
+      "cy": 110.0,
+      "nodes": [
+        "ITAIL",
+        "IPB",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          29.740000000000002,
+          110.0
+        ],
+        "G": [
+          32.0,
+          120.5
+        ],
+        "S": [
+          34.26,
+          110.0
+        ],
+        "B": [
+          27.5,
+          110.0
+        ]
+      }
+    },
+    {
+      "name": "IPD1",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 50.0,
+      "cy": 150.0,
+      "nodes": [
+        "IN1",
+        "VSET",
+        "ITAIL",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          44.74,
+          150.0
+        ],
+        "G": [
+          50.0,
+          200.5
+        ],
+        "S": [
+          55.26,
+          150.0
+        ],
+        "B": [
+          42.5,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "IPD2",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 72.0,
+      "cy": 150.0,
+      "nodes": [
+        "IN2",
+        "SENSE",
+        "ITAIL",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          66.74,
+          150.0
+        ],
+        "G": [
+          72.0,
+          200.5
+        ],
+        "S": [
+          77.26,
+          150.0
+        ],
+        "B": [
+          64.5,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "IND1",
+      "model": "nfet_06v0",
+      "w_um": 50,
+      "l_um": 10,
+      "cx": 94.0,
+      "cy": 125.0,
+      "nodes": [
+        "IN1",
+        "IN1",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          88.74,
+          125.0
+        ],
+        "G": [
+          94.0,
+          150.5
+        ],
+        "S": [
+          99.26,
+          125.0
+        ],
+        "B": [
+          86.5,
+          125.0
+        ]
+      },
+      "guard_all_sides": true
+    },
+    {
+      "name": "IND2",
+      "model": "nfet_06v0",
+      "w_um": 50,
+      "l_um": 10,
+      "cx": 116.0,
+      "cy": 125.0,
+      "nodes": [
+        "IN2",
+        "IN1",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          110.74,
+          125.0
+        ],
+        "G": [
+          116.0,
+          150.5
+        ],
+        "S": [
+          121.26,
+          125.0
+        ],
+        "B": [
+          108.5,
+          125.0
+        ]
+      },
+      "guard_all_sides": true
+    },
+    {
+      "name": "INSTAGE",
+      "model": "nfet_06v0",
+      "w_um": 20,
+      "l_um": 1,
+      "cx": 138.0,
+      "cy": 110.0,
+      "nodes": [
+        "ICTRL",
+        "IN2",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          137.24,
+          110.0
+        ],
+        "G": [
+          138.0,
+          120.5
+        ],
+        "S": [
+          138.76,
+          110.0
+        ],
+        "B": [
+          134.5,
+          110.0
+        ]
+      },
+      "guard_all_sides": true
+    },
+    {
+      "name": "IPLOAD",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 156.0,
+      "cy": 150.0,
+      "nodes": [
+        "ICTRL",
+        "ICTRL",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          150.74,
+          150.0
+        ],
+        "G": [
+          156.0,
+          200.5
+        ],
+        "S": [
+          161.26,
+          150.0
+        ],
+        "B": [
+          148.5,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "IPREG",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 178.0,
+      "cy": 150.0,
+      "nodes": [
+        "SENSE",
+        "ICTRL",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          172.74,
+          150.0
+        ],
+        "G": [
+          178.0,
+          200.5
+        ],
+        "S": [
+          183.26,
+          150.0
+        ],
+        "B": [
+          170.5,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "IPOUT",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 200.0,
+      "cy": 150.0,
+      "nodes": [
+        "IOUT",
+        "ICTRL",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          194.74,
+          150.0
+        ],
+        "G": [
+          200.0,
+          200.5
+        ],
+        "S": [
+          205.26,
+          150.0
+        ],
+        "B": [
+          192.5,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "LPBIAS",
+      "model": "pfet_06v0",
+      "w_um": 20,
+      "l_um": 4,
+      "cx": 222.0,
+      "cy": 110.0,
+      "nodes": [
+        "LPB",
+        "LPB",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          219.74,
+          110.0
+        ],
+        "G": [
+          222.0,
+          120.5
+        ],
+        "S": [
+          224.26,
+          110.0
+        ],
+        "B": [
+          217.5,
+          110.0
+        ]
+      }
+    },
+    {
+      "name": "LPTAIL",
+      "model": "pfet_06v0",
+      "w_um": 20,
+      "l_um": 4,
+      "cx": 240.0,
+      "cy": 110.0,
+      "nodes": [
+        "LTAIL",
+        "LPB",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          237.74,
+          110.0
+        ],
+        "G": [
+          240.0,
+          120.5
+        ],
+        "S": [
+          242.26,
+          110.0
+        ],
+        "B": [
+          235.5,
+          110.0
+        ]
+      }
+    },
+    {
+      "name": "LPD1",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 258.0,
+      "cy": 150.0,
+      "nodes": [
+        "LN1",
+        "VSET",
+        "LTAIL",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          252.74,
+          150.0
+        ],
+        "G": [
+          258.0,
+          200.5
+        ],
+        "S": [
+          263.26,
+          150.0
+        ],
+        "B": [
+          250.5,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "LPD2",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 280.0,
+      "cy": 150.0,
+      "nodes": [
+        "LN2",
+        "REGFB",
+        "LTAIL",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          274.74,
+          150.0
+        ],
+        "G": [
+          280.0,
+          200.5
+        ],
+        "S": [
+          285.26,
+          150.0
+        ],
+        "B": [
+          272.5,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "LND1",
+      "model": "nfet_06v0",
+      "w_um": 50,
+      "l_um": 10,
+      "cx": 302.0,
+      "cy": 125.0,
+      "nodes": [
+        "LN1",
+        "LN1",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          296.74,
+          125.0
+        ],
+        "G": [
+          302.0,
+          150.5
+        ],
+        "S": [
+          307.26,
+          125.0
+        ],
+        "B": [
+          294.5,
+          125.0
+        ]
+      },
+      "guard_all_sides": true
+    },
+    {
+      "name": "LND2",
+      "model": "nfet_06v0",
+      "w_um": 50,
+      "l_um": 10,
+      "cx": 324.0,
+      "cy": 125.0,
+      "nodes": [
+        "LN2",
+        "LN1",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          318.74,
+          125.0
+        ],
+        "G": [
+          324.0,
+          150.5
+        ],
+        "S": [
+          329.26,
+          125.0
+        ],
+        "B": [
+          316.5,
+          125.0
+        ]
+      },
+      "guard_all_sides": true
+    },
+    {
+      "name": "LNSTAGE",
+      "model": "nfet_06v0",
+      "w_um": 20,
+      "l_um": 1,
+      "cx": 346.0,
+      "cy": 110.0,
+      "nodes": [
+        "LCTRL",
+        "LN2",
+        "VSS",
+        "VSS"
+      ],
+      "pins_um": {
+        "D": [
+          345.24,
+          110.0
+        ],
+        "G": [
+          346.0,
+          120.5
+        ],
+        "S": [
+          346.76,
+          110.0
+        ],
+        "B": [
+          342.5,
+          110.0
+        ]
+      },
+      "guard_all_sides": true
+    },
+    {
+      "name": "LPLOAD",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 364.0,
+      "cy": 150.0,
+      "nodes": [
+        "LCTRL",
+        "LCTRL",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          358.74,
+          150.0
+        ],
+        "G": [
+          364.0,
+          200.5
+        ],
+        "S": [
+          369.26,
+          150.0
+        ],
+        "B": [
+          356.5,
+          150.0
+        ]
+      }
+    },
+    {
+      "name": "LPREG",
+      "model": "pfet_06v0",
+      "w_um": 100,
+      "l_um": 10,
+      "cx": 386.0,
+      "cy": 150.0,
+      "nodes": [
+        "VREG",
+        "LCTRL",
+        "VIN",
+        "VIN"
+      ],
+      "pins_um": {
+        "D": [
+          380.74,
+          150.0
+        ],
+        "G": [
+          386.0,
+          200.5
+        ],
+        "S": [
+          391.26,
+          150.0
+        ],
+        "B": [
+          378.5,
+          150.0
+        ]
+      }
+    }
+  ],
+  "buses_um": {
+    "VIN": 1,
+    "VSS": 3,
+    "VSET": 5,
+    "SENSE": 7,
+    "IOUT": 9,
+    "REGFB": 11,
+    "VREG": 13,
+    "IPB": 15,
+    "IN2": 17,
+    "ICTRL": 19,
+    "LPB": 21,
+    "LN2": 23,
+    "LCTRL": 25,
+    "ITAIL": 27,
+    "IN1": 29,
+    "LTAIL": 31,
+    "LN1": 33
+  },
+  "bus_spans_um": {
+    "VIN": [
+      9.0,
+      391.76
+    ],
+    "VSS": [
+      86.0,
+      347.26
+    ],
+    "VSET": [
+      49.5,
+      258.5
+    ],
+    "SENSE": [
+      71.5,
+      173.24
+    ],
+    "IOUT": [
+      194.24,
+      195.24
+    ],
+    "REGFB": [
+      279.5,
+      280.5
+    ],
+    "VREG": [
+      380.24,
+      381.24
+    ],
+    "IPB": [
+      11.24,
+      32.5
+    ],
+    "IN2": [
+      66.24,
+      138.5
+    ],
+    "ICTRL": [
+      136.74,
+      200.5
+    ],
+    "LPB": [
+      219.24,
+      240.5
+    ],
+    "LN2": [
+      274.24,
+      346.5
+    ],
+    "LCTRL": [
+      344.74,
+      386.5
+    ],
+    "ITAIL": [
+      29.240000000000002,
+      77.76
+    ],
+    "IN1": [
+      44.24,
+      116.5
+    ],
+    "LTAIL": [
+      237.24,
+      285.76
+    ],
+    "LN1": [
+      252.24,
+      324.5
+    ]
+  },
+  "port_anchor_um": {
+    "VIN": [
+      9.2,
+      1
+    ],
+    "VSS": [
+      86.2,
+      3
+    ],
+    "VSET": [
+      49.7,
+      5
+    ],
+    "SENSE": [
+      71.7,
+      7
+    ],
+    "IOUT": [
+      194.44,
+      9
+    ],
+    "REGFB": [
+      279.7,
+      11
+    ],
+    "VREG": [
+      380.44,
+      13
+    ],
+    "IPB": [
+      11.44,
+      15
+    ],
+    "IN2": [
+      66.44,
+      17
+    ],
+    "ICTRL": [
+      136.94,
+      19
+    ],
+    "LPB": [
+      219.44,
+      21
+    ],
+    "LN2": [
+      274.44,
+      23
+    ],
+    "LCTRL": [
+      344.94,
+      25
+    ]
+  },
+  "routes": [
+    {
+      "net": "VIN",
+      "layer": "metal3",
+      "rect_um": [
+        9.0,
+        0.8,
+        391.76,
+        1.2
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal3",
+      "rect_um": [
+        86.0,
+        2.8,
+        347.26,
+        3.2
+      ]
+    },
+    {
+      "net": "VSET",
+      "layer": "metal3",
+      "rect_um": [
+        49.5,
+        4.8,
+        258.5,
+        5.2
+      ]
+    },
+    {
+      "net": "SENSE",
+      "layer": "metal3",
+      "rect_um": [
+        71.5,
+        6.8,
+        173.24,
+        7.2
+      ]
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal3",
+      "rect_um": [
+        194.24,
+        8.8,
+        195.24,
+        9.2
+      ]
+    },
+    {
+      "net": "REGFB",
+      "layer": "metal3",
+      "rect_um": [
+        279.5,
+        10.8,
+        280.5,
+        11.2
+      ]
+    },
+    {
+      "net": "VREG",
+      "layer": "metal3",
+      "rect_um": [
+        380.24,
+        12.8,
+        381.24,
+        13.2
+      ]
+    },
+    {
+      "net": "IPB",
+      "layer": "metal3",
+      "rect_um": [
+        11.24,
+        14.8,
+        32.5,
+        15.2
+      ]
+    },
+    {
+      "net": "IN2",
+      "layer": "metal3",
+      "rect_um": [
+        66.24,
+        16.8,
+        138.5,
+        17.2
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal3",
+      "rect_um": [
+        136.74,
+        18.8,
+        200.5,
+        19.2
+      ]
+    },
+    {
+      "net": "LPB",
+      "layer": "metal3",
+      "rect_um": [
+        219.24,
+        20.8,
+        240.5,
+        21.2
+      ]
+    },
+    {
+      "net": "LN2",
+      "layer": "metal3",
+      "rect_um": [
+        274.24,
+        22.8,
+        346.5,
+        23.2
+      ]
+    },
+    {
+      "net": "LCTRL",
+      "layer": "metal3",
+      "rect_um": [
+        344.74,
+        24.8,
+        386.5,
+        25.2
+      ]
+    },
+    {
+      "net": "ITAIL",
+      "layer": "metal3",
+      "rect_um": [
+        29.24,
+        26.8,
+        77.76,
+        27.2
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal3",
+      "rect_um": [
+        44.24,
+        28.8,
+        116.5,
+        29.2
+      ]
+    },
+    {
+      "net": "LTAIL",
+      "layer": "metal3",
+      "rect_um": [
+        237.24,
+        30.8,
+        285.76,
+        31.2
+      ]
+    },
+    {
+      "net": "LN1",
+      "layer": "metal3",
+      "rect_um": [
+        252.24,
+        32.8,
+        324.5,
+        33.2
+      ]
+    },
+    {
+      "net": "IPB",
+      "layer": "metal1",
+      "rect_um": [
+        13.81,
+        99.31,
+        14.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        9.5,
+        109.81,
+        11.17,
+        110.19
+      ]
+    },
+    {
+      "net": "IPB",
+      "layer": "metal2",
+      "rect_um": [
+        11.55,
+        14.81,
+        11.93,
+        110.19
+      ]
+    },
+    {
+      "net": "IPB",
+      "layer": "metal4",
+      "rect_um": [
+        13.81,
+        14.81,
+        14.19,
+        120.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        16.07,
+        0.81,
+        16.45,
+        110.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        9.31,
+        0.81,
+        9.69,
+        110.19
+      ]
+    },
+    {
+      "net": "IPB",
+      "layer": "metal1",
+      "rect_um": [
+        31.81,
+        99.31,
+        32.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        27.5,
+        109.81,
+        29.17,
+        110.19
+      ]
+    },
+    {
+      "net": "ITAIL",
+      "layer": "metal2",
+      "rect_um": [
+        29.55,
+        26.81,
+        29.93,
+        110.19
+      ]
+    },
+    {
+      "net": "IPB",
+      "layer": "metal4",
+      "rect_um": [
+        31.81,
+        14.81,
+        32.19,
+        120.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        34.07,
+        0.81,
+        34.45,
+        110.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        27.31,
+        0.81,
+        27.69,
+        110.19
+      ]
+    },
+    {
+      "net": "VSET",
+      "layer": "metal1",
+      "rect_um": [
+        49.81,
+        99.31,
+        50.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        42.5,
+        149.81,
+        44.17,
+        150.19
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal2",
+      "rect_um": [
+        44.55,
+        28.81,
+        44.93,
+        150.19
+      ]
+    },
+    {
+      "net": "VSET",
+      "layer": "metal4",
+      "rect_um": [
+        49.81,
+        4.81,
+        50.19,
+        200.69
+      ]
+    },
+    {
+      "net": "ITAIL",
+      "layer": "metal2",
+      "rect_um": [
+        55.07,
+        26.81,
+        55.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        42.31,
+        0.81,
+        42.69,
+        150.19
+      ]
+    },
+    {
+      "net": "SENSE",
+      "layer": "metal1",
+      "rect_um": [
+        71.81,
+        99.31,
+        72.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        64.5,
+        149.81,
+        66.17,
+        150.19
+      ]
+    },
+    {
+      "net": "IN2",
+      "layer": "metal2",
+      "rect_um": [
+        66.55,
+        16.81,
+        66.93,
+        150.19
+      ]
+    },
+    {
+      "net": "SENSE",
+      "layer": "metal4",
+      "rect_um": [
+        71.81,
+        6.81,
+        72.19,
+        200.69
+      ]
+    },
+    {
+      "net": "ITAIL",
+      "layer": "metal2",
+      "rect_um": [
+        77.07,
+        26.81,
+        77.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        64.31,
+        0.81,
+        64.69,
+        150.19
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal1",
+      "rect_um": [
+        93.81,
+        99.31,
+        94.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        86.5,
+        124.81,
+        88.17,
+        125.19
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal2",
+      "rect_um": [
+        88.55,
+        28.81,
+        88.93,
+        125.19
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal4",
+      "rect_um": [
+        93.81,
+        28.81,
+        94.19,
+        150.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        99.07,
+        2.81,
+        99.45,
+        125.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        86.31,
+        2.81,
+        86.69,
+        125.19
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal1",
+      "rect_um": [
+        115.81,
+        99.31,
+        116.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        108.5,
+        124.81,
+        110.17,
+        125.19
+      ]
+    },
+    {
+      "net": "IN2",
+      "layer": "metal2",
+      "rect_um": [
+        110.55,
+        16.81,
+        110.93,
+        125.19
+      ]
+    },
+    {
+      "net": "IN1",
+      "layer": "metal4",
+      "rect_um": [
+        115.81,
+        28.81,
+        116.19,
+        150.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        121.07,
+        2.81,
+        121.45,
+        125.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        108.31,
+        2.81,
+        108.69,
+        125.19
+      ]
+    },
+    {
+      "net": "IN2",
+      "layer": "metal1",
+      "rect_um": [
+        137.81,
+        99.31,
+        138.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        134.5,
+        109.81,
+        136.67,
+        110.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal2",
+      "rect_um": [
+        137.05,
+        18.81,
+        137.43,
+        110.19
+      ]
+    },
+    {
+      "net": "IN2",
+      "layer": "metal4",
+      "rect_um": [
+        137.81,
+        16.81,
+        138.19,
+        120.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        138.57,
+        2.81,
+        138.95,
+        110.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        134.31,
+        2.81,
+        134.69,
+        110.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal1",
+      "rect_um": [
+        155.81,
+        99.31,
+        156.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        148.5,
+        149.81,
+        150.17,
+        150.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal2",
+      "rect_um": [
+        150.55,
+        18.81,
+        150.93,
+        150.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal4",
+      "rect_um": [
+        155.81,
+        18.81,
+        156.19,
+        200.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        161.07,
+        0.81,
+        161.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        148.31,
+        0.81,
+        148.69,
+        150.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal1",
+      "rect_um": [
+        177.81,
+        99.31,
+        178.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        170.5,
+        149.81,
+        172.17,
+        150.19
+      ]
+    },
+    {
+      "net": "SENSE",
+      "layer": "metal2",
+      "rect_um": [
+        172.55,
+        6.81,
+        172.93,
+        150.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal4",
+      "rect_um": [
+        177.81,
+        18.81,
+        178.19,
+        200.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        183.07,
+        0.81,
+        183.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        170.31,
+        0.81,
+        170.69,
+        150.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal1",
+      "rect_um": [
+        199.81,
+        99.31,
+        200.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        192.5,
+        149.81,
+        194.17,
+        150.19
+      ]
+    },
+    {
+      "net": "IOUT",
+      "layer": "metal2",
+      "rect_um": [
+        194.55,
+        8.81,
+        194.93,
+        150.19
+      ]
+    },
+    {
+      "net": "ICTRL",
+      "layer": "metal4",
+      "rect_um": [
+        199.81,
+        18.81,
+        200.19,
+        200.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        205.07,
+        0.81,
+        205.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        192.31,
+        0.81,
+        192.69,
+        150.19
+      ]
+    },
+    {
+      "net": "LPB",
+      "layer": "metal1",
+      "rect_um": [
+        221.81,
+        99.31,
+        222.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        217.5,
+        109.81,
+        219.17,
+        110.19
+      ]
+    },
+    {
+      "net": "LPB",
+      "layer": "metal2",
+      "rect_um": [
+        219.55,
+        20.81,
+        219.93,
+        110.19
+      ]
+    },
+    {
+      "net": "LPB",
+      "layer": "metal4",
+      "rect_um": [
+        221.81,
+        20.81,
+        222.19,
+        120.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        224.07,
+        0.81,
+        224.45,
+        110.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        217.31,
+        0.81,
+        217.69,
+        110.19
+      ]
+    },
+    {
+      "net": "LPB",
+      "layer": "metal1",
+      "rect_um": [
+        239.81,
+        99.31,
+        240.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        235.5,
+        109.81,
+        237.17,
+        110.19
+      ]
+    },
+    {
+      "net": "LTAIL",
+      "layer": "metal2",
+      "rect_um": [
+        237.55,
+        30.81,
+        237.93,
+        110.19
+      ]
+    },
+    {
+      "net": "LPB",
+      "layer": "metal4",
+      "rect_um": [
+        239.81,
+        20.81,
+        240.19,
+        120.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        242.07,
+        0.81,
+        242.45,
+        110.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        235.31,
+        0.81,
+        235.69,
+        110.19
+      ]
+    },
+    {
+      "net": "VSET",
+      "layer": "metal1",
+      "rect_um": [
+        257.81,
+        99.31,
+        258.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        250.5,
+        149.81,
+        252.17,
+        150.19
+      ]
+    },
+    {
+      "net": "LN1",
+      "layer": "metal2",
+      "rect_um": [
+        252.55,
+        32.81,
+        252.93,
+        150.19
+      ]
+    },
+    {
+      "net": "VSET",
+      "layer": "metal4",
+      "rect_um": [
+        257.81,
+        4.81,
+        258.19,
+        200.69
+      ]
+    },
+    {
+      "net": "LTAIL",
+      "layer": "metal2",
+      "rect_um": [
+        263.07,
+        30.81,
+        263.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        250.31,
+        0.81,
+        250.69,
+        150.19
+      ]
+    },
+    {
+      "net": "REGFB",
+      "layer": "metal1",
+      "rect_um": [
+        279.81,
+        99.31,
+        280.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        272.5,
+        149.81,
+        274.17,
+        150.19
+      ]
+    },
+    {
+      "net": "LN2",
+      "layer": "metal2",
+      "rect_um": [
+        274.55,
+        22.81,
+        274.93,
+        150.19
+      ]
+    },
+    {
+      "net": "REGFB",
+      "layer": "metal4",
+      "rect_um": [
+        279.81,
+        10.81,
+        280.19,
+        200.69
+      ]
+    },
+    {
+      "net": "LTAIL",
+      "layer": "metal2",
+      "rect_um": [
+        285.07,
+        30.81,
+        285.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        272.31,
+        0.81,
+        272.69,
+        150.19
+      ]
+    },
+    {
+      "net": "LN1",
+      "layer": "metal1",
+      "rect_um": [
+        301.81,
+        99.31,
+        302.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        294.5,
+        124.81,
+        296.17,
+        125.19
+      ]
+    },
+    {
+      "net": "LN1",
+      "layer": "metal2",
+      "rect_um": [
+        296.55,
+        32.81,
+        296.93,
+        125.19
+      ]
+    },
+    {
+      "net": "LN1",
+      "layer": "metal4",
+      "rect_um": [
+        301.81,
+        32.81,
+        302.19,
+        150.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        307.07,
+        2.81,
+        307.45,
+        125.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        294.31,
+        2.81,
+        294.69,
+        125.19
+      ]
+    },
+    {
+      "net": "LN1",
+      "layer": "metal1",
+      "rect_um": [
+        323.81,
+        99.31,
+        324.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        316.5,
+        124.81,
+        318.17,
+        125.19
+      ]
+    },
+    {
+      "net": "LN2",
+      "layer": "metal2",
+      "rect_um": [
+        318.55,
+        22.81,
+        318.93,
+        125.19
+      ]
+    },
+    {
+      "net": "LN1",
+      "layer": "metal4",
+      "rect_um": [
+        323.81,
+        32.81,
+        324.19,
+        150.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        329.07,
+        2.81,
+        329.45,
+        125.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        316.31,
+        2.81,
+        316.69,
+        125.19
+      ]
+    },
+    {
+      "net": "LN2",
+      "layer": "metal1",
+      "rect_um": [
+        345.81,
+        99.31,
+        346.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal1",
+      "rect_um": [
+        342.5,
+        109.81,
+        344.67,
+        110.19
+      ]
+    },
+    {
+      "net": "LCTRL",
+      "layer": "metal2",
+      "rect_um": [
+        345.05,
+        24.81,
+        345.43,
+        110.19
+      ]
+    },
+    {
+      "net": "LN2",
+      "layer": "metal4",
+      "rect_um": [
+        345.81,
+        22.81,
+        346.19,
+        120.69
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        346.57,
+        2.81,
+        346.95,
+        110.19
+      ]
+    },
+    {
+      "net": "VSS",
+      "layer": "metal2",
+      "rect_um": [
+        342.31,
+        2.81,
+        342.69,
+        110.19
+      ]
+    },
+    {
+      "net": "LCTRL",
+      "layer": "metal1",
+      "rect_um": [
+        363.81,
+        99.31,
+        364.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        356.5,
+        149.81,
+        358.17,
+        150.19
+      ]
+    },
+    {
+      "net": "LCTRL",
+      "layer": "metal2",
+      "rect_um": [
+        358.55,
+        24.81,
+        358.93,
+        150.19
+      ]
+    },
+    {
+      "net": "LCTRL",
+      "layer": "metal4",
+      "rect_um": [
+        363.81,
+        24.81,
+        364.19,
+        200.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        369.07,
+        0.81,
+        369.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        356.31,
+        0.81,
+        356.69,
+        150.19
+      ]
+    },
+    {
+      "net": "LCTRL",
+      "layer": "metal1",
+      "rect_um": [
+        385.81,
+        99.31,
+        386.19,
+        99.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal1",
+      "rect_um": [
+        378.5,
+        149.81,
+        380.17,
+        150.19
+      ]
+    },
+    {
+      "net": "VREG",
+      "layer": "metal2",
+      "rect_um": [
+        380.55,
+        12.81,
+        380.93,
+        150.19
+      ]
+    },
+    {
+      "net": "LCTRL",
+      "layer": "metal4",
+      "rect_um": [
+        385.81,
+        24.81,
+        386.19,
+        200.69
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        391.07,
+        0.81,
+        391.45,
+        150.19
+      ]
+    },
+    {
+      "net": "VIN",
+      "layer": "metal2",
+      "rect_um": [
+        378.31,
+        0.81,
+        378.69,
+        150.19
+      ]
+    }
+  ],
+  "external_components": [
+    {
+      "name": "VSET",
+      "nodes": [
+        "VSET",
+        "VSS"
+      ],
+      "kind": "external precision-voltage anchor",
+      "nominal_v": 0.5
+    },
+    {
+      "name": "RSET",
+      "nodes": [
+        "SENSE",
+        "VSS"
+      ],
+      "kind": "external set resistor",
+      "ohm": 20000
+    },
+    {
+      "name": "RBIAS_I",
+      "nodes": [
+        "IPB",
+        "VSS"
+      ],
+      "kind": "external bias resistor",
+      "ohm": 100000
+    },
+    {
+      "name": "RBIAS_L",
+      "nodes": [
+        "LPB",
+        "VSS"
+      ],
+      "kind": "external bias resistor",
+      "ohm": 100000
+    },
+    {
+      "name": "RFB_H",
+      "nodes": [
+        "VREG",
+        "REGFB"
+      ],
+      "kind": "external feedback resistor",
+      "ohm": 56000
+    },
+    {
+      "name": "RFB_L",
+      "nodes": [
+        "REGFB",
+        "VSS"
+      ],
+      "kind": "external feedback resistor",
+      "ohm": 10000
+    },
+    {
+      "name": "CCOMP_I",
+      "nodes": [
+        "IN2",
+        "ICTRL"
+      ],
+      "kind": "external compensation capacitor",
+      "value": "electrical experiment parameter"
+    },
+    {
+      "name": "CCOMP_L",
+      "nodes": [
+        "LN2",
+        "LCTRL"
+      ],
+      "kind": "external compensation capacitor",
+      "value": "electrical experiment parameter"
+    },
+    {
+      "name": "COUT_L",
+      "nodes": [
+        "VREG",
+        "VSS"
+      ],
+      "kind": "external regulator output capacitor",
+      "value": "electrical experiment parameter"
+    },
+    {
+      "name": "VIN",
+      "nodes": [
+        "VIN",
+        "VSS"
+      ],
+      "kind": "external supply input",
+      "nominal_v": 5
+    },
+    {
+      "name": "OLD_B_CORE",
+      "nodes": [
+        "IOUT",
+        "VREG",
+        "VSS"
+      ],
+      "kind": "old separately extracted hv-r2/B core; intermodule connections external"
+    }
+  ],
+  "dimension_change": [],
+  "source_sha256": {
+    "layout/reference_v2/nrz_bias_power-reference.spice": "7e205c7405db507ded0fc9dd799e98663ef373f03e42cdd9b21e05483bc5999d",
+    "build/reference-v2-layout/nrz-r1/sources/N/schematic.spice": "524bedaa1a3adc24fa24111cbaf72d9910ca74eaba36c8a49d99be7d1daa0ccd"
+  },
+  "pcell_parameters": {
+    "full_metal": 0,
+    "gate_to_polycont_um": 0.5,
+    "guard": 1,
+    "glc": 1,
+    "grc": 1,
+    "topc": 1,
+    "botc": 1
+  },
+  "note": "Transistor core only; no pads/ESD/regulators/external resistor implementation. Use extraction results for junction areas/perimeters, not schematic estimates.",
+  "resistors": [],
+  "design_changes": [
+    "New true transistor current servo and LDO module; original B core unchanged.",
+    "Shared VIN/VSS/VSET routes within this new module extracted. No pads or intermodule package routes."
+  ],
+  "negative_control_gate": "VSET",
+  "supply_port": "VIN",
+  "nmos_guard_all_sides": true,
+  "electrical_physical_independence": "Physical D/G/S/B independently authored in JSON; gold independently parsed from electrical MOS source. No netlist-to-placement parser."
+}

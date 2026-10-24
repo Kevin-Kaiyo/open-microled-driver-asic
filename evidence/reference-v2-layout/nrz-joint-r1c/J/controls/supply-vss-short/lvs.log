@@ -1,0 +1,111 @@
+
+Circuit 1 cell nfet_06v0 and Circuit 2 cell nfet_06v0 are black boxes.
+Warning: Equate pins:  cell nfet_06v0 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell nfet_06v0 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: nfet_06v0                       |Circuit 2: nfet_06v0                       
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes nfet_06v0 and nfet_06v0 are equivalent.
+
+Circuit 1 cell pfet_06v0 and Circuit 2 cell pfet_06v0 are black boxes.
+Warning: Equate pins:  cell pfet_06v0 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell pfet_06v0 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: pfet_06v0                       |Circuit 2: pfet_06v0                       
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes pfet_06v0 and pfet_06v0 are equivalent.
+
+Circuit 1 cell ppolyf_u_1k_6p0 and Circuit 2 cell ppolyf_u_1k_6p0 are black boxes.
+Warning: Equate pins:  cell ppolyf_u_1k_6p0 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell ppolyf_u_1k_6p0 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: ppolyf_u_1k_6p0                 |Circuit 2: ppolyf_u_1k_6p0                 
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes ppolyf_u_1k_6p0 and ppolyf_u_1k_6p0 are equivalent.
+
+Circuit 1 cell nfet_03v3 and Circuit 2 cell nfet_03v3 are black boxes.
+Warning: Equate pins:  cell nfet_03v3 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell nfet_03v3 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: nfet_03v3                       |Circuit 2: nfet_03v3                       
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes nfet_03v3 and nfet_03v3 are equivalent.
+
+Subcircuit summary:
+Circuit 1: nrz_reference_integrated        |Circuit 2: nrz_reference_integrated        
+-------------------------------------------|-------------------------------------------
+nfet_06v0 (8)                              |nfet_06v0 (8)                              
+pfet_06v0 (9)                              |pfet_06v0 (9)                              
+ppolyf_u_1k_6p0 (1)                        |ppolyf_u_1k_6p0 (1)                        
+nfet_03v3 (3)                              |nfet_03v3 (3)                              
+Number of devices: 21                      |Number of devices: 21                      
+Number of nets: 18 **Mismatch**            |Number of nets: 19 **Mismatch**            
+---------------------------------------------------------------------------------------
+NET mismatches: Class fragments follow (with fanout counts):
+Circuit 1: nrz_reference_integrated        |Circuit 2: nrz_reference_integrated        
+
+---------------------------------------------------------------------------------------
+Net: VSS                                   |Net: VSS                                   
+  ppolyf_u_1k_6p0/3 = 1                    |  ppolyf_u_1k_6p0/3 = 1                    
+  nfet_03v3/(1|3) = 3                      |  nfet_03v3/(1|3) = 3                      
+  nfet_03v3/4 = 3                          |  nfet_03v3/4 = 3                          
+  nfet_06v0/4 = 8                          |  nfet_06v0/4 = 8                          
+  nfet_06v0/(1|3) = 6                      |  nfet_06v0/(1|3) = 6                      
+  pfet_06v0/4 = 7                          |                                           
+  pfet_06v0/(1|3) = 5                      |                                           
+                                           |                                           
+(no matching net)                          |Net: VIN                                   
+                                           |  pfet_06v0/(1|3) = 5                      
+                                           |  pfet_06v0/4 = 7                          
+---------------------------------------------------------------------------------------
+Netlists do not match.
+Port matching may fail to disambiguate symmetries.
+
+Subcircuit pins:
+Circuit 1: nrz_reference_integrated        |Circuit 2: nrz_reference_integrated        
+-------------------------------------------|-------------------------------------------
+VSS                                        |VSS                                        
+VDD                                        |VDD                                        
+OUT                                        |OUT                                        
+SENSE                                      |SENSE                                      
+DATA                                       |DATA                                       
+DUMMY                                      |DUMMY                                      
+VSET                                       |VSET                                       
+DISABLE                                    |DISABLE                                    
+BIAS                                       |BIAS                                       
+ICTRL                                      |ICTRL                                      
+IPB                                        |IPB                                        
+IN2                                        |IN2                                        
+(no pin, node is VSS)                      |VIN                                        
+---------------------------------------------------------------------------------------
+Cell pin lists for nrz_reference_integrated and nrz_reference_integrated altered to match.
+Device classes nrz_reference_integrated and nrz_reference_integrated are equivalent.
+
+Final result: Top level cell failed pin matching.

@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "physical_status": "validated standalone 19-MOS GDS/DRC/LVS/PEX; electrical validation separate",
+  "run": "build/reference-v2-layout/nrz-r1",
+  "published_run": "evidence/reference-v2-layout/nrz-r1",
+  "top": "nrz_bias_power",
+  "ports": [
+    "VIN",
+    "VSS",
+    "VSET",
+    "SENSE",
+    "IOUT",
+    "REGFB",
+    "VREG",
+    "IPB",
+    "IN2",
+    "ICTRL",
+    "LPB",
+    "LN2",
+    "LCTRL"
+  ],
+  "gds": {
+    "path": "build/reference-v2-layout/nrz-r1/N/generate/nrz_bias_power.gds",
+    "sha256": "675f33b899966d8d3d4fa55ebf42d5d02adc908161c22ae30eb913556647d163",
+    "dimensions_um": [
+      383.40000000000003,
+      200.78
+    ],
+    "area_um2": 76979.05200000001
+  },
+  "pex": {
+    "path": "build/reference-v2-layout/nrz-r1/N/full-rc/nrz_bias_power_rc.spice",
+    "sha256": "babbe738dd8c8215a4ae87df8c22d53369c64c4532ff416442651e6a551d1f94",
+    "counts": {
+      "mos": 19,
+      "device_resistors": 0,
+      "resistors": 188,
+      "capacitors": 176,
+      "zero_valued_capacitors": 0
+    },
+    "nets": 17,
+    "capacitance_fF": 2348.95591366,
+    "matrix_max_abs_error_F": 8.077935669463161e-28,
+    "controls": {
+      "geometry": "build/reference-v2-layout/nrz-r1/N/geometry-only.spice",
+      "capacitance": "build/reference-v2-layout/nrz-r1/N/capacitance-only.spice",
+      "RCLUMP": "build/reference-v2-layout/nrz-r1/N/rc-lumped-capacitance.spice"
+    }
+  },
+  "checks": {
+    "Magic_DRC": 0,
+    "KLayout_DRC": 0,
+    "native_LVS": true,
+    "GDS_readback_LVS": true,
+    "RC_collapse_LVS": true,
+    "all_nets_extracted": true,
+    "actual_GDS_open_short_negative_controls": true,
+    "independent_readonly_manifest_GDS_validation": true,
+    "independent_R_network_connectivity": true
+  },
+  "supply_max_terminal_to_port_R_ohm": {
+    "VIN": 182.8614000000003,
+    "VSS": 171.47116460606875
+  },
+  "visuals": {
+    "png": "evidence/reference-v2-layout/visuals/N-layout.png",
+    "svg": "evidence/reference-v2-layout/visuals/N-layout.svg",
+    "actual_GDS_coordinates": true,
+    "equal_xy_scale": true,
+    "visual_review_status": "passed"
+  },
+  "boundaries": [
+    "Existing hv-r2/B core is separate and unchanged. Connections between modules remain external assumptions.",
+    "Precision VSET source, RSET, RBIAS, feedback resistors, compensation and output capacitor are external, not on-chip PEX.",
+    "No pads/ESD/top-level die/package or silicon/optical claims.",
+    "C weights after Magic resistor simplification are explicit approximation; C matrix conservation does not establish high-frequency spatial correctness.",
+    "Substrate resistance validates exported graph only, not a physical field solution."
+  ]
+}

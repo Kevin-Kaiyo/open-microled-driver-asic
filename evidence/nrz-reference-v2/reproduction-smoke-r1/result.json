@@ -1,0 +1,561 @@
+{
+  "case": {
+    "route": "B",
+    "rate_Gbps": 0.5,
+    "corner": "typical",
+    "temp_C": 27,
+    "vdd_V": 3.3,
+    "cap_F": 2e-13,
+    "r_pkg": 1.0,
+    "l_pkg": 5e-10,
+    "edge_s": 2e-11,
+    "steps_per_ui": 40,
+    "reltol": 1e-05,
+    "chgtol": 1e-16,
+    "method": "gear",
+    "kind": "DC_TT",
+    "compensation": "shunt",
+    "vi_comp_F": 1.5e-10,
+    "dc_bit": 1,
+    "name": "REFERENCE-B-DC_TT-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-bit1",
+    "variant": "REFERENCE",
+    "res_corner": "typical",
+    "data_mode": "tracking",
+    "data_high_V": 3.3
+  },
+  "simulation_ok": true,
+  "exit_code": 0,
+  "runner_source": "build/nrz-reference-v2/reproduction-smoke-r1/execution-sources/3d1c6a296af7dd813540a97aceb20436b2802cdf93f4ae4dbb2949c30d0f5dec.py",
+  "runner_source_sha256": "3d1c6a296af7dd813540a97aceb20436b2802cdf93f4ae4dbb2949c30d0f5dec",
+  "passives": [
+    {
+      "instance": "x3",
+      "nodes": [
+        "xdrv.di.t0",
+        "xdrv.data.t0",
+        "xdrv.vss.t12"
+      ],
+      "model": "ppolyf_u_1k_6p0",
+      "sizing": "r_width=1u r_length=58u"
+    }
+  ],
+  "candidate_definition": {
+    "path": "physical/B-reference-RC.spice",
+    "sha256": "925b0e98ede116b7d3dc0c0f326aa1704fd08b84dd8cabe39cf03ae4ac4f3d6a",
+    "reference_v2": true,
+    "direct_raw": true,
+    "disable_clamp": true,
+    "switched_keeper": true,
+    "keeper_ohm": 1800000.0,
+    "rdummy_ohm": 50000,
+    "reference_control": "12MOS VI, external DISABLE clamp and conditional keeper, integrated with old B in real GDS/fullRC",
+    "source_blocks": [
+      {
+        "path": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/full-rc/nrz_reference_integrated_rc.spice",
+        "sha256": "925b0e98ede116b7d3dc0c0f326aa1704fd08b84dd8cabe39cf03ae4ac4f3d6a"
+      },
+      {
+        "path": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/physical-contract.json",
+        "sha256": "d3f1edef031658c48a63a1257feb215b083976d906c68115ee90558d7bd6f844"
+      }
+    ],
+    "top_level_interconnect": "Actual routed integrated top, all extracted R/C retained"
+  },
+  "candidate_definition_sha256": "7621a8dbce9075745fe7625ae8eca8b1ab9c822b28b1e2e1b9600bd09a1859ae",
+  "input_identity": {
+    "legacy/run.py": "3a9a78a10f4964bc6ee1de793510a425091014af08989d06043b01b49b2ccea1",
+    "legacy/metrics.py": "07fdffa7ab8eb011a070d018ccf683902471427633170b9e83df697ce525180e",
+    "legacy/analyze.py": "ef4a96fd06d7d7ec7a252fbed74eb143f8e1990f86a333d9284526fb8e292c22",
+    "led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+    "pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+  },
+  "stimulus_sha256": "deaf1d197e63fd56f75b2681e6032a8402673cd9ff7e642a5cc6675db4609bf1",
+  "deck_sha256": "7466a443e62bbc5139e8e98b90c454f5f744914ab5547f1deec3c47280642d27",
+  "log": "build/nrz-reference-v2/reproduction-smoke-r1/cases/REFERENCE-B-DC_TT-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-bit1/ngspice.log",
+  "log_sha256": "73320f0607d9d60f1ab998e711fc2f435f56130f084b1f898a8635e2f0f9069b",
+  "vectors": {
+    "data": 1,
+    "out": 2,
+    "led_k": 3,
+    "led_voltage": 4,
+    "iled_cond": 5,
+    "package_current": 6,
+    "xdrv.bias.t0": 7,
+    "xdrv.bias.t1": 8,
+    "xdrv.bias.t2": 9,
+    "xdrv.bias.t3": 10,
+    "xdrv.bias.t4": 11,
+    "xdrv.bias.t5": 12,
+    "xdrv.data.t0": 13,
+    "xdrv.di.t0": 14,
+    "xdrv.di.t1": 15,
+    "xdrv.di.t2": 16,
+    "xdrv.disable.t0": 17,
+    "xdrv.disable.t1": 18,
+    "xdrv.dummy.t0": 19,
+    "xdrv.gb.t0": 20,
+    "xdrv.gb.t1": 21,
+    "xdrv.gb.t2": 22,
+    "xdrv.gb.t3": 23,
+    "xdrv.gb.t4": 24,
+    "xdrv.gp.t0": 25,
+    "xdrv.gp.t1": 26,
+    "xdrv.gp.t2": 27,
+    "xdrv.ictrl.t0": 28,
+    "xdrv.ictrl.t1": 29,
+    "xdrv.ictrl.t2": 30,
+    "xdrv.ictrl.t3": 31,
+    "xdrv.ictrl.t4": 32,
+    "xdrv.in1.t0": 33,
+    "xdrv.in1.t1": 34,
+    "xdrv.in1.t2": 35,
+    "xdrv.in1.t3": 36,
+    "xdrv.in2.t0": 37,
+    "xdrv.in2.t1": 38,
+    "xdrv.in2.t2": 39,
+    "xdrv.ipb.t0": 40,
+    "xdrv.ipb.t1": 41,
+    "xdrv.ipb.t2": 42,
+    "xdrv.itail.t0": 43,
+    "xdrv.itail.t1": 44,
+    "xdrv.itail.t2": 45,
+    "xdrv.kret.t0": 46,
+    "xdrv.out.t0": 47,
+    "xdrv.out.t1": 48,
+    "xdrv.sense.t0": 49,
+    "xdrv.sense.t1": 50,
+    "xdrv.vdd.t0": 51,
+    "xdrv.vdd.t1": 52,
+    "xdrv.vdd.t2": 53,
+    "xdrv.vdd.t3": 54,
+    "xdrv.vin.t0": 55,
+    "xdrv.vin.t1": 56,
+    "xdrv.vin.t10": 57,
+    "xdrv.vin.t11": 58,
+    "xdrv.vin.t2": 59,
+    "xdrv.vin.t3": 60,
+    "xdrv.vin.t4": 61,
+    "xdrv.vin.t5": 62,
+    "xdrv.vin.t6": 63,
+    "xdrv.vin.t7": 64,
+    "xdrv.vin.t8": 65,
+    "xdrv.vin.t9": 66,
+    "xdrv.vset.t0": 67,
+    "xdrv.vss.t0": 68,
+    "xdrv.vss.t1": 69,
+    "xdrv.vss.t10": 70,
+    "xdrv.vss.t11": 71,
+    "xdrv.vss.t12": 72,
+    "xdrv.vss.t13": 73,
+    "xdrv.vss.t14": 74,
+    "xdrv.vss.t15": 75,
+    "xdrv.vss.t16": 76,
+    "xdrv.vss.t17": 77,
+    "xdrv.vss.t18": 78,
+    "xdrv.vss.t19": 79,
+    "xdrv.vss.t2": 80,
+    "xdrv.vss.t20": 81,
+    "xdrv.vss.t21": 82,
+    "xdrv.vss.t22": 83,
+    "xdrv.vss.t3": 84,
+    "xdrv.vss.t4": 85,
+    "xdrv.vss.t5": 86,
+    "xdrv.vss.t6": 87,
+    "xdrv.vss.t7": 88,
+    "xdrv.vss.t8": 89,
+    "xdrv.vss.t9": 90,
+    "xdrv.vx.t0": 91,
+    "xdrv.vx.t1": 92,
+    "xdrv.vx.t2": 93,
+    "vled_voltage": 94,
+    "vdd_voltage": 95,
+    "vraw_voltage": 96,
+    "vref_voltage": 97,
+    "vdisable_voltage": 98,
+    "vled_current": 99,
+    "vdd_current": 100,
+    "vraw_current": 101,
+    "vref_current": 102,
+    "vdisable_current": 103,
+    "data_current": 104,
+    "iset_current": 105,
+    "dummy_supply_voltage": 106,
+    "vset_voltage": 107,
+    "vin_die_voltage": 108
+  },
+  "devices": [
+    {
+      "instance": "x0",
+      "nodes": [
+        "xdrv.vss.t14",
+        "xdrv.di.t2",
+        "xdrv.gb.t1",
+        "xdrv.vss.t13"
+      ],
+      "model": "nfet_06v0",
+      "sizing": "ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u"
+    },
+    {
+      "instance": "x1",
+      "nodes": [
+        "xdrv.vin.t3",
+        "xdrv.ictrl.t0",
+        "xdrv.ictrl.t1",
+        "xdrv.vin.t2"
+      ],
+      "model": "pfet_06v0",
+      "sizing": "ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u"
+    },
+    {
+      "instance": "x2",
+      "nodes": [
+        "xdrv.vin.t1",
+        "xdrv.ictrl.t3",
+        "xdrv.bias.t3",
+        "xdrv.vin.t0"
+      ],
+      "model": "pfet_06v0",
+      "sizing": "ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u"
+    },
+    {
+      "instance": "x4",
+      "nodes": [
+        "xdrv.vx.t1",
+        "xdrv.gb.t2",
+        "xdrv.dummy.t0",
+        "xdrv.vss.t19"
+      ],
+      "model": "nfet_06v0",
+      "sizing": "ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u"
+    },
+    {
+      "instance": "x5",
+      "nodes": [
+        "xdrv.vin.t11",
+        "xdrv.ipb.t0",
+        "xdrv.ipb.t1",
+        "xdrv.vin.t10"
+      ],
+      "model": "pfet_06v0",
+      "sizing": "ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u"
+    },
+    {
+      "instance": "x6",
+      "nodes": [
+        "xdrv.vss.t1",
+        "xdrv.disable.t1",
+        "xdrv.bias.t0",
+        "xdrv.vss.t0"
+      ],
+      "model": "nfet_06v0",
+      "sizing": "ad=4.4p pd=20.88u as=4.4p ps=20.88u w=10u l=0.7u"
+    },
+    {
+      "instance": "x7",
+      "nodes": [
+        "xdrv.itail.t0",
+        "xdrv.sense.t1",
+        "xdrv.in2.t1",
+        "xdrv.vin.t6"
+      ],
+      "model": "pfet_06v0",
+      "sizing": "ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u"
+    },
+    {
+      "instance": "x8",
+      "nodes": [
+        "xdrv.vss.t11",
+        "xdrv.in2.t2",
+        "xdrv.ictrl.t2",
+        "xdrv.vss.t10"
+      ],
+      "model": "nfet_06v0",
+      "sizing": "ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=1u"
+    },
+    {
+      "instance": "x9",
+      "nodes": [
+        "xdrv.itail.t1",
+        "xdrv.vset.t0",
+        "xdrv.in1.t0",
+        "xdrv.vin.t7"
+      ],
+      "model": "pfet_06v0",
+      "sizing": "ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u"
+    },
+    {
+      "instance": "x10",
+      "nodes": [
+        "xdrv.vin.t9",
+        "xdrv.ipb.t2",
+        "xdrv.itail.t2",
+        "xdrv.vin.t8"
+      ],
+      "model": "pfet_06v0",
+      "sizing": "ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u"
+    },
+    {
+      "instance": "x11",
+      "nodes": [
+        "xdrv.vss.t5",
+        "xdrv.bias.t4",
+        "xdrv.out.t1",
+        "xdrv.vss.t4"
+      ],
+      "model": "nfet_03v3",
+      "sizing": "ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u"
+    },
+    {
+      "instance": "x12",
+      "nodes": [
+        "xdrv.vin.t5",
+        "xdrv.ictrl.t4",
+        "xdrv.sense.t0",
+        "xdrv.vin.t4"
+      ],
+      "model": "pfet_06v0",
+      "sizing": "ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u"
+    },
+    {
+      "instance": "x13",
+      "nodes": [
+        "xdrv.vss.t3",
+        "xdrv.disable.t0",
+        "xdrv.kret.t0",
+        "xdrv.vss.t2"
+      ],
+      "model": "nfet_06v0",
+      "sizing": "ad=0.44p pd=2.88u as=0.44p ps=2.88u w=1u l=0.7u"
+    },
+    {
+      "instance": "x14",
+      "nodes": [
+        "xdrv.vx.t2",
+        "xdrv.gp.t2",
+        "xdrv.out.t0",
+        "xdrv.vss.t22"
+      ],
+      "model": "nfet_06v0",
+      "sizing": "ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u"
+    },
+    {
+      "instance": "x15",
+      "nodes": [
+        "xdrv.vdd.t1",
+        "xdrv.di.t1",
+        "xdrv.gb.t0",
+        "xdrv.vdd.t0"
+      ],
+      "model": "pfet_06v0",
+      "sizing": "ad=1.7292p pd=8.74u as=1.7292p ps=8.74u w=3.93u l=0.55u"
+    },
+    {
+      "instance": "x16",
+      "nodes": [
+        "xdrv.vss.t18",
+        "xdrv.in1.t3",
+        "xdrv.in2.t0",
+        "xdrv.vss.t17"
+      ],
+      "model": "nfet_06v0",
+      "sizing": "ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u"
+    },
+    {
+      "instance": "x17",
+      "nodes": [
+        "xdrv.vss.t7",
+        "xdrv.bias.t5",
+        "xdrv.vx.t0",
+        "xdrv.vss.t6"
+      ],
+      "model": "nfet_03v3",
+      "sizing": "ad=2.5344p pd=12.4u as=2.5344p ps=12.4u w=5.76u l=1u"
+    },
+    {
+      "instance": "x18",
+      "nodes": [
+        "xdrv.vss.t9",
+        "xdrv.bias.t1",
+        "xdrv.bias.t2",
+        "xdrv.vss.t8"
+      ],
+      "model": "nfet_03v3",
+      "sizing": "ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u"
+    },
+    {
+      "instance": "x19",
+      "nodes": [
+        "xdrv.vss.t21",
+        "xdrv.gb.t4",
+        "xdrv.gp.t0",
+        "xdrv.vss.t20"
+      ],
+      "model": "nfet_06v0",
+      "sizing": "ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u"
+    },
+    {
+      "instance": "x20",
+      "nodes": [
+        "xdrv.vss.t16",
+        "xdrv.in1.t1",
+        "xdrv.in1.t2",
+        "xdrv.vss.t15"
+      ],
+      "model": "nfet_06v0",
+      "sizing": "ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u"
+    },
+    {
+      "instance": "x21",
+      "nodes": [
+        "xdrv.vdd.t3",
+        "xdrv.gb.t3",
+        "xdrv.gp.t1",
+        "xdrv.vdd.t2"
+      ],
+      "model": "pfet_06v0",
+      "sizing": "ad=1.7292p pd=8.74u as=1.7292p ps=8.74u w=3.93u l=0.55u"
+    }
+  ],
+  "rails": {
+    "VLED": {
+      "node": "led_a",
+      "voltage_V": 5.0
+    },
+    "VDD": {
+      "node": "vdd",
+      "voltage_V": 3.3
+    },
+    "VRAW": {
+      "node": "vin_source",
+      "voltage_V": 5.0
+    },
+    "VREF": {
+      "node": "ref_source",
+      "voltage_V": 2.5
+    },
+    "VDISABLE": {
+      "node": "disable_source",
+      "voltage_V": 0.0
+    }
+  },
+  "rows": 1,
+  "warnings": [],
+  "dc_values": {
+    "data": 3.3,
+    "out": 1.230822534593846,
+    "led_k": 1.23092292975608,
+    "led_voltage": 3.76907707024392,
+    "iled_cond": 0.0001003951622364039,
+    "package_current": 0.0001003951622363464,
+    "xdrv.bias.t0": 1.116699546613212,
+    "xdrv.bias.t1": 1.116279224965817,
+    "xdrv.bias.t2": 1.115911648874289,
+    "xdrv.bias.t3": 1.116962884749801,
+    "xdrv.bias.t4": 1.11630860325647,
+    "xdrv.bias.t5": 1.116402690003233,
+    "xdrv.data.t0": 3.300000000000084,
+    "xdrv.di.t0": 3.300000000305369,
+    "xdrv.di.t1": 3.300000000305437,
+    "xdrv.di.t2": 3.300000000305437,
+    "xdrv.disable.t0": 0.0,
+    "xdrv.disable.t1": 0.0,
+    "xdrv.dummy.t0": 4.999964705846958,
+    "xdrv.gb.t0": 0.001485239131421701,
+    "xdrv.gb.t1": 0.001485239028167974,
+    "xdrv.gb.t2": 0.001485239083797819,
+    "xdrv.gb.t3": 0.001485239083797819,
+    "xdrv.gb.t4": 0.001485239083797819,
+    "xdrv.gp.t0": 3.299999991367552,
+    "xdrv.gp.t1": 3.299999991459264,
+    "xdrv.gp.t2": 3.299999991417028,
+    "xdrv.ictrl.t0": 3.6045303461259,
+    "xdrv.ictrl.t1": 3.605535617760467,
+    "xdrv.ictrl.t2": 3.603678166120801,
+    "xdrv.ictrl.t3": 3.6045303461259,
+    "xdrv.ictrl.t4": 3.604530346125899,
+    "xdrv.in1.t0": 0.944075377383564,
+    "xdrv.in1.t1": 0.9432666272595766,
+    "xdrv.in1.t2": 0.9427180812298371,
+    "xdrv.in1.t3": 0.9432666272595766,
+    "xdrv.in2.t0": 0.8430166022568335,
+    "xdrv.in2.t1": 0.8444500917799975,
+    "xdrv.in2.t2": 0.8436034251889651,
+    "xdrv.ipb.t0": 3.277079846207422,
+    "xdrv.ipb.t1": 3.278150227997589,
+    "xdrv.ipb.t2": 3.277079846207423,
+    "xdrv.itail.t0": 2.66276211993223,
+    "xdrv.itail.t1": 2.662842786965321,
+    "xdrv.itail.t2": 2.664684243026403,
+    "xdrv.kret.t0": 1.230820298092489,
+    "xdrv.out.t0": 1.229672200294262,
+    "xdrv.out.t1": 1.23032331379377,
+    "xdrv.sense.t0": 0.5019925420222864,
+    "xdrv.sense.t1": 0.5003519454520436,
+    "xdrv.vdd.t0": 3.299999999557263,
+    "xdrv.vdd.t1": 3.299999999997068,
+    "xdrv.vdd.t2": 3.299999999990324,
+    "xdrv.vdd.t3": 3.299999999941049,
+    "xdrv.vin.t0": 4.99951923313492,
+    "xdrv.vin.t1": 4.999186245123437,
+    "xdrv.vin.t10": 4.999710597722378,
+    "xdrv.vin.t11": 4.999321903680915,
+    "xdrv.vin.t2": 4.999538450353683,
+    "xdrv.vin.t3": 4.999205340790317,
+    "xdrv.vin.t4": 4.99952498046097,
+    "xdrv.vin.t5": 4.999189822768427,
+    "xdrv.vin.t6": 4.999591086813575,
+    "xdrv.vin.t7": 4.999607043504093,
+    "xdrv.vin.t8": 4.999624379417345,
+    "xdrv.vin.t9": 4.999290389631228,
+    "xdrv.vset.t0": 0.4999996000003171,
+    "xdrv.vss.t0": 0.0001762914339618691,
+    "xdrv.vss.t1": 0.0001748255859978962,
+    "xdrv.vss.t10": 0.000175220988168791,
+    "xdrv.vss.t11": 0.0003940381255274359,
+    "xdrv.vss.t12": 0.001421218160348994,
+    "xdrv.vss.t13": 0.001403436856221528,
+    "xdrv.vss.t14": 0.001485234757493717,
+    "xdrv.vss.t15": 0.0001316686182473855,
+    "xdrv.vss.t16": 0.0003228006709936049,
+    "xdrv.vss.t17": 0.0002350987394878913,
+    "xdrv.vss.t18": 0.0003361470537341125,
+    "xdrv.vss.t19": 0.002254308577855935,
+    "xdrv.vss.t2": 0.0001750084843183462,
+    "xdrv.vss.t20": 0.001457737938381006,
+    "xdrv.vss.t21": 0.001815675141216655,
+    "xdrv.vss.t22": 0.002100153917174928,
+    "xdrv.vss.t3": 0.0001749174145156249,
+    "xdrv.vss.t4": 0.002503174610269378,
+    "xdrv.vss.t5": 0.002921275384948027,
+    "xdrv.vss.t6": 0.002404714231001086,
+    "xdrv.vss.t7": 0.00349609738244873,
+    "xdrv.vss.t8": 0.00252313826112862,
+    "xdrv.vss.t9": 0.002952889619518327,
+    "xdrv.vx.t0": 1.036860011752045,
+    "xdrv.vx.t1": 1.037846373539678,
+    "xdrv.vx.t2": 1.038939427376989,
+    "vled_voltage": 5.0,
+    "vdd_voltage": 3.3,
+    "vraw_voltage": 5.0,
+    "vref_voltage": 2.5,
+    "vdisable_voltage": 0.0,
+    "vled_current": -0.0001003951622364039,
+    "vdd_current": -7.038691299546185e-12,
+    "vraw_current": -0.00014017677226974,
+    "vref_current": -9.999991998910218e-06,
+    "vdisable_current": 0.0,
+    "data_current": 5.10163641758009e-15,
+    "iset_current": 2.501748406848677e-05,
+    "dummy_supply_voltage": 4.999964955806933,
+    "vset_voltage": 0.4999996000003171,
+    "vin_die_voltage": 4.999964955806933
+  },
+  "waveform": "build/nrz-reference-v2/reproduction-smoke-r1/cases/REFERENCE-B-DC_TT-0.5G-typical-27C-3.3V-C200-L0.5-e20-s40-bit1/waveform.dat.gz",
+  "waveform_sha256": "14e0e32596ec23c4424609e4a13197b2eb24690f69b3cfb3c1e90708c4c47960",
+  "uncompressed_sha256": "fc5a5a2a176015a83a7d873ce1616e4183e97d27fab240c5cf09defebb25d9db",
+  "uncompressed_bytes": 5016,
+  "compressed_bytes": 1390,
+  "roundtrip_verified": true,
+  "elapsed_s": 0.2675518750002084
+}

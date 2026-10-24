@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "baseline_commit": "112ba95969ac6a2141c305324ea694e7b96c0765",
+  "baseline_macro": "r5 actual39MOS full nominal RC; source SHA d6ebc340c5f2096c43e1358b851d68590fefddbf47b5cc6e746ffc3c12851424",
+  "purpose": "Improve display-PWM reference dynamics and verifiable controlled startup, without reclassifying numerical or optical evidence.",
+  "preserved_contract": {
+    "target_current_a": 0.0001,
+    "vset_external_ideal_v": 0.5,
+    "rset_ohm": 5000,
+    "led_vf_at100uA_27C_v": 2.8,
+    "led_model": "Original synthetic N=3 RS=50ohm CJO=2pF TT=1ns; unchanged",
+    "pwm_clock_hz": 1000000,
+    "pwm_frame_s": 0.000256,
+    "cc_original_pf": 30,
+    "sense_capacitance_pf": 30,
+    "startup_fault_held_s": 0.000020,
+    "startup_held_branch_limit_a": 1e-9,
+    "dc_accuracy_fraction": 0.05,
+    "fault_shutdown_s": 1e-6,
+    "fault_positive_charge_c": 1e-11,
+    "fault_negative_charge_abs_c": 2e-11,
+    "fault_held_current_a": 1e-9,
+    "minimum_pwm_charge_error_fraction": 0.02,
+    "research_supply_excursion_fraction": 0.20,
+    "research_supply_restore_settle_s": 5e-6,
+    "research_settling_band_fraction": 0.005
+  },
+  "predeclared_diagnostic_order": [
+    "Audit ideal PERMIT source timeline: previous strict failures at61ps/273ps occur while PERMIT is constant zero; a named trouble node is not root-cause proof.",
+    "Separate the same physical circuit's PWL breakpoint mesh and numerical integration settings from finite source output impedance (1/10/50ohm engineering model, not a PDK digital-cell claim).",
+    "Compare measured VREF-to-CTRL, VREF-to-SENSE and normalized ILED AC transfer; retain original 30pF compensation and 30pF sense budget initially.",
+    "Test supply-to-CTRL feedforward capacitor chosen from the original 30pF compensation: first 60pF analytical candidate, not an unrestricted parameter sweep.",
+    "If feedforward is stable and useful, add a small actual MOS supply-enable module with finite passive gate charging to produce a continuous controlled local reference ramp; external START and FAULT sequencing remain explicit.",
+    "Freeze selected connections/sizes and hand them to physical agent; use its actual new PEX for final regression. External components are never called extracted on-chip devices."
+  ],
+  "candidate_options": {
+    "A_minimal": "Keep the reference servo and external VSET boundary; add supply-to-CTRL feedforward plus two-MOS controlled supply enable and explicit passive gate charge shaping. Seek improved high-frequency PSRR without 10us input filtering.",
+    "B_fallback": "Rebuild the reference amplifier/mirror supply rejection or add a locally regulated reference supply. Greater transistor/headroom/loop interaction cost; do not implement unless A's causal tests fail."
+  },
+  "selected_first_option": "A_minimal, provisional until AC and transient measurements; 60pF is a diagnostic candidate, not an accepted design.",
+  "numerical_acceptance": {
+    "require_independent_configurations": 2,
+    "baseline_reltol": "1e-7",
+    "baseline_abstol_a": 1e-14,
+    "baseline_vntol_v": 1e-9,
+    "no_pass_by_looser_tolerance": true,
+    "near_zero_current_agreement_a": 2e-12,
+    "near_zero_charge_agreement_c": 4e-17,
+    "resolved_charge_relative_agreement": 0.002
+  },
+  "boundaries": [
+    "No autonomous POR/brownout claim; any START/FAULT timing assumption is recorded.",
+    "VSET is initially an external ideal0.5V boundary; later finite impedance/error controls are not an internally verified bandgap.",
+    "The initial GPIO model is an external driver-impedance hypothesis. Pin source correction and actual circuit changes have separate case identities.",
+    "Original directories are read-only. No silicon, optical, foundry reliability, tapeout or array claim."
+  ],
+  "resources": {
+    "raw_budget_bytes": 1610612736,
+    "minimum_free_bytes": 5368709120,
+    "one_ngspice_process_per_pwm_branch": true,
+    "lock": "/tmp/open-microled-pwm-reference-v2-ngspice.lock",
+    "failure_identity_policy": "New immutable case for every changed physical or numerical input; failed logs retained; validated raw gzip roundtrip checked."
+  }
+}

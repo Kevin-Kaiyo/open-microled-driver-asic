@@ -1,0 +1,80 @@
+{
+  "case": {
+    "name": "pcb150_board100n_fault",
+    "kind": "fault",
+    "corner": "typical",
+    "temp_c": 27,
+    "logic_v": 3.3,
+    "led_v": 5.0,
+    "r_factors": {},
+    "r_tc_ppm": {},
+    "package": "stress",
+    "candidate": true,
+    "stop_ns": 66125,
+    "comp_n2_pf": 150,
+    "comp_return": "0",
+    "filter_location": "board",
+    "filter_c_nf": 100,
+    "driver_r_ohm": 10,
+    "step_rail": "ref",
+    "edge_ns": 10,
+    "dc_reference_case": "pcb150_board100n_dc",
+    "fault_clear_ns": 100,
+    "rtl_assertions_passed": true,
+    "actual_resistance_ohm": {
+      "RSET": 5000.0,
+      "RBIAS": 100000.0,
+      "RRELEASE": 100000.0,
+      "RBLEED": 10000000.0
+    }
+  },
+  "deck_sha256": "139d027bfff9753046a08d179d95195eb06a4003dfa8854834a038b715210299",
+  "executed_runner_sha256": "a76dca9f4918b73ce7cb915415e9262b0bed1d0b7b218ffe32931c82a8207de6",
+  "source_manifest_sha256": "8b150b3ecda95912a59c23dab01e2a97e1f2c58b60b125f0bb4a21ccf8e6bf48",
+  "completed": true,
+  "exit_code": 0,
+  "elapsed_s": 35.24299073219299,
+  "log_sha256": "c0946ba7c92ec5084a74b5b0829da33a2617a0b26bf402a5a1366f36bfafb5ba",
+  "rows": 76613,
+  "current_min_a": -0.0002056387161023056,
+  "current_max_a": 0.0001042457258333344,
+  "fault_to_safe_s": 2.0587753849101277e-07,
+  "fault_charge": {
+    "signed_c": -6.858547927404685e-12,
+    "positive_c": 5.048943933949398e-13,
+    "negative_c": -7.363442320799625e-12
+  },
+  "held_fault_peak_a": 2.648672949671938e-14,
+  "stopped_clock_release_conduction_peak_a": 9.53880029713282e-15,
+  "recovered_a": 9.973303613446066e-05,
+  "checks": [
+    {
+      "name": "fault_shutdown_1us",
+      "passed": true
+    },
+    {
+      "name": "fault_Qpositive_10pC",
+      "passed": true
+    },
+    {
+      "name": "fault_Qnegative_20pC",
+      "passed": true
+    },
+    {
+      "name": "fault_held_1nA",
+      "passed": true
+    },
+    {
+      "name": "fault_stopped_clock_release_1nA",
+      "passed": true
+    },
+    {
+      "name": "fault_recovered_5pct",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "raw_sha256": "43c6a481f32adb1030b9f48f02954ecc812220c828f344ba773e8bf9fac1e468",
+  "raw_bytes": 40605426,
+  "gzip_sha256": "6e4532fe10c54e92e4291bf02554740f2d4ec11c6a61e2bcda332ac161c50114"
+}

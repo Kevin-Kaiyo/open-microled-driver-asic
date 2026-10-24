@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "status": "electrical_topology_and_dimensions_frozen",
+  "top": "nrz_reference_integrated",
+  "ports": [
+    "DATA",
+    "OUT",
+    "VDD",
+    "VSS",
+    "BIAS",
+    "DUMMY",
+    "VIN",
+    "VSET",
+    "SENSE",
+    "IPB",
+    "IN2",
+    "ICTRL",
+    "DISABLE",
+    "KRET"
+  ],
+  "modules": [
+    {
+      "tag": "C",
+      "folder": "build/highspeed-nrz-robustness-layout/hv-r2/B",
+      "electrical_source": "layout/highspeed_nrz_robustness/steering_driver-reference.spice",
+      "offset_um": [
+        0,
+        0
+      ],
+      "node_map": {}
+    },
+    {
+      "tag": "R",
+      "folder": "build/reference-v2-layout/vi-switched-keeper-pg-r1b/V",
+      "electrical_source": "layout/reference_v2/vi_reference_switched_keeper-reference.spice",
+      "offset_um": [
+        100,
+        100
+      ],
+      "node_map": {
+        "IOUT": "BIAS"
+      }
+    }
+  ],
+  "bridges": [
+    {
+      "net": "BIAS",
+      "anchors": [
+        "C:BIAS",
+        "R:IOUT"
+      ],
+      "corridor_y_um": 60,
+      "vertical_width_um": 1.6,
+      "horizontal_width_um": 6,
+      "endpoint_offsets_um": [
+        [
+          0.3,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "endpoint_reason": "Align BIAS via3 array with existing core gate via3 at x40um; existing M3 BIAS rail remains continuous."
+    },
+    {
+      "net": "VSS",
+      "anchors": [
+        "C:VSS",
+        "R:VSS"
+      ],
+      "corridor_y_um": 80,
+      "vertical_width_um": 1.6,
+      "horizontal_width_um": 6
+    }
+  ],
+  "external_components": [
+    {
+      "name": "VIN",
+      "nodes": [
+        "VIN",
+        "boardGND"
+      ],
+      "kind": "external nonideal 5V rail",
+      "nominal_v": 5,
+      "series_r_ohm": 0.25,
+      "series_l_h": 5e-10
+    },
+    {
+      "name": "ANCHOR",
+      "nodes": [
+        "VSET",
+        "boardGND"
+      ],
+      "kind": "external 2.5V precision anchor with 0.2ohm output and 200k/50k divider",
+      "nominal_v": 2.5
+    },
+    {
+      "name": "RSET",
+      "nodes": [
+        "SENSE",
+        "boardGND"
+      ],
+      "kind": "external resistor",
+      "ohm": 20000
+    },
+    {
+      "name": "RIBIAS",
+      "nodes": [
+        "IPB",
+        "boardGND"
+      ],
+      "kind": "external resistor",
+      "ohm": 100000
+    },
+    {
+      "name": "COMP",
+      "nodes": [
+        "IN2",
+        "boardGND"
+      ],
+      "kind": "external compensation capacitor",
+      "farad": 1.5e-10
+    },
+    {
+      "name": "CIN",
+      "nodes": [
+        "VIN",
+        "boardGND"
+      ],
+      "kind": "external decoupling",
+      "farad": 1e-07,
+      "esr_ohm": 0.2
+    },
+    {
+      "name": "RDUMMY",
+      "nodes": [
+        "VIN",
+        "DUMMY"
+      ],
+      "kind": "external resistor",
+      "ohm": 50000
+    },
+    {
+      "name": "RKEEP",
+      "nodes": [
+        "OUT",
+        "KRET"
+      ],
+      "kind": "external keeper resistor to switched on-chip return",
+      "ohm": 1800000.0
+    },
+    {
+      "name": "DISABLE_GPIO",
+      "nodes": [
+        "DISABLE",
+        "boardGND"
+      ],
+      "kind": "external 3.3V GPIO, default assert until anchor stable plus20us, not POR",
+      "series_r_ohm": 100
+    },
+    {
+      "name": "VDD",
+      "kind": "independent external logic rail",
+      "nodes": [
+        "VDD",
+        "boardGND"
+      ],
+      "nominal_v": 3.3
+    },
+    {
+      "name": "LED",
+      "kind": "unchanged existing external MicroLED load",
+      "nodes": [
+        "LED_A",
+        "OUT"
+      ]
+    }
+  ],
+  "note": "Actual21MOS plus PDK RIN composite. Separate VIN5V and logicVDD. Explicit external DISABLE control, switched external keeper, compensation, precision anchor and board passives. IOUT to BIAS and VSS use actual M4/M5 bridges."
+}

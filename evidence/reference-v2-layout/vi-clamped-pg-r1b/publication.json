@@ -1,0 +1,809 @@
+{
+  "schema_version": 1,
+  "physical_validation": {
+    "schema_version": 1,
+    "passed": true,
+    "raw_run": "build/reference-v2-layout/vi-clamped-pg-r1b",
+    "manifest_files": 113,
+    "method": "Rehash every frozen artifact, parse full LVS and independent KLayout report, intersect actual channel polygons with Dualgate 55/0, and compare actual negative-control polygons.",
+    "routes": {
+      "V": {
+        "gds_sha256": "fca9c35303db526d858e5472d3d2e4ebcfc3ed990e44131f97f82c7b030b1f7f",
+        "rc_sha256": "3850633101daada03c32e4b43e2b19b7e4e9c7cd08cd5a9bcdda185547974c36",
+        "dualgate_checks": [
+          {
+            "instance": "IPBIAS",
+            "model": "pfet_06v0",
+            "channel_um2": 80,
+            "dualgate_overlap_um2": 80.0,
+            "passed": true
+          },
+          {
+            "instance": "IPTAIL",
+            "model": "pfet_06v0",
+            "channel_um2": 80,
+            "dualgate_overlap_um2": 80.0,
+            "passed": true
+          },
+          {
+            "instance": "IPD1",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "IPD2",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "IND1",
+            "model": "nfet_06v0",
+            "channel_um2": 500,
+            "dualgate_overlap_um2": 500.0,
+            "passed": true
+          },
+          {
+            "instance": "IND2",
+            "model": "nfet_06v0",
+            "channel_um2": 500,
+            "dualgate_overlap_um2": 500.0,
+            "passed": true
+          },
+          {
+            "instance": "INSTAGE",
+            "model": "nfet_06v0",
+            "channel_um2": 20,
+            "dualgate_overlap_um2": 20.0,
+            "passed": true
+          },
+          {
+            "instance": "IPLOAD",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "IPREG",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "IPOUT",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "DIS",
+            "model": "nfet_06v0",
+            "channel_um2": 7.0,
+            "dualgate_overlap_um2": 7.0,
+            "passed": true
+          }
+        ],
+        "negative_controls": [
+          {
+            "control": "reference-gate-open",
+            "actual_changed_area_um2": 0.22799999999999998,
+            "lvs_rejected": true
+          },
+          {
+            "control": "supply-vss-short",
+            "actual_changed_area_um2": 0.64,
+            "lvs_rejected": true
+          }
+        ],
+        "counts": {
+          "mos": 11,
+          "device_resistors": 0,
+          "resistors": 460,
+          "capacitors": 241,
+          "zero_valued_capacitors": 0
+        },
+        "all_nets_extracted": true
+      }
+    }
+  },
+  "source_run": "build/reference-v2-layout/vi-clamped-pg-r1b",
+  "scope": "Actual experimental transistor-core GDS, DRC, LVS, PEX and fault controls; electrical performance validated separately.",
+  "exclusions": [
+    "Full PDK",
+    "Tool binaries",
+    "Transient waveform data",
+    "Package/EM/IR/ESD/pad/full-chip/silicon signoff"
+  ],
+  "copied_files": [
+    {
+      "path": "V/capacitance-correction.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/capacitance-correction.json",
+      "sha256": "9dacdcfd88c60ebac6a9f0fb25f8a67143df26b83aa79c1bbb6a3d91fbcd444d",
+      "size": 42151
+    },
+    {
+      "path": "V/capacitance-only.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/capacitance-only.spice",
+      "sha256": "b5bf06ac60230a1c36a76cfabcafead7ba2797feee5ea2c70bc42bb84b158d6d",
+      "size": 8342
+    },
+    {
+      "path": "V/controls/reference-gate-open/extract/extract.tcl",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/reference-gate-open/extract/extract.tcl",
+      "sha256": "c253f654f4ef7bc8bf0f7bd6b2428a79d0f95a1926fe5c30104210a1a802c1fd",
+      "size": 1330
+    },
+    {
+      "path": "V/controls/reference-gate-open/extract/magic.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/reference-gate-open/extract/magic.log",
+      "sha256": "12d777568b1a55e6b06210cb1cc3c78b360c19e65e6858e01abf99f69e7465e1",
+      "size": 1861
+    },
+    {
+      "path": "V/controls/reference-gate-open/extract/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/reference-gate-open/extract/magic.log.command.json",
+      "sha256": "ca5b5c17f0ec713ba0ffe6342c791e1618d83b722cbff20e03c451509299b59e",
+      "size": 585
+    },
+    {
+      "path": "V/controls/reference-gate-open/extract/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/reference-gate-open/extract/nrz_vi_reference.ext",
+      "sha256": "5e4fdc658537173d8badf8ab445ef7bc1615637a400d6b70461d5389e36fd726",
+      "size": 5402
+    },
+    {
+      "path": "V/controls/reference-gate-open/extract/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/reference-gate-open/extract/nrz_vi_reference.mag",
+      "sha256": "4de67602151a80cc9308c20901c186674992f93dfec3bf5e92c449bfbedf4668",
+      "size": 83349
+    },
+    {
+      "path": "V/controls/reference-gate-open/extract/nrz_vi_reference.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/reference-gate-open/extract/nrz_vi_reference.spice",
+      "sha256": "11b38d6a1fdbd3d87d8b45979759a3d029b8d6e6b3f61c74f8bbf13ea4f968ba",
+      "size": 1053
+    },
+    {
+      "path": "V/controls/reference-gate-open/lvs-stdout.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/reference-gate-open/lvs-stdout.log",
+      "sha256": "1cf71ee2dbd74c804c150b1c2478e680766bba2ed688d3bf3b4062399e64a317",
+      "size": 5220
+    },
+    {
+      "path": "V/controls/reference-gate-open/lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/reference-gate-open/lvs-stdout.log.command.json",
+      "sha256": "5e954b6a5876f8ab9a44ac74dd60260babaedf767282ce0c44b5dd407465f6ea",
+      "size": 866
+    },
+    {
+      "path": "V/controls/reference-gate-open/lvs.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/reference-gate-open/lvs.log",
+      "sha256": "9e34e8a68086fc59e74367cabd137b13d293c78642a6620b76311ae9554066e3",
+      "size": 4281
+    },
+    {
+      "path": "V/controls/reference-gate-open/nrz_vi_reference.gds",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/reference-gate-open/nrz_vi_reference.gds",
+      "sha256": "1b7cf062af21fffaaaefb3dae943a415fcf1cb08598adf110a3f25284a861775",
+      "size": 456756
+    },
+    {
+      "path": "V/controls/supply-vss-short/extract/extract.tcl",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/supply-vss-short/extract/extract.tcl",
+      "sha256": "8bdf5bcdead684c897bf0a6e2cb583c8748e7b7d3f5c77193b99d003d3487bc7",
+      "size": 1327
+    },
+    {
+      "path": "V/controls/supply-vss-short/extract/magic.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/supply-vss-short/extract/magic.log",
+      "sha256": "46d8a5f3157b0ca167b7dd429fcce804a1acff6d3a58d178b39fe93ef3dbdd9e",
+      "size": 1916
+    },
+    {
+      "path": "V/controls/supply-vss-short/extract/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/supply-vss-short/extract/magic.log.command.json",
+      "sha256": "7468b58d8527787499e89308d14db6df6248d629b173dd95ce24c624a9056167",
+      "size": 579
+    },
+    {
+      "path": "V/controls/supply-vss-short/extract/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/supply-vss-short/extract/nrz_vi_reference.ext",
+      "sha256": "df285ad5526056b7e233f1f82d79cd67d68b640b63280881c2be907b6f33ff12",
+      "size": 4859
+    },
+    {
+      "path": "V/controls/supply-vss-short/extract/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/supply-vss-short/extract/nrz_vi_reference.mag",
+      "sha256": "be0f6b89dfbfed10e84939ff5ae0c6f4bea5400e3f7ac92f9723ece2844fb25b",
+      "size": 83264
+    },
+    {
+      "path": "V/controls/supply-vss-short/extract/nrz_vi_reference.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/supply-vss-short/extract/nrz_vi_reference.spice",
+      "sha256": "b977a1e7a32b0e2261fa85b6ee46f74826c152e17de7f306b8cc7dab20452cd5",
+      "size": 1104
+    },
+    {
+      "path": "V/controls/supply-vss-short/lvs-stdout.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/supply-vss-short/lvs-stdout.log",
+      "sha256": "253eaa2f5087d1840f29a62d828045ebab0f6ddcc26196a4a4f7227fed668d47",
+      "size": 5137
+    },
+    {
+      "path": "V/controls/supply-vss-short/lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/supply-vss-short/lvs-stdout.log.command.json",
+      "sha256": "95a5f6da9a94cf5b9609896f890a853bb67bc8197a0fb45e3da8e4ed9077f83f",
+      "size": 857
+    },
+    {
+      "path": "V/controls/supply-vss-short/lvs.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/supply-vss-short/lvs.log",
+      "sha256": "a6640830606121e9ed4ba78d459e33d6caaea08dc17d7121b1e4747a7d6371d7",
+      "size": 5002
+    },
+    {
+      "path": "V/controls/supply-vss-short/nrz_vi_reference.gds",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/controls/supply-vss-short/nrz_vi_reference.gds",
+      "sha256": "cbae9443dd770d26fc8938639cb570794900cd824c4ce8e81acda02fda567577",
+      "size": 456466
+    },
+    {
+      "path": "V/flat-c-control/export.tcl",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/flat-c-control/export.tcl",
+      "sha256": "2cbc88d41fbc21702c1b8668559e3fd4f47e510e2311496d494d37cbd52519ac",
+      "size": 189
+    },
+    {
+      "path": "V/flat-c-control/flat-c.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/flat-c-control/flat-c.spice",
+      "sha256": "7f252b2b7203554fbe23da2630dfc1ee2e082a73d39cfa185e101be538b14b94",
+      "size": 1682
+    },
+    {
+      "path": "V/flat-c-control/magic.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/flat-c-control/magic.log",
+      "sha256": "db07463dc55e39609e6f863a9beef1936bfd92f1f3717d599010e74618536b62",
+      "size": 1484
+    },
+    {
+      "path": "V/flat-c-control/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/flat-c-control/magic.log.command.json",
+      "sha256": "6a25d8b690bbfb807fc5322fc800fef2fe1a508e7a496bd40c69980d523bc7df",
+      "size": 540
+    },
+    {
+      "path": "V/flat-c-control/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/flat-c-control/nrz_vi_reference.ext",
+      "sha256": "e9893a7c3ce531c45e9b3f192afc6084e211a05a0000f433597ef64ddf94fa95",
+      "size": 5103
+    },
+    {
+      "path": "V/flat-c-control/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/flat-c-control/nrz_vi_reference.mag",
+      "sha256": "21654b76534469abc9486b1d1adc83b0b29ce5c8bdf1cc66971b9ff525713a47",
+      "size": 83321
+    },
+    {
+      "path": "V/full-rc/coverage.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/full-rc/coverage.json",
+      "sha256": "10660ec106f6efb899fedf19a647c3d8cf6ad0fc65aeaeb42bf4efa27fbbb2ad",
+      "size": 468
+    },
+    {
+      "path": "V/full-rc/drive-attributes.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/full-rc/drive-attributes.json",
+      "sha256": "cbb81cd92fb17588aaa42db3146c7959cfe5da9cbef236e39a996044678a0bb4",
+      "size": 1240
+    },
+    {
+      "path": "V/full-rc/extract-driven.tcl",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/full-rc/extract-driven.tcl",
+      "sha256": "8f1824282c0428bfe24726c028e1c9b4174c6153349f868b58e8dde3e6243425",
+      "size": 269
+    },
+    {
+      "path": "V/full-rc/magic.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/full-rc/magic.log",
+      "sha256": "f5d83892e33aa5c82e5c6a459d938055af3c5d771afeb7a3dd896594237109ed",
+      "size": 1734
+    },
+    {
+      "path": "V/full-rc/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/full-rc/magic.log.command.json",
+      "sha256": "9b2b863acaf4cbe7e416e9a4bd85a3e57cb65e9a4d60b27e1424b691857dfc33",
+      "size": 534
+    },
+    {
+      "path": "V/full-rc/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/full-rc/nrz_vi_reference.ext",
+      "sha256": "12da239ec32a45c5c0e6dab03cf01bd520f56e4d248242f67311d7a819430b0d",
+      "size": 5593
+    },
+    {
+      "path": "V/full-rc/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/full-rc/nrz_vi_reference.mag",
+      "sha256": "21654b76534469abc9486b1d1adc83b0b29ce5c8bdf1cc66971b9ff525713a47",
+      "size": 83321
+    },
+    {
+      "path": "V/full-rc/nrz_vi_reference.res.ext",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/full-rc/nrz_vi_reference.res.ext",
+      "sha256": "46a178061bbc2eec755cec0b8eea867f7271f092c61aa28d37fe573ce9cf8e60",
+      "size": 29481
+    },
+    {
+      "path": "V/full-rc/nrz_vi_reference_rc.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/full-rc/nrz_vi_reference_rc.spice",
+      "sha256": "3850633101daada03c32e4b43e2b19b7e4e9c7cd08cd5a9bcdda185547974c36",
+      "size": 24068
+    },
+    {
+      "path": "V/gds-geometry-audit.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/gds-geometry-audit.json",
+      "sha256": "679b75fa8bab19ea18e00ba492c6a70eb303d797e2ccb56cb93b002310c55197",
+      "size": 3280
+    },
+    {
+      "path": "V/generate/magic.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/magic.log",
+      "sha256": "d6e98a2278e74ec53c67dc333f0cd2f2743c8e2b73d6e1f986cb591d9099b30b",
+      "size": 2456
+    },
+    {
+      "path": "V/generate/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/magic.log.command.json",
+      "sha256": "0dc34f7d6c212a1b245115522d959ee5ea3120ec1e6e13825205f6b98e8762be",
+      "size": 528
+    },
+    {
+      "path": "V/generate/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/nrz_vi_reference.ext",
+      "sha256": "c73d71b6f569ea4a47c193f1b83d08474ff21c2d64ace82d261ad4ab7940f071",
+      "size": 5085
+    },
+    {
+      "path": "V/generate/nrz_vi_reference.gds",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/nrz_vi_reference.gds",
+      "sha256": "fca9c35303db526d858e5472d3d2e4ebcfc3ed990e44131f97f82c7b030b1f7f",
+      "size": 456836
+    },
+    {
+      "path": "V/generate/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/nrz_vi_reference.mag",
+      "sha256": "c2d5e726ca2ee3d1655e2e3a04d2d282b2e41b80799332e397da1a9afe7e305a",
+      "size": 83148
+    },
+    {
+      "path": "V/generate/nrz_vi_reference.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/nrz_vi_reference.spice",
+      "sha256": "de4d82e5dbdc46624ae246f5f328bf351337f85db633248e73c39cb088daf672",
+      "size": 1044
+    },
+    {
+      "path": "V/generate/pcell_DIS.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/pcell_DIS.mag",
+      "sha256": "d82929de61ac9c2d698e9f4faf33263a6df6f02218aada89ca932f7aa3d363a8",
+      "size": 1692
+    },
+    {
+      "path": "V/generate/pcell_IND1.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/pcell_IND1.mag",
+      "sha256": "be50870390b859667b68cc85b65209212e20d1d9be68b51b9aec6e3651a6d9b9",
+      "size": 1862
+    },
+    {
+      "path": "V/generate/pcell_IND2.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/pcell_IND2.mag",
+      "sha256": "be50870390b859667b68cc85b65209212e20d1d9be68b51b9aec6e3651a6d9b9",
+      "size": 1862
+    },
+    {
+      "path": "V/generate/pcell_INSTAGE.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/pcell_INSTAGE.mag",
+      "sha256": "aac7acdc5202b9d0a39f2eb5ba98bbaf43e870fd55019ea403ca242b2745445a",
+      "size": 1744
+    },
+    {
+      "path": "V/generate/pcell_IPBIAS.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/pcell_IPBIAS.mag",
+      "sha256": "8e15f939afb12751bda6f7ea0b3b9af3546c2dbbb098cd64b7eea29d75bed714",
+      "size": 1460
+    },
+    {
+      "path": "V/generate/pcell_IPD1.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/pcell_IPD1.mag",
+      "sha256": "bd57c49b4175ecefb48b8c147c917f1a42e9cb88d1c9e46b8f71847ee62ef659",
+      "size": 1610
+    },
+    {
+      "path": "V/generate/pcell_IPD2.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/pcell_IPD2.mag",
+      "sha256": "bd57c49b4175ecefb48b8c147c917f1a42e9cb88d1c9e46b8f71847ee62ef659",
+      "size": 1610
+    },
+    {
+      "path": "V/generate/pcell_IPLOAD.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/pcell_IPLOAD.mag",
+      "sha256": "bd57c49b4175ecefb48b8c147c917f1a42e9cb88d1c9e46b8f71847ee62ef659",
+      "size": 1610
+    },
+    {
+      "path": "V/generate/pcell_IPOUT.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/pcell_IPOUT.mag",
+      "sha256": "bd57c49b4175ecefb48b8c147c917f1a42e9cb88d1c9e46b8f71847ee62ef659",
+      "size": 1610
+    },
+    {
+      "path": "V/generate/pcell_IPREG.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/pcell_IPREG.mag",
+      "sha256": "bd57c49b4175ecefb48b8c147c917f1a42e9cb88d1c9e46b8f71847ee62ef659",
+      "size": 1610
+    },
+    {
+      "path": "V/generate/pcell_IPTAIL.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/generate/pcell_IPTAIL.mag",
+      "sha256": "8e15f939afb12751bda6f7ea0b3b9af3546c2dbbb098cd64b7eea29d75bed714",
+      "size": 1460
+    },
+    {
+      "path": "V/geometry-only.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/geometry-only.spice",
+      "sha256": "0aba0c1de4f55c3cf061b35f0138e6d67587adf28c6d62f86eb1a691ce20e886",
+      "size": 1053
+    },
+    {
+      "path": "V/klayout/drc_run_2026_10_24_11_51_27.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/klayout/drc_run_2026_10_24_11_51_27.log",
+      "sha256": "c30ad7ef364098d79d1f0af2fd307284811223d948dd395e720ca64dbcd5d198",
+      "size": 1614
+    },
+    {
+      "path": "V/klayout/layers_def.drc",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/klayout/layers_def.drc",
+      "sha256": "5122a9179ad810c29c3c3afb2500990cbbd3dcae27aebca55b13aaeef181155e",
+      "size": 17316
+    },
+    {
+      "path": "V/klayout/main.drc",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/klayout/main.drc",
+      "sha256": "1c683e80a80d068c047184780b1feea630c46fe59c25cf527d5e40ba5151b3c7",
+      "size": 393698
+    },
+    {
+      "path": "V/klayout/nrz_vi_reference_main.lyrdb",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/klayout/nrz_vi_reference_main.lyrdb",
+      "sha256": "c1cfaaa2b42d2cdf20bbb3f93931980003661f813585f2b49978800c4bd843cb",
+      "size": 120982
+    },
+    {
+      "path": "V/klayout-command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/klayout-command.json",
+      "sha256": "060e8264ed05ee3813f11ec4fdee015a9c629b2702dd64177edd87442c8c9f7e",
+      "size": 1452
+    },
+    {
+      "path": "V/klayout-result.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/klayout-result.json",
+      "sha256": "7d4eaf306a6a5bcb56e3bdbb0a03a26eb3b7da034ffabdb9026edbb8da79f83d",
+      "size": 60
+    },
+    {
+      "path": "V/klayout.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/klayout.log",
+      "sha256": "3dce7cdb4fafeb6fbe3dcc50542188e45bddbe0d464263bdb4a74055ad03e595",
+      "size": 57140
+    },
+    {
+      "path": "V/lvs-stdout.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/lvs-stdout.log",
+      "sha256": "235f5e2a5c7d3ca10a5271609fa6cb426ae6fe7a4bbd81cad1a2e09c11826ff4",
+      "size": 4982
+    },
+    {
+      "path": "V/lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/lvs-stdout.log.command.json",
+      "sha256": "4945b911db96d19c6fd63544ed1505a934edc3deeb9464a0d8c535f09fca8d48",
+      "size": 780
+    },
+    {
+      "path": "V/lvs.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/lvs.log",
+      "sha256": "ad6d26f3e55214c910d11373c020992622137151d35fd508bd2d8383cc2f1dc6",
+      "size": 3782
+    },
+    {
+      "path": "V/negative-controls.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/negative-controls.json",
+      "sha256": "5d6612865e6d3c5944c5f8393d0bdfb89738e2c4be6b6de73c29cc8860ab6193",
+      "size": 1228
+    },
+    {
+      "path": "V/pex-audit.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/pex-audit.json",
+      "sha256": "b5ce14a4bd5a3cf355e657638527ea391c7f71ae699a8cc2834ab86f8a147e87",
+      "size": 154681
+    },
+    {
+      "path": "V/physical-contract.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/physical-contract.json",
+      "sha256": "f499c746d11e968a26a5ac2fba71724103563f44ad067845abcf551cdaadb4e8",
+      "size": 230582
+    },
+    {
+      "path": "V/rc-collapse-lvs-stdout.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/rc-collapse-lvs-stdout.log",
+      "sha256": "f2622dea85ac67d66aea3b7adafc8cd70cee4035cb29b902439328f7165c201e",
+      "size": 4994
+    },
+    {
+      "path": "V/rc-collapse-lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/rc-collapse-lvs-stdout.log.command.json",
+      "sha256": "2a522c1a91f80a5fbf30761e5338699ab1c99f5e7473951567fba66b5bc34ef0",
+      "size": 780
+    },
+    {
+      "path": "V/rc-collapse-lvs.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/rc-collapse-lvs.log",
+      "sha256": "ad6d26f3e55214c910d11373c020992622137151d35fd508bd2d8383cc2f1dc6",
+      "size": 3782
+    },
+    {
+      "path": "V/rc-lumped-capacitance.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/rc-lumped-capacitance.spice",
+      "sha256": "55d2e6239aa45e794350bc300e0daa3b2aad3654e013d98296a0461961192d72",
+      "size": 15504
+    },
+    {
+      "path": "V/readback/extract.tcl",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/readback/extract.tcl",
+      "sha256": "1664bca092607247aac4942c3076f27bcb6893ccc1a13f6e111c68e9288a6729",
+      "size": 1665
+    },
+    {
+      "path": "V/readback/magic.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/readback/magic.log",
+      "sha256": "ebf5b30fd88b0c768beb13da853c1e6675140a6c3d8ffa2cfd39fb098b4e2cc8",
+      "size": 2819
+    },
+    {
+      "path": "V/readback/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/readback/magic.log.command.json",
+      "sha256": "807bc09d43491248a41ddcc47b6eaa5a82b65609dfec05e1314d999f9b1fba54",
+      "size": 529
+    },
+    {
+      "path": "V/readback/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/readback/nrz_vi_reference.ext",
+      "sha256": "e9893a7c3ce531c45e9b3f192afc6084e211a05a0000f433597ef64ddf94fa95",
+      "size": 5103
+    },
+    {
+      "path": "V/readback/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/readback/nrz_vi_reference.mag",
+      "sha256": "21654b76534469abc9486b1d1adc83b0b29ce5c8bdf1cc66971b9ff525713a47",
+      "size": 83321
+    },
+    {
+      "path": "V/readback/nrz_vi_reference.res.ext",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/readback/nrz_vi_reference.res.ext",
+      "sha256": "aa3fb08c57253c96bdb95e9c16af531f0eac58028e1fe9656e1ca84cd99b726a",
+      "size": 29191
+    },
+    {
+      "path": "V/readback/nrz_vi_reference.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/readback/nrz_vi_reference.spice",
+      "sha256": "de4d82e5dbdc46624ae246f5f328bf351337f85db633248e73c39cb088daf672",
+      "size": 1044
+    },
+    {
+      "path": "V/readback/nrz_vi_reference_c.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/readback/nrz_vi_reference_c.spice",
+      "sha256": "c400df5d55e6cc1e702e640eb818da1f149179e67e8a37a1e2d6fd7aeb23b222",
+      "size": 1626
+    },
+    {
+      "path": "V/readback/nrz_vi_reference_rc.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/readback/nrz_vi_reference_rc.spice",
+      "sha256": "40f15f779643602b1ea10f609d3d8be82509b984c6f59ff03872b622f4100309",
+      "size": 20055
+    },
+    {
+      "path": "V/readback-lvs-stdout.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/readback-lvs-stdout.log",
+      "sha256": "53e3684f30178289706c6c09f7778180b8df8a70daa336ad2027248359aa977a",
+      "size": 5009
+    },
+    {
+      "path": "V/readback-lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/readback-lvs-stdout.log.command.json",
+      "sha256": "6494c17a6a413aa240e4bc5b33827803a8a088a52d67df388b5bab97407f4dfa",
+      "size": 789
+    },
+    {
+      "path": "V/readback-lvs.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/readback-lvs.log",
+      "sha256": "ad6d26f3e55214c910d11373c020992622137151d35fd508bd2d8383cc2f1dc6",
+      "size": 3782
+    },
+    {
+      "path": "V/selected-electrical-source.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/selected-electrical-source.spice",
+      "sha256": "32102a9a792fb3927a7dec7e22c009a9ec547f5c7cb2e090419fb39900e934c1",
+      "size": 1242
+    },
+    {
+      "path": "V/source/contract.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/source/contract.json",
+      "sha256": "251a481735d45d3aef4a51d157dcf8962d5484de16c6e42d097d860627af86fd",
+      "size": 215782
+    },
+    {
+      "path": "V/source/generate.tcl",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/source/generate.tcl",
+      "sha256": "24a0b9f08f422b5159137ca9e89de7bae76142918b3373300db8d6c642053f84",
+      "size": 44892
+    },
+    {
+      "path": "V/source/schematic.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/source/schematic.spice",
+      "sha256": "4db5ef951165f38f85a1c853bdbb8c9da6896d66613d299ee872bce84e49cf73",
+      "size": 710
+    },
+    {
+      "path": "V/unmodified-full-rc/coverage.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/unmodified-full-rc/coverage.json",
+      "sha256": "10660ec106f6efb899fedf19a647c3d8cf6ad0fc65aeaeb42bf4efa27fbbb2ad",
+      "size": 468
+    },
+    {
+      "path": "V/unmodified-full-rc/drive-attributes.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/unmodified-full-rc/drive-attributes.json",
+      "sha256": "cbb81cd92fb17588aaa42db3146c7959cfe5da9cbef236e39a996044678a0bb4",
+      "size": 1240
+    },
+    {
+      "path": "V/unmodified-full-rc/extract-driven.tcl",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/unmodified-full-rc/extract-driven.tcl",
+      "sha256": "8f1824282c0428bfe24726c028e1c9b4174c6153349f868b58e8dde3e6243425",
+      "size": 269
+    },
+    {
+      "path": "V/unmodified-full-rc/magic.log",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/unmodified-full-rc/magic.log",
+      "sha256": "f5d83892e33aa5c82e5c6a459d938055af3c5d771afeb7a3dd896594237109ed",
+      "size": 1734
+    },
+    {
+      "path": "V/unmodified-full-rc/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/unmodified-full-rc/magic.log.command.json",
+      "sha256": "9b2b863acaf4cbe7e416e9a4bd85a3e57cb65e9a4d60b27e1424b691857dfc33",
+      "size": 534
+    },
+    {
+      "path": "V/unmodified-full-rc/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/unmodified-full-rc/nrz_vi_reference.ext",
+      "sha256": "12da239ec32a45c5c0e6dab03cf01bd520f56e4d248242f67311d7a819430b0d",
+      "size": 5593
+    },
+    {
+      "path": "V/unmodified-full-rc/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/unmodified-full-rc/nrz_vi_reference.mag",
+      "sha256": "21654b76534469abc9486b1d1adc83b0b29ce5c8bdf1cc66971b9ff525713a47",
+      "size": 83321
+    },
+    {
+      "path": "V/unmodified-full-rc/nrz_vi_reference.res.ext",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/unmodified-full-rc/nrz_vi_reference.res.ext",
+      "sha256": "46a178061bbc2eec755cec0b8eea867f7271f092c61aa28d37fe573ce9cf8e60",
+      "size": 29481
+    },
+    {
+      "path": "V/unmodified-full-rc/nrz_vi_reference_rc.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/V/unmodified-full-rc/nrz_vi_reference_rc.spice",
+      "sha256": "6464cae1a550d573f88eab4f7f2225608b4d71dd270dcb5646bd7edd4349c782",
+      "size": 20583
+    },
+    {
+      "path": "artifact-manifest.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/artifact-manifest.json",
+      "sha256": "755f26ef831c8b0aff504e8a490fad3e72885c54d8b62f5bccdeddb968cea980",
+      "size": 21548
+    },
+    {
+      "path": "correction-provenance.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/correction-provenance.json",
+      "sha256": "c1c7320847eb0a89e4597f3be243e506c21d419bab1fcfb47af648bfa01f371d",
+      "size": 1365
+    },
+    {
+      "path": "selected-spec.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/selected-spec.json",
+      "sha256": "d970d5012854234b3f791ce91313606d3d7e3db8571243bf4c3a62e99dc78003",
+      "size": 5595
+    },
+    {
+      "path": "source_scripts/0-run.py",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/source_scripts/0-run.py",
+      "sha256": "2a0d07addd3c18b491e0252b24789d0b6b59d31d20793519bd65a182504aa0bc",
+      "size": 10110
+    },
+    {
+      "path": "source_scripts/1-generate.py",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/source_scripts/1-generate.py",
+      "sha256": "c67a024ccd23494aaea59b24d3fd4e156ae7fed4cc686f625ac21d83bd723c52",
+      "size": 6979
+    },
+    {
+      "path": "source_scripts/2-power_routes.py",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/source_scripts/2-power_routes.py",
+      "sha256": "f5803c6986c4a67f94468e1d57812c81e564ec3dde1ab1352e3d3993e0865968",
+      "size": 4430
+    },
+    {
+      "path": "source_scripts/3-correct_capacitance.py",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/source_scripts/3-correct_capacitance.py",
+      "sha256": "5120ab6d32273be8504d4ac2a8bd2939de1b76fc909afe82fa81889322256966",
+      "size": 14370
+    },
+    {
+      "path": "source_scripts/4-run.py",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/source_scripts/4-run.py",
+      "sha256": "760a191832ce8a692964e4dbbb6b81eafe7c5f04faeec9c3ed0b4fcbdbd7a765",
+      "size": 24471
+    },
+    {
+      "path": "source_scripts/5-audit.py",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/source_scripts/5-audit.py",
+      "sha256": "f3a1e52ea33a06a16bdcba32645c286dd6c3fc6f3a05bd61cf285c8708b51c08",
+      "size": 16866
+    },
+    {
+      "path": "source_scripts/6-correct_capacitance.py",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/source_scripts/6-correct_capacitance.py",
+      "sha256": "a37b4e50c8fbd099ecc03006bdd64036da2e18d1e436f015a3f532034ecd9b89",
+      "size": 13296
+    },
+    {
+      "path": "source_scripts/7-generate.py",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/source_scripts/7-generate.py",
+      "sha256": "3f441b7ee332ab83af57f43fc1fdb446415f8ad214b63b7ff983be47ffd776d1",
+      "size": 7270
+    },
+    {
+      "path": "source_scripts/8-run.py",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/source_scripts/8-run.py",
+      "sha256": "75976fd0cd474318dc9defe2718ba5f67ee4f40af81380b3c8a88a8447194b63",
+      "size": 9022
+    },
+    {
+      "path": "sources/V/contract.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/sources/V/contract.json",
+      "sha256": "251a481735d45d3aef4a51d157dcf8962d5484de16c6e42d097d860627af86fd",
+      "size": 215782
+    },
+    {
+      "path": "sources/V/generate.tcl",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/sources/V/generate.tcl",
+      "sha256": "24a0b9f08f422b5159137ca9e89de7bae76142918b3373300db8d6c642053f84",
+      "size": 44892
+    },
+    {
+      "path": "sources/V/schematic.spice",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/sources/V/schematic.spice",
+      "sha256": "4db5ef951165f38f85a1c853bdbb8c9da6896d66613d299ee872bce84e49cf73",
+      "size": 710
+    },
+    {
+      "path": "status.json",
+      "source": "build/reference-v2-layout/vi-clamped-pg-r1b/status.json",
+      "sha256": "9870f6f63a8ce4f65eb035c497cd625a562ab7d377860dd68b60372eaea18aff",
+      "size": 7042
+    }
+  ]
+}

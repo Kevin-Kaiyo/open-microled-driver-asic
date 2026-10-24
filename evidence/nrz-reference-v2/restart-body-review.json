@@ -1,0 +1,232 @@
+{
+  "result_json": "build/nrz-reference-v2/selected-final-r2/cases/REFERENCE-B-restart_FF_residual_LED_anchor-0.5G-ff--40C-3.65V-C200-L0.5-e20-s40-bit1/result.json",
+  "result_sha256": "fc79ad0dfdcf434da24b1417177ebfd388c09531eac1e2648ed10b56793d309f",
+  "waveform_sha256": "a1a68e061deac202700208b187df9302e7eb089b49994a7603c16c39cdf04107",
+  "case": {
+    "route": "B",
+    "rate_Gbps": 0.5,
+    "corner": "ff",
+    "temp_C": -40,
+    "vdd_V": 3.65,
+    "cap_F": 2e-13,
+    "r_pkg": 1.0,
+    "l_pkg": 5e-10,
+    "edge_s": 2e-11,
+    "steps_per_ui": 40,
+    "reltol": 1e-05,
+    "chgtol": 1e-16,
+    "method": "gear",
+    "kind": "restart_FF_residual_LED_anchor",
+    "compensation": "shunt",
+    "vi_comp_F": 1.5e-10,
+    "dc_bit": 1,
+    "startup": {
+      "stop_s": 0.0001,
+      "maxstep_s": 1e-08,
+      "disable_release_s": 4.4e-05,
+      "initial_op": true,
+      "rail_pwl": {
+        "VRAW": [
+          [
+            0,
+            5
+          ],
+          [
+            2e-05,
+            5
+          ],
+          [
+            2.1e-05,
+            0
+          ],
+          [
+            2.3e-05,
+            0
+          ],
+          [
+            2.4e-05,
+            5
+          ]
+        ],
+        "VLED": [
+          [
+            0,
+            5
+          ]
+        ],
+        "VDD": [
+          [
+            0,
+            3.65
+          ]
+        ],
+        "VREF": [
+          [
+            0,
+            2.5
+          ]
+        ],
+        "VDISABLE": [
+          [
+            0,
+            0
+          ],
+          [
+            1.99e-05,
+            0
+          ],
+          [
+            2e-05,
+            3.3
+          ],
+          [
+            4.4e-05,
+            3.3
+          ],
+          [
+            4.41e-05,
+            0
+          ]
+        ]
+      },
+      "hold_windows_s": [
+        [
+          2.02e-05,
+          4.4e-05
+        ]
+      ]
+    },
+    "name": "REFERENCE-B-restart_FF_residual_LED_anchor-0.5G-ff--40C-3.65V-C200-L0.5-e20-s40-bit1",
+    "variant": "REFERENCE",
+    "res_corner": "ff",
+    "data_mode": "tracking",
+    "data_high_V": 3.65
+  },
+  "device": {
+    "instance": "x7",
+    "nodes": [
+      "xdrv.itail.t0",
+      "xdrv.sense.t1",
+      "xdrv.in2.t1",
+      "xdrv.vin.t6"
+    ],
+    "model": "pfet_06v0",
+    "sizing": "ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u"
+  },
+  "physical_mapping": {
+    "original_instance": "XR_IPD2",
+    "extracted_instance": "X7",
+    "original_nodes": {
+      "D": "IN2",
+      "G": "SENSE",
+      "S": "ITAIL",
+      "B": "VIN"
+    },
+    "rc_nodes": {
+      "D": "IN2.t1",
+      "G": "SENSE.t1",
+      "S": "ITAIL.t0",
+      "B": "VIN.t6"
+    },
+    "extracted_spice_nodes": {
+      "D": "ITAIL.t0",
+      "G": "SENSE.t1",
+      "S": "IN2.t1",
+      "B": "VIN.t6"
+    },
+    "drain_source_swapped": true,
+    "params_si": {
+      "ad": 4.3999999999999997e-11,
+      "pd": 0.00020088000000000001,
+      "as": 4.3999999999999997e-11,
+      "ps": 0.00020088000000000001,
+      "w": 9.999999999999999e-05,
+      "l": 9.999999999999999e-06
+    },
+    "multiplicity": 1,
+    "fingers": 1,
+    "cx_um": 172.0,
+    "cy_um": 250.0,
+    "pin_coordinate_um": {
+      "D": [
+        166.74,
+        250.0
+      ],
+      "G": [
+        172.0,
+        300.5
+      ],
+      "S": [
+        177.26,
+        250.0
+      ],
+      "B": [
+        164.5,
+        250.0
+      ]
+    }
+  },
+  "peak": {
+    "time_s": 2.117366047283699e-05,
+    "forward_voltage_V": 0.746648764813482,
+    "SPICE_S_IN2_V": 0.7490060311776551,
+    "BODY_VIN_V": 0.002357266364173126,
+    "forward_diff_V": 0.746648764813482,
+    "RAW_source_V": 0.0,
+    "VIN_port_V": 0.002300569783643818,
+    "ILED_cond_A": 1.266500921456249e-06,
+    "ISET_A": -1.153430216288941e-07,
+    "VREF_source_V": 2.5,
+    "DISABLE_source_V": 3.3
+  },
+  "descriptive_durations": [
+    {
+      "threshold_V": 0,
+      "total_duration_s": 2.2902242386777498e-06,
+      "intervals_s": [
+        [
+          2.0871909036051254e-05,
+          2.3162133274729004e-05
+        ]
+      ],
+      "meaning": "Descriptive threshold only, not a new foundry acceptance limit"
+    },
+    {
+      "threshold_V": 0.3,
+      "total_duration_s": 2.1677877961114077e-06,
+      "intervals_s": [
+        [
+          2.093233218838264e-05,
+          2.3100119984494046e-05
+        ]
+      ],
+      "meaning": "Descriptive threshold only, not a new foundry acceptance limit"
+    },
+    {
+      "threshold_V": 0.6,
+      "total_duration_s": 2.03654468619699e-06,
+      "intervals_s": [
+        [
+          2.0993238573818392e-05,
+          2.3029783260015382e-05
+        ]
+      ],
+      "meaning": "Descriptive threshold only, not a new foundry acceptance limit"
+    },
+    {
+      "threshold_V": 0.7,
+      "total_duration_s": 1.4001339729932422e-06,
+      "intervals_s": [
+        [
+          2.1033994523086727e-05,
+          2.243412849607997e-05
+        ]
+      ],
+      "meaning": "Descriptive threshold only, not a new foundry acceptance limit"
+    }
+  ],
+  "csv": "evidence/nrz-reference-v2/final-tables/restart-body-event.csv",
+  "csv_sha256": "b4af0b36cd4d403198d96a1fe46bcc5e0dc1e83c51a0e055f73b3357a775559f",
+  "script_sha256": "e225088dd1b23e0c81cc00c8e4729b2fffae6e8157968f1186827420ac91d128",
+  "interpretation": "SPICE S=IN2.t1 is originalXR_IPD2 drain after documentedD/Sswap; B=VIN.t6 nwell. IN2external150pF storescharge asRAWfalls; eventconsistentwithjunctionforwardconduction. Existingwaveforms containterminalvoltages, notjunctioncurrent: noquantifiedinjectioncharge/latchup/SOAqualification. Originalstartupboolonlyfunctional+absolutesixpairs, notrestartqualification."
+}

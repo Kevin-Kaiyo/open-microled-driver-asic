@@ -1,0 +1,32 @@
+{
+  "name": "slow-start-filter-control",
+  "title": "SS / 85°C / 低供电：只改变滤波电容的中间诊断",
+  "xlim_us": [
+    0,
+    40
+  ],
+  "traces": [
+    {
+      "csv": "evidence/pwm-reference-v2/20261024/damped_startup_ss_slow.csv",
+      "label": "标称 100 nF（慢角 110 nF）：启动恢复不足",
+      "color": "#a7664b",
+      "columns": {
+        "time": 0,
+        "current": 1,
+        "sense": 5,
+        "refrail": 2
+      }
+    },
+    {
+      "csv": "evidence/pwm-reference-v2/20261024/c47_startup_ss_slow.csv",
+      "label": "标称 47 nF（慢角 51.7 nF）：本项通过，随后动态恢复失败",
+      "color": "#147d83",
+      "columns": {
+        "time": 0,
+        "current": 1,
+        "sense": 5,
+        "refrail": 2
+      }
+    }
+  ]
+}

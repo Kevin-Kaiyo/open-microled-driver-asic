@@ -1,0 +1,8 @@
+{
+ "measured_failure":"damped_startup_ss_slow:SS85C,2.97V,RFILTER105ohm,CFILTER110nF,CCOMP165pF, full40us strictGear2 completed. Held5.568pA passed, but30–40us recovery91.702uA failed±5%. No window or FAULT timing change is permitted.",
+ "root_cause_hypothesis":"The slow11.55us supply RC leaves the low-voltageSS reference below its needed headroom through the fixed recovery window. This is a physical startup limitation, not a numerical-convergence failure.",
+ "single_change":"CFILTER nominal100nF→47nF; same100ohm RFILTER,150pF PCB compensation,10ohm damping and1ohm/5nH N2 pin. Slow tolerance tau becomes105ohm×51.7nF=5.4285us; at30us a first-order step has reached99.60% versus92.55% at11.55us. Actual transistor response must confirm.",
+ "dc_equivalence":"Changing only capacitors leaves the DC network unchanged; verify nominal/globalmin/globalmax DC against already completed144-point resistor/MOS/temp matrix. Do not replay the entire matrix merely because C changed.",
+ "predeclared_first_tests":"SameSS slow startup, same10%/10ns100us VREF step. Then nominalGear2/trap numerical pair, original fault/minPWM,12 boundedR/C dynamic points,FF fast startup and3 local loop estimates.",
+ "unchanged_contract":"Original LED,20us FAULT hold,1MHz/256us PWM,0–20us holding,30–40us recovery,100us step window,20%/5us/1nA/±5% and original charge limits. No more capacitor sweep planned."
+}

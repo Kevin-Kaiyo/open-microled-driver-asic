@@ -2,7 +2,7 @@
 
 An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
-**当前阶段（2026-10-24）**：显示方向为单像素39MOS参考/保护/PWM宏，已完成本轮供电、封装与滤波回流实验，保留启动收敛和恢复时间问题；高速方向为单通道NRZ的电压驱动与电流转向两版实际GDS/PEX。新阶段的失败、修订及证据边界见下方当前报告；尚无硅片或实测光链路证据。
+**当前阶段（2026-10-24，参考与启动修订）**：显示 PWM 保留原 39 MOS 实际版图/PEX，修订板级补偿、滤波和受控启动边界；高速 B 已接入 12 MOS 参考/保护与原 9 MOS 核心，完成实际联通 GDS、DRC/LVS/PEX 及限定电气回归。两份独立报告保留失败过程、外部基准/许可前提和残余电源重启的体结风险；尚无硅片或实测光链路证据。
 
 **早期基础路径（历史状态，2026-10-05–07）**：从1 Pixel开始，电气与物理研究基线为 **v0.4（2026-10-05）**，新增 **frame experiment v0.1（2026-10-07）**。电气基线：在冻结的共同GDS上，实际提取末级`output12/buf_2`、数字输出线、跨宏线与六MOS pixel的联合信号寄生模型；nominal为12MOS、45 signal R、77显式C，另有HRHC／LRHC／HRLC／LRLC四种actual RC提取。模型从真实M3右端接入，整体替换v0.3分块路径。主研究37次transient／12次DC、146项工程guards通过；[电源／控制边界](docs/research/robustness.md)另保留startup假设越界、enable延迟与static LED headroom失效。
 
@@ -21,6 +21,12 @@ An independent, open platform for experimental R&D methodology validation and te
 [2026-10-19 研究快照与原始附件](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/research-20261019)：31 个归档的上传后回读核验通过；独立检出恢复并复算 96 组 NRZ 数据，完整分析和汇总文件与归档逐字节一致。此次使用同一台 Mac 的不同目录，跨操作系统完整流程仍待验证。
 
 ## 先读当前研究报告
+
+- **显示 PWM：参考源与受控启动修订（2026-10-24）：[中文报告](docs/research/pwm-reference-startup-20261024/index.html) / [完整 Markdown](docs/research/pwm-reference-startup-20261024/report-complete.md) / [复现入口](docs/research/pwm-reference-startup-20261024/README.md)。** 从 N2 补偿、封装阻尼和 100 Ω / 15 nF 板级滤波解释恢复、严格启动、独立保护和最低 PWM 码；100 nF 与 47 nF 的失败保留。原 39 MOS 制造图形未变，外部 FAULT/PERMIT 与电压基准仍是接口前提。
+
+- **高速 B：真实参考、供电与保护（2026-10-24）：[中文报告](docs/research/nrz-b-reference-power-20261024/index.html) / [完整 Markdown](docs/research/nrz-b-reference-power-20261024/report-complete.md) / [复现入口](docs/research/nrz-b-reference-power-20261024/README.md)。** 10 MOS 电流反馈参考加两只保护管，与原 B 核心构成 21 MOS 实际提取宏。固定 0.5 Gb/s 的 10 项通信测试均为 0/511；参考容差、全电源端口能量、实际布线和原 LDO 失败分别呈现。提前释放过压与残余电源重启约 0.747 V 体结正向偏置未闭合，不能写成任意上掉电安全。
+
+以下为历史阶段，保留当时结论与限制。
 
 - **供电、电阻角与封装扰动（2026-10-24）：[中文研究报告](docs/research/driver-robustness-20261024/index.html) / [实际GDS分层查看器](docs/research/driver-robustness-20261024/layout-viewer.html) / [证据与复现](docs/research/driver-robustness-20261024/README.md)。** 显示PWM和高速NRZ分开整理。旧9–11 mV余量不能覆盖+50 mV或声明的供电/回地封装阻抗；新的实际厚栅氧核心完成DRC/LVS/PEX与电气复验。A在固定辅助电源三条件的0.4 Gb/s点通过，但辅助电源扰动仍失败；B在0.5 Gb/s的本轮所测扰动条件下通过。PWM板侧参考滤波显著减小扰动，恢复时间和启动数值一致性仍未闭合。报告保留失败、同速率能量比较及原始证据边界。
 

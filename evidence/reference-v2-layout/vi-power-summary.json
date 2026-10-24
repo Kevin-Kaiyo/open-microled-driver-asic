@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "status": "10MOS physical single-variable PG comparison complete; final 11MOS/startup/core integration not frozen",
+  "comparison": "evidence/reference-v2-layout/vi-power-comparison.json",
+  "electrical_source": "analog/nrz_reference_v2/vi_reference_selected.spice",
+  "electrical_source_sha256": "71908fcbe01b0fd6c9ec4179d378b9552e27ee3aba0f6e214fdca6a50d472202",
+  "thin_run": "build/reference-v2-layout/vi-thin-r1b",
+  "PG_run": "build/reference-v2-layout/vi-pg-r2d",
+  "counts": {
+    "thin": {
+      "mos": 10,
+      "device_resistors": 0,
+      "resistors": 95,
+      "capacitors": 92,
+      "zero_valued_capacitors": 0
+    },
+    "PG": {
+      "mos": 10,
+      "device_resistors": 0,
+      "resistors": 399,
+      "capacitors": 224,
+      "zero_valued_capacitors": 0
+    }
+  },
+  "published_successful_runs": [
+    "evidence/reference-v2-layout/vi-thin-r1b",
+    "evidence/reference-v2-layout/vi-pg-r2d"
+  ],
+  "single_factor_checks": {
+    "identical_MOS_and_placement": true,
+    "identical_independent_schematic": true,
+    "all_original_manufacturing_polygons_retained": true,
+    "only_additional_routing_layers_changed": true
+  },
+  "terminal_path_comparison": {
+    "VIN": {
+      "thin": {
+        "max_DS_ohm": 88.47410000000005,
+        "max_body_ohm": 141.00640000000007
+      },
+      "pg": {
+        "max_DS_ohm": 17.306935885042737,
+        "max_body_ohm": 108.44219249425086
+      },
+      "DS_reduction_percent": 80.43841544017658
+    },
+    "VSS": {
+      "thin": {
+        "max_DS_ohm": 46.337689177239135,
+        "max_body_ohm": 127.3963495701524
+      },
+      "pg": {
+        "max_DS_ohm": 13.16902878544731,
+        "max_body_ohm": 107.38885492337384
+      },
+      "DS_reduction_percent": 71.5803074791311
+    },
+    "IOUT": {
+      "thin": {
+        "max_DS_ohm": 42.5279,
+        "max_body_ohm": null
+      },
+      "pg": {
+        "max_DS_ohm": 13.177711822194066,
+        "max_body_ohm": null
+      },
+      "DS_reduction_percent": 69.0139606653654
+    }
+  },
+  "area_change_percent": 2.6139817629179385,
+  "capacitance_change_percent": 3.834027790245287,
+  "visuals": {
+    "png": "evidence/reference-v2-layout/visuals/vi-power-comparison.png",
+    "svg": "evidence/reference-v2-layout/visuals/vi-power-comparison.svg",
+    "actual_GDS": true,
+    "same_XY_scale": true,
+    "visual_review_status": "passed"
+  },
+  "not_a_final_circuit_claim": true,
+  "limits": [
+    "Body return includes unchanged well/substrate graph; metal improvement is not body-field validation.",
+    "Only these two 10MOS runs establish the single-variable layout comparison.",
+    "Earlier 19MOS module has different circuitry and is not an area optimization baseline."
+  ]
+}

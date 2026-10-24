@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "status": "interface_preparation_only_pending_final_startup_topology",
+  "top": "nrz_reference_integrated",
+  "ports": [
+    "DATA",
+    "OUT",
+    "VDD",
+    "VSS",
+    "BIAS",
+    "DUMMY",
+    "VIN",
+    "VSET",
+    "SENSE",
+    "REGFB",
+    "VREG",
+    "IPB",
+    "IN2",
+    "ICTRL",
+    "LPB",
+    "LN2",
+    "LCTRL"
+  ],
+  "modules": [
+    {
+      "tag": "C",
+      "folder": "build/highspeed-nrz-robustness-layout/hv-r2/B",
+      "electrical_source": "layout/highspeed_nrz_robustness/steering_driver-reference.spice",
+      "offset_um": [
+        0,
+        0
+      ],
+      "node_map": {}
+    },
+    {
+      "tag": "R",
+      "folder": "build/reference-v2-layout/nrz-r1/N",
+      "electrical_source": "layout/reference_v2/nrz_bias_power-reference.spice",
+      "offset_um": [
+        100,
+        100
+      ],
+      "node_map": {
+        "IOUT": "BIAS"
+      }
+    }
+  ],
+  "bridges": [
+    {
+      "net": "BIAS",
+      "anchors": [
+        "C:BIAS",
+        "R:IOUT"
+      ],
+      "corridor_y_um": 60
+    },
+    {
+      "net": "VSS",
+      "anchors": [
+        "C:VSS",
+        "R:VSS"
+      ],
+      "corridor_y_um": 80
+    }
+  ],
+  "external_components": [
+    {
+      "name": "VSET",
+      "nodes": [
+        "VSET",
+        "VSS"
+      ],
+      "kind": "external precision-voltage anchor",
+      "nominal_v": 0.5
+    },
+    {
+      "name": "RSET",
+      "nodes": [
+        "SENSE",
+        "VSS"
+      ],
+      "kind": "external set resistor",
+      "ohm": 20000
+    },
+    {
+      "name": "RBIAS_I",
+      "nodes": [
+        "IPB",
+        "VSS"
+      ],
+      "kind": "external bias resistor",
+      "ohm": 100000
+    },
+    {
+      "name": "RBIAS_L",
+      "nodes": [
+        "LPB",
+        "VSS"
+      ],
+      "kind": "external bias resistor",
+      "ohm": 100000
+    },
+    {
+      "name": "RFB_H",
+      "nodes": [
+        "VREG",
+        "REGFB"
+      ],
+      "kind": "external feedback resistor",
+      "ohm": 56000
+    },
+    {
+      "name": "RFB_L",
+      "nodes": [
+        "REGFB",
+        "VSS"
+      ],
+      "kind": "external feedback resistor",
+      "ohm": 10000
+    },
+    {
+      "name": "CCOMP_I",
+      "nodes": [
+        "IN2",
+        "ICTRL"
+      ],
+      "kind": "external compensation capacitor",
+      "value": "electrical experiment parameter"
+    },
+    {
+      "name": "CCOMP_L",
+      "nodes": [
+        "LN2",
+        "LCTRL"
+      ],
+      "kind": "external compensation capacitor",
+      "value": "electrical experiment parameter"
+    },
+    {
+      "name": "COUT_L",
+      "nodes": [
+        "VREG",
+        "VSS"
+      ],
+      "kind": "external regulator output capacitor",
+      "value": "electrical experiment parameter"
+    },
+    {
+      "name": "VIN",
+      "nodes": [
+        "VIN",
+        "VSS"
+      ],
+      "kind": "external supply input",
+      "nominal_v": 5
+    },
+    {
+      "name": "VDD",
+      "kind": "independent external logic rail",
+      "nodes": [
+        "VDD",
+        "VSS"
+      ],
+      "nominal_v": 3.3
+    },
+    {
+      "name": "RDUMMY",
+      "kind": "external load resistor",
+      "nodes": [
+        "VREG",
+        "DUMMY"
+      ],
+      "ohm": 28000
+    },
+    {
+      "name": "LED",
+      "kind": "fixed existing external MicroLED load",
+      "nodes": [
+        "LED_A",
+        "OUT"
+      ]
+    }
+  ],
+  "note": "Pending final enable/clamp design. Prepare only until electrical agent freezes. VREG supplies external RDUMMY; VDD independent external rail. BIAS and ground bridge implemented by actual metal4/metal5."
+}

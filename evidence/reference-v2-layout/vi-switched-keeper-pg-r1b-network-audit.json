@@ -1,0 +1,422 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "rc": "build/reference-v2-layout/vi-switched-keeper-pg-r1b/V/full-rc/nrz_vi_reference_rc.spice",
+  "rc_sha256": "9b8eed82ae15cb617911bd0af8c117675effd244cc98f0adf0e7e3fa2bb64dbe",
+  "method": "Independent full nodal conductance inversion; 1 A terminal injection to the named net anchor; no MOS current/capacitance active. All R branches and mapped terminals included.",
+  "limitations": [
+    "Terminal effective R is not a sum of branch R.",
+    "Substrate values establish only the graph exported by pinned Magic, not local physical substrate collection.",
+    "No intermodule/package/PCB resistances or EM effects included."
+  ],
+  "networks": {
+    "DISABLE": {
+      "anchor_is_external_port": true,
+      "nodes": 4,
+      "branches": 3,
+      "all_terminals_connected": true,
+      "inverse_residual": 2.220446049250313e-16,
+      "terminal_to_anchor": [
+        {
+          "instance": "XDIS",
+          "pin": "G",
+          "node": "DISABLE.t1",
+          "effective_ohm": 105.59249999999997
+        },
+        {
+          "instance": "XKEEP",
+          "pin": "G",
+          "node": "DISABLE.t0",
+          "effective_ohm": 60.582699999999996
+        }
+      ],
+      "max_terminal_to_anchor_ohm": 105.59249999999997
+    },
+    "ICTRL": {
+      "anchor_is_external_port": true,
+      "nodes": 10,
+      "branches": 9,
+      "all_terminals_connected": true,
+      "inverse_residual": 8.881784197001252e-16,
+      "terminal_to_anchor": [
+        {
+          "instance": "XINSTAGE",
+          "pin": "D",
+          "node": "ICTRL.t2",
+          "effective_ohm": 31.8229
+        },
+        {
+          "instance": "XIPLOAD",
+          "pin": "D",
+          "node": "ICTRL.t1",
+          "effective_ohm": 44.14529999999999
+        },
+        {
+          "instance": "XIPLOAD",
+          "pin": "G",
+          "node": "ICTRL.t0",
+          "effective_ohm": 103.49320000000002
+        },
+        {
+          "instance": "XIPREG",
+          "pin": "G",
+          "node": "ICTRL.t4",
+          "effective_ohm": 108.4437
+        },
+        {
+          "instance": "XIPOUT",
+          "pin": "G",
+          "node": "ICTRL.t3",
+          "effective_ohm": 113.393
+        }
+      ],
+      "max_terminal_to_anchor_ohm": 113.393
+    },
+    "IN1": {
+      "anchor_is_external_port": false,
+      "nodes": 10,
+      "branches": 9,
+      "all_terminals_connected": true,
+      "inverse_residual": 4.547473508864641e-13,
+      "terminal_to_anchor": [
+        {
+          "instance": "XIPD1",
+          "pin": "D",
+          "node": "IN1.t0",
+          "effective_ohm": 39.19060000000103
+        },
+        {
+          "instance": "XIND1",
+          "pin": "D",
+          "node": "IN1.t2",
+          "effective_ohm": 43.21910000000001
+        },
+        {
+          "instance": "XIND1",
+          "pin": "G",
+          "node": "IN1.t1",
+          "effective_ohm": 78.34629999999999
+        },
+        {
+          "instance": "XIND2",
+          "pin": "G",
+          "node": "IN1.t3",
+          "effective_ohm": 83.29630000000002
+        }
+      ],
+      "max_terminal_to_anchor_ohm": 83.29630000000002
+    },
+    "IN2": {
+      "anchor_is_external_port": true,
+      "nodes": 6,
+      "branches": 5,
+      "all_terminals_connected": true,
+      "inverse_residual": 2.220446049250313e-16,
+      "terminal_to_anchor": [
+        {
+          "instance": "XIPD2",
+          "pin": "D",
+          "node": "IN2.t1",
+          "effective_ohm": 41.58099999999999
+        },
+        {
+          "instance": "XIND2",
+          "pin": "D",
+          "node": "IN2.t0",
+          "effective_ohm": 45.61
+        },
+        {
+          "instance": "XINSTAGE",
+          "pin": "G",
+          "node": "IN2.t2",
+          "effective_ohm": 140.235
+        }
+      ],
+      "max_terminal_to_anchor_ohm": 140.235
+    },
+    "IOUT": {
+      "anchor_is_external_port": true,
+      "nodes": 26,
+      "branches": 36,
+      "all_terminals_connected": true,
+      "inverse_residual": 9.264279325915862e-14,
+      "terminal_to_anchor": [
+        {
+          "instance": "XIPOUT",
+          "pin": "D",
+          "node": "IOUT.t1",
+          "effective_ohm": 12.985596885968313
+        },
+        {
+          "instance": "XDIS",
+          "pin": "D",
+          "node": "IOUT.t0",
+          "effective_ohm": 11.611237384738414
+        }
+      ],
+      "max_terminal_to_anchor_ohm": 12.985596885968313
+    },
+    "IPB": {
+      "anchor_is_external_port": true,
+      "nodes": 6,
+      "branches": 5,
+      "all_terminals_connected": true,
+      "inverse_residual": 3.777777657336318e-16,
+      "terminal_to_anchor": [
+        {
+          "instance": "XIPBIAS",
+          "pin": "D",
+          "node": "IPB.t1",
+          "effective_ohm": 32.7532
+        },
+        {
+          "instance": "XIPBIAS",
+          "pin": "G",
+          "node": "IPB.t0",
+          "effective_ohm": 64.6967
+        },
+        {
+          "instance": "XIPTAIL",
+          "pin": "G",
+          "node": "IPB.t2",
+          "effective_ohm": 68.7467
+        }
+      ],
+      "max_terminal_to_anchor_ohm": 68.7467
+    },
+    "ITAIL": {
+      "anchor_is_external_port": false,
+      "nodes": 8,
+      "branches": 7,
+      "all_terminals_connected": true,
+      "inverse_residual": 2.102109330562638e-14,
+      "terminal_to_anchor": [
+        {
+          "instance": "XIPTAIL",
+          "pin": "D",
+          "node": "ITAIL.t2",
+          "effective_ohm": 30.362800000001982
+        },
+        {
+          "instance": "XIPD1",
+          "pin": "S",
+          "node": "ITAIL.t1",
+          "effective_ohm": 45.406200000000005
+        },
+        {
+          "instance": "XIPD2",
+          "pin": "S",
+          "node": "ITAIL.t0",
+          "effective_ohm": 50.35619999999999
+        }
+      ],
+      "max_terminal_to_anchor_ohm": 50.35619999999999
+    },
+    "KRET": {
+      "anchor_is_external_port": true,
+      "nodes": 2,
+      "branches": 1,
+      "all_terminals_connected": true,
+      "inverse_residual": 0.0,
+      "terminal_to_anchor": [
+        {
+          "instance": "XKEEP",
+          "pin": "D",
+          "node": "KRET.t0",
+          "effective_ohm": 33.1811
+        }
+      ],
+      "max_terminal_to_anchor_ohm": 33.1811
+    },
+    "SENSE": {
+      "anchor_is_external_port": true,
+      "nodes": 4,
+      "branches": 3,
+      "all_terminals_connected": true,
+      "inverse_residual": 6.699360469624092e-17,
+      "terminal_to_anchor": [
+        {
+          "instance": "XIPD2",
+          "pin": "G",
+          "node": "SENSE.t1",
+          "effective_ohm": 101.1665
+        },
+        {
+          "instance": "XIPREG",
+          "pin": "D",
+          "node": "SENSE.t0",
+          "effective_ohm": 65.66850000000001
+        }
+      ],
+      "max_terminal_to_anchor_ohm": 101.1665
+    },
+    "VIN": {
+      "anchor_is_external_port": true,
+      "nodes": 146,
+      "branches": 216,
+      "all_terminals_connected": true,
+      "inverse_residual": 6.838973831690964e-14,
+      "terminal_to_anchor": [
+        {
+          "instance": "XIPBIAS",
+          "pin": "S",
+          "node": "VIN.t11",
+          "effective_ohm": 11.995883477430116
+        },
+        {
+          "instance": "XIPBIAS",
+          "pin": "B",
+          "node": "VIN.t10",
+          "effective_ohm": 106.8476563089551
+        },
+        {
+          "instance": "XIPTAIL",
+          "pin": "S",
+          "node": "VIN.t9",
+          "effective_ohm": 12.358580629130985
+        },
+        {
+          "instance": "XIPTAIL",
+          "pin": "B",
+          "node": "VIN.t8",
+          "effective_ohm": 108.44219249425086
+        },
+        {
+          "instance": "XIPD1",
+          "pin": "B",
+          "node": "VIN.t7",
+          "effective_ohm": 70.92717596584423
+        },
+        {
+          "instance": "XIPD2",
+          "pin": "B",
+          "node": "VIN.t6",
+          "effective_ohm": 71.19566151882351
+        },
+        {
+          "instance": "XIPLOAD",
+          "pin": "S",
+          "node": "VIN.t3",
+          "effective_ohm": 16.943808173271183
+        },
+        {
+          "instance": "XIPLOAD",
+          "pin": "B",
+          "node": "VIN.t2",
+          "effective_ohm": 71.88315463580864
+        },
+        {
+          "instance": "XIPREG",
+          "pin": "S",
+          "node": "VIN.t5",
+          "effective_ohm": 17.103246882706326
+        },
+        {
+          "instance": "XIPREG",
+          "pin": "B",
+          "node": "VIN.t4",
+          "effective_ohm": 72.0257081963662
+        },
+        {
+          "instance": "XIPOUT",
+          "pin": "S",
+          "node": "VIN.t1",
+          "effective_ohm": 17.306935885042737
+        },
+        {
+          "instance": "XIPOUT",
+          "pin": "B",
+          "node": "VIN.t0",
+          "effective_ohm": 72.19851389525964
+        }
+      ],
+      "max_terminal_to_anchor_ohm": 108.44219249425086
+    },
+    "VSET": {
+      "anchor_is_external_port": true,
+      "nodes": 2,
+      "branches": 1,
+      "all_terminals_connected": true,
+      "inverse_residual": 0.0,
+      "terminal_to_anchor": [
+        {
+          "instance": "XIPD1",
+          "pin": "G",
+          "node": "VSET.t0",
+          "effective_ohm": 101.639
+        }
+      ],
+      "max_terminal_to_anchor_ohm": 101.639
+    },
+    "VSS": {
+      "anchor_is_external_port": true,
+      "nodes": 142,
+      "branches": 214,
+      "all_terminals_connected": true,
+      "inverse_residual": 8.213429936176908e-13,
+      "terminal_to_anchor": [
+        {
+          "instance": "XIND1",
+          "pin": "S",
+          "node": "VSS.t7",
+          "effective_ohm": 12.785962829556512
+        },
+        {
+          "instance": "XIND1",
+          "pin": "B",
+          "node": "VSS.t6",
+          "effective_ohm": 100.6045159140962
+        },
+        {
+          "instance": "XIND2",
+          "pin": "S",
+          "node": "VSS.t9",
+          "effective_ohm": 13.166525740848828
+        },
+        {
+          "instance": "XIND2",
+          "pin": "B",
+          "node": "VSS.t8",
+          "effective_ohm": 106.02373201859413
+        },
+        {
+          "instance": "XINSTAGE",
+          "pin": "S",
+          "node": "VSS.t5",
+          "effective_ohm": 12.177998814211051
+        },
+        {
+          "instance": "XINSTAGE",
+          "pin": "B",
+          "node": "VSS.t4",
+          "effective_ohm": 45.77441514377397
+        },
+        {
+          "instance": "XDIS",
+          "pin": "S",
+          "node": "VSS.t1",
+          "effective_ohm": 13.429644278251605
+        },
+        {
+          "instance": "XDIS",
+          "pin": "B",
+          "node": "VSS.t0",
+          "effective_ohm": 36.588151600255934
+        },
+        {
+          "instance": "XKEEP",
+          "pin": "S",
+          "node": "VSS.t3",
+          "effective_ohm": 20.397679070548918
+        },
+        {
+          "instance": "XKEEP",
+          "pin": "B",
+          "node": "VSS.t2",
+          "effective_ohm": 33.1024224056645
+        }
+      ],
+      "max_terminal_to_anchor_ohm": 106.02373201859413
+    }
+  }
+}

@@ -1,0 +1,7 @@
+* Autonomous VREG threshold clamp candidate; not a complete POR/brownout detector.
+* VDET from external1M/1M VREG divider; terminal CPP exposed for observation.
+.subckt nrz_startup_clamp VIN VSS BIAS VDET CPP
+XUP CPP VSS VIN VIN pfet_06v0 w=1u l=10u ad=.44p as=.44p pd=2.88u ps=2.88u
+XDET CPP VDET VSS VSS nfet_06v0 w=2u l=1u ad=.88p as=.88p pd=4.88u ps=4.88u
+XCLAMP BIAS CPP VSS VSS nfet_06v0 w=10u l=.7u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+.ends nrz_startup_clamp

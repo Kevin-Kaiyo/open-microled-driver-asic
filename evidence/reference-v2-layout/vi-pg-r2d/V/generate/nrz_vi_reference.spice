@@ -1,0 +1,15 @@
+* NGSPICE file created from nrz_vi_reference.ext - technology: gf180mcuD
+
+.subckt nrz_vi_reference VIN VSS VSET SENSE IOUT IPB IN2 ICTRL
+X0 VSS IN1 IN2 VSS nfet_06v0 ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u
+X1 VSS IN1 IN1 VSS nfet_06v0 ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u
+X2 VIN ICTRL IOUT VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X3 VIN ICTRL ICTRL VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X4 ITAIL SENSE IN2 VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X5 VSS IN2 ICTRL VSS nfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=1u
+X6 VIN IPB IPB VIN pfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u
+X7 VIN ICTRL SENSE VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X8 ITAIL VSET IN1 VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X9 VIN IPB ITAIL VIN pfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u
+.ends
+

@@ -1,0 +1,38 @@
+{
+  "name": "matched-board-step",
+  "title": "相同 10% / 10 ns 供电阶跃：保留 100 µs 完整窗口",
+  "xlim_us": [
+    0,
+    100
+  ],
+  "traces": [
+    {
+      "csv": "evidence/pwm-robustness/20261024/step_ref_10ns_board100n.csv",
+      "label": "上一阶段：Miller 30 pF，板级 100 Ω / 100 nF",
+      "color": "#a7664b",
+      "columns": {
+        "time": 0,
+        "current": 1,
+        "sense": [
+          5,
+          12
+        ],
+        "refrail": [
+          8,
+          12
+        ]
+      }
+    },
+    {
+      "csv": "evidence/pwm-reference-v2/20261024/c15_step.csv",
+      "label": "本轮：N2 对地 150 pF，15 nF 滤波，外引 R/L 与阻尼",
+      "color": "#147d83",
+      "columns": {
+        "time": 0,
+        "current": 1,
+        "sense": 5,
+        "refrail": 2
+      }
+    }
+  ]
+}

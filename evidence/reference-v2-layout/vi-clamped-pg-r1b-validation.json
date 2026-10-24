@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "raw_run": "build/reference-v2-layout/vi-clamped-pg-r1b",
+  "manifest_files": 113,
+  "method": "Rehash every frozen artifact, parse full LVS and independent KLayout report, intersect actual channel polygons with Dualgate 55/0, and compare actual negative-control polygons.",
+  "routes": {
+    "V": {
+      "gds_sha256": "fca9c35303db526d858e5472d3d2e4ebcfc3ed990e44131f97f82c7b030b1f7f",
+      "rc_sha256": "3850633101daada03c32e4b43e2b19b7e4e9c7cd08cd5a9bcdda185547974c36",
+      "dualgate_checks": [
+        {
+          "instance": "IPBIAS",
+          "model": "pfet_06v0",
+          "channel_um2": 80,
+          "dualgate_overlap_um2": 80.0,
+          "passed": true
+        },
+        {
+          "instance": "IPTAIL",
+          "model": "pfet_06v0",
+          "channel_um2": 80,
+          "dualgate_overlap_um2": 80.0,
+          "passed": true
+        },
+        {
+          "instance": "IPD1",
+          "model": "pfet_06v0",
+          "channel_um2": 1000,
+          "dualgate_overlap_um2": 1000.0,
+          "passed": true
+        },
+        {
+          "instance": "IPD2",
+          "model": "pfet_06v0",
+          "channel_um2": 1000,
+          "dualgate_overlap_um2": 1000.0,
+          "passed": true
+        },
+        {
+          "instance": "IND1",
+          "model": "nfet_06v0",
+          "channel_um2": 500,
+          "dualgate_overlap_um2": 500.0,
+          "passed": true
+        },
+        {
+          "instance": "IND2",
+          "model": "nfet_06v0",
+          "channel_um2": 500,
+          "dualgate_overlap_um2": 500.0,
+          "passed": true
+        },
+        {
+          "instance": "INSTAGE",
+          "model": "nfet_06v0",
+          "channel_um2": 20,
+          "dualgate_overlap_um2": 20.0,
+          "passed": true
+        },
+        {
+          "instance": "IPLOAD",
+          "model": "pfet_06v0",
+          "channel_um2": 1000,
+          "dualgate_overlap_um2": 1000.0,
+          "passed": true
+        },
+        {
+          "instance": "IPREG",
+          "model": "pfet_06v0",
+          "channel_um2": 1000,
+          "dualgate_overlap_um2": 1000.0,
+          "passed": true
+        },
+        {
+          "instance": "IPOUT",
+          "model": "pfet_06v0",
+          "channel_um2": 1000,
+          "dualgate_overlap_um2": 1000.0,
+          "passed": true
+        },
+        {
+          "instance": "DIS",
+          "model": "nfet_06v0",
+          "channel_um2": 7.0,
+          "dualgate_overlap_um2": 7.0,
+          "passed": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "control": "reference-gate-open",
+          "actual_changed_area_um2": 0.22799999999999998,
+          "lvs_rejected": true
+        },
+        {
+          "control": "supply-vss-short",
+          "actual_changed_area_um2": 0.64,
+          "lvs_rejected": true
+        }
+      ],
+      "counts": {
+        "mos": 11,
+        "device_resistors": 0,
+        "resistors": 460,
+        "capacitors": 241,
+        "zero_valued_capacitors": 0
+      },
+      "all_nets_extracted": true
+    }
+  }
+}

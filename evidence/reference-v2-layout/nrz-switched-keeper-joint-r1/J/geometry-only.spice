@@ -1,0 +1,25 @@
+* Explicit control derived from full raw RC; original RC retained.
+.subckt nrz_reference_integrated DATA OUT VDD VSS BIAS DUMMY VIN VSET SENSE IPB IN2 ICTRL DISABLE KRET
+X0 VSS DI GB VSS nfet_06v0 ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u
+X1 VIN ICTRL ICTRL VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X2 VIN ICTRL BIAS VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X4 VX GB DUMMY VSS nfet_06v0 ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u
+X5 VIN IPB IPB VIN pfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u
+X6 VSS DISABLE BIAS VSS nfet_06v0 ad=4.4p pd=20.88u as=4.4p ps=20.88u w=10u l=0.7u
+X7 ITAIL SENSE IN2 VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X8 VSS IN2 ICTRL VSS nfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=1u
+X9 ITAIL VSET IN1 VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X10 VIN IPB ITAIL VIN pfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u
+X11 VSS BIAS OUT VSS nfet_03v3 ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u
+X12 VIN ICTRL SENSE VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X13 VSS DISABLE KRET VSS nfet_06v0 ad=0.44p pd=2.88u as=0.44p ps=2.88u w=1u l=0.7u
+X14 VX GP OUT VSS nfet_06v0 ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u
+X15 VDD DI GB VDD pfet_06v0 ad=1.7292p pd=8.74u as=1.7292p ps=8.74u w=3.93u l=0.55u
+X16 VSS IN1 IN2 VSS nfet_06v0 ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u
+X17 VSS BIAS VX VSS nfet_03v3 ad=2.5344p pd=12.4u as=2.5344p ps=12.4u w=5.76u l=1u
+X18 VSS BIAS BIAS VSS nfet_03v3 ad=0.88p pd=4.88u as=0.88p ps=4.88u w=2u l=1u
+X19 VSS GB GP VSS nfet_06v0 ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u
+X20 VSS IN1 IN1 VSS nfet_06v0 ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u
+X21 VDD GB GP VDD pfet_06v0 ad=1.7292p pd=8.74u as=1.7292p ps=8.74u w=3.93u l=0.55u
+X3 DI DATA VSS ppolyf_u_1k_6p0 r_width=1u r_length=58u
+.ends nrz_reference_integrated

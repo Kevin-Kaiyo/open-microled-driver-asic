@@ -1,0 +1,5 @@
+{
+ "diagnosis": "60pF and1000pF VREF-to-CTRL capacitors cannot close both excursion and recovery. Original Miller capacitor couples output gate to the slower first-stage N2 node; the largest feedforward adds a second slow energy store.",
+ "bounded_compensation_test": {"removed":"CCOMP N2 CTRL30pF", "added":"CCOMP N2 VSS150pF", "rationale":"Same order as original30pF multiplied by a several-fold second-stage gain; first test local loop before transient.", "unchanged":"CSENSE30pF, all39MOS and full distributed RC, synthetic LED, external0.5V VSET"},
+ "bounded_startup_test": {"module":"softstart_v1.spice", "pass_total_W_um":200,"L_um":1,"gate_pullup_ohm":1000000,"gate_discharge_series_ohm":100000,"bootstrap_cap_f":3.3e-11,"external_START_after_raw_ref_ramp_s":2e-6,"start_edge_s":1e-8,"fault_held_s":2e-5,"rationale":"Isolate rapid raw VIN rise; bootstrap gate with VIN initially. START then discharges the gate through finite resistance; run-time path is the MOS channel, not the old100ohm100nF filter.","boundary":"No output reservoir cap; gate capacitor and resistors are explicit external components. START is an external sequence assumption, not autonomous POR."}
+}

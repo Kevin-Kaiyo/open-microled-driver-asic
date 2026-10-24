@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "status": "physical_pass_electrical_constant_keeper_control_rejected",
+  "raw_run": "build/reference-v2-layout/nrz-joint-r1c",
+  "published_run": "evidence/reference-v2-layout/nrz-joint-r1c",
+  "electrical_status": "NRZ agent reported actual fullRC jointDC failure: FF I0 +6.485%, I1 +5.919%; retained control, switched keeper candidate pending electrical freeze.",
+  "gds": {
+    "path": "build/reference-v2-layout/nrz-joint-r1c/J/generate/nrz_reference_integrated.gds",
+    "sha256": "abec81a846d50758d227b3c6c85c6c4a19b047fdb84702a3b4cfea01d8078d88",
+    "width_um": 330.99,
+    "height_um": 340.06,
+    "area_um2": 112556.4594,
+    "scope": "test-macro bounding box, not chip area"
+  },
+  "rc": {
+    "path": "build/reference-v2-layout/nrz-joint-r1c/J/full-rc/nrz_reference_integrated_rc.spice",
+    "sha256": "b497c0d439475250a9a7c6cb15efad8e1fe8b4afce14b736a5317f024ee867f6",
+    "ports": [
+      "DATA",
+      "OUT",
+      "VDD",
+      "VSS",
+      "BIAS",
+      "DUMMY",
+      "VIN",
+      "VSET",
+      "SENSE",
+      "IPB",
+      "IN2",
+      "ICTRL",
+      "DISABLE"
+    ],
+    "counts": {
+      "mos": 20,
+      "device_resistors": 1,
+      "resistors": 589,
+      "capacitors": 317,
+      "zero_valued_capacitors": 0
+    },
+    "net_count": 19,
+    "authoritative_c_total_farad": 1.430947034911e-12
+  },
+  "actual_geometry_preservation": "Every source fabrication polygon retained; all11 nonrouting layer unions exact. 0.0482um2 N+ source corner slivers restored after Magic roundtrip, then finalGDS independently rechecked and extracted.",
+  "controls": [
+    {
+      "name": "reference-gate-open",
+      "actual_edited_area_um2": 0.22799999999999998,
+      "lvs_rejected": true
+    },
+    {
+      "name": "supply-vss-short",
+      "actual_edited_area_um2": 0.64,
+      "lvs_rejected": true
+    },
+    {
+      "name": "bridge-BIAS-open",
+      "actual_edited_area_um2": 6.0,
+      "lvs_rejected": true
+    }
+  ],
+  "checks": {
+    "preliminary_magic_drc": true,
+    "macro_geometry_preservation": true,
+    "magic_drc": true,
+    "lvs": true,
+    "readback_drc": true,
+    "readback_lvs": true,
+    "klayout_drc": true,
+    "pex_audit": true,
+    "gds_geometry": true
+  },
+  "audits": [
+    "nrz-joint-r1c-validation.json",
+    "nrz-joint-r1c-network-audit.json",
+    "nrz-joint-r1c-geometry-audit.json"
+  ],
+  "image": "visuals/nrz-joint-r1c.png",
+  "image_visual_review": "passed",
+  "limitations": [
+    "External anchor, compensation150p, keeper1.8M, dummy50k, input100n/ESR and DISABLE GPIO not included in chipPEX.",
+    "FullR includes supply/body and actual M4/M5 bridges. C complete logical matrix with explicit native allocation correction; not EM field extraction.",
+    "VIN5V and logicVDD separate, no pads/ESD/package/silicon/optical qualification."
+  ]
+}

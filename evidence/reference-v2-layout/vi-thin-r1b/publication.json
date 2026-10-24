@@ -1,0 +1,796 @@
+{
+  "schema_version": 1,
+  "physical_validation": {
+    "schema_version": 1,
+    "passed": true,
+    "raw_run": "build/reference-v2-layout/vi-thin-r1b",
+    "manifest_files": 112,
+    "method": "Rehash every frozen artifact, parse full LVS and independent KLayout report, intersect actual channel polygons with Dualgate 55/0, and compare actual negative-control polygons.",
+    "routes": {
+      "V": {
+        "gds_sha256": "3cf98d14f07883a7866be34d6b049a35fd0b54a176eacbf32c0927c9cf76375e",
+        "rc_sha256": "970c381ed2b9e70260b32b059338e99b9a5d8c0008fd9a606f35afc20dbf5eb6",
+        "dualgate_checks": [
+          {
+            "instance": "IPBIAS",
+            "model": "pfet_06v0",
+            "channel_um2": 80,
+            "dualgate_overlap_um2": 80.0,
+            "passed": true
+          },
+          {
+            "instance": "IPTAIL",
+            "model": "pfet_06v0",
+            "channel_um2": 80,
+            "dualgate_overlap_um2": 80.0,
+            "passed": true
+          },
+          {
+            "instance": "IPD1",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "IPD2",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "IND1",
+            "model": "nfet_06v0",
+            "channel_um2": 500,
+            "dualgate_overlap_um2": 500.0,
+            "passed": true
+          },
+          {
+            "instance": "IND2",
+            "model": "nfet_06v0",
+            "channel_um2": 500,
+            "dualgate_overlap_um2": 500.0,
+            "passed": true
+          },
+          {
+            "instance": "INSTAGE",
+            "model": "nfet_06v0",
+            "channel_um2": 20,
+            "dualgate_overlap_um2": 20.0,
+            "passed": true
+          },
+          {
+            "instance": "IPLOAD",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "IPREG",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          },
+          {
+            "instance": "IPOUT",
+            "model": "pfet_06v0",
+            "channel_um2": 1000,
+            "dualgate_overlap_um2": 1000.0,
+            "passed": true
+          }
+        ],
+        "negative_controls": [
+          {
+            "control": "reference-gate-open",
+            "actual_changed_area_um2": 0.22799999999999998,
+            "lvs_rejected": true
+          },
+          {
+            "control": "supply-vss-short",
+            "actual_changed_area_um2": 0.64,
+            "lvs_rejected": true
+          }
+        ],
+        "counts": {
+          "mos": 10,
+          "device_resistors": 0,
+          "resistors": 95,
+          "capacitors": 92,
+          "zero_valued_capacitors": 0
+        },
+        "all_nets_extracted": true
+      }
+    }
+  },
+  "source_run": "build/reference-v2-layout/vi-thin-r1b",
+  "scope": "Actual experimental transistor-core GDS, DRC, LVS, PEX and fault controls; electrical performance validated separately.",
+  "exclusions": [
+    "Full PDK",
+    "Tool binaries",
+    "Transient waveform data",
+    "Package/EM/IR/ESD/pad/full-chip/silicon signoff"
+  ],
+  "copied_files": [
+    {
+      "path": "V/capacitance-correction.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/capacitance-correction.json",
+      "sha256": "f0a798d2c7b39a9f91f42ca9e10aa3f2a90c9254a406fc8b42409fd203ba5d4e",
+      "size": 28448
+    },
+    {
+      "path": "V/capacitance-only.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/capacitance-only.spice",
+      "sha256": "b5443f331eeca70497028246eb2891adb612edd8a5e01f64fd18144604b0551e",
+      "size": 3670
+    },
+    {
+      "path": "V/controls/reference-gate-open/extract/extract.tcl",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/reference-gate-open/extract/extract.tcl",
+      "sha256": "95626f9f6854a4f3ca55d90cb530990c63f0c1152497ee58f4c723f291c31b4f",
+      "size": 1056
+    },
+    {
+      "path": "V/controls/reference-gate-open/extract/magic.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/reference-gate-open/extract/magic.log",
+      "sha256": "109d221f5fcaa7d21c43aef46986e2b27cb845c196e99a2ecda6ea9dcdc3420e",
+      "size": 1463
+    },
+    {
+      "path": "V/controls/reference-gate-open/extract/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/reference-gate-open/extract/magic.log.command.json",
+      "sha256": "915e113853d96c303fce8c95d7b9307ee848270b04466d6398c79bf984f0e004",
+      "size": 573
+    },
+    {
+      "path": "V/controls/reference-gate-open/extract/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/reference-gate-open/extract/nrz_vi_reference.ext",
+      "sha256": "06cff6827aee2a314c66f0765e13274490a28ee52446334f289a4d593cec94e5",
+      "size": 4948
+    },
+    {
+      "path": "V/controls/reference-gate-open/extract/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/reference-gate-open/extract/nrz_vi_reference.mag",
+      "sha256": "3da9fae3495415c47db7daac72216e8c41ab24381658e9bea1df7d84a0115fad",
+      "size": 39418
+    },
+    {
+      "path": "V/controls/reference-gate-open/extract/nrz_vi_reference.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/reference-gate-open/extract/nrz_vi_reference.spice",
+      "sha256": "d9a29a6e72cc12472a876c68fb2675a6eb06fe2fd75141f77ad94ef0a04376b8",
+      "size": 961
+    },
+    {
+      "path": "V/controls/reference-gate-open/lvs-stdout.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/reference-gate-open/lvs-stdout.log",
+      "sha256": "339b18a529bb00f1f5d1417c68220698cb1faf6625d22aa2215c071f627765f0",
+      "size": 5178
+    },
+    {
+      "path": "V/controls/reference-gate-open/lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/reference-gate-open/lvs-stdout.log.command.json",
+      "sha256": "959d3ef26f900be4d6b583b9ef6eec6ff21e3499c3bd0570321a469ebe2f4cfa",
+      "size": 842
+    },
+    {
+      "path": "V/controls/reference-gate-open/lvs.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/reference-gate-open/lvs.log",
+      "sha256": "6124674415ca91c90e8d19b19bff6e301a8175f92b26783db7ec1f6c4067902f",
+      "size": 4193
+    },
+    {
+      "path": "V/controls/reference-gate-open/nrz_vi_reference.gds",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/reference-gate-open/nrz_vi_reference.gds",
+      "sha256": "811164c8ddfeca8e4ed4e9281d794de6efbc83cd82f802c083fcc99a9b55b4c9",
+      "size": 424920
+    },
+    {
+      "path": "V/controls/supply-vss-short/extract/extract.tcl",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/supply-vss-short/extract/extract.tcl",
+      "sha256": "b6adb94b9e4ba70074e09485671208273ea11ee2d9b0d638f1765b1277ccf900",
+      "size": 1053
+    },
+    {
+      "path": "V/controls/supply-vss-short/extract/magic.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/supply-vss-short/extract/magic.log",
+      "sha256": "ecd5626328f7a46e701ea248351d9aab51f4d46f09001827e97a017570fa72a9",
+      "size": 1518
+    },
+    {
+      "path": "V/controls/supply-vss-short/extract/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/supply-vss-short/extract/magic.log.command.json",
+      "sha256": "9a66e6d02a4c1c5e5c60af0169606c7904e5888ed805a9d5aa0a67442d8b1a45",
+      "size": 567
+    },
+    {
+      "path": "V/controls/supply-vss-short/extract/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/supply-vss-short/extract/nrz_vi_reference.ext",
+      "sha256": "2f762efd42015e8bcba3dba50990c91691c0c5d35dcfc4b3bd3cd2db86cbe397",
+      "size": 4426
+    },
+    {
+      "path": "V/controls/supply-vss-short/extract/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/supply-vss-short/extract/nrz_vi_reference.mag",
+      "sha256": "86e010eac3041659b311d98057189d86ccf4e54f2d4c9398e842d805eb2ba467",
+      "size": 39333
+    },
+    {
+      "path": "V/controls/supply-vss-short/extract/nrz_vi_reference.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/supply-vss-short/extract/nrz_vi_reference.spice",
+      "sha256": "b53500c677802db4f096cd58913c4da68960b0e268620ed960040f5a1ae13a31",
+      "size": 1012
+    },
+    {
+      "path": "V/controls/supply-vss-short/lvs-stdout.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/supply-vss-short/lvs-stdout.log",
+      "sha256": "d0d7a7df33304cf3e5eb34de64ac349b5df31d0a1f0a7c34b2262540af5effe8",
+      "size": 5093
+    },
+    {
+      "path": "V/controls/supply-vss-short/lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/supply-vss-short/lvs-stdout.log.command.json",
+      "sha256": "4ce9d1a408b30607ae901db63bf9867647f59ecb5b4c42ce9e7f06d62764374e",
+      "size": 833
+    },
+    {
+      "path": "V/controls/supply-vss-short/lvs.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/supply-vss-short/lvs.log",
+      "sha256": "91ddee49cb846efea484febc7f5625d64c5a7a7da3245d7a748b9ceba17ddc28",
+      "size": 4914
+    },
+    {
+      "path": "V/controls/supply-vss-short/nrz_vi_reference.gds",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/controls/supply-vss-short/nrz_vi_reference.gds",
+      "sha256": "1920fe8c8fd205daacc5d26cdd2605ff728e47e42557358b20919a97d0dbb5e4",
+      "size": 424774
+    },
+    {
+      "path": "V/flat-c-control/export.tcl",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/flat-c-control/export.tcl",
+      "sha256": "2cbc88d41fbc21702c1b8668559e3fd4f47e510e2311496d494d37cbd52519ac",
+      "size": 189
+    },
+    {
+      "path": "V/flat-c-control/flat-c.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/flat-c-control/flat-c.spice",
+      "sha256": "310d9271e9be6c680331d1e9f129cde52f7ce0dea837bbf5ab4c8947bedc024a",
+      "size": 1550
+    },
+    {
+      "path": "V/flat-c-control/magic.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/flat-c-control/magic.log",
+      "sha256": "0d7cb8128122fb490049cb3f21b71bca805bf29a310bf46e1a84b7a80645e225",
+      "size": 1478
+    },
+    {
+      "path": "V/flat-c-control/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/flat-c-control/magic.log.command.json",
+      "sha256": "2146eab24d7857b6de058f9b3c642e1b472de677fc64c5d4ae910405d224e24f",
+      "size": 528
+    },
+    {
+      "path": "V/flat-c-control/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/flat-c-control/nrz_vi_reference.ext",
+      "sha256": "9ade707341ab0e788c77f5166919769bea7c51d86fab4d95de7aeb544614d9e9",
+      "size": 4651
+    },
+    {
+      "path": "V/flat-c-control/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/flat-c-control/nrz_vi_reference.mag",
+      "sha256": "ca82089b6085ae83d5a3e315bb353085949b54818202da664b06fb6ff6bab25d",
+      "size": 39390
+    },
+    {
+      "path": "V/full-rc/coverage.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/full-rc/coverage.json",
+      "sha256": "155f4060162129f06eb9de6eda92facfbde220e6d29026e63fef7370d718157b",
+      "size": 437
+    },
+    {
+      "path": "V/full-rc/drive-attributes.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/full-rc/drive-attributes.json",
+      "sha256": "08a5c105679c6dcc2219d739c4d9970d42defc17c246240853ece772243bd267",
+      "size": 1146
+    },
+    {
+      "path": "V/full-rc/extract-driven.tcl",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/full-rc/extract-driven.tcl",
+      "sha256": "8f1824282c0428bfe24726c028e1c9b4174c6153349f868b58e8dde3e6243425",
+      "size": 269
+    },
+    {
+      "path": "V/full-rc/magic.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/full-rc/magic.log",
+      "sha256": "fe1798f56ac86a1105bbec91f0b717975c7372536e8a72c63ff47c4e081b838a",
+      "size": 1709
+    },
+    {
+      "path": "V/full-rc/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/full-rc/magic.log.command.json",
+      "sha256": "76fd02e589965903fdcd628a776bfbde3c8d462de6d0b9aed35040a506dcce1f",
+      "size": 522
+    },
+    {
+      "path": "V/full-rc/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/full-rc/nrz_vi_reference.ext",
+      "sha256": "d6a01b52e4bc8a92aec7a96eb0bc5a06a0edd3187ef527dca997379c3e747f66",
+      "size": 5089
+    },
+    {
+      "path": "V/full-rc/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/full-rc/nrz_vi_reference.mag",
+      "sha256": "ca82089b6085ae83d5a3e315bb353085949b54818202da664b06fb6ff6bab25d",
+      "size": 39390
+    },
+    {
+      "path": "V/full-rc/nrz_vi_reference.res.ext",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/full-rc/nrz_vi_reference.res.ext",
+      "sha256": "71ba1613482c77a9501baa0fc1e956951ce4bac3875fcf1ea8ae22e3c3ff816b",
+      "size": 8019
+    },
+    {
+      "path": "V/full-rc/nrz_vi_reference_rc.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/full-rc/nrz_vi_reference_rc.spice",
+      "sha256": "970c381ed2b9e70260b32b059338e99b9a5d8c0008fd9a606f35afc20dbf5eb6",
+      "size": 7275
+    },
+    {
+      "path": "V/gds-geometry-audit.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/gds-geometry-audit.json",
+      "sha256": "b48c6aec00917bd98c4e19f559ae9692fb9361ba6e10fc6c4849efa2638f944e",
+      "size": 2981
+    },
+    {
+      "path": "V/generate/magic.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/magic.log",
+      "sha256": "7041bd5dcfb1da2b6a80394dbe19420ef43987e8b4c675a8ec183dff948e4726",
+      "size": 2178
+    },
+    {
+      "path": "V/generate/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/magic.log.command.json",
+      "sha256": "46c1266c166e42e1eb9a98fb4b7e987da93e27f53987a9884a84db7d1f9170ec",
+      "size": 516
+    },
+    {
+      "path": "V/generate/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/nrz_vi_reference.ext",
+      "sha256": "5d2d140c3ea2d10e5d9e3e5074189f1e85bf88b17d2ecda177e97320293acab9",
+      "size": 4636
+    },
+    {
+      "path": "V/generate/nrz_vi_reference.gds",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/nrz_vi_reference.gds",
+      "sha256": "3cf98d14f07883a7866be34d6b049a35fd0b54a176eacbf32c0927c9cf76375e",
+      "size": 424856
+    },
+    {
+      "path": "V/generate/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/nrz_vi_reference.mag",
+      "sha256": "372ad0fc596d5589bc7a6d2083ed5965aadfd533e8520f0039bc65234090d6bb",
+      "size": 39390
+    },
+    {
+      "path": "V/generate/nrz_vi_reference.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/nrz_vi_reference.spice",
+      "sha256": "e3e768c722271088ac19a79ed4b63ba0aabec96693af917092410b0ea2a8c0ca",
+      "size": 952
+    },
+    {
+      "path": "V/generate/pcell_IND1.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/pcell_IND1.mag",
+      "sha256": "6d33bf2237c1982d46dff1927a52b8b7a8d18197f062f2081075103cc8701cc1",
+      "size": 1862
+    },
+    {
+      "path": "V/generate/pcell_IND2.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/pcell_IND2.mag",
+      "sha256": "6d33bf2237c1982d46dff1927a52b8b7a8d18197f062f2081075103cc8701cc1",
+      "size": 1862
+    },
+    {
+      "path": "V/generate/pcell_INSTAGE.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/pcell_INSTAGE.mag",
+      "sha256": "3e675bda5695bbec87bc4efed7fb628ac7379a767d1715ccbda6204ab7e95859",
+      "size": 1744
+    },
+    {
+      "path": "V/generate/pcell_IPBIAS.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/pcell_IPBIAS.mag",
+      "sha256": "9fe4a0cfe1b9f149b56bca726187d6a9594bdae8c98d83efad82c348c3d1d1dc",
+      "size": 1460
+    },
+    {
+      "path": "V/generate/pcell_IPD1.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/pcell_IPD1.mag",
+      "sha256": "1c24cf00a64fa98bef46645e46b5070e8ac565326a196e392d41bf7c3d7d3407",
+      "size": 1610
+    },
+    {
+      "path": "V/generate/pcell_IPD2.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/pcell_IPD2.mag",
+      "sha256": "1c24cf00a64fa98bef46645e46b5070e8ac565326a196e392d41bf7c3d7d3407",
+      "size": 1610
+    },
+    {
+      "path": "V/generate/pcell_IPLOAD.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/pcell_IPLOAD.mag",
+      "sha256": "1c24cf00a64fa98bef46645e46b5070e8ac565326a196e392d41bf7c3d7d3407",
+      "size": 1610
+    },
+    {
+      "path": "V/generate/pcell_IPOUT.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/pcell_IPOUT.mag",
+      "sha256": "1c24cf00a64fa98bef46645e46b5070e8ac565326a196e392d41bf7c3d7d3407",
+      "size": 1610
+    },
+    {
+      "path": "V/generate/pcell_IPREG.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/pcell_IPREG.mag",
+      "sha256": "1c24cf00a64fa98bef46645e46b5070e8ac565326a196e392d41bf7c3d7d3407",
+      "size": 1610
+    },
+    {
+      "path": "V/generate/pcell_IPTAIL.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/generate/pcell_IPTAIL.mag",
+      "sha256": "9fe4a0cfe1b9f149b56bca726187d6a9594bdae8c98d83efad82c348c3d1d1dc",
+      "size": 1460
+    },
+    {
+      "path": "V/geometry-only.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/geometry-only.spice",
+      "sha256": "4cab207f10d9c218b504a73fd594a0879c1abfa4c7e970cec39bb0b87eff4326",
+      "size": 961
+    },
+    {
+      "path": "V/klayout/drc_run_2026_10_24_11_34_16.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/klayout/drc_run_2026_10_24_11_34_16.log",
+      "sha256": "f630518bc7522b673aa7c9a1f2121881d616fdf924914d64cdbc753fe7e95b15",
+      "size": 1602
+    },
+    {
+      "path": "V/klayout/layers_def.drc",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/klayout/layers_def.drc",
+      "sha256": "5122a9179ad810c29c3c3afb2500990cbbd3dcae27aebca55b13aaeef181155e",
+      "size": 17316
+    },
+    {
+      "path": "V/klayout/main.drc",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/klayout/main.drc",
+      "sha256": "1c683e80a80d068c047184780b1feea630c46fe59c25cf527d5e40ba5151b3c7",
+      "size": 393698
+    },
+    {
+      "path": "V/klayout/nrz_vi_reference_main.lyrdb",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/klayout/nrz_vi_reference_main.lyrdb",
+      "sha256": "b4b2cbaaeca07e51deab816cde6a32cc5369024c67141f79390d9f3d601e682e",
+      "size": 120976
+    },
+    {
+      "path": "V/klayout-command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/klayout-command.json",
+      "sha256": "26c0b3461f05a77ac0f4d5aeecf084d807f21caecd9d244e818bf9c501407f80",
+      "size": 1434
+    },
+    {
+      "path": "V/klayout-result.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/klayout-result.json",
+      "sha256": "7d4eaf306a6a5bcb56e3bdbb0a03a26eb3b7da034ffabdb9026edbb8da79f83d",
+      "size": 60
+    },
+    {
+      "path": "V/klayout.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/klayout.log",
+      "sha256": "044c1f8e01e296ddddf82a124f9762146e05fd551c9ba91d6eae38c2b4844772",
+      "size": 57113
+    },
+    {
+      "path": "V/lvs-stdout.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/lvs-stdout.log",
+      "sha256": "bfde1cc9c481d73c06c18dc9e43f95bc443568bbedc7101efcc9105dba0ca951",
+      "size": 4940
+    },
+    {
+      "path": "V/lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/lvs-stdout.log.command.json",
+      "sha256": "e415997e329f5080a03f7ff594f0eb4e15b30538cdb10507a246903375158d37",
+      "size": 756
+    },
+    {
+      "path": "V/lvs.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/lvs.log",
+      "sha256": "a91a22b2b52724fa9e8f8e8d7c5d00491a66a9c3457104afa94ce224fd936feb",
+      "size": 3694
+    },
+    {
+      "path": "V/negative-controls.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/negative-controls.json",
+      "sha256": "d6302801aa00114402b050a1aeb5dc0819df1389c208346a926f5e8641890308",
+      "size": 1216
+    },
+    {
+      "path": "V/pex-audit.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/pex-audit.json",
+      "sha256": "70825d6cc5a31111b977ef286e8e335e55ebdf4503a33937b212639b77fed8ba",
+      "size": 71439
+    },
+    {
+      "path": "V/physical-contract.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/physical-contract.json",
+      "sha256": "94823d64eeab48665682079e1fb1a3838302dc4de2d898962a2840fccef44649",
+      "size": 31938
+    },
+    {
+      "path": "V/rc-collapse-lvs-stdout.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/rc-collapse-lvs-stdout.log",
+      "sha256": "125850c1b9ad60068b02c189cc71b0639e527c16a979b0cebff14be50a5d9595",
+      "size": 4952
+    },
+    {
+      "path": "V/rc-collapse-lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/rc-collapse-lvs-stdout.log.command.json",
+      "sha256": "aeedcc60f35987917ca55faba3e1adad7dc9e7953cd304e35427e5cfb21c62fa",
+      "size": 756
+    },
+    {
+      "path": "V/rc-collapse-lvs.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/rc-collapse-lvs.log",
+      "sha256": "a91a22b2b52724fa9e8f8e8d7c5d00491a66a9c3457104afa94ce224fd936feb",
+      "size": 3694
+    },
+    {
+      "path": "V/rc-lumped-capacitance.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/rc-lumped-capacitance.spice",
+      "sha256": "e808a37a60b8318c764afe050b33d528977b3402ef918257f423db63e12e3aac",
+      "size": 4624
+    },
+    {
+      "path": "V/readback/extract.tcl",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/readback/extract.tcl",
+      "sha256": "3ea237593634f3a65754aa2a18ce8801e29e481c9864970c653e9af84cf12fb1",
+      "size": 1391
+    },
+    {
+      "path": "V/readback/magic.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/readback/magic.log",
+      "sha256": "5e6ae0aca10dd37c00440fc066e08ae6a2e7a4ae9d93d3b73750fd7aeedd30b5",
+      "size": 2467
+    },
+    {
+      "path": "V/readback/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/readback/magic.log.command.json",
+      "sha256": "9244a66baa5a4010b7ed25d976063e9e4c61b64982a7841d11bb21238701b008",
+      "size": 517
+    },
+    {
+      "path": "V/readback/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/readback/nrz_vi_reference.ext",
+      "sha256": "9ade707341ab0e788c77f5166919769bea7c51d86fab4d95de7aeb544614d9e9",
+      "size": 4651
+    },
+    {
+      "path": "V/readback/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/readback/nrz_vi_reference.mag",
+      "sha256": "ca82089b6085ae83d5a3e315bb353085949b54818202da664b06fb6ff6bab25d",
+      "size": 39390
+    },
+    {
+      "path": "V/readback/nrz_vi_reference.res.ext",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/readback/nrz_vi_reference.res.ext",
+      "sha256": "aa8a49c6c02d18ca233ef42f1b807b40656f31deeb88f093acae76340ce03806",
+      "size": 7729
+    },
+    {
+      "path": "V/readback/nrz_vi_reference.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/readback/nrz_vi_reference.spice",
+      "sha256": "e3e768c722271088ac19a79ed4b63ba0aabec96693af917092410b0ea2a8c0ca",
+      "size": 952
+    },
+    {
+      "path": "V/readback/nrz_vi_reference_c.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/readback/nrz_vi_reference_c.spice",
+      "sha256": "5156ec394e11ee41d40e246bc9c68a2a901ce711243a6a95f8a9e495b52fd3e7",
+      "size": 1509
+    },
+    {
+      "path": "V/readback/nrz_vi_reference_rc.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/readback/nrz_vi_reference_rc.spice",
+      "sha256": "405d7923bd2a9052c2c6275c3a3be8fc111795b4c542939a3ad3e0989973ecee",
+      "size": 5388
+    },
+    {
+      "path": "V/readback-lvs-stdout.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/readback-lvs-stdout.log",
+      "sha256": "2afc2ff584dc2ab6d41cf0e8d091f83c9e346920be70d43f5f6b2a486758fe6d",
+      "size": 4967
+    },
+    {
+      "path": "V/readback-lvs-stdout.log.command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/readback-lvs-stdout.log.command.json",
+      "sha256": "8b21c156474bebbe8cbb34cf5197ee4829838c6c688efb1c8b3730c01f7d6e9f",
+      "size": 765
+    },
+    {
+      "path": "V/readback-lvs.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/readback-lvs.log",
+      "sha256": "a91a22b2b52724fa9e8f8e8d7c5d00491a66a9c3457104afa94ce224fd936feb",
+      "size": 3694
+    },
+    {
+      "path": "V/selected-electrical-source.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/selected-electrical-source.spice",
+      "sha256": "71908fcbe01b0fd6c9ec4179d378b9552e27ee3aba0f6e214fdca6a50d472202",
+      "size": 1150
+    },
+    {
+      "path": "V/source/contract.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/source/contract.json",
+      "sha256": "0dbb21919d0ba77fa0d278f0aeac87eb6ecdde77a23093dbf8e3a7b397bef268",
+      "size": 18592
+    },
+    {
+      "path": "V/source/generate.tcl",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/source/generate.tcl",
+      "sha256": "a5b76da0204f7ba1d6f13353b3cf1f3d359431399be3607dcf9fc2f0ef4ebaa6",
+      "size": 8583
+    },
+    {
+      "path": "V/source/schematic.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/source/schematic.spice",
+      "sha256": "6a6a2e1775d7011159fd45529f8d066a20e138f59eb81e27efc1f7ecddbd23e7",
+      "size": 646
+    },
+    {
+      "path": "V/unmodified-full-rc/coverage.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/unmodified-full-rc/coverage.json",
+      "sha256": "155f4060162129f06eb9de6eda92facfbde220e6d29026e63fef7370d718157b",
+      "size": 437
+    },
+    {
+      "path": "V/unmodified-full-rc/drive-attributes.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/unmodified-full-rc/drive-attributes.json",
+      "sha256": "08a5c105679c6dcc2219d739c4d9970d42defc17c246240853ece772243bd267",
+      "size": 1146
+    },
+    {
+      "path": "V/unmodified-full-rc/extract-driven.tcl",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/unmodified-full-rc/extract-driven.tcl",
+      "sha256": "8f1824282c0428bfe24726c028e1c9b4174c6153349f868b58e8dde3e6243425",
+      "size": 269
+    },
+    {
+      "path": "V/unmodified-full-rc/magic.log",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/unmodified-full-rc/magic.log",
+      "sha256": "fe1798f56ac86a1105bbec91f0b717975c7372536e8a72c63ff47c4e081b838a",
+      "size": 1709
+    },
+    {
+      "path": "V/unmodified-full-rc/magic.log.command.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/unmodified-full-rc/magic.log.command.json",
+      "sha256": "76fd02e589965903fdcd628a776bfbde3c8d462de6d0b9aed35040a506dcce1f",
+      "size": 522
+    },
+    {
+      "path": "V/unmodified-full-rc/nrz_vi_reference.ext",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/unmodified-full-rc/nrz_vi_reference.ext",
+      "sha256": "d6a01b52e4bc8a92aec7a96eb0bc5a06a0edd3187ef527dca997379c3e747f66",
+      "size": 5089
+    },
+    {
+      "path": "V/unmodified-full-rc/nrz_vi_reference.mag",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/unmodified-full-rc/nrz_vi_reference.mag",
+      "sha256": "ca82089b6085ae83d5a3e315bb353085949b54818202da664b06fb6ff6bab25d",
+      "size": 39390
+    },
+    {
+      "path": "V/unmodified-full-rc/nrz_vi_reference.res.ext",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/unmodified-full-rc/nrz_vi_reference.res.ext",
+      "sha256": "71ba1613482c77a9501baa0fc1e956951ce4bac3875fcf1ea8ae22e3c3ff816b",
+      "size": 8019
+    },
+    {
+      "path": "V/unmodified-full-rc/nrz_vi_reference_rc.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/V/unmodified-full-rc/nrz_vi_reference_rc.spice",
+      "sha256": "c47bdb153dbbbd13ec6ba723176f55fbcc3928f2f469853f359f3ae522881849",
+      "size": 5874
+    },
+    {
+      "path": "artifact-manifest.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/artifact-manifest.json",
+      "sha256": "88af348938d268a0b9cbff0708a58d8d9c773a7d91cdda96c409ca31028b00e0",
+      "size": 21372
+    },
+    {
+      "path": "correction-provenance.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/correction-provenance.json",
+      "sha256": "21e1f07bad5cd792ea2360311dedd2e414a32c08c4bcadcfc2314f91a4ec6f66",
+      "size": 1365
+    },
+    {
+      "path": "selected-spec.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/selected-spec.json",
+      "sha256": "e60fd6c3b82f8b375a2f6534cf87754879397f6719422c0f6d4f69541a956571",
+      "size": 4509
+    },
+    {
+      "path": "source_scripts/0-run.py",
+      "source": "build/reference-v2-layout/vi-thin-r1b/source_scripts/0-run.py",
+      "sha256": "83572a1268e94ad76aaa861cc02a871c6e759e0da9f9fde560defc431dea79c2",
+      "size": 9140
+    },
+    {
+      "path": "source_scripts/1-generate.py",
+      "source": "build/reference-v2-layout/vi-thin-r1b/source_scripts/1-generate.py",
+      "sha256": "98e53c8c96b8ea9d326d32e1ca74e2e03c844110897c0c45e55d20cb5e9e0fd5",
+      "size": 6998
+    },
+    {
+      "path": "source_scripts/2-power_routes.py",
+      "source": "build/reference-v2-layout/vi-thin-r1b/source_scripts/2-power_routes.py",
+      "sha256": "2f50f26f6e541097fd78171b1d492d79a50511001d62e8cfa38a93eb7ea3427c",
+      "size": 3863
+    },
+    {
+      "path": "source_scripts/3-correct_capacitance.py",
+      "source": "build/reference-v2-layout/vi-thin-r1b/source_scripts/3-correct_capacitance.py",
+      "sha256": "5120ab6d32273be8504d4ac2a8bd2939de1b76fc909afe82fa81889322256966",
+      "size": 14370
+    },
+    {
+      "path": "source_scripts/4-run.py",
+      "source": "build/reference-v2-layout/vi-thin-r1b/source_scripts/4-run.py",
+      "sha256": "760a191832ce8a692964e4dbbb6b81eafe7c5f04faeec9c3ed0b4fcbdbd7a765",
+      "size": 24471
+    },
+    {
+      "path": "source_scripts/5-audit.py",
+      "source": "build/reference-v2-layout/vi-thin-r1b/source_scripts/5-audit.py",
+      "sha256": "f3a1e52ea33a06a16bdcba32645c286dd6c3fc6f3a05bd61cf285c8708b51c08",
+      "size": 16866
+    },
+    {
+      "path": "source_scripts/6-correct_capacitance.py",
+      "source": "build/reference-v2-layout/vi-thin-r1b/source_scripts/6-correct_capacitance.py",
+      "sha256": "a37b4e50c8fbd099ecc03006bdd64036da2e18d1e436f015a3f532034ecd9b89",
+      "size": 13296
+    },
+    {
+      "path": "source_scripts/7-generate.py",
+      "source": "build/reference-v2-layout/vi-thin-r1b/source_scripts/7-generate.py",
+      "sha256": "3f441b7ee332ab83af57f43fc1fdb446415f8ad214b63b7ff983be47ffd776d1",
+      "size": 7270
+    },
+    {
+      "path": "source_scripts/8-run.py",
+      "source": "build/reference-v2-layout/vi-thin-r1b/source_scripts/8-run.py",
+      "sha256": "75976fd0cd474318dc9defe2718ba5f67ee4f40af81380b3c8a88a8447194b63",
+      "size": 9022
+    },
+    {
+      "path": "sources/V/contract.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/sources/V/contract.json",
+      "sha256": "0dbb21919d0ba77fa0d278f0aeac87eb6ecdde77a23093dbf8e3a7b397bef268",
+      "size": 18592
+    },
+    {
+      "path": "sources/V/generate.tcl",
+      "source": "build/reference-v2-layout/vi-thin-r1b/sources/V/generate.tcl",
+      "sha256": "a5b76da0204f7ba1d6f13353b3cf1f3d359431399be3607dcf9fc2f0ef4ebaa6",
+      "size": 8583
+    },
+    {
+      "path": "sources/V/schematic.spice",
+      "source": "build/reference-v2-layout/vi-thin-r1b/sources/V/schematic.spice",
+      "sha256": "6a6a2e1775d7011159fd45529f8d066a20e138f59eb81e27efc1f7ecddbd23e7",
+      "size": 646
+    },
+    {
+      "path": "status.json",
+      "source": "build/reference-v2-layout/vi-thin-r1b/status.json",
+      "sha256": "f59add940eb9b771382c4495ba1ed0b6993c59ed5bd33035a35588b762cbc724",
+      "size": 6622
+    }
+  ]
+}

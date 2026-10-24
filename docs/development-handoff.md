@@ -2,7 +2,20 @@
 
 更新：2026-10-24。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
 
-## 当前阶段：显示PWM与高速NRZ的扰动验证（2026-10-24）
+## 当前阶段：PWM 参考启动与高速 B 真实参考（2026-10-24）
+
+分别阅读[显示 PWM 报告](research/pwm-reference-startup-20261024/index.html)和[高速 B 报告](research/nrz-b-reference-power-20261024/index.html)。这轮保持各自 LED、PWM/NRZ 时序及接收条件；失败与负控制一并保存。
+
+PWM 复用原 r5 39 MOS / 345 R / 288 C，修改片外补偿与 100 Ω / 15 nF 滤波。新输入包已经保存原完整 RC；旧 GDS/物理工具重跑仍依赖此前阶段。高速最终是 21 MOS + RIN 的实际联通版图，正式 RC 为 `925b0e98ede116b7d3dc0c0f326aa1704fd08b84dd8cabe39cf03ae4ac4f3d6a`；芯片面积只指实验宏，不含 pad/ESD 与片外元件。
+
+- 新实验树：`build/pwm-reference-v2/20261024/`、`build/nrz-reference-v2/`、`build/reference-v2-layout/`、`build/reference-v2-audit/`。完整 PDK、VM、Python 环境和所有历史实验不自动包含在增量中。
+- 可移植入口：`scripts/pwm_reference_v2/reproduce.py` 和 `scripts/nrz_reference_v2/reproduce.py`。它们核对输入身份并在新目录生成新 deck，不能直接运行带旧机器路径的冻结 deck。
+- 物理重跑环境与顺序见[物理恢复说明](../evidence/reference-v2-layout/RESTORE.md)。报告重建依赖中英文字体；字体与许可随该阶段 report-support 分组提供。
+- 高速仍依赖外部精密基准和 DISABLE 时序；提前释放存在端压失败，残余电源重启存在约 0.747 V 体结正向偏置，不能当作生产就绪设计。
+
+本阶段原始附件与远端回读/新目录恢复记录随 `reference-v2-20261024` Release 的验收回执补齐；下列旧 Release 保持不可变，按依赖范围恢复。
+
+## 历史阶段：显示PWM与高速NRZ的扰动验证（2026-10-24）
 
 [中文研究报告](research/driver-robustness-20261024/index.html)与[本轮复现说明](research/driver-robustness-20261024/README.md)为当前入口。两种应用保留不同的冻结负载和判据，不能混用电流精度与高速RX结果。
 

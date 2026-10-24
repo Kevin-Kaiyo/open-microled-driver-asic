@@ -1,0 +1,24 @@
+* NGSPICE file created from nrz_bias_power.ext - technology: gf180mcuD
+
+.subckt nrz_bias_power VIN VSS VSET SENSE IOUT REGFB VREG IPB IN2 ICTRL LPB LN2 LCTRL
+X0 VIN LPB LTAIL VIN pfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u
+X1 VIN LCTRL VREG VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X2 VSS IN1 IN2 VSS nfet_06v0 ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u
+X3 VSS IN1 IN1 VSS nfet_06v0 ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u
+X4 VIN ICTRL IOUT VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X5 VSS LN1 LN2 VSS nfet_06v0 ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u
+X6 VIN ICTRL ICTRL VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X7 VSS LN1 LN1 VSS nfet_06v0 ad=22p pd=0.10088m as=22p ps=0.10088m w=50u l=10u
+X8 LTAIL VSET LN1 VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X9 VIN LCTRL LCTRL VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X10 VIN LPB LPB VIN pfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u
+X11 ITAIL SENSE IN2 VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X12 VSS IN2 ICTRL VSS nfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=1u
+X13 VIN IPB IPB VIN pfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u
+X14 LTAIL REGFB LN2 VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X15 VSS LN2 LCTRL VSS nfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=1u
+X16 VIN ICTRL SENSE VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X17 ITAIL a_9000_19864# IN1 VIN pfet_06v0 ad=44p pd=0.20088m as=44p ps=0.20088m w=100u l=10u
+X18 VIN IPB ITAIL VIN pfet_06v0 ad=8.8p pd=40.88u as=8.8p ps=40.88u w=20u l=4u
+.ends
+

@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "status": "physical_complete_electrical_formal_regression_separate",
+  "raw_run": "build/reference-v2-layout/nrz-switched-keeper-joint-r1",
+  "published_run": "evidence/reference-v2-layout/nrz-switched-keeper-joint-r1",
+  "selected_module": "vi-switched-keeper-pg-r1b",
+  "electrical_source": "analog/nrz_reference_v2/vi_reference_switched_keeper.spice",
+  "electrical_source_sha256": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8",
+  "gds": {
+    "path": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/generate/nrz_reference_integrated.gds",
+    "sha256": "363e51112c60692538da2130c99664d22a24c15fa0ca9327c244494938b4065c",
+    "width_um": 348.99,
+    "height_um": 340.06,
+    "area_um2": 118677.53940000001,
+    "scope": "experimental connected test macro bounding box, not chip area"
+  },
+  "rc": {
+    "path": "build/reference-v2-layout/nrz-switched-keeper-joint-r1/J/full-rc/nrz_reference_integrated_rc.spice",
+    "sha256": "925b0e98ede116b7d3dc0c0f326aa1704fd08b84dd8cabe39cf03ae4ac4f3d6a",
+    "ports": [
+      "DATA",
+      "OUT",
+      "VDD",
+      "VSS",
+      "BIAS",
+      "DUMMY",
+      "VIN",
+      "VSET",
+      "SENSE",
+      "IPB",
+      "IN2",
+      "ICTRL",
+      "DISABLE",
+      "KRET"
+    ],
+    "counts": {
+      "mos": 21,
+      "device_resistors": 1,
+      "resistors": 638,
+      "capacitors": 322,
+      "zero_valued_capacitors": 0
+    },
+    "net_count": 20,
+    "authoritative_total_fF": 1444.1590599110002,
+    "matrix_max_error_farad": 2.0194839173657902e-28
+  },
+  "effective_terminal_to_anchor_ohm": {
+    "VIN": {
+      "DS": 17.306935885042737,
+      "G": 0,
+      "B": 108.44219249425086
+    },
+    "VDD": {
+      "DS": 17.519595,
+      "G": 0,
+      "B": 122.63849499999998
+    },
+    "VSS": {
+      "DS": 37.46764624711143,
+      "G": 0,
+      "B": 353.1108263849089
+    },
+    "BIAS": {
+      "DS": 29.220150000000004,
+      "G": 51.679990000000004,
+      "B": 0
+    },
+    "KRET": {
+      "DS": 33.1811,
+      "G": 0,
+      "B": 0
+    }
+  },
+  "checks": {
+    "preliminary_magic_drc": true,
+    "macro_geometry_preservation": true,
+    "magic_drc": true,
+    "lvs": true,
+    "readback_drc": true,
+    "readback_lvs": true,
+    "klayout_drc": true,
+    "pex_audit": true,
+    "gds_geometry": true
+  },
+  "controls": [
+    {
+      "name": "reference-gate-open",
+      "actual_edited_area_um2": 0.22799999999999998,
+      "lvs_rejected": true
+    },
+    {
+      "name": "supply-vss-short",
+      "actual_edited_area_um2": 0.64,
+      "lvs_rejected": true
+    },
+    {
+      "name": "bridge-BIAS-open",
+      "actual_edited_area_um2": 6.0,
+      "lvs_rejected": true
+    }
+  ],
+  "geometry": {
+    "original_B_all_manufacturing_polygons_retained": true,
+    "all11_nonrouting_layer_unions_exact": true,
+    "source_implant_corner_restoration_um2": 0.0608,
+    "finalGDS_reextracted": true
+  },
+  "audit_files": [
+    "nrz-switched-keeper-joint-r1-validation.json",
+    "nrz-switched-keeper-joint-r1-network-audit.json",
+    "nrz-switched-keeper-joint-r1-geometry-audit.json"
+  ],
+  "visual": "visuals/nrz-switched-keeper-joint-r1.png",
+  "visual_review_status": "passed",
+  "limitations": [
+    "External precision anchor, board compensation150p/keeper1.8M/dummy50k/set20k/bias100k/input100n+ESR and DISABLE GPIO are not chipPEX.",
+    "All actual supply/body/BIAS bridge resistance retained. Maximum VSS body graph353.11ohm is not a validated substrate field solution.",
+    "FullC logical matrix retained; explicit ground allocation correction is an approximation, not native unmodified RC or EM field extraction. Original native output retained.",
+    "No package, pads, ESD, full-chip, silicon or optical qualification. Electrical completion is determined from separate formal regression using the exact RC hash."
+  ],
+  "historical_controls": [
+    "nrz-r1:19MOS LDO candidate electrically rejected",
+    "vi-thin-r1b vs vi-pg-r2d: same10MOS routing-only comparison",
+    "nrz-joint-r1c:20MOS continuouskeeper actualDC target failure; retained immutable"
+  ]
+}

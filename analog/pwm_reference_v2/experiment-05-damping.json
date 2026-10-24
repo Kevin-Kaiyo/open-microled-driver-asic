@@ -1,0 +1,7 @@
+{
+ "hypothesis":"N2 packageL5nH and externalC150pF form a184MHz branch whose critical total seriesR is2sqrt(L/C)=11.55ohm. Existing1ohm pinR+0.5ohm ESR=1.5ohm is underdamped. Add an actual10ohm series resistor rather than changing SPICE tolerances.",
+ "single_physical_change":"AddRDAMP_N2=10ohm between capacitor ESR and150pF; all supplies, GPIO10ohm, PCB100ohm100nF, MOS/LED, FAULT20us, observation windows unchanged.",
+ "predeclared_tests":"First strictGear2 startup0.1ps edge mesh/2ns global and0.05ps edge mesh/1ns global; same full40us. Then100us same10%/10ns step, local loop and original fault/minPWM criteria. If rejected, retain failure rather than retune damping blindly.",
+ "diagnosis_limit":"The resonant estimate motivates a test; it does not prove the prior360s timeout was caused by this resonance. Prior fine run reached12.67us without an explicit timestep-too-small error.",
+ "dc_equivalence":"SeriesR in a capacitor-only branch is open atDC. Use existing resistor/PVT matrix as baseline, verify nominal and selectedSS/FF DC identical within numerical tolerance rather than rerun unbounded matrix."
+}

@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-24T20:16:28.185801",
+  "scope": "Analysis-wrapper failures only; retained simulator results reused with identical deck/input SHA. No circuit/simulator retries caused by these errors.",
+  "attempts": [
+    {
+      "log": "build/nrz-reference-v2/startup-full-r1-execution.log",
+      "error": "legacy metrics module not loaded before frozen analyze import"
+    },
+    {
+      "log": "build/nrz-reference-v2/startup-full-r1-analysis-retry.log",
+      "error": "frozen analyzer ROOT not assigned to current repository; wrong relative raw path"
+    },
+    {
+      "log": "build/nrz-reference-v2/startup-full-r1-analysis-retry2.log",
+      "error": "numpy.bool_ startup acceptance not converted to native bool for strict JSON"
+    }
+  ],
+  "repair": "Match known working validate.py loader: load frozen metrics, set analyzer.ROOT, convert scalar boolean before strict JSON. Executed analyzer source snapshots retained.",
+  "plan_note": "Before plan immutability guard was added, identical startup case list and acceptance were emitted again by first two analysis retries, regenerating created_before_execution timestamp. Do not use current plan timestamp to establish timing of first TT run; phase scope/script and retained command order establish planned cases. No case or acceptance was changed."
+}

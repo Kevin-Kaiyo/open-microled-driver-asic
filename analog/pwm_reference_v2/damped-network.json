@@ -1,0 +1,14 @@
+{
+  "status": "electrical_candidate; nominal two-method startup verified; see final-summary.json for completed coverage",
+  "core": "Unmodified old actual39MOS,345R,288C full nominal RC PEX; no new MOS or new layout claim",
+  "supply_filter": "100ohm board VREF source to board filter node;100nF from filter node to board0; then existing1ohm5nH VREF package path",
+  "compensation": "Remove30pF N2\u2013CTRL. N2 macro pin ->1ohm package R ->5nH package L ->0.5ohm capacitor ESR ->10ohm actual PCB damping resistor ->150pF ->board0",
+  "compensation_parts_boundary": "150pF and0.5ohm ESR are external PCB components; N2 R/L explicit engineering stress assumptions, not extracted package/pad model. No pad/ESD or mutual coupling claim.",
+  "other_components": "Original30pF SENSE-to-board0 and all four original resistor nominal values retained",
+  "drive": "VRAW,VFAULT,VPERMIT external PWL high3.3V,10ns edges, each10ohm output impedance",
+  "startup": "Raw VREF linear0\u20133.3V in100ns. PCB passive network controls delivered rail; FAULT held20us, original RTL permit/recovery schedule. No autonomous POR.",
+  "external_reference": "Ideal external0.5V VSET retained for primary matrix; separate\u00b10.2%100ohm source tests are generic boundary sensitivity, not a verified IC reference part",
+  "numerics": "reltol1e-7 abstol1e-14 vntol1e-9. StartupGear2 maxstep2ns vs trapezoidal maxstep1ns, both0.1ps local source-edge knots0\u20131ns and99\u2013102ns, full40us. The earlier0.05ps Gear2 run is a retained timeout, not passed.",
+  "budget": "20% maximum branch excursion,5us restoration to0.5% band; held1nA;DC\u00b15%;original fault/charge/minPWM criteria",
+  "causal_limit": "Added damping is motivated by L/C and its measured candidate passes two numerical methods; prior timeout mechanism is not uniquely proven by this result."
+}

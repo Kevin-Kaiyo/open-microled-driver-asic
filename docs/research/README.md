@@ -1,5 +1,12 @@
 # 当前研究资料入口
 
+**当前入口（2026-10-24，参考与启动修订）**：两种应用分开阅读，负载及判据各自冻结。
+
+- [显示 PWM：参考源、受控启动与恢复时间](pwm-reference-startup-20261024/index.html) / [证据与复现](pwm-reference-startup-20261024/README.md)。原 39 MOS PEX，加外部补偿/阻尼和 15 nF 滤波；保留 100/47 nF 失败与自主 POR 未完成边界。
+- [高速 B：真实参考、供电与启动保护](nrz-b-reference-power-20261024/index.html) / [证据与复现](nrz-b-reference-power-20261024/README.md)。新 21 MOS 实际 GDS/PEX、参考电阻容差、固定 0.5 Gb/s 和完整端口能量；明确提前释放过压、掉电体结正向偏置与外部基准依赖。
+
+以下报告为各自日期的历史快照，较早的“当前/最新”文字只描述当时状态。
+
 当前新增阶段：[2026-10-24 供电、电阻角与封装扰动研究报告](driver-robustness-20261024/index.html)，附[实际GDS](driver-robustness-20261024/layout-viewer.html)与[复现入口](driver-robustness-20261024/README.md)。显示PWM与高速NRZ分别使用各自冻结负载。旧9–11mV余量不足；新厚栅氧核心改善相对器件限值的余量，A辅助电源扰动与PWM启动数值闭合仍有明确缺口。
 
 历史阶段：[2026-10-23 单通道 NRZ 慢热接收与快冷端电压修正](highspeed-nrz-pvt-20261023/index.html)，附[真实 GDS 查看器](highspeed-nrz-pvt-20261023/layout-viewer.html)与[复现说明](highspeed-nrz-pvt-20261023/README.md)。本轮限定在冻结负载与接收代理下的实际版图 RC 实验，未完成光学或生产签核。

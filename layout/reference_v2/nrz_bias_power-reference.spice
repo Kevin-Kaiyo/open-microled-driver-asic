@@ -1,0 +1,22 @@
+* Independent transistor V-to-I servo and 5V-to-3.3V LDO. External passives and precision anchor are explicit.
+.subckt nrz_bias_power VIN VSS VSET SENSE IOUT REGFB VREG IPB IN2 ICTRL LPB LN2 LCTRL
+XIPBIAS IPB IPB VIN VIN pfet_06v0 w=20u l=4u ad=8.8e-12 as=8.8e-12 pd=4.088e-05 ps=4.088e-05
+XIPTAIL ITAIL IPB VIN VIN pfet_06v0 w=20u l=4u ad=8.8e-12 as=8.8e-12 pd=4.088e-05 ps=4.088e-05
+XIPD1 IN1 VSET ITAIL VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XIPD2 IN2 SENSE ITAIL VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XIND1 IN1 IN1 VSS VSS nfet_06v0 w=50u l=10u ad=2.2e-11 as=2.2e-11 pd=0.00010088 ps=0.00010088
+XIND2 IN2 IN1 VSS VSS nfet_06v0 w=50u l=10u ad=2.2e-11 as=2.2e-11 pd=0.00010088 ps=0.00010088
+XINSTAGE ICTRL IN2 VSS VSS nfet_06v0 w=20u l=1u ad=8.8e-12 as=8.8e-12 pd=4.088e-05 ps=4.088e-05
+XIPLOAD ICTRL ICTRL VIN VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XIPREG SENSE ICTRL VIN VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XIPOUT IOUT ICTRL VIN VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XLPBIAS LPB LPB VIN VIN pfet_06v0 w=20u l=4u ad=8.8e-12 as=8.8e-12 pd=4.088e-05 ps=4.088e-05
+XLPTAIL LTAIL LPB VIN VIN pfet_06v0 w=20u l=4u ad=8.8e-12 as=8.8e-12 pd=4.088e-05 ps=4.088e-05
+XLPD1 LN1 VSET LTAIL VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XLPD2 LN2 REGFB LTAIL VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XLND1 LN1 LN1 VSS VSS nfet_06v0 w=50u l=10u ad=2.2e-11 as=2.2e-11 pd=0.00010088 ps=0.00010088
+XLND2 LN2 LN1 VSS VSS nfet_06v0 w=50u l=10u ad=2.2e-11 as=2.2e-11 pd=0.00010088 ps=0.00010088
+XLNSTAGE LCTRL LN2 VSS VSS nfet_06v0 w=20u l=1u ad=8.8e-12 as=8.8e-12 pd=4.088e-05 ps=4.088e-05
+XLPLOAD LCTRL LCTRL VIN VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+XLPREG VREG LCTRL VIN VIN pfet_06v0 w=100u l=10u ad=4.4e-11 as=4.4e-11 pd=0.00020088 ps=0.00020088
+.ends nrz_bias_power

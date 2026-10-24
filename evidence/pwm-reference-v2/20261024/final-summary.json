@@ -1,0 +1,2769 @@
+{
+  "baseline_commit": "112ba95969ac6a2141c305324ea694e7b96c0765",
+  "selected_prefix": "c15",
+  "selected_filter_c_nf": 15,
+  "selected_network": {
+    "status": "Bounded final electrical acceptance completed:27/27 selected c15 cases,12/12 dynamic endpoints,3 final local-loop estimates,strict startup and step numerical comparisons all passed. Historical failures retained; evidence limited to the declared external-reference and controlled-rail boundaries.",
+    "core": "Unmodified old actual39MOS,345R,288C full nominal RC PEX; no new MOS or new layout claim",
+    "supply_filter": "100ohm board VREF source to board filter node;15nF from filter node to board0; then existing1ohm5nH VREF package path",
+    "compensation": "Remove30pF N2–CTRL. N2 macro pin ->1ohm package R ->5nH package L ->0.5ohm capacitor ESR ->10ohm actual PCB damping resistor ->150pF ->board0",
+    "compensation_parts_boundary": "150pF and0.5ohm ESR are external PCB components; N2 R/L explicit engineering stress assumptions, not extracted package/pad model. No pad/ESD or mutual coupling claim.",
+    "other_components": "Original30pF SENSE-to-board0 and all four original resistor nominal values retained",
+    "drive": "VRAW,VFAULT,VPERMIT external PWL high3.3V,10ns edges, each10ohm output impedance",
+    "startup": "VSAFE,VBUF,VLED and externalFAULT high are established at t=0. OnlyrawVREF rises0→target in100ns. PCBpassive network controls delivered reference rail;FAULT20us/PERMIT21.5us schedule unchanged. Not arbitraryrailsequencing or autonomousPOR.",
+    "external_reference": "Ideal external0.5V VSET retained for primary matrix; separate±0.2%100ohm source tests are generic boundary sensitivity, not a verified IC reference part",
+    "numerics": "Strictreltol1e-7/abstol1e-14/vntol1e-9. FinalstartupGear2maxstep2ns vs trap1ns, same0.1ps local source-edge knots0–1ns and99–102ns/full40us. Supply step2ns vs1ns/full100us. MinimumPWM original5ns maxstep and full258.5–514.5us charge frame.",
+    "budget": "20% maximum branch excursion,5us restoration to0.5% band; held1nA;DC±5%;original fault/charge/minPWM criteria",
+    "causal_limit": "Added damping is motivated by L/C and its measured candidate passes two numerical methods; prior timeout mechanism is not uniquely proven by this result.",
+    "selected_prefix": "c15",
+    "selected_filter_c_nf": 15,
+    "why_15nF": "The47nF candidate fixedSSstartup but failedSSsupplyrestore8.057–10.989us. OnlyCF changed to15nF:SSfast/slowrestore1.634/2.325us;FFfaststartupheld58.764pA passed. All earlier cases retained.",
+    "completion_evidence": "evidence/pwm-reference-v2/20261024/validation.json"
+  },
+  "selected_acceptance": true,
+  "selected_case_count": 27,
+  "selected_completed": 27,
+  "selected_passed": 27,
+  "dc_matrix": {
+    "basis": "144-point N2-package baseline with100nF and no added damping; capacitor branch is open atDC. Final capacitor/damping values leave the DC network identical; nominal/global extrema were separately replayed.",
+    "count": 144,
+    "passed": 144,
+    "min_error_pct": -4.436140789318688,
+    "max_error_pct": 1.9851248302072966
+  },
+  "dynamic_matrix": {
+    "count": 12,
+    "passed": 12,
+    "max_excursion_pct": 8.873339474719765,
+    "max_restore_s": 2.520415577066662e-06
+  },
+  "key_results": {
+    "c15_dc": {
+      "case": {
+        "name": "c15_dc",
+        "kind": "dc",
+        "corner": "typical",
+        "temp_c": 27,
+        "logic_v": 3.3,
+        "led_v": 5.0,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 0,
+        "comp_n2_pf": 150,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "filter_location": "board",
+        "filter_c_nf": 15.0,
+        "driver_r_ohm": 10,
+        "step_rail": "ref",
+        "edge_ns": 10,
+        "dc_reference_case": "c15_dc",
+        "comp_damp_ohm": 10,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "3b8ae1efa956bfddf40881372b2c62b143ada2456cee5a93ef08f1e0521fa568",
+      "executed_runner_sha256": "dca36f92884d3c6ab335c9b44d2c0a00f7c0dbb0ab63ce992b404b6af301b668",
+      "source_manifest_sha256": "7f47c994582d91177fc9de8228cedf009fea5ba15395e4f14e0f2e0c6e977337",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 361.02900409698486,
+      "elapsed_ngspice_s": 0.14914584159851074,
+      "lock_wait_s": 360.8798589706421,
+      "log_sha256": "4f51ac95018dae4dd2452ec0633f7c268633593bf3d3f4c202cca587c920a3bd",
+      "rows": 1,
+      "current_a": 9.97335114117108e-05,
+      "error_pct": -0.2664885882891932,
+      "checks": [
+        {
+          "name": "dc_5pct",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_sha256": "7c1ef22521fed7948f2a1516d99adabf782a45b501b46b014f295938bddf7e11",
+      "raw_bytes": 1066,
+      "gzip_sha256": "dd7135cb728743c43e5b856e3818cf97a30c06748b8640f256af1f99e51ff429"
+    },
+    "c15_step": {
+      "case": {
+        "name": "c15_step",
+        "kind": "step",
+        "corner": "typical",
+        "temp_c": 27,
+        "logic_v": 3.3,
+        "led_v": 5.0,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 100000,
+        "comp_n2_pf": 150,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "filter_location": "board",
+        "filter_c_nf": 15.0,
+        "driver_r_ohm": 10,
+        "step_rail": "ref",
+        "edge_ns": 10,
+        "dc_reference_case": "c15_dc",
+        "terminal_stress": true,
+        "comp_damp_ohm": 10,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "3b445fd3f77405bc306461c7eddee9c69a1eda6fb8f5ff9f3c578e08b79e583b",
+      "executed_runner_sha256": "dca36f92884d3c6ab335c9b44d2c0a00f7c0dbb0ab63ce992b404b6af301b668",
+      "source_manifest_sha256": "7f47c994582d91177fc9de8228cedf009fea5ba15395e4f14e0f2e0c6e977337",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 28.5937180519104,
+      "elapsed_ngspice_s": 14.067255020141602,
+      "lock_wait_s": 14.526463031768799,
+      "log_sha256": "370b1ce2e8d7444966918b2f01adbcb17dee2e7ba4c48ab6a328276b61f970c1",
+      "rows": 50173,
+      "terminal_abs_peak_v": {
+        "s_x0_gs": 3.299296347654901,
+        "s_x0_gd": 2.701301295377021e-08,
+        "s_x0_gb": 2.156532180868503e-08,
+        "s_x0_ds": 3.299296358181667,
+        "s_x0_bs": 3.2992963532743,
+        "s_x0_bd": 5.454804599875664e-09,
+        "s_x1_gs": 0.000227215581514395,
+        "s_x1_gd": 0.8668378587949636,
+        "s_x1_gb": 0.8672060288294534,
+        "s_x1_ds": 0.8666108734013572,
+        "s_x1_bs": 0.8669790434358471,
+        "s_x1_bd": 0.0003681716755711779,
+        "s_x2_gs": 3.299293057303958,
+        "s_x2_gd": 3.299293067770132,
+        "s_x2_gb": 3.299293063828292,
+        "s_x2_ds": 2.682107942328631e-08,
+        "s_x2_bs": 2.231226374320439e-08,
+        "s_x2_bd": 4.578488083562156e-09,
+        "s_x3_gs": 1.381506822696615,
+        "s_x3_gd": 0.0003745370766677466,
+        "s_x3_gb": 0.0003809252465634931,
+        "s_x3_ds": 1.381132612156105,
+        "s_x3_bs": 1.381126237938384,
+        "s_x3_bd": 6.39201742090031e-06,
+        "s_x4_gs": 3.299520083512172,
+        "s_x4_gd": 3.314468465021037e-06,
+        "s_x4_gb": 3.315550707760906e-06,
+        "s_x4_ds": 3.299516783587903,
+        "s_x4_bs": 3.299516783081144,
+        "s_x4_bd": 1.420561890341787e-09,
+        "s_x5_gs": 3.29951678397535,
+        "s_x5_gd": 3.299516791543458,
+        "s_x5_gb": 3.299525416429109,
+        "s_x5_ds": 4.393769959182888e-08,
+        "s_x5_bs": 8.757433216358265e-06,
+        "s_x5_bd": 8.749907499774987e-06,
+        "s_x6_gs": 0.5356359690830073,
+        "s_x6_gd": 1.655998480745624,
+        "s_x6_gb": 2.766845964561433,
+        "s_x6_ds": 1.125597915091756,
+        "s_x6_bs": 2.236445398860361,
+        "s_x6_bd": 1.110847483910304,
+        "s_x7_gs": 1.853341169496269,
+        "s_x7_gd": 1.920529100117672,
+        "s_x7_gb": 3.299545016364325,
+        "s_x7_ds": 0.06898288203194003,
+        "s_x7_bs": 1.45355682297112,
+        "s_x7_bd": 1.38457394093918,
+        "s_x8_gs": 3.299516767963563,
+        "s_x8_gd": 1.279762731343226e-07,
+        "s_x8_gb": 1.273281005076399e-07,
+        "s_x8_ds": 3.299516783562629,
+        "s_x8_bs": 3.299516783042642,
+        "s_x8_bd": 1.150985085018874e-09,
+        "s_x9_gs": 0.00298479043295119,
+        "s_x9_gd": 1.373192531858062,
+        "s_x9_gb": 1.377381712577876,
+        "s_x9_ds": 1.370207741425111,
+        "s_x9_bs": 1.374396922144925,
+        "s_x9_bd": 0.004189180719813626,
+        "s_x10_gs": 3.299516776275998,
+        "s_x10_gd": 4.070072188813002e-05,
+        "s_x10_gb": 3.083918052821088e-05,
+        "s_x10_ds": 3.299476662869321,
+        "s_x10_bs": 3.299486382101033,
+        "s_x10_bd": 9.861541499669004e-06,
+        "s_x11_gs": 3.299296364466068,
+        "s_x11_gd": 3.299296347724927,
+        "s_x11_gb": 3.299296360609839,
+        "s_x11_ds": 3.855571009125924e-07,
+        "s_x11_bs": 6.590139101092518e-09,
+        "s_x11_bd": 3.810376369983715e-07,
+        "s_x12_gs": 4.999867489962671,
+        "s_x12_gd": 0.000576702967742428,
+        "s_x12_gb": 0.0005778362641021338,
+        "s_x12_ds": 4.999300355707643,
+        "s_x12_bs": 4.999299244386641,
+        "s_x12_bd": 1.136180726055537e-06,
+        "s_x13_gs": 1.927405564141843,
+        "s_x13_gd": 1.927405581235627,
+        "s_x13_gb": 3.299297599833614,
+        "s_x13_ds": 1.081383241552381e-05,
+        "s_x13_bs": 1.377347651640974,
+        "s_x13_bd": 1.377347631814523,
+        "s_x14_gs": 3.299296349316505,
+        "s_x14_gd": 3.91644743302777e-07,
+        "s_x14_gb": 3.908505279426322e-07,
+        "s_x14_ds": 3.299296366351594,
+        "s_x14_bs": 3.29929636582983,
+        "s_x14_bd": 1.222282275392672e-09,
+        "s_x15_gs": 3.299967095884459,
+        "s_x15_gd": 0.0004695280620918944,
+        "s_x15_gb": 0.0004740472992043953,
+        "s_x15_ds": 3.299505336564856,
+        "s_x15_bs": 3.299500860963446,
+        "s_x15_bd": 4.521256774542336e-06,
+        "s_x16_gs": 0.8041473133648002,
+        "s_x16_gd": 1.955871894163199,
+        "s_x16_gb": 1.960264864755041,
+        "s_x16_ds": 2.755066329483006,
+        "s_x16_bs": 2.759426883860773,
+        "s_x16_bd": 0.004393138173713673,
+        "s_x17_gs": 3.299967083935421,
+        "s_x17_gd": 3.299963746540358,
+        "s_x17_gb": 3.299963726056568,
+        "s_x17_ds": 3.351759492620232e-06,
+        "s_x17_bs": 3.373269838569115e-06,
+        "s_x17_bd": 2.171001378670212e-08,
+        "s_x18_gs": 0.3681081618895717,
+        "s_x18_gd": 1.655241131213945,
+        "s_x18_gb": 2.765941771543445,
+        "s_x18_ds": 1.287133122150451,
+        "s_x18_bs": 2.397833735089063,
+        "s_x18_bd": 1.110700640425202,
+        "s_x19_gs": 0.2756033219590843,
+        "s_x19_gd": 1.028684490586157,
+        "s_x19_gb": 1.032854487157033,
+        "s_x19_ds": 1.300093845590936,
+        "s_x19_bs": 1.304252322816932,
+        "s_x19_bd": 0.004194339240823314,
+        "s_x20_gs": 1.381780969856968,
+        "s_x20_gd": 1.457027191407949,
+        "s_x20_gb": 3.299963730005237,
+        "s_x20_ds": 0.07524622155098126,
+        "s_x20_bs": 1.923705176801631,
+        "s_x20_bd": 1.850342029594109,
+        "s_x21_gs": 0.0006028035466556503,
+        "s_x21_gd": 1.490007381059958,
+        "s_x21_gb": 1.490717988840492,
+        "s_x21_ds": 1.489404612264007,
+        "s_x21_bs": 1.490115220044541,
+        "s_x21_bd": 0.0007106079038927682,
+        "s_x22_gs": 3.299520083780267,
+        "s_x22_gd": 3.299520091351379,
+        "s_x22_gb": 3.299609575907911,
+        "s_x22_ds": 2.998220996827542e-08,
+        "s_x22_bs": 9.079618214557318e-05,
+        "s_x22_bd": 9.07886325095073e-05,
+        "s_x23_gs": 3.29929305725817,
+        "s_x23_gd": 3.384925418625784e-06,
+        "s_x23_gb": 3.377238035895402e-06,
+        "s_x23_ds": 3.299296364455834,
+        "s_x23_bs": 3.29929635882793,
+        "s_x23_bd": 9.02182417661379e-09,
+        "s_x24_gs": 3.299296347723687,
+        "s_x24_gd": 3.299296364468011,
+        "s_x24_gb": 3.299296362120692,
+        "s_x24_ds": 3.856306287630673e-07,
+        "s_x24_bs": 3.829459935822399e-07,
+        "s_x24_bd": 4.212122206581626e-09,
+        "s_x25_gs": 0.8245094641915269,
+        "s_x25_gd": 1.373141556619834,
+        "s_x25_gb": 1.377357282230455,
+        "s_x25_ds": 2.192256520480822,
+        "s_x25_bs": 2.196410922002691,
+        "s_x25_bd": 0.004215725610621863,
+        "s_x26_gs": 1.377346364516423,
+        "s_x26_gd": 7.376545441736392e-08,
+        "s_x26_gb": 2.024610236139607e-07,
+        "s_x26_ds": 1.377346372230522,
+        "s_x26_bs": 1.377346502756901,
+        "s_x26_bd": 1.305414225299516e-07,
+        "s_x27_gs": 0.5501880221662092,
+        "s_x27_gd": 1.490058618003392,
+        "s_x27_gb": 1.490747926466626,
+        "s_x27_ds": 1.109180593680112,
+        "s_x27_bs": 1.109869902143256,
+        "s_x27_bd": 0.0006893557655249793,
+        "s_x28_gs": 0.4792079915541737,
+        "s_x28_gd": 1.955570947130614,
+        "s_x28_gb": 1.959742511636173,
+        "s_x28_ds": 1.801686727464376,
+        "s_x28_bs": 1.805828536244009,
+        "s_x28_bd": 0.004171805740257106,
+        "s_x29_gs": 3.299963785105452,
+        "s_x29_gd": 0.0003507134597089485,
+        "s_x29_gb": 0.0003571582564812695,
+        "s_x29_ds": 3.299619883866294,
+        "s_x29_bs": 3.299613579201316,
+        "s_x29_bd": 6.449505520030464e-06,
+        "s_x30_gs": 2.693749735858258e-08,
+        "s_x30_gd": 3.2992963476549,
+        "s_x30_gb": 2.054652011604461e-08,
+        "s_x30_ds": 3.299296358160928,
+        "s_x30_bs": 6.421121216768771e-09,
+        "s_x30_bd": 3.299296352420876,
+        "s_x31_gs": 0.003252014616113907,
+        "s_x31_gd": 1.95654678585053,
+        "s_x31_gb": 1.96111900922077,
+        "s_x31_ds": 1.953294775866169,
+        "s_x31_bs": 1.957866999236409,
+        "s_x31_bd": 0.004572223854319102,
+        "s_x32_gs": 3.299963784829031,
+        "s_x32_gd": 3.299963713536293,
+        "s_x32_gb": 3.299963714971135,
+        "s_x32_ds": 1.262788504874379e-07,
+        "s_x32_bs": 1.270696956545692e-07,
+        "s_x32_bd": 1.632399992956834e-09,
+        "s_x33_gs": 3.299520083522239,
+        "s_x33_gd": 3.31354308347187e-06,
+        "s_x33_gb": 3.314253731456773e-06,
+        "s_x33_ds": 3.299516783558713,
+        "s_x33_bs": 3.299516783041059,
+        "s_x33_bd": 9.681104806702479e-10,
+        "s_x34_gs": 3.29952009167543,
+        "s_x34_gd": 3.299520099244706,
+        "s_x34_gb": 3.299568748702826,
+        "s_x34_ds": 3.667798012285976e-08,
+        "s_x34_bs": 4.936589021040035e-05,
+        "s_x34_bd": 4.935835048091192e-05,
+        "s_x35_gs": 3.299516776401598,
+        "s_x35_gd": 3.299516783513837,
+        "s_x35_gb": 3.299516783606064,
+        "s_x35_ds": 8.882527025022569e-08,
+        "s_x35_bs": 9.000853573581935e-08,
+        "s_x35_bd": 1.448845932117138e-09,
+        "s_x36_gs": 0.1829137018538749,
+        "s_x36_gd": 0.8668388772082806,
+        "s_x36_gb": 0.8672098723209167,
+        "s_x36_ds": 1.03229196697199,
+        "s_x36_bs": 1.032605863784267,
+        "s_x36_bd": 0.000370997805252366,
+        "s_x37_gs": 2.800397859654722,
+        "s_x37_gd": 8.421777168976519e-07,
+        "s_x37_gb": 8.412051961670386e-07,
+        "s_x37_ds": 2.800398359381214,
+        "s_x37_bs": 2.800398358812692,
+        "s_x37_bd": 1.281447836731786e-09,
+        "s_x38_gs": 3.299296349491596,
+        "s_x38_gd": 3.29929635841016,
+        "s_x38_gb": 3.299296373200986,
+        "s_x38_ds": 7.170269355105847e-08,
+        "s_x38_bs": 8.760711377284354e-08,
+        "s_x38_bd": 1.590442022178506e-08
+      },
+      "terminal_pairs_logged": [
+        "gs",
+        "gd",
+        "gb",
+        "ds",
+        "bs",
+        "bd"
+      ],
+      "terminal_note": "Actual39MOS PEX terminal maxima only; no foundry lifetime or absolute-maximum qualification claim.",
+      "current_min_a": 9.901556648226049e-05,
+      "current_max_a": 0.0001004771683500282,
+      "baseline_current_a": 9.973351141286429e-05,
+      "final_current_a": 9.973351141269008e-05,
+      "excursion_pct": 0.7456439933067216,
+      "settle_s": 2.284566486161752e-06,
+      "ctrl_rail_error_peak_v": 1.963186515590563,
+      "checks": [
+        {
+          "name": "research_excursion_20pct",
+          "passed": true
+        },
+        {
+          "name": "research_restore_5us",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_sha256": "a8f629fea4299525803989672197c054b977c9f5b027e93623ab87cf8ec7972f",
+      "raw_bytes": 26592226,
+      "gzip_sha256": "aeb81d0190cfd35bdcd33b4bf10fa6dfb5be5bda661c66de8b76b28028f0f10e"
+    },
+    "c15_step_fine": {
+      "case": {
+        "name": "c15_step_fine",
+        "kind": "step",
+        "corner": "typical",
+        "temp_c": 27,
+        "logic_v": 3.3,
+        "led_v": 5.0,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 100000,
+        "maxstep_ns": 1,
+        "comp_n2_pf": 150,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "filter_location": "board",
+        "filter_c_nf": 15.0,
+        "driver_r_ohm": 10,
+        "edge_ns": 10,
+        "step_rail": "ref",
+        "terminal_stress": true,
+        "comp_damp_ohm": 10,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "e86992ed371564d0e12d3d898a6c0aaa5ac7f6857c900d164f63680b2639069d",
+      "executed_runner_sha256": "dca36f92884d3c6ab335c9b44d2c0a00f7c0dbb0ab63ce992b404b6af301b668",
+      "source_manifest_sha256": "7f47c994582d91177fc9de8228cedf009fea5ba15395e4f14e0f2e0c6e977337",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 28.280301094055176,
+      "elapsed_ngspice_s": 27.90648102760315,
+      "lock_wait_s": 0.37382006645202637,
+      "log_sha256": "0d4568169197ba29c611f982658f446a85db0055eb80f7b4c5f7f06b13f0a081",
+      "rows": 100175,
+      "terminal_abs_peak_v": {
+        "s_x0_gs": 3.299296347712342,
+        "s_x0_gd": 2.692754221293378e-08,
+        "s_x0_gb": 2.147609547804245e-08,
+        "s_x0_ds": 3.299296358239145,
+        "s_x0_bs": 3.299296353331773,
+        "s_x0_bd": 5.451446734891334e-09,
+        "s_x1_gs": 0.0002272154877371868,
+        "s_x1_gd": 0.8668378587939841,
+        "s_x1_gb": 0.8672060288310077,
+        "s_x1_ds": 0.8666108734015413,
+        "s_x1_bs": 0.8669790434416962,
+        "s_x1_bd": 0.0003681716626344488,
+        "s_x2_gs": 3.299293057326899,
+        "s_x2_gd": 3.2992930677931,
+        "s_x2_gb": 3.299293063851256,
+        "s_x2_ds": 2.67362641376322e-08,
+        "s_x2_bs": 2.221728026292197e-08,
+        "s_x2_bd": 4.574125626768781e-09,
+        "s_x3_gs": 1.381506817707372,
+        "s_x3_gd": 0.0003745370723253799,
+        "s_x3_gb": 0.0003809252421295354,
+        "s_x3_ds": 1.381132607280246,
+        "s_x3_bs": 1.381126233092149,
+        "s_x3_bd": 6.392017390579783e-06,
+        "s_x4_gs": 3.29952008350759,
+        "s_x4_gd": 3.314467988513314e-06,
+        "s_x4_gb": 3.315552083549278e-06,
+        "s_x4_ds": 3.299516783583542,
+        "s_x4_bs": 3.299516783076816,
+        "s_x4_bd": 1.419425466053781e-09,
+        "s_x5_gs": 3.299516784005275,
+        "s_x5_gd": 3.299516791573368,
+        "s_x5_gb": 3.299525416458802,
+        "s_x5_ds": 4.382133580755222e-08,
+        "s_x5_bs": 8.757433124048967e-06,
+        "s_x5_bd": 8.749907408111873e-06,
+        "s_x6_gs": 0.5356359666220277,
+        "s_x6_gd": 1.655998480738996,
+        "s_x6_gb": 2.766845964561036,
+        "s_x6_ds": 1.125597915075179,
+        "s_x6_bs": 2.236445398860361,
+        "s_x6_bd": 1.110847483832231,
+        "s_x7_gs": 1.853341164361026,
+        "s_x7_gd": 1.920529096782911,
+        "s_x7_gb": 3.299545013413548,
+        "s_x7_ds": 0.06898288072841785,
+        "s_x7_bs": 1.453556817037115,
+        "s_x7_bd": 1.384573936308697,
+        "s_x8_gs": 3.299516767993508,
+        "s_x8_gd": 1.288164783730394e-07,
+        "s_x8_gb": 1.281251775786529e-07,
+        "s_x8_ds": 3.29951678355827,
+        "s_x8_bs": 3.299516783038275,
+        "s_x8_bd": 1.157226314774107e-09,
+        "s_x9_gs": 0.00298479039686006,
+        "s_x9_gd": 1.373192526781759,
+        "s_x9_gb": 1.377381707441269,
+        "s_x9_ds": 1.370207736384899,
+        "s_x9_bs": 1.374396917044409,
+        "s_x9_bd": 0.004189180665785352,
+        "s_x10_gs": 3.299516776301809,
+        "s_x10_gd": 4.070072132925128e-05,
+        "s_x10_gb": 3.083918017853486e-05,
+        "s_x10_ds": 3.299476662894298,
+        "s_x10_bs": 3.299486382126243,
+        "s_x10_bd": 9.861541366381742e-06,
+        "s_x11_gs": 3.299296364459658,
+        "s_x11_gd": 3.299296347782294,
+        "s_x11_gb": 3.299296360603398,
+        "s_x11_ds": 3.851383461039859e-07,
+        "s_x11_bs": 6.573975142032396e-09,
+        "s_x11_bd": 3.806358286340128e-07,
+        "s_x12_gs": 4.999867488992757,
+        "s_x12_gd": 0.0005767029600263735,
+        "s_x12_gb": 0.000577836257474796,
+        "s_x12_ds": 4.999300354506442,
+        "s_x12_bs": 4.999299243145673,
+        "s_x12_bd": 1.136172047279957e-06,
+        "s_x13_gs": 1.927405560435762,
+        "s_x13_gd": 1.927405577373535,
+        "s_x13_gb": 3.299297599891769,
+        "s_x13_ds": 1.08012276351932e-05,
+        "s_x13_bs": 1.377347646504013,
+        "s_x13_bd": 1.377347627597764,
+        "s_x14_gs": 3.2992963493755,
+        "s_x14_gd": 3.912188151211637e-07,
+        "s_x14_gb": 3.904285446054701e-07,
+        "s_x14_ds": 3.29929636634466,
+        "s_x14_bs": 3.299296365822884,
+        "s_x14_bd": 1.217658418539713e-09,
+        "s_x15_gs": 3.299967093136701,
+        "s_x15_gd": 0.0004695280574509557,
+        "s_x15_gb": 0.0004740472941548695,
+        "s_x15_ds": 3.299505333656633,
+        "s_x15_bs": 3.299500858030869,
+        "s_x15_bd": 4.521256719095153e-06,
+        "s_x16_gs": 0.8041473133687626,
+        "s_x16_gd": 1.955871886660805,
+        "s_x16_gb": 1.960264858869622,
+        "s_x16_ds": 2.755066329483006,
+        "s_x16_bs": 2.759426883860764,
+        "s_x16_bd": 0.004393138122651408,
+        "s_x17_gs": 3.299967081224929,
+        "s_x17_gd": 3.299963746205572,
+        "s_x17_gb": 3.299963725742851,
+        "s_x17_ds": 3.347517924634502e-06,
+        "s_x17_bs": 3.369056340130072e-06,
+        "s_x17_bd": 2.168679813507879e-08,
+        "s_x18_gs": 0.3681081660027304,
+        "s_x18_gd": 1.655241131237609,
+        "s_x18_gb": 2.765941771543416,
+        "s_x18_ds": 1.287133123102639,
+        "s_x18_bs": 2.397833735018374,
+        "s_x18_bd": 1.110700640347025,
+        "s_x19_gs": 0.2756033219623686,
+        "s_x19_gd": 1.028684491057274,
+        "s_x19_gb": 1.032854488100938,
+        "s_x19_ds": 1.300093845595379,
+        "s_x19_bs": 1.304252322821397,
+        "s_x19_bd": 0.004194339192004094,
+        "s_x20_gs": 1.381780964863967,
+        "s_x20_gd": 1.457027184392265,
+        "s_x20_gb": 3.299963729896326,
+        "s_x20_ds": 0.07524622020935401,
+        "s_x20_bs": 1.923705172900772,
+        "s_x20_bd": 1.85034202411226,
+        "s_x21_gs": 0.0006028036572145457,
+        "s_x21_gd": 1.490007381084804,
+        "s_x21_gb": 1.490717988865398,
+        "s_x21_ds": 1.489404612288848,
+        "s_x21_bs": 1.490115220069441,
+        "s_x21_bd": 0.0007106079032705992,
+        "s_x22_gs": 3.299520083775686,
+        "s_x22_gd": 3.29952009134679,
+        "s_x22_gb": 3.299609575904324,
+        "s_x22_ds": 3.014658374447593e-08,
+        "s_x22_bs": 9.079618115325784e-05,
+        "s_x22_bd": 9.078863156698264e-05,
+        "s_x23_gs": 3.299293057281111,
+        "s_x23_gd": 3.384893007218892e-06,
+        "s_x23_gb": 3.377040789231955e-06,
+        "s_x23_ds": 3.299296364449429,
+        "s_x23_bs": 3.299296358821488,
+        "s_x23_bd": 8.998772393908894e-09,
+        "s_x24_gs": 3.299296347781059,
+        "s_x24_gd": 3.299296364461608,
+        "s_x24_gb": 3.299296362114266,
+        "s_x24_ds": 3.852117784752807e-07,
+        "s_x24_bs": 3.825389782718958e-07,
+        "s_x24_bd": 4.201727854535875e-09,
+        "s_x25_gs": 0.8245094592066857,
+        "s_x25_gd": 1.373141552493092,
+        "s_x25_gb": 1.377357278048644,
+        "s_x25_ds": 2.192256519488154,
+        "s_x25_bs": 2.196410921055413,
+        "s_x25_bd": 0.004215725559419453,
+        "s_x26_gs": 1.377346360325819,
+        "s_x26_gd": 7.369424813398126e-08,
+        "s_x26_gb": 2.02390191830922e-07,
+        "s_x26_ds": 1.377346368024565,
+        "s_x26_bs": 1.377346498551186,
+        "s_x26_bd": 1.305414206137327e-07,
+        "s_x27_gs": 0.550188022268983,
+        "s_x27_gd": 1.49005861802824,
+        "s_x27_gb": 1.490747926491546,
+        "s_x27_ds": 1.109180593601556,
+        "s_x27_bs": 1.109869902064768,
+        "s_x27_bd": 0.0006893557513367732,
+        "s_x28_gs": 0.4792079916840364,
+        "s_x28_gd": 1.955570939366234,
+        "s_x28_gb": 1.959742505327013,
+        "s_x28_ds": 1.801686727476297,
+        "s_x28_bs": 1.805828536255895,
+        "s_x28_bd": 0.004171805697492204,
+        "s_x29_gs": 3.299963785461243,
+        "s_x29_gd": 0.0003507134560922405,
+        "s_x29_gb": 0.0003571582522235256,
+        "s_x29_ds": 3.299619883896881,
+        "s_x29_bs": 3.299613579232392,
+        "s_x29_bd": 6.449505484345901e-06,
+        "s_x30_gs": 2.685230614783447e-08,
+        "s_x30_gd": 3.299296347712341,
+        "s_x30_gb": 2.045467804704694e-08,
+        "s_x30_ds": 3.299296358218405,
+        "s_x30_bs": 6.414742863627976e-09,
+        "s_x30_bd": 3.299296352478347,
+        "s_x31_gs": 0.003252014573614348,
+        "s_x31_gd": 1.956546780035972,
+        "s_x31_gb": 1.96111900356407,
+        "s_x31_ds": 1.953294769467068,
+        "s_x31_bs": 1.957866992995167,
+        "s_x31_bd": 0.004572223807464137,
+        "s_x32_gs": 3.299963785254576,
+        "s_x32_gd": 3.299963713199481,
+        "s_x32_gb": 3.299963714602179,
+        "s_x32_ds": 1.271099345778737e-07,
+        "s_x32_bs": 1.278626333700572e-07,
+        "s_x32_bd": 1.62391300406739e-09,
+        "s_x33_gs": 3.299520083517623,
+        "s_x33_gd": 3.313544107541588e-06,
+        "s_x33_gb": 3.3140461019876e-06,
+        "s_x33_ds": 3.299516783554322,
+        "s_x33_bs": 3.29951678303666,
+        "s_x33_bd": 9.675380496787511e-10,
+        "s_x34_gs": 3.299520091670806,
+        "s_x34_gd": 3.299520099240072,
+        "s_x34_gb": 3.299568748698624,
+        "s_x34_ds": 3.694666823601377e-08,
+        "s_x34_bs": 4.936588970107567e-05,
+        "s_x34_bd": 4.935834984655499e-05,
+        "s_x35_gs": 3.299516776427159,
+        "s_x35_gd": 3.299516783510021,
+        "s_x35_gb": 3.299516783601869,
+        "s_x35_ds": 8.819075203447824e-08,
+        "s_x35_bs": 8.933464368254818e-08,
+        "s_x35_bd": 1.434931284904906e-09,
+        "s_x36_gs": 0.1829137018482916,
+        "s_x36_gd": 0.8668388772803095,
+        "s_x36_gb": 0.8672098723209167,
+        "s_x36_ds": 1.032291967286451,
+        "s_x36_bs": 1.032605864485537,
+        "s_x36_bd": 0.0003709977756416801,
+        "s_x37_gs": 2.800397856632775,
+        "s_x37_gd": 8.411506469130359e-07,
+        "s_x37_gb": 8.401722437767489e-07,
+        "s_x37_ds": 2.800398358365597,
+        "s_x37_bs": 2.800398357797188,
+        "s_x37_bd": 1.279582662050416e-09,
+        "s_x38_gs": 3.299296349550503,
+        "s_x38_gd": 3.299296358468035,
+        "s_x38_gb": 3.299296373258874,
+        "s_x38_ds": 7.163352135032205e-08,
+        "s_x38_bs": 8.753661560651112e-08,
+        "s_x38_bd": 1.590309425618906e-08
+      },
+      "terminal_pairs_logged": [
+        "gs",
+        "gd",
+        "gb",
+        "ds",
+        "bs",
+        "bd"
+      ],
+      "terminal_note": "Actual39MOS PEX terminal maxima only; no foundry lifetime or absolute-maximum qualification claim.",
+      "current_min_a": 9.901556751628779e-05,
+      "current_max_a": 0.0001004771673181114,
+      "baseline_current_a": 9.97335114237957e-05,
+      "final_current_a": 9.973351142514685e-05,
+      "excursion_pct": 0.745642947590297,
+      "settle_s": 2.283726466025941e-06,
+      "ctrl_rail_error_peak_v": 1.9631865100067791,
+      "checks": [
+        {
+          "name": "research_excursion_20pct",
+          "passed": true
+        },
+        {
+          "name": "research_restore_5us",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_sha256": "44c1a9402b94b5edb149e66db417eff6efcc75cd4901dd1668f655dac9a21408",
+      "raw_bytes": 53093286,
+      "gzip_sha256": "e6baeb6ad0d2b1c23f0aeec1b57d13f780694b13ebcdc0dc8d13921be9aa528f"
+    },
+    "c15_startup_fullmesh": {
+      "case": {
+        "name": "c15_startup_fullmesh",
+        "kind": "startup",
+        "corner": "typical",
+        "temp_c": 27,
+        "logic_v": 3.3,
+        "led_v": 5.0,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 40000,
+        "startup_mesh_full": true,
+        "comp_n2_pf": 150,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "filter_location": "board",
+        "filter_c_nf": 15.0,
+        "driver_r_ohm": 10,
+        "edge_ns": 10,
+        "step_rail": "ref",
+        "comp_damp_ohm": 10,
+        "fault_clear_ns": 20000,
+        "rtl_assertions_passed": true,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "230420cdeaa58646f4e8bae64d6fb1455bdf80660a4584e442ab6b8ec6896424",
+      "executed_runner_sha256": "72bcca9dadd58ad4cfc9c5c69d1d85450a788aa6cf701c1d6c4ac694270794b2",
+      "source_manifest_sha256": "7d3e80000277b99e3dc9a996ab80595de125daaf10ba566a95bc8404c4ffa7cc",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 130.55285692214966,
+      "elapsed_ngspice_s": 130.55278205871582,
+      "lock_wait_s": 7.605552673339844e-05,
+      "log_sha256": "1afd4d66e9b432e07b45fdcb3ca78644eb7e40c814135a55a312c56c1fb64193",
+      "rows": 246889,
+      "current_min_a": -2.320306332786085e-05,
+      "current_max_a": 9.973351129021965e-05,
+      "held_peak_a": 4.638792724940462e-11,
+      "held_conduction_peak_a": 4.852926058089208e-20,
+      "held_displacement_peak_a": 5.859186058884456e-11,
+      "held_diegnd_peak_v": 0.0001659868316688425,
+      "held_charge": {
+        "signed_c": -1.478525158943197e-21,
+        "positive_c": 1.2354284255908204e-19,
+        "negative_c": -1.2502136771802522e-19
+      },
+      "recovered_a": 9.973349597011471e-05,
+      "permit_pre_release_max_v": 0.0001659868312332177,
+      "prepermit_conduction_peak_a": 9.538235273475936e-15,
+      "checks": [
+        {
+          "name": "held_1nA",
+          "passed": true
+        },
+        {
+          "name": "prepermit_conduction_1nA",
+          "passed": true
+        },
+        {
+          "name": "recovered_5pct",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_sha256": "18e4f9e79d587b0652120bb7fff563f893dc56d822790a82c65e71d6fa27ed3a",
+      "raw_bytes": 130851706,
+      "gzip_sha256": "0eef1c7fad0904df3456f2d11083cb7c0e79d35db99b8146d866cd55fffda1b3"
+    },
+    "c15_startup_fullmesh_trap": {
+      "case": {
+        "name": "c15_startup_fullmesh_trap",
+        "kind": "startup",
+        "corner": "typical",
+        "temp_c": 27,
+        "logic_v": 3.3,
+        "led_v": 5.0,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 40000,
+        "startup_mesh_full": true,
+        "method": "trap",
+        "maxstep_ns": 1,
+        "comp_n2_pf": 150,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "comp_damp_ohm": 10,
+        "filter_location": "board",
+        "filter_c_nf": 15.0,
+        "driver_r_ohm": 10,
+        "fault_clear_ns": 20000,
+        "rtl_assertions_passed": true,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "69b538152dcecb1349401080e53e66b75000adf98431b18bf7ccd6c96eff147d",
+      "executed_runner_sha256": "72bcca9dadd58ad4cfc9c5c69d1d85450a788aa6cf701c1d6c4ac694270794b2",
+      "source_manifest_sha256": "7d3e80000277b99e3dc9a996ab80595de125daaf10ba566a95bc8404c4ffa7cc",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 315.0252158641815,
+      "elapsed_ngspice_s": 185.38178205490112,
+      "lock_wait_s": 129.6434350013733,
+      "log_sha256": "cb550dfb4f3a8d964d3de8257be26369824edf0199a6d0fd297981f28dc52f1f",
+      "rows": 269299,
+      "current_min_a": -2.319694207543091e-05,
+      "current_max_a": 9.973351130917338e-05,
+      "held_peak_a": 4.645792847644177e-11,
+      "held_conduction_peak_a": 4.85150586612174e-20,
+      "held_displacement_peak_a": 2.028180820242056e-10,
+      "held_diegnd_peak_v": 0.0001659868319208921,
+      "held_charge": {
+        "signed_c": 3.0512499348811454e-22,
+        "positive_c": 2.56207904387787e-19,
+        "negative_c": -2.5590277939429886e-19
+      },
+      "recovered_a": 9.973349597855823e-05,
+      "permit_pre_release_max_v": 0.0001659868314716377,
+      "prepermit_conduction_peak_a": 9.538237442149632e-15,
+      "checks": [
+        {
+          "name": "held_1nA",
+          "passed": true
+        },
+        {
+          "name": "prepermit_conduction_1nA",
+          "passed": true
+        },
+        {
+          "name": "recovered_5pct",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_sha256": "ce2f9cec570d2cae9c432e439ce60ec15986ae18922b4779facf2f758d66501f",
+      "raw_bytes": 142729006,
+      "gzip_sha256": "1afef9cdaf96469f4feac0643c08b11407ec8fc5f39041704efb8ac030403251"
+    },
+    "c15_fault": {
+      "case": {
+        "name": "c15_fault",
+        "kind": "fault",
+        "corner": "typical",
+        "temp_c": 27,
+        "logic_v": 3.3,
+        "led_v": 5.0,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 66125,
+        "comp_n2_pf": 150,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "filter_location": "board",
+        "filter_c_nf": 15.0,
+        "driver_r_ohm": 10,
+        "step_rail": "ref",
+        "edge_ns": 10,
+        "dc_reference_case": "c15_dc",
+        "terminal_stress": true,
+        "comp_damp_ohm": 10,
+        "fault_clear_ns": 100,
+        "rtl_assertions_passed": true,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "4b5d0fe49f4f26978a9f7f5f5779c1d5a07654da1eb760af6221fac33400f315",
+      "executed_runner_sha256": "dca36f92884d3c6ab335c9b44d2c0a00f7c0dbb0ab63ce992b404b6af301b668",
+      "source_manifest_sha256": "7f47c994582d91177fc9de8228cedf009fea5ba15395e4f14e0f2e0c6e977337",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 52.85621786117554,
+      "elapsed_ngspice_s": 39.4380989074707,
+      "lock_wait_s": 13.418118953704834,
+      "log_sha256": "19dabf3b272883b47d3237522b4dc2be54027af2e30b43042e75073f8df6b829",
+      "rows": 84080,
+      "terminal_abs_peak_v": {
+        "s_x0_gs": 3.315768994946322,
+        "s_x0_gd": 3.322247179741288,
+        "s_x0_gb": 3.32171511791489,
+        "s_x0_ds": 3.303124260654483,
+        "s_x0_bs": 3.303125410676402,
+        "s_x0_bd": 0.01232064158719515,
+        "s_x1_gs": 0.0003147032137024164,
+        "s_x1_gd": 0.8706808380379166,
+        "s_x1_gb": 0.8710626355618731,
+        "s_x1_ds": 0.8704454370344393,
+        "s_x1_bs": 0.8708272345583958,
+        "s_x1_bd": 0.0003817975239564971,
+        "s_x2_gs": 3.353835837712408,
+        "s_x2_gd": 3.35392913053731,
+        "s_x2_gb": 3.353948555353741,
+        "s_x2_ds": 3.322218363441936,
+        "s_x2_bs": 3.321026474848277,
+        "s_x2_bd": 0.02775458775189259,
+        "s_x3_gs": 3.299743895439549,
+        "s_x3_gd": 3.301009267398444,
+        "s_x3_gb": 3.301201804353995,
+        "s_x3_ds": 2.000522643300107,
+        "s_x3_bs": 2.000696094447815,
+        "s_x3_bd": 0.004464111763198309,
+        "s_x4_gs": 3.323261836646249,
+        "s_x4_gd": 3.301877892173333,
+        "s_x4_gb": 3.301873401622298,
+        "s_x4_ds": 3.307109179151605,
+        "s_x4_bs": 3.307116354262674,
+        "s_x4_bd": 0.001040854514967382,
+        "s_x5_gs": 3.317234901387299,
+        "s_x5_gd": 3.313212817643839,
+        "s_x5_gb": 3.313033635522152,
+        "s_x5_ds": 0.2132755712336133,
+        "s_x5_bs": 0.2143345163344417,
+        "s_x5_bd": 0.005306876615112909,
+        "s_x6_gs": 0.540853763820001,
+        "s_x6_gd": 1.662701854889864,
+        "s_x6_gb": 2.777751184459956,
+        "s_x6_ds": 1.133054761662945,
+        "s_x6_bs": 2.248333665910235,
+        "s_x6_bd": 1.118042116367895,
+        "s_x7_gs": 3.276863739410388,
+        "s_x7_gd": 2.089550603330902,
+        "s_x7_gb": 3.314947625172544,
+        "s_x7_ds": 3.280205407915616,
+        "s_x7_bs": 3.273297855903318,
+        "s_x7_bd": 2.001504649245392,
+        "s_x8_gs": 3.320527303947225,
+        "s_x8_gd": 3.304511082180117,
+        "s_x8_gb": 3.304530067360096,
+        "s_x8_ds": 3.307094449455109,
+        "s_x8_bs": 3.307092212957354,
+        "s_x8_bd": 0.006326763516806722,
+        "s_x9_gs": 0.009930967264234036,
+        "s_x9_gd": 1.975281233686813,
+        "s_x9_gb": 1.98878716365749,
+        "s_x9_ds": 1.965647511441052,
+        "s_x9_bs": 1.979154064617689,
+        "s_x9_bd": 0.01350908043458337,
+        "s_x10_gs": 3.339614447880435,
+        "s_x10_gd": 3.33997313511385,
+        "s_x10_gb": 3.340005814067263,
+        "s_x10_ds": 3.353148187319619,
+        "s_x10_bs": 3.35311274960335,
+        "s_x10_bd": 0.02462664622454087,
+        "s_x11_gs": 3.317063094724777,
+        "s_x11_gd": 3.315734800274369,
+        "s_x11_gb": 3.315738849863965,
+        "s_x11_ds": 3.301813677478386,
+        "s_x11_bs": 0.01547450088978453,
+        "s_x11_bd": 3.301805782089287,
+        "s_x12_gs": 5.014527744776953,
+        "s_x12_gd": 3.299496152074287,
+        "s_x12_gb": 3.301250432239331,
+        "s_x12_ds": 5.051323725659309,
+        "s_x12_bs": 5.051219991379451,
+        "s_x12_bd": 0.005257208956557874,
+        "s_x13_gs": 2.873999259913597,
+        "s_x13_gd": 2.764390667800586,
+        "s_x13_gb": 3.30312990247381,
+        "s_x13_ds": 1.988724373169032,
+        "s_x13_bs": 1.988763654975051,
+        "s_x13_bd": 1.386229227426615,
+        "s_x14_gs": 3.312589061275085,
+        "s_x14_gd": 3.301800518083614,
+        "s_x14_gb": 3.301816407892471,
+        "s_x14_ds": 3.416914095462824,
+        "s_x14_bs": 3.417659298953946,
+        "s_x14_bd": 0.007519727240457463,
+        "s_x15_gs": 3.310887256235747,
+        "s_x15_gd": 3.301024359680039,
+        "s_x15_gb": 3.301107523810165,
+        "s_x15_ds": 3.314881615174972,
+        "s_x15_bs": 3.31480757659148,
+        "s_x15_bd": 0.005421076012170976,
+        "s_x16_gs": 0.8615717732233041,
+        "s_x16_gd": 2.035332585792922,
+        "s_x16_gb": 2.04046272049313,
+        "s_x16_ds": 2.767268321458502,
+        "s_x16_bs": 2.771373456315196,
+        "s_x16_bd": 0.00582905434305836,
+        "s_x17_gs": 3.31084885314446,
+        "s_x17_gd": 3.305573003723112,
+        "s_x17_gb": 3.305614279531337,
+        "s_x17_ds": 3.304800022991538,
+        "s_x17_bs": 3.304655939593353,
+        "s_x17_bd": 0.003462918026817974,
+        "s_x18_gs": 0.3718789494577513,
+        "s_x18_gd": 1.662148707894848,
+        "s_x18_gb": 2.776745233865639,
+        "s_x18_ds": 1.291796618315176,
+        "s_x18_bs": 2.40875114733951,
+        "s_x18_bd": 1.117917704960495,
+        "s_x19_gs": 0.3287382892892436,
+        "s_x19_gd": 1.028667760117519,
+        "s_x19_gb": 1.032908690408685,
+        "s_x19_ds": 1.353368113104943,
+        "s_x19_bs": 1.35754310701754,
+        "s_x19_bd": 0.004240930291166199,
+        "s_x20_gs": 3.299743902996858,
+        "s_x20_gd": 2.606711854623357,
+        "s_x20_gb": 3.305602794538356,
+        "s_x20_ds": 3.280188796668147,
+        "s_x20_bs": 3.309496962673155,
+        "s_x20_bd": 2.047221416899105,
+        "s_x21_gs": 0.000621441712037818,
+        "s_x21_gd": 1.491614016658151,
+        "s_x21_gb": 1.492328285852006,
+        "s_x21_ds": 1.491008269971868,
+        "s_x21_bs": 1.491722519403554,
+        "s_x21_bd": 0.0007147627447725569,
+        "s_x22_gs": 3.323355653943699,
+        "s_x22_gd": 3.306820135201985,
+        "s_x22_gb": 3.302818735287432,
+        "s_x22_ds": 3.315156853867336,
+        "s_x22_bs": 3.340176394454021,
+        "s_x22_bd": 2.218241833051989,
+        "s_x23_gs": 3.353835606340114,
+        "s_x23_gd": 3.311182008292627,
+        "s_x23_gb": 3.311188805221742,
+        "s_x23_ds": 3.317050098722449,
+        "s_x23_bs": 3.315212194328015,
+        "s_x23_bd": 0.02092538881016148,
+        "s_x24_gs": 3.315734451959014,
+        "s_x24_gd": 3.317108266735917,
+        "s_x24_gb": 3.316248742160177,
+        "s_x24_ds": 3.301814194477665,
+        "s_x24_bs": 3.301804691229143,
+        "s_x24_bd": 0.01034671577617807,
+        "s_x25_gs": 5.009738456367847,
+        "s_x25_gd": 1.381919975198813,
+        "s_x25_gb": 1.386239154859131,
+        "s_x25_ds": 5.016922227158044,
+        "s_x25_bs": 5.01732791149033,
+        "s_x25_bd": 0.004320269078665858,
+        "s_x26_gs": 3.428327446947562,
+        "s_x26_gd": 3.458581113921648,
+        "s_x26_gb": 3.459074862118512,
+        "s_x26_ds": 1.386226026845553,
+        "s_x26_bs": 1.386226263560689,
+        "s_x26_bd": 0.002915281171937965,
+        "s_x27_gs": 0.3820534216626104,
+        "s_x27_gd": 1.491665750706279,
+        "s_x27_gb": 1.492357393566527,
+        "s_x27_ds": 1.116500176064569,
+        "s_x27_bs": 1.117189871136073,
+        "s_x27_bd": 0.0007242852169340175,
+        "s_x28_gs": 1.956551740463969,
+        "s_x28_gd": 2.035825370372621,
+        "s_x28_gb": 2.038817289167381,
+        "s_x28_ds": 2.003923992271584,
+        "s_x28_bs": 2.00801711532856,
+        "s_x28_bd": 0.006302890443446341,
+        "s_x29_gs": 3.301503525697269,
+        "s_x29_gd": 3.301163570232003,
+        "s_x29_gb": 3.301226285007268,
+        "s_x29_ds": 3.313107200013967,
+        "s_x29_bs": 3.313007434623058,
+        "s_x29_bd": 0.005526774811514109,
+        "s_x30_gs": 3.322226317374422,
+        "s_x30_gd": 3.315769351813967,
+        "s_x30_gb": 3.321382847284367,
+        "s_x30_ds": 3.303124363493869,
+        "s_x30_bs": 0.02018037983585227,
+        "s_x30_bd": 3.303125974955339,
+        "s_x31_gs": 0.003925060237717881,
+        "s_x31_gd": 2.036173845300904,
+        "s_x31_gb": 2.0415116234193,
+        "s_x31_ds": 2.032465207164293,
+        "s_x31_bs": 2.037848662796524,
+        "s_x31_bd": 0.006004572768129268,
+        "s_x32_gs": 3.301498379292509,
+        "s_x32_gd": 3.305451152691237,
+        "s_x32_gb": 3.305622032111142,
+        "s_x32_ds": 3.304488610259737,
+        "s_x32_bs": 3.304342176285279,
+        "s_x32_bd": 0.003522988048683562,
+        "s_x33_gs": 3.340251363087852,
+        "s_x33_gd": 3.301914118586299,
+        "s_x33_gb": 3.301912643657129,
+        "s_x33_ds": 3.307087179799852,
+        "s_x33_bs": 3.306976101603254,
+        "s_x33_bd": 0.003566901195912742,
+        "s_x34_gs": 3.299785831772852,
+        "s_x34_gd": 3.299829495565137,
+        "s_x34_gb": 3.304114291044513,
+        "s_x34_ds": 2.218153135212119,
+        "s_x34_bs": 2.218177413990874,
+        "s_x34_bd": 0.2101625619548522,
+        "s_x35_gs": 3.339609344195108,
+        "s_x35_gd": 3.307094039232399,
+        "s_x35_gb": 3.307093724519037,
+        "s_x35_ds": 3.310334900938413,
+        "s_x35_bs": 3.310283838632657,
+        "s_x35_bd": 0.01071441458824074,
+        "s_x36_gs": 0.1650597913291149,
+        "s_x36_gd": 0.8706819426280533,
+        "s_x36_gb": 0.871066608845929,
+        "s_x36_ds": 1.032248622633858,
+        "s_x36_bs": 1.032547723429607,
+        "s_x36_bd": 0.0005081732407521348,
+        "s_x37_gs": 4.893975273041587,
+        "s_x37_gd": 4.893982167778446,
+        "s_x37_gb": 4.89398869090225,
+        "s_x37_ds": 2.80130465914345,
+        "s_x37_bs": 2.801163541426253,
+        "s_x37_bd": 0.006254278407366698,
+        "s_x38_gs": 3.312635563916124,
+        "s_x38_gd": 3.303127841510747,
+        "s_x38_gb": 3.303140607483968,
+        "s_x38_ds": 3.457414695325076,
+        "s_x38_bs": 3.45854217979502,
+        "s_x38_bd": 0.009383411031005241
+      },
+      "terminal_pairs_logged": [
+        "gs",
+        "gd",
+        "gb",
+        "ds",
+        "bs",
+        "bd"
+      ],
+      "terminal_note": "Actual39MOS PEX terminal maxima only; no foundry lifetime or absolute-maximum qualification claim.",
+      "current_min_a": -0.0002057317650402836,
+      "current_max_a": 0.0001042461961982032,
+      "fault_to_safe_s": 2.057768017073655e-07,
+      "fault_charge": {
+        "signed_c": -6.858572362600417e-12,
+        "positive_c": 5.048963158059756e-13,
+        "negative_c": -7.363468678406392e-12
+      },
+      "held_fault_peak_a": 2.482250518280627e-14,
+      "stopped_clock_release_conduction_peak_a": 9.538362127600543e-15,
+      "recovered_a": 9.97333904470067e-05,
+      "checks": [
+        {
+          "name": "fault_shutdown_1us",
+          "passed": true
+        },
+        {
+          "name": "fault_Qpositive_10pC",
+          "passed": true
+        },
+        {
+          "name": "fault_Qnegative_20pC",
+          "passed": true
+        },
+        {
+          "name": "fault_held_1nA",
+          "passed": true
+        },
+        {
+          "name": "fault_stopped_clock_release_1nA",
+          "passed": true
+        },
+        {
+          "name": "fault_recovered_5pct",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_sha256": "a24d6bf5055c239e77d39b6cf0d1e6b638104e0911c956c5faea0ec5fc6da65b",
+      "raw_bytes": 44562936,
+      "gzip_sha256": "0b0a61edf437f3c1313d3c3077fcb197e7dba06b109ac7355c7f026e4d4282e2"
+    },
+    "c15_pwm": {
+      "case": {
+        "name": "c15_pwm",
+        "kind": "pwm",
+        "corner": "typical",
+        "temp_c": 27,
+        "logic_v": 3.3,
+        "led_v": 5.0,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 540000,
+        "comp_n2_pf": 150,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "filter_location": "board",
+        "filter_c_nf": 15.0,
+        "driver_r_ohm": 10,
+        "step_rail": "ref",
+        "edge_ns": 10,
+        "dc_reference_case": "c15_dc",
+        "comp_damp_ohm": 10,
+        "maxstep_ns": 5,
+        "fault_clear_ns": 100,
+        "rtl_assertions_passed": true,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "3b03e09ca6bca7061e85628d1dea379b0ff84d7bb3e0ea0b4454dc3b46c37cd2",
+      "executed_runner_sha256": "dca36f92884d3c6ab335c9b44d2c0a00f7c0dbb0ab63ce992b404b6af301b668",
+      "source_manifest_sha256": "7f47c994582d91177fc9de8228cedf009fea5ba15395e4f14e0f2e0c6e977337",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 105.68284893035889,
+      "elapsed_ngspice_s": 93.38286995887756,
+      "lock_wait_s": 12.299978971481323,
+      "log_sha256": "4c8d7fbc3258dcb9e3502d9f15dd34a5ca0b477a68fae8b0908bed226bf87cfe",
+      "rows": 166086,
+      "current_min_a": -2.369852442347178e-05,
+      "current_max_a": 0.0001121808085564928,
+      "d1_charge_c": 9.963325349929468e-11,
+      "d1_charge_error_pct": -0.10052580220729634,
+      "matched_dc_reference": "c15_dc",
+      "matched_dc_current_a": 9.97335114117108e-05,
+      "pwm_integration_window_s": [
+        0.0002585,
+        0.0005145
+      ],
+      "checks": [
+        {
+          "name": "duty1_charge_error_2pct",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_sha256": "1e1bebc663b26d32b0596383ec5919ac05b7ba31529c716070af62a8361a2431",
+      "raw_bytes": 88026116,
+      "gzip_sha256": "4a5e044bcdb1887dd39af64bef6a383d5c86e01896251d7f96cc431f2107de18"
+    }
+  },
+  "startup_corners": {
+    "c15_startup_ss_slow": {
+      "case": {
+        "name": "c15_startup_ss_slow",
+        "kind": "startup",
+        "corner": "ss",
+        "temp_c": 85,
+        "logic_v": 2.97,
+        "led_v": 4.5,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 40000,
+        "comp_n2_pf": 165.0,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "filter_location": "board",
+        "filter_c_nf": 16.5,
+        "filter_r_ohm": 105.0,
+        "driver_r_ohm": 10,
+        "startup_mesh_full": true,
+        "comp_damp_ohm": 10,
+        "fault_clear_ns": 20000,
+        "rtl_assertions_passed": true,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "7ad28a24900ef531f581df972582e44d3c64cdb3e5ee3052918bdbcbd8c76204",
+      "executed_runner_sha256": "72bcca9dadd58ad4cfc9c5c69d1d85450a788aa6cf701c1d6c4ac694270794b2",
+      "source_manifest_sha256": "7d3e80000277b99e3dc9a996ab80595de125daaf10ba566a95bc8404c4ffa7cc",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 439.3407790660858,
+      "elapsed_ngspice_s": 125.47973799705505,
+      "lock_wait_s": 313.8610420227051,
+      "log_sha256": "a582e5cf614cd03e1ea1a00afd5bff9e116bb842cd2cb1637c112c49afabc882",
+      "rows": 245178,
+      "current_min_a": -1.174982093264311e-05,
+      "current_max_a": 9.679843303000999e-05,
+      "held_peak_a": 3.692213111637226e-11,
+      "held_conduction_peak_a": 6.129161070882738e-20,
+      "held_displacement_peak_a": 4.085768979193271e-11,
+      "held_diegnd_peak_v": 0.0001530367129391454,
+      "held_charge": {
+        "signed_c": -3.578552892256767e-21,
+        "positive_c": 9.855253002513854e-20,
+        "negative_c": -1.0213108291739529e-19
+      },
+      "recovered_a": 9.679728145748114e-05,
+      "permit_pre_release_max_v": 0.0001530333114735154,
+      "prepermit_conduction_peak_a": 8.79180255689831e-15,
+      "checks": [
+        {
+          "name": "held_1nA",
+          "passed": true
+        },
+        {
+          "name": "prepermit_conduction_1nA",
+          "passed": true
+        },
+        {
+          "name": "recovered_5pct",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_sha256": "d91558a51d2eb45201d9be6ee24c539c6f05b550b388e587117991dd7b1ac51e",
+      "raw_bytes": 129944876,
+      "gzip_sha256": "6256d6194b00f04bff67e98adbce23748d4115d1aa56859b1120d5cacd404ddd"
+    },
+    "c15_startup_ff_fast": {
+      "case": {
+        "name": "c15_startup_ff_fast",
+        "kind": "startup",
+        "corner": "ff",
+        "temp_c": 0,
+        "logic_v": 3.63,
+        "led_v": 5.5,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 40000,
+        "comp_n2_pf": 135.0,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "filter_location": "board",
+        "filter_c_nf": 13.5,
+        "filter_r_ohm": 95.0,
+        "driver_r_ohm": 10,
+        "startup_mesh_full": true,
+        "comp_damp_ohm": 10,
+        "fault_clear_ns": 20000,
+        "rtl_assertions_passed": true,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "8fa1210f2d794d8bf2e67f834d7230bc6ce1ebdbb603acdcd31d563c0ba5f0b9",
+      "executed_runner_sha256": "72bcca9dadd58ad4cfc9c5c69d1d85450a788aa6cf701c1d6c4ac694270794b2",
+      "source_manifest_sha256": "ad7ba58c7c63ee1b733a486e7455579d874df3b601af2078a2c3fb45260c1e87",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 341.0985379219055,
+      "elapsed_ngspice_s": 314.3019540309906,
+      "lock_wait_s": 26.79658579826355,
+      "log_sha256": "74602ad5504b10041228aaa13e5d590b32ee919ec284334a736b90094e3007e9",
+      "rows": 276460,
+      "current_min_a": -3.482782427564162e-05,
+      "current_max_a": 0.0001022786182270575,
+      "held_peak_a": 5.876364901622433e-11,
+      "held_conduction_peak_a": 4.7010849902386937e-20,
+      "held_displacement_peak_a": 6.442485555847802e-10,
+      "held_diegnd_peak_v": 0.0001751688553864652,
+      "held_charge": {
+        "signed_c": 1.2622136378293395e-20,
+        "positive_c": 1.9247655157428243e-19,
+        "negative_c": -1.7985441519598907e-19
+      },
+      "recovered_a": 0.00010061291405265184,
+      "permit_pre_release_max_v": 0.0001751688553813024,
+      "prepermit_conduction_peak_a": 1.0309972550789867e-14,
+      "checks": [
+        {
+          "name": "held_1nA",
+          "passed": true
+        },
+        {
+          "name": "prepermit_conduction_1nA",
+          "passed": true
+        },
+        {
+          "name": "recovered_5pct",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_sha256": "9297a43b1015c0a5c4809de3b7be370b179011e4ff9570efe64684c83e45a356",
+      "raw_bytes": 146524336,
+      "gzip_sha256": "4ac972ebc732169e19bf4b25b3405528e17708b54671e6958f7bfb34c6976332"
+    }
+  },
+  "dc_equivalence_spots": [
+    {
+      "case": "c15_dc_equiv_max",
+      "baseline": "pcb_dc_ff_85_mmmp",
+      "current_delta_a": -1.6912605213872944e-14
+    },
+    {
+      "case": "c15_dc_equiv_min",
+      "baseline": "pcb_dc_ss_85_pmmm",
+      "current_delta_a": 4.1849295838621015e-14
+    }
+  ],
+  "external_reference_spots": [
+    {
+      "case": {
+        "name": "c15_dc_extref_max",
+        "kind": "dc",
+        "corner": "ff",
+        "temp_c": 85,
+        "logic_v": 3.63,
+        "led_v": 5.5,
+        "r_factors": {
+          "RSET": 0.99,
+          "RBIAS": 0.95,
+          "RRELEASE": 0.95,
+          "RBLEED": 1.05
+        },
+        "r_tc_ppm": {
+          "RSET": -100,
+          "RBIAS": -200,
+          "RRELEASE": -200,
+          "RBLEED": 200
+        },
+        "package": "stress",
+        "candidate": true,
+        "comp_n2_pf": 150,
+        "comp_return": "0",
+        "filter_location": "board",
+        "filter_c_nf": 15.0,
+        "driver_r_ohm": 10,
+        "actual_resistance_ohm": {
+          "RSET": 4921.29,
+          "RBIAS": 93897.99999999999,
+          "RRELEASE": 93897.99999999999,
+          "RBLEED": 10621800.000000002
+        },
+        "comp_pin_package": true,
+        "comp_damp_ohm": 10,
+        "equivalence_baseline_case": "pcb_dc_ff_85_mmmp",
+        "vset_r_ohm": 100,
+        "vset_v": 0.501
+      },
+      "deck_sha256": "459ee1091ea255454c8e53a5c8f1f1ef9875bf8ac410d7d1f8d9a29b37e59705",
+      "executed_runner_sha256": "dca36f92884d3c6ab335c9b44d2c0a00f7c0dbb0ab63ce992b404b6af301b668",
+      "source_manifest_sha256": "7f47c994582d91177fc9de8228cedf009fea5ba15395e4f14e0f2e0c6e977337",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 39.64273405075073,
+      "elapsed_ngspice_s": 0.1305220127105713,
+      "lock_wait_s": 39.51221203804016,
+      "log_sha256": "3cf7786532cbfa108c2a42031a0fe03c2d5a94d34c1cce0187e2c38f95e47d47",
+      "rows": 1,
+      "current_a": 0.0001021874538314017,
+      "error_pct": 2.1874538314016867,
+      "checks": [
+        {
+          "name": "dc_5pct",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_sha256": "6a370484ccf4d0c45087ae35982fd34a653353fdf37ff2e73c9714464f0f62cf",
+      "raw_bytes": 1066,
+      "gzip_sha256": "642d5883853865d14dfcf509b4f0d8407a4d9fa53c5c3b3985d0eeb92eb03c83"
+    },
+    {
+      "case": {
+        "name": "c15_dc_extref_min",
+        "kind": "dc",
+        "corner": "ss",
+        "temp_c": 85,
+        "logic_v": 2.97,
+        "led_v": 4.5,
+        "r_factors": {
+          "RSET": 1.01,
+          "RBIAS": 0.95,
+          "RRELEASE": 0.95,
+          "RBLEED": 0.95
+        },
+        "r_tc_ppm": {
+          "RSET": 100,
+          "RBIAS": -200,
+          "RRELEASE": -200,
+          "RBLEED": -200
+        },
+        "package": "stress",
+        "candidate": true,
+        "comp_n2_pf": 150,
+        "comp_return": "0",
+        "filter_location": "board",
+        "filter_c_nf": 15.0,
+        "driver_r_ohm": 10,
+        "actual_resistance_ohm": {
+          "RSET": 5079.29,
+          "RBIAS": 93897.99999999999,
+          "RRELEASE": 93897.99999999999,
+          "RBLEED": 9389800.0
+        },
+        "comp_pin_package": true,
+        "comp_damp_ohm": 10,
+        "equivalence_baseline_case": "pcb_dc_ss_85_pmmm",
+        "vset_r_ohm": 100,
+        "vset_v": 0.499
+      },
+      "deck_sha256": "9d71cf34e794d2772a89953f34766508a3350084ef0aa539db2ec15d43aaf8a3",
+      "executed_runner_sha256": "dca36f92884d3c6ab335c9b44d2c0a00f7c0dbb0ab63ce992b404b6af301b668",
+      "source_manifest_sha256": "7f47c994582d91177fc9de8228cedf009fea5ba15395e4f14e0f2e0c6e977337",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 14.409905910491943,
+      "elapsed_ngspice_s": 0.13907194137573242,
+      "lock_wait_s": 14.270833969116211,
+      "log_sha256": "c51a32c8a3b2c1501854a77faea5e078422ed97a78232ff338947c382017f1a5",
+      "rows": 1,
+      "current_a": 9.540334854996967e-05,
+      "error_pct": -4.596651450030331,
+      "checks": [
+        {
+          "name": "dc_5pct",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_sha256": "056921ccc0e46d1d2237ec4cd9d39a8fda01b5d49c964b16a1d904bf9b989cc6",
+      "raw_bytes": 1066,
+      "gzip_sha256": "fc00874631795e0a7c043f0fd91906b06fed0fe5a8a16f743664284be13a800c"
+    }
+  ],
+  "historical_candidates": {
+    "damped_startup_ss_slow": {
+      "case": {
+        "name": "damped_startup_ss_slow",
+        "kind": "startup",
+        "corner": "ss",
+        "temp_c": 85,
+        "logic_v": 2.97,
+        "led_v": 4.5,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 40000,
+        "comp_n2_pf": 165.0,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "filter_location": "board",
+        "filter_c_nf": 110.00000000000001,
+        "filter_r_ohm": 105.0,
+        "driver_r_ohm": 10,
+        "startup_mesh_full": true,
+        "comp_damp_ohm": 10,
+        "fault_clear_ns": 20000,
+        "rtl_assertions_passed": true,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "f8b0875654d688d010cdcf05e6139a757079e757a5b0f5203e7d077c43a92ed5",
+      "executed_runner_sha256": "2930d6a4f02746a7ea69073580735acfef9b26088e023c96b45656518a604b9d",
+      "source_manifest_sha256": "b16321e3edf470ad1aa5e7532c49017ee340b18aa7e47d77d5589418f6182db5",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 167.38074016571045,
+      "elapsed_ngspice_s": 107.61073708534241,
+      "lock_wait_s": 59.77000403404236,
+      "log_sha256": "9c7e0210e533401a59d6c5da172a4771f447ce6ad63917c7b6fd47ec95f03cf1",
+      "rows": 243000,
+      "current_min_a": -3.737115245577086e-06,
+      "current_max_a": 9.528468505800768e-05,
+      "held_peak_a": 5.568093000581103e-12,
+      "held_conduction_peak_a": 5.060912673527667e-20,
+      "held_displacement_peak_a": 1.203842630396391e-11,
+      "held_diegnd_peak_v": 4.373033688696498e-05,
+      "held_charge": {
+        "signed_c": 3.696176244754176e-22,
+        "positive_c": 1.6783633074584683e-20,
+        "negative_c": -1.6414015450109263e-20
+      },
+      "recovered_a": 9.170240469166197e-05,
+      "permit_pre_release_max_v": 4.373033711280503e-05,
+      "prepermit_conduction_peak_a": 8.552366226686201e-15,
+      "checks": [
+        {
+          "name": "held_1nA",
+          "passed": true
+        },
+        {
+          "name": "prepermit_conduction_1nA",
+          "passed": true
+        },
+        {
+          "name": "recovered_5pct",
+          "passed": false
+        }
+      ],
+      "passed": false,
+      "raw_sha256": "4b35ff1436fb84688d0fdc76ec636f0578bee0f3c352f7760842679a00251b9d",
+      "raw_bytes": 128790536,
+      "gzip_sha256": "d45c354c19844429c5234fb6c276a5b8642334a1b9291ba13ee999b8cf7659e4"
+    },
+    "c47_startup_ss_slow": {
+      "case": {
+        "name": "c47_startup_ss_slow",
+        "kind": "startup",
+        "corner": "ss",
+        "temp_c": 85,
+        "logic_v": 2.97,
+        "led_v": 4.5,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 40000,
+        "comp_n2_pf": 165.0,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "filter_location": "board",
+        "filter_c_nf": 51.7,
+        "filter_r_ohm": 105.0,
+        "driver_r_ohm": 10,
+        "startup_mesh_full": true,
+        "comp_damp_ohm": 10,
+        "fault_clear_ns": 20000,
+        "rtl_assertions_passed": true,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "fa26975d8aca29e503396cc28dd318d6e2a0eee697bd936870524eafd15982e0",
+      "executed_runner_sha256": "0fd4fdb2b5676471cb6fdfa4b9ba521fe23096c34f7b15a7f3732ca74f9554ce",
+      "source_manifest_sha256": "76d75a27fc8df95d8795d59f73ecec25b60396affd6afa05dcdc988ff7ddb34a",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 236.00250887870789,
+      "elapsed_ngspice_s": 113.009840965271,
+      "lock_wait_s": 122.99266791343689,
+      "log_sha256": "1659a780a0c833750ae52a5bdef470c87016299d07767b35c9774d0109aa6d65",
+      "rows": 242179,
+      "current_min_a": -1.133526772951067e-05,
+      "current_max_a": 9.678780768598537e-05,
+      "held_peak_a": 1.178817689297536e-11,
+      "held_conduction_peak_a": 6.00955748029342e-20,
+      "held_displacement_peak_a": 1.494242755430817e-11,
+      "held_diegnd_peak_v": 8.775151556840459e-05,
+      "held_charge": {
+        "signed_c": -1.9232215001882846e-20,
+        "positive_c": 4.628348223231021e-20,
+        "negative_c": -6.551569723419304e-20
+      },
+      "recovered_a": 9.674534408569228e-05,
+      "permit_pre_release_max_v": 8.770937449662552e-05,
+      "prepermit_conduction_peak_a": 8.758983897558837e-15,
+      "checks": [
+        {
+          "name": "held_1nA",
+          "passed": true
+        },
+        {
+          "name": "prepermit_conduction_1nA",
+          "passed": true
+        },
+        {
+          "name": "recovered_5pct",
+          "passed": true
+        }
+      ],
+      "passed": true,
+      "raw_sha256": "897e76c406788a306295a71761d34c3008381e9ab02d5cc68d6d611be8a96e3c",
+      "raw_bytes": 128355406,
+      "gzip_sha256": "0ba2659f236342e7f2cb4c774c9e527d049c970c3941493f476850cf28cd391b"
+    },
+    "c47_dyn_ss_mmm": {
+      "case": {
+        "name": "c47_dyn_ss_mmm",
+        "kind": "step",
+        "corner": "ss",
+        "temp_c": 85,
+        "logic_v": 2.97,
+        "led_v": 4.5,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 100000,
+        "comp_n2_pf": 135.0,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "filter_location": "board",
+        "filter_c_nf": 42.3,
+        "filter_r_ohm": 95.0,
+        "driver_r_ohm": 10,
+        "step_rail": "ref",
+        "edge_ns": 10,
+        "comp_damp_ohm": 10,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "95e6c433732376938784ed546722c10959d250a17eee3695295ddfd25a1a7e6c",
+      "executed_runner_sha256": "74adddb8f2ce608bf3cc2228ed6d262be1d247b568d87cfda70727d24c4e9ad1",
+      "source_manifest_sha256": "9d721370bc06a4f790abb04b9435849285085881a0298e47c8e584d278698719",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 15.26032304763794,
+      "elapsed_ngspice_s": 15.260250091552734,
+      "lock_wait_s": 7.390975952148438e-05,
+      "log_sha256": "e7a3aa452bb3970187555dfc3986b27cfe1a60009bbc52c89a7888b01131e603",
+      "rows": 50321,
+      "current_min_a": 8.857931625665859e-05,
+      "current_max_a": 9.684630443941987e-05,
+      "baseline_current_a": 9.684629001095686e-05,
+      "final_current_a": 9.684629000254092e-05,
+      "excursion_pct": 8.536180119406712,
+      "settle_s": 8.056971898998048e-06,
+      "ctrl_rail_error_peak_v": 2.183647789641788,
+      "checks": [
+        {
+          "name": "research_excursion_20pct",
+          "passed": true
+        },
+        {
+          "name": "research_restore_5us",
+          "passed": false
+        }
+      ],
+      "passed": false,
+      "raw_sha256": "2846a5334241fd1c9aaede5f7c6c188f3f55a670ea554cc6bfe2db75c9270206",
+      "raw_bytes": 26670666,
+      "gzip_sha256": "296275719c391b016fda611c81947a9f0292fb0c9ee1e4685667e5187707d0dc"
+    },
+    "c47_dyn_ss_ppp": {
+      "case": {
+        "name": "c47_dyn_ss_ppp",
+        "kind": "step",
+        "corner": "ss",
+        "temp_c": 85,
+        "logic_v": 2.97,
+        "led_v": 4.5,
+        "r_factors": {},
+        "r_tc_ppm": {},
+        "package": "stress",
+        "candidate": true,
+        "stop_ns": 100000,
+        "comp_n2_pf": 165.0,
+        "comp_return": "0",
+        "comp_pin_package": true,
+        "filter_location": "board",
+        "filter_c_nf": 51.7,
+        "filter_r_ohm": 105.0,
+        "driver_r_ohm": 10,
+        "step_rail": "ref",
+        "edge_ns": 10,
+        "comp_damp_ohm": 10,
+        "actual_resistance_ohm": {
+          "RSET": 5000.0,
+          "RBIAS": 100000.0,
+          "RRELEASE": 100000.0,
+          "RBLEED": 10000000.0
+        }
+      },
+      "deck_sha256": "366b817cfdc3072d99e29834ba74ab7eb7e9ab49b5df735e878303072c1f478a",
+      "executed_runner_sha256": "74adddb8f2ce608bf3cc2228ed6d262be1d247b568d87cfda70727d24c4e9ad1",
+      "source_manifest_sha256": "9d721370bc06a4f790abb04b9435849285085881a0298e47c8e584d278698719",
+      "completed": true,
+      "exit_code": 0,
+      "elapsed_s": 15.60295295715332,
+      "elapsed_ngspice_s": 15.602895021438599,
+      "lock_wait_s": 5.793571472167969e-05,
+      "log_sha256": "08d81f7e6dfbbcbc77ac56102f179fb5e07f72777b05c8c2effd20c8d5ebb3ac",
+      "rows": 50378,
+      "current_min_a": 8.886026216283559e-05,
+      "current_max_a": 9.679846251434052e-05,
+      "baseline_current_a": 9.679845259337774e-05,
+      "final_current_a": 9.679844747101287e-05,
+      "excursion_pct": 8.200741042719129,
+      "settle_s": 1.0988932262978021e-05,
+      "ctrl_rail_error_peak_v": 2.182709736930804,
+      "checks": [
+        {
+          "name": "research_excursion_20pct",
+          "passed": true
+        },
+        {
+          "name": "research_restore_5us",
+          "passed": false
+        }
+      ],
+      "passed": false,
+      "raw_sha256": "c18f6e99a554959d9e97af5acda718a7fd57ffd541f3169b70ed257fa1f2b8d6",
+      "raw_bytes": 26700876,
+      "gzip_sha256": "3e2b20961db48ad17ee514bdc5bc84b098042e28470b1ae5867d5ec5e03cdf21"
+    }
+  },
+  "final_local_loops": [
+    {
+      "name": "loop_cff0_cc30_cs30_ff_0_n2c135_pcb13.5n_r95_damp10_n2rl_frozen2",
+      "cff_pf": 0.0,
+      "cc_pf": 30,
+      "cs_pf": 30,
+      "comp_n2_pf": 135.0,
+      "pcb_filter": true,
+      "filter_c_nf": 13.5,
+      "filter_r_ohm": 95.0,
+      "comp_damp_ohm": 10.0,
+      "n2_pin_package": true,
+      "corner": "ff",
+      "temp_c": 0.0,
+      "logic_v": 3.63,
+      "led_v": 5.5,
+      "crossings": [
+        {
+          "frequency_hz": 244558.3032684595,
+          "phase_margin_deg": 73.64563731249494
+        }
+      ],
+      "dc_loop_gain_db": 56.95077805379664,
+      "closed_injected_op_max_delta_v": 2.2460033832771842e-11,
+      "records": [
+        {
+          "method": "voltage",
+          "deck_sha256": "063eb0a272aa46ade226dbb306f8d5c2083ee34de204ad41d6d448f5cfec9091",
+          "dut_sha256": "9fe80d1dac72445a202485a3d6610057ab7de5b8d9df06e3221814adfe773ccc",
+          "log_sha256": "75157585b9146197770a837ace1604ada6b57c6c67f580647904ddf1f8b8f6a3"
+        },
+        {
+          "method": "current",
+          "deck_sha256": "bf37976cb916a1e8c03fe4131c178bfce150d3d0572d90731f43965f5ef94f9b",
+          "dut_sha256": "f92388d836437d2d588133575a65e2c92bd9f43a8896960b4b9e295a945b0235",
+          "log_sha256": "a07020a127f37139004d80d6bd0cc94c9fa89a8a7f23dea1e2a0fe7838c589cc"
+        },
+        {
+          "method": "closed",
+          "deck_sha256": "e724ad05b4431606e5a3d375d00619d998ed46efb0df75eb539242c4d0e7443d",
+          "dut_sha256": "49540fd16e8a9c94186b5bd05486e854be71c535c1c924696d0dd6078e178582",
+          "log_sha256": "6dc1c0a97514024ed63163961a63b7087fd42939724934d4debff1333ace4d79"
+        }
+      ],
+      "executed_source_sha256": "9062a80a47f8d12295a12b3cd7a71def22a851b4b45379ff84e53859956cf69f",
+      "helper_runner_sha256": "dca36f92884d3c6ab335c9b44d2c0a00f7c0dbb0ab63ce992b404b6af301b668",
+      "source_manifest_sha256": "7f47c994582d91177fc9de8228cedf009fea5ba15395e4f14e0f2e0c6e977337",
+      "complete_source_identity": true,
+      "limitation": "Local two-injection return-ratio estimate; includes same stress package. No full silicon stability qualification."
+    },
+    {
+      "name": "loop_cff0_cc30_cs30_ss_85_n2c165_pcb16.5n_r105_damp10_n2rl_frozen2",
+      "cff_pf": 0.0,
+      "cc_pf": 30,
+      "cs_pf": 30,
+      "comp_n2_pf": 165.0,
+      "pcb_filter": true,
+      "filter_c_nf": 16.5,
+      "filter_r_ohm": 105.0,
+      "comp_damp_ohm": 10.0,
+      "n2_pin_package": true,
+      "corner": "ss",
+      "temp_c": 85.0,
+      "logic_v": 2.97,
+      "led_v": 4.5,
+      "crossings": [
+        {
+          "frequency_hz": 86511.42201605746,
+          "phase_margin_deg": 84.05966560852558
+        }
+      ],
+      "dc_loop_gain_db": 53.83693662360607,
+      "closed_injected_op_max_delta_v": 5.067091191079953e-11,
+      "records": [
+        {
+          "method": "voltage",
+          "deck_sha256": "f61b8ae12bd85e69ab61e9387758df91480aa4036041f667f4cd39de73a5abf3",
+          "dut_sha256": "9fe80d1dac72445a202485a3d6610057ab7de5b8d9df06e3221814adfe773ccc",
+          "log_sha256": "b4b7b5e630d2d0e5a2268e1e8f68a39e0b71be93a93eb0d5d5276d6550dd80f5"
+        },
+        {
+          "method": "current",
+          "deck_sha256": "78cfe4ddd75b73d748505b71a4f4caa442e658fb9e7a2bdd1b3f576c692f6f77",
+          "dut_sha256": "f92388d836437d2d588133575a65e2c92bd9f43a8896960b4b9e295a945b0235",
+          "log_sha256": "77d58e7eccd7afc0287b809f6bf2fa56be623bc2d64b6b1a09c7a468aae420af"
+        },
+        {
+          "method": "closed",
+          "deck_sha256": "5d3b922ef2e2f293a556a99084c81650a9d8693c21ee151d4891fda6c06754bb",
+          "dut_sha256": "49540fd16e8a9c94186b5bd05486e854be71c535c1c924696d0dd6078e178582",
+          "log_sha256": "49889c42f85ba5cbd1d7f2ba5ba4ba3dc6ebf51127f633b0474e6c306a7566bc"
+        }
+      ],
+      "executed_source_sha256": "9062a80a47f8d12295a12b3cd7a71def22a851b4b45379ff84e53859956cf69f",
+      "helper_runner_sha256": "dca36f92884d3c6ab335c9b44d2c0a00f7c0dbb0ab63ce992b404b6af301b668",
+      "source_manifest_sha256": "7f47c994582d91177fc9de8228cedf009fea5ba15395e4f14e0f2e0c6e977337",
+      "complete_source_identity": true,
+      "limitation": "Local two-injection return-ratio estimate; includes same stress package. No full silicon stability qualification."
+    },
+    {
+      "name": "loop_cff0_cc30_cs30_typical_27_n2c150_pcb15n_r100_damp10_n2rl_frozen2",
+      "cff_pf": 0.0,
+      "cc_pf": 30,
+      "cs_pf": 30,
+      "comp_n2_pf": 150.0,
+      "pcb_filter": true,
+      "filter_c_nf": 15.0,
+      "filter_r_ohm": 100.0,
+      "comp_damp_ohm": 10.0,
+      "n2_pin_package": true,
+      "corner": "typical",
+      "temp_c": 27.0,
+      "logic_v": 3.3,
+      "led_v": 5.0,
+      "crossings": [
+        {
+          "frequency_hz": 158407.82915101506,
+          "phase_margin_deg": 79.26102281201636
+        }
+      ],
+      "dc_loop_gain_db": 55.87892334524528,
+      "closed_injected_op_max_delta_v": 8.313993937747455e-11,
+      "records": [
+        {
+          "method": "voltage",
+          "deck_sha256": "1cb54467b1fc070e48678db760ba8c62e143e4f080b56e112e9eb646484371d1",
+          "dut_sha256": "9fe80d1dac72445a202485a3d6610057ab7de5b8d9df06e3221814adfe773ccc",
+          "log_sha256": "3485a6803e324883d8b09f44cf2a55bc1f592126c40c689cf46a5d3f01afc479"
+        },
+        {
+          "method": "current",
+          "deck_sha256": "dbcac143ed3e70fc47f6cda13229098f2ad864b6b1ea93a39469caf44f45b3d1",
+          "dut_sha256": "f92388d836437d2d588133575a65e2c92bd9f43a8896960b4b9e295a945b0235",
+          "log_sha256": "372c2d64d0db0a94c2b85f41945ad516ec576c4eec2332879a9f09d568bf53e8"
+        },
+        {
+          "method": "closed",
+          "deck_sha256": "3ed3f062e79875d2812b703606363f75cfd69161448f67d72deb9785e79335cb",
+          "dut_sha256": "49540fd16e8a9c94186b5bd05486e854be71c535c1c924696d0dd6078e178582",
+          "log_sha256": "69f938943e91491e7ad86ef6e679c359cb9c93393d02be2b5460abb0020716a0"
+        }
+      ],
+      "executed_source_sha256": "9062a80a47f8d12295a12b3cd7a71def22a851b4b45379ff84e53859956cf69f",
+      "helper_runner_sha256": "dca36f92884d3c6ab335c9b44d2c0a00f7c0dbb0ab63ce992b404b6af301b668",
+      "source_manifest_sha256": "7f47c994582d91177fc9de8228cedf009fea5ba15395e4f14e0f2e0c6e977337",
+      "complete_source_identity": true,
+      "limitation": "Local two-injection return-ratio estimate; includes same stress package. No full silicon stability qualification."
+    }
+  ],
+  "numerical_validation": [
+    {
+      "pair": [
+        "c15_startup_fullmesh",
+        "c15_startup_fullmesh_trap"
+      ],
+      "completed": true,
+      "held_peak_delta_a": 7.000122703714815e-14,
+      "held_charge_max_delta_c": 1.3266506182870497e-19,
+      "recovered_current_relative_delta": 8.466083389890855e-11,
+      "passed": true
+    },
+    {
+      "pair": [
+        "c15_step",
+        "c15_step_fine"
+      ],
+      "completed": true,
+      "peak_relative_delta": 1.0443078068966827e-08,
+      "disturbance_positive_negative_charge_c": [
+        [
+          2.1394151217698587e-12,
+          -3.1195099333277364e-12
+        ],
+        [
+          2.139414304729227e-12,
+          -3.1195086158382125e-12
+        ]
+      ],
+      "disturbance_charge_relative_delta": 4.223387994883865e-07,
+      "settle_delta_s": 8.400201358106879e-10,
+      "passed": true
+    }
+  ],
+  "identity_exceptions": [
+    {
+      "case": "pcb150_board100n_ac",
+      "case_runner": "a76dca9f4918b73ce7cb915415e9262b0bed1d0b7b218ffe32931c82a8207de6",
+      "manifest_runner": "d0f3225fdc868dd06239c371df493635967c3904f88590e6f81c73e367bf9780",
+      "excluded_from_final_acceptance": true,
+      "note": "Historical mutable manifest index race; exact deck/log/input bytes and actual executed-runner bytes remain verified. Original record unchanged."
+    },
+    {
+      "case": "startup_diagnostic_strict_r10_gear1_fullmesh",
+      "case_runner": "5ca1b92de02c12757f838fdbeec442bb354b2fd5c1d8d98bbf7093e0b21e994b",
+      "manifest_runner": "02a3a3b8d2295dd4449c106db983d112d673aeda29cd734bfcf0ebea47492984",
+      "excluded_from_final_acceptance": true,
+      "note": "Historical mutable manifest index race; exact deck/log/input bytes and actual executed-runner bytes remain verified. Original record unchanged."
+    }
+  ],
+  "figures": [
+    {
+      "name": "供电阶跃与恢复",
+      "outputs": [
+        {
+          "path": "docs/research/pwm-reference-startup-20261024/electrical-figures/供电阶跃与恢复.png",
+          "sha256": "6a8ea638a55445fdd523dcacbf422edcf4d7516c47eb25c6e0b3ea9dc8e79f9d"
+        },
+        {
+          "path": "docs/research/pwm-reference-startup-20261024/electrical-figures/供电阶跃与恢复.svg",
+          "sha256": "5839179a083324bc47434e317377bbc93bd7d86b57ee58002b2af237c15dea0b"
+        }
+      ],
+      "sources": [
+        {
+          "case": "pilot_step_cff0_obs2",
+          "raw_sha256": "d49f74b71286519a409f935dc83307f4684dca6886669ad9528de11b39d0996c",
+          "plot_data": "evidence/pwm-reference-v2/20261024/plot-data/pilot_step_cff0_obs2.csv",
+          "plot_data_sha256": "ed3e8917c90f9a2ac1516ffde644a4ed99df6943d23e68ade1e5fce92347916d"
+        },
+        {
+          "case": "comp_n2_150p_step",
+          "raw_sha256": "e087c7b4dda8b0bff39dc03b47973f652ead0607ec973edea34a064293caacbc",
+          "plot_data": "evidence/pwm-reference-v2/20261024/plot-data/comp_n2_150p_step.csv",
+          "plot_data_sha256": "604ab1213326c2401e6ef9670ffbcf9a9283b56a4eeaf5fe8ff49d01af55e0fe"
+        },
+        {
+          "case": "c15_step",
+          "raw_sha256": "a8f629fea4299525803989672197c054b977c9f5b027e93623ab87cf8ec7972f",
+          "plot_data": "evidence/pwm-reference-v2/20261024/plot-data/c15_step.csv",
+          "plot_data_sha256": "ff887deb2ad1e6f7f007ea7e570f6672fe857c598242ac0076d8a6490cebe7de"
+        }
+      ]
+    },
+    {
+      "name": "启动保持与许可",
+      "outputs": [
+        {
+          "path": "docs/research/pwm-reference-startup-20261024/electrical-figures/启动保持与许可.png",
+          "sha256": "e3f6cf5797d99d83d012bfd1be4b48c5f5dfbb392b98d283e6ab53757e999637"
+        },
+        {
+          "path": "docs/research/pwm-reference-startup-20261024/electrical-figures/启动保持与许可.svg",
+          "sha256": "144f3061a5a022eadfdf7aeb51fbe17552fcf8a49d69a55c7155f4104ca8d18e"
+        }
+      ],
+      "sources": [
+        {
+          "case": "c15_startup_fullmesh_trap",
+          "raw_sha256": "ce2f9cec570d2cae9c432e439ce60ec15986ae18922b4779facf2f758d66501f",
+          "plot_data": "evidence/pwm-reference-v2/20261024/plot-data/c15_startup_fullmesh_trap.csv",
+          "plot_data_sha256": "292d6f84928ab6b814b88e1a8cf1db358deee63716af028a9b1b3ebe9a37519f"
+        }
+      ]
+    },
+    {
+      "name": "直流PVT与独立电阻角落",
+      "outputs": [
+        {
+          "path": "docs/research/pwm-reference-startup-20261024/electrical-figures/直流PVT与独立电阻角落.png",
+          "sha256": "eca2df83b24af5ae3b8c9842f3d2a6b7c01f02b334b355a509e8a8eb0999b5e8"
+        },
+        {
+          "path": "docs/research/pwm-reference-startup-20261024/electrical-figures/直流PVT与独立电阻角落.svg",
+          "sha256": "b99a0afe7bfc081a000c1aa57ba2767090e2e5e9b8c51ff6d446fd4119db656c"
+        }
+      ],
+      "sources": [
+        {
+          "case": "n2rl_dc_ff_0_mmmm",
+          "raw_sha256": "840f2ef8b909eda639485131db60d3c2ea8d967e99de41e0ee4311475352da5b"
+        },
+        {
+          "case": "n2rl_dc_ff_0_mmmp",
+          "raw_sha256": "4ffb47bca979481e18bfed034db562f4fa3d7c4412c14b7d4430884b4efeee1a"
+        },
+        {
+          "case": "n2rl_dc_ff_0_mmpm",
+          "raw_sha256": "a41a14c82c11a4f76647583a47cc3a0e4a0b14af3f603bf503b527504424f7cf"
+        },
+        {
+          "case": "n2rl_dc_ff_0_mmpp",
+          "raw_sha256": "d75c088db18e151f8a93f25af1e32ab59e8652bcb06ee221e0adead80944aa33"
+        },
+        {
+          "case": "n2rl_dc_ff_0_mpmm",
+          "raw_sha256": "b614e3d847b1fe2b6901aef974e30d38a00c41176b7578f2c187ec1e78b8672c"
+        },
+        {
+          "case": "n2rl_dc_ff_0_mpmp",
+          "raw_sha256": "2d3c06dbe997cb70bbcf273a23c87dae851dfe5bb68a100421b9df15bb2ad002"
+        },
+        {
+          "case": "n2rl_dc_ff_0_mppm",
+          "raw_sha256": "11b0ad59e2112bbdf467c038681bc1e93025b79d6ae235d0ad291722ff682687"
+        },
+        {
+          "case": "n2rl_dc_ff_0_mppp",
+          "raw_sha256": "65d5d35402c25d58a63e6a08d4d2ffdd7a78322fc9ce2fff5d07d4e5dbfb46ea"
+        },
+        {
+          "case": "n2rl_dc_ff_0_pmmm",
+          "raw_sha256": "ad5860d4cd527ab4b8a28b33ed905067ab731712abc5586751ed961985f7b8f7"
+        },
+        {
+          "case": "n2rl_dc_ff_0_pmmp",
+          "raw_sha256": "b7aef65682eda8dd1ef5e4c3e1df102b1c8ae89eda7c5cd276150549ae990c70"
+        },
+        {
+          "case": "n2rl_dc_ff_0_pmpm",
+          "raw_sha256": "87162f4805bef7600004e62e0ee97ae3fb1620fbd257a851c45c0feaf2fd9c75"
+        },
+        {
+          "case": "n2rl_dc_ff_0_pmpp",
+          "raw_sha256": "24fe9d6a3399b2f30efb5ebeae754a39803284851adc2a6e89ddb7c176d48965"
+        },
+        {
+          "case": "n2rl_dc_ff_0_ppmm",
+          "raw_sha256": "1692ddbf1b6ef2e33bd1678c13ed707dc6ff11b05f6b08cfb6e7811f51d3f4f0"
+        },
+        {
+          "case": "n2rl_dc_ff_0_ppmp",
+          "raw_sha256": "fee3668f90eb7134d2cdb3fb7bf2934d93948df694c8a19fc7713f80dbd7cd38"
+        },
+        {
+          "case": "n2rl_dc_ff_0_pppm",
+          "raw_sha256": "6b70e22b5cf7be7b22ac981e6d67cade11970d6483d82bf5a33bc2164d3919bd"
+        },
+        {
+          "case": "n2rl_dc_ff_0_pppp",
+          "raw_sha256": "f5ec3d10ce0905b912bfa06a31184776e9b3c5b449ea549ea033671986def639"
+        },
+        {
+          "case": "n2rl_dc_ff_27_mmmm",
+          "raw_sha256": "cbc9fd4d68d4a6bd148ff9b705a87ff1062b5f954f5c2f66a17599e587836196"
+        },
+        {
+          "case": "n2rl_dc_ff_27_mmmp",
+          "raw_sha256": "0b0088659ed42b1dc880cf7b94cca28c251b73afc9240118df87c6f28882bae7"
+        },
+        {
+          "case": "n2rl_dc_ff_27_mmpm",
+          "raw_sha256": "46ab13df4171296cc70d8411f361e121bf273054dbcefad1ab58332b417ec3d2"
+        },
+        {
+          "case": "n2rl_dc_ff_27_mmpp",
+          "raw_sha256": "6a532bd30256dd078ccece961759e2efec0dbb48ef23bd2a30eae180f35c467f"
+        },
+        {
+          "case": "n2rl_dc_ff_27_mpmm",
+          "raw_sha256": "0c48c2a30227bdce2dd0a94e9d1bbbc51e56f1c40a2bc04f7a94867eb15b7d91"
+        },
+        {
+          "case": "n2rl_dc_ff_27_mpmp",
+          "raw_sha256": "dc50f780263659520bbbf16b7534d6f44a690a486c57aad63b6f9b6d952296eb"
+        },
+        {
+          "case": "n2rl_dc_ff_27_mppm",
+          "raw_sha256": "8f53131800055c0f913576a8c0f9989305bf56472e0713c24fece405b1aa2d8c"
+        },
+        {
+          "case": "n2rl_dc_ff_27_mppp",
+          "raw_sha256": "f0eb430c3143bf4394824e4108c6d04b9dd1ced4a6b2dfcad7ea7a6ec9342d2c"
+        },
+        {
+          "case": "n2rl_dc_ff_27_pmmm",
+          "raw_sha256": "cdf1bf3e32845aa82fe17ed7d7796ac84aacdff98386aedf35accfc4cb28768d"
+        },
+        {
+          "case": "n2rl_dc_ff_27_pmmp",
+          "raw_sha256": "51476f8e42f5027f845ce64e8d45aeb41223afd40b9618aea44f8395c570729b"
+        },
+        {
+          "case": "n2rl_dc_ff_27_pmpm",
+          "raw_sha256": "fd6eec6727b2321b01e366ccc2b014b7e080f0a25267d28d9b02b10f364cb4ef"
+        },
+        {
+          "case": "n2rl_dc_ff_27_pmpp",
+          "raw_sha256": "7e35f0667e14eb306f22e7add0356dc671c6ad4527ec6b9fb750aa4b8242110e"
+        },
+        {
+          "case": "n2rl_dc_ff_27_ppmm",
+          "raw_sha256": "cab49264b9f17c21da3ffdf5bbb5d36894635cd681b7406716953c502f1be47a"
+        },
+        {
+          "case": "n2rl_dc_ff_27_ppmp",
+          "raw_sha256": "31a79331d05217c69156458cd3a73da988ae281a142a4e9ffc28a9bf91661759"
+        },
+        {
+          "case": "n2rl_dc_ff_27_pppm",
+          "raw_sha256": "2584790f86dd4971b8eaff7db2c437aa52ae8632c00b15c7e53372297e5f1787"
+        },
+        {
+          "case": "n2rl_dc_ff_27_pppp",
+          "raw_sha256": "cf32cd53edd1a42cbd170c0335da615e390f7b632f5331e32c0bb9060ac55cc2"
+        },
+        {
+          "case": "n2rl_dc_ff_85_mmmm",
+          "raw_sha256": "917d476644baff66666f652788c6571bafb56c32dd76245305f9704e0729e2ee"
+        },
+        {
+          "case": "n2rl_dc_ff_85_mmmp",
+          "raw_sha256": "92c5aaa8c731698ff30e05c487929b2a154c95c7acb4a73178c8b0f5cad6b9ef"
+        },
+        {
+          "case": "n2rl_dc_ff_85_mmpm",
+          "raw_sha256": "ef5f0dc202bd716c7a5ff3861679a4bb3ec8d803f15cbb39290ad362d4f7a3fb"
+        },
+        {
+          "case": "n2rl_dc_ff_85_mmpp",
+          "raw_sha256": "45c2a1d9738c2adf8162d3a0abedc6294964b77018a3824d29370423f9aa55f2"
+        },
+        {
+          "case": "n2rl_dc_ff_85_mpmm",
+          "raw_sha256": "f78be1216670db59b11ea2133689800670dbd776609627509f702d26fe4045b6"
+        },
+        {
+          "case": "n2rl_dc_ff_85_mpmp",
+          "raw_sha256": "7270232caf303afa8daec299f44860bee33298b8e035de8c93a2155fa4646d03"
+        },
+        {
+          "case": "n2rl_dc_ff_85_mppm",
+          "raw_sha256": "9b90d0ba9b6e8faa00d6900e1af161439f8de43380d7d797b25c685f89cc211c"
+        },
+        {
+          "case": "n2rl_dc_ff_85_mppp",
+          "raw_sha256": "7e0835f0f41f1154ef67c27344148e8f0f9a1ce86b2aa017c31efcfd3b634e28"
+        },
+        {
+          "case": "n2rl_dc_ff_85_pmmm",
+          "raw_sha256": "d1e007c6add8f955acadfd9a0061aa93d2a4c37576b0f7be10026b38ecc3ddf4"
+        },
+        {
+          "case": "n2rl_dc_ff_85_pmmp",
+          "raw_sha256": "d3fbe56b38b48ed2148c1c5b45d02759553964a51b6fb12bd75085d658499990"
+        },
+        {
+          "case": "n2rl_dc_ff_85_pmpm",
+          "raw_sha256": "ecf46f750bcc98cc246d7d5ed896fe9869b05181ae1544eaa62b3c8a59e8f6da"
+        },
+        {
+          "case": "n2rl_dc_ff_85_pmpp",
+          "raw_sha256": "e7d0d11f51ff11adb8e6a411acaaddbdca08e3491647e8ca7d96a3a0c4668dde"
+        },
+        {
+          "case": "n2rl_dc_ff_85_ppmm",
+          "raw_sha256": "b7bc3cc42fadb808bc746a349386bb829ba94f8d608b0f36a00ad629fe230990"
+        },
+        {
+          "case": "n2rl_dc_ff_85_ppmp",
+          "raw_sha256": "df7ffe246ce1cf8c55d5c5e01355a87c79d44076bd5fe293b74e8eae6fd1840d"
+        },
+        {
+          "case": "n2rl_dc_ff_85_pppm",
+          "raw_sha256": "7be7b72ff8d802c9d4e5386631eae156959ccaaf474bc2cac4c6019c49de6218"
+        },
+        {
+          "case": "n2rl_dc_ff_85_pppp",
+          "raw_sha256": "edaee47e9784a4eb491ae93eb6ee149c91bdd4b68dca3c70b414a0cfe96eccee"
+        },
+        {
+          "case": "n2rl_dc_ss_0_mmmm",
+          "raw_sha256": "b9a138e21c1dbf40251ca33c779b824ba1821ed941825aa2098b9d8549b28135"
+        },
+        {
+          "case": "n2rl_dc_ss_0_mmmp",
+          "raw_sha256": "50f2a8ff62a5cb97c748fb9fbee5738c6d72cb32eb82f3d786a59dcaf5f25d3a"
+        },
+        {
+          "case": "n2rl_dc_ss_0_mmpm",
+          "raw_sha256": "abdaf4a01f789b09a8d3474729a6a79922188ecaf355c759d8804be36190ff0a"
+        },
+        {
+          "case": "n2rl_dc_ss_0_mmpp",
+          "raw_sha256": "b60c825e918437703d405480dbfae3bac11ee7fa5bba4338abae82bd3ecf0479"
+        },
+        {
+          "case": "n2rl_dc_ss_0_mpmm",
+          "raw_sha256": "f46f6503ba52fe087197d1fe4d6f34dcff9c3cc05c4b1bc25bbccf25bb6f6c4e"
+        },
+        {
+          "case": "n2rl_dc_ss_0_mpmp",
+          "raw_sha256": "a16d0bf7f118d1436b2adc906534d067f9cd2bfc6f40e11f7ad478e0f9078710"
+        },
+        {
+          "case": "n2rl_dc_ss_0_mppm",
+          "raw_sha256": "749f95207fcefa0dd9a7b107ec3f8ff828688e453a5d0f34fbb80ac87b22373b"
+        },
+        {
+          "case": "n2rl_dc_ss_0_mppp",
+          "raw_sha256": "0092c86ad5f87e9f84b50988a12721ba1e7c6c5c5a300b0062850ab5c55f7c66"
+        },
+        {
+          "case": "n2rl_dc_ss_0_pmmm",
+          "raw_sha256": "ef00028d256de5c532d3300a0b24a4ae3bdf4a34c6acd0fec45f8583f8ada68e"
+        },
+        {
+          "case": "n2rl_dc_ss_0_pmmp",
+          "raw_sha256": "13e0f9aead6c026caee3ed124d77890063b3e50568744b9ebfa6fd638fc28ead"
+        },
+        {
+          "case": "n2rl_dc_ss_0_pmpm",
+          "raw_sha256": "bb28c9a2146943d4151c476d246e8dd2ffc8adc5f78524424510171e25ee0bed"
+        },
+        {
+          "case": "n2rl_dc_ss_0_pmpp",
+          "raw_sha256": "ab610d5f807000be699edb45d4e1258d4301449ae5a02d28d07880230cd76992"
+        },
+        {
+          "case": "n2rl_dc_ss_0_ppmm",
+          "raw_sha256": "72671543af397e7ef522d56f6cf1e36986a46450a6065f51ff21defff9c0d06c"
+        },
+        {
+          "case": "n2rl_dc_ss_0_ppmp",
+          "raw_sha256": "a105b4b88d55c9c5b675016739be623e106a0d0abc4a478799c6dcd50fcd0322"
+        },
+        {
+          "case": "n2rl_dc_ss_0_pppm",
+          "raw_sha256": "18c89eac138fe428103aae42838057ecaf5d88bd50975a483dba2fc750a9d3f3"
+        },
+        {
+          "case": "n2rl_dc_ss_0_pppp",
+          "raw_sha256": "715003b30cf5a782bb52e5d7519376714cb709e41f6eef226e0d72a874cec324"
+        },
+        {
+          "case": "n2rl_dc_ss_27_mmmm",
+          "raw_sha256": "ae9b73945a1702157dc8e6989fcc5a8c5f23e83f59be98d4f8eba3adc38c5a62"
+        },
+        {
+          "case": "n2rl_dc_ss_27_mmmp",
+          "raw_sha256": "4423d2acb69980a0c4325a7cff0493c7d76d71d17632d55582b0feae8591c39c"
+        },
+        {
+          "case": "n2rl_dc_ss_27_mmpm",
+          "raw_sha256": "5ff01df680d54607d111b872278a316fdb15b839ae60665fab42414dce78f5d1"
+        },
+        {
+          "case": "n2rl_dc_ss_27_mmpp",
+          "raw_sha256": "40904666951b7c1b16adb59268d2b0cd862e5f38d9d612009163193798d3c8f3"
+        },
+        {
+          "case": "n2rl_dc_ss_27_mpmm",
+          "raw_sha256": "0fd3df59feb2053cf7ac9dae854551994a30239f2c0bbc584b02e3a4f7b6457f"
+        },
+        {
+          "case": "n2rl_dc_ss_27_mpmp",
+          "raw_sha256": "6b2d4f0c86e6594b7e138ba0b988bb611b8cbd176345e0b878847ba4c58f628b"
+        },
+        {
+          "case": "n2rl_dc_ss_27_mppm",
+          "raw_sha256": "28119f8b8d9e868c9390192d4c7bb6894f2d972cb8508862f344bd02e33d932a"
+        },
+        {
+          "case": "n2rl_dc_ss_27_mppp",
+          "raw_sha256": "ecb1ed898c695ebcc80a265a54b1db4f8c91e101beea60cbd98b25fed215792c"
+        },
+        {
+          "case": "n2rl_dc_ss_27_pmmm",
+          "raw_sha256": "68b071f53d665e549ce68fc98fcda498c1b5c8e5f198da9a18ee07df5a26ea0e"
+        },
+        {
+          "case": "n2rl_dc_ss_27_pmmp",
+          "raw_sha256": "f823463d1732aeefe098036f2d32d196a71244a5d72622b46db497f436529f5f"
+        },
+        {
+          "case": "n2rl_dc_ss_27_pmpm",
+          "raw_sha256": "131ad87cdb290abab610a9831c84a9a59368e84c5e916807580a200ce08c7d55"
+        },
+        {
+          "case": "n2rl_dc_ss_27_pmpp",
+          "raw_sha256": "5b6bd2d92a750eca18de12b8e1d7ccb54cb2e17efbf4c757730e1c5bd73e7ff1"
+        },
+        {
+          "case": "n2rl_dc_ss_27_ppmm",
+          "raw_sha256": "841ac98dd42dcf906b7c01c060085ddaa58521955a9b8c222527586ca6aba8e8"
+        },
+        {
+          "case": "n2rl_dc_ss_27_ppmp",
+          "raw_sha256": "d5ff11186db35ffc2a408f0163251e8aad0a09f9fc4251eed73b78157a152157"
+        },
+        {
+          "case": "n2rl_dc_ss_27_pppm",
+          "raw_sha256": "b54b3ddfe99816b45f13befd85f2a11cdf6a2d7582b213e363007104af7bc62b"
+        },
+        {
+          "case": "n2rl_dc_ss_27_pppp",
+          "raw_sha256": "8045df33da0b323919f5310ab753c05e60b125060d2e1571f93b21d21d06a784"
+        },
+        {
+          "case": "n2rl_dc_ss_85_mmmm",
+          "raw_sha256": "098671727fa0b65c73794187f720f7c453bce9cd4d9771bd66032d35580bf947"
+        },
+        {
+          "case": "n2rl_dc_ss_85_mmmp",
+          "raw_sha256": "15cc35aab5d350df64d855653afef78815eea4d2b663401562af31d766e6c3ac"
+        },
+        {
+          "case": "n2rl_dc_ss_85_mmpm",
+          "raw_sha256": "5c340e1760c45036d1700ea4619ca2705ddea8e054f3a519b6c3da23b02255ae"
+        },
+        {
+          "case": "n2rl_dc_ss_85_mmpp",
+          "raw_sha256": "005dc926896543061a87e0274b6d3b2f3a267ca4742c084fdbd91f4ef35640dc"
+        },
+        {
+          "case": "n2rl_dc_ss_85_mpmm",
+          "raw_sha256": "a7d54ac63c58ff4fca7a70824f935cdb2d0fc3e17039cfeae175af2c2bcac612"
+        },
+        {
+          "case": "n2rl_dc_ss_85_mpmp",
+          "raw_sha256": "35675485e4974955e6088185bbc5d151e2613bfabd1a2753ff066369b9c8bd2b"
+        },
+        {
+          "case": "n2rl_dc_ss_85_mppm",
+          "raw_sha256": "f948bc70fd3cb63ce5c61d5819f12efcc6443b1852610bd471021476eb697094"
+        },
+        {
+          "case": "n2rl_dc_ss_85_mppp",
+          "raw_sha256": "ac4af356720add8a77eaa3922a352e9d8ac70c6ba85bad9b65db77edc8584fc3"
+        },
+        {
+          "case": "n2rl_dc_ss_85_pmmm",
+          "raw_sha256": "f61f2c054ca6d970cc0b1e26dd9172483cd439d4d8b45a1e6165fbc3e5714b56"
+        },
+        {
+          "case": "n2rl_dc_ss_85_pmmp",
+          "raw_sha256": "700dac3ac1f1d5400c434a5189f6c93de008c9fd78ac494d7f7483f58fef19cc"
+        },
+        {
+          "case": "n2rl_dc_ss_85_pmpm",
+          "raw_sha256": "d737f5e1a3ea272463a50583ea7a3400d6923cab971f6c87f4f98c0b890914a4"
+        },
+        {
+          "case": "n2rl_dc_ss_85_pmpp",
+          "raw_sha256": "f74290b3288aafa9bb123474c217659d08ce9b156cc65e351bbe4ef8ba57f4cf"
+        },
+        {
+          "case": "n2rl_dc_ss_85_ppmm",
+          "raw_sha256": "b3055ef71a01d40348fdf7b75281f309f26e016c0458a026596a4117868c4983"
+        },
+        {
+          "case": "n2rl_dc_ss_85_ppmp",
+          "raw_sha256": "96cf4bd04de1deaff79ce595225f51ee949481f23bf5f09966cca1ddfb49c809"
+        },
+        {
+          "case": "n2rl_dc_ss_85_pppm",
+          "raw_sha256": "2e2f9a5e7b596fa2d1bbdadebfb7a27ef52627ce03246269cd3dbaf2b8986806"
+        },
+        {
+          "case": "n2rl_dc_ss_85_pppp",
+          "raw_sha256": "646a00b64a2b1a400e0ab201636b120ce5c9be5613fbcc2068cbecf03c02e104"
+        },
+        {
+          "case": "n2rl_dc_typical_0_mmmm",
+          "raw_sha256": "841ecd120633cc0971073cdb23f7258128bbb077fc57f7ee690e1ef9d3330260"
+        },
+        {
+          "case": "n2rl_dc_typical_0_mmmp",
+          "raw_sha256": "0627dc025a42f44ed393a05ca0daec057c8165a51af5f097c98222d00e1b62d0"
+        },
+        {
+          "case": "n2rl_dc_typical_0_mmpm",
+          "raw_sha256": "8188c23be5d8a6620d4d4d5aa2382c61f82f7bd031850b53ba068ed58b299753"
+        },
+        {
+          "case": "n2rl_dc_typical_0_mmpp",
+          "raw_sha256": "3d749f627e4efe017ba3561f171bbd797866762914602f1526769748c65adfa8"
+        },
+        {
+          "case": "n2rl_dc_typical_0_mpmm",
+          "raw_sha256": "5a48729106290e77086fee0442d503dc62a93a2f84cd431bf5d12131ec873d09"
+        },
+        {
+          "case": "n2rl_dc_typical_0_mpmp",
+          "raw_sha256": "30d0621182fa554072e7e33cc95444c80affacf2bef89782bda4a0cb83edd228"
+        },
+        {
+          "case": "n2rl_dc_typical_0_mppm",
+          "raw_sha256": "3f44b599f90fef19c54488a4c13c202eaf6517ec0fc35f7640dc78d766e1d53d"
+        },
+        {
+          "case": "n2rl_dc_typical_0_mppp",
+          "raw_sha256": "34a9b2c0739f6934b02bc150abc761d8f65b411cded50c4494c68d511bdd10eb"
+        },
+        {
+          "case": "n2rl_dc_typical_0_pmmm",
+          "raw_sha256": "42952ed8d622862914612adecf9c420bbd03dcb3dead081c4b2dc2b0f8f91084"
+        },
+        {
+          "case": "n2rl_dc_typical_0_pmmp",
+          "raw_sha256": "e9df0dabdfb9f1f03accdb5ec6cfb08c0827098dfdb70022aa761265517869af"
+        },
+        {
+          "case": "n2rl_dc_typical_0_pmpm",
+          "raw_sha256": "e3f977cf5d771c24d2885db2752ab8bd9412199e8c02f9520f14c5f336981010"
+        },
+        {
+          "case": "n2rl_dc_typical_0_pmpp",
+          "raw_sha256": "c29d540ed37a37e292772591513c3200f67aca450da56de6b0255364308691fb"
+        },
+        {
+          "case": "n2rl_dc_typical_0_ppmm",
+          "raw_sha256": "d9cb84f7dae64f3c0d2ae5ac1947cae401dc29a0fdfd79556ae8ee623637919a"
+        },
+        {
+          "case": "n2rl_dc_typical_0_ppmp",
+          "raw_sha256": "476034f8bf5bb7fa03ab9f7425b8159bee6014a6e5b240a31fe8202bbb4ae7e8"
+        },
+        {
+          "case": "n2rl_dc_typical_0_pppm",
+          "raw_sha256": "4d5c7f5c33485a8c65504fb9d1eb678441f8af8692242a17bf65752ce22dc831"
+        },
+        {
+          "case": "n2rl_dc_typical_0_pppp",
+          "raw_sha256": "c9bc051d370a6a57e98e33d0131b61fb931114f9920826e754375948c50503b9"
+        },
+        {
+          "case": "n2rl_dc_typical_27_mmmm",
+          "raw_sha256": "5e43cd36d463146bcbe4d1437f2d8967d2e954e0bd927613453dc2d5abccaba3"
+        },
+        {
+          "case": "n2rl_dc_typical_27_mmmp",
+          "raw_sha256": "feb37a22ece9f1e90782520572c2271492de3b1ed9a179795aeefc6aa75a9430"
+        },
+        {
+          "case": "n2rl_dc_typical_27_mmpm",
+          "raw_sha256": "0a5b61de52692f1cbec9d23b229fc60270d21ac2a5344f268b90eb8d6a2a8187"
+        },
+        {
+          "case": "n2rl_dc_typical_27_mmpp",
+          "raw_sha256": "61373b3d350aec17717046b56978d3aa98d04c3305f60a72eda171c247a07bbd"
+        },
+        {
+          "case": "n2rl_dc_typical_27_mpmm",
+          "raw_sha256": "26c12276f32a2430dfc89b4ba8db3a9a2599e9d78514da2e7cd324575f9c2c6e"
+        },
+        {
+          "case": "n2rl_dc_typical_27_mpmp",
+          "raw_sha256": "19275e6b70e65be5fe5dd526acc68d5a2e153dc681350a2bc763801d558701c6"
+        },
+        {
+          "case": "n2rl_dc_typical_27_mppm",
+          "raw_sha256": "5b2a005ab2dad66c6ab6782a28e5523e750dd5c2c2ebcbb457c8497b2ef69040"
+        },
+        {
+          "case": "n2rl_dc_typical_27_mppp",
+          "raw_sha256": "479c76b04ea7ba48e4f4cd00085e0646ead4e4ae61ba1fc5772f4d190004da9b"
+        },
+        {
+          "case": "n2rl_dc_typical_27_pmmm",
+          "raw_sha256": "8def0c352a0a46dbe3336d5b5cbe2bc66a907f5094d0b7ec4065d0000cfc2dcf"
+        },
+        {
+          "case": "n2rl_dc_typical_27_pmmp",
+          "raw_sha256": "9f10cc3c234adda5ba57247547d19d465e5e3d8012d0d04b09ed25a14f404fe7"
+        },
+        {
+          "case": "n2rl_dc_typical_27_pmpm",
+          "raw_sha256": "967a59b7b4841a712c6f8b587461f0d96ba440607f94ca6fdc5c9fc9a7b40bf4"
+        },
+        {
+          "case": "n2rl_dc_typical_27_pmpp",
+          "raw_sha256": "5d6e4d3e463ebb729d3b295f6b323d2254e67cc42aef65ac435828cefa118963"
+        },
+        {
+          "case": "n2rl_dc_typical_27_ppmm",
+          "raw_sha256": "41ad36f91302fbc2b0b17db8c63bbfa836c0e280f6928956dc7534a1660da5e4"
+        },
+        {
+          "case": "n2rl_dc_typical_27_ppmp",
+          "raw_sha256": "b49753cc3e0d495a76c918a5d57d74d6163d11606da69b28cec515306c104812"
+        },
+        {
+          "case": "n2rl_dc_typical_27_pppm",
+          "raw_sha256": "19255a5fdd373bcb289a6e87ab2f6a7c2bd19c0ddcf6da373fb079b25c170279"
+        },
+        {
+          "case": "n2rl_dc_typical_27_pppp",
+          "raw_sha256": "953d6a952c993f6686eec9161c21b780fa852a7623a69158073246c364a94f70"
+        },
+        {
+          "case": "n2rl_dc_typical_85_mmmm",
+          "raw_sha256": "70c11dfa652b7e49a75c9929de5e7bf312905eff330cd89952fe546e47da5690"
+        },
+        {
+          "case": "n2rl_dc_typical_85_mmmp",
+          "raw_sha256": "ab2aafbfdc6af529cb1b9506179820adf2e4429415e7dc9bb0b692c40af8e02a"
+        },
+        {
+          "case": "n2rl_dc_typical_85_mmpm",
+          "raw_sha256": "13ef17d98e79cb203717df073bd144e44aa799e4f90a2ee1fac2b37f2335569e"
+        },
+        {
+          "case": "n2rl_dc_typical_85_mmpp",
+          "raw_sha256": "9ae2f6d17f3f50e6043071a30d6e9ad0620d8197c57cba139d3b7e6e743f1b0c"
+        },
+        {
+          "case": "n2rl_dc_typical_85_mpmm",
+          "raw_sha256": "fc449461cd89dc72f585523af055d9bd9c712b0737e7e7e14b4774c2bc4e70c6"
+        },
+        {
+          "case": "n2rl_dc_typical_85_mpmp",
+          "raw_sha256": "eff2ca18e80cd126614dfd095bf164a22f224cc052fc713c004df88e2c976512"
+        },
+        {
+          "case": "n2rl_dc_typical_85_mppm",
+          "raw_sha256": "ee287b613f83614e93ef496107da54ca1e86971ccafc81d5e0e5d9793d6a4d04"
+        },
+        {
+          "case": "n2rl_dc_typical_85_mppp",
+          "raw_sha256": "33ba3f4023e7b7090e40c6bd98225f8296e6c7bf59a11eb57ae59bde126183da"
+        },
+        {
+          "case": "n2rl_dc_typical_85_pmmm",
+          "raw_sha256": "7249e9df586d2f03c2b012f6066dc835f95b11c1e76407bdba83c1bc810ca3b7"
+        },
+        {
+          "case": "n2rl_dc_typical_85_pmmp",
+          "raw_sha256": "251c153582cdc7d01af39392e0b822ef30f3a6cd7e09a5fd74c6a3623d7175c5"
+        },
+        {
+          "case": "n2rl_dc_typical_85_pmpm",
+          "raw_sha256": "ed905092bd8bba43b02570dbf53b5a4ef3f436dbcde6cb53acb6c49ba53d4e80"
+        },
+        {
+          "case": "n2rl_dc_typical_85_pmpp",
+          "raw_sha256": "85ab51e060ee7e6b16c0afc0d152dc82a473f1196b36c689780ee3afde398779"
+        },
+        {
+          "case": "n2rl_dc_typical_85_ppmm",
+          "raw_sha256": "0175c06e81cd9696318f5f424b948ff56b89f6826171c96f115f7d00272811f8"
+        },
+        {
+          "case": "n2rl_dc_typical_85_ppmp",
+          "raw_sha256": "208fa55f7ac85c0414d6bfe64b29b55455c4d5d2e59c81a4518edce111c9af01"
+        },
+        {
+          "case": "n2rl_dc_typical_85_pppm",
+          "raw_sha256": "96b042e7e7d6ce55b1431ecd82bad475ac630dfb7937ebc166c8e66d45f65482"
+        },
+        {
+          "case": "n2rl_dc_typical_85_pppp",
+          "raw_sha256": "ef4a997ac3ad7d23638f505c3b01cacd279c797b9bcdf5240f6a556933714c84"
+        }
+      ]
+    },
+    {
+      "name": "供电动态容差",
+      "outputs": [
+        {
+          "path": "docs/research/pwm-reference-startup-20261024/electrical-figures/供电动态容差.png",
+          "sha256": "ee9920d32a5b95fc437988532c8217011bb174b69e4e9e490faa8dab405d88ab"
+        },
+        {
+          "path": "docs/research/pwm-reference-startup-20261024/electrical-figures/供电动态容差.svg",
+          "sha256": "6eb5a0cd8461d30f763f4d3dd39b55c19060450fd3fc21d9663a04685f6ae7fd"
+        }
+      ],
+      "sources": [
+        {
+          "case": "c15_dyn_ff_mmm",
+          "raw_sha256": "13ed0d3dacc1689d19075d5c0771511cb77d9620f66c383c133f2fa9041fd665"
+        },
+        {
+          "case": "c15_dyn_ff_ppp",
+          "raw_sha256": "7c428490262ccec1ad7ad9d5a6798af26c06f73e7f452f16864b70c5bc03d595"
+        },
+        {
+          "case": "c15_dyn_ss_mmm",
+          "raw_sha256": "3af08248db1e5d9c28227c1106a65e1e8eb9fa57a896d2186470d01a29b785c8"
+        },
+        {
+          "case": "c15_dyn_ss_ppp",
+          "raw_sha256": "965fab21cfb29b90d74f33af2089defe0638bd255c104c500356ef8797ecdf05"
+        },
+        {
+          "case": "c15_dyn_typical_mmm",
+          "raw_sha256": "140cbfd6b386421661db6c34c6ba8490079c39cdd0f0fc47be976bd869612f70"
+        },
+        {
+          "case": "c15_dyn_typical_mmp",
+          "raw_sha256": "83b0339d23ab7aad7006d51b316feb6b96ea02b2416b2f934dddaf66e084509b"
+        },
+        {
+          "case": "c15_dyn_typical_mpm",
+          "raw_sha256": "cd3e0d694c2d45690d0cf9df683003b2e014e74c374c088916ff55a23d9678cd"
+        },
+        {
+          "case": "c15_dyn_typical_mpp",
+          "raw_sha256": "527ef698cfc2797682999094c0f50bc1a4c403948c980f0c12a170518285b7ec"
+        },
+        {
+          "case": "c15_dyn_typical_pmm",
+          "raw_sha256": "ed93bab431bff841721e84af022ba377aafe9749205023c624f7a068f29f5964"
+        },
+        {
+          "case": "c15_dyn_typical_pmp",
+          "raw_sha256": "fd12dcb15de0d515c7c1f957cbd96c7a10c7112c8b2e16e096bd9e7ff8003fdf"
+        },
+        {
+          "case": "c15_dyn_typical_ppm",
+          "raw_sha256": "9f6b3d3988874a0751ba04404b806883eea63cbfff530627403dc96dd395223e"
+        },
+        {
+          "case": "c15_dyn_typical_ppp",
+          "raw_sha256": "9aad68d98773b1cfafd6c7d0f17eacf05d677947a0f9bff705a2c5df6c05710e"
+        }
+      ]
+    },
+    {
+      "name": "局部环路对照",
+      "outputs": [
+        {
+          "path": "docs/research/pwm-reference-startup-20261024/electrical-figures/局部环路对照.png",
+          "sha256": "73c05abeb5cf7ddbec18d17d88c617775c0b2bd1ff8a1df849985249118295c1"
+        },
+        {
+          "path": "docs/research/pwm-reference-startup-20261024/electrical-figures/局部环路对照.svg",
+          "sha256": "181b218a47afb9d1f65d52b874fc513f17367d41356620a19a48a7dc18523965"
+        }
+      ],
+      "sources": [
+        {
+          "loop": "loop_cff0_cc30_cs30_typical_27",
+          "csv_sha256": "4a86a6e9bb32a1232b87ce36967d4a42b28853a908b2c3bfcf00efb59f6b2ac1"
+        },
+        {
+          "loop": "loop_cff1000_cc30_cs30_typical_27",
+          "csv_sha256": "ad0f596b633a15bf4f91f2aa25a4f3e76dd46174663bc5f07b34f4500e498062"
+        },
+        {
+          "loop": "loop_cff0_cc30_cs30_ff_0_n2c135_pcb13.5n_r95_damp10_n2rl_frozen2",
+          "csv_sha256": "86c263cd6cb33dce27fed119476a17ffb93095a4d74cf58d22bd4e1ca71979b5"
+        },
+        {
+          "loop": "loop_cff0_cc30_cs30_ss_85_n2c165_pcb16.5n_r105_damp10_n2rl_frozen2",
+          "csv_sha256": "33082a1f136d5167ed03701b560949ce037991ac41eae449a669ee0968e963cb"
+        },
+        {
+          "loop": "loop_cff0_cc30_cs30_typical_27_n2c150_pcb15n_r100_damp10_n2rl_frozen2",
+          "csv_sha256": "2a858530c54e824409130f10ba33ab201a4ac62dde5373cbc5b271dd46a40d3e"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    "外部0.5V基准边界，未验证片内带隙",
+    "外部FAULT/RTL许可，非自主POR",
+    "原合成LED，电流/电荷不是实测光功率",
+    "N2及原供电引脚R/L/ESR为工程应力，不含完整pad/ESD/互感",
+    "原39MOS真实PEX未修改；外部补偿改变不产生新GDS",
+    "局部两注入估计，不升级为全多环路/硅/可靠性签核"
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "checked_on": "2026-10-24",
+  "purpose": "Primary-source boundaries for the reference-v2 experiment; these are not adopted component macromodels or purchasing recommendations.",
+  "sources": [
+    {
+      "id": "TI-REF33-I",
+      "title": "REF33xx voltage reference datasheet",
+      "url": "https://www.ti.com/lit/ds/symlink/ref33.pdf",
+      "revision": "SBOS392I, April 2026",
+      "locator": "PDF pp.6-7 electrical-characteristics tables; section 8.3.2 box-method drift definition; official product page corroboration",
+      "facts": {
+        "REF3312_output_V": 1.25,
+        "IQ_typ_uA": 3.9,
+        "initial_accuracy_max_percent": 0.15,
+        "TC_max_ppm_per_C": 30,
+        "REF3312_min_VIN_V": 1.7,
+        "IQ_max_at25C_uA": 5,
+        "IQ_max_minus40_to85C_uA": 6.5,
+        "IQ_max_minus40_to125C_uA": 8.5,
+        "TC_definition": "Box method over specified temperature range, not a local linear slope",
+        "specified_COUT_range_uF": [
+          0.1,
+          10
+        ],
+        "turn_on_typ_ms_at_1uF": 2
+      },
+      "use": "Example showing the accuracy, power and headroom cost of a physical external voltage anchor. Generic sensitivity sources are not a simulation of this commercial IC.",
+      "corroborating_url": "https://www.ti.com/product/REF33",
+      "source_discrepancy": "Rev I first-page feature summary lists 1.2V, while electrical characteristics specify REF3312=1.25V; official product page and Rev H also list1.25V. Use the detailed electrical-characteristic value, not rounded/contradictory front matter."
+    },
+    {
+      "id": "TI-REF34-G",
+      "title": "REF34xx voltage reference datasheet",
+      "url": "https://www.ti.com/lit/ds/symlink/ref34.pdf",
+      "revision": "SBAS804G, April 2026",
+      "locator": "PDF pp.3, 6-7: variants, electrical characteristics, operating/measurement conditions",
+      "facts": {
+        "available_outputs_V": [
+          2.5,
+          3,
+          3.3,
+          4.096,
+          5
+        ],
+        "IQ_typ_uA": 72,
+        "IQ_max_uA": 95,
+        "initial_accuracy_max_percent": 0.05,
+        "TC_max_ppm_per_C": 6,
+        "specified_COUT_range_uF": [
+          0.1,
+          10
+        ],
+        "turn_on_typ_ms_at_10uF": 2.5,
+        "TC_definition": "Box method, not a guaranteed linear slope at each temperature"
+      },
+      "use": "Example of accuracy-versus-quiescent-power and settling tradeoffs. Do not use the specified 10uF turn-on number for other capacitances or for the project's custom OTA."
+    },
+    {
+      "id": "TI-AN1482",
+      "title": "AN-1482 LDO Regulator Stability Using Ceramic Output Capacitors",
+      "url": "https://www.ti.com/lit/an/snva167a/snva167a.pdf",
+      "revision": "SNVA167A, April 2013",
+      "locator": "Sections 2-8, PDF pp.2-9",
+      "use": "Method reference: pass-device and load poles, compensation, output capacitor ESR and additional bypass poles. This source does not validate the stability of the project's transistor regulator."
+    },
+    {
+      "id": "GF180-BJT-SPECS",
+      "title": "GF180MCU Electrical Specifications 5.8 Vertical BJT Transistors",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/analog/spice/elec_specs/elec_specs_5_8.html",
+      "locator": "VPNP rows; specified emitter W/L=0.42/10",
+      "use": "Public PDK contains bipolar device specifications, but the listed geometry and conditions cannot be transferred to an arbitrary PNP cell. A future bandgap implementation requires matching device models, fixed-cell terminals and physical extraction support."
+    },
+    {
+      "id": "tian-2001",
+      "title": "Striving for Small-Signal Stability",
+      "authors": "Michael Tian, V. Visvanathan, Jeffrey Hantgan, Kenneth Kundert",
+      "year": 2001,
+      "journal": "IEEE Circuits and Devices Magazine 17(1):31–41",
+      "doi": "10.1109/101.900125",
+      "url": "https://kenkundert.com/docs/cd2001-01.pdf",
+      "primary_source": "author-hosted paper; publisher metadata https://ieeexplore.ieee.org/document/900125/",
+      "locator": "PDF pp.5–6, Fig.7 and Eqs.20–32",
+      "use": "Method boundary: bilateral two-port return ratio differs from simply naming a local Tv/Ti estimate Tian. Project method and applicable loop limits must be stated."
+    }
+  ]
+}

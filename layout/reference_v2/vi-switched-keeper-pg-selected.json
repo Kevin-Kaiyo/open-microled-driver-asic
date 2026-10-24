@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "status": "electrical_topology_and_dimensions_frozen",
+  "electrical_freeze": {
+    "source": "analog/nrz_reference_v2/vi_reference_switched_keeper.spice",
+    "sha256": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8"
+  },
+  "routes": {
+    "V": {
+      "top": "nrz_vi_reference",
+      "schematic_source": "layout/reference_v2/vi_reference_switched_keeper-reference.spice",
+      "ports": [
+        "VIN",
+        "VSS",
+        "VSET",
+        "SENSE",
+        "IOUT",
+        "IPB",
+        "IN2",
+        "ICTRL",
+        "DISABLE",
+        "KRET"
+      ],
+      "negative_control_gate": "VSET",
+      "supply_port": "VIN",
+      "devices": [
+        {
+          "name": "IPBIAS",
+          "model": "pfet_06v0",
+          "w_um": 20,
+          "l_um": 4,
+          "nodes": [
+            "IPB",
+            "IPB",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPTAIL",
+          "model": "pfet_06v0",
+          "w_um": 20,
+          "l_um": 4,
+          "nodes": [
+            "ITAIL",
+            "IPB",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPD1",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "IN1",
+            "VSET",
+            "ITAIL",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPD2",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "IN2",
+            "SENSE",
+            "ITAIL",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IND1",
+          "model": "nfet_06v0",
+          "w_um": 50,
+          "l_um": 10,
+          "nodes": [
+            "IN1",
+            "IN1",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "IND2",
+          "model": "nfet_06v0",
+          "w_um": 50,
+          "l_um": 10,
+          "nodes": [
+            "IN2",
+            "IN1",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "INSTAGE",
+          "model": "nfet_06v0",
+          "w_um": 20,
+          "l_um": 1,
+          "nodes": [
+            "ICTRL",
+            "IN2",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "IPLOAD",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "ICTRL",
+            "ICTRL",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPREG",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "SENSE",
+            "ICTRL",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "IPOUT",
+          "model": "pfet_06v0",
+          "w_um": 100,
+          "l_um": 10,
+          "nodes": [
+            "IOUT",
+            "ICTRL",
+            "VIN",
+            "VIN"
+          ]
+        },
+        {
+          "name": "DIS",
+          "model": "nfet_06v0",
+          "w_um": 10,
+          "l_um": 0.7,
+          "nodes": [
+            "IOUT",
+            "DISABLE",
+            "VSS",
+            "VSS"
+          ]
+        },
+        {
+          "name": "KEEP",
+          "model": "nfet_06v0",
+          "w_um": 1,
+          "l_um": 0.7,
+          "nodes": [
+            "KRET",
+            "DISABLE",
+            "VSS",
+            "VSS"
+          ]
+        }
+      ],
+      "external_components": [
+        {
+          "name": "VIN",
+          "nodes": [
+            "VIN",
+            "boardGND"
+          ],
+          "kind": "external nonideal 5V rail",
+          "nominal_v": 5,
+          "series_r_ohm": 0.25,
+          "series_l_h": 5e-10
+        },
+        {
+          "name": "ANCHOR",
+          "nodes": [
+            "VSET",
+            "boardGND"
+          ],
+          "kind": "external 2.5V precision anchor with 0.2ohm output and 200k/50k divider",
+          "nominal_v": 2.5
+        },
+        {
+          "name": "RSET",
+          "nodes": [
+            "SENSE",
+            "boardGND"
+          ],
+          "kind": "external resistor",
+          "ohm": 20000
+        },
+        {
+          "name": "RIBIAS",
+          "nodes": [
+            "IPB",
+            "boardGND"
+          ],
+          "kind": "external resistor",
+          "ohm": 100000
+        },
+        {
+          "name": "COMP",
+          "nodes": [
+            "IN2",
+            "boardGND"
+          ],
+          "kind": "external compensation capacitor",
+          "farad": 1.5e-10
+        },
+        {
+          "name": "CIN",
+          "nodes": [
+            "VIN",
+            "boardGND"
+          ],
+          "kind": "external decoupling",
+          "farad": 1e-07,
+          "esr_ohm": 0.2
+        },
+        {
+          "name": "RDUMMY",
+          "nodes": [
+            "VIN",
+            "DUMMY"
+          ],
+          "kind": "external resistor",
+          "ohm": 50000
+        },
+        {
+          "name": "RKEEP",
+          "nodes": [
+            "OUT",
+            "KRET"
+          ],
+          "kind": "external keeper resistor to switched on-chip return",
+          "ohm": 1800000.0
+        },
+        {
+          "name": "DISABLE_GPIO",
+          "nodes": [
+            "DISABLE",
+            "boardGND"
+          ],
+          "kind": "external 3.3V GPIO, default assert until anchor stable plus20us, not POR",
+          "series_r_ohm": 100
+        }
+      ],
+      "design_changes": [
+        "Selected12MOS VI with explicit DISABLE clamp and conditional keeper return; original11MOS unchanged.",
+        "Actual M5 VIN/VSS/IOUT trunks and M2 terminal feeds. W1 keeper uses one via1 terminal cut and three trunk vias; small D/S pitch uses .8um leg and displaced stack.",
+        "External OUT-to-KRET1.8M keeper only conducts during external DISABLE assertion; no autonomous POR."
+      ],
+      "power_trunk_nets": [
+        "VIN",
+        "VSS",
+        "IOUT"
+      ]
+    }
+  }
+}

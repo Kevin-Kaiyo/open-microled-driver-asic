@@ -1,0 +1,10 @@
+* Candidate A controlled reference supply. Public GF180MCU 6V MOS only.
+* NOT autonomous POR. START is external, asserted after VIN is established.
+* External components: RUP VIN GSOFT 1Meg; RDOWN GSOFT NDRAIN 100k;
+* CBOOT VIN GSOFT 33p. The capacitor returns to VIN, not local ground.
+* MOS-only module for subsequent real layout/PEX if electrical tests accept it.
+.subckt pwm_ref_softstart VSS VIN VOUT START GSOFT NDRAIN
+XP0 VOUT GSOFT VIN VIN pfet_06v0 w=100u l=1u ad=44p as=44p pd=200.88u ps=200.88u
+XP1 VOUT GSOFT VIN VIN pfet_06v0 w=100u l=1u ad=44p as=44p pd=200.88u ps=200.88u
+XN0 NDRAIN START VSS VSS nfet_06v0 w=2u l=1u ad=.88p as=.88p pd=4.88u ps=4.88u
+.ends pwm_ref_softstart
