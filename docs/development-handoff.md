@@ -10,11 +10,44 @@
 - PWM仍用r5实际39MOS/345R/288C和原合成LED，原始输入/实验在 `build/pwm-robustness/20261024`。PCB侧100Ω/100nF滤波是外部网络修订，没有虚构新版芯片版图；恢复时间与启动的跨数值设置一致性仍待解决。
 - 本轮小输入恢复入口不再依赖旧历史raw目录：NRZ `scripts/highspeed_nrz_robustness/reproduce.py`，PWM `scripts/pwm_robustness/reproduce.py`。两者按新机器路径生成新的deck，原冻结证据保持字节不变。完整物理重跑仍需固定full PDK及工具。
 
-<!-- ROBUSTNESS_BACKUP_RECEIPTS -->
+本轮增量 Release：[`driver-robustness-20261024`](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/driver-robustness-20261024)，源标签固定在 `9d84753bae099e497a813f9097b1ce6eeb2f2df7`。后续回执进入主分支，标签不移动。实验工作完成不表示所有电路条件通过，失败与未收敛记录一并保存。
+
+- [逐文件清单](../evidence/backups/driver-robustness-20261024.json)与[范围/排除项](../evidence/backups/driver-robustness-20261024-scope.json)：25 个归档、2,302 个普通文件；原文件 8,446,706,417 字节，归档 8,307,456,214 字节。294 个符号链接单独记录目标，未跟随复制；完整 PDK、工具、VM、Python 环境及其它历史 build 不在本轮增量内。
+- [本地逐成员核验](../evidence/backups/driver-robustness-20261024-local.json)与[GitHub 流式回读](../evidence/backups/driver-robustness-20261024-remote.json)：25 个归档及 7 份清单/恢复助手共 32 个资产的长度和 SHA-256 一致。远端归档字节与已逐成员验证的本地归档相同。
+- [新目录恢复回执](../evidence/backups/driver-robustness-20261024-recovery.json)与[保留的复跑日志](../evidence/backups/driver-robustness-20261024-recovery/README.md)：从 GitHub 新检出源标签，实际下载六个小分组，恢复 2,057 个文件；NRZ/PWM 的一个 DC 点分别重跑为 108.566138350767 / 99.733511476514 µA，与归档原结果均差 0 A。实际 GDS/物理证据回读分别覆盖 105 与 205 文件并通过。一次仅发生在回执整理中的脚本类型错误已修正并保留记录，电路仿真与物理回读均退出 0。
+- 这次恢复使用同一台 macOS ARM 主机的不同目录，复用已有 Python/ngspice/iverilog。没有在全新电脑安装工具，没有重跑全部瞬态矩阵或 DRC/LVS/PEX，也没有恢复全部大波形。NRZ 仅把新分析摘要的输出目录在进程内重定向到恢复工作区；电路、输入与判据未改。
+- [暂存清理回执](../evidence/backups/driver-robustness-20261024-cleanup.json)记录再次核对所有活动原件后，仅清理本次归档副本、下载副本与临时检出目录。活动实验、失败证据、完整 PDK、VM、工具和紧凑恢复日志全部保留。逻辑删除字节数不等于 APFS 实际空间增量。
+
+仅复跑新的 DC/瞬态，不需要先下载约 8 GB 大波形。先检出本轮源标签，再准备 README 所列 Python、ngspice 和 Icarus Verilog 依赖：
+
+```sh
+gh release download driver-robustness-20261024 \
+  --repo Kevin-Kaiyo/open-microled-driver-asic \
+  --pattern 'driver-robustness-20261024.json' \
+  --pattern '*-inputs-*.tar.gz' --pattern '*-metadata-*.tar.gz' \
+  --pattern '*-physical-evidence-*.tar.gz' --pattern '*-report-support-*.tar.gz' \
+  --dir build/github-download-driver-robustness
+python3 scripts/backup/release_bundle.py restore \
+  --manifest build/github-download-driver-robustness/driver-robustness-20261024.json \
+  --asset-dir build/github-download-driver-robustness --root . \
+  --group nrz-inputs --group nrz-metadata \
+  --group pwm-inputs --group pwm-metadata \
+  --group physical-evidence --group report-support
+
+build/layout/venv/bin/python scripts/highspeed_nrz_robustness/reproduce.py \
+  --source-work build/highspeed-nrz-robustness/selected-a8-b58-r4 \
+  --work build/highspeed-nrz-robustness/new-machine-smoke --smoke-dc
+.venv/bin/python scripts/pwm_robustness/reproduce.py \
+  --work build/pwm-robustness/new-machine-smoke
+```
+
+解释器路径是本项目环境约定，需在新机器安装相同依赖；Git 克隆不会生成这些环境。`restore` 会先核对归档及每个成员，拒绝覆盖不同的已有文件。小输入入口按新根目录生成绝对引用，不执行旧 deck 中的旧机器路径。若要复算已归档的全部波形，另下载 `nrz-waveforms` / `pwm-waveforms` 分组后按同样方式恢复。
+
+恢复原案例中的符号链接时，先下载 Release 的 `restore_symlinks.py`、`backup_common.py` 和 scope JSON 到同一目录，用 `python3 restore_symlinks.py --root <checkout> --scope <scope.json>` 先预览，再加 `--execute` 执行；当前小输入复跑入口不依赖恢复这些旧链接。旧基线波形和完整物理重跑环境仍按相应历史 Release 与 PDK 锁文件准备。
 
 ## 历史阶段：慢热接收与快冷端电压修正（2026-10-23）
 
-[新版中文研究报告](research/highspeed-nrz-pvt-20261023/index.html)、[真实新版 GDS 查看器](research/highspeed-nrz-pvt-20261023/layout-viewer.html)与[复现说明](research/highspeed-nrz-pvt-20261023/README.md)是当前入口。最终实际物理目录为 `build/highspeed-nrz-pvt-layout/final-r4`，仿真目录为 `build/highspeed-nrz-pvt/final-r4`。旧版模型与报告保留。
+[新版中文研究报告](research/highspeed-nrz-pvt-20261023/index.html)、[真实新版 GDS 查看器](research/highspeed-nrz-pvt-20261023/layout-viewer.html)与[复现说明](research/highspeed-nrz-pvt-20261023/README.md)是该历史阶段入口。最终实际物理目录为 `build/highspeed-nrz-pvt-layout/final-r4`，仿真目录为 `build/highspeed-nrz-pvt/final-r4`。旧版模型与报告保留。
 
 A 新增 48 × 1 µm、B 新增 58 × 1 µm 工艺输入电阻，并修改 DI 连线和衬底接地；B 的参考电阻改接已有固定 3.3 V 电源。相同 LED、输入码型和接收条件下，三组联合条件的最高离散通过点为 A 1 Gb/s、B 0.5 Gb/s。A 的 2 Gb/s 仍失败，快冷电压筛查余量约 9–11 mV，不能视为量产可靠性结论。
 

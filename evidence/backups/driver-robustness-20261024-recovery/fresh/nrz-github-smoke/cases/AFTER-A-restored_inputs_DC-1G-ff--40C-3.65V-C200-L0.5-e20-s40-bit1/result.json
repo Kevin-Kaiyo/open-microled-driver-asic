@@ -1,0 +1,264 @@
+{
+  "case": {
+    "route": "A",
+    "rate_Gbps": 1,
+    "corner": "ff",
+    "temp_C": -40,
+    "vdd_V": 3.65,
+    "cap_F": 2e-13,
+    "r_pkg": 1.0,
+    "l_pkg": 5e-10,
+    "edge_s": 2e-11,
+    "steps_per_ui": 40,
+    "reltol": 1e-05,
+    "chgtol": 1e-16,
+    "method": "gear",
+    "kind": "restored_inputs_DC",
+    "dc_bit": 1,
+    "name": "AFTER-A-restored_inputs_DC-1G-ff--40C-3.65V-C200-L0.5-e20-s40-bit1",
+    "variant": "AFTER",
+    "res_corner": "ff",
+    "data_mode": "tracking",
+    "data_high_V": 3.65
+  },
+  "simulation_ok": true,
+  "exit_code": 0,
+  "runner_source": "build/recovery-checks/nrz-github-smoke/execution-sources/f90db76b5ed65b72c38209fb85410206e60bc0dc750428e7e69e507184a12c7c.py",
+  "runner_source_sha256": "f90db76b5ed65b72c38209fb85410206e60bc0dc750428e7e69e507184a12c7c",
+  "passives": [
+    {
+      "instance": "x4",
+      "nodes": [
+        "xdrv.di.t0",
+        "xdrv.data.t0",
+        "xdrv.vss.t0"
+      ],
+      "model": "ppolyf_u_1k_6p0",
+      "sizing": "r_width=1u r_length=8u"
+    }
+  ],
+  "candidate_definition": {
+    "path": "physical/A-AFTER.spice",
+    "sha256": "f26ca7a4a66baf61ccef9b3625a1e8234bf10edcf65d4adcc30117db1b72a1c0",
+    "subckt": "hs_voltage_robust",
+    "ports": [
+      "data",
+      "out",
+      "vdd",
+      "vh",
+      "vl",
+      "vss"
+    ],
+    "source": "build/highspeed-nrz-robustness-layout/hv-A8-r3/A/full-rc/hs_voltage_robust_rc.spice",
+    "rref_source": "vdd",
+    "rref_ohm": 88386.1064910889
+  },
+  "candidate_definition_sha256": "7aebe59cf77bafc3efe9c1376ddb1b342bc1addbbe51feff7347626fdc5f33ca",
+  "input_identity": {
+    "legacy/run.py": "3a9a78a10f4964bc6ee1de793510a425091014af08989d06043b01b49b2ccea1",
+    "legacy/metrics.py": "07fdffa7ab8eb011a070d018ccf683902471427633170b9e83df697ce525180e",
+    "legacy/analyze.py": "ef4a96fd06d7d7ec7a252fbed74eb143f8e1990f86a333d9284526fb8e292c22",
+    "led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+    "pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+  },
+  "stimulus_sha256": "deaf1d197e63fd56f75b2681e6032a8402673cd9ff7e642a5cc6675db4609bf1",
+  "deck_sha256": "0ce62f3e89c9dc3f1770f85b8dd61c34681b5e32214850445f89bf194ca218b4",
+  "log": "build/recovery-checks/nrz-github-smoke/cases/AFTER-A-restored_inputs_DC-1G-ff--40C-3.65V-C200-L0.5-e20-s40-bit1/ngspice.log",
+  "log_sha256": "28950d9a8c980ddaaf6fcf81f04c03bc4508841faad3040bae09cc8ebb185667",
+  "vectors": {
+    "data": 1,
+    "out": 2,
+    "led_k": 3,
+    "led_voltage": 4,
+    "iled_cond": 5,
+    "package_current": 6,
+    "xdrv.ctrl.t0": 7,
+    "xdrv.ctrl.t1": 8,
+    "xdrv.ctrl.t2": 9,
+    "xdrv.ctrl.t3": 10,
+    "xdrv.data.t0": 11,
+    "xdrv.di.t0": 12,
+    "xdrv.di.t1": 13,
+    "xdrv.di.t2": 14,
+    "xdrv.n1.t0": 15,
+    "xdrv.n1.t1": 16,
+    "xdrv.n1.t2": 17,
+    "xdrv.n1.t3": 18,
+    "xdrv.out.t0": 19,
+    "xdrv.out.t1": 20,
+    "xdrv.vdd.t0": 21,
+    "xdrv.vdd.t1": 22,
+    "xdrv.vdd.t2": 23,
+    "xdrv.vdd.t3": 24,
+    "xdrv.vh.t0": 25,
+    "xdrv.vh.t1": 26,
+    "xdrv.vl.t0": 27,
+    "xdrv.vss.t0": 28,
+    "xdrv.vss.t1": 29,
+    "xdrv.vss.t2": 30,
+    "xdrv.vss.t3": 31,
+    "xdrv.vss.t4": 32,
+    "xdrv.vss.t5": 33,
+    "vled_voltage": 34,
+    "vdd_voltage": 35,
+    "vh_voltage": 36,
+    "vl_voltage": 37,
+    "vled_current": 38,
+    "vdd_current": 39,
+    "vh_current": 40,
+    "vl_current": 41,
+    "data_current": 42
+  },
+  "devices": [
+    {
+      "instance": "x0",
+      "nodes": [
+        "xdrv.vss.t2",
+        "xdrv.di.t2",
+        "xdrv.n1.t1",
+        "xdrv.vss.t1"
+      ],
+      "model": "nfet_06v0",
+      "sizing": "ad=1.1p pd=5.88u as=1.1p ps=5.88u w=2.5u l=0.7u",
+      "original_instance": "XN1",
+      "extracted_D_S_swapped_from_original": true
+    },
+    {
+      "instance": "x1",
+      "nodes": [
+        "xdrv.vh.t1",
+        "xdrv.ctrl.t2",
+        "xdrv.out.t0",
+        "xdrv.vh.t0"
+      ],
+      "model": "pfet_06v0",
+      "sizing": "ad=6.9168p pd=32.32u as=6.9168p ps=32.32u w=15.72u l=0.55u",
+      "original_instance": "XPOUT",
+      "extracted_D_S_swapped_from_original": true
+    },
+    {
+      "instance": "x2",
+      "nodes": [
+        "xdrv.vdd.t3",
+        "xdrv.n1.t2",
+        "xdrv.ctrl.t0",
+        "xdrv.vdd.t2"
+      ],
+      "model": "pfet_06v0",
+      "sizing": "ad=6.9168p pd=32.32u as=6.9168p ps=32.32u w=15.72u l=0.55u",
+      "original_instance": "XP2",
+      "extracted_D_S_swapped_from_original": true
+    },
+    {
+      "instance": "x3",
+      "nodes": [
+        "xdrv.vl.t0",
+        "xdrv.ctrl.t3",
+        "xdrv.out.t1",
+        "xdrv.vss.t5"
+      ],
+      "model": "nfet_06v0",
+      "sizing": "ad=4.4p pd=20.88u as=4.4p ps=20.88u w=10u l=0.7u",
+      "original_instance": "XNOUT",
+      "extracted_D_S_swapped_from_original": true
+    },
+    {
+      "instance": "x5",
+      "nodes": [
+        "xdrv.vss.t4",
+        "xdrv.n1.t3",
+        "xdrv.ctrl.t1",
+        "xdrv.vss.t3"
+      ],
+      "model": "nfet_06v0",
+      "sizing": "ad=4.4p pd=20.88u as=4.4p ps=20.88u w=10u l=0.7u",
+      "original_instance": "XN2",
+      "extracted_D_S_swapped_from_original": true
+    },
+    {
+      "instance": "x6",
+      "nodes": [
+        "xdrv.vdd.t1",
+        "xdrv.di.t1",
+        "xdrv.n1.t0",
+        "xdrv.vdd.t0"
+      ],
+      "model": "pfet_06v0",
+      "sizing": "ad=1.7292p pd=8.74u as=1.7292p ps=8.74u w=3.93u l=0.55u",
+      "original_instance": "XP1",
+      "extracted_D_S_swapped_from_original": true
+    }
+  ],
+  "rails": {
+    "VLED": {
+      "node": "led_a",
+      "voltage_V": 5.0
+    },
+    "VDD": {
+      "node": "vdd",
+      "voltage_V": 3.65
+    },
+    "VH": {
+      "node": "vh",
+      "voltage_V": 1.6110254451423758
+    },
+    "VL": {
+      "node": "vl",
+      "voltage_V": 1.1721543178141975
+    }
+  },
+  "rows": 1,
+  "warnings": [],
+  "dc_values": {
+    "data": 3.65,
+    "out": 1.209525531681878,
+    "led_k": 1.209634097820229,
+    "led_voltage": 3.790365902179771,
+    "iled_cond": 0.000108566138350767,
+    "package_current": 0.0001085661383506422,
+    "xdrv.ctrl.t0": 3.649999998595082,
+    "xdrv.ctrl.t1": 3.649999998503146,
+    "xdrv.ctrl.t2": 3.649999998551969,
+    "xdrv.ctrl.t3": 3.649999998551969,
+    "xdrv.data.t0": 3.649999999999956,
+    "xdrv.di.t0": 3.649999999980287,
+    "xdrv.di.t1": 3.649999999980247,
+    "xdrv.di.t2": 3.649999999980247,
+    "xdrv.n1.t0": 3.12001296790332e-09,
+    "xdrv.n1.t1": 3.004396406834024e-09,
+    "xdrv.n1.t2": 3.066686936096294e-09,
+    "xdrv.n1.t3": 3.066686936096293e-09,
+    "xdrv.out.t0": 1.209515706454096,
+    "xdrv.out.t1": 1.208030510809998,
+    "xdrv.vdd.t0": 3.64999999950419,
+    "xdrv.vdd.t1": 3.649999999996794,
+    "xdrv.vdd.t2": 3.649999999989411,
+    "xdrv.vdd.t3": 3.6499999999386,
+    "xdrv.vh.t0": 1.611025445108051,
+    "xdrv.vh.t1": 1.611025445142328,
+    "xdrv.vl.t0": 1.173556720882291,
+    "xdrv.vss.t0": 1.240777971763055e-09,
+    "xdrv.vss.t1": 1.598165879714124e-11,
+    "xdrv.vss.t2": 6.332053973978726e-11,
+    "xdrv.vss.t3": 2.079873238180089e-09,
+    "xdrv.vss.t4": 1.257741701426794e-11,
+    "xdrv.vss.t5": 3.678783242082603e-10,
+    "vled_voltage": 5.0,
+    "vdd_voltage": 3.65,
+    "vh_voltage": 1.611025445142376,
+    "vl_voltage": 1.172154317814198,
+    "vled_current": -0.000108566138350767,
+    "vdd_current": -7.788490540044412e-12,
+    "vh_current": -5.225999038915265e-13,
+    "vl_current": 0.0001085661364887153,
+    "data_current": -2.667402696545843e-15
+  },
+  "waveform": "build/recovery-checks/nrz-github-smoke/cases/AFTER-A-restored_inputs_DC-1G-ff--40C-3.65V-C200-L0.5-e20-s40-bit1/waveform.dat.gz",
+  "waveform_sha256": "3061313af402b4a601d1a429926e5341faee2d467d0f16a8e1c7572ac2002eac",
+  "uncompressed_sha256": "b1325f514511c70912e20507ee164e5e806d9c23d33fb012aa3d3e4b3d88e258",
+  "uncompressed_bytes": 1980,
+  "compressed_bytes": 574,
+  "roundtrip_verified": true,
+  "elapsed_s": 0.2706579999994574
+}

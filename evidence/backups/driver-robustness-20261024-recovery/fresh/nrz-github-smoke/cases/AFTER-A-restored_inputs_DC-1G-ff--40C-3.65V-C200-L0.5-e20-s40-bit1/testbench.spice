@@ -1,0 +1,31 @@
+Frozen NRZ PEX comparison AFTER-A-restored_inputs_DC-1G-ff--40C-3.65V-C200-L0.5-e20-s40-bit1
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-driver-robustness-20261024/repository/build/recovery-checks/nrz-github-smoke/inputs/pdk/design.ngspice"
+.param sw_stat_global=0 sw_stat_mismatch=0
+.lib "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-driver-robustness-20261024/repository/build/recovery-checks/nrz-github-smoke/inputs/pdk/sm141064.ngspice" ff
+.lib "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-driver-robustness-20261024/repository/build/recovery-checks/nrz-github-smoke/inputs/pdk/sm141064.ngspice" res_ff
+.temp -40
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-driver-robustness-20261024/repository/build/recovery-checks/nrz-github-smoke/inputs/physical/A-AFTER.spice"
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/github-recovery-driver-robustness-20261024/repository/build/recovery-checks/nrz-github-smoke/inputs/led.spice"
+VLED led_a 0 5.0
+VDD vdd 0 3.65
+VH vh 0 1.6110254451423758
+VL vl 0 1.1721543178141975
+VDATA data 0 3.65
+
+XDRV data out vdd vh vl 0 hs_voltage_robust
+
+XLED led_a led_dc_k lin2026_yellow20_dc
+VSENSE led_dc_k led_k 0
+CLED led_a led_k 2e-13
+RPKG led_k pkg 1
+LPKG pkg out 5e-10
+.options reltol=1e-05 abstol=1e-13 vntol=1e-7 chgtol=1e-16 method=gear maxord=2
+.control
+set numdgt=15
+set wr_singlescale
+set wr_vecnames
+op
+wrdata waveform.dat v(data) v(out) v(led_k) v(led_a,led_k) i(VSENSE) i(LPKG) v(xdrv.ctrl.t0) v(xdrv.ctrl.t1) v(xdrv.ctrl.t2) v(xdrv.ctrl.t3) v(xdrv.data.t0) v(xdrv.di.t0) v(xdrv.di.t1) v(xdrv.di.t2) v(xdrv.n1.t0) v(xdrv.n1.t1) v(xdrv.n1.t2) v(xdrv.n1.t3) v(xdrv.out.t0) v(xdrv.out.t1) v(xdrv.vdd.t0) v(xdrv.vdd.t1) v(xdrv.vdd.t2) v(xdrv.vdd.t3) v(xdrv.vh.t0) v(xdrv.vh.t1) v(xdrv.vl.t0) v(xdrv.vss.t0) v(xdrv.vss.t1) v(xdrv.vss.t2) v(xdrv.vss.t3) v(xdrv.vss.t4) v(xdrv.vss.t5) v(led_a) v(vdd) v(vh) v(vl) i(VLED) i(VDD) i(VH) i(VL) i(VDATA)
+quit
+.endc
+.end

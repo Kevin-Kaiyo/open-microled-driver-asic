@@ -1,0 +1,3417 @@
+{
+  "common": {
+    "vled_V": 5.0,
+    "vdd_V": 3.3,
+    "led_C_F": 2e-13,
+    "package_R_ohm": 1.0,
+    "package_L_H": 5e-10,
+    "I0_A": 2.5e-05,
+    "I1_A": 0.0001,
+    "edge_s": 2e-11,
+    "temperature_C": 27,
+    "corner": "typical",
+    "optical_proxy_tau_s": 2e-10,
+    "receiver_bw_Hz": 1000000000.0,
+    "fixed_threshold_A": 6.25e-05,
+    "temperature_caution": "MOS temperature changes only; measured LED DC curve has no temperature model"
+  },
+  "route_a_rails": {
+    "VLED_V": 5,
+    "VDD_V": 3.3,
+    "VH_V": 1.6110254451423758,
+    "VL_V": 1.1721543178141975
+  },
+  "physical_contract": {
+    "A": {
+      "schema_version": 1,
+      "route": "A",
+      "top": "hs_voltage_robust",
+      "ports": [
+        "DATA",
+        "OUT",
+        "VDD",
+        "VH",
+        "VL",
+        "VSS"
+      ],
+      "grid_um": 0.005,
+      "devices": [
+        {
+          "name": "N1",
+          "model": "nfet_06v0",
+          "w_um": 2.5,
+          "l_um": 0.7,
+          "cx": 4,
+          "cy": 20,
+          "nodes": [
+            "N1",
+            "DI",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              3.39,
+              20
+            ],
+            "G": [
+              4,
+              21.75
+            ],
+            "S": [
+              4.61,
+              20
+            ],
+            "B": [
+              1.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "P1",
+          "model": "pfet_06v0",
+          "w_um": 3.93,
+          "l_um": 0.55,
+          "cx": 10,
+          "cy": 20,
+          "nodes": [
+            "N1",
+            "DI",
+            "VDD",
+            "VDD"
+          ],
+          "pins_um": {
+            "D": [
+              9.465,
+              20
+            ],
+            "G": [
+              10,
+              22.465
+            ],
+            "S": [
+              10.535,
+              20
+            ],
+            "B": [
+              7.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "N2",
+          "model": "nfet_06v0",
+          "w_um": 10,
+          "l_um": 0.7,
+          "cx": 16,
+          "cy": 20,
+          "nodes": [
+            "CTRL",
+            "N1",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              15.39,
+              20
+            ],
+            "G": [
+              16,
+              25.5
+            ],
+            "S": [
+              16.61,
+              20
+            ],
+            "B": [
+              13.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "P2",
+          "model": "pfet_06v0",
+          "w_um": 15.72,
+          "l_um": 0.55,
+          "cx": 22,
+          "cy": 20,
+          "nodes": [
+            "CTRL",
+            "N1",
+            "VDD",
+            "VDD"
+          ],
+          "pins_um": {
+            "D": [
+              21.465,
+              20
+            ],
+            "G": [
+              22,
+              28.36
+            ],
+            "S": [
+              22.535,
+              20
+            ],
+            "B": [
+              19.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "NOUT",
+          "model": "nfet_06v0",
+          "w_um": 10,
+          "l_um": 0.7,
+          "cx": 28,
+          "cy": 20,
+          "nodes": [
+            "OUT",
+            "CTRL",
+            "VL",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              27.39,
+              20
+            ],
+            "G": [
+              28,
+              25.5
+            ],
+            "S": [
+              28.61,
+              20
+            ],
+            "B": [
+              25.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "POUT",
+          "model": "pfet_06v0",
+          "w_um": 15.72,
+          "l_um": 0.55,
+          "cx": 34,
+          "cy": 20,
+          "nodes": [
+            "OUT",
+            "CTRL",
+            "VH",
+            "VH"
+          ],
+          "pins_um": {
+            "D": [
+              33.465,
+              20
+            ],
+            "G": [
+              34,
+              28.36
+            ],
+            "S": [
+              34.535,
+              20
+            ],
+            "B": [
+              31.5,
+              20
+            ]
+          }
+        }
+      ],
+      "buses_um": {
+        "DI": 22.5,
+        "OUT": 2.2,
+        "VDD": 3.4,
+        "VH": 4.6,
+        "VL": 5.8,
+        "VSS": 7.0,
+        "N1": 8.2,
+        "CTRL": 9.4,
+        "DATA": 12.64
+      },
+      "bus_spans_um": {
+        "DI": [
+          -5.5,
+          10.5
+        ],
+        "OUT": [
+          26.89,
+          33.965
+        ],
+        "VDD": [
+          7.0,
+          23.035
+        ],
+        "VH": [
+          31.0,
+          35.035
+        ],
+        "VL": [
+          28.11,
+          29.11
+        ],
+        "VSS": [
+          -6.88,
+          26.0
+        ],
+        "N1": [
+          2.89,
+          22.5
+        ],
+        "CTRL": [
+          14.89,
+          34.5
+        ],
+        "DATA": [
+          -5.5,
+          -4.5
+        ]
+      },
+      "port_anchor_um": {
+        "OUT": [
+          27.09,
+          2.2
+        ],
+        "VDD": [
+          7.2,
+          3.4
+        ],
+        "VH": [
+          31.2,
+          4.6
+        ],
+        "VL": [
+          28.31,
+          5.8
+        ],
+        "VSS": [
+          1.2,
+          7.0
+        ],
+        "DATA": [
+          -5.3,
+          12.64
+        ]
+      },
+      "routes": [
+        {
+          "net": "DI",
+          "layer": "metal3",
+          "rect_um": [
+            3.5,
+            22.3,
+            10.5,
+            22.7
+          ]
+        },
+        {
+          "net": "OUT",
+          "layer": "metal3",
+          "rect_um": [
+            26.89,
+            2.0,
+            33.965,
+            2.4
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal3",
+          "rect_um": [
+            7.0,
+            3.2,
+            23.035,
+            3.6
+          ]
+        },
+        {
+          "net": "VH",
+          "layer": "metal3",
+          "rect_um": [
+            31.0,
+            4.4,
+            35.035,
+            4.8
+          ]
+        },
+        {
+          "net": "VL",
+          "layer": "metal3",
+          "rect_um": [
+            28.11,
+            5.6,
+            29.11,
+            6.0
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal3",
+          "rect_um": [
+            1.0,
+            6.8,
+            26.0,
+            7.2
+          ]
+        },
+        {
+          "net": "N1",
+          "layer": "metal3",
+          "rect_um": [
+            2.89,
+            8.0,
+            22.5,
+            8.4
+          ]
+        },
+        {
+          "net": "CTRL",
+          "layer": "metal3",
+          "rect_um": [
+            14.89,
+            9.2,
+            34.5,
+            9.6
+          ]
+        },
+        {
+          "net": "DI",
+          "layer": "metal1",
+          "rect_um": [
+            3.81,
+            18.06,
+            4.19,
+            18.44
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal1",
+          "rect_um": [
+            1.5,
+            19.81,
+            2.82,
+            20.19
+          ]
+        },
+        {
+          "net": "N1",
+          "layer": "metal2",
+          "rect_um": [
+            3.2,
+            8.01,
+            3.58,
+            20.19
+          ]
+        },
+        {
+          "net": "DI",
+          "layer": "metal4",
+          "rect_um": [
+            3.81,
+            21.56,
+            4.19,
+            22.69
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            4.42,
+            6.81,
+            4.8,
+            20.19
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            1.31,
+            6.81,
+            1.69,
+            20.19
+          ]
+        },
+        {
+          "net": "DI",
+          "layer": "metal1",
+          "rect_um": [
+            9.81,
+            17.345,
+            10.19,
+            17.725
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal1",
+          "rect_um": [
+            7.5,
+            19.81,
+            8.895,
+            20.19
+          ]
+        },
+        {
+          "net": "N1",
+          "layer": "metal2",
+          "rect_um": [
+            9.275,
+            8.01,
+            9.655,
+            20.19
+          ]
+        },
+        {
+          "net": "DI",
+          "layer": "metal4",
+          "rect_um": [
+            9.81,
+            22.275,
+            10.19,
+            22.69
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal2",
+          "rect_um": [
+            10.345,
+            3.21,
+            10.725,
+            20.19
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal2",
+          "rect_um": [
+            7.31,
+            3.21,
+            7.69,
+            20.19
+          ]
+        },
+        {
+          "net": "N1",
+          "layer": "metal1",
+          "rect_um": [
+            15.81,
+            14.31,
+            16.19,
+            14.69
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal1",
+          "rect_um": [
+            13.5,
+            19.81,
+            14.82,
+            20.19
+          ]
+        },
+        {
+          "net": "CTRL",
+          "layer": "metal2",
+          "rect_um": [
+            15.2,
+            9.21,
+            15.58,
+            20.19
+          ]
+        },
+        {
+          "net": "N1",
+          "layer": "metal4",
+          "rect_um": [
+            15.81,
+            8.01,
+            16.19,
+            25.69
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            16.42,
+            6.81,
+            16.8,
+            20.19
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            13.31,
+            6.81,
+            13.69,
+            20.19
+          ]
+        },
+        {
+          "net": "N1",
+          "layer": "metal1",
+          "rect_um": [
+            21.81,
+            11.45,
+            22.19,
+            11.83
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal1",
+          "rect_um": [
+            19.5,
+            19.81,
+            20.895,
+            20.19
+          ]
+        },
+        {
+          "net": "CTRL",
+          "layer": "metal2",
+          "rect_um": [
+            21.275,
+            9.21,
+            21.655,
+            20.19
+          ]
+        },
+        {
+          "net": "N1",
+          "layer": "metal4",
+          "rect_um": [
+            21.81,
+            8.01,
+            22.19,
+            28.55
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal2",
+          "rect_um": [
+            22.345,
+            3.21,
+            22.725,
+            20.19
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal2",
+          "rect_um": [
+            19.31,
+            3.21,
+            19.69,
+            20.19
+          ]
+        },
+        {
+          "net": "CTRL",
+          "layer": "metal1",
+          "rect_um": [
+            27.81,
+            14.31,
+            28.19,
+            14.69
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal1",
+          "rect_um": [
+            25.5,
+            19.81,
+            26.82,
+            20.19
+          ]
+        },
+        {
+          "net": "OUT",
+          "layer": "metal2",
+          "rect_um": [
+            27.2,
+            2.01,
+            27.58,
+            20.19
+          ]
+        },
+        {
+          "net": "CTRL",
+          "layer": "metal4",
+          "rect_um": [
+            27.81,
+            9.21,
+            28.19,
+            25.69
+          ]
+        },
+        {
+          "net": "VL",
+          "layer": "metal2",
+          "rect_um": [
+            28.42,
+            5.61,
+            28.8,
+            20.19
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            25.31,
+            6.81,
+            25.69,
+            20.19
+          ]
+        },
+        {
+          "net": "CTRL",
+          "layer": "metal1",
+          "rect_um": [
+            33.81,
+            11.45,
+            34.19,
+            11.83
+          ]
+        },
+        {
+          "net": "VH",
+          "layer": "metal1",
+          "rect_um": [
+            31.5,
+            19.81,
+            32.895,
+            20.19
+          ]
+        },
+        {
+          "net": "OUT",
+          "layer": "metal2",
+          "rect_um": [
+            33.275,
+            2.01,
+            33.655,
+            20.19
+          ]
+        },
+        {
+          "net": "CTRL",
+          "layer": "metal4",
+          "rect_um": [
+            33.81,
+            9.21,
+            34.19,
+            28.55
+          ]
+        },
+        {
+          "net": "VH",
+          "layer": "metal2",
+          "rect_um": [
+            34.345,
+            4.41,
+            34.725,
+            20.19
+          ]
+        },
+        {
+          "net": "VH",
+          "layer": "metal2",
+          "rect_um": [
+            31.31,
+            4.41,
+            31.69,
+            20.19
+          ]
+        },
+        {
+          "net": "DI",
+          "layer": "metal3",
+          "rect_um": [
+            -5.5,
+            22.3,
+            10.5,
+            22.7
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal3",
+          "rect_um": [
+            -6.88,
+            6.8,
+            26.0,
+            7.2
+          ]
+        },
+        {
+          "net": "DATA",
+          "layer": "metal3",
+          "rect_um": [
+            -5.5,
+            12.44,
+            -4.5,
+            12.84
+          ]
+        },
+        {
+          "net": "DATA",
+          "layer": "metal2",
+          "rect_um": [
+            -5.19,
+            12.45,
+            -4.81,
+            13.83
+          ]
+        },
+        {
+          "net": "DI",
+          "layer": "metal2",
+          "rect_um": [
+            -5.19,
+            22.31,
+            -4.81,
+            22.69
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            -6.57,
+            6.81,
+            -6.19,
+            18.26
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "pwell",
+          "rect_um": [
+            -0.3,
+            -2.12,
+            0.3,
+            29.12
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "psd",
+          "rect_um": [
+            -0.18,
+            -2,
+            0.18,
+            29
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "psc",
+          "rect_um": [
+            -0.115,
+            -1.935,
+            0.115,
+            28.935
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal1",
+          "rect_um": [
+            -0.19,
+            -1.935,
+            0.19,
+            28.935
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            -0.19,
+            -1.935,
+            0.19,
+            28.935
+          ]
+        }
+      ],
+      "external_components": [
+        {
+          "name": "VH",
+          "kind": "ideal bidirectional rail"
+        },
+        {
+          "name": "VL",
+          "kind": "ideal bidirectional rail"
+        }
+      ],
+      "dimension_change": [
+        {
+          "device": "P2",
+          "parameter": "W",
+          "prelayout_hv_um": 15.715,
+          "physical_um": 15.72,
+          "reason": "Keep symmetric PCell pins on 0.005 um manufacturing grid"
+        },
+        {
+          "device": "POUT",
+          "parameter": "W",
+          "prelayout_hv_um": 15.715,
+          "physical_um": 15.72,
+          "reason": "Keep symmetric PCell pins on 0.005 um manufacturing grid"
+        }
+      ],
+      "source_sha256": {
+        "layout/highspeed_nrz_robustness/voltage_driver-A8-reference.spice": "ab57f8582bdc54975e9f472472e3dd5d1b788323aed5e26abdb225cedeab02d9",
+        "build/highspeed-nrz-robustness-layout/hv-A8-r3/sources/A/schematic.spice": "161232113ba8a253b7d99ed02da961710253fbe485688a3344aeb23b89baae76"
+      },
+      "pcell_parameters": {
+        "full_metal": 0,
+        "gate_to_polycont_um": 0.5,
+        "guard": 1,
+        "glc": 1,
+        "grc": 1,
+        "topc": 1,
+        "botc": 1
+      },
+      "note": "Transistor core only; no pads/ESD/regulators/external resistor implementation. Use extraction results for junction areas/perimeters, not schematic estimates.",
+      "resistors": [
+        {
+          "name": "RIN",
+          "model": "ppolyf_u_1k_6p0",
+          "r_width_um": 1,
+          "r_length_um": 8,
+          "nodes": [
+            "DATA",
+            "DI",
+            "VSS"
+          ],
+          "short_di": true,
+          "substrate_screen": true,
+          "guard_all_sides": true,
+          "cx": -5.0,
+          "cy": 18.07,
+          "pins_um": {
+            "1": [
+              -5.0,
+              13.64
+            ],
+            "2": [
+              -5.0,
+              22.5
+            ],
+            "B": [
+              -6.38,
+              18.07
+            ]
+          },
+          "substrate_screen_geometry": {
+            "center_x_um": 0.0,
+            "bottom_um": -2,
+            "top_um": 29,
+            "diffusion_width_um": 0.36,
+            "contact_width_um": 0.23,
+            "metal_width_um": 0.38
+          }
+        }
+      ],
+      "design_changes": [
+        "6 V high-R-poly DATA-to-DI conditioning resistor, 8 x 1 um",
+        "DI shortened to local first-inverter gate bus",
+        "Continuous VSS-connected substrate contact strip between resistor and MOS row",
+        "Four-sided resistor substrate contacts",
+        "Original MOS geometry preserved",
+        "All six full-swing MOS replaced by actual public 6 V MOS PCells",
+        "6 V channel lengths NMOS 0.70 um / PMOS 0.55 um; approximate original W/L ratio",
+        "P2/POUT W rounded from pre-layout 15.715 to 15.72 um for centered geometry on 0.005 um grid",
+        "Reduce physical input high-R-poly length from 48 to 8 um after actual A48 RC slow-hot receiver margin failure; retain all HV MOS geometry"
+      ],
+      "electrical_physical_independence": "Physical D/G/S/B is hand-authored in selected specification; LVS gold is independently read from selected SPICE. No netlist-to-placement parser is used.",
+      "gds_sha256": "5c6bedfd663f33feefe1ee0d1821dbbe5cacfc528526fb00f88d51673b211bb6",
+      "bbox_um": [
+        -6.88,
+        -2.12,
+        35.675000000000004,
+        29.44
+      ],
+      "width_um": 42.55500000000001,
+      "height_um": 31.560000000000002,
+      "area_um2": 1343.0358000000003,
+      "drawn_layers": [
+        {
+          "gds_layer": 21,
+          "datatype": 0,
+          "name": "N-well",
+          "area_um2": 141.5403
+        },
+        {
+          "gds_layer": 204,
+          "datatype": 0,
+          "name": "P-well",
+          "area_um2": 164.0644
+        },
+        {
+          "gds_layer": 22,
+          "datatype": 0,
+          "name": "Active",
+          "area_um2": 170.03789999999998
+        },
+        {
+          "gds_layer": 110,
+          "datatype": 5,
+          "name": "PDK marker",
+          "area_um2": 12.479999999999999
+        },
+        {
+          "gds_layer": 49,
+          "datatype": 0,
+          "name": "PDK marker",
+          "area_um2": 12.792
+        },
+        {
+          "gds_layer": 32,
+          "datatype": 0,
+          "name": "N+ implant",
+          "area_um2": 104.5332
+        },
+        {
+          "gds_layer": 31,
+          "datatype": 0,
+          "name": "P+ implant",
+          "area_um2": 121.8855
+        },
+        {
+          "gds_layer": 55,
+          "datatype": 0,
+          "name": "PDK marker",
+          "area_um2": 304.7295
+        },
+        {
+          "gds_layer": 30,
+          "datatype": 0,
+          "name": "Poly",
+          "area_um2": 49.5235
+        },
+        {
+          "gds_layer": 33,
+          "datatype": 0,
+          "name": "Contact",
+          "area_um2": 32.2344
+        },
+        {
+          "gds_layer": 34,
+          "datatype": 0,
+          "name": "Metal1",
+          "area_um2": 82.3985
+        },
+        {
+          "gds_layer": 35,
+          "datatype": 0,
+          "name": "Via1",
+          "area_um2": 2.2308
+        },
+        {
+          "gds_layer": 36,
+          "datatype": 0,
+          "name": "Metal2",
+          "area_um2": 117.8
+        },
+        {
+          "gds_layer": 38,
+          "datatype": 0,
+          "name": "Via2",
+          "area_um2": 1.8927999999999998
+        },
+        {
+          "gds_layer": 42,
+          "datatype": 0,
+          "name": "Metal3",
+          "area_um2": 47.6295
+        },
+        {
+          "gds_layer": 40,
+          "datatype": 0,
+          "name": "Via3",
+          "area_um2": 0.7435999999999999
+        },
+        {
+          "gds_layer": 46,
+          "datatype": 0,
+          "name": "Metal4",
+          "area_um2": 28.722299999999997
+        },
+        {
+          "gds_layer": 62,
+          "datatype": 0,
+          "name": "PDK marker",
+          "area_um2": 18.035999999999998
+        },
+        {
+          "gds_layer": 42,
+          "datatype": 10,
+          "name": "Metal3",
+          "area_um2": 0.24
+        }
+      ],
+      "routed_metal_layers": [
+        "Metal1",
+        "Metal2",
+        "Metal3",
+        "Metal4"
+      ],
+      "pdk_available_metal_layers": 5,
+      "extracted_device_mapping": [
+        {
+          "original_instance": "XN1",
+          "extracted_instance": "X0",
+          "original_nodes": {
+            "D": "N1",
+            "G": "DI",
+            "S": "VSS",
+            "B": "VSS"
+          },
+          "rc_nodes": {
+            "D": "N1.t1",
+            "G": "DI.t2",
+            "S": "VSS.t2",
+            "B": "VSS.t1"
+          },
+          "extracted_spice_nodes": {
+            "D": "VSS.t2",
+            "G": "DI.t2",
+            "S": "N1.t1",
+            "B": "VSS.t1"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 1.1000000000000002e-12,
+            "pd": 5.88e-06,
+            "as": 1.1000000000000002e-12,
+            "ps": 5.88e-06,
+            "w": 2.4999999999999998e-06,
+            "l": 7e-07
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 4,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              3.39,
+              20
+            ],
+            "G": [
+              4,
+              21.75
+            ],
+            "S": [
+              4.61,
+              20
+            ],
+            "B": [
+              1.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XP1",
+          "extracted_instance": "X6",
+          "original_nodes": {
+            "D": "N1",
+            "G": "DI",
+            "S": "VDD",
+            "B": "VDD"
+          },
+          "rc_nodes": {
+            "D": "N1.t0",
+            "G": "DI.t1",
+            "S": "VDD.t1",
+            "B": "VDD.t0"
+          },
+          "extracted_spice_nodes": {
+            "D": "VDD.t1",
+            "G": "DI.t1",
+            "S": "N1.t0",
+            "B": "VDD.t0"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 1.7292e-12,
+            "pd": 8.74e-06,
+            "as": 1.7292e-12,
+            "ps": 8.74e-06,
+            "w": 3.93e-06,
+            "l": 5.5e-07
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 10,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              9.465,
+              20
+            ],
+            "G": [
+              10,
+              22.465
+            ],
+            "S": [
+              10.535,
+              20
+            ],
+            "B": [
+              7.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XN2",
+          "extracted_instance": "X5",
+          "original_nodes": {
+            "D": "CTRL",
+            "G": "N1",
+            "S": "VSS",
+            "B": "VSS"
+          },
+          "rc_nodes": {
+            "D": "CTRL.t1",
+            "G": "N1.t3",
+            "S": "VSS.t4",
+            "B": "VSS.t3"
+          },
+          "extracted_spice_nodes": {
+            "D": "VSS.t4",
+            "G": "N1.t3",
+            "S": "CTRL.t1",
+            "B": "VSS.t3"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 4.400000000000001e-12,
+            "pd": 2.0879999999999997e-05,
+            "as": 4.400000000000001e-12,
+            "ps": 2.0879999999999997e-05,
+            "w": 9.999999999999999e-06,
+            "l": 7e-07
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 16,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              15.39,
+              20
+            ],
+            "G": [
+              16,
+              25.5
+            ],
+            "S": [
+              16.61,
+              20
+            ],
+            "B": [
+              13.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XP2",
+          "extracted_instance": "X2",
+          "original_nodes": {
+            "D": "CTRL",
+            "G": "N1",
+            "S": "VDD",
+            "B": "VDD"
+          },
+          "rc_nodes": {
+            "D": "CTRL.t0",
+            "G": "N1.t2",
+            "S": "VDD.t3",
+            "B": "VDD.t2"
+          },
+          "extracted_spice_nodes": {
+            "D": "VDD.t3",
+            "G": "N1.t2",
+            "S": "CTRL.t0",
+            "B": "VDD.t2"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 6.9168e-12,
+            "pd": 3.2319999999999995e-05,
+            "as": 6.9168e-12,
+            "ps": 3.2319999999999995e-05,
+            "w": 1.572e-05,
+            "l": 5.5e-07
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 22,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              21.465,
+              20
+            ],
+            "G": [
+              22,
+              28.36
+            ],
+            "S": [
+              22.535,
+              20
+            ],
+            "B": [
+              19.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XNOUT",
+          "extracted_instance": "X3",
+          "original_nodes": {
+            "D": "OUT",
+            "G": "CTRL",
+            "S": "VL",
+            "B": "VSS"
+          },
+          "rc_nodes": {
+            "D": "OUT.t1",
+            "G": "CTRL.t3",
+            "S": "VL.t0",
+            "B": "VSS.t5"
+          },
+          "extracted_spice_nodes": {
+            "D": "VL.t0",
+            "G": "CTRL.t3",
+            "S": "OUT.t1",
+            "B": "VSS.t5"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 4.400000000000001e-12,
+            "pd": 2.0879999999999997e-05,
+            "as": 4.400000000000001e-12,
+            "ps": 2.0879999999999997e-05,
+            "w": 9.999999999999999e-06,
+            "l": 7e-07
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 28,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              27.39,
+              20
+            ],
+            "G": [
+              28,
+              25.5
+            ],
+            "S": [
+              28.61,
+              20
+            ],
+            "B": [
+              25.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XPOUT",
+          "extracted_instance": "X1",
+          "original_nodes": {
+            "D": "OUT",
+            "G": "CTRL",
+            "S": "VH",
+            "B": "VH"
+          },
+          "rc_nodes": {
+            "D": "OUT.t0",
+            "G": "CTRL.t2",
+            "S": "VH.t1",
+            "B": "VH.t0"
+          },
+          "extracted_spice_nodes": {
+            "D": "VH.t1",
+            "G": "CTRL.t2",
+            "S": "OUT.t0",
+            "B": "VH.t0"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 6.9168e-12,
+            "pd": 3.2319999999999995e-05,
+            "as": 6.9168e-12,
+            "ps": 3.2319999999999995e-05,
+            "w": 1.572e-05,
+            "l": 5.5e-07
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 34,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              33.465,
+              20
+            ],
+            "G": [
+              34,
+              28.36
+            ],
+            "S": [
+              34.535,
+              20
+            ],
+            "B": [
+              31.5,
+              20
+            ]
+          }
+        }
+      ],
+      "extracted_resistor_mapping": [
+        {
+          "original_instance": "XRIN",
+          "extracted_instance": "X4",
+          "original_nodes": {
+            "1": "DATA",
+            "2": "DI",
+            "B": "VSS"
+          },
+          "rc_nodes": {
+            "1": "DATA.t0",
+            "2": "DI.t0",
+            "B": "VSS.t0"
+          },
+          "params_si": {
+            "r_width": 1e-06,
+            "r_length": 8e-06
+          },
+          "pin_coordinate_um": {
+            "1": [
+              -5.0,
+              13.64
+            ],
+            "2": [
+              -5.0,
+              22.5
+            ],
+            "B": [
+              -6.38,
+              18.07
+            ]
+          }
+        }
+      ],
+      "manufacturing_grid_check": {
+        "grid_um": 0.005,
+        "polygon_vertex_violations": 0
+      },
+      "pex_port_order": [
+        "DATA",
+        "OUT",
+        "VDD",
+        "VH",
+        "VL",
+        "VSS"
+      ]
+    },
+    "B": {
+      "schema_version": 1,
+      "route": "B",
+      "top": "hs_steering_robust",
+      "ports": [
+        "DATA",
+        "OUT",
+        "VDD",
+        "VSS",
+        "BIAS",
+        "DUMMY"
+      ],
+      "grid_um": 0.005,
+      "devices": [
+        {
+          "name": "INV1N",
+          "model": "nfet_06v0",
+          "w_um": 2.5,
+          "l_um": 0.7,
+          "cx": 4,
+          "cy": 20,
+          "nodes": [
+            "GB",
+            "DI",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              3.39,
+              20
+            ],
+            "G": [
+              4,
+              21.75
+            ],
+            "S": [
+              4.61,
+              20
+            ],
+            "B": [
+              1.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "INV1P",
+          "model": "pfet_06v0",
+          "w_um": 3.93,
+          "l_um": 0.55,
+          "cx": 10,
+          "cy": 20,
+          "nodes": [
+            "GB",
+            "DI",
+            "VDD",
+            "VDD"
+          ],
+          "pins_um": {
+            "D": [
+              9.465,
+              20
+            ],
+            "G": [
+              10,
+              22.465
+            ],
+            "S": [
+              10.535,
+              20
+            ],
+            "B": [
+              7.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "INV2N",
+          "model": "nfet_06v0",
+          "w_um": 2.5,
+          "l_um": 0.7,
+          "cx": 16,
+          "cy": 20,
+          "nodes": [
+            "GP",
+            "GB",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              15.39,
+              20
+            ],
+            "G": [
+              16,
+              21.75
+            ],
+            "S": [
+              16.61,
+              20
+            ],
+            "B": [
+              13.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "INV2P",
+          "model": "pfet_06v0",
+          "w_um": 3.93,
+          "l_um": 0.55,
+          "cx": 22,
+          "cy": 20,
+          "nodes": [
+            "GP",
+            "GB",
+            "VDD",
+            "VDD"
+          ],
+          "pins_um": {
+            "D": [
+              21.465,
+              20
+            ],
+            "G": [
+              22,
+              22.465
+            ],
+            "S": [
+              22.535,
+              20
+            ],
+            "B": [
+              19.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "LED",
+          "model": "nfet_06v0",
+          "w_um": 2.5,
+          "l_um": 0.7,
+          "cx": 28,
+          "cy": 20,
+          "nodes": [
+            "OUT",
+            "GP",
+            "VX",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              27.39,
+              20
+            ],
+            "G": [
+              28,
+              21.75
+            ],
+            "S": [
+              28.61,
+              20
+            ],
+            "B": [
+              25.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "DUMMY",
+          "model": "nfet_06v0",
+          "w_um": 2.5,
+          "l_um": 0.7,
+          "cx": 34,
+          "cy": 20,
+          "nodes": [
+            "DUMMY",
+            "GB",
+            "VX",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              33.39,
+              20
+            ],
+            "G": [
+              34,
+              21.75
+            ],
+            "S": [
+              34.61,
+              20
+            ],
+            "B": [
+              31.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "TAIL",
+          "model": "nfet_03v3",
+          "w_um": 5.76,
+          "l_um": 1,
+          "cx": 40,
+          "cy": 20,
+          "nodes": [
+            "VX",
+            "BIAS",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              39.24,
+              20
+            ],
+            "G": [
+              40,
+              23.38
+            ],
+            "S": [
+              40.76,
+              20
+            ],
+            "B": [
+              37.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "BASE",
+          "model": "nfet_03v3",
+          "w_um": 2,
+          "l_um": 1,
+          "cx": 46,
+          "cy": 20,
+          "nodes": [
+            "OUT",
+            "BIAS",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              45.24,
+              20
+            ],
+            "G": [
+              46,
+              21.5
+            ],
+            "S": [
+              46.76,
+              20
+            ],
+            "B": [
+              43.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "REF",
+          "model": "nfet_03v3",
+          "w_um": 2,
+          "l_um": 1,
+          "cx": 52,
+          "cy": 20,
+          "nodes": [
+            "BIAS",
+            "BIAS",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              51.24,
+              20
+            ],
+            "G": [
+              52,
+              21.5
+            ],
+            "S": [
+              52.76,
+              20
+            ],
+            "B": [
+              49.5,
+              20
+            ]
+          }
+        }
+      ],
+      "buses_um": {
+        "DI": 22.5,
+        "OUT": 2.2,
+        "VDD": 3.4,
+        "VSS": 4.6,
+        "BIAS": 5.8,
+        "DUMMY": 7.0,
+        "GB": 8.2,
+        "GP": 9.4,
+        "VX": 10.6,
+        "DATA": -37.36
+      },
+      "bus_spans_um": {
+        "DI": [
+          -5.5,
+          10.5
+        ],
+        "OUT": [
+          26.89,
+          45.74
+        ],
+        "VDD": [
+          7.0,
+          23.035
+        ],
+        "VSS": [
+          -6.88,
+          53.26
+        ],
+        "BIAS": [
+          39.5,
+          52.5
+        ],
+        "DUMMY": [
+          32.89,
+          33.89
+        ],
+        "GB": [
+          2.89,
+          34.5
+        ],
+        "GP": [
+          14.89,
+          28.5
+        ],
+        "VX": [
+          28.11,
+          39.74
+        ],
+        "DATA": [
+          -5.5,
+          -4.5
+        ]
+      },
+      "port_anchor_um": {
+        "OUT": [
+          27.09,
+          2.2
+        ],
+        "VDD": [
+          7.2,
+          3.4
+        ],
+        "VSS": [
+          1.2,
+          4.6
+        ],
+        "BIAS": [
+          39.7,
+          5.8
+        ],
+        "DUMMY": [
+          33.09,
+          7.0
+        ],
+        "DATA": [
+          -5.3,
+          -37.36
+        ]
+      },
+      "routes": [
+        {
+          "net": "DI",
+          "layer": "metal3",
+          "rect_um": [
+            3.5,
+            22.3,
+            10.5,
+            22.7
+          ]
+        },
+        {
+          "net": "OUT",
+          "layer": "metal3",
+          "rect_um": [
+            26.89,
+            2.0,
+            45.74,
+            2.4
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal3",
+          "rect_um": [
+            7.0,
+            3.2,
+            23.035,
+            3.6
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal3",
+          "rect_um": [
+            1.0,
+            4.4,
+            53.26,
+            4.8
+          ]
+        },
+        {
+          "net": "BIAS",
+          "layer": "metal3",
+          "rect_um": [
+            39.5,
+            5.6,
+            52.5,
+            6.0
+          ]
+        },
+        {
+          "net": "DUMMY",
+          "layer": "metal3",
+          "rect_um": [
+            32.89,
+            6.8,
+            33.89,
+            7.2
+          ]
+        },
+        {
+          "net": "GB",
+          "layer": "metal3",
+          "rect_um": [
+            2.89,
+            8.0,
+            34.5,
+            8.4
+          ]
+        },
+        {
+          "net": "GP",
+          "layer": "metal3",
+          "rect_um": [
+            14.89,
+            9.2,
+            28.5,
+            9.6
+          ]
+        },
+        {
+          "net": "VX",
+          "layer": "metal3",
+          "rect_um": [
+            28.11,
+            10.4,
+            39.74,
+            10.8
+          ]
+        },
+        {
+          "net": "DI",
+          "layer": "metal1",
+          "rect_um": [
+            3.81,
+            18.06,
+            4.19,
+            18.44
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal1",
+          "rect_um": [
+            1.5,
+            19.81,
+            2.82,
+            20.19
+          ]
+        },
+        {
+          "net": "GB",
+          "layer": "metal2",
+          "rect_um": [
+            3.2,
+            8.01,
+            3.58,
+            20.19
+          ]
+        },
+        {
+          "net": "DI",
+          "layer": "metal4",
+          "rect_um": [
+            3.81,
+            21.56,
+            4.19,
+            22.69
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            4.42,
+            4.41,
+            4.8,
+            20.19
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            1.31,
+            4.41,
+            1.69,
+            20.19
+          ]
+        },
+        {
+          "net": "DI",
+          "layer": "metal1",
+          "rect_um": [
+            9.81,
+            17.345,
+            10.19,
+            17.725
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal1",
+          "rect_um": [
+            7.5,
+            19.81,
+            8.895,
+            20.19
+          ]
+        },
+        {
+          "net": "GB",
+          "layer": "metal2",
+          "rect_um": [
+            9.275,
+            8.01,
+            9.655,
+            20.19
+          ]
+        },
+        {
+          "net": "DI",
+          "layer": "metal4",
+          "rect_um": [
+            9.81,
+            22.275,
+            10.19,
+            22.69
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal2",
+          "rect_um": [
+            10.345,
+            3.21,
+            10.725,
+            20.19
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal2",
+          "rect_um": [
+            7.31,
+            3.21,
+            7.69,
+            20.19
+          ]
+        },
+        {
+          "net": "GB",
+          "layer": "metal1",
+          "rect_um": [
+            15.81,
+            18.06,
+            16.19,
+            18.44
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal1",
+          "rect_um": [
+            13.5,
+            19.81,
+            14.82,
+            20.19
+          ]
+        },
+        {
+          "net": "GP",
+          "layer": "metal2",
+          "rect_um": [
+            15.2,
+            9.21,
+            15.58,
+            20.19
+          ]
+        },
+        {
+          "net": "GB",
+          "layer": "metal4",
+          "rect_um": [
+            15.81,
+            8.01,
+            16.19,
+            21.94
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            16.42,
+            4.41,
+            16.8,
+            20.19
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            13.31,
+            4.41,
+            13.69,
+            20.19
+          ]
+        },
+        {
+          "net": "GB",
+          "layer": "metal1",
+          "rect_um": [
+            21.81,
+            17.345,
+            22.19,
+            17.725
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal1",
+          "rect_um": [
+            19.5,
+            19.81,
+            20.895,
+            20.19
+          ]
+        },
+        {
+          "net": "GP",
+          "layer": "metal2",
+          "rect_um": [
+            21.275,
+            9.21,
+            21.655,
+            20.19
+          ]
+        },
+        {
+          "net": "GB",
+          "layer": "metal4",
+          "rect_um": [
+            21.81,
+            8.01,
+            22.19,
+            22.655
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal2",
+          "rect_um": [
+            22.345,
+            3.21,
+            22.725,
+            20.19
+          ]
+        },
+        {
+          "net": "VDD",
+          "layer": "metal2",
+          "rect_um": [
+            19.31,
+            3.21,
+            19.69,
+            20.19
+          ]
+        },
+        {
+          "net": "GP",
+          "layer": "metal1",
+          "rect_um": [
+            27.81,
+            18.06,
+            28.19,
+            18.44
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal1",
+          "rect_um": [
+            25.5,
+            19.81,
+            26.82,
+            20.19
+          ]
+        },
+        {
+          "net": "OUT",
+          "layer": "metal2",
+          "rect_um": [
+            27.2,
+            2.01,
+            27.58,
+            20.19
+          ]
+        },
+        {
+          "net": "GP",
+          "layer": "metal4",
+          "rect_um": [
+            27.81,
+            9.21,
+            28.19,
+            21.94
+          ]
+        },
+        {
+          "net": "VX",
+          "layer": "metal2",
+          "rect_um": [
+            28.42,
+            10.41,
+            28.8,
+            20.19
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            25.31,
+            4.41,
+            25.69,
+            20.19
+          ]
+        },
+        {
+          "net": "GB",
+          "layer": "metal1",
+          "rect_um": [
+            33.81,
+            18.06,
+            34.19,
+            18.44
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal1",
+          "rect_um": [
+            31.5,
+            19.81,
+            32.82,
+            20.19
+          ]
+        },
+        {
+          "net": "DUMMY",
+          "layer": "metal2",
+          "rect_um": [
+            33.2,
+            6.81,
+            33.58,
+            20.19
+          ]
+        },
+        {
+          "net": "GB",
+          "layer": "metal4",
+          "rect_um": [
+            33.81,
+            8.01,
+            34.19,
+            21.94
+          ]
+        },
+        {
+          "net": "VX",
+          "layer": "metal2",
+          "rect_um": [
+            34.42,
+            10.41,
+            34.8,
+            20.19
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            31.31,
+            4.41,
+            31.69,
+            20.19
+          ]
+        },
+        {
+          "net": "BIAS",
+          "layer": "metal1",
+          "rect_um": [
+            39.81,
+            16.43,
+            40.19,
+            16.81
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal1",
+          "rect_um": [
+            37.5,
+            19.81,
+            38.67,
+            20.19
+          ]
+        },
+        {
+          "net": "VX",
+          "layer": "metal2",
+          "rect_um": [
+            39.05,
+            10.41,
+            39.43,
+            20.19
+          ]
+        },
+        {
+          "net": "BIAS",
+          "layer": "metal4",
+          "rect_um": [
+            39.81,
+            5.61,
+            40.19,
+            23.57
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            40.57,
+            4.41,
+            40.95,
+            20.19
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            37.31,
+            4.41,
+            37.69,
+            20.19
+          ]
+        },
+        {
+          "net": "BIAS",
+          "layer": "metal1",
+          "rect_um": [
+            45.81,
+            18.31,
+            46.19,
+            18.69
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal1",
+          "rect_um": [
+            43.5,
+            19.81,
+            44.67,
+            20.19
+          ]
+        },
+        {
+          "net": "OUT",
+          "layer": "metal2",
+          "rect_um": [
+            45.05,
+            2.01,
+            45.43,
+            20.19
+          ]
+        },
+        {
+          "net": "BIAS",
+          "layer": "metal4",
+          "rect_um": [
+            45.81,
+            5.61,
+            46.19,
+            21.69
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            46.57,
+            4.41,
+            46.95,
+            20.19
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            43.31,
+            4.41,
+            43.69,
+            20.19
+          ]
+        },
+        {
+          "net": "BIAS",
+          "layer": "metal1",
+          "rect_um": [
+            51.81,
+            18.31,
+            52.19,
+            18.69
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal1",
+          "rect_um": [
+            49.5,
+            19.81,
+            50.67,
+            20.19
+          ]
+        },
+        {
+          "net": "BIAS",
+          "layer": "metal2",
+          "rect_um": [
+            51.05,
+            5.61,
+            51.43,
+            20.19
+          ]
+        },
+        {
+          "net": "BIAS",
+          "layer": "metal4",
+          "rect_um": [
+            51.81,
+            5.61,
+            52.19,
+            21.69
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            52.57,
+            4.41,
+            52.95,
+            20.19
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            49.31,
+            4.41,
+            49.69,
+            20.19
+          ]
+        },
+        {
+          "net": "DI",
+          "layer": "metal3",
+          "rect_um": [
+            -5.5,
+            22.3,
+            10.5,
+            22.7
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal3",
+          "rect_um": [
+            -6.88,
+            4.4,
+            53.26,
+            4.8
+          ]
+        },
+        {
+          "net": "DATA",
+          "layer": "metal3",
+          "rect_um": [
+            -5.5,
+            -37.56,
+            -4.5,
+            -37.16
+          ]
+        },
+        {
+          "net": "DATA",
+          "layer": "metal2",
+          "rect_um": [
+            -5.19,
+            -37.55,
+            -4.81,
+            -36.17
+          ]
+        },
+        {
+          "net": "DI",
+          "layer": "metal2",
+          "rect_um": [
+            -5.19,
+            22.31,
+            -4.81,
+            22.69
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            -6.57,
+            -7.12,
+            -6.19,
+            4.79
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "pwell",
+          "rect_um": [
+            -0.3,
+            -38.48,
+            0.3,
+            29.12
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "psd",
+          "rect_um": [
+            -0.18,
+            -38.36,
+            0.18,
+            29
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "psc",
+          "rect_um": [
+            -0.115,
+            -38.295,
+            0.115,
+            28.935
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal1",
+          "rect_um": [
+            -0.19,
+            -38.295,
+            0.19,
+            28.935
+          ]
+        },
+        {
+          "net": "VSS",
+          "layer": "metal2",
+          "rect_um": [
+            -0.19,
+            -38.295,
+            0.19,
+            28.935
+          ]
+        }
+      ],
+      "external_components": [
+        {
+          "name": "RREF",
+          "nodes": [
+            "VDUMMY",
+            "BIAS"
+          ],
+          "ohm": 88386.1064910889
+        },
+        {
+          "name": "RDUMMY",
+          "nodes": [
+            "VDUMMY",
+            "DUMMY"
+          ],
+          "ohm": 28000
+        }
+      ],
+      "dimension_change": [],
+      "source_sha256": {
+        "layout/highspeed_nrz_robustness/steering_driver-reference.spice": "b88b8f021f903c9c0c3c47516426d783a5e6520df581241d5ca0db792bab0d70",
+        "build/highspeed-nrz-robustness-layout/hv-r2/sources/B/schematic.spice": "366575f58850cade385057f1c445a1b6d299aa6270deed4678d1dc197ac486bb"
+      },
+      "pcell_parameters": {
+        "full_metal": 0,
+        "gate_to_polycont_um": 0.5,
+        "guard": 1,
+        "glc": 1,
+        "grc": 1,
+        "topc": 1,
+        "botc": 1
+      },
+      "note": "Transistor core only; no pads/ESD/regulators/external resistor implementation. Use extraction results for junction areas/perimeters, not schematic estimates.",
+      "resistors": [
+        {
+          "name": "RIN",
+          "model": "ppolyf_u_1k_6p0",
+          "r_width_um": 1,
+          "r_length_um": 58,
+          "nodes": [
+            "DATA",
+            "DI",
+            "VSS"
+          ],
+          "short_di": true,
+          "substrate_screen": true,
+          "guard_all_sides": true,
+          "cx": -5.0,
+          "cy": -6.93,
+          "pins_um": {
+            "1": [
+              -5.0,
+              -36.36
+            ],
+            "2": [
+              -5.0,
+              22.5
+            ],
+            "B": [
+              -6.38,
+              -6.93
+            ]
+          },
+          "substrate_screen_geometry": {
+            "center_x_um": 0.0,
+            "bottom_um": -38.36,
+            "top_um": 29,
+            "diffusion_width_um": 0.36,
+            "contact_width_um": 0.23,
+            "metal_width_um": 0.38
+          }
+        }
+      ],
+      "design_changes": [
+        "6 V high-R-poly DATA-to-DI conditioning resistor, 58 x 1 um",
+        "DI shortened to local first-inverter gate bus",
+        "Continuous VSS-connected substrate contact strip between resistor and MOS row",
+        "Four-sided resistor substrate contacts",
+        "RREF connected to existing fixed3.3V VDUMMY rail",
+        "Original MOS geometry preserved",
+        "Full-swing INV1N/P, INV2N/P, LED/DUMMY are actual public 6 V MOS PCells; REF/BASE/TAIL retain 3.3 V devices",
+        "6 V W/L: NMOS 2.50/0.70 um, PMOS 3.93/0.55 um; original connectivity unchanged"
+      ],
+      "electrical_physical_independence": "Physical D/G/S/B is hand-authored in selected specification; LVS gold is independently read from selected SPICE. No netlist-to-placement parser is used.",
+      "gds_sha256": "d2e32ac286d208e2d74485b4d2650ffbbf4cd25cd57c86c5f7cd9cb97e3256af",
+      "bbox_um": [
+        -6.88,
+        -38.480000000000004,
+        53.75,
+        29.12
+      ],
+      "width_um": 60.63,
+      "height_um": 67.60000000000001,
+      "area_um2": 4098.588000000001,
+      "drawn_layers": [
+        {
+          "gds_layer": 21,
+          "datatype": 0,
+          "name": "N-well",
+          "area_um2": 44.2134
+        },
+        {
+          "gds_layer": 204,
+          "datatype": 0,
+          "name": "P-well",
+          "area_um2": 386.9804
+        },
+        {
+          "gds_layer": 22,
+          "datatype": 0,
+          "name": "Active",
+          "area_um2": 167.1694
+        },
+        {
+          "gds_layer": 110,
+          "datatype": 5,
+          "name": "PDK marker",
+          "area_um2": 90.47999999999999
+        },
+        {
+          "gds_layer": 49,
+          "datatype": 0,
+          "name": "PDK marker",
+          "area_um2": 90.792
+        },
+        {
+          "gds_layer": 32,
+          "datatype": 0,
+          "name": "N+ implant",
+          "area_um2": 67.3772
+        },
+        {
+          "gds_layer": 31,
+          "datatype": 0,
+          "name": "P+ implant",
+          "area_um2": 143.856
+        },
+        {
+          "gds_layer": 55,
+          "datatype": 0,
+          "name": "PDK marker",
+          "area_um2": 349.29499999999996
+        },
+        {
+          "gds_layer": 30,
+          "datatype": 0,
+          "name": "Poly",
+          "area_um2": 89.687
+        },
+        {
+          "gds_layer": 33,
+          "datatype": 0,
+          "name": "Contact",
+          "area_um2": 35.089999999999996
+        },
+        {
+          "gds_layer": 34,
+          "datatype": 0,
+          "name": "Metal1",
+          "area_um2": 96.4478
+        },
+        {
+          "gds_layer": 35,
+          "datatype": 0,
+          "name": "Via1",
+          "area_um2": 3.5827999999999998
+        },
+        {
+          "gds_layer": 36,
+          "datatype": 0,
+          "name": "Metal2",
+          "area_um2": 183.00039999999998
+        },
+        {
+          "gds_layer": 38,
+          "datatype": 0,
+          "name": "Via2",
+          "area_um2": 2.7039999999999997
+        },
+        {
+          "gds_layer": 42,
+          "datatype": 0,
+          "name": "Metal3",
+          "area_um2": 74.3147
+        },
+        {
+          "gds_layer": 40,
+          "datatype": 0,
+          "name": "Via3",
+          "area_um2": 1.1492
+        },
+        {
+          "gds_layer": 46,
+          "datatype": 0,
+          "name": "Metal4",
+          "area_um2": 40.622
+        },
+        {
+          "gds_layer": 62,
+          "datatype": 0,
+          "name": "PDK marker",
+          "area_um2": 108.036
+        },
+        {
+          "gds_layer": 42,
+          "datatype": 10,
+          "name": "Metal3",
+          "area_um2": 0.24
+        }
+      ],
+      "routed_metal_layers": [
+        "Metal1",
+        "Metal2",
+        "Metal3",
+        "Metal4"
+      ],
+      "pdk_available_metal_layers": 5,
+      "extracted_device_mapping": [
+        {
+          "original_instance": "XINV1N",
+          "extracted_instance": "X0",
+          "original_nodes": {
+            "D": "GB",
+            "G": "DI",
+            "S": "VSS",
+            "B": "VSS"
+          },
+          "rc_nodes": {
+            "D": "GB.t1",
+            "G": "DI.t2",
+            "S": "VSS.t8",
+            "B": "VSS.t7"
+          },
+          "extracted_spice_nodes": {
+            "D": "VSS.t8",
+            "G": "DI.t2",
+            "S": "GB.t1",
+            "B": "VSS.t7"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 1.1000000000000002e-12,
+            "pd": 5.88e-06,
+            "as": 1.1000000000000002e-12,
+            "ps": 5.88e-06,
+            "w": 2.4999999999999998e-06,
+            "l": 7e-07
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 4,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              3.39,
+              20
+            ],
+            "G": [
+              4,
+              21.75
+            ],
+            "S": [
+              4.61,
+              20
+            ],
+            "B": [
+              1.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XINV1P",
+          "extracted_instance": "X5",
+          "original_nodes": {
+            "D": "GB",
+            "G": "DI",
+            "S": "VDD",
+            "B": "VDD"
+          },
+          "rc_nodes": {
+            "D": "GB.t0",
+            "G": "DI.t1",
+            "S": "VDD.t1",
+            "B": "VDD.t0"
+          },
+          "extracted_spice_nodes": {
+            "D": "VDD.t1",
+            "G": "DI.t1",
+            "S": "GB.t0",
+            "B": "VDD.t0"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 1.7292e-12,
+            "pd": 8.74e-06,
+            "as": 1.7292e-12,
+            "ps": 8.74e-06,
+            "w": 3.93e-06,
+            "l": 5.5e-07
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 10,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              9.465,
+              20
+            ],
+            "G": [
+              10,
+              22.465
+            ],
+            "S": [
+              10.535,
+              20
+            ],
+            "B": [
+              7.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XINV2N",
+          "extracted_instance": "X8",
+          "original_nodes": {
+            "D": "GP",
+            "G": "GB",
+            "S": "VSS",
+            "B": "VSS"
+          },
+          "rc_nodes": {
+            "D": "GP.t0",
+            "G": "GB.t4",
+            "S": "VSS.t11",
+            "B": "VSS.t10"
+          },
+          "extracted_spice_nodes": {
+            "D": "VSS.t11",
+            "G": "GB.t4",
+            "S": "GP.t0",
+            "B": "VSS.t10"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 1.1000000000000002e-12,
+            "pd": 5.88e-06,
+            "as": 1.1000000000000002e-12,
+            "ps": 5.88e-06,
+            "w": 2.4999999999999998e-06,
+            "l": 7e-07
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 16,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              15.39,
+              20
+            ],
+            "G": [
+              16,
+              21.75
+            ],
+            "S": [
+              16.61,
+              20
+            ],
+            "B": [
+              13.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XINV2P",
+          "extracted_instance": "X9",
+          "original_nodes": {
+            "D": "GP",
+            "G": "GB",
+            "S": "VDD",
+            "B": "VDD"
+          },
+          "rc_nodes": {
+            "D": "GP.t1",
+            "G": "GB.t3",
+            "S": "VDD.t3",
+            "B": "VDD.t2"
+          },
+          "extracted_spice_nodes": {
+            "D": "VDD.t3",
+            "G": "GB.t3",
+            "S": "GP.t1",
+            "B": "VDD.t2"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 1.7292e-12,
+            "pd": 8.74e-06,
+            "as": 1.7292e-12,
+            "ps": 8.74e-06,
+            "w": 3.93e-06,
+            "l": 5.5e-07
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 22,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              21.465,
+              20
+            ],
+            "G": [
+              22,
+              22.465
+            ],
+            "S": [
+              22.535,
+              20
+            ],
+            "B": [
+              19.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XLED",
+          "extracted_instance": "X4",
+          "original_nodes": {
+            "D": "OUT",
+            "G": "GP",
+            "S": "VX",
+            "B": "VSS"
+          },
+          "rc_nodes": {
+            "D": "OUT.t1",
+            "G": "GP.t2",
+            "S": "VX.t2",
+            "B": "VSS.t12"
+          },
+          "extracted_spice_nodes": {
+            "D": "VX.t2",
+            "G": "GP.t2",
+            "S": "OUT.t1",
+            "B": "VSS.t12"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 1.1000000000000002e-12,
+            "pd": 5.88e-06,
+            "as": 1.1000000000000002e-12,
+            "ps": 5.88e-06,
+            "w": 2.4999999999999998e-06,
+            "l": 7e-07
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 28,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              27.39,
+              20
+            ],
+            "G": [
+              28,
+              21.75
+            ],
+            "S": [
+              28.61,
+              20
+            ],
+            "B": [
+              25.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XDUMMY",
+          "extracted_instance": "X2",
+          "original_nodes": {
+            "D": "DUMMY",
+            "G": "GB",
+            "S": "VX",
+            "B": "VSS"
+          },
+          "rc_nodes": {
+            "D": "DUMMY.t0",
+            "G": "GB.t2",
+            "S": "VX.t1",
+            "B": "VSS.t9"
+          },
+          "extracted_spice_nodes": {
+            "D": "VX.t1",
+            "G": "GB.t2",
+            "S": "DUMMY.t0",
+            "B": "VSS.t9"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 1.1000000000000002e-12,
+            "pd": 5.88e-06,
+            "as": 1.1000000000000002e-12,
+            "ps": 5.88e-06,
+            "w": 2.4999999999999998e-06,
+            "l": 7e-07
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 34,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              33.39,
+              20
+            ],
+            "G": [
+              34,
+              21.75
+            ],
+            "S": [
+              34.61,
+              20
+            ],
+            "B": [
+              31.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XTAIL",
+          "extracted_instance": "X6",
+          "original_nodes": {
+            "D": "VX",
+            "G": "BIAS",
+            "S": "VSS",
+            "B": "VSS"
+          },
+          "rc_nodes": {
+            "D": "VX.t0",
+            "G": "BIAS.t3",
+            "S": "VSS.t1",
+            "B": "VSS.t0"
+          },
+          "extracted_spice_nodes": {
+            "D": "VSS.t1",
+            "G": "BIAS.t3",
+            "S": "VX.t0",
+            "B": "VSS.t0"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 2.5344e-12,
+            "pd": 1.24e-05,
+            "as": 2.5344e-12,
+            "ps": 1.24e-05,
+            "w": 5.76e-06,
+            "l": 1e-06
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 40,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              39.24,
+              20
+            ],
+            "G": [
+              40,
+              23.38
+            ],
+            "S": [
+              40.76,
+              20
+            ],
+            "B": [
+              37.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XBASE",
+          "extracted_instance": "X3",
+          "original_nodes": {
+            "D": "OUT",
+            "G": "BIAS",
+            "S": "VSS",
+            "B": "VSS"
+          },
+          "rc_nodes": {
+            "D": "OUT.t0",
+            "G": "BIAS.t2",
+            "S": "VSS.t5",
+            "B": "VSS.t4"
+          },
+          "extracted_spice_nodes": {
+            "D": "VSS.t5",
+            "G": "BIAS.t2",
+            "S": "OUT.t0",
+            "B": "VSS.t4"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 8.8e-13,
+            "pd": 4.88e-06,
+            "as": 8.8e-13,
+            "ps": 4.88e-06,
+            "w": 2e-06,
+            "l": 1e-06
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 46,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              45.24,
+              20
+            ],
+            "G": [
+              46,
+              21.5
+            ],
+            "S": [
+              46.76,
+              20
+            ],
+            "B": [
+              43.5,
+              20
+            ]
+          }
+        },
+        {
+          "original_instance": "XREF",
+          "extracted_instance": "X7",
+          "original_nodes": {
+            "D": "BIAS",
+            "G": "BIAS",
+            "S": "VSS",
+            "B": "VSS"
+          },
+          "rc_nodes": {
+            "D": "BIAS.t1",
+            "G": "BIAS.t0",
+            "S": "VSS.t3",
+            "B": "VSS.t2"
+          },
+          "extracted_spice_nodes": {
+            "D": "VSS.t3",
+            "G": "BIAS.t0",
+            "S": "BIAS.t1",
+            "B": "VSS.t2"
+          },
+          "drain_source_swapped": true,
+          "params_si": {
+            "ad": 8.8e-13,
+            "pd": 4.88e-06,
+            "as": 8.8e-13,
+            "ps": 4.88e-06,
+            "w": 2e-06,
+            "l": 1e-06
+          },
+          "multiplicity": 1,
+          "fingers": 1,
+          "cx_um": 52,
+          "cy_um": 20,
+          "pin_coordinate_um": {
+            "D": [
+              51.24,
+              20
+            ],
+            "G": [
+              52,
+              21.5
+            ],
+            "S": [
+              52.76,
+              20
+            ],
+            "B": [
+              49.5,
+              20
+            ]
+          }
+        }
+      ],
+      "extracted_resistor_mapping": [
+        {
+          "original_instance": "XRIN",
+          "extracted_instance": "X1",
+          "original_nodes": {
+            "1": "DATA",
+            "2": "DI",
+            "B": "VSS"
+          },
+          "rc_nodes": {
+            "1": "DATA.t0",
+            "2": "DI.t0",
+            "B": "VSS.t6"
+          },
+          "params_si": {
+            "r_width": 1e-06,
+            "r_length": 5.8e-05
+          },
+          "pin_coordinate_um": {
+            "1": [
+              -5.0,
+              -36.36
+            ],
+            "2": [
+              -5.0,
+              22.5
+            ],
+            "B": [
+              -6.38,
+              -6.93
+            ]
+          }
+        }
+      ],
+      "manufacturing_grid_check": {
+        "grid_um": 0.005,
+        "polygon_vertex_violations": 0
+      },
+      "pex_port_order": [
+        "DATA",
+        "OUT",
+        "VDD",
+        "VSS",
+        "BIAS",
+        "DUMMY"
+      ]
+    }
+  },
+  "variants": {
+    "A": {
+      "AFTER": {
+        "path": "physical/A-AFTER.spice",
+        "sha256": "f26ca7a4a66baf61ccef9b3625a1e8234bf10edcf65d4adcc30117db1b72a1c0",
+        "subckt": "hs_voltage_robust",
+        "ports": [
+          "data",
+          "out",
+          "vdd",
+          "vh",
+          "vl",
+          "vss"
+        ],
+        "source": "build/highspeed-nrz-robustness-layout/hv-A8-r3/A/full-rc/hs_voltage_robust_rc.spice",
+        "rref_source": "vdd",
+        "rref_ohm": 88386.1064910889
+      }
+    },
+    "B": {
+      "AFTER": {
+        "path": "physical/B-AFTER.spice",
+        "sha256": "fcb457660f238ee402237378a48b06496109b101d51ee85e8a7257224e7ee6ae",
+        "subckt": "hs_steering_robust",
+        "ports": [
+          "data",
+          "out",
+          "vdd",
+          "vss",
+          "bias",
+          "dummy"
+        ],
+        "source": "build/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/hs_steering_robust_rc.spice",
+        "rref_source": "vdummy",
+        "rref_ohm": 88386.1064910889
+      }
+    }
+  },
+  "created": "2026-10-24T18:12:27.773091",
+  "baseline": "build/highspeed-nrz-pvt/final-r4",
+  "baseline_manifest_sha256": "d79d109e9104cbc7bd4b870719f620fe82c0722292b9b84a0e1b08e9a2300113",
+  "source_hashes": {
+    "led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+    "pipeline/run.py": "f688d8f1b3371eb4bfe48088cc884b6bf35e5a9ad22c9063ce0c676e7d305aca",
+    "pipeline/final.py": "c08a45a9c4ace939e05e05b9a5781f8daf1852acf212d2f0f8afa640387d8228",
+    "pipeline/resume.py": "7e798f8f97c59e3a07427f87c8fab8f39b9d6317be850c997236f103d3655f8a",
+    "pipeline/audit.py": "d1609e9975a359daa4a2587893279a4e7c62543382fb3396ae741d6789f0b9a7",
+    "pipeline/validate.py": "7d1760b59d284882da4c6bd8aa90c980e89810a0cf7d271b8fc0069d29271fc3",
+    "pipeline/waveform_window.py": "293754d1cb8f780517245837a56bb5b5dcb5ae537fc5a9c483f77a37575edb5b",
+    "pipeline/candidate.py": "816338da31ac96d327a1c495ecd6a1f3b5bbd7375d2271d9e53e62fd9427e588",
+    "pipeline/reanalyze.py": "2fc9bfb0c0dbbbfed2b669cd5e0b6c609bce01da5a9918fdec2db448dfa759e2",
+    "pipeline/test_pipeline.py": "526465ce45d97a23d62f5354eb0ecc4eb108c6e445d09b156e6256a03ace0c1a",
+    "pipeline/supply_package.py": "eb3a1c4ce98c0cf05d99edcdb6faba8e802cccd5cba2938c47fe156a791f34b8",
+    "physical/A-selected-electrical-source.spice": "ab57f8582bdc54975e9f472472e3dd5d1b788323aed5e26abdb225cedeab02d9",
+    "physical/A-AFTER.spice": "f26ca7a4a66baf61ccef9b3625a1e8234bf10edcf65d4adcc30117db1b72a1c0",
+    "physical/B-AFTER.spice": "fcb457660f238ee402237378a48b06496109b101d51ee85e8a7257224e7ee6ae",
+    "physical/A-physical-contract.json": "047c802c4a1b650d5bd2a10b9c5a489c65cb8d5e43005b425ed1dcaadef8b70c",
+    "physical/B-physical-contract.json": "c12431238cce6d27b9422f38af6e9be1885c8e15e5530eb05e53f0f3929cd79d",
+    "physical/B-selected-electrical-source.spice": "b88b8f021f903c9c0c3c47516426d783a5e6520df581241d5ca0db792bab0d70",
+    "physical/A-contract.json": "047c802c4a1b650d5bd2a10b9c5a489c65cb8d5e43005b425ed1dcaadef8b70c",
+    "physical/B-contract.json": "c12431238cce6d27b9422f38af6e9be1885c8e15e5530eb05e53f0f3929cd79d",
+    "legacy/metrics.py": "07fdffa7ab8eb011a070d018ccf683902471427633170b9e83df697ce525180e",
+    "legacy/run.py": "3a9a78a10f4964bc6ee1de793510a425091014af08989d06043b01b49b2ccea1",
+    "legacy/analyze.py": "ef4a96fd06d7d7ec7a252fbed74eb143f8e1990f86a333d9284526fb8e292c22",
+    "pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+  },
+  "stimulus_sha256": "deaf1d197e63fd56f75b2681e6032a8402673cd9ff7e642a5cc6675db4609bf1",
+  "ngspice_version": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******\n",
+  "scope": {
+    "intrinsic_LED_and_RX": "Frozen LED static fit, CLED=200fF, optical tau200ps, RX1GHz threshold62.5uA and original PRBS sampler. No optical measurement or reliability signoff.",
+    "stress_screen_V": 3.63,
+    "data_fixed": "fixed 3.6V high for FF disturbance; low0V, unchanged20ps edge",
+    "data_tracking": "high follows actual VDD(t), low0V, unchanged20ps bit transition; behavioral source current sensed by VDATA and energy uses actual DATA voltage",
+    "energy": "all terminal supply voltages sampled, actual v(t)*i(t); DATA included. VBIT has zero load; BTRACK terminal energy counted once via series VDATA. No upstream generation losses.",
+    "matrix": "bounded one-factor and declared combined-corner stress, not exhaustive signoff",
+    "storage_budget_GiB": 6,
+    "candidate": "Genuinely generated and re-extracted06v0/03v3 mixed device layout. Source and physical contracts pinned; no post-extraction current recalibration."
+  },
+  "physical_work": "build/highspeed-nrz-robustness/physical-a8-b58-inputs",
+  "reproduction_identity": {
+    "source_manifest_sha256": "188384a3866aaf2f903997d37375d6e2ac90152bf94edf7aff28dd7ea36a1a4b",
+    "source_manifest_locator": "build/highspeed-nrz-robustness/selected-a8-b58-r4/manifest.json",
+    "source_work": "build/highspeed-nrz-robustness/selected-a8-b58-r4",
+    "target_work": "build/recovery-checks/nrz-github-smoke",
+    "copied": [
+      "inputs/**",
+      "stimulus.json"
+    ],
+    "not_copied": [
+      "cases/**",
+      "waveform.dat.gz",
+      "execution-sources/**"
+    ],
+    "historical_baseline_and_physical_work_paths": "Historical provenance only, not required for simulation after restored inputs are verified.",
+    "new_deck_paths": "Rendered for this target workspace; original absolute deck paths are not reused."
+  }
+}

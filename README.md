@@ -2,7 +2,7 @@
 
 An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
-**当前阶段（2026-10-24）**：显示方向为单像素39MOS参考/保护/PWM宏，正在核查供电、封装与滤波回流；高速方向为单通道NRZ的电压驱动与电流转向两版实际GDS/PEX。新阶段的失败、修订及证据边界见下方当前报告；尚无硅片或实测光链路证据。
+**当前阶段（2026-10-24）**：显示方向为单像素39MOS参考/保护/PWM宏，已完成本轮供电、封装与滤波回流实验，保留启动收敛和恢复时间问题；高速方向为单通道NRZ的电压驱动与电流转向两版实际GDS/PEX。新阶段的失败、修订及证据边界见下方当前报告；尚无硅片或实测光链路证据。
 
 **早期基础路径（历史状态，2026-10-05–07）**：从1 Pixel开始，电气与物理研究基线为 **v0.4（2026-10-05）**，新增 **frame experiment v0.1（2026-10-07）**。电气基线：在冻结的共同GDS上，实际提取末级`output12/buf_2`、数字输出线、跨宏线与六MOS pixel的联合信号寄生模型；nominal为12MOS、45 signal R、77显式C，另有HRHC／LRHC／HRLC／LRLC四种actual RC提取。模型从真实M3右端接入，整体替换v0.3分块路径。主研究37次transient／12次DC、146项工程guards通过；[电源／控制边界](docs/research/robustness.md)另保留startup假设越界、enable延迟与static LED headroom失效。
 
@@ -11,6 +11,8 @@ An independent, open platform for experimental R&D methodology validation and te
 ## GitHub 备份与跨机开发
 
 每个已验证阶段完成后同步。代码、报告、最终 Blender 场景和紧凑证据保存在 Git；大型原始数据采用有 SHA-256 清单的 Release 附件。阅读 [跨机接续说明](docs/development-handoff.md)，按需恢复指定实验。普通 `git clone` 不包含被忽略的全部 `build/`、PDK 或虚拟机。
+
+[2026-10-24 显示PWM与高速NRZ扰动快照](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/driver-robustness-20261024)：25 个归档、2,302 个文件，32 份远端资产均完成 SHA-256 回读。新检出恢复 2,057 个小输入/物理文件，PWM和NRZ各一个DC点复跑与原结果差0；完整矩阵及跨操作系统验证范围见[交接说明](docs/development-handoff.md)。
 
 [2026-10-23 慢热/快冷修复快照](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/nrz-pvt-20261023)：17 个增量归档、2,400 个文件；跨机依赖、逐文件清单、远端回读和限定恢复记录见[交接说明](docs/development-handoff.md)。完整物理 PDK 和旧版基线按各自清单恢复。
 

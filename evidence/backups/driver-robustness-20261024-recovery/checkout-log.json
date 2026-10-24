@@ -1,0 +1,44 @@
+[
+  {
+    "command": [
+      "git",
+      "init",
+      "-q"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/Kevin-Kaiyo/open-microled-driver-asic.git"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "git",
+      "fetch",
+      "--depth",
+      "1",
+      "origin",
+      "refs/tags/driver-robustness-20261024"
+    ],
+    "exit_code": 0,
+    "output": "From https://github.com/Kevin-Kaiyo/open-microled-driver-asic\n * tag               driver-robustness-20261024 -> FETCH_HEAD\n"
+  },
+  {
+    "command": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "exit_code": 0,
+    "output": "HEAD is now at 9d84753 Validate PWM and NRZ supply, resistor and package robustness\n"
+  }
+]

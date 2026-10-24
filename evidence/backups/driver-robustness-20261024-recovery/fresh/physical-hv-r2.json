@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "raw_run": "build/highspeed-nrz-robustness-layout/hv-r2",
+  "manifest_files": 205,
+  "method": "Rehash every frozen artifact, parse full LVS and independent KLayout report, intersect actual channel polygons with Dualgate 55/0, and compare actual negative-control polygons.",
+  "routes": {
+    "A": {
+      "gds_sha256": "6355b837a3c4e4e3a0ef7a1dce8284e3129e0b1dfbd2e14496f7d93e149f96f0",
+      "rc_sha256": "c8c7d00cdf3db51df2b02afaa6790728809f4092669e655991bd8a16071ff978",
+      "dualgate_checks": [
+        {
+          "instance": "N1",
+          "model": "nfet_06v0",
+          "channel_um2": 1.75,
+          "dualgate_overlap_um2": 1.75,
+          "passed": true
+        },
+        {
+          "instance": "P1",
+          "model": "pfet_06v0",
+          "channel_um2": 2.1615,
+          "dualgate_overlap_um2": 2.1614999999999998,
+          "passed": true
+        },
+        {
+          "instance": "N2",
+          "model": "nfet_06v0",
+          "channel_um2": 7.0,
+          "dualgate_overlap_um2": 7.0,
+          "passed": true
+        },
+        {
+          "instance": "P2",
+          "model": "pfet_06v0",
+          "channel_um2": 8.646,
+          "dualgate_overlap_um2": 8.645999999999999,
+          "passed": true
+        },
+        {
+          "instance": "NOUT",
+          "model": "nfet_06v0",
+          "channel_um2": 7.0,
+          "dualgate_overlap_um2": 7.0,
+          "passed": true
+        },
+        {
+          "instance": "POUT",
+          "model": "pfet_06v0",
+          "channel_um2": 8.646,
+          "dualgate_overlap_um2": 8.645999999999999,
+          "passed": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "control": "input-gate-open",
+          "actual_changed_area_um2": 0.22799999999999998,
+          "lvs_rejected": true
+        },
+        {
+          "control": "vdd-vss-short",
+          "actual_changed_area_um2": 1.28,
+          "lvs_rejected": true
+        }
+      ],
+      "counts": {
+        "mos": 6,
+        "device_resistors": 1,
+        "resistors": 79,
+        "capacitors": 62,
+        "zero_valued_capacitors": 0
+      },
+      "all_nets_extracted": true
+    },
+    "B": {
+      "gds_sha256": "d2e32ac286d208e2d74485b4d2650ffbbf4cd25cd57c86c5f7cd9cb97e3256af",
+      "rc_sha256": "fcb457660f238ee402237378a48b06496109b101d51ee85e8a7257224e7ee6ae",
+      "dualgate_checks": [
+        {
+          "instance": "INV1N",
+          "model": "nfet_06v0",
+          "channel_um2": 1.75,
+          "dualgate_overlap_um2": 1.75,
+          "passed": true
+        },
+        {
+          "instance": "INV1P",
+          "model": "pfet_06v0",
+          "channel_um2": 2.1615,
+          "dualgate_overlap_um2": 2.1614999999999998,
+          "passed": true
+        },
+        {
+          "instance": "INV2N",
+          "model": "nfet_06v0",
+          "channel_um2": 1.75,
+          "dualgate_overlap_um2": 1.75,
+          "passed": true
+        },
+        {
+          "instance": "INV2P",
+          "model": "pfet_06v0",
+          "channel_um2": 2.1615,
+          "dualgate_overlap_um2": 2.1614999999999998,
+          "passed": true
+        },
+        {
+          "instance": "LED",
+          "model": "nfet_06v0",
+          "channel_um2": 1.75,
+          "dualgate_overlap_um2": 1.75,
+          "passed": true
+        },
+        {
+          "instance": "DUMMY",
+          "model": "nfet_06v0",
+          "channel_um2": 1.75,
+          "dualgate_overlap_um2": 1.75,
+          "passed": true
+        },
+        {
+          "instance": "TAIL",
+          "model": "nfet_03v3",
+          "channel_um2": 5.76,
+          "dualgate_overlap_um2": 0.0,
+          "passed": true
+        },
+        {
+          "instance": "BASE",
+          "model": "nfet_03v3",
+          "channel_um2": 2,
+          "dualgate_overlap_um2": 0.0,
+          "passed": true
+        },
+        {
+          "instance": "REF",
+          "model": "nfet_03v3",
+          "channel_um2": 2,
+          "dualgate_overlap_um2": 0.0,
+          "passed": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "control": "input-gate-open",
+          "actual_changed_area_um2": 0.22799999999999998,
+          "lvs_rejected": true
+        },
+        {
+          "control": "vdd-vss-short",
+          "actual_changed_area_um2": 0.32,
+          "lvs_rejected": true
+        }
+      ],
+      "counts": {
+        "mos": 9,
+        "device_resistors": 1,
+        "resistors": 127,
+        "capacitors": 76,
+        "zero_valued_capacitors": 0
+      },
+      "all_nets_extracted": true
+    }
+  }
+}
