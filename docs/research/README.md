@@ -1,5 +1,7 @@
 # 当前研究资料入口
 
+**先读阶段复盘（2026-10-25）**：[显示PWM与高速光通信的架构、性能和路线选择](architecture-decision-review-20261025/index.html) / [完整Markdown](architecture-decision-review-20261025/report-complete.md)。回答当前电流/灰度/频率/延迟、通信能耗/速率/BER、阵列、QSPI与制造成本；比较同条件结果并保留未知，不新增EDA/实测资格。
+
 **当前入口（2026-10-24，参考与启动修订）**：两种应用分开阅读，负载及判据各自冻结。
 
 - [显示 PWM：参考源、受控启动与恢复时间](pwm-reference-startup-20261024/index.html) / [证据与复现](pwm-reference-startup-20261024/README.md)。原 39 MOS PEX，加外部补偿/阻尼和 15 nF 滤波；保留 100/47 nF 失败与自主 POR 未完成边界。

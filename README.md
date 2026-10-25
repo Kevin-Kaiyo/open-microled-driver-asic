@@ -2,6 +2,8 @@
 
 An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
+**阶段复盘（2026-10-25）**：[显示PWM与高速光通信的架构、性能和路线选择](docs/research/architecture-decision-review-20261025/index.html) / [完整文字](docs/research/architecture-decision-review-20261025/report-complete.md)。核对电流/PWM、Gb/s/pJ/bit/BER、阵列、QSPI及量产成本边界；是现有证据与公开资料的研究复盘，没有新增电路/EDA或光学实验。
+
 **当前阶段（2026-10-24，参考与启动修订）**：显示 PWM 保留原 39 MOS 实际版图/PEX，修订板级补偿、滤波和受控启动边界；高速 B 已接入 12 MOS 参考/保护与原 9 MOS 核心，完成实际联通 GDS、DRC/LVS/PEX 及限定电气回归。两份独立报告保留失败过程、外部基准/许可前提和残余电源重启的体结风险；尚无硅片或实测光链路证据。
 
 **早期基础路径（历史状态，2026-10-05–07）**：从1 Pixel开始，电气与物理研究基线为 **v0.4（2026-10-05）**，新增 **frame experiment v0.1（2026-10-07）**。电气基线：在冻结的共同GDS上，实际提取末级`output12/buf_2`、数字输出线、跨宏线与六MOS pixel的联合信号寄生模型；nominal为12MOS、45 signal R、77显式C，另有HRHC／LRHC／HRLC／LRLC四种actual RC提取。模型从真实M3右端接入，整体替换v0.3分块路径。主研究37次transient／12次DC、146项工程guards通过；[电源／控制边界](docs/research/robustness.md)另保留startup假设越界、enable延迟与static LED headroom失效。
