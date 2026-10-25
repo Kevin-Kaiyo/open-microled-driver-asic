@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "audit_source_sha256": "c487381b07284be94d39485b1aa9521c4edfd080bf3baf363d3ab0ccce464d54",
+  "work": "/Users/kimmy/Projects/open-microled-driver-asic/build/fair-driver-v1/matched-r2",
+  "manifest_sha256": "d7bf8eaba3169347b91f054d576248222541b0af0440c8a1c35f2bd2bab48cba",
+  "stimulus_sha256": "3b6fd9be6d6c7c367e6f1ea8d7d467560c80bda4a0e1b2b1111409b33081d819",
+  "method": "Independent analytic partial-fraction parallel first-order filters, DC initial states, exact PWL input integration. No receiver import or filter_trace call.",
+  "transfer_function": "[a/(1+a*s)-b/(1+b*s)]/(a-b)=1/((1+a*s)*(1+b*s)); a=200ps, b=1/(2*pi*1GHz)",
+  "comparison_tolerance_uA": 1e-06,
+  "analytic_fixtures": {
+    "passed": true,
+    "DC_max_error_A": 1.3552527156068805e-20,
+    "unit_step_max_error": 1.0263139010868727e-07,
+    "negative_controls": "wrong NRZ bit=1 error; Gray00->11=2 bit errors; weak NRZ margin4.5uA despite0 errors"
+  },
+  "rows": [
+    {
+      "case": "RX-TT-A-0.5G",
+      "route": "A",
+      "export_mode": "native-led+native-energy-stress",
+      "sample_count": 1929919,
+      "max_dt_ps": 43.243243244414025,
+      "uniform_dt_max_deviation_ps": 42.07229748320326,
+      "identity": {
+        "result_sha256": "1f5d04e2f51ecbab9347f130ee12c3203d37fac0d7970b4721d8f420c74504af",
+        "gzip_sha256": "b492c96a614db6c814ee409f0552e8d0963d8960295a2d20c3c7e2002a9c1e2c",
+        "raw_sha256": "7193ec8fa8d188181e4f207566b6f900abca2d91e4bc1acb4dbc01789bfe2a15",
+        "frozen_receiver_sha256": "f7d815223c190a9e0803f672523754006670a0cfe9738c57462510cce5049cc9"
+      },
+      "independent_bit_errors": 0,
+      "independent_symbol_errors": 0,
+      "independent_min_signed_margin_uA": 36.71558743079173,
+      "max_sample_difference_uA": 9.318057436757954e-11,
+      "min_margin_difference_uA": -7.105427357601002e-15,
+      "max_training_score_difference_uA": 2.4293456135637825e-11,
+      "independent_delay_symbol_UI": 1.4140625,
+      "transition_counts": {
+        "0->0": 1006,
+        "0->1": 1029,
+        "1->0": 1028,
+        "1->1": 1032
+      },
+      "checks": {
+        "frozen_sample_values_agree": true,
+        "minimum_current_margin_agrees": true,
+        "bit_error_count_agrees": true,
+        "symbol_error_count_agrees": true,
+        "all_symbol_decisions_agree": true,
+        "transition_counts_agree": true,
+        "all_directed_transitions_present": true,
+        "independent_training_phase_agrees": true,
+        "training_scores_agree": true,
+        "validation_challenge_cannot_change_training": true
+      },
+      "audit_passed": true,
+      "circuit_receiver_passed": true
+    },
+    {
+      "case": "RX-TT-B-0.5G",
+      "route": "B",
+      "export_mode": "native-led+native-energy-stress",
+      "sample_count": 1500190,
+      "max_dt_ps": 43.243243244414025,
+      "uniform_dt_max_deviation_ps": 42.57553681937521,
+      "identity": {
+        "result_sha256": "66d7fe784200ac1bea671417145a89f49f5261bec1bcd1808029748f40968602",
+        "gzip_sha256": "e1ff4f55fb399e9dc172f760e00fd803b48138c4072907869ba24597d15f02e4",
+        "raw_sha256": "74121b8e2a44d7d07941e84a4d82f8425bc361ba05bd019c2568c77342860179",
+        "frozen_receiver_sha256": "f7d815223c190a9e0803f672523754006670a0cfe9738c57462510cce5049cc9"
+      },
+      "independent_bit_errors": 0,
+      "independent_symbol_errors": 0,
+      "independent_min_signed_margin_uA": 18.143736467440263,
+      "max_sample_difference_uA": 4.199307568342192e-11,
+      "min_margin_difference_uA": 9.805489753489383e-13,
+      "max_training_score_difference_uA": 3.794298208958935e-12,
+      "independent_delay_symbol_UI": 1.2734375,
+      "transition_counts": {
+        "0->0": 1006,
+        "0->1": 1029,
+        "1->0": 1028,
+        "1->1": 1032
+      },
+      "checks": {
+        "frozen_sample_values_agree": true,
+        "minimum_current_margin_agrees": true,
+        "bit_error_count_agrees": true,
+        "symbol_error_count_agrees": true,
+        "all_symbol_decisions_agree": true,
+        "transition_counts_agree": true,
+        "all_directed_transitions_present": true,
+        "independent_training_phase_agrees": true,
+        "training_scores_agree": true,
+        "validation_challenge_cannot_change_training": true
+      },
+      "audit_passed": true,
+      "circuit_receiver_passed": true
+    },
+    {
+      "case": "RX-TT-C-0.5G",
+      "route": "C",
+      "export_mode": "native-led+native-energy-stress",
+      "sample_count": 1566238,
+      "max_dt_ps": 86.48648648713399,
+      "uniform_dt_max_deviation_ps": 85.75614342618964,
+      "identity": {
+        "result_sha256": "97cdb70f9091c4ad0d0cfd298178ce9ebc1b35e4eb9c8be6ac7459634e13135b",
+        "gzip_sha256": "52c2da2b7246ee7ba01bae3f7923d0f2a676089e035ff3ab036aef9667d20319",
+        "raw_sha256": "1d52076ed080fdfc7f700adac133fd10699045581b5bb67ba91053fdef33fcf4",
+        "frozen_receiver_sha256": "f7d815223c190a9e0803f672523754006670a0cfe9738c57462510cce5049cc9"
+      },
+      "independent_bit_errors": 0,
+      "independent_symbol_errors": 0,
+      "independent_min_signed_margin_uA": 4.845544842924362,
+      "max_sample_difference_uA": 1.3670842236024328e-11,
+      "min_margin_difference_uA": -3.552713678800501e-14,
+      "max_training_score_difference_uA": 2.3447910280083306e-12,
+      "independent_delay_symbol_UI": 1.125,
+      "transition_counts": {
+        "0->0": 114,
+        "0->1": 131,
+        "0->2": 131,
+        "0->3": 128,
+        "1->0": 129,
+        "1->1": 126,
+        "1->2": 131,
+        "1->3": 126,
+        "2->0": 131,
+        "2->1": 127,
+        "2->2": 130,
+        "2->3": 128,
+        "3->0": 130,
+        "3->1": 127,
+        "3->2": 125,
+        "3->3": 133
+      },
+      "checks": {
+        "frozen_sample_values_agree": true,
+        "minimum_current_margin_agrees": true,
+        "bit_error_count_agrees": true,
+        "symbol_error_count_agrees": true,
+        "all_symbol_decisions_agree": true,
+        "transition_counts_agree": true,
+        "all_directed_transitions_present": true,
+        "independent_training_phase_agrees": true,
+        "training_scores_agree": true,
+        "validation_challenge_cannot_change_training": true
+      },
+      "audit_passed": true,
+      "circuit_receiver_passed": false
+    }
+  ],
+  "audit_passed": true,
+  "limits_zh": [
+    "每个结果保留 export_mode：native 使用原始自适应求解时间点；若为 uniform，则不能证明 linearize 未遗失峰值、边沿或高频细节。",
+    "两种独立算法在相同数据上吻合，只验证滤波和判决实现；即使 native 导出仍须最大步长 40/80 等细化对照，才能评估求解波形的离散误差。",
+    "原始传导电流的抽取正确性、器件模型、光学/RX 极点物理真实性、功耗与端压不属于此复核。",
+    "训练相位使用独立模型重算并与冻结结果比较，同时扰动验证/尾段数据与标签；本复核不调用原接收器分析。",
+    "有限确定性错误数不是 BER 测量或认证；audit_passed 不等于 circuit_receiver_passed。"
+  ]
+}

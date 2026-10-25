@@ -1,6 +1,8 @@
 # 当前研究资料入口
 
-**先读阶段复盘（2026-10-25）**：[显示PWM与高速光通信的架构、性能和路线选择](architecture-decision-review-20261025/index.html) / [完整Markdown](architecture-decision-review-20261025/report-complete.md)。回答当前电流/灰度/频率/延迟、通信能耗/速率/BER、阵列、QSPI与制造成本；比较同条件结果并保留未知，不新增EDA/实测资格。
+**最新实验（2026-10-26，A/B/C条件配对）**：[高速驱动研究报告](fair-driver-comparison-20261025/index.html) / [完整文字](fair-driver-comparison-20261025/README.md)。A20/B21/C49 MOS统一负载、电流目标和七源端口能量；24个DC＋45个主体瞬态、32个DC＋11个单因素控制，统一绝对延迟接收规则并保留旧结果。新增C的MOS译码/DAC、内部电容慢尾与体结风险诊断；属于新原理图级实验，不继承历史版图/PEX，不预选架构。
+
+**背景复盘（2026-10-25）**：[显示PWM与高速光通信的架构、性能和路线选择](architecture-decision-review-20261025/index.html) / [完整Markdown](architecture-decision-review-20261025/report-complete.md)。回答当前电流/灰度/频率/延迟、通信能耗/速率/BER、阵列、QSPI与制造成本；比较同条件结果并保留未知，不新增EDA/实测资格。
 
 **当前入口（2026-10-24，参考与启动修订）**：两种应用分开阅读，负载及判据各自冻结。
 

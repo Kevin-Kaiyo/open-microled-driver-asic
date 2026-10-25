@@ -1,0 +1,48 @@
+{
+  "level": "calculation, not measured dynamics and not a powered circuit comparison",
+  "model_csv_sha256": "9da8dbac6499c34159da5e3aa0c59cd6de43aad446090181b4c070beba9505ab",
+  "frozen_LED_spice_sha256": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+  "capacitance_F": 2e-13,
+  "equation": "C*dVF/dt=I_sink-I_LED(VF); ideal instantaneous sink100uA->25uA; same static PWL, no driver/gate/reference/package/optical/RX poles",
+  "method": "Exact integral sum C*rd(segment)*log(abs((Istart-Itarget)/(Iend-Itarget))) across every PWL segment. Piecewise-resistance analytic control, no fitted lifetime.",
+  "levels": [
+    {
+      "I_uA": 25.0,
+      "VF_V": 3.361339464285714,
+      "local_r_d_ohm": 10767.857142857245,
+      "tau_rdC_ns": 2.1535714285714493
+    },
+    {
+      "I_uA": 50.0,
+      "VF_V": 3.566363667711599,
+      "local_r_d_ohm": 6028.213166144223,
+      "tau_rdC_ns": 1.2056426332288446
+    },
+    {
+      "I_uA": 75.0,
+      "VF_V": 3.686023525641026,
+      "local_r_d_ohm": 3985.0427350427503,
+      "tau_rdC_ns": 0.7970085470085501
+    },
+    {
+      "I_uA": 100.0,
+      "VF_V": 3.767909545454545,
+      "local_r_d_ohm": 2954.545454545433,
+      "tau_rdC_ns": 0.5909090909090866
+    }
+  ],
+  "step_100to25": {
+    "VF_delta_V": 0.4065700811688311,
+    "charge_delta_fC": 81.31401623376622,
+    "time_to_32p5uA_ns": 2.807231139390234,
+    "time_to_30uA_ns": 3.586004839131366,
+    "current_at_3p892ns_uA": 29.279171387513742
+  },
+  "limits": [
+    "The200fF is a shared sensitivity assumption, not a fitted measured capacitance.",
+    "Package/driver conductance and transient gate/reference effects omitted; this is an isolation control, not proof of sole causality.",
+    "A voltage-output candidate can supply displacement current; this ideal fixed-current sink control does not describe A.",
+    "Full-frame transistor results continue to use real references/rails, never this ideal sink."
+  ],
+  "self_test": "Constant-r analytic C*r*ln3 fixture passed"
+}

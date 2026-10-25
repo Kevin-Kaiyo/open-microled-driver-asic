@@ -1,0 +1,74 @@
+* Fair C: schematic-only Gray-to-thermometer PAM4 current steering.
+* D1D0=00/01/11/10 -> nominal ILED=25/50/75/100uA.
+* No hidden behavioral decoder or ideal current source; common.spice supplies nrz_vi_reference.
+* Board-level divider/RSET/bias/150pF compensation/dummy/keeper are included here
+* for complete port accounting; their inclusion is NOT a claim of on-chip layout.
+* All MOS junction geometry uses diffusion length 0.44um; no extracted RC claim.
+.subckt fair_c D0 D1 OUT VIN VDD VREF VSS DISABLE params: RSET=20k WUNIT=1.92u RINL=8u
+
+* Real 10MOS V-to-I reference plus DISABLE and switched-keeper NMOS (12MOS).
+XREFMOD VIN VSS VSET SENSE BIAS IPB IN2 ICTRL DISABLE KRET nrz_vi_reference
+RDIVH VREF VSET 200k
+RDIVL VSET VSS 50k
+RIBIAS IPB VSS 100k
+RSET_EXT SENSE VSS {RSET}
+RCOMP IN2 CC .5
+CCOMP CC VSS 150p
+RKEEP OUT KRET 1.8meg
+
+* Common 25uA reference diode and unswitched base-current mirror.
+XREF BIAS BIAS VSS VSS nfet_03v3 w=2u l=1u ad=.88p as=.88p pd=4.88u ps=4.88u
+XBASE OUT BIAS VSS VSS nfet_03v3 w=2u l=1u ad=.88p as=.88p pd=4.88u ps=4.88u
+
+* Static CMOS decoder: shared NB0=!D0 (2MOS).
+XD0N NB0 D0 VSS VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XD0P NB0 D0 VDD VDD pfet_06v0 w=3.93u l=.55u ad=1.7292p as=1.7292p pd=8.74u ps=8.74u
+* T1=D1 OR D0: NOR2 then inverter (6MOS); stack PMOS sized x2.
+XORNA N_OR D1 VSS VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XORNB N_OR D0 VSS VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XORPA P_OR D1 VDD VDD pfet_06v0 w=7.86u l=.55u ad=3.4584p as=3.4584p pd=16.60u ps=16.60u
+XORPB N_OR D0 P_OR VDD pfet_06v0 w=7.86u l=.55u ad=3.4584p as=3.4584p pd=16.60u ps=16.60u
+XORTN T1 N_OR VSS VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XORTP T1 N_OR VDD VDD pfet_06v0 w=3.93u l=.55u ad=1.7292p as=1.7292p pd=8.74u ps=8.74u
+* T2=D1: direct net, no ideal voltage source and no extra decoder gate.
+* T3=D1 AND NB0: NAND2 then inverter (6MOS); stack NMOS sized x2.
+XANDNA N_AND D1 N_STACK VSS nfet_06v0 w=5u l=.7u ad=2.2p as=2.2p pd=10.88u ps=10.88u
+XANDNB N_STACK NB0 VSS VSS nfet_06v0 w=5u l=.7u ad=2.2p as=2.2p pd=10.88u ps=10.88u
+XANDPA N_AND D1 VDD VDD pfet_06v0 w=3.93u l=.55u ad=1.7292p as=1.7292p pd=8.74u ps=8.74u
+XANDPB N_AND NB0 VDD VDD pfet_06v0 w=3.93u l=.55u ad=1.7292p as=1.7292p pd=8.74u ps=8.74u
+XANDTN T3 N_AND VSS VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XANDTP T3 N_AND VDD VDD pfet_06v0 w=3.93u l=.55u ad=1.7292p as=1.7292p pd=8.74u ps=8.74u
+
+* Three matched unary cells; each has 1 tail + 2 steer + 4 buffer MOS.
+* Common new schematic comparison uses RIN W=1um,L=RINL (default8um).
+* This does not inherit the historical B58 extracted-layout qualification.
+XRIN1 T1 DI1 VSS ppolyf_u_1k_6p0 r_width=1u r_length={RINL}
+XTAIL1 VX1 BIAS VSS VSS nfet_03v3 w={WUNIT} l=1u ad={WUNIT*.44u} as={WUNIT*.44u} pd={2*(WUNIT+.44u)} ps={2*(WUNIT+.44u)}
+XLED1 OUT GP1 VX1 VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XDUMMY1 DUMMY1 GB1 VX1 VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XBUF1N GB1 DI1 VSS VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XBUF1P GB1 DI1 VDD VDD pfet_06v0 w=3.93u l=.55u ad=1.7292p as=1.7292p pd=8.74u ps=8.74u
+XBUF2N GP1 GB1 VSS VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XBUF2P GP1 GB1 VDD VDD pfet_06v0 w=3.93u l=.55u ad=1.7292p as=1.7292p pd=8.74u ps=8.74u
+RDUMMY1 VIN DUMMY1 150k
+
+XRIN2 D1 DI2 VSS ppolyf_u_1k_6p0 r_width=1u r_length={RINL}
+XTAIL2 VX2 BIAS VSS VSS nfet_03v3 w={WUNIT} l=1u ad={WUNIT*.44u} as={WUNIT*.44u} pd={2*(WUNIT+.44u)} ps={2*(WUNIT+.44u)}
+XLED2 OUT GP2 VX2 VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XDUMMY2 DUMMY2 GB2 VX2 VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XBUF3N GB2 DI2 VSS VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XBUF3P GB2 DI2 VDD VDD pfet_06v0 w=3.93u l=.55u ad=1.7292p as=1.7292p pd=8.74u ps=8.74u
+XBUF4N GP2 GB2 VSS VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XBUF4P GP2 GB2 VDD VDD pfet_06v0 w=3.93u l=.55u ad=1.7292p as=1.7292p pd=8.74u ps=8.74u
+RDUMMY2 VIN DUMMY2 150k
+
+XRIN3 T3 DI3 VSS ppolyf_u_1k_6p0 r_width=1u r_length={RINL}
+XTAIL3 VX3 BIAS VSS VSS nfet_03v3 w={WUNIT} l=1u ad={WUNIT*.44u} as={WUNIT*.44u} pd={2*(WUNIT+.44u)} ps={2*(WUNIT+.44u)}
+XLED3 OUT GP3 VX3 VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XDUMMY3 DUMMY3 GB3 VX3 VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XBUF5N GB3 DI3 VSS VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XBUF5P GB3 DI3 VDD VDD pfet_06v0 w=3.93u l=.55u ad=1.7292p as=1.7292p pd=8.74u ps=8.74u
+XBUF6N GP3 GB3 VSS VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XBUF6P GP3 GB3 VDD VDD pfet_06v0 w=3.93u l=.55u ad=1.7292p as=1.7292p pd=8.74u ps=8.74u
+RDUMMY3 VIN DUMMY3 150k
+.ends fair_c

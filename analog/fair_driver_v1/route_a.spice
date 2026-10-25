@@ -1,0 +1,46 @@
+* Independent pre-layout fair-comparison candidate; NOT extracted layout.
+* Original A 06v0 MOS sizes and actual PDK RIN geometry are preserved.
+* All MOS AD/AS=W*0.44um and PD/PS=2*(W+0.44um): schematic estimates.
+* VH/VL are dissipative shunt-regulated rails, not ideal/recovering supplies.
+* D1 unused. DISABLE reserved/unimplemented: no startup/protection claim.
+.subckt fair_a D0 D1 OUT VIN VDD VREF VSS DISABLE params: RH=180k RL=88k
+* Original six-MOS voltage-output core and 8-square PDK input resistor.
+XRIN D0 DI VSS ppolyf_u_1k_6p0 r_width=1u r_length=8u
+XN1 N1 DI VSS VSS nfet_06v0 w=2.5u l=.7u ad=1.1p as=1.1p pd=5.88u ps=5.88u
+XP1 N1 DI VDD VDD pfet_06v0 w=3.93u l=.55u ad=1.7292p as=1.7292p pd=8.74u ps=8.74u
+XN2 CTRL N1 VSS VSS nfet_06v0 w=10u l=.7u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+XP2 CTRL N1 VDD VDD pfet_06v0 w=15.72u l=.55u ad=6.9168p as=6.9168p pd=32.32u ps=32.32u
+XNOUT OUT CTRL VL VSS nfet_06v0 w=10u l=.7u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+XPOUT OUT CTRL VH VH pfet_06v0 w=15.72u l=.55u ad=6.9168p as=6.9168p pd=32.32u ps=32.32u
+* Two external reference dividers. RH/RL are TT-only calibration knobs.
+RH_TOP VREF HSET 100k
+RH_BOTTOM HSET VSS {RH}
+RL_TOP VREF LSET 100k
+RL_BOTTOM LSET VSS {RL}
+* High rail: actual PMOS/R bias and five-MOS OTA, plus NMOS shunt.
+XHPBIAS HPB HPB VIN VIN pfet_06v0 w=20u l=4u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+RHBIAS HPB VSS 1meg
+XHPTAIL HTAIL HPB VIN VIN pfet_06v0 w=20u l=4u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XHP1 HN1 VH HTAIL VIN pfet_06v0 w=20u l=4u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XHP2 HG HSET HTAIL VIN pfet_06v0 w=20u l=4u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XHN1 HN1 HN1 VSS VSS nfet_06v0 w=10u l=4u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+XHN2 HG HN1 VSS VSS nfet_06v0 w=10u l=4u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+XHSHUNT VH HG VSS VSS nfet_06v0 w=20u l=.7u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+* Low rail: same independent servo, no second gain stage or ideal bias.
+XLPBIAS LPB LPB VIN VIN pfet_06v0 w=20u l=4u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+RLBIAS LPB VSS 1meg
+XLPTAIL LTAIL LPB VIN VIN pfet_06v0 w=20u l=4u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XLP1 LN1 VL LTAIL VIN pfet_06v0 w=20u l=4u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XLP2 LG LSET LTAIL VIN pfet_06v0 w=20u l=4u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XLN1 LN1 LN1 VSS VSS nfet_06v0 w=10u l=4u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+XLN2 LG LN1 VSS VSS nfet_06v0 w=10u l=4u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+XLSHUNT VL LG VSS VSS nfet_06v0 w=20u l=.7u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+* External board feed/decoupling represented here for a closed interface.
+* These R/C elements are NOT on-chip layout/PEX area or extracted parasitics.
+RHFEED VIN VH 100k
+RLFEED VIN VL 100k
+RHESR VH HC .2
+CH_EXT HC VSS 10n
+RLESR VL LC .2
+CL_EXT LC VSS 10n
+.ends fair_a

@@ -2,6 +2,8 @@
 
 An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
+**本轮新增（2026-10-26，A/B/C条件配对）**：[高速驱动研究报告](docs/research/fair-driver-comparison-20261025/index.html) / [完整文字](docs/research/fair-driver-comparison-20261025/README.md)。A20/B21/C49 MOS统一负载、电流目标和七源端口能量；24个DC＋45个主体瞬态、32个DC＋11个单因素控制，统一绝对延迟接收规则并保留旧结果。新增C的MOS译码/DAC、内部电容慢尾与体结风险诊断；属于新原理图级实验，不继承历史版图/PEX，不预选架构。
+
 **阶段复盘（2026-10-25）**：[显示PWM与高速光通信的架构、性能和路线选择](docs/research/architecture-decision-review-20261025/index.html) / [完整文字](docs/research/architecture-decision-review-20261025/report-complete.md)。核对电流/PWM、Gb/s/pJ/bit/BER、阵列、QSPI及量产成本边界；是现有证据与公开资料的研究复盘，没有新增电路/EDA或光学实验。
 
 **当前阶段（2026-10-24，参考与启动修订）**：显示 PWM 保留原 39 MOS 实际版图/PEX，修订板级补偿、滤波和受控启动边界；高速 B 已接入 12 MOS 参考/保护与原 9 MOS 核心，完成实际联通 GDS、DRC/LVS/PEX 及限定电气回归。两份独立报告保留失败过程、外部基准/许可前提和残余电源重启的体结风险；尚无硅片或实测光链路证据。

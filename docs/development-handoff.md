@@ -1,8 +1,19 @@
 # GitHub 备份与另一台电脑接续开发
 
-更新：2026-10-24。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
+更新：2026-10-26。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
 
-## 当前阶段：PWM 参考启动与高速 B 真实参考（2026-10-24）
+## 新增阶段：高速A/B/C配对原理级研究（2026-10-26）
+
+先读[研究报告](research/fair-driver-comparison-20261025/index.html)和[同条件数据](../evidence/fair-driver-v1/summary.json)。显示PWM和既有版图保持其历史证据；这轮A20/B21/C49 MOS均是新的SCHEM候选，不能继承此前B的GDS/PEX资格。相同Lin静态负载和假设200fF下，实际参考/辅助轨与译码都计入七端口能量；未包含上游电源IC内部损耗或实体RX。
+
+- 主体：`build/fair-driver-v1/matched-r2`；单因素：`controls-r1`；C内部节点：`c-transition-probe/run-03`。原输入、失败、超时与存储原型均保留。
+- 最终接收：`build/fair-driver-v1/rx-equal-latency-v2-final-r1`。对相同原生LED波形，以共同0–8ns、5ps和448训练评分＋64bit保护重新分析；旧symbol窗口v1与执行身份较弱的v2预跑目录保留，但不进入最终表。
+- 原始输入、模型子集、源哈希与实际执行代码由新的[备份/恢复工具](../scripts/backup/fair-driver-20261025/README.md)打包；仅恢复inputs＋results即可在新目录重新生成DC deck。完整物理PDK、VM和Python环境仍须另装。报告绘图字体与许可置于`build/fair-driver-v1/report-font`。
+- [旧成功波形按需恢复记录](../evidence/backups/fair-driver-20261025-old-waveforms-offload.json)：54个已完成备份与读回核验的历史成功波形转为GitHub Release按需恢复，释放4.016GiB。当前阶段输入/原生波形、全部失败、旧模型与版图不在此删除范围。原case目录保留`REMOTE-WAVEFORM.json`，按其指定archive/成员/SHA恢复；旧归档验收回执是当时快照，不表示清理后本地仍含全部旧波形。
+
+本轮Release上传和新目录DC复跑的最终验收回执会在完成后追加；本段不提前声称备份已完成。
+
+## 前一阶段：PWM 参考启动与高速 B 真实参考（2026-10-24）
 
 分别阅读[显示 PWM 报告](research/pwm-reference-startup-20261024/index.html)和[高速 B 报告](research/nrz-b-reference-power-20261024/index.html)。这轮保持各自 LED、PWM/NRZ 时序及接收条件；失败与负控制一并保存。
 
