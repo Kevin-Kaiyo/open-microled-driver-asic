@@ -22,6 +22,10 @@ An independent, open platform for experimental R&D methodology validation and te
 
 [2026-10-19 研究快照与原始附件](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/research-20261019)：31 个归档的上传后回读核验通过；独立检出恢复并复算 96 组 NRZ 数据，完整分析和汇总文件与归档逐字节一致。此次使用同一台 Mac 的不同目录，跨操作系统完整流程仍待验证。
 
+## 从头阅读研究过程
+
+[个人博客：MicroLED 驱动研究记录](https://kaiyo-blog.pages.dev/zh/microled-driver-series/)按十篇文章串联环境搭建、材料与模型、显示 PWM、高速 NRZ、失败修订和复现方法，另保留三篇电路基础。资料截止 2026-10-24；2026-10-25 的整理发布没有新增电路实验。原始数据、所执行物理检查与光学/硅片证据分别标明。[本仓库发布记录与来源身份](docs/research/blog-series-20261025.md)保留对应博客版本和验收范围。
+
 ## 先读当前研究报告
 
 - **显示 PWM：参考源与受控启动修订（2026-10-24）：[中文报告](docs/research/pwm-reference-startup-20261024/index.html) / [完整 Markdown](docs/research/pwm-reference-startup-20261024/report-complete.md) / [复现入口](docs/research/pwm-reference-startup-20261024/README.md)。** 从 N2 补偿、封装阻尼和 100 Ω / 15 nF 板级滤波解释恢复、严格启动、独立保护和最低 PWM 码；100 nF 与 47 nF 的失败保留。原 39 MOS 制造图形未变，外部 FAULT/PERMIT 与电压基准仍是接口前提。
