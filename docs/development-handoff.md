@@ -11,7 +11,13 @@
 - 原始输入、模型子集、源哈希与实际执行代码由新的[备份/恢复工具](../scripts/backup/fair-driver-20261025/README.md)打包；仅恢复inputs＋results即可在新目录重新生成DC deck。完整物理PDK、VM和Python环境仍须另装。报告绘图字体与许可置于`build/fair-driver-v1/report-font`。
 - [旧成功波形按需恢复记录](../evidence/backups/fair-driver-20261025-old-waveforms-offload.json)：54个已完成备份与读回核验的历史成功波形转为GitHub Release按需恢复，释放4.016GiB。当前阶段输入/原生波形、全部失败、旧模型与版图不在此删除范围。原case目录保留`REMOTE-WAVEFORM.json`，按其指定archive/成员/SHA恢复；旧归档验收回执是当时快照，不表示清理后本地仍含全部旧波形。
 
-本轮Release上传和新目录DC复跑的最终验收回执会在完成后追加；本段不提前声称备份已完成。
+本轮[Release：fair-driver-20261025](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/fair-driver-20261025)已完成验收。标签固定源码提交`d203aa748de36c96a4d51605bc5acaae94b0b759`，源树`e90af1adeec19fb3b79c7c5616d94e4cbe4d66ab`，不随验收回执提交移动。
+
+- [归档manifest](../evidence/backups/fair-driver-20261025.json)、[范围](../evidence/backups/fair-driver-20261025-scope.json)、[本地逐成员验收](../evidence/backups/fair-driver-20261025-local.json)与[远端读回](../evidence/backups/fair-driver-20261025-remote.json)：1,413个原文件、2,085,144,228字节；7卷1,965,567,453字节。12个预定归档/清单资产全部流式SHA-256读回一致，未落额外全下载副本。manifest SHA为`3a9af00442308fe7c01034d64c834e65456803968e47ecc4b4b44e725393f7b2`。
+- [新检出恢复与DC回执](../evidence/backups/fair-driver-20261025-recovery/check.json)：从公开标签作depth1新检出，仅下载inputs＋results约30.1MB，恢复1,184文件并逐个核SHA；新work的B TT L0为25.000668784µA，与原值相差0 A，七端口DC功率差均0 W。17条命令全部成功；[运行脚本/日志/小证据](../evidence/backups/fair-driver-20261025-recovery/)保留。使用同一Mac与既有Python/ngspice，只证明单点路径恢复；不是异机/新OS、NRZ全矩阵、光学或物理EDA验证。恢复应先检出上述标签/源提交，而非任意较新的main。
+- [暂存副本整理](../evidence/backups/fair-driver-20261025-staging-cleanup.json)：完成远端读回和DC恢复后，再次对原范围1,413文件作完整内容SHA核对；只移除7个可重新下载的暂存tar副本，释放1,965,567,453字节。全部本轮原输入/波形/失败与恢复检出保留。备份工具本身不自动清理；若要再次运行要求本地assets的校验入口，先从Release下载指定同名归档并核SHA。
+
+当前主分支会比源码标签多一个验收回执提交；tag、源模型与归档都不改写。
 
 ## 前一阶段：PWM 参考启动与高速 B 真实参考（2026-10-24）
 

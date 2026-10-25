@@ -1,0 +1,45 @@
+Fair matched schematic DC-TT-B-L0-recovery
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout/build/fair-driver-v1/recovery-dc-r1/inputs/pdk/design.ngspice"
+.param sw_stat_global=0 sw_stat_mismatch=0
+.lib "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout/build/fair-driver-v1/recovery-dc-r1/inputs/pdk/sm141064.ngspice" typical
+.lib "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout/build/fair-driver-v1/recovery-dc-r1/inputs/pdk/sm141064.ngspice" res_typical
+.temp 27
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout/build/fair-driver-v1/recovery-dc-r1/inputs/common.spice"
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout/build/fair-driver-v1/recovery-dc-r1/inputs/route_b.spice"
+.include "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout/build/fair-driver-v1/recovery-dc-r1/inputs/led.spice"
+VIN vin_src 0 5.0
+RVIN vin_src vin_p 0.25
+LVIN vin_p vin 5e-10
+RCVIN vin vin_c .2
+CVIN vin_c 0 1e-07
+VDD vdd_src 0 3.3
+RVDD vdd_src vdd_p 1.0
+LVDD vdd_p vdd 2e-09
+RCVDD vdd vdd_c .2
+CVDD vdd_c 0 1e-07
+VREF vref_src 0 2.5
+RREF vref_src vref .2
+VLED led_src 0 5.0
+RLEDSRC led_src led_a .25
+VDISABLE disable 0 0
+VD0 data0_src 0 0.0
+RD0 data0_src d0 100
+VD1 data1_src 0 0.0
+RD1 data1_src d1 100
+XDRV d0 d1 out vin vdd vref 0 disable fair_b RSET=20126.53544430115 WTAIL=5.76e-06 RINL=8e-06
+XLED led_a led_dc_k lin2026_yellow20_dc
+VSENSE led_dc_k led_k 0
+CLED led_a led_k 2e-13
+RPKG led_k pk 1
+LPKG pk out .5n
+.options reltol=1e-05 abstol=1e-13 vntol=1e-7 chgtol=1e-16 method=gear maxord=2
+.control
+set numdgt=15
+set wr_singlescale
+set wr_vecnames
+op
+
+wrdata waveform.dat i(VSENSE) v(led_a) v(led_k) v(out) v(d0) v(d1) v(disable) v(vdd) v(vin) v(vref) v(xdrv.bias) v(xdrv.cc) v(xdrv.di) v(xdrv.dummy) v(xdrv.gb) v(xdrv.gp) v(xdrv.ictrl) v(xdrv.in2) v(xdrv.ipb) v(xdrv.kret) v(xdrv.sense) v(xdrv.vset) v(xdrv.vx) v(xdrv.xvi.in1) v(xdrv.xvi.itail) v(vin_src) i(VIN) v(vdd_src) i(VDD) v(vref_src) i(VREF) v(led_src) i(VLED) v(data0_src) i(VD0) v(data1_src) i(VD1) v(disable) i(VDISABLE)
+quit
+.endc
+.end

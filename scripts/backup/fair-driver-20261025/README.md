@@ -156,4 +156,8 @@ assert passed, 'Numerical difference exceeds predeclared DC recovery tolerance'
 PY
 ```
 
-这一步是操作说明，尚未执行。最终交付应保存下载 SHA、恢复文件数、运行命令/退出码、fresh DC result/log 和比较回执；恢复成功与原电路功能是否合格分别报告。
+以上是恢复操作示例；本批次实际执行脚本、下载SHA、恢复文件数、命令/退出码、fresh DC result/log与比较回执见下方验收链接。恢复成功与原电路功能是否合格分别报告。
+
+## 本批次已完成验收
+
+见[交接与验收回执](../../../docs/development-handoff.md)。源码标签保持`d203aa748de36c96a4d51605bc5acaae94b0b759`，验收回执另提交到main。原始3树保留；父任务在完整远端读回与新检出单DC通过后，手动移除了7个暂存tar重复副本。工具仍无自动清理行为。需要本地归档的入口应先按清单从Release重新下载并核SHA。

@@ -1,0 +1,586 @@
+{
+  "schema_version": 1,
+  "started_utc": "2026-10-25T16:03:28.619218+00:00",
+  "status": "passed",
+  "repository": "Kevin-Kaiyo/open-microled-driver-asic",
+  "tag": "fair-driver-20261025",
+  "expected_source_commit": "d203aa748de36c96a4d51605bc5acaae94b0b759",
+  "trusted_manifest_sha256": "3a9af00442308fe7c01034d64c834e65456803968e47ecc4b4b44e725393f7b2",
+  "trusted_scope_sha256": "88eb9b83dc2c868389cd99723203a93be42aad64bcb10e88342618a6192bd24b",
+  "recovery_script_sha256": "cc0d8ca0e42b31a71778db8d0cb6bed79150495e9963ec3d0e0412a4c62d00da",
+  "commands": [
+    {
+      "label": "origin",
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic",
+      "started_utc": "2026-10-25T16:03:28.762571+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.017326459012110718,
+      "log": {
+        "path": "logs/origin.log",
+        "bytes": 61,
+        "sha256": "942385bcf37b833b6b9389aa516d4845816c41bf28345e2e4b5f566c15cc261d"
+      }
+    },
+    {
+      "label": "tag-before",
+      "argv": [
+        "git",
+        "ls-remote",
+        "https://github.com/Kevin-Kaiyo/open-microled-driver-asic.git",
+        "refs/tags/fair-driver-20261025",
+        "refs/tags/fair-driver-20261025^{}"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery",
+      "started_utc": "2026-10-25T16:03:28.780738+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.7163091250113212,
+      "log": {
+        "path": "logs/tag-before.log",
+        "bytes": 72,
+        "sha256": "8a132a989f9ee71a744368caa9fb4c1f0008271a294a83299b4d80216b261a66"
+      }
+    },
+    {
+      "label": "clone",
+      "argv": [
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "--branch",
+        "fair-driver-20261025",
+        "https://github.com/Kevin-Kaiyo/open-microled-driver-asic.git",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery",
+      "started_utc": "2026-10-25T16:03:29.498647+00:00",
+      "timeout_s": 900,
+      "exit_code": 0,
+      "elapsed_s": 8.03544375000638,
+      "log": {
+        "path": "logs/clone.log",
+        "bytes": 3020,
+        "sha256": "a5d88827aa693e1d4d2757ebbd40765eb97cd4c5e3f91c00674ca26e88819b47"
+      }
+    },
+    {
+      "label": "checkout-HEAD",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout",
+      "started_utc": "2026-10-25T16:03:37.535162+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.020100499998079613,
+      "log": {
+        "path": "logs/checkout-HEAD.log",
+        "bytes": 41,
+        "sha256": "ed980306f595c5b246ddaa308cfbdb7bff0f2dbdaffde9ac0dee1b8c0b24c75b"
+      }
+    },
+    {
+      "label": "checkout-tag",
+      "argv": [
+        "git",
+        "rev-parse",
+        "fair-driver-20261025^{commit}"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout",
+      "started_utc": "2026-10-25T16:03:37.556195+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.019710458000190556,
+      "log": {
+        "path": "logs/checkout-tag.log",
+        "bytes": 41,
+        "sha256": "ed980306f595c5b246ddaa308cfbdb7bff0f2dbdaffde9ac0dee1b8c0b24c75b"
+      }
+    },
+    {
+      "label": "release-before",
+      "argv": [
+        "gh",
+        "api",
+        "repos/Kevin-Kaiyo/open-microled-driver-asic/releases/tags/fair-driver-20261025"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery",
+      "started_utc": "2026-10-25T16:03:37.576817+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.47074612499272916,
+      "log": {
+        "path": "logs/release-before.log",
+        "bytes": 22646,
+        "sha256": "51a288ab9b604eb552a76dc265a9f3649e0b55f9295a32ab70224798c27ccb70"
+      }
+    },
+    {
+      "label": "download-fair-driver-20261025.json",
+      "argv": [
+        "gh",
+        "release",
+        "download",
+        "fair-driver-20261025",
+        "--repo",
+        "Kevin-Kaiyo/open-microled-driver-asic",
+        "--dir",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/downloads",
+        "--pattern",
+        "fair-driver-20261025.json"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery",
+      "started_utc": "2026-10-25T16:03:38.049726+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.8524374999979045,
+      "log": {
+        "path": "logs/download-fair-driver-20261025.json.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "download-fair-driver-20261025-scope.json",
+      "argv": [
+        "gh",
+        "release",
+        "download",
+        "fair-driver-20261025",
+        "--repo",
+        "Kevin-Kaiyo/open-microled-driver-asic",
+        "--dir",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/downloads",
+        "--pattern",
+        "fair-driver-20261025-scope.json"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery",
+      "started_utc": "2026-10-25T16:03:38.903671+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.7669095830060542,
+      "log": {
+        "path": "logs/download-fair-driver-20261025-scope.json.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "download-fair-driver-20261025-inputs-001.tar.gz",
+      "argv": [
+        "gh",
+        "release",
+        "download",
+        "fair-driver-20261025",
+        "--repo",
+        "Kevin-Kaiyo/open-microled-driver-asic",
+        "--dir",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/downloads",
+        "--pattern",
+        "fair-driver-20261025-inputs-001.tar.gz"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery",
+      "started_utc": "2026-10-25T16:03:39.675473+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.9292585000075633,
+      "log": {
+        "path": "logs/download-fair-driver-20261025-inputs-001.tar.gz.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "download-fair-driver-20261025-results-001.tar.gz",
+      "argv": [
+        "gh",
+        "release",
+        "download",
+        "fair-driver-20261025",
+        "--repo",
+        "Kevin-Kaiyo/open-microled-driver-asic",
+        "--dir",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/downloads",
+        "--pattern",
+        "fair-driver-20261025-results-001.tar.gz"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery",
+      "started_utc": "2026-10-25T16:03:40.610724+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 2.0143781250080792,
+      "log": {
+        "path": "logs/download-fair-driver-20261025-results-001.tar.gz.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "restore",
+      "argv": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout/scripts/backup/release_bundle.py",
+        "restore",
+        "--manifest",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/downloads/fair-driver-20261025.json",
+        "--asset-dir",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/downloads",
+        "--root",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout",
+        "--group",
+        "inputs",
+        "--group",
+        "results"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout",
+      "started_utc": "2026-10-25T16:03:42.677398+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 1.176853166994988,
+      "log": {
+        "path": "logs/restore.log",
+        "bytes": 47,
+        "sha256": "268fd48f3ebf1ab9add9ee0e401bd306581baeef6aad51fe04fb4c44ebb6624f"
+      }
+    },
+    {
+      "label": "runtime",
+      "argv": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "-c",
+        "import sys,numpy; print(sys.version); print(\"numpy=\"+numpy.__version__)"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery",
+      "started_utc": "2026-10-25T16:03:44.198075+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.12245766700652894,
+      "log": {
+        "path": "logs/runtime.log",
+        "bytes": 66,
+        "sha256": "78e5e1fbe8a69fa2917710017f049a4e6fbdcf1bceb4f8200c535d660dd6b57d"
+      }
+    },
+    {
+      "label": "ngspice-version",
+      "argv": [
+        "ngspice",
+        "--version"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery",
+      "started_utc": "2026-10-25T16:03:44.321800+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.13026433299819473,
+      "log": {
+        "path": "logs/ngspice-version.log",
+        "bytes": 402,
+        "sha256": "bec78cc02d7d3d09f7f4eebb4e19362208cde780aa6927f7614a245fbc806f68"
+      }
+    },
+    {
+      "label": "DC-smoke",
+      "argv": [
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+        "-B",
+        "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery-run.py",
+        "--smoke"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout",
+      "started_utc": "2026-10-25T16:03:44.453744+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.3355488749948563,
+      "log": {
+        "path": "logs/DC-smoke.log",
+        "bytes": 3192,
+        "sha256": "0bdf14979daa6565566425cfda729121a426b8dffba2746430a95a9b70d5de9a"
+      }
+    },
+    {
+      "label": "checkout-clean",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain",
+        "--untracked-files=no"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout",
+      "started_utc": "2026-10-25T16:03:45.099383+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.3959202499972889,
+      "log": {
+        "path": "logs/checkout-clean.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "tag-after",
+      "argv": [
+        "git",
+        "ls-remote",
+        "https://github.com/Kevin-Kaiyo/open-microled-driver-asic.git",
+        "refs/tags/fair-driver-20261025",
+        "refs/tags/fair-driver-20261025^{}"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery",
+      "started_utc": "2026-10-25T16:03:45.496433+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.41367424999771174,
+      "log": {
+        "path": "logs/tag-after.log",
+        "bytes": 72,
+        "sha256": "8a132a989f9ee71a744368caa9fb4c1f0008271a294a83299b4d80216b261a66"
+      }
+    },
+    {
+      "label": "release-after",
+      "argv": [
+        "gh",
+        "api",
+        "repos/Kevin-Kaiyo/open-microled-driver-asic/releases/tags/fair-driver-20261025"
+      ],
+      "cwd": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery",
+      "started_utc": "2026-10-25T16:03:45.913064+00:00",
+      "timeout_s": 600,
+      "exit_code": 0,
+      "elapsed_s": 0.47037220900529064,
+      "log": {
+        "path": "logs/release-after.log",
+        "bytes": 22646,
+        "sha256": "51a288ab9b604eb552a76dc265a9f3649e0b55f9295a32ab70224798c27ccb70"
+      }
+    }
+  ],
+  "downloads": [
+    {
+      "path": "downloads/fair-driver-20261025.json",
+      "bytes": 344272,
+      "sha256": "3a9af00442308fe7c01034d64c834e65456803968e47ecc4b4b44e725393f7b2",
+      "release_asset": {
+        "id": 675444125,
+        "name": "fair-driver-20261025.json",
+        "size": 344272,
+        "digest": "sha256:3a9af00442308fe7c01034d64c834e65456803968e47ecc4b4b44e725393f7b2",
+        "updated_at": "2026-10-25T15:54:14Z",
+        "browser_download_url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/download/fair-driver-20261025/fair-driver-20261025.json"
+      }
+    },
+    {
+      "path": "downloads/fair-driver-20261025-scope.json",
+      "bytes": 3672,
+      "sha256": "88eb9b83dc2c868389cd99723203a93be42aad64bcb10e88342618a6192bd24b",
+      "release_asset": {
+        "id": 675444188,
+        "name": "fair-driver-20261025-scope.json",
+        "size": 3672,
+        "digest": "sha256:88eb9b83dc2c868389cd99723203a93be42aad64bcb10e88342618a6192bd24b",
+        "updated_at": "2026-10-25T15:54:15Z",
+        "browser_download_url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/download/fair-driver-20261025/fair-driver-20261025-scope.json"
+      }
+    },
+    {
+      "path": "downloads/fair-driver-20261025-inputs-001.tar.gz",
+      "bytes": 2320885,
+      "sha256": "e496707af155d183996673ebe66e0c61f607317f1640594a87c4d71a5587f4b1",
+      "release_asset": {
+        "id": 675444374,
+        "name": "fair-driver-20261025-inputs-001.tar.gz",
+        "size": 2320885,
+        "digest": "sha256:e496707af155d183996673ebe66e0c61f607317f1640594a87c4d71a5587f4b1",
+        "updated_at": "2026-10-25T15:54:20Z",
+        "browser_download_url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/download/fair-driver-20261025/fair-driver-20261025-inputs-001.tar.gz"
+      }
+    },
+    {
+      "path": "downloads/fair-driver-20261025-results-001.tar.gz",
+      "bytes": 27808128,
+      "sha256": "cf875eef686614d2f56295f53a8882c67c4195d91347b0d77c548c2243b9e622",
+      "release_asset": {
+        "id": 675444451,
+        "name": "fair-driver-20261025-results-001.tar.gz",
+        "size": 27808128,
+        "digest": "sha256:cf875eef686614d2f56295f53a8882c67c4195d91347b0d77c548c2243b9e622",
+        "updated_at": "2026-10-25T15:54:23Z",
+        "browser_download_url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/download/fair-driver-20261025/fair-driver-20261025-results-001.tar.gz"
+      }
+    }
+  ],
+  "free_bytes_before": 9281253376,
+  "free_floor_bytes": 5368709120,
+  "original_tree_metadata_before": {
+    "files": 1423,
+    "bytes": 2085412866,
+    "path_size_mtime_mode_sha256": "86bce8875b2c6548cd343342cb123a063432db3cc22caa605e55e6df65abcdb9"
+  },
+  "boundary": {
+    "same_host": true,
+    "same_OS": true,
+    "existing_runtime": "/Users/kimmy/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+    "runtime_resolved": "/Users/kimmy/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/bin/python3.12",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "download_groups": [
+      "inputs",
+      "results"
+    ],
+    "waveform_archives_downloaded": false,
+    "new_case": "B typical 27 C 3.3 V logic, level 0, DC only",
+    "no_original_evidence_cleanup": true,
+    "no_commit_or_upload": true
+  },
+  "source_commit": "d203aa748de36c96a4d51605bc5acaae94b0b759",
+  "restore": {
+    "restored": 1184,
+    "skipped_identical": 0,
+    "per_file_sha256_all_verified": true,
+    "groups": {
+      "inputs": 126,
+      "results": 1058
+    },
+    "manifest": {
+      "path": "restored-files.json",
+      "bytes": 253505,
+      "sha256": "f0d7a3cf82d3a361c64eb873c08616d804cb3a0408360399dc134a5811e79923"
+    }
+  },
+  "DC_smoke": {
+    "source_commit": "d203aa748de36c96a4d51605bc5acaae94b0b759",
+    "runner_sha256": "0316afadb96dabc2c7554214bad408779d8f07ea3b430074140899c685a92873",
+    "original_result": {
+      "path": "build/fair-driver-v1/matched-r2/cases/DC-TT-B-L0/result.json",
+      "bytes": 11213,
+      "sha256": "ece377ddbdab1de1c00ef4bb4dca62cadea4c660a76fa20e72bdd1318b181369"
+    },
+    "fresh_result": {
+      "path": "build/fair-driver-v1/recovery-dc-r1/cases/DC-TT-B-L0-recovery/result.json",
+      "bytes": 11220,
+      "sha256": "48700cd84723fc985027846510b528574b1245c52ff0b1b8eb2bc4fbdd588c62"
+    },
+    "parent_manifest_sha256": "d7bf8eaba3169347b91f054d576248222541b0af0440c8a1c35f2bd2bab48cba",
+    "new_manifest_is_byte_identical": true,
+    "path_relocation_only": [
+      "ROOT",
+      "BUILD",
+      "MODELS"
+    ],
+    "path_constants_before": {
+      "ROOT": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout/build/fair-driver-v1",
+      "BUILD": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout/build/fair-driver-v1/build/fair-driver-v1",
+      "MODELS": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout/build/fair-driver-v1/build/nrz-reference-v2/selected-final-r2/inputs"
+    },
+    "path_constants_after": {
+      "ROOT": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout",
+      "BUILD": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout/build/fair-driver-v1",
+      "MODELS": "/Users/kimmy/Projects/open-microled-driver-asic/build/github-sync-fair-driver-20261025/recovery/checkout/build/fair-driver-v1/matched-r2/inputs"
+    },
+    "all_deck_includes_use_new_inputs": true,
+    "case": {
+      "name": "DC-TT-B-L0-recovery",
+      "kind": "dc",
+      "route": "B",
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "level": 0
+    },
+    "simulation_exit_code": 0,
+    "simulation_ok": true,
+    "sample_count": 1,
+    "original_current_A": 2.500066878409723e-05,
+    "fresh_current_A": 2.500066878409723e-05,
+    "current_difference_A": 0.0,
+    "current_tolerance_A": 1e-12,
+    "port_power_tolerance_W": 1e-10,
+    "port_power_differences_W": {
+      "VIN": 0.0,
+      "VDD": 0.0,
+      "VREF": 0.0,
+      "VLED": 0.0,
+      "VD0": 0.0,
+      "VD1": 0.0,
+      "VDISABLE": 0.0
+    },
+    "original_port_power_W": {
+      "VIN": 0.001074743427249558,
+      "VDD": 2.3222224143637502e-11,
+      "VREF": 2.4999979997275545e-05,
+      "VLED": 0.00012500334392484544,
+      "VD0": -0.0,
+      "VD1": -0.0,
+      "VDISABLE": -0.0
+    },
+    "fresh_port_power_W": {
+      "VIN": 0.001074743427249558,
+      "VDD": 2.3222224143637502e-11,
+      "VREF": 2.4999979997275545e-05,
+      "VLED": 0.00012500334392484544,
+      "VD0": -0.0,
+      "VD1": -0.0,
+      "VDISABLE": -0.0
+    },
+    "fresh_device_voltage_passed": true,
+    "fresh_current_error_percent": 0.0026751363889188084,
+    "raw_sha256": "6161fafaad5985c1a352b974f20562985f2b9c349d8b3d5c41f44a303f2b981a",
+    "reproduction_passed": true,
+    "boundary": "Same host/OS/runtime; one B TT L0 DC only. No NRZ rerun, new optical/physical evidence, or full-matrix qualification."
+  },
+  "original_tree_metadata_after": {
+    "files": 1423,
+    "bytes": 2085412866,
+    "path_size_mtime_mode_sha256": "86bce8875b2c6548cd343342cb123a063432db3cc22caa605e55e6df65abcdb9"
+  },
+  "original_tree_metadata_unchanged": true,
+  "compact_evidence": [
+    {
+      "path": "compact-evidence/case.json",
+      "bytes": 137,
+      "sha256": "4a78bd5d993c43a24160c8354899b9676b1cb858c3e92a7eefddd71ae79662b1"
+    },
+    {
+      "path": "compact-evidence/ngspice.log",
+      "bytes": 230,
+      "sha256": "00fffe3b7f29961922cd1a1ebb6631491eee14ee82b4dac1e8d57a9c2d4afccf"
+    },
+    {
+      "path": "compact-evidence/result.json",
+      "bytes": 11220,
+      "sha256": "48700cd84723fc985027846510b528574b1245c52ff0b1b8eb2bc4fbdd588c62"
+    },
+    {
+      "path": "compact-evidence/smoke-check.json",
+      "bytes": 3192,
+      "sha256": "0bdf14979daa6565566425cfda729121a426b8dffba2746430a95a9b70d5de9a"
+    },
+    {
+      "path": "compact-evidence/testbench.spice",
+      "bytes": 2353,
+      "sha256": "22fbb2fb239d8430657b94e782c9d86450950f207a140e504e474a59cb1e1682"
+    },
+    {
+      "path": "compact-evidence/waveform.dat.gz",
+      "bytes": 576,
+      "sha256": "a89b5520d75e8ef15bfeab738761ef0450ac7b871ef9bb26b3a5f75251bdbb0b"
+    }
+  ],
+  "reproduction_passed": true,
+  "completed_utc": "2026-10-25T16:03:46.489502+00:00",
+  "free_bytes_after": 8577961984,
+  "originals_content_hash_recomputed": false,
+  "original_preservation_check": "No original writes by helper; original file path/size/mtime/mode unchanged. This is not a second content hash of all original waveforms.",
+  "final_boundary": "Public GitHub fresh checkout plus inputs/results download and SHA-verified restore; same-machine one TT B L0 DC reproduction only. No full-waveform download, NRZ/full-matrix/EDA rerun, new-machine or new-OS claim."
+}

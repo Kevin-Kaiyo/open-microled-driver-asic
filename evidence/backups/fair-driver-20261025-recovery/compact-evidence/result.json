@@ -1,0 +1,494 @@
+{
+  "case": {
+    "name": "DC-TT-B-L0-recovery",
+    "kind": "dc",
+    "route": "B",
+    "corner": "typical",
+    "temp_C": 27,
+    "vdd_V": 3.3,
+    "level": 0
+  },
+  "metadata": {
+    "vectors": {
+      "iled_cond": 1,
+      "led_a": 2,
+      "led_k": 3,
+      "out": 4,
+      "d0": 5,
+      "d1": 6,
+      "disable": 7,
+      "vdd": 8,
+      "vin": 9,
+      "vref": 10,
+      "xdrv.bias": 11,
+      "xdrv.cc": 12,
+      "xdrv.di": 13,
+      "xdrv.dummy": 14,
+      "xdrv.gb": 15,
+      "xdrv.gp": 16,
+      "xdrv.ictrl": 17,
+      "xdrv.in2": 18,
+      "xdrv.ipb": 19,
+      "xdrv.kret": 20,
+      "xdrv.sense": 21,
+      "xdrv.vset": 22,
+      "xdrv.vx": 23,
+      "xdrv.xvi.in1": 24,
+      "xdrv.xvi.itail": 25,
+      "VIN_voltage": 26,
+      "VIN_current": 27,
+      "VDD_voltage": 28,
+      "VDD_current": 29,
+      "VREF_voltage": 30,
+      "VREF_current": 31,
+      "VLED_voltage": 32,
+      "VLED_current": 33,
+      "VD0_voltage": 34,
+      "VD0_current": 35,
+      "VD1_voltage": 36,
+      "VD1_current": 37,
+      "VDISABLE_voltage": 38,
+      "VDISABLE_current": 39
+    },
+    "devices": [
+      {
+        "instance": "xdrv.xvi.xipbias",
+        "nodes": [
+          "xdrv.ipb",
+          "xdrv.ipb",
+          "vin",
+          "vin"
+        ],
+        "model": "pfet_06v0"
+      },
+      {
+        "instance": "xdrv.xvi.xiptail",
+        "nodes": [
+          "xdrv.xvi.itail",
+          "xdrv.ipb",
+          "vin",
+          "vin"
+        ],
+        "model": "pfet_06v0"
+      },
+      {
+        "instance": "xdrv.xvi.xipd1",
+        "nodes": [
+          "xdrv.xvi.in1",
+          "xdrv.vset",
+          "xdrv.xvi.itail",
+          "vin"
+        ],
+        "model": "pfet_06v0"
+      },
+      {
+        "instance": "xdrv.xvi.xipd2",
+        "nodes": [
+          "xdrv.in2",
+          "xdrv.sense",
+          "xdrv.xvi.itail",
+          "vin"
+        ],
+        "model": "pfet_06v0"
+      },
+      {
+        "instance": "xdrv.xvi.xind1",
+        "nodes": [
+          "xdrv.xvi.in1",
+          "xdrv.xvi.in1",
+          "0",
+          "0"
+        ],
+        "model": "nfet_06v0"
+      },
+      {
+        "instance": "xdrv.xvi.xind2",
+        "nodes": [
+          "xdrv.in2",
+          "xdrv.xvi.in1",
+          "0",
+          "0"
+        ],
+        "model": "nfet_06v0"
+      },
+      {
+        "instance": "xdrv.xvi.xinstage",
+        "nodes": [
+          "xdrv.ictrl",
+          "xdrv.in2",
+          "0",
+          "0"
+        ],
+        "model": "nfet_06v0"
+      },
+      {
+        "instance": "xdrv.xvi.xipload",
+        "nodes": [
+          "xdrv.ictrl",
+          "xdrv.ictrl",
+          "vin",
+          "vin"
+        ],
+        "model": "pfet_06v0"
+      },
+      {
+        "instance": "xdrv.xvi.xipreg",
+        "nodes": [
+          "xdrv.sense",
+          "xdrv.ictrl",
+          "vin",
+          "vin"
+        ],
+        "model": "pfet_06v0"
+      },
+      {
+        "instance": "xdrv.xvi.xipout",
+        "nodes": [
+          "xdrv.bias",
+          "xdrv.ictrl",
+          "vin",
+          "vin"
+        ],
+        "model": "pfet_06v0"
+      },
+      {
+        "instance": "xdrv.xvi.xdis",
+        "nodes": [
+          "xdrv.bias",
+          "disable",
+          "0",
+          "0"
+        ],
+        "model": "nfet_06v0"
+      },
+      {
+        "instance": "xdrv.xvi.xkeep",
+        "nodes": [
+          "xdrv.kret",
+          "disable",
+          "0",
+          "0"
+        ],
+        "model": "nfet_06v0"
+      },
+      {
+        "instance": "xdrv.xref",
+        "nodes": [
+          "xdrv.bias",
+          "xdrv.bias",
+          "0",
+          "0"
+        ],
+        "model": "nfet_03v3"
+      },
+      {
+        "instance": "xdrv.xbase",
+        "nodes": [
+          "out",
+          "xdrv.bias",
+          "0",
+          "0"
+        ],
+        "model": "nfet_03v3"
+      },
+      {
+        "instance": "xdrv.xtail",
+        "nodes": [
+          "xdrv.vx",
+          "xdrv.bias",
+          "0",
+          "0"
+        ],
+        "model": "nfet_03v3"
+      },
+      {
+        "instance": "xdrv.xled",
+        "nodes": [
+          "out",
+          "xdrv.gp",
+          "xdrv.vx",
+          "0"
+        ],
+        "model": "nfet_06v0"
+      },
+      {
+        "instance": "xdrv.xdummy",
+        "nodes": [
+          "xdrv.dummy",
+          "xdrv.gb",
+          "xdrv.vx",
+          "0"
+        ],
+        "model": "nfet_06v0"
+      },
+      {
+        "instance": "xdrv.xinv1n",
+        "nodes": [
+          "xdrv.gb",
+          "xdrv.di",
+          "0",
+          "0"
+        ],
+        "model": "nfet_06v0"
+      },
+      {
+        "instance": "xdrv.xinv1p",
+        "nodes": [
+          "xdrv.gb",
+          "xdrv.di",
+          "vdd",
+          "vdd"
+        ],
+        "model": "pfet_06v0"
+      },
+      {
+        "instance": "xdrv.xinv2n",
+        "nodes": [
+          "xdrv.gp",
+          "xdrv.gb",
+          "0",
+          "0"
+        ],
+        "model": "nfet_06v0"
+      },
+      {
+        "instance": "xdrv.xinv2p",
+        "nodes": [
+          "xdrv.gp",
+          "xdrv.gb",
+          "vdd",
+          "vdd"
+        ],
+        "model": "pfet_06v0"
+      }
+    ],
+    "sources": {
+      "VIN": "vin_src",
+      "VDD": "vdd_src",
+      "VREF": "vref_src",
+      "VLED": "led_src",
+      "VD0": "data0_src",
+      "VD1": "data1_src",
+      "VDISABLE": "disable"
+    },
+    "parameters": {
+      "RSET": 20126.535444301146,
+      "WTAIL": 5.76e-06,
+      "RINL": 8e-06
+    },
+    "frame_duration_s": null,
+    "physical_level": "new schematic only, uniform estimated junctions; no PEX or inherited layout claim",
+    "export_mode": "full-native"
+  },
+  "runner_sha256": "0316afadb96dabc2c7554214bad408779d8f07ea3b430074140899c685a92873",
+  "deck_sha256": "22fbb2fb239d8430657b94e782c9d86450950f207a140e504e474a59cb1e1682",
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_s": 0.143967866897583,
+  "simulation_ok": true,
+  "metrics": {
+    "sample_count": 1,
+    "i_led_A": 2.500066878409723e-05,
+    "energy": {
+      "VIN": {
+        "DC_power_W": 0.001074743427249558
+      },
+      "VDD": {
+        "DC_power_W": 2.3222224143637502e-11
+      },
+      "VREF": {
+        "DC_power_W": 2.4999979997275545e-05
+      },
+      "VLED": {
+        "DC_power_W": 0.00012500334392484544
+      },
+      "VD0": {
+        "DC_power_W": -0.0
+      },
+      "VD1": {
+        "DC_power_W": -0.0
+      },
+      "VDISABLE": {
+        "DC_power_W": -0.0
+      }
+    },
+    "stress": [
+      {
+        "instance": "xdrv.xvi.xipbias",
+        "model": "pfet_06v0",
+        "max_pair_V": 1.7221421380405992,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xvi.xiptail",
+        "model": "pfet_06v0",
+        "max_pair_V": 2.3369695572214444,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xvi.xipd1",
+        "model": "pfet_06v0",
+        "max_pair_V": 4.499946662828318,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": -2.3369695572214444
+      },
+      {
+        "instance": "xdrv.xvi.xipd2",
+        "model": "pfet_06v0",
+        "max_pair_V": 4.499446649947162,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": -2.3369695572214444
+      },
+      {
+        "instance": "xdrv.xvi.xind1",
+        "model": "nfet_06v0",
+        "max_pair_V": 0.942902217183445,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xvi.xind2",
+        "model": "nfet_06v0",
+        "max_pair_V": 0.942902217183445,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xvi.xinstage",
+        "model": "nfet_06v0",
+        "max_pair_V": 3.607070137744223,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xvi.xipload",
+        "model": "pfet_06v0",
+        "max_pair_V": 1.3928761250844155,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xvi.xipreg",
+        "model": "pfet_06v0",
+        "max_pair_V": 4.499446649947162,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xvi.xipout",
+        "model": "pfet_06v0",
+        "max_pair_V": 3.8882187793926994,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xvi.xdis",
+        "model": "nfet_06v0",
+        "max_pair_V": 1.111727483435939,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xvi.xkeep",
+        "model": "nfet_06v0",
+        "max_pair_V": 1.638619108672777,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xref",
+        "model": "nfet_03v3",
+        "max_pair_V": 1.111727483435939,
+        "limit_V": 3.63,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xbase",
+        "model": "nfet_03v3",
+        "max_pair_V": 1.638622083506687,
+        "limit_V": 3.63,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xtail",
+        "model": "nfet_03v3",
+        "max_pair_V": 1.111727483435939,
+        "limit_V": 3.63,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xled",
+        "model": "nfet_06v0",
+        "max_pair_V": 1.638622083506687,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": -1.04756048483564
+      },
+      {
+        "instance": "xdrv.xdummy",
+        "model": "nfet_06v0",
+        "max_pair_V": 3.299999991515425,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": -1.04756048483564
+      },
+      {
+        "instance": "xdrv.xinv1n",
+        "model": "nfet_06v0",
+        "max_pair_V": 3.299999991515425,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xinv1p",
+        "model": "pfet_06v0",
+        "max_pair_V": 3.299999999992963,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xinv2n",
+        "model": "nfet_06v0",
+        "max_pair_V": 3.299999991515425,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      },
+      {
+        "instance": "xdrv.xinv2p",
+        "model": "pfet_06v0",
+        "max_pair_V": 3.29999999572197,
+        "limit_V": 6.0,
+        "passed": true,
+        "max_body_forward_V": 0.0
+      }
+    ],
+    "device_voltage_passed": true,
+    "max_body_forward_V": 0.0,
+    "target_A": 2.4999999999999998e-05,
+    "current_error_percent": 0.0026751363889188084,
+    "DC_power_W": 0.001224746774393903
+  },
+  "raw_sha256": "6161fafaad5985c1a352b974f20562985f2b9c349d8b3d5c41f44a303f2b981a",
+  "gzip_sha256": "a89b5520d75e8ef15bfeab738761ef0450ac7b871ef9bb26b3a5f75251bdbb0b",
+  "gzip_bytes": 576
+}
