@@ -18,6 +18,8 @@ Git 保存新电路、模型来源/代码、仿真/分析脚本、报告和 comp
 
 Release 清单 `<tag>.json` 逐文件记录 SHA-256，并记录每个 tar.gz 的 SHA-256。`archive-local.json` 表示本地归档全部成员核验，`archive-remote.json` 表示下载流回读一致。只有看到对应成功回执，才能称那一步完成。
 
+本阶段已完成验收：731 文件、11 卷归档，全部远端回读一致；另在同机独立目录恢复并复核 653 个 metadata 文件。Release 绑定源码提交 `74166165bc05cb7f090a38e50750209b31633f70`。下载清单 SHA-256 应为 `673744ab85c076dc00548911fb4c4ce20004d797653b32dad93ef124f64cbbbe`。已提交的[远端回执](../../../evidence/three-gbps-experiment-20261027/archive-remote.json)、[恢复回执](../../../evidence/three-gbps-experiment-20261027/archive-restore.json)及[清单副本](../../../evidence/three-gbps-experiment-20261027/archive-manifest.json)可独立核对；本地原始证据未删除。
+
 保留了全部新失败及修正记录。原始 Frontiers 完整网页和解析文本留在本地，因不需要再次分发整页而排除；源 URL / SHA 和选取的 CC BY 4.0 原图另有记录。Python 环境、完整 PDK、历史 build 和系统软件均不属于这次 Release。
 
 恢复流程（在独立目录操作，不覆盖不同字节的旧数据）：

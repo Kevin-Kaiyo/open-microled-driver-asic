@@ -8,6 +8,8 @@
 
 新原始范围为 `build/three-gbps-experiment-20261027/`；源与compact evidence在Git。Release标签为 `three-gbps-experiment-20261027`，归档、远端读回和排除范围以本轮 `evidence/three-gbps-experiment-20261027/archive-*.json` 验收回执为准。历史实验、完整PDK、运行环境不包含在本轮范围，不复用或移动旧标签。
 
+备份验收已完成：源码提交 `74166165bc05cb7f090a38e50750209b31633f70` 对应 [Release](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/three-gbps-experiment-20261027)。731个原始文件组成11卷归档（压缩1,076,459,001字节）；全部归档及清单已从远端完整回读并核对SHA-256。同机独立目录恢复653个metadata文件后逐个复核哈希。清单SHA为 `673744ab85c076dc00548911fb4c4ce20004d797653b32dad93ef124f64cbbbe`；见 [远端回执](../evidence/three-gbps-experiment-20261027/archive-remote.json)、[恢复回执](../evidence/three-gbps-experiment-20261027/archive-restore.json)与[逐文件清单](../evidence/three-gbps-experiment-20261027/archive-manifest.json)。原始证据仍保留本地；这不是异机重新仿真的证明。
+
 ## 目标与研究增补：单通道 >3 Gb/s 与 VCSEL（2026-10-27）
 
 [本轮报告](research/three-gbps-vcsel-20261027/index.html)及[证据台账](../evidence/three-gbps-vcsel-20261027/source-ledger.json)区分用户确认的单通道净率目标与建议评估点3.2 Gb/s。只读核对旧1/2 Gb/s结果，计算帧效率、UI及旧代理响应；新增VCSEL教学电路与公开一手资料索引。没有新增晶体管、VCSEL、3 Gb/s瞬态或物理验证，未预选拓扑或更换PDK。
