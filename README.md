@@ -2,6 +2,8 @@
 
 An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
+**目标与研究增补（2026-10-27）**：[单通道净吞吐超过3 Gb/s与VCSEL驱动](docs/research/three-gbps-vcsel-20261027/index.html)。明确3.2 Gb/s净率对应3.7 Gb/s线路；复核当前候选差距，讲解VCSEL偏置/调制、CMOS与SiGe、公开光学证据和后续验证。仅研究及解析计算，未新增3 Gb/s/VCSEL仿真。
+
 **本轮新增（2026-10-26，A/B/C条件配对）**：[高速驱动研究报告](docs/research/fair-driver-comparison-20261025/index.html) / [完整文字](docs/research/fair-driver-comparison-20261025/README.md)。A20/B21/C49 MOS统一负载、电流目标和七源端口能量；24个DC＋45个主体瞬态、32个DC＋11个单因素控制，统一绝对延迟接收规则并保留旧结果。新增C的MOS译码/DAC、内部电容慢尾与体结风险诊断；属于新原理图级实验，不继承历史版图/PEX，不预选架构。
 
 [本轮GitHub归档与新检出DC恢复验收](docs/development-handoff.md)：源码标签固定，原始证据按SHA读回，恢复范围及仍未闭合的工程问题分别记录。

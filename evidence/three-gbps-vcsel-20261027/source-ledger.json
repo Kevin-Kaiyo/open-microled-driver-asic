@@ -1,0 +1,264 @@
+{
+  "as_of": "2026-10-27",
+  "scope": "Public research sources and current project calculations, not product benchmarking or new VCSEL/3Gbps simulation.",
+  "assets": [
+    {
+      "id": "VC-01",
+      "title": "MAX3795: 1Gbps to 4.25Gbps Multirate VCSEL Driver with Diagnostic Monitors",
+      "source_type": "manufacturer datasheet",
+      "organization": "Maxim Integrated / Analog Devices",
+      "version": "Rev 0, August 2004",
+      "url": "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX3795.pdf",
+      "locator": "Printed pp.1, 10-12; Figure3 modulation circuit",
+      "evidence_class": "manufacturer specification",
+      "conditions": "3.3V +/-10%; -40 to +85C; exact electrical-test conditions per table",
+      "values": {
+        "line_rate_Gbps": [
+          1,
+          4.25
+        ],
+        "bias_mA": [
+          1,
+          15
+        ],
+        "modulation_mA": [
+          2,
+          15
+        ],
+        "transition_ps_typ": 52,
+        "deterministic_jitter_ps_typ": 8.4
+      },
+      "supports": "Bias generator, input buffer/current mirror/high-speed current switch, APC, peaking and independent shutdown are established driver partitions.",
+      "limits": "Not net payload rate or whole-link energy. Current official product page marks NOT RECOMMENDED FOR NEW DESIGNS; not a new procurement recommendation.",
+      "status_url": "https://www.analog.com/en/products/max3795.html",
+      "reuse": "link/cite only; no figure republished"
+    },
+    {
+      "id": "VC-02",
+      "title": "ONET8501V: 11.3 Gbps Differential VCSEL Driver With Output Waveform Shaping",
+      "organization": "Texas Instruments",
+      "source_type": "manufacturer datasheet",
+      "version": "SLLS837B, June2007 revised September2007",
+      "url": "https://www.ti.com/lit/ds/symlink/onet8501v.pdf",
+      "locator": "Printed pp.1-2 and7-8; Figure1; Bias Current Generation and APC Loop",
+      "evidence_class": "manufacturer specification",
+      "conditions": "3.3V; -40 to +85C",
+      "values": {
+        "line_rate_Gbps": [
+          2,
+          11.3
+        ],
+        "bias_mA_max": 20,
+        "modulation_mA_pp_differential_max": 24
+      },
+      "supports": "Input equalizer/limiter, main plus peak output driver, rising/falling waveform shaping, bias/modulation DAC, monitor-PD APC, POR and fault control.",
+      "limits": "2-wire serial configuration is not the high-speed data path. Differential mApp is not automatically the laser branch swing. Current TI product page marks OBSOLETE.",
+      "status_url": "https://www.ti.com/product/ONET8501V",
+      "reuse": "link/cite only"
+    },
+    {
+      "id": "VC-03",
+      "title": "A Small-Area and Low-EPB Inductive-Peaking VCSEL Driver for a 65-nm CMOS Chip",
+      "authors": [
+        "Toshiyuki Inoue",
+        "Akira Tsuchiya",
+        "Keiji Kishine",
+        "Daisuke Ito",
+        "Yasuhiro Takahashi",
+        "Makoto Nakamura"
+      ],
+      "source_type": "primary conference abstract",
+      "date": "SOCC2024, September16-19 2024",
+      "doi": "10.1109/SOCC62300.2024.10737718",
+      "url": "https://ieeexplore.ieee.org/document/10737718/",
+      "locator": "Publisher indexed abstract; direct page requires JS verification",
+      "evidence_class": "fabricated IC on-wafer electrical measurements reported by authors",
+      "conditions": "65nm CMOS; custom on-chip inductors; on-wafer electrical probing",
+      "values": {
+        "electrical_eye_rate_Gbps": 36,
+        "power_mW": 41.6,
+        "EPB_pJ_b": 1.16,
+        "core_um": [
+          124,
+          309
+        ]
+      },
+      "supports": "Silicon CMOS can implement high-speed driver electrical outputs with inductive peaking.",
+      "limits": "Electrical eye is not optical BER or full-link energy. Accessible abstract does not establish laser/RX/FEC inclusion or net throughput.",
+      "reuse": "link/cite abstract facts; full figures not obtained"
+    },
+    {
+      "id": "VC-04",
+      "title": "AFCD-V51KY: 25 Gb/s Oxide VCSEL, Low-Power",
+      "organization": "Broadcom",
+      "source_type": "manufacturer product page",
+      "url": "https://www.broadcom.com/products/fiber-optic-modules-components/components-broadband/short-reach-gaas-die/lasers/afcd-v51ky",
+      "locator": "Overview, Features and Specification",
+      "evidence_class": "manufacturer product specification",
+      "conditions": "850nm oxide GaAs VCSEL; one channel; multimode fiber coupling",
+      "values": {
+        "line_rate_Gbps": 25,
+        "wavelength_nm": 850,
+        "die_um": [
+          220,
+          220,
+          150
+        ],
+        "temperature_C": [
+          5,
+          75
+        ],
+        "channels": 1
+      },
+      "supports": "The emitter is a GaAs optoelectronic device, distinct from a silicon CMOS driver.",
+      "limits": "Page states Limited Release and Distributor Inventory No; no stock or price assurance. Do not generalize GaAs to all VCSEL wavelengths.",
+      "reuse": "link/cite only"
+    },
+    {
+      "id": "VC-05",
+      "title": "25-Gb/s 6.5-pJ/bit 90-nm CMOS-driven multimode optical link",
+      "organization": "IBM Research",
+      "authors": [
+        "Clint L. Schow",
+        "Alexander V. Rylyakov",
+        "Christian Baks",
+        "Fuad E. Doany",
+        "Jeff A. Kash"
+      ],
+      "source_type": "author-institution primary publication abstract",
+      "date": "2012-04-24",
+      "url": "https://research.ibm.com/publications/25-gbs-65-pjbit-90-nm-cmos-driven-multimode-optical-link",
+      "locator": "Abstract and title",
+      "evidence_class": "full optical-link experiment reported by authors",
+      "conditions": "850nm VCSEL; standard90nm bulk CMOS driver and receiver ICs; commercial GaAs optoelectronic devices",
+      "values": {
+        "line_rate_Gbps": 25,
+        "BER_less_than": 1e-12,
+        "title_full_link_pJ_b": 6.5,
+        "other_operating_points": [
+          {
+            "rate_Gbps": 22,
+            "pJ_b": 3.8
+          },
+          {
+            "rate_Gbps": 15,
+            "pJ_b": 2.6
+          }
+        ]
+      },
+      "supports": "Optically measured fast links can use silicon CMOS driver/RX; authors state a complete accounting of all component power.",
+      "limits": "Do not rank full-link energy directly against this project seven-source electrical energy or driver-only energy. This is a2012 result, not a2026 record. Visible abstract does not specify all BER run details, path length or net payload overhead.",
+      "reuse": "link/cite only"
+    },
+    {
+      "id": "VC-06",
+      "title": "A112Gb/s Radiation-Hardened Mid-Board Optical Transceiver in130-nm SiGe BiCMOS for Intra-Satellite Links",
+      "source_type": "primary journal research",
+      "date": "2021",
+      "doi": "10.3389/fphy.2021.672941",
+      "url": "https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2021.672941/full",
+      "locator": "Process Technology; VCSEL Measurements and Modeling; Physical Design and Performance; Figures6-11; Table4",
+      "evidence_class": "measured VCSEL characterization plus post-layout circuit simulation",
+      "conditions": "IHP0.13um SG13RH SiGe BiCMOS; npn HBT; four28Gb/s channels; package EM/TL and extracted netlist; 3.3V driver",
+      "values": {
+        "HBT_fT_GHz": 250,
+        "HBT_fmax_GHz": 340,
+        "channels": 4,
+        "per_channel_target_Gbps": 28,
+        "simulated_driver_mW_per_lane_25C": 74,
+        "simulated_driver_pJ_b": 2.64,
+        "simulated_25C_current_mA": [
+          3,
+          7
+        ],
+        "nominal85C_current_mA": [
+          4,
+          8
+        ]
+      },
+      "supports": "SiGe high-speed element is an npn heterojunction bipolar transistor, with CMOS for control. Modeling requires measured I-V/P-I/S11/S21 versus temperature/bias; static load alone is insufficient for large-signal switching.",
+      "limits": "Driver eye and74mW are PEX simulation in the cited section; do not upgrade them to silicon optical measurements.112Gb/s is4x28 aggregate, not one channel112Gb/s.",
+      "reuse": "Figure8 reproduced unmodified under article CC BY4.0 with adjacent attribution/DOI/license; other figures not reproduced. See licensed_original_figure and figures/NOTICE.md."
+    },
+    {
+      "id": "ML-01",
+      "title": "GaN Micro-LEDs for Chip-to-Chip Interconnects",
+      "authors": [
+        "B. Pezeshki"
+      ],
+      "date": "CS MANTECH 2025",
+      "url": "https://csmantech.org/wp-content/uploads/2025/05/10A.1-Final.2025.pdf",
+      "locator": "pp.2-4, Figures2,5-7",
+      "evidence_class": "reported optical measurements; industry-authored primary conference paper",
+      "conditions": "3.3Gb/s integrated16nm lane data measured one lane active; separate sapphire/external50ohm1tapFIR10Gb/s experiment",
+      "values": {
+        "integrated_line_Gbps": 3.3,
+        "external_line_Gbps": 10,
+        "external_BER_approx": 1e-10,
+        "LED_only_energy_approx_pJ_b": 1
+      },
+      "supports": "MultiGbps optical MicroLED links have measured evidence with carefully chosen emitters and electrical/optical hardware.",
+      "limits": "Not same yellow20um load, GF180 circuitry, receiver, current or whole-system energy. Not all300lanes simultaneously10Gbps.",
+      "reuse": "Original PDF/figure page retained locally under ignored build; public report uses link/cited facts only.",
+      "local_original_pdf_sha256": "c89bdbe59cc1672142b324248c86e939910f687e358e8e7c155392e8e3bd079c"
+    },
+    {
+      "id": "ML-02",
+      "title": "High-Speed Micro-LEDs Based on Nano-Engineered InGaN Active Region Towards Chip-to-Chip Interconnections",
+      "date": "JLT2024, Volume42 Issue24 pp8760-8770",
+      "doi": "10.1109/JLT.2024.3444324",
+      "url": "https://doi.org/10.1109/JLT.2024.3444324",
+      "locator": "Visible publisher-indexed abstract; full methods not obtained in this run",
+      "evidence_class": "Authors reported real-time NRZ-OOK optical measurements, abstract only",
+      "conditions": "Three-layer nanoengineered InGaN blueMicroLED; free-space vs quartzfiber vs4channelplasticfiber distinguished",
+      "values": {
+        "EE_3dB_bandwidth_GHz_greater_than": 2.6,
+        "free_space_single_channel_Gbps": 3.07,
+        "quartzfiber_single_channel_Gbps": 2.6,
+        "four_channel_aggregate_Gbps": 12
+      },
+      "supports": "Emitter active-region engineering and optical medium affect achievable rates.",
+      "limits": "Not net throughput proof, no full driver energy accounting in accessible abstract.",
+      "reuse": "Link/cite abstract facts only."
+    },
+    {
+      "id": "VC-07",
+      "title": "ADN2530:11.3Gbps Active Back-Termination Differential VCSEL Driver",
+      "url": "https://www.analog.com/en/products/adn2530.html",
+      "locator": "Official product overview and RevD datasheet",
+      "evidence_class": "Manufacturer specification",
+      "values": {
+        "line_Gbps_max": 11.3,
+        "supply_V": 3.3,
+        "bias_mA": [
+          2,
+          25
+        ],
+        "differential_modulation_mA": [
+          2.2,
+          23
+        ],
+        "edge_ps_typ": 26
+      },
+      "conditions": "PackagedVCSEL differential resistance35-140ohm, detailed testconditions indatasheet",
+      "supports": "Distinct BSET/MSET bias/modulation controls, activebacktermination and automatic laser shutdown.",
+      "limits": "Obsolete as checked20261027; educationalreference not purchase recommendation; differential current is not direct laser branch current.",
+      "reuse": "Link/cite only."
+    }
+  ],
+  "licensed_original_figure": {
+    "asset_id": "VC-06-F8",
+    "path": "docs/research/three-gbps-vcsel-20261027/figures/frontiers-2021-figure8.webp",
+    "original_url": "https://www.frontiersin.org/files/Articles/672941/xml-images/fphy-09-672941-g0008.webp",
+    "source_article": "https://doi.org/10.3389/fphy.2021.672941",
+    "locator": "Figure8",
+    "copyright": "2021 Giannakopoulos et al.",
+    "license": "CC BY4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license_locator": "Article Copyright paragraph; verified20261027",
+    "changes": "None; browser scales display only; no cropping or color changes",
+    "evidence_class": "Original author measured-versus-modeled DC and normalizedS21, not our results",
+    "supports": "Static and dynamic fitting depend on temperature/bias.",
+    "does_not_support": "Absolute optical power from normalizedS21, BER, or our driver performance."
+  }
+}

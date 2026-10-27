@@ -1,0 +1,401 @@
+{
+  "created_date_JST": "2026-10-27",
+  "mode": "Read-only source audit and analytic calculations only; no new transistor SPICE or new route performance claim",
+  "confirmed_user_target": "Single optical channel net payload throughput greater than3Gb/s",
+  "working_candidate_target_Gbps": 3.2,
+  "working_target_status": "Analyst example above confirmed3Gb/s lower bound, not a user-chosen exact test rate",
+  "sources_sha256": {
+    "evidence/fair-driver-v1/summary.json": "dc1d517366cc7a0935ccdc1cb008edf410cdad1429f4ffca7de68f6df91c9eeb",
+    "evidence/fair-driver-v1/rx-equal-latency-v2-index.json": "ebe53124789f1695028a7bf9c90e995b69381d1a3496750c352778ed9ada78ea",
+    "scripts/fair_driver_v1/receiver_equal_latency_v2.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+    "docs/superpowers/specs/2026-10-25-fair-driver-v1.md": "c28fc36686bb5284d43d12d3b054d2dc8969f50c230676a27b3dc9c2c9818e80",
+    "analog/fair_driver_v1/common.spice": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8"
+  },
+  "current_evidence": {
+    "highest_net_Gbps_simulated": 2.0,
+    "baseline_RX_matrix_points": 45,
+    "new_3Gbps_or_3p2Gbps_SPICE_cases": 0,
+    "no_3Gbps_qualification": true,
+    "rows_at_1_and_2Gbps": [
+      {
+        "case": "RX-FF-A-1G",
+        "route": "A",
+        "corner": "ff",
+        "net_Gbps": 1.0,
+        "bit_errors": 0,
+        "bit_count": 4096,
+        "min_decision_distance_uA": 26.562752197369733,
+        "min_one_sided_time_ps": 266.51371833157685,
+        "all_RX_checks": true,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 1.4791476337946046
+      },
+      {
+        "case": "RX-FF-A-2G",
+        "route": "A",
+        "corner": "ff",
+        "net_Gbps": 2.0,
+        "bit_errors": 512,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -6.207330731420143,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 1.0297338265704101
+      },
+      {
+        "case": "RX-FF-B-1G",
+        "route": "B",
+        "corner": "ff",
+        "net_Gbps": 1.0,
+        "bit_errors": 162,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -4.320073201025089,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 1.4327507382793825
+      },
+      {
+        "case": "RX-FF-B-2G",
+        "route": "B",
+        "corner": "ff",
+        "net_Gbps": 2.0,
+        "bit_errors": 889,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -16.861067192122647,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 0.7996964790782056
+      },
+      {
+        "case": "RX-FF-C-1G",
+        "route": "C",
+        "corner": "ff",
+        "net_Gbps": 1.0,
+        "bit_errors": 460,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -7.001297224509628,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 1.7211755270359843
+      },
+      {
+        "case": "RX-FF-C-2G",
+        "route": "C",
+        "corner": "ff",
+        "net_Gbps": 2.0,
+        "bit_errors": 1109,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -29.127867529197886,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 1.0877168364612648
+      },
+      {
+        "case": "RX-SS-A-1G",
+        "route": "A",
+        "corner": "ss",
+        "net_Gbps": 1.0,
+        "bit_errors": 830,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -22.966213742592906,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 1.0593256308410095
+      },
+      {
+        "case": "RX-SS-A-2G",
+        "route": "A",
+        "corner": "ss",
+        "net_Gbps": 2.0,
+        "bit_errors": 1424,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -44.37046745726205,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 0.5667100570706823
+      },
+      {
+        "case": "RX-SS-B-1G",
+        "route": "B",
+        "corner": "ss",
+        "net_Gbps": 1.0,
+        "bit_errors": 142,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -8.24750762916183,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 1.293823505453286
+      },
+      {
+        "case": "RX-SS-B-2G",
+        "route": "B",
+        "corner": "ss",
+        "net_Gbps": 2.0,
+        "bit_errors": 936,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -20.44178058124809,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 0.6830757533988098
+      },
+      {
+        "case": "RX-SS-C-1G",
+        "route": "C",
+        "corner": "ss",
+        "net_Gbps": 1.0,
+        "bit_errors": 531,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -10.654713740853992,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 1.517470598533469
+      },
+      {
+        "case": "RX-SS-C-2G",
+        "route": "C",
+        "corner": "ss",
+        "net_Gbps": 2.0,
+        "bit_errors": 1223,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -31.11703825700124,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 0.9028611358738998
+      },
+      {
+        "case": "RX-TT-A-1G",
+        "route": "A",
+        "corner": "typical",
+        "net_Gbps": 1.0,
+        "bit_errors": 0,
+        "bit_count": 4096,
+        "min_decision_distance_uA": 26.32008573207367,
+        "min_one_sided_time_ps": 357.7818652417025,
+        "all_RX_checks": true,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 1.2958129245232837
+      },
+      {
+        "case": "RX-TT-A-2G",
+        "route": "A",
+        "corner": "typical",
+        "net_Gbps": 2.0,
+        "bit_errors": 1044,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -18.13885353230907,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 0.8271737913962002
+      },
+      {
+        "case": "RX-TT-B-1G",
+        "route": "B",
+        "corner": "typical",
+        "net_Gbps": 1.0,
+        "bit_errors": 117,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -5.848925819048205,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 1.3626664141653413
+      },
+      {
+        "case": "RX-TT-B-2G",
+        "route": "B",
+        "corner": "typical",
+        "net_Gbps": 2.0,
+        "bit_errors": 918,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -17.39579891483362,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 0.7455586620269969
+      },
+      {
+        "case": "RX-TT-C-1G",
+        "route": "C",
+        "corner": "typical",
+        "net_Gbps": 1.0,
+        "bit_errors": 467,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -8.912676486085573,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 1.6092906214089793
+      },
+      {
+        "case": "RX-TT-C-2G",
+        "route": "C",
+        "corner": "typical",
+        "net_Gbps": 2.0,
+        "bit_errors": 1118,
+        "bit_count": 4096,
+        "min_decision_distance_uA": -29.25657559769339,
+        "min_one_sided_time_ps": 0.0,
+        "all_RX_checks": false,
+        "terminal_pair_screen": true,
+        "positive_input_energy_pJ_per_offered_payload_bit": 0.9876647415279125
+      }
+    ],
+    "pass_counts_at_1Gbps": {
+      "A": 2,
+      "B": 0,
+      "C": 0
+    },
+    "pass_counts_at_2Gbps": {
+      "A": 0,
+      "B": 0,
+      "C": 0
+    }
+  },
+  "frame": {
+    "transmitted_bits": 4736,
+    "warmup_bits": 64,
+    "training_bits": 512,
+    "training_scored_bits": 448,
+    "training_guard_bits": 64,
+    "payload_bits": 4096,
+    "tail_bits": 64,
+    "eta": 0.8648648648648649,
+    "eta_exact": "32/37",
+    "no_FEC_protocol_implemented": true
+  },
+  "rate_calculations": [
+    {
+      "net_Gbps": 0.5,
+      "line_Gbps": 0.578125,
+      "frame_duration_us": 8.192,
+      "64_bit_training_guard_ns": 110.7027027027027,
+      "line_bit_UI_ps": 1729.7297297297298,
+      "net_bit_interval_ps": 2000.0,
+      "NRZ": {
+        "symbol_Gbaud": 0.578125,
+        "symbol_UI_ps": 1729.7297297297298,
+        "Nyquist_GHz": 0.2890625,
+        "legacy_100ps_margin_in_symbol_UI": 0.0578125,
+        "legacy_5ps_grid_in_symbol_UI": 0.002890625,
+        "guard_slack_after_8ns_ns": 104.43243243243244,
+        "tail_slack_after_8ns_ns": 104.43243243243244,
+        "optical_rx_two_pole_mag_at_Nyquist": 0.9029440283027697,
+        "optical_rx_two_pole_dB_at_Nyquist": -0.8867833979966105
+      },
+      "PAM4": {
+        "symbol_Gbaud": 0.2890625,
+        "symbol_UI_ps": 3459.4594594594596,
+        "Nyquist_GHz": 0.14453125,
+        "legacy_100ps_margin_in_symbol_UI": 0.02890625,
+        "legacy_5ps_grid_in_symbol_UI": 0.0014453125,
+        "guard_slack_after_8ns_ns": 106.16216216216216,
+        "tail_slack_after_8ns_ns": 106.16216216216216,
+        "optical_rx_two_pole_mag_at_Nyquist": 0.9737853644202694,
+        "optical_rx_two_pole_dB_at_Nyquist": -0.23073514004733142
+      }
+    },
+    {
+      "net_Gbps": 3.0,
+      "line_Gbps": 3.46875,
+      "frame_duration_us": 1.3653333333333333,
+      "64_bit_training_guard_ns": 18.45045045045045,
+      "line_bit_UI_ps": 288.2882882882883,
+      "net_bit_interval_ps": 333.3333333333333,
+      "NRZ": {
+        "symbol_Gbaud": 3.46875,
+        "symbol_UI_ps": 288.2882882882883,
+        "Nyquist_GHz": 1.734375,
+        "legacy_100ps_margin_in_symbol_UI": 0.346875,
+        "legacy_5ps_grid_in_symbol_UI": 0.017343749999999998,
+        "guard_slack_after_8ns_ns": 10.738738738738737,
+        "tail_slack_after_8ns_ns": 10.738738738738737,
+        "optical_rx_two_pole_mag_at_Nyquist": 0.2083023373310811,
+        "optical_rx_two_pole_dB_at_Nyquist": -13.626117137358495
+      },
+      "PAM4": {
+        "symbol_Gbaud": 1.734375,
+        "symbol_UI_ps": 576.5765765765766,
+        "Nyquist_GHz": 0.8671875,
+        "legacy_100ps_margin_in_symbol_UI": 0.1734375,
+        "legacy_5ps_grid_in_symbol_UI": 0.008671874999999999,
+        "guard_slack_after_8ns_ns": 11.027027027027028,
+        "tail_slack_after_8ns_ns": 11.027027027027028,
+        "optical_rx_two_pole_mag_at_Nyquist": 0.5108035081388339,
+        "optical_rx_two_pole_dB_at_Nyquist": -5.834922574292044
+      }
+    },
+    {
+      "net_Gbps": 3.2,
+      "line_Gbps": 3.7,
+      "frame_duration_us": 1.28,
+      "64_bit_training_guard_ns": 17.297297297297295,
+      "line_bit_UI_ps": 270.27027027027026,
+      "net_bit_interval_ps": 312.5,
+      "NRZ": {
+        "symbol_Gbaud": 3.7,
+        "symbol_UI_ps": 270.27027027027026,
+        "Nyquist_GHz": 1.85,
+        "legacy_100ps_margin_in_symbol_UI": 0.37000000000000005,
+        "legacy_5ps_grid_in_symbol_UI": 0.0185,
+        "guard_slack_after_8ns_ns": 9.567567567567565,
+        "tail_slack_after_8ns_ns": 9.567567567567565,
+        "optical_rx_two_pole_mag_at_Nyquist": 0.1878971663763957,
+        "optical_rx_two_pole_dB_at_Nyquist": -14.521595386427428
+      },
+      "PAM4": {
+        "symbol_Gbaud": 1.85,
+        "symbol_UI_ps": 540.5405405405405,
+        "Nyquist_GHz": 0.925,
+        "legacy_100ps_margin_in_symbol_UI": 0.18500000000000003,
+        "legacy_5ps_grid_in_symbol_UI": 0.00925,
+        "guard_slack_after_8ns_ns": 9.837837837837837,
+        "tail_slack_after_8ns_ns": 9.837837837837837,
+        "optical_rx_two_pole_mag_at_Nyquist": 0.478756662471962,
+        "optical_rx_two_pole_dB_at_Nyquist": -6.397703385075262
+      }
+    }
+  ],
+  "optical_RX_proxy": {
+    "tau_optical_ps": 200,
+    "optical_single_pole_3dB_GHz": 0.7957747154594766,
+    "RX_single_pole_3dB_GHz": 1.0,
+    "cascaded_3dB_GHz": 0.5688655763053951,
+    "interpretation": "Calculated small-signal frequency response of existing assumed two-pole proxy only, excluding actual current driver/electrical load and noise. Not a measured MicroLED bandwidth, not a link-rate ceiling and not new waveform simulation."
+  },
+  "unchanged_load": {
+    "CLED_assumed_fF": 200,
+    "RPKG_Ohm": 1,
+    "LPKG_nH": 0.5,
+    "VLED_V": 5,
+    "static_IV": "Measured-static PWL curve with unspecified measurement temperature; same emitter dynamic C(V,I,T), L-I and carrier lifetime not fitted"
+  },
+  "timing_interpretation": [
+    "At3.2net NRZ the legacy100ps one-sided guard is0.37symbolUI and both sides need200ps=0.74UI. Report it unchanged for continuity; add a separately preregistered hardware jitter/clock/recovery budget rather than relaxing it after results.",
+    "The64-bit training and tail guard is still sufficient at3.2net for8ns absolute delay; there is no guard-caused rejection at this rate. Exact endpoint slack is65bitUI-8ns forNRZ and66bitUI-8ns forPAM4.",
+    "Offline8ns/5ps training search is not an implemented CDR, phase interpolator, input serializer, timing closure or jitter measurement."
+  ],
+  "next_minimal_experiments": [
+    "Keep original A/B/C+frozen load/RX legacy cases intact and append3.0/3.2net TT full-frame points; any failures are diagnostic, not a criterion-fitting step. Use the same source energy boundary and positive/returned/net accounting.",
+    "Run separately labeled one-factor sensitivity on measured/fitted CLED and emitter bandwidth, RX bandwidth, bias/swing and driver/pre-emphasis. Hold current/peak/average/port-energy constraints constant per paired comparison; do not claim passing by silently replacing the200fF/200ps/1GHz legacy assumptions.",
+    "Acquire the same emitter static/dynamic/optical data, receiver responsivity/noise and package S-parameters. Do not import VCSEL threshold/relaxation resonance model into MicroLED, or reuse current25-100uA load as if it describes a VCSEL.",
+    "After selecting physically supported candidates, run PVT+independent R/C corners, mismatch, power/startup/protection, then matched layout/DRC/LVS/PEX and package+clock-noise verification.3Gb/s raw electrical toggle alone is not3Gb/s net optical goodput."
+  ],
+  "BER": {
+    "current_validation_bits_per_point": 4096,
+    "zero_error_iid_binomial_one_sided_95pct_upper": 0.0007311125564753995,
+    "upper_bound_is_conditional_statistical_formula_not_applicable_as_actual_simulated_optical_BER": true,
+    "minimum_zero_error_bits_for_95pct_upper_1e_minus_12": 2995732273553
+  }
+}
