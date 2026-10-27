@@ -2,6 +2,8 @@
 
 An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
+**新增实验（2026-10-27）**：[净3.2 Gb/s单通道：MicroLED瓶颈与VCSEL晶体管验证](docs/research/three-gbps-experiment-20261027/index.html)。MicroLED新增35次SPICE诊断；VCSEL新增13MOS偏置/调制、图读约束负载、8个完整帧及非重叠PRBS窗口复核。TT联合接收诊断得到约127.75ps余量，慢热/快冷仍失败；不预选路线，不升级为光学或芯片资格。
+
 **目标与研究增补（2026-10-27）**：[单通道净吞吐超过3 Gb/s与VCSEL驱动](docs/research/three-gbps-vcsel-20261027/index.html)。明确3.2 Gb/s净率对应3.7 Gb/s线路；复核当前候选差距，讲解VCSEL偏置/调制、CMOS与SiGe、公开光学证据和后续验证。仅研究及解析计算，未新增3 Gb/s/VCSEL仿真。
 
 **本轮新增（2026-10-26，A/B/C条件配对）**：[高速驱动研究报告](docs/research/fair-driver-comparison-20261025/index.html) / [完整文字](docs/research/fair-driver-comparison-20261025/README.md)。A20/B21/C49 MOS统一负载、电流目标和七源端口能量；24个DC＋45个主体瞬态、32个DC＋11个单因素控制，统一绝对延迟接收规则并保留旧结果。新增C的MOS译码/DAC、内部电容慢尾与体结风险诊断；属于新原理图级实验，不继承历史版图/PEX，不预选架构。

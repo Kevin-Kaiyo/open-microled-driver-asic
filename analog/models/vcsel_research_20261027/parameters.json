@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "status": "independent public-figure-constrained research proxy; NOT validated VCSEL model",
+  "source": {
+    "authors": "Giannakopoulos et al.",
+    "title": "A 112 Gb/s Radiation-Hardened Mid-Board Optical Transceiver in 130-nm SiGe BiCMOS for Intra-Satellite Links",
+    "date": "2021-05-17",
+    "doi": "10.3389/fphy.2021.672941",
+    "url": "https://www.frontiersin.org/journals/physics/articles/10.3389/fphy.2021.672941/full",
+    "figure_path": "docs/research/three-gbps-vcsel-20261027/figures/frontiers-2021-figure8.webp",
+    "figure_sha256": "cfa990cc3ea74d24f5e451149a91baec536d2e2a6e72a53e3934eca9a92e5a5d",
+    "reuse": "CC BY 4.0; original figure already retained with adjacent notice"
+  },
+  "temperature_C": {
+    "value": 25,
+    "provenance": "Fig.8A blue legend; only static curves. Fig.8B temperature is not specified."
+  },
+  "iv": {
+    "current_A": [
+      0.0004,
+      0.001,
+      0.002,
+      0.003,
+      0.004,
+      0.005,
+      0.006,
+      0.007,
+      0.008
+    ],
+    "voltage_V": [
+      1.5,
+      1.6,
+      1.734,
+      1.834,
+      1.923,
+      2.004,
+      2.074,
+      2.136,
+      2.195
+    ],
+    "provenance": "approximate manual Fig.8A measured light-blue dots, 25 C",
+    "voltage_reading_uncertainty_V": 0.02,
+    "current_reading_uncertainty_A": 5e-05,
+    "trusted_simulation_current_A": [
+      0.002,
+      0.008
+    ],
+    "outside_scope": "0-0.4mA artificial linear numerical continuation; >8mA extends final slope; no reverse-breakdown or thermal validity"
+  },
+  "pi": {
+    "current_A": [
+      0,
+      0.0005,
+      0.001,
+      0.002,
+      0.003,
+      0.004,
+      0.005,
+      0.006,
+      0.007,
+      0.0075
+    ],
+    "power_W": [
+      0,
+      4.633204633204633e-05,
+      0.00025740025740025744,
+      0.0008288288288288288,
+      0.0014311454311454312,
+      0.002048906048906049,
+      0.0026357786357786355,
+      0.0031814671814671814,
+      0.0036705276705276705,
+      0.0039485199485199485
+    ],
+    "provenance": "Fig.8A blue pixel trace, measured/model curves overlap; extraction details and pixels in CSV; zero-current zero-power is numerical assumption",
+    "power_reading_uncertainty_W": 8e-05,
+    "trusted_current_A": [
+      0.001,
+      0.0075
+    ],
+    "outside_scope": "linear continuation above last point is unsupported; no thermal rollover, spontaneous emission or absolute calibration verification"
+  },
+  "electrical_assumptions": {
+    "CJ_F": {
+      "default": 1.5e-13,
+      "sweep": [
+        5e-14,
+        1.5e-13,
+        5e-13
+      ],
+      "provenance": "engineering sensitivity choices; NOT disclosed by source and NOT fitted from S11"
+    },
+    "series_resistance_ohm": {
+      "value": 0,
+      "provenance": "no added resistor; measured terminal I-V already contains static series loss; not a claim that physical series resistance is zero"
+    }
+  },
+  "dynamic": {
+    "name": "figure3mA_proxy",
+    "f0_Hz": 9170696296.296295,
+    "zeta": 0.30311387654320987,
+    "fp_Hz": 15330429629.629633,
+    "formula": "H(s) = w0^2/(s^2 + 2*zeta*w0*s + w0^2) * wp/(s+wp)",
+    "parameter_provenance": "all three parameters jointly derived by deterministic coarse-to-fine least-squares magnitude-only shape approximation to manually digitized Fig.8B 3mA points; none disclosed by authors",
+    "fit_rms_dB": 0.5024208372567843,
+    "fit_max_abs_dB": 1.1804441006095172,
+    "figure_reading_uncertainty_dB": 0.6,
+    "fit_validation": "in-sample graphical shape agreement only; no held-out device measurements or phase validation",
+    "bias_A": 0.003,
+    "temperature_C": null,
+    "dc_gain": 1.0,
+    "application": "fixed normalized shape applied to static P(I); no bias interpolation; only constant 3mA reference shape across whole swing",
+    "double_counting": "published electrical-to-optical S21 is not de-embedded; applying this shape to conductive current after separate assumed CJ can double-count electrical roll-off. No unique correction is possible without same-device S11/complex S21."
+  },
+  "alternative_responses": {
+    "lowpass8GHz_assumed": {
+      "pole_Hz": 8000000000.0,
+      "provenance": "engineering sensitivity assumption, not extracted intrinsic pole"
+    },
+    "lowpass4GHz_assumed": {
+      "pole_Hz": 4000000000.0,
+      "provenance": "deliberate slower response sensitivity assumption"
+    },
+    "static": {
+      "provenance": "instantaneous P(I) control; no optical dynamics"
+    }
+  },
+  "excluded": [
+    "authors original Spectre model",
+    "same-device capacitance/impedance calibration",
+    "bias/temperature-dependent optical dynamics",
+    "carrier-photon rate equations",
+    "noise, RIN, chirp, modal competition",
+    "package/PDN and receiver physics",
+    "BER or optical-link validation"
+  ]
+}

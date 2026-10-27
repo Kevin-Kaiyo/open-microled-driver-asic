@@ -1,0 +1,25 @@
+* Independent 13-MOS VCSEL bias + unipolar current-steering experiment.
+* Public GF180 03v3 model subset; schematic geometry estimates, not layout/PEX.
+* D/DB are externally supplied complementary data; true CMOS buffers included.
+* A resistively fed diode-connected NMOS establishes BIAS; no ideal IREF.
+* This resistor reference is NOT precision / temperature compensated.
+* Terminal order below is D G S B; all dimensions are metres.
+.subckt vcsel_bias_mod D DB OUT VLASER VDD VREF VSS params: RREF=6.9k WBASE=60u WTAIL=84u RDUMMY=500
+RREF1 VREF BIAS {RREF}
+XREF BIAS BIAS VSS VSS nmos_3p3 w=5u l=1u ad=2.2p as=2.2p pd=10.88u ps=10.88u
+VIBASE OUT BS 0
+VITAIL VX TS 0
+XBASE BS BIAS VSS VSS nmos_3p3 w={WBASE} l=1u ad={WBASE*.44u} as={WBASE*.44u} pd={2*(WBASE+.44u)} ps={2*(WBASE+.44u)}
+XTAIL TS BIAS VSS VSS nmos_3p3 w={WTAIL} l=1u ad={WTAIL*.44u} as={WTAIL*.44u} pd={2*(WTAIL+.44u)} ps={2*(WTAIL+.44u)}
+XSTEER OUT GP VX VSS nmos_3p3 w=20u l=.28u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XDUMP DUMMY GN VX VSS nmos_3p3 w=20u l=.28u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+RDUMMY1 VLASER DUMMY {RDUMMY}
+XBP1N NP D VSS VSS nmos_3p3 w=4u l=.28u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+XBP1P NP D VDD VDD pmos_3p3 w=8u l=.28u ad=3.52p as=3.52p pd=16.88u ps=16.88u
+XBP2N GP NP VSS VSS nmos_3p3 w=12u l=.28u ad=5.28p as=5.28p pd=24.88u ps=24.88u
+XBP2P GP NP VDD VDD pmos_3p3 w=24u l=.28u ad=10.56p as=10.56p pd=48.88u ps=48.88u
+XBN1N NN DB VSS VSS nmos_3p3 w=4u l=.28u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+XBN1P NN DB VDD VDD pmos_3p3 w=8u l=.28u ad=3.52p as=3.52p pd=16.88u ps=16.88u
+XBN2N GN NN VSS VSS nmos_3p3 w=12u l=.28u ad=5.28p as=5.28p pd=24.88u ps=24.88u
+XBN2P GN NN VDD VDD pmos_3p3 w=24u l=.28u ad=10.56p as=10.56p pd=48.88u ps=48.88u
+.ends vcsel_bias_mod

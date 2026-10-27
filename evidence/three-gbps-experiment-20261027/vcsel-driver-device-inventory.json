@@ -1,0 +1,262 @@
+{
+  "devices": [
+    {
+      "instance": "XREF",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.bias",
+        "xdrv.bias",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=5u",
+        "l=1u",
+        "ad=2.2p",
+        "as=2.2p",
+        "pd=10.88u",
+        "ps=10.88u"
+      ]
+    },
+    {
+      "instance": "XBASE",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.bs",
+        "xdrv.bias",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w={WBASE}",
+        "l=1u",
+        "ad={WBASE*.44u}",
+        "as={WBASE*.44u}",
+        "pd={2*(WBASE+.44u)}",
+        "ps={2*(WBASE+.44u)}"
+      ]
+    },
+    {
+      "instance": "XTAIL",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.ts",
+        "xdrv.bias",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w={WTAIL}",
+        "l=1u",
+        "ad={WTAIL*.44u}",
+        "as={WTAIL*.44u}",
+        "pd={2*(WTAIL+.44u)}",
+        "ps={2*(WTAIL+.44u)}"
+      ]
+    },
+    {
+      "instance": "XSTEER",
+      "model": "nmos_3p3",
+      "nodes": [
+        "out",
+        "xdrv.gp",
+        "xdrv.vx",
+        "0"
+      ],
+      "parameters": [
+        "w=20u",
+        "l=.28u",
+        "ad=8.8p",
+        "as=8.8p",
+        "pd=40.88u",
+        "ps=40.88u"
+      ]
+    },
+    {
+      "instance": "XDUMP",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.dummy",
+        "xdrv.gn",
+        "xdrv.vx",
+        "0"
+      ],
+      "parameters": [
+        "w=20u",
+        "l=.28u",
+        "ad=8.8p",
+        "as=8.8p",
+        "pd=40.88u",
+        "ps=40.88u"
+      ]
+    },
+    {
+      "instance": "XBP1N",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.np",
+        "d",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=4u",
+        "l=.28u",
+        "ad=1.76p",
+        "as=1.76p",
+        "pd=8.88u",
+        "ps=8.88u"
+      ]
+    },
+    {
+      "instance": "XBP1P",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.np",
+        "d",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=8u",
+        "l=.28u",
+        "ad=3.52p",
+        "as=3.52p",
+        "pd=16.88u",
+        "ps=16.88u"
+      ]
+    },
+    {
+      "instance": "XBP2N",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.gp",
+        "xdrv.np",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=12u",
+        "l=.28u",
+        "ad=5.28p",
+        "as=5.28p",
+        "pd=24.88u",
+        "ps=24.88u"
+      ]
+    },
+    {
+      "instance": "XBP2P",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.gp",
+        "xdrv.np",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=24u",
+        "l=.28u",
+        "ad=10.56p",
+        "as=10.56p",
+        "pd=48.88u",
+        "ps=48.88u"
+      ]
+    },
+    {
+      "instance": "XBN1N",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.nn",
+        "db",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=4u",
+        "l=.28u",
+        "ad=1.76p",
+        "as=1.76p",
+        "pd=8.88u",
+        "ps=8.88u"
+      ]
+    },
+    {
+      "instance": "XBN1P",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.nn",
+        "db",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=8u",
+        "l=.28u",
+        "ad=3.52p",
+        "as=3.52p",
+        "pd=16.88u",
+        "ps=16.88u"
+      ]
+    },
+    {
+      "instance": "XBN2N",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.gn",
+        "xdrv.nn",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=12u",
+        "l=.28u",
+        "ad=5.28p",
+        "as=5.28p",
+        "pd=24.88u",
+        "ps=24.88u"
+      ]
+    },
+    {
+      "instance": "XBN2P",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.gn",
+        "xdrv.nn",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=24u",
+        "l=.28u",
+        "ad=10.56p",
+        "as=10.56p",
+        "pd=48.88u",
+        "ps=48.88u"
+      ]
+    }
+  ],
+  "args": {
+    "name": "frame-TT-3p2-r1",
+    "mode": "frame",
+    "level": 0,
+    "pvt": "TT",
+    "rate": 3.2,
+    "steps": 40,
+    "rref": 6900.0,
+    "wbase": 6e-05,
+    "wtail": 8.4e-05,
+    "cj": 1.5e-13,
+    "optical_response": "figure3mA_proxy",
+    "rx_ghz": 5.0
+  },
+  "source_sha256": "17ff70f029ae10cec7b0951e19f5e45acb2812abcec6b5f20540ea3d2e74e51b",
+  "source": "analog/circuits/vcsel_research_20261027/vcsel_bias_mod.spice",
+  "MOS_count": 13,
+  "topology": "resistor-diode reference + baseline sink + tail sink + differential steering pair +2x two-stage CMOS buffer",
+  "model_names": [
+    "nmos_3p3",
+    "pmos_3p3"
+  ],
+  "model_pin": "analog/models/pdk-lock.json",
+  "junction_geometry": "W*.44um and2*(W+.44um) schematic estimate"
+}

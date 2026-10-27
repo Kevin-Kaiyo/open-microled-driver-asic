@@ -1,0 +1,52 @@
+{
+  "name": "frame-TT-3p2-nonoverlap1",
+  "declared_before_execution": "2026-10-27T23:12:24.451726+09:00",
+  "seed": 22446,
+  "seed_hex": "0x57AE",
+  "purpose": "Frozen receiver-v3 confirmation using nonoverlapping deterministic PRBS15 phase window; not an independent random BER trial",
+  "all_other_conditions": "TT25C3.3V,net3.2G,CJ150f,RREF6900,WBASE60um, WTAIL84um,figure3mA_proxy,RX5GHz; same4736frame/4096payload/448score+64guard; v2 andv3paired",
+  "frozen_source_sha256": {
+    "analog/circuits/vcsel_research_20261027/vcsel_bias_mod.spice": "17ff70f029ae10cec7b0951e19f5e45acb2812abcec6b5f20540ea3d2e74e51b",
+    "analog/circuits/vcsel_research_20261027/receiver-feasibility-v3-diagnostic.json": "20b4ac369a2bc165e1df8eeb13ebb8b1250646e44e4e10976cf40a342972db2e",
+    "analog/models/vcsel_research_20261027/vcsel_research.spice": "7ed34d124b85230c15b4914407dbac0761103879ced25b1bb3794fb0e2d90beb",
+    "analog/models/vcsel_research_20261027/parameters.json": "a35665e2b9eed9d3776d2a9878608688a4a00677d0e57e51446d0956967a4991",
+    "scripts/three_gbps_experiment/vcsel_model.py": "5cf8907df8e1ace985012ff5107312ab3b04699f2e944696fc49dae4b4d7bf23",
+    "scripts/three_gbps_experiment/vcsel_driver_receiver_v3.py": "1f47a36f24379b58fb3094303d17d678e0aba7328ddbd58eb601c7b966e0c962",
+    "scripts/fair_driver_v1/receiver_equal_latency_v2.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+    "scripts/three_gbps_experiment/vcsel_driver_run.py": "aec5178ecb05a39b69415e7bd45959b1953dd097eff5d022e3271bd02bcee1e3",
+    "scripts/three_gbps_experiment/vcsel_driver_analyze.py": "919137375a6b04763a7617eee97fa8c990fb04eadf1fdf39f0df60fb247b7128"
+  },
+  "generator_checks": {
+    "deterministic": true,
+    "default_unchanged": true,
+    "new_bits_differ": true,
+    "gray_roundtrip": true,
+    "frame_ranges_unchanged": true
+  },
+  "stimulus_sha256": "d249064ae5850f5e23835e17ab7191a8f203fb9310f02db951881d308241784d",
+  "phase_offset": 8192,
+  "period_bits": 32767,
+  "old_frame_phase_interval": [
+    0,
+    4736
+  ],
+  "new_frame_phase_interval": [
+    8192,
+    12928
+  ],
+  "new_validation_phase_interval": [
+    8768,
+    12864
+  ],
+  "frame_intersection_bits": 0,
+  "validation_intersection_bits": 0,
+  "new_training_intersection_old_frame_bits": 0,
+  "supersedes_independence_claim_only": {
+    "case": "frame-TT-3p2-holdout1",
+    "seed_hex": "0x1ACE",
+    "reason": "Different seed represents overlapping cyclic PRBS phase; preserve as phase control only",
+    "validation_overlap_bits": 1582
+  },
+  "independent_overlap_audit_path": "evidence/three-gbps-experiment-20261027/vcsel-model/seed-overlap-audit.json",
+  "independent_overlap_audit_sha256": "84d251ff71c5c65016d85c8a1d91677e7396e4e4f4fca1c01cf2d4c18a5bfda2"
+}

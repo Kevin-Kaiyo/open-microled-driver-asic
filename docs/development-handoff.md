@@ -2,6 +2,12 @@
 
 更新：2026-10-27。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
 
+## 新增阶段：净3.2 Gb/s瓶颈与VCSEL晶体管研究（2026-10-27）
+
+阅读[新报告](research/three-gbps-experiment-20261027/index.html)与[恢复/复现说明](research/three-gbps-experiment-20261027/reproduce.md)。本轮MicroLED保留原负载与门槛做35次SPICE诊断；VCSEL建立13MOS真实电阻参考/偏置/转向电路和公开图读约束代理，运行8个完整帧、14个成功DC点、21组接收分析。原v2结果不覆盖；新v3训练规则先冻结，再以不重叠PRBS窗口确认TT条件性结果。SS/FF仍失败，尚非实际光链路、BER或物理实现资格。
+
+新原始范围为 `build/three-gbps-experiment-20261027/`；源与compact evidence在Git。Release标签为 `three-gbps-experiment-20261027`，归档、远端读回和排除范围以本轮 `evidence/three-gbps-experiment-20261027/archive-*.json` 验收回执为准。历史实验、完整PDK、运行环境不包含在本轮范围，不复用或移动旧标签。
+
 ## 目标与研究增补：单通道 >3 Gb/s 与 VCSEL（2026-10-27）
 
 [本轮报告](research/three-gbps-vcsel-20261027/index.html)及[证据台账](../evidence/three-gbps-vcsel-20261027/source-ledger.json)区分用户确认的单通道净率目标与建议评估点3.2 Gb/s。只读核对旧1/2 Gb/s结果，计算帧效率、UI及旧代理响应；新增VCSEL教学电路与公开一手资料索引。没有新增晶体管、VCSEL、3 Gb/s瞬态或物理验证，未预选拓扑或更换PDK。

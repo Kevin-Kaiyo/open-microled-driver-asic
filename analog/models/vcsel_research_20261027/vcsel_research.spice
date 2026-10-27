@@ -1,0 +1,14 @@
+* Independent research proxy; NOT the authors' Spectre model or measured device model.
+* Giannakopoulos et al., Front.Phys.9:672941 (2021), Fig.8A, 25 C blue I-V dots.
+* https://doi.org/10.3389/fphy.2021.672941 ; see parameters.json and MODEL_CARD.md.
+* A=anode, K=cathode, JMON=forward conductive current monitor (1 V = 1 A).
+* I-V digitized approximately: uncertainty +/-20mV and +/-0.05mA; valid 2-8mA.
+* CJ is an UNMEASURED lumped shunt sensitivity parameter, not disclosed by source.
+* Figure voltage already includes device series resistance: do not add it again.
+* No physical temperature, reverse breakdown, self-heating or carrier dynamics.
+.subckt vcsel_research A K JMON params: CJ=150f
+C_assumed A K {CJ}
+Biv A nsense I={v(A,K)<0 ? v(A,K)*1e-9 : v(A,K)<1.50 ? v(A,K)*0.0004/1.50 : v(A,K)<1.60 ? 0.0004+(v(A,K)-1.50)*0.0006/0.10 : v(A,K)<1.734 ? 0.001+(v(A,K)-1.60)*0.001/0.134 : v(A,K)<1.834 ? 0.002+(v(A,K)-1.734)*0.001/0.100 : v(A,K)<1.923 ? 0.003+(v(A,K)-1.834)*0.001/0.089 : v(A,K)<2.004 ? 0.004+(v(A,K)-1.923)*0.001/0.081 : v(A,K)<2.074 ? 0.005+(v(A,K)-2.004)*0.001/0.070 : v(A,K)<2.136 ? 0.006+(v(A,K)-2.074)*0.001/0.062 : 0.007+(v(A,K)-2.136)*0.001/0.059}
+Vsense nsense K 0
+Bmonitor JMON 0 V={i(Vsense)}
+.ends vcsel_research
