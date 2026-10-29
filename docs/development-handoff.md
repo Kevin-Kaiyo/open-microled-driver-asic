@@ -1,6 +1,18 @@
 # GitHub 备份与另一台电脑接续开发
 
-更新：2026-10-27。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
+更新：2026-10-29。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
+
+## 新增阶段：VCSEL 参考/供电与 MicroLED 动态依据（2026-10-29）
+
+先读[研究报告](research/vcsel-reference-microled-dynamics-20261029/index.html)及[恢复步骤](research/vcsel-reference-microled-dynamics-20261029/reproduce.md)。r10 为新的 73 MOS 原理图候选；固定净 3.2 Gb/s 的 TT/SS/FF 帧及连续上电后数据帧通过本轮有限筛查。快冷 20 ns 上电仍越线，AC 注入比不能用于稳定性签核；未预选路线，也没有新的版图/PEX 或实测光学 BER。
+
+源标签固定于 `a58752951ed84cb7e1b815d4ca888c6b8f4f91b0`，对应[本阶段 Release](https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/vcsel-reference-microled-dynamics-20261029)。3,492 个原始文件分为 85 卷，归档总计 11,349,061,387 字节；所有归档与清单均完成远端完整字节回读，发布后再次核对资产身份与标签提交。清单 SHA-256：`4cf33e29319e76c2cb793132b323dfcae591733a1dca7b6f29331200fc14b632`。
+
+- [逐文件清单](../evidence/vcsel-robustness-20261029/archive-manifest.json)、[覆盖核对](../evidence/vcsel-robustness-20261029/archive-coverage.json)与[远端回执](../evidence/vcsel-robustness-20261029/archive-remote.json)绑定原始文件、归档和源码身份。备份范围包含本轮 VCSEL 输入/波形/失败日志，以及五个明确许可的 MicroLED 数据文件；论文原件、完整 PDK、运行环境和其他历史阶段依赖不在此增量内。
+- [恢复回执](../evidence/vcsel-robustness-20261029/archive-restore.json)：从远端恢复 2,950 个 metadata 文件到同机独立目录，逐成员校验后重新生成本机网表，重跑 TT/SS/FF 三个高电平 DC 点，电流与原结果差值均为 0。未在新操作系统重跑全矩阵，也未恢复全部大波形。
+- [归档执行说明](../evidence/vcsel-robustness-20261029/archive-execution-notes.md)保留上传重试重名错误和后续字节核验。只清理已确认远端一致的临时压缩副本；原始实验与失败证据保留。恢复时使用 `release_bundle.py` 的 `--group metadata` 可先取小输入，完整波形另按需下载。
+
+备份验收回执另入主分支；上述源标签不移动。
 
 ## 新增阶段：净3.2 Gb/s瓶颈与VCSEL晶体管研究（2026-10-27）
 

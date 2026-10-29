@@ -1,0 +1,24 @@
+from pathlib import Path
+import hashlib,json,shutil
+root=Path(__file__).resolve().parents[2]
+stage=root/'build/github-sync-vcsel-reference-microled-dynamics-20261029'
+ev=root/'evidence/vcsel-robustness-20261029'
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+plan=json.loads((stage/'rolling-plan.json').read_text())
+manifest=stage/'vcsel-reference-microled-dynamics-20261029.json'
+m=json.loads(manifest.read_text());a=json.loads((ev/'archive-local.json').read_text());r=json.loads((stage/'rolling-readback.json').read_text())
+actual={f['path']:{'size':f['size'],'sha256':f['sha256']} for x in m['assets'] for f in x['files']}
+assert len(actual)==sum(len(x['files']) for x in m['assets'])
+assert actual==plan['files']
+assert a['manifest_sha256']==sha(manifest)
+assert a['source_commit']==plan['source_commit']==r['source_commit']
+remote={x['name']:x for x in r['files']}
+assert set(remote)=={x['name'] for x in m['assets']}|{manifest.name}
+for x in m['assets']:
+ rr=remote[x['name']];assert rr['download_readback_verified'] and rr['sha256']==x['sha256'] and rr['size']==x['size']
+allowed=set(json.loads((root/'evidence/microled-dynamic-20261029/release-allowlist.json').read_text())['files'])
+assert {p for p in actual if p.startswith('build/microled-dynamic-20261029/')}==allowed
+shutil.copy2(manifest,ev/'archive-manifest.json')
+receipt=dict(status='PASS',source_commit=a['source_commit'],manifest_sha256=sha(manifest),snapshot_plan_sha256=sha(stage/'rolling-plan.json'),files=len(actual),original_bytes=sum(x['size'] for x in actual.values()),archive_count=len(m['assets']),archive_bytes=sum(x['size'] for x in m['assets']),remote_assets_including_manifest=len(remote),checks=['Exact member path, size and SHA-256 equality against pre-upload frozen snapshot','No duplicate or omitted members','Every archive has completed full-byte remote readback with matching digest and size','MicroLED raw subset exactly matches the five-file licensed allowlist','Source commit identity agrees across plan, archive receipt and readback receipt'],boundary='Coverage audit, not an additional optical or circuit experiment. Final public tag/asset identity is separately checked by finalize-rolling.')
+(ev/'archive-coverage.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps(receipt,ensure_ascii=False,indent=2))

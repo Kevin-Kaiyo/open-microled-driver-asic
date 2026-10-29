@@ -1,0 +1,211 @@
+#!/usr/bin/env python3
+"""Authorized 3-thread completion of frozen rolling archive batches 10--85.
+No source/original removal. Reuses the frozen archive module and bundle verifier.
+Resume the suspended parent only after every worker has exited, including errors.
+"""
+import concurrent.futures
+import datetime
+import importlib.util
+import json
+import os
+from pathlib import Path
+import shutil
+import signal
+import subprocess
+import sys
+import threading
+import traceback
+
+sys.dont_write_bytecode = True
+ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / 'build/driver-report-20261029'
+PARENT_PID = 29274
+COMMIT = 'a58752951ed84cb7e1b815d4ca888c6b8f4f91b0'
+RELEASE_ID = 427339356
+MIN_FREE = int(2.5 * 1024**3)
+START, END, THREADS = 10, 85, 3
+SPEC = importlib.util.spec_from_file_location('frozen_driver_archive', ROOT / 'scripts/driver_report_20261029/archive.py')
+a = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(a)
+LOCK = threading.Lock()
+STOP = threading.Event()
+NEXT = START
+RESULTS = []
+ERRORS = []
+STARTED = datetime.datetime.now(datetime.timezone.utc).isoformat()
+PLAN = None
+PLAN_SHA = None
+ARCHIVE_SHA = a.sha(ROOT / 'scripts/driver_report_20261029/archive.py')
+BUNDLE_SHA = a.sha(ROOT / 'scripts/backup/release_bundle.py')
+RESUMED = False
+
+def utc():
+    return datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+def root_state():
+    line = subprocess.check_output(['ps', '-p', str(PARENT_PID), '-o', 'state=', '-o', 'command='], text=True).strip()
+    assert 'scripts/driver_report_20261029/archive.py rolling' in line, 'Parent PID identity changed'
+    return line
+
+def current_release():
+    r = a.gh('api', f'repos/{a.REPO}/releases/{RELEASE_ID}')
+    assert r['id'] == RELEASE_ID and r['draft'] and r['tag_name'] == a.TAG
+    assert r['target_commitish'] == COMMIT, 'Draft source target changed'
+    return r
+
+def check_members(paths):
+    for rel in paths:
+        p = ROOT / rel
+        assert not p.is_symlink() and p.is_file(), 'Nonregular frozen input: ' + rel
+        e = PLAN['files'][rel]
+        assert p.stat().st_size == e['size'] and a.sha(p) == e['sha256'], 'Frozen input changed: ' + rel
+
+def cleanup_verified(index):
+    for entry in index['assets']:
+        p = a.STAGE / 'assets' / entry['name']
+        assert p.parent == a.STAGE / 'assets' and p.name == entry['name']
+        if p.exists():
+            assert not p.is_symlink() and p.is_file()
+            assert p.stat().st_size == entry['size'] and a.sha(p) == entry['sha256']
+            p.unlink()  # Verified staging archive ONLY; never source/original inputs.
+
+def complete_part(i):
+    assert START <= i <= END
+    part = PLAN['parts'][i - 1]
+    paths, group = part['paths'], part['group']
+    name = f'{a.TAG}-s{i:03}'
+    manifest = a.STAGE / (name + '.json')
+    receipt = a.STAGE / (name + '-readback.json')
+    begin = utc()
+    check_members(paths)
+    m = a.bundle()
+    if not manifest.exists():
+        m.pack({'groups': [{'name': group, 'paths': paths}]}, name, a.STAGE / 'assets', manifest,
+               root=ROOT, target_bytes=128 * 1024**2)
+    index = m.read_manifest(manifest)
+    assert index['tag'] == name
+    actual = {x['path']: {'size': x['size'], 'sha256': x['sha256']} for z in index['assets'] for x in z['files']}
+    expected = {p: PLAN['files'][p] for p in paths}
+    assert actual == expected, 'Part manifest differs from frozen snapshot'
+    assert all(z['group'] == group and z['name'].startswith(name + '-') for z in index['assets'])
+    reused = receipt.exists()
+    if reused:
+        prior = json.loads(receipt.read_text())
+        now = {x['name']: x for x in current_release()['assets']}
+        assert {x['name'] for x in prior} == {x['name'] for x in index['assets']}
+        for x in prior:
+            z = now[x['name']]
+            e = next(v for v in index['assets'] if v['name'] == x['name'])
+            assert (x['size'], x['sha256']) == (e['size'], e['sha256'])
+            assert x['download_readback_verified'] is True
+            assert (z['id'], z['updated_at'], z['size']) == (x['asset_id'], x['updated_at'], x['size'])
+            if z.get('digest'):
+                assert z['digest'] == 'sha256:' + x['sha256']
+        cleanup_verified(index)
+    else:
+        m.verify(manifest, a.STAGE / 'assets')
+        check_members(paths)
+        checked = []
+        for entry in index['assets']:
+            now = {x['name']: x for x in current_release()['assets']}
+            if entry['name'] not in now:
+                subprocess.run(['gh', 'release', 'upload', a.TAG, str(a.STAGE / 'assets' / entry['name']), '--repo', a.REPO], check=True)
+            now = {x['name']: x for x in current_release()['assets']}
+            checked.append(a.api_readback(now[entry['name']], entry))
+        a.emit(receipt, checked)
+        cleanup_verified(index)
+    check_members(paths)
+    return {'batch': i, 'status': 'verified', 'started_utc': begin, 'finished_utc': utc(),
+            'manifest': str(manifest.relative_to(ROOT)), 'manifest_sha256': a.sha(manifest),
+            'readback_receipt': str(receipt.relative_to(ROOT)), 'readback_sha256': a.sha(receipt),
+            'assets': len(index['assets']), 'files': len(paths),
+            'bytes': sum(x['size'] for x in index['assets']), 'reused_receipt': reused,
+            'verified_temporary_archives_removed': True}
+
+def worker():
+    global NEXT
+    while True:
+        with LOCK:
+            if STOP.is_set() or NEXT > END:
+                return
+            free = shutil.disk_usage(ROOT).free
+            if free < MIN_FREE:
+                ERRORS.append({'kind': 'disk_threshold', 'free_bytes': free, 'minimum_bytes': MIN_FREE, 'next_batch': NEXT, 'time': utc()})
+                STOP.set()
+                return
+            i = NEXT
+            NEXT += 1
+        try:
+            r = complete_part(i)
+            with LOCK:
+                RESULTS.append(r)
+            print(f'HELPER VERIFIED batch {i}/{END}: {r["bytes"]} bytes; originals retained', flush=True)
+        except BaseException as exc:
+            with LOCK:
+                ERRORS.append({'kind': 'batch_failure', 'batch': i, 'error': repr(exc), 'traceback': traceback.format_exc(), 'time': utc()})
+                STOP.set()
+            print(f'HELPER STOP batch {i}: {exc!r}', flush=True)
+            return
+
+def main():
+    global PLAN, PLAN_SHA, RESUMED
+    receipt_path = OUT / 'parallel-archive-10-85-execution.json'
+    lock_path = OUT / 'parallel-archive-10-85.lock'
+    assert not receipt_path.exists(), 'Execution receipt already exists; do not repeat blindly'
+    with lock_path.open('x') as f:
+        f.write(json.dumps({'pid': os.getpid(), 'parent_pid': PARENT_PID, 'started_utc': STARTED}) + '\n')
+    try:
+        state = root_state()
+        assert 'T' in state.split()[0], 'Root rolling process must remain stopped'
+        assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip() == COMMIT
+        assert a.gh('repo', 'view', a.REPO, '--json', 'nameWithOwner,isPrivate') == {'isPrivate': False, 'nameWithOwner': a.REPO}
+        draft = a.gh('release', 'view', a.TAG, '--repo', a.REPO, '--json', 'databaseId,isDraft,tagName,targetCommitish')
+        assert draft == {'databaseId': RELEASE_ID, 'isDraft': True, 'tagName': a.TAG, 'targetCommitish': COMMIT}
+        current_release()
+        pp = a.STAGE / 'rolling-plan.json'
+        PLAN_SHA = a.sha(pp)
+        PLAN = json.loads(pp.read_text())
+        assert PLAN['source_commit'] == COMMIT and PLAN['release_id'] == RELEASE_ID
+        assert len(PLAN['parts']) == END
+        print(f'HELPER START pid={os.getpid()} batches={START}-{END} threads={THREADS} free={shutil.disk_usage(ROOT).free}', flush=True)
+        # Exiting this context joins all running workers before the finally/resume section.
+        with concurrent.futures.ThreadPoolExecutor(max_workers=THREADS) as executor:
+            futures = [executor.submit(worker) for _ in range(THREADS)]
+            for future in futures:
+                future.result()
+        assert a.sha(pp) == PLAN_SHA, 'Rolling plan changed'
+        assert a.sha(ROOT / 'scripts/driver_report_20261029/archive.py') == ARCHIVE_SHA
+        assert a.sha(ROOT / 'scripts/backup/release_bundle.py') == BUNDLE_SHA
+        assert subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip() == COMMIT
+    except BaseException as exc:
+        STOP.set()
+        ERRORS.append({'kind': 'helper_failure', 'error': repr(exc), 'traceback': traceback.format_exc(), 'time': utc()})
+    finally:
+        # No executor or worker remains active here, even when a future raised.
+        try:
+            root_state()
+            os.kill(PARENT_PID, signal.SIGCONT)
+            RESUMED = True
+        except BaseException as exc:
+            ERRORS.append({'kind': 'parent_resume_failure', 'error': repr(exc), 'time': utc()})
+        result = {'schema_version': 1, 'source_commit': COMMIT, 'release_id': RELEASE_ID,
+                  'tag': a.TAG, 'repository': a.REPO, 'parent_pid': PARENT_PID,
+                  'helper_pid': os.getpid(), 'helper_sha256': a.sha(__file__),
+                  'archive_module_sha256': ARCHIVE_SHA, 'bundle_module_sha256': BUNDLE_SHA,
+                  'rolling_plan_sha256': PLAN_SHA, 'requested_batch_range': [START, END],
+                  'threads': THREADS, 'disk_stop_threshold_bytes': MIN_FREE,
+                  'started_utc': STARTED, 'finished_utc': utc(), 'free_bytes_at_exit': shutil.disk_usage(ROOT).free,
+                  'status': 'complete' if not ERRORS and len(RESULTS) == END - START + 1 else 'incomplete',
+                  'checks': ['draft release and public repository identity', 'frozen HEAD and plan hash',
+                             'per-member snapshot SHA-256 and size before/after', 'exact manifest membership',
+                             'release_bundle archive and member verification', 'authenticated remote byte readback SHA-256',
+                             'delete only verified temporary staging archives', 'all threads joined before parent SIGCONT'],
+                  'parent_resumed_after_worker_join': RESUMED, 'originals_removed': False,
+                  'batches_1_through_9_modified_by_helper': False,
+                  'completed': sorted(RESULTS, key=lambda x: x['batch']), 'errors': ERRORS}
+        a.emit(receipt_path, result)
+        print(f'HELPER FINAL status={result["status"]} verified={len(RESULTS)}/76 parent_resumed={RESUMED} receipt={receipt_path}', flush=True)
+    return 0 if not ERRORS and len(RESULTS) == END - START + 1 else 1
+
+if __name__ == '__main__':
+    raise SystemExit(main())
