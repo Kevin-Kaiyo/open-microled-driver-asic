@@ -1,0 +1,419 @@
+{
+  "schema": "microled-device-codesign-illustrative-calculations-v1",
+  "date": "2026-10-29",
+  "status": "teaching arithmetic and proposed protocol only; no new transistor or optical pass claim",
+  "recomputation_comparison_policy": {
+    "strict": "all structure, types, keys, identities, hashes, integer counts and all other values",
+    "explicit_float_paths_rel_tol": {
+      "/abc/rows/2/recombination_cm_inv3_s_inv": 1e-12,
+      "/abc/rows/2/density_over_recombination_lifetime_ns": 1e-12,
+      "/abc/rows/2/radiative_fraction_ABC_only": 1e-12
+    },
+    "float_abs_tol": 0.0,
+    "reason": "Three derived ABC leaves differ by approximately one ULP between Python 3.9.6 and 3.12.13; this is arithmetic rounding, not evidence uncertainty or a physical tolerance."
+  },
+  "provenance": {
+    "script": "scripts/microled_device_codesign_20261029/calculations.py",
+    "script_sha256": "5d8129882f0e572beec1507bc31bf7936f95451a739e45b8b302061117a9818c",
+    "frozen_response_contract": "evidence/microled-dynamic-20261029/response-contract.json",
+    "frozen_response_contract_sha256": "c685bd0e6b8c0d471f12cd1ec5563a7c20ad9e1c42931edd712aa995dac65b25",
+    "frozen_test_frame_spec": "docs/superpowers/specs/2026-10-25-fair-driver-v1.md",
+    "frozen_test_frame_spec_sha256": "c28fc36686bb5284d43d12d3b054d2dc8969f50c230676a27b3dc9c2c9818e80",
+    "receiver_training_guard_contract": "evidence/fair-driver-v1/rx-equal-latency-v2-contract.md",
+    "receiver_training_guard_contract_sha256": "1679e2219a9bf5be44e808d5fa7326bdcc5893b74ac6ae654cc818c35d3759a6",
+    "receiver_v3_source": "scripts/three_gbps_experiment/vcsel_driver_receiver_v3.py",
+    "receiver_v3_source_sha256": "1f47a36f24379b58fb3094303d17d678e0aba7328ddbd58eb601c7b966e0c962"
+  },
+  "frame": {
+    "evidence_class": "arithmetic from existing frozen test-frame contract",
+    "payload_bits": 4096,
+    "frame_bits": 4736,
+    "overhead_bits": 640,
+    "parts_bits": {
+      "warm": 64,
+      "training_scoring": 448,
+      "training_guard": 64,
+      "validation": 4096,
+      "tail": 64
+    },
+    "ranges_bits_left_closed_right_open": {
+      "warm": [
+        0,
+        64
+      ],
+      "training_scoring": [
+        64,
+        512
+      ],
+      "training_guard": [
+        512,
+        576
+      ],
+      "validation": [
+        576,
+        4672
+      ],
+      "tail": [
+        4672,
+        4736
+      ]
+    },
+    "payload_efficiency_exact": "32/37",
+    "payload_efficiency": 0.8648648648648649,
+    "net_payload_bps": 3200000000.0,
+    "line_bit_rate_bps": 3700000000.0,
+    "frame_duration_us": 1.28,
+    "nrz": {
+      "symbols_per_frame": 4736,
+      "baud": 3700000000.0,
+      "symbol_UI_ps": 270.27027027027026,
+      "nyquist_Hz": 1850000000.0
+    },
+    "pam4": {
+      "symbols_per_frame": 2368,
+      "baud": 1850000000.0,
+      "symbol_UI_ps": 540.5405405405405,
+      "nyquist_Hz": 925000000.0,
+      "condition": "2 bits/symbol; same 32/37 test-frame efficiency; no added FEC/encoding overhead"
+    },
+    "boundary": "The original 512-bit training overhead consists of 448 scoring bits and 64 guard bits; the guard does not train the receiver. This is test accounting, not an implemented product protocol. Extra framing/FEC must reduce efficiency or raise line rate. Nyquist alone does not predict eye opening or BER."
+  },
+  "geometry": [
+    {
+      "square_side_um": 5,
+      "square_area_um2": 25,
+      "square_area_cm2": 2.5e-07,
+      "square_perimeter_um": 20,
+      "square_perimeter_over_area_um_inv": 0.8,
+      "same_I_25uA_J_A_cm2": 100.00000000000001,
+      "same_I_100uA_J_A_cm2": 400.00000000000006,
+      "same_J_25A_cm2_I_uA": 6.249999999999999,
+      "circle_if_same_numerical_DIAMETER_um": 5,
+      "circle_area_um2": 19.634954084936208,
+      "circle_J_at_100uA_A_cm2": 509.29581789406507,
+      "circle_DIAMETER_um_for_equal_square_area": 5.6418958354775635
+    },
+    {
+      "square_side_um": 10,
+      "square_area_um2": 100,
+      "square_area_cm2": 1e-06,
+      "square_perimeter_um": 40,
+      "square_perimeter_over_area_um_inv": 0.4,
+      "same_I_25uA_J_A_cm2": 25.000000000000004,
+      "same_I_100uA_J_A_cm2": 100.00000000000001,
+      "same_J_25A_cm2_I_uA": 24.999999999999996,
+      "circle_if_same_numerical_DIAMETER_um": 10,
+      "circle_area_um2": 78.53981633974483,
+      "circle_J_at_100uA_A_cm2": 127.32395447351627,
+      "circle_DIAMETER_um_for_equal_square_area": 11.283791670955127
+    },
+    {
+      "square_side_um": 20,
+      "square_area_um2": 400,
+      "square_area_cm2": 4e-06,
+      "square_perimeter_um": 80,
+      "square_perimeter_over_area_um_inv": 0.2,
+      "same_I_25uA_J_A_cm2": 6.250000000000001,
+      "same_I_100uA_J_A_cm2": 25.000000000000004,
+      "same_J_25A_cm2_I_uA": 99.99999999999999,
+      "circle_if_same_numerical_DIAMETER_um": 20,
+      "circle_area_um2": 314.1592653589793,
+      "circle_J_at_100uA_A_cm2": 31.830988618379067,
+      "circle_DIAMETER_um_for_equal_square_area": 22.567583341910254
+    },
+    {
+      "square_side_um": 40,
+      "square_area_um2": 1600,
+      "square_area_cm2": 1.6e-05,
+      "square_perimeter_um": 160,
+      "square_perimeter_over_area_um_inv": 0.1,
+      "same_I_25uA_J_A_cm2": 1.5625000000000002,
+      "same_I_100uA_J_A_cm2": 6.250000000000001,
+      "same_J_25A_cm2_I_uA": 399.99999999999994,
+      "circle_if_same_numerical_DIAMETER_um": 40,
+      "circle_area_um2": 1256.6370614359173,
+      "circle_J_at_100uA_A_cm2": 7.957747154594767,
+      "circle_DIAMETER_um_for_equal_square_area": 45.13516668382051
+    }
+  ],
+  "rc": {
+    "evidence_class": "synthetic illustrative lumped electrical calculation; never measured/fitted",
+    "assumptions": {
+      "area_capacitance_fF_per_um2": 0.25,
+      "perimeter_capacitance_fF_per_um": 0.1,
+      "fixed_pad_package_capacitance_fF": 100.0,
+      "n_times_thermal_voltage_V": 0.05,
+      "voltage_source_series_R_ohm": 50.0
+    },
+    "equations": {
+      "C": "c_area*A + c_perimeter*P + C_fixed",
+      "rd": "nVT/I (hypothetical local exponential slope, no added contact resistance)",
+      "current_input": "I_conductive/I_terminal = 1/(1+s*rd*C)",
+      "voltage_input_normalized": "H/H(0) = 1/(1+s*(Rs||rd)*C)"
+    },
+    "rows": [
+      {
+        "square_side_um": 5,
+        "geometric_C_fF": 8.25,
+        "fixed_C_fF": 100.0,
+        "total_C_fF": 108.25,
+        "fixed_C_fraction": 0.9237875288683602,
+        "fixed_50ohm_tau_ps": 5.4125000000000005,
+        "fixed_50ohm_pole_GHz": 29.405070317209297,
+        "same_I_100uA": {
+          "I_uA": 100.0,
+          "rd_ohm": 500.0,
+          "ideal_current_input_tau_ps": 54.125,
+          "ideal_current_input_pole_GHz": 2.94050703172093,
+          "voltage_via_50ohm_tau_ps": 4.920454545454547,
+          "voltage_via_50ohm_pole_GHz": 32.34557734893023,
+          "ideal_current_area_C_only_tau_ps": 3.125
+        },
+        "same_J_25A_cm2": {
+          "I_uA": 6.249999999999998,
+          "rd_ohm": 8000.000000000002,
+          "ideal_current_input_tau_ps": 866.0000000000002,
+          "ideal_current_input_pole_GHz": 0.18378168948255807,
+          "voltage_via_50ohm_tau_ps": 5.37888198757764,
+          "voltage_via_50ohm_pole_GHz": 29.58885200669186,
+          "ideal_current_area_C_only_tau_ps": 50.00000000000002
+        }
+      },
+      {
+        "square_side_um": 10,
+        "geometric_C_fF": 29.0,
+        "fixed_C_fF": 100.0,
+        "total_C_fF": 129.0,
+        "fixed_C_fraction": 0.7751937984496124,
+        "fixed_50ohm_tau_ps": 6.45,
+        "fixed_50ohm_pole_GHz": 24.675184975487642,
+        "same_I_100uA": {
+          "I_uA": 100.0,
+          "rd_ohm": 500.0,
+          "ideal_current_input_tau_ps": 64.5,
+          "ideal_current_input_pole_GHz": 2.4675184975487654,
+          "voltage_via_50ohm_tau_ps": 5.863636363636365,
+          "voltage_via_50ohm_pole_GHz": 27.14270347303641,
+          "ideal_current_area_C_only_tau_ps": 12.5
+        },
+        "same_J_25A_cm2": {
+          "I_uA": 24.999999999999993,
+          "rd_ohm": 2000.0000000000005,
+          "ideal_current_input_tau_ps": 258.0000000000001,
+          "ideal_current_input_pole_GHz": 0.616879624387191,
+          "voltage_via_50ohm_tau_ps": 6.292682926829269,
+          "voltage_via_50ohm_pole_GHz": 25.29206459987484,
+          "ideal_current_area_C_only_tau_ps": 50.00000000000002
+        }
+      },
+      {
+        "square_side_um": 20,
+        "geometric_C_fF": 108.0,
+        "fixed_C_fF": 100.0,
+        "total_C_fF": 208.00000000000003,
+        "fixed_C_fraction": 0.4807692307692308,
+        "fixed_50ohm_tau_ps": 10.4,
+        "fixed_50ohm_pole_GHz": 15.303359912682243,
+        "same_I_100uA": {
+          "I_uA": 100.0,
+          "rd_ohm": 500.0,
+          "ideal_current_input_tau_ps": 104.00000000000001,
+          "ideal_current_input_pole_GHz": 1.5303359912682242,
+          "voltage_via_50ohm_tau_ps": 9.454545454545457,
+          "voltage_via_50ohm_pole_GHz": 16.833695903950463,
+          "ideal_current_area_C_only_tau_ps": 50.0
+        },
+        "same_J_25A_cm2": {
+          "I_uA": 99.99999999999997,
+          "rd_ohm": 500.0000000000001,
+          "ideal_current_input_tau_ps": 104.00000000000003,
+          "ideal_current_input_pole_GHz": 1.530335991268224,
+          "voltage_via_50ohm_tau_ps": 9.454545454545457,
+          "voltage_via_50ohm_pole_GHz": 16.833695903950463,
+          "ideal_current_area_C_only_tau_ps": 50.00000000000002
+        }
+      },
+      {
+        "square_side_um": 40,
+        "geometric_C_fF": 416.0,
+        "fixed_C_fF": 100.0,
+        "total_C_fF": 516.0,
+        "fixed_C_fraction": 0.1937984496124031,
+        "fixed_50ohm_tau_ps": 25.8,
+        "fixed_50ohm_pole_GHz": 6.168796243871911,
+        "same_I_100uA": {
+          "I_uA": 100.0,
+          "rd_ohm": 500.0,
+          "ideal_current_input_tau_ps": 258.0,
+          "ideal_current_input_pole_GHz": 0.6168796243871913,
+          "voltage_via_50ohm_tau_ps": 23.45454545454546,
+          "voltage_via_50ohm_pole_GHz": 6.785675868259102,
+          "ideal_current_area_C_only_tau_ps": 200.0
+        },
+        "same_J_25A_cm2": {
+          "I_uA": 399.9999999999999,
+          "rd_ohm": 125.00000000000003,
+          "ideal_current_input_tau_ps": 64.50000000000003,
+          "ideal_current_input_pole_GHz": 2.467518497548764,
+          "voltage_via_50ohm_tau_ps": 18.42857142857143,
+          "voltage_via_50ohm_pole_GHz": 8.636314741420676,
+          "ideal_current_area_C_only_tau_ps": 50.00000000000002
+        }
+      }
+    ],
+    "fixed_50ohm_Cfloor_only_tau_ps": 5.000000000000001,
+    "fixed_50ohm_Cfloor_only_pole_GHz": 31.830988618379063,
+    "boundary": "The pad floor limits capacitance scaling; it is a time-constant floor and an RC-pole ceiling only under the stated fixed resistance. Real Zout(f,state), contact/spreading R, distributed electrodes, lifetime, optical gain and heat are omitted. This table is not an EO bandwidth prediction."
+  },
+  "abc": {
+    "evidence_class": "synthetic illustrative rate-equation calculation; not any published device fit",
+    "assumptions": {
+      "A_s_inv": 10000000.0,
+      "B_cm3_per_s": 1e-11,
+      "C_cm6_per_s": 1e-30,
+      "uniform_effective_active_thickness_nm": 9,
+      "injection_efficiency": 1,
+      "q_C_exact_SI": 1.602176634e-19
+    },
+    "equations": {
+      "R": "A*n+B*n^2+C*n^3",
+      "tau_differential": "1/(A+2*B*n+3*C*n^2)",
+      "intrinsic_pole": "1/(2*pi*tau_differential)",
+      "J": "q*d*R/eta_injection"
+    },
+    "rows": [
+      {
+        "carrier_density_cm_inv3": 1e+18,
+        "recombination_cm_inv3_s_inv": 2.1e+25,
+        "differential_recombination_rate_s_inv": 33000000.0,
+        "differential_lifetime_ns": 30.303030303030305,
+        "density_over_recombination_lifetime_ns": 47.61904761904762,
+        "intrinsic_one_reservoir_pole_MHz": 5.252113122032546,
+        "radiative_fraction_ABC_only": 0.47619047619047616,
+        "J_if_uniform_9nm_and_injection_efficiency_1_A_cm2": 3.02811383826
+      },
+      {
+        "carrier_density_cm_inv3": 3e+18,
+        "recombination_cm_inv3_s_inv": 1.4699999999999999e+26,
+        "differential_recombination_rate_s_inv": 97000000.0,
+        "differential_lifetime_ns": 10.309278350515465,
+        "density_over_recombination_lifetime_ns": 20.408163265306122,
+        "intrinsic_one_reservoir_pole_MHz": 15.438029479913848,
+        "radiative_fraction_ABC_only": 0.6122448979591837,
+        "J_if_uniform_9nm_and_injection_efficiency_1_A_cm2": 21.196796867819998
+      },
+      {
+        "carrier_density_cm_inv3": 1e+19,
+        "recombination_cm_inv3_s_inv": 2.1000000000000002e+27,
+        "differential_recombination_rate_s_inv": 510000000.0,
+        "differential_lifetime_ns": 1.9607843137254901,
+        "density_over_recombination_lifetime_ns": 4.761904761904761,
+        "intrinsic_one_reservoir_pole_MHz": 81.16902097686662,
+        "radiative_fraction_ABC_only": 0.4761904761904761,
+        "J_if_uniform_9nm_and_injection_efficiency_1_A_cm2": 302.811383826
+      }
+    ],
+    "boundary": "This assumes one uniform charge reservoir and locally constant ABC coefficients. QW transport/capture/escape, polarization, sidewalls, leakage, photon extraction and self-heating are omitted. Increasing A can speed nonradiative loss while lowering efficiency. Neither nominal QW count nor a magnitude-only cutoff uniquely determines this lifetime."
+  },
+  "bandwidth_conventions": {
+    "evidence_class": "algebra for H=1/(1+j*f/fp), DC normalized, no peaking/delay",
+    "detector_voltage_or_VNA_wave_amplitude_dB": "20*log10(|H|)",
+    "optical_modulation_amplitude_is_watts": "If a source reports 10*log10(deltaP/deltaP0), its numerical dB is half 20*log10(|H|), assuming the detector is linear and no other transfer changes. Preserve the source definition/reference plane; optical carrier power and modulation amplitude are different quantities.",
+    "at_pole_f_over_fp_1": {
+      "amplitude_ratio": 0.7071067811865475,
+      "20log10_amplitude_dB": -3.0102999566398125,
+      "10log10_optical_modulation_amplitude_dB": -1.5051499783199063
+    },
+    "at_amplitude_ratio_half": {
+      "f_over_fp": 1.7320508075688772,
+      "20log10_amplitude_dB": -6.020599913279624,
+      "10log10_optical_modulation_amplitude_dB": -3.010299956639812
+    },
+    "exact_minus3dB_20log_f_over_fp": 0.9976283451109834,
+    "exact_minus6dB_20log_f_over_fp": 1.7265780334334653,
+    "exact_minus6_over_minus3_frequency_ratio_20log": 1.7306826153194237,
+    "tau_ps_if_a_single_intrinsic_pole_is_1p85GHz": 86.02969896859209,
+    "synthetic_cascade": {
+      "poles_Hz": {
+        "electrical": 3000000000.0,
+        "intrinsic_EO": 2000000000.0,
+        "RX": 1000000000.0
+      },
+      "half_power_cutoff_Hz": 787401464.6023004,
+      "amplitude_at_1p85GHz": 0.2971239936181961,
+      "20log10_amplitude_at_1p85GHz_dB": -10.541245525001262,
+      "condition": "Three distinct nonoverlapping blocks only. Do not count a recombination charge state both as diffusion capacitance in an electrical RC pole and again as an independent lifetime pole."
+    },
+    "magnitude_does_not_identify_phase": {
+      "counterexample": "H(s) and H(s)*exp(-s*100ps)",
+      "additional_delay_ps": 100.0,
+      "additional_phase_at_1p85GHz_deg": -66.60000000000001,
+      "amplitude_ratio_between_delayed_and_original": 1.0
+    },
+    "no_double_counting": "Use either an observed full measured chain with its original electrical source and detector, or calibrated separately deembedded blocks. Never fit full E-to-E S21 and append the same electrical/optical/RX pole again. Magnitude does not identify phase or delay.",
+    "boundary": "A pole at Nyquist is a diagnostic example, not a required/sufficient BER criterion. Cascaded half-power frequency is not the minimum of the individual pole frequencies."
+  },
+  "ber": {
+    "evidence_class": "exact one-sided binomial zero-error confidence calculation, conditional on IID stationary bit errors",
+    "confidence": 0.95,
+    "equation": "p_upper=1-alpha^(1/N); N_min=ceil(ln(alpha)/ln(1-p_target))",
+    "N_4096_exact_upper": 0.0007311125564754343,
+    "N_4096_rule_of_three_upper": 0.000732421875,
+    "targets": [
+      {
+        "proposed_target_ber": 1e-12,
+        "minimum_zero_error_bits_95percent_one_sided": 2995732273553,
+        "exact_upper_bound_at_N": 9.999999999998307e-13,
+        "wall_time_s_at_3p2G_validated_payload_bps": 936.1663354853125
+      },
+      {
+        "proposed_target_ber": 3e-12,
+        "minimum_zero_error_bits_95percent_one_sided": 998577424517,
+        "exact_upper_bound_at_N": 2.9999999999984952e-12,
+        "wall_time_s_at_3p2G_validated_payload_bps": 312.0554451615625
+      }
+    ],
+    "boundary": "1e-12 and 3e-12 are proposed planning thresholds, not the frozen project acceptance contract. A deterministic no-noise 0/4096 SPICE run is not random optical BER sampling. Repeating an identical trace creates no new independent evidence. Burst/correlated errors, drifting temperature, confidence across corners and FEC require additional design.",
+    "source": "NIST/SEMATECH e-Handbook section 7.2.4.1 exact binomial interval; use alpha rather than alpha/2 for a one-sided upper limit: https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm"
+  },
+  "energy": {
+    "evidence_class": "synthetic LED-terminal-only constant-voltage/current example",
+    "assumptions": {
+      "Vf_V": 3.0,
+      "Iavg_A": 0.0001,
+      "net_payload_bps": 3200000000.0
+    },
+    "LED_terminal_average_power_uW": 300.0,
+    "LED_terminal_pJ_per_offered_payload_bit": 0.09375,
+    "equations": {
+      "LED_exact": "integral_frame(V_LED(t)*I_LED(t) dt)/N_payload",
+      "LED_constant_approximation": "Vf*Iavg/Rnet",
+      "source_port_energy": "For each declared input port separately integrate positive, returned and net V*I over the same whole frame; divide by offered payload bits; report successfully delivered payload separately if errors occur."
+    },
+    "boundaries": {
+      "LED_only": "Electrical energy at LED terminals, not emitted optical energy or full link energy.",
+      "declared_driver_ports": "State VIN5V, VDD3.3V, VREF2.5V, D0/D1 and DISABLE source planes plus included auxiliary devices/passives. External reference IC generation, upstream regulation and serializer/clock/encoding/DSP may be outside; explicitly list exclusions. Avoid counting terminal LED energy twice if its supply energy is already included.",
+      "closed_TX": "Include all physical TX supplies, LED, regulation/reference generation, serializer/clock, mapping/FEC and equalization/control overhead for the same net delivered payload. Summing an incomplete driver boundary and LED-only number does not close TX.",
+      "closed_link": "Additionally include optical loss assumptions, calibrated detector/TIA/CDR/equalization/FEC and RX power; this calculation supplies none of those."
+    }
+  },
+  "logical_checks": {
+    "frame_parts_sum": true,
+    "exact_eta_32_over_37": true,
+    "line_rate_3p7Gbps": true,
+    "frame_1p28us": true,
+    "payload_and_frame_time_agree": true,
+    "sameJ_area_only_current_drive_tau_is_constant": true,
+    "fixed_pad_fraction_grows_when_size_shrinks": true,
+    "voltage_time_constants_below_current_time_constants": true,
+    "cascade_cutoff_below_all_individual_poles": true,
+    "cascade_root_half_power": true,
+    "allpass_delay_preserves_magnitude_but_changes_phase": true,
+    "square_vs_same_numeric_diameter_area_ratio": true,
+    "ABC_differential_lifetime_smaller_than_density_over_R": true,
+    "LED_example_0p09375pJ": true,
+    "zero_4096_does_not_qualify_1e_minus12": true,
+    "no_phase_added_to_source_contract": true
+  },
+  "all_logical_checks_pass": true
+}

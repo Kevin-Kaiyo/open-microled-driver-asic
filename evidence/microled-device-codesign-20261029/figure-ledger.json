@@ -1,0 +1,267 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-10-29",
+  "purpose": "MicroLED device / driver / package / receiver co-design research teaching figures",
+  "evidence_class": "original conceptual diagrams plus explicitly stated elementary geometry",
+  "reuse_status": "repository-original artwork; no borrowed source image or traced paper figure",
+  "not_claimed": [
+    "TCAD",
+    "fabricated device",
+    "mask layout or GDS",
+    "process-qualified structure",
+    "measured performance",
+    "production readiness"
+  ],
+  "generator": "scripts/microled_device_codesign_20261029/figures.py",
+  "generator_sha256": "dfd5b8a3b91f170bb2de523244c504fa5cb5bd67c153c891717beb46a3ba4c76",
+  "render_command": "build/layout/venv/bin/python scripts/microled_device_codesign_20261029/figures.py",
+  "matplotlib_version": "3.11.2",
+  "numpy_version": "2.5.3",
+  "font_used_for_png": "Hiragino Sans GB",
+  "font_fallbacks_in_svg": [
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Noto Sans CJK SC",
+    "Microsoft YaHei UI",
+    "sans-serif"
+  ],
+  "visual_review": {
+    "status": "pass",
+    "date": "2026-10-29",
+    "method": "Final figure 6 PNG re-inspected with view_image at native 1600 px width after S21 reference-plane wording correction; other three figures retain reviewed byte-identical artwork.",
+    "checks": [
+      "Chinese and math glyphs present",
+      "All text within safe canvas bounds",
+      "Number badges visible",
+      "No overlaps in corrected Port 2 label",
+      "Port 2 explicitly describes measured full-chain S21",
+      "Electrical and optical de-embedding explanation retained",
+      "Figure numbering 1,4,2,6 retained",
+      "Correct p-QW-n current and isolated p/n metal retained",
+      "Concept-only evidence labels retained"
+    ],
+    "repairs": [
+      "CJK Latin math fallback and badge z-order",
+      "Circuit label and light-arrow placements",
+      "Port 2 wording changed from E/O S21 to measured full-chain complex S21 after scientific review"
+    ],
+    "artifact_sha256": {
+      "docs/research/microled-device-codesign-20261029/figures/01-device-cross-section.svg": "d8bcdb910ab8784ef771ede338ee2b20b9e5fd40b219e799c9caa601ed6ac25e",
+      "docs/research/microled-device-codesign-20261029/figures/01-device-cross-section.png": "d9f2eac74964f8555a935426561d7d0ea5e8fbeea4b1dfd5717a11d126a1cdfe",
+      "docs/research/microled-device-codesign-20261029/figures/02-orientation-quantum-wells.svg": "8eaebdf7c0b4dc48d614086e89e676729ecfdadd42f8a2a3b66a6af900d041ce",
+      "docs/research/microled-device-codesign-20261029/figures/02-orientation-quantum-wells.png": "23d523a93818427a777f4eca2fa11094defb437737523c82738c70453728d409",
+      "docs/research/microled-device-codesign-20261029/figures/03-size-electrode-tradeoffs.svg": "153d90cd94687f6ef28c7126167dfa1631fb62ef4254125b92c71a61be0808b0",
+      "docs/research/microled-device-codesign-20261029/figures/03-size-electrode-tradeoffs.png": "31f51d663c7c78aa06107e5dd44d737a7664760c1f3e94b6618f7cae0dd0f9ee",
+      "docs/research/microled-device-codesign-20261029/figures/04-codesign-reference-planes.svg": "71466d1f447027af6833c71e7a0dc1baa52cc3059b98357531c777f7e2fd287c",
+      "docs/research/microled-device-codesign-20261029/figures/04-codesign-reference-planes.png": "972e6a6697a7654d61ddbb65bcc98ed84896ecaa0608910b7782d5040b2fd1e1"
+    }
+  },
+  "source_basis_locators": {
+    "ZHU2024": {
+      "title": "Modulation bandwidth analysis of GaN-based micro-LED deduced by an equivalent circuit model",
+      "doi": "10.1364/OE.539321",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39573804/",
+      "use": "Mechanism / model decomposition only; no numerical result reproduced."
+    },
+    "ELBADAOUI2025": {
+      "title": "SPICE Modeling of GaN MicroLEDs for Optical Communication",
+      "doi": "10.1002/jsid.2105",
+      "url": "https://sid.onlinelibrary.wiley.com/doi/full/10.1002/jsid.2105",
+      "use": "Mechanism / electrical and optical modeling and de-embedding basis; no artwork copied."
+    },
+    "LI2025": {
+      "doi": "10.1063/5.0258108",
+      "preprint_url": "https://arxiv.org/abs/2502.21302",
+      "use": "Mechanism / co-design context; source ID aligned with main report ledger."
+    },
+    "WANG2019": {
+      "doi": "10.3390/mi10110767",
+      "url": "https://doi.org/10.3390/mi10110767",
+      "use": "Size / mechanism background; source ID aligned with main report ledger."
+    },
+    "RAJABI2018": {
+      "doi": "10.1364/OE.26.024985",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30469606/",
+      "use": "Orientation / QW mechanism context; source ID supplied by report research owner."
+    },
+    "XU2023": {
+      "doi": "10.1109/JPHOT.2023.3235108",
+      "url": "https://doi.org/10.1109/JPHOT.2023.3235108",
+      "use": "QW and orientation context; source ID supplied by report research owner."
+    },
+    "LIN2026": {
+      "locator": "Main report source ledger, LIN2026",
+      "use": "Size / current-density comparison context; source ID supplied by report research owner."
+    }
+  },
+  "figures": [
+    {
+      "id": "FIG01",
+      "figure_number_in_report": 1,
+      "basename": "01-device-cross-section",
+      "title_zh": "GaN MicroLED：电流、光、寄生与热走不同路径",
+      "explanation": "横向接触例子的层次剖面、正确的 p→QW→n 常规电流路径、侧壁介质钝化、局部光逃逸与向下热路径；用 Rs、Cpad、gj 和动态 Cj 区分端口储能与复合。",
+      "source_basis_ids": [
+        "ZHU2024",
+        "ELBADAOUI2025",
+        "WANG2019"
+      ],
+      "source_basis": "独立机制综合；不追摹论文剖面或电路图。ZHU2024 / El Badaoui 2025 支持寄生网络与有源区动力学需联合分析的建模依据。",
+      "supports": [
+        "端口电流中的电容电流不能直接当作光输出",
+        "接触与电流扩展、结区动态、焊盘和热路径具有不同作用"
+      ],
+      "does_not_support": [
+        "某种实际外延堆栈、层厚、材料参数或金属化已被选择",
+        "所画有效电路已由本项目实测校准",
+        "图示衬底散热方向是所有封装的唯一主要热路径"
+      ],
+      "width_px": 1600,
+      "height_px": 1180,
+      "min_font_pt": 13,
+      "text_canvas_bounds_check": "pass",
+      "artifacts": [
+        {
+          "path": "docs/research/microled-device-codesign-20261029/figures/01-device-cross-section.svg",
+          "sha256": "d8bcdb910ab8784ef771ede338ee2b20b9e5fd40b219e799c9caa601ed6ac25e",
+          "bytes": 29628
+        },
+        {
+          "path": "docs/research/microled-device-codesign-20261029/figures/01-device-cross-section.png",
+          "sha256": "d9f2eac74964f8555a935426561d7d0ea5e8fbeea4b1dfd5717a11d126a1cdfe",
+          "bytes": 246234
+        }
+      ]
+    },
+    {
+      "id": "FIG02",
+      "figure_number_in_report": 4,
+      "basename": "02-orientation-quantum-wells",
+      "title_zh": "晶向与量子阱：先看内部场，再看载流子与传输",
+      "explanation": "以同一水平阱平面展示 c 面、m 面和半极性面的晶轴 / 法向关系；以任意无量纲概率曲线解释 QCSE 波函数分离；并列阱宽、跨阱传输以及 SRH 使速度与效率分离的限制。",
+      "source_basis_ids": [
+        "RAJABI2018",
+        "XU2023",
+        "LI2025",
+        "WANG2019"
+      ],
+      "source_basis": "独立定性机制图；极化几何与波函数重叠不包含来源测量值。各晶向的实际 ΔP、应变、阱势与屏蔽必须在具体样品上确定。",
+      "supports": [
+        "晶向通过极化法向分量影响内部场",
+        "较快复合可以来自辐射或非辐射通道，带宽不能替代光效率",
+        "阱宽和阱数需要同时考虑束缚、捕获、逃逸及传输"
+      ],
+      "does_not_support": [
+        "图中的波函数来自数值求解或测量",
+        "nonpolar 或 semipolar 必然比 c 面更快、更高效",
+        "所有半极性面的法向场都严格处于另两者之间",
+        "阱宽或阱数有一个普适最优值"
+      ],
+      "width_px": 1600,
+      "height_px": 1320,
+      "min_font_pt": 13,
+      "text_canvas_bounds_check": "pass",
+      "artifacts": [
+        {
+          "path": "docs/research/microled-device-codesign-20261029/figures/02-orientation-quantum-wells.svg",
+          "sha256": "8eaebdf7c0b4dc48d614086e89e676729ecfdadd42f8a2a3b66a6af900d041ce",
+          "bytes": 78597
+        },
+        {
+          "path": "docs/research/microled-device-codesign-20261029/figures/02-orientation-quantum-wells.png",
+          "sha256": "23d523a93818427a777f4eca2fa11094defb437737523c82738c70453728d409",
+          "bytes": 295961
+        }
+      ]
+    },
+    {
+      "id": "FIG03",
+      "figure_number_in_report": 2,
+      "basename": "03-size-electrode-tradeoffs",
+      "title_zh": "尺寸与电极：缩小发光区不会等比例缩小全部代价",
+      "explanation": "给出同形方形 L→L/2 的可核验面积 / 周长缩放；将同 J 与同 I 比较分开；独立画出 p 顶电极、露出 n-GaN 上 n 接触和介质隔离的两种俯视构型。",
+      "source_basis_ids": [
+        "LIN2026",
+        "WANG2019",
+        "ZHU2024",
+        "ELBADAOUI2025"
+      ],
+      "source_basis": "A=L²、P/A=4/L 为几何计算；接触图由作者独立构思，无实际 mask / GDS 参数。C 总分解仅为识别面积项、周长项和固定寄生的思考框架。",
+      "supports": [
+        "同 J 与同 I 下缩小面积对应不同的工作点",
+        "周长 / 面积和固定焊盘项可限制单纯面积缩小的收益",
+        "接触均匀性、遮光与寄生需要共同验证"
+      ],
+      "does_not_support": [
+        "接触图符合任一实际制造工艺的设计规则",
+        "阴影或箭头代表 TCAD 电流密度",
+        "分布 / 对称接触必然优于偏置接触",
+        "器件面积缩小可直接推出净能量每比特下降"
+      ],
+      "calculation": {
+        "shape": "square",
+        "scale_L": 0.5,
+        "scale_area": 0.25,
+        "scale_perimeter": 0.5,
+        "scale_P_over_A": 2.0,
+        "fixed_J_scale_I": 0.25,
+        "fixed_I_scale_J": 4.0
+      },
+      "width_px": 1600,
+      "height_px": 1260,
+      "min_font_pt": 13,
+      "text_canvas_bounds_check": "pass",
+      "artifacts": [
+        {
+          "path": "docs/research/microled-device-codesign-20261029/figures/03-size-electrode-tradeoffs.svg",
+          "sha256": "153d90cd94687f6ef28c7126167dfa1631fb62ef4254125b92c71a61be0808b0",
+          "bytes": 28705
+        },
+        {
+          "path": "docs/research/microled-device-codesign-20261029/figures/03-size-electrode-tradeoffs.png",
+          "sha256": "31f51d663c7c78aa06107e5dd44d737a7664760c1f3e94b6618f7cae0dd0f9ee",
+          "bytes": 238217
+        }
+      ]
+    },
+    {
+      "id": "FIG04",
+      "figure_number_in_report": 6,
+      "basename": "04-codesign-reference-planes",
+      "title_zh": "把 Driver、封装、LED 与 RX 放在同一组参考面上",
+      "explanation": "将 Driver-pad、LED-pad、LED optical output 与 PD input 定义为 A/B/C/D 参考面；示意 Bias-T、VNA 两端口和校准接收链；串起 I-V、P-I、复数 S11/S21 与独立大信号验证，并标明去嵌入和动态储能不得重复计数。",
+      "source_basis_ids": [
+        "ZHU2024",
+        "ELBADAOUI2025",
+        "LI2025"
+      ],
+      "source_basis": "独立系统与测量分工示意，参考电光联合等效电路研究的一般方法；并非任何来源实验台的重绘。",
+      "supports": [
+        "联合拟合需记录参考面、复数响应与偏置温度",
+        "电端校准和接收链光电响应去嵌入具有不同作用",
+        "拟合后需要独立瞬态、BER 和净速率验证"
+      ],
+      "does_not_support": [
+        "一个孤立的 -3dB 带宽足以证明净 3.2 Gb/s",
+        "已测 S11 的器件必然具有唯一可辨识的内部参数",
+        "示意光路或接收机已具备实际所需带宽和噪声性能"
+      ],
+      "width_px": 1600,
+      "height_px": 1320,
+      "min_font_pt": 13,
+      "text_canvas_bounds_check": "pass",
+      "artifacts": [
+        {
+          "path": "docs/research/microled-device-codesign-20261029/figures/04-codesign-reference-planes.svg",
+          "sha256": "71466d1f447027af6833c71e7a0dc1baa52cc3059b98357531c777f7e2fd287c",
+          "bytes": 33006
+        },
+        {
+          "path": "docs/research/microled-device-codesign-20261029/figures/04-codesign-reference-planes.png",
+          "sha256": "972e6a6697a7654d61ddbb65bcc98ed84896ecaa0608910b7782d5040b2fd1e1",
+          "bytes": 314465
+        }
+      ]
+    }
+  ]
+}

@@ -2,6 +2,14 @@
 
 更新：2026-10-29。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
 
+## 器件与 Driver 共设计研究（2026-10-29）
+
+[新研究报告](research/microled-device-codesign-20261029/index.html)、[待执行验证计划](research/microled-device-codesign-20261029/joint-validation-plan.md)与[重建入口](research/microled-device-codesign-20261029/reproduce.md)。本轮新增 9 篇器件研究台账，加上 Lin 2026 数据与 El Badaoui 2025 模型方法，共 11 项原始来源，6 张原创 SVG/PNG、解析计算及来源/图文校验。尺寸、电极、材料、晶向与 QW 均作为开放设计变量，目标仍是单通道净 3.2 Gb/s。
+
+公开文件在 `docs/research/microled-device-codesign-20261029/`、`evidence/microled-device-codesign-20261029/` 与 `scripts/microled_device_codesign_20261029/`。本轮无大型新仿真波形，源/报告/紧凑证据走 Git；本机核查用论文与原图在忽略的 `build/microled-device-codesign-20261029/literature/`，不上传，公开台账保留原始 URL、图号、许可与 SHA。新电脑可在许可允许下重取；既有 Lin 工作簿仍按原阶段 Release 恢复。
+
+当前 A/B/C 与 LED 模型未改，没有新 TCAD/SPICE/DRC/LVS/PEX 或光学 BER 结论。下一门槛是同像素 IV/PI、复数阻抗/幅相、检测器/光路校准与大信号留出验证；缺失前只做参数敏感性，不将 GHz 文献数字换成新的接收成绩。前一阶段 VCSEL 启动端压及稳定性验证问题仍见下文，不因这份研究报告而关闭。
+
 ## 新增阶段：VCSEL 参考/供电与 MicroLED 动态依据（2026-10-29）
 
 先读[研究报告](research/vcsel-reference-microled-dynamics-20261029/index.html)及[恢复步骤](research/vcsel-reference-microled-dynamics-20261029/reproduce.md)。r10 为新的 73 MOS 原理图候选；固定净 3.2 Gb/s 的 TT/SS/FF 帧及连续上电后数据帧通过本轮有限筛查。快冷 20 ns 上电仍越线，AC 注入比不能用于稳定性签核；未预选路线，也没有新的版图/PEX 或实测光学 BER。

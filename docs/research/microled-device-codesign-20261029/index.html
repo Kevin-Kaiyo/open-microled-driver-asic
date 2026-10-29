@@ -1,0 +1,578 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MicroLED 器件与 Driver 联合设计｜净3.2 Gb/s研究报告</title><style>
+:root{--ink:#233c4d;--muted:#526b79;--teal:#246f77;--line:#dce5e7;--paper:#fff;--wash:#f3f7f7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:#f5f7f8;font:17px/1.72 Bahnschrift,"PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+header{background:#213d4c;color:#fff;padding:25px max(24px,calc((100vw - 1160px)/2));font-size:15px}header a{color:#d8f1ef}
+main{max-width:1220px;margin:0 auto;padding:34px 42px 70px;background:var(--paper)}h1,h2,h3{line-height:1.35;color:#203e50;font-weight:600;scroll-margin-top:20px}h1{font-size:34px;margin:0 0 22px}h2{font-size:25px;border-top:1px solid var(--line);margin:52px 0 20px;padding-top:26px}h3{font-size:20px;margin-top:28px}p,li{max-width:950px}p{margin:14px 0}a{color:var(--teal);text-underline-offset:3px}strong{font-weight:650}code{font-size:.92em;background:var(--wash);padding:2px 5px;border-radius:3px;overflow-wrap:anywhere}pre{overflow:auto;background:var(--wash);padding:16px}pre code{padding:0}blockquote{border-left:3px solid var(--teal);padding-left:18px;margin-left:0;color:var(--muted)}img{max-width:100%;height:auto;background:white}p:has(>img){max-width:none;margin:28px 0 6px}p:has(>em:only-child){color:var(--muted);font-size:15px;max-width:none}table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.6;display:block;overflow-x:auto;margin:20px 0}th,td{padding:12px 13px;border:1px solid var(--line);vertical-align:top;min-width:100px}th{background:#eef4f5;text-align:left}td:nth-child(2),td:nth-child(3){min-width:190px}tbody tr:nth-child(even){background:#fafcfc}details{border:1px solid var(--line);padding:12px 18px;background:var(--wash);border-radius:5px;margin:24px 0}summary{cursor:pointer;color:var(--teal);font-weight:600}.toc ul{list-style:none;padding-left:18px}.toc>ul{padding:0;columns:2}.toc a{text-decoration:none}footer{font-size:14px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);margin-top:40px}.status{font-size:14px;letter-spacing:.03em;color:#cae5e4}.back{float:right}
+p:has(>a>img){max-width:none;margin:28px 0 6px}a:has(>img){display:block}
+@media(max-width:720px){body{font-size:16px}main{padding:24px 18px}h1{font-size:27px}h2{font-size:22px}.toc>ul{columns:1}table{font-size:14px}header{padding:18px}.back{float:none;display:block;margin-top:5px}}
+@media print{body,main{background:white}main{padding:0;max-width:none}body{font-size:10.8pt;line-height:1.65}h1{font-size:25pt}h2{font-size:15pt;break-after:avoid}h3{font-size:12pt;break-after:avoid}header,details,.back{display:none}img{max-height:230mm;object-fit:contain}table{display:table;font-size:8.5pt;table-layout:fixed}th,td{min-width:0;padding:6px;overflow-wrap:anywhere}p:has(>img){break-inside:avoid}a{color:inherit}@page{size:A4;margin:20mm}}
+</style></head><body><header><div class="status">OPEN MICROLED DRIVER ASIC · DEVICE STUDY · 2026-10-29</div><a class="back" href="../vcsel-reference-microled-dynamics-20261029/index.html">前一阶段研究</a>文献实测 · 解析计算 · 待执行协议</header><main><h1 id="32-gbs-microled-driver">面向单通道净 3.2 Gb/s 的 MicroLED 器件与 Driver 联合设计</h1>
+<p>2026-10-29 · 器件研究报告 · 从物理结构、论文证据到可执行验证方案</p>
+<p><strong>提高调制带宽，需要同时处理电荷充放电、载流子复合、光提取与散热。缩小尺寸、改变晶向或减薄量子阱，都可能改善其中一项，也可能损害光效率、接收信噪比或制造一致性。当前证据不足以预选器件或 Driver 路线。</strong></p>
+<p>本报告为实验性研发方法验证与教学。新增内容是文献核查、原创结构示意、可复算的解析计算和待执行方案；<strong>没有新增器件流片、TCAD、晶体管瞬态、版图 PEX 或光学 BER 测量</strong>。历史 A/B/C 电路及其负载没有被本报告替换。</p>
+<p>建议读法：先看第 1–3 节理解问题，再看第 4–7 节比较证据与取舍，最后用第 8–10 节安排设计和实验。文中“实测”指论文作者测量，除非明确注明为本项目。</p>
+<details><summary>阅读目录</summary><div class="toc">
+<ul>
+<li><a href="#1-ghz">1. 先定义目标：我们要传数据，而不仅是得到 GHz 数字</a></li>
+<li><a href="#2-driver">2. 从剖面看懂器件：材料、结构和 Driver 各负责什么</a></li>
+<li><a href="#3">3. 带宽、效率和能耗为什么会相互牵制</a><ul>
+<li><a href="#31">3.1 先区分电学极点和光学动态</a></li>
+<li><a href="#32">3.2 不混用带宽定义</a></li>
+<li><a href="#33">3.3 能效要分三个边界</a></li>
+</ul>
+</li>
+<li><a href="#4">4. 尺寸与电极：缩小什么，保留什么？</a></li>
+<li><a href="#5">5. 材料、晶向和量子阱：改变的是复合与输运</a><ul>
+<li><a href="#51-mos">5.1 材料与波长：不要把基板、发光层和 MOS 混为一谈</a></li>
+<li><a href="#52-qcse">5.2 晶向：减小 QCSE 不等于没有代价</a></li>
+<li><a href="#53">5.3 量子阱：不是越薄、越少越好</a></li>
+</ul>
+</li>
+<li><a href="#6">6. 论文数据：哪些支持下一步，哪些还不能横比？</a><ul>
+<li><a href="#61">6.1 三个最有决策价值的现象</a></li>
+<li><a href="#62-lin-2026">6.2 与我们现有负载直接相关的 Lin 2026 数据</a></li>
+</ul>
+</li>
+<li><a href="#7">7. 取舍地图：以接收要求约束带宽，而不是只追最高带宽</a></li>
+<li><a href="#8-driver">8. 联合仿真与实验：先校准器件，再比较 Driver</a><ul>
+<li><a href="#_1">固定分母与模型契约</a></li>
+<li><a href="#doe">分组 DOE</a></li>
+<li><a href="#gono-go">七阶段与 go/no-go</a></li>
+<li><a href="#_2">统计与能量边界</a></li>
+</ul>
+</li>
+<li><a href="#9">9. 当前开源环境能完成什么，还缺什么？</a></li>
+<li><a href="#10">10. 下一阶段的三项优先工作与决策门槛</a></li>
+<li><a href="#11">11. 证据、原文与复现</a></li>
+</ul>
+</div>
+</details><h2 id="1-ghz">1. 先定义目标：我们要传数据，而不仅是得到 GHz 数字</h2>
+<p>当前实验帧用 4,736 个线路位承载 4,096 个 payload 位，效率为 <code>4096/4736 = 32/37</code>。因此，净 3.2 Gb/s 对应 <strong>NRZ 线路 3.7 Gb/s、3.7 GBd、UI≈270.27 ps</strong>。1.85 GHz 是此 NRZ 符号率的 Nyquist 频率，适合选作频域检查点；它不是“LED 只要有 1.85 GHz 带宽就一定成功”的门槛。</p>
+<p>实际判据需要同时包括：到达接收器的光调制幅度 OMA、噪声、眼图幅度与时间余量、时钟抖动、温度、失配和误码率。更换调制方式、编码或训练长度后，应重新核算净吞吐。若把两位映射到一个 PAM4 符号，频谱压力可能下降，但相同满幅下相邻电平距离缩小，线性度与多阈值判决要求提高；均衡/DSP 能耗按实际实现计量。</p>
+<p>本轮不把某篇论文的 OFDM、离线均衡 PAM 或多通道总速率当成“单通道净 3.2 Gb/s NRZ”已经实现。也不把 LED 直流耗电除以线路数据率得到的 fJ/bit，当作完整光互连的能效。</p>
+<table>
+<thead>
+<tr>
+<th>要回答的问题</th>
+<th>比较时必须一起固定或披露</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>哪种器件更快？</td>
+<td>激励参考面、尺寸定义、J、温度、光波长、检测器与去嵌、截止定义</td>
+</tr>
+<tr>
+<td>哪种器件更省电？</td>
+<td>相同净吞吐、接收端 OMA/误码条件、耦合损耗、供电与 Driver/DSP 统计范围</td>
+</tr>
+<tr>
+<td>哪种结构更容易做？</td>
+<td>外延与衬底供应、工艺步骤、容差、转移/键合、热管理、良率和寿命</td>
+</tr>
+<tr>
+<td>能否接到当前 ASIC？</td>
+<td>端电压、电流、输出阻抗、焊盘与封装寄生、参考/供电功率、可靠性筛查</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-driver">2. 从剖面看懂器件：材料、结构和 Driver 各负责什么</h2>
+<p><a href="figures/01-device-cross-section.svg" title="查看原尺寸图"><img alt="MicroLED 剖面、电流与等效电路" src="figures/01-device-cross-section.svg" /></a></p>
+<p><em>图 1｜原创原理示意，非工艺截面或掩膜。导电电流进入有源区后才可能产生光；焊盘/结电容的充放电电流不能直接当成发光电流。真实结构可能采用垂直电极、倒装或不同接触层。</em></p>
+<p>这里的材料至少有四层含义。<strong>InGaN 量子阱</strong>是发光有源区；GaN 或其他势垒/包层承担载流子约束与输运；蓝宝石、Si、GaN、SiC 或转移后的金刚石是生长/承载/散热平台；ITO 与金属接触负责电流注入。它们不能都简称为“GaN 材料”。</p>
+<p>Driver 的 MOS 则是另一套器件。项目现用 GF180 模型描述硅 CMOS 晶体管，并不生成 InGaN 外延、量子阱或侧壁缺陷。LED 与 Driver 可以通过封装、微凸点或混合集成连接；“LED 用 GaN”并不要求 Driver 的 MOS 也用 GaN。</p>
+<p>把整个通道分成以下几段，便于定位问题：数字编码与缓冲 → Driver 输出网络 → 封装/电极 → LED 电荷和载流子 → 出射及耦合光 → PD/TIA → 判决。<strong>只有知道每个测量参考面，才能决定某个 GHz 数据应该放在哪一段。</strong></p>
+<h2 id="3">3. 带宽、效率和能耗为什么会相互牵制</h2>
+<h3 id="31">3.1 先区分电学极点和光学动态</h3>
+<p>对于均匀载流子浓度、固定温度、忽略逃逸与输运等效应的简化 ABC 模型：</p>
+<p><code>R(n)=A·n+B·n²+C·n³</code>；<code>1/τdiff=dR/dn=A+2Bn+3Cn²</code>。</p>
+<p>其中 A 表示 SRH 等非辐射通道，B 对应辐射复合项，C 对应高注入损失的等效项。常数与适用域必须拟合，不能从不同颜色或晶向的论文直接借来。小信号单一寿命模型下，按标准 <code>20log10</code> 幅度响应的半功率（约 −3.01 dB）定义，<code>frec≈1/(2π·τdiff)</code>。提高注入常可缩短微分寿命，却也可能增加非辐射损耗、载流子泄漏和发热；<strong>让 A 变大也能让响应变快，但会把更多电能变成热，而不是光。</strong></p>
+<p>最小电学模型的极点约为 <code>felec≈1/(2π·Reff·Ctot)</code>。但 Reff 取决于激励：理想电流输入到 <code>rd∥C</code> 时，导电支路归一化响应的时间常数是 <code>rd·C</code>；低阻电压源经过 Rs 时，则是 <code>(Rs∥rd)·C</code>。真实 MOS 输出阻抗具有状态和频率依赖，不能简单把 A 等同理想 50 Ω 电压源，或把 B 等同无限输出阻抗电流源。</p>
+<p>独立的一阶环节串联时，响应相乘；总半功率带宽小于任一单独极点。两个相同一阶极点按上述 <code>20log10</code> 半功率约定，截止频率约为单极点的 0.644 倍。实际 LED 的载流子、结电荷与注入耦合时，应使用守恒的联合模型，不能机械叠加两个互相重叠的低通。</p>
+<h3 id="32">3.2 不混用带宽定义</h3>
+<p>报告响应时优先保存线性传递函数及参考面，再注明 dB 约定。仪器电压幅度通常用 <code>20 log10(|Vout/Vin|)</code>；光功率的时间调制幅度 ΔP 与平均光功率是不同的量，来源可能另用 <code>10 log10</code> 定义。必须逐篇核对。若把一阶幅度响应按 <code>10log10(ΔP/ΔP0)</code> 表示，其约 −3.01 dB 点约为 <code>√3/(2πτ)</code>，不能继续用 <code>1/(2πτ)</code> 反推寿命。<strong>同一条归一化曲线的 −3 dB 和 −6 dB 截止点，不是两次独立测试，也不能任意换标签。</strong></p>
+<p>只有幅频、没有相位和绝对增益，不能唯一确定瞬态响应。给传递函数乘上纯延迟，幅度完全不变，但判决时刻已经改变；低信噪比下的归一化曲线也不证明有足够接收光功率。</p>
+<h3 id="33">3.3 能效要分三个边界</h3>
+<p><code>EQE = 出射光子数/注入电子数</code>；<code>WPE = 出射光功率/LED 端电功率</code>。窄谱、稳态近似下 <code>WPE≈EQE·hν/(qVf)</code>，但光学收集口径和温度必须一致。到接收器还要乘耦合与传输效率；低电流的高 EQE 不必然提供足够 OMA。</p>
+<p><code>ELED = ∫VLED(t)·ILED(t)dt / Npayload</code>。在当前实验中积分覆盖完整 4,736 线路位、1.28 µs 的帧，分母为其中 4,096 个 payload 位；不能只积分验证段却沿用整帧净率。</p>
+<p><code>ETX = Σ∫Vk(t)·Ik(t)dt / Npayload</code>，仅对声明统计面上互不重叠的供电及数据源端口求和，包含范围内的数字/模拟/参考/缓冲/稳压及预加重。统一取“向统计区域供能”为正，分别记录正向、返回和净能量。若 LED 已由这些电源供能，ELED 只是内部能量分解，不能再加一次。外部电源转换、时钟、串行器、DSP 和 RX 若未计入，分别列出。ELED 使用 LED 参考面的总端口电流（含 dQ/dt），因此短帧还要报告电荷/电容净储能；它不等于辐射复合能量，不能把电容放电当作稳态节能。</p>
+<p><strong>解析示例</strong>：若 LED 端压近似恒定为 3 V、平均电流 100 µA，在净 3.2 Gb/s 连续发送时，仅 LED 端耗电为 0.09375 pJ/bit。电压与电流均变化时，应积分瞬时乘积，不能直接相乘两个均值。此例没有包含 Driver 或证明误码性能。增加偏置、预加重或均衡可能提高吞吐，但应以符合接收条件后的总能耗评价。</p>
+<h2 id="4">4. 尺寸与电极：缩小什么，保留什么？</h2>
+<p><a href="figures/03-size-electrode-tradeoffs.svg" title="查看原尺寸图"><img alt="尺寸、电流密度和电极设计" src="figures/03-size-electrode-tradeoffs.svg" /></a></p>
+<p><em>图 2｜原创尺寸和电极原理图。方形边长与圆形直径分开；同 J 和同 I 是两种不同实验。平面图表达电流拥挤及扩展路径，非实际版图。</em></p>
+<p>面积 S 以 cm² 计算，<code>J=I/S</code>。对边长 L 的正方形，<code>S=L²</code>、侧壁周长/面积比为 <code>4/L</code>。圆形直径 D 则为 <code>S=πD²/4</code>，不能把“20 µm 器件”的两种面积混用。</p>
+<table>
+<thead>
+<tr>
+<th>方形边长 / µm</th>
+<th>面积 / µm²</th>
+<th>同 100 µA 的 J / A·cm⁻²</th>
+<th>同 J=25 的 I / µA</th>
+<th>周长/面积 / µm⁻¹</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>25</td>
+<td>400</td>
+<td>6.25</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>10</td>
+<td>100</td>
+<td>100</td>
+<td>25</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>20</td>
+<td>400</td>
+<td>25</td>
+<td>100</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>40</td>
+<td>1600</td>
+<td>6.25</td>
+<td>400</td>
+<td>0.1</td>
+</tr>
+</tbody>
+</table>
+<p><a href="figures/06-size-rc-illustration.svg" title="查看原尺寸图"><img alt="同I与同J条件下的纯教学RC计算" src="figures/06-size-rc-illustration.svg" /></a></p>
+<p><em>图 3｜独立假设计算：C=0.25 fF/µm²×面积+0.1 fF/µm×周长+100 fF；rd=50 mV/I。它演示条件改变可反转 RC 趋势，不是拟合或电光性能预测。数值及全部假设见 calculations.json。</em></p>
+<p>在同电流下，缩小面积会提高 J，也可能改变复合寿命；这时不能把带宽提高全部归因于电容减小。在同 J 下，小像素的总电流和总光功率一般更低，须实测效率、光提取和耦合后才能判断接收效果。缩小还会提高侧壁占比，放大刻蚀损伤、表面复合和接触定位的影响。</p>
+<p><code>Ctot</code> 可能含面积项、侧壁项、焊盘/互连固定项与偏置相关储存电荷。像素缩小后，焊盘项不会自动按面积同比缩小。透明接触层和金属扩展可减小电流拥挤与串联电阻，却可能增加遮光、吸收或电极电容；深刻蚀与隔离可减小寄生，但增加损伤、刻蚀深度和钝化控制要求。</p>
+<p><strong>应采用两类比较</strong>：先用同一外延片、同 J、相同温度与校准面，看尺寸本身的影响；再固定净速率与接收 OMA/BER，允许各器件调整偏置和调制，比较完整 Driver+LED 能耗。前者解释物理，后者支持系统选择。</p>
+<h2 id="5">5. 材料、晶向和量子阱：改变的是复合与输运</h2>
+<p><a href="figures/02-orientation-quantum-wells.svg" title="查看原尺寸图"><img alt="晶向、极化场和量子阱结构" src="figures/02-orientation-quantum-wells.svg" /></a></p>
+<p><em>图 4｜原创机制图。晶向图仅表示极化方向相对于阱面的关系，实际内建场还受应变与组分影响；空间分布示意不代替自洽能带求解。</em></p>
+<h3 id="51-mos">5.1 材料与波长：不要把基板、发光层和 MOS 混为一谈</h3>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>可能带来的器件收益</th>
+<th>对系统与制造的取舍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InGaN/GaN 蓝/绿及高 In 长波长结构</td>
+<td>调整组分、应变、局域态、波函数重叠与光谱</td>
+<td>波长改变后 PD 响应、光学损耗和耦合也改变；高 In 结构的效率、缺陷与均匀性须实测，不能从蓝光推到黄/红光</td>
+</tr>
+<tr>
+<td>AlGaInP 红光</td>
+<td>另一套有源材料、载流子输运与红光平台</td>
+<td>小尺寸侧壁损失显著，需要特定钝化与转移/接触工艺；本轮尺寸论文不能证明其 GHz 性能优于 InGaN</td>
+</tr>
+<tr>
+<td>蓝宝石/Si/GaN/SiC 生长平台，或转印至金刚石</td>
+<td>改变外延条件、热流与集成形式</td>
+<td>高热导承载体有望改善工作温度，但键合界面、热边界电阻、转移良率与成本仍需验证；不直接改变发光材料身份</td>
+</tr>
+</tbody>
+</table>
+<p>这是设计空间，不是材料优劣排行榜。不同波长跨材料比较时，同时报告绝对接收功率与响应度；不能只固定电流或接收电压阈值。</p>
+<h3 id="52-qcse">5.2 晶向：减小 QCSE 不等于没有代价</h3>
+<p>常见 c-plane 极性结构中，极化场可使电子和空穴波函数分离，即量子限制斯塔克效应（QCSE），降低重叠。非极性或半极性生长可以减小阱法向的极化分量，可能提高辐射复合速度。实际效果仍依赖组分、应变、缺陷、阱宽及载流子屏蔽。</p>
+<p>Xu 2023 的半极性样品提供低注入下的高速证据，详见第 6 节。但不能只凭这一个结果推断它一定是最省电或最容易量产的方案。非传统晶向的衬底、外延窗口、缺陷和片内均匀性需要供应及工艺验证；本文没有对应报价或良率数据。</p>
+<h3 id="53">5.3 量子阱：不是越薄、越少越好</h3>
+<p>减薄阱可能降低电场造成的空间分离，提高波函数重叠；也会改变束缚态、载流子逃逸、注入效率与可用发光体积。减少阱数可减小跨阱分布不均，但在相同总电流下提高单阱负荷，可能加重损耗、热和寿命问题。势垒厚度、组分与掺杂还会改变输运，不能只扫阱宽而假装其他参数不变。</p>
+<p>Rajabi 2018 的超薄阱/势垒样品在指定注入下提高了截止频率；Li 2025 的另一组固定 In 组分样品却在低 J 下呈现过薄阱的效率损失。后者发射波长随阱厚跨约 465–570 nm，也不是同波长对照；高 J 下部分薄阱效率趋近，不能把低 J 结论外推到整个工作区。它们说明应比较<strong>成套可制造结构及其工作区间</strong>。2025 年文献的最佳约 2.7 nm 仅适用于那组样品，不是所有 MicroLED 的设计规则。</p>
+<h2 id="6">6. 论文数据：哪些支持下一步，哪些还不能横比？</h2>
+<p>下表保留论文自己的截止定义和接收条件。未核实的项直接写“未核实”，不按带宽排序。全文核查和摘要核查的证据深度不同。</p>
+<table>
+<thead>
+<tr>
+<th>来源/变量</th>
+<th>器件与几何</th>
+<th>偏置和响应/速率</th>
+<th>效率与能耗边界</th>
+<th>核查深度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#source-L01-RAJABI2018">L01-RAJABI2018</a><br>超薄量子阱/势垒</td>
+<td>c-plane InGaN/GaN；阱 1 nm / 势垒 3 nm；横向尺寸未核实</td>
+<td>J=2.5 kA/cm²；214→536 MHz；摘要称截止频率，dB 约定未核实</td>
+<td>未核实 EQE、WPE 或完整能耗；同时改变阱和势垒</td>
+<td>摘要</td>
+</tr>
+<tr>
+<td><a href="#source-L02-XU2023-SEMIPOLAR">L02-XU2023-SEMIPOLAR</a><br>半极性晶向</td>
+<td>直径 60 µm；5 周期 MQW；蓝/绿约 455/520 nm</td>
+<td>绿 &gt;500 MHz@43.8 A/cm²；&gt;1 GHz@120.6 A/cm²；最大值受 1 GHz APD 限制</td>
+<td>峰值 EQE 蓝/绿 3.49%/1.99%，不是带宽工作点值；OFDM 净开销未核实</td>
+<td>公开原始全文</td>
+</tr>
+<tr>
+<td><a href="#source-L03-LI2023-QD">L03-LI2023-QD</a><br>有源 InGaN 量子点</td>
+<td>多种直径；摘要中的 20 µm 用于 RC 分析，不能绑定全部最高值</td>
+<td>蓝/绿约 3.6/1.4 GHz，J&lt;1 kA/cm²；−3 dB 的归一化/去嵌未核实</td>
+<td>无已核实净速率/pJ/bit；125°C 可工作不是最高带宽的温度证明</td>
+<td>摘要</td>
+</tr>
+<tr>
+<td><a href="#source-L04-LI2024-NANOACTIVE">L04-LI2024-NANOACTIVE</a><br>纳米工程有源区</td>
+<td>三层纳米结构，交替生长中断；横向尺寸与 J 未核实</td>
+<td>作者称 E–E −3 dB &gt;2.6 GHz；NRZ 自由空间 3.07、光纤 2.60 Gb/s</td>
+<td>&gt;0.5 mW 的偏置与最高带宽是否相同未核实；不等于净 3.2 Gb/s</td>
+<td>摘要</td>
+</tr>
+<tr>
+<td><a href="#source-L05-LI2025-THINWELL">L05-LI2025-THINWELL</a><br>阱宽的效率反例</td>
+<td>In=19%；阱 2.1–3.6 nm，势垒 18 nm；光谱随之约 465–570 nm；横向尺寸未核实</td>
+<td>Fig.5：薄阱低 J 动态还受逃逸影响；不提供可横排的 GHz 数字</td>
+<td>本样品组约 2.7 nm 效率较优，过薄的低 J 效率下降；高 J 下部分薄阱趋近；不是通用最佳阱宽</td>
+<td>预印本+接受稿全文</td>
+</tr>
+<tr>
+<td><a href="#source-L06-ZHU2024-ELECTRODE">L06-ZHU2024-ELECTRODE</a><br>深刻蚀/电极寄生</td>
+<td>浅/深刻蚀 GaN；横向尺寸未核实</td>
+<td>J=4 kA/cm²；203→249.8 MHz；截止定义未核实</td>
+<td>电极 C 减少 24.9 pF 是模型拟合；无已核实 EQE/能效</td>
+<td>摘要</td>
+</tr>
+<tr>
+<td><a href="#source-L07-WANG2019-PHC">L07-WANG2019-PHC</a><br>光子晶体/刻蚀</td>
+<td>PC60/PC30 是半径 60/30 µm；InGaN/GaN 倒装</td>
+<td>PC60：212 MHz@1 kA/cm²；PC30：285 MHz@2 kA/cm²；源称 optical −3 dB</td>
+<td>同尺寸 PhC 出光降低；Purcell 1.81 与提取率 68% 属 FDTD 模拟</td>
+<td>全文+原 Fig.6–7</td>
+</tr>
+<tr>
+<td><a href="#source-L08-FERREIRA2016">L08-FERREIRA2016</a><br>尺寸+接触/版图工程</td>
+<td>A/B 发光面积 435/1369 µm²；c-plane，450 nm，倒装</td>
+<td>A/B 最高 E–O 833/397 MHz；Fig.3 DC 扫描 A10–70/B10–110 mA；频响 PD1.4 GHz</td>
+<td>高阶通信使用 B 及相应均衡/处理；不可把 A 的 833 MHz 与最高 OFDM 速率绑定</td>
+<td>作者托管正式全文</td>
+</tr>
+<tr>
+<td><a href="#source-L09-FAN2022-RED-SIZE">L09-FAN2022-RED-SIZE</a><br>红光尺寸/侧壁</td>
+<td>AlGaInP 垂直结构、Si 承载；边长 160/80/40/20/10 µm</td>
+<td>没有调制带宽实验；研究尺寸的电学与光效率影响</td>
+<td>小尺寸串联电阻/侧壁损失上升，也改善部分高注入 droop；不支持跨材料速度排名</td>
+<td>摘要</td>
+</tr>
+</tbody>
+</table>
+<h3 id="61">6.1 三个最有决策价值的现象</h3>
+<p><strong>第一，结构改善应优先看同一研究内的配对。</strong> Rajabi 的 QW/势垒变化和 Zhu 的电极/刻蚀变化，都在各自指定 J 下给出前后值。它们支持相应机制值得验证，却不能把两者增益直接相乘，或把别的样品减少的 24.9 pF 填入我们假设为 200 fF 的负载。</p>
+<p><a href="figures/05-within-study-bandwidth.svg" title="查看原尺寸图"><img alt="同一论文内部的带宽前后值" src="figures/05-within-study-bandwidth.svg" /></a></p>
+<p><em>图 5｜由两篇原始摘要披露的数值独立绘图，各面板具有自己的 J 和器件条件；频率数值见文献台账，不能据此比较两条路线的系统能耗或制造优势。</em></p>
+<p><strong>第二，快不一定亮。</strong> Wang 2019 的光子晶体结果同时涉及光学模式与刻蚀损伤；同尺寸器件的输出光功率降低。若非辐射通道参与了寿命缩短，接收链路可能需要更多电流补偿。微透镜、表面纹理和收光结构主要改变提取/耦合；没有自发辐射速率证据时，不能把收光提高称为内禀寿命缩短。</p>
+<p><strong>第三，GHz 级小信号与净 3.2 Gb/s 是不同证据。</strong> Li 2024 的纳米工程有源区论文摘要给出 GHz 响应与单通道 NRZ 实验，但其自由空间 3.07 Gb/s 结果仍不能写成我们所需的净 3.2 Gb/s。Ferreira 2016 则说明系统设计可以改变可用吞吐：带宽 397 MHz 的 B 器件，在 0.75 m、1 GHz PD、离线处理下，论文正文按所述 7% FEC 开销给出 PAM4 净 3.5 Gb/s（含 DFE）及 OFDM 净 5 Gb/s。它是带条件的公开链路证据，不是我们已实现的同条件成绩；摘要的 PAM 数字为 3.4 Gb/s，与正文不同，台账保留这一差异。不能把这些条件与 A 器件的最高 833 MHz 拼成一个系统。</p>
+<h3 id="62-lin-2026">6.2 与我们现有负载直接相关的 Lin 2026 数据</h3>
+<p>下面保留作者公开工作簿的忠实单元格摘录，先看原始单位，再看派生解释。数据集为 CC BY 4.0；图是已有阶段对表头和数值的忠实呈现，非论文受限图像的替代品。</p>
+<p><a href="../../../evidence/microled-dynamic-20261029/source-cell-extract.png" title="查看原尺寸图"><img alt="Lin2026 原始工作簿单元格摘录" src="../../../evidence/microled-dynamic-20261029/source-cell-extract.png" /></a></p>
+<p>来源：<a href="https://doi.org/10.5281/zenodo.20034288">Zenodo 20034288</a>，<code>yellow20_s21_bandwidths.xlsx</code> 的 <code>Bandwidths</code> 与 <code>Shifted_Curves</code>；测量结构为 20 µm <strong>正方形</strong>黄色 InGaN/GaN、转印至金刚石。更完整的原始定位与复算见<a href="../vcsel-reference-microled-dynamics-20261029/microled-dynamic-evidence.html">动态证据章节</a>。</p>
+<table>
+<thead>
+<tr>
+<th>偏置 / µA</th>
+<th>J / A·cm⁻²</th>
+<th>源定义 −3 dB / GHz</th>
+<th>源定义 −6 dB / GHz</th>
+<th>1.85 GHz 处 / dB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25</td>
+<td>6.25</td>
+<td>2.1358</td>
+<td>2.8504</td>
+<td>-2.0582</td>
+</tr>
+<tr>
+<td>50</td>
+<td>12.50</td>
+<td>2.3485</td>
+<td>2.8528</td>
+<td>-1.4106</td>
+</tr>
+<tr>
+<td>60</td>
+<td>15.00</td>
+<td>2.3673</td>
+<td>2.8542</td>
+<td>-1.2627</td>
+</tr>
+<tr>
+<td>80</td>
+<td>20.00</td>
+<td>2.3867</td>
+<td>2.8536</td>
+<td>-1.0707</td>
+</tr>
+<tr>
+<td>100</td>
+<td>25.00</td>
+<td>2.3833</td>
+<td>2.8543</td>
+<td>-1.0689</td>
+</tr>
+</tbody>
+</table>
+<p>这是同结构公开数据对我们模型的约束：低电流工作区不能被直接假定为很慢。但测试链含 VNA、bias tee、光学和额定 3 GHz 检测器，缺少相位、复数阻抗和独立去嵌；不能把整个 S21 再接到已含 LED RC 与 RX 低通的链路后面。现有 200 fF、200 ps 和 1 GHz RX 仍是旧实验假设。论文把同曲线 −3 dB/−6 dB 分别称为 E–E/E–O，本报告保留其定义。</p>
+<p>低电流数据也不能外推到更高 J。完整带宽表呈非单调变化，不能由 25–100 µA 五点得出“电流越大越快”。目前只对该五点曲线进行了独立截止复算；高电流变化的机制仍待按噪声、温度、载流子和测量条件逐项确认。</p>
+<h2 id="7">7. 取舍地图：以接收要求约束带宽，而不是只追最高带宽</h2>
+<table>
+<thead>
+<tr>
+<th>设计变量</th>
+<th>可能改善什么</th>
+<th>可能损失什么</th>
+<th>制造与验证重点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>缩小发光面积</td>
+<td>降低部分电容、减小总电流；同 I 下提高 J</td>
+<td>侧壁复合、总光功率、接触容差；固定焊盘项占比提高</td>
+<td>同片尺寸分组；侧壁/接触一致性；同 J 与同接收 OMA 两套比较</td>
+</tr>
+<tr>
+<td>改电极/减寄生</td>
+<td>减小 R、C、拥挤和振铃</td>
+<td>遮光/吸收、接触面积、电流密度局部热点</td>
+<td>RF dummy、四端/Kelvin 结构、热像；电极金属与回流一并提取</td>
+</tr>
+<tr>
+<td>半极性/非极性</td>
+<td>减小 QCSE，可能提高辐射复合速度</td>
+<td>外延/衬底供应、缺陷与均匀性风险</td>
+<td>同波长相近结构比较；厚度/组分与应变不能忽略</td>
+</tr>
+<tr>
+<td>超薄/少阱/势垒工程</td>
+<td>改善重叠或跨阱输运</td>
+<td>逃逸、注入效率、单阱高负荷、厚度敏感性</td>
+<td>单层厚度及组分统计；P–I/效率与复杂动态共同拟合</td>
+</tr>
+<tr>
+<td>纳米有源区/量子点</td>
+<td>改变局域化、复合和载流子分布</td>
+<td>生长一致性、缺陷、工艺及模型复杂度</td>
+<td>区分有源 InGaN 量子点和外部颜色转换 QD；验证重复性</td>
+</tr>
+<tr>
+<td>光子晶体/微腔</td>
+<td>改变模式、提取，特定条件下改变辐射速率</td>
+<td>出光方向/谱宽约束、刻蚀损伤、对准容差</td>
+<td>实测寿命与效率；排除“非辐射变快”；需光场仿真与实测</td>
+</tr>
+<tr>
+<td>更高偏置/预加重</td>
+<td>缩短建立，改善高频眼图</td>
+<td>静态耗电、峰值 J、过冲、热、老化</td>
+<td>DC+AC 电流与端压、光过冲、热耦合及全 TX pJ/bit</td>
+</tr>
+<tr>
+<td>转移与热平台</td>
+<td>减小热阻或缩短电连接</td>
+<td>转移/键合步骤、界面热阻、良率和修复</td>
+<td>测实际热路径和接触；评估阵列热串扰与装配容差</td>
+</tr>
+</tbody>
+</table>
+<p>表中制造难度是<strong>工程推断</strong>，不是供应商已确认的成本或量产结论。比较“多少层”时应分别说明外延层、器件金属/介质层与 CMOS BEOL 金属层，三者不能互换。没有外延、掩膜、封装、测试与良率报价，无法据本文给出单颗量产价格。</p>
+<h2 id="8-driver">8. 联合仿真与实验：先校准器件，再比较 Driver</h2>
+<p><a href="figures/04-codesign-reference-planes.svg" title="查看原尺寸图"><img alt="器件与 Driver 联合验证参考面" src="figures/04-codesign-reference-planes.svg" /></a></p>
+<p><em>图 6｜原创验证框架。电学 S11 与电光 S21 需要共同参考面、检测器校准和样品身份；电容电流与复合发光分别处理，避免重复计算寄生或光学低通。</em></p>
+<p>2026-10-29｜拟议实验协议；本轮只做可复算计算，没有新增晶体管、硅或光学通过结果。A/B/C 保持开放。</p>
+<p>以<a href="../../../evidence/microled-dynamic-20261029/response-contract.json">冻结动态契约</a>为起点：现有幅频属于原测量整链，缺相位且同像素身份未确定。旧 200 fF / 200 ps / RX 1 GHz baseline 保留；新数据只能建立新 model ID，再做 DC 校准与耦合回归。</p>
+<h3 id="_1">固定分母与模型契约</h3>
+<p>单通道净 3.2 Gb/s：4736 bit＝64 warm＋448 training scoring＋64 guard＋4096 payload＋64 tail，效率 32/37，整帧 1.28 µs。训练仅取 <code>[64,512)</code>，guard 为 <code>[512,576)</code>，验证为 <code>[576,4672)</code>。NRZ 为 3.7 GBd，UI 270.27 ps、Nyquist 1.85 GHz；相同开销下 PAM4 为 1.85 GBd、UI 540.54 ps、Nyquist 0.925 GHz。Nyquist 是诊断频点，不能替代 BER。</p>
+<p>每个样品记录 pixel/wafer/die ID、实际发光/注入面积、mesa 形状与周长、晶向、QW/势垒、接触/电极/钝化/封装版本；输入同像素 I–V、绝对 P–I、结温/环境温度、复数 S11/Z 与 S21 幅度和相位、小信号电压/电流、RF 幅度、暗态/噪声底、探测器/TIA/光路校准及去嵌文件，并保留不确定度。缺项不填拟合值。</p>
+<p>候选模型为 <code>I(V,T,q)</code>、<code>ZLED(s,I,T)</code>、绝对静态 <code>P(I,T)</code> 与残余 <code>HEO(s,I,T)</code> 的一致组合；分别描述端口位移电流、导电/复合电流和光功率。联合拟合电学与电光，留出偏置/温度，检查因果、稳定、被动电学端口及参数相关性。不得由幅度推唯一相位；不得拟合整体 E–E 后再乘相同光学极点。<a href="https://arxiv.org/pdf/2310.17066">多寿命研究</a>说明空间非均匀 MQW 需要检验单寿命假设，不能按 QW 数直接缩放寿命。ABC 微分寿命取 <code>1/(A+2Bn+3Cn²)</code>，不是稳态 <code>n/R</code>；PL 衰减测量的注入/空间分布不同，不能直接等同电注入微分寿命。ABC 辐射比例也不承诺带宽或出光效率。</p>
+<h3 id="doe">分组 DOE</h3>
+<table>
+<thead>
+<tr>
+<th>因素块</th>
+<th>配对与扫描</th>
+<th>必须控制的混杂</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>面积/侧壁</td>
+<td>同外延 5/10/20/40 µm 正方形；等面积圆形；同面积电极/钝化 split</td>
+<td>同 I 与同 J 两套结果；实测有效面积、侧壁损伤、接触/电流扩展和光收集</td>
+</tr>
+<tr>
+<td>外延/晶向/QW</td>
+<td>把材料成分、晶向、QW 数/厚度、势垒和工艺视为耦合 wafer block</td>
+<td>不将异片差异强拆成独立因果；匹配波长、温度、J 和接收器，报告未匹配项</td>
+</tr>
+<tr>
+<td>偏置/温度</td>
+<td>先复核 20 µm 的 25/50/75/100 µA；跨尺寸按同 J 重映射；建议 25/60/85°C</td>
+<td>先声明器件降额与结温上限；环境温度不能代替结温；温漂后重新测静态</td>
+</tr>
+<tr>
+<td>重复/留出</td>
+<td>每 split 建议至少 3 个独立像素，配对 wafer/die；留出偏置与温度</td>
+<td>探索样本不证明良率；重复测量与独立器件分开计数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gono-go">七阶段与 go/no-go</h3>
+<p>下表数值门槛均为<strong>待冻结的研究建议</strong>，不覆盖旧接收合同；应先按仪器重复性与误差预算收紧或修订。缺少校准只允许继续诊断，不进入性能认证。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>操作与输出</th>
+<th>进入下一阶段的判据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 身份/DC/安全</td>
+<td>I–V/P–I、温度、尺寸、绝对功率和降额表</td>
+<td>身份与参考面完整；安全极限缺失时不开展应力扫描</td>
+</tr>
+<tr>
+<td>2 小信号分离</td>
+<td>electrical-only：Driver→校准 Z 负载；driver-bypass：已知源阻抗→LED→校准 RX；optical-only：校准光源→RX；最后 full-chain</td>
+<td>保存复数响应、噪声底、去嵌及 RF 幅度；幅度缩小一半后的归一化响应差建议≤0.5 dB，确认线性区</td>
+</tr>
+<tr>
+<td>3 联合识别</td>
+<td>比较单/多状态、偏置相关模型，留出验证</td>
+<td>留出 I/P 误差建议≤5%，有效带内幅度≤1 dB、相位≤10°；须高于噪声底，残差无系统结构且参数可辨识，否则增加证据</td>
+</tr>
+<tr>
+<td>4 大信号</td>
+<td>多幅度阶跃、长短脉冲、过冲/电流尖峰、恢复尾巴、热瞬态</td>
+<td>与留出瞬态一致；峰值 I/V、结温均在事先声明的降额内；电荷/能量守恒与数值收敛通过</td>
+</tr>
+<tr>
+<td>5 公平晶体管比较</td>
+<td>同器件/模型版本/净速率/光损耗/RX；A/B 为 NRZ，C 为 PAM4；短 PRBS 筛查后增加 PRBS15/31、独立 seed、长连码、抖动和供电/数据 skew</td>
+<td>训练后冻结相位、阈值、均衡与延迟；先复核旧合同的决策距离/时序，再给光接收结果；不在验证段重训练</td>
+</tr>
+<tr>
+<td>6 BER/能量</td>
+<td>同一绝对噪声模型/实测 RX，报告灵敏度、误码数与置信区间；前/后 FEC 分开</td>
+<td>给定净吞吐与误码目标后评定；DSP/编码/FEC 的额外码率、延迟、训练和能耗全部入账</td>
+</tr>
+<tr>
+<td>7 热/老化与封装</td>
+<td>DC、PRBS、热循环/老化前后重测 I–V/P–I/Z/S21；再检查互连与电极寄生</td>
+<td>建议漂移≤5%且所有安全/RX门槛仍满足；时长/温度/失效定义须预注册。通过后再作版图联合验证，最后才考虑阵列扩展</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2">统计与能量边界</h3>
+<p>在平稳独立误码假设下，零误码的单侧 95% 上界为 <code>1−0.05^(1/N)≈3/N</code>。0/4096 的上界约 <code>7.31×10⁻⁴</code>；拟议 BER≤10⁻¹² 需至少 2,995,732,273,553 个零误码有效 bit，净 3.2 Gb/s 下约 936 s。无噪声 SPICE 与复制同一确定性仿真波形不能据此认证；突发误码/漂移须另建统计设计。<a href="https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm">NIST 精确二项式方法</a></p>
+<p><code>ELED=∫VLED·ILED dt/4096≈Vf·Iavg/Rnet</code>；3 V、100 µA 仅为 LED 电端口 0.09375 pJ/bit 示例。Driver 应逐端口报告正向/返回/净能量及排除项；闭合 TX 还需上游稳压/参考、时钟/串行器、编码/DSP/FEC。LED 若已由纳入的电源供能，不可再相加。完整链路另计 RX 与光损耗条件。</p>
+<p>GaN TCAD 需极化、量子阱、输运/复合/光学模型与耦合校准；GF180 CMOS PDK 不能提供这些证据。制造只讨论工艺复杂度、接触/钝化/键合、容差及测试可达性，当前没有 foundry 成本/良率报价。</p>
+<p>复算：<code>python3 scripts/microled_device_codesign_20261029/calculations.py --check</code>。结果见 <a href="../../../evidence/microled-device-codesign-20261029/calculations.json">calculations.json</a>；其中 ABC、几何电容及 RC 数值全部是明确假设的教学例子。</p>
+<h2 id="9">9. 当前开源环境能完成什么，还缺什么？</h2>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>当前可用路径</th>
+<th>产出与限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文献/解析/参数管理</td>
+<td>本报告 Python、CSV/JSON、SHA 清单</td>
+<td>可复算几何、J、RC 敏感性、吞吐/能耗边界；本轮已执行</td>
+</tr>
+<tr>
+<td>电路联合仿真</td>
+<td>已有 ngspice、GF180 模型子集、A/B/C 原理图研究；校准后新增负载模型 ID</td>
+<td>可分析参考/供电、端压、电荷、时序与能量；本轮没有新增电路成绩</td>
+</tr>
+<tr>
+<td>行为动态器件</td>
+<td>电荷守恒等效电路、可用的 Verilog-A/等效状态模型及参数拟合</td>
+<td>需要先确认当前仿真器的语言支持或模型编译路径；不能只凭“有 SPICE”认定任意模型可运行</td>
+</tr>
+<tr>
+<td>LED 器件物理</td>
+<td>漂移扩散/Poisson、量子阱与复合、热模型；必要时 Schrödinger–Poisson</td>
+<td>开源求解器可用于简化方程研究，但本项目没有经过实测校准的 GaN TCAD 工艺/材料卡；GF180 不提供它</td>
+</tr>
+<tr>
+<td>光场与封装</td>
+<td>需要波长相关材料数据的光场/模式分析，及封装电磁、热联合提取</td>
+<td>可以建立方法和简单几何；没有校准参数/边界就不能当作实物性能预测或制造签核</td>
+</tr>
+<tr>
+<td>ASIC 物理实现</td>
+<td>完整匹配 PDK、规则与工具下的 DRC/LVS/PEX</td>
+<td>旧版图证据只属于相应冻结电路；新的 Driver+LED 联合方案需要新一轮寄生、端压和接收回归</td>
+</tr>
+<tr>
+<td>硬件验证</td>
+<td>外延/器件样品、RF 探针/封装、校准 PD/TIA、BERT/采样、温控和光功率测量</td>
+<td>仪器带宽、噪声、接口和样品需采购/合作确认；本轮未建立硬件台架</td>
+</tr>
+</tbody>
+</table>
+<p>对设计决策最有价值的可视化依次是：器件剖面与电流密度分布、复数阻抗和去嵌前后响应、不同偏置/温度的 P–I 与效率、瞬态电荷/光功率、同尺度眼图与 pJ/bit–接收余量图。二维/三维结构图适合解释几何，但没有解方程和校准数据时，不是器件仿真。</p>
+<h2 id="10">10. 下一阶段的三项优先工作与决策门槛</h2>
+<ol>
+<li><strong>把现有黄色 20 µm 负载的动态证据补齐。</strong> 优先取得同一像素的 IV、PI、复数 S11/S21、温度和检测器响应；拿不到时，保持参数敏感性研究身份，不给出新的真实光学 BER 预测。</li>
+<li><strong>建立同外延的尺寸–电极–钝化小矩阵。</strong> 先区分面积、侧壁和焊盘三类限制，再决定是否投入晶向或 QW 外延变更；这表示减少混杂变量的实验顺序，不表示已选 c-plane 或任一商业工艺。</li>
+<li><strong>用统一链路合同回归 A/B/C。</strong> 每个合法 LED 模型都测试所有 Driver 候选；达到净 3.2 Gb/s、规定接收余量与可靠性条件后，才比较完整能耗、热和制造可行性。若没有方案同时满足，记录失败机制并继续修改，不能从失败点选出“最省电”。</li>
+</ol>
+<p>项目接下来需要的决策不是“哪篇带宽最高就采用哪种材料”，而是：<strong>在可取得、可校准的器件上，哪个器件–Driver 组合能在温度、寄生和噪声变化下，以可接受的功耗持续交付净 3.2 Gb/s？</strong> 本报告给出回答这个问题的路径，尚未给出路线胜负。</p>
+<h2 id="11">11. 证据、原文与复现</h2>
+<p>以下原始研究按问题检索，未按性能排名。精确数值的完整条件以台账为准。</p>
+<p><a id="source-L01-RAJABI2018"></a></p>
+<p><strong>L01-RAJABI2018</strong> · Kamran Rajabi et al. · <a href="https://doi.org/10.1364/OE.26.024985">Improving modulation bandwidth of c-plane GaN-based light-emitting diodes by an ultra-thin quantum wells design</a> · DOI <code>10.1364/OE.26.024985</code>。</p>
+<p>定位：Abstract; Optics Express 26(19), 24985-24991。核查层级：primary_abstract_only。 待确认：lateral size；well count；exact baseline epitaxy；temperature；frequency-response definition/calibration；EQE at bandwidth bias；sample distribution；reliability。</p>
+<p><a id="source-L02-XU2023-SEMIPOLAR"></a></p>
+<p><strong>L02-XU2023-SEMIPOLAR</strong> · Feifan Xu et al. · <a href="https://doi.org/10.1109/JPHOT.2023.3235108">High Bandwidth Semi-Polar InGaN/GaN Micro-LEDs With Low Current Injection for Visible Light Communication</a> · DOI <code>10.1109/JPHOT.2023.3235108</code>。</p>
+<p>定位：IEEE Photonics Journal 15(1), 7300704; Sec II, Figs 2-4 and 6, Sec III。核查层级：public_original_fulltext_html_on_ResearchGate; publisher PDF blocked。 待确认：junction temperature；unloaded intrinsic bandwidth；EQE at exact link bias；net-rate overhead；system pJ/bit；sample statistics；lifetime/reliability。</p>
+<p><a id="source-L03-LI2023-QD"></a></p>
+<p><strong>L03-LI2023-QD</strong> · Zhenhao Li et al. · <a href="https://doi.org/10.1109/LED.2023.3256422">Bandwidth Analysis of High-Speed InGaN Micro-LEDs by an Equivalent Circuit Model</a> · DOI <code>10.1109/LED.2023.3256422</code>。</p>
+<p>定位：IEEE Electron Device Letters 44(5), 785-788; publisher abstract。核查层级：primary_abstract_only。 待确认：exact headline geometry and bias；orientation；wavelength；bandwidth convention；detector calibration；frequency response at125C；EQE/WPE；link BER/net rate；yield。</p>
+<p><a id="source-L04-LI2024-NANOACTIVE"></a></p>
+<p><strong>L04-LI2024-NANOACTIVE</strong> · Zhenhao Li et al. · <a href="https://doi.org/10.1109/JLT.2024.3444324">High-Speed Micro-LEDs Based on Nano-Engineered InGaN Active Region Towards Chip-to-Chip Interconnections</a> · DOI <code>10.1109/JLT.2024.3444324</code>。</p>
+<p>定位：Journal of Lightwave Technology 42(24), 8760-8770; publisher abstract。核查层级：primary_abstract_only。 待确认：device geometry；bias/current density；temperature；frequency de-embedding；receiver/distance/BER；net overhead；EQE/WPE；reliability/yield。</p>
+<p><a id="source-L05-LI2025-THINWELL"></a></p>
+<p><strong>L05-LI2025-THINWELL</strong> · Xuefeng Li et al. · <a href="https://doi.org/10.1063/5.0258108">Impact of quantum well thickness on efficiency loss in InGaN/GaN LEDs: Challenges for thin-well designs</a> · DOI <code>10.1063/5.0258108</code>。</p>
+<p>定位：arXiv v1 pp2-4 Table1/Fig1 and pp8-10 Fig5/Eqs2-3; accepted manuscript DOI10.1063/5.0258108; APL126,132102。核查层级：preprint_and_peer_reviewed_accepted_manuscript_fulltext; original Table1/Figs1,5 visually inspected。 待确认：lateral geometry；explicit temperature；sample statistics；fixed-wavelength matched-control result；absolute modulated output；net-rate BER；system energy；generality of thin-well loss mechanism。</p>
+<p><a id="source-L06-ZHU2024-ELECTRODE"></a></p>
+<p><strong>L06-ZHU2024-ELECTRODE</strong> · Lingli Zhu et al. · <a href="https://doi.org/10.1364/OE.539321">Modulation bandwidth analysis of GaN-based micro-LED deduced by an equivalent circuit model</a> · DOI <code>10.1364/OE.539321</code>。</p>
+<p>定位：Optics Express32(22),39974-39983; abstract。核查层级：primary_abstract_only。 待确认：pixel size；color；exact etch/contact geometry；temperature；fit identifiability/uncertainty；EQE/lifetime；receiver calibration；reliability/yield。</p>
+<p><a id="source-L07-WANG2019-PHC"></a></p>
+<p><strong>L07-WANG2019-PHC</strong> · Hong Wang et al. · <a href="https://doi.org/10.3390/mi10110767">Study on Modulation Bandwidth and Light Extraction Efficiency of Flip-Chip Light-Emitting Diode with Photonic Crystals</a> · DOI <code>10.3390/mi10110767</code>。</p>
+<p>定位：Sec2,Sec3,Figs6-7,conclusion; Micromachines10(11),767。核查层级：primary_fulltext; Figs6-7 visually inspected。 待确认：explicit junction temperature；measured EQE at bandwidth bias；detector calibration；direct radiative/nonradiative lifetime separation；sample variation；link BER/net rate。</p>
+<p><a id="source-L08-FERREIRA2016"></a></p>
+<p><strong>L08-FERREIRA2016</strong> · Ricardo X. G. Ferreira et al. · <a href="https://doi.org/10.1109/LPT.2016.2581318">High Bandwidth GaN-Based Micro-LEDs for Multi-Gb/s Visible Light Communications</a> · DOI <code>10.1109/LPT.2016.2581318</code>。</p>
+<p>定位：pp2023-2026: SecII,Fig2,SecIIIB/Fig3,SecIVA/Fig4,SecIVB/Fig5。核查层级：author-hosted_publisher_fulltext; Fig3 visually inspected。 待确认：junction temperature；causal contribution of each process；sample statistics；real-time FEC realization；total system energy；reliability/yield。</p>
+<p><a id="source-L09-FAN2022-RED-SIZE"></a></p>
+<p><strong>L09-FAN2022-RED-SIZE</strong> · Kaili Fan et al. · <a href="https://doi.org/10.1016/j.rinp.2022.105449">Size effects of AlGaInP red vertical micro-LEDs on silicon substrate</a> · DOI <code>10.1016/j.rinp.2022.105449</code>。</p>
+<p>定位：Results in Physics36,105449; publisher abstract/highlights。核查层级：primary_abstract_only。 待确认：measurement temperature；exact spectra/current conditions；sidewall treatment control；bandwidth；link BER；sample statistics；manufacturing yield。</p>
+<p><a id="source-LIN2026"></a></p>
+<p><strong>LIN2026</strong> · Runze Lin et al. · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13433930/">Transfer-printed yellow and red InGaN micro-LEDs on diamond for ultra-low-power high-speed optical interconnects</a> · DOI <code>10.1038/s41467-026-74151-4</code>。</p>
+<p>定位：Fig.4; Fig.5l-n; Measurement method; independently published dataset DOI10.5281/zenodo.20034288。核查层级：Primary full text; current live identity/method/results check plus pinned prior extraction。 待确认：Magnitude-only measurement chain, no unique lifetime/C extraction；No project3.2Gb/s qualification；Higher-current full table is nonmonotonic；Source OOK receiver differs from S21 detector。</p>
+<p><a id="source-ELBADAOUI2025"></a></p>
+<p><strong>ELBADAOUI2025</strong> · Sultan El Badaoui et al. · <a href="https://sid.onlinelibrary.wiley.com/doi/full/10.1002/jsid.2105">SPICE Modeling of GaN MicroLEDs for Optical Communication</a> · DOI <code>10.1002/jsid.2105</code>。</p>
+<p>定位：Section2 devices; Section3 dynamic models/Fig.7; Section5 SPICE model/Fig.15-17; Section6/Fig.20-22。核查层级：Primary publisher full text checked live。 待确认：Its blue devices, fitted capacitance/lifetimes and receiver parameters do not calibrate our yellow20 model; simulator compatibility must be verified。</p>
+<p>方法参考：<a href="https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm">NIST 精确二项式置信区间</a>。本报告的零误码数字由公开公式独立计算；不是硬件认证。</p>
+<ul>
+<li><a href="../../../evidence/microled-device-codesign-20261029/literature.json">完整文献数据台账</a>与<a href="../../../evidence/microled-device-codesign-20261029/source-notes.md">原文核查记录</a>：记录条件、定位、阅读深度及不可推导结论。</li>
+<li><a href="../../../evidence/microled-device-codesign-20261029/calculations.json">解析计算结果</a>、<a href="joint-validation-plan.md">独立联合验证方案</a>、<a href="reproduce.md">复现说明</a>。</li>
+<li><a href="../../../evidence/microled-dynamic-20261029/response-contract.json">历史动态数据合同</a>与<a href="../vcsel-reference-microled-dynamics-20261029/index.html">前一阶段总报告</a>。</li>
+</ul>
+<p>公开报告使用原创结构图、独立计算、事实数据表和明确许可的数值数据。论文原图的公开复用需分别核查；本轮核查用的原始页面/图表保留在忽略目录 <code>build/microled-device-codesign-20261029/literature/</code>，不随 Git 上传。Lin 论文原 Fig. 4 是此前私有原文证据，亦未纳入本轮公开文件；其独立数据集另有 CC BY 4.0 许可。不能把“可在线阅读”当作“可复制发布”。</p>
+<p>本轮所有图中的器件几何和层厚均为原理示意，不能交付晶圆厂制造。最终制造需要经工艺方接受的外延与器件工艺、掩膜/版图、规则与可靠性验证；本报告只建立研究方法和下一步实验合同。</p><footer>公开研究报告：未预选路线，未新增器件或光链路通过结果。文字源：<a href="README.md">README.md</a> · <a href="reproduce.md">复现</a></footer></main></body></html>
