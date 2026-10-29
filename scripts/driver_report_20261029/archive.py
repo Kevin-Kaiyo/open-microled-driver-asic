@@ -89,10 +89,14 @@ def rolling():
     Per-part manifests and receipts allow resuming a network interruption without overwriting evidence.
     """
     files,excluded=selected_files();STAGE.mkdir(exist_ok=True)
-    release=gh('api',f'repos/{REPO}/releases/tags/{TAG}')
+    # GitHub's by-tag REST endpoint may return 404 for a draft; gh resolves it through the draft inventory.
+    draft=gh('release','view',TAG,'--repo',REPO,'--json','databaseId,isDraft,tagName,targetCommitish')
+    assert draft['tagName']==TAG and draft['isDraft']
+    release=gh('api',f'repos/{REPO}/releases/{draft["databaseId"]}')
     assert release['draft'],'Use a draft until every member and archive has been verified'
     assert gh('repo','view',REPO,'--json','nameWithOwner,isPrivate')=={'isPrivate':False,'nameWithOwner':REPO}
     commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    assert draft['targetCommitish']==commit,'Draft must target the exact current source commit'
     plans=[]
     for group in ['metadata','waveforms']:
         batch=[];size=0
