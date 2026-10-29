@@ -1,0 +1,44 @@
+{
+  "scope": "Runtime-only recovery of a frozen r10 continuous startup/frame experiment",
+  "frozen_source": {
+    "path": "analog/circuits/vcsel_robustness_20261029/regulated-r10.spice",
+    "sha256": "c614ef23c1443adf5ec34f162c456f3cba3ce4f87cb872dacef689a8cc2840ac"
+  },
+  "original_runner": {
+    "path": "scripts/vcsel_robustness_20261029/run_continuous_r10.py",
+    "sha256": "2add6f8a25abe2841dbf8853c54f67d6bd0de9ade9846d579624eeeeaa91c465",
+    "wall_clock_timeout_s": 360
+  },
+  "recovery_runner": {
+    "path": "scripts/vcsel_robustness_20261029/run_continuous_restored_r10.py",
+    "sha256": "96a4795e130222705b847e4bf4f5de9158d5dddaba409b87011590d6b077904a",
+    "wall_clock_timeout_s": 900
+  },
+  "verified_only_change": "subprocess wall-clock timeout 360 -> 900 seconds; no circuit/solver/clock/data-condition change",
+  "retained_failed_trial": {
+    "path": "build/vcsel-robustness-20261029/continuous-TT-r10/result.json",
+    "sha256": "e7782581416c19516586e0f86e49c778bfcaa791bb7ee1ebf3efb4ccfeea0162",
+    "status": "timeout"
+  },
+  "new_case_names": [
+    "continuous-TT-r10-restored",
+    "continuous-SS-r10-restored",
+    "continuous-FF-r10-restored"
+  ],
+  "extracted_frame_names": [
+    "continuous-TT-r10-restored-frame",
+    "continuous-SS-r10-restored-frame",
+    "continuous-FF-r10-restored-frame"
+  ],
+  "analysis_label": "continuous-v3-r1",
+  "orchestrator": {
+    "path": "scripts/vcsel_robustness_20261029/complete_continuous_r10.py",
+    "sha256": "de5a1bc67e421669b79deb50ece69bab9f8fecbd7b29e64641fdc8687c1745cc"
+  },
+  "boundary": "Timeout itself is neither an electrical failure nor a pass. The original failed run remains immutable; recovered results need the normal independent numerical and receiver review.",
+  "execution_coordination": {
+    "helper": "scripts/vcsel_robustness_20261029/parallel_ff_r10.py",
+    "sha256": "19f72f08cab0419cd98abfcad1f8de8f9c4dde39ef23022c2d7b320019aa4674",
+    "description": "SS and FF ngspice children may execute concurrently. Pause only the sequential Python orchestrator while it waits for its SS child, run and compress FF, then resume orchestration so the completed FF result is reused. No simulator is paused and no electrical inputs are changed. Wall-clock elapsed_s may include coordination wait."
+  }
+}

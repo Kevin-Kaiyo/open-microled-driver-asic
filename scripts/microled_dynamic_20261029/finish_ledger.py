@@ -1,0 +1,84 @@
+#!/usr/bin/env python3
+"""Freeze traceability metadata and explicit public/private evidence boundaries."""
+from pathlib import Path
+import json, hashlib
+from extract import ROOT, EV, BUILD, sha, emit
+
+def run():
+    checks=json.loads((EV/'extraction-checks.json').read_text())
+    meta=json.loads((BUILD/'zenodo-metadata.json').read_text())
+    frozen_path=EV/'source-ledger.json'
+    frozen={a['id']:a for a in json.loads(frozen_path.read_text())['assets']} if frozen_path.exists() else {}
+    private_status=[]
+    def private_hash(path,asset,key):
+        """Public-only restores retain an already recorded hash, never claim local readback."""
+        if path.exists():
+            digest=sha(path);status='present; hashed locally'
+        else:
+            digest=frozen.get(asset,{}).get(key)
+            if not digest:raise FileNotFoundError(f'{path}: restore original or frozen source-ledger.json before finalizing ledger')
+            status='absent; hash retained from frozen public ledger, not reverified locally'
+        private_status.append({'path':str(path.relative_to(ROOT)),'status':status,'sha256':digest})
+        return digest
+    assets=[
+      {'id':'LIN2026-DATA-S21','title':'Source data for Transfer-printed yellow and red InGaN micro-LEDs on diamond for ultra-low-power high-speed optical interconnects',
+       'authors':'Runze Lin; Yu Zhang; Yucheng Yang; Shengyuan Dong; Handan Xu; Daqi Shen; Cheng Gao; Zehui Liang; Junze Tong; Erdan Gu; Zhizhong Chen; Bo Shen; Pengfei Tian',
+       'source_type':'author-deposited experimental numerical dataset; normalized/processed response, not raw complex VNA acquisition',
+       'doi':'10.5281/zenodo.20034288','url':'https://zenodo.org/records/20034288','metadata_url':'https://zenodo.org/api/records/20034288',
+       'publication_date':meta['metadata']['publication_date'],'record_created':meta['created'],'record_updated':meta['updated'],
+       'date_note':'Publication-date field and record-creation date differ; neither is silently substituted for the other.',
+       'original_archive':'build/led-fit/lin2026-source-data.zip','archive_sha256':checks['original_archive_sha256'],
+       'workbooks':checks['source_workbooks'],
+       'locators':['yellow20_s21_bandwidths.xlsx: Bandwidths A1:D46; Shifted_Curves A1:AT2002','frequency_response_low_current.xlsx: first sheet A:B (100uA yellow20)','diamond-optical-power.xlsx: first sheet A:B (yellow20)'],
+       'evidence_class':'measured by source authors; numerical extraction and cutoff interpolation by this project',
+       'conditions':'20um-square yellow InGaN MicroLED on diamond; VNA/bias-tee/fiber/SPD-4;30MHz-3GHz;selected25,50,60,80,100uA;temperature and physical serial unknown',
+       'key_values_file':'extraction-checks.json','cell_provenance_file':'source-cell-extract.json','uncertainty':'Not figure digitized. Instrument uncertainty/repeatability unavailable; decimal precision is not physical accuracy.',
+       'supports':['low-current bias points are actually covered','source-normalized magnitude/cutoff reproducibility','bias-dependent magnitude'],
+       'does_not_support':['unique C or recombination lifetime','same individual physical pixel for IV/PI/S21','temperature model','phase or transient eye','project net3.2Gb/s BER','full-link energy'],
+       'reuse_status':'confirmed reusable: CC BY4.0 numerical data and attributed derivatives','license':'https://creativecommons.org/licenses/by/4.0/',
+       'article_use':'Public original-data cell extract, redraws and narrow numerical comparisons; no unchanged paper figures.'},
+      {'id':'LIN2026-PAPER-FIG4','title':'Transfer-printed yellow and red InGaN micro-LEDs on diamond for ultra-low-power high-speed optical interconnects',
+       'doi':'10.1038/s41467-026-74151-4','url':'https://www.nature.com/articles/s41467-026-74151-4','published':'2026-06-17','journal':'Nature Communications17,7674',
+       'source_type':'peer-reviewed primary experimental paper','inspected':'Main text, Methods, original Fig.4 and source workbooks. Supplementary PDF was not successfully retrieved.',
+       'locators':['Fig.4a-d','Results: low-current modulation and near3GHz noise-floor note','Methods: Measurement method'],
+       'original_figure_path':'build/microled-dynamic-20261029/lin2026-figure4-original.jpg','original_figure_sha256':private_hash(BUILD/'lin2026-figure4-original.jpg','LIN2026-PAPER-FIG4','original_figure_sha256'),
+       'figure_url':'https://cdn.ncbi.nlm.nih.gov/pmc/blobs/122f/13433930/f0a35094fe82/41467_2026_74151_Fig4_HTML.jpg',
+       'cached_article_path':'build/led-fit/lin2026-article.html','cached_article_sha256':private_hash(ROOT/'build/led-fit/lin2026-article.html','LIN2026-PAPER-FIG4','cached_article_sha256'),
+       'supports':['measurement chain identification','source E-E minus3dB / E-O minus6dB convention','source authors acknowledge near3GHz low-SNR noise-floor elevation'],
+       'does_not_support':['independently calibrated intrinsic lifetime','asserting no missing parameter anywhere in unread supplementary material'],
+       'reuse_status':'private original evidence view only; excluded from public evidence package','license':'CC BY-NC-ND4.0; distinct from dataset CC BY4.0','article_use':'Public text citation only; public plot independently derived from separately licensed data.'},
+      {'id':'LI2023-MULTIPLE-LIFETIME','title':'Multiple-Carrier-Lifetime Model for Carrier Dynamics in InGaN/GaN LEDs with Non-Uniform Carrier Distribution',
+       'authors':['Xuefeng Li','Elizabeth DeJong','Rob Armitage','Daniel Feezell'],'source_type':'primary research preprint; v1, not represented here as peer reviewed','version':'arXiv:2310.17066v1','published':'2023-10-26',
+       'url':'https://arxiv.org/abs/2310.17066','pdf_url':'https://arxiv.org/pdf/2310.17066v1','doi':'10.48550/arXiv.2310.17066',
+       'locators':['p3 Fig.1','p4 Fig.2 and measured impedance/response discussion','p6 Fig.3','p8 Fig.5'],
+       'inspected':'Full primary PDF text and p4 original visual including Fig2; no numerical digitization performed.',
+       'conditions':'100um-diameter injection area; quasi-SQW vs V-pit-engineered MQW InGaN/GaN LEDs; different structures from Lin yellow20',
+       'key_values':{'J_A_cm2':40,'quasi_SQW_BW3_MHz':20.2,'MQW_BW3_MHz':4.2},
+       'evidence_class':'measured responses plus author model/fitting interpretation',
+       'supports':['joint impedance and modulation validation','single lifetime can fail for nonuniform-carrier LEDs'],
+       'does_not_support':['transplanting its lifetime/capacitance to Lin20um','full MicroLED3.2Gb/s transmitter performance'],
+       'original_pdf_path':'build/microled-dynamic-20261029/li2023-multiple-lifetime-v1.pdf','original_pdf_sha256':private_hash(BUILD/'li2023-multiple-lifetime-v1.pdf','LI2023-MULTIPLE-LIFETIME','original_pdf_sha256'),
+       'private_page':'build/microled-dynamic-20261029/li2023-page4-private.png','license':'arXiv non-exclusive distribution license','license_url':'https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html',
+       'reuse_status':'link/cite only in public chapter; original PDF/page retained for private review','article_use':'Method comparison; no imported figure or fitted parameters.'},
+      {'id':'ZHU2024-CIRCUIT','title':'Modulation bandwidth analysis of GaN-based micro-LED deduced by an equivalent circuit model',
+       'authors':['Lingli Zhu','Zhen Zhang','Daqi Shen','Na Gao','Pengfei Tian','Shuping Li','Junyong Kang','Rong Zhang'],
+       'source_type':'peer-reviewed primary paper; author abstract checked, full text unavailable in this run',
+       'doi':'10.1364/OE.539321','url':'https://doi.org/10.1364/OE.539321','abstract_url':'https://pubmed.ncbi.nlm.nih.gov/39573804/','journal':'Optics Express32(22),39974-39983','issue_date':'2024-10-21',
+       'locator':'author abstract as indexed by PubMed; publisher issue contents verified',
+       'conditions':'shallow/deep-etch GaN MicroLED comparison at4kA/cm2; geometry and complete fixture parameters not verified from full text',
+       'key_values_from_abstract':{'electrode_C_reduction_pF':24.9,'shallow_BW_MHz':203,'deep_BW_MHz':249.8,'current_density_A_cm2':4000},
+       'evidence_class':'source authors report measured/fitted improvement; this run has abstract-level verification only',
+       'supports':['model fixture, bond wires and intrinsic LED separately','electrode/parasitic C changes can affect modulation response'],
+       'does_not_support':['reproduced parameter fit','the same C values for this project','statistical equivalence with Lin low-current data'],
+       'reuse_status':'link/cite only; no original figure copied','license':'full-text reuse license not checked','article_use':'Short method pointer with explicit evidence-depth limitation.'}]
+    emit(EV/'source-ledger.json',{'created':'2026-10-29','scope':'MicroLED dynamics supplement only; historical baseline unchanged','assets':assets,
+       'private_evidence_local_status':private_status,
+       'open_issues':['same-pixel pairing','RF stimulus/reference-plane calibration','S21phase/complexS11','receiver/noise-floor deembedding','cross-temperature behavior','supplementary material retrieval'],
+       'discrepancy':'Lin prose identifies100uA2383.3MHz as maximum low-current E-E bandwidth; deposited80uA row is2386.699MHz (~0.14% higher). Both are preserved; table is not silently rounded to agree with prose.'})
+    outputs={str(p.relative_to(ROOT)):{'bytes':p.stat().st_size,'sha256':sha(p)} for p in sorted(EV.iterdir()) if p.is_file() and p.name!='manifest.json'}
+    allow=json.loads((EV/'release-allowlist.json').read_text())['files']
+    originals={str(p.relative_to(ROOT)):{'bytes':p.stat().st_size,'sha256':sha(p),'public_release':'allowlisted' if str(p.relative_to(ROOT)) in allow else 'excluded'} for p in sorted(BUILD.iterdir()) if p.suffix in ['.xlsx','.pdf','.jpg'] or str(p.relative_to(ROOT)) in allow}
+    emit(EV/'manifest.json',{'public_files':outputs,'raw_inputs':originals,'raw_release_allowlist':'evidence/microled-dynamic-20261029/release-allowlist.json','do_not_upload_private_originals_by_default':True})
+    print(json.dumps({'source_records':len(assets),'public_files_hashed':len(outputs),'raw_inputs_hashed':len(originals)},indent=2))
+
+if __name__=='__main__':run()

@@ -1,0 +1,71 @@
+{
+  "revision": "r10",
+  "source": "analog/circuits/vcsel_robustness_20261029/regulated-r10.spice",
+  "frames": {
+    "TT": {
+      "baseline": "frame-baseline-TT-r6",
+      "reference": "frame-reference-TT-r6",
+      "regulated": "frame-TT-r10"
+    },
+    "SS": {
+      "baseline": "frame-baseline-SS-r6",
+      "reference": "frame-reference-SS-r6",
+      "regulated": "frame-SS-r10"
+    },
+    "FF": {
+      "baseline": "frame-baseline-FF-r6",
+      "reference": "frame-reference-FF-r6",
+      "regulated": "frame-FF-r10"
+    }
+  },
+  "startup_before": {
+    "TT": "startup-TT-30us-r6",
+    "SS": "startup-SS-30us-r6",
+    "FF": "startup-FF-30us-r6"
+  },
+  "startup_after": {
+    "TT": "startup-TT-60us-r10",
+    "SS": "startup-SS-60us-r10",
+    "FF": "startup-FF-60us-r10"
+  },
+  "controls": [
+    "frame-control-TT-supply-minus-r8",
+    "frame-TT-supply-minus-r10",
+    "frame-TT-supply-plus-r10",
+    "frame-SS-supply-minus-r10",
+    "frame-TT-supply-minus-ESL0p5n-r10",
+    "frame-SS-Rsense-plus-r10",
+    "frame-FF-Rsense-minus-r10",
+    "frame-TT-seed7B43-r10",
+    "frame-TT-halfstep-r10",
+    "frame-TT-r10#fixed-v3-grid1p25"
+  ],
+  "startup_interpretation": "r10 的 TT 两轨最晚约 41.33 µs 才进入对应 DC 带内，因此连续实验等待 60 µs；SS 激光轨受 dropout 限制，按实际 DC 目标判断。100 ns 同步上电在 FF 仅有约 2.147 mV 端压余量，20 ns 快速上电的失败见下表。电流先建立不代表电源轨或可靠性已经就绪。",
+  "control_interpretation": "相同4736-bit帧、4096验证位和冻结接收门槛。0x7B43位于PRBS15周期的非重叠窗口，仍是确定性码型，不能充当随机BER样本；steps80把电路最大步长从UI/40减半。光学网格从2.5ps减至1.25ps后时间余量变化约−0.358ps，没有改变联合判定。0.5nH是外部去耦支路ESL的工程敏感性假设，VCSEL原来的0.5Ω/0.2nH封装模型保持不变。",
+  "dc_revision": "r10",
+  "dc_tolerance_note": "下表为最终r10的48个确定性容差点与6个标称DC点；它们分别改变一个误差源或两电阻的相对方向。",
+  "supply_after_plot": "audit-supply-transient-r10.npz",
+  "capacitor_audits": [
+    "audit-r10-cap-energy-index.json",
+    "audit-continuous-TT-r10-cap-energy.json",
+    "audit-continuous-SS-r10-cap-energy.json",
+    "audit-continuous-FF-r10-cap-energy.json"
+  ],
+  "control_labels": {
+    "frame-control-TT-supply-minus-r8": "r8：TT供电−5%，失败对照",
+    "frame-TT-supply-minus-r10": "r10：TT供电−5%",
+    "frame-TT-supply-plus-r10": "r10：TT供电+5%",
+    "frame-SS-supply-minus-r10": "r10：SS供电−2%",
+    "frame-TT-supply-minus-ESL0p5n-r10": "r10：TT−5%且去耦ESL=0.5nH",
+    "frame-SS-Rsense-plus-r10": "r10：SS感测电阻+1%",
+    "frame-FF-Rsense-minus-r10": "r10：FF感测电阻−1%",
+    "frame-TT-seed7B43-r10": "r10：TT非重叠码型0x7B43",
+    "frame-TT-halfstep-r10": "r10：TT电路步长减半",
+    "frame-TT-r10#fixed-v3-grid1p25": "r10：TT光学网格减半"
+  },
+  "continuous": [
+    "continuous-TT-r10-restored-frame#continuous-v3-r1",
+    "continuous-SS-r10-restored-frame#continuous-v3-r1",
+    "continuous-FF-r10-restored-frame#continuous-v3-r1"
+  ]
+}

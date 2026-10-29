@@ -1,0 +1,859 @@
+{
+  "source": "analog/circuits/vcsel_robustness_20261029/regulated-r10.spice",
+  "source_sha256": "c614ef23c1443adf5ec34f162c456f3cba3ce4f87cb872dacef689a8cc2840ac",
+  "mos_count": 73,
+  "parameters": {
+    "RBASE": "50",
+    "RTAIL": "37.5",
+    "CC": "5p",
+    "CLDO": "30p",
+    "WBASE": "60u",
+    "WTAIL": "84u",
+    "RDUMMY": "500",
+    "ATTEN": "200",
+    "RZERO": "100000",
+    "RZEROD": "100000",
+    "RBLEED": "5000"
+  },
+  "passives": {
+    "RLBIAS": [
+      "Lpb",
+      "VSS",
+      "100k"
+    ],
+    "RLZERO": [
+      "Ln2",
+      "Lzc",
+      "{RZERO}"
+    ],
+    "CLMILLER": [
+      "Lzc",
+      "Lctrl",
+      "{CLDO}"
+    ],
+    "RLTOP": [
+      "VL",
+      "Lfb",
+      "85k"
+    ],
+    "RLBOT": [
+      "Lfb",
+      "VSS",
+      "10k"
+    ],
+    "RLESR": [
+      "VL",
+      "Lcap",
+      ".1"
+    ],
+    "CLOUT": [
+      "Lcap",
+      "VSS",
+      "10n"
+    ],
+    "RLBLEED": [
+      "VL",
+      "VSS",
+      "{RBLEED}"
+    ],
+    "RDBIAS": [
+      "Dpb",
+      "VSS",
+      "100k"
+    ],
+    "RDZERO": [
+      "Dn2",
+      "Dzc",
+      "{RZEROD}"
+    ],
+    "CDMILLER": [
+      "Dzc",
+      "Dctrl",
+      "{CLDO}"
+    ],
+    "RDTOP": [
+      "DR",
+      "Dfb",
+      "85k"
+    ],
+    "RDBOT": [
+      "Dfb",
+      "VSS",
+      "10k"
+    ],
+    "RDESR": [
+      "DR",
+      "Dcap",
+      ".1"
+    ],
+    "CDOUT": [
+      "Dcap",
+      "VSS",
+      "1n"
+    ],
+    "RDBLEED": [
+      "DR",
+      "VSS",
+      "{RBLEED}"
+    ],
+    "RABIAS": [
+      "ABIAS",
+      "VSS",
+      "100k"
+    ],
+    "CBMILLER": [
+      "Bn2",
+      "BCTRL",
+      "{CC}"
+    ],
+    "CTMILLER": [
+      "Tn2",
+      "TCTRL",
+      "{CC}"
+    ],
+    "RBASE": [
+      "SBASE",
+      "VSS",
+      "{RBASE}"
+    ],
+    "RTAIL": [
+      "STAIL",
+      "VSS",
+      "{RTAIL}"
+    ],
+    "RDUMMY1": [
+      "VL",
+      "DUMMY",
+      "{RDUMMY}"
+    ],
+    "RAD": [
+      "D",
+      "DI",
+      "{ATTEN}"
+    ],
+    "RADI": [
+      "DI",
+      "VSS",
+      "2500"
+    ],
+    "RADB": [
+      "DB",
+      "DBI",
+      "{ATTEN}"
+    ],
+    "RADBI": [
+      "DBI",
+      "VSS",
+      "2500"
+    ]
+  },
+  "rail_target_V": 3.1,
+  "representation": "Identical parallel devices may share one explicitly multiplied symbol; all source instances accounted for.",
+  "figures": [
+    {
+      "path": "docs/research/vcsel-reference-microled-dynamics-20261029/figures/servo-current-core.svg",
+      "sha256": "01afedc0d234f7545c5e1a4795614f1c42daeb8376f1ffa24b122860fa9f3431",
+      "groups": [
+        {
+          "instances": [
+            "XBASE0",
+            "XBASE1"
+          ],
+          "nets": [
+            "BS",
+            "BCTRL",
+            "SBASE",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "{WBASE}",
+          "l": "1u"
+        },
+        {
+          "instances": [
+            "XSTEER_0"
+          ],
+          "nets": [
+            "OUT",
+            "GP",
+            "VX",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "40.0u",
+          "l": "0.28u"
+        },
+        {
+          "instances": [
+            "XDUMP_0"
+          ],
+          "nets": [
+            "DUMMY",
+            "GN",
+            "VX",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "40.0u",
+          "l": "0.28u"
+        },
+        {
+          "instances": [
+            "XTAIL0",
+            "XTAIL1"
+          ],
+          "nets": [
+            "TS",
+            "TCTRL",
+            "STAIL",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "{WTAIL}",
+          "l": ".28u"
+        }
+      ]
+    },
+    {
+      "path": "docs/research/vcsel-reference-microled-dynamics-20261029/figures/ota-b.svg",
+      "sha256": "cba5d7cf9b57ab1cec64c54f566feda8f8dfd8ae8cc3e4b40ca34fdc867f74eb",
+      "groups": [
+        {
+          "instances": [
+            "XBT_0"
+          ],
+          "nets": [
+            "Btail",
+            "ABIAS",
+            "VREF",
+            "VREF"
+          ],
+          "model": "pmos_3p3",
+          "w": "10.0u",
+          "l": "2u"
+        },
+        {
+          "instances": [
+            "XBP1_0",
+            "XBP1_1"
+          ],
+          "nets": [
+            "Bn1",
+            "SBASE",
+            "Btail",
+            "VREF"
+          ],
+          "model": "pmos_3p3",
+          "w": "64.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XBP2_0",
+            "XBP2_1"
+          ],
+          "nets": [
+            "Bn2",
+            "VSET",
+            "Btail",
+            "VREF"
+          ],
+          "model": "pmos_3p3",
+          "w": "64.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XBN1_0"
+          ],
+          "nets": [
+            "Bn1",
+            "Bn1",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "32.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XBN2_0"
+          ],
+          "nets": [
+            "Bn2",
+            "Bn1",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "32.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XBPL_0"
+          ],
+          "nets": [
+            "BCTRL",
+            "ABIAS",
+            "VREF",
+            "VREF"
+          ],
+          "model": "pmos_3p3",
+          "w": "20.0u",
+          "l": "2u"
+        },
+        {
+          "instances": [
+            "XBNS_0"
+          ],
+          "nets": [
+            "BCTRL",
+            "Bn2",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "20.0u",
+          "l": "1u"
+        },
+        {
+          "instances": [
+            "XAB_0"
+          ],
+          "nets": [
+            "ABIAS",
+            "ABIAS",
+            "VREF",
+            "VREF"
+          ],
+          "model": "pmos_3p3",
+          "w": "10.0u",
+          "l": "2u"
+        }
+      ]
+    },
+    {
+      "path": "docs/research/vcsel-reference-microled-dynamics-20261029/figures/ota-t.svg",
+      "sha256": "645fbb77d5a2fb54c0b625c65ee734a615e167548024487438d1b00cdf2c8e42",
+      "groups": [
+        {
+          "instances": [
+            "XTT_0"
+          ],
+          "nets": [
+            "Ttail",
+            "ABIAS",
+            "VREF",
+            "VREF"
+          ],
+          "model": "pmos_3p3",
+          "w": "10.0u",
+          "l": "2u"
+        },
+        {
+          "instances": [
+            "XTP1_0",
+            "XTP1_1"
+          ],
+          "nets": [
+            "Tn1",
+            "STAIL",
+            "Ttail",
+            "VREF"
+          ],
+          "model": "pmos_3p3",
+          "w": "64.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XTP2_0",
+            "XTP2_1"
+          ],
+          "nets": [
+            "Tn2",
+            "VSET",
+            "Ttail",
+            "VREF"
+          ],
+          "model": "pmos_3p3",
+          "w": "64.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XTN1_0"
+          ],
+          "nets": [
+            "Tn1",
+            "Tn1",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "32.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XTN2_0"
+          ],
+          "nets": [
+            "Tn2",
+            "Tn1",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "32.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XTPL_0"
+          ],
+          "nets": [
+            "TCTRL",
+            "ABIAS",
+            "VREF",
+            "VREF"
+          ],
+          "model": "pmos_3p3",
+          "w": "20.0u",
+          "l": "2u"
+        },
+        {
+          "instances": [
+            "XTNS_0"
+          ],
+          "nets": [
+            "TCTRL",
+            "Tn2",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "20.0u",
+          "l": "1u"
+        }
+      ]
+    },
+    {
+      "path": "docs/research/vcsel-reference-microled-dynamics-20261029/figures/ota-l.svg",
+      "sha256": "4afea4f4c5ffc71fb7bc8d08f43446434639f83a2d3267065ed9e9306b1f678a",
+      "groups": [
+        {
+          "instances": [
+            "XLT_0"
+          ],
+          "nets": [
+            "Ltail",
+            "Lpb",
+            "VLASER",
+            "VLASER"
+          ],
+          "model": "pmos_3p3",
+          "w": "10.0u",
+          "l": "2u"
+        },
+        {
+          "instances": [
+            "XLP1_0",
+            "XLP1_1"
+          ],
+          "nets": [
+            "Ln1",
+            "VREGSET",
+            "Ltail",
+            "VLASER"
+          ],
+          "model": "pmos_3p3",
+          "w": "64.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XLP2_0",
+            "XLP2_1"
+          ],
+          "nets": [
+            "Ln2",
+            "Lfb",
+            "Ltail",
+            "VLASER"
+          ],
+          "model": "pmos_3p3",
+          "w": "64.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XLN1_0"
+          ],
+          "nets": [
+            "Ln1",
+            "Ln1",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "32.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XLN2_0"
+          ],
+          "nets": [
+            "Ln2",
+            "Ln1",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "32.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XLPL_0"
+          ],
+          "nets": [
+            "Lctrl",
+            "Lpb",
+            "VLASER",
+            "VLASER"
+          ],
+          "model": "pmos_3p3",
+          "w": "20.0u",
+          "l": "2u"
+        },
+        {
+          "instances": [
+            "XLNS_0"
+          ],
+          "nets": [
+            "Lctrl",
+            "Ln2",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "20.0u",
+          "l": "1u"
+        },
+        {
+          "instances": [
+            "XLB_0"
+          ],
+          "nets": [
+            "Lpb",
+            "Lpb",
+            "VLASER",
+            "VLASER"
+          ],
+          "model": "pmos_3p3",
+          "w": "10.0u",
+          "l": "2u"
+        }
+      ]
+    },
+    {
+      "path": "docs/research/vcsel-reference-microled-dynamics-20261029/figures/ota-d.svg",
+      "sha256": "49824b167f3b30a04a578d685e3bb78b353e2e2714d60eef459d55cbd6a1d3ae",
+      "groups": [
+        {
+          "instances": [
+            "XDT_0"
+          ],
+          "nets": [
+            "Dtail",
+            "Dpb",
+            "VDD",
+            "VDD"
+          ],
+          "model": "pmos_3p3",
+          "w": "10.0u",
+          "l": "2u"
+        },
+        {
+          "instances": [
+            "XDP1_0",
+            "XDP1_1"
+          ],
+          "nets": [
+            "Dn1",
+            "VREGSET",
+            "Dtail",
+            "VDD"
+          ],
+          "model": "pmos_3p3",
+          "w": "64.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XDP2_0",
+            "XDP2_1"
+          ],
+          "nets": [
+            "Dn2",
+            "Dfb",
+            "Dtail",
+            "VDD"
+          ],
+          "model": "pmos_3p3",
+          "w": "64.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XDN1_0"
+          ],
+          "nets": [
+            "Dn1",
+            "Dn1",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "32.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XDN2_0"
+          ],
+          "nets": [
+            "Dn2",
+            "Dn1",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "32.0u",
+          "l": "8u"
+        },
+        {
+          "instances": [
+            "XDPL_0"
+          ],
+          "nets": [
+            "Dctrl",
+            "Dpb",
+            "VDD",
+            "VDD"
+          ],
+          "model": "pmos_3p3",
+          "w": "20.0u",
+          "l": "2u"
+        },
+        {
+          "instances": [
+            "XDNS_0"
+          ],
+          "nets": [
+            "Dctrl",
+            "Dn2",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "20.0u",
+          "l": "1u"
+        },
+        {
+          "instances": [
+            "XDB_0"
+          ],
+          "nets": [
+            "Dpb",
+            "Dpb",
+            "VDD",
+            "VDD"
+          ],
+          "model": "pmos_3p3",
+          "w": "10.0u",
+          "l": "2u"
+        }
+      ]
+    },
+    {
+      "path": "docs/research/vcsel-reference-microled-dynamics-20261029/figures/regulated-rails.svg",
+      "sha256": "3b3c128f9b57d6a8244676a286b1b97231597b8cd80deb6255b627018e664bb9",
+      "groups": [
+        {
+          "instances": [
+            "XLPASS_0",
+            "XLPASS_1",
+            "XLPASS_2",
+            "XLPASS_3",
+            "XLPASS_4",
+            "XLPASS_5",
+            "XLPASS_6",
+            "XLPASS_7",
+            "XLPASS_8",
+            "XLPASS_9"
+          ],
+          "nets": [
+            "VL",
+            "Lctrl",
+            "VLASER",
+            "VLASER"
+          ],
+          "model": "pmos_3p3",
+          "w": "100.0u",
+          "l": "0.28u"
+        },
+        {
+          "instances": [
+            "XDPASS_0",
+            "XDPASS_1",
+            "XDPASS_2",
+            "XDPASS_3",
+            "XDPASS_4",
+            "XDPASS_5",
+            "XDPASS_6",
+            "XDPASS_7",
+            "XDPASS_8",
+            "XDPASS_9"
+          ],
+          "nets": [
+            "DR",
+            "Dctrl",
+            "VDD",
+            "VDD"
+          ],
+          "model": "pmos_3p3",
+          "w": "100.0u",
+          "l": "0.28u"
+        }
+      ]
+    },
+    {
+      "path": "docs/research/vcsel-reference-microled-dynamics-20261029/figures/buffer-detail.svg",
+      "sha256": "613a42ccccdeb32381a5347195c557b9985530d9cf5e91a60a01b6091761331c",
+      "groups": [
+        {
+          "instances": [
+            "XBP1P_0"
+          ],
+          "nets": [
+            "NP",
+            "DI",
+            "DR",
+            "DR"
+          ],
+          "model": "pmos_3p3",
+          "w": "8.0u",
+          "l": "0.28u"
+        },
+        {
+          "instances": [
+            "XBP1N_0"
+          ],
+          "nets": [
+            "NP",
+            "DI",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "4.0u",
+          "l": "0.28u"
+        },
+        {
+          "instances": [
+            "XBP2P_0"
+          ],
+          "nets": [
+            "GP",
+            "NP",
+            "DR",
+            "DR"
+          ],
+          "model": "pmos_3p3",
+          "w": "24.0u",
+          "l": "0.28u"
+        },
+        {
+          "instances": [
+            "XBP2N_0"
+          ],
+          "nets": [
+            "GP",
+            "NP",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "12.0u",
+          "l": "0.28u"
+        },
+        {
+          "instances": [
+            "XBN1P_0"
+          ],
+          "nets": [
+            "NN",
+            "DBI",
+            "DR",
+            "DR"
+          ],
+          "model": "pmos_3p3",
+          "w": "8.0u",
+          "l": "0.28u"
+        },
+        {
+          "instances": [
+            "XBN1N_0"
+          ],
+          "nets": [
+            "NN",
+            "DBI",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "4.0u",
+          "l": "0.28u"
+        },
+        {
+          "instances": [
+            "XBN2P_0"
+          ],
+          "nets": [
+            "GN",
+            "NN",
+            "DR",
+            "DR"
+          ],
+          "model": "pmos_3p3",
+          "w": "24.0u",
+          "l": "0.28u"
+        },
+        {
+          "instances": [
+            "XBN2N_0"
+          ],
+          "nets": [
+            "GN",
+            "NN",
+            "VSS",
+            "VSS"
+          ],
+          "model": "nmos_3p3",
+          "w": "12.0u",
+          "l": "0.28u"
+        }
+      ]
+    },
+    {
+      "path": "docs/research/vcsel-reference-microled-dynamics-20261029/figures/input-network.svg",
+      "sha256": "31001ab3793e41295d5355ecb282af276a391b6f8ca0f97bc93bae7f8409fe09",
+      "groups": []
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "circuits": {
+    "analog/circuits/vcsel_robustness_20261029/reference-r6.spice": "2d1946bbcce2939e28fd7b28bdd55b2ab9bdce55000ef9b97fe2c32a068083e6",
+    "analog/circuits/vcsel_robustness_20261029/regulated-r6.spice": "66687ff0241412ba799ecea99874bbc28ae02df503bb38b613ee9f9a88a398a8"
+  },
+  "runner_sha256": "69c418d705a3886a4428e919fe983264b4cbe607ed6c9e52f2dd0ea911753dc1",
+  "receiver_sha256": "1f47a36f24379b58fb3094303d17d678e0aba7328ddbd58eb601c7b966e0c962",
+  "optical_sha256": "5cf8907df8e1ace985012ff5107312ab3b04699f2e944696fc49dae4b4d7bf23",
+  "default_config": {
+    "variant": "regulated",
+    "mode": "dc",
+    "level": 0,
+    "corner": "typical",
+    "temp": 25,
+    "voltage": 3.3,
+    "seed": 23246,
+    "rate": 3.2,
+    "steps": 40,
+    "nbits": 4736,
+    "cj": 1.5e-13,
+    "vset": 0.15,
+    "vregset": 0.3,
+    "rscale": 1.0,
+    "cc": 5e-12,
+    "cldo": 1e-10,
+    "wbase": 6e-05,
+    "wtail": 8.4e-05,
+    "atten": 200.0,
+    "ramp_ns": 100.0,
+    "duration_ns": 2000.0,
+    "disturb": 0.0,
+    "rref": 6900.0
+  },
+  "corners": [
+    [
+      "TT",
+      "typical",
+      25,
+      3.3
+    ],
+    [
+      "SS",
+      "ss",
+      125,
+      2.97
+    ],
+    [
+      "FF",
+      "ff",
+      -40,
+      3.63
+    ]
+  ],
+  "main_seed": 23246,
+  "confirmation_seed": 31555,
+  "gates": {
+    "time_ps": 100,
+    "margin_uAeq": 7.5,
+    "terminal_V": 3.63,
+    "body_forward_V": 0.3,
+    "IV_range_mA": [
+      2,
+      8
+    ],
+    "PI_max_mA": 7.5
+  },
+  "planned_controls": [
+    "Rsense +/-1% DC and frame",
+    "VSET +/-1% DC",
+    "regulated-reference +/-1% DC",
+    "SS -2% raw supply pulse",
+    "TT +/-5% raw supply pulse",
+    "TT UI/80",
+    "TT optical grid1.25ps",
+    "nonoverlap TT seed0x7B43",
+    "100ns supply ramp at3corners and slower1us ramp"
+  ],
+  "scope": "No endpoint retuning by corner, no change to VCSEL figure proxy or RX conditions; all modifications stated, no architecture selection"
+}

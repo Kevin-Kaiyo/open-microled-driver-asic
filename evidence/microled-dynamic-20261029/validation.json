@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "scope": "extraction, units, algebra, traceability and visual review; not new transient or optical measurement",
+  "source_archive_sha256": "4873cfd00f6ffa7e9c75e425e4e41d230a7100e43e9e74bb67225e37ea09c3ee",
+  "source_checks": {
+    "points_per_curve": 2001,
+    "selected_curves": 5,
+    "bandwidth_table_recompute_max_error_MHz": 9.094947017729282e-13,
+    "independent_workbook_100uA_response_matches": true,
+    "allpass_delay_magnitude_max_error": 3.3306690738754696e-16,
+    "source_current_density_area_check_max_A_cm2": 4.547473508864641e-13,
+    "all_selected_curves_equal_zero_dB_at_30MHz": true
+  },
+  "python": "3.12.13",
+  "numpy": "2.5.3",
+  "matplotlib": "3.11.2",
+  "visual_review": [
+    "source-response.png: axes and legends inspected",
+    "source-cell-extract.png: source units/header/selected rows inspected",
+    "power-and-old-proxy.png: distinct reference planes labelled",
+    "reference-plane-response.png: same assumptions and normalized conductive-current quantity",
+    "reference-planes.png: Chinese/Greek glyphs, series Rs connectivity and layout inspected",
+    "private Fig4 original and Li2023 p4 original inspected"
+  ],
+  "historical_baseline_modified": false,
+  "new_parameters_activated": false,
+  "scripts": {
+    "scripts/microled_dynamic_20261029/extract.py": "aac265336091d58879b8382dfa65efec9ab62f4b3d25ebabec914a9cadfdeeb9",
+    "scripts/microled_dynamic_20261029/finish_ledger.py": "5d7360e680d724064db745a543deda487e800446ae45dc7cbeb512ce175189d3",
+    "scripts/microled_dynamic_20261029/make_evidence.py": "0d684a6b4fb333849306b27d1533abe435de299be0bfcf9d15be38ee81bc800b"
+  },
+  "reproducibility_smoke": {
+    "status": "PASS",
+    "mode": "isolated public-only restore; checksum-verified existing ZIP/font shared as read-only inputs; no paper PDF/image/HTML copied",
+    "scripts": [
+      {
+        "script": "extract.py",
+        "exit_code": 0
+      },
+      {
+        "script": "make_evidence.py",
+        "exit_code": 0
+      },
+      {
+        "script": "finish_ledger.py",
+        "exit_code": 0
+      }
+    ],
+    "byte_identical": [
+      "yellow20-bandwidth.csv",
+      "yellow20-optical-power.csv",
+      "yellow20-s21-selected.csv",
+      "reference-plane-calculation.json",
+      "response-contract.json"
+    ],
+    "private_inputs_absent_and_explicitly_recorded": 3,
+    "chapter_local_link_count": 10,
+    "all_chapter_local_links_resolve": true,
+    "same_directory_HTML_embedding": "valid absent a different HTML base URL",
+    "source_ledger_dates": {
+      "publication_date": "2026-05-05",
+      "record_created": "2026-06-18T10:05:25.310369+00:00",
+      "record_updated": "2026-06-18T10:05:25.539819+00:00"
+    }
+  }
+}

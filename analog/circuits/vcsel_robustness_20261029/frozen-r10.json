@@ -1,0 +1,93 @@
+{
+  "circuits": {
+    "analog/circuits/vcsel_robustness_20261029/regulated-r10.spice": "c614ef23c1443adf5ec34f162c456f3cba3ce4f87cb872dacef689a8cc2840ac"
+  },
+  "runner_sha256": "09f72cb2fda4a04fd02a16612636101977ce6380f47fea84064983d7a8ccc83b",
+  "receiver_sha256": "1f47a36f24379b58fb3094303d17d678e0aba7328ddbd58eb601c7b966e0c962",
+  "optical_sha256": "5cf8907df8e1ace985012ff5107312ab3b04699f2e944696fc49dae4b4d7bf23",
+  "default_config": {
+    "variant": "regulated",
+    "mode": "dc",
+    "level": 0,
+    "corner": "typical",
+    "temp": 25,
+    "voltage": 3.3,
+    "seed": 23246,
+    "rate": 3.2,
+    "steps": 40,
+    "nbits": 4736,
+    "cj": 1.5e-13,
+    "vset": 0.15,
+    "vregset": 0.3263157894736842,
+    "rscale": 1.0,
+    "cc": 5e-12,
+    "cldo": 3e-11,
+    "wbase": 6e-05,
+    "wtail": 8.4e-05,
+    "atten": 200.0,
+    "ramp_ns": 100.0,
+    "duration_ns": 2000.0,
+    "disturb": 0.0,
+    "rref": 6900.0,
+    "revision": "r10",
+    "rzero": 100000.0,
+    "rzerod": 100000.0,
+    "rbleed": 5000.0
+  },
+  "corners": [
+    [
+      "TT",
+      "typical",
+      25,
+      3.3
+    ],
+    [
+      "SS",
+      "ss",
+      125,
+      2.97
+    ],
+    [
+      "FF",
+      "ff",
+      -40,
+      3.63
+    ]
+  ],
+  "main_seed": 23246,
+  "confirmation_seed": 31555,
+  "gates": {
+    "time_ps": 100,
+    "margin_uAeq": 7.5,
+    "terminal_V": 3.63,
+    "body_forward_V": 0.3,
+    "IV_range_mA": [
+      2,
+      8
+    ],
+    "PI_max_mA": 7.5
+  },
+  "planned_controls": [
+    "Rsense +/-1% DC and frame",
+    "VSET +/-1% DC",
+    "regulated-reference +/-1% DC",
+    "SS -2% raw supply pulse",
+    "TT +/-5% raw supply pulse",
+    "TT UI/80",
+    "TT optical grid1.25ps",
+    "nonoverlap TT seed0x7B43",
+    "100ns supply ramp at3corners and slower1us ramp"
+  ],
+  "scope": "No endpoint retuning by corner, no change to VCSEL figure proxy or RX conditions; all modifications stated, no architecture selection",
+  "revision": "r10",
+  "startup_gate": "Current±5% and bothrails±1% of independentDC, last20%p2p; 60us sync-ramp then data enabled; no on-chip POR exists",
+  "rail_contract": "3.10V target withSSdropout:laser2.917624V,buffers2.965754V; LDOactiveTTFF",
+  "compensation": "L:Rzero100kohm/30pF and10nF/.1ohm externaloutputdecap;D:100kohm/30pF and1nF/.1ohm; each5kohmminimumload",
+  "change_from_r8": "Only laser outputcapacitor1nF->10nF andlaserMillerRzero10k->100k; quietVREF RC r9 not adopted",
+  "pdn_boundary": "Outputdecap10nF external; ESR0.1ohm, baselineESL0 idealization; additional0.5nHcontrol separate. VCSELpackage .5ohm/.2nHunchanged",
+  "additional_sources": {
+    "scripts/vcsel_robustness_20261029/run_continuous_r10.py": "2add6f8a25abe2841dbf8853c54f67d6bd0de9ade9846d579624eeeeaa91c465",
+    "scripts/vcsel_robustness_20261029/extract_frame_r10.py": "e51d97aca07ba86993546c22804ddf0ca0351a15e396b29855a3bfea96d1628a",
+    "scripts/vcsel_robustness_20261029/analyze_continuous.py": "0433bb91a96ce940755b891fc23e02996979d80b07c0a0b6296efe1e8330213f"
+  }
+}

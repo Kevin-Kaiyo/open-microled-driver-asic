@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "scope": "Public raw numerical data and reproduction metadata only; exact build paths, no glob expansion",
+  "files": [
+    "build/microled-dynamic-20261029/yellow20_s21_bandwidths.xlsx",
+    "build/microled-dynamic-20261029/bandwidth.xlsx",
+    "build/microled-dynamic-20261029/frequency_response_low_current.xlsx",
+    "build/microled-dynamic-20261029/diamond-optical-power.xlsx",
+    "build/microled-dynamic-20261029/zenodo-metadata.json"
+  ],
+  "licenses": [
+    {
+      "applies_to": "Four XLSX workbooks",
+      "source": "Runze Lin et al., Zenodo 20034288, source_data.zip",
+      "doi": "https://doi.org/10.5281/zenodo.20034288",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution_file": "evidence/microled-dynamic-20261029/NOTICE.md"
+    },
+    {
+      "applies_to": "zenodo-metadata.json",
+      "source": "https://zenodo.org/api/records/20034288",
+      "purpose": "Public repository metadata snapshot used to verify source identity, dates, archive checksum and declared data license; not paper text or artwork"
+    }
+  ],
+  "required_external_input": {
+    "path": "build/led-fit/lin2026-source-data.zip",
+    "reason": "extract.py currently verifies and reads the complete source archive; selected workbooks alone are insufficient for that script. Restore an existing verified archive or download once from the official source.",
+    "url": "https://zenodo.org/api/records/20034288/files/source_data.zip/content",
+    "bytes": 86472338,
+    "sha256": "4873cfd00f6ffa7e9c75e425e4e41d230a7100e43e9e74bb67225e37ea09c3ee",
+    "included_in_this_raw_release_subset": false
+  },
+  "exclude": [
+    "build/microled-dynamic-20261029/lin2026-figure4-original.jpg",
+    "build/microled-dynamic-20261029/li2023-multiple-lifetime-v1.pdf",
+    "build/microled-dynamic-20261029/li2023-page4-private.png",
+    "build/microled-dynamic-20261029/private-evidence.md",
+    "build/microled-dynamic-20261029/reference-planes.svg.png",
+    "build/microled-dynamic-20261029/fontconfig.xml",
+    "build/led-fit/lin2026-article.html",
+    "build/led-fit/lin2026-article.txt"
+  ],
+  "rule": "Anything not listed in files is excluded from this raw-data subset, including future files, caches and directories. Public source/derived evidence is backed up separately through Git. Never recursively package the build directory."
+}

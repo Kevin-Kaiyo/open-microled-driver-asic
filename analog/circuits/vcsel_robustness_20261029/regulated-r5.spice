@@ -1,0 +1,103 @@
+* Independent dual source-sense current servo; finite-gain PMOS-input OTAs.
+* VSET and VREGSET are externally supplied precision-voltage boundaries, NOT implemented bandgaps.
+* RBASE/RTAIL, compensation, divider and output capacitors are explicit external ideal passive assumptions.
+* All MOS use pinned GF180 silicon 3.3V BSIM; no layout/PEX qualification.
+.subckt vcsel_servo D DB OUT VLASER VDD VREF VSET VREGSET VL VSS params: RBASE=50 RTAIL=37.5 CC=5p CLDO=100p WBASE=60u WTAIL=84u RDUMMY=500 ATTEN=200
+XLB_0 Lpb Lpb VLASER VLASER pmos_3p3 w=10.0u l=2u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+RLBIAS Lpb VSS 100k
+XLT_0 Ltail Lpb VLASER VLASER pmos_3p3 w=10.0u l=2u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+XLP1_0 Ln1 VREGSET Ltail VLASER pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XLP1_1 Ln1 VREGSET Ltail VLASER pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XLP2_0 Ln2 Lfb Ltail VLASER pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XLP2_1 Ln2 Lfb Ltail VLASER pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XLN1_0 Ln1 Ln1 VSS VSS nmos_3p3 w=32.0u l=8u ad=14.08p as=14.08p pd=64.88u ps=64.88u
+XLN2_0 Ln2 Ln1 VSS VSS nmos_3p3 w=32.0u l=8u ad=14.08p as=14.08p pd=64.88u ps=64.88u
+XLNS_0 Lctrl Ln2 VSS VSS nmos_3p3 w=20.0u l=1u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XLPL_0 Lctrl Lpb VLASER VLASER pmos_3p3 w=20.0u l=2u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+CLMILLER Ln2 Lctrl {CLDO}
+XLPASS_0 VL Lctrl VLASER VLASER pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XLPASS_1 VL Lctrl VLASER VLASER pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XLPASS_2 VL Lctrl VLASER VLASER pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XLPASS_3 VL Lctrl VLASER VLASER pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XLPASS_4 VL Lctrl VLASER VLASER pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XLPASS_5 VL Lctrl VLASER VLASER pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XLPASS_6 VL Lctrl VLASER VLASER pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XLPASS_7 VL Lctrl VLASER VLASER pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XLPASS_8 VL Lctrl VLASER VLASER pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XLPASS_9 VL Lctrl VLASER VLASER pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+RLTOP VL Lfb 85k
+RLBOT Lfb VSS 10k
+RLESR VL Lcap .1
+CLOUT Lcap VSS 1n
+XDB_0 Dpb Dpb VDD VDD pmos_3p3 w=10.0u l=2u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+RDBIAS Dpb VSS 100k
+XDT_0 Dtail Dpb VDD VDD pmos_3p3 w=10.0u l=2u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+XDP1_0 Dn1 VREGSET Dtail VDD pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XDP1_1 Dn1 VREGSET Dtail VDD pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XDP2_0 Dn2 Dfb Dtail VDD pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XDP2_1 Dn2 Dfb Dtail VDD pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XDN1_0 Dn1 Dn1 VSS VSS nmos_3p3 w=32.0u l=8u ad=14.08p as=14.08p pd=64.88u ps=64.88u
+XDN2_0 Dn2 Dn1 VSS VSS nmos_3p3 w=32.0u l=8u ad=14.08p as=14.08p pd=64.88u ps=64.88u
+XDNS_0 Dctrl Dn2 VSS VSS nmos_3p3 w=20.0u l=1u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XDPL_0 Dctrl Dpb VDD VDD pmos_3p3 w=20.0u l=2u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+CDMILLER Dn2 Dctrl {CLDO}
+XDPASS_0 DR Dctrl VDD VDD pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XDPASS_1 DR Dctrl VDD VDD pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XDPASS_2 DR Dctrl VDD VDD pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XDPASS_3 DR Dctrl VDD VDD pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XDPASS_4 DR Dctrl VDD VDD pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XDPASS_5 DR Dctrl VDD VDD pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XDPASS_6 DR Dctrl VDD VDD pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XDPASS_7 DR Dctrl VDD VDD pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XDPASS_8 DR Dctrl VDD VDD pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+XDPASS_9 DR Dctrl VDD VDD pmos_3p3 w=100.0u l=0.28u ad=44.0p as=44.0p pd=200.88u ps=200.88u
+RDTOP DR Dfb 85k
+RDBOT Dfb VSS 10k
+RDESR DR Dcap .1
+CDOUT Dcap VSS 1n
+XAB_0 ABIAS ABIAS VREF VREF pmos_3p3 w=10.0u l=2u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+RABIAS ABIAS VSS 100k
+XBT_0 Btail ABIAS VREF VREF pmos_3p3 w=10.0u l=2u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+XBP1_0 Bn1 SBASE Btail VREF pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XBP1_1 Bn1 SBASE Btail VREF pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XBP2_0 Bn2 VSET Btail VREF pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XBP2_1 Bn2 VSET Btail VREF pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XBN1_0 Bn1 Bn1 VSS VSS nmos_3p3 w=32.0u l=8u ad=14.08p as=14.08p pd=64.88u ps=64.88u
+XBN2_0 Bn2 Bn1 VSS VSS nmos_3p3 w=32.0u l=8u ad=14.08p as=14.08p pd=64.88u ps=64.88u
+XBNS_0 BCTRL Bn2 VSS VSS nmos_3p3 w=20.0u l=1u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XBPL_0 BCTRL ABIAS VREF VREF pmos_3p3 w=20.0u l=2u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+CBMILLER Bn2 BCTRL {CC}
+XTT_0 Ttail ABIAS VREF VREF pmos_3p3 w=10.0u l=2u ad=4.4p as=4.4p pd=20.88u ps=20.88u
+XTP1_0 Tn1 STAIL Ttail VREF pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XTP1_1 Tn1 STAIL Ttail VREF pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XTP2_0 Tn2 VSET Ttail VREF pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XTP2_1 Tn2 VSET Ttail VREF pmos_3p3 w=64.0u l=8u ad=28.16p as=28.16p pd=128.88u ps=128.88u
+XTN1_0 Tn1 Tn1 VSS VSS nmos_3p3 w=32.0u l=8u ad=14.08p as=14.08p pd=64.88u ps=64.88u
+XTN2_0 Tn2 Tn1 VSS VSS nmos_3p3 w=32.0u l=8u ad=14.08p as=14.08p pd=64.88u ps=64.88u
+XTNS_0 TCTRL Tn2 VSS VSS nmos_3p3 w=20.0u l=1u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XTPL_0 TCTRL ABIAS VREF VREF pmos_3p3 w=20.0u l=2u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+CTMILLER Tn2 TCTRL {CC}
+VIBASE OUT BS 0
+VITAIL VX TS 0
+XBASE0 BS BCTRL SBASE VSS nmos_3p3 w={WBASE} l=1u ad={WBASE*.44u} as={WBASE*.44u} pd={2*(WBASE+.44u)} ps={2*(WBASE+.44u)}
+XTAIL0 TS TCTRL STAIL VSS nmos_3p3 w={WTAIL} l=.28u ad={WTAIL*.44u} as={WTAIL*.44u} pd={2*(WTAIL+.44u)} ps={2*(WTAIL+.44u)}
+RBASE SBASE VSS {RBASE}
+RTAIL STAIL VSS {RTAIL}
+XBASE1 BS BCTRL SBASE VSS nmos_3p3 w={WBASE} l=1u ad={WBASE*.44u} as={WBASE*.44u} pd={2*(WBASE+.44u)} ps={2*(WBASE+.44u)}
+XTAIL1 TS TCTRL STAIL VSS nmos_3p3 w={WTAIL} l=.28u ad={WTAIL*.44u} as={WTAIL*.44u} pd={2*(WTAIL+.44u)} ps={2*(WTAIL+.44u)}
+XSTEER_0 OUT GP VX VSS nmos_3p3 w=20.0u l=0.28u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+XDUMP_0 DUMMY GN VX VSS nmos_3p3 w=20.0u l=0.28u ad=8.8p as=8.8p pd=40.88u ps=40.88u
+RDUMMY1 VL DUMMY {RDUMMY}
+RAD D DI {ATTEN}
+RADI DI VSS 2500
+RADB DB DBI {ATTEN}
+RADBI DBI VSS 2500
+XBP1N_0 NP DI VSS VSS nmos_3p3 w=4.0u l=0.28u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+XBP1P_0 NP DI DR DR pmos_3p3 w=8.0u l=0.28u ad=3.52p as=3.52p pd=16.88u ps=16.88u
+XBP2N_0 GP NP VSS VSS nmos_3p3 w=12.0u l=0.28u ad=5.28p as=5.28p pd=24.88u ps=24.88u
+XBP2P_0 GP NP DR DR pmos_3p3 w=24.0u l=0.28u ad=10.56p as=10.56p pd=48.88u ps=48.88u
+XBN1N_0 NN DBI VSS VSS nmos_3p3 w=4.0u l=0.28u ad=1.76p as=1.76p pd=8.88u ps=8.88u
+XBN1P_0 NN DBI DR DR pmos_3p3 w=8.0u l=0.28u ad=3.52p as=3.52p pd=16.88u ps=16.88u
+XBN2N_0 GN NN VSS VSS nmos_3p3 w=12.0u l=0.28u ad=5.28p as=5.28p pd=24.88u ps=24.88u
+XBN2P_0 GN NN DR DR pmos_3p3 w=24.0u l=0.28u ad=10.56p as=10.56p pd=48.88u ps=48.88u
+.ends vcsel_servo

@@ -1,0 +1,172 @@
+{
+  "script_sha256": "ea78993543d63091a92647d3d5c77ea9c9cd85bdbf4a198be3165fdb0e73c901",
+  "common_helpers_sha256": "abd0af7b643e3a88060dee7be37fa2f57564d9644d3eec4e829d63854571983f",
+  "scope": "Independent native-waveform energy/stress and receiver training evaluation; same frozen physical optical proxy. No SPICE rerun, optical measurement, calibrated receiver noise, silicon or physical signoff.",
+  "rows": [
+    {
+      "case": "frame-TT-supply-minus-r10",
+      "analysis_label": "fixed-v3-r2",
+      "config": {
+        "variant": "regulated",
+        "mode": "frame",
+        "level": 0,
+        "corner": "typical",
+        "temp": 25,
+        "voltage": 3.3,
+        "seed": 23246,
+        "rate": 3.2,
+        "steps": 40,
+        "nbits": 4736,
+        "cj": 1.5e-13,
+        "vset": 0.15,
+        "vregset": 0.3263157894736842,
+        "rscale": 1.0,
+        "cc": 5e-12,
+        "cldo": 3e-11,
+        "wbase": 6e-05,
+        "wtail": 8.4e-05,
+        "atten": 200.0,
+        "ramp_ns": 100.0,
+        "duration_ns": 2000.0,
+        "disturb": -0.05,
+        "rref": 6900.0,
+        "revision": "r10",
+        "rzero": 100000.0,
+        "rzerod": 100000.0,
+        "rbleed": 5000.0
+      },
+      "manifest_sha256": "aca04ce035fd099615a713fb76fadae8f605541be2da2a01fe94d5154fde5109",
+      "waveform_sha256": "7e8a54f29f2ccd25408d05e4ec9720cab603d62c681cfeefe049ed9c07ea0cbd",
+      "analysis_sha256": "989c65af8284eb8afd688f90ea6cc7d00231ce3ed8d659206c918eaf04ce4547",
+      "MOS_inventory_count": 73,
+      "all_MOS_nodes_match_netlist": true,
+      "receiver_independent": {
+        "errors": 0,
+        "margin_uAeq": 32.46016314047874,
+        "time_ps": 127.07071767974097,
+        "delay_ps": 355,
+        "training_joint_score": 1.3078627223512624,
+        "candidate_count": 1601
+      },
+      "energy_by_port": {
+        "VLASER": {
+          "positive_J": 3.163931996720291e-08,
+          "returned_J": 9.705400867209684e-13,
+          "net_J": 3.163834942711619e-08
+        },
+        "VDD": {
+          "positive_J": 7.374908878786921e-09,
+          "returned_J": 3.0523907038867135e-10,
+          "net_J": 7.069669808398249e-09
+        },
+        "VREF": {
+          "positive_J": 5.996516752526086e-10,
+          "returned_J": 2.764467313688213e-11,
+          "net_J": 5.720070021157264e-10
+        },
+        "VD": {
+          "positive_J": 2.620305314989511e-09,
+          "returned_J": 2.8145749306649394e-11,
+          "net_J": 2.5921595656828615e-09
+        },
+        "VDB": {
+          "positive_J": 2.6010120261335755e-09,
+          "returned_J": 2.8142866289522578e-11,
+          "net_J": 2.572869159844053e-09
+        },
+        "VSET": {
+          "positive_J": 6.42267360200352e-13,
+          "returned_J": 6.424543346003135e-13,
+          "net_J": -1.8697439996150276e-16
+        },
+        "VREGSET": {
+          "positive_J": 1.720228907672763e-13,
+          "returned_J": 1.696142937718006e-13,
+          "net_J": 2.4085969954756802e-15
+        }
+      },
+      "positive_pJ_per_offered_payload_bit": 10.946292029447386,
+      "native_current_range_mA": [
+        2.578573071401,
+        7.244443232111
+      ],
+      "native_model_domain_passed": true,
+      "maximum_terminal_V": 3.299636206455,
+      "terminal_headroom_mV": 330.3637935449997,
+      "maximum_body_forward_V": 0.17270680310999964,
+      "worst_devices": [
+        {
+          "instance": "XDUMP_0",
+          "max_terminal_V": 3.299636206455,
+          "terminal_indices_DGSB": [
+            0,
+            3
+          ],
+          "body_forward_V": 0.0
+        },
+        {
+          "instance": "XBN1N_0",
+          "max_terminal_V": 3.27089288605,
+          "terminal_indices_DGSB": [
+            0,
+            2
+          ],
+          "body_forward_V": 0.1387860581067
+        },
+        {
+          "instance": "XBN2N_0",
+          "max_terminal_V": 3.27089288605,
+          "terminal_indices_DGSB": [
+            1,
+            2
+          ],
+          "body_forward_V": 0.07672828703217
+        },
+        {
+          "instance": "XBP1N_0",
+          "max_terminal_V": 3.270863943395,
+          "terminal_indices_DGSB": [
+            0,
+            2
+          ],
+          "body_forward_V": 0.1387844776005
+        }
+      ],
+      "observed_rail_ranges_V": {
+        "vlaser": [
+          3.133572760694,
+          3.299120982163
+        ],
+        "vdd": [
+          3.133817198096,
+          3.300425394035
+        ],
+        "vref": [
+          3.134894270844,
+          3.30005014409
+        ],
+        "vl": [
+          2.96761353535,
+          3.100295740716
+        ],
+        "xdrv.dr": [
+          2.851674455236,
+          3.104024219982
+        ],
+        "xdrv.bctrl": [
+          1.486887987967,
+          1.51717958034
+        ],
+        "xdrv.tctrl": [
+          1.1036428631,
+          1.145766310971
+        ]
+      },
+      "combined_screen_passed": true,
+      "checked_saved_receiver": true,
+      "checked_saved_energy": true,
+      "checked_saved_stress": true,
+      "optical_proxy_source_sha256": "5cf8907df8e1ace985012ff5107312ab3b04699f2e944696fc49dae4b4d7bf23"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "status": "PASS within stated audit scope",
+  "audit_script_sha256": "357b2b0fcfe656b2e5d5b5661fb4062ba7496cb222108c5cfdf831995bbdb73c",
+  "scope": "Independent OOXML cell/CSV equality, source hashes, cutoffs, units and reference-plane circuit algebra. Primary article wording, instrumentation calibration and licenses are ledger-reviewed, not independently remeasured or newly reverified here.",
+  "source_archive_sha256": "4873cfd00f6ffa7e9c75e425e4e41d230a7100e43e9e74bb67225e37ea09c3ee",
+  "reviewed_files": {
+    "response-contract.json": "c685bd0e6b8c0d471f12cd1ec5563a7c20ad9e1c42931edd712aa995dac65b25",
+    "source-ledger.json": "c656bc7a9c5fc02066d89b89f4d6f22f54829cf84e48a9cf5c7d168001596b0a",
+    "reference-plane-calculation.json": "46cdba41cac9282bdae5e6cf23c4430de191a51a95b15583fb714b98ad0c1fa0"
+  },
+  "magnitude": [
+    {
+      "bias_uA": 25,
+      "points_matching_source_exactly": 2001,
+      "BW3_MHz": 2135.812727355459,
+      "BW6_MHz": 2850.448556077935,
+      "S21_at_1p85GHz_dB": -2.0581587111498454
+    },
+    {
+      "bias_uA": 50,
+      "points_matching_source_exactly": 2001,
+      "BW3_MHz": 2348.5323463742825,
+      "BW6_MHz": 2852.7851492188106,
+      "S21_at_1p85GHz_dB": -1.4105899839149503
+    },
+    {
+      "bias_uA": 60,
+      "points_matching_source_exactly": 2001,
+      "BW3_MHz": 2367.349534826789,
+      "BW6_MHz": 2854.2454613030595,
+      "S21_at_1p85GHz_dB": -1.2627255906734842
+    },
+    {
+      "bias_uA": 80,
+      "points_matching_source_exactly": 2001,
+      "BW3_MHz": 2386.6993701088672,
+      "BW6_MHz": 2853.591259912261,
+      "S21_at_1p85GHz_dB": -1.0706881385318443
+    },
+    {
+      "bias_uA": 100,
+      "points_matching_source_exactly": 2001,
+      "BW3_MHz": 2383.2595241461713,
+      "BW6_MHz": 2854.329203951577,
+      "S21_at_1p85GHz_dB": -1.0688737972239768
+    }
+  ],
+  "PI_rows_match": 48,
+  "RC_direct_KCL": [
+    {
+      "bias_uA": 25.0,
+      "rd_Ohm": 10767.857142857245,
+      "direct_KCL_vs_report_max_complex_error": 3.342213888644167e-16
+    },
+    {
+      "bias_uA": 100.0,
+      "rd_Ohm": 2954.545454545433,
+      "direct_KCL_vs_report_max_complex_error": 3.433175098891678e-16
+    }
+  ],
+  "limitations": [
+    "Composite source S21 includes fixture, electrical-to-optical conversion and receiver response; no unique intrinsic lifetime follows.",
+    "Magnitude-only data do not determine phase, eye or BER.",
+    "200 fF and 50 ohm are explicit illustrations, not fits or actual A-route impedance.",
+    "Physical-pixel pairing, measurement temperature, receiver deembedding and S21 phase remain unknown.",
+    "No model switch or route ranking is justified by this extraction alone."
+  ],
+  "recommendations": [
+    "Keep old baseline frozen; use new model ID plus DC and coupled regression for any future fit.",
+    "Retain complete-chain versus deembedded-block alternatives and never count RC/RX twice."
+  ]
+}
