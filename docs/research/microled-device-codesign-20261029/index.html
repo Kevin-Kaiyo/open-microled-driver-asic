@@ -320,6 +320,7 @@ p:has(>a>img){max-width:none;margin:28px 0 6px}a:has(>img){display:block}
 </tr>
 </tbody>
 </table>
+<p>能耗也有可核查的论文数字：在其 <strong>1.5 Gb/s OOK、约 1 GHz 检测器</strong>的低功耗实验中，20 µm 器件取 25 µA、DC 端压 3.360 V，作者按 <code>I×V</code> 得到 84.0 µW，再除以报告的数据率得 <strong>0.056 pJ/bit</strong>；40 µm 器件取 50 µA、3.308 V，对应 165.4 µW 和约 <strong>0.110 pJ/bit</strong>。这说明小电流器件的研究价值，同时要保留分母：这些是作者的 <strong>LED 直流端功耗估算</strong>，不包含完整 RF Driver、编码、RX 或瞬时调制能量，也没有建立我们净 3.2 Gb/s 下的同条件能效排名。<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13433930/">原文 Fig.5l–n 与低功耗实验说明</a></p>
 <p>这是同结构公开数据对我们模型的约束：低电流工作区不能被直接假定为很慢。但测试链含 VNA、bias tee、光学和额定 3 GHz 检测器，缺少相位、复数阻抗和独立去嵌；不能把整个 S21 再接到已含 LED RC 与 RX 低通的链路后面。现有 200 fF、200 ps 和 1 GHz RX 仍是旧实验假设。论文把同曲线 −3 dB/−6 dB 分别称为 E–E/E–O，本报告保留其定义。</p>
 <p>低电流数据也不能外推到更高 J。完整带宽表呈非单调变化，不能由 25–100 µA 五点得出“电流越大越快”。目前只对该五点曲线进行了独立截止复算；高电流变化的机制仍待按噪声、温度、载流子和测量条件逐项确认。</p>
 <h2 id="7">7. 取舍地图：以接收要求约束带宽，而不是只追最高带宽</h2>
