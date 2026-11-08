@@ -1,6 +1,16 @@
 # GitHub 备份与另一台电脑接续开发
 
-更新：2026-10-29。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
+更新：2026-11-08。项目定位为实验性研发方法验证与教学。备份保存当前设计、研究资料和指定实验的证据链；它不使仿真结果升级为实测结果，也不表示已经完成芯片制造签核。
+
+## 动态负载验证（2026-11-08）
+
+[研究报告](research/microled-dynamic-validation-20261108/index.html)、[复现](research/microled-dynamic-validation-20261108/reproduce.md)、[原始证据恢复范围](research/microled-dynamic-validation-20261108/backup.md)。49项计划包括33个原理图瞬态与16个DC；I–V、A/B/C电路/校准参数、七端供电和原v2接收器均有冻结身份。扫C=0/10/50/200/800fF及光响应0/25/75/200ps，0值仅为理想诊断；33个瞬态均另与旧200ps接收处理核对，6对半步长保留误差变化。
+
+公开源/模型/报告/compact evidence分别在 `scripts/microled_dynamic_v1/`、`analog/models/microled_dynamic_v1/`、`docs/research/microled-dynamic-validation-20261108/` 与 `evidence/microled-dynamic-v1/`。原始新输出在 `build/microled-dynamic-v1/`，按版本Release及SHA清单恢复；可再生filter state cache、Python环境和私有论文不在新增原始数据包内，详见backup.md。
+
+动态校准的限制仍然明确：已实现源整链幅频的条件化数学拟合，未识别同像素S11/相位、真实C/寿命、光路/检测器去嵌及大信号温漂。拟合整链H未叠加到SPICE的C/RX后。当前固定接收判据下现版A/B/C仍未达净3.2 Gb/s，body-forward也不等于端对电压筛查，继续保持路线开放。原VCSEL启动/稳定性和既有物理流问题仍按各阶段证据处理。
+
+本轮另有存储迁移工作树改动；它们保留并与本次提交范围分开，不作为本轮验证的一部分。
 
 ## 器件与 Driver 共设计研究（2026-10-29）
 

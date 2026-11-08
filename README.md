@@ -2,6 +2,8 @@
 
 An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
+**动态负载验证（2026-11-08）**：[20 µm MicroLED 校准边界、敏感性与净 3.2 Gb/s 的 A/B/C 验证](docs/research/microled-dynamic-validation-20261108/index.html) / [复现](docs/research/microled-dynamic-validation-20261108/reproduce.md)。新增49项电气实验（33瞬态+16DC）、公开整链幅频的条件拟合和留出检验，以及固定RX下的电容/光响应扫描。DC最大目标误差约0.127%，现版A/B/C在所测假设下仍未满足净3.2 Gb/s联合门槛；接收规则限制和体结正偏另列，不预选路线。缺少S11、相位和去嵌，未将数学幅频拟合升级成物理瞬态模型，也无新布局/PEX或光学BER结论。
+
 **新增器件课题（2026-10-29）**：[面向净 3.2 Gb/s 的 MicroLED 器件与 Driver 联合设计](docs/research/microled-device-codesign-20261029/index.html) / [文字报告](docs/research/microled-device-codesign-20261029/README.md) / [验证方案](docs/research/microled-device-codesign-20261029/joint-validation-plan.md)。用 6 张原创图和 11 项原始研究来源，比较尺寸、材料、晶向、量子阱和电极的带宽、效率、能耗与制造取舍。含同 I/同 J 的解析对照、文献前后值及七阶段联合验证计划；本轮没有新增 TCAD、SPICE、版图或光学通过结果，不预选路线。
 
 **新增研究（2026-10-29）**：[VCSEL 参考电流、供电与 MicroLED 动态依据](docs/research/vcsel-reference-microled-dynamics-20261029/index.html) / [复现说明](docs/research/vcsel-reference-microled-dynamics-20261029/reproduce.md)。73 MOS 反馈与稳压候选在固定净 3.2 Gb/s 的 TT/SS/FF 数据帧中均为 0/4096，时间余量约 130.72/115.06/133.56 ps；源端能量约 11.162/9.874/12.487 pJ/尝试净位。保留供电扰动失败与修正、启动等待和能耗代价；快冷 20 ns 上电仍超 3.63 V 筛查线约 0.879 mV，尚无完整启动保护。新增同系列 MicroLED 的公开幅频数据与参考面分析，未擅自替换 A/B/C 瞬态模型。本轮为原理图仿真和数据审查，未新增版图/PEX、实测 BER 或路线预选。

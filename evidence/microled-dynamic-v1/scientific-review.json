@@ -1,0 +1,163 @@
+{
+  "schema": "microled-dynamic-scientific-review-v1",
+  "created": "2026-11-08T20:52:32.764900+09:00",
+  "status": "no_blocking_scientific_issue_found_in_reviewed_sources_and_compact_evidence",
+  "reviewer_role": "Fit/calibration subagent performing a read-only crosscheck of final report generation and frozen experiment evidence; not an external independent laboratory review.",
+  "reviewed_files": [
+    {
+      "path": "docs/research/microled-dynamic-validation-20261108/report-template.md",
+      "sha256": "d996c3f2ddba4c2ac38d4425cd82b779f3288c7014e77f04f52d5ef0d2418e19"
+    },
+    {
+      "path": "scripts/microled_dynamic_v1/report.py",
+      "sha256": "3c66f306a74f2f1f020c2b2c190dde8353aa46d70e24ce53f8d4b618cd5fe05b"
+    },
+    {
+      "path": "scripts/microled_dynamic_v1/run.py",
+      "sha256": "df4482ccb877fb95c8cb39eef5188b2310931b39bc10025c0a449db22309739a"
+    },
+    {
+      "path": "scripts/microled_dynamic_v1/analyze.py",
+      "sha256": "53738c2565dca5707fa76001db929d89aa91003824c9ba2e7da626214c2d2930"
+    },
+    {
+      "path": "scripts/microled_dynamic_v1/fit.py",
+      "sha256": "ca46e004992adfee8f6906a4c900789941ec34d2001943d5f26306c60e18a0da"
+    },
+    {
+      "path": "analog/models/microled_dynamic_v1/model-card.json",
+      "sha256": "21238ce974f710657222377d0410ca47d3837405b2fc1b6aafa4553a58d90abe"
+    },
+    {
+      "path": "evidence/microled-dynamic-v1/electrical-registry.json",
+      "sha256": "0f3fc1ee4de046cbfc6e0a441b80cf7069b5fd0b4ff7d220165935705a0038fd"
+    },
+    {
+      "path": "evidence/microled-dynamic-v1/electrical-summary.json",
+      "sha256": "ebc3ec200f330cf1502b4e32748786ec14333ff2e40022aca6bd159a1f458313"
+    },
+    {
+      "path": "evidence/microled-dynamic-v1/rx-summary.json",
+      "sha256": "c7d954ee434874730566c6d89a1fda7d07d4a563f790477768fedfbfed395175"
+    },
+    {
+      "path": "evidence/microled-dynamic-v1/rx-validation.json",
+      "sha256": "c7f7c60eb97d2d0b7dc07bf00bdf383f4f2b07f0247f14c30fe0bcd0e902e046"
+    },
+    {
+      "path": "evidence/microled-dynamic-v1/rx-contract.json",
+      "sha256": "ae625230c2a982433af912cae261450fe142d171af8cc51c3790ab6c4e6fa6fc"
+    },
+    {
+      "path": "evidence/microled-dynamic-v1/fit-summary.json",
+      "sha256": "32950643534b6e32f4e6f08ad83b139be6e500d68adacf3a6cd6688a4144b032"
+    },
+    {
+      "path": "evidence/microled-dynamic-v1/fit-validation.json",
+      "sha256": "1d6fa2fc4f30de7349c4033195b8384f0f14215977445b2f7a3086bf9c1389b9"
+    },
+    {
+      "path": "evidence/microled-dynamic-v1/fit-physical-compatibility.json",
+      "sha256": "e67b1e67deacdb53c1a795a63b45c987dfbddd369fc6c1819cd29d270d4c2c64"
+    },
+    {
+      "path": "evidence/microled-dynamic-v1/electrical-baseline-reproduction.json",
+      "sha256": "ec22cfc59a01f68cefd3e6418b4eae2c9bdd346d697a6bdda1b9ac0ab181f93f"
+    },
+    {
+      "path": "evidence/microled-dynamic-v1/electrical-restore-smoke.json",
+      "sha256": "01fb406f6d2267ce01aacde95e3f7813d9e4a5646e6487b4a1fbdee10c460c5c"
+    }
+  ],
+  "scope": [
+    "Final report template and report generator scientific statements, units, causal wording and evidence boundaries.",
+    "Frozen electrical registry:49case result-file SHA checks and33complete native-frame metadata checks;16DC points retained.",
+    "RX174records, fixed1GHz transfer/threshold/training contract,33unchanged200ps baseline reproductions and24halfstep conditions.",
+    "Conditional whole-chain magnitude fits, frequency/bias holdouts and source-plane C/tau compatibility interpretation.",
+    "Seven-port positive/returned/net electrical energy identities, body-forward versus pair-voltage screens and no-route-selection boundary."
+  ],
+  "verified_metrics": {
+    "electrical_attempted": 49,
+    "electrical_successful_transients": 33,
+    "DC_points": 16,
+    "RX_records": 174,
+    "TT_full_hypotheses": 60,
+    "TT_ideal_diagnostics": 24,
+    "TT_combined_original_RX_and_pair_voltage_passes": 0,
+    "net_rate_Gbps": 3.2,
+    "line_rate_Gbps": 3.7,
+    "frame_bits": 4736,
+    "payload_bits": 4096,
+    "frame_duration_us": 1.28,
+    "maximum_abs_DC_current_error_percent": 0.12673257376414337,
+    "halfstep_conditions": 24,
+    "halfstep_pass_fail_unchanged": 24,
+    "halfstep_max_abs_amplitude_delta_uAeq": 0.011744036956926607,
+    "halfstep_max_abs_time_delta_ps": 0.04510137571334383,
+    "halfstep_max_abs_positive_energy_delta_percent": 0.008783111432930646,
+    "halfstep_max_abs_error_count_delta": 1,
+    "all174_positive_minus_returned_equals_net_tolerance_pJ_per_attempted_payload_bit": 1e-09,
+    "all174_seven_port_positive_sum_tolerance_pJ_per_attempted_payload_bit": 1e-09
+  },
+  "scientific_boundary_checks": [
+    {
+      "topic": "reference_plane_and_double_counting",
+      "result": "Whole-chain S21 remains frequency-only; native conduction current receives separate synthetic optical tau and a single fixed1GHz RX. The assumed50ohm/3GHz detector compatibility chain is explicitly distinct."
+    },
+    {
+      "topic": "postselection_and_holdouts",
+      "result": "Report states full-curve model-family/order selection, conditional coefficient/prediction holdouts, no nested selection or independent-device blind validation, and no verified high-SNR claim for<=2.5GHz."
+    },
+    {
+      "topic": "fixed_receiver_and_training",
+      "result": "Transfer, thresholds,7.5uAeq and100ps gates are unchanged; eachcase/hypothesis trains delay only on the declared training segment before validation. No claim that allcases share one sampling phase."
+    },
+    {
+      "topic": "causality",
+      "result": "Stage bypasses and20ps ideal controls are diagnostic only. Nonmonotonic tau/time-margin results are acknowledged; no unique internal failure mechanism or universal architecture impossibility is claimed."
+    },
+    {
+      "topic": "energy",
+      "result": "Full-frame seven-source accounting uses4096attempted payload bits; positive/returned/net are distinct. Failed receiver points are not ranked as delivered-bit energy efficiency; no second LED/C energy addition."
+    },
+    {
+      "topic": "body_and_route_selection",
+      "result": "Pair-voltage screen is separated from body PN forward bias, DC precision, model domain and reliability. NMOS/PMOS forward-bias signs match device junction polarity; no unqualified product candidate or A/B/C winner is declared."
+    },
+    {
+      "topic": "model_evidence",
+      "result": "Static I-V replay, normalized magnitude fit, synthetic C/tau response, transistor simulation and physical optical measurement remain separate. Same-pixel/temperature/deembedding/complex-data/large-signal gaps remain open."
+    }
+  ],
+  "blockers": [],
+  "required_scientific_changes": [],
+  "limits": [
+    "Review did not inspect every raw waveform sample or rehash/re-simulate all raw gzip files; it checked49record-file hashes, compact metrics and the report source logic.",
+    "This reviewer authored the fit helper earlier in this task; fit checks here are internal reproducibility/method review, not independent physical validation.",
+    "Rendered HTML/PDF/figure visual layout, publication permissions, remote archive upload/readback and actual second-machine execution are outside this scientific review.",
+    "No physical C/lifetime/phase/temperature/noise/BER calibration or tape-out readiness is established. Zero finite deterministic errors are not physical BER qualification.",
+    "Review applies to the exact hashes listed above; subsequent scientific content/evidence changes require a scoped recheck."
+  ],
+  "scoped_rechecks": [
+    {
+      "created": "2026-11-08T20:54:42.811867+09:00",
+      "status": "no_scientific_blocker; exact reviewed source/evidence hashes remain current",
+      "scope": "Sensitivity plot colorbar placement/SVG trailing whitespace and added validation bindings only; no scientific parameter/data/selection-rule changes.",
+      "presentation_check": "report.py matrix retains the same case selection, plotted min-signed-margin quantity, -60..30uAeq color limits and units; dedicated cax now reserves space after route C. SVG line-end whitespace normalization changes serialization only.",
+      "validation_check": "validate.py explicitly requires33unchanged200ps baseline reproductions,24step controls and final RX audit summary/source SHA bindings; numerical deltas are retained and screening invariance is not called exact waveform equality.",
+      "reviewed_extra_file_hashes": [
+        {
+          "path": "scripts/microled_dynamic_v1/validate.py",
+          "sha256": "11385c54510ccf6fcef9dfb96dd8b2d2942635eb86de94d045b188159784e712"
+        },
+        {
+          "path": "evidence/microled-dynamic-v1/visual-review.json",
+          "sha256": "f4d90f8b9f4ac4732c7720f2be178995fc30b069e80f0bf0a083dbd2b214ada2"
+        }
+      ],
+      "visual_review_scope": "Read the separate caller visual-review receipt and its boundary; this scoped scientific recheck did not independently repeat browser/image QA.",
+      "required_scientific_changes": []
+    }
+  ],
+  "scientific_review_frozen_at": "2026-11-08T20:54:42.811867+09:00"
+}

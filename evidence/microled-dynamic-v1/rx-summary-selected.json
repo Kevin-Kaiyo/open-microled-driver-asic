@@ -1,0 +1,3397 @@
+{
+  "created": "2026-11-08T20:09:04.598989+09:00",
+  "contract": {
+    "schema": "microled-dynamic-rx-v1",
+    "receiver_source": "scripts/fair_driver_v1/receiver_equal_latency_v2.py",
+    "receiver_sha256": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+    "analysis_sha256": "b7a9bb26031d017b3d14a9c1d2025774d7a76841b699e1df94d20a4712b9145a",
+    "rates": {
+      "net_Gbps": 3.2,
+      "line_Gbps": 3.7,
+      "NRZ_Gbaud": 3.7,
+      "PAM4_Gbaud": 1.85,
+      "eta": 0.8648648648648649
+    },
+    "optical_tau_ps": [
+      0,
+      25,
+      75,
+      200
+    ],
+    "RX_pole_Hz": 1000000000.0,
+    "thresholds_uA": {
+      "NRZ": [
+        62.5
+      ],
+      "PAM4": [
+        37.5,
+        62.5,
+        87.5
+      ]
+    },
+    "acceptance": {
+      "minimum_signed_amplitude_uA": 7.5,
+      "minimum_one_sided_time_ps": 100,
+      "training_and_validation_errors": 0
+    },
+    "training": {
+      "scored_bits": 448,
+      "guard_bits": 64,
+      "validation_bits": 4096,
+      "delay_ps": [
+        0,
+        8000,
+        5
+      ],
+      "selection": "Maximize minimum signed expected-class threshold distance in absoluteuA. Among candidates within1pA of maximum, maximize minimum TRAINING absolute time margin; earliest exact tie wins. Validation never participates."
+    },
+    "boundary": [
+      "Current-equivalent unity-DC-gain optical/RX proxy, not optical watts or measured dynamics.",
+      "C=0 and tau=0 are ideal diagnostics, not physical candidates.",
+      "Native transistor energy and stress are independent electrical evidence; changing the offline optical tau does not rerun or physically couple the emitter.",
+      "Zero finite deterministic bit errors is not physical BER qualification.",
+      "Author-normalized S21 magnitude is not used to identify a transient or remove circuit/RX poles."
+    ]
+  },
+  "electrical_registry_sha256": "84bb8f38c5c617707fd8e9fea1d6206adc71bbe427181e7ff3a1043060bc458a",
+  "stimulus_sha256": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+  "records": [
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "route": "A",
+      "group": "TT_capacitance",
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "capacitance_fF": 200.0,
+      "steps_per_symbol": 40,
+      "device_voltage_pass": true,
+      "max_body_forward_V": 0.1573849386277519,
+      "device_pair_stress": [
+        {
+          "instance": "xdrv.xn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06508718365723072
+        },
+        {
+          "instance": "xdrv.xp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.365053219372788,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.08920330582234248
+        },
+        {
+          "instance": "xdrv.xn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.04602503792356571
+        },
+        {
+          "instance": "xdrv.xp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.384906096177943,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06548566957025237
+        },
+        {
+          "instance": "xdrv.xnout",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.365456836364401,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.16660751243161
+        },
+        {
+          "instance": "xdrv.xpout",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.133286329465169,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.1573849386277519
+        },
+        {
+          "instance": "xdrv.xhpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780772849966,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.679775951470041,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200413682728219,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.2361668634602,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7996821862929944,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.8206215108393082,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.599827465435747,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780742337742,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.011071991151921,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200443269685339,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xlp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.053560392631566,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xln1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7997395198971439,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xln2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.9910894011133516,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.167375710545017,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        }
+      ],
+      "energy_positive_pJ_per_attempted_payload_bit": 0.5256267986644043,
+      "energy_returned_pJ_per_attempted_payload_bit": 0.030266575486555654,
+      "energy_net_pJ_per_attempted_payload_bit": 0.49536022317784867,
+      "energy_ports_positive_pJ_per_attempted_payload_bit": {
+        "VIN": 0.13715760636790253,
+        "VDD": 0.20849919131393654,
+        "VREF": 0.017453439990555784,
+        "VLED": 0.13368246945260512,
+        "VD0": 0.028834091539404416,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "mean_LED_conduction_uA": 67.17998214952654,
+      "result_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/result.json",
+      "result_sha256": "f9ab86277431dd4d11108eb6fe565554d682074ed84c228d8099b9cd0d4cded5",
+      "waveform_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/waveform.dat.gz",
+      "raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+      "gzip_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+      "native_time": {
+        "first_s": 0.0,
+        "last_s": 1.28e-06,
+        "max_step_ps": 6.75675675717792,
+        "strictly_increasing": true,
+        "rows": 783066
+      },
+      "observables": {
+        "iled_cond": {
+          "min": 1.649426298280145e-05,
+          "max": 0.0001129989958542008,
+          "mean_time_weighted": 6.717998214952654e-05
+        },
+        "led_a": {
+          "min": 4.999904420950035,
+          "max": 5.000055590983413,
+          "mean_time_weighted": 4.999983205286043
+        },
+        "led_k": {
+          "min": 1.198106529417049,
+          "max": 1.753634097278267,
+          "mean_time_weighted": 1.3911808186143766
+        },
+        "out": {
+          "min": 1.197251835584273,
+          "max": 1.756970028962178,
+          "mean_time_weighted": 1.391113611106873
+        },
+        "pk": {
+          "min": 1.197994809156326,
+          "max": 1.753621469125398,
+          "mean_time_weighted": 1.3911136397585502
+        },
+        "vin": {
+          "min": 4.999977997398138,
+          "max": 4.999978112942894,
+          "mean_time_weighted": 4.999978054782632
+        },
+        "vdd": {
+          "min": 3.299609494279294,
+          "max": 3.300027178155374,
+          "mean_time_weighted": 3.2997974856294485
+        },
+        "vref": {
+          "min": 2.499995531793139,
+          "max": 2.499995532033713,
+          "mean_time_weighted": 2.4999955319193625
+        },
+        "LED_terminal_V": {
+          "min": 3.2463617951903707,
+          "max": 3.8018655405177704,
+          "mean_time_weighted": 3.608802386671667
+        },
+        "package_V": {
+          "min": -0.014619381788838037,
+          "max": 0.014369158829254935,
+          "mean_time_weighted": 6.720750750358164e-05
+        },
+        "package_R_V": {
+          "min": -0.00022236393365293594,
+          "max": 0.0003823161998641744,
+          "mean_time_weighted": 6.717885582642443e-05
+        },
+        "package_L_V": {
+          "min": -0.014517112578465996,
+          "max": 0.014466251077590142,
+          "mean_time_weighted": 2.8651677157192944e-08
+        }
+      },
+      "stage": "full",
+      "optical_tau_ps": 0,
+      "extra_pure_delay_ps": 0,
+      "bit_errors": 1158,
+      "bit_count": 4096,
+      "symbol_errors": 1158,
+      "min_signed_margin_uA": -38.6346163604142,
+      "mean_signed_margin_uA": 15.099884323518097,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1170.0,
+      "training_bit_errors": 119,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "analysis_path": "build/microled-dynamic-v1/receiver/cases/TT-A-C200fF-S40/full-tau0ps.json",
+      "analysis_sha256": "86f7812ad382988883183742cfd0bc93f0a85d45a1b4b8d3bf3b0362139eb2ec",
+      "state_cache": "build/microled-dynamic-v1/receiver/cache/95212f30cb4c85271dfb6b87bc3a91a922daefac253d579a6fe2be8d4a1f7bbc.npz",
+      "state_cache_sha256": "d273195918c143f33e75abe496b2e6548e9e871ed77834c9a2c3530b149a991c",
+      "combined_electrical_and_RX_screen_pass": false,
+      "physical_candidate": false,
+      "eye_path": "build/microled-dynamic-v1/receiver/eyes/TT-A-C200fF-S40/full-tau0ps.npz",
+      "eye_sha256": "4ab74b7a2ec8830ee91f360cc23506259c2a0b1298782d6b793a6e45909b802c"
+    },
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "route": "A",
+      "group": "TT_capacitance",
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "capacitance_fF": 200.0,
+      "steps_per_symbol": 40,
+      "device_voltage_pass": true,
+      "max_body_forward_V": 0.1573849386277519,
+      "device_pair_stress": [
+        {
+          "instance": "xdrv.xn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06508718365723072
+        },
+        {
+          "instance": "xdrv.xp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.365053219372788,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.08920330582234248
+        },
+        {
+          "instance": "xdrv.xn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.04602503792356571
+        },
+        {
+          "instance": "xdrv.xp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.384906096177943,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06548566957025237
+        },
+        {
+          "instance": "xdrv.xnout",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.365456836364401,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.16660751243161
+        },
+        {
+          "instance": "xdrv.xpout",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.133286329465169,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.1573849386277519
+        },
+        {
+          "instance": "xdrv.xhpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780772849966,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.679775951470041,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200413682728219,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.2361668634602,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7996821862929944,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.8206215108393082,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.599827465435747,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780742337742,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.011071991151921,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200443269685339,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xlp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.053560392631566,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xln1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7997395198971439,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xln2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.9910894011133516,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.167375710545017,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        }
+      ],
+      "energy_positive_pJ_per_attempted_payload_bit": 0.5256267986644043,
+      "energy_returned_pJ_per_attempted_payload_bit": 0.030266575486555654,
+      "energy_net_pJ_per_attempted_payload_bit": 0.49536022317784867,
+      "energy_ports_positive_pJ_per_attempted_payload_bit": {
+        "VIN": 0.13715760636790253,
+        "VDD": 0.20849919131393654,
+        "VREF": 0.017453439990555784,
+        "VLED": 0.13368246945260512,
+        "VD0": 0.028834091539404416,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "mean_LED_conduction_uA": 67.17998214952654,
+      "result_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/result.json",
+      "result_sha256": "f9ab86277431dd4d11108eb6fe565554d682074ed84c228d8099b9cd0d4cded5",
+      "waveform_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/waveform.dat.gz",
+      "raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+      "gzip_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+      "native_time": {
+        "first_s": 0.0,
+        "last_s": 1.28e-06,
+        "max_step_ps": 6.75675675717792,
+        "strictly_increasing": true,
+        "rows": 783066
+      },
+      "observables": {
+        "iled_cond": {
+          "min": 1.649426298280145e-05,
+          "max": 0.0001129989958542008,
+          "mean_time_weighted": 6.717998214952654e-05
+        },
+        "led_a": {
+          "min": 4.999904420950035,
+          "max": 5.000055590983413,
+          "mean_time_weighted": 4.999983205286043
+        },
+        "led_k": {
+          "min": 1.198106529417049,
+          "max": 1.753634097278267,
+          "mean_time_weighted": 1.3911808186143766
+        },
+        "out": {
+          "min": 1.197251835584273,
+          "max": 1.756970028962178,
+          "mean_time_weighted": 1.391113611106873
+        },
+        "pk": {
+          "min": 1.197994809156326,
+          "max": 1.753621469125398,
+          "mean_time_weighted": 1.3911136397585502
+        },
+        "vin": {
+          "min": 4.999977997398138,
+          "max": 4.999978112942894,
+          "mean_time_weighted": 4.999978054782632
+        },
+        "vdd": {
+          "min": 3.299609494279294,
+          "max": 3.300027178155374,
+          "mean_time_weighted": 3.2997974856294485
+        },
+        "vref": {
+          "min": 2.499995531793139,
+          "max": 2.499995532033713,
+          "mean_time_weighted": 2.4999955319193625
+        },
+        "LED_terminal_V": {
+          "min": 3.2463617951903707,
+          "max": 3.8018655405177704,
+          "mean_time_weighted": 3.608802386671667
+        },
+        "package_V": {
+          "min": -0.014619381788838037,
+          "max": 0.014369158829254935,
+          "mean_time_weighted": 6.720750750358164e-05
+        },
+        "package_R_V": {
+          "min": -0.00022236393365293594,
+          "max": 0.0003823161998641744,
+          "mean_time_weighted": 6.717885582642443e-05
+        },
+        "package_L_V": {
+          "min": -0.014517112578465996,
+          "max": 0.014466251077590142,
+          "mean_time_weighted": 2.8651677157192944e-08
+        }
+      },
+      "stage": "full",
+      "optical_tau_ps": 25,
+      "extra_pure_delay_ps": 0,
+      "bit_errors": 1155,
+      "bit_count": 4096,
+      "symbol_errors": 1155,
+      "min_signed_margin_uA": -38.70158948437199,
+      "mean_signed_margin_uA": 15.07664702020681,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1195.0,
+      "training_bit_errors": 119,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "analysis_path": "build/microled-dynamic-v1/receiver/cases/TT-A-C200fF-S40/full-tau25ps.json",
+      "analysis_sha256": "7f2495edb14c20b70879db0fcbf65140de4e75292aedae97b36067f88584c0a6",
+      "state_cache": "build/microled-dynamic-v1/receiver/cache/95212f30cb4c85271dfb6b87bc3a91a922daefac253d579a6fe2be8d4a1f7bbc.npz",
+      "state_cache_sha256": "d273195918c143f33e75abe496b2e6548e9e871ed77834c9a2c3530b149a991c",
+      "combined_electrical_and_RX_screen_pass": false,
+      "physical_candidate": true,
+      "eye_path": "build/microled-dynamic-v1/receiver/eyes/TT-A-C200fF-S40/full-tau25ps.npz",
+      "eye_sha256": "fc7ab7376223ec47df0d18498f8b900ffa8116b14598d9be11177bb38492e808"
+    },
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "route": "A",
+      "group": "TT_capacitance",
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "capacitance_fF": 200.0,
+      "steps_per_symbol": 40,
+      "device_voltage_pass": true,
+      "max_body_forward_V": 0.1573849386277519,
+      "device_pair_stress": [
+        {
+          "instance": "xdrv.xn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06508718365723072
+        },
+        {
+          "instance": "xdrv.xp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.365053219372788,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.08920330582234248
+        },
+        {
+          "instance": "xdrv.xn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.04602503792356571
+        },
+        {
+          "instance": "xdrv.xp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.384906096177943,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06548566957025237
+        },
+        {
+          "instance": "xdrv.xnout",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.365456836364401,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.16660751243161
+        },
+        {
+          "instance": "xdrv.xpout",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.133286329465169,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.1573849386277519
+        },
+        {
+          "instance": "xdrv.xhpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780772849966,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.679775951470041,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200413682728219,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.2361668634602,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7996821862929944,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.8206215108393082,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.599827465435747,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780742337742,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.011071991151921,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200443269685339,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xlp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.053560392631566,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xln1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7997395198971439,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xln2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.9910894011133516,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.167375710545017,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        }
+      ],
+      "energy_positive_pJ_per_attempted_payload_bit": 0.5256267986644043,
+      "energy_returned_pJ_per_attempted_payload_bit": 0.030266575486555654,
+      "energy_net_pJ_per_attempted_payload_bit": 0.49536022317784867,
+      "energy_ports_positive_pJ_per_attempted_payload_bit": {
+        "VIN": 0.13715760636790253,
+        "VDD": 0.20849919131393654,
+        "VREF": 0.017453439990555784,
+        "VLED": 0.13368246945260512,
+        "VD0": 0.028834091539404416,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "mean_LED_conduction_uA": 67.17998214952654,
+      "result_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/result.json",
+      "result_sha256": "f9ab86277431dd4d11108eb6fe565554d682074ed84c228d8099b9cd0d4cded5",
+      "waveform_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/waveform.dat.gz",
+      "raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+      "gzip_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+      "native_time": {
+        "first_s": 0.0,
+        "last_s": 1.28e-06,
+        "max_step_ps": 6.75675675717792,
+        "strictly_increasing": true,
+        "rows": 783066
+      },
+      "observables": {
+        "iled_cond": {
+          "min": 1.649426298280145e-05,
+          "max": 0.0001129989958542008,
+          "mean_time_weighted": 6.717998214952654e-05
+        },
+        "led_a": {
+          "min": 4.999904420950035,
+          "max": 5.000055590983413,
+          "mean_time_weighted": 4.999983205286043
+        },
+        "led_k": {
+          "min": 1.198106529417049,
+          "max": 1.753634097278267,
+          "mean_time_weighted": 1.3911808186143766
+        },
+        "out": {
+          "min": 1.197251835584273,
+          "max": 1.756970028962178,
+          "mean_time_weighted": 1.391113611106873
+        },
+        "pk": {
+          "min": 1.197994809156326,
+          "max": 1.753621469125398,
+          "mean_time_weighted": 1.3911136397585502
+        },
+        "vin": {
+          "min": 4.999977997398138,
+          "max": 4.999978112942894,
+          "mean_time_weighted": 4.999978054782632
+        },
+        "vdd": {
+          "min": 3.299609494279294,
+          "max": 3.300027178155374,
+          "mean_time_weighted": 3.2997974856294485
+        },
+        "vref": {
+          "min": 2.499995531793139,
+          "max": 2.499995532033713,
+          "mean_time_weighted": 2.4999955319193625
+        },
+        "LED_terminal_V": {
+          "min": 3.2463617951903707,
+          "max": 3.8018655405177704,
+          "mean_time_weighted": 3.608802386671667
+        },
+        "package_V": {
+          "min": -0.014619381788838037,
+          "max": 0.014369158829254935,
+          "mean_time_weighted": 6.720750750358164e-05
+        },
+        "package_R_V": {
+          "min": -0.00022236393365293594,
+          "max": 0.0003823161998641744,
+          "mean_time_weighted": 6.717885582642443e-05
+        },
+        "package_L_V": {
+          "min": -0.014517112578465996,
+          "max": 0.014466251077590142,
+          "mean_time_weighted": 2.8651677157192944e-08
+        }
+      },
+      "stage": "full",
+      "optical_tau_ps": 75,
+      "extra_pure_delay_ps": 0,
+      "bit_errors": 948,
+      "bit_count": 4096,
+      "symbol_errors": 948,
+      "min_signed_margin_uA": -38.67183087509192,
+      "mean_signed_margin_uA": 15.250313992764351,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1220.0,
+      "training_bit_errors": 96,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "analysis_path": "build/microled-dynamic-v1/receiver/cases/TT-A-C200fF-S40/full-tau75ps.json",
+      "analysis_sha256": "c4828f30fa67cd33de4262363dd2a1bba282cc981caee30fbf914e73c50dac09",
+      "state_cache": "build/microled-dynamic-v1/receiver/cache/95212f30cb4c85271dfb6b87bc3a91a922daefac253d579a6fe2be8d4a1f7bbc.npz",
+      "state_cache_sha256": "d273195918c143f33e75abe496b2e6548e9e871ed77834c9a2c3530b149a991c",
+      "combined_electrical_and_RX_screen_pass": false,
+      "physical_candidate": true,
+      "eye_path": "build/microled-dynamic-v1/receiver/eyes/TT-A-C200fF-S40/full-tau75ps.npz",
+      "eye_sha256": "684c3cda925e2fd9c1989cd0392043bceb23cef670c5a0404c8adb2d3afe5f0c"
+    },
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "route": "A",
+      "group": "TT_capacitance",
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "capacitance_fF": 200.0,
+      "steps_per_symbol": 40,
+      "device_voltage_pass": true,
+      "max_body_forward_V": 0.1573849386277519,
+      "device_pair_stress": [
+        {
+          "instance": "xdrv.xn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06508718365723072
+        },
+        {
+          "instance": "xdrv.xp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.365053219372788,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.08920330582234248
+        },
+        {
+          "instance": "xdrv.xn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.04602503792356571
+        },
+        {
+          "instance": "xdrv.xp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.384906096177943,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06548566957025237
+        },
+        {
+          "instance": "xdrv.xnout",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.365456836364401,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.16660751243161
+        },
+        {
+          "instance": "xdrv.xpout",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.133286329465169,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.1573849386277519
+        },
+        {
+          "instance": "xdrv.xhpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780772849966,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.679775951470041,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200413682728219,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.2361668634602,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7996821862929944,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.8206215108393082,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.599827465435747,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780742337742,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.011071991151921,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200443269685339,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xlp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.053560392631566,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xln1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7997395198971439,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xln2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.9910894011133516,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.167375710545017,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        }
+      ],
+      "energy_positive_pJ_per_attempted_payload_bit": 0.5256267986644043,
+      "energy_returned_pJ_per_attempted_payload_bit": 0.030266575486555654,
+      "energy_net_pJ_per_attempted_payload_bit": 0.49536022317784867,
+      "energy_ports_positive_pJ_per_attempted_payload_bit": {
+        "VIN": 0.13715760636790253,
+        "VDD": 0.20849919131393654,
+        "VREF": 0.017453439990555784,
+        "VLED": 0.13368246945260512,
+        "VD0": 0.028834091539404416,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "mean_LED_conduction_uA": 67.17998214952654,
+      "result_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/result.json",
+      "result_sha256": "f9ab86277431dd4d11108eb6fe565554d682074ed84c228d8099b9cd0d4cded5",
+      "waveform_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/waveform.dat.gz",
+      "raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+      "gzip_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+      "native_time": {
+        "first_s": 0.0,
+        "last_s": 1.28e-06,
+        "max_step_ps": 6.75675675717792,
+        "strictly_increasing": true,
+        "rows": 783066
+      },
+      "observables": {
+        "iled_cond": {
+          "min": 1.649426298280145e-05,
+          "max": 0.0001129989958542008,
+          "mean_time_weighted": 6.717998214952654e-05
+        },
+        "led_a": {
+          "min": 4.999904420950035,
+          "max": 5.000055590983413,
+          "mean_time_weighted": 4.999983205286043
+        },
+        "led_k": {
+          "min": 1.198106529417049,
+          "max": 1.753634097278267,
+          "mean_time_weighted": 1.3911808186143766
+        },
+        "out": {
+          "min": 1.197251835584273,
+          "max": 1.756970028962178,
+          "mean_time_weighted": 1.391113611106873
+        },
+        "pk": {
+          "min": 1.197994809156326,
+          "max": 1.753621469125398,
+          "mean_time_weighted": 1.3911136397585502
+        },
+        "vin": {
+          "min": 4.999977997398138,
+          "max": 4.999978112942894,
+          "mean_time_weighted": 4.999978054782632
+        },
+        "vdd": {
+          "min": 3.299609494279294,
+          "max": 3.300027178155374,
+          "mean_time_weighted": 3.2997974856294485
+        },
+        "vref": {
+          "min": 2.499995531793139,
+          "max": 2.499995532033713,
+          "mean_time_weighted": 2.4999955319193625
+        },
+        "LED_terminal_V": {
+          "min": 3.2463617951903707,
+          "max": 3.8018655405177704,
+          "mean_time_weighted": 3.608802386671667
+        },
+        "package_V": {
+          "min": -0.014619381788838037,
+          "max": 0.014369158829254935,
+          "mean_time_weighted": 6.720750750358164e-05
+        },
+        "package_R_V": {
+          "min": -0.00022236393365293594,
+          "max": 0.0003823161998641744,
+          "mean_time_weighted": 6.717885582642443e-05
+        },
+        "package_L_V": {
+          "min": -0.014517112578465996,
+          "max": 0.014466251077590142,
+          "mean_time_weighted": 2.8651677157192944e-08
+        }
+      },
+      "stage": "full",
+      "optical_tau_ps": 200,
+      "extra_pure_delay_ps": 0,
+      "bit_errors": 844,
+      "bit_count": 4096,
+      "symbol_errors": 844,
+      "min_signed_margin_uA": -38.84157672245193,
+      "mean_signed_margin_uA": 14.589703400963785,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1260.0,
+      "training_bit_errors": 88,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "analysis_path": "build/microled-dynamic-v1/receiver/cases/TT-A-C200fF-S40/full-tau200ps.json",
+      "analysis_sha256": "81d4072efb58089981aea6922200173bf7a267808a35a54a76cbdf5cc568cac2",
+      "state_cache": "build/microled-dynamic-v1/receiver/cache/95212f30cb4c85271dfb6b87bc3a91a922daefac253d579a6fe2be8d4a1f7bbc.npz",
+      "state_cache_sha256": "d273195918c143f33e75abe496b2e6548e9e871ed77834c9a2c3530b149a991c",
+      "combined_electrical_and_RX_screen_pass": false,
+      "physical_candidate": true,
+      "eye_path": "build/microled-dynamic-v1/receiver/eyes/TT-A-C200fF-S40/full-tau200ps.npz",
+      "eye_sha256": "0a5ef9d2aabfe094dfc91a6e2015efd90eeca5f302fa9a361fc09f9a3bef8039"
+    },
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "route": "A",
+      "group": "TT_capacitance",
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "capacitance_fF": 200.0,
+      "steps_per_symbol": 40,
+      "device_voltage_pass": true,
+      "max_body_forward_V": 0.1573849386277519,
+      "device_pair_stress": [
+        {
+          "instance": "xdrv.xn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06508718365723072
+        },
+        {
+          "instance": "xdrv.xp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.365053219372788,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.08920330582234248
+        },
+        {
+          "instance": "xdrv.xn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.04602503792356571
+        },
+        {
+          "instance": "xdrv.xp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.384906096177943,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06548566957025237
+        },
+        {
+          "instance": "xdrv.xnout",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.365456836364401,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.16660751243161
+        },
+        {
+          "instance": "xdrv.xpout",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.133286329465169,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.1573849386277519
+        },
+        {
+          "instance": "xdrv.xhpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780772849966,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.679775951470041,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200413682728219,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.2361668634602,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7996821862929944,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.8206215108393082,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.599827465435747,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780742337742,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.011071991151921,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200443269685339,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xlp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.053560392631566,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xln1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7997395198971439,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xln2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.9910894011133516,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.167375710545017,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        }
+      ],
+      "energy_positive_pJ_per_attempted_payload_bit": 0.5256267986644043,
+      "energy_returned_pJ_per_attempted_payload_bit": 0.030266575486555654,
+      "energy_net_pJ_per_attempted_payload_bit": 0.49536022317784867,
+      "energy_ports_positive_pJ_per_attempted_payload_bit": {
+        "VIN": 0.13715760636790253,
+        "VDD": 0.20849919131393654,
+        "VREF": 0.017453439990555784,
+        "VLED": 0.13368246945260512,
+        "VD0": 0.028834091539404416,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "mean_LED_conduction_uA": 67.17998214952654,
+      "result_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/result.json",
+      "result_sha256": "f9ab86277431dd4d11108eb6fe565554d682074ed84c228d8099b9cd0d4cded5",
+      "waveform_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/waveform.dat.gz",
+      "raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+      "gzip_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+      "native_time": {
+        "first_s": 0.0,
+        "last_s": 1.28e-06,
+        "max_step_ps": 6.75675675717792,
+        "strictly_increasing": true,
+        "rows": 783066
+      },
+      "observables": {
+        "iled_cond": {
+          "min": 1.649426298280145e-05,
+          "max": 0.0001129989958542008,
+          "mean_time_weighted": 6.717998214952654e-05
+        },
+        "led_a": {
+          "min": 4.999904420950035,
+          "max": 5.000055590983413,
+          "mean_time_weighted": 4.999983205286043
+        },
+        "led_k": {
+          "min": 1.198106529417049,
+          "max": 1.753634097278267,
+          "mean_time_weighted": 1.3911808186143766
+        },
+        "out": {
+          "min": 1.197251835584273,
+          "max": 1.756970028962178,
+          "mean_time_weighted": 1.391113611106873
+        },
+        "pk": {
+          "min": 1.197994809156326,
+          "max": 1.753621469125398,
+          "mean_time_weighted": 1.3911136397585502
+        },
+        "vin": {
+          "min": 4.999977997398138,
+          "max": 4.999978112942894,
+          "mean_time_weighted": 4.999978054782632
+        },
+        "vdd": {
+          "min": 3.299609494279294,
+          "max": 3.300027178155374,
+          "mean_time_weighted": 3.2997974856294485
+        },
+        "vref": {
+          "min": 2.499995531793139,
+          "max": 2.499995532033713,
+          "mean_time_weighted": 2.4999955319193625
+        },
+        "LED_terminal_V": {
+          "min": 3.2463617951903707,
+          "max": 3.8018655405177704,
+          "mean_time_weighted": 3.608802386671667
+        },
+        "package_V": {
+          "min": -0.014619381788838037,
+          "max": 0.014369158829254935,
+          "mean_time_weighted": 6.720750750358164e-05
+        },
+        "package_R_V": {
+          "min": -0.00022236393365293594,
+          "max": 0.0003823161998641744,
+          "mean_time_weighted": 6.717885582642443e-05
+        },
+        "package_L_V": {
+          "min": -0.014517112578465996,
+          "max": 0.014466251077590142,
+          "mean_time_weighted": 2.8651677157192944e-08
+        }
+      },
+      "stage": "electrical",
+      "optical_tau_ps": 0,
+      "extra_pure_delay_ps": 0,
+      "bit_errors": 1205,
+      "bit_count": 4096,
+      "symbol_errors": 1205,
+      "min_signed_margin_uA": -38.42549367262579,
+      "mean_signed_margin_uA": 17.478723019494783,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 680.0,
+      "training_bit_errors": 125,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "analysis_path": "build/microled-dynamic-v1/receiver/cases/TT-A-C200fF-S40/electrical-tau0ps.json",
+      "analysis_sha256": "6a248fae9b46f936eb2f82ba776134c0c70c9eae36df719760d3a984db93ddba",
+      "state_cache": "build/microled-dynamic-v1/receiver/cache/95212f30cb4c85271dfb6b87bc3a91a922daefac253d579a6fe2be8d4a1f7bbc.npz",
+      "state_cache_sha256": "d273195918c143f33e75abe496b2e6548e9e871ed77834c9a2c3530b149a991c",
+      "combined_electrical_and_RX_screen_pass": false,
+      "physical_candidate": false,
+      "eye_path": "build/microled-dynamic-v1/receiver/eyes/TT-A-C200fF-S40/electrical-tau0ps.npz",
+      "eye_sha256": "413d3841a651b4cb4c4258e792ee3a3943b221661e141ddd9529062153a09bd8"
+    },
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "route": "A",
+      "group": "TT_capacitance",
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "capacitance_fF": 200.0,
+      "steps_per_symbol": 40,
+      "device_voltage_pass": true,
+      "max_body_forward_V": 0.1573849386277519,
+      "device_pair_stress": [
+        {
+          "instance": "xdrv.xn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06508718365723072
+        },
+        {
+          "instance": "xdrv.xp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.365053219372788,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.08920330582234248
+        },
+        {
+          "instance": "xdrv.xn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.04602503792356571
+        },
+        {
+          "instance": "xdrv.xp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.384906096177943,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06548566957025237
+        },
+        {
+          "instance": "xdrv.xnout",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.365456836364401,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.16660751243161
+        },
+        {
+          "instance": "xdrv.xpout",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.133286329465169,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.1573849386277519
+        },
+        {
+          "instance": "xdrv.xhpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780772849966,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.679775951470041,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200413682728219,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.2361668634602,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7996821862929944,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.8206215108393082,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.599827465435747,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780742337742,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.011071991151921,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200443269685339,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xlp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.053560392631566,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xln1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7997395198971439,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xln2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.9910894011133516,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.167375710545017,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        }
+      ],
+      "energy_positive_pJ_per_attempted_payload_bit": 0.5256267986644043,
+      "energy_returned_pJ_per_attempted_payload_bit": 0.030266575486555654,
+      "energy_net_pJ_per_attempted_payload_bit": 0.49536022317784867,
+      "energy_ports_positive_pJ_per_attempted_payload_bit": {
+        "VIN": 0.13715760636790253,
+        "VDD": 0.20849919131393654,
+        "VREF": 0.017453439990555784,
+        "VLED": 0.13368246945260512,
+        "VD0": 0.028834091539404416,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "mean_LED_conduction_uA": 67.17998214952654,
+      "result_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/result.json",
+      "result_sha256": "f9ab86277431dd4d11108eb6fe565554d682074ed84c228d8099b9cd0d4cded5",
+      "waveform_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/waveform.dat.gz",
+      "raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+      "gzip_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+      "native_time": {
+        "first_s": 0.0,
+        "last_s": 1.28e-06,
+        "max_step_ps": 6.75675675717792,
+        "strictly_increasing": true,
+        "rows": 783066
+      },
+      "observables": {
+        "iled_cond": {
+          "min": 1.649426298280145e-05,
+          "max": 0.0001129989958542008,
+          "mean_time_weighted": 6.717998214952654e-05
+        },
+        "led_a": {
+          "min": 4.999904420950035,
+          "max": 5.000055590983413,
+          "mean_time_weighted": 4.999983205286043
+        },
+        "led_k": {
+          "min": 1.198106529417049,
+          "max": 1.753634097278267,
+          "mean_time_weighted": 1.3911808186143766
+        },
+        "out": {
+          "min": 1.197251835584273,
+          "max": 1.756970028962178,
+          "mean_time_weighted": 1.391113611106873
+        },
+        "pk": {
+          "min": 1.197994809156326,
+          "max": 1.753621469125398,
+          "mean_time_weighted": 1.3911136397585502
+        },
+        "vin": {
+          "min": 4.999977997398138,
+          "max": 4.999978112942894,
+          "mean_time_weighted": 4.999978054782632
+        },
+        "vdd": {
+          "min": 3.299609494279294,
+          "max": 3.300027178155374,
+          "mean_time_weighted": 3.2997974856294485
+        },
+        "vref": {
+          "min": 2.499995531793139,
+          "max": 2.499995532033713,
+          "mean_time_weighted": 2.4999955319193625
+        },
+        "LED_terminal_V": {
+          "min": 3.2463617951903707,
+          "max": 3.8018655405177704,
+          "mean_time_weighted": 3.608802386671667
+        },
+        "package_V": {
+          "min": -0.014619381788838037,
+          "max": 0.014369158829254935,
+          "mean_time_weighted": 6.720750750358164e-05
+        },
+        "package_R_V": {
+          "min": -0.00022236393365293594,
+          "max": 0.0003823161998641744,
+          "mean_time_weighted": 6.717885582642443e-05
+        },
+        "package_L_V": {
+          "min": -0.014517112578465996,
+          "max": 0.014466251077590142,
+          "mean_time_weighted": 2.8651677157192944e-08
+        }
+      },
+      "stage": "rx_only",
+      "optical_tau_ps": 0,
+      "extra_pure_delay_ps": 0,
+      "bit_errors": 1158,
+      "bit_count": 4096,
+      "symbol_errors": 1158,
+      "min_signed_margin_uA": -38.6346163604142,
+      "mean_signed_margin_uA": 15.099884323518097,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1170.0,
+      "training_bit_errors": 119,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "analysis_path": "build/microled-dynamic-v1/receiver/cases/TT-A-C200fF-S40/rx_only-tau0ps.json",
+      "analysis_sha256": "76a6ddf13ab950be823f1a4e9dfeda8b814ba563f6ea2f2e846484f1db01b0a3",
+      "state_cache": "build/microled-dynamic-v1/receiver/cache/95212f30cb4c85271dfb6b87bc3a91a922daefac253d579a6fe2be8d4a1f7bbc.npz",
+      "state_cache_sha256": "d273195918c143f33e75abe496b2e6548e9e871ed77834c9a2c3530b149a991c",
+      "combined_electrical_and_RX_screen_pass": false,
+      "physical_candidate": false,
+      "eye_path": "build/microled-dynamic-v1/receiver/eyes/TT-A-C200fF-S40/rx_only-tau0ps.npz",
+      "eye_sha256": "4ab74b7a2ec8830ee91f360cc23506259c2a0b1298782d6b793a6e45909b802c"
+    },
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "route": "A",
+      "group": "TT_capacitance",
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "capacitance_fF": 200.0,
+      "steps_per_symbol": 40,
+      "device_voltage_pass": true,
+      "max_body_forward_V": 0.1573849386277519,
+      "device_pair_stress": [
+        {
+          "instance": "xdrv.xn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06508718365723072
+        },
+        {
+          "instance": "xdrv.xp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.365053219372788,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.08920330582234248
+        },
+        {
+          "instance": "xdrv.xn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.04602503792356571
+        },
+        {
+          "instance": "xdrv.xp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.384906096177943,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06548566957025237
+        },
+        {
+          "instance": "xdrv.xnout",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.365456836364401,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.16660751243161
+        },
+        {
+          "instance": "xdrv.xpout",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.133286329465169,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.1573849386277519
+        },
+        {
+          "instance": "xdrv.xhpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780772849966,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.679775951470041,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200413682728219,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.2361668634602,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7996821862929944,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.8206215108393082,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.599827465435747,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780742337742,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.011071991151921,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200443269685339,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xlp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.053560392631566,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xln1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7997395198971439,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xln2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.9910894011133516,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.167375710545017,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        }
+      ],
+      "energy_positive_pJ_per_attempted_payload_bit": 0.5256267986644043,
+      "energy_returned_pJ_per_attempted_payload_bit": 0.030266575486555654,
+      "energy_net_pJ_per_attempted_payload_bit": 0.49536022317784867,
+      "energy_ports_positive_pJ_per_attempted_payload_bit": {
+        "VIN": 0.13715760636790253,
+        "VDD": 0.20849919131393654,
+        "VREF": 0.017453439990555784,
+        "VLED": 0.13368246945260512,
+        "VD0": 0.028834091539404416,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "mean_LED_conduction_uA": 67.17998214952654,
+      "result_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/result.json",
+      "result_sha256": "f9ab86277431dd4d11108eb6fe565554d682074ed84c228d8099b9cd0d4cded5",
+      "waveform_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/waveform.dat.gz",
+      "raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+      "gzip_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+      "native_time": {
+        "first_s": 0.0,
+        "last_s": 1.28e-06,
+        "max_step_ps": 6.75675675717792,
+        "strictly_increasing": true,
+        "rows": 783066
+      },
+      "observables": {
+        "iled_cond": {
+          "min": 1.649426298280145e-05,
+          "max": 0.0001129989958542008,
+          "mean_time_weighted": 6.717998214952654e-05
+        },
+        "led_a": {
+          "min": 4.999904420950035,
+          "max": 5.000055590983413,
+          "mean_time_weighted": 4.999983205286043
+        },
+        "led_k": {
+          "min": 1.198106529417049,
+          "max": 1.753634097278267,
+          "mean_time_weighted": 1.3911808186143766
+        },
+        "out": {
+          "min": 1.197251835584273,
+          "max": 1.756970028962178,
+          "mean_time_weighted": 1.391113611106873
+        },
+        "pk": {
+          "min": 1.197994809156326,
+          "max": 1.753621469125398,
+          "mean_time_weighted": 1.3911136397585502
+        },
+        "vin": {
+          "min": 4.999977997398138,
+          "max": 4.999978112942894,
+          "mean_time_weighted": 4.999978054782632
+        },
+        "vdd": {
+          "min": 3.299609494279294,
+          "max": 3.300027178155374,
+          "mean_time_weighted": 3.2997974856294485
+        },
+        "vref": {
+          "min": 2.499995531793139,
+          "max": 2.499995532033713,
+          "mean_time_weighted": 2.4999955319193625
+        },
+        "LED_terminal_V": {
+          "min": 3.2463617951903707,
+          "max": 3.8018655405177704,
+          "mean_time_weighted": 3.608802386671667
+        },
+        "package_V": {
+          "min": -0.014619381788838037,
+          "max": 0.014369158829254935,
+          "mean_time_weighted": 6.720750750358164e-05
+        },
+        "package_R_V": {
+          "min": -0.00022236393365293594,
+          "max": 0.0003823161998641744,
+          "mean_time_weighted": 6.717885582642443e-05
+        },
+        "package_L_V": {
+          "min": -0.014517112578465996,
+          "max": 0.014466251077590142,
+          "mean_time_weighted": 2.8651677157192944e-08
+        }
+      },
+      "stage": "optical_only",
+      "optical_tau_ps": 0,
+      "extra_pure_delay_ps": 0,
+      "bit_errors": 1205,
+      "bit_count": 4096,
+      "symbol_errors": 1205,
+      "min_signed_margin_uA": -38.42549367262579,
+      "mean_signed_margin_uA": 17.478723019494783,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 680.0,
+      "training_bit_errors": 125,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "analysis_path": "build/microled-dynamic-v1/receiver/cases/TT-A-C200fF-S40/optical_only-tau0ps.json",
+      "analysis_sha256": "42c4d168603409355104089ac9ab0c0c850c4163efe6d67ce567e9a6649a876c",
+      "state_cache": "build/microled-dynamic-v1/receiver/cache/95212f30cb4c85271dfb6b87bc3a91a922daefac253d579a6fe2be8d4a1f7bbc.npz",
+      "state_cache_sha256": "d273195918c143f33e75abe496b2e6548e9e871ed77834c9a2c3530b149a991c",
+      "combined_electrical_and_RX_screen_pass": false,
+      "physical_candidate": false,
+      "eye_path": "build/microled-dynamic-v1/receiver/eyes/TT-A-C200fF-S40/optical_only-tau0ps.npz",
+      "eye_sha256": "413d3841a651b4cb4c4258e792ee3a3943b221661e141ddd9529062153a09bd8"
+    },
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "route": "A",
+      "group": "TT_capacitance",
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "capacitance_fF": 200.0,
+      "steps_per_symbol": 40,
+      "device_voltage_pass": true,
+      "max_body_forward_V": 0.1573849386277519,
+      "device_pair_stress": [
+        {
+          "instance": "xdrv.xn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06508718365723072
+        },
+        {
+          "instance": "xdrv.xp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.365053219372788,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.08920330582234248
+        },
+        {
+          "instance": "xdrv.xn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.04602503792356571
+        },
+        {
+          "instance": "xdrv.xp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.384906096177943,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06548566957025237
+        },
+        {
+          "instance": "xdrv.xnout",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.365456836364401,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.16660751243161
+        },
+        {
+          "instance": "xdrv.xpout",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.133286329465169,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.1573849386277519
+        },
+        {
+          "instance": "xdrv.xhpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780772849966,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.679775951470041,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200413682728219,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.2361668634602,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7996821862929944,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.8206215108393082,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.599827465435747,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780742337742,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.011071991151921,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200443269685339,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xlp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.053560392631566,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xln1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7997395198971439,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xln2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.9910894011133516,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.167375710545017,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        }
+      ],
+      "energy_positive_pJ_per_attempted_payload_bit": 0.5256267986644043,
+      "energy_returned_pJ_per_attempted_payload_bit": 0.030266575486555654,
+      "energy_net_pJ_per_attempted_payload_bit": 0.49536022317784867,
+      "energy_ports_positive_pJ_per_attempted_payload_bit": {
+        "VIN": 0.13715760636790253,
+        "VDD": 0.20849919131393654,
+        "VREF": 0.017453439990555784,
+        "VLED": 0.13368246945260512,
+        "VD0": 0.028834091539404416,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "mean_LED_conduction_uA": 67.17998214952654,
+      "result_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/result.json",
+      "result_sha256": "f9ab86277431dd4d11108eb6fe565554d682074ed84c228d8099b9cd0d4cded5",
+      "waveform_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/waveform.dat.gz",
+      "raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+      "gzip_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+      "native_time": {
+        "first_s": 0.0,
+        "last_s": 1.28e-06,
+        "max_step_ps": 6.75675675717792,
+        "strictly_increasing": true,
+        "rows": 783066
+      },
+      "observables": {
+        "iled_cond": {
+          "min": 1.649426298280145e-05,
+          "max": 0.0001129989958542008,
+          "mean_time_weighted": 6.717998214952654e-05
+        },
+        "led_a": {
+          "min": 4.999904420950035,
+          "max": 5.000055590983413,
+          "mean_time_weighted": 4.999983205286043
+        },
+        "led_k": {
+          "min": 1.198106529417049,
+          "max": 1.753634097278267,
+          "mean_time_weighted": 1.3911808186143766
+        },
+        "out": {
+          "min": 1.197251835584273,
+          "max": 1.756970028962178,
+          "mean_time_weighted": 1.391113611106873
+        },
+        "pk": {
+          "min": 1.197994809156326,
+          "max": 1.753621469125398,
+          "mean_time_weighted": 1.3911136397585502
+        },
+        "vin": {
+          "min": 4.999977997398138,
+          "max": 4.999978112942894,
+          "mean_time_weighted": 4.999978054782632
+        },
+        "vdd": {
+          "min": 3.299609494279294,
+          "max": 3.300027178155374,
+          "mean_time_weighted": 3.2997974856294485
+        },
+        "vref": {
+          "min": 2.499995531793139,
+          "max": 2.499995532033713,
+          "mean_time_weighted": 2.4999955319193625
+        },
+        "LED_terminal_V": {
+          "min": 3.2463617951903707,
+          "max": 3.8018655405177704,
+          "mean_time_weighted": 3.608802386671667
+        },
+        "package_V": {
+          "min": -0.014619381788838037,
+          "max": 0.014369158829254935,
+          "mean_time_weighted": 6.720750750358164e-05
+        },
+        "package_R_V": {
+          "min": -0.00022236393365293594,
+          "max": 0.0003823161998641744,
+          "mean_time_weighted": 6.717885582642443e-05
+        },
+        "package_L_V": {
+          "min": -0.014517112578465996,
+          "max": 0.014466251077590142,
+          "mean_time_weighted": 2.8651677157192944e-08
+        }
+      },
+      "stage": "optical_only",
+      "optical_tau_ps": 25,
+      "extra_pure_delay_ps": 0,
+      "bit_errors": 1218,
+      "bit_count": 4096,
+      "symbol_errors": 1218,
+      "min_signed_margin_uA": -38.50798559445254,
+      "mean_signed_margin_uA": 16.94962100981546,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 695.0,
+      "training_bit_errors": 125,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "analysis_path": "build/microled-dynamic-v1/receiver/cases/TT-A-C200fF-S40/optical_only-tau25ps.json",
+      "analysis_sha256": "984867df895c85d23154e6724b42f9663db4e2b4424c007347c5fbc1ace0840a",
+      "state_cache": "build/microled-dynamic-v1/receiver/cache/95212f30cb4c85271dfb6b87bc3a91a922daefac253d579a6fe2be8d4a1f7bbc.npz",
+      "state_cache_sha256": "d273195918c143f33e75abe496b2e6548e9e871ed77834c9a2c3530b149a991c",
+      "combined_electrical_and_RX_screen_pass": false,
+      "physical_candidate": false,
+      "eye_path": "build/microled-dynamic-v1/receiver/eyes/TT-A-C200fF-S40/optical_only-tau25ps.npz",
+      "eye_sha256": "88cea02955fbf1807aa50be66eb165cd613fdad656790e983f7a888b459fa88b"
+    },
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "route": "A",
+      "group": "TT_capacitance",
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "capacitance_fF": 200.0,
+      "steps_per_symbol": 40,
+      "device_voltage_pass": true,
+      "max_body_forward_V": 0.1573849386277519,
+      "device_pair_stress": [
+        {
+          "instance": "xdrv.xn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06508718365723072
+        },
+        {
+          "instance": "xdrv.xp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.365053219372788,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.08920330582234248
+        },
+        {
+          "instance": "xdrv.xn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.04602503792356571
+        },
+        {
+          "instance": "xdrv.xp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.384906096177943,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06548566957025237
+        },
+        {
+          "instance": "xdrv.xnout",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.365456836364401,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.16660751243161
+        },
+        {
+          "instance": "xdrv.xpout",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.133286329465169,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.1573849386277519
+        },
+        {
+          "instance": "xdrv.xhpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780772849966,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.679775951470041,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200413682728219,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.2361668634602,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7996821862929944,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.8206215108393082,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.599827465435747,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780742337742,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.011071991151921,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200443269685339,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xlp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.053560392631566,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xln1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7997395198971439,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xln2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.9910894011133516,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.167375710545017,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        }
+      ],
+      "energy_positive_pJ_per_attempted_payload_bit": 0.5256267986644043,
+      "energy_returned_pJ_per_attempted_payload_bit": 0.030266575486555654,
+      "energy_net_pJ_per_attempted_payload_bit": 0.49536022317784867,
+      "energy_ports_positive_pJ_per_attempted_payload_bit": {
+        "VIN": 0.13715760636790253,
+        "VDD": 0.20849919131393654,
+        "VREF": 0.017453439990555784,
+        "VLED": 0.13368246945260512,
+        "VD0": 0.028834091539404416,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "mean_LED_conduction_uA": 67.17998214952654,
+      "result_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/result.json",
+      "result_sha256": "f9ab86277431dd4d11108eb6fe565554d682074ed84c228d8099b9cd0d4cded5",
+      "waveform_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/waveform.dat.gz",
+      "raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+      "gzip_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+      "native_time": {
+        "first_s": 0.0,
+        "last_s": 1.28e-06,
+        "max_step_ps": 6.75675675717792,
+        "strictly_increasing": true,
+        "rows": 783066
+      },
+      "observables": {
+        "iled_cond": {
+          "min": 1.649426298280145e-05,
+          "max": 0.0001129989958542008,
+          "mean_time_weighted": 6.717998214952654e-05
+        },
+        "led_a": {
+          "min": 4.999904420950035,
+          "max": 5.000055590983413,
+          "mean_time_weighted": 4.999983205286043
+        },
+        "led_k": {
+          "min": 1.198106529417049,
+          "max": 1.753634097278267,
+          "mean_time_weighted": 1.3911808186143766
+        },
+        "out": {
+          "min": 1.197251835584273,
+          "max": 1.756970028962178,
+          "mean_time_weighted": 1.391113611106873
+        },
+        "pk": {
+          "min": 1.197994809156326,
+          "max": 1.753621469125398,
+          "mean_time_weighted": 1.3911136397585502
+        },
+        "vin": {
+          "min": 4.999977997398138,
+          "max": 4.999978112942894,
+          "mean_time_weighted": 4.999978054782632
+        },
+        "vdd": {
+          "min": 3.299609494279294,
+          "max": 3.300027178155374,
+          "mean_time_weighted": 3.2997974856294485
+        },
+        "vref": {
+          "min": 2.499995531793139,
+          "max": 2.499995532033713,
+          "mean_time_weighted": 2.4999955319193625
+        },
+        "LED_terminal_V": {
+          "min": 3.2463617951903707,
+          "max": 3.8018655405177704,
+          "mean_time_weighted": 3.608802386671667
+        },
+        "package_V": {
+          "min": -0.014619381788838037,
+          "max": 0.014369158829254935,
+          "mean_time_weighted": 6.720750750358164e-05
+        },
+        "package_R_V": {
+          "min": -0.00022236393365293594,
+          "max": 0.0003823161998641744,
+          "mean_time_weighted": 6.717885582642443e-05
+        },
+        "package_L_V": {
+          "min": -0.014517112578465996,
+          "max": 0.014466251077590142,
+          "mean_time_weighted": 2.8651677157192944e-08
+        }
+      },
+      "stage": "optical_only",
+      "optical_tau_ps": 75,
+      "extra_pure_delay_ps": 0,
+      "bit_errors": 1332,
+      "bit_count": 4096,
+      "symbol_errors": 1332,
+      "min_signed_margin_uA": -38.586987502073356,
+      "mean_signed_margin_uA": 14.72167183478162,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1150.0,
+      "training_bit_errors": 139,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "analysis_path": "build/microled-dynamic-v1/receiver/cases/TT-A-C200fF-S40/optical_only-tau75ps.json",
+      "analysis_sha256": "55b85d6fc22b8c1e3cb8e2256aece3940526e10051b48f14d92a96ea25e313f5",
+      "state_cache": "build/microled-dynamic-v1/receiver/cache/95212f30cb4c85271dfb6b87bc3a91a922daefac253d579a6fe2be8d4a1f7bbc.npz",
+      "state_cache_sha256": "d273195918c143f33e75abe496b2e6548e9e871ed77834c9a2c3530b149a991c",
+      "combined_electrical_and_RX_screen_pass": false,
+      "physical_candidate": false,
+      "eye_path": "build/microled-dynamic-v1/receiver/eyes/TT-A-C200fF-S40/optical_only-tau75ps.npz",
+      "eye_sha256": "d8b78c1f3d2cd10d74b30f8da1c9e0e8e5fcc3f9e324451008d1dabbaff70540"
+    },
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "route": "A",
+      "group": "TT_capacitance",
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "capacitance_fF": 200.0,
+      "steps_per_symbol": 40,
+      "device_voltage_pass": true,
+      "max_body_forward_V": 0.1573849386277519,
+      "device_pair_stress": [
+        {
+          "instance": "xdrv.xn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06508718365723072
+        },
+        {
+          "instance": "xdrv.xp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.365053219372788,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.08920330582234248
+        },
+        {
+          "instance": "xdrv.xn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.04602503792356571
+        },
+        {
+          "instance": "xdrv.xp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.384906096177943,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06548566957025237
+        },
+        {
+          "instance": "xdrv.xnout",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.365456836364401,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.16660751243161
+        },
+        {
+          "instance": "xdrv.xpout",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.133286329465169,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.1573849386277519
+        },
+        {
+          "instance": "xdrv.xhpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780772849966,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.679775951470041,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200413682728219,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.2361668634602,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7996821862929944,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.8206215108393082,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.599827465435747,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780742337742,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.011071991151921,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200443269685339,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xlp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.053560392631566,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xln1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7997395198971439,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xln2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.9910894011133516,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.167375710545017,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        }
+      ],
+      "energy_positive_pJ_per_attempted_payload_bit": 0.5256267986644043,
+      "energy_returned_pJ_per_attempted_payload_bit": 0.030266575486555654,
+      "energy_net_pJ_per_attempted_payload_bit": 0.49536022317784867,
+      "energy_ports_positive_pJ_per_attempted_payload_bit": {
+        "VIN": 0.13715760636790253,
+        "VDD": 0.20849919131393654,
+        "VREF": 0.017453439990555784,
+        "VLED": 0.13368246945260512,
+        "VD0": 0.028834091539404416,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "mean_LED_conduction_uA": 67.17998214952654,
+      "result_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/result.json",
+      "result_sha256": "f9ab86277431dd4d11108eb6fe565554d682074ed84c228d8099b9cd0d4cded5",
+      "waveform_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/waveform.dat.gz",
+      "raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+      "gzip_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+      "native_time": {
+        "first_s": 0.0,
+        "last_s": 1.28e-06,
+        "max_step_ps": 6.75675675717792,
+        "strictly_increasing": true,
+        "rows": 783066
+      },
+      "observables": {
+        "iled_cond": {
+          "min": 1.649426298280145e-05,
+          "max": 0.0001129989958542008,
+          "mean_time_weighted": 6.717998214952654e-05
+        },
+        "led_a": {
+          "min": 4.999904420950035,
+          "max": 5.000055590983413,
+          "mean_time_weighted": 4.999983205286043
+        },
+        "led_k": {
+          "min": 1.198106529417049,
+          "max": 1.753634097278267,
+          "mean_time_weighted": 1.3911808186143766
+        },
+        "out": {
+          "min": 1.197251835584273,
+          "max": 1.756970028962178,
+          "mean_time_weighted": 1.391113611106873
+        },
+        "pk": {
+          "min": 1.197994809156326,
+          "max": 1.753621469125398,
+          "mean_time_weighted": 1.3911136397585502
+        },
+        "vin": {
+          "min": 4.999977997398138,
+          "max": 4.999978112942894,
+          "mean_time_weighted": 4.999978054782632
+        },
+        "vdd": {
+          "min": 3.299609494279294,
+          "max": 3.300027178155374,
+          "mean_time_weighted": 3.2997974856294485
+        },
+        "vref": {
+          "min": 2.499995531793139,
+          "max": 2.499995532033713,
+          "mean_time_weighted": 2.4999955319193625
+        },
+        "LED_terminal_V": {
+          "min": 3.2463617951903707,
+          "max": 3.8018655405177704,
+          "mean_time_weighted": 3.608802386671667
+        },
+        "package_V": {
+          "min": -0.014619381788838037,
+          "max": 0.014369158829254935,
+          "mean_time_weighted": 6.720750750358164e-05
+        },
+        "package_R_V": {
+          "min": -0.00022236393365293594,
+          "max": 0.0003823161998641744,
+          "mean_time_weighted": 6.717885582642443e-05
+        },
+        "package_L_V": {
+          "min": -0.014517112578465996,
+          "max": 0.014466251077590142,
+          "mean_time_weighted": 2.8651677157192944e-08
+        }
+      },
+      "stage": "optical_only",
+      "optical_tau_ps": 200,
+      "extra_pure_delay_ps": 0,
+      "bit_errors": 953,
+      "bit_count": 4096,
+      "symbol_errors": 953,
+      "min_signed_margin_uA": -38.66280478207459,
+      "mean_signed_margin_uA": 14.972966266205319,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1175.0,
+      "training_bit_errors": 99,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "analysis_path": "build/microled-dynamic-v1/receiver/cases/TT-A-C200fF-S40/optical_only-tau200ps.json",
+      "analysis_sha256": "afe91a7fcc63ace9052f09d1362516e637cf48751c2d0b36d696c97eb3631ec4",
+      "state_cache": "build/microled-dynamic-v1/receiver/cache/95212f30cb4c85271dfb6b87bc3a91a922daefac253d579a6fe2be8d4a1f7bbc.npz",
+      "state_cache_sha256": "d273195918c143f33e75abe496b2e6548e9e871ed77834c9a2c3530b149a991c",
+      "combined_electrical_and_RX_screen_pass": false,
+      "physical_candidate": false,
+      "eye_path": "build/microled-dynamic-v1/receiver/eyes/TT-A-C200fF-S40/optical_only-tau200ps.npz",
+      "eye_sha256": "49497ea9edb7daae7c48023ec8d4cf74fab2728b596cdbd2d655991cc2bd0060"
+    },
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "route": "A",
+      "group": "TT_capacitance",
+      "corner": "typical",
+      "temp_C": 27,
+      "vdd_V": 3.3,
+      "capacitance_fF": 200.0,
+      "steps_per_symbol": 40,
+      "device_voltage_pass": true,
+      "max_body_forward_V": 0.1573849386277519,
+      "device_pair_stress": [
+        {
+          "instance": "xdrv.xn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06508718365723072
+        },
+        {
+          "instance": "xdrv.xp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.365053219372788,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.08920330582234248
+        },
+        {
+          "instance": "xdrv.xn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.389157250997682,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.04602503792356571
+        },
+        {
+          "instance": "xdrv.xp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 3.384906096177943,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.06548566957025237
+        },
+        {
+          "instance": "xdrv.xnout",
+          "model": "nfet_06v0",
+          "max_pair_V": 3.365456836364401,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.16660751243161
+        },
+        {
+          "instance": "xdrv.xpout",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.133286329465169,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.1573849386277519
+        },
+        {
+          "instance": "xdrv.xhpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780772849966,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.679775951470041,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xhp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200413682728219,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.2361668634602,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -1.67955804836924
+        },
+        {
+          "instance": "xdrv.xhn1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7996821862929944,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhn2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.8206215108393082,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xhshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.599827465435747,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlpbias",
+          "model": "pfet_06v0",
+          "max_pair_V": 1.152780742337742,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlptail",
+          "model": "pfet_06v0",
+          "max_pair_V": 2.011071991151921,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -0.0
+        },
+        {
+          "instance": "xdrv.xlp1",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.200443269685339,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xlp2",
+          "model": "pfet_06v0",
+          "max_pair_V": 4.053560392631566,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": -2.01075110968772
+        },
+        {
+          "instance": "xdrv.xln1",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.7997395198971439,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xln2",
+          "model": "nfet_06v0",
+          "max_pair_V": 0.9910894011133516,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        },
+        {
+          "instance": "xdrv.xlshunt",
+          "model": "nfet_06v0",
+          "max_pair_V": 1.167375710545017,
+          "limit_V": 6.0,
+          "passed": true,
+          "max_body_forward_V": 0.0
+        }
+      ],
+      "energy_positive_pJ_per_attempted_payload_bit": 0.5256267986644043,
+      "energy_returned_pJ_per_attempted_payload_bit": 0.030266575486555654,
+      "energy_net_pJ_per_attempted_payload_bit": 0.49536022317784867,
+      "energy_ports_positive_pJ_per_attempted_payload_bit": {
+        "VIN": 0.13715760636790253,
+        "VDD": 0.20849919131393654,
+        "VREF": 0.017453439990555784,
+        "VLED": 0.13368246945260512,
+        "VD0": 0.028834091539404416,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "mean_LED_conduction_uA": 67.17998214952654,
+      "result_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/result.json",
+      "result_sha256": "f9ab86277431dd4d11108eb6fe565554d682074ed84c228d8099b9cd0d4cded5",
+      "waveform_path": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/waveform.dat.gz",
+      "raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+      "gzip_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+      "native_time": {
+        "first_s": 0.0,
+        "last_s": 1.28e-06,
+        "max_step_ps": 6.75675675717792,
+        "strictly_increasing": true,
+        "rows": 783066
+      },
+      "observables": {
+        "iled_cond": {
+          "min": 1.649426298280145e-05,
+          "max": 0.0001129989958542008,
+          "mean_time_weighted": 6.717998214952654e-05
+        },
+        "led_a": {
+          "min": 4.999904420950035,
+          "max": 5.000055590983413,
+          "mean_time_weighted": 4.999983205286043
+        },
+        "led_k": {
+          "min": 1.198106529417049,
+          "max": 1.753634097278267,
+          "mean_time_weighted": 1.3911808186143766
+        },
+        "out": {
+          "min": 1.197251835584273,
+          "max": 1.756970028962178,
+          "mean_time_weighted": 1.391113611106873
+        },
+        "pk": {
+          "min": 1.197994809156326,
+          "max": 1.753621469125398,
+          "mean_time_weighted": 1.3911136397585502
+        },
+        "vin": {
+          "min": 4.999977997398138,
+          "max": 4.999978112942894,
+          "mean_time_weighted": 4.999978054782632
+        },
+        "vdd": {
+          "min": 3.299609494279294,
+          "max": 3.300027178155374,
+          "mean_time_weighted": 3.2997974856294485
+        },
+        "vref": {
+          "min": 2.499995531793139,
+          "max": 2.499995532033713,
+          "mean_time_weighted": 2.4999955319193625
+        },
+        "LED_terminal_V": {
+          "min": 3.2463617951903707,
+          "max": 3.8018655405177704,
+          "mean_time_weighted": 3.608802386671667
+        },
+        "package_V": {
+          "min": -0.014619381788838037,
+          "max": 0.014369158829254935,
+          "mean_time_weighted": 6.720750750358164e-05
+        },
+        "package_R_V": {
+          "min": -0.00022236393365293594,
+          "max": 0.0003823161998641744,
+          "mean_time_weighted": 6.717885582642443e-05
+        },
+        "package_L_V": {
+          "min": -0.014517112578465996,
+          "max": 0.014466251077590142,
+          "mean_time_weighted": 2.8651677157192944e-08
+        }
+      },
+      "stage": "phase_delay",
+      "optical_tau_ps": 75,
+      "extra_pure_delay_ps": 100,
+      "bit_errors": 948,
+      "bit_count": 4096,
+      "symbol_errors": 948,
+      "min_signed_margin_uA": -38.67183087509192,
+      "mean_signed_margin_uA": 15.250313992764378,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1320.0,
+      "training_bit_errors": 96,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "analysis_path": "build/microled-dynamic-v1/receiver/cases/TT-A-C200fF-S40/phase_delay-tau75ps.json",
+      "analysis_sha256": "62bc30e54fa3579c0abea580ca022c961081a8c4844c0b5117c3a7b7db6cae8a",
+      "state_cache": "build/microled-dynamic-v1/receiver/cache/95212f30cb4c85271dfb6b87bc3a91a922daefac253d579a6fe2be8d4a1f7bbc.npz",
+      "state_cache_sha256": "d273195918c143f33e75abe496b2e6548e9e871ed77834c9a2c3530b149a991c",
+      "combined_electrical_and_RX_screen_pass": false,
+      "physical_candidate": false,
+      "eye_path": "build/microled-dynamic-v1/receiver/eyes/TT-A-C200fF-S40/phase_delay-tau75ps.npz",
+      "eye_sha256": "8702d90c8abfb9f2cdaa4d65d97b598d128b3b663c0054ab4c668492849ddae2"
+    }
+  ],
+  "electrical_dc": [],
+  "electrical_dc_capacitance_checks": [],
+  "missing_electrical": [
+    "TT-C-C200fF-S40",
+    "TT-A-C0fF-S40",
+    "TT-B-C0fF-S40",
+    "TT-C-C0fF-S40",
+    "TT-A-C10fF-S40",
+    "TT-B-C10fF-S40",
+    "TT-C-C10fF-S40",
+    "TT-A-C50fF-S40",
+    "TT-B-C50fF-S40",
+    "TT-C-C50fF-S40",
+    "TT-A-C800fF-S40",
+    "TT-B-C800fF-S40",
+    "TT-C-C800fF-S40",
+    "DC-TT-A-C200fF-L0",
+    "DC-TT-A-C200fF-L1",
+    "DC-TT-B-C200fF-L0",
+    "DC-TT-B-C200fF-L1",
+    "DC-TT-C-C200fF-L0",
+    "DC-TT-C-C200fF-L1",
+    "DC-TT-C-C200fF-L2",
+    "DC-TT-C-C200fF-L3",
+    "DC-TT-A-C10fF-L0",
+    "DC-TT-A-C10fF-L1",
+    "DC-TT-B-C10fF-L0",
+    "DC-TT-B-C10fF-L1",
+    "DC-TT-C-C10fF-L0",
+    "DC-TT-C-C10fF-L1",
+    "DC-TT-C-C10fF-L2",
+    "DC-TT-C-C10fF-L3",
+    "TT-A-C200fF-S80",
+    "TT-B-C200fF-S80",
+    "TT-C-C200fF-S80",
+    "TT-A-C10fF-S80",
+    "TT-B-C10fF-S80",
+    "TT-C-C10fF-S80",
+    "SS-A-C200fF-S40",
+    "SS-B-C200fF-S40",
+    "SS-C-C200fF-S40",
+    "SS-A-C10fF-S40",
+    "SS-B-C10fF-S40",
+    "SS-C-C10fF-S40",
+    "FF-A-C200fF-S40",
+    "FF-B-C200fF-S40",
+    "FF-C-C200fF-S40",
+    "FF-A-C10fF-S40",
+    "FF-B-C10fF-S40",
+    "FF-C-C10fF-S40"
+  ],
+  "electrical_failures": [],
+  "analysis_failures": [],
+  "numerical_validation": {
+    "passed": true,
+    "analytic_fixtures": [
+      {
+        "tau_optical_ps": 0.0,
+        "tau_rx_ps": 159.15494309189535,
+        "analytic_ramp_max_absolute_error_unit_gain": 5.1514348342607263e-14
+      },
+      {
+        "tau_optical_ps": 25.0,
+        "tau_rx_ps": 159.15494309189535,
+        "analytic_ramp_max_absolute_error_unit_gain": 4.463096558993129e-14
+      },
+      {
+        "tau_optical_ps": 200.0,
+        "tau_rx_ps": 200.0,
+        "analytic_ramp_max_absolute_error_unit_gain": 3.3306690738754696e-14
+      },
+      {
+        "tau_optical_ps": 200.0,
+        "tau_rx_ps": 200.000000001,
+        "analytic_ramp_max_absolute_error_unit_gain": 1.3545831123451535e-12
+      }
+    ],
+    "PWL_subdivision": [
+      {
+        "tau_optical_ps": 0.0,
+        "tau_rx_ps": 159.15494309189535,
+        "exact_PWL_half_interval_max_error_A": 1.3552527156068805e-19
+      },
+      {
+        "tau_optical_ps": 25.0,
+        "tau_rx_ps": 159.15494309189535,
+        "exact_PWL_half_interval_max_error_A": 2.303929616531697e-19
+      },
+      {
+        "tau_optical_ps": 75.0,
+        "tau_rx_ps": 159.15494309189535,
+        "exact_PWL_half_interval_max_error_A": 1.8973538018496328e-19
+      },
+      {
+        "tau_optical_ps": 200.0,
+        "tau_rx_ps": 159.15494309189535,
+        "exact_PWL_half_interval_max_error_A": 2.574980159653073e-19
+      },
+      {
+        "tau_optical_ps": 200.0,
+        "tau_rx_ps": 200.0,
+        "exact_PWL_half_interval_max_error_A": 2.168404344971009e-19
+      }
+    ],
+    "old_200ps_filter_nonuniform_max_error_A": 3.2526065174565133e-19,
+    "tolerances": {
+      "analytic_unit_gain": 1e-10,
+      "PWL_subdivision_A": 1e-15,
+      "old_filter_A": 1e-15
+    },
+    "limits": "Analytic/subdivision tests verify numerical state propagation only; circuit halfstep and native baseline metrics are separate checks."
+  },
+  "baseline_200ps_reproduction": [
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 844,
+        "bit_count": 4096,
+        "symbol_errors": 844,
+        "min_signed_margin_uA": -38.841576722451926,
+        "mean_signed_margin_uA": 14.58970340096378,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1260.0,
+        "training_bit_errors": 88,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 844,
+        "bit_count": 4096,
+        "symbol_errors": 844,
+        "min_signed_margin_uA": -38.84157672245193,
+        "mean_signed_margin_uA": 14.589703400963785,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1260.0,
+        "training_bit_errors": 88,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    }
+  ],
+  "pure_delay_sensitivity": [
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "pure_delay_ps": 100,
+      "training_delay_shift_ps": 100.0,
+      "signed_margin_delta_uA": 0.0,
+      "time_margin_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "interpretation": "A uniform100ps pure delay is absorbed by the shared0..8ns training search when its optimum remains inside the budget. This does not identify missing dispersive phase or a physical transient."
+    }
+  ],
+  "halfstep_checks": [],
+  "stage_status": "partial",
+  "selection_filter": "TT-A-C200fF"
+}

@@ -1,0 +1,34 @@
+{
+  "model_id": "yellow20-conditional-RC-optical-sensitivity-v1",
+  "date": "2026-11-08",
+  "status": "Executed hypothesis family, not a physically identified dynamic emitter",
+  "static_IV": {
+    "path": "analog/models/measured-led/lin2026-yellow20-dc.spice",
+    "sha256": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+    "device_class": "20um-square yellow InGaN/GaN on diamond from author-published data; same physical pixel for IV/PI/S21 not established"
+  },
+  "electrical": {
+    "topology": "Static IV branch and VSENSE in parallel with constant CLED at LED terminals; series package1ohm/0.5nH",
+    "capacitance_fF": [0, 10, 50, 200, 800],
+    "charge_law": "Q=C*(Va-Vk); terminal current=conduction current+dQ/dt",
+    "evidence": "C and package parasitics are sensitivity assumptions; not extracted from S11 or PEX"
+  },
+  "optical_proxy": {
+    "tau_ps": [0, 25, 75, 200],
+    "state": "tau*dy/dt=I_conductive-y, unityDCgain; tau0 is bypass",
+    "quantity": "equivalent-current proxy, not absolute emitted or received optical power",
+    "evidence": "Explicit hypothetical temporal dynamics; no carrier lifetime identified"
+  },
+  "receiver": {
+    "source": "scripts/fair_driver_v1/receiver_equal_latency_v2.py",
+    "sha256": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+    "lowpass_Hz": 1000000000,
+    "amplitude_gate_uAeq": 7.5,
+    "minimum_single_sided_time_ps": 100,
+    "training": "Original v2 rule independently selects each waveform delay from448trainingbits only; thresholds/selectionrule/grid are unchanged"
+  },
+  "frequency_fit_separation": "coefficients.json describes the observed whole measurement chain only and is not used in this RC/optical/RX transient family",
+  "ideal_controls": "C0 or tau0 are limiting diagnostics; no manufacturing feasibility implied",
+  "not_identified": ["Bias/voltage-dependent charge", "Actual EO phase and group delay", "Residual emitter response after electrical and receiver de-embedding", "Same-pixel covariance", "Temperature/thermal/aging behavior", "PD/TIA noise and opticalBER"],
+  "energy_scope": "Actual transistor source-port energy over complete1.28us frame/4096attemptedpayloadbits; offline optical hypotheses do not feed back into electrical power. All extra sourceIC/serializer/clock/RX costs remain excluded."
+}

@@ -1,0 +1,908 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>20µm动态负载与A/B/C净3.2Gb/s验证</title><style>
+:root{--ink:#233c4d;--muted:#526b79;--teal:#246f77;--line:#dce5e7;--paper:#fff;--wash:#f3f7f7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:#f5f7f8;font:17px/1.72 Bahnschrift,"PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+header{background:#213d4c;color:#fff;padding:25px max(24px,calc((100vw - 1160px)/2));font-size:15px}header a{color:#d8f1ef}
+main{max-width:1220px;margin:0 auto;padding:34px 42px 70px;background:var(--paper)}h1,h2,h3{line-height:1.35;color:#203e50;font-weight:600;scroll-margin-top:20px}h1{font-size:34px;margin:0 0 22px}h2{font-size:25px;border-top:1px solid var(--line);margin:52px 0 20px;padding-top:26px}h3{font-size:20px;margin-top:28px}p,li{max-width:950px}p{margin:14px 0}a{color:var(--teal);text-underline-offset:3px}strong{font-weight:650}code{font-size:.92em;background:var(--wash);padding:2px 5px;border-radius:3px;overflow-wrap:anywhere}pre{overflow:auto;background:var(--wash);padding:16px}pre code{padding:0}blockquote{border-left:3px solid var(--teal);padding-left:18px;margin-left:0;color:var(--muted)}img{max-width:100%;height:auto;background:white}p:has(>img){max-width:none;margin:28px 0 6px}p:has(>em:only-child){color:var(--muted);font-size:15px;max-width:none}table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.6;display:block;overflow-x:auto;margin:20px 0}th,td{padding:12px 13px;border:1px solid var(--line);vertical-align:top;min-width:100px}th{background:#eef4f5;text-align:left}td:nth-child(2),td:nth-child(3){min-width:190px}tbody tr:nth-child(even){background:#fafcfc}details{border:1px solid var(--line);padding:12px 18px;background:var(--wash);border-radius:5px;margin:24px 0}summary{cursor:pointer;color:var(--teal);font-weight:600}.toc ul{list-style:none;padding-left:18px}.toc>ul{padding:0;columns:2}.toc a{text-decoration:none}footer{font-size:14px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);margin-top:40px}.status{font-size:14px;letter-spacing:.03em;color:#cae5e4}.back{float:right}
+p:has(>a>img){max-width:none;margin:28px 0 6px}a:has(>img){display:block}
+@media(max-width:720px){body{font-size:16px}main{padding:24px 18px}h1{font-size:27px}h2{font-size:22px}.toc>ul{columns:1}table{font-size:14px}header{padding:18px}.back{float:none;display:block;margin-top:5px}}
+@media print{body,main{background:white}main{padding:0;max-width:none}body{font-size:10.8pt;line-height:1.65}h1{font-size:25pt}h2{font-size:15pt;break-after:avoid}h3{font-size:12pt;break-after:avoid}header,details,.back{display:none}img{max-height:230mm;object-fit:contain}table{display:table;font-size:8.5pt;table-layout:fixed}th,td{min-width:0;padding:6px;overflow-wrap:anywhere}p:has(>img){break-inside:avoid}a{color:inherit}@page{size:A4;margin:20mm}}
+</style></head><body><header>OPEN MICROLED DRIVER ASIC · 2026-11-08 · 动态负载验证</header><main><h1 id="20-m-microled-32-gbs-abc">20 µm MicroLED 动态负载：校准边界、敏感性与净 3.2 Gb/s 的 A/B/C 验证</h1>
+<p>2026-11-08 · 中文研究报告 · 原理图级晶体管仿真、公开数据拟合与接收代理分析</p>
+<p><strong>本轮完成公开幅频的条件化拟合，并以冻结 A/B/C 电路进行动态负载敏感性实验。电气计划 49/49 项已记录，典型条件全链假设点 60 个（含 24 个理想限制诊断），其中原接收与 MOS 端对压差联合筛查通过 0 个。</strong></p>
+<p>这些通过或失败只属于明确的 C/τ 假设和电流域接收代理。幅频拟合仍只能解释已测整链幅度，尚不能作为真实器件瞬态预测；器件物理动态校准未闭合。暂不预选路线。</p>
+<p>本轮继承<a href="../microled-device-codesign-20261029/index.html">器件与 Driver 共设计研究</a>，将其中的验证方案推进到实际数据处理和晶体管实验。项目定位仍是实验性研发方法验证与教学。<strong>文献数据、条件化模型、仿真接收结果与真实光学链路是不同证据层级。</strong></p>
+<details><summary>阅读目录</summary><div class="toc">
+<ul>
+<li><a href="#1">1. 固定什么，改变什么？</a></li>
+<li><a href="#2">2. 电路连接：导电电流、电容电流和光响应要分清</a></li>
+<li><a href="#3">3. 校准了什么？还不能从幅频反推出什么？</a><ul>
+<li><a href="#31-dc">3.1 静态与 DC 回归</a></li>
+<li><a href="#32">3.2 公开动态数据的独立拟合和留出检验</a></li>
+</ul>
+</li>
+<li><a href="#4-abc">4. 同一接收器下的 A/B/C 结果</a><ul>
+<li><a href="#41">4.1 先复核旧基线，再看修改负载后的变化</a></li>
+<li><a href="#42">4.2 电容与光响应时间的完整敏感性矩阵</a></li>
+<li><a href="#43">4.3 相同坐标眼图与分层诊断</a></li>
+</ul>
+</li>
+<li><a href="#5">5. 能耗：统计范围和失败点的含义</a></li>
+<li><a href="#6">6. 为什么失败？角落、数值分辨率和模型域</a></li>
+<li><a href="#7">7. 下一步的实验与设计门槛</a></li>
+<li><a href="#8">8. 证据、来源和复现</a></li>
+</ul>
+</div>
+</details><h2 id="1">1. 固定什么，改变什么？</h2>
+<p>对象为黄色 InGaN/GaN、20 µm <strong>正方形</strong>、面积 400 µm² 的文献样品类别。静态 I–V 来自作者公开数值文件；25–100 µA 对应 6.25–25 A/cm²。I–V、P–I 与 S21 是否来自同一颗物理像素仍无法确认。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>本轮条件</th>
+<th>证据边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A / B / C</td>
+<td>原 20 / 21 / 49 MOS 候选及原校准参数</td>
+<td>原理图级；没有新增布局/PEX</td>
+</tr>
+<tr>
+<td>发射格式</td>
+<td>A/B 为 NRZ；C 为 Gray PAM4</td>
+<td>只比较当前实现，不能据一版电路否定整个架构类别</td>
+</tr>
+<tr>
+<td>目标</td>
+<td>净 3.2 Gb/s；4,736 线路位中 4,096 payload</td>
+<td>A/B 3.7 GBd；C 1.85 GBd；帧长 1.28 µs</td>
+</tr>
+<tr>
+<td>序列与训练</td>
+<td>同一 PRBS15；448 位训练评分、64 位保护、4,096 位验证</td>
+<td>训练选择算法取自冻结 v2 源码，不使用验证标签调相</td>
+</tr>
+<tr>
+<td>接收器</td>
+<td>1 GHz 一阶响应；原固定阈值、7.5 µAeq 幅度和 100 ps 单侧时间筛查</td>
+<td>电流等效代理，无已标定 PD/TIA、噪声或光学 BER</td>
+</tr>
+<tr>
+<td>负载电容</td>
+<td>0 / 10 / 50 / 200 / 800 fF</td>
+<td>全部为敏感性假设；0 fF 仅作理想诊断</td>
+</tr>
+<tr>
+<td>光响应时间</td>
+<td>0 / 25 / 75 / 200 ps</td>
+<td>全部为独立状态模型假设；0 ps 仅作理想诊断</td>
+</tr>
+<tr>
+<td>LED 封装</td>
+<td>原 1 Ω / 0.5 nH，原供电网络不变</td>
+<td>未从新实测提取，不能称新 PEX</td>
+</tr>
+<tr>
+<td>角落</td>
+<td>TT 27°C/3.3 V；SS 125°C/2.95 V；FF −40°C/3.65 V</td>
+<td>变化作用于 MOS/电阻及供电；LED 没有实测温度模型</td>
+</tr>
+</tbody>
+</table>
+<p>现有 A/B/C 的设置均沿用同一冻结输入包，不在每个电容或角落重新校准电流。给 C 更长符号 UI 是两位一符号的必然结果；它没有获得更低的接收幅度门槛或额外验证训练。</p>
+<p>“固定接收条件”指传函、阈值、门槛和训练规则固定；每个 case/光响应假设仍用自己的训练段选择 0–8 ns、5 ps 网格中的 delay，再冻结用于验证。它们不强制共用同一个采样时刻。文中的联合筛查字段只包含原 v2 接收检查与原 MOS 端对压差筛查；DC 精度、体结正偏、模型域和完整可靠性需另行审查。</p>
+<h2 id="2">2. 电路连接：导电电流、电容电流和光响应要分清</h2>
+<p><a href="figures/model-circuit.svg" title="查看原尺寸"><img alt="负载、电流参考面与接收模型" src="figures/model-circuit.svg" /></a></p>
+<p><em>图 1｜本轮实际 testbench 的负载连接及后处理参考面。BIV/二极管符号表示文献 I–V 的行为负载；VSENSE 只测导电支路。光响应是假设的因果状态模型，未由整链幅频唯一校准。</em></p>
+<p>LED 两端总电流包括导电支路与储能变化：<code>I端口 = I导电 + dQ/dt</code>。本轮电容为常数，故 <code>dQ/dt=C·d(Va−Vk)/dt</code>。导电电流是接收代理的输入；七个源端口的能量统计则自然包含负载充放电与所有实际辅助电路的取能。两者不能互换。</p>
+<p>电压驱动 A 通过输出级与实际 VH/VL 辅助轨改变 LED 阴极电压；B 把尾电流在 LED 和 dummy 支路之间转向；C 使用译码和多单位电流形成四个发光电平。相同负载下，它们对电容的充放电能力、内部节点建立和静态功耗不同。</p>
+<p>实际器件展开沿用已核查的原理图：<a href="../fair-driver-comparison-20261025/figures/a-core.svg">A 输出核心</a>、<a href="../fair-driver-comparison-20261025/figures/a-rails.svg">A 辅助轨</a>、<a href="../fair-driver-comparison-20261025/figures/b-core.svg">B 核心</a>、<a href="../fair-driver-comparison-20261025/figures/common-reference.svg">公共参考</a>、<a href="../fair-driver-comparison-20261025/figures/c-overview.svg">C 总览</a>、<a href="../fair-driver-comparison-20261025/figures/c-decoder.svg">C 译码</a>与<a href="../fair-driver-comparison-20261025/figures/c-unit.svg">C 单位电流</a>。本轮不改变这些源网表，新增的是负载假设扫描和模型检验。</p>
+<h2 id="3">3. 校准了什么？还不能从幅频反推出什么？</h2>
+<h3 id="31-dc">3.1 静态与 DC 回归</h3>
+<table>
+<thead>
+<tr>
+<th>路线/电容/电平</th>
+<th>目标 / µA</th>
+<th>导电电流 / µA</th>
+<th>误差 / %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A / 200 fF / L0</td>
+<td>25</td>
+<td>24.99972</td>
+<td>-0.0011</td>
+</tr>
+<tr>
+<td>A / 200 fF / L1</td>
+<td>100</td>
+<td>99.99377</td>
+<td>-0.0062</td>
+</tr>
+<tr>
+<td>B / 200 fF / L0</td>
+<td>25</td>
+<td>25.00067</td>
+<td>0.0027</td>
+</tr>
+<tr>
+<td>B / 200 fF / L1</td>
+<td>100</td>
+<td>100.01501</td>
+<td>0.0150</td>
+</tr>
+<tr>
+<td>C / 200 fF / L0</td>
+<td>25</td>
+<td>25.00203</td>
+<td>0.0081</td>
+</tr>
+<tr>
+<td>C / 200 fF / L1</td>
+<td>50</td>
+<td>50.06337</td>
+<td>0.1267</td>
+</tr>
+<tr>
+<td>C / 200 fF / L2</td>
+<td>75</td>
+<td>75.05472</td>
+<td>0.0730</td>
+</tr>
+<tr>
+<td>C / 200 fF / L3</td>
+<td>100</td>
+<td>99.99843</td>
+<td>-0.0016</td>
+</tr>
+<tr>
+<td>A / 10 fF / L0</td>
+<td>25</td>
+<td>24.99972</td>
+<td>-0.0011</td>
+</tr>
+<tr>
+<td>A / 10 fF / L1</td>
+<td>100</td>
+<td>99.99377</td>
+<td>-0.0062</td>
+</tr>
+<tr>
+<td>B / 10 fF / L0</td>
+<td>25</td>
+<td>25.00067</td>
+<td>0.0027</td>
+</tr>
+<tr>
+<td>B / 10 fF / L1</td>
+<td>100</td>
+<td>100.01501</td>
+<td>0.0150</td>
+</tr>
+<tr>
+<td>C / 10 fF / L0</td>
+<td>25</td>
+<td>25.00203</td>
+<td>0.0081</td>
+</tr>
+<tr>
+<td>C / 10 fF / L1</td>
+<td>50</td>
+<td>50.06337</td>
+<td>0.1267</td>
+</tr>
+<tr>
+<td>C / 10 fF / L2</td>
+<td>75</td>
+<td>75.05472</td>
+<td>0.0730</td>
+</tr>
+<tr>
+<td>C / 10 fF / L3</td>
+<td>100</td>
+<td>99.99843</td>
+<td>-0.0016</td>
+</tr>
+</tbody>
+</table>
+<p>16 点的最大绝对目标误差为 <strong>0.126733%</strong>。这是冻结晶体管模型对目标电流的仿真偏差，不包含真实样品测量、失配或生产公差，也没有为本轮重新调整电流参数。</p>
+<p>改变常数并联电容不改变稳态电容电流。两个电容组的 DC 一致性控制单独保存，不能用动态幅频拟合重新调整目标电流。</p>
+<h3 id="32">3.2 公开动态数据的独立拟合和留出检验</h3>
+<p>原始数据为 <a href="https://doi.org/10.5281/zenodo.20034288">Lin 等人的独立公开数据集</a>中 <code>yellow20_s21_bandwidths.xlsx</code>：每条曲线 2,001 点、30 MHz–3 GHz、25/50/60/80/100 µA，首点归一化为 0 dB。它不是复数 VNA 原始采集。论文测量链还含 bias tee、光路和检测器，缺少把这些环节移到 LED 参考面所需的独立校准。</p>
+<table>
+<thead>
+<tr>
+<th>偏置 / µA</th>
+<th>整链数学模型</th>
+<th>30M–3G：RMSE / 峰值 dB</th>
+<th>≤2.5G：RMSE / 峰值 dB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25</td>
+<td>三极点/一零点条件模型</td>
+<td>0.410 / 1.637</td>
+<td>0.247 / 1.239</td>
+</tr>
+<tr>
+<td>50</td>
+<td>三极点/一零点条件模型</td>
+<td>0.273 / 1.365</td>
+<td>0.145 / 0.591</td>
+</tr>
+<tr>
+<td>60</td>
+<td>三极点/一零点条件模型</td>
+<td>0.267 / 1.571</td>
+<td>0.145 / 0.500</td>
+</tr>
+<tr>
+<td>80</td>
+<td>三极点/一零点条件模型</td>
+<td>0.262 / 1.251</td>
+<td>0.161 / 0.508</td>
+</tr>
+<tr>
+<td>100</td>
+<td>三极点/一零点条件模型</td>
+<td>0.212 / 0.998</td>
+<td>0.135 / 0.431</td>
+</tr>
+</tbody>
+</table>
+<p>这些是<strong>条件化幅频拟合</strong>，不是器件动态参数校准完成。高频残差、频率外推、偏置留出与参数触边见<a href="../../../evidence/microled-dynamic-v1/fit-validation.json">完整拟合验证</a>。不把拟合零点解释为 LED 物理机制，也不把最小相位当成测量结果。</p>
+<p>模型族及阶数使用完整源曲线选择；以下留出仅在既定模型族下重新拟合或预测，未进行嵌套选模或独立器件盲测，因此属于条件化内部检验。≤2.5 GHz 只是截取的频域范围，缺少仪器噪声数据时不能称已验证的高信噪比区间。</p>
+<table>
+<thead>
+<tr>
+<th>频率留出类型（五个偏置）</th>
+<th>留出 RMSE 范围 /dB</th>
+<th>留出峰误差范围 /dB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>连续留出 0.8–1.2 GHz</td>
+<td>0.086–0.131</td>
+<td>0.172–0.261</td>
+</tr>
+<tr>
+<td>高频外推 2.6–3.0 GHz</td>
+<td>0.496–1.319</td>
+<td>1.147–2.300</td>
+</tr>
+<tr>
+<td>交错留出：每 5 点取 1 点</td>
+<td>0.211–0.409</td>
+<td>0.961–1.613</td>
+</tr>
+</tbody>
+</table>
+<p>另以<strong>假定 50 Ω 激励源和 3 GHz 一阶检测器</strong>测试 C/τ 简化组合，属于对源测量链的兼容性检验。这一假定检测器与下文 A/B/C 固定 1 GHz RX 属不同参考面。简单组合的残差不能证明真实电容或寿命不合格，只说明这些参数与测量链尚未联合识别。
+<a href="figures/frequency-fit.png" title="查看原尺寸"><img alt="图 2｜公开整链幅频与独立数学拟合；测量链、归一化和高频噪声仍在数据内。" src="figures/frequency-fit.png" /></a></p>
+<p><em>图 2｜公开整链幅频与独立数学拟合；测量链、归一化和高频噪声仍在数据内。</em></p>
+<p>即使一个稳定的最小相位数学模型能拟合幅度，也不能据此证明其相位、复合寿命、电容或检测器分配正确。<code>H(s)</code> 与 <code>H(s)·exp(−sTd)</code> 幅度相同；纯延迟可能被现有训练窗口吸收，但未知的频率相关相位、群延迟和大信号状态仍会改变眼图。不能用幅频唯一推断瞬态接收。</p>
+<p>因此，新模型卡分别记录 <strong>静态数据校准状态、整链幅频拟合状态、动态物理参数识别状态</strong>。整链拟合留在频域证据层；下面的晶体管实验使用单独编号的敏感性模型，不把整链 S21 再串到 CLED 和 1 GHz RX 后面。</p>
+<h2 id="4-abc">4. 同一接收器下的 A/B/C 结果</h2>
+<h3 id="41">4.1 先复核旧基线，再看修改负载后的变化</h3>
+<table>
+<thead>
+<tr>
+<th>路线</th>
+<th>历史错误 /4096</th>
+<th>新重跑错误 /4096</th>
+<th>新正向 pJ/尝试净位</th>
+<th>新时间余量 /ps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>844</td>
+<td>844</td>
+<td>0.525627</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1440</td>
+<td>1440</td>
+<td>0.501387</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>C</td>
+<td>1399</td>
+<td>1399</td>
+<td>0.744521</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<p><a href="../../../evidence/microled-dynamic-v1/electrical-baseline-reproduction.json">原生求解复现回执</a>独立核对样本数、七端口能量、器件端压和旧接收判决；新增导出电压用于诊断，不改变电路参数。</p>
+<h3 id="42">4.2 电容与光响应时间的完整敏感性矩阵</h3>
+<p><a href="figures/sensitivity-margin.png" title="查看原尺寸"><img alt="图 3｜三路线使用相同色标与 RX；这是负载假设扫描，不是实测器件性能。" src="figures/sensitivity-margin.png" /></a></p>
+<p><em>图 3｜三路线使用相同色标与 RX；这是负载假设扫描，不是实测器件性能。</em></p>
+<p>每格为 <strong>观察错误数 / 最小有符号幅度 µAeq / 最小单侧时间 ps</strong>。幅度需≥7.5 µAeq、时间需≥100 ps，并满足其余接收与电气筛查。</p>
+<table>
+<thead>
+<tr>
+<th>路线</th>
+<th>C / fF</th>
+<th>τ=0 ps *</th>
+<th>τ=25 ps</th>
+<th>τ=75 ps</th>
+<th>τ=200 ps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>10</td>
+<td>1337 / -39.44 / 0.00</td>
+<td>1338 / -39.46 / 0.00</td>
+<td>1343 / -39.84 / 0.00</td>
+<td>1276 / -39.93 / 0.00</td>
+</tr>
+<tr>
+<td>B</td>
+<td>10</td>
+<td>0 / 3.49 / 23.52</td>
+<td>0 / 1.52 / 17.36</td>
+<td>658 / -5.21 / 0.00</td>
+<td>888 / -16.07 / 0.00</td>
+</tr>
+<tr>
+<td>C</td>
+<td>10</td>
+<td>410 / -7.06 / 0.00</td>
+<td>416 / -6.90 / 0.00</td>
+<td>500 / -7.71 / 0.00</td>
+<td>761 / -14.71 / 0.00</td>
+</tr>
+<tr>
+<td>A</td>
+<td>50</td>
+<td>1339 / -39.17 / 0.00</td>
+<td>1339 / -39.17 / 0.00</td>
+<td>1345 / -39.22 / 0.00</td>
+<td>934 / -39.38 / 0.00</td>
+</tr>
+<tr>
+<td>B</td>
+<td>50</td>
+<td>950 / -12.14 / 0.00</td>
+<td>985 / -12.97 / 0.00</td>
+<td>1089 / -16.28 / 0.00</td>
+<td>1129 / -22.22 / 0.00</td>
+</tr>
+<tr>
+<td>C</td>
+<td>50</td>
+<td>876 / -16.00 / 0.00</td>
+<td>879 / -16.11 / 0.00</td>
+<td>900 / -17.11 / 0.00</td>
+<td>1000 / -21.16 / 0.00</td>
+</tr>
+<tr>
+<td>A</td>
+<td>200</td>
+<td>1158 / -38.63 / 0.00</td>
+<td>1155 / -38.70 / 0.00</td>
+<td>948 / -38.67 / 0.00</td>
+<td>844 / -38.84 / 0.00</td>
+</tr>
+<tr>
+<td>B</td>
+<td>200</td>
+<td>1404 / -26.02 / 0.00</td>
+<td>1397 / -26.22 / 0.00</td>
+<td>1399 / -27.19 / 0.00</td>
+<td>1440 / -29.04 / 0.00</td>
+</tr>
+<tr>
+<td>C</td>
+<td>200</td>
+<td>1347 / -34.79 / 0.00</td>
+<td>1347 / -34.85 / 0.00</td>
+<td>1354 / -35.23 / 0.00</td>
+<td>1399 / -36.79 / 0.00</td>
+</tr>
+<tr>
+<td>A</td>
+<td>800</td>
+<td>1569 / -36.94 / 0.00</td>
+<td>1572 / -36.95 / 0.00</td>
+<td>1601 / -36.99 / 0.00</td>
+<td>1226 / -37.56 / 0.00</td>
+</tr>
+<tr>
+<td>B</td>
+<td>800</td>
+<td>1809 / -29.67 / 0.00</td>
+<td>1811 / -29.67 / 0.00</td>
+<td>1809 / -29.67 / 0.00</td>
+<td>1807 / -29.74 / 0.00</td>
+</tr>
+<tr>
+<td>C</td>
+<td>800</td>
+<td>1689 / -38.93 / 0.00</td>
+<td>1689 / -38.94 / 0.00</td>
+<td>1692 / -38.94 / 0.00</td>
+<td>1708 / -39.11 / 0.00</td>
+</tr>
+<tr>
+<td>A</td>
+<td>0</td>
+<td>1328 / -39.45 / 0.00</td>
+<td>1336 / -39.47 / 0.00</td>
+<td>1342 / -39.87 / 0.00</td>
+<td>1288 / -40.05 / 0.00</td>
+</tr>
+<tr>
+<td>B</td>
+<td>0</td>
+<td>0 / 11.60 / 27.69</td>
+<td>0 / 9.06 / 31.98</td>
+<td>0 / 0.38 / 7.82</td>
+<td>773 / -13.19 / 0.00</td>
+</tr>
+<tr>
+<td>C</td>
+<td>0</td>
+<td>466 / -5.45 / 0.00</td>
+<td>392 / -6.87 / 0.00</td>
+<td>391 / -5.97 / 0.00</td>
+<td>756 / -12.61 / 0.00</td>
+</tr>
+</tbody>
+</table>
+<p>完整记录与精度见<a href="../../../evidence/microled-dynamic-v1/rx-matrix.csv">RX 矩阵 CSV</a>。* 0 fF 或 0 ps 为理想限制控制，不能据此宣称器件可制造。</p>
+<p>这里的 µAeq 不是实测接收光功率。改变光响应时间不会反过来改变本轮晶体管电气取能，所以同一个电容/电路下，四种光响应假设共享同一电气能量。这是当前分块模型的适用边界，不能冒充已完成电–光–热双向耦合。</p>
+<h3 id="43">4.3 相同坐标眼图与分层诊断</h3>
+<p><a href="figures/paired-eyes.png" title="查看原尺寸"><img alt="图 4｜上排旧200 fF/200 ps，下排另一假设10 fF/25 ps；共同纵轴和±270.27 ps观察窗，虚线标±100 ps；展示80个窗口，指标取全部验证位。C符号UI为540.54 ps，A/B为270.27 ps。" src="figures/paired-eyes.png" /></a></p>
+<p><em>图 4｜上排旧200 fF/200 ps，下排另一假设10 fF/25 ps；共同纵轴和±270.27 ps观察窗，虚线标±100 ps；展示80个窗口，指标取全部验证位。C符号UI为540.54 ps，A/B为270.27 ps。</em></p>
+<table>
+<thead>
+<tr>
+<th>路线</th>
+<th>C / fF</th>
+<th>仅电气</th>
+<th>电气+同 RX（τ=0）</th>
+<th>电气+光响应200ps+同 RX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>200</td>
+<td>1205 / -38.43 / 0.00</td>
+<td>1158 / -38.63 / 0.00</td>
+<td>844 / -38.84 / 0.00</td>
+</tr>
+<tr>
+<td>A</td>
+<td>10</td>
+<td>619 / -39.30 / 0.00</td>
+<td>1337 / -39.44 / 0.00</td>
+<td>1276 / -39.93 / 0.00</td>
+</tr>
+<tr>
+<td>B</td>
+<td>200</td>
+<td>1045 / -18.38 / 0.00</td>
+<td>1404 / -26.02 / 0.00</td>
+<td>1440 / -29.04 / 0.00</td>
+</tr>
+<tr>
+<td>B</td>
+<td>10</td>
+<td>0 / 28.27 / 26.01</td>
+<td>0 / 3.49 / 23.52</td>
+<td>888 / -16.07 / 0.00</td>
+</tr>
+<tr>
+<td>C</td>
+<td>200</td>
+<td>1281 / -31.84 / 0.00</td>
+<td>1347 / -34.79 / 0.00</td>
+<td>1399 / -36.79 / 0.00</td>
+</tr>
+<tr>
+<td>C</td>
+<td>10</td>
+<td>46 / -6.55 / 0.00</td>
+<td>410 / -7.06 / 0.00</td>
+<td>761 / -14.71 / 0.00</td>
+</tr>
+</tbody>
+</table>
+<p><strong>分层结果怎样解释。</strong> 在10 fF假设下，A的仅电气观察错误为619位，加入同一RX后为1337位：当前输出波形及其与RX的配合仍有问题，不能只把光响应做快。B的仅电气为零观察错误，但最小时间仅26.01 ps；加入同RX后幅度仅3.49 µAeq、时间23.52 ps，仍达不到两项门槛。C仅电气仍有46位错误，需继续分离译码、单位电流建立和电平间串扰；这里没有把某一个内部机制当成已经独立证实的唯一原因。</p>
+<p>完整矩阵中0 fF/0 ps控制仍未恢复所有联合门槛，排除了“只减小并联电容就足够”的解释；但它保留真实Driver、封装和固定RX，不能进一步断言所有电路或接收方法都不可行。</p>
+<p><strong>固定接收规则本身的控制实验。</strong> 另外给出具有20 ps线性边沿的理想导电电流，全帧和接收规则完全相同。它不含真实 Driver，也没有可比较的电路取能。</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>光响应 τ /ps</th>
+<th>错误 /4096</th>
+<th>幅度 /µAeq</th>
+<th>时间 /ps</th>
+<th>原接收筛查</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NRZ</td>
+<td>0</td>
+<td>0</td>
+<td>22.968</td>
+<td>83.521</td>
+<td>未通过</td>
+</tr>
+<tr>
+<td>NRZ</td>
+<td>25</td>
+<td>0</td>
+<td>21.223</td>
+<td>99.791</td>
+<td>未通过</td>
+</tr>
+<tr>
+<td>NRZ</td>
+<td>75</td>
+<td>0</td>
+<td>14.860</td>
+<td>104.020</td>
+<td>通过</td>
+</tr>
+<tr>
+<td>NRZ</td>
+<td>200</td>
+<td>0</td>
+<td>0.496</td>
+<td>25.953</td>
+<td>未通过</td>
+</tr>
+<tr>
+<td>PAM4</td>
+<td>0</td>
+<td>0</td>
+<td>9.814</td>
+<td>34.244</td>
+<td>未通过</td>
+</tr>
+<tr>
+<td>PAM4</td>
+<td>25</td>
+<td>0</td>
+<td>9.387</td>
+<td>50.485</td>
+<td>未通过</td>
+</tr>
+<tr>
+<td>PAM4</td>
+<td>75</td>
+<td>0</td>
+<td>7.764</td>
+<td>63.159</td>
+<td>未通过</td>
+</tr>
+<tr>
+<td>PAM4</td>
+<td>200</td>
+<td>215</td>
+<td>-1.559</td>
+<td>0.000</td>
+<td>未通过</td>
+</tr>
+</tbody>
+</table>
+<p>这些是特定波形和既定幅度优先训练规则的结果，不是任意波形的可行性上界。零观察错误仍可能不满足100 ps时间门槛；τ更短也未保证所有指标单调改善。因此，不能把每个失败都归因于 Driver 或 LED。</p>
+<p>绕过某一级滤波只用于定位限制，不能把绕过后的结果当成完整链路通过。也不能把 C=0 fF 或 τ=0 ps 的结果当成可制造器件。</p>
+<h2 id="5">5. 能耗：统计范围和失败点的含义</h2>
+<p>统计面为 <code>VIN、VDD、VREF、VLED、D0、D1、DISABLE</code> 七个独立输入端口，覆盖完整 1.28 µs 帧。定义向电路输入功率为正，正向、返回和净能量分别报告；分母为 4,096 个尝试发送的 payload 位。已经由这些端口供能的 LED 或电容，不再单独相加。</p>
+<p><a href="figures/energy-ports.png" title="查看原尺寸"><img alt="图 5｜七输入端口正向取能分解；DATA 合并 D0/D1/DISABLE，返回能量另外列出。" src="figures/energy-ports.png" /></a></p>
+<p><em>图 5｜七输入端口正向取能分解；DATA 合并 D0/D1/DISABLE，返回能量另外列出。</em></p>
+<table>
+<thead>
+<tr>
+<th>路线</th>
+<th>C / fF</th>
+<th>正向 pJ/尝试净位</th>
+<th>返回 pJ/尝试净位</th>
+<th>净值 pJ/尝试净位</th>
+<th>平均导电 /µA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>200</td>
+<td>0.525627</td>
+<td>0.030267</td>
+<td>0.495360</td>
+<td>67.180</td>
+</tr>
+<tr>
+<td>A</td>
+<td>10</td>
+<td>0.497904</td>
+<td>0.003961</td>
+<td>0.493943</td>
+<td>65.961</td>
+</tr>
+<tr>
+<td>A</td>
+<td>0</td>
+<td>0.495624</td>
+<td>0.001549</td>
+<td>0.494075</td>
+<td>66.013</td>
+</tr>
+<tr>
+<td>B</td>
+<td>200</td>
+<td>0.501387</td>
+<td>0.001646</td>
+<td>0.499741</td>
+<td>70.997</td>
+</tr>
+<tr>
+<td>B</td>
+<td>10</td>
+<td>0.501511</td>
+<td>0.001525</td>
+<td>0.499985</td>
+<td>70.340</td>
+</tr>
+<tr>
+<td>B</td>
+<td>0</td>
+<td>0.501547</td>
+<td>0.001518</td>
+<td>0.500029</td>
+<td>70.252</td>
+</tr>
+<tr>
+<td>C</td>
+<td>200</td>
+<td>0.744521</td>
+<td>0.030544</td>
+<td>0.713976</td>
+<td>63.649</td>
+</tr>
+<tr>
+<td>C</td>
+<td>10</td>
+<td>0.744638</td>
+<td>0.030481</td>
+<td>0.714157</td>
+<td>63.338</td>
+</tr>
+<tr>
+<td>C</td>
+<td>0</td>
+<td>0.744647</td>
+<td>0.030481</td>
+<td>0.714166</td>
+<td>63.284</td>
+</tr>
+</tbody>
+</table>
+<p>例如A从200 fF到10 fF，正向取能变化-5.27%，净取能变化-0.29%；返回能量也同时改变。B/C在表中变化很小，与持续尾流、参考和数字等取能仍然存在相符；仅凭这组相关变化不能给出各内部损耗的唯一分解。所有这些点还需通过相同接收条件，才能讨论有效交付能效。</p>
+<p>该数值不包括上游电源/精密基准芯片内部、串行器/时钟、实体光接收器与编码/DSP 的全部功耗。电容净储能和建立过程也需要单独检查。接收失败点的低 pJ/bit 是<strong>尝试发送的取能</strong>，不能解释成有效交付效率更优。</p>
+<h2 id="6">6. 为什么失败？角落、数值分辨率和模型域</h2>
+<table>
+<thead>
+<tr>
+<th>组合条件</th>
+<th>路线</th>
+<th>C / fF</th>
+<th>错误 / 幅度 / 时间（τ=75ps）</th>
+<th>MOS端压筛查</th>
+<th>最大体结正偏 /V</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ss</td>
+<td>A</td>
+<td>200</td>
+<td>1817 / -47.90 / 0.00</td>
+<td>True</td>
+<td>0.217</td>
+</tr>
+<tr>
+<td>ss</td>
+<td>B</td>
+<td>200</td>
+<td>1834 / -34.44 / 0.00</td>
+<td>True</td>
+<td>0.172</td>
+</tr>
+<tr>
+<td>ss</td>
+<td>C</td>
+<td>200</td>
+<td>1627 / -50.83 / 0.00</td>
+<td>True</td>
+<td>0.722</td>
+</tr>
+<tr>
+<td>ss</td>
+<td>A</td>
+<td>10</td>
+<td>1326 / -58.48 / 0.00</td>
+<td>True</td>
+<td>0.576</td>
+</tr>
+<tr>
+<td>ss</td>
+<td>B</td>
+<td>10</td>
+<td>1721 / -38.49 / 0.00</td>
+<td>True</td>
+<td>0.172</td>
+</tr>
+<tr>
+<td>ss</td>
+<td>C</td>
+<td>10</td>
+<td>1134 / -41.41 / 0.00</td>
+<td>True</td>
+<td>0.722</td>
+</tr>
+<tr>
+<td>ff</td>
+<td>A</td>
+<td>200</td>
+<td>891 / -41.43 / 0.00</td>
+<td>True</td>
+<td>0.146</td>
+</tr>
+<tr>
+<td>ff</td>
+<td>B</td>
+<td>200</td>
+<td>1108 / -22.96 / 0.00</td>
+<td>True</td>
+<td>0.122</td>
+</tr>
+<tr>
+<td>ff</td>
+<td>C</td>
+<td>200</td>
+<td>1348 / -35.51 / 0.00</td>
+<td>True</td>
+<td>0.935</td>
+</tr>
+<tr>
+<td>ff</td>
+<td>A</td>
+<td>10</td>
+<td>773 / -33.03 / 0.00</td>
+<td>True</td>
+<td>0.564</td>
+</tr>
+<tr>
+<td>ff</td>
+<td>B</td>
+<td>10</td>
+<td>0 / 2.01 / 44.66</td>
+<td>True</td>
+<td>0.122</td>
+</tr>
+<tr>
+<td>ff</td>
+<td>C</td>
+<td>10</td>
+<td>149 / -5.99 / 0.00</td>
+<td>True</td>
+<td>0.935</td>
+</tr>
+</tbody>
+</table>
+<p>这里 τ=75 ps 只是列示相同假设，未根据哪个结果更好而逐角选择。其他光响应和电气失败见完整矩阵。SS/FF 的 LED 光学温漂仍未建模。</p>
+<p><strong>端对电压通过不等于体结/可靠性通过。</strong> 下面单独列出同一TT帧的最大体结正向偏置及器件。较小电容可能暴露新的切换过冲；没有匹配工艺的可靠性规则，不能把此类点当作产品候选。</p>
+<table>
+<thead>
+<tr>
+<th>路线</th>
+<th>C /fF</th>
+<th>最大体结正偏器件</th>
+<th>正偏 /V</th>
+<th>原MOS端对筛查</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>200</td>
+<td>xdrv.xpout</td>
+<td>0.157</td>
+<td>True</td>
+</tr>
+<tr>
+<td>A</td>
+<td>10</td>
+<td>xdrv.xpout</td>
+<td>0.584</td>
+<td>True</td>
+</tr>
+<tr>
+<td>A</td>
+<td>0</td>
+<td>xdrv.xpout</td>
+<td>0.731</td>
+<td>True</td>
+</tr>
+<tr>
+<td>B</td>
+<td>200</td>
+<td>xdrv.xinv1p</td>
+<td>0.144</td>
+<td>True</td>
+</tr>
+<tr>
+<td>B</td>
+<td>10</td>
+<td>xdrv.xinv1p</td>
+<td>0.144</td>
+<td>True</td>
+</tr>
+<tr>
+<td>B</td>
+<td>0</td>
+<td>xdrv.xinv1p</td>
+<td>0.144</td>
+<td>True</td>
+</tr>
+<tr>
+<td>C</td>
+<td>200</td>
+<td>xdrv.xorpa</td>
+<td>0.858</td>
+<td>True</td>
+</tr>
+<tr>
+<td>C</td>
+<td>10</td>
+<td>xdrv.xorpa</td>
+<td>0.858</td>
+<td>True</td>
+</tr>
+<tr>
+<td>C</td>
+<td>0</td>
+<td>xdrv.xorpa</td>
+<td>0.858</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>体结正偏定义与栅压不同：NMOS取 <code>max(VB−VS, VB−VD)</code>，PMOS取 <code>max(VS−VB, VD−VB)</code>。正值表示相应体PN结受到正向偏置。原有端对筛查检查的是任意两端电压差上限，两者不能互相代替。A小电容与C译码器的这些现象，需要在后续修改电平兼容、回路与体端连接后独立复验；本文不依据该现象直接选B。</p>
+<p>具体连接也可回到源网表检查：A的 <code>XPOUT</code> 为 D=OUT、G=CTRL、S=B=VH；C的 <code>XORPA</code> 为 D=P_OR、G=D1、S=B=VDD。两只PMOS的源与体同网，因此记录到的正偏来自漏端瞬间高于体端。这里记录的是电压现象；各耦合路径、电荷注入和体结电流的贡献仍需额外内部节点/电流探针实验，不能仅由一个峰值断言唯一原因。</p>
+<p>需要区分三类失败：一是电气电流未在给定 UI 内进入目标判决区；二是电气有变化，但后续光响应/RX 的码间干扰使判决失败；三是接收代理可能有开口，但器件端压、体结、DC 目标或模型适用域检查失败。它们对应不同的下一步修改。</p>
+<p>数值复核分别报告状态积分、旧基线复现、DC电容控制和 S40/S80 最大步长减半。它们验证数值路径，不替代新实测参数。详见 <a href="../../../evidence/microled-dynamic-v1/rx-validation.json">RX 验证</a>和<a href="../../../evidence/microled-dynamic-v1/electrical-summary.json">电气回执</a>。</p>
+<p>当前 24 组 τ 条件的半步长检查：幅度变化最大 0.011744 µAeq，时间变化最大 0.045101 ps，正向取能变化最大 0.008783%。观察错误数变化最大 1 位；通过/失败判定保持不变的条件为 24/24。这些差异完整保留，不能写成所有数值完全相等。</p>
+<h2 id="7">7. 下一步的实验与设计门槛</h2>
+<ol>
+<li><strong>补齐同像素电学与电光动态数据。</strong> 同一像素/温度下测 IV、绝对 PI、复数 S11/Z、S21 幅相、RF 幅度和噪声底；校准 PD/TIA、光路、焊盘与夹具。缺少这些数据时，电容和光学状态只能保持条件化身份。</li>
+<li><strong>按分层失败机制修改电路。</strong> 若小电容/快光响应仍受电气建立限制，研究输出级、内部节点和译码时序；若主要受接收响应限制，先量化相同接收器下的预加重/均衡代价。每次修改仍保持净吞吐、误码和端压条件，再重新统计参考/供电和数字代价。</li>
+<li><strong>最后才选择路线。</strong> 候选需要在器件模型留出、数值收敛、角落/封装、绝对光功率与噪声测量下同时保留余量。单一典型点、少量零错误位或最小取能都不足以决定 A/B/C。</li>
+</ol>
+<p>本轮的价值是把“文献说有 GHz”与“当前驱动器在这个 UI 内实际交付什么”用明确的参考面和可重跑证据连接起来。项目还没有完成实物光学链路、阵列或流片签核。</p>
+<h2 id="8">8. 证据、来源和复现</h2>
+<p>复现说明、工具/源码哈希和备份范围见<a href="reproduce.md">reproduce.md</a>。<a href="../../../analog/models/microled_dynamic_v1/MODEL_CARD.md">模型卡</a>、<a href="../../../evidence/microled-dynamic-v1/fit-validation.json">频域验证</a>、<a href="../../../evidence/microled-dynamic-v1/electrical-summary.json">电气矩阵</a>与<a href="../../../evidence/microled-dynamic-v1/rx-summary.json">接收矩阵</a>均可检查。</p>
+<ul>
+<li>静态来源：<a href="../../../analog/models/measured-led/model-card.json">模型卡</a>、<a href="../../../analog/models/measured-led/NOTICE.md">源数据通知</a>。</li>
+<li>动态来源：<a href="../../../evidence/microled-dynamic-20261029/source-ledger.json">原始定位与许可台账</a>、<a href="../vcsel-reference-microled-dynamics-20261029/microled-dynamic-evidence.html">数据提取章节</a>。</li>
+<li>原论文：<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13433930/">Transfer-printed yellow and red InGaN micro-LEDs on diamond…</a>；本轮公开文件只复用已明确许可的数值数据及原创图，不重新发布受限论文图像。</li>
+<li>本轮原始输出在 <code>build/microled-dynamic-v1/</code>；本轮模型和 compact evidence 在 <code>analog/models/microled_dynamic_v1/</code> 与 <code>evidence/microled-dynamic-v1/</code>。源版本、文件 SHA、数值验证、失败和备份范围分别记录。</li>
+</ul></main></body></html>

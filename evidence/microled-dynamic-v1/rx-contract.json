@@ -1,0 +1,61 @@
+{
+  "schema": "microled-dynamic-rx-v1",
+  "receiver_source": "scripts/fair_driver_v1/receiver_equal_latency_v2.py",
+  "receiver_sha256": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+  "analysis_sha256": "53738c2565dca5707fa76001db929d89aa91003824c9ba2e7da626214c2d2930",
+  "state_kernel_sha256": "fc17d22a514cd37f1074842d0ebb83d0b95370054da82eee2f9cf47e1337d539",
+  "response_evidence_contract": "evidence/microled-dynamic-20261029/response-contract.json",
+  "response_evidence_contract_sha256": "c685bd0e6b8c0d471f12cd1ec5563a7c20ad9e1c42931edd712aa995dac65b25",
+  "runtime": {
+    "python": "3.12.13 (main, Mar 25 2026, 03:16:06) [Clang 22.1.1 ]",
+    "numpy": "2.5.3",
+    "command": "build/layout/venv/bin/python scripts/microled_dynamic_v1/analyze.py"
+  },
+  "rates": {
+    "net_Gbps": 3.2,
+    "line_Gbps": 3.7,
+    "NRZ_Gbaud": 3.7,
+    "PAM4_Gbaud": 1.85,
+    "eta": 0.8648648648648649
+  },
+  "optical_tau_ps": [
+    0,
+    25,
+    75,
+    200
+  ],
+  "RX_pole_Hz": 1000000000.0,
+  "thresholds_uA": {
+    "NRZ": [
+      62.5
+    ],
+    "PAM4": [
+      37.5,
+      62.5,
+      87.5
+    ]
+  },
+  "acceptance": {
+    "minimum_signed_amplitude_uA": 7.5,
+    "minimum_one_sided_time_ps": 100,
+    "training_and_validation_errors": 0
+  },
+  "training": {
+    "scored_bits": 448,
+    "guard_bits": 64,
+    "validation_bits": 4096,
+    "delay_ps": [
+      0,
+      8000,
+      5
+    ],
+    "selection": "Maximize minimum signed expected-class threshold distance in absoluteuA. Among candidates within1pA of maximum, maximize minimum TRAINING absolute time margin; earliest exact tie wins. Validation never participates."
+  },
+  "boundary": [
+    "Current-equivalent unity-DC-gain optical/RX proxy, not optical watts or measured dynamics.",
+    "C=0 and tau=0 are ideal diagnostics, not physical candidates.",
+    "Native transistor energy and stress are independent electrical evidence; changing the offline optical tau does not rerun or physically couple the emitter.",
+    "Zero finite deterministic bit errors is not physical BER qualification.",
+    "Author-normalized S21 magnitude is not used to identify a transient or remove circuit/RX poles."
+  ]
+}

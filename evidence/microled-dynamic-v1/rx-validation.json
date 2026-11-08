@@ -1,0 +1,2238 @@
+{
+  "numerical_validation": {
+    "passed": true,
+    "analytic_fixtures": [
+      {
+        "tau_optical_ps": 0.0,
+        "tau_rx_ps": 159.15494309189535,
+        "analytic_ramp_max_absolute_error_unit_gain": 5.1514348342607263e-14
+      },
+      {
+        "tau_optical_ps": 25.0,
+        "tau_rx_ps": 159.15494309189535,
+        "analytic_ramp_max_absolute_error_unit_gain": 4.463096558993129e-14
+      },
+      {
+        "tau_optical_ps": 200.0,
+        "tau_rx_ps": 200.0,
+        "analytic_ramp_max_absolute_error_unit_gain": 3.3306690738754696e-14
+      },
+      {
+        "tau_optical_ps": 200.0,
+        "tau_rx_ps": 200.000000001,
+        "analytic_ramp_max_absolute_error_unit_gain": 1.3545831123451535e-12
+      }
+    ],
+    "PWL_subdivision": [
+      {
+        "tau_optical_ps": 0.0,
+        "tau_rx_ps": 159.15494309189535,
+        "exact_PWL_half_interval_max_error_A": 1.3552527156068805e-19
+      },
+      {
+        "tau_optical_ps": 25.0,
+        "tau_rx_ps": 159.15494309189535,
+        "exact_PWL_half_interval_max_error_A": 2.303929616531697e-19
+      },
+      {
+        "tau_optical_ps": 75.0,
+        "tau_rx_ps": 159.15494309189535,
+        "exact_PWL_half_interval_max_error_A": 1.8973538018496328e-19
+      },
+      {
+        "tau_optical_ps": 200.0,
+        "tau_rx_ps": 159.15494309189535,
+        "exact_PWL_half_interval_max_error_A": 2.574980159653073e-19
+      },
+      {
+        "tau_optical_ps": 200.0,
+        "tau_rx_ps": 200.0,
+        "exact_PWL_half_interval_max_error_A": 2.168404344971009e-19
+      }
+    ],
+    "old_200ps_filter_nonuniform_max_error_A": 3.2526065174565133e-19,
+    "tolerances": {
+      "analytic_unit_gain": 1e-10,
+      "PWL_subdivision_A": 1e-15,
+      "old_filter_A": 1e-15
+    },
+    "limits": "Analytic/subdivision tests verify numerical state propagation only; circuit halfstep and native baseline metrics are separate checks."
+  },
+  "baseline_200ps_reproduction": [
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 844,
+        "bit_count": 4096,
+        "symbol_errors": 844,
+        "min_signed_margin_uA": -38.841576722451926,
+        "mean_signed_margin_uA": 14.58970340096378,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1260.0,
+        "training_bit_errors": 88,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 844,
+        "bit_count": 4096,
+        "symbol_errors": 844,
+        "min_signed_margin_uA": -38.84157672245193,
+        "mean_signed_margin_uA": 14.589703400963785,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1260.0,
+        "training_bit_errors": 88,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-B-C200fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1440,
+        "bit_count": 4096,
+        "symbol_errors": 1440,
+        "min_signed_margin_uA": -29.0412543484031,
+        "mean_signed_margin_uA": 5.876520801256037,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 780.0,
+        "training_bit_errors": 151,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1440,
+        "bit_count": 4096,
+        "symbol_errors": 1440,
+        "min_signed_margin_uA": -29.041254348403115,
+        "mean_signed_margin_uA": 5.876520801256042,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 780.0,
+        "training_bit_errors": 151,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-C-C200fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1399,
+        "bit_count": 4096,
+        "symbol_errors": 1300,
+        "min_signed_margin_uA": -36.78967864078551,
+        "mean_signed_margin_uA": -5.704974381213438,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1450.0,
+        "training_bit_errors": 177,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1399,
+        "bit_count": 4096,
+        "symbol_errors": 1300,
+        "min_signed_margin_uA": -36.789678640785496,
+        "mean_signed_margin_uA": -5.704974381213441,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1450.0,
+        "training_bit_errors": 177,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-A-C0fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1288,
+        "bit_count": 4096,
+        "symbol_errors": 1288,
+        "min_signed_margin_uA": -40.050185751597716,
+        "mean_signed_margin_uA": 16.20391493573856,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1205.0,
+        "training_bit_errors": 137,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1288,
+        "bit_count": 4096,
+        "symbol_errors": 1288,
+        "min_signed_margin_uA": -40.05018575159772,
+        "mean_signed_margin_uA": 16.203914935738567,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1205.0,
+        "training_bit_errors": 137,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-B-C0fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 773,
+        "bit_count": 4096,
+        "symbol_errors": 773,
+        "min_signed_margin_uA": -13.190153306128806,
+        "mean_signed_margin_uA": 17.828986920056508,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 570.0,
+        "training_bit_errors": 79,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 773,
+        "bit_count": 4096,
+        "symbol_errors": 773,
+        "min_signed_margin_uA": -13.190153306128863,
+        "mean_signed_margin_uA": 17.828986920056504,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 570.0,
+        "training_bit_errors": 79,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-C-C0fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 756,
+        "bit_count": 4096,
+        "symbol_errors": 756,
+        "min_signed_margin_uA": -12.614548545977435,
+        "mean_signed_margin_uA": 2.5086352470176374,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1125.0,
+        "training_bit_errors": 86,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 756,
+        "bit_count": 4096,
+        "symbol_errors": 756,
+        "min_signed_margin_uA": -12.614548545977406,
+        "mean_signed_margin_uA": 2.5086352470176356,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1125.0,
+        "training_bit_errors": 86,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-A-C10fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1276,
+        "bit_count": 4096,
+        "symbol_errors": 1276,
+        "min_signed_margin_uA": -39.92782184227623,
+        "mean_signed_margin_uA": 16.273326055549546,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1210.0,
+        "training_bit_errors": 135,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1276,
+        "bit_count": 4096,
+        "symbol_errors": 1276,
+        "min_signed_margin_uA": -39.92782184227626,
+        "mean_signed_margin_uA": 16.273326055549553,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1210.0,
+        "training_bit_errors": 135,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-B-C10fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 888,
+        "bit_count": 4096,
+        "symbol_errors": 888,
+        "min_signed_margin_uA": -16.06581242792346,
+        "mean_signed_margin_uA": 16.423475400174787,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 605.0,
+        "training_bit_errors": 95,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 888,
+        "bit_count": 4096,
+        "symbol_errors": 888,
+        "min_signed_margin_uA": -16.065812427923575,
+        "mean_signed_margin_uA": 16.423475400174784,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 605.0,
+        "training_bit_errors": 95,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-C-C10fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 761,
+        "bit_count": 4096,
+        "symbol_errors": 761,
+        "min_signed_margin_uA": -14.709038765023507,
+        "mean_signed_margin_uA": 1.8813337357422948,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1185.0,
+        "training_bit_errors": 88,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 761,
+        "bit_count": 4096,
+        "symbol_errors": 761,
+        "min_signed_margin_uA": -14.7090387650234,
+        "mean_signed_margin_uA": 1.8813337357422908,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1185.0,
+        "training_bit_errors": 88,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-A-C50fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 934,
+        "bit_count": 4096,
+        "symbol_errors": 934,
+        "min_signed_margin_uA": -39.38120924010455,
+        "mean_signed_margin_uA": 16.20941822522615,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1220.0,
+        "training_bit_errors": 98,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 934,
+        "bit_count": 4096,
+        "symbol_errors": 934,
+        "min_signed_margin_uA": -39.381209240104724,
+        "mean_signed_margin_uA": 16.209418225226155,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1220.0,
+        "training_bit_errors": 98,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-B-C50fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1129,
+        "bit_count": 4096,
+        "symbol_errors": 1129,
+        "min_signed_margin_uA": -22.219659410202397,
+        "mean_signed_margin_uA": 11.745672909132608,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 680.0,
+        "training_bit_errors": 117,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1129,
+        "bit_count": 4096,
+        "symbol_errors": 1129,
+        "min_signed_margin_uA": -22.219659410202368,
+        "mean_signed_margin_uA": 11.745672909132612,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 680.0,
+        "training_bit_errors": 117,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-C-C50fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1000,
+        "bit_count": 4096,
+        "symbol_errors": 1000,
+        "min_signed_margin_uA": -21.16080894391105,
+        "mean_signed_margin_uA": -0.9490297677068052,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1295.0,
+        "training_bit_errors": 125,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1000,
+        "bit_count": 4096,
+        "symbol_errors": 1000,
+        "min_signed_margin_uA": -21.160808943910936,
+        "mean_signed_margin_uA": -0.9490297677068066,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1295.0,
+        "training_bit_errors": 125,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-A-C800fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1226,
+        "bit_count": 4096,
+        "symbol_errors": 1226,
+        "min_signed_margin_uA": -37.5560606020796,
+        "mean_signed_margin_uA": 8.905964672299724,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1570.0,
+        "training_bit_errors": 128,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1226,
+        "bit_count": 4096,
+        "symbol_errors": 1226,
+        "min_signed_margin_uA": -37.5560606020797,
+        "mean_signed_margin_uA": 8.905964672299728,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1570.0,
+        "training_bit_errors": 128,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-B-C800fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1807,
+        "bit_count": 4096,
+        "symbol_errors": 1807,
+        "min_signed_margin_uA": -29.737007591154025,
+        "mean_signed_margin_uA": 2.1305526774892574,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 2085.0,
+        "training_bit_errors": 176,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1807,
+        "bit_count": 4096,
+        "symbol_errors": 1807,
+        "min_signed_margin_uA": -29.737007591154224,
+        "mean_signed_margin_uA": 2.1305526774892574,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 2085.0,
+        "training_bit_errors": 176,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-C-C800fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1708,
+        "bit_count": 4096,
+        "symbol_errors": 1420,
+        "min_signed_margin_uA": -39.1085732154814,
+        "mean_signed_margin_uA": -9.864231697222337,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1465.0,
+        "training_bit_errors": 205,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1708,
+        "bit_count": 4096,
+        "symbol_errors": 1420,
+        "min_signed_margin_uA": -39.108573215481314,
+        "mean_signed_margin_uA": -9.864231697222335,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1465.0,
+        "training_bit_errors": 205,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-A-C200fF-S80",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 844,
+        "bit_count": 4096,
+        "symbol_errors": 844,
+        "min_signed_margin_uA": -38.84175867831986,
+        "mean_signed_margin_uA": 14.589995987223348,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1260.0,
+        "training_bit_errors": 88,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 844,
+        "bit_count": 4096,
+        "symbol_errors": 844,
+        "min_signed_margin_uA": -38.84175867831983,
+        "mean_signed_margin_uA": 14.589995987223364,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1260.0,
+        "training_bit_errors": 88,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-B-C200fF-S80",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1440,
+        "bit_count": 4096,
+        "symbol_errors": 1440,
+        "min_signed_margin_uA": -29.04667961742348,
+        "mean_signed_margin_uA": 5.876468572150935,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 780.0,
+        "training_bit_errors": 151,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1440,
+        "bit_count": 4096,
+        "symbol_errors": 1440,
+        "min_signed_margin_uA": -29.046679617423578,
+        "mean_signed_margin_uA": 5.876468572150948,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 780.0,
+        "training_bit_errors": 151,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-C-C200fF-S80",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1399,
+        "bit_count": 4096,
+        "symbol_errors": 1300,
+        "min_signed_margin_uA": -36.78972706374326,
+        "mean_signed_margin_uA": -5.704962006661884,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1450.0,
+        "training_bit_errors": 177,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1399,
+        "bit_count": 4096,
+        "symbol_errors": 1300,
+        "min_signed_margin_uA": -36.78972706374322,
+        "mean_signed_margin_uA": -5.704962006661887,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1450.0,
+        "training_bit_errors": 177,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-A-C10fF-S80",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1276,
+        "bit_count": 4096,
+        "symbol_errors": 1276,
+        "min_signed_margin_uA": -39.92790292313771,
+        "mean_signed_margin_uA": 16.27337605068209,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1210.0,
+        "training_bit_errors": 135,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1276,
+        "bit_count": 4096,
+        "symbol_errors": 1276,
+        "min_signed_margin_uA": -39.92790292313771,
+        "mean_signed_margin_uA": 16.273376050682103,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1210.0,
+        "training_bit_errors": 135,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-B-C10fF-S80",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 888,
+        "bit_count": 4096,
+        "symbol_errors": 888,
+        "min_signed_margin_uA": -16.07358325509152,
+        "mean_signed_margin_uA": 16.422802321669796,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 605.0,
+        "training_bit_errors": 95,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 888,
+        "bit_count": 4096,
+        "symbol_errors": 888,
+        "min_signed_margin_uA": -16.073583255091478,
+        "mean_signed_margin_uA": 16.422802321669803,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 605.0,
+        "training_bit_errors": 95,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "TT-C-C10fF-S80",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 761,
+        "bit_count": 4096,
+        "symbol_errors": 761,
+        "min_signed_margin_uA": -14.708188192758328,
+        "mean_signed_margin_uA": 1.8807285204955153,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1185.0,
+        "training_bit_errors": 88,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 761,
+        "bit_count": 4096,
+        "symbol_errors": 761,
+        "min_signed_margin_uA": -14.708188192758364,
+        "mean_signed_margin_uA": 1.8807285204955195,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1185.0,
+        "training_bit_errors": 88,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "SS-A-C200fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 2055,
+        "bit_count": 4096,
+        "symbol_errors": 2055,
+        "min_signed_margin_uA": -47.7442865208409,
+        "mean_signed_margin_uA": -0.16932568795294656,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 7705.0,
+        "training_bit_errors": 221,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 2055,
+        "bit_count": 4096,
+        "symbol_errors": 2055,
+        "min_signed_margin_uA": -47.744286520840895,
+        "mean_signed_margin_uA": -0.16932568795294695,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 7705.0,
+        "training_bit_errors": 221,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "SS-B-C200fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1884,
+        "bit_count": 4096,
+        "symbol_errors": 1884,
+        "min_signed_margin_uA": -34.55111350039239,
+        "mean_signed_margin_uA": 2.7134465369169076,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 680.0,
+        "training_bit_errors": 199,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1884,
+        "bit_count": 4096,
+        "symbol_errors": 1884,
+        "min_signed_margin_uA": -34.55111350039252,
+        "mean_signed_margin_uA": 2.7134465369169134,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 680.0,
+        "training_bit_errors": 199,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "SS-C-C200fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1678,
+        "bit_count": 4096,
+        "symbol_errors": 1343,
+        "min_signed_margin_uA": -52.14831443458421,
+        "mean_signed_margin_uA": -9.343679809970284,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1180.0,
+        "training_bit_errors": 196,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1678,
+        "bit_count": 4096,
+        "symbol_errors": 1343,
+        "min_signed_margin_uA": -52.148314434584265,
+        "mean_signed_margin_uA": -9.343679809970283,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1180.0,
+        "training_bit_errors": 196,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "SS-A-C10fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1719,
+        "bit_count": 4096,
+        "symbol_errors": 1719,
+        "min_signed_margin_uA": -55.544021426553115,
+        "mean_signed_margin_uA": 4.344075512029967,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 2475.0,
+        "training_bit_errors": 173,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1719,
+        "bit_count": 4096,
+        "symbol_errors": 1719,
+        "min_signed_margin_uA": -55.54402142655312,
+        "mean_signed_margin_uA": 4.34407551202997,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 2475.0,
+        "training_bit_errors": 173,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "SS-B-C10fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1724,
+        "bit_count": 4096,
+        "symbol_errors": 1724,
+        "min_signed_margin_uA": -37.76392399716292,
+        "mean_signed_margin_uA": 8.049930747078088,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1415.0,
+        "training_bit_errors": 182,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1724,
+        "bit_count": 4096,
+        "symbol_errors": 1724,
+        "min_signed_margin_uA": -37.7639239971629,
+        "mean_signed_margin_uA": 8.049930747078092,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1415.0,
+        "training_bit_errors": 182,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "SS-C-C10fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1196,
+        "bit_count": 4096,
+        "symbol_errors": 1050,
+        "min_signed_margin_uA": -44.585663337918106,
+        "mean_signed_margin_uA": -4.231032223987371,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1065.0,
+        "training_bit_errors": 138,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1196,
+        "bit_count": 4096,
+        "symbol_errors": 1050,
+        "min_signed_margin_uA": -44.58566333791816,
+        "mean_signed_margin_uA": -4.231032223987373,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1065.0,
+        "training_bit_errors": 138,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "FF-A-C200fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 925,
+        "bit_count": 4096,
+        "symbol_errors": 925,
+        "min_signed_margin_uA": -44.3999355264028,
+        "mean_signed_margin_uA": 17.479965023635376,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 790.0,
+        "training_bit_errors": 100,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 925,
+        "bit_count": 4096,
+        "symbol_errors": 925,
+        "min_signed_margin_uA": -44.39993552640283,
+        "mean_signed_margin_uA": 17.47996502363538,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 790.0,
+        "training_bit_errors": 100,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "FF-B-C200fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1389,
+        "bit_count": 4096,
+        "symbol_errors": 1389,
+        "min_signed_margin_uA": -27.86479106362549,
+        "mean_signed_margin_uA": 5.376819637466968,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1290.0,
+        "training_bit_errors": 142,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1389,
+        "bit_count": 4096,
+        "symbol_errors": 1389,
+        "min_signed_margin_uA": -27.864791063625503,
+        "mean_signed_margin_uA": 5.376819637466968,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1290.0,
+        "training_bit_errors": 142,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "FF-C-C200fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 1403,
+        "bit_count": 4096,
+        "symbol_errors": 1305,
+        "min_signed_margin_uA": -37.32066921524994,
+        "mean_signed_margin_uA": -5.576453811868181,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1280.0,
+        "training_bit_errors": 182,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 1403,
+        "bit_count": 4096,
+        "symbol_errors": 1305,
+        "min_signed_margin_uA": -37.32066921524996,
+        "mean_signed_margin_uA": -5.576453811868181,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1280.0,
+        "training_bit_errors": 182,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "FF-A-C10fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 891,
+        "bit_count": 4096,
+        "symbol_errors": 891,
+        "min_signed_margin_uA": -40.2302799608577,
+        "mean_signed_margin_uA": 21.693504836816736,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 725.0,
+        "training_bit_errors": 93,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 891,
+        "bit_count": 4096,
+        "symbol_errors": 891,
+        "min_signed_margin_uA": -40.23027996085784,
+        "mean_signed_margin_uA": 21.693504836816736,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 725.0,
+        "training_bit_errors": 93,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "FF-B-C10fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 394,
+        "bit_count": 4096,
+        "symbol_errors": 394,
+        "min_signed_margin_uA": -8.703454648644666,
+        "mean_signed_margin_uA": 17.548079675877347,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 640.0,
+        "training_bit_errors": 36,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 394,
+        "bit_count": 4096,
+        "symbol_errors": 394,
+        "min_signed_margin_uA": -8.703454648644637,
+        "mean_signed_margin_uA": 17.548079675877354,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 640.0,
+        "training_bit_errors": 36,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    },
+    {
+      "case_name": "FF-C-C10fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 545,
+        "bit_count": 4096,
+        "symbol_errors": 545,
+        "min_signed_margin_uA": -13.587095286208623,
+        "mean_signed_margin_uA": 3.5951549914502916,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1100.0,
+        "training_bit_errors": 71,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 545,
+        "bit_count": 4096,
+        "symbol_errors": 545,
+        "min_signed_margin_uA": -13.587095286208552,
+        "mean_signed_margin_uA": 3.5951549914502903,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1100.0,
+        "training_bit_errors": 71,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    }
+  ],
+  "pure_delay_sensitivity": [
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "pure_delay_ps": 100,
+      "training_delay_shift_ps": 100.0,
+      "signed_margin_delta_uA": 0.0,
+      "time_margin_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "interpretation": "A uniform100ps pure delay is absorbed by the shared0..8ns training search when its optimum remains inside the budget. This does not identify missing dispersive phase or a physical transient."
+    },
+    {
+      "case_name": "TT-B-C200fF-S40",
+      "pure_delay_ps": 100,
+      "training_delay_shift_ps": 100.0,
+      "signed_margin_delta_uA": 0.0,
+      "time_margin_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "interpretation": "A uniform100ps pure delay is absorbed by the shared0..8ns training search when its optimum remains inside the budget. This does not identify missing dispersive phase or a physical transient."
+    },
+    {
+      "case_name": "TT-C-C200fF-S40",
+      "pure_delay_ps": 100,
+      "training_delay_shift_ps": 100.0,
+      "signed_margin_delta_uA": 0.0,
+      "time_margin_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "interpretation": "A uniform100ps pure delay is absorbed by the shared0..8ns training search when its optimum remains inside the budget. This does not identify missing dispersive phase or a physical transient."
+    },
+    {
+      "case_name": "TT-A-C10fF-S40",
+      "pure_delay_ps": 100,
+      "training_delay_shift_ps": 100.0,
+      "signed_margin_delta_uA": 0.0,
+      "time_margin_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "interpretation": "A uniform100ps pure delay is absorbed by the shared0..8ns training search when its optimum remains inside the budget. This does not identify missing dispersive phase or a physical transient."
+    },
+    {
+      "case_name": "TT-B-C10fF-S40",
+      "pure_delay_ps": 100,
+      "training_delay_shift_ps": 100.0,
+      "signed_margin_delta_uA": 0.0,
+      "time_margin_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "interpretation": "A uniform100ps pure delay is absorbed by the shared0..8ns training search when its optimum remains inside the budget. This does not identify missing dispersive phase or a physical transient."
+    },
+    {
+      "case_name": "TT-C-C10fF-S40",
+      "pure_delay_ps": 100,
+      "training_delay_shift_ps": 100.0,
+      "signed_margin_delta_uA": 0.0,
+      "time_margin_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "interpretation": "A uniform100ps pure delay is absorbed by the shared0..8ns training search when its optimum remains inside the budget. This does not identify missing dispersive phase or a physical transient."
+    }
+  ],
+  "halfstep_checks": [
+    {
+      "coarse_case": "TT-A-C200fF-S40",
+      "fine_case": "TT-A-C200fF-S80",
+      "route": "A",
+      "capacitance_fF": 200.0,
+      "optical_tau_ps": 0,
+      "amplitude_delta_uA": -0.00014632953865145737,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.02065641848023015,
+        "full_rms_uA": 0.002163387855332895,
+        "optical_max_abs_uA": 0.033072252310245596,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.004314061899679533,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-A-C200fF-S40",
+      "fine_case": "TT-A-C200fF-S80",
+      "route": "A",
+      "capacitance_fF": 200.0,
+      "optical_tau_ps": 25,
+      "amplitude_delta_uA": -0.00012701888198307643,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.020505348643129646,
+        "full_rms_uA": 0.0021455615654331593,
+        "optical_max_abs_uA": 0.027465497692385737,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.004314061899679533,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-A-C200fF-S40",
+      "fine_case": "TT-A-C200fF-S80",
+      "route": "A",
+      "capacitance_fF": 200.0,
+      "optical_tau_ps": 75,
+      "amplitude_delta_uA": -0.00013711105329861084,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.019566958916176658,
+        "full_rms_uA": 0.002066008668580342,
+        "optical_max_abs_uA": 0.023699265885094016,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.004314061899679533,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-A-C200fF-S40",
+      "fine_case": "TT-A-C200fF-S80",
+      "route": "A",
+      "capacitance_fF": 200.0,
+      "optical_tau_ps": 200,
+      "amplitude_delta_uA": -0.00018195586789460094,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.01697562354392918,
+        "full_rms_uA": 0.0018692219652364814,
+        "optical_max_abs_uA": 0.019444423669978575,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.004314061899679533,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-B-C200fF-S40",
+      "fine_case": "TT-B-C200fF-S80",
+      "route": "B",
+      "capacitance_fF": 200.0,
+      "optical_tau_ps": 0,
+      "amplitude_delta_uA": -0.006415076766472794,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 1,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.010229513759988599,
+        "full_rms_uA": 0.0028682008475684434,
+        "optical_max_abs_uA": 0.016061796031366957,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.0010027690404923462,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-B-C200fF-S40",
+      "fine_case": "TT-B-C200fF-S80",
+      "route": "B",
+      "capacitance_fF": 200.0,
+      "optical_tau_ps": 25,
+      "amplitude_delta_uA": -0.005982883423357066,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.010269168557392253,
+        "full_rms_uA": 0.002825431429226861,
+        "optical_max_abs_uA": 0.01607762484286796,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.0010027690404923462,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-B-C200fF-S40",
+      "fine_case": "TT-B-C200fF-S80",
+      "route": "B",
+      "capacitance_fF": 200.0,
+      "optical_tau_ps": 75,
+      "amplitude_delta_uA": -0.006112580609112683,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.009575426019610813,
+        "full_rms_uA": 0.0027734850289313044,
+        "optical_max_abs_uA": 0.012449270356620652,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.0010027690404923462,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-B-C200fF-S40",
+      "fine_case": "TT-B-C200fF-S80",
+      "route": "B",
+      "capacitance_fF": 200.0,
+      "optical_tau_ps": 200,
+      "amplitude_delta_uA": -0.005425269020463475,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.008637530654574135,
+        "full_rms_uA": 0.002712389221975416,
+        "optical_max_abs_uA": 0.009724838788375687,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.0010027690404923462,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-C-C200fF-S40",
+      "fine_case": "TT-C-C200fF-S80",
+      "route": "C",
+      "capacitance_fF": 200.0,
+      "optical_tau_ps": 0,
+      "amplitude_delta_uA": -5.1794014616746153e-05,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.002417862222665445,
+        "full_rms_uA": 0.0001376404659395105,
+        "optical_max_abs_uA": 0.01499371024461392,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -7.568350844922023e-05,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-C-C200fF-S40",
+      "fine_case": "TT-C-C200fF-S80",
+      "route": "C",
+      "capacitance_fF": 200.0,
+      "optical_tau_ps": 25,
+      "amplitude_delta_uA": -5.6839609825942716e-05,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.0030564823566943877,
+        "full_rms_uA": 0.00014376864673079325,
+        "optical_max_abs_uA": 0.006262629932205616,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -7.568350844922023e-05,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-C-C200fF-S40",
+      "fine_case": "TT-C-C200fF-S80",
+      "route": "C",
+      "capacitance_fF": 200.0,
+      "optical_tau_ps": 75,
+      "amplitude_delta_uA": -3.2548993537773185e-05,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.0038091062321341093,
+        "full_rms_uA": 0.0001553315782984846,
+        "optical_max_abs_uA": 0.003377451912383537,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -7.568350844922023e-05,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-C-C200fF-S40",
+      "fine_case": "TT-C-C200fF-S80",
+      "route": "C",
+      "capacitance_fF": 200.0,
+      "optical_tau_ps": 200,
+      "amplitude_delta_uA": -4.842295772533589e-05,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.0030521768124242097,
+        "full_rms_uA": 0.00015382754110155139,
+        "optical_max_abs_uA": 0.002547405300197254,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -7.568350844922023e-05,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-A-C10fF-S40",
+      "fine_case": "TT-A-C10fF-S80",
+      "route": "A",
+      "capacitance_fF": 10.000000000000002,
+      "optical_tau_ps": 0,
+      "amplitude_delta_uA": -0.0010076486730312695,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.08415415851839678,
+        "full_rms_uA": 0.009127458344043613,
+        "optical_max_abs_uA": 0.17406299883737716,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.008783111432930646,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-A-C10fF-S40",
+      "fine_case": "TT-A-C10fF-S80",
+      "route": "A",
+      "capacitance_fF": 10.000000000000002,
+      "optical_tau_ps": 25,
+      "amplitude_delta_uA": -0.00022151542519566192,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.08104070220951465,
+        "full_rms_uA": 0.00900203279236028,
+        "optical_max_abs_uA": 0.13893648007030018,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.008783111432930646,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-A-C10fF-S40",
+      "fine_case": "TT-A-C10fF-S80",
+      "route": "A",
+      "capacitance_fF": 10.000000000000002,
+      "optical_tau_ps": 75,
+      "amplitude_delta_uA": -0.000331381878069692,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.0721779618587795,
+        "full_rms_uA": 0.008501341944907584,
+        "optical_max_abs_uA": 0.1130734172412505,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.008783111432930646,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-A-C10fF-S40",
+      "fine_case": "TT-A-C10fF-S80",
+      "route": "A",
+      "capacitance_fF": 10.000000000000002,
+      "optical_tau_ps": 200,
+      "amplitude_delta_uA": -8.108086144886784e-05,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.05333550019490102,
+        "full_rms_uA": 0.007284029257740023,
+        "optical_max_abs_uA": 0.07426935299813692,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.008783111432930646,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-B-C10fF-S40",
+      "fine_case": "TT-B-C10fF-S80",
+      "route": "B",
+      "capacitance_fF": 10.000000000000002,
+      "optical_tau_ps": 0,
+      "amplitude_delta_uA": -0.011100158070739496,
+      "time_delta_ps": -0.04510137571334383,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.028329914814834784,
+        "full_rms_uA": 0.005880707033074644,
+        "optical_max_abs_uA": 0.1544373398743834,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.0013277968985869748,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-B-C10fF-S40",
+      "fine_case": "TT-B-C10fF-S80",
+      "route": "B",
+      "capacitance_fF": 10.000000000000002,
+      "optical_tau_ps": 25,
+      "amplitude_delta_uA": -0.010836651802641484,
+      "time_delta_ps": -0.0406418923004388,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.02589278171003808,
+        "full_rms_uA": 0.005421245747447865,
+        "optical_max_abs_uA": 0.08607617938246248,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.0013277968985869748,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-B-C10fF-S40",
+      "fine_case": "TT-B-C10fF-S80",
+      "route": "B",
+      "capacitance_fF": 10.000000000000002,
+      "optical_tau_ps": 75,
+      "amplitude_delta_uA": -0.011744036956926607,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 1,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.017317945121155365,
+        "full_rms_uA": 0.004697418296987845,
+        "optical_max_abs_uA": 0.05023658248865404,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.0013277968985869748,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-B-C10fF-S40",
+      "fine_case": "TT-B-C10fF-S80",
+      "route": "B",
+      "capacitance_fF": 10.000000000000002,
+      "optical_tau_ps": 200,
+      "amplitude_delta_uA": -0.007770827167902894,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.01318453267269953,
+        "full_rms_uA": 0.004084398627613702,
+        "optical_max_abs_uA": 0.02372521255933975,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -0.0013277968985869748,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-C-C10fF-S40",
+      "fine_case": "TT-C-C10fF-S80",
+      "route": "C",
+      "capacitance_fF": 10.000000000000002,
+      "optical_tau_ps": 0,
+      "amplitude_delta_uA": 0.0005294400619249018,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.013783836143637306,
+        "full_rms_uA": 0.0012572371167463444,
+        "optical_max_abs_uA": 0.045735496000262,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -9.988067775079656e-05,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-C-C10fF-S40",
+      "fine_case": "TT-C-C10fF-S80",
+      "route": "C",
+      "capacitance_fF": 10.000000000000002,
+      "optical_tau_ps": 25,
+      "amplitude_delta_uA": 0.0005508256682560386,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.01284101999898975,
+        "full_rms_uA": 0.0012711497208787316,
+        "optical_max_abs_uA": 0.04108835929854453,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -9.988067775079656e-05,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-C-C10fF-S40",
+      "fine_case": "TT-C-C10fF-S80",
+      "route": "C",
+      "capacitance_fF": 10.000000000000002,
+      "optical_tau_ps": 75,
+      "amplitude_delta_uA": -0.0006711092693549858,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.008924890011370049,
+        "full_rms_uA": 0.0012586294067471946,
+        "optical_max_abs_uA": 0.030185074739826533,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -9.988067775079656e-05,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    },
+    {
+      "coarse_case": "TT-C-C10fF-S40",
+      "fine_case": "TT-C-C10fF-S80",
+      "route": "C",
+      "capacitance_fF": 10.000000000000002,
+      "optical_tau_ps": 200,
+      "amplitude_delta_uA": 0.0008505722650369307,
+      "time_delta_ps": 0.0,
+      "delay_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "native_state_difference": {
+        "full_max_abs_uA": 0.009169674763571143,
+        "full_rms_uA": 0.001167032243878388,
+        "optical_max_abs_uA": 0.010170605562292143,
+        "comparison": "S40 state linearly interpolated onto S80 native grid; full-frame max and native-sample RMS, not a time-weighted error norm."
+      },
+      "energy_positive_delta_percent": -9.988067775079656e-05,
+      "scope": "Native ngspice maximum-step refinement; same circuit and fixed RX training/threshold contract. Deltas remain visible even when both screens fail."
+    }
+  ],
+  "analysis_failures": [],
+  "electrical_failures": [],
+  "missing_electrical": [],
+  "missing_transients": [],
+  "missing_DC": [],
+  "input_scope": {
+    "registry_records": 49,
+    "successful_transient_records": 33,
+    "DC_records_excluded_from_RX": 16,
+    "planned_transient_records": 33,
+    "DC_table_retained": true
+  },
+  "ideal_conduction_controls": [
+    {
+      "control": "ideal_conduction_20ps_edge",
+      "modulation": "NRZ",
+      "optical_tau_ps": 0,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 22.967899576901978,
+      "mean_signed_margin_uA": 30.208564846017392,
+      "min_time_margin_ps": 83.52139211870808,
+      "delay_ps": 275.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": true,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "energy_pJ_per_bit": null,
+      "candidate": false,
+      "analysis_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/NRZ/step5ps-tau0ps.json",
+      "analysis_sha256": "08409d781a60be274a8604247a5982fcab92d8c5d5e1fcb986025e393af8270c",
+      "eye_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/NRZ/tau0ps-eye.npz",
+      "eye_sha256": "baeac82d5460a125fdcb754ca5e0934e7305044ad655d7719f6b3622e9170f99",
+      "boundary": "Ideal conduction current25/100uA NRZ or25/50/75/100uA Gray PAM4, fixed20ps linear edges, same complete4736bit frame and same1GHz RX/threshold/training contract. Excludes circuit and optical evidence and all energy ranking.",
+      "PWL_grid_halfstep": {
+        "coarse_step_ps": 5.0,
+        "fine_step_ps": 2.5,
+        "amplitude_delta_uA": 0.05516566958674929,
+        "time_delta_ps": -6.13950656003226e-05,
+        "delay_delta_ps": 0.0,
+        "bit_error_delta": 0,
+        "pass_unchanged": true
+      }
+    },
+    {
+      "control": "ideal_conduction_20ps_edge",
+      "modulation": "NRZ",
+      "optical_tau_ps": 25,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 21.223265954986907,
+      "mean_signed_margin_uA": 29.324836268129424,
+      "min_time_margin_ps": 99.79149334406037,
+      "delay_ps": 285.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": true,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "energy_pJ_per_bit": null,
+      "candidate": false,
+      "analysis_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/NRZ/step5ps-tau25ps.json",
+      "analysis_sha256": "29d1b9060020c18efa5fc1be831725550b19bca0b4446554d281078295e5031d",
+      "eye_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/NRZ/tau25ps-eye.npz",
+      "eye_sha256": "d285c3968a9ca583ca0d073e428a7aff2cc454f2e83fab72ee37194f5e597296",
+      "boundary": "Ideal conduction current25/100uA NRZ or25/50/75/100uA Gray PAM4, fixed20ps linear edges, same complete4736bit frame and same1GHz RX/threshold/training contract. Excludes circuit and optical evidence and all energy ranking.",
+      "PWL_grid_halfstep": {
+        "coarse_step_ps": 5.0,
+        "fine_step_ps": 2.5,
+        "amplitude_delta_uA": 0.025030861266138515,
+        "time_delta_ps": -0.000991418395202004,
+        "delay_delta_ps": 0.0,
+        "bit_error_delta": 0,
+        "pass_unchanged": true
+      }
+    },
+    {
+      "control": "ideal_conduction_20ps_edge",
+      "modulation": "NRZ",
+      "optical_tau_ps": 75,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 14.859507778005351,
+      "mean_signed_margin_uA": 26.122937438591826,
+      "min_time_margin_ps": 104.01968421296698,
+      "delay_ps": 305.0,
+      "training_bit_errors": 0,
+      "passed": true,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": true,
+        "time_margin_100ps": true,
+        "all_directed_transitions_present": true
+      },
+      "energy_pJ_per_bit": null,
+      "candidate": false,
+      "analysis_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/NRZ/step5ps-tau75ps.json",
+      "analysis_sha256": "e29dd80d0afa667e77227d8cc9d7b93b5a6a5ea1dfe533b788558c2565e8fe5e",
+      "eye_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/NRZ/tau75ps-eye.npz",
+      "eye_sha256": "ffa14752dc3644a2cd35c7d7f6a7d68689e6be7bc3d4634d328bb3d1e6665476",
+      "boundary": "Ideal conduction current25/100uA NRZ or25/50/75/100uA Gray PAM4, fixed20ps linear edges, same complete4736bit frame and same1GHz RX/threshold/training contract. Excludes circuit and optical evidence and all energy ranking.",
+      "PWL_grid_halfstep": {
+        "coarse_step_ps": 5.0,
+        "fine_step_ps": 2.5,
+        "amplitude_delta_uA": 0.010385395342126458,
+        "time_delta_ps": 0.007595828411467664,
+        "delay_delta_ps": 0.0,
+        "bit_error_delta": 0,
+        "pass_unchanged": true
+      }
+    },
+    {
+      "control": "ideal_conduction_20ps_edge",
+      "modulation": "NRZ",
+      "optical_tau_ps": 200,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 0.4960042673823821,
+      "mean_signed_margin_uA": 18.894773046184497,
+      "min_time_margin_ps": 25.953215482234974,
+      "delay_ps": 355.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "energy_pJ_per_bit": null,
+      "candidate": false,
+      "analysis_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/NRZ/step5ps-tau200ps.json",
+      "analysis_sha256": "6dca947c58cc8173bfac62bf21a5a1ad9f3021e00fbf3a2deb73f58b768f73ce",
+      "eye_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/NRZ/tau200ps-eye.npz",
+      "eye_sha256": "eb015b5bf405480a0d458e0944747b961e6ca723ef5818b3e9bdf58e1ef3b024",
+      "boundary": "Ideal conduction current25/100uA NRZ or25/50/75/100uA Gray PAM4, fixed20ps linear edges, same complete4736bit frame and same1GHz RX/threshold/training contract. Excludes circuit and optical evidence and all energy ranking.",
+      "PWL_grid_halfstep": {
+        "coarse_step_ps": 5.0,
+        "fine_step_ps": 2.5,
+        "amplitude_delta_uA": 0.0022123132919418254,
+        "time_delta_ps": 0.07661465396903111,
+        "delay_delta_ps": 0.0,
+        "bit_error_delta": 0,
+        "pass_unchanged": true
+      }
+    },
+    {
+      "control": "ideal_conduction_20ps_edge",
+      "modulation": "PAM4",
+      "optical_tau_ps": 0,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 9.813875379664495,
+      "mean_signed_margin_uA": 11.383126623201623,
+      "min_time_margin_ps": 34.24355953113854,
+      "delay_ps": 540.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": true,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "energy_pJ_per_bit": null,
+      "candidate": false,
+      "analysis_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/PAM4/step5ps-tau0ps.json",
+      "analysis_sha256": "ad53970272437515bb604ea6ad84d1cd9389464eb26c197dc48576a5e209360f",
+      "eye_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/PAM4/tau0ps-eye.npz",
+      "eye_sha256": "2187b5e15a646c9094842f2a6a656f649547478e245d3f766c53be72fcc77a8b",
+      "boundary": "Ideal conduction current25/100uA NRZ or25/50/75/100uA Gray PAM4, fixed20ps linear edges, same complete4736bit frame and same1GHz RX/threshold/training contract. Excludes circuit and optical evidence and all energy ranking.",
+      "PWL_grid_halfstep": {
+        "coarse_step_ps": 5.0,
+        "fine_step_ps": 2.5,
+        "amplitude_delta_uA": 7.237300016527115e-05,
+        "time_delta_ps": -0.0006728637033006635,
+        "delay_delta_ps": 0.0,
+        "bit_error_delta": 0,
+        "pass_unchanged": true
+      }
+    },
+    {
+      "control": "ideal_conduction_20ps_edge",
+      "modulation": "PAM4",
+      "optical_tau_ps": 25,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 9.386558045291778,
+      "mean_signed_margin_uA": 11.209893741821158,
+      "min_time_margin_ps": 50.48532233612776,
+      "delay_ps": 545.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": true,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "energy_pJ_per_bit": null,
+      "candidate": false,
+      "analysis_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/PAM4/step5ps-tau25ps.json",
+      "analysis_sha256": "7356df61977a48d3943c313d4db4e51cdcdfdee306aa90fd3dc68c22ff5d7d57",
+      "eye_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/PAM4/tau25ps-eye.npz",
+      "eye_sha256": "77dc6e789adb2f531eec0ec1c217712cf9d83e045dd0e8002ce8de5b1df5c5cb",
+      "boundary": "Ideal conduction current25/100uA NRZ or25/50/75/100uA Gray PAM4, fixed20ps linear edges, same complete4736bit frame and same1GHz RX/threshold/training contract. Excludes circuit and optical evidence and all energy ranking.",
+      "PWL_grid_halfstep": {
+        "coarse_step_ps": 5.0,
+        "fine_step_ps": 2.5,
+        "amplitude_delta_uA": 0.009200698226202064,
+        "time_delta_ps": 0.009598735329930719,
+        "delay_delta_ps": 0.0,
+        "bit_error_delta": 0,
+        "pass_unchanged": true
+      }
+    },
+    {
+      "control": "ideal_conduction_20ps_edge",
+      "modulation": "PAM4",
+      "optical_tau_ps": 75,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 7.763576177693576,
+      "mean_signed_margin_uA": 10.552012080995327,
+      "min_time_margin_ps": 63.158864964882284,
+      "delay_ps": 555.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": true,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "energy_pJ_per_bit": null,
+      "candidate": false,
+      "analysis_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/PAM4/step5ps-tau75ps.json",
+      "analysis_sha256": "1a087f6a51dda71d343dd103777ac2100b9cc3d2fa5008cdc078754bd1737ec7",
+      "eye_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/PAM4/tau75ps-eye.npz",
+      "eye_sha256": "7e22f9f69bdaebfb1e95862c95bf472d7479d3c799b39e6ec949dc17c003adcd",
+      "boundary": "Ideal conduction current25/100uA NRZ or25/50/75/100uA Gray PAM4, fixed20ps linear edges, same complete4736bit frame and same1GHz RX/threshold/training contract. Excludes circuit and optical evidence and all energy ranking.",
+      "PWL_grid_halfstep": {
+        "coarse_step_ps": 5.0,
+        "fine_step_ps": 2.5,
+        "amplitude_delta_uA": 0.009633804629377352,
+        "time_delta_ps": 0.015386200756246637,
+        "delay_delta_ps": 0.0,
+        "bit_error_delta": 0,
+        "pass_unchanged": true
+      }
+    },
+    {
+      "control": "ideal_conduction_20ps_edge",
+      "modulation": "PAM4",
+      "optical_tau_ps": 200,
+      "bit_errors": 215,
+      "bit_count": 4096,
+      "symbol_errors": 215,
+      "min_signed_margin_uA": -1.5589859454977244,
+      "mean_signed_margin_uA": 6.849505336803944,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 580.0,
+      "training_bit_errors": 28,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "energy_pJ_per_bit": null,
+      "candidate": false,
+      "analysis_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/PAM4/step5ps-tau200ps.json",
+      "analysis_sha256": "4068f60f2c52a9fae37218589215e2e10efac1b483805c5ba3ed903e9ad267f6",
+      "eye_path": "build/microled-dynamic-v1/receiver/ideal-conduction-controls/PAM4/tau200ps-eye.npz",
+      "eye_sha256": "0d32800c2f54a166de935f870ce632387bb41e3597b14b392bea2779f40bbbbc",
+      "boundary": "Ideal conduction current25/100uA NRZ or25/50/75/100uA Gray PAM4, fixed20ps linear edges, same complete4736bit frame and same1GHz RX/threshold/training contract. Excludes circuit and optical evidence and all energy ranking.",
+      "PWL_grid_halfstep": {
+        "coarse_step_ps": 5.0,
+        "fine_step_ps": 2.5,
+        "amplitude_delta_uA": 0.0025777341933945763,
+        "time_delta_ps": 0.0,
+        "delay_delta_ps": 0.0,
+        "bit_error_delta": 0,
+        "pass_unchanged": true
+      }
+    }
+  ],
+  "stage_status": "complete"
+}

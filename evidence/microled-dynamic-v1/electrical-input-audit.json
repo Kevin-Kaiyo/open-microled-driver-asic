@@ -1,0 +1,52 @@
+{
+  "schema": "electrical-input-audit-v1",
+  "created": "2026-11-08T20:10:16.190607+09:00",
+  "work": "build/microled-dynamic-v1/electrical/run-r1",
+  "manifest_sha256": "b7ddcf06cfbebd53db2790730a7fe1d967eb29d0b48542957c18ddd2e136fd4a",
+  "semantic_input_sha256": {
+    "route_a.spice": "02ba88d9b7654b68b11b4db15bd8bbf316271123c8d377944335602763657a53",
+    "route_c.spice": "096ecd179eadf8193896b6c1177d845c666bbe93903ccf5a99020593c6da8b1d",
+    "route_b.spice": "9572b2bc5f659391c48d3a69d3ab84cef8a2eebc37e582437803c2ddebd3c3c7",
+    "receiver.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+    "common.spice": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8",
+    "led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+    "pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+  },
+  "derived_cache_locked_in_r1_manifest": {
+    "__pycache__/receiver.cpython-312.pyc": {
+      "manifest_sha256": "eeb4afc46a69b1297575745cc062670d85cb991122eed98beef36efde61e772c",
+      "current_sha256": "eeb4afc46a69b1297575745cc062670d85cb991122eed98beef36efde61e772c",
+      "bytes": 27273,
+      "semantic_input": false,
+      "consumed_by_ngspice": false,
+      "reason": "Python import cache accidentally enumerated during initialization; retained byte-for-byte because the original r1 manifest is immutable."
+    }
+  },
+  "source_snapshot_current_identity": {
+    "r1_frozen_wrapper_sha256": "c5a007fb9e14d4d51ee3506a2d9c4460ba53c37e959bbb35bfa6976e59306b42",
+    "current_runner_sha256": "c5a007fb9e14d4d51ee3506a2d9c4460ba53c37e959bbb35bfa6976e59306b42",
+    "matches": true
+  },
+  "plan": "Keep r1 manifest and cache bytes unchanged; subsequent wrapper source will disable bytecode writing, use explicit semantic-input allowlist and save per-execution source snapshots. Clean r2 representative reproduction will verify unchanged physics.",
+  "observed_execution_environment": {
+    "Python": "3.12.13 (main, Mar 25 2026, 03:16:06) [Clang 22.1.1 ]",
+    "NumPy": "2.5.3",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "ngspice": "47 KLU; full version string in frozen manifest",
+    "runtime_package_scope": "Python environment is required to regenerate analysis but is not an archived project source input."
+  },
+  "post_matrix_CLI_packaging_fix": {
+    "completed_after_all49_original_cases": true,
+    "new_wrapper_sha256": "df4482ccb877fb95c8cb39eef5188b2310931b39bc10025c0a449db22309739a",
+    "dont_write_bytecode": true,
+    "new_init_semantic_allowlist_only": true,
+    "per_execution_source_snapshot": true,
+    "old49case_runner_sha256": "c5a007fb9e14d4d51ee3506a2d9c4460ba53c37e959bbb35bfa6976e59306b42",
+    "clean_reproduction_evidence": "evidence/microled-dynamic-v1/electrical-clean-reproduction.json",
+    "clean_reproduction_evidence_sha256": "1bc3cdf5e55be25f91473d09924848a030b5014dc0a76313626c236b51fb6cb3",
+    "isolated_restore_smoke_evidence": "evidence/microled-dynamic-v1/electrical-restore-smoke.json",
+    "original_manifest_unchanged_sha256": "b7ddcf06cfbebd53db2790730a7fe1d967eb29d0b48542957c18ddd2e136fd4a",
+    "registry_frozen_sha256": "0f3fc1ee4de046cbfc6e0a441b80cf7069b5fd0b4ff7d220165935705a0038fd"
+  }
+}

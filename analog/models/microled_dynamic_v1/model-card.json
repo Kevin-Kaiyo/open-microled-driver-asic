@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "model_id": "yellow20-wholechain-magnitude-conditional-v1",
+  "status": "conditional_frequency_fit_only",
+  "usable_transient_family": false,
+  "physical_dynamic_calibration_complete": false,
+  "source_observable": "author-normalized measured-chain S21 magnitude in dB; 20log10(abs(H)) numeric convention;30MHz-to3GHz,25/50/60/80/100uA",
+  "source_license": "numerical dataset CC BY4.0; Lin et al. Zenodo10.5281/zenodo.20034288; paper DOI10.1038/s41467-026-74151-4 cited, no paper figure reused",
+  "sources": [
+    {
+      "path": "evidence/microled-dynamic-20261029/yellow20-s21-selected.csv",
+      "sha256": "6262127b6dc906009e79cf110f95759510d9f6345582a4ab29cfc0d4ed094df2"
+    },
+    {
+      "path": "evidence/microled-dynamic-20261029/yellow20-optical-power.csv",
+      "sha256": "0767607b4f2dcda7bedb0f27815be1b7bb34c3721107bc2366f1a4f8c65f79fb"
+    },
+    {
+      "path": "evidence/microled-dynamic-20261029/source-ledger.json",
+      "sha256": "dd38a7d58bb715565c6a56faa221b5090c2f590ffea4763c96fd32601a5ad960"
+    },
+    {
+      "path": "evidence/microled-dynamic-20261029/response-contract.json",
+      "sha256": "c685bd0e6b8c0d471f12cd1ec5563a7c20ad9e1c42931edd712aa995dac65b25"
+    },
+    {
+      "path": "analog/models/measured-led/lin2026-yellow20-diamond-iv.csv",
+      "sha256": "9da8dbac6499c34159da5e3aa0c59cd6de43aad446090181b4c070beba9505ab"
+    },
+    {
+      "path": "analog/models/measured-led/lin2026-yellow20-dc.spice",
+      "sha256": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc"
+    }
+  ],
+  "static_inputs": [
+    {
+      "bias_uA": 25,
+      "voltage_V": 3.361339464285714,
+      "rd_ohm": 10767.857142857245,
+      "IV_source_rows": [
+        46,
+        47
+      ],
+      "static_optical_power_uW": 1.1245587058207647,
+      "same_physical_pixel_across_IV_PI_S21": "not established"
+    },
+    {
+      "bias_uA": 50,
+      "voltage_V": 3.566363667711599,
+      "rd_ohm": 6028.213166144223,
+      "IV_source_rows": [
+        51,
+        52
+      ],
+      "static_optical_power_uW": 2.029391987594698,
+      "same_physical_pixel_across_IV_PI_S21": "not established"
+    },
+    {
+      "bias_uA": 60,
+      "voltage_V": 3.6211181655172413,
+      "rd_ohm": 5231.724137931006,
+      "IV_source_rows": [
+        52,
+        53
+      ],
+      "static_optical_power_uW": 2.3786829677346777,
+      "same_physical_pixel_across_IV_PI_S21": "not established"
+    },
+    {
+      "bias_uA": 80,
+      "voltage_V": 3.7047817857142857,
+      "rd_ohm": 3426.691729323296,
+      "IV_source_rows": [
+        55,
+        56
+      ],
+      "static_optical_power_uW": 3.0622838353130803,
+      "same_physical_pixel_across_IV_PI_S21": "not established"
+    },
+    {
+      "bias_uA": 100,
+      "voltage_V": 3.767909545454545,
+      "rd_ohm": 2954.545454545433,
+      "IV_source_rows": [
+        56,
+        57
+      ],
+      "static_optical_power_uW": 3.7502519321439305,
+      "same_physical_pixel_across_IV_PI_S21": "not established"
+    }
+  ],
+  "fit_method": {
+    "loss": "unweighted least squares in author S21 dB over uniform source frequency samples",
+    "normalization": "exact unity magnitude at30MHz, conditional extrapolated DC gain is not measured",
+    "bounded_parameters": "pole/zero characteristic frequencies10MHz..100GHz; damping0.01..100; deterministic multistart",
+    "families": [
+      "real2p",
+      "real3p",
+      "real4p",
+      "real3p1z",
+      "real4p2z",
+      "complex3p1z",
+      "complex4p2z"
+    ],
+    "maximum_order": 4,
+    "selection": "lowest state/parameter count within0.03dB RMSE of best tested family per bias; no order added to follow near3GHz noise",
+    "tolerance": {
+      "rmse_dB": 0.35,
+      "max_abs_dB": 1.25
+    },
+    "tolerance_status": "descriptive diagnostic only; instrument uncertainty and repeatability unavailable"
+  },
+  "fit_summary": {
+    "25": {
+      "family": "complex3p1z",
+      "residual": {
+        "full_30MHz_to3GHz": {
+          "count": 2001,
+          "rmse_dB": 0.40985051648081927,
+          "max_abs_dB": 1.637105182507602,
+          "mean_dB": -0.0017260995877763647
+        },
+        "restricted_30MHz_to2p5GHz": {
+          "count": 1664,
+          "rmse_dB": 0.24660851957159802,
+          "max_abs_dB": 1.2387277081990922,
+          "mean_dB": 0.03307645256760034
+        }
+      },
+      "bound_hit": false,
+      "full_30MHz_to3GHz_within_descriptive_tolerance": false,
+      "restricted_30MHz_to2p5GHz_within_descriptive_tolerance": true,
+      "physical_transient_admissibility": "not established regardless of magnitude residual"
+    },
+    "50": {
+      "family": "complex3p1z",
+      "residual": {
+        "full_30MHz_to3GHz": {
+          "count": 2001,
+          "rmse_dB": 0.2730026811223666,
+          "max_abs_dB": 1.3646078964646344,
+          "mean_dB": -0.013328965000447387
+        },
+        "restricted_30MHz_to2p5GHz": {
+          "count": 1664,
+          "rmse_dB": 0.14477071051617654,
+          "max_abs_dB": 0.5911633817823931,
+          "mean_dB": 0.00022526805827914503
+        }
+      },
+      "bound_hit": false,
+      "full_30MHz_to3GHz_within_descriptive_tolerance": false,
+      "restricted_30MHz_to2p5GHz_within_descriptive_tolerance": true,
+      "physical_transient_admissibility": "not established regardless of magnitude residual"
+    },
+    "60": {
+      "family": "complex3p1z",
+      "residual": {
+        "full_30MHz_to3GHz": {
+          "count": 2001,
+          "rmse_dB": 0.26690116592593166,
+          "max_abs_dB": 1.5706486526225563,
+          "mean_dB": -0.01942342391017923
+        },
+        "restricted_30MHz_to2p5GHz": {
+          "count": 1664,
+          "rmse_dB": 0.1453904035738061,
+          "max_abs_dB": 0.4998769678995236,
+          "mean_dB": -0.00877684391155317
+        }
+      },
+      "bound_hit": false,
+      "full_30MHz_to3GHz_within_descriptive_tolerance": false,
+      "restricted_30MHz_to2p5GHz_within_descriptive_tolerance": true,
+      "physical_transient_admissibility": "not established regardless of magnitude residual"
+    },
+    "80": {
+      "family": "complex3p1z",
+      "residual": {
+        "full_30MHz_to3GHz": {
+          "count": 2001,
+          "rmse_dB": 0.26151605179940857,
+          "max_abs_dB": 1.2508606521502657,
+          "mean_dB": -0.03296575365301923
+        },
+        "restricted_30MHz_to2p5GHz": {
+          "count": 1664,
+          "rmse_dB": 0.16078526482942038,
+          "max_abs_dB": 0.5081399113729265,
+          "mean_dB": -0.023327861886290564
+        }
+      },
+      "bound_hit": true,
+      "full_30MHz_to3GHz_within_descriptive_tolerance": false,
+      "restricted_30MHz_to2p5GHz_within_descriptive_tolerance": true,
+      "physical_transient_admissibility": "not established regardless of magnitude residual"
+    },
+    "100": {
+      "family": "complex3p1z",
+      "residual": {
+        "full_30MHz_to3GHz": {
+          "count": 2001,
+          "rmse_dB": 0.21231694079552615,
+          "max_abs_dB": 0.9975776408881245,
+          "mean_dB": -0.02534279589046908
+        },
+        "restricted_30MHz_to2p5GHz": {
+          "count": 1664,
+          "rmse_dB": 0.135133080214754,
+          "max_abs_dB": 0.43130345990900776,
+          "mean_dB": -0.01790182953147512
+        }
+      },
+      "bound_hit": true,
+      "full_30MHz_to3GHz_within_descriptive_tolerance": true,
+      "restricted_30MHz_to2p5GHz_within_descriptive_tolerance": true,
+      "physical_transient_admissibility": "not established regardless of magnitude residual"
+    }
+  },
+  "non_identifiability": {
+    "minimum_phase": "explicit mathematical convention, not measured phase",
+    "counterexamples": [
+      {
+        "bias_uA": 25,
+        "100ps_delay_max_magnitude_difference": 3.3306690738754696e-16,
+        "stable_allpass_max_magnitude_difference": 4.440892098500626e-16,
+        "allpass": "A(s)=(1/100ps-s)/(1/100ps+s): causal stable, nonminimum-phase, identical magnitude"
+      },
+      {
+        "bias_uA": 50,
+        "100ps_delay_max_magnitude_difference": 3.3306690738754696e-16,
+        "stable_allpass_max_magnitude_difference": 4.440892098500626e-16,
+        "allpass": "A(s)=(1/100ps-s)/(1/100ps+s): causal stable, nonminimum-phase, identical magnitude"
+      },
+      {
+        "bias_uA": 60,
+        "100ps_delay_max_magnitude_difference": 3.3306690738754696e-16,
+        "stable_allpass_max_magnitude_difference": 5.551115123125783e-16,
+        "allpass": "A(s)=(1/100ps-s)/(1/100ps+s): causal stable, nonminimum-phase, identical magnitude"
+      },
+      {
+        "bias_uA": 80,
+        "100ps_delay_max_magnitude_difference": 3.3306690738754696e-16,
+        "stable_allpass_max_magnitude_difference": 4.440892098500626e-16,
+        "allpass": "A(s)=(1/100ps-s)/(1/100ps+s): causal stable, nonminimum-phase, identical magnitude"
+      },
+      {
+        "bias_uA": 100,
+        "100ps_delay_max_magnitude_difference": 3.3306690738754696e-16,
+        "stable_allpass_max_magnitude_difference": 4.440892098500626e-16,
+        "allpass": "A(s)=(1/100ps-s)/(1/100ps+s): causal stable, nonminimum-phase, identical magnitude"
+      }
+    ],
+    "decomposition": "For each arbitrary C, H_residual=H_total*(1+s*(50||rd)*C)*(1+s/(2*pi*3GHz)) reproduces the exact same fitted magnitude and is stable/proper for the selected relative-degree2 models; it introduces zeros without establishing physical optical dynamics. Unknown package/receiver add more degrees of freedom.",
+    "unique_C": false,
+    "unique_lifetime": false,
+    "unique_delay_or_phase": false,
+    "electrical_passivity_identified": false
+  },
+  "missing_domains": [
+    "complex S11/impedance and RF stimulus at calibrated same-device plane",
+    "complex S21 and group delay",
+    "absolute gain and calibrated detector/fiber/package deembedding",
+    "same pixel identity and temperature across I-V/P-I/S21",
+    "measurement uncertainty, repeatability and near3GHz noise floor",
+    "large-signal charge/recombination dynamics, transitions and pattern effects",
+    "cross-device/cross-temperature validation, optical noise and BER"
+  ],
+  "permitted": [
+    "source magnitude replay and residual inspection",
+    "conditional stable/minimum-phase mathematical frequency curves",
+    "separately labelled C/tau/source/RX sensitivity"
+  ],
+  "prohibited": [
+    "append Htotal after an electrical RC or receiver model",
+    "promote synthetic C/tau to uniquely measured parameters",
+    "use assigned minimum-phase response as validated phase/transient eye",
+    "claim net3.2Gb/s BER or physical optical-link qualification"
+  ],
+  "baseline_policy": "historical200fF/200ps/RX1GHz model and old results unchanged",
+  "coefficients": "coefficients.json"
+}

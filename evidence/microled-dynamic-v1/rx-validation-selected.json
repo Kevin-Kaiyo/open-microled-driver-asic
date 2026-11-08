@@ -1,0 +1,168 @@
+{
+  "numerical_validation": {
+    "passed": true,
+    "analytic_fixtures": [
+      {
+        "tau_optical_ps": 0.0,
+        "tau_rx_ps": 159.15494309189535,
+        "analytic_ramp_max_absolute_error_unit_gain": 5.1514348342607263e-14
+      },
+      {
+        "tau_optical_ps": 25.0,
+        "tau_rx_ps": 159.15494309189535,
+        "analytic_ramp_max_absolute_error_unit_gain": 4.463096558993129e-14
+      },
+      {
+        "tau_optical_ps": 200.0,
+        "tau_rx_ps": 200.0,
+        "analytic_ramp_max_absolute_error_unit_gain": 3.3306690738754696e-14
+      },
+      {
+        "tau_optical_ps": 200.0,
+        "tau_rx_ps": 200.000000001,
+        "analytic_ramp_max_absolute_error_unit_gain": 1.3545831123451535e-12
+      }
+    ],
+    "PWL_subdivision": [
+      {
+        "tau_optical_ps": 0.0,
+        "tau_rx_ps": 159.15494309189535,
+        "exact_PWL_half_interval_max_error_A": 1.3552527156068805e-19
+      },
+      {
+        "tau_optical_ps": 25.0,
+        "tau_rx_ps": 159.15494309189535,
+        "exact_PWL_half_interval_max_error_A": 2.303929616531697e-19
+      },
+      {
+        "tau_optical_ps": 75.0,
+        "tau_rx_ps": 159.15494309189535,
+        "exact_PWL_half_interval_max_error_A": 1.8973538018496328e-19
+      },
+      {
+        "tau_optical_ps": 200.0,
+        "tau_rx_ps": 159.15494309189535,
+        "exact_PWL_half_interval_max_error_A": 2.574980159653073e-19
+      },
+      {
+        "tau_optical_ps": 200.0,
+        "tau_rx_ps": 200.0,
+        "exact_PWL_half_interval_max_error_A": 2.168404344971009e-19
+      }
+    ],
+    "old_200ps_filter_nonuniform_max_error_A": 3.2526065174565133e-19,
+    "tolerances": {
+      "analytic_unit_gain": 1e-10,
+      "PWL_subdivision_A": 1e-15,
+      "old_filter_A": 1e-15
+    },
+    "limits": "Analytic/subdivision tests verify numerical state propagation only; circuit halfstep and native baseline metrics are separate checks."
+  },
+  "baseline_200ps_reproduction": [
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "passed": true,
+      "legacy": {
+        "bit_errors": 844,
+        "bit_count": 4096,
+        "symbol_errors": 844,
+        "min_signed_margin_uA": -38.841576722451926,
+        "mean_signed_margin_uA": 14.58970340096378,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1260.0,
+        "training_bit_errors": 88,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      },
+      "new": {
+        "bit_errors": 844,
+        "bit_count": 4096,
+        "symbol_errors": 844,
+        "min_signed_margin_uA": -38.84157672245193,
+        "mean_signed_margin_uA": 14.589703400963785,
+        "min_time_margin_ps": 0.0,
+        "delay_ps": 1260.0,
+        "training_bit_errors": 88,
+        "passed": false,
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        }
+      }
+    }
+  ],
+  "pure_delay_sensitivity": [
+    {
+      "case_name": "TT-A-C200fF-S40",
+      "pure_delay_ps": 100,
+      "training_delay_shift_ps": 100.0,
+      "signed_margin_delta_uA": 0.0,
+      "time_margin_delta_ps": 0.0,
+      "bit_error_delta": 0,
+      "pass_unchanged": true,
+      "interpretation": "A uniform100ps pure delay is absorbed by the shared0..8ns training search when its optimum remains inside the budget. This does not identify missing dispersive phase or a physical transient."
+    }
+  ],
+  "halfstep_checks": [],
+  "analysis_failures": [],
+  "electrical_failures": [],
+  "missing_electrical": [
+    "TT-C-C200fF-S40",
+    "TT-A-C0fF-S40",
+    "TT-B-C0fF-S40",
+    "TT-C-C0fF-S40",
+    "TT-A-C10fF-S40",
+    "TT-B-C10fF-S40",
+    "TT-C-C10fF-S40",
+    "TT-A-C50fF-S40",
+    "TT-B-C50fF-S40",
+    "TT-C-C50fF-S40",
+    "TT-A-C800fF-S40",
+    "TT-B-C800fF-S40",
+    "TT-C-C800fF-S40",
+    "DC-TT-A-C200fF-L0",
+    "DC-TT-A-C200fF-L1",
+    "DC-TT-B-C200fF-L0",
+    "DC-TT-B-C200fF-L1",
+    "DC-TT-C-C200fF-L0",
+    "DC-TT-C-C200fF-L1",
+    "DC-TT-C-C200fF-L2",
+    "DC-TT-C-C200fF-L3",
+    "DC-TT-A-C10fF-L0",
+    "DC-TT-A-C10fF-L1",
+    "DC-TT-B-C10fF-L0",
+    "DC-TT-B-C10fF-L1",
+    "DC-TT-C-C10fF-L0",
+    "DC-TT-C-C10fF-L1",
+    "DC-TT-C-C10fF-L2",
+    "DC-TT-C-C10fF-L3",
+    "TT-A-C200fF-S80",
+    "TT-B-C200fF-S80",
+    "TT-C-C200fF-S80",
+    "TT-A-C10fF-S80",
+    "TT-B-C10fF-S80",
+    "TT-C-C10fF-S80",
+    "SS-A-C200fF-S40",
+    "SS-B-C200fF-S40",
+    "SS-C-C200fF-S40",
+    "SS-A-C10fF-S40",
+    "SS-B-C10fF-S40",
+    "SS-C-C10fF-S40",
+    "FF-A-C200fF-S40",
+    "FF-B-C200fF-S40",
+    "FF-C-C200fF-S40",
+    "FF-A-C10fF-S40",
+    "FF-B-C10fF-S40",
+    "FF-C-C10fF-S40"
+  ],
+  "stage_status": "partial"
+}
