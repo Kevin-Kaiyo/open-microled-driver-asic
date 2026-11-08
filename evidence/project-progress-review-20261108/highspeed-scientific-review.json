@@ -1,0 +1,147 @@
+{
+  "schema": "project-progress-highspeed-final-review-v1",
+  "created": "2026-11-09T00:20:57.529985+09:00",
+  "status": "zero_blockers_within_scoped_scientific_review",
+  "blocker_count": 0,
+  "required_changes": [],
+  "reviewed_files": [
+    {
+      "path": "scripts/project_progress_20261108/content.py",
+      "sha256": "8ae15126b21772516ab9c1b4725c8c7292ec45129cae687d2144a465ddacb651",
+      "bytes": 27682,
+      "locator": "lines21,48,97-124,134-149,170-175;scoped scientific boundary text"
+    },
+    {
+      "path": "scripts/project_progress_20261108/build.py",
+      "sha256": "18d70a82fe59f57affcdb480efd669ce9191377ad7cd51801b64114c42f2dd38",
+      "bytes": 27436,
+      "locator": "architecture132-record label;vcsel-core generation lines67-84"
+    },
+    {
+      "path": "docs/research/project-progress-review-20261108/assets/vcsel-core.svg",
+      "sha256": "185b673cc3e3d9671642a25ddf68868e15d5225e1d7ca46375ac243dc0860842",
+      "bytes": 7612,
+      "locator": "all named components,wire paths,feedback polarity,shared sensing resistors and partial-core labels"
+    },
+    {
+      "path": "docs/research/project-progress-review-20261108/assets/vcsel-core.png",
+      "sha256": "f99aed3fe27a5cb82bf6b7fd46151752ad8fdbad0d8abf64225079d0a0859052",
+      "bytes": 199137,
+      "locator": "standalone rendered figure visually inspected;all labels and principal wires readable"
+    },
+    {
+      "path": "docs/research/vcsel-reference-microled-dynamics-20261029/figures/servo-current-core.svg",
+      "sha256": "01afedc0d234f7545c5e1a4795614f1c42daeb8376f1ffa24b122860fa9f3431",
+      "bytes": 15292,
+      "locator": "source-bound original current-core figure"
+    },
+    {
+      "path": "analog/circuits/vcsel_robustness_20261029/regulated-r10.spice",
+      "sha256": "c614ef23c1443adf5ec34f162c456f3cba3ce4f87cb872dacef689a8cc2840ac",
+      "bytes": 7799,
+      "locator": "VIBASE/VITAIL,XBASE0/1,XTAIL0/1,XSTEER_0,XDUMP_0,RBASE,RTAIL,RDUMMY1 and actual data buffer nets"
+    },
+    {
+      "path": "analog/models/vcsel_research_20261027/MODEL_CARD.md",
+      "sha256": "e8d110a7896c027413e2e66edb8ebd66aaa99108ae8c71b0d508b33a8ab58b69",
+      "bytes": 6423,
+      "locator": "model provenance/C/phase/temperature/large-signal limits"
+    },
+    {
+      "path": "evidence/microled-dynamic-v1/rx-summary.json",
+      "sha256": "c7d954ee434874730566c6d89a1fda7d07d4a563f790477768fedfbfed395175",
+      "bytes": 2122137,
+      "locator": "132full records;TT/PVT/halfstep and fixed receiving contract"
+    }
+  ],
+  "resolved_previous_findings": [
+    "HSR01 VCSEL syntheticC/fixed3mA/no-phase/no-emitter-temperature-calibration stated locally",
+    "HSR02 TT15positiveEplus/attemptedpayloadbit scope stated",
+    "HSR03 20um extraction separated from20/40um author cases",
+    "132records=60TT+48PVT+24halfstep stated consistently incontent andarchitecture generator",
+    "Old6/9MOS corelayoutPEX notinherited bynew20/21/49MOS or73MOS stated explicitly"
+  ],
+  "checks": {
+    "VCSEL_C150fF_fixed3mA_missingphase_explicit": true,
+    "VCSEL_emitter_proxy_temperature_boundary_explicit": true,
+    "MicroLED_energy_TT15_Eplus_attempted_payload_scope_explicit": true,
+    "yellow20_extraction_scope_separated_from40_author_case": true,
+    "132_records_disaggregated_60_48_24": true,
+    "no_132_old_independent_hypothesis_wording": true,
+    "new20_21_49MOS_do_not_inherit6_9_core_PEX": true,
+    "VCSEL73MOS_no_matching_new_PEX": true,
+    "VCSEL_and_MicroLED_RX5GHzV3_vs1GHzV2_separated": true,
+    "no_B_preselection": true,
+    "VCSEL_faststartup_and_returnratio_open": true,
+    "literature_max_net_matrix_not_claimed_complete": true,
+    "manufacturing_and_signoff_boundary_explicit": true,
+    "diagram_caption_partial_core_and_setpoint_boundary": true,
+    "diagram_source_required_named_nets_and_values": true,
+    "PNG_identity_matches_visually_inspected_image": true,
+    "SVG_identity_matches_connection_inspected_source": true
+  },
+  "diagram_connection_review": [
+    {
+      "figure": "OUT to XBASE×2 drain",
+      "netlist": "VIBASE OUT BS 0;XBASE0/1 BS BCTRL SBASE VSS",
+      "result": "matches after explicitly omitted0Vmeasurement source"
+    },
+    {
+      "figure": "BASE common source toSBASE then50ohm toVSS",
+      "netlist": "XBASE0/1 shareSBASE;RBASE SBASE VSS50",
+      "result": "matches;3mA is aggregate setpoint,not3mA perparallel device"
+    },
+    {
+      "figure": "OUT/GP/VX steering andDUMMY/GN/VX dumping",
+      "netlist": "XSTEER_0 OUT GP VX VSS;XDUMP_0 DUMMY GN VX VSS",
+      "result": "matches"
+    },
+    {
+      "figure": "VL toRDUMMY500ohm toDUMMY",
+      "netlist": "RDUMMY1 VL DUMMY500",
+      "result": "matches"
+    },
+    {
+      "figure": "VX toXTAIL×2 drain",
+      "netlist": "VITAIL VX TS 0;XTAIL0/1 TS TCTRL STAIL VSS",
+      "result": "matches after explicitly omitted0Vmeasurement source"
+    },
+    {
+      "figure": "TAIL common source toSTAIL then37.5ohm toVSS",
+      "netlist": "XTAIL0/1 shareSTAIL;RTAIL STAIL VSS37.5",
+      "result": "matches;4mA is aggregate setpoint"
+    },
+    {
+      "figure": "OTA-B/T plusVSET,minusSBASE/STAIL,outputBASE/TAILgate",
+      "netlist": "independent finite-gain PMOS-input source-sense OTAs produceBCTRL/TCTRL",
+      "result": "negative-feedback direction matches original source-bound figure/netlist;OTA internal implementation intentionally notexpanded"
+    },
+    {
+      "figure": "depictedNMOS bodyVSS;GP/GN bufferedD/DB;D1 modulation throughVCSEL,D0 throughdummy",
+      "netlist": "depicted devices have fourth terminalVSS;two-stage actual buffers generateGP/GN",
+      "result": "matches;body statement applies to depictedNMOS,notall73MOS"
+    },
+    {
+      "figure": "VL regulatedlaser supply maydropout;IBIAS stays inVCSEL both states",
+      "netlist": "base current branchalways fromOUT;steering branchchanges;VLfromactualregulator",
+      "result": "matches withinsetpoint/partial-core abstraction"
+    }
+  ],
+  "visual_review": {
+    "asset": "docs/research/project-progress-review-20261108/assets/vcsel-core.png",
+    "method": "Viewed the actual PNG using view_image;read the SVG/generator and compared named connectivity to originalsource figure andr10netlist.",
+    "image_native_pixels": [
+      2112,
+      1176
+    ],
+    "observations": "Main labels,resistor values,gate controls,feedback polarity and common nodes readable;no clipped principal label or obscured connection observed.",
+    "scope": "Standalone figure scientific/readability review only;final PDF/HTML fullpage rendering is root responsibility."
+  },
+  "limits": [
+    "Internal scoped source/figure review,not external lab orfoundry signoff.",
+    "No SPICE rerun,no raw/largeCSV inspection andno content/diagram edits performed byreviewer.",
+    "No new physicalC,lifetime,phase,temperature,noise,BER,loop-stability,layout/PEX ormanufacturing qualification is established.",
+    "Receipt binds the exact hashes above. Regeneratedassets are covered only ifbytes areidentical;changed scientific content/connectivity requires scoped recheck.",
+    "A later purely presentation re-render can be checked bysource/asset identity andreadability without relabelling the experiment asnew validation."
+  ]
+}

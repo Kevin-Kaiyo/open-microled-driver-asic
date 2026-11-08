@@ -1,0 +1,432 @@
+{
+  "schema": "project-progress-pwm-content-review-v1",
+  "review_date": "2026-11-09",
+  "reviewed_at": "2026-11-09T00:08:40.276671+09:00",
+  "reviewed_file": "scripts/project_progress_20261108/content.py",
+  "reviewed_file_sha256": "8ae15126b21772516ab9c1b4725c8c7292ec45129cae687d2144a465ddacb651",
+  "scope": "Display PWM, digital/SDF,macro/common-topphysical,newmAresearchtargetandmanufacturingwording;highspeedcontentreviewedbyotheragent",
+  "method": {
+    "read_only": true,
+    "raw_CSV_or_waveform_read": false,
+    "EDA_rerun": false,
+    "only_written_artifact": "build/project-progress-review-20261108/pwm-review.json",
+    "PDF_visual_review": false,
+    "scoped_confirmation_only": true
+  },
+  "verdict": "pass_scoped_final_source_confirmation",
+  "blocker_count": 0,
+  "needs_change_count": 0,
+  "findings": [
+    {
+      "id": "PWM-R01",
+      "priority": "P2",
+      "category": "condition_scope",
+      "path": "scripts/project_progress_20261108/content.py",
+      "line": 68,
+      "status": "resolved_in_observed_source",
+      "title": "启动保持峰值需标为TT名义",
+      "observed_text": "['受控启动','TT名义保持窗数值峰值约46.46pA，低于1nA研究门槛','仅指定电源顺序；不等于硅片pA级漏电或自主POR']],[.20,.38,.42]),",
+      "reason": "46.46pA来自TT名义严格启动的trapezoidal结果；全部startup corners中FF fast总支路保持峰值约58.76pA。因此该数值不应作为不带corner限定的总体峰值。",
+      "evidence": [
+        {
+          "path": "evidence/pwm-reference-v2/20261024/final-summary.json",
+          "sha256": "a5300ce2b6e1d7a55ffa000d789d2b8cf3525b45296085b2163d107c5be16049",
+          "locator": "key_results.c15_startup_fullmesh_trap.held_peak_a",
+          "value_pA": 46.45792847644177
+        },
+        {
+          "path": "evidence/pwm-reference-v2/20261024/final-summary.json",
+          "sha256": "a5300ce2b6e1d7a55ffa000d789d2b8cf3525b45296085b2163d107c5be16049",
+          "locator": "startup_corners.c15_startup_ff_fast.held_peak_a",
+          "value_pA": 58.76364901622433
+        }
+      ],
+      "suggested_change": "将当前结果改为“TT名义保持窗数值峰值约46.46pA，低于1nA研究门槛”，或另列FF fast约58.76pA。",
+      "blocking_scientific_conclusion": false
+    },
+    {
+      "id": "PWM-R02",
+      "priority": "P2",
+      "category": "version_scope",
+      "path": "scripts/project_progress_20261108/content.py",
+      "line": 77,
+      "status": "resolved_in_observed_source",
+      "title": "SDF到r5回放需要保留旧外部网络身份",
+      "observed_text": "p('在1000ns时钟、200ns输入到达及72.91fF输出负载的SDC条件下，最小寄存器setup/hold余量为986.059/0.441845ns。这些数字是当前约束的余量，不是最高时钟性能。数字SDF事件曾回放到r5的30pF补偿/30pF SENSE/10MΩ名义网络；仍假设10ns引脚斜率，未完成共同顶层全部晶体管动态联仿。[S02][S03][S22]'),",
+      "reason": "现有SDF→r5回放使用30pF补偿、30pF SENSE、10MΩ bleed的名义网络；本报告上一页主结果是后来N2对地150pF、参考滤波15nF的27项选定case。未限定的表述容易把两种实验合并成最新外部网络已完成九角联合SDF/PEX闭合。",
+      "evidence": [
+        {
+          "path": "evidence/control-v3/coupled-r5-bleed10/summary.json",
+          "sha256": "490495c6a167693dc18bec803c794dbd943697bd0f1a1eabb2a745412a055837",
+          "locator": "cc_pf/csense_pf/bleed_meg/scope",
+          "values": {
+            "cc_pf": 30,
+            "csense_pf": 30,
+            "bleed_meg": 10.0,
+            "scope": "Nominal SDF timestamp replay into actual macro full R/C with assumed 10ns pin slew, not full-chip transistor co-simulation"
+          }
+        },
+        {
+          "path": "evidence/project-progress-review-20261108/pwm-physical-audit.json",
+          "sha256": "d992604a770d5668e36f32595bf24b7f242a73f2e19cd3cffa9fb87cc3eb25ce",
+          "locator": "claims.DIG-04.conditions and limitations"
+        }
+      ],
+      "suggested_change": "写明“已有此前30pF补偿网络的名义SDF→r5 PEX事件回放，仍假设10ns引脚斜率；不等于最新150pF/15nF网络的九角联合回归或共同顶层晶体管联仿”。",
+      "blocking_scientific_conclusion": false
+    }
+  ],
+  "checked_topics": [
+    {
+      "topic": "clock_vs_carrier",
+      "status": "pass",
+      "lines": [
+        47,
+        71,
+        73,
+        85,
+        86
+      ],
+      "reason": "现有1MHz clock/256slot→3.90625kHz carrier及1us脉宽明确；1MHz+8/10bit的256MHz/1.024GHz被明确标为计数PWM架构推导。"
+    },
+    {
+      "topic": "144_DC_reuse_and_27_selected_cases",
+      "status": "pass",
+      "lines": [
+        15,
+        65,
+        69
+      ],
+      "reason": "144点被标为固定100uA、DC等效复用并重测极值；27个选定case与历史失败分开，未声称可调mA范围或全部历史case通过。"
+    },
+    {
+      "topic": "digital_macro_and_SDF_support",
+      "status": "pass",
+      "lines": [
+        75,
+        76,
+        77,
+        78
+      ],
+      "reason": "200um宏、415标准单元实例/20时序单元、10RTL+10gate、9角×4108检查与限定STA余量匹配来源；Icarus不支持项、72.91fF/200ns/1000ns条件及非最高频率结论均保留。"
+    },
+    {
+      "topic": "new_mA_target",
+      "status": "pass",
+      "lines": [
+        79,
+        80,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ],
+      "reason": "45um/2.5mA/0.15–7.33mA/3.2V/1MHz被限定为未经商业核实的后续研究输入；25x/73.3x、8mW及假设45×45um²的123.46A/cm²核算正确。"
+    },
+    {
+      "topic": "macro_area_and_array",
+      "status": "pass",
+      "lines": [
+        56,
+        75,
+        90,
+        94,
+        96,
+        131,
+        145
+      ],
+      "reason": "39MOS宏637.03×200.36um、共同顶层916×204um与200um数字宏分开；研究宏范围不当作单个阵列像素或产品die面积；逻辑4×4不当物理阵列。"
+    },
+    {
+      "topic": "physical_GDS_DRC_LVS_PEX",
+      "status": "pass",
+      "lines": [
+        92,
+        93,
+        94,
+        95,
+        96
+      ],
+      "reason": "39MOS/345R/288C/29nets及共同顶层7277MOS/36588R/30230C/6512nets匹配来源；完整顶层瞬态未完成明确。"
+    },
+    {
+      "topic": "process_and_metal_stack",
+      "status": "pass",
+      "lines": [
+        95,
+        148
+      ],
+      "reason": "gf180mcuD/5LM_1TM_11K五金属与模拟宏M1–M3、硅CMOS驱动与发光材料、模型子集与完整PDK分别表述。"
+    },
+    {
+      "topic": "manufacturing_boundary",
+      "status": "pass",
+      "lines": [
+        45,
+        59,
+        96,
+        144,
+        145,
+        146,
+        147,
+        149
+      ],
+      "reason": "未声称silicon、foundry接受、车规或MPW签核；完整顶层动态、电源顺序、异步安全、pad/ESD、EM/IR、密度/天线/可靠性与成本缺口仍明确。"
+    }
+  ],
+  "baseline_audit": {
+    "path": "evidence/project-progress-review-20261108/pwm-physical-audit.json",
+    "sha256": "d992604a770d5668e36f32595bf24b7f242a73f2e19cd3cffa9fb87cc3eb25ce",
+    "claims": 17,
+    "source_count": 32,
+    "all_current_source_hashes_match": true
+  },
+  "source_integrity": [
+    {
+      "path": "docs/pwm.md",
+      "recorded_sha256": "ae4b164390bdd054cfedba714bd0d29257ccc146be42b89126975030f012deab",
+      "current_sha256": "ae4b164390bdd054cfedba714bd0d29257ccc146be42b89126975030f012deab",
+      "matches": true
+    },
+    {
+      "path": "docs/research/pwm-reference-startup-20261024/report-complete.md",
+      "recorded_sha256": "e13b9cd3fa7caceb65925a523d2255f864f98c3f61e2a4e44416fd92cfb6d551",
+      "current_sha256": "e13b9cd3fa7caceb65925a523d2255f864f98c3f61e2a4e44416fd92cfb6d551",
+      "matches": true
+    },
+    {
+      "path": "evidence/pwm-reference-v2/20261024/final-summary.json",
+      "recorded_sha256": "a5300ce2b6e1d7a55ffa000d789d2b8cf3525b45296085b2163d107c5be16049",
+      "current_sha256": "a5300ce2b6e1d7a55ffa000d789d2b8cf3525b45296085b2163d107c5be16049",
+      "matches": true
+    },
+    {
+      "path": "evidence/pwm-reference-v2/20261024/validation.json",
+      "recorded_sha256": "3226fd1e88de301860ee6459c2048a51c3c2a1056654e08d7cf46337f45e4072",
+      "current_sha256": "3226fd1e88de301860ee6459c2048a51c3c2a1056654e08d7cf46337f45e4072",
+      "matches": true
+    },
+    {
+      "path": "analog/pwm_reference_v2/final-network.json",
+      "recorded_sha256": "2ce4864a5e9cbe6754cf5d907f3a2a1f55cb88174423d7ffa79f3d270d3a22dc",
+      "current_sha256": "2ce4864a5e9cbe6754cf5d907f3a2a1f55cb88174423d7ffa79f3d270d3a22dc",
+      "matches": true
+    },
+    {
+      "path": "docs/research/single-pixel-closure-20261015/report.md",
+      "recorded_sha256": "ebf1f27124fcde77c21a4ba3afd585e2c98bac68a95576e6e2cf6c64201be71f",
+      "current_sha256": "ebf1f27124fcde77c21a4ba3afd585e2c98bac68a95576e6e2cf6c64201be71f",
+      "matches": true
+    },
+    {
+      "path": "evidence/analog-v3/pvt-pex-r5-bleed10M/summary.json",
+      "recorded_sha256": "ee6b29e39f878d7d90e47423693d8bc9b02276eee8d8610b1d6c8304415f75c3",
+      "current_sha256": "ee6b29e39f878d7d90e47423693d8bc9b02276eee8d8610b1d6c8304415f75c3",
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/r5/summary.json",
+      "recorded_sha256": "9c3e21a9dc221fc40b057cc6ee341f54fcb6d57dbcc7fcc386618fbb4abe708a",
+      "current_sha256": "9c3e21a9dc221fc40b057cc6ee341f54fcb6d57dbcc7fcc386618fbb4abe708a",
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/r5/geometry.json",
+      "recorded_sha256": "9b91dd15ab2ecdc6bedbb452254e55eaf4d73919f28fd8d9eff330ffa9b2a309",
+      "current_sha256": "9b91dd15ab2ecdc6bedbb452254e55eaf4d73919f28fd8d9eff330ffa9b2a309",
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/r5/klayout-result.json",
+      "recorded_sha256": "86f3515475803a845b8295a3a6fc090c52885e7617aba56decf50fdfd515c5b1",
+      "current_sha256": "86f3515475803a845b8295a3a6fc090c52885e7617aba56decf50fdfd515c5b1",
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/joint-r2/summary.json",
+      "recorded_sha256": "c19dfc416a572d3f8848500b69bb60d8f6ee38cb11096d1b1d406bf1418a74c8",
+      "current_sha256": "c19dfc416a572d3f8848500b69bb60d8f6ee38cb11096d1b1d406bf1418a74c8",
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/joint-r2/pex-audit.json",
+      "recorded_sha256": "43ad41e9e63edbdb900eafa3c63b9a24bddd19a548ec6cf5f0d9ecca78071366",
+      "current_sha256": "43ad41e9e63edbdb900eafa3c63b9a24bddd19a548ec6cf5f0d9ecca78071366",
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/joint-r2/klayout-result.json",
+      "recorded_sha256": "5779b08d6a73789a642cd4629aa2a3832aad13f99ff17525d1186f7b4dc21481",
+      "current_sha256": "5779b08d6a73789a642cd4629aa2a3832aad13f99ff17525d1186f7b4dc21481",
+      "matches": true
+    },
+    {
+      "path": "docs/digital/README.md",
+      "recorded_sha256": "20860b4b7fd41cd15cefe87e3054eb124bd66201dd41c9ff8e1ae4c3545e7617",
+      "current_sha256": "20860b4b7fd41cd15cefe87e3054eb124bd66201dd41c9ff8e1ae4c3545e7617",
+      "matches": true
+    },
+    {
+      "path": "docs/digital/physical.md",
+      "recorded_sha256": "6d61c69a3bf5e788af4657b7d792702c379a29caacfa0bbdf5ee32ec46898db6",
+      "current_sha256": "6d61c69a3bf5e788af4657b7d792702c379a29caacfa0bbdf5ee32ec46898db6",
+      "matches": true
+    },
+    {
+      "path": "evidence/digital/summary.json",
+      "recorded_sha256": "d31492d0bb507086caa81c33629e33143ac14dd5f4e7fc7358b744fe9b5f54b0",
+      "current_sha256": "d31492d0bb507086caa81c33629e33143ac14dd5f4e7fc7358b744fe9b5f54b0",
+      "matches": true
+    },
+    {
+      "path": "evidence/physical/summary.json",
+      "recorded_sha256": "eaebcfe18d122a16d249a4bf6baf19a7772c36b7a59b31b46b6d8044b807f071",
+      "current_sha256": "eaebcfe18d122a16d249a4bf6baf19a7772c36b7a59b31b46b6d8044b807f071",
+      "matches": true
+    },
+    {
+      "path": "evidence/physical/digital/gds-inspection.json",
+      "recorded_sha256": "54a5a01f78b7a4325a4f1fc0d9d439a4a2bfa6441ad46a6ad6c8e345195e0665",
+      "current_sha256": "54a5a01f78b7a4325a4f1fc0d9d439a4a2bfa6441ad46a6ad6c8e345195e0665",
+      "matches": true
+    },
+    {
+      "path": "evidence/control-v3/summary.json",
+      "recorded_sha256": "0f58925181dc2f26dd9e9ecb30c6fc2559d6d26099d8f6cd482cc5f78e106b67",
+      "current_sha256": "0f58925181dc2f26dd9e9ecb30c6fc2559d6d26099d8f6cd482cc5f78e106b67",
+      "matches": true
+    },
+    {
+      "path": "evidence/control-v3/inputs.json",
+      "recorded_sha256": "4080e9f9c8fa424c2099934c21789e309e7234e80c032994855ce90b9a42b141",
+      "current_sha256": "4080e9f9c8fa424c2099934c21789e309e7234e80c032994855ce90b9a42b141",
+      "matches": true
+    },
+    {
+      "path": "evidence/control-v3/metrics.json",
+      "recorded_sha256": "0863555684176aff6412aadebc462cbcd49e24c17f2f8392696d2d59a3a68fe9",
+      "current_sha256": "0863555684176aff6412aadebc462cbcd49e24c17f2f8392696d2d59a3a68fe9",
+      "matches": true
+    },
+    {
+      "path": "evidence/control-v3/sta.json",
+      "recorded_sha256": "a1009472d54e20e24f2fd9528239e715abdc21a42a565d4b9cf7d34a8d423f5b",
+      "current_sha256": "a1009472d54e20e24f2fd9528239e715abdc21a42a565d4b9cf7d34a8d423f5b",
+      "matches": true
+    },
+    {
+      "path": "evidence/control-v3/sdf.json",
+      "recorded_sha256": "033043cdb2d3f8e095d48e0b1cb41afe85ff8ed0f7a36173e4f7ae14e0c3b1bd",
+      "current_sha256": "033043cdb2d3f8e095d48e0b1cb41afe85ff8ed0f7a36173e4f7ae14e0c3b1bd",
+      "matches": true
+    },
+    {
+      "path": "evidence/control-v3/coupled-r5-bleed10/summary.json",
+      "recorded_sha256": "490495c6a167693dc18bec803c794dbd943697bd0f1a1eabb2a745412a055837",
+      "current_sha256": "490495c6a167693dc18bec803c794dbd943697bd0f1a1eabb2a745412a055837",
+      "matches": true
+    },
+    {
+      "path": "layout/pdk-lock.json",
+      "recorded_sha256": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+      "current_sha256": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+      "matches": true
+    },
+    {
+      "path": "scripts/physical/pdk-lock.json",
+      "recorded_sha256": "50f119ae5e17f0589f0a7a58db4c7a6daa7e6e1b40c85e15cd0d96300f7c3762",
+      "current_sha256": "50f119ae5e17f0589f0a7a58db4c7a6daa7e6e1b40c85e15cd0d96300f7c3762",
+      "matches": true
+    },
+    {
+      "path": "evidence/physical/tool-versions.json",
+      "recorded_sha256": "662dc05532610041f63b327d110cd265f2df55f064b39f6b83b8bb6e65f0c970",
+      "current_sha256": "662dc05532610041f63b327d110cd265f2df55f064b39f6b83b8bb6e65f0c970",
+      "matches": true
+    },
+    {
+      "path": "evidence/physical/environment-inputs.json",
+      "recorded_sha256": "b72729679b48a10cba1f9b8df77b9ef41f4d6ba9a592b3cf82c6623edf1cc3f1",
+      "current_sha256": "b72729679b48a10cba1f9b8df77b9ef41f4d6ba9a592b3cf82c6623edf1cc3f1",
+      "matches": true
+    },
+    {
+      "path": "docs/research/startup-tapeout-20261014/fabrication-chapter.md",
+      "recorded_sha256": "7ec737426195c9fa769dda6ba2cef1c89dc5509ac19ca6061338ede38b69521e",
+      "current_sha256": "7ec737426195c9fa769dda6ba2cef1c89dc5509ac19ca6061338ede38b69521e",
+      "matches": true
+    },
+    {
+      "path": "rtl/pixel_pwm.v",
+      "recorded_sha256": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+      "current_sha256": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+      "matches": true
+    },
+    {
+      "path": "rtl/safety/pixel_safety.v",
+      "recorded_sha256": "a6f4ef3f0705dec13d578ef6c0e6a6dd755e2d7b7714d7fb1411fbd078672a93",
+      "current_sha256": "a6f4ef3f0705dec13d578ef6c0e6a6dd755e2d7b7714d7fb1411fbd078672a93",
+      "matches": true
+    },
+    {
+      "path": "rtl/safety/pixel_control_v3.v",
+      "recorded_sha256": "a2975cf19839a0711cdd1a1aeb59be1430e8d6537172ae87eb924b47a50435db",
+      "current_sha256": "a2975cf19839a0711cdd1a1aeb59be1430e8d6537172ae87eb924b47a50435db",
+      "matches": true
+    }
+  ],
+  "delivery_note": "Final scoped display/digital/physical/mA-target/manufacturing confirmation passes at current content SHA.0blockers/0requiredchanges.NoassertiononhighspeededitsorPDFvisualQA;parentownsfullreportchecks.",
+  "post_change_recheck": {
+    "checked_at": "2026-11-09T00:24:19.336365+09:00",
+    "TT_startup_qualifier_verified": true,
+    "SDF_legacy_network_qualifier_verified": true,
+    "source_sha256": "8ae15126b21772516ab9c1b4725c8c7292ec45129cae687d2144a465ddacb651"
+  },
+  "superseded_reviewed_file_sha256": "a2d003a4c21bbc031478def3e16a54f9405cb08d1d9875754ffca4befd8b3c26",
+  "final_scoped_confirmation": {
+    "checked_at": "2026-11-09T00:24:19.336365+09:00",
+    "source_sha256": "8ae15126b21772516ab9c1b4725c8c7292ec45129cae687d2144a465ddacb651",
+    "scope": "Only previously reviewed display/PWM,digital,mA-target,physicalandmanufacturingpages;highspeedtextandfigureeditsarenotre-reviewed",
+    "scope_confirmed_unchanged": true,
+    "confirmation_method": "Re-readfivecurrentpagecallsandtheirconditionsagainstthepreviousscopedreviewand32hash-boundprimarysources;retainedTTstartupandoldSDFnetworkqualifiersverified.",
+    "page_fragments": [
+      {
+        "title": "照明单像素：参考源、保护与供电恢复已有结果",
+        "start_line": 61,
+        "end_line": 69,
+        "source_fragment_sha256": "84eddcb0df4098e29af9143eb164e5cc2f62e256665d04e543b580977a3a6281"
+      },
+      {
+        "title": "PWM与数字控制：时钟、载波和灰度必须分开",
+        "start_line": 70,
+        "end_line": 78,
+        "source_fragment_sha256": "1c55c2d7d5792682bdad8d1d737b05ebbf0024b57489ef42a4cc7a41ed8e6f8b"
+      },
+      {
+        "title": "mA级照明目标需要重新设计输出与时序",
+        "start_line": 79,
+        "end_line": 88,
+        "source_fragment_sha256": "fb8c4eb2d394379f4c950c490e7438c18446593e77c787cbf7cdce47c22ea191"
+      },
+      {
+        "title": "真实版图已做到哪里，芯片面积怎样解读",
+        "start_line": 89,
+        "end_line": 96,
+        "source_fragment_sha256": "2922d3379549bb1b0ff31d5b910a50eb5f8e5463a2998bb59c92c13ba9902a49"
+      },
+      {
+        "title": "从研究宏到可制造ASIC仍有明确边界",
+        "start_line": 141,
+        "end_line": 149,
+        "source_fragment_sha256": "b2b35aceb2e0a6f3d16df13baef0c004d77c1f9cb526272d0b5b04c5127d74b1"
+      }
+    ],
+    "combined_scope_sha256": "e9633074be7fadf97cfd687d1d7265190db279d88e00eb199408f0d1ff394dbb",
+    "primary_source_hashes_verified": 32,
+    "PDF_visual_review": false,
+    "full_report_validation_rerun": false
+  }
+}

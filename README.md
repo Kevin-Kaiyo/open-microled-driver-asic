@@ -2,6 +2,8 @@
 
 An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
+**项目进度总览（2026-11-09编制，证据截至2026-11-08）**：[专业报告PDF](docs/research/project-progress-review-20261108/project-progress-report.pdf) / [网页阅读版](docs/research/project-progress-review-20261108/index.html)。17页汇总照明PWM、MicroLED A/B/C、VCSEL、数字逻辑、实际版图/PEX、器件文献与教学平台；列明已验证范围、未过项及下一阶段进入条件。报告为现有证据综合，没有新增流片、硬件或光学通过声明。
+
 **动态负载验证（2026-11-08）**：[20 µm MicroLED 校准边界、敏感性与净 3.2 Gb/s 的 A/B/C 验证](docs/research/microled-dynamic-validation-20261108/index.html) / [复现](docs/research/microled-dynamic-validation-20261108/reproduce.md)。新增49项电气实验（33瞬态+16DC）、公开整链幅频的条件拟合和留出检验，以及固定RX下的电容/光响应扫描。DC最大目标误差约0.127%，现版A/B/C在所测假设下仍未满足净3.2 Gb/s联合门槛；接收规则限制和体结正偏另列，不预选路线。缺少S11、相位和去嵌，未将数学幅频拟合升级成物理瞬态模型，也无新布局/PEX或光学BER结论。
 
 **新增器件课题（2026-10-29）**：[面向净 3.2 Gb/s 的 MicroLED 器件与 Driver 联合设计](docs/research/microled-device-codesign-20261029/index.html) / [文字报告](docs/research/microled-device-codesign-20261029/README.md) / [验证方案](docs/research/microled-device-codesign-20261029/joint-validation-plan.md)。用 6 张原创图和 11 项原始研究来源，比较尺寸、材料、晶向、量子阱和电极的带宽、效率、能耗与制造取舍。含同 I/同 J 的解析对照、文献前后值及七阶段联合验证计划；本轮没有新增 TCAD、SPICE、版图或光学通过结果，不预选路线。

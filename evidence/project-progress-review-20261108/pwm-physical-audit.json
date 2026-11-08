@@ -1,0 +1,929 @@
+{
+  "schema": "project-progress-pwm-physical-audit-v1",
+  "audited_at": "2026-11-08T23:21:41.754491+09:00",
+  "scope": "Display PWM, reference/startup/protection, RTL/gate/SDF,39MOSmacroandcommon-topphysicalevidence",
+  "method": {
+    "read_only_source_review": true,
+    "EDA_or_test_rerun": false,
+    "raw_CSV_or_waveform_read": false,
+    "only_written_file": "build/project-progress-review-20261108/pwm-physical-audit.json",
+    "source_claim_status": "CurrentfilesreadandSHAverified;historicalexecutionresultsreportedwiththeiroriginalconditions,notnewEDAexecution"
+  },
+  "executive_findings": [
+    "100uA显示PWM单像素已达到真实39MOS PEX、有限PVT/元件角落及受控启动/保护验证。",
+    "数字PWM+恢复宏完成RTL/门级/9角STA与支持范围内SDF；共同顶层DRC/LVS/PEX完成，完整顶层晶体管瞬态未完成。",
+    "1MHz是时钟，实际PWM载波3.90625kHz；mA范围、1MHz载波、车规及硅/光学资格未建立。"
+  ],
+  "claims": [
+    {
+      "id": "PWM-01",
+      "claim": "显示PWM当前目标是100uA单像素电流设定；电压基准仍来自片外。",
+      "status": "verified_selected_simulation",
+      "values": {
+        "target_current_uA": 100,
+        "VSET_V": 0.5,
+        "RSET_ohm": 5000,
+        "nominal_current_uA": 99.73351141171081,
+        "nominal_error_percent": -0.2664885882891932
+      },
+      "conditions": {
+        "LED_model": "synthetic; about2.8V@100uA at27C, N=3, RS=50ohm, CJO=2pF, TT=1ns",
+        "nominal_rails_V": {
+          "logic_reference": 3.3,
+          "LED_supply": 5
+        }
+      },
+      "sources": [
+        {
+          "source_id": "pwm_report",
+          "locator": "lines26–40"
+        },
+        {
+          "source_id": "pwm_final",
+          "locator": "key_results.c15_dc"
+        }
+      ],
+      "limitations": [
+        "不是可编程0.15–7.33mA电流范围验证；没有45um实测LED动态/温度/光学标定。",
+        "平均支路电流与积分电荷是电气亮度代理量。"
+      ]
+    },
+    {
+      "id": "PWM-02",
+      "claim": "最新外部网络的27个选定电气case全部通过限定研究判据。",
+      "status": "verified_selected_simulation",
+      "values": {
+        "selected_cases": 27,
+        "completed": 27,
+        "passed": 27,
+        "selected_acceptance": true,
+        "local_loop_points": 3
+      },
+      "conditions": {
+        "external_network": {
+          "N2_to_board_ground_pF": 150,
+          "compensation_damping_ohm": 10,
+          "reference_filter_ohm": 100,
+          "reference_filter_nF": 15,
+          "external_control_output_ohm": 10
+        },
+        "on_chip_geometry": "unchanged r5 39MOS extracted macro"
+      },
+      "sources": [
+        {
+          "source_id": "pwm_final"
+        },
+        {
+          "source_id": "pwm_validation"
+        },
+        {
+          "source_id": "pwm_network"
+        }
+      ],
+      "limitations": [
+        "仅选定case完成；不能写成全部404个历史探索case均通过。",
+        "没有新增片内器件或新GDS；外部补偿和封装分开建模。"
+      ]
+    },
+    {
+      "id": "PWM-03",
+      "claim": "100uA设定的DC PVT/独立电阻矩阵有144点通过，误差不是可调电流范围。",
+      "status": "verified_conditional_reuse",
+      "values": {
+        "DC_matrix": {
+          "basis": "144-point N2-package baseline with100nF and no added damping; capacitor branch is open atDC. Final capacitor/damping values leave the DC network identical; nominal/global extrema were separately replayed.",
+          "count": 144,
+          "passed": 144,
+          "min_error_pct": -4.436140789318688,
+          "max_error_pct": 1.9851248302072966
+        },
+        "external_reference_extreme_error_percent": [
+          -4.59665,
+          2.18745
+        ]
+      },
+      "conditions": {
+        "coverage": "3 MOS corners ×3 temperatures ×16 independent resistor vertices",
+        "resistors": "RSET5k,RBIAS100k,RRELEASE100k,RBLEED10M; VSET external0.5V",
+        "reuse_basis": "144 historical100nF/no-added-damping points reused because capacitors are DC-open and compensation branch DC-equivalent; nominal/extremes replayed",
+        "extra_reference_boundary": "generic VSET ±0.2% with100ohm source impedance"
+      },
+      "sources": [
+        {
+          "source_id": "pwm_final"
+        },
+        {
+          "source_id": "pwm_report",
+          "locator": "lines111–119"
+        }
+      ],
+      "limitations": [
+        "144点不是以最终15nF逐点重跑的瞬态矩阵。",
+        "无统计失配/制造良率承诺；通用外部基准边界不是已验证某款参考IC。"
+      ]
+    },
+    {
+      "id": "PWM-04",
+      "claim": "最新限定供电扰动矩阵通过恢复与偏差门槛。",
+      "status": "verified_selected_simulation",
+      "values": {
+        "dynamic_matrix": {
+          "count": 12,
+          "passed": 12,
+          "max_excursion_pct": 8.873339474719765,
+          "max_restore_s": 2.520415577066662e-06
+        },
+        "nominal_excursion_percent": 0.7456439933067216,
+        "nominal_restore_us": 2.2845664861617516
+      },
+      "conditions": {
+        "disturbance": "10% supply step with10ns edge",
+        "matrix": "TT8 independent Rfilter±5%,Cfilter±10%,Ccomp±10% vertices plus SS/FF2 fast/slow endpoints each",
+        "gates": "excursion≤20%, restore to baseline±0.5%≤5us"
+      },
+      "sources": [
+        {
+          "source_id": "pwm_final"
+        },
+        {
+          "source_id": "pwm_report"
+        }
+      ],
+      "limitations": [
+        "并非全部温度、供电、封装与无源容差的完整联合覆盖。",
+        "不能把局部相位裕量当全多环路稳定性签核。"
+      ]
+    },
+    {
+      "id": "PWM-05",
+      "claim": "受控启动的近零保持和严格数值一致性通过；自主POR尚未完成。",
+      "status": "verified_selected_simulation",
+      "values": {
+        "TT_Gear2_held_peak_pA": 46.38792724940462,
+        "TT_trapezoidal_held_peak_pA": 46.45792847644177,
+        "SS_slow_recovered_current_uA": 96.79728145748115,
+        "SS_slow_recovery_window_us": [
+          30,
+          40
+        ],
+        "numerical_validation": [
+          {
+            "pair": [
+              "c15_startup_fullmesh",
+              "c15_startup_fullmesh_trap"
+            ],
+            "completed": true,
+            "held_peak_delta_a": 7.000122703714815e-14,
+            "held_charge_max_delta_c": 1.3266506182870497e-19,
+            "recovered_current_relative_delta": 8.466083389890855e-11,
+            "passed": true
+          },
+          {
+            "pair": [
+              "c15_step",
+              "c15_step_fine"
+            ],
+            "completed": true,
+            "peak_relative_delta": 1.0443078068966827e-08,
+            "disturbance_positive_negative_charge_c": [
+              [
+                2.1394151217698587e-12,
+                -3.1195099333277364e-12
+              ],
+              [
+                2.139414304729227e-12,
+                -3.1195086158382125e-12
+              ]
+            ],
+            "disturbance_charge_relative_delta": 4.223387994883865e-07,
+            "settle_delta_s": 8.400201358106879e-10,
+            "passed": true
+          }
+        ]
+      },
+      "conditions": {
+        "startup": "safety/buffer/LED rails pre-powered; reference rail100ns rise; FAULT held until20us; permission later from RTL",
+        "integration": "full0–40us Gear2/maxstep2ns and trapezoidal/maxstep1ns; near-edge0.1ps fine mesh",
+        "hold_gate_nA": 1
+      },
+      "sources": [
+        {
+          "source_id": "pwm_final"
+        },
+        {
+          "source_id": "pwm_report",
+          "locator": "lines97–109,152–156"
+        }
+      ],
+      "limitations": [
+        "pA是SPICE数值近零窗口，非pA级硅片漏电预测或测量。",
+        "任意同时上电/掉电、控制电源缺失、自主reference-ready/UVLO/POR未闭合。"
+      ]
+    },
+    {
+      "id": "PWM-06",
+      "claim": "故障可在停钟后独立切断LED支路，当前TT案例通过关断和双向电荷门槛。",
+      "status": "verified_selected_simulation",
+      "values": {
+        "TT_fault_to_safe_ns": 205.7768017073655,
+        "positive_tail_charge_pC": 0.5048963158059756,
+        "negative_tail_charge_pC": -7.363468678406392
+      },
+      "conditions": {
+        "clock_stop_us": 47.7,
+        "fault_assert_us": 50.125,
+        "gates": "safe continuously below1nA within1us; Q+≤10pC and abs(Q−)≤20pC in first1us",
+        "control": "external FAULT/PERMIT; finite10ohm GPIO drive assumption"
+      },
+      "sources": [
+        {
+          "source_id": "pwm_final"
+        },
+        {
+          "source_id": "pwm_report"
+        }
+      ],
+      "limitations": [
+        "关闭时间不是数字观测信号传播延迟。",
+        "不构成所有异步故障释放相位、可靠性或完整电源顺序验证。"
+      ]
+    },
+    {
+      "id": "PWM-07",
+      "claim": "当前PWM为1MHz clock、3.90625kHz载波，验证最低码1us电荷。",
+      "status": "verified_RTL_and_selected_PEX_simulation",
+      "values": {
+        "clock_Hz": 1000000.0,
+        "slots_per_frame": 256,
+        "frame_period_us": 256,
+        "PWM_carrier_Hz": 3906.25,
+        "gray_bits": 8,
+        "duty_port_bits": 9,
+        "minimum_commanded_on_us": 1,
+        "latest_TT_duty1_charge_pC": 99.63325349929468,
+        "latest_TT_duty1_charge_error_percent": -0.10052580220729634
+      },
+      "conditions": {
+        "duty": "9bit encodes0..256 high slots;257..511 clamp to256;not9bit grayscale",
+        "measurement_window_us": [
+          258.5,
+          514.5
+        ],
+        "charge_reference": "same-network DC current×1us",
+        "bridge_slew_ns_assumed": 10
+      },
+      "sources": [
+        {
+          "source_id": "pwm_contract",
+          "locator": "lines3–21"
+        },
+        {
+          "source_id": "pwm_final"
+        },
+        {
+          "source_id": "pwm_report",
+          "locator": "lines107–109"
+        }
+      ],
+      "limitations": [
+        "1MHz时钟不能写成1MHz PWM载波。",
+        "若同256slot结构升至1MHz载波，需256MHz clock、3.90625ns时隙；未在当前证据中验证。",
+        "电荷误差是完整帧积分，非实测光学亮度误差。"
+      ]
+    },
+    {
+      "id": "PWM-08",
+      "claim": "此前完整r5 PEX的270点MOS/温压扫描和关断电流通过。",
+      "status": "historical_verified_simulation",
+      "values": {
+        "points": 270,
+        "failed": 0,
+        "on_min_uA": 97.2547391093085,
+        "on_max_uA": 100.61622007402181,
+        "off_max_pA": 52.508415393556554
+      },
+      "conditions": {
+        "date": "2026-10-15",
+        "network": "r5 with30pF compensation and10M bleed;different external compensation fromlatest150pF/N2/15nF network",
+        "coverage": "deterministic MOS process corners, temperatures and rail voltages;nominal extracted RC"
+      },
+      "sources": [
+        {
+          "source_id": "analog_pvt"
+        },
+        {
+          "source_id": "closure_report"
+        }
+      ],
+      "limitations": [
+        "不要与最新144点电阻容差矩阵合并成同一覆盖或同一误差口径。",
+        "不含统计失配/良率或RC提取工艺角扫描。"
+      ]
+    },
+    {
+      "id": "DIG-01",
+      "claim": "注册输出PWM完成RTL穷举与早期标准单元综合/门级回归。",
+      "status": "historical_verified_digital",
+      "values": {
+        "RTL_full_frames": 518,
+        "slot_checks": 133159,
+        "known_events": 543,
+        "legal_duty_values": 257,
+        "clamp_inputs": 255,
+        "mapped_standard_cells": 95,
+        "mapped_flip_flops": 19,
+        "mapped_Liberty_cell_area_um2": 2434.4768
+      },
+      "conditions": {
+        "direct_output_driver": "dffq_1.Q",
+        "gate_modes": [
+          "official FUNCTIONAL zero-delay",
+          "1ns scalar specify placeholder with100ns sampling delay"
+        ],
+        "library": "gf180mcu_fd_sc_mcu7t5v0 TT25C3.3V"
+      },
+      "sources": [
+        {
+          "source_id": "digital_legacy_synthesis"
+        },
+        {
+          "source_id": "digital_legacy_doc"
+        },
+        {
+          "source_id": "pwm_contract"
+        }
+      ],
+      "limitations": [
+        "1ns标量是Verilog模板占位，不能当成Liberty/PEX实际延迟。",
+        "Liberty cell area不是core或die面积。",
+        "本轮审查未重跑RTL或EDA；当前RTL SHA已另与control-v3 implemented inputs核对。"
+      ]
+    },
+    {
+      "id": "DIG-02",
+      "claim": "当前PWM+恢复存储数字宏完成10组RTL、10组门级以及9角实际SDF回归。",
+      "status": "verified_published_digital_evidence",
+      "values": {
+        "top": "pixel_control_v3",
+        "RTL_cases": 10,
+        "gate_cases": 10,
+        "SDF_corners": 9,
+        "SDF_checks_per_corner": 4108,
+        "SDF_fault_monitor_off_ns": [
+          0.767,
+          2.429
+        ],
+        "die_um": [
+          200,
+          200
+        ],
+        "standard_cell_instances": 415,
+        "sequential_cells": 20,
+        "standard_cell_area_um2": 4811.88,
+        "die_area_um2": 40000
+      },
+      "conditions": {
+        "RC_corners": "nom/min/max",
+        "PVT": [
+          "TT25C3.3V",
+          "SS125C3.0V",
+          "FF−40C3.6V"
+        ],
+        "clock_period_ns": 1000,
+        "input_arrival_ns_assumed": 200,
+        "output_load_fF_assumed": 72.91
+      },
+      "sources": [
+        {
+          "source_id": "digital_v3"
+        },
+        {
+          "source_id": "digital_v3_metrics"
+        },
+        {
+          "source_id": "digital_v3_inputs"
+        },
+        {
+          "source_id": "digital_v3_sdf"
+        }
+      ],
+      "limitations": [
+        "SDF Icarus存在条件XOR ModPath和timing check不支持；不是完整SDF signoff。",
+        "0.767–2.429ns是数字故障观测输出，不是LED支路205ns关断。",
+        "未回灌共同顶层跨宏RC到这组STA；负载72.91fF为假设。"
+      ]
+    },
+    {
+      "id": "DIG-03",
+      "claim": "当前数字宏9角STA的setup/hold及slew/cap/fanout计数通过限定SDC条件。",
+      "status": "verified_static_timing",
+      "values": {
+        "minimum_r2r_setup_slack_ns": 986.059082,
+        "minimum_r2r_hold_slack_ns": 0.441845,
+        "metrics": {
+          "magic__drc_error__count": 0,
+          "design__lvs_error__count": 0,
+          "design__xor_difference__count": 0,
+          "design__max_slew_violation__count": 0,
+          "design__max_cap_violation__count": 0,
+          "design__max_fanout_violation__count": 0,
+          "timing__setup_vio__count": 0,
+          "timing__hold_vio__count": 0
+        }
+      },
+      "conditions": {
+        "SDC": "1000ns clock;200ns input-arrival assumption;72.91fF output load",
+        "scope": "extracted digital macro,notfullcommon-top"
+      },
+      "sources": [
+        {
+          "source_id": "digital_v3"
+        },
+        {
+          "source_id": "digital_v3_sta"
+        },
+        {
+          "source_id": "digital_v3_metrics"
+        }
+      ],
+      "limitations": [
+        "任意异步FAULT release、metastability安全没有建立。",
+        "STA与SDF各自覆盖范围不同，不能互相替代所有不支持项。"
+      ]
+    },
+    {
+      "id": "DIG-04",
+      "claim": "实际SDF事件时间戳已回放到完整r5模拟RC，最低码与停钟故障通过。",
+      "status": "historical_verified_one_way_replay",
+      "values": {
+        "duty1_charge_error_percent": -0.10138585167696057,
+        "fault_to_safe_ns": 205.79359248306653,
+        "full_on_uA": 99.7391154201245
+      },
+      "conditions": {
+        "network": "r5 actual macro fullRC;30pF compensation,30pF SENSE,10M bleed",
+        "slew_ns_assumed": 10,
+        "scope": "Nominal SDF timestamp replay into actual macro full R/C with assumed 10ns pin slew, not full-chip transistor co-simulation"
+      },
+      "sources": [
+        {
+          "source_id": "digital_v3_coupled"
+        },
+        {
+          "source_id": "closure_report"
+        }
+      ],
+      "limitations": [
+        "仅单向event replay，不是完整共同顶层7277MOS晶体管动态联仿。",
+        "该30pF外部网络回放不能改写成最新15nF/N2-150pF全部SDF/PVT联合通过。"
+      ]
+    },
+    {
+      "id": "PHY-01",
+      "claim": "39MOS参考/保护/缓冲/像素宏完成两套DRC、LVS、GDS回读和实际全网络RC提取。",
+      "status": "verified_open_PDK_physical_checks",
+      "values": {
+        "physical_checks_passed": true,
+        "extracted_counts": {
+          "mos": 39,
+          "resistors": 345,
+          "capacitors": 288
+        },
+        "RC_nets_extracted": 29,
+        "RC_nets_total": 29,
+        "bbox_um": [
+          9.0,
+          -4.0,
+          646.03,
+          196.36
+        ],
+        "span_um": [
+          637.03,
+          200.36
+        ],
+        "geometric_bbox_area_um2": 127635.3308,
+        "external_signoff": false
+      },
+      "conditions": {
+        "tools": {
+          "magic": "8.3.684",
+          "netgen": "Netgen 1.5.324 compiled on Sat Oct  3 18:46:18 JST 2026",
+          "klayout": "0.30.7 (pinned LibreLane Linux image; see command manifest)"
+        },
+        "LVS_scope": "Connectivity, MOS classes and W/L with PDK property tolerance; AD/AS/PD/PS excluded by pinned Netgen setup; extracted geometry used in PEX",
+        "negative_controls": "real GDS open and power-ground short rejected"
+      },
+      "sources": [
+        {
+          "source_id": "analog_physical"
+        },
+        {
+          "source_id": "analog_geometry"
+        },
+        {
+          "source_id": "analog_klayout"
+        },
+        {
+          "source_id": "closure_report"
+        }
+      ],
+      "limitations": [
+        "637.03×200.36um为研究测试宏GDS范围，非最终产品die或每个45um像素的driver面积。",
+        "没有pad ring/ESD/seal ring/package/POR；不等于foundry制造接受。",
+        "AD/AS/PD/PS未由锁定Netgen setup比较，PEX使用抽取结几何。"
+      ]
+    },
+    {
+      "id": "PHY-02",
+      "claim": "模拟与数字宏已有真实共同顶层GDS、独立DRC/LVS和完整RC拓扑审计。",
+      "status": "verified_open_PDK_physical_checks",
+      "values": {
+        "physical_checks_passed": true,
+        "occupied_span_um": [
+          916.0,
+          204.0
+        ],
+        "occupied_area_um2": 186864.0,
+        "extracted_counts": {
+          "mos": 7277,
+          "resistors": 36588,
+          "capacitors": 30230
+        },
+        "RC_nets_extracted": 6512,
+        "RC_nets_total": 6512,
+        "electrical_full_top_transient_regression_passed": null,
+        "external_signoff": false,
+        "silicon": false
+      },
+      "conditions": {
+        "top": "startup_integrated_v3",
+        "interfaces": "RAW_PWM,PERMIT,FAULT andpower returns physically routed;separateVREF",
+        "PEX_audit": "R-collapse/C-ignore copy onlyfor topology LVS;deliveredRCkeepsallR/C",
+        "area": "916×204um actual recognized-polygon extent;no pad ring"
+      },
+      "sources": [
+        {
+          "source_id": "joint_physical"
+        },
+        {
+          "source_id": "joint_pex"
+        },
+        {
+          "source_id": "joint_klayout"
+        },
+        {
+          "source_id": "closure_report"
+        }
+      ],
+      "limitations": [
+        "完整7277MOS共同顶层瞬态回归仍未完成。",
+        "6512/6512网络覆盖不等于RC数值校准、3D场求解、RC工艺角或EM/IR签核。",
+        "先前242/6512不完整提取与Via2几何失败已保留并修正，不能隐去历史失败。"
+      ]
+    },
+    {
+      "id": "PHY-03",
+      "claim": "当前完整PDK配置为gf180mcuD五层互连金属；实际39MOS宏绘图使用M1–M3。",
+      "status": "verified_configuration_and_GDS_metadata",
+      "values": {
+        "variant": "gf180mcuD",
+        "stack": "5LM_1TM_11K",
+        "interconnect_metal_count": 5,
+        "top_metal": "Metal5",
+        "analog_macro_present_metal_layers": [
+          "Metal1",
+          "Metal2",
+          "Metal3"
+        ],
+        "analog_MOS_option": "06v0",
+        "digital_standard_cell_device_option": "05v0",
+        "PDK_build": "54435919abffb937387ec956209f9cf5fd2dfbee",
+        "primitive_revision": "41918f5a2356b9fb49a897ecc4fb4716b0ab1041"
+      },
+      "conditions": {
+        "scope": "driver CMOS process configuration;doesnotdescribetheInGaNLEDprocess",
+        "proof": "local pinned PDK metadata plusproject fabricationchapter;actualanaloglayernamesfromGDS-derivedmetadata"
+      },
+      "sources": [
+        {
+          "source_id": "pdk_lock"
+        },
+        {
+          "source_id": "physical_pdk_lock"
+        },
+        {
+          "source_id": "fabrication_scope"
+        },
+        {
+          "source_id": "analog_geometry"
+        },
+        {
+          "source_id": "closure_report"
+        }
+      ],
+      "limitations": [
+        "五层互连金属不是五层工艺/五张mask；poly不算第六层金属。",
+        "没有由几何或配置证明工艺厚度/电迁移/可靠性已签核。"
+      ]
+    },
+    {
+      "id": "PHY-04",
+      "claim": "工具、PDK与输入身份有锁定及执行版本记录，native模拟与Linux数字工具栈分开。",
+      "status": "verified_published_provenance",
+      "values": {
+        "native_analog": {
+          "Magic": "8.3.684",
+          "Netgen": "1.5.324",
+          "ngspice": "47",
+          "Tcl_Tk": "8.6.18"
+        },
+        "independent_KLayout": "0.30.7 Linux",
+        "digital_image_index": "sha256:f91b21d75f79871f9ccf37451020b5d2f7b3236881a997ff709c561e8280a30f",
+        "digital_arm64_manifest": "sha256:f851ed1ae33a641389239dcf93194a8a2077e39eab9b1afdf8f9321078e49a18",
+        "digital_tool_versions": {
+          "LibreLane": "3.0.14",
+          "OpenROAD": "dcf36133a369abc8f3c5e5738cd4d82e4903c0e0",
+          "Yosys": "0.62/7326bb7d6641500ecb285c291a54a662cb1e76cf",
+          "Magic": "8.3.623",
+          "Netgen": "1.5.316",
+          "KLayout": "0.30.7"
+        }
+      },
+      "conditions": {
+        "PDK": "Ciel/open_pdks54435919...;actualfullPDKnotanalog/models subset",
+        "digital_v3_image_matches_recorded_environment": true
+      },
+      "sources": [
+        {
+          "source_id": "pdk_lock"
+        },
+        {
+          "source_id": "tool_versions"
+        },
+        {
+          "source_id": "environment"
+        },
+        {
+          "source_id": "digital_v3_inputs"
+        },
+        {
+          "source_id": "analog_physical"
+        }
+      ],
+      "limitations": [
+        "早期native Yosys0.69+post与容器Yosys0.62不同，不能合并成单一工具版本。",
+        "layout/pdk-lock.json的旧nativeKLayout未验证字段不覆盖之后Linux独立DRC通过证据。",
+        "锁定公共PDK/工具并不构成foundry认可signoff。"
+      ]
+    },
+    {
+      "id": "GAP-01",
+      "claim": "显示方向仍有明确未过项和被拒绝候选，不能宣布车载HD lighting规格完成。",
+      "status": "not_demonstrated_or_historical_failure_retained",
+      "values": {
+        "rejected_100nF_SS_startup_uA": 91.7024,
+        "rejected_47nF_SS_recovery_us": [
+          8.057,
+          10.989
+        ],
+        "rejected_three_MOS_startup_peak_nA": 328,
+        "selected27_incomplete_or_failed": [],
+        "retained_historical_incomplete_count": 10,
+        "historical_identity_exceptions_excluded": [
+          "pcb150_board100n_ac",
+          "startup_diagnostic_strict_r10_gear1_fullmesh"
+        ]
+      },
+      "conditions": {
+        "current_development_level": "experimental singlepixel methodology andpublicPDKproof",
+        "user_proposed_target_not_validated": {
+          "LED_side_um": 45,
+          "nominal_mA": 2.5,
+          "current_range_mA": [
+            0.15,
+            7.33
+          ],
+          "Vf_V": 3.2,
+          "PWM_carrier_Hz": 1000000.0
+        }
+      },
+      "sources": [
+        {
+          "source_id": "pwm_validation"
+        },
+        {
+          "source_id": "pwm_report"
+        },
+        {
+          "source_id": "joint_physical"
+        },
+        {
+          "source_id": "closure_report"
+        }
+      ],
+      "limitations": [
+        "没有自主POR/UVLO/reference-ready；任意电源顺序/异步故障释放未闭合。",
+        "没有mA级范围、电迁移/热预算、真实LED温度动态、光学量、阵列均匀性及车规可靠性。",
+        "没有完整pad/ESD/package、manufacturingdeck/EMIR/reliability/silicon/opticalqualification。",
+        "历史可变manifest身份异常两case已排除最终验收，原始证据保留。"
+      ]
+    }
+  ],
+  "sources": {
+    "pwm_contract": {
+      "path": "docs/pwm.md",
+      "sha256": "ae4b164390bdd054cfedba714bd0d29257ccc146be42b89126975030f012deab",
+      "bytes": 4558
+    },
+    "pwm_report": {
+      "path": "docs/research/pwm-reference-startup-20261024/report-complete.md",
+      "sha256": "e13b9cd3fa7caceb65925a523d2255f864f98c3f61e2a4e44416fd92cfb6d551",
+      "bytes": 22531
+    },
+    "pwm_final": {
+      "path": "evidence/pwm-reference-v2/20261024/final-summary.json",
+      "sha256": "a5300ce2b6e1d7a55ffa000d789d2b8cf3525b45296085b2163d107c5be16049",
+      "bytes": 104872
+    },
+    "pwm_validation": {
+      "path": "evidence/pwm-reference-v2/20261024/validation.json",
+      "sha256": "3226fd1e88de301860ee6459c2048a51c3c2a1056654e08d7cf46337f45e4072",
+      "bytes": 12780
+    },
+    "pwm_network": {
+      "path": "analog/pwm_reference_v2/final-network.json",
+      "sha256": "2ce4864a5e9cbe6754cf5d907f3a2a1f55cb88174423d7ffa79f3d270d3a22dc",
+      "bytes": 2477
+    },
+    "closure_report": {
+      "path": "docs/research/single-pixel-closure-20261015/report.md",
+      "sha256": "ebf1f27124fcde77c21a4ba3afd585e2c98bac68a95576e6e2cf6c64201be71f",
+      "bytes": 18655
+    },
+    "analog_pvt": {
+      "path": "evidence/analog-v3/pvt-pex-r5-bleed10M/summary.json",
+      "sha256": "ee6b29e39f878d7d90e47423693d8bc9b02276eee8d8610b1d6c8304415f75c3",
+      "bytes": 1212
+    },
+    "analog_physical": {
+      "path": "evidence/layout-v3/r5/summary.json",
+      "sha256": "9c3e21a9dc221fc40b057cc6ee341f54fcb6d57dbcc7fcc386618fbb4abe708a",
+      "bytes": 7865
+    },
+    "analog_geometry": {
+      "path": "evidence/layout-v3/r5/geometry.json",
+      "sha256": "9b91dd15ab2ecdc6bedbb452254e55eaf4d73919f28fd8d9eff330ffa9b2a309",
+      "bytes": 785164
+    },
+    "analog_klayout": {
+      "path": "evidence/layout-v3/r5/klayout-result.json",
+      "sha256": "86f3515475803a845b8295a3a6fc090c52885e7617aba56decf50fdfd515c5b1",
+      "bytes": 60
+    },
+    "joint_physical": {
+      "path": "evidence/layout-v3/joint-r2/summary.json",
+      "sha256": "c19dfc416a572d3f8848500b69bb60d8f6ee38cb11096d1b1d406bf1418a74c8",
+      "bytes": 8533
+    },
+    "joint_pex": {
+      "path": "evidence/layout-v3/joint-r2/pex-audit.json",
+      "sha256": "43ad41e9e63edbdb900eafa3c63b9a24bddd19a548ec6cf5f0d9ecca78071366",
+      "bytes": 1156
+    },
+    "joint_klayout": {
+      "path": "evidence/layout-v3/joint-r2/klayout-result.json",
+      "sha256": "5779b08d6a73789a642cd4629aa2a3832aad13f99ff17525d1186f7b4dc21481",
+      "bytes": 40
+    },
+    "digital_legacy_doc": {
+      "path": "docs/digital/README.md",
+      "sha256": "20860b4b7fd41cd15cefe87e3054eb124bd66201dd41c9ff8e1ae4c3545e7617",
+      "bytes": 7036
+    },
+    "digital_legacy_physical_doc": {
+      "path": "docs/digital/physical.md",
+      "sha256": "6d61c69a3bf5e788af4657b7d792702c379a29caacfa0bbdf5ee32ec46898db6",
+      "bytes": 10494
+    },
+    "digital_legacy_synthesis": {
+      "path": "evidence/digital/summary.json",
+      "sha256": "d31492d0bb507086caa81c33629e33143ac14dd5f4e7fc7358b744fe9b5f54b0",
+      "bytes": 9847
+    },
+    "digital_legacy_physical": {
+      "path": "evidence/physical/summary.json",
+      "sha256": "eaebcfe18d122a16d249a4bf6baf19a7772c36b7a59b31b46b6d8044b807f071",
+      "bytes": 30789
+    },
+    "digital_legacy_geometry": {
+      "path": "evidence/physical/digital/gds-inspection.json",
+      "sha256": "54a5a01f78b7a4325a4f1fc0d9d439a4a2bfa6441ad46a6ad6c8e345195e0665",
+      "bytes": 127
+    },
+    "digital_v3": {
+      "path": "evidence/control-v3/summary.json",
+      "sha256": "0f58925181dc2f26dd9e9ecb30c6fc2559d6d26099d8f6cd482cc5f78e106b67",
+      "bytes": 3211
+    },
+    "digital_v3_inputs": {
+      "path": "evidence/control-v3/inputs.json",
+      "sha256": "4080e9f9c8fa424c2099934c21789e309e7234e80c032994855ce90b9a42b141",
+      "bytes": 627
+    },
+    "digital_v3_metrics": {
+      "path": "evidence/control-v3/metrics.json",
+      "sha256": "0863555684176aff6412aadebc462cbcd49e24c17f2f8392696d2d59a3a68fe9",
+      "bytes": 17009
+    },
+    "digital_v3_sta": {
+      "path": "evidence/control-v3/sta.json",
+      "sha256": "a1009472d54e20e24f2fd9528239e715abdc21a42a565d4b9cf7d34a8d423f5b",
+      "bytes": 2075
+    },
+    "digital_v3_sdf": {
+      "path": "evidence/control-v3/sdf.json",
+      "sha256": "033043cdb2d3f8e095d48e0b1cb41afe85ff8ed0f7a36173e4f7ae14e0c3b1bd",
+      "bytes": 4530
+    },
+    "digital_v3_coupled": {
+      "path": "evidence/control-v3/coupled-r5-bleed10/summary.json",
+      "sha256": "490495c6a167693dc18bec803c794dbd943697bd0f1a1eabb2a745412a055837",
+      "bytes": 1533
+    },
+    "pdk_lock": {
+      "path": "layout/pdk-lock.json",
+      "sha256": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+      "bytes": 2539
+    },
+    "physical_pdk_lock": {
+      "path": "scripts/physical/pdk-lock.json",
+      "sha256": "50f119ae5e17f0589f0a7a58db4c7a6daa7e6e1b40c85e15cd0d96300f7c3762",
+      "bytes": 103094
+    },
+    "tool_versions": {
+      "path": "evidence/physical/tool-versions.json",
+      "sha256": "662dc05532610041f63b327d110cd265f2df55f064b39f6b83b8bb6e65f0c970",
+      "bytes": 2970
+    },
+    "environment": {
+      "path": "evidence/physical/environment-inputs.json",
+      "sha256": "b72729679b48a10cba1f9b8df77b9ef41f4d6ba9a592b3cf82c6623edf1cc3f1",
+      "bytes": 1031
+    },
+    "fabrication_scope": {
+      "path": "docs/research/startup-tapeout-20261014/fabrication-chapter.md",
+      "sha256": "7ec737426195c9fa769dda6ba2cef1c89dc5509ac19ca6061338ede38b69521e",
+      "bytes": 29155
+    },
+    "rtl_pwm": {
+      "path": "rtl/pixel_pwm.v",
+      "sha256": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+      "bytes": 1414
+    },
+    "rtl_safety": {
+      "path": "rtl/safety/pixel_safety.v",
+      "sha256": "a6f4ef3f0705dec13d578ef6c0e6a6dd755e2d7b7714d7fb1411fbd078672a93",
+      "bytes": 952
+    },
+    "rtl_control": {
+      "path": "rtl/safety/pixel_control_v3.v",
+      "sha256": "a2975cf19839a0711cdd1a1aeb59be1430e8d6537172ae87eb924b47a50435db",
+      "bytes": 764
+    }
+  },
+  "current_RTL_matches_implemented_inputs": {
+    "rtl/pixel_pwm.v": {
+      "actual_sha256": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+      "implemented_sha256": "690e4f6f08d58485dcbe0bf42eb00cfae4810a813f993b4ae6fe8af8a6d05de6",
+      "matches": true
+    },
+    "rtl/safety/pixel_safety.v": {
+      "actual_sha256": "a6f4ef3f0705dec13d578ef6c0e6a6dd755e2d7b7714d7fb1411fbd078672a93",
+      "implemented_sha256": "a6f4ef3f0705dec13d578ef6c0e6a6dd755e2d7b7714d7fb1411fbd078672a93",
+      "matches": true
+    },
+    "rtl/safety/pixel_control_v3.v": {
+      "actual_sha256": "a2975cf19839a0711cdd1a1aeb59be1430e8d6537172ae87eb924b47a50435db",
+      "implemented_sha256": "a2975cf19839a0711cdd1a1aeb59be1430e8d6537172ae87eb924b47a50435db",
+      "matches": true
+    }
+  },
+  "chronology_conflicts_resolved": [
+    {
+      "earlier": "docs/digital/physical.md states standalone180um macrohasnocommontop",
+      "later": "evidence/layout-v3/joint-r2/summary.json showsrealcommontopphysicalpassed",
+      "interpretation": "180umstandalonehistoryandlater200umcontrolmacro/common-topareseparatestages;nofullcommon-toptransientclaim."
+    },
+    {
+      "earlier": "control-v3 summary notes independentcommon-topKLayoutplanned",
+      "later": "joint-r2 KLayoutresultpassed",
+      "interpretation": "common-topindependentchecknowexists;digitalflowbuilt-inKLayoutskipremainshistoricalfact."
+    },
+    {
+      "earlier": "layout/pdk-lock.json nativeKLayoutstatusunverified",
+      "later": "r5/joint-r2 independentLinuxKLayout0.30.7passed",
+      "interpretation": "oldmacOSnativeexecutionfailuredoesnotmeanindependentDRCcurrentlymissing."
+    }
+  ],
+  "recommended_report_wording": "已形成可复现的单像素显示PWM研究平台，覆盖数字控制、真实模拟宏PEX及共同顶层物理检查；当前定量性能集中在100uA、3.90625kHz PWM，仍需完整顶层动态、电源就绪互锁、mA级输出与真实LED/封装/硅测量。"
+}

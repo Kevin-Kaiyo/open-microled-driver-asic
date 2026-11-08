@@ -1,0 +1,792 @@
+{
+  "schema": "project-platform-delivery-audit-v1",
+  "created": "2026-11-08T23:24:41.075031+09:00",
+  "audit_mode": "read-only current-file evidence audit; only this JSON written",
+  "claims": [
+    {
+      "id": "research-library",
+      "status": "available; dated evidence library",
+      "claim": "35条目标导向来源（21研究论文，其中13关键全文、8仅摘要，另有综述/官方资料）和可搜索索引；2026-10-29器件共设计新增9条来源条目及条件/缺口台账。",
+      "metrics": {
+        "driver_literature_counts": {
+          "all_sources": 35,
+          "research_papers": 21,
+          "review_papers": 1,
+          "key_fulltext_research_papers": 13,
+          "abstract_research_papers": 8
+        },
+        "codesign_source_entries": 9
+      },
+      "sources": [
+        {
+          "path": "docs/research/driver-literature-20261012/README.md",
+          "sha256": "d782c6456f6774769506909dd7d151a8d7ecc3e4bab49d313c5e90da9cc02dab",
+          "bytes": 2682
+        },
+        {
+          "path": "docs/research/driver-literature-20261012/sources.json",
+          "sha256": "e3231f67e59a8026965442d193d57829e87ce2032a9aad0840f2e0542a0d84b4",
+          "bytes": 91318
+        },
+        {
+          "path": "docs/research/driver-literature-20261012/papers-index.md",
+          "sha256": "cf06ea9b2295d69243cfcfab9752b05fb44e8f959af37fb084b8972e9af02c80",
+          "bytes": 83647
+        },
+        {
+          "path": "evidence/microled-device-codesign-20261029/literature.json",
+          "sha256": "013b6e918bf8aa6209b6af76eaf98b78182aef8a704114a6045870c7b43e31e8",
+          "bytes": 42987
+        },
+        {
+          "path": "evidence/microled-dynamic-20261029/source-ledger.json",
+          "sha256": "dd38a7d58bb715565c6a56faa221b5090c2f590ffea4763c96fd32601a5ad960",
+          "bytes": 10756
+        }
+      ],
+      "limits": [
+        "Targeted repository study, not exhaustive systematic review, market share, current global performance ranking or proof the user has read every paper.",
+        "This audit checked files/counts/locators, did not re-fetch external papers or independently repeat all bibliographic verification."
+      ]
+    },
+    {
+      "id": "reproducible-one-pixel-platform",
+      "status": "software/RTL/electrical replay evidence available; hardware interfaces incomplete",
+      "claim": "Frame experiment v0.1可追溯从合成命令、完整性检查、atomic commit、selected pixel量化、RTL/PWL到冻结v0.4电气后端；765项既有检查、8192slots、3transient/2circuit DC/1LED calibration有记录。",
+      "metrics": {
+        "recorded_checks": 765,
+        "slot_checks": 8192,
+        "transient_runs": 3,
+        "circuit_DC_runs": 2,
+        "LED_calibrations": 1
+      },
+      "sources": [
+        {
+          "path": "docs/research/experimental-methods/platform-plan.md",
+          "sha256": "7c6c4a3e483e46672b35e2e2237b809e45e6832b2a4439a6b896b39092ba1d3c",
+          "bytes": 5335
+        },
+        {
+          "path": "docs/research/control-experiment/progress.md",
+          "sha256": "b11c22957b70671045db119e1948f2ccf0d6e267c24ddbbf33973c88f1b0f8d8",
+          "bytes": 13181
+        },
+        {
+          "path": "docs/specifications/frame-experiment-v0.1.md",
+          "sha256": "97e87c1ce506583045cb532731340ad43124be20ed4ac427999bc0410614a17e",
+          "bytes": 6248
+        },
+        {
+          "path": "evidence/control/summary.json",
+          "sha256": "8a7ce3b371e76477119de257d2315e248c12d54921ded294a69a2239b685d6f6",
+          "bytes": 213877
+        }
+      ],
+      "limits": [
+        "No receiver RTL/physical implementation",
+        "No actual bus or hardware",
+        "Software boundary timeout is not asynchronous hardware protection",
+        "No new extraction or PG/reference generator",
+        "No dynamic/thermal/optical measurements",
+        "Counts are from the stored historical run receipt; the current audit did not execute a fresh complete regression or implement a physical array."
+      ]
+    },
+    {
+      "id": "new-dynamic-experiment-platform",
+      "status": "frozen schematic experiments and bounded local restore proven",
+      "claim": "最新驱动动态研究有49电气case、33transient/16DC、174RX记录；可从tagged源码与frozen inputs恢复并重跑DC及代表帧接收代理。",
+      "sources": [
+        {
+          "path": "scripts/microled_dynamic_v1/run.py",
+          "sha256": "df4482ccb877fb95c8cb39eef5188b2310931b39bc10025c0a449db22309739a",
+          "bytes": 19309
+        },
+        {
+          "path": "scripts/microled_dynamic_v1/analyze.py",
+          "sha256": "53738c2565dca5707fa76001db929d89aa91003824c9ba2e7da626214c2d2930",
+          "bytes": 36314
+        },
+        {
+          "path": "scripts/microled_dynamic_v1/fit.py",
+          "sha256": "ca46e004992adfee8f6906a4c900789941ec34d2001943d5f26306c60e18a0da",
+          "bytes": 26378
+        },
+        {
+          "path": "scripts/microled_dynamic_v1/validate.py",
+          "sha256": "11385c54510ccf6fcef9dfb96dd8b2d2942635eb86de94d045b188159784e712",
+          "bytes": 10435
+        },
+        {
+          "path": "evidence/microled-dynamic-v1/electrical-summary.json",
+          "sha256": "ebc3ec200f330cf1502b4e32748786ec14333ff2e40022aca6bd159a1f458313",
+          "bytes": 214887
+        },
+        {
+          "path": "evidence/microled-dynamic-v1/rx-summary.json",
+          "sha256": "c7d954ee434874730566c6d89a1fda7d07d4a563f790477768fedfbfed395175",
+          "bytes": 2122137
+        },
+        {
+          "path": "evidence/microled-dynamic-v1/archive-restore.json",
+          "sha256": "72e6d6234a514b51b45c9133f76973f1c5771f5a738bd471d929a335fc9bf30b",
+          "bytes": 9210
+        }
+      ],
+      "limits": [
+        "C/tau are sensitivity hypotheses; normalized whole-chain magnitude fit is not physical transient calibration.",
+        "Same-Mac isolated restore proves software/evidence restoration, not second hardware, all33-case rerun, physical optical BER or manufacturing readiness.",
+        "Restored RX summaries must be preserved/made cache-ineligible before regeneration of intentionally excluded state caches."
+      ]
+    },
+    {
+      "id": "two-dimensional-viewer",
+      "status": "deliverable files and source-geometry identity inspected; browser not rerun",
+      "claim": "r5二维viewer具有缩放、平移、分层开关、端口定位；geometry包含9074个GDS多边形并带原GDS SHA。",
+      "metrics": {
+        "top": "startup_test_macro",
+        "polygons": 9074,
+        "source_GDS_sha256": "a81c512f302f10b9f2795c465e91536e1fb013f2994f609101f579fca3d920bb"
+      },
+      "sources": [
+        {
+          "path": "docs/research/single-pixel-closure-20261015/layout/viewer.html",
+          "sha256": "9287b46c9e713a207fced063e602e9c8ca8babc88689ff6e7ea74f10ba0d4a34",
+          "bytes": 4919
+        },
+        {
+          "path": "docs/research/single-pixel-closure-20261015/layout/geometry.json",
+          "sha256": "9b91dd15ab2ecdc6bedbb452254e55eaf4d73919f28fd8d9eff330ffa9b2a309",
+          "bytes": 785164
+        },
+        {
+          "path": "evidence/layout-v3/r5/startup_test_macro.gds",
+          "sha256": "a81c512f302f10b9f2795c465e91536e1fb013f2994f609101f579fca3d920bb",
+          "bytes": 605982
+        }
+      ],
+      "limits": [
+        "Viewer is a read-only rendering/inspection aid; it does not rerun DRC/LVS/PEX or certify process/EM/thermal behavior.",
+        "No new browser or native-app interaction QA was performed in this audit."
+      ]
+    },
+    {
+      "id": "blender-still-scenes",
+      "status": "renders and editable scene available; old receipt has2current hash mismatches",
+      "claim": "Blender4.5.11 LTS教学模型包含39MOS模拟宏、三场景、10个选定图层、9074个XY多边形；名义Magic层高Z放大12倍。三幅PNG及scene-manifest仍匹配旧记录；index.html和.blend当前字节与旧验证不一致。",
+      "metrics": {
+        "historical_validation_checks": 24,
+        "selected_GDS_polygons": 9074,
+        "z_exaggeration": 12.0,
+        "receipt_hash_mismatches": [
+          {
+            "path": "docs/research/blender-layout-20261018/index.html",
+            "expected_sha256": "20519f57dd46a61cec51c4787675d5ff106be474ee5ce5880d370668ed1613d1",
+            "current_sha256": "26fbf9963d3ecd8de37c0323ea955b10179ba3fe20a793292a133c3049a142e6",
+            "matches": false
+          },
+          {
+            "path": "docs/research/blender-layout-20261018/single-pixel-r5.blend",
+            "expected_sha256": "a7c2f3c6bcf10d4dc30a8049501b2b686bdc0978419fdedae3043f612545387e",
+            "current_sha256": "8b9113b42d39436d9977515e1f892fdc5eee5b78d607bbb379ddefaaf76487f0",
+            "matches": false
+          }
+        ]
+      },
+      "sources": [
+        {
+          "path": "docs/research/blender-layout-20261018/index.html",
+          "sha256": "26fbf9963d3ecd8de37c0323ea955b10179ba3fe20a793292a133c3049a142e6",
+          "bytes": 7453
+        },
+        {
+          "path": "docs/research/blender-layout-20261018/validation.json",
+          "sha256": "8ce9823054a1534ff56c224287c6da13577828cb288c6b56c39614ecfd7dc946",
+          "bytes": 3013
+        },
+        {
+          "path": "docs/research/blender-layout-20261018/scene-manifest.json",
+          "sha256": "1ea5deda284a5ced5f45e3e8a44ffadd8aeb2fdc829fef6588ea0e33ed4d9ae7",
+          "bytes": 1614
+        },
+        {
+          "path": "docs/research/blender-layout-20261018/single-pixel-r5.blend",
+          "sha256": "8b9113b42d39436d9977515e1f892fdc5eee5b78d607bbb379ddefaaf76487f0",
+          "bytes": 5206049
+        },
+        {
+          "path": "evidence/blender-demo/delivery.json",
+          "sha256": "954331bfd886c81eedb89a0ee5c52861f0db21acb567a70e4405e39c8846ff98",
+          "bytes": 1385
+        },
+        {
+          "path": "evidence/blender-demo/stack-audit.json",
+          "sha256": "c42bb6aa2b30a27f772f964a309b805c505c8389c41876465a6f54ddaf5e08cd",
+          "bytes": 7609
+        }
+      ],
+      "limits": [
+        "XY vertices are the exact selected r5 GDS polygon vertices. GDS is a layout database, not a 3D process structure.",
+        "Z and thickness are nominal height annotations from the pinned open PDK Magic extraction technology, not foundry-certified physical section data.",
+        "Well and active slabs are teaching visualization proxies. They do not reconstruct implantation depth, doping, depletion region, gate dielectric, silicide, liners, or diffusion profile.",
+        "Colors are layer identifiers, not measured material appearance. No unverified metal composition is assigned.",
+        "Layer 31/0 Pplus, 32/0 Nplus, 55/0 Dualgate, 112/1 V5_XTOR and 42/10 pin shapes are omitted from solid rendering; they remain in the original GDS and audit inventory.",
+        "Any Z exaggeration or exploded-layer gap must be labeled. It changes display geometry only; electrical connectivity comes from the original GDS and LVS.",
+        "No Blender render establishes TCAD, electromagnetic, thermal, circuit, reliability, manufacturing, or optical validation. No actual MicroLED, package, pad ring or complete die is modeled.",
+        "Current .blend hash drift is not explained by this audit; old geometry validation/native-open evidence cannot be promoted to a fresh validation of the changed file. Re-run scene validation before claiming the current editable scene is validated."
+      ]
+    },
+    {
+      "id": "blender-PWM-animation",
+      "status": "14media artifact hashes currently match;102scene checks are historical bounded evidence",
+      "claim": "可交付64s/1920x1080/24fps动画、可编辑.blend、字幕/章节、timeline/mapping及高低电平示意；历史102项检查与完整解码0errors有记录。",
+      "metrics": {
+        "duration_s": 64.0,
+        "resolution": [
+          1920,
+          1080
+        ],
+        "fps": "24/1",
+        "frames": 1536,
+        "historical_scene_checks": 102,
+        "historical_failed_checks": 0,
+        "current_artifact_hash_checks": 14,
+        "historical_decode_errors": 0
+      },
+      "sources": [
+        {
+          "path": "docs/research/blender-pwm-animation-20261018/index.html",
+          "sha256": "134d64b8cc185033b61f95b294f0ba1b1e3551599290aea4524bc49f1d8e9942",
+          "bytes": 21414
+        },
+        {
+          "path": "docs/research/blender-pwm-animation-20261018/animation.mp4",
+          "sha256": "3be5baf20872e24d34f832615ecf9b70c987ef375de27287e1ab2522a7952bc7",
+          "bytes": 3621220
+        },
+        {
+          "path": "docs/research/blender-pwm-animation-20261018/pwm-layer-animation.blend",
+          "sha256": "1ddc701f24b7ec8ceba6ac34433fa4bdcc25af38940f1ab7b09eb63b2b73925c",
+          "bytes": 25532877
+        },
+        {
+          "path": "evidence/blender-pwm-animation/media-validation.json",
+          "sha256": "800d58ee5d8a06f66504014a64fcac9695ecf3c62ff577ccd44fe00defd90384",
+          "bytes": 4793
+        },
+        {
+          "path": "evidence/blender-pwm-animation/validation.json",
+          "sha256": "d6f487c78048f545e098e379b53aa4588ad2b16f138a48834c9e266b897708e7",
+          "bytes": 14168
+        },
+        {
+          "path": "evidence/blender-pwm-animation/viewer-validation.json",
+          "sha256": "3e5c522ebdf13a53eebf471f34e2d9a7c09f0659b3e73c53fa27c62e9f0ebc13",
+          "bytes": 1020
+        }
+      ],
+      "limits": [
+        "XY comes from r5 GDS; nominal Z is exaggerated by 12 and layer explosion is an additional teaching displacement.",
+        "Paths are camera-projected annotations of audited centre lines; channel interpolation and off-chip LED connections are schematic.",
+        "Arrows represent conventional current direction; their speed/width does not encode current, delay or charge.",
+        "State transitions are slowed teaching scenes; no simulated transient tail, current density, dielectric stack or optical power is shown.",
+        "The reference and supply network are cropped in the pixel view; actual BIAS/VSS ports lie outside the crop.",
+        "Current byte hashes were checked, but Blender re-render, native scene reopening, video decode and browser controls were not repeated now."
+      ]
+    },
+    {
+      "id": "local-raw-archive",
+      "status": "complete local byte/member verification record;6archive bytes rehashed now",
+      "claim": "本地6卷共783files、2321782033原始bytes已建立per-file/archive SHA；6卷当前SHA与冻结manifest一致。",
+      "metrics": {
+        "archive_count": 6,
+        "files": 783,
+        "original_bytes": 2321782033,
+        "compressed_archive_bytes": 2135817848
+      },
+      "sources": [
+        {
+          "path": "evidence/microled-dynamic-v1/archive-local.json",
+          "sha256": "0729e26a3a2cf4bafd6eb1d3747931448c3173e1457a772a9bf85ebd17749ae6",
+          "bytes": 1623
+        },
+        {
+          "path": "build/github-sync-microled-dynamic-validation-20261108/verify.log",
+          "sha256": "7e7873212caba6158667fadeebda2a0d0644f93cbfd636cc8a04f33106a7a5c6",
+          "bytes": 52
+        },
+        {
+          "path": "build/github-sync-microled-dynamic-validation-20261108/microled-dynamic-validation-20261108.json",
+          "sha256": "8562d5c01db6c78aca6679b503f7e433e29ea79c0f18e743ec83058dec38f681",
+          "bytes": 203256
+        },
+        {
+          "path": "docs/research/microled-dynamic-validation-20261108/backup.md",
+          "sha256": "9b528e47d0d6cf7b0a379be941375fcd4c8f91bb1cf6047d0e6398c9f8cf2a2f",
+          "bytes": 9616
+        }
+      ],
+      "limits": [
+        "Member verification is established by the earlier verified receipt plus identical archive SHA now; this audit did not extract/revalidate every tar member again.",
+        "A Git push or local bundle does not establish complete remote backup. Original raw data remains present."
+      ]
+    },
+    {
+      "id": "restore-evidence",
+      "status": "bounded same-Mac local-metadata/DC/single-RX restore passed",
+      "claim": "fresh local-git-object source tree恢复730metadata成员，DC24.9997200923uA/deck+rawSHA一致；从本地已验证卷取一帧后无损另存旧summary/eyes并重建11RX记录，关键指标与冻结结果一致。",
+      "metrics": {
+        "metadata_members": 730,
+        "DC_current_uA": 24.99972009230522,
+        "RX_records": 11
+      },
+      "sources": [
+        {
+          "path": "evidence/microled-dynamic-v1/archive-restore.json",
+          "sha256": "72e6d6234a514b51b45c9133f76973f1c5771f5a738bd471d929a335fc9bf30b",
+          "bytes": 9210
+        },
+        {
+          "path": "evidence/microled-dynamic-v1/electrical-restore-smoke.json",
+          "sha256": "01fb406f6d2267ce01aacde95e3f7813d9e4a5646e6487b4a1fbdee10c460c5c",
+          "bytes": 1849
+        }
+      ],
+      "limits": [
+        "Same Mac and existing host Python/NumPy/ngspice supplied runtime; no cross-hardware validation.",
+        "Only the archive manifest was actually downloaded remotely. Metadata tar was restored from the local member-verified archive with matching remote-manifest SHA; remote metadata and waveform tar-byte readback remain pending. All33 RX cases were not rerun here.",
+        "Single RX test uses one local verified archive member with exact frozen manifest bytes, explicitly distinct from the actual remote manifest download; neither tar group is claimed as remotely downloaded here.",
+        "Original restored RX cases/eyes were moved aside rather than removed so excluded filter caches could be rebuilt without a matching-summary shortcut; original project raw outputs were not changed.",
+        "DC/receiver regeneration verifies software/evidence restoration only, not physical optical dynamics, BER, reliability or tape-out readiness.",
+        "Remote metadata tar is now API-uploaded, but that later API state does not retroactively convert the local-tar restoration receipt into a remote-tar download/restore test."
+      ]
+    },
+    {
+      "id": "remote-backup-current",
+      "status": "stopped_requires_review; NOT remotely accepted",
+      "claim": "finish workflow于23:08:16JST因HTTP408上传body inactivity超时停止；实时draft Release现9/14assets uploaded，其中metadata tar1卷与8个小文件；5个waveform卷未见uploaded。",
+      "metrics": {
+        "workflow_state": "stopped_requires_review",
+        "workflow_stop_time": "2026-11-08T23:08:16.765774+09:00",
+        "observed_HTTP_error": 408,
+        "uploaded_assets": 9,
+        "expected_assets": 14,
+        "API_size_digest_match_uploaded": true,
+        "missing_asset_names": [
+          "microled-dynamic-validation-20261108-waveforms-001.tar.gz",
+          "microled-dynamic-validation-20261108-waveforms-002.tar.gz",
+          "microled-dynamic-validation-20261108-waveforms-003.tar.gz",
+          "microled-dynamic-validation-20261108-waveforms-004.tar.gz",
+          "microled-dynamic-validation-20261108-waveforms-005.tar.gz"
+        ],
+        "remote_readback_complete": false,
+        "release_is_draft": true
+      },
+      "sources": [
+        {
+          "path": "build/github-sync-microled-dynamic-validation-20261108/finish-status.json",
+          "sha256": "68bab41b9b184d93dba074249461508095886712d0f00268d2ed61c63231b1e5",
+          "bytes": 1144
+        },
+        {
+          "path": "build/github-sync-microled-dynamic-validation-20261108/finish-process.log",
+          "sha256": "c8c63292c7261c76ee61e8ce5068a0f59a7110c82a64b62e0b7df8a10348c875",
+          "bytes": 5033
+        },
+        {
+          "path": "build/github-sync-microled-dynamic-validation-20261108/upload-index.json",
+          "sha256": "ecbc724077bce3f4672c82125dc4c29612b4313692bae693903094b17033a956",
+          "bytes": 2480
+        },
+        {
+          "path": "evidence/microled-dynamic-v1/archive-remote.json",
+          "sha256": "59f7d91db2e791b0691bd547b16ac8cc287a8cc1e9135fac34c4ca3731fb655a",
+          "bytes": 4037
+        }
+      ],
+      "limits": [
+        "The existing public archive-remote.json says8uploaded at an earlier time; current API snapshot supersedes that count, without modifying the original receipt.",
+        "API uploaded state/size/digest is not a fresh full-byte readback performed in this audit.",
+        "No upload/retry/Release edit/publication/restart/Git mutation was performed by this audit.",
+        "Remote acceptance remains false until all frozen assets exist and complete byte readback/identity gates pass."
+      ]
+    }
+  ],
+  "current_remote_snapshot": {
+    "id": 438216149,
+    "draft": true,
+    "prerelease": true,
+    "tag_name": "microled-dynamic-validation-20261108",
+    "target_commitish": "0d857f9e3ba26ae0f35d0fb5844dc23e7d555fe3",
+    "html_url": "https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/untagged-69965eaadd16cd1f86e9",
+    "assets": [
+      {
+        "id": 723813329,
+        "name": "microled-dynamic-validation-20261108-metadata-001.tar.gz",
+        "size": 58523965,
+        "state": "uploaded",
+        "updated_at": "2026-11-08T13:26:34Z",
+        "digest": "sha256:c8866928fa7494145d917e4fcf235cd70c5c1f99624df56526de6c8852d46713"
+      },
+      {
+        "id": 723820451,
+        "name": "readiness.json",
+        "size": 458,
+        "state": "uploaded",
+        "updated_at": "2026-11-08T12:08:03Z",
+        "digest": "sha256:983df0c98fc02744bc42c9839757eb7a665379070824347485fca4bf6b023e7d"
+      },
+      {
+        "id": 723820487,
+        "name": "scope.json",
+        "size": 1361,
+        "state": "uploaded",
+        "updated_at": "2026-11-08T12:08:04Z",
+        "digest": "sha256:37a11ad38e6de35415b9594cc0ba6385d498728314a5810f7ad3eb70d5534b96"
+      },
+      {
+        "id": 723820492,
+        "name": "provenance.json",
+        "size": 6933,
+        "state": "uploaded",
+        "updated_at": "2026-11-08T12:08:06Z",
+        "digest": "sha256:69e597b1eab7765952d0165f48318d581854f7b9fc4ad63cf88babb57636423c"
+      },
+      {
+        "id": 723820502,
+        "name": "selection.json",
+        "size": 71725,
+        "state": "uploaded",
+        "updated_at": "2026-11-08T12:08:11Z",
+        "digest": "sha256:12420b210bec27dd058a6332e53cd17b6a7d2701adf3475d29028fc0344212ff"
+      },
+      {
+        "id": 723820523,
+        "name": "files-sha256.json",
+        "size": 173488,
+        "state": "uploaded",
+        "updated_at": "2026-11-08T12:08:17Z",
+        "digest": "sha256:6de393da71ed669f0dfc2c863bb5de4c96a397641ba88783989202ffe1a831cb"
+      },
+      {
+        "id": 723820537,
+        "name": "archive-local.json",
+        "size": 1623,
+        "state": "uploaded",
+        "updated_at": "2026-11-08T12:08:06Z",
+        "digest": "sha256:0729e26a3a2cf4bafd6eb1d3747931448c3173e1457a772a9bf85ebd17749ae6"
+      },
+      {
+        "id": 723820541,
+        "name": "microled-dynamic-validation-20261108.json",
+        "size": 203256,
+        "state": "uploaded",
+        "updated_at": "2026-11-08T12:08:25Z",
+        "digest": "sha256:8562d5c01db6c78aca6679b503f7e433e29ea79c0f18e743ec83058dec38f681"
+      },
+      {
+        "id": 723821712,
+        "name": "restore-addendum.md",
+        "size": 1560,
+        "state": "uploaded",
+        "updated_at": "2026-11-08T12:08:41Z",
+        "digest": "sha256:cf36d38e3ad820ae6a19195d2718de3815a5ec1c33b0da0bea7dcbd7afea2099"
+      }
+    ]
+  },
+  "local_archive_current_byte_checks": [
+    {
+      "path": "build/github-sync-microled-dynamic-validation-20261108/assets/microled-dynamic-validation-20261108-metadata-001.tar.gz",
+      "size": 58523965,
+      "sha256": "c8866928fa7494145d917e4fcf235cd70c5c1f99624df56526de6c8852d46713",
+      "matches_frozen_manifest": true
+    },
+    {
+      "path": "build/github-sync-microled-dynamic-validation-20261108/assets/microled-dynamic-validation-20261108-waveforms-001.tar.gz",
+      "size": 480745272,
+      "sha256": "f789ae42a8f626c70316d5edb7ea5c3bce7404ad909542dc7eb51bfc39c8e49b",
+      "matches_frozen_manifest": true
+    },
+    {
+      "path": "build/github-sync-microled-dynamic-validation-20261108/assets/microled-dynamic-validation-20261108-waveforms-002.tar.gz",
+      "size": 493208593,
+      "sha256": "4e63e930c25c4b297623ad7b28476f2ed82375ec9e7f80be1317db3b66ed0fcb",
+      "matches_frozen_manifest": true
+    },
+    {
+      "path": "build/github-sync-microled-dynamic-validation-20261108/assets/microled-dynamic-validation-20261108-waveforms-003.tar.gz",
+      "size": 513751379,
+      "sha256": "9a48a541857f4fee5d71a2306a492e9acf7fae78a11428658994debdc3808afc",
+      "matches_frozen_manifest": true
+    },
+    {
+      "path": "build/github-sync-microled-dynamic-validation-20261108/assets/microled-dynamic-validation-20261108-waveforms-004.tar.gz",
+      "size": 516487899,
+      "sha256": "01b2e52d4527f67bbcdc6fd3dcf557af6a3522bcb87e0789814236f77d6ff9b5",
+      "matches_frozen_manifest": true
+    },
+    {
+      "path": "build/github-sync-microled-dynamic-validation-20261108/assets/microled-dynamic-validation-20261108-waveforms-005.tar.gz",
+      "size": 73100740,
+      "sha256": "e78ab0ecef2f12d1857eb5105e2fe39b810c4c881940657d281ce979010882de",
+      "matches_frozen_manifest": true
+    }
+  ],
+  "static_Blender_delivery_hash_checks": [
+    {
+      "path": "docs/research/blender-layout-20261018/index.html",
+      "expected_sha256": "20519f57dd46a61cec51c4787675d5ff106be474ee5ce5880d370668ed1613d1",
+      "current_sha256": "26fbf9963d3ecd8de37c0323ea955b10179ba3fe20a793292a133c3049a142e6",
+      "matches": false
+    },
+    {
+      "path": "docs/research/blender-layout-20261018/single-pixel-r5.blend",
+      "expected_sha256": "a7c2f3c6bcf10d4dc30a8049501b2b686bdc0978419fdedae3043f612545387e",
+      "current_sha256": "8b9113b42d39436d9977515e1f892fdc5eee5b78d607bbb379ddefaaf76487f0",
+      "matches": false
+    },
+    {
+      "path": "docs/research/blender-layout-20261018/scene-manifest.json",
+      "expected_sha256": "1ea5deda284a5ced5f45e3e8a44ffadd8aeb2fdc829fef6588ea0e33ed4d9ae7",
+      "current_sha256": "1ea5deda284a5ced5f45e3e8a44ffadd8aeb2fdc829fef6588ea0e33ed4d9ae7",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-layout-20261018/01-overview.png",
+      "expected_sha256": "ac15a4e08fd39580b91be1b198e4ab872cea4860285bbf86be5258d4a59d18f6",
+      "current_sha256": "ac15a4e08fd39580b91be1b198e4ab872cea4860285bbf86be5258d4a59d18f6",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-layout-20261018/02-device.png",
+      "expected_sha256": "933f27c26ab934b90d94aadd3cb2d16c3d67173f3689f547f8728d7d9337ce6a",
+      "current_sha256": "933f27c26ab934b90d94aadd3cb2d16c3d67173f3689f547f8728d7d9337ce6a",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-layout-20261018/validation.json",
+      "expected_sha256": "8ce9823054a1534ff56c224287c6da13577828cb288c6b56c39614ecfd7dc946",
+      "current_sha256": "8ce9823054a1534ff56c224287c6da13577828cb288c6b56c39614ecfd7dc946",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-layout-20261018/03-vias.png",
+      "expected_sha256": "87489661fbe29aed8fd8d3e2bdaa10bc5e0089f8550fd8cee234a07aa154bed3",
+      "current_sha256": "87489661fbe29aed8fd8d3e2bdaa10bc5e0089f8550fd8cee234a07aa154bed3",
+      "matches": true
+    },
+    {
+      "path": "scripts/blender_demo/build_scene.py",
+      "expected_sha256": "ef9dea819e3b12c113eb59d3e20204cf3890f49b31ba77bb952679395454f634",
+      "current_sha256": "ef9dea819e3b12c113eb59d3e20204cf3890f49b31ba77bb952679395454f634",
+      "matches": true
+    },
+    {
+      "path": "scripts/blender_demo/validate_scene.py",
+      "expected_sha256": "5a338854375bb33cd246e8d1d0f0cc9f7ed6f5cd8829012e50f09184fb988a71",
+      "current_sha256": "5a338854375bb33cd246e8d1d0f0cc9f7ed6f5cd8829012e50f09184fb988a71",
+      "matches": true
+    },
+    {
+      "path": "scripts/blender_demo/prepare_geometry.py",
+      "expected_sha256": "c09a9406add797381c2b5c5e142c6ef141143cc6c167c9e0bfb063cfae868dca",
+      "current_sha256": "c09a9406add797381c2b5c5e142c6ef141143cc6c167c9e0bfb063cfae868dca",
+      "matches": true
+    }
+  ],
+  "animation_media_current_hash_checks": [
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/Noto-OFL.txt",
+      "expected_sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "current_sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/animation.mp4",
+      "expected_sha256": "3be5baf20872e24d34f832615ecf9b70c987ef375de27287e1ab2522a7952bc7",
+      "current_sha256": "3be5baf20872e24d34f832615ecf9b70c987ef375de27287e1ab2522a7952bc7",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/chapters-zh.vtt",
+      "expected_sha256": "46bd64ab75154b505c4b78f58c5f58b1a3b2430bd037a82ae8bc7f5c43c5980e",
+      "current_sha256": "46bd64ab75154b505c4b78f58c5f58b1a3b2430bd037a82ae8bc7f5c43c5980e",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/figures/pwm-high.png",
+      "expected_sha256": "619e5500d63f545376262467894539f04d3bf8156fd3dded8b2aed8db1ebac82",
+      "current_sha256": "619e5500d63f545376262467894539f04d3bf8156fd3dded8b2aed8db1ebac82",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/figures/pwm-high.svg",
+      "expected_sha256": "5628b0e84a790e1c42bcb365115d90fd96094f539c74bf9b61b2af0431a8b205",
+      "current_sha256": "5628b0e84a790e1c42bcb365115d90fd96094f539c74bf9b61b2af0431a8b205",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/figures/pwm-low.png",
+      "expected_sha256": "f4be5c8d27e5b4ca577f3091f4b0a8da3b8c750653dce8cdc09713ccdc1eccb7",
+      "current_sha256": "f4be5c8d27e5b4ca577f3091f4b0a8da3b8c750653dce8cdc09713ccdc1eccb7",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/figures/pwm-low.svg",
+      "expected_sha256": "fdb5cff51612ec5c280501abc9700ad565de0f395f7ae1c778be47125530e4a7",
+      "current_sha256": "fdb5cff51612ec5c280501abc9700ad565de0f395f7ae1c778be47125530e4a7",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/figures/schematic-check.json",
+      "expected_sha256": "bf8cd3254868961f769693a42184131b697205740fb8c0c2045e04a4dfde950a",
+      "current_sha256": "bf8cd3254868961f769693a42184131b697205740fb8c0c2045e04a4dfde950a",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/index.html",
+      "expected_sha256": "134d64b8cc185033b61f95b294f0ba1b1e3551599290aea4524bc49f1d8e9942",
+      "current_sha256": "134d64b8cc185033b61f95b294f0ba1b1e3551599290aea4524bc49f1d8e9942",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/mapping.json",
+      "expected_sha256": "120922bb25c95e91812217bf2d53373207c554d8ce83a0df7935027dc90b2c5b",
+      "current_sha256": "120922bb25c95e91812217bf2d53373207c554d8ce83a0df7935027dc90b2c5b",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/poster.png",
+      "expected_sha256": "e95e6091189d23c78351d1888cf010469a89fc4b63143eef7f4d45dfe1822c2b",
+      "current_sha256": "e95e6091189d23c78351d1888cf010469a89fc4b63143eef7f4d45dfe1822c2b",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/pwm-layer-animation.blend",
+      "expected_sha256": "1ddc701f24b7ec8ceba6ac34433fa4bdcc25af38940f1ab7b09eb63b2b73925c",
+      "current_sha256": "1ddc701f24b7ec8ceba6ac34433fa4bdcc25af38940f1ab7b09eb63b2b73925c",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/timeline.json",
+      "expected_sha256": "f2c2d7259b5c9c174341388e442b545b9d0057c0893b218bad07fdde79356f81",
+      "current_sha256": "f2c2d7259b5c9c174341388e442b545b9d0057c0893b218bad07fdde79356f81",
+      "matches": true
+    },
+    {
+      "path": "docs/research/blender-pwm-animation-20261018/validation.json",
+      "expected_sha256": "d6f487c78048f545e098e379b53aa4588ad2b16f138a48834c9e266b897708e7",
+      "current_sha256": "d6f487c78048f545e098e379b53aa4588ad2b16f138a48834c9e266b897708e7",
+      "matches": true
+    }
+  ],
+  "reusable_original_or_generated_figures": [
+    {
+      "kind": "repository_original_conceptual_artwork",
+      "path": "docs/research/microled-device-codesign-20261029/figures/01-device-cross-section.svg",
+      "sha256": "d8bcdb910ab8784ef771ede338ee2b20b9e5fd40b219e799c9caa601ed6ac25e",
+      "title": "GaN MicroLED：电流、光、寄生与热走不同路径",
+      "reuse_boundary": "Original artwork according to figure-ledger; preserve cited scientific basis/conditions; not a fabricated-device cross section or mask."
+    },
+    {
+      "kind": "repository_original_conceptual_artwork",
+      "path": "docs/research/microled-device-codesign-20261029/figures/02-orientation-quantum-wells.svg",
+      "sha256": "8eaebdf7c0b4dc48d614086e89e676729ecfdadd42f8a2a3b66a6af900d041ce",
+      "title": "晶向与量子阱：先看内部场，再看载流子与传输",
+      "reuse_boundary": "Original artwork according to figure-ledger; preserve cited scientific basis/conditions; not a fabricated-device cross section or mask."
+    },
+    {
+      "kind": "repository_original_conceptual_artwork",
+      "path": "docs/research/microled-device-codesign-20261029/figures/03-size-electrode-tradeoffs.svg",
+      "sha256": "153d90cd94687f6ef28c7126167dfa1631fb62ef4254125b92c71a61be0808b0",
+      "title": "尺寸与电极：缩小发光区不会等比例缩小全部代价",
+      "reuse_boundary": "Original artwork according to figure-ledger; preserve cited scientific basis/conditions; not a fabricated-device cross section or mask."
+    },
+    {
+      "kind": "repository_original_conceptual_artwork",
+      "path": "docs/research/microled-device-codesign-20261029/figures/04-codesign-reference-planes.svg",
+      "sha256": "71466d1f447027af6833c71e7a0dc1baa52cc3059b98357531c777f7e2fd287c",
+      "title": "把 Driver、封装、LED 与 RX 放在同一组参考面上",
+      "reuse_boundary": "Original artwork according to figure-ledger; preserve cited scientific basis/conditions; not a fabricated-device cross section or mask."
+    },
+    {
+      "kind": "repository_generated_experiment_or_source_data_plot",
+      "path": "docs/research/microled-dynamic-validation-20261108/figures/model-circuit.svg",
+      "sha256": "2dee6d5fd97d6128e7f38d3c6cf1a05a7a4957f1486d1b6991acc6fd0aa9bacc",
+      "title": "动态负载与电流参考面",
+      "reuse_boundary": "Keep synthetic C/tau/current-equivalent RX and attempted-bit energy labels; frequency source-data plot retains Lin/Zenodo CC BY4.0 attribution."
+    },
+    {
+      "kind": "repository_generated_experiment_or_source_data_plot",
+      "path": "docs/research/microled-dynamic-validation-20261108/figures/sensitivity-margin.svg",
+      "sha256": "27f864d25d79a8db025e85a334f02cfe427284e54e17ffb03a98af1ad7781ce9",
+      "title": "A/B/C C/tau敏感性矩阵",
+      "reuse_boundary": "Keep synthetic C/tau/current-equivalent RX and attempted-bit energy labels; frequency source-data plot retains Lin/Zenodo CC BY4.0 attribution."
+    },
+    {
+      "kind": "repository_generated_experiment_or_source_data_plot",
+      "path": "docs/research/microled-dynamic-validation-20261108/figures/energy-ports.svg",
+      "sha256": "b98fe0d29320d18d12065282bdd9c355d084b2331ecd86619aa26eba34255f2f",
+      "title": "七端口电气取能",
+      "reuse_boundary": "Keep synthetic C/tau/current-equivalent RX and attempted-bit energy labels; frequency source-data plot retains Lin/Zenodo CC BY4.0 attribution."
+    },
+    {
+      "kind": "repository_generated_experiment_or_source_data_plot",
+      "path": "docs/research/microled-dynamic-validation-20261108/figures/frequency-fit.svg",
+      "sha256": "00d879a33337c362e18004c483cfb727010284fa028834a74f83802693ac5744",
+      "title": "源数据整链幅频及残差",
+      "reuse_boundary": "Keep synthetic C/tau/current-equivalent RX and attempted-bit energy labels; frequency source-data plot retains Lin/Zenodo CC BY4.0 attribution."
+    },
+    {
+      "kind": "repository_generated_experiment_or_source_data_plot",
+      "path": "docs/research/microled-dynamic-validation-20261108/figures/paired-eyes.svg",
+      "sha256": "c50154280901ba7e2239b9f8981951f962dafd5323de19c09abf4e6b769be117",
+      "title": "同坐标接收代理眼图",
+      "reuse_boundary": "Keep synthetic C/tau/current-equivalent RX and attempted-bit energy labels; frequency source-data plot retains Lin/Zenodo CC BY4.0 attribution."
+    },
+    {
+      "kind": "repository_original_teaching_render_or_schematic",
+      "path": "docs/research/blender-layout-20261018/01-overview.png",
+      "sha256": "ac15a4e08fd39580b91be1b198e4ab872cea4860285bbf86be5258d4a59d18f6",
+      "title": "r5模拟宏三维教学总览",
+      "reuse_boundary": "GDS-derived teaching geometry and schematic paths; no current density, field, thermal, optical or manufacturing simulation."
+    },
+    {
+      "kind": "repository_original_teaching_render_or_schematic",
+      "path": "docs/research/blender-layout-20261018/03-vias.png",
+      "sha256": "87489661fbe29aed8fd8d3e2bdaa10bc5e0089f8550fd8cee234a07aa154bed3",
+      "title": "Via2连接与无Via2交叉示例",
+      "reuse_boundary": "GDS-derived teaching geometry and schematic paths; no current density, field, thermal, optical or manufacturing simulation."
+    },
+    {
+      "kind": "repository_original_teaching_render_or_schematic",
+      "path": "docs/research/blender-pwm-animation-20261018/figures/pwm-high.svg",
+      "sha256": "5628b0e84a790e1c42bcb365115d90fd96094f539c74bf9b61b2af0431a8b205",
+      "title": "PWM高电平电路路径",
+      "reuse_boundary": "GDS-derived teaching geometry and schematic paths; no current density, field, thermal, optical or manufacturing simulation."
+    },
+    {
+      "kind": "repository_original_teaching_render_or_schematic",
+      "path": "docs/research/blender-pwm-animation-20261018/figures/pwm-low.svg",
+      "sha256": "fdb5cff51612ec5c280501abc9700ad565de0f395f7ae1c778be47125530e4a7",
+      "title": "PWM低电平电路路径",
+      "reuse_boundary": "GDS-derived teaching geometry and schematic paths; no current density, field, thermal, optical or manufacturing simulation."
+    }
+  ],
+  "recommended_report_wording": [
+    "现有成果可交付为可追溯研究资料、单像素可复现实验路径与教学可视化；各自证据层级分开列示。",
+    "本地归档及同Mac恢复校验已完成限定验证；远端raw备份因网络超时停止，尚未验收，不能标成备份完成。",
+    "静态Blender附录的当前.blend/index与旧receipt不一致，需重新验证；动画资产当前SHA仍全部匹配，但不构成器件物理仿真。"
+  ],
+  "actions_not_taken": [
+    "No source/public report edits",
+    "No Git operation or mutation",
+    "No Release/upload restart/publication",
+    "No original raw deletion",
+    "No new EDA/Blender rendering/browser/video decode execution"
+  ],
+  "limits": [
+    "Source counts and historical validation receipts are reported within their dated scope, not upgraded to current full regressions.",
+    "Repository files, source-data ledgers and declared limits were inspected; no external literature re-survey, user-hardware measurement or optical qualification was performed.",
+    "Memory was used only to locate a prior report family; all claims in this artifact are based on current files/API snapshot and recorded SHA values."
+  ]
+}
