@@ -1,0 +1,174 @@
+{
+  "schema": "microled-dynamic-manifest-and-local-metadata-restore-v1",
+  "created": "2026-11-08T21:11:53.439782+09:00",
+  "scope": "Actual remote manifest download and locally member-verified metadata restore, DC smoke and one clean RX-state rebuild on the same Mac; remote metadata tar download remains pending, not second-hardware execution or full remote waveform restoration.",
+  "source": {
+    "source_commit": "0d857f9e3ba26ae0f35d0fb5844dc23e7d555fe3",
+    "source_tree": "2242336d4dcd62519a8f5f17392d677f8745205f",
+    "source_method": "git archive from local Git object; remote commit/tree identity separately verified by parent",
+    "source_archive_sha256": "5bb1118615b6959e8940e966cbcbf253f4fc5964e928d4d0dd58ea018c454b9c",
+    "source_archive_bytes": 475187200,
+    "source_tree_path": "build/github-restore-microled-dynamic-validation-20261108/source",
+    "historical_build_absent_before_restore": true
+  },
+  "host_runtime": {
+    "executable": "/Volumes/DevSSD/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+    "python": "3.12.13 (main, Mar 25 2026, 03:16:06) [Clang 22.1.1 ]",
+    "numpy": "2.5.3",
+    "scope": "Existing host runtime supplied to an isolated restored source tree; environment itself not downloaded/restored."
+  },
+  "remote_manifest": {
+    "created": "2026-11-08T21:11:28.281883+09:00",
+    "release_id": 438216149,
+    "release_draft_at_download": true,
+    "source_commit": "0d857f9e3ba26ae0f35d0fb5844dc23e7d555fe3",
+    "verified_against": "actual remote manifest download matches local frozen upload-index and manifest SHA; parent separately verified remote source commit/tree",
+    "files": [
+      {
+        "asset_id": 723820541,
+        "asset_updated_at": "2026-11-08T12:08:25Z",
+        "name": "microled-dynamic-validation-20261108.json",
+        "state": "uploaded",
+        "size": 203256,
+        "sha256": "8562d5c01db6c78aca6679b503f7e433e29ea79c0f18e743ec83058dec38f681",
+        "path": "build/github-restore-microled-dynamic-validation-20261108/downloads/microled-dynamic-validation-20261108.json",
+        "download_method": "authenticated GitHub Release asset API byte stream; GODEBUG=http2client=0",
+        "downloaded_remote_bytes": true
+      }
+    ],
+    "metadata_tar_remote_download_status": "pending; not claimed; restore uses separately local member-verified metadata archive"
+  },
+  "metadata_archive_remote_download_status": "pending; not claimed",
+  "archive_manifest_sha256": "8562d5c01db6c78aca6679b503f7e433e29ea79c0f18e743ec83058dec38f681",
+  "metadata_restore": {
+    "archive_source": "Local already member-verified metadata tar whose per-file/archive SHA is bound by the actually downloaded remote manifest; tar itself was not downloaded remotely",
+    "group": "metadata",
+    "tar_members_verified": 730,
+    "restored_files": 730,
+    "skipped_identical": 0,
+    "restore_root": "build/github-restore-microled-dynamic-validation-20261108/source",
+    "details": "build/github-restore-microled-dynamic-validation-20261108/metadata-restore-result.json"
+  },
+  "source_independence": {
+    "absent_at_fresh_source_root": [
+      ".git",
+      "build/fair-driver-v1",
+      "build/three-gbps-experiment-20261027"
+    ],
+    "restored_r1_manifest_sha256": "b7ddcf06cfbebd53db2790730a7fe1d967eb29d0b48542957c18ddd2e136fd4a",
+    "all_manifest_inputs_and_sources_hash_matched": true,
+    "input_file_count": 9,
+    "original_locked_r1_bytecode_preserved": true
+  },
+  "DC_smoke": {
+    "case": "DC-TT-A-C10fF-L0",
+    "command_from_fresh_source_root": "python scripts/microled_dynamic_v1/run.py --phase reproduce --case DC-TT-A-C10fF-L0 --work build/microled-dynamic-v1/electrical/remote-metadata-dc-smoke",
+    "interpreter": "/Volumes/DevSSD/Projects/open-microled-driver-asic/build/layout/venv/bin/python",
+    "exit_code": 0,
+    "simulation_ok": true,
+    "current_uA": 24.99972009230522,
+    "target_uA": 24.999999999999996,
+    "current_error_percent": -0.0011196307791117022,
+    "device_voltage_passed": true,
+    "deck_SHA256_matches_restored_r1_source_case": true,
+    "raw_SHA256_matches_restored_r1_source_case": true,
+    "restored_inputs_unchanged_after_smoke": true,
+    "reproduction_record": "build/github-restore-microled-dynamic-validation-20261108/source/build/microled-dynamic-v1/electrical/remote-metadata-dc-smoke/reproduction.json",
+    "reproduction_record_sha256": "b801e4c51db35480bb357ed1d1c2868a2acf42ded43a3e9ab3857c22c6533afe",
+    "log": "build/github-restore-microled-dynamic-validation-20261108/dc-smoke.log"
+  },
+  "single_case_RX_rebuild": {
+    "case": "TT-A-C200fF-S40",
+    "source_code_sha256": "53738c2565dca5707fa76001db929d89aa91003824c9ba2e7da626214c2d2930",
+    "command_from_fresh_source_root": "python scripts/microled_dynamic_v1/analyze.py --only TT-A-C200fF-S40",
+    "exit_code": 0,
+    "record_count": 11,
+    "preserved_reference_output_directories": [
+      "build/github-restore-microled-dynamic-validation-20261108/source/build/microled-dynamic-v1/receiver/cases-from-release-reference",
+      "build/github-restore-microled-dynamic-validation-20261108/source/build/microled-dynamic-v1/receiver/eyes-from-release-reference"
+    ],
+    "no_receiver_state_cache_existed_before_rebuild": true,
+    "cache_recreated_and_hash_verified": true,
+    "frozen_200ps_baseline_reproduction_passed": true,
+    "frozen_compact_result_comparisons": [
+      {
+        "stage": "full",
+        "optical_tau_ps": 0,
+        "all_10_compact_RX_fields_exactly_equal_to_frozen": true
+      },
+      {
+        "stage": "full",
+        "optical_tau_ps": 25,
+        "all_10_compact_RX_fields_exactly_equal_to_frozen": true
+      },
+      {
+        "stage": "full",
+        "optical_tau_ps": 75,
+        "all_10_compact_RX_fields_exactly_equal_to_frozen": true
+      },
+      {
+        "stage": "full",
+        "optical_tau_ps": 200,
+        "all_10_compact_RX_fields_exactly_equal_to_frozen": true
+      },
+      {
+        "stage": "electrical",
+        "optical_tau_ps": 0,
+        "all_10_compact_RX_fields_exactly_equal_to_frozen": true
+      },
+      {
+        "stage": "rx_only",
+        "optical_tau_ps": 0,
+        "all_10_compact_RX_fields_exactly_equal_to_frozen": true
+      },
+      {
+        "stage": "optical_only",
+        "optical_tau_ps": 0,
+        "all_10_compact_RX_fields_exactly_equal_to_frozen": true
+      },
+      {
+        "stage": "optical_only",
+        "optical_tau_ps": 25,
+        "all_10_compact_RX_fields_exactly_equal_to_frozen": true
+      },
+      {
+        "stage": "optical_only",
+        "optical_tau_ps": 75,
+        "all_10_compact_RX_fields_exactly_equal_to_frozen": true
+      },
+      {
+        "stage": "optical_only",
+        "optical_tau_ps": 200,
+        "all_10_compact_RX_fields_exactly_equal_to_frozen": true
+      },
+      {
+        "stage": "phase_delay",
+        "optical_tau_ps": 75,
+        "all_10_compact_RX_fields_exactly_equal_to_frozen": true
+      }
+    ],
+    "summary_record": "build/github-restore-microled-dynamic-validation-20261108/source/evidence/microled-dynamic-v1/rx-summary-selected.json",
+    "summary_sha256": "53f9f0edcef3e6d4b646f4a27462dfdec9839fff730f09b920d3ec73e9466ec0",
+    "log": "build/github-restore-microled-dynamic-validation-20261108/single-case-rx-rebuild.log"
+  },
+  "single_RX_waveform_provenance": {
+    "source": "One member extracted from local already member-verified Release archive; not a remote waveform download",
+    "archive_name": "microled-dynamic-validation-20261108-waveforms-003.tar.gz",
+    "archive_sha256": "9a48a541857f4fee5d71a2306a492e9acf7fae78a11428658994debdc3808afc",
+    "member": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40/waveform.dat.gz",
+    "member_size": 51825771,
+    "member_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+    "decompressed_raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+    "same_bytes_as_frozen_manifest": true,
+    "remote_equivalence_boundary": "Parent separately performs full remote asset-byte readback; this receipt alone does not establish remote verification of waveform archives."
+  },
+  "limits": [
+    "Same Mac and existing host Python/NumPy/ngspice supplied runtime; no cross-hardware validation.",
+    "Only the archive manifest was actually downloaded remotely. Metadata tar was restored from the local member-verified archive with matching remote-manifest SHA; remote metadata and waveform tar-byte readback remain pending. All33 RX cases were not rerun here.",
+    "Single RX test uses one local verified archive member with exact frozen manifest bytes, explicitly distinct from the actual remote manifest download; neither tar group is claimed as remotely downloaded here.",
+    "Original restored RX cases/eyes were moved aside rather than removed so excluded filter caches could be rebuilt without a matching-summary shortcut; original project raw outputs were not changed.",
+    "DC/receiver regeneration verifies software/evidence restoration only, not physical optical dynamics, BER, reliability or tape-out readiness."
+  ],
+  "original_project_raw_removed_or_modified": false,
+  "upload_or_release_changes_performed": false
+}

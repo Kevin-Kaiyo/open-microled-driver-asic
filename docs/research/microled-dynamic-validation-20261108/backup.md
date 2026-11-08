@@ -83,6 +83,27 @@ python scripts/microled_dynamic_v1/run.py --phase reproduce \
 
 receiver filter states 没有存入归档；需要时按 tag 的接收分析命令从已恢复 native traces 重新生成。该重算是独立验证步骤，不把缺失缓存当成丢失电气原始证据。
 
+## 重建接收缓存：先保留归档摘要
+
+恢复检查发现，tag 中的 `analyze.py` 会在逐 case 摘要指纹匹配时直接复用摘要；这一步不会补建被排除的 state cache。随后半步长比较需要读取这些缓存。因此，**在新的恢复 checkout 中完整恢复 metadata 和 waveforms 后**，首次全 RX 重算前先把归档的 `receiver/cases/` 无损另存。不要在现有研究工作树中照搬这一操作。
+
+```bash
+python - <<'PY'
+from pathlib import Path
+cases = Path('build/microled-dynamic-v1/receiver/cases')
+saved = cases.with_name('cases-from-release-reference')
+if saved.exists():
+    raise SystemExit('Reference directory already exists; inspect it before proceeding.')
+if cases.exists():
+    cases.rename(saved)
+PY
+python scripts/microled_dynamic_v1/analyze.py
+```
+
+新运行会从原生波形建立独立缓存和 case 摘要；原归档摘要保留在 `cases-from-release-reference/`，可核对新旧接收指标。请保留重算的版本、日志和差异，不用它覆盖已发布阶段的科学证据。`--only TT-A-C200fF-S40` 可作单 case 重建检查，但不能证明 33 个瞬态或完整半步长矩阵已重算。实际恢复覆盖范围以 `archive-restore.json` 为准。
+
+这一恢复步骤作为本阶段 Release 的 `restore-addendum.md` 同时保存；Release 固定源码仍为原已验证的 source commit，主分支的交付回执另行记录补充说明。
+
 ## helper 自测
 
 ```bash

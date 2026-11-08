@@ -6,7 +6,7 @@
 
 1. **公开幅频拟合**：使用 `analog/models/microled_dynamic_v1/model-card.json` 记录的 Python/numpy/scipy 版本，运行 `scripts/microled_dynamic_v1/fit.py`。本机独立解释器为 `build/microled-dynamic-v1/calibration/venv/bin/python`。它只产生整链条件化数学拟合；`usable_transient_family=false` 不得改为器件资格。
 2. **电气仿真**：运行 `scripts/microled_dynamic_v1/run.py --help`，按 `backup.md` 恢复输入并在新的输出目录执行 `--phase reproduce --case DC-TT-A-C200fF-L1`。完整矩阵通过 `--phase run` 运行；不覆盖既有case。ngspice与回归解释器分别需可用；数值分析使用Python≥3.11和numpy。
-3. **接收分析**：`build/layout/venv/bin/python scripts/microled_dynamic_v1/analyze.py` 从新阶段的 electrical-registry 读取原生导电电流，保留原 v2 训练规则，生成四种光响应假设、分层与理想波形控制。缓存是可再生派生物，不能替代原生波形。
+3. **接收分析**：`build/layout/venv/bin/python scripts/microled_dynamic_v1/analyze.py` 从新阶段的 electrical-registry 读取原生导电电流，保留原 v2 训练规则，生成四种光响应假设、分层与理想波形控制。缓存是可再生派生物，不能替代原生波形。从 Release 首次恢复时，需要先按 [backup.md 的重建步骤](backup.md#重建接收缓存先保留归档摘要)无损另存已有 case 摘要，否则指纹匹配可能跳过已被排除的缓存。
 4. **报告**：准备 numpy、matplotlib、Markdown、CairoSVG 及中文字体。macOS 本机 Cairo1.18.4 动态库需要可发现；本机命令如下。
 
 ```sh
