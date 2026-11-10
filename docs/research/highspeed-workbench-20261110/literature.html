@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>高速 MicroLED 与 VCSEL Driver 的公开证据</title><style>
+:root{color-scheme:light;--ink:#172d3a;--sub:#48606c;--accent:#176467;--rule:#cddde2;--light:#eff6f6}
+*{box-sizing:border-box}
+body{margin:0;background:#f7faf9;color:var(--ink);font:16px/1.69 "PingFang SC","Noto Sans CJK SC",sans-serif}
+main{max-width:1060px;margin:0 auto;padding:42px 52px 72px;background:white}
+h1,h2,h3{line-height:1.27;font-family:"Tw Cen MT","Avenir Next","PingFang SC","Noto Sans CJK SC",sans-serif}
+h1{font-size:clamp(30px,5vw,47px);margin:16px 0 12px;letter-spacing:-.035em}
+h2{font-size:27px;border-top:1px solid var(--rule);padding-top:28px;margin-top:42px}
+h3{font-size:20px;margin-top:28px}
+p,ul,ol{margin:14px 0}
+li{margin:8px 0}
+a{color:var(--accent);text-underline-offset:3px;overflow-wrap:anywhere}
+nav{font-size:14px;color:var(--sub);padding-bottom:8px}
+header{border-bottom:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;font-size:.9em;line-height:1.55;margin:20px 0}
+td,th{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
+th{background:var(--light);font-weight:650}
+img{max-width:100%;height:auto;border-radius:7px}
+figure{margin:22px 0}
+figure.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:center}
+figure.pair img{width:100%;border:1px solid var(--rule)}
+figcaption{grid-column:1/-1;color:var(--sub);font-size:14px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--light);padding:12px}
+code{font-size:.92em;overflow-wrap:anywhere}
+.table-scroll{overflow:auto}
+@media(max-width:680px){main{padding:22px 18px 45px}figure.pair{grid-template-columns:1fr}td,th{padding:8px}.table-scroll table{min-width:520px}}
+@media print{main{padding:0}body{background:white;font-size:11pt;line-height:1.58}figure,tr,h2,h3{break-inside:avoid}h2,h3{break-after:avoid}nav{display:none}th{print-color-adjust:exact}}
+</style></head><body><main><header><nav><a href="index.html">返回高速光发射 Driver 研究报告</a></nav></header><h1 id="microled-vcsel-driver">高速 MicroLED 与 VCSEL Driver 的公开证据</h1>
+<p>2026-11-10 · 开放实验方法与教学 · <a href="../../../evidence/highspeed-workbench-20261110/literature-sources.json">文献数据台账</a></p>
+<p><strong>目前没有可以单靠论文确定的最佳 MicroLED 尺寸，也没有同口径数据可以判定哪一种发射器的系统能耗最低。</strong> 在公开样本中，直接调制 VCSEL 已展示更高的单通道速率，MicroLED 同时提供低电流与多通道并行的实验依据。当前设计目标仍是单通道净 3.2 Gb/s。这一阶段可以先冻结输入接口、能量边界与测试方法，再分别验证发射器和输出级。20 µm 是已有模型的几何条件，下一轮把尺寸作为实验变量。</p>
+<h2 id="1">1. 先看规格说的是什么</h2>
+<p>带宽以 GHz 表示，说明小幅度正弦调制在特定偏置下如何衰减。符号率以 GBd 表示，说明每秒发出多少符号。NRZ/OOK 每符号 1 bit，PAM4 每符号 2 bit。净吞吐还需要扣除编码、训练、帧和 FEC 开销。OFDM 的每个子载波可按信噪比选用不同调制阶数，因此 OFDM 的总数据率和 NRZ 的线速没有固定换算关系。</p>
+<p>项目的比较帧包含 4,736 线路位与 4,096 payload 位。净 3.2 Gb/s 对应 3.7 Gb/s 线路位速率。NRZ 为 3.7 GBd、UI 270.27 ps，PAM4 为 1.85 GBd、UI 540.54 ps。两者的基带 Nyquist 频率分别为 1.85 GHz 与 0.925 GHz，可作为频响检查点。真正的接收结果还由整个频响、采样抖动、噪声、幅度和调制格式决定。<a href="../microled-dynamic-validation-20261108/README.md">项目冻结帧与接收假设</a></p>
+<h2 id="2-microled">2. MicroLED 尺寸、带宽与速率</h2>
+<h3 id="_1">同一论文的尺寸扫描</h3>
+<p>2024 年一项 c-plane 蓝光 GaN 自支撑衬底实验给出六个尺寸的单颗 MicroLED OFDM 最大报告速率。同一论文内，20 µm 样品的 −3 dB 带宽约 2.3 GHz，60 µm 样品在该收光和 OFDM 配置下取得最高速率。摘要另给出 60 µm 样品在 0.5、1、5、10 m 的 10.045、9.668、9.277、8.649 Gb/s。下表不将各尺寸最大值归到同一个距离。当前核查为出版社摘要，逐尺寸偏置、FEC/BER 和净速率口径留空。<a href="https://doi.org/10.1109/JLT.2024.3363729">2024 年 JLT 原始论文摘要</a></p>
+<div class="table-scroll" role="region" aria-label="数据表" tabindex="0"><table>
+<thead>
+<tr>
+<th>论文尺寸标注 µm</th>
+<th style="text-align: right;">20</th>
+<th style="text-align: right;">40</th>
+<th style="text-align: right;">60</th>
+<th style="text-align: right;">80</th>
+<th style="text-align: right;">100</th>
+<th style="text-align: right;">300</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OFDM 最大报告速率 Gb/s</td>
+<td style="text-align: right;">8.294</td>
+<td style="text-align: right;">8.394</td>
+<td style="text-align: right;">10.547</td>
+<td style="text-align: right;">10.019</td>
+<td style="text-align: right;">9.398</td>
+<td style="text-align: right;">7.294</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="_2">从发光样品到集成电路</h3>
+<div class="table-scroll" role="region" aria-label="数据表" tabindex="0"><table>
+<thead>
+<tr>
+<th>样品和实验</th>
+<th>公开观测</th>
+<th>参考面和限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20 / 40 µm 正方形黄光 InGaN，转印到金刚石</td>
+<td>1 m 光纤、1.5 Gb/s OOK，25 / 50 µA，0.056 / 0.110 pJ/bit。约 1 GHz APD 限制了该实验的 OOK 速率</td>
+<td>能量以 LED 直流偏置 <code>I×V/R</code> 估算。20 µm 样品 25 µA 时，公开工作簿 −3 dB 为 2.1358 GHz、−6 dB 为 2.8504 GHz，保留作者的参考面和命名。<a href="https://doi.org/10.1038/s41467-026-74151-4">Lin 等 Fig.4–5 与测量方法</a> · <a href="https://doi.org/10.5281/zenodo.20034288">公开数据工作簿</a></td>
+</tr>
+<tr>
+<td>同一篇 Lin 论文，20 / 40 µm 黄光及红光</td>
+<td>1 m OFDM，黄光 4.74 / 6.35 Gb/s，红光 4.45 / 5.37 Gb/s，分别在 8 / 5 kA/cm²</td>
+<td>这是高注入的独立模式。用论文面积复算，20 µm 的 8 kA/cm² 约等于 32 mA，40 µm 的 5 kA/cm² 约等于 80 mA。这些速率与上一行低电流 OOK 能耗对应不同工作点。<a href="https://doi.org/10.1038/s41467-026-74151-4">Lin 等 Fig.5c–o 与结果</a></td>
+</tr>
+<tr>
+<td>蓝光 GaN，约 6–7 µm 有效发光/注入口径，蓝宝石测试板</td>
+<td>10 Gb/s NRZ、BER 约 10⁻¹⁰、约 1 pJ/bit</td>
+<td>外部 AC 耦合 50 Ω 激励、GSG 探针与一抽头 FIR。能量来自 LED 平均电流乘端压，外部激励及接收系统功耗未计入。12 Gb/s 只有开眼的描述。<a href="https://csmantech.org/wp-content/uploads/2025/05/10A.1-Final.2025.pdf">Pezeshki 2025 Fig.4–7</a></td>
+</tr>
+<tr>
+<td>同一团队，MicroLED 转印到 16 nm CMOS ASIC</td>
+<td>300 单元阵列中抽测 60 路，3.3 Gb/s/路，参考接收器给出 BER 瀑布曲线。作者报告集成驱动电子约 3.5 Gb/s 限制</td>
+<td>另有在 2.5 Gb/s 进行的多通道串扰实验。测试板单通道的 10 Gb/s 与 CMOS 集成实验为不同连接和结果。<a href="https://csmantech.org/wp-content/uploads/2025/05/10A.1-Final.2025.pdf">Pezeshki 2025 Fig.1–3</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>对固定驱动电流，尺寸变化同时改变电流密度和寄生。以 <strong>100 µA、正方形发光面</strong>作计算例，10 / 20 / 40 / 60 µm 分别对应 100 / 25 / 6.25 / 2.78 A/cm²。有效发光区、注入口径、台面尺寸、焊盘节距需要分别登记。小台面可降低结电容，焊盘、ESD 与互连电容可能成为主要负载。改变电流密度还会改变微分复合寿命、光功率、效率及温升。单极点近似的复合响应带宽为 <code>1/(2π τdiff)</code>，其适用点由偏置和器件物理决定。减小尺寸可能减少可耦合光功率，侧壁复合也会改变效率。最后应在指定光通道和接收目标下比较所需的电流、输入功耗和余量。<a href="https://doi.org/10.1038/s41467-026-74151-4">Lin 等器件/耦合实验</a> · <a href="https://doi.org/10.1038/s41598-024-57132-9">长波 MicroLED 的复合与带宽实测</a></p>
+<h2 id="3-vcsel">3. VCSEL 的偏置与调制</h2>
+<p>VCSEL 在小电流时有自发辐射。注入使有源区光增益达到腔内总损耗后，可建立受激振荡，对应阈值电流 <code>Ith</code>。对于叠加单极性调制的低侧驱动，低位 <code>I0=IB</code>，高位 <code>I1=IB+IM</code>。阈值以上可在有限范围用 <code>Popt≈ηs(T)·[I−Ith(T)]</code> 估算。选择低位接近或高于阈值有助于控制跨阈值开启延迟和振铃，同时带来直流功耗和低位光功率。偏置点应按温度、老化、OMA（光调制幅度）、消光比和绝对最大电流来定。接收端能看到多少调制还取决于光路损耗和 PD 响应。<a href="https://doi.org/10.1088/2515-7647/add1a2">氧化孔径 850 nm VCSEL 的 I–L 与偏置扫描 Fig.1、3、4</a></p>
+<p>在常规器件的局部小信号近似下，载流子与光子弛豫频率 <code>fR</code> 随 <code>√(I−Ith)</code> 上升，阻尼、寄生和热状态决定最终频响。原始实验在 85°C 将偏置由 2 mA 提到 8 mA，−3 dB 带宽从 12.9 升至 26.5 GHz，<code>fR</code> 从 8.8 升至 20.0 GHz。完整区间按该论文 Eq.1 的高阶关系拟合。对 Driver，偏置、调制两个可独立设定的电流，加上受控启动、欠压关断、过流和过冲检查，是可验证的电路接口。要闭合激光平均光功率控制，还需可用的监测光电二极管与 APC 环路。<a href="https://doi.org/10.1088/2515-7647/add1a2">85°C 小信号数据 Fig.3b、Eq.1</a> · <a href="https://arxiv.org/pdf/2006.11728">偏置和调制独立控制的 65 nm 电路 Fig.2</a></p>
+<div class="table-scroll" role="region" aria-label="数据表" tabindex="0"><table>
+<thead>
+<tr>
+<th>公开实例</th>
+<th>速率和测量条件</th>
+<th>该数据所支持的结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>65 nm CMOS Driver 与外置 850 nm TOSA</td>
+<td>实测 25 Gb/s 光眼、22% mask margin。输入 CML，经 CTLE、四级限幅前置放大、NMOS 输出级，设计点 6 mA bias、8 mA 调制</td>
+<td>已有真实硅 Driver 的接口与末级实现范例。32 GHz 是 CTLE 版图后仿真值。光眼结果没有给出可用于本比较的完整链路能量。<a href="https://arxiv.org/pdf/2006.11728">Chao 等 §2–3、Fig.2–4</a></td>
+</tr>
+<tr>
+<td>850 nm 氧化孔径 VCSEL，2026 年同行评议论文</td>
+<td>106.25 GBd PAM4，即 212.5 Gb/s 线路位速率的 200G 级链路。作者分别报告约 10⁻⁸ 未纠前 BER，以及 50 m OM4、9 小时无不可纠帧</td>
+<td>9 mA 小信号带宽 &gt;35 GHz、RIN &lt;−152 dB/Hz。另有 7 抽头 TX FIR 与 25 抽头接收分析仪 FFE 的 PAM4 光眼。约 1 pJ/bit 是近封装光学方案估算。作者区分 100G 量产基础与 200G 开发。<a href="https://doi.org/10.3390/photonics13010090">Chow 等 §1、§3–4、Fig.2、4–6</a></td>
+</tr>
+<tr>
+<td>850 nm 横向失谐加载 VCSEL，2026-10 作者预印本</td>
+<td>4.7 mA、2.65 V，PRBS13、B2B，106.25 Gb/s NRZ，消光比 3.07 dB。无 DSP、预加重及接收均衡</td>
+<td>1.9×10⁻⁴ pre-FEC BER 由高斯眼图统计估计，&gt;50 GHz 截止来自对 50 GHz 内数据拟合。可观察器件高速潜力，实际 ASIC、远端链路及净速率需单独验证。<a href="https://arxiv.org/pdf/2610.35578">Graziano 等 Fig.5、Methods C</a></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-fpga-asic">4. 从 FPGA 或 ASIC 到发射器的接口</h2>
+<p>用户所说的“缓冲”在芯片设计里分成 <strong>电气输入前端</strong>和 <strong>输出预驱动级</strong>。以片外串行接口为例，完整的数据路径可以写成下图。发送侧的 FPGA 硬收发器或 ASIC SerDes 负责串化与高速电气发射。Driver 芯片入口需规定差分摆幅、共模、端接、AC/DC 耦合、抖动与保护电容。前置放大或 CTLE 取决于实际损耗，CDR/重定时取决于时钟和接口预算。PAM4 前端保留多电平线性，若用二值限幅器，应当放在二进制输入路径上，再由本地 DAC 生成 PAM4 发光电平。<a href="https://docs.amd.com/v/u/en-US/ug476_7Series_Transceivers">AMD UG476 收发器用户指南</a> · <a href="https://arxiv.org/pdf/2006.11728">65 nm CML 输入到激光输出的实例</a></p>
+<pre><code class="language-text">数据 → 编码/串化 → FPGA GT 或 ASIC SerDes → 差分 PCB/封装
+     → 端接与输入保护 → 按损耗选择 CTLE/前置放大 → 可选重定时
+     → 输出预驱动 → 发光器件末级 → 光耦合 → PD/TIA → 判决
+                              ↑
+                  电流基准、慢速配置、启动与关断
+</code></pre>
+<div class="table-scroll" role="region" aria-label="数据表" tabindex="0"><table>
+<thead>
+<tr>
+<th>路线</th>
+<th>末级动作</th>
+<th>需要单独验证的主要边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MicroLED A 电压驱动</td>
+<td>预驱动控制输出电压，让二极管在两种电流间切换</td>
+<td>通过电压设定电流时，Vf、温度和电源轨误差映射到光调制幅度。输出电容与回流路径决定边沿、过冲和充放电能耗</td>
+</tr>
+<tr>
+<td>MicroLED B 电流转向 NRZ</td>
+<td>差分预驱动将调制电流转向 LED 或 dummy。独立偏置支路可保持低位电流</td>
+<td>恒流尾级要留合规电压。dummy 的静态耗电与两支路不匹配的瞬态需要积分或直接测量</td>
+</tr>
+<tr>
+<td>MicroLED C 单位电流 PAM4</td>
+<td>数字译码后由单位电流单元相加，产生四个发光电平</td>
+<td>四电平的最小眼高、单元失配、开关时序偏斜和非线性光输出。相同总摆幅下，三只理想眼的幅度间隔仅为 NRZ 的约三分之一</td>
+</tr>
+<tr>
+<td>VCSEL 独立偏置与调制</td>
+<td>直流支路决定阈值附近的低位，调制支路快速转向或叠加</td>
+<td>高温低位的偏置与光余量、低温与快启动峰值、RIN、弛豫振铃、独立偏置能耗与保护</td>
+</tr>
+</tbody>
+</table></div>
+<p>前三行对应项目已命名的 A/B/C，最后一行对应独立的 VCSEL 电路族。也可试一抽头 FFE 增强边沿，但应与相同末级的无 FFE 实验成对比较，计入附加功耗和过冲。片内短线的低摆幅并行接入是另一组接口条件，要单独记录时钟、通道数和电气接口能耗。<a href="../microled-dynamic-validation-20261108/README.md">项目 A/B/C 实际核心及电流参考面</a> · <a href="../../../evidence/vcsel-robustness-20261029/final-r10-index.json">项目 VCSEL r10 网表及筛查索引</a> · <a href="https://csmantech.org/wp-content/uploads/2025/05/10A.1-Final.2025.pdf">MicroLED 一抽头 FIR 实测</a></p>
+<p>蓝光/黄光 MicroLED 的 InGaN/GaN 外延、850 nm 氧化孔径 VCSEL 的 GaAs 系外延和硅 CMOS Driver 可分别制造，再用转印、倒装或合适的短互连集成。可依据发光器件的 Vf、最大电流及封装寄生选择输出器件电压等级和负载。输入串行前端依据带宽、低摆幅共模与电容选择器件。高速核心与较高电压的 LED 端可以分供电域。布局布线时要保留紧凑的电流回路和成对输入路径，显式纳入 pad、ESD、bump/焊线与回流电感，评估参考源隔离、脉冲 EM/IR 与热路径。65 nm 和 16 nm 的实例分别验证了论文中的电路和集成方式，项目工艺取舍仍要以可取得的 PDK、IO 耐压、负载、PEX 和样片能力为依据。<a href="https://arxiv.org/pdf/2006.11728">65 nm 与 TOSA</a> · <a href="https://csmantech.org/wp-content/uploads/2025/05/10A.1-Final.2025.pdf">16 nm CMOS 转印与蓝宝石对照</a> · <a href="https://doi.org/10.3390/photonics13010090">GaAs 系 VCSEL 工艺</a></p>
+<h2 id="5">5. 可执行的联合验证方法</h2>
+<ol>
+<li><strong>分别定义电与光参考面。</strong> MicroLED 取小口径、20 µm、40 µm、60 µm 的可追溯样品类别。先固定 J 比较几何效应，再按相同目标接收 OMA、BER 和光程比较系统所需电流。VCSEL 按具体器件、阈值与温度分组，在 <code>I0/I1</code> 网格上扫描。记录器件面积定义、温度、光耦合和器件批次。没有实物时，这些只能作为设计与仿真矩阵。</li>
+<li><strong>分离电气负载和发光动态。</strong> 拟合 <code>I–V</code>、<code>P–I</code>、复数 <code>S11/S21</code>，在多个偏置和温度上去嵌探头、光路及检测器。独立做脉冲或 PRBS 留出检验。MicroLED 测导电电流和储能支路，VCSEL 同时记录 <code>Ith</code>、斜率效率、弛豫与阻尼。项目目前 20 µm 幅频仅支持条件化拟合，动态参数继续按范围扫描。<a href="https://doi.org/10.1002/jsid.2105">El Badaoui 等 §2–6 模型与实测</a> · <a href="../microled-dynamic-validation-20261108/README.md">项目幅频与留出检验</a></li>
+<li><strong>将发射器能耗与链路能耗分开。</strong> <code>E_TX=Σ∫Vi(t)·Ii(t)dt / Npayload</code> 按完整评分窗口计算，并记录取能正向积分与净积分的口径。分别列 LED 或 VCSEL、输出级与偏置/dummy、预驱动与电气接口、数字编码/时钟、RX、供电转换。比较成功链路时要求相同净吞吐、BER 目标、延迟与光程，明确不同波长对应的探测响应度和噪声。失败的尝试帧只能以 pJ/尝试净位表示。降低电流能否提高 bit/pJ 取决于同样的有效吞吐和接收可靠性，同时还要看固定功耗和重复传输。</li>
+<li><strong>先定位失败，再试修复。</strong> 对每条路线逐级保存输入边沿、输出摆幅、导电电流、等效光响应、接收眼高/眼宽、各源能量与峰值端压。理想源、理想末级、理想 RX 的逐一替换用于定位损失。确定在哪一层丢失余量后，再做尺寸、封装、输出级或均衡的成对对照。有限帧用错误数和测试位数报告。随机独立误码的理想模型下，若观测到零错误，单侧 95% 上界近似 <code>3/N</code>。4,096 位对应约 7.3×10⁻⁴，验证 10⁻¹² 量级约需 3×10¹² 位零错误。项目确定性仿真不满足这一统计前提，记录仿真错误数及筛查余量。</li>
+</ol>
+<p><strong>路线判断的触发条件</strong>为固定净 3.2 Gb/s 通过并稳定复现、能量口径完整、温度与寄生扫角有可解释余量。达到后再比较同错误率目标下的单通道速率扩展，或用多通道实验评估吞吐密度、串扰、供电、热和光耦合。本轮公开资料用于指导独立实验设计。</p></main></body></html>

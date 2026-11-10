@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 385" role="img" aria-labelledby="title desc">
+<title id="title">高速光发射器输入接口与门极驱动</title>
+<desc id="desc">板上FPGA发送高速差分数据，经输入保护、终端与接收，再经时序恢复与前置驱动，最终切换电流或电压送给发光器件。台架注入和片上PRBS的参考面也已标出。</desc>
+<defs><marker id="a" markerWidth="8" markerHeight="7" refX="7" refY="3.5" orient="auto"><path d="M0 0 L8 3.5 L0 7Z" fill="#27666a"/></marker></defs>
+<style>text{font-family:'PingFang SC','Noto Sans CJK SC',sans-serif;fill:#172d3a}.h{font-size:22px;font-weight:bold}.s{font-size:16px}.q{font-size:14px;fill:#415d68}.wire{stroke:#27666a;stroke-width:2;fill:none;marker-end:url(#a)}.box{fill:#fff;stroke:#9ab4bc;stroke-width:1.4;rx:10}.hi{fill:#e9f4f3;stroke:#6eaaa7}</style>
+<rect width="1160" height="385" rx="16" fill="#f7fafb"/>
+<text x="34" y="39" class="h">从 FPGA / ASIC 数据到发光器件</text>
+<path d="M35 63H190M220 63H945M978 63H1124" stroke="#9ab4bc"/>
+<text x="35" y="86" class="q">板级数据源</text><text x="220" y="86" class="q">驱动芯片与片上测试节点</text><text x="978" y="86" class="q">封装外或近贴装</text>
+<rect x="34" y="112" width="146" height="96" class="box"/><text x="107" y="145" text-anchor="middle" class="s">FPGA / ASIC TX</text><text x="107" y="178" text-anchor="middle" class="q">串行器 · 电接口</text>
+<rect x="220" y="112" width="150" height="96" class="box"/><text x="295" y="145" text-anchor="middle" class="s">输入接收前端</text><text x="295" y="178" text-anchor="middle" class="q">PAD/ESD · 终端 · RX</text>
+<rect x="410" y="112" width="150" height="96" class="box"/><text x="485" y="145" text-anchor="middle" class="s">时序与码型</text><text x="485" y="178" text-anchor="middle" class="q">转发时钟 / CDR</text>
+<rect x="600" y="112" width="150" height="96" class="box hi"/><text x="675" y="145" text-anchor="middle" class="s">前置驱动级</text><text x="675" y="178" text-anchor="middle" class="q">电平转换 · 驱动门极</text>
+<rect x="790" y="112" width="150" height="96" class="box"/><text x="865" y="145" text-anchor="middle" class="s">发射输出级</text><text x="865" y="178" text-anchor="middle" class="q">电压切换 / 电流转向</text>
+<rect x="980" y="112" width="146" height="96" class="box"/><text x="1053" y="145" text-anchor="middle" class="s">发光器件</text><text x="1053" y="178" text-anchor="middle" class="q">MicroLED / VCSEL</text>
+<path class="wire" d="M180 160H218"/><path class="wire" d="M370 160H408"/><path class="wire" d="M560 160H598"/><path class="wire" d="M750 160H788"/><path class="wire" d="M940 160H978"/>
+<rect x="354" y="262" width="207" height="59" class="box"/><text x="457" y="297" text-anchor="middle" class="s">片上 PRBS / 外部台架</text>
+<path class="wire" d="M561 291H580V164" stroke-dasharray="5 4"/>
+<rect x="790" y="262" width="150" height="59" class="box"/><text x="865" y="297" text-anchor="middle" class="s">供电 · 偏置 · 关断</text>
+<path class="wire" d="M865 262V210"/>
+<text x="35" y="354" class="q">虚线为建议的隔离注入点。现有 SPICE 从理想电输入开始，用于单独验证输出与前置驱动；板级 PHY 待验证。</text>
+</svg>

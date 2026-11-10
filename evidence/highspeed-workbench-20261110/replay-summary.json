@@ -1,0 +1,811 @@
+{
+  "schema": "highspeed-driver-transistor-replay-v1",
+  "run_id": "tt-20261110-r2",
+  "level": "Schematic transistor + frozen electrical load and deterministic optical/RX proxy",
+  "net_Gbps": 3.2,
+  "line_Gbps": 3.7,
+  "line_bits": 4736,
+  "offered_payload_bits": 4096,
+  "acceptance_thresholds": {
+    "min_amplitude_uAeq_within_each_proxy": 7.5,
+    "min_one_sided_time_ps": 100,
+    "training_and_validation_bit_errors": 0
+  },
+  "runtime": {
+    "python": "3.12.13 (main, Mar 25 2026, 03:16:06) [Clang 22.1.1 ]",
+    "numpy": "2.5.3",
+    "platform": "macOS-27.2-arm64-arm-64bit"
+  },
+  "commands": [
+    "build/layout/venv/bin/python scripts/highspeed_workbench_20261110/replay.py A --run-id tt-20261110-r2",
+    "build/layout/venv/bin/python scripts/highspeed_workbench_20261110/replay.py B --run-id tt-20261110-r2",
+    "build/layout/venv/bin/python scripts/highspeed_workbench_20261110/replay.py C --run-id tt-20261110-r2",
+    "build/layout/venv/bin/python scripts/highspeed_workbench_20261110/replay.py VCSEL --run-id tt-20261110-r2",
+    "build/layout/venv/bin/python scripts/highspeed_workbench_20261110/replay_summary.py --run-id tt-20261110-r2"
+  ],
+  "MicroLED_conditions": {
+    "corner": "typical",
+    "temperature_C": 27,
+    "supply_V": 3.3,
+    "emitter_model": "20 µm published static I-V fit + assumed 200 fF parallel C",
+    "electrical_package_assumption": "1 Ω / 0.5 nH",
+    "receiver": "v2: fixed 200 ps synthetic optical pole and 1 GHz RX pole"
+  },
+  "VCSEL_conditions": {
+    "corner": "typical",
+    "temperature_C": 25,
+    "supply_V": 3.3,
+    "emitter_model": "850 nm 25 °C graph-constrained VCSEL + assumed 150 fF parallel C",
+    "electrical_package_assumption": "0.5 Ω / 0.2 nH",
+    "receiver": "v3: fixed graph-constrained 3 mA optical response proxy and 5 GHz RX pole"
+  },
+  "energy_scope": "For each source port use P=-V×I from native points. Split each linear power interval at zero. Positive E+, returned magnitude E− and net E+−E− are each summed across seven ports over 1.28 µs and divided by 4096 offered payload bits. This remains an input energy metric when a receiver screen fails. Upstream host, clock/SerDes, RX and internal power of ideal sources are outside this ledger.",
+  "receiver_diagnosis": "Negative expected-class signed decision margin means at least one validation sample is on the wrong side of its threshold. A zero minimum one-sided time margin means at least one expected class has no valid time window at the selected delay. The electrical-only diagnostic evaluates the freshly replayed native LED conduction current with both optical and receiver poles bypassed. The v2 delay is trained independently under the same declared contract and thresholds, so differences in error count are diagnostic and do not partition additive errors. VCSEL v3 maps graph-constrained optical power at 3/7 mA to 25/100 µAeq, so the positive signed distance is a normalization within that proxy.",
+  "interpretation": "MicroLED A/B/C share a stimulus, load, supply convention and v2 receiver. VCSEL retains its own frozen optical/RX contract and temperature. Cross-family measured optical power, system BER, end-to-end energy and route ranking require additional evidence.",
+  "compressed_native_waveform_total_bytes": 393861446,
+  "waveform_extract": {
+    "path": "evidence/highspeed-workbench-20261110/replay-waves.csv",
+    "sha256": "841863b17c08c860753201a9a9d4314007cb440b6a19cc1e89d3edab6cb6618c",
+    "time_origin": "First validation bit launch (frame bit index 576); no RX delay shift.",
+    "symbols_per_route": 12,
+    "samples_per_symbol": 48,
+    "scope": "Electrical current in mA. MicroLED optical and RX proxies in µAeq. VCSEL graph-derived optical and RX proxies in mW. Compare amplitudes within each family."
+  },
+  "routes": {
+    "A": {
+      "replay": {
+        "route": "A",
+        "run_id": "tt-20261110-r2",
+        "old_case": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C200fF-S40",
+        "new_case": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/A/cases/TT-A-C200fF-S40",
+        "solver_command": [
+          "ngspice",
+          "-b",
+          "testbench.spice"
+        ],
+        "solver_version": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******\n",
+        "source_commit": "6f823fea7f7d2ee1a613fd5e3a8dea7e891b6469",
+        "exit_code": 0,
+        "simulation_ok": true,
+        "analysis_error": null,
+        "simulation_elapsed_s": 58.72511577606201,
+        "old_result_sha256": "f9ab86277431dd4d11108eb6fe565554d682074ed84c228d8099b9cd0d4cded5",
+        "new_result_sha256": "c6d9cab6ea0f1a18432a03365222ed344f6402003288cd60308b5a603205b3a9",
+        "old_deck_sha256": "96b1f6767f6e256a3dbb5ad1ac20047be5ed4408a8207aae88cb7a4e53736c4a",
+        "new_deck_sha256": "96b1f6767f6e256a3dbb5ad1ac20047be5ed4408a8207aae88cb7a4e53736c4a",
+        "exact_deck_sha256_match": true,
+        "normalized_deck_match": true,
+        "old_native_raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+        "new_native_raw_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+        "exact_native_raw_sha256_match": true,
+        "analysis_path": null
+      },
+      "metrics": {
+        "modulation": "NRZ",
+        "symbol_rate_Gbaud": 3.7,
+        "source_port_positive_pJ_per_offered_payload_bit": {
+          "VIN": 0.13715760636790253,
+          "VDD": 0.20849919131393654,
+          "VREF": 0.017453439990555784,
+          "VLED": 0.13368246945260512,
+          "VD0": 0.028834091539404416,
+          "VD1": 0.0,
+          "VDISABLE": 0.0
+        },
+        "positive_pJ_per_offered_payload_bit": 0.5256267986644043,
+        "returned_pJ_per_offered_payload_bit": 0.030266575486555654,
+        "net_pJ_per_offered_payload_bit": 0.49536022317784867,
+        "current_min_mA": 0.01649426298280145,
+        "current_max_mA": 0.1129989958542008,
+        "max_native_step_ps": 6.75675675717792,
+        "native_samples": 783066,
+        "device_voltage_screen_passed": true,
+        "receiver": {
+          "errors": 844,
+          "symbol_errors": 844,
+          "compared_bits": 4096,
+          "signed_amplitude_margin": -38.841576722451926,
+          "signed_amplitude_margin_unit": "µAeq (MicroLED v2)",
+          "minimum_one_sided_time_margin_ps": 0.0,
+          "sampling_delay_ps": 1260.0,
+          "thresholds_uAeq": [
+            62.5
+          ],
+          "checks": {
+            "training_error_free": false,
+            "validation_error_free": false,
+            "decision_distance_7p5uA": false,
+            "time_margin_100ps": false,
+            "all_directed_transitions_present": true
+          },
+          "passed": false
+        }
+      },
+      "historical_metrics": {
+        "modulation": "NRZ",
+        "symbol_rate_Gbaud": 3.7,
+        "source_port_positive_pJ_per_offered_payload_bit": {
+          "VIN": 0.13715760636790253,
+          "VDD": 0.20849919131393654,
+          "VREF": 0.017453439990555784,
+          "VLED": 0.13368246945260512,
+          "VD0": 0.028834091539404416,
+          "VD1": 0.0,
+          "VDISABLE": 0.0
+        },
+        "positive_pJ_per_offered_payload_bit": 0.5256267986644043,
+        "returned_pJ_per_offered_payload_bit": 0.030266575486555654,
+        "net_pJ_per_offered_payload_bit": 0.49536022317784867,
+        "current_min_mA": 0.01649426298280145,
+        "current_max_mA": 0.1129989958542008,
+        "max_native_step_ps": 6.75675675717792,
+        "native_samples": 783066,
+        "device_voltage_screen_passed": true,
+        "receiver": {
+          "errors": 844,
+          "symbol_errors": 844,
+          "compared_bits": 4096,
+          "signed_amplitude_margin": -38.841576722451926,
+          "signed_amplitude_margin_unit": "µAeq (MicroLED v2)",
+          "minimum_one_sided_time_margin_ps": 0.0,
+          "sampling_delay_ps": 1260.0,
+          "thresholds_uAeq": [
+            62.5
+          ],
+          "checks": {
+            "training_error_free": false,
+            "validation_error_free": false,
+            "decision_distance_7p5uA": false,
+            "time_margin_100ps": false,
+            "all_directed_transitions_present": true
+          },
+          "passed": false
+        }
+      },
+      "exact_reported_metrics_match": true,
+      "electrical_only_retrained_delay": {
+        "errors": 1205,
+        "symbol_errors": 1205,
+        "compared_bits": 4096,
+        "signed_amplitude_margin": -38.42549367262579,
+        "signed_amplitude_margin_unit": "µA (conduction-current diagnostic)",
+        "minimum_one_sided_time_margin_ps": 0.0,
+        "sampling_delay_ps": 680.0,
+        "thresholds_uAeq": [
+          62.5
+        ],
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        },
+        "passed": false
+      },
+      "receiver_symbol_errors_by_expected_transition": {
+        "0->0": {
+          "symbol_errors": 85,
+          "opportunities": 1006
+        },
+        "0->1": {
+          "symbol_errors": 311,
+          "opportunities": 1029
+        },
+        "1->0": {
+          "symbol_errors": 429,
+          "opportunities": 1029
+        },
+        "1->1": {
+          "symbol_errors": 19,
+          "opportunities": 1032
+        }
+      },
+      "identities_sha256": {
+        "inputs": {
+          "route_a.spice": "02ba88d9b7654b68b11b4db15bd8bbf316271123c8d377944335602763657a53",
+          "route_c.spice": "096ecd179eadf8193896b6c1177d845c666bbe93903ccf5a99020593c6da8b1d",
+          "route_b.spice": "9572b2bc5f659391c48d3a69d3ab84cef8a2eebc37e582437803c2ddebd3c3c7",
+          "receiver.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+          "common.spice": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8",
+          "led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+          "__pycache__/receiver.cpython-312.pyc": "eeb4afc46a69b1297575745cc062670d85cb991122eed98beef36efde61e772c",
+          "pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+          "pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+        },
+        "frozen_sources": {
+          "circuits.py": "b41e3844563b44804a1efa17dcbf99e8bcdde6c4fdd40697da25bf7efbbfa901",
+          "wrapper.py": "c5a007fb9e14d4d51ee3506a2d9c4460ba53c37e959bbb35bfa6976e59306b42",
+          "legacy_engine.py": "0316afadb96dabc2c7554214bad408779d8f07ea3b430074140899c685a92873",
+          "microled_diagnosis.py": "05a3094ef2d4ac9927d2e4d0fde6476aa67f36ecdb6c8b613eba959d97119fa0",
+          "receiver_equal_latency_v2.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0"
+        },
+        "stimulus": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+        "executed_runner": "c5a007fb9e14d4d51ee3506a2d9c4460ba53c37e959bbb35bfa6976e59306b42"
+      },
+      "compressed_native_waveforms": {
+        "historical_bytes": 51825771,
+        "replay_bytes": 51825771,
+        "historical_sha256": "96591012438728400b9e2b4b2b92768c95c1f2dc8f2fdbf65687f075cb3d3616",
+        "replay_sha256": "9dc68fa68fdc5526d4649792c0d362507b05e7b497e0c25a015646a3647c6b50"
+      }
+    },
+    "B": {
+      "replay": {
+        "route": "B",
+        "run_id": "tt-20261110-r2",
+        "old_case": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-B-C200fF-S40",
+        "new_case": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/B/cases/TT-B-C200fF-S40",
+        "solver_command": [
+          "ngspice",
+          "-b",
+          "testbench.spice"
+        ],
+        "solver_version": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******\n",
+        "source_commit": "6f823fea7f7d2ee1a613fd5e3a8dea7e891b6469",
+        "exit_code": 0,
+        "simulation_ok": true,
+        "analysis_error": null,
+        "simulation_elapsed_s": 98.277911901474,
+        "old_result_sha256": "266e6cf263560368c2fb34566d3e30f03773090503036c639c16609107b7971a",
+        "new_result_sha256": "feab93f478a5d65d9faed4d06f9f78f8b154f95df2305fb422e6c72b9354bedb",
+        "old_deck_sha256": "0533d3c84df6ac4ce62ec736427d08cdaf97d05e961e5c71c503580665d4f8a6",
+        "new_deck_sha256": "0533d3c84df6ac4ce62ec736427d08cdaf97d05e961e5c71c503580665d4f8a6",
+        "exact_deck_sha256_match": true,
+        "normalized_deck_match": true,
+        "old_native_raw_sha256": "fabea9f162d5b5d3ff983b37132307b0375f8e31eb17eb1a6d94adfe4cbcafa6",
+        "new_native_raw_sha256": "fabea9f162d5b5d3ff983b37132307b0375f8e31eb17eb1a6d94adfe4cbcafa6",
+        "exact_native_raw_sha256_match": true,
+        "analysis_path": null
+      },
+      "metrics": {
+        "modulation": "NRZ",
+        "symbol_rate_Gbaud": 3.7,
+        "source_port_positive_pJ_per_offered_payload_bit": {
+          "VIN": 0.26175343762461767,
+          "VDD": 0.09040994978726156,
+          "VREF": 0.007812494186587808,
+          "VLED": 0.11103444286065207,
+          "VD0": 0.030376938427598508,
+          "VD1": 0.0,
+          "VDISABLE": 0.0
+        },
+        "positive_pJ_per_offered_payload_bit": 0.5013872628867176,
+        "returned_pJ_per_offered_payload_bit": 0.0016463247208951994,
+        "net_pJ_per_offered_payload_bit": 0.49974093816582243,
+        "current_min_mA": 0.032493692218550835,
+        "current_max_mA": 0.10042111307167771,
+        "max_native_step_ps": 6.75675675717792,
+        "native_samples": 1160991,
+        "device_voltage_screen_passed": true,
+        "receiver": {
+          "errors": 1440,
+          "symbol_errors": 1440,
+          "compared_bits": 4096,
+          "signed_amplitude_margin": -29.0412543484031,
+          "signed_amplitude_margin_unit": "µAeq (MicroLED v2)",
+          "minimum_one_sided_time_margin_ps": 0.0,
+          "sampling_delay_ps": 780.0,
+          "thresholds_uAeq": [
+            62.5
+          ],
+          "checks": {
+            "training_error_free": false,
+            "validation_error_free": false,
+            "decision_distance_7p5uA": false,
+            "time_margin_100ps": false,
+            "all_directed_transitions_present": true
+          },
+          "passed": false
+        }
+      },
+      "historical_metrics": {
+        "modulation": "NRZ",
+        "symbol_rate_Gbaud": 3.7,
+        "source_port_positive_pJ_per_offered_payload_bit": {
+          "VIN": 0.26175343762461767,
+          "VDD": 0.09040994978726156,
+          "VREF": 0.007812494186587808,
+          "VLED": 0.11103444286065207,
+          "VD0": 0.030376938427598508,
+          "VD1": 0.0,
+          "VDISABLE": 0.0
+        },
+        "positive_pJ_per_offered_payload_bit": 0.5013872628867176,
+        "returned_pJ_per_offered_payload_bit": 0.0016463247208951994,
+        "net_pJ_per_offered_payload_bit": 0.49974093816582243,
+        "current_min_mA": 0.032493692218550835,
+        "current_max_mA": 0.10042111307167771,
+        "max_native_step_ps": 6.75675675717792,
+        "native_samples": 1160991,
+        "device_voltage_screen_passed": true,
+        "receiver": {
+          "errors": 1440,
+          "symbol_errors": 1440,
+          "compared_bits": 4096,
+          "signed_amplitude_margin": -29.0412543484031,
+          "signed_amplitude_margin_unit": "µAeq (MicroLED v2)",
+          "minimum_one_sided_time_margin_ps": 0.0,
+          "sampling_delay_ps": 780.0,
+          "thresholds_uAeq": [
+            62.5
+          ],
+          "checks": {
+            "training_error_free": false,
+            "validation_error_free": false,
+            "decision_distance_7p5uA": false,
+            "time_margin_100ps": false,
+            "all_directed_transitions_present": true
+          },
+          "passed": false
+        }
+      },
+      "exact_reported_metrics_match": true,
+      "electrical_only_retrained_delay": {
+        "errors": 1045,
+        "symbol_errors": 1045,
+        "compared_bits": 4096,
+        "signed_amplitude_margin": -18.384103835404602,
+        "signed_amplitude_margin_unit": "µA (conduction-current diagnostic)",
+        "minimum_one_sided_time_margin_ps": 0.0,
+        "sampling_delay_ps": 510.0,
+        "thresholds_uAeq": [
+          62.5
+        ],
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        },
+        "passed": false
+      },
+      "receiver_symbol_errors_by_expected_transition": {
+        "0->0": {
+          "symbol_errors": 293,
+          "opportunities": 1006
+        },
+        "0->1": {
+          "symbol_errors": 261,
+          "opportunities": 1029
+        },
+        "1->0": {
+          "symbol_errors": 858,
+          "opportunities": 1029
+        },
+        "1->1": {
+          "symbol_errors": 28,
+          "opportunities": 1032
+        }
+      },
+      "identities_sha256": {
+        "inputs": {
+          "route_a.spice": "02ba88d9b7654b68b11b4db15bd8bbf316271123c8d377944335602763657a53",
+          "route_c.spice": "096ecd179eadf8193896b6c1177d845c666bbe93903ccf5a99020593c6da8b1d",
+          "route_b.spice": "9572b2bc5f659391c48d3a69d3ab84cef8a2eebc37e582437803c2ddebd3c3c7",
+          "receiver.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+          "common.spice": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8",
+          "led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+          "__pycache__/receiver.cpython-312.pyc": "eeb4afc46a69b1297575745cc062670d85cb991122eed98beef36efde61e772c",
+          "pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+          "pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+        },
+        "frozen_sources": {
+          "circuits.py": "b41e3844563b44804a1efa17dcbf99e8bcdde6c4fdd40697da25bf7efbbfa901",
+          "wrapper.py": "c5a007fb9e14d4d51ee3506a2d9c4460ba53c37e959bbb35bfa6976e59306b42",
+          "legacy_engine.py": "0316afadb96dabc2c7554214bad408779d8f07ea3b430074140899c685a92873",
+          "microled_diagnosis.py": "05a3094ef2d4ac9927d2e4d0fde6476aa67f36ecdb6c8b613eba959d97119fa0",
+          "receiver_equal_latency_v2.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0"
+        },
+        "stimulus": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+        "executed_runner": "c5a007fb9e14d4d51ee3506a2d9c4460ba53c37e959bbb35bfa6976e59306b42"
+      },
+      "compressed_native_waveforms": {
+        "historical_bytes": 76153444,
+        "replay_bytes": 76153444,
+        "historical_sha256": "e954172d4cd9142f91fdc70293b1bff4ecbf37d0285570199108bab3d5a0933e",
+        "replay_sha256": "844e1bf5a23d27ceece207addcef4f2f79569ed0e00c458d8cb59f7f97a6fcc9"
+      }
+    },
+    "C": {
+      "replay": {
+        "route": "C",
+        "run_id": "tt-20261110-r2",
+        "old_case": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-C-C200fF-S40",
+        "new_case": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/C/cases/TT-C-C200fF-S40",
+        "solver_command": [
+          "ngspice",
+          "-b",
+          "testbench.spice"
+        ],
+        "solver_version": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******\n",
+        "source_commit": "6f823fea7f7d2ee1a613fd5e3a8dea7e891b6469",
+        "exit_code": 0,
+        "simulation_ok": true,
+        "analysis_error": null,
+        "simulation_elapsed_s": 203.2529547214508,
+        "old_result_sha256": "371728417145bfc31005fa06c7e1f8ad2bd849785453375d86292245413554f9",
+        "new_result_sha256": "8ae8c39d02ec3792a3b65cc9d90c3b10eb56f7d3e6f415139342c1c1b5600b06",
+        "old_deck_sha256": "ba8aae555610c85b24285c038a8436a74358c455eac1a9565a8f46f526dc111a",
+        "new_deck_sha256": "ba8aae555610c85b24285c038a8436a74358c455eac1a9565a8f46f526dc111a",
+        "exact_deck_sha256_match": true,
+        "normalized_deck_match": true,
+        "old_native_raw_sha256": "143f184962fc52767698858cc458a7e77c6561cf2feea81d9a96596770e670e1",
+        "new_native_raw_sha256": "143f184962fc52767698858cc458a7e77c6561cf2feea81d9a96596770e670e1",
+        "exact_native_raw_sha256_match": true,
+        "analysis_path": null
+      },
+      "metrics": {
+        "modulation": "PAM4",
+        "symbol_rate_Gbaud": 1.85,
+        "source_port_positive_pJ_per_offered_payload_bit": {
+          "VIN": 0.2744666366503897,
+          "VDD": 0.289264525261822,
+          "VREF": 0.0078124943266585515,
+          "VLED": 0.09948139348801432,
+          "VD0": 0.024723836019751807,
+          "VD1": 0.04877180888095769,
+          "VDISABLE": 0.0
+        },
+        "positive_pJ_per_offered_payload_bit": 0.7445206946275941,
+        "returned_pJ_per_offered_payload_bit": 0.030544390484619002,
+        "net_pJ_per_offered_payload_bit": 0.7139763041429751,
+        "current_min_mA": 0.03118388052554262,
+        "current_max_mA": 0.1010442705382706,
+        "max_native_step_ps": 13.51351351414408,
+        "native_samples": 1133090,
+        "device_voltage_screen_passed": true,
+        "receiver": {
+          "errors": 1399,
+          "symbol_errors": 1300,
+          "compared_bits": 4096,
+          "signed_amplitude_margin": -36.78967864078551,
+          "signed_amplitude_margin_unit": "µAeq (MicroLED v2)",
+          "minimum_one_sided_time_margin_ps": 0.0,
+          "sampling_delay_ps": 1450.0,
+          "thresholds_uAeq": [
+            37.5,
+            62.5,
+            87.5
+          ],
+          "checks": {
+            "training_error_free": false,
+            "validation_error_free": false,
+            "decision_distance_7p5uA": false,
+            "time_margin_100ps": false,
+            "all_directed_transitions_present": true
+          },
+          "passed": false
+        }
+      },
+      "historical_metrics": {
+        "modulation": "PAM4",
+        "symbol_rate_Gbaud": 1.85,
+        "source_port_positive_pJ_per_offered_payload_bit": {
+          "VIN": 0.2744666366503897,
+          "VDD": 0.289264525261822,
+          "VREF": 0.0078124943266585515,
+          "VLED": 0.09948139348801432,
+          "VD0": 0.024723836019751807,
+          "VD1": 0.04877180888095769,
+          "VDISABLE": 0.0
+        },
+        "positive_pJ_per_offered_payload_bit": 0.7445206946275941,
+        "returned_pJ_per_offered_payload_bit": 0.030544390484619002,
+        "net_pJ_per_offered_payload_bit": 0.7139763041429751,
+        "current_min_mA": 0.03118388052554262,
+        "current_max_mA": 0.1010442705382706,
+        "max_native_step_ps": 13.51351351414408,
+        "native_samples": 1133090,
+        "device_voltage_screen_passed": true,
+        "receiver": {
+          "errors": 1399,
+          "symbol_errors": 1300,
+          "compared_bits": 4096,
+          "signed_amplitude_margin": -36.78967864078551,
+          "signed_amplitude_margin_unit": "µAeq (MicroLED v2)",
+          "minimum_one_sided_time_margin_ps": 0.0,
+          "sampling_delay_ps": 1450.0,
+          "thresholds_uAeq": [
+            37.5,
+            62.5,
+            87.5
+          ],
+          "checks": {
+            "training_error_free": false,
+            "validation_error_free": false,
+            "decision_distance_7p5uA": false,
+            "time_margin_100ps": false,
+            "all_directed_transitions_present": true
+          },
+          "passed": false
+        }
+      },
+      "exact_reported_metrics_match": true,
+      "electrical_only_retrained_delay": {
+        "errors": 1281,
+        "symbol_errors": 1250,
+        "compared_bits": 4096,
+        "signed_amplitude_margin": -31.841757999583194,
+        "signed_amplitude_margin_unit": "µA (conduction-current diagnostic)",
+        "minimum_one_sided_time_margin_ps": 0.0,
+        "sampling_delay_ps": 1105.0,
+        "thresholds_uAeq": [
+          37.5,
+          62.5,
+          87.5
+        ],
+        "checks": {
+          "training_error_free": false,
+          "validation_error_free": false,
+          "decision_distance_7p5uA": false,
+          "time_margin_100ps": false,
+          "all_directed_transitions_present": true
+        },
+        "passed": false
+      },
+      "receiver_symbol_errors_by_expected_transition": {
+        "0->0": {
+          "symbol_errors": 107,
+          "opportunities": 114
+        },
+        "0->1": {
+          "symbol_errors": 4,
+          "opportunities": 131
+        },
+        "0->2": {
+          "symbol_errors": 97,
+          "opportunities": 131
+        },
+        "0->3": {
+          "symbol_errors": 128,
+          "opportunities": 128
+        },
+        "1->0": {
+          "symbol_errors": 129,
+          "opportunities": 129
+        },
+        "1->1": {
+          "symbol_errors": 19,
+          "opportunities": 126
+        },
+        "1->2": {
+          "symbol_errors": 51,
+          "opportunities": 131
+        },
+        "1->3": {
+          "symbol_errors": 126,
+          "opportunities": 126
+        },
+        "2->0": {
+          "symbol_errors": 131,
+          "opportunities": 131
+        },
+        "2->1": {
+          "symbol_errors": 53,
+          "opportunities": 128
+        },
+        "2->2": {
+          "symbol_errors": 12,
+          "opportunities": 130
+        },
+        "2->3": {
+          "symbol_errors": 120,
+          "opportunities": 128
+        },
+        "3->0": {
+          "symbol_errors": 130,
+          "opportunities": 130
+        },
+        "3->1": {
+          "symbol_errors": 95,
+          "opportunities": 127
+        },
+        "3->2": {
+          "symbol_errors": 6,
+          "opportunities": 125
+        },
+        "3->3": {
+          "symbol_errors": 92,
+          "opportunities": 133
+        }
+      },
+      "identities_sha256": {
+        "inputs": {
+          "route_a.spice": "02ba88d9b7654b68b11b4db15bd8bbf316271123c8d377944335602763657a53",
+          "route_c.spice": "096ecd179eadf8193896b6c1177d845c666bbe93903ccf5a99020593c6da8b1d",
+          "route_b.spice": "9572b2bc5f659391c48d3a69d3ab84cef8a2eebc37e582437803c2ddebd3c3c7",
+          "receiver.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+          "common.spice": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8",
+          "led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+          "__pycache__/receiver.cpython-312.pyc": "eeb4afc46a69b1297575745cc062670d85cb991122eed98beef36efde61e772c",
+          "pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+          "pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+        },
+        "frozen_sources": {
+          "circuits.py": "b41e3844563b44804a1efa17dcbf99e8bcdde6c4fdd40697da25bf7efbbfa901",
+          "wrapper.py": "c5a007fb9e14d4d51ee3506a2d9c4460ba53c37e959bbb35bfa6976e59306b42",
+          "legacy_engine.py": "0316afadb96dabc2c7554214bad408779d8f07ea3b430074140899c685a92873",
+          "microled_diagnosis.py": "05a3094ef2d4ac9927d2e4d0fde6476aa67f36ecdb6c8b613eba959d97119fa0",
+          "receiver_equal_latency_v2.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0"
+        },
+        "stimulus": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+        "executed_runner": "c5a007fb9e14d4d51ee3506a2d9c4460ba53c37e959bbb35bfa6976e59306b42"
+      },
+      "compressed_native_waveforms": {
+        "historical_bytes": 73694773,
+        "replay_bytes": 73694773,
+        "historical_sha256": "e762dfb467e48c0964cacc8cef0405923f00d0e264dd4bce76819dfa3c5f5c82",
+        "replay_sha256": "9ec590567dc2516c5f60cd58158e21bca64fe4e5e6ce0cb244f5223cd85ba399"
+      }
+    },
+    "VCSEL": {
+      "replay": {
+        "route": "VCSEL",
+        "run_id": "tt-20261110-r2",
+        "old_case": "build/vcsel-robustness-20261029/frame-TT-r10",
+        "new_case": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/VCSEL/frame-TT-r10",
+        "solver_command": [
+          "ngspice",
+          "-b",
+          "testbench.spice"
+        ],
+        "solver_version": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******\n",
+        "source_commit": "6f823fea7f7d2ee1a613fd5e3a8dea7e891b6469",
+        "exit_code": 0,
+        "simulation_ok": true,
+        "analysis_error": null,
+        "simulation_elapsed_s": 105.84215188026428,
+        "old_result_sha256": "697a8779ef312c5bd36586c6b0177fb5c4cf9759df32f04017da26215d948239",
+        "new_result_sha256": "8a38087aa6ebe28311596de4ff2edc303234bcf4737e9aca84e45bdb826647d5",
+        "old_deck_sha256": "b43fe2618cca9575a3c0f8ec5f4876135fbb2e657ac8037f3894f1e9d085289e",
+        "new_deck_sha256": "c7e2512fe7a37365c45ca5e8fc990d5b510b10efe5a211e6b24045cfed047d48",
+        "exact_deck_sha256_match": false,
+        "normalized_deck_match": true,
+        "old_native_raw_sha256": "d377fdd71f81b3cac9b62af49a0fe85eb4e169b8443fd7157474a15e5e776dd1",
+        "new_native_raw_sha256": "d377fdd71f81b3cac9b62af49a0fe85eb4e169b8443fd7157474a15e5e776dd1",
+        "exact_native_raw_sha256_match": true,
+        "analysis_path": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/VCSEL/frame-TT-r10/analysis-fixed-v3-r2/result.json"
+      },
+      "metrics": {
+        "modulation": "NRZ",
+        "symbol_rate_Gbaud": 3.7,
+        "source_port_positive_pJ_per_offered_payload_bit": {
+          "VLASER": 7.97564617677351,
+          "VDD": 1.7595073566210724,
+          "VREF": 0.15146872463917907,
+          "VD": 0.6399666310109771,
+          "VDB": 0.6352563863816942,
+          "VSET": 0.00015062653288667636,
+          "VREGSET": 8.70684891624837e-07
+        },
+        "positive_pJ_per_offered_payload_bit": 11.16199677264421,
+        "returned_pJ_per_offered_payload_bit": 0.020985426653372486,
+        "net_pJ_per_offered_payload_bit": 11.141011345990838,
+        "current_min_mA": 2.605450845355,
+        "current_max_mA": 7.211587017178999,
+        "max_native_step_ps": 6.756757000064617,
+        "native_samples": 448095,
+        "device_voltage_screen_passed": true,
+        "receiver": {
+          "errors": 0,
+          "symbol_errors": 0,
+          "compared_bits": 4096,
+          "signed_amplitude_margin": 34.1052817990374,
+          "signed_amplitude_margin_unit": "µAeq (VCSEL v3)",
+          "minimum_one_sided_time_margin_ps": 130.72242402851865,
+          "sampling_delay_ps": 355.0,
+          "thresholds_uAeq": [
+            62.5
+          ],
+          "checks": {
+            "training_error_free": true,
+            "validation_error_free": true,
+            "decision_distance_7p5uA": true,
+            "time_margin_100ps": true,
+            "all_directed_transitions_present": true
+          },
+          "passed": true,
+          "thresholds_mW": [
+            2.550836550836551
+          ]
+        },
+        "optical_margin_min_mW": 1.0183301643987919,
+        "combined_screen_passed": true
+      },
+      "historical_metrics": {
+        "modulation": "NRZ",
+        "symbol_rate_Gbaud": 3.7,
+        "source_port_positive_pJ_per_offered_payload_bit": {
+          "VLASER": 7.97564617677351,
+          "VDD": 1.7595073566210724,
+          "VREF": 0.15146872463917907,
+          "VD": 0.6399666310109771,
+          "VDB": 0.6352563863816942,
+          "VSET": 0.00015062653288667636,
+          "VREGSET": 8.70684891624837e-07
+        },
+        "positive_pJ_per_offered_payload_bit": 11.16199677264421,
+        "returned_pJ_per_offered_payload_bit": 0.020985426653372486,
+        "net_pJ_per_offered_payload_bit": 11.141011345990838,
+        "current_min_mA": 2.605450845355,
+        "current_max_mA": 7.211587017178999,
+        "max_native_step_ps": 6.756757000064617,
+        "native_samples": 448095,
+        "device_voltage_screen_passed": true,
+        "receiver": {
+          "errors": 0,
+          "symbol_errors": 0,
+          "compared_bits": 4096,
+          "signed_amplitude_margin": 34.1052817990374,
+          "signed_amplitude_margin_unit": "µAeq (VCSEL v3)",
+          "minimum_one_sided_time_margin_ps": 130.72242402851865,
+          "sampling_delay_ps": 355.0,
+          "thresholds_uAeq": [
+            62.5
+          ],
+          "checks": {
+            "training_error_free": true,
+            "validation_error_free": true,
+            "decision_distance_7p5uA": true,
+            "time_margin_100ps": true,
+            "all_directed_transitions_present": true
+          },
+          "passed": true,
+          "thresholds_mW": [
+            2.550836550836551
+          ]
+        },
+        "optical_margin_min_mW": 1.0183301643987919,
+        "combined_screen_passed": true
+      },
+      "exact_reported_metrics_match": true,
+      "electrical_only_retrained_delay": null,
+      "receiver_symbol_errors_by_expected_transition": {
+        "0->0": {
+          "symbol_errors": 0,
+          "opportunities": 1006
+        },
+        "0->1": {
+          "symbol_errors": 0,
+          "opportunities": 1029
+        },
+        "1->0": {
+          "symbol_errors": 0,
+          "opportunities": 1029
+        },
+        "1->1": {
+          "symbol_errors": 0,
+          "opportunities": 1032
+        }
+      },
+      "identities_sha256": {
+        "inputs": {
+          "driver.spice": "c614ef23c1443adf5ec34f162c456f3cba3ce4f87cb872dacef689a8cc2840ac",
+          "runner.py": "09f72cb2fda4a04fd02a16612636101977ce6380f47fea84064983d7a8ccc83b",
+          "design.ngspice": "8d9721a5bf8f079d3fddbd03339af9a0c84d4feb06db8e06465fbd02c7500508",
+          "sm141064.ngspice": "73fc67d38747d95ce03f3c2ba5f0a25c98f56a293363a9df4c971a3a28a3dcda",
+          "vcsel.spice": "7ed34d124b85230c15b4914407dbac0761103879ced25b1bb3794fb0e2d90beb"
+        },
+        "stimulus": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+        "receiver_analysis": {
+          "scripts/three_gbps_experiment/vcsel_model.py": "5cf8907df8e1ace985012ff5107312ab3b04699f2e944696fc49dae4b4d7bf23",
+          "analog/models/vcsel_research_20261027/parameters.json": "a35665e2b9eed9d3776d2a9878608688a4a00677d0e57e51446d0956967a4991",
+          "scripts/three_gbps_experiment/vcsel_driver_receiver_v3.py": "1f47a36f24379b58fb3094303d17d678e0aba7328ddbd58eb601c7b966e0c962",
+          "analog/circuits/vcsel_research_20261027/receiver-feasibility-v3-diagnostic.json": "20b4ac369a2bc165e1df8eeb13ebb8b1250646e44e4e10976cf40a342972db2e",
+          "scripts/vcsel_robustness_20261029/analyze.py": "d0f58a5be29cb52c8c155cb0366760474e202912cd2de06e6e67b86ff469dc84"
+        },
+        "result": "5ded73cd7a9764547af752b2c8b19b6a6f0b024e6c0a6b2685acea6034cc6fbd"
+      },
+      "compressed_native_waveforms": {
+        "historical_bytes": 192187458,
+        "replay_bytes": 192187458,
+        "historical_sha256": "1639a99afa2d004fce57665ceb444ec0ebdc1b68eb416b291c0f8c235731564c",
+        "replay_sha256": "e232c9b573566dbf796b9df70357c196519eb14b564f46bf027e2aae34ddd855"
+      }
+    }
+  },
+  "replay_script_sha256": "c9e38d5aa60a639608e6d48849aa50a4592467471915291bcebfbf1059880117",
+  "generator_sha256": "c83adaf3cd75926a94bf9bbbf1eb93a86e7f8e16e932e8ffdc8f2cdee074b44f"
+}

@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "checked": "2026-11-10",
+  "purpose": "Primary-source evidence for independent driver research. Rate, power and BER stay scoped to each experiment. Null values mean unavailable at the checked read depth.",
+  "sources": [
+    {
+      "id": "M1",
+      "title": "10.5 Gbps Visible Light Communication Systems Based on C-Plane Freestanding GaN Micro-LED",
+      "publisher": "IEEE Journal of Lightwave Technology",
+      "publication_date": "2024-02-08",
+      "doi": "10.1109/JLT.2024.3363729",
+      "url": "https://ieeexplore.ieee.org/document/10428001/",
+      "read_depth": "Publisher abstract",
+      "locator": "Abstract, device-size sweep and extended-distance sentence",
+      "evidence": {
+        "emitter": "single blue c-plane GaN-substrate MicroLED",
+        "modulation": "OFDM",
+        "size_reported_um": [20, 40, 60, 80, 100, 300],
+        "maximum_reported_gbps": [8.294, 8.394, 10.547, 10.019, 9.398, 7.294],
+        "size_20_small_signal_minus3db_ghz_approx": 2.3,
+        "size_60_extended_distance_m": [0.5, 1, 5, 10],
+        "size_60_extended_distance_gbps": [10.045, 9.668, 9.277, 8.649],
+        "bias_at_maxima": null,
+        "ber_at_maxima": null,
+        "payload_definition": null,
+        "energy_pj_per_bit": null
+      },
+      "limits": "Abstract does not establish the geometry definition, per-size bias, per-size maximum-rate distance, FEC, BER, or energy boundary. The 60 um optimum is specific to this setup."
+    },
+    {
+      "id": "M2",
+      "title": "Transfer-printed yellow and red InGaN micro-LEDs on diamond for ultra-low-power high-speed optical interconnects",
+      "first_author": "Runze Lin",
+      "publisher": "Nature Communications",
+      "publication_date": "2026-06-17",
+      "doi": "10.1038/s41467-026-74151-4",
+      "url": "https://www.nature.com/articles/s41467-026-74151-4",
+      "read_depth": "Primary full text available through publisher indexing and previously verified full-text extraction",
+      "locator": "Fig. 4; Fig. 5c–o; Results (optical interconnection tests); Measurement method",
+      "evidence": {
+        "emitter": "square yellow/red InGaN, transfer-printed to diamond, microlensed",
+        "distance_m": 1,
+        "yellow_ook": [
+          {"size_um": 20, "bias_ua": 25, "current_density_a_per_cm2": 6.25, "dc_voltage_v": 3.360, "led_dc_power_uw": 84.0, "rate_gbps": 1.5, "led_dc_pj_per_reported_bit": 0.056},
+          {"size_um": 40, "bias_ua": 50, "current_density_a_per_cm2": 3.125, "dc_voltage_v": 3.308, "led_dc_power_uw": 165.4, "rate_gbps": 1.5, "led_dc_pj_per_reported_bit": 0.110}
+        ],
+        "ofdm": [
+          {"size_um": 20, "current_density_ka_per_cm2": 8, "derived_current_ma": 32, "yellow_rate_gbps": 4.74, "red_rate_gbps": 4.45},
+          {"size_um": 40, "current_density_ka_per_cm2": 5, "derived_current_ma": 80, "yellow_rate_gbps": 6.35, "red_rate_gbps": 5.37}
+        ],
+        "ook_receiver": "approx. 1 GHz Hamamatsu C5658 APD, DSA capture and MATLAB processing",
+        "ook_ber_scope": "Amplitude swept while maintaining BER below author's FEC threshold; separate setup from small-signal measurement"
+      },
+      "limits": "The receiver limited the OOK experiment to 1.5 Gb/s. LED DC estimate excludes the RF driver, modulated energy, and receiver. OFDM and OOK conditions are distinct. Derived current is J times geometric square area."
+    },
+    {
+      "id": "M2D",
+      "title": "Supporting data for Transfer-printed yellow and red InGaN micro-LEDs on diamond for ultra-low-power high-speed optical interconnects",
+      "first_author": "Runze Lin",
+      "doi": "10.5281/zenodo.20034288",
+      "url": "https://doi.org/10.5281/zenodo.20034288",
+      "read_depth": "Primary dataset and repository-pinned numeric extraction",
+      "locator": "yellow20_s21_bandwidths.xlsx, Bandwidths and Shifted_Curves; 25 uA row",
+      "evidence": {
+        "size_square_um": 20,
+        "bias_ua": 25,
+        "minus3db_ghz": 2.1358,
+        "minus6db_ghz": 2.8504,
+        "reference_plane": "author's normalized measured chain; no phase or independent probe/path/PD de-embedding"
+      },
+      "existing_evidence": "evidence/microled-dynamic-20261029/manifest.json",
+      "limits": "The article uses distinct labels for the −3 dB and −6 dB quantities. Do not import 2.8504 GHz as a −3 dB response or append the complete fitted response to a receiver already included in the chain."
+    },
+    {
+      "id": "M3",
+      "title": "GaN Micro-LEDs for Chip-to-Chip Interconnects",
+      "first_author": "Bardia Pezeshki",
+      "publisher": "CS MANTECH 2025, Paper 10A.1",
+      "url": "https://csmantech.org/wp-content/uploads/2025/05/10A.1-Final.2025.pdf",
+      "read_depth": "Primary full conference paper",
+      "locator": "Sample preparation and Results; Fig. 2–7",
+      "evidence": {
+        "single_lane": {
+          "effective_diameter_um_approx": "6–7",
+          "fabricated_device_diameter_um_approx": 12,
+          "substrate": "passive polished sapphire with GSG and externally driven 50 ohm AC coupling",
+          "equalization": "one-tap FIR",
+          "nrz_gbps": 10,
+          "ber_approx": 1e-10,
+          "led_electrical_pj_per_reported_bit_approx": 1,
+          "energy_scope": "LED average current times applied voltage divided by line rate, excludes integrated driver estimate"
+        },
+        "integrated_driver": {
+          "cmos_node_nm": 16,
+          "array_elements": 300,
+          "reference_receiver_sampled_lanes": 60,
+          "rate_per_sampled_lane_gbps": 3.3,
+          "reported_driver_electronics_limit_gbps_approx": 3.5,
+          "separate_multilane_crosstalk_test_gbps": 2.5
+        }
+      },
+      "limits": "The paper reports open eyes to 12 Gb/s; BER claim quoted here refers to 10 Gb/s. A faster stand-alone emitter is distinct from the tested integrated driver or the array."
+    },
+    {
+      "id": "M4",
+      "title": "SPICE Modeling of GaN MicroLEDs for Optical Communication",
+      "first_author": "Sultan El Badaoui",
+      "doi": "10.1002/jsid.2105",
+      "url": "https://doi.org/10.1002/jsid.2105",
+      "read_depth": "Primary publisher full text previously checked in source ledger",
+      "locator": "§2 devices, §3 dynamics, §5 SPICE, §6 validation",
+      "evidence": "Joint electrical and optical model method with measured I–V, P–I, S11/S21 and simulation checks",
+      "existing_evidence": "evidence/microled-device-codesign-20261029/root-sources.json",
+      "limits": "Reference method. The authors' fitted blue-device values do not identify the repository's yellow 20 um sample."
+    },
+    {
+      "id": "M5",
+      "title": "Advancing high-performance visible light communication with long-wavelength InGaN-based micro-LEDs",
+      "publisher": "Scientific Reports",
+      "doi": "10.1038/s41598-024-57132-9",
+      "url": "https://www.nature.com/articles/s41598-024-57132-9",
+      "read_depth": "Primary publisher full-text section",
+      "locator": "Modulation bandwidth and transmission data rate; Eq. 2",
+      "evidence": "MicroLED small-signal frequency response depends on carrier recombination lifetime and electrical parasitics",
+      "limits": "Mechanism source. Its examples do not set the bandwidth of another geometry, color, device structure or bias."
+    },
+    {
+      "id": "V1",
+      "title": "High-speed 850 nm oxide-confined vertical-cavity surface-emitting lasers at high temperature and cryogenic temperature",
+      "doi": "10.1088/2515-7647/add1a2",
+      "url": "https://doi.org/10.1088/2515-7647/add1a2",
+      "read_depth": "Primary publisher text with Fig. 3(b) paragraph and Eq. 1",
+      "locator": "Fig. 1, Fig. 3(b), Fig. 4 and Eq. 1",
+      "evidence": {
+        "temperature_c": 85,
+        "bias_ma": [2, 3, 4, 6, 8],
+        "minus3db_ghz": [12.9, 18.3, 21.7, 25.3, 26.5],
+        "relaxation_resonance_ghz": [8.8, 12.9, 15.6, 18.9, 20.0]
+      },
+      "limits": "Small-signal device result. Higher-order dependence and thermal effects matter outside the local square-root approximation."
+    },
+    {
+      "id": "V2",
+      "title": "Prototyping of a 25 Gbps optical transmitter for applications in high-energy physics experiments",
+      "first_author": "C.-P. Chao",
+      "arxiv": "2006.11728",
+      "url": "https://arxiv.org/pdf/2006.11728",
+      "read_depth": "Primary authors' full manuscript",
+      "locator": "§2 LOCld65, Fig. 2–3; §3 25 Gb/s revision and optical eye",
+      "evidence": {
+        "process": "TSMC 65 nm CMOS, external 850 nm TOSA",
+        "input_and_driver": "CML, CTLE, four limiting preamplifier stages, NMOS pair output stage, independent bias-current generator",
+        "bias_ma_design": 6,
+        "modulation_ma_design": 8,
+        "ctle_postlayout_simulated_ghz": 32,
+        "optical_eye_measured_gbps": 25,
+        "optical_eye_mask_margin_percent": 22,
+        "ber": null,
+        "end_to_end_energy_pj_per_bit": null
+      },
+      "limits": "The equalizer bandwidth is simulated. Optical-eye mask margin and BER are distinct. Bias/modulation values describe the design point."
+    },
+    {
+      "id": "V3",
+      "title": "200G VCSEL Development and Proposal of Using VCSELs for Near-Package-Optics Scale-Up Application",
+      "first_author": "Tzu Hao Chow",
+      "publication_date": "2026-01-20",
+      "doi": "10.3390/photonics13010090",
+      "url": "https://www.mdpi.com/2304-6732/13/1/90",
+      "read_depth": "Primary peer-reviewed full text, with the authors' own experiments and a separate proposed NPO architecture",
+      "locator": "§1–4 and Fig. 2; source references to authors' OFC measurements",
+      "evidence": {
+        "emitter": "850 nm oxide-confined VCSEL",
+        "modulation": "PAM4",
+        "line_gbd": 106.25,
+        "derived_line_gbps": 212.5,
+        "rate_class_gbps": 200,
+        "minus3db_ghz_gt": 35,
+        "rin_db_per_hz_lt": -152,
+        "small_signal_bias_ma": 9,
+        "separate_large_signal_eye": {"pattern": "PRBS13Q", "tx_fir_taps": 7, "adaptive_dca_ffe_taps": 25, "longest_eye_capture_fiber": "50 m custom MMF, EMB 7500 MHz km"},
+        "reported_uncorrected_ber_approx": 1e-8,
+        "separately_reported_frame_test": {"fiber": "OM4", "length_m": 50, "duration_h": 9, "observed_uncorrectable_frames": 0},
+        "proposed_npo_energy_pj_per_bit_approx": 1
+      },
+      "limits": "No inference that the BER and frame result are the same test point. The NPO estimate includes CMOS driver, TIAs and VCSEL concept; it is not measured link energy for the 200G demonstration."
+    },
+    {
+      "id": "V4",
+      "title": "Transverse detuned loading for modulation bandwidth enhancement in VCSELs",
+      "first_author": "Giacomo Graziano",
+      "publication_date": "2026-10-26",
+      "arxiv": "2610.35578",
+      "url": "https://arxiv.org/pdf/2610.35578",
+      "read_depth": "Primary authors' full preprint",
+      "locator": "Large-signal modulation, Fig. 5, Methods C",
+      "evidence": {
+        "emitter": "850 nm single-mode VCSEL, transverse detuned loading",
+        "mode": "NRZ, PRBS13, back-to-back, no DSP/pre-emphasis/receiver equalization",
+        "rate_gbps": 106.25,
+        "bias_ma": 4.7,
+        "bias_voltage_v": 2.65,
+        "extinction_ratio_db": 3.07,
+        "eye_gaussian_estimated_prefec_ber": 0.00019,
+        "minus3db_bandwidth_fit_ghz_gt": 50,
+        "measurement_upper_bound_ghz": 50
+      },
+      "limits": "Eye-statistics BER estimate, not long bit-count BER. FEC threshold comparison, not deployed FEC. Fitted roll-off extrapolates beyond the instrument measurement span. External AWG and probe; no production ASIC evidence."
+    },
+    {
+      "id": "I1",
+      "title": "7 Series FPGAs GTX/GTH Transceivers User Guide (UG476)",
+      "publisher": "AMD",
+      "url": "https://docs.amd.com/v/u/en-US/ug476_7Series_Transceivers",
+      "read_depth": "Primary official guide identity and interface reference",
+      "locator": "TX/RX transceiver chapters and interface characteristics",
+      "evidence": "GTX/GTH hard serial transceiver separates digital/serial transmitter interface from an external optical emitter driver",
+      "limits": "Pin electrical settings and accepted line rate depend on the selected FPGA, package, protocol and board."
+    }
+  ]
+}

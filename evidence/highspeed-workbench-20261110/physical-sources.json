@@ -1,0 +1,1080 @@
+{
+  "schema_version": 1,
+  "stack": {
+    "technology_file": "libs.tech/magic/gf180mcuD.tech",
+    "technology_sha256": "0db2e5c354a2f7c7749f86df4c995127c1564daf51f936030b4e1a5982ad3210",
+    "lock_sha256": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e",
+    "nominal_unit": "µm",
+    "z_multiplier": 6,
+    "exploded_gap_per_tier_um": 2,
+    "layers": {
+      "21": {
+        "name": "N-well",
+        "color": "#94b6e0",
+        "nominal_height": {
+          "z": 0.0,
+          "thickness": 0.0145,
+          "tech_line": 3269
+        }
+      },
+      "204": {
+        "name": "P-well",
+        "color": "#dfafb5",
+        "nominal_height": {
+          "z": 0.0,
+          "thickness": 0.0145,
+          "tech_line": 3269
+        }
+      },
+      "22": {
+        "name": "Active",
+        "color": "#51a878",
+        "nominal_height": {
+          "z": 0.0145,
+          "thickness": 0.3,
+          "tech_line": 3270
+        }
+      },
+      "30": {
+        "name": "Poly",
+        "color": "#bc4566",
+        "nominal_height": {
+          "z": 0.32,
+          "thickness": 0.2,
+          "tech_line": 3271
+        }
+      },
+      "33": {
+        "name": "Contact",
+        "color": "#172738",
+        "nominal_height": null
+      },
+      "34": {
+        "name": "Metal1",
+        "color": "#3c73cb",
+        "nominal_height": {
+          "z": 1.23,
+          "thickness": 0.55,
+          "tech_line": 3274
+        }
+      },
+      "35": {
+        "name": "Via1",
+        "color": "#18406f",
+        "nominal_height": {
+          "z": 1.78,
+          "thickness": 0.6,
+          "tech_line": 3275
+        }
+      },
+      "36": {
+        "name": "Metal2",
+        "color": "#06958b",
+        "nominal_height": {
+          "z": 2.38,
+          "thickness": 0.55,
+          "tech_line": 3276
+        }
+      },
+      "38": {
+        "name": "Via2",
+        "color": "#00594e",
+        "nominal_height": {
+          "z": 2.93,
+          "thickness": 0.6,
+          "tech_line": 3277
+        }
+      },
+      "42": {
+        "name": "Metal3",
+        "color": "#d68e24",
+        "nominal_height": {
+          "z": 3.53,
+          "thickness": 0.55,
+          "tech_line": 3278
+        }
+      },
+      "40": {
+        "name": "Via3",
+        "color": "#98571c",
+        "nominal_height": {
+          "z": 4.08,
+          "thickness": 0.6,
+          "tech_line": 3279
+        }
+      },
+      "46": {
+        "name": "Metal4",
+        "color": "#8356bd",
+        "nominal_height": {
+          "z": 4.68,
+          "thickness": 0.55,
+          "tech_line": 3280
+        }
+      }
+    },
+    "contact_height": {
+      "diffusion": {
+        "z": 0.3145,
+        "thickness": 0.9155,
+        "tech_line": 3272
+      },
+      "poly": {
+        "z": 0.52,
+        "thickness": 0.71,
+        "tech_line": 3273
+      }
+    }
+  },
+  "klayout_version": "0.30.12",
+  "matplotlib_version": "3.11.2",
+  "cores": [
+    {
+      "route": "A",
+      "title": "Voltage-mode",
+      "revision": "hv-A8-ties-r5",
+      "top": "hs_voltage_robust",
+      "dbu_um": 0.001,
+      "bbox_um": [
+        -6.88,
+        -28.48,
+        35.675000000000004,
+        29.44
+      ],
+      "width_um": 42.55500000000001,
+      "height_um": 57.92,
+      "bbox_area_um2": 2464.7856000000006,
+      "ports": [
+        "DATA",
+        "OUT",
+        "VDD",
+        "VH",
+        "VL",
+        "VSS"
+      ],
+      "port_anchor_um": {
+        "OUT": [
+          27.09,
+          2.2
+        ],
+        "VDD": [
+          7.2,
+          3.4
+        ],
+        "VH": [
+          31.2,
+          4.6
+        ],
+        "VL": [
+          28.31,
+          5.8
+        ],
+        "VSS": [
+          1.2,
+          7.0
+        ],
+        "DATA": [
+          -5.3,
+          12.64
+        ]
+      },
+      "devices": [
+        {
+          "name": "N1",
+          "model": "nfet_06v0",
+          "w_um": 2.5,
+          "l_um": 0.7,
+          "cx": 4,
+          "cy": 20,
+          "nodes": [
+            "N1",
+            "DI",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              3.39,
+              20
+            ],
+            "G": [
+              4,
+              21.75
+            ],
+            "S": [
+              4.61,
+              20
+            ],
+            "B": [
+              1.5,
+              20
+            ]
+          },
+          "guard_all_sides": true
+        },
+        {
+          "name": "P1",
+          "model": "pfet_06v0",
+          "w_um": 3.93,
+          "l_um": 0.55,
+          "cx": 10,
+          "cy": 20,
+          "nodes": [
+            "N1",
+            "DI",
+            "VDD",
+            "VDD"
+          ],
+          "pins_um": {
+            "D": [
+              9.465,
+              20
+            ],
+            "G": [
+              10,
+              22.465
+            ],
+            "S": [
+              10.535,
+              20
+            ],
+            "B": [
+              7.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "N2",
+          "model": "nfet_06v0",
+          "w_um": 10,
+          "l_um": 0.7,
+          "cx": 16,
+          "cy": 20,
+          "nodes": [
+            "CTRL",
+            "N1",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              15.39,
+              20
+            ],
+            "G": [
+              16,
+              25.5
+            ],
+            "S": [
+              16.61,
+              20
+            ],
+            "B": [
+              13.5,
+              20
+            ]
+          },
+          "guard_all_sides": true
+        },
+        {
+          "name": "P2",
+          "model": "pfet_06v0",
+          "w_um": 15.72,
+          "l_um": 0.55,
+          "cx": 22,
+          "cy": 20,
+          "nodes": [
+            "CTRL",
+            "N1",
+            "VDD",
+            "VDD"
+          ],
+          "pins_um": {
+            "D": [
+              21.465,
+              20
+            ],
+            "G": [
+              22,
+              28.36
+            ],
+            "S": [
+              22.535,
+              20
+            ],
+            "B": [
+              19.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "NOUT",
+          "model": "nfet_06v0",
+          "w_um": 10,
+          "l_um": 0.7,
+          "cx": 28,
+          "cy": 20,
+          "nodes": [
+            "OUT",
+            "CTRL",
+            "VL",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              27.39,
+              20
+            ],
+            "G": [
+              28,
+              25.5
+            ],
+            "S": [
+              28.61,
+              20
+            ],
+            "B": [
+              25.5,
+              20
+            ]
+          },
+          "guard_all_sides": true
+        },
+        {
+          "name": "POUT",
+          "model": "pfet_06v0",
+          "w_um": 15.72,
+          "l_um": 0.55,
+          "cx": 34,
+          "cy": 20,
+          "nodes": [
+            "OUT",
+            "CTRL",
+            "VH",
+            "VH"
+          ],
+          "pins_um": {
+            "D": [
+              33.465,
+              20
+            ],
+            "G": [
+              34,
+              28.36
+            ],
+            "S": [
+              34.535,
+              20
+            ],
+            "B": [
+              31.5,
+              20
+            ]
+          }
+        }
+      ],
+      "inventory": [
+        {
+          "layer": 21,
+          "datatype": 0,
+          "included": true,
+          "polygons": 3,
+          "texts": 0
+        },
+        {
+          "layer": 204,
+          "datatype": 0,
+          "included": true,
+          "polygons": 5,
+          "texts": 0
+        },
+        {
+          "layer": 22,
+          "datatype": 0,
+          "included": true,
+          "polygons": 35,
+          "texts": 0
+        },
+        {
+          "layer": 110,
+          "datatype": 5,
+          "included": false,
+          "polygons": 2,
+          "texts": 0
+        },
+        {
+          "layer": 49,
+          "datatype": 0,
+          "included": false,
+          "polygons": 2,
+          "texts": 0
+        },
+        {
+          "layer": 32,
+          "datatype": 0,
+          "included": false,
+          "polygons": 21,
+          "texts": 0
+        },
+        {
+          "layer": 31,
+          "datatype": 0,
+          "included": false,
+          "polygons": 52,
+          "texts": 0
+        },
+        {
+          "layer": 55,
+          "datatype": 0,
+          "included": false,
+          "polygons": 7,
+          "texts": 0
+        },
+        {
+          "layer": 30,
+          "datatype": 0,
+          "included": true,
+          "polygons": 7,
+          "texts": 0
+        },
+        {
+          "layer": 33,
+          "datatype": 0,
+          "included": true,
+          "polygons": 746,
+          "texts": 0
+        },
+        {
+          "layer": 34,
+          "datatype": 0,
+          "included": true,
+          "polygons": 115,
+          "texts": 0
+        },
+        {
+          "layer": 35,
+          "datatype": 0,
+          "included": true,
+          "polygons": 39,
+          "texts": 0
+        },
+        {
+          "layer": 36,
+          "datatype": 0,
+          "included": true,
+          "polygons": 28,
+          "texts": 0
+        },
+        {
+          "layer": 38,
+          "datatype": 0,
+          "included": true,
+          "polygons": 28,
+          "texts": 0
+        },
+        {
+          "layer": 42,
+          "datatype": 0,
+          "included": true,
+          "polygons": 15,
+          "texts": 3
+        },
+        {
+          "layer": 40,
+          "datatype": 0,
+          "included": true,
+          "polygons": 11,
+          "texts": 0
+        },
+        {
+          "layer": 46,
+          "datatype": 0,
+          "included": true,
+          "polygons": 6,
+          "texts": 0
+        },
+        {
+          "layer": 62,
+          "datatype": 0,
+          "included": false,
+          "polygons": 1,
+          "texts": 0
+        },
+        {
+          "layer": 42,
+          "datatype": 10,
+          "included": false,
+          "polygons": 6,
+          "texts": 6
+        }
+      ],
+      "contact_types": {
+        "pc": 16,
+        "alldiffcont": 730
+      },
+      "via_landings": [
+        [
+          35,
+          34,
+          36
+        ],
+        [
+          38,
+          36,
+          42
+        ],
+        [
+          40,
+          42,
+          46
+        ]
+      ],
+      "selected_polygons": 1038,
+      "historical_checks": {
+        "klayout_drc_items": 0,
+        "gds_readback_lvs": "unique match",
+        "rc_collapsed_lvs": "unique match",
+        "extracted": {
+          "mos": 6,
+          "device_resistors": 1,
+          "resistors": 95,
+          "capacitors": 64,
+          "zero_valued_capacitors": 0
+        }
+      },
+      "source_sha256": {
+        "evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/generate/hs_voltage_robust.gds": "61bf1932e1c265420cd9d338bf263ea9bdf01a3260db47ec2f5dce33e49cbbec",
+        "evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/full-rc/hs_voltage_robust_rc.spice": "eb4dcab821c1bd55a5c89bf5b3e1ac6194976a3bda74b202f96666e3cb5eb623",
+        "evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/physical-contract.json": "ca658b7c49c89b222576b022178ce612b4388ad7b5d25671ad4b32dc3b882bc3",
+        "evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/gds-geometry-audit.json": "2cd588efddfae41d2df3d3b7e2eb4cee88d400210de62e803c5e753c54f711b7",
+        "evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/klayout-result.json": "7d4eaf306a6a5bcb56e3bdbb0a03a26eb3b7da034ffabdb9026edbb8da79f83d",
+        "evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/pex-audit.json": "305179b653500527c9826c29a4288967b8ccd45496b52724851d60bab79c2723",
+        "evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/readback-lvs.log": "3a0486961ee9461d066dc99457eec4fa2e3b461d1d1984e60c202a5bab2d401a",
+        "evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/source/schematic.spice": "161232113ba8a253b7d99ed02da961710253fbe485688a3344aeb23b89baae76",
+        "evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/selected-electrical-source.spice": "ab57f8582bdc54975e9f472472e3dd5d1b788323aed5e26abdb225cedeab02d9"
+      }
+    },
+    {
+      "route": "B",
+      "title": "Current steering",
+      "revision": "hv-r2",
+      "top": "hs_steering_robust",
+      "dbu_um": 0.001,
+      "bbox_um": [
+        -6.88,
+        -38.480000000000004,
+        53.75,
+        29.12
+      ],
+      "width_um": 60.63,
+      "height_um": 67.60000000000001,
+      "bbox_area_um2": 4098.588000000001,
+      "ports": [
+        "DATA",
+        "OUT",
+        "VDD",
+        "VSS",
+        "BIAS",
+        "DUMMY"
+      ],
+      "port_anchor_um": {
+        "OUT": [
+          27.09,
+          2.2
+        ],
+        "VDD": [
+          7.2,
+          3.4
+        ],
+        "VSS": [
+          1.2,
+          4.6
+        ],
+        "BIAS": [
+          39.7,
+          5.8
+        ],
+        "DUMMY": [
+          33.09,
+          7.0
+        ],
+        "DATA": [
+          -5.3,
+          -37.36
+        ]
+      },
+      "devices": [
+        {
+          "name": "INV1N",
+          "model": "nfet_06v0",
+          "w_um": 2.5,
+          "l_um": 0.7,
+          "cx": 4,
+          "cy": 20,
+          "nodes": [
+            "GB",
+            "DI",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              3.39,
+              20
+            ],
+            "G": [
+              4,
+              21.75
+            ],
+            "S": [
+              4.61,
+              20
+            ],
+            "B": [
+              1.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "INV1P",
+          "model": "pfet_06v0",
+          "w_um": 3.93,
+          "l_um": 0.55,
+          "cx": 10,
+          "cy": 20,
+          "nodes": [
+            "GB",
+            "DI",
+            "VDD",
+            "VDD"
+          ],
+          "pins_um": {
+            "D": [
+              9.465,
+              20
+            ],
+            "G": [
+              10,
+              22.465
+            ],
+            "S": [
+              10.535,
+              20
+            ],
+            "B": [
+              7.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "INV2N",
+          "model": "nfet_06v0",
+          "w_um": 2.5,
+          "l_um": 0.7,
+          "cx": 16,
+          "cy": 20,
+          "nodes": [
+            "GP",
+            "GB",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              15.39,
+              20
+            ],
+            "G": [
+              16,
+              21.75
+            ],
+            "S": [
+              16.61,
+              20
+            ],
+            "B": [
+              13.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "INV2P",
+          "model": "pfet_06v0",
+          "w_um": 3.93,
+          "l_um": 0.55,
+          "cx": 22,
+          "cy": 20,
+          "nodes": [
+            "GP",
+            "GB",
+            "VDD",
+            "VDD"
+          ],
+          "pins_um": {
+            "D": [
+              21.465,
+              20
+            ],
+            "G": [
+              22,
+              22.465
+            ],
+            "S": [
+              22.535,
+              20
+            ],
+            "B": [
+              19.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "LED",
+          "model": "nfet_06v0",
+          "w_um": 2.5,
+          "l_um": 0.7,
+          "cx": 28,
+          "cy": 20,
+          "nodes": [
+            "OUT",
+            "GP",
+            "VX",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              27.39,
+              20
+            ],
+            "G": [
+              28,
+              21.75
+            ],
+            "S": [
+              28.61,
+              20
+            ],
+            "B": [
+              25.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "DUMMY",
+          "model": "nfet_06v0",
+          "w_um": 2.5,
+          "l_um": 0.7,
+          "cx": 34,
+          "cy": 20,
+          "nodes": [
+            "DUMMY",
+            "GB",
+            "VX",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              33.39,
+              20
+            ],
+            "G": [
+              34,
+              21.75
+            ],
+            "S": [
+              34.61,
+              20
+            ],
+            "B": [
+              31.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "TAIL",
+          "model": "nfet_03v3",
+          "w_um": 5.76,
+          "l_um": 1,
+          "cx": 40,
+          "cy": 20,
+          "nodes": [
+            "VX",
+            "BIAS",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              39.24,
+              20
+            ],
+            "G": [
+              40,
+              23.38
+            ],
+            "S": [
+              40.76,
+              20
+            ],
+            "B": [
+              37.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "BASE",
+          "model": "nfet_03v3",
+          "w_um": 2,
+          "l_um": 1,
+          "cx": 46,
+          "cy": 20,
+          "nodes": [
+            "OUT",
+            "BIAS",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              45.24,
+              20
+            ],
+            "G": [
+              46,
+              21.5
+            ],
+            "S": [
+              46.76,
+              20
+            ],
+            "B": [
+              43.5,
+              20
+            ]
+          }
+        },
+        {
+          "name": "REF",
+          "model": "nfet_03v3",
+          "w_um": 2,
+          "l_um": 1,
+          "cx": 52,
+          "cy": 20,
+          "nodes": [
+            "BIAS",
+            "BIAS",
+            "VSS",
+            "VSS"
+          ],
+          "pins_um": {
+            "D": [
+              51.24,
+              20
+            ],
+            "G": [
+              52,
+              21.5
+            ],
+            "S": [
+              52.76,
+              20
+            ],
+            "B": [
+              49.5,
+              20
+            ]
+          }
+        }
+      ],
+      "inventory": [
+        {
+          "layer": 21,
+          "datatype": 0,
+          "included": true,
+          "polygons": 2,
+          "texts": 0
+        },
+        {
+          "layer": 204,
+          "datatype": 0,
+          "included": true,
+          "polygons": 9,
+          "texts": 0
+        },
+        {
+          "layer": 22,
+          "datatype": 0,
+          "included": true,
+          "polygons": 50,
+          "texts": 0
+        },
+        {
+          "layer": 110,
+          "datatype": 5,
+          "included": false,
+          "polygons": 2,
+          "texts": 0
+        },
+        {
+          "layer": 49,
+          "datatype": 0,
+          "included": false,
+          "polygons": 2,
+          "texts": 0
+        },
+        {
+          "layer": 32,
+          "datatype": 0,
+          "included": false,
+          "polygons": 29,
+          "texts": 0
+        },
+        {
+          "layer": 31,
+          "datatype": 0,
+          "included": false,
+          "polygons": 75,
+          "texts": 0
+        },
+        {
+          "layer": 55,
+          "datatype": 0,
+          "included": false,
+          "polygons": 7,
+          "texts": 0
+        },
+        {
+          "layer": 30,
+          "datatype": 0,
+          "included": true,
+          "polygons": 10,
+          "texts": 0
+        },
+        {
+          "layer": 33,
+          "datatype": 0,
+          "included": true,
+          "polygons": 725,
+          "texts": 0
+        },
+        {
+          "layer": 34,
+          "datatype": 0,
+          "included": true,
+          "polygons": 157,
+          "texts": 0
+        },
+        {
+          "layer": 35,
+          "datatype": 0,
+          "included": true,
+          "polygons": 53,
+          "texts": 0
+        },
+        {
+          "layer": 36,
+          "datatype": 0,
+          "included": true,
+          "polygons": 40,
+          "texts": 0
+        },
+        {
+          "layer": 38,
+          "datatype": 0,
+          "included": true,
+          "polygons": 40,
+          "texts": 0
+        },
+        {
+          "layer": 42,
+          "datatype": 0,
+          "included": true,
+          "polygons": 19,
+          "texts": 4
+        },
+        {
+          "layer": 40,
+          "datatype": 0,
+          "included": true,
+          "polygons": 17,
+          "texts": 0
+        },
+        {
+          "layer": 46,
+          "datatype": 0,
+          "included": true,
+          "polygons": 9,
+          "texts": 0
+        },
+        {
+          "layer": 62,
+          "datatype": 0,
+          "included": false,
+          "polygons": 1,
+          "texts": 0
+        },
+        {
+          "layer": 42,
+          "datatype": 10,
+          "included": false,
+          "polygons": 6,
+          "texts": 6
+        }
+      ],
+      "contact_types": {
+        "alldiffcont": 697,
+        "pc": 28
+      },
+      "via_landings": [
+        [
+          35,
+          34,
+          36
+        ],
+        [
+          38,
+          36,
+          42
+        ],
+        [
+          40,
+          42,
+          46
+        ]
+      ],
+      "selected_polygons": 1131,
+      "historical_checks": {
+        "klayout_drc_items": 0,
+        "gds_readback_lvs": "unique match",
+        "rc_collapsed_lvs": "unique match",
+        "extracted": {
+          "mos": 9,
+          "device_resistors": 1,
+          "resistors": 127,
+          "capacitors": 76,
+          "zero_valued_capacitors": 0
+        }
+      },
+      "source_sha256": {
+        "evidence/highspeed-nrz-robustness-layout/hv-r2/B/generate/hs_steering_robust.gds": "d2e32ac286d208e2d74485b4d2650ffbbf4cd25cd57c86c5f7cd9cb97e3256af",
+        "evidence/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/hs_steering_robust_rc.spice": "fcb457660f238ee402237378a48b06496109b101d51ee85e8a7257224e7ee6ae",
+        "evidence/highspeed-nrz-robustness-layout/hv-r2/B/physical-contract.json": "c12431238cce6d27b9422f38af6e9be1885c8e15e5530eb05e53f0f3929cd79d",
+        "evidence/highspeed-nrz-robustness-layout/hv-r2/B/gds-geometry-audit.json": "4f76ceeb319e80496d958ebd4a22790871cd8c4871deb7ad41de58cc5562adf4",
+        "evidence/highspeed-nrz-robustness-layout/hv-r2/B/klayout-result.json": "7d4eaf306a6a5bcb56e3bdbb0a03a26eb3b7da034ffabdb9026edbb8da79f83d",
+        "evidence/highspeed-nrz-robustness-layout/hv-r2/B/pex-audit.json": "43bf2efca8aa22837ca14416652ab7607ebe62d6fe51462e2f8f3fac30cea10c",
+        "evidence/highspeed-nrz-robustness-layout/hv-r2/B/readback-lvs.log": "86ad50d7eb4b150e71eaa4300ee202a36bc32ddecf3646c6fc125d9f7c9f2917",
+        "evidence/highspeed-nrz-robustness-layout/hv-r2/B/source/schematic.spice": "366575f58850cade385057f1c445a1b6d299aa6270deed4678d1dc197ac486bb",
+        "evidence/highspeed-nrz-robustness-layout/hv-r2/B/selected-electrical-source.spice": "b88b8f021f903c9c0c3c47516426d783a5e6520df581241d5ca0db792bab0d70"
+      }
+    }
+  ]
+}

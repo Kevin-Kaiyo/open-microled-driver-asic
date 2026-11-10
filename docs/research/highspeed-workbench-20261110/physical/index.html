@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>高速光发射机｜物理设计工作台</title>
+<style>
+:root{color-scheme:light;--ink:#173241;--muted:#4d6270;--accent:#11686d;--line:#d5e2e6;--paper:#f8fafb}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 "PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif}main{max-width:1120px;margin:auto;padding:42px 25px 60px}a{color:var(--accent);text-underline-offset:.2em}h1,h2,h3{line-height:1.28}h1{font-size:clamp(29px,5vw,43px);margin:9px 0 18px}h2{font-size:27px;margin:0 0 12px}h3{font-size:19px;margin:0 0 8px}.eyebrow{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.14em;margin:0}p{margin:0 0 14px}nav{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 0}nav a,.button{display:inline-block;border:1px solid var(--line);border-radius:7px;padding:7px 12px;background:#fff;text-decoration:none}section{border-top:1px solid var(--line);padding-top:25px;margin-top:35px}figure{margin:12px 0 17px}img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;background:#fff}figcaption{color:var(--muted);font-size:14px;margin-top:7px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.tag{display:inline-block;color:#11585b;background:#e7f2ef;border-radius:4px;padding:2px 8px;font-size:13px;font-weight:650;margin-bottom:8px}.scroller{overflow:auto;margin:10px 0 13px}table{border-collapse:collapse;width:100%;background:#fff}th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}th{background:#edf4f5}.layer-key{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:7px 14px;margin:12px 0 20px}.layer-key li{font-size:14px}.layer-key i{width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:2px;background:var(--c)}code,pre{font-family:ui-monospace,monospace}pre{padding:13px;overflow:auto;background:#eaf1f3;border-radius:6px;font-size:13px}.links a{margin-right:12px;white-space:nowrap}li{margin-bottom:4px}@media(max-width:650px){main{padding:26px 16px 40px}.grid{grid-template-columns:1fr}h2{font-size:23px}}@media print{body{background:#fff}main{max-width:none;padding:0}figure,.scroller{break-inside:avoid}nav{display:none}}
+</style>
+</head>
+<body><main>
+<header><p class="eyebrow">OPEN MICROLED DRIVER ASIC · 物理设计 · 2026-11-10</p><h1>高速光发射机物理设计工作台</h1><p>先从发射机、封装与发光器件的布局关系入手，再用两份已布线的 GF180MCU-D 历史核心，学习原理图器件、金属、通孔与提取寄生之间的对应关系。</p><nav aria-label="报告目录"><a href="#plan">发射机概念布局</a><a href="#gds">二维 GDS</a><a href="#blender">Blender 三维</a><a href="#reproduce">复现与来源</a></nav></header>
+
+<section id="plan"><span class="tag">概念规划 · 单通道 NRZ</span><h2>从高速数据接口到发光器件</h2>
+<figure><a href="tx-floorplan.svg"><img src="tx-floorplan.svg" width="1460" height="790" alt="高速发射机概念版图：上游 FPGA 或 ASIC，输入焊盘与 ESD，前置驱动，输出级和偏置，发光器件与封装，供电与回流"></a><figcaption>图 1　单通道位置规划。输入焊盘对、输出焊盘与附近回流端、发光器件的相对位置优先确定。假负载、终端和电平转换由所选架构与接口决定。</figcaption></figure>
+<ol><li><strong>输入端。</strong>板间实验可用 FPGA 的高速 TX PHY 送差分串行数据。输入 Pad、ESD、通道终端和接收前端构成第一段负载。实际终端阻值、共模、电平和抖动预算由发端与收端接口共同确定。</li><li><strong>前置驱动。</strong>前置驱动器靠近大门极输出器件。电压切换关注上下管交越与输出摆幅。电流转向关注互补偏斜和两支路的高频阻抗。边沿增强和 VCSEL 偏置／调制路径需要各自的幅度、时序与保护条件。</li><li><strong>输出与回流。</strong>输出与回流焊盘相邻，尽量缩小封装到发光器件的电流环路。将 Pad/ESD、凸点或键合线、去耦与互连 RLC 联合建模，回灌到同一负载和接收链路中再比较时序、过冲和能耗。</li></ol>
+<p>这张图用于划定版图边界。完整 TX 的核心拓扑、Pad/ESD、供电、封装与实际发光器件接口仍需确定，随后才能实施晶体管布局布线和全芯片提取。</p></section>
+
+<section id="gds"><span class="tag">实际 GDS 回读 · 历史核心 A/B</span><h2>同一比例看两份已布线核心</h2>
+<figure><a href="actual-layout-2d.svg"><img src="actual-layout-2d.png" width="2015" height="1271" alt="GF180MCU-D 历史电压驱动 A 和电流转向 B 的等比例二维 GDS 版图，标出 MOS 实例中心和 OUT 端口"></a><figcaption>图 2　使用同一 XY 尺度绘制历史 GDS。斜标记来自 MOS 的版图中心坐标。圆点标出核心的 OUT 端口锚点，封装焊盘在图 1 的规划范围内。</figcaption></figure>
+<div class="scroller"><table><thead><tr><th>检查项</th><th>A · 电压驱动</th><th>B · 电流转向</th></tr></thead><tbody>
+<tr><td>源版图</td><td><code>hv-A8-ties-r5</code></td><td><code>hv-r2</code></td></tr>
+<tr><td>器件</td><td>6 MOS + 1 片上电阻</td><td>9 MOS + 1 片上电阻</td></tr>
+<tr><td>核心包络</td><td>42.555 × 57.920 µm</td><td>60.630 × 67.600 µm</td></tr>
+<tr><td>包络面积</td><td>2,464.786 µm²</td><td>4,098.588 µm²</td></tr>
+<tr><td>归档 KLayout DRC</td><td>0 项</td><td>0 项</td></tr>
+<tr><td>归档 GDS 回读 LVS / RC 折叠 LVS</td><td>均唯一匹配</td><td>均唯一匹配</td></tr>
+<tr><td>提取网络 R / C</td><td>95 / 64</td><td>127 / 76</td></tr>
+<tr><td>OUT 的关联电容和</td><td>5.733 fF</td><td>4.104 fF</td></tr>
+</tbody></table></div>
+<p>A 以两级反相器和 NOUT／POUT 切换输出。B 的开关将尾电流引向主支路或 DUMMY 支路，另有 BASE 与 REF 器件。先在二维图找标注的器件与 OUT，再在三维场景切换对应金属层及通孔。原历史核心的 A 外接理想 VH、VL，B 外接 RREF、RDUMMY。这里的包络面积仅适用于所示研究核心，OUT 关联电容来自保存的核心 PEX。它随提取范围与电容定义变化，系统还需加入发光器件、Pad/ESD 和封装。</p>
+<p>归档 R/C 基于 GDS 回读的 Magic 提取，并对线间和对地电容保留了项目记录的空间分配近似。该网络用于这两个核心的电路回归。当前 A/B/C 与 VCSEL 的新版候选电路需各自建立版图和物理验证记录。 <span class="links"><a href="../../../../evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/pex-audit.json">A 原提取审计</a><a href="../../../../evidence/highspeed-nrz-robustness-layout/hv-r2/B/pex-audit.json">B 原提取审计</a></span></p></section>
+
+<section id="blender"><span class="tag">Blender 4.5.11 LTS · 可编辑</span><h2>把版图沿工艺层拆开</h2>
+<div class="grid"><figure><a href="core-a-3d.png"><img src="core-a-3d.png" width="1280" height="1080" alt="A 电压驱动核心的 GDS 图层爆炸图"></a><figcaption>图 3　A 电压驱动核心。颜色按工艺层分组。</figcaption></figure><figure><a href="core-b-3d.png"><img src="core-b-3d.png" width="1280" height="1080" alt="B 电流转向核心的 GDS 图层爆炸图"></a><figcaption>图 4　B 电流转向核心。同一正交投影尺度。</figcaption></figure></div>
+<ul class="layer-key" aria-label="工艺图层图例"><li><i style="--c:#94b6e0"></i>N 阱</li><li><i style="--c:#dfafb5"></i>P 阱</li><li><i style="--c:#51a878"></i>有源区 Active</li><li><i style="--c:#bc4566"></i>多晶硅 Poly</li><li><i style="--c:#172738"></i>接触孔 Contact</li><li><i style="--c:#3c73cb"></i>金属 M1</li><li><i style="--c:#18406f"></i>通孔 V1</li><li><i style="--c:#06958b"></i>金属 M2</li><li><i style="--c:#00594e"></i>通孔 V2</li><li><i style="--c:#d68e24"></i>金属 M3</li><li><i style="--c:#98571c"></i>通孔 V3</li><li><i style="--c:#8356bd"></i>金属 M4</li></ul>
+<p><a class="button" href="highspeed-cores.blend" download>下载可编辑 Blender 场景</a></p>
+<p>打开 <code>.blend</code> 后，在顶部场景列表选择 A 或 B。时间轴第 1 帧是组装位置，第 60 帧是分层展开位置。用 Outliner 按层隐藏对象，先看 N 阱、P 阱、有源区和多晶硅，再逐层打开 Contact、M1 和更高层金属。接触孔把有源区或多晶硅接到 M1。V1、V2、V3 分别跨接相邻金属层。</p>
+<p>每个 Blender XY 单位对应 1 µm。两份核心分别回验 1,038 和 1,131 个所选 GDS 多边形，源坐标用原 GDS 数据库单位逐顶点比较。Z 使用锁定 PDK 的 Magic 抽取技术名义高度，显示放大 6 倍，展开时每层级另加 2 个显示单位。离子注入、器件标记、pin 图形等几何完整保留在源 GDS，此处显示 12 个选定绘制层。</p>
+<p>GF180MCU-D 是硅 CMOS 平台。该配置提供五层金属，本次两个核心布线使用 M1 至 M4。阱和有源区以教学几何呈现，渲染适合学习相对位置。真实材料截面、膜厚分布、光电器件的外延和封装均以相应工艺资料及实测为依据。 <span class="links"><a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_02.html">GF180MCU 工艺选项</a><a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_04_1.html">官方 GDS 图层定义</a></span></p></section>
+
+<section id="reproduce"><h2>复现与验证记录</h2>
+<p>从仓库根目录运行。KLayout Python 与 Matplotlib 取自现有物理验证环境。Blender 命令按本机安装位置配置。</p>
+<pre>build/layout/venv/bin/python scripts/highspeed_workbench_20261110/physical_prepare.py
+blender -b -t 4 --python-exit-code 1 --python scripts/highspeed_workbench_20261110/physical_blender.py
+build/layout/venv/bin/python scripts/highspeed_workbench_20261110/physical_validate.py</pre>
+<p>本轮回读源 GDS 和保存的 PEX，复核了源哈希、端口坐标来源、所选多边形和接触孔及通孔覆盖。DRC/LVS 表格对应归档原始日志，本轮新运行的是图形生成与回读验证。</p>
+<p class="links"><a href="../../../../evidence/highspeed-workbench-20261110/physical-sources.json">源文件与 PDK SHA-256</a><a href="../../../../evidence/highspeed-workbench-20261110/physical-blender-checks.json">Blender 重开与帧校验</a><a href="../../../../evidence/highspeed-workbench-20261110/physical-delivery.json">可视化交付清单</a></p>
+</section>
+</main></body></html>

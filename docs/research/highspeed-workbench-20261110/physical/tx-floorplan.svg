@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1460 790" role="img" aria-labelledby="title desc">
+  <title id="title">高速光发射机芯片与封装概念布局</title>
+  <desc id="desc">FPGA或ASIC通过高速差分数据和回流参考进入驱动裸片，经过焊盘和低电容ESD，按接口选择终端与电平转换，再经过前置驱动和输出器件。电流转向架构可放置相邻假负载。发光器件靠近输出与回流焊盘。供电和偏置贴近对应负载，连续低阻回流和局部去耦。</desc>
+  <defs>
+    <marker id="data-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 Z" fill="#11686d"/></marker>
+    <marker id="pwr-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a86231"/></marker>
+    <style>
+      text{font-family:"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;fill:#152d3d}
+      .title{font-size:36px;font-weight:700;letter-spacing:.2px}.sub{font-size:18px;fill:#4d6370}
+      .section{font-size:21px;font-weight:700}.box-title{font-size:17px;font-weight:700}.small{font-size:15px;fill:#375061}
+      .micro{font-size:13px;fill:#516772}.chip{fill:#eef7f5;stroke:#77a5a3;stroke-width:1.7}.function{fill:#fff;stroke:#aac7c6;stroke-width:1.3}
+      .offchip{fill:#f0f5fa;stroke:#a8bfd2;stroke-width:1.3}.placeholder{fill:#f6f9fa;stroke:#a1b4c0;stroke-width:1.3;stroke-dasharray:5 4}
+      .data{fill:none;stroke:#11686d;stroke-width:2.5;marker-end:url(#data-arrow)}
+      .return{fill:none;stroke:#356781;stroke-width:2.3;stroke-dasharray:7 4;marker-end:url(#data-arrow)}
+      .power{fill:none;stroke:#a86231;stroke-width:2.2;marker-end:url(#pwr-arrow)}
+      .rail{fill:none;stroke:#a86231;stroke-width:2.2}.pad{fill:#cfdee6;stroke:#5e7d92;stroke-width:1.3}
+      .note-title{font-size:15px;font-weight:700;fill:#11686d}.line{stroke:#d6e2e8;stroke-width:1}
+    </style>
+  </defs>
+  <rect width="1460" height="790" fill="#fbfcfd"/>
+  <text x="43" y="54" class="title">高速光发射机芯片与封装概念布局</text>
+  <text x="44" y="89" class="sub">单通道 NRZ 研究平台  ·  位置关系与回流路径  ·  概念规划</text>
+  <path class="line" d="M44 113 H1415"/>
+
+  <rect x="44" y="245" width="212" height="180" rx="10" class="offchip"/>
+  <text x="65" y="282" class="section">FPGA / 上游 ASIC</text>
+  <text x="65" y="320" class="box-title">高速 TX PHY / SerDes</text>
+  <text x="65" y="350" class="small">串行数据 · 端口电平</text>
+  <text x="65" y="379" class="small">阻抗与抖动规格</text>
+  <text x="65" y="402" class="micro">线路编码可在上游实现</text>
+
+  <rect x="367" y="146" width="730" height="443" rx="15" class="chip"/>
+  <text x="391" y="180" class="section">发射驱动 ASIC 裸片</text>
+  <text x="391" y="209" class="small">左侧接口区  →  数字前置驱动区  →  靠近发光端的输出级</text>
+
+  <text x="269" y="288" class="micro">受控阻抗</text>
+  <path d="M256 311 H368" class="data"/>
+  <path d="M256 324 H368" class="data"/>
+  <text x="272" y="350" class="micro">差分串行</text>
+  <path d="M367 392 H257" class="return"/>
+  <text x="272" y="415" class="micro">参考回流</text>
+
+  <rect x="366" y="301" width="24" height="31" rx="3" class="pad"/>
+  <rect x="366" y="378" width="24" height="27" rx="3" class="pad"/>
+  <path d="M390 317 H409" class="data"/>
+  <rect x="409" y="269" width="131" height="117" rx="9" class="function"/>
+  <text x="424" y="299" class="box-title">焊盘与 ESD</text>
+  <text x="424" y="327" class="small">低电容保护</text>
+  <text x="424" y="351" class="small">终端、接收与</text>
+  <text x="424" y="372" class="small">电平转换按接口</text>
+
+  <path d="M540 317 H573" class="data"/>
+  <rect x="573" y="269" width="141" height="117" rx="9" class="function"/>
+  <text x="588" y="299" class="box-title">前置驱动器</text>
+  <text x="588" y="327" class="small">门极负载扇出</text>
+  <text x="588" y="351" class="small">互补信号偏斜</text>
+  <text x="588" y="372" class="small">边沿与摆幅</text>
+
+  <path d="M714 317 H750" class="data"/>
+  <rect x="750" y="269" width="231" height="117" rx="9" class="function"/>
+  <text x="767" y="299" class="box-title">输出级 / 偏置电流</text>
+  <text x="767" y="327" class="small">电压切换 · 电流转向</text>
+  <text x="767" y="351" class="small">边沿增强 · VCSEL 偏置调制</text>
+  <text x="767" y="372" class="micro">按候选电路配置和验证</text>
+
+  <path d="M981 317 H1068" class="data"/>
+  <rect x="1068" y="301" width="29" height="32" rx="3" class="pad"/>
+  <rect x="1068" y="378" width="29" height="27" rx="3" class="pad"/>
+  <text x="1025" y="285" class="micro">OUT</text>
+  <text x="1059" y="426" class="micro">回流端</text>
+
+  <rect x="1151" y="245" width="264" height="180" rx="10" class="offchip"/>
+  <text x="1170" y="282" class="section">发光器件与封装</text>
+  <text x="1170" y="320" class="box-title">MicroLED 或 VCSEL</text>
+  <text x="1170" y="350" class="small">输出与回流走线相邻</text>
+  <text x="1170" y="378" class="small">提取互连 RLC 与耦合</text>
+  <text x="1170" y="402" class="micro">光耦合、对准与热路径</text>
+  <path d="M1097 317 H1151" class="data"/>
+  <path d="M1151 392 H1097" class="return"/>
+  <path d="M1068 392 H1008 V382 H981" class="return"/>
+
+  <path d="M868 386 V433" class="data"/>
+  <rect x="758" y="433" width="215" height="46" rx="8" class="placeholder"/>
+  <text x="771" y="461" class="small">相邻假负载 · 电流转向时</text>
+  <path d="M390 392 H399 V559 H408 M1048 392 V559" stroke="#356781" stroke-width="2.3" stroke-dasharray="7 4" fill="none"/>
+  <rect x="409" y="482" width="281" height="58" rx="8" class="function"/>
+  <text x="425" y="507" class="box-title">分配电源、偏置、局部去耦</text>
+  <text x="425" y="529" class="micro">数字 / 模拟供电按电气接口划分</text>
+  <path d="M558 482 V438 H643 V386" class="power"/>
+  <path d="M690 510 H1005 V369 H981" class="power"/>
+  <path d="M474 386 V482" class="rail"/>
+  <path d="M408 559 H1055" stroke="#356781" stroke-width="2.3" stroke-dasharray="7 4" fill="none"/>
+  <text x="425" y="579" class="micro">连续低阻回流参考 · 封装引脚分配和裸片地网同时验证</text>
+
+  <path class="line" d="M44 627 H1415"/>
+  <path d="M48 653 H93" class="data"/><text x="105" y="659" class="small">信号 / 开关电流</text>
+  <path d="M266 653 H311" class="return"/><text x="323" y="659" class="small">回流方向示意</text>
+  <path d="M486 653 H531" class="power"/><text x="543" y="659" class="small">供电 / 偏置</text>
+  <rect x="700" y="641" width="42" height="24" rx="4" class="placeholder"/><text x="753" y="659" class="small">随路线配置</text>
+  <text x="44" y="712" class="note-title">版图约束</text>
+  <text x="44" y="740" class="small">输出与回流优先缩小环路；预驱动紧邻输出门极；假支路尽量匹配主支路的高频负载。</text>
+  <text x="780" y="712" class="note-title">留给下一轮物理验证</text>
+  <text x="780" y="740" class="small">器件选型、Pad/ESD、负载模型、供电阻抗、封装互连与完整提取。</text>
+</svg>
