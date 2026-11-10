@@ -1,0 +1,81 @@
+{
+  "schema": "vcsel-improvement-independent-checks-v1",
+  "passed": true,
+  "checks": [
+    {
+      "name": "native_case_identity_geometry_and_accounting",
+      "passed": true,
+      "detail": {
+        "counts": {
+          "DC": 6,
+          "development_frames": 7,
+          "holdout_frames": 1
+        },
+        "errors": []
+      }
+    },
+    {
+      "name": "expected_case_count",
+      "passed": true,
+      "detail": {
+        "DC": 6,
+        "development_frames": 7,
+        "holdout_frames": 1
+      }
+    },
+    {
+      "name": "holdout_changes_only_two_data_PWL_sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "holdout_keeps_identical_driver",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "predeclared_nonoverlapping_PRBS_phase",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "holdout_source_capture",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "halfstep_conclusion_and_numeric_agreement",
+      "passed": true,
+      "detail": {
+        "net_Gbps": 6.4,
+        "steps_before": 40,
+        "steps_after": 80,
+        "identical_pass": true,
+        "identical_errors": true,
+        "amplitude_delta_uAeq": 0.0013920942768024247,
+        "timing_delta_ps": 0.003101240670993377,
+        "energy_relative_delta_percent": -0.0010812251682423835,
+        "source_coarse": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net6.4-edge20-s40/analysis.json",
+        "source_fine": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net6.4-edge20-s80/analysis.json"
+      }
+    },
+    {
+      "name": "old_passing_rate_regression",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "heldout_frame_passes_without_retuning",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "source_hashes": {
+    "evidence/ab-improvement-20261111/vcsel-improvement.json": "4459c409b2b1bd6805aa96e05c1131c08c20d69f2fa86e5412654bbb37529356",
+    "evidence/ab-improvement-20261111/vcsel-causal-comparison.json": "9ed96356182ca6521d69f05fc513b9ec8721125b8aaaed03ad5b00c04d6ed401",
+    "evidence/ab-improvement-20261111/vcsel-holdout.json": "e6b9d0efe319684c3c541f6503cf3742d00503cb7c2460b60ea4f30ded0bc1ca",
+    "evidence/ab-improvement-20261111/holdout-protocol.json": "d0700012a915c7d90b048f0e878dcbcfda59ccc70b429db89ecc271241d0de1b",
+    "scripts/ab_improvement_20261111/validate_vcsel.py": "543080a770ec0ac378f2f93df2cc076d0c8bf7f2116725fb056fa2230722f576"
+  },
+  "scope": "Repository identity/accounting and fixed nominal circuit simulations. Does not establish hardware BER, PVT/startup reliability, new layout/PEX or production qualification."
+}

@@ -1,0 +1,117 @@
+{
+  "scope": "Matched6.4G causal node comparison; receiver-selected delays are sampling phases, not standalone propagation delays.",
+  "rows": [
+    {
+      "candidate": "r10-baseline",
+      "net_Gbps": 6.4,
+      "positive_pJ_per_attempted_bit": 5.952065691334976,
+      "power_mW": 38.09322042454385,
+      "input_differential_peak_V": 3.0000000000000018,
+      "gate_margin_UI": 0.38212337325411605,
+      "gate_selected_sampling_delay_ps": 192.14527027027032,
+      "electrical_margin_UI": 0.33563079899819814,
+      "full_margin_UI": 0.3435087819552182,
+      "full_margin_ps": 46.42010566962409,
+      "full_amplitude_uAeq": 28.647401842833283
+    },
+    {
+      "candidate": "vc-atten50",
+      "net_Gbps": 6.4,
+      "positive_pJ_per_attempted_bit": 5.987278943672977,
+      "power_mW": 38.31858523950705,
+      "input_differential_peak_V": 3.1730769230770015,
+      "gate_margin_UI": 0.40395256351595127,
+      "gate_selected_sampling_delay_ps": 190.0337837837838,
+      "electrical_margin_UI": 0.36772332869104524,
+      "full_margin_UI": 0.3745876649480074,
+      "full_margin_ps": 50.61995472270371,
+      "full_amplitude_uAeq": 28.96736876127129
+    },
+    {
+      "candidate": "vc-steer20",
+      "net_Gbps": 6.4,
+      "positive_pJ_per_attempted_bit": 5.843151170211424,
+      "power_mW": 37.39616748935312,
+      "input_differential_peak_V": 3.0000000068060304,
+      "gate_margin_UI": 0.4055279491923038,
+      "gate_selected_sampling_delay_ps": 185.81081081081084,
+      "electrical_margin_UI": 0.3476867941616688,
+      "full_margin_UI": 0.36633370983471975,
+      "full_margin_ps": 49.50455538307025,
+      "full_amplitude_uAeq": 31.0249772889475
+    },
+    {
+      "candidate": "vc-atten50-steer20",
+      "net_Gbps": 6.4,
+      "positive_pJ_per_attempted_bit": 5.880207294096013,
+      "power_mW": 37.63332668221448,
+      "input_differential_peak_V": 3.1730769230770024,
+      "gate_margin_UI": 0.4115220629861916,
+      "gate_selected_sampling_delay_ps": 181.58783783783787,
+      "electrical_margin_UI": 0.37700889677171306,
+      "full_margin_UI": 0.38104011602079746,
+      "full_margin_ps": 51.49190757037804,
+      "full_amplitude_uAeq": 30.844707659630522
+    }
+  ],
+  "geometry": {
+    "steering_instances": [
+      "XSTEER_0",
+      "XDUMP_0"
+    ],
+    "length_um": 0.28,
+    "width_um_before": 40,
+    "width_um_after": 20,
+    "gate_drawn_area_um2_per_device_before": 11.2,
+    "gate_drawn_area_um2_per_device_after": 5.6,
+    "diffusion_area_um2_each_terminal_before": 17.6,
+    "diffusion_area_um2_each_terminal_after": 8.8,
+    "diffusion_perimeter_um_each_terminal_before": 80.88,
+    "diffusion_perimeter_um_each_terminal_after": 40.88,
+    "note": "Estimated geometry parameters; actual nonlinear Cgg/Cgd/Cdb not measured or extracted. ReducedW trades less capacitive loading against increased on-resistance/current-compliance demand. Total chip area is not inferred."
+  },
+  "input_divider": {
+    "RD_external_ohm": 50,
+    "ATTEN_before_ohm": 200,
+    "ATTEN_after_ohm": 50,
+    "RADI_to_ground_ohm": 2500,
+    "high_level_before_V": 3.0,
+    "high_level_after_V": 3.173076923076923,
+    "note": "Single resistor change affects both input RC and input high-level attenuation. Two identical complementary input branches."
+  },
+  "source_hashes": {
+    "evidence/blue-emitter-speed-review-20261110/speed-sweep-all.json": "e024eaac0bee20adbfd3247693b6acd8e122206884e44b56ab38c6ea61c14b09",
+    "scripts/ab_improvement_20261111/vcsel_causal.py": "92804e4122a93e5114d53d9f382b3527ccf3160e1a1b773ef42af6b479630ef5",
+    "build/ab-improvement-20261111/VCSEL/vc-atten50/net6.4-edge20-s40/analysis.json": "e438984027d31bd7b0b7ec54fc00fa059a9aa81b72d036f8f37dfc64622beb5d",
+    "build/ab-improvement-20261111/VCSEL/vc-steer20/net6.4-edge20-s40/analysis.json": "edfc0b975f2ccdb229b80e390151d94309368ece0f800f8e87245ae9c1baa623",
+    "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net6.4-edge20-s40/analysis.json": "d3513a2c8b953dbc365c1cc5d6256d6b7ceadb4a7f87f00d07394320f8a20c0c",
+    "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net6.4-edge20-s80/analysis.json": "0cdae9e8184408d5b71ac2707ec9463ee6679fbfd08fa8e1b5db21913b4d0b77",
+    "evidence/ab-improvement-20261111/vcsel-improvement.json": "4459c409b2b1bd6805aa96e05c1131c08c20d69f2fa86e5412654bbb37529356"
+  },
+  "halfstep_control": {
+    "net_Gbps": 6.4,
+    "steps_before": 40,
+    "steps_after": 80,
+    "identical_pass": true,
+    "identical_errors": true,
+    "amplitude_delta_uAeq": 0.0013920942768024247,
+    "timing_delta_ps": 0.003101240670993377,
+    "energy_relative_delta_percent": -0.0010812251682423835,
+    "source_coarse": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net6.4-edge20-s40/analysis.json",
+    "source_fine": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net6.4-edge20-s80/analysis.json"
+  },
+  "tested_envelope": {
+    "candidate": "vc-atten50-steer20",
+    "tested_rates_Gbps": [
+      4.8,
+      6.4,
+      7.2,
+      8.0
+    ],
+    "highest_passing_tested_Gbps": 6.4,
+    "next_failing_tested_Gbps": 7.2,
+    "previous_highest_passing_tested_Gbps": 4.8,
+    "ratio_of_highest_passing_tested_points": 1.3333333333333335,
+    "scope": "Discrete sampled nominal points, not an exact maximum or proof of monotonicity. The ratio compares highest tested passing points, not measured physical bandwidth improvement. No PVT/startup/PEX/BER closure."
+  }
+}

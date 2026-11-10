@@ -1,0 +1,1727 @@
+{
+  "schema": "vcsel-real-driver-improvement-v1",
+  "scope": "Same850nm load/optical proxy and5GHz RX; no new PVT/startup/layout/BER qualification.",
+  "candidates": {
+    "vc-base": {
+      "atten_ohm": 200.0,
+      "steer_width_um": 40.0,
+      "hypothesis": "Unmodified r10 schematic control."
+    },
+    "vc-atten50": {
+      "atten_ohm": 50.0,
+      "steer_width_um": 40.0,
+      "hypothesis": "Reduce two input attenuation series resistors from200 to50ohm; test input RC while retaining all transistor dimensions."
+    },
+    "vc-steer20": {
+      "atten_ohm": 200.0,
+      "steer_width_um": 20.0,
+      "hypothesis": "Halve only two steering MOS widths40to20um, including estimated diffusions; test gate/output capacitive load versus on-resistance and current compliance."
+    },
+    "vc-atten50-steer20": {
+      "atten_ohm": 50.0,
+      "steer_width_um": 20.0,
+      "hypothesis": "Combine the two independently tested modifications; preserve real reference and rail circuits."
+    }
+  },
+  "dc": [
+    {
+      "candidate": "vc-atten50",
+      "level": 0,
+      "source": "build/ab-improvement-20261111/VCSEL/vc-atten50/DC-L0/result.json",
+      "result_sha256": "e833c94149045aabfc31e96ade67501038e7a21c6ed6f1ce6a7ffe074c8eb389",
+      "simulation_ok": true,
+      "current_mA": 2.999752191304,
+      "target_mA": 3,
+      "error_percent": -0.008260289866657278,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-atten50",
+      "level": 1,
+      "source": "build/ab-improvement-20261111/VCSEL/vc-atten50/DC-L1/result.json",
+      "result_sha256": "6c9789552ddfae27c40614694d41cc887566e42cfdbabeff75a484901d55ce7f",
+      "simulation_ok": true,
+      "current_mA": 6.9994713968569995,
+      "target_mA": 7,
+      "error_percent": -0.007551473471434367,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-atten50-steer20",
+      "level": 0,
+      "source": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/DC-L0/result.json",
+      "result_sha256": "a51c86b34a2a449f951b37f2a04785ecd9f4ab4444a884a2af8027eb97a6ed3f",
+      "simulation_ok": true,
+      "current_mA": 2.999752205035,
+      "target_mA": 3,
+      "error_percent": -0.008259832166668257,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-atten50-steer20",
+      "level": 1,
+      "source": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/DC-L1/result.json",
+      "result_sha256": "124062e0539a3e333e3b761901922f7f5345479e4d3a0bbf018ab4c5211c1688",
+      "simulation_ok": true,
+      "current_mA": 6.99946868765,
+      "target_mA": 7,
+      "error_percent": -0.007590176428562412,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-steer20",
+      "level": 0,
+      "source": "build/ab-improvement-20261111/VCSEL/vc-steer20/DC-L0/result.json",
+      "result_sha256": "01c376cc8dc6e84a78609b5039cc6b52cab9f818df4a6b0a39de31e0d4361854",
+      "simulation_ok": true,
+      "current_mA": 2.999752205035,
+      "target_mA": 3,
+      "error_percent": -0.008259832166668257,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-steer20",
+      "level": 1,
+      "source": "build/ab-improvement-20261111/VCSEL/vc-steer20/DC-L1/result.json",
+      "result_sha256": "1759c2c033e7bd76e2407d479061796dea0c99e1d0f3ba97e65937db2ffad7a9",
+      "simulation_ok": true,
+      "current_mA": 6.99946868765,
+      "target_mA": 7,
+      "error_percent": -0.007590176428562412,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    }
+  ],
+  "rows": [
+    {
+      "candidate": "vc-atten50",
+      "net_Gbps": 6.4,
+      "steps_per_UI": 40,
+      "combined_screen_pass": true,
+      "DC_calibration_pass": true,
+      "full_receiver": {
+        "delay_UI": 2.0,
+        "delay_ps": 270.2702702702703,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 28.96736876127129,
+        "one_sided_margin_UI": 0.3745876649480074,
+        "one_sided_margin_ps": 50.61995472270371,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.317221212844398,
+            "median": 27.246247479893828,
+            "p95": 33.145120903705575
+          },
+          "1": {
+            "p05": 93.69442571188775,
+            "median": 97.71947188663087,
+            "p95": 99.88544985528017
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.59375,
+        "delay_ps": 215.37162162162164,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 30.149738551396126,
+        "one_sided_margin_UI": 0.36772332869104524,
+        "one_sided_margin_ps": 49.692341715006116,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.925875858046954,
+            "median": 25.98361401372955,
+            "p95": 31.569572661637697
+          },
+          "1": {
+            "p05": 93.37348256609259,
+            "median": 97.68515034133148,
+            "p95": 99.98261057580797
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.578125,
+          "delay_ps": 78.12500000000001,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.933095178439814,
+          "one_sided_margin_UI": 0.49269628169686996,
+          "one_sided_margin_ps": 66.58057860768514,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.442327946277523,
+              "median": 26.56141193615442,
+              "p95": 26.565597734091007
+            },
+            "1": {
+              "p05": 98.4338250032621,
+              "median": 98.51541121334944,
+              "p95": 98.55767683165325
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.40625,
+          "delay_ps": 190.0337837837838,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 30.898971314672636,
+          "one_sided_margin_UI": 0.40395256351595127,
+          "one_sided_margin_ps": 54.58818425891234,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.883994179950353,
+              "median": 25.516293986218486,
+              "p95": 30.814949503789105
+            },
+            "1": {
+              "p05": 93.93914764830106,
+              "median": 99.96673160596305,
+              "p95": 102.11365149348953
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 5.987278943672977,
+        "returned": 0.02459197988910597,
+        "net": 5.962686963783871
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.1730769230770015,
+        "steering_gate_differential_peak_V": 3.272557575659891,
+        "laser_rail_range_V": [
+          3.0998999092637542,
+          3.1002445106569794
+        ],
+        "predriver_rail_range_V": [
+          2.962249818159633,
+          3.100199903035495
+        ],
+        "electrical_current_range_mA": [
+          2.601570321979,
+          7.176263582111
+        ],
+        "base_current_range_mA": [
+          2.03421037852,
+          3.865107552945
+        ],
+        "tail_current_range_mA": [
+          3.118132979701,
+          5.44543025816
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.4084606808982576,
+          4.148549735088883
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.304680200606,
+          "instance": "XDUMP_0",
+          "pair": "VDB"
+        },
+        "max_body_forward_V": 0.18108126384300016
+      },
+      "source_analysis": "build/ab-improvement-20261111/VCSEL/vc-atten50/net6.4-edge20-s40/analysis.json",
+      "analysis_sha256": "e438984027d31bd7b0b7ec54fc00fa059a9aa81b72d036f8f37dfc64622beb5d",
+      "source_case": "build/ab-improvement-20261111/VCSEL/vc-atten50/net6.4-edge20-s40",
+      "result_sha256": "512bea161e478d55be6c2d2f88ccabecec124a332df5ec59a3ce8057d4fc1689",
+      "deck_sha256": "2fadeed4798bf5ab5621807166c506dd2dd482eebd2bf72583ca400f2869c147",
+      "waveform": {
+        "path": "build/ab-improvement-20261111/VCSEL/vc-atten50/net6.4-edge20-s40/waveform.dat.gz",
+        "sha256": "0ba0032e03b45805541d4163bab1d18cdfbb4afb7b5bad8e8d82aaadda16f540",
+        "raw_sha256": "286172f98dc596083b00917a0b13d79827a865b6a76ae55f6da21403f99d644c",
+        "bytes": 161118149,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-atten50-steer20",
+      "net_Gbps": 4.8,
+      "steps_per_UI": 40,
+      "combined_screen_pass": true,
+      "DC_calibration_pass": true,
+      "full_receiver": {
+        "delay_UI": 1.609375,
+        "delay_ps": 289.9774774774775,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 32.331870783494224,
+        "one_sided_margin_UI": 0.4654137618672213,
+        "one_sided_margin_ps": 83.85833547157141,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.547161013183086,
+            "median": 29.083705053148858,
+            "p95": 29.911573011256184
+          },
+          "1": {
+            "p05": 95.4806787533536,
+            "median": 98.62114507410232,
+            "p95": 99.81919118996908
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.296875,
+        "delay_ps": 233.67117117117118,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 34.78768946652014,
+        "one_sided_margin_UI": 0.44451282001825904,
+        "one_sided_margin_ps": 80.09240000328992,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.591063686008223,
+            "median": 26.811448351817727,
+            "p95": 27.491278574879505
+          },
+          "1": {
+            "p05": 97.99570676772888,
+            "median": 99.01445801906495,
+            "p95": 99.74233893156455
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.5625,
+          "delay_ps": 101.35135135135137,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.92907666646943,
+          "one_sided_margin_UI": 0.49842245182485373,
+          "one_sided_margin_ps": 89.80584717564933,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.442317818322397,
+              "median": 26.566354675358234,
+              "p95": 26.56995049520122
+            },
+            "1": {
+              "p05": 98.42976211715731,
+              "median": 98.55247606852808,
+              "p95": 98.55768203898472
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.171875,
+          "delay_ps": 211.14864864864865,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 36.956153991847536,
+          "one_sided_margin_UI": 0.474401637284747,
+          "one_sided_margin_ps": 85.4777724837382,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 23.72770302176773,
+              "median": 23.959654792847466,
+              "p95": 25.534268938383548
+            },
+            "1": {
+              "p05": 99.4976854922428,
+              "median": 99.99972351512301,
+              "p95": 101.26754963715783
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 7.646446686386449,
+        "returned": 0.02198968064709113,
+        "net": 7.624457005739358
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.173076928982835,
+        "steering_gate_differential_peak_V": 3.2901531492871725,
+        "laser_rail_range_V": [
+          3.100013445454327,
+          3.10025013404404
+        ],
+        "predriver_rail_range_V": [
+          2.9965071976817454,
+          3.100198264588796
+        ],
+        "electrical_current_range_mA": [
+          2.799289583748,
+          7.077602250631
+        ],
+        "base_current_range_mA": [
+          2.056514858915,
+          3.774323487228
+        ],
+        "tail_current_range_mA": [
+          3.256581761819,
+          4.518627664558999
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.26958627272066416,
+          4.193422605440377
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.278208991042,
+          "instance": "XBN2N_0",
+          "pair": "VGS"
+        },
+        "max_body_forward_V": 0.18041156578600015
+      },
+      "source_analysis": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net4.8-edge20-s40/analysis.json",
+      "analysis_sha256": "cfdf597ee98a0541cb7309aee73bcaf33ec200ab8e629f11fc1c70af1732402a",
+      "source_case": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net4.8-edge20-s40",
+      "result_sha256": "798572398023c29e5219b5f03b21629d06908e24badd276a835f734b3eb2d617",
+      "deck_sha256": "814f10bb1bd6e3e53932cdec5f79bf2e64f50f0e4baf4041281aac27cdd1f4bb",
+      "waveform": {
+        "path": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net4.8-edge20-s40/waveform.dat.gz",
+        "sha256": "c9aae61d328fc6fdddb1123bda79d9ba61969b4cd22e7f65ac2d64f001df3631",
+        "raw_sha256": "04d36320c8670585f55f46da24d915b793d647299e93ea07ad15f4d802ed3d86",
+        "bytes": 186472208,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-atten50-steer20",
+      "net_Gbps": 6.4,
+      "steps_per_UI": 40,
+      "combined_screen_pass": true,
+      "DC_calibration_pass": true,
+      "full_receiver": {
+        "delay_UI": 1.90625,
+        "delay_ps": 257.6013513513514,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 30.844707659630522,
+        "one_sided_margin_UI": 0.38104011602079746,
+        "one_sided_margin_ps": 51.49190757037804,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.342350800318336,
+            "median": 28.793534028179028,
+            "p95": 31.33772961405024
+          },
+          "1": {
+            "p05": 95.79697029775623,
+            "median": 98.3826127008578,
+            "p95": 99.83643024370569
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.515625,
+        "delay_ps": 204.8141891891892,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 32.516740663645436,
+        "one_sided_margin_UI": 0.37700889677171306,
+        "one_sided_margin_ps": 50.947148212393664,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.420020833557285,
+            "median": 26.66193227312429,
+            "p95": 29.70232963120662
+          },
+          "1": {
+            "p05": 95.9513399798611,
+            "median": 98.74446413913483,
+            "p95": 100.38072760192414
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.578125,
+          "delay_ps": 78.12500000000001,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.938184527514764,
+          "one_sided_margin_UI": 0.49269204911723585,
+          "one_sided_margin_ps": 66.58000663746432,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.4423237843501,
+              "median": 26.554830816198226,
+              "p95": 26.560912394816015
+            },
+            "1": {
+              "p05": 98.43888804319474,
+              "median": 98.5186386637009,
+              "p95": 98.5576785467234
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.34375,
+          "delay_ps": 181.58783783783787,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.36454915528353,
+          "one_sided_margin_UI": 0.4115220629861916,
+          "one_sided_margin_ps": 55.611089592728604,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.726523219038516,
+              "median": 25.002786490112044,
+              "p95": 27.06572906925899
+            },
+            "1": {
+              "p05": 98.03319424903864,
+              "median": 99.99931907645788,
+              "p95": 102.28286235025351
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 5.880207294096013,
+        "returned": 0.021580602711136956,
+        "net": 5.858626691384876
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.1730769230770024,
+        "steering_gate_differential_peak_V": 3.2905666232124164,
+        "laser_rail_range_V": [
+          3.100029504158853,
+          3.1002525069398743
+        ],
+        "predriver_rail_range_V": [
+          2.975563135663753,
+          3.100198202568696
+        ],
+        "electrical_current_range_mA": [
+          2.803559978924,
+          7.078332690483
+        ],
+        "base_current_range_mA": [
+          2.061730543587,
+          3.774903435238
+        ],
+        "tail_current_range_mA": [
+          3.2588374089889998,
+          4.660582032716
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.27226442052289546,
+          4.1798284845173335
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.278329788815,
+          "instance": "XBN2N_0",
+          "pair": "VGS"
+        },
+        "max_body_forward_V": 0.18083027235500015
+      },
+      "source_analysis": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net6.4-edge20-s40/analysis.json",
+      "analysis_sha256": "d3513a2c8b953dbc365c1cc5d6256d6b7ceadb4a7f87f00d07394320f8a20c0c",
+      "source_case": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net6.4-edge20-s40",
+      "result_sha256": "e4c76c9f932e85d429ba5dfe36bbfc743bb2b71486ca6ab191b2839bf170c483",
+      "deck_sha256": "2fadeed4798bf5ab5621807166c506dd2dd482eebd2bf72583ca400f2869c147",
+      "waveform": {
+        "path": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net6.4-edge20-s40/waveform.dat.gz",
+        "sha256": "fa14e51401ffaec542124fa049e43bf2b6a051a46958ca497a4714c463204fe1",
+        "raw_sha256": "d693be47e6e261a62ab3cf9016c082a9108c2117e839afc726998c4d84891014",
+        "bytes": 164274327,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-atten50-steer20",
+      "net_Gbps": 6.4,
+      "steps_per_UI": 80,
+      "combined_screen_pass": true,
+      "DC_calibration_pass": true,
+      "full_receiver": {
+        "delay_UI": 1.90625,
+        "delay_ps": 257.6013513513514,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 30.846099753907325,
+        "one_sided_margin_UI": 0.38106306520176275,
+        "one_sided_margin_ps": 51.49500881104903,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.34256134699164,
+            "median": 28.79375523484514,
+            "p95": 31.335640510207543
+          },
+          "1": {
+            "p05": 95.7981835510835,
+            "median": 98.38151751187934,
+            "p95": 99.837609995971
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.515625,
+        "delay_ps": 204.8141891891892,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 32.4902670872411,
+        "one_sided_margin_UI": 0.37704406411189406,
+        "one_sided_margin_ps": 50.95190055566137,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.42183814168844,
+            "median": 26.663370715036073,
+            "p95": 29.736539638879776
+          },
+          "1": {
+            "p05": 95.95306955899936,
+            "median": 98.74363212184066,
+            "p95": 100.40457064627914
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.578125,
+          "delay_ps": 78.12500000000001,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.93818705919682,
+          "one_sided_margin_UI": 0.4926921389923655,
+          "one_sided_margin_ps": 66.5800187827521,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.442323710905946,
+              "median": 26.55487401492652,
+              "p95": 26.56089425665498
+            },
+            "1": {
+              "p05": 98.43895176602803,
+              "median": 98.51864875984698,
+              "p95": 98.55767854638984
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.34375,
+          "delay_ps": 181.58783783783787,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.36508350777557,
+          "one_sided_margin_UI": 0.41153871016602406,
+          "one_sided_margin_ps": 55.613339211624876,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.722261302134925,
+              "median": 25.002886255547573,
+              "p95": 27.064811904745394
+            },
+            "1": {
+              "p05": 98.03174822905359,
+              "median": 99.99931827856076,
+              "p95": 102.2857276811001
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 5.880143715814804,
+        "returned": 0.02157989361036811,
+        "net": 5.858563822204435
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.173076923077003,
+        "steering_gate_differential_peak_V": 3.2907237261413615,
+        "laser_rail_range_V": [
+          3.1000293222330435,
+          3.100252341648169
+        ],
+        "predriver_rail_range_V": [
+          2.975572464115994,
+          3.100198143456926
+        ],
+        "electrical_current_range_mA": [
+          2.80189503434,
+          7.077766793719
+        ],
+        "base_current_range_mA": [
+          2.062145880391,
+          3.7717091214529996
+        ],
+        "tail_current_range_mA": [
+          3.2638379464400002,
+          4.660389213174001
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.2727868390110233,
+          4.179793783131174
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.278315273992,
+          "instance": "XBN2N_0",
+          "pair": "VGS"
+        },
+        "max_body_forward_V": 0.18083371653799984
+      },
+      "source_analysis": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net6.4-edge20-s80/analysis.json",
+      "analysis_sha256": "0cdae9e8184408d5b71ac2707ec9463ee6679fbfd08fa8e1b5db21913b4d0b77",
+      "source_case": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net6.4-edge20-s80",
+      "result_sha256": "46e738bb4f8db9de189126b23364350f8cfe756194433ef4403e7170828b23c7",
+      "deck_sha256": "6ffc6353de72fde68939e66e33ca72b9a5225b982aa8d0a03c475a420008a381",
+      "waveform": {
+        "path": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net6.4-edge20-s80/waveform.dat.gz",
+        "sha256": "c9fa3aa8f72ace15181d77ab8c51a57e2e8d98f15ffb7552bfcf3669bb58c399",
+        "raw_sha256": "cdba5a617502248c19c2a98d42d507b90e5f2cfef63c4a8bc4f2464ece2fcda0",
+        "bytes": 210416756,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-atten50-steer20",
+      "net_Gbps": 7.2,
+      "steps_per_UI": 40,
+      "combined_screen_pass": false,
+      "DC_calibration_pass": true,
+      "full_receiver": {
+        "delay_UI": 2.046875,
+        "delay_ps": 245.8708708708709,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 28.639433755435547,
+        "one_sided_margin_UI": 0.3306908891780733,
+        "one_sided_margin_ps": 39.7226293306995,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.231824544552193,
+            "median": 28.962780572726462,
+            "p95": 33.133244648642204
+          },
+          "1": {
+            "p05": 91.84138322916162,
+            "median": 98.41492946825484,
+            "p95": 99.85580306319864
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.609375,
+        "delay_ps": 193.31831831831835,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 30.29002835088486,
+        "one_sided_margin_UI": 0.3279645951821957,
+        "one_sided_margin_ps": 39.39514656843192,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.357737829645895,
+            "median": 26.539891366433373,
+            "p95": 31.807678642499468
+          },
+          "1": {
+            "p05": 93.83439728979066,
+            "median": 98.59084367752557,
+            "p95": 100.40956039046998
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.59375,
+          "delay_ps": 71.32132132132134,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.936409485168696,
+          "one_sided_margin_UI": 0.49764618795015947,
+          "one_sided_margin_ps": 59.777319873893035,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.442344110647067,
+              "median": 26.555802321766187,
+              "p95": 26.562896070827797
+            },
+            "1": {
+              "p05": 98.4376971565423,
+              "median": 98.49244555178507,
+              "p95": 98.55767634320759
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.421875,
+          "delay_ps": 170.7957957957958,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 29.53708413947109,
+          "one_sided_margin_UI": 0.3682953807682968,
+          "one_sided_margin_ps": 44.239685377573196,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.639508626752324,
+              "median": 25.023305684875034,
+              "p95": 31.818609043535844
+            },
+            "1": {
+              "p05": 92.81509931791663,
+              "median": 99.97945054867785,
+              "p95": 102.37141738436989
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 5.274018687392952,
+        "returned": 0.021222411389678973,
+        "net": 5.252796276003274
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.1730769244307355,
+        "steering_gate_differential_peak_V": 3.2906182080654585,
+        "laser_rail_range_V": [
+          3.1000101680049177,
+          3.1002458638220274
+        ],
+        "predriver_rail_range_V": [
+          2.966466586618836,
+          3.100198392739829
+        ],
+        "electrical_current_range_mA": [
+          2.803789794743,
+          7.081899404792
+        ],
+        "base_current_range_mA": [
+          2.004166479317,
+          3.767059525982
+        ],
+        "tail_current_range_mA": [
+          3.266688662475,
+          4.715179699124
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.2720333988877144,
+          4.176268421693022
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.278285148918,
+          "instance": "XBN2N_0",
+          "pair": "VGS"
+        },
+        "max_body_forward_V": 0.18101447529399994
+      },
+      "source_analysis": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net7.2-edge20-s40/analysis.json",
+      "analysis_sha256": "126e74ef4f60d2241040b3e97d7da1e3030458ff8faa10abaa996ec5413529e6",
+      "source_case": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net7.2-edge20-s40",
+      "result_sha256": "cd77406b7078613b459bdac3e2af3189d76bd968b4ea44412b8f9e7d0b8c5f36",
+      "deck_sha256": "4d6b37721b412f57058101879e50515b5ee75da01d8e20420f820abbd592d450",
+      "waveform": {
+        "path": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net7.2-edge20-s40/waveform.dat.gz",
+        "sha256": "49c760abc6a8cab6513a65b8bfa20b2cd5a261aee1b2b686daa6bbb872c2cd21",
+        "raw_sha256": "d18e4bdba685fa6d1818b03b489d9d6b9d91dc2346203f267120175169d42ebd",
+        "bytes": 159079326,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-atten50-steer20",
+      "net_Gbps": 8.0,
+      "steps_per_UI": 40,
+      "combined_screen_pass": false,
+      "DC_calibration_pass": true,
+      "full_receiver": {
+        "delay_UI": 2.15625,
+        "delay_ps": 233.10810810810813,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 17.053361480304204,
+        "one_sided_margin_UI": 0.2396002049736409,
+        "one_sided_margin_ps": 25.902724862015233,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.235992566642363,
+            "median": 28.248365019295623,
+            "p95": 43.70076810320259
+          },
+          "1": {
+            "p05": 80.84388070222901,
+            "median": 97.8655526217784,
+            "p95": 99.51781340742875
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.671875,
+        "delay_ps": 180.74324324324326,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 20.864519174495044,
+        "one_sided_margin_UI": 0.24563875889570624,
+        "one_sided_margin_ps": 26.555541502238516,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.374156838130112,
+            "median": 26.593832252312463,
+            "p95": 35.28097468003702
+          },
+          "1": {
+            "p05": 84.83936186848779,
+            "median": 98.1404607417097,
+            "p95": 100.11455526875093
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.609375,
+          "delay_ps": 65.87837837837839,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.92868022860391,
+          "one_sided_margin_UI": 0.49662959614870206,
+          "one_sided_margin_ps": 53.68968607012996,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.44238839864961,
+              "median": 26.552580977992818,
+              "p95": 26.569624578019763
+            },
+            "1": {
+              "p05": 98.430173771628,
+              "median": 98.47781546582817,
+              "p95": 98.55767056050115
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.453125,
+          "delay_ps": 157.0945945945946,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 16.9694998737326,
+          "one_sided_margin_UI": 0.2858003293790607,
+          "one_sided_margin_ps": 30.897332905844404,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.65852088124991,
+              "median": 25.063409129535167,
+              "p95": 44.071845435708354
+            },
+            "1": {
+              "p05": 80.41701817145028,
+              "median": 99.95363705625091,
+              "p95": 102.3516373775196
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 4.769783813663649,
+        "returned": 0.02144931817037212,
+        "net": 4.7483344954932765
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.1730769254892843,
+        "steering_gate_differential_peak_V": 3.290574234946209,
+        "laser_rail_range_V": [
+          3.0999184930406622,
+          3.100225663640338
+        ],
+        "predriver_rail_range_V": [
+          2.959692435624728,
+          3.100198308414785
+        ],
+        "electrical_current_range_mA": [
+          2.802970612859,
+          7.082980515737
+        ],
+        "base_current_range_mA": [
+          2.062842667204,
+          3.860941038433
+        ],
+        "tail_current_range_mA": [
+          3.230892676591,
+          4.828725761722
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.2730208033935604,
+          4.180824807646648
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.278083321971,
+          "instance": "XBN2N_0",
+          "pair": "VGS"
+        },
+        "max_body_forward_V": 0.18107533341399984
+      },
+      "source_analysis": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net8-edge20-s40/analysis.json",
+      "analysis_sha256": "2db0d327d069bc6e2f07b7e52219d55e0f3f66a3c0f2385dddca16ec806afbe5",
+      "source_case": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net8-edge20-s40",
+      "result_sha256": "e4bb58dd9b404e4226e222167df702fde4e10eb18da7c28e16609b4db4ce1189",
+      "deck_sha256": "53d3bb56c0225429011cca6240d11b3f1568e31c3dc7b09a07c07e9deefbede1",
+      "waveform": {
+        "path": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/net8-edge20-s40/waveform.dat.gz",
+        "sha256": "23e39c661c4f4e3028039eeb9b179d6b5b6987c6ab5219d42f15b93c0b40e722",
+        "raw_sha256": "48098878a5fe6fcc3388e0f790b6a8a6dfcbb605faf50bf34665dfcb74e25f87",
+        "bytes": 149713530,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-steer20",
+      "net_Gbps": 6.4,
+      "steps_per_UI": 40,
+      "combined_screen_pass": false,
+      "DC_calibration_pass": true,
+      "full_receiver": {
+        "delay_UI": 1.9375,
+        "delay_ps": 261.8243243243244,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.0249772889475,
+        "one_sided_margin_UI": 0.36633370983471975,
+        "one_sided_margin_ps": 49.50455538307025,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.42685793734898,
+            "median": 28.852023193083543,
+            "p95": 31.191740697480697
+          },
+          "1": {
+            "p05": 96.88793417059951,
+            "median": 98.97875638264694,
+            "p95": 100.8090795255675
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.53125,
+        "delay_ps": 206.9256756756757,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 32.51020958786307,
+        "one_sided_margin_UI": 0.3476867941616688,
+        "one_sided_margin_ps": 46.98470191373904,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.514135970879533,
+            "median": 26.621020523504733,
+            "p95": 29.72481762966656
+          },
+          "1": {
+            "p05": 97.2995993769195,
+            "median": 99.89895779349848,
+            "p95": 101.54578223940247
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.59375,
+          "delay_ps": 80.2364864864865,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 33.803818483857754,
+          "one_sided_margin_UI": 0.49378201707182423,
+          "one_sided_margin_ps": 66.72729960430058,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 28.40912976633877,
+              "median": 28.652034151281185,
+              "p95": 28.692725114839295
+            },
+            "1": {
+              "p05": 96.30548109197086,
+              "median": 96.48849181339159,
+              "p95": 96.59087519427163
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.375,
+          "delay_ps": 185.81081081081084,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.17066514970839,
+          "one_sided_margin_UI": 0.4055279491923038,
+          "one_sided_margin_ps": 54.80107421517619,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.76722012215348,
+              "median": 24.999584408415153,
+              "p95": 27.278014382659467
+            },
+            "1": {
+              "p05": 97.89133456151121,
+              "median": 99.99956245491697,
+              "p95": 102.24047234117525
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 5.843151170211424,
+        "returned": 0.017647508160431164,
+        "net": 5.825503662050993
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.0000000068060304,
+        "steering_gate_differential_peak_V": 3.2835385625636127,
+        "laser_rail_range_V": [
+          3.10009352283784,
+          3.100601424442122
+        ],
+        "predriver_rail_range_V": [
+          2.9758619484716546,
+          3.1001848826974934
+        ],
+        "electrical_current_range_mA": [
+          2.812887303897,
+          7.123873842838
+        ],
+        "base_current_range_mA": [
+          2.047686475696,
+          3.775141710411
+        ],
+        "tail_current_range_mA": [
+          2.717748692228,
+          4.800501913503
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.26028368474743946,
+          4.223339525072286
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.267219666372,
+          "instance": "XBN2N_0",
+          "pair": "VGS"
+        },
+        "max_body_forward_V": 0.16996070897299997
+      },
+      "source_analysis": "build/ab-improvement-20261111/VCSEL/vc-steer20/net6.4-edge20-s40/analysis.json",
+      "analysis_sha256": "edfc0b975f2ccdb229b80e390151d94309368ece0f800f8e87245ae9c1baa623",
+      "source_case": "build/ab-improvement-20261111/VCSEL/vc-steer20/net6.4-edge20-s40",
+      "result_sha256": "b51c1ec679d99ecbf287d91ac65af39ff8790897af61f8a2ceb6c17587907f49",
+      "deck_sha256": "5330a4f1c0c0cbe05cf1812748d040d0787750230d775aae8cefca52345a0db7",
+      "waveform": {
+        "path": "build/ab-improvement-20261111/VCSEL/vc-steer20/net6.4-edge20-s40/waveform.dat.gz",
+        "sha256": "72b6817f95900bc239362ca574b4d680c5f9032d12575af64ac41e5a47f9d81f",
+        "raw_sha256": "f08b378aaf661462f473ed20881dc05a6bca8290c02b7e301747ca4931159a0a",
+        "bytes": 155723341,
+        "roundtrip_verified": true
+      }
+    }
+  ],
+  "source_sha256": "f96b129863bdcb0045348e7094829086eeee0e6470307e1bf7c64cd933ec1443",
+  "energy_scope": "All7instantiated source port energies. Driver/reference/rail MOS included. External reference/regulator IC overhead, clock and RX not included."
+}

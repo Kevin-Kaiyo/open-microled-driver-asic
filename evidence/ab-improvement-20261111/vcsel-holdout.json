@@ -1,0 +1,115 @@
+{
+  "schema": "vcsel-predeclared-holdout-v1",
+  "candidate": "vc-atten50-steer20",
+  "net_Gbps": 6.4,
+  "steps_per_UI": 40,
+  "seed": 12670,
+  "protocol": {
+    "schema": "predeclared-pattern-holdout-v1",
+    "baseline_seed": 23246,
+    "holdout_seed": 12670,
+    "holdout_seed_hex": "0x317e",
+    "phase_offset_in_PRBS15_period_bits": 16749,
+    "frame_bits": 4736,
+    "payload_validation_bits": 4096,
+    "comparison": "Apply once after candidate and nominal rate selection; no retuning to this frame. Same loads, receiver and thresholds. Phase training remains allowed under the same receiver contract.",
+    "scope": "A nonoverlapping PRBS15 window, not random-independent BER qualification; no noise or clock recovery.",
+    "freeze_time": "2026-11-11 before final candidate selection"
+  },
+  "protocol_sha256": "d0700012a915c7d90b048f0e878dcbcfda59ccc70b429db89ecc271241d0de1b",
+  "combined_screen_pass": true,
+  "full_receiver": {
+    "delay_UI": 1.921875,
+    "delay_ps": 259.71283783783787,
+    "train_errors": 0,
+    "errors": 0,
+    "validation_bits": 4096,
+    "min_training_errors_any_delay": 0,
+    "worst_signed_margin_uAeq": 31.12066986170813,
+    "one_sided_margin_UI": 0.38774075117408274,
+    "one_sided_margin_ps": 52.397398807308484,
+    "sample_level_quantiles_uAeq": {
+      "0": {
+        "p05": 25.196489127126693,
+        "median": 28.45418138769159,
+        "p95": 31.08488491499761
+      },
+      "1": {
+        "p05": 95.03200432811273,
+        "median": 96.812509722601,
+        "p95": 99.6035818624998
+      }
+    },
+    "transition_errors": {
+      "0->0": {
+        "errors": 0,
+        "occurrences": 1008
+      },
+      "0->1": {
+        "errors": 0,
+        "occurrences": 1031
+      },
+      "1->0": {
+        "errors": 0,
+        "occurrences": 1031
+      },
+      "1->1": {
+        "errors": 0,
+        "occurrences": 1026
+      }
+    },
+    "screen_pass": true
+  },
+  "observed": {
+    "predriver_input_differential_peak_V": 3.1730769267794297,
+    "steering_gate_differential_peak_V": 3.289486593064592,
+    "laser_rail_range_V": [
+      3.100111029639638,
+      3.1010441519594996
+    ],
+    "predriver_rail_range_V": [
+      2.9709548675756015,
+      3.100197950139721
+    ],
+    "electrical_current_range_mA": [
+      2.773511840403,
+      7.03809194509
+    ],
+    "base_current_range_mA": [
+      2.051472403309,
+      3.726256909651
+    ],
+    "tail_current_range_mA": [
+      2.9984384629650003,
+      4.603274518484
+    ],
+    "dummy_resistor_current_range_mA": [
+      -0.27329402613867426,
+      4.160798682558582
+    ],
+    "optical_graph_negative_fraction": 0.0,
+    "within_calibrated_electrical_and_optical_current_range": true,
+    "terminal_screen_pass": true,
+    "terminal_peak": {
+      "value_V": 3.278176870718,
+      "instance": "XBP2N_0",
+      "pair": "VGS"
+    },
+    "max_body_forward_V": 0.1809084429140002
+  },
+  "energy_pJ_per_attempted_bit": {
+    "positive": 5.871052542285952,
+    "returned": 0.021754935899567986,
+    "net": 5.849297606386384
+  },
+  "source_case": "build/ab-improvement-20261111/VCSEL/vc-atten50-steer20/holdout-seed317e-net6.4-s40",
+  "source_analysis_sha256": "6dee241b9e6ad378e81044d00a12e92d34cbb3a7ec09c520a9239603c059751f",
+  "result_sha256": "bed691178a4366ed112c563d3c420fb259603108b9447e2b804c09c24d34ff8a",
+  "deck_sha256": "27c35f48d40a67a407bfd974e6a4610ddd4147948532279d2b87cb22ef36d574",
+  "driver_sha256": "d598b6feabdb3a69f76e80a29805547745a841be9266394603ab03c6ac6dcffb",
+  "stimulus_sha256": "14af54275f90fdc98b18a010587ac3af23d4e61900a0c07bbcfa18710bcf9578",
+  "selected_case_driver_sha256": "d598b6feabdb3a69f76e80a29805547745a841be9266394603ab03c6ac6dcffb",
+  "source_execution_sha256": "d38062baf1ce84134f0da344dc6c6b8f9c4dd2daf2f3543b7cc287697b9426a1",
+  "no_post_holdout_circuit_or_threshold_retuning": true,
+  "scope": "Independent PRBS phase window held out from candidate selection. Same deterministic simulation contract; not physical BER, noise, PVT or complete PHY qualification."
+}

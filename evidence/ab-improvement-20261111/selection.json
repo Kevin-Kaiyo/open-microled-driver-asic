@@ -1,0 +1,33 @@
+{
+  "A": {
+    "candidate": "a-rin1wide-core03-matched",
+    "highest_passing_Gbps": 1.6,
+    "next_failing_Gbps": 1.8,
+    "baseline_highest_passing_tested_Gbps": 1.2,
+    "baseline_next_failing_tested_Gbps": 1.6,
+    "changes": "1方块4×4µm输入电阻；六只核心MOS改为03v3、L0.28µm，保持原宽度；重新校准真实VH/VL；14只供电轨伺服MOS保留06v0。"
+  },
+  "B": {
+    "candidate": "B_wide_ff31p275",
+    "highest_passing_Gbps": 2.0,
+    "next_failing_Gbps": 2.4,
+    "baseline_highest_passing_tested_Gbps": 0.4,
+    "baseline_next_failing_tested_Gbps": 0.8,
+    "changes": "4×4µm一方块输入电阻；四只预驱动MOS改03v3；保留06v0换流管；从GB到OUT加31.275fF前馈电容；真实参考与25/100µA目标保留。"
+  },
+  "VCSEL": {
+    "candidate": "vc-atten50-steer20",
+    "highest_passing_Gbps": 6.4,
+    "next_failing_Gbps": 7.2,
+    "baseline_highest_passing_tested_Gbps": 4.8,
+    "baseline_next_failing_tested_Gbps": 6.4,
+    "changes": "差分输入ATTEN200→50Ω；两只换流管W40→20µm，保持L0.28µm；保留真实参考与供电、3/7mA目标。"
+  },
+  "policy": {
+    "candidate_parameters_frozen": true,
+    "holdout_retuning": false,
+    "scope": "Discrete nominal research envelope; no exact physical fmax or steady-operation/PVT guarantee. Baseline A1.2 newly measured to avoid coarse-grid speed inflation.",
+    "holdout_protocol": "holdout-protocol.json",
+    "written_at_utc": "2026-11-10T18:02:15.312870+00:00"
+  }
+}

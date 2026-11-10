@@ -1,0 +1,110 @@
+{
+  "candidate": "B_wide_ff31p275",
+  "route": "B",
+  "rate_Gbps": 2.0,
+  "protocol": {
+    "schema": "predeclared-pattern-holdout-v1",
+    "baseline_seed": 23246,
+    "holdout_seed": 12670,
+    "holdout_seed_hex": "0x317e",
+    "phase_offset_in_PRBS15_period_bits": 16749,
+    "frame_bits": 4736,
+    "payload_validation_bits": 4096,
+    "comparison": "Apply once after candidate and nominal rate selection; no retuning to this frame. Same loads, receiver and thresholds. Phase training remains allowed under the same receiver contract.",
+    "scope": "A nonoverlapping PRBS15 window, not random-independent BER qualification; no noise or clock recovery.",
+    "freeze_time": "2026-11-11 before final candidate selection"
+  },
+  "comparison_deck_only_data_sources_changed": true,
+  "identical_input_hashes": true,
+  "source_case": "build/ab-improvement-20261111/B_wide_ff31p275-holdout317e/cases/TT-net2-C200-S40",
+  "result_sha256": "aea1f569c4bc66a32b013239542a9c6c6e41044f2d80fb46dd887ed4f653eccf",
+  "selected_source_result_sha256": "4c2fb2ec27b8ec1d3b6be520b493f0ee078d8931f5bb54bbc56c25155483281f",
+  "DC_reused_same_circuit": true,
+  "analysis": {
+    "full_receiver": {
+      "errors": 0,
+      "validation_bits": 4096,
+      "symbol_errors": 0,
+      "train_errors": 0,
+      "delay_bit_UI": 1.375,
+      "delay_ps": 594.5945945945947,
+      "worst_signed_margin_uAeq": 13.309435185431,
+      "one_sided_margin_ps": 165.23721876850774,
+      "one_sided_margin_bit_UI": 0.38211106840217407,
+      "one_sided_margin_symbol_UI": 0.38211106840217407,
+      "zero_error": true,
+      "research_margin_pass": true,
+      "historical_100ps_pass": true,
+      "transition_symbol_errors": {
+        "0->0": {
+          "errors": 0,
+          "occurrences": 1008
+        },
+        "0->1": {
+          "errors": 0,
+          "occurrences": 1031
+        },
+        "1->0": {
+          "errors": 0,
+          "occurrences": 1031
+        },
+        "1->1": {
+          "errors": 0,
+          "occurrences": 1026
+        }
+      }
+    },
+    "electrical_receiver": {
+      "errors": 0,
+      "validation_bits": 4096,
+      "symbol_errors": 0,
+      "train_errors": 0,
+      "delay_bit_UI": 0.734375,
+      "delay_ps": 317.5675675675676,
+      "worst_signed_margin_uAeq": 34.94931424199433,
+      "one_sided_margin_ps": 200.72633763718113,
+      "one_sided_margin_bit_UI": 0.46417965578598136,
+      "one_sided_margin_symbol_UI": 0.46417965578598136,
+      "zero_error": true,
+      "research_margin_pass": true,
+      "historical_100ps_pass": true,
+      "transition_symbol_errors": {
+        "0->0": {
+          "errors": 0,
+          "occurrences": 1008
+        },
+        "0->1": {
+          "errors": 0,
+          "occurrences": 1031
+        },
+        "1->0": {
+          "errors": 0,
+          "occurrences": 1031
+        },
+        "1->1": {
+          "errors": 0,
+          "occurrences": 1026
+        }
+      }
+    },
+    "energy_pJ_per_attempted_payload_bit": {
+      "positive": 0.943551738064895,
+      "returned": 0.1110429644197376,
+      "net": 0.8325087736451574
+    },
+    "terminal_screen_pass": true,
+    "max_body_forward_V": 0.08757785607686985,
+    "body_screen_pass": true,
+    "static_IV_domain_pass": true,
+    "combined_screen_pass": true,
+    "current_range_uA": [
+      23.61873563662548,
+      114.2644327548329
+    ],
+    "native_samples": 1097476,
+    "max_step_ps": 10.810810811315264
+  },
+  "simulation_ok": true,
+  "analysis_error": null,
+  "scope": "Nonoverlapping PRBS window, no random noise/BER/PVT claim; candidate not retuned after holdout."
+}

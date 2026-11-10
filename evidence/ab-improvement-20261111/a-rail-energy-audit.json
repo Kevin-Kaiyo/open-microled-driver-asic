@@ -1,0 +1,81 @@
+{
+  "schema": "A-rail-energy-drift-audit-v1",
+  "approximation": {
+    "expression": "deltaE=0.5*10nF*((VHend^2-VHstart^2)+(VLend^2-VLstart^2))",
+    "actual_capacitor_nodes": "HC and LC, behind0.2ohm ESR; they were not exported, so onlyVH/VL proxies are used. Error bound not established.",
+    "sign": "positive means net charging; negative means release of initially stored rail energy.",
+    "initial_condition": "Each frame starts at the DC operating point of the first data bit, not independently established periodic communication steady state.",
+    "excluded": "Energy of other C/L, MOS stored charge, ESR losses, and exact internalcapnodes; this is not totalenergybalance or corrected wall-plug energy."
+  },
+  "records": [
+    {
+      "candidate": "a-base",
+      "rate_Gbps": 1.6,
+      "frame_duration_s": 2.56e-06,
+      "rails": {
+        "VH": {
+          "first_V": 1.599783753847824,
+          "last_V": 1.599501540735075,
+          "drift_mV": -0.28221311274889693,
+          "minimum_V": 1.599139753182534,
+          "maximum_V": 1.599827467656386,
+          "delta_energy_pJ_approx": -4.514401307780247
+        },
+        "VL": {
+          "first_V": 1.167111121748935,
+          "last_V": 1.167062197075404,
+          "drift_mV": -0.04892467353090346,
+          "minimum_V": 1.166617738149631,
+          "maximum_V": 1.167275094503565,
+          "delta_energy_pJ_approx": -0.5709933379405285
+        }
+      },
+      "total_delta_rail_storage_pJ_approx": -5.0853946457207755,
+      "equivalent_delta_storage_pJ_per_payload_bit_approx": -0.0012415514271779237,
+      "source_frame_positive_pJ": 3940.869376484687,
+      "source_frame_net_pJ": 3664.7278675069983,
+      "source_result": "build/ab-improvement-20261111/a-base/cases/TT-net1.6-C200-S40/result.json",
+      "source_result_sha256": "ea5237b13ac35745aefa12f0f6d19c319a55fc5ec7d115335665b541795a6238",
+      "waveform_raw_sha256": "c4dd297e6d653b63fcce3a1cfae4ebdd9eeca6859ddef54c537190118509d6f2",
+      "waveform_gzip_sha256": "cbc3894467bfc6b4795d769b572bb1830fd5e69edeb229bedbf04aa9f264330b"
+    },
+    {
+      "candidate": "a-rin1wide-core03-matched",
+      "rate_Gbps": 1.6,
+      "frame_duration_s": 2.56e-06,
+      "rails": {
+        "VH": {
+          "first_V": 1.624456302799833,
+          "last_V": 1.622349030247701,
+          "drift_mV": -2.1072725521320557,
+          "minimum_V": 1.622193655317357,
+          "maximum_V": 1.6245797102874,
+          "delta_energy_pJ_approx": -34.2095188022351
+        },
+        "VL": {
+          "first_V": 1.208492617691136,
+          "last_V": 1.208466473174178,
+          "drift_mV": -0.02614451695781561,
+          "minimum_V": 1.208310151959632,
+          "maximum_V": 1.208854136771603,
+          "delta_energy_pJ_approx": -0.31595113968774236
+        }
+      },
+      "total_delta_rail_storage_pJ_approx": -34.52546994192284,
+      "equivalent_delta_storage_pJ_per_payload_bit_approx": -0.008429069810039757,
+      "source_frame_positive_pJ": 4332.876716139403,
+      "source_frame_net_pJ": 3774.675443030327,
+      "source_result": "build/ab-improvement-20261111/a-rin1wide-core03-matched/cases/TT-net1.6-C200-S40/result.json",
+      "source_result_sha256": "ca9ed15b9d3f3a5e2e295bea4e24447300a16bcdfb2ca43ebdcb9bb94258448f",
+      "waveform_raw_sha256": "c40a9f73caec5e495b056cba212cf8ee0c5a7ad4dc347b86f6f11c272e199bb4",
+      "waveform_gzip_sha256": "6d40d142bd777b85acf09dcde9724b26ef18d739663e7dc8af4247a3a7fd3263"
+    }
+  ],
+  "comparison": {
+    "selected_minus_baseline_source_positive_pJ": 392.00733965471545,
+    "selected_minus_baseline_rail_storage_pJ_approx": -29.440075296202068,
+    "absolute_storage_difference_over_source_energy_difference": 0.07510082673996162
+  },
+  "script_path": "scripts/ab_improvement_20261111/a_rail_energy.py",
+  "script_sha256": "b65fb229acf2329cf1f99bece98b62337f637208f11e7a65c11ce5855d6aa4a9"
+}

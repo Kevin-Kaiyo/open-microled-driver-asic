@@ -1,0 +1,71 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+:root{--ink:#213e49;--teal:#236d73;--muted:#5b727d;--line:#d3e0df;--light:#edf4f3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#eef3f2;color:var(--ink);font:16px/1.72 "PingFang SC","Noto Sans CJK SC",Arial,sans-serif}header{background:#203e49;color:#fff;padding:24px max(22px,calc((100vw - 1060px)/2));font-size:14px;letter-spacing:.06em}main{max-width:1120px;margin:auto;background:white;padding:24px 44px 64px}h1,h2,h3{font-family:"Avenir Next","PingFang SC",sans-serif;line-height:1.35;color:var(--teal)}h1{font-size:clamp(29px,4vw,42px)}h2{font-size:28px}h3{font-size:20px;margin-top:24px}p{margin:0 0 16px}section{padding:28px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}a{color:var(--teal);overflow-wrap:anywhere;text-underline-offset:3px}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}details{padding:18px 22px;background:var(--light);margin:22px 0}summary{cursor:pointer;font-weight:650}.toc{columns:2;padding-left:20px}.toc li{break-inside:avoid;padding:4px 0}.kicker{font:13px/1.6 "Avenir Next","PingFang SC",sans-serif;color:var(--muted);letter-spacing:.08em}.note{padding:16px 18px;background:var(--light);border-left:3px solid #6c9e9f;color:#49636e}.table-scroll{overflow:auto;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.6}td,th{padding:10px 11px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{background:var(--light);color:var(--teal)}figure{margin:22px 0}img{max-width:100%;height:auto;display:block;margin:auto}figcaption{font-size:13px;line-height:1.6;color:var(--muted);margin-top:10px}code{overflow-wrap:anywhere;font-size:.9em}li{margin:8px 0}@media(max-width:680px){main{padding:18px 18px 40px}.toc{columns:1}h2{font-size:25px}table{min-width:560px}section{padding:22px 0}}@media print{body{background:#fff;font-size:11pt}main{padding:0}header,nav,details{display:none}section{break-after:page}tr,figure{break-inside:avoid}h2,h3{break-after:avoid}table{font-size:9pt}.note,th{print-color-adjust:exact}}
+</style><title>电路改进：复现、验收与原始证据</title></head><body><main><nav><a href="index.html">返回阶段技术报告</a></nav><h1 id="_1">电路改进：复现、验收与原始证据</h1>
+<p>本阶段在冻结的 MicroLED A/B 与 VCSEL 基线之上做逐项电路改进。每个候选、直流拟合点和速率都有自己的目录、网表、执行源码快照、日志、原生波形 SHA-256 和结果。失败的接收筛查保留在结果中；它与求解失败不是一回事。早期 <code>engine.py</code> 保留原样，后来运行器的输入检查由 <code>engine_checked.py</code> 承担，不能通过覆盖旧快照改变历史证据。</p>
+<h2 id="_2">结果入口</h2>
+<ul>
+<li><a href="../../../evidence/ab-improvement-20261111/summary.json">A/B 全部完成案例与 DC 校准</a></li>
+<li><a href="../../../evidence/ab-improvement-20261111/selection.json">最终候选与边界</a></li>
+<li><a href="../../../evidence/ab-improvement-20261111/a-improvement-summary.json">A 改进对照</a>、<a href="../../../evidence/ab-improvement-20261111/b-diagnostics.json">B 边沿诊断</a>、<a href="../../../evidence/ab-improvement-20261111/vcsel-causal-comparison.json">VCSEL 因果对照</a></li>
+<li><a href="../../../evidence/ab-improvement-20261111/scientific-validation.json">完整科学验收</a>、<a href="../../../evidence/ab-improvement-20261111/validation.json">报告文件验收</a></li>
+<li><a href="../../../evidence/ab-improvement-20261111/holdout-protocol.json">预先锁定的第二帧协议</a>、<a href="../../../evidence/ab-improvement-20261111/a-holdout.json">A 结果</a>、<a href="../../../evidence/ab-improvement-20261111/b-holdout.json">B 结果</a>、<a href="../../../evidence/ab-improvement-20261111/vcsel-holdout.json">VCSEL 结果</a></li>
+</ul>
+<p>所有通过点只适用于本轮 TT、已建立偏置、无外加噪声的数据帧。MicroLED 的 200 fF、200 ps 光学极点和 VCSEL 的 150 fF 等动态参数没有被本轮校准为真实器件参数。源端正向、返回和净能量分别记录；分母是 4096 个尝试载荷位，未通过点不能作为可靠有效载荷能效。启动、关断、随机 BER、长时间稳态和完整 PVT 不在这次通过结论内。</p>
+<h2 id="_3">恢复输入</h2>
+<p>先按<a href="../blue-emitter-speed-review-20261110/reproduce.html">上一阶段恢复说明</a>恢复 <code>blue-emitter-speed-review-20261110</code> 的基线输入、历史锚点和必要 metadata。本阶段仍引用这些既有文件，不重复归档同一套历史波形。两个 GF180 模型文件必须依锁定 SHA-256 恢复；PDK、VM 和 Python 环境没有放入公开原始波形归档。</p>
+<p>随后下载本阶段 Release 的全部 assets，保留仓库相对路径：</p>
+<pre><code class="language-sh">python3 scripts/backup/release_bundle.py verify \
+  --manifest release-assets/driver-improvement-20261111-archive-manifest.json \
+  --asset-dir release-assets
+python3 scripts/backup/release_bundle.py restore \
+  --manifest release-assets/driver-improvement-20261111-archive-manifest.json \
+  --asset-dir release-assets --root .
+</code></pre>
+<p>恢复会核对 archive 和每个成员文件 SHA，不覆盖已有不同内容。若只要审阅报告，无需恢复大波形。重新分析需要完整案例与上述历史输入；重新求解则在独立 checkout 中保留历史输入、让本阶段候选目录为空。运行器见到完整已有结果时会验证并返回它，不能把这种重用称为新求解。</p>
+<h2 id="_4">重新求解示例</h2>
+<p>基准环境是 Python 3.12、NumPy 2.5.3、ngspice 47 KLU。<code>python</code> 应指向对应环境。本机科学图环境为 <code>build/layout/venv/</code>。下列是最终候选的核心复现入口；完整试验矩阵以结果 JSON 为准。</p>
+<pre><code class="language-sh"># A：重新拟合两条真实输出轨，保留所有二分迭代，再冻结参数扫速。
+python scripts/ab_improvement_20261111/a_calibrate.py \
+  a-rin1wide-core03 --rates 1.2 1.6 1.8 2.0 3.2
+
+# B：初始参数不变；显式集中 CFF 不是 PDK MIM/PEX。
+PYTHONPATH=scripts/ab_improvement_20261111 python - &lt;&lt;'PY'
+from b_candidates import candidate
+from engine_checked import init_candidate, run_case
+c = candidate('B_wide_ff31p275')
+w = init_candidate(c['name'], c['route'], c['route_text'],
+                   c['parameters'], c['notes'])
+for level in [0, 1]:
+    run_case(w, level=level)
+for rate in [0.8, 1.2, 1.6, 2.0, 2.4, 3.2]:
+    run_case(w, rate=rate)
+PY
+
+python scripts/ab_improvement_20261111/vcsel_improve.py \
+  --candidate vc-atten50-steer20 --rates 4.8 6.4 7.2 8.0
+python scripts/ab_improvement_20261111/vcsel_improve.py \
+  --candidate vc-atten50-steer20 --rates 6.4 --steps 80
+</code></pre>
+<p>半步长对照使用 <code>run_case(w, rate=..., steps=80)</code>。A 的 1.6/1.8 和 B 的 2.0/2.4 Gb/s 都检查。第二帧在最终电路冻结后运行：</p>
+<pre><code class="language-sh">python scripts/ab_improvement_20261111/holdout.py a-rin1wide-core03-matched --rate 1.6
+python scripts/ab_improvement_20261111/holdout.py B_wide_ff31p275 --rate 2.0
+python scripts/ab_improvement_20261111/vcsel_holdout.py
+python scripts/ab_improvement_20261111/summarize.py
+python scripts/ab_improvement_20261111/validate_stage.py --final
+</code></pre>
+<p>验收包括实际 PWL 的位数、速率与边沿、模型与执行源码哈希、正向能量范围、DC 匹配、接收和应力筛查、半步长及第二帧。另一种子是在已知开发序列之后选择的 PRBS15 非重叠窗口，不是新独立器件，更不是统计 BER 证据。</p>
+<h2 id="_5">重建图表和报告</h2>
+<pre><code class="language-sh">python scripts/ab_improvement_20261111/figures.py
+python scripts/ab_improvement_20261111/plot.py
+python scripts/ab_improvement_20261111/a_waveforms.py
+python scripts/ab_improvement_20261111/b_figures.py
+python scripts/ab_improvement_20261111/vcsel_plots.py
+python scripts/ab_improvement_20261111/report.py
+python scripts/ab_improvement_20261111/validate_report.py
+</code></pre>
+<p>科学图使用 Matplotlib、Pillow 和 CairoSVG；报告使用 ReportLab 4.4.9、pypdf 6.10.0、pdfplumber 0.11.9、Markdown 3.9。本机报告环境复用 <code>build/blue-emitter-speed-review-20261110/report-venv/</code>。HTML 优先 PingFang SC；PDF 使用可嵌入 Heiti SC TrueType 与 Arial，因为 ReportLab 不支持系统 PingFang 的 CFF 字体。跨平台应替换为有许可的 CJK 可嵌入字体。</p>
+<p>本轮图是独立绘制的连接图和原生仿真数据图，未新增完整物理版图、DRC/LVS/PEX 或可流片 GDS。原有物理结果只对应其历史网表，不能自动覆盖这次改版。</p>
+<h2 id="_6">备份范围</h2>
+<p>Git 保存公开源码、报告、图表和紧凑证据；<a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/driver-improvement-20261111">本阶段 Release</a>保存完成求解的原始波形、冻结输入、源码快照与日志，包括接收未通过的案例和 DC 拟合中间点。发布后按 <a href="../../../evidence/ab-improvement-20261111/archive-manifest.json">archive 清单</a>验证远端下载的 archive 及每个成员。最终交付状态在独立 <code>delivery.json</code> 中记录。</p>
+<p>未完成或求解失败的本地日志、PDK、环境、无关工作区内容不纳入这次 Release，也不删除。此前未完成的 <code>microled-dynamic-validation-20261108</code> 全矩阵 draft 不属于本次补齐范围。Git push 不等于忽略目录的备份；本阶段不清除任何本地原始证据。</p></main></body></html>

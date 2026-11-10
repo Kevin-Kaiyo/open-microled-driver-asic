@@ -1,0 +1,51 @@
+{
+  "schema": "ab-improvement-physical-source-notes-v1",
+  "review_date": "2026-11-11",
+  "scope": "Public GF180 planning constraints and pinned model arithmetic; no new layout, matching rule-deck execution, EM qualification or foundry signoff.",
+  "sources": [
+    {
+      "id": "GF180-HRES",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_10_03.html",
+      "locator": "10.3 HRES Poly Resistor, HRES.2 and HRES.11",
+      "facts": {
+        "minimum_width_um": 1,
+        "maximum_current_density_mA_per_um": 1
+      },
+      "interpretation": "A 1 um wide 1 kohm input resistor can approach several mA during a fast 3.3 V edge; this exceeds a conservative instantaneous application of HRES.11. The public table does not provide a pulsed-duration derating in this section. Average-current arguments alone do not establish compliance. A 4 um wide, 4 um long resistor keeps approximately one square and reduces that conservative density estimate, while increasing model substrate capacitance.",
+      "limits": "Current density must ultimately use extracted device current, temperature and the selected PDK reliability flow. Geometric mitigation is not an EM pass."
+    },
+    {
+      "id": "GF180-MIM-B",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_10_4_2.html",
+      "locator": "10.4.2 MIM Option B, MIMTM.8a and process-option note",
+      "facts": {
+        "minimum_top_plate_area_um2": 25,
+        "minimum_square_side_um": 5,
+        "requires_at_least_metal_layers": 4
+      },
+      "interpretation": "Option B uses the top-metal/top-metal-minus-one stack. It is an option for four-or-more-metal processes. Option A and B cannot be combined in the same process. GF180D having five metal layers does not by itself identify a chosen MIM option or density; the selected full PDK and fabrication option must establish that.",
+      "limits": "A 5–20 fF ideal capacitor cannot be claimed to be a minimum-area single MIM implementation from this rule alone. Series capacitors, a qualified MOM implementation or another approved option need actual device/parasitic validation."
+    },
+    {
+      "id": "pinned-model-MIM",
+      "repository_relative_path": "build/blue-emitter-speed-review-20261110/microled/inputs/pdk/sm141064.ngspice",
+      "sha256": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46",
+      "locator": ".LIB cap_mim, .subckt cap_mim_1f0fF and cap_mim_1f5fF; model lines39173–39227 in this frozen copy",
+      "facts": {
+        "cap_mim_1f0fF_area_fF_per_um2": 0.987,
+        "cap_mim_1f0fF_edge_fF_per_um": 0.33,
+        "cap_mim_1f5fF_area_fF_per_um2": 1.47,
+        "cap_mim_1f5fF_edge_fF_per_um": 0.379,
+        "nominal_5x5um_1f0_fF": 31.275000000000002,
+        "nominal_5x5um_1f5_fF": 44.33
+      },
+      "calculation": "C=area_density*(5*5)+edge_density*(2*(5+5)), at nominal cap corner and before temperature correction. The model includes separate MIM corner/mismatch terms.",
+      "limits": "The B candidate CFF remains a lumped capacitor. These arithmetic values motivate a realizable scale but do not instantiate or validate the PDK MIM device, substrate/coupling parasitics, voltage/temperature tolerance, or series-capacitor midpoint behavior."
+    }
+  ],
+  "candidate_implications": {
+    "B_rin1": "Input-RC ablation only. Net0.8Gb/s zero errors but receiver margin worsens and CMOS GB PFET drain/body forward peak becomes0.31356V, above0.3V project research screen.",
+    "B_fast_wide": "Tested 4um width and4um length input-resistor geometry with faster predrivers: both DC levels pass1%; net0.8Gb/s still has12 validation errors. Its resistor-current density/EM and layout are not signed off.",
+    "B_wide_ff31p275": "Lumped31.275fF candidate passes tested net0.8,1.2,1.6,2.0Gb/s and fails complete receiver at2.4 and3.2Gb/s. It passes the electrical-only receiver even at3.2Gb/s. 31.275fF matches nominal arithmetic of a5x5um1fF/um2MIM model with fringe, but no PDK MIM device or layout is instantiated."
+  }
+}

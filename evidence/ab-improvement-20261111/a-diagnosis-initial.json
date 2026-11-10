@@ -1,0 +1,530 @@
+{
+  "schema": "A-improvement-causal-diagnosis-v1",
+  "scope": "Nominal transistor schematic ablation, not physical layout/EM/reliability qualification",
+  "conditions": {
+    "net_Gbps": 1.6,
+    "line_GBd": 1.85,
+    "CLED_fF": 200,
+    "optical_tau_ps": 200,
+    "receiver_GHz": 1,
+    "VDD_V": 3.3,
+    "VIN_V": 5,
+    "VLED_V": 5,
+    "temperature_C": 27,
+    "corner": "typical",
+    "target_uA": [
+      25,
+      100
+    ],
+    "payload_bits": 4096
+  },
+  "ablation": "Only XRIN geometry changes from1umwidth×8umlength to1umwidth×1umlength. All20MOS,outputrails,RH/RL,sourceports,stimulus,receivercriterionunchanged.",
+  "latency_method": {
+    "scope": "Diagnostic only; receiver phase remains selected on independent training segment. These transitions are not used for receiver fitting.",
+    "selection": "Transitions in validationsegment with3identicalbits both beforeandafteredge;0polarity63events,1polarity76events.",
+    "reference": "PWLtransitionstart, not threshold time; d0 latency around10ps reflects20pssourceedge.",
+    "crossing_thresholds": "d0,DI,N1,CTRL1.65V;OUT midpoint of own DC0/1voltages;ILED62.5uA. N1andOUTpolarityinverted.",
+    "statistics": "Median/min/max isolated-transitionlatency; not randomjitter statistics.",
+    "script_path": "scripts/ab_improvement_20261111/a_diagnostics.py",
+    "script_sha256": "ca537d8e03e85c2af8b55d8653dc66655844ba0388647d67acb8b353ca74b664"
+  },
+  "conclusions": [
+    "1.6Gb/s baseline is reproducibly margin-failed despite0errors:2.54034uAeq,94.1711ps (.174217UI).",
+    "RIN-only control raises fullRX margins to6.40420uAeq,147.6856ps(.273218UI), still below7.5uAeq/.37UI. Electrical-only now passes.",
+    "InputDI crossing shifts from63.3/66.0ps to19.3/19.6ps. Faster input slew also reduces first-inverter latency: CTRL shifts from474.5/403.9ps to368.1/304.6ps.",
+    "Post-CTRL-to-OUT midpoint delay remains about300–363ps, supporting subsequent output-path investigation; no ideal-source bypass is credited as improved circuit.",
+    "The1umwidth1square resistor is an electrical ablation only; a4umwidth4umlength1square control is planned to account for a conservative PDKcurrent-densitybudget and larger parasiticcapacitance."
+  ],
+  "records": [
+    {
+      "candidate": "a-base",
+      "source_result": "build/ab-improvement-20261111/a-base/cases/TT-net1.6-C200-S40/result.json",
+      "result_sha256": "ea5237b13ac35745aefa12f0f6d19c319a55fc5ec7d115335665b541795a6238",
+      "waveform_raw_sha256": "c4dd297e6d653b63fcce3a1cfae4ebdd9eeca6859ddef54c537190118509d6f2",
+      "waveform_gzip_sha256": "cbc3894467bfc6b4795d769b572bb1830fd5e69edeb229bedbf04aa9f264330b",
+      "deck_sha256": "f6e7757cd911d201ac6b19bdacb8d38d206fc9509b918b1b1a674db671e3f044",
+      "manifest_sha256": "46b9143b92338aa70d32cc3761f4777986399997d08dcc9b9ac6007b1edc2759",
+      "DC": [
+        {
+          "level": 0,
+          "current_uA": 24.99972009230522,
+          "error_percent": -0.0011196307791117022,
+          "pass": true,
+          "source": "build/ab-improvement-20261111/a-base/cases/DC-L0/result.json",
+          "source_sha256": "cc501120e775761f34ddd6fbd404e2818575239f888bbd563446050d3f863f48"
+        },
+        {
+          "level": 1,
+          "current_uA": 99.99376525290877,
+          "error_percent": -0.006234747091216075,
+          "pass": true,
+          "source": "build/ab-improvement-20261111/a-base/cases/DC-L1/result.json",
+          "source_sha256": "aa6a9669287f4b125c19d00c1728935139f5ff66f38245ca1198ea5ce2ec88a6"
+        }
+      ],
+      "analysis": {
+        "full_receiver": {
+          "errors": 0,
+          "validation_bits": 4096,
+          "symbol_errors": 0,
+          "train_errors": 0,
+          "delay_bit_UI": 2.25,
+          "delay_ps": 1216.2162162162165,
+          "worst_signed_margin_uAeq": 2.540340738157248,
+          "one_sided_margin_ps": 94.17108244143779,
+          "one_sided_margin_bit_UI": 0.1742165025166599,
+          "one_sided_margin_symbol_UI": 0.1742165025166599,
+          "zero_error": true,
+          "research_margin_pass": false,
+          "historical_100ps_pass": false,
+          "transition_symbol_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          }
+        },
+        "electrical_receiver": {
+          "errors": 0,
+          "validation_bits": 4096,
+          "symbol_errors": 0,
+          "train_errors": 0,
+          "delay_bit_UI": 1.75,
+          "delay_ps": 945.945945945946,
+          "worst_signed_margin_uAeq": 20.951058494960648,
+          "one_sided_margin_ps": 173.72413210028404,
+          "one_sided_margin_bit_UI": 0.3213896443855254,
+          "one_sided_margin_symbol_UI": 0.3213896443855254,
+          "zero_error": true,
+          "research_margin_pass": false,
+          "historical_100ps_pass": true,
+          "transition_symbol_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          }
+        },
+        "energy_pJ_per_attempted_payload_bit": {
+          "positive": 0.9621263126183318,
+          "returned": 0.06741736059025605,
+          "net": 0.8947089520280758
+        },
+        "terminal_screen_pass": true,
+        "max_body_forward_V": 0.1510302427744925,
+        "body_screen_pass": true,
+        "static_IV_domain_pass": true,
+        "combined_screen_pass": false,
+        "current_range_uA": [
+          16.90281763955058,
+          112.9946795936356
+        ],
+        "native_samples": 1342759,
+        "max_step_ps": 13.51351351435584
+      },
+      "latency": [
+        {
+          "to_bit": 0,
+          "node": "d0",
+          "threshold": 1.65,
+          "event_count": 63,
+          "measured_count": 63,
+          "missing": [],
+          "median_delay_ps": 10.144309345489305,
+          "min_delay_ps": 10.144285403467777,
+          "max_delay_ps": 10.144435398073778
+        },
+        {
+          "to_bit": 0,
+          "node": "xdrv.di",
+          "threshold": 1.65,
+          "event_count": 63,
+          "measured_count": 63,
+          "missing": [],
+          "median_delay_ps": 63.29933211343084,
+          "min_delay_ps": 63.291716135587855,
+          "max_delay_ps": 63.308949291103254
+        },
+        {
+          "to_bit": 0,
+          "node": "xdrv.n1",
+          "threshold": 1.65,
+          "event_count": 63,
+          "measured_count": 63,
+          "missing": [],
+          "median_delay_ps": 356.53747068437264,
+          "min_delay_ps": 356.53198061110237,
+          "max_delay_ps": 356.5446702732066
+        },
+        {
+          "to_bit": 0,
+          "node": "xdrv.ctrl",
+          "threshold": 1.65,
+          "event_count": 63,
+          "measured_count": 63,
+          "missing": [],
+          "median_delay_ps": 474.52993437312966,
+          "min_delay_ps": 474.5253890513979,
+          "max_delay_ps": 474.53856626587833
+        },
+        {
+          "to_bit": 0,
+          "node": "out",
+          "threshold": 1.4353080916264045,
+          "event_count": 63,
+          "measured_count": 63,
+          "missing": [],
+          "median_delay_ps": 836.9565520633273,
+          "min_delay_ps": 836.8585371835675,
+          "max_delay_ps": 837.4032221269282
+        },
+        {
+          "to_bit": 0,
+          "node": "iled_cond",
+          "threshold": 6.25e-05,
+          "event_count": 63,
+          "measured_count": 63,
+          "missing": [],
+          "median_delay_ps": 731.7211659223491,
+          "min_delay_ps": 731.6681565519608,
+          "max_delay_ps": 732.04079918429
+        },
+        {
+          "to_bit": 1,
+          "node": "d0",
+          "threshold": 1.65,
+          "event_count": 76,
+          "measured_count": 76,
+          "missing": [],
+          "median_delay_ps": 10.145105094932646,
+          "min_delay_ps": 10.145096022045111,
+          "max_delay_ps": 10.14512535521959
+        },
+        {
+          "to_bit": 1,
+          "node": "xdrv.di",
+          "threshold": 1.65,
+          "event_count": 76,
+          "measured_count": 76,
+          "missing": [],
+          "median_delay_ps": 66.0128308746416,
+          "min_delay_ps": 66.00972251598218,
+          "max_delay_ps": 66.01887005877809
+        },
+        {
+          "to_bit": 1,
+          "node": "xdrv.n1",
+          "threshold": 1.65,
+          "event_count": 76,
+          "measured_count": 76,
+          "missing": [],
+          "median_delay_ps": 261.5400035698517,
+          "min_delay_ps": 261.53733572081444,
+          "max_delay_ps": 261.5501588848932
+        },
+        {
+          "to_bit": 1,
+          "node": "xdrv.ctrl",
+          "threshold": 1.65,
+          "event_count": 76,
+          "measured_count": 76,
+          "missing": [],
+          "median_delay_ps": 403.853462664779,
+          "min_delay_ps": 403.8377241963078,
+          "max_delay_ps": 403.9368378450892
+        },
+        {
+          "to_bit": 1,
+          "node": "out",
+          "threshold": 1.4353080916264045,
+          "event_count": 76,
+          "measured_count": 76,
+          "missing": [],
+          "median_delay_ps": 704.2320866838153,
+          "min_delay_ps": 703.5650048653188,
+          "max_delay_ps": 707.0464910506114
+        },
+        {
+          "to_bit": 1,
+          "node": "iled_cond",
+          "threshold": 6.25e-05,
+          "event_count": 76,
+          "measured_count": 76,
+          "missing": [],
+          "median_delay_ps": 769.0804122658883,
+          "min_delay_ps": 768.2447147820493,
+          "max_delay_ps": 772.1963659862058
+        }
+      ]
+    },
+    {
+      "candidate": "a-rin1",
+      "source_result": "build/ab-improvement-20261111/a-rin1/cases/TT-net1.6-C200-S40/result.json",
+      "result_sha256": "93bb1bee70c2f88adaf3463b261427f41691e93d42070da3cfae0518168cdf76",
+      "waveform_raw_sha256": "4aee22768b04799851af803c1f941d595e3c8f12bedcd56904eaaf2b5452f6f7",
+      "waveform_gzip_sha256": "a3c0de7df54484d5fd4822bb9324941a18f640b86ed306ac1e9e0da37d1d5f27",
+      "deck_sha256": "f6e7757cd911d201ac6b19bdacb8d38d206fc9509b918b1b1a674db671e3f044",
+      "manifest_sha256": "b1bceecf6a70e99325fd3fecf0497f912cad3a723f4106c8482498c927743727",
+      "DC": [
+        {
+          "level": 0,
+          "current_uA": 24.99972009230522,
+          "error_percent": -0.0011196307791117022,
+          "pass": true,
+          "source": "build/ab-improvement-20261111/a-rin1/cases/DC-L0/result.json",
+          "source_sha256": "91f3941aeee8d2fdb1e9df330cd5173572b6d418bebe375ec3c77abb6fcaf397"
+        },
+        {
+          "level": 1,
+          "current_uA": 99.99376525290833,
+          "error_percent": -0.006234747091660164,
+          "pass": true,
+          "source": "build/ab-improvement-20261111/a-rin1/cases/DC-L1/result.json",
+          "source_sha256": "742818c391a883c9562bd34dcf78ee40a709ba1f57c21a38d7806a6f8d8f8275"
+        }
+      ],
+      "analysis": {
+        "full_receiver": {
+          "errors": 0,
+          "validation_bits": 4096,
+          "symbol_errors": 0,
+          "train_errors": 0,
+          "delay_bit_UI": 2.15625,
+          "delay_ps": 1165.5405405405406,
+          "worst_signed_margin_uAeq": 6.404197319988917,
+          "one_sided_margin_ps": 147.6855816309273,
+          "one_sided_margin_bit_UI": 0.27321832601721546,
+          "one_sided_margin_symbol_UI": 0.27321832601721546,
+          "zero_error": true,
+          "research_margin_pass": false,
+          "historical_100ps_pass": false,
+          "transition_symbol_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          }
+        },
+        "electrical_receiver": {
+          "errors": 0,
+          "validation_bits": 4096,
+          "symbol_errors": 0,
+          "train_errors": 0,
+          "delay_bit_UI": 1.625,
+          "delay_ps": 878.3783783783786,
+          "worst_signed_margin_uAeq": 22.998420395762587,
+          "one_sided_margin_ps": 202.999687792065,
+          "one_sided_margin_bit_UI": 0.3755494224153202,
+          "one_sided_margin_symbol_UI": 0.3755494224153202,
+          "zero_error": true,
+          "research_margin_pass": true,
+          "historical_100ps_pass": true,
+          "transition_symbol_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          }
+        },
+        "energy_pJ_per_attempted_payload_bit": {
+          "positive": 0.963514837447436,
+          "returned": 0.07421027765274785,
+          "net": 0.8893045597946881
+        },
+        "terminal_screen_pass": true,
+        "max_body_forward_V": 0.1754044401612482,
+        "body_screen_pass": true,
+        "static_IV_domain_pass": true,
+        "combined_screen_pass": false,
+        "current_range_uA": [
+          16.89925532735069,
+          113.7122646687979
+        ],
+        "native_samples": 1509770,
+        "max_step_ps": 13.51351351435584
+      },
+      "latency": [
+        {
+          "to_bit": 0,
+          "node": "d0",
+          "threshold": 1.65,
+          "event_count": 63,
+          "measured_count": 63,
+          "missing": [],
+          "median_delay_ps": 10.49766407834477,
+          "min_delay_ps": 10.497549279969427,
+          "max_delay_ps": 10.497928578358593
+        },
+        {
+          "to_bit": 0,
+          "node": "xdrv.di",
+          "threshold": 1.65,
+          "event_count": 63,
+          "measured_count": 63,
+          "missing": [],
+          "median_delay_ps": 19.318855320619196,
+          "min_delay_ps": 19.318125466315742,
+          "max_delay_ps": 19.324186239575045
+        },
+        {
+          "to_bit": 0,
+          "node": "xdrv.n1",
+          "threshold": 1.65,
+          "event_count": 63,
+          "measured_count": 63,
+          "missing": [],
+          "median_delay_ps": 250.0565954225616,
+          "min_delay_ps": 250.05129960210996,
+          "max_delay_ps": 250.05829249499953
+        },
+        {
+          "to_bit": 0,
+          "node": "xdrv.ctrl",
+          "threshold": 1.65,
+          "event_count": 63,
+          "measured_count": 63,
+          "missing": [],
+          "median_delay_ps": 368.08506726223555,
+          "min_delay_ps": 368.0833078439375,
+          "max_delay_ps": 368.08961250355213
+        },
+        {
+          "to_bit": 0,
+          "node": "out",
+          "threshold": 1.4353080916264045,
+          "event_count": 63,
+          "measured_count": 63,
+          "missing": [],
+          "median_delay_ps": 730.9330101946009,
+          "min_delay_ps": 730.8217706254345,
+          "max_delay_ps": 731.3855472910444
+        },
+        {
+          "to_bit": 0,
+          "node": "iled_cond",
+          "threshold": 6.25e-05,
+          "event_count": 63,
+          "measured_count": 63,
+          "missing": [],
+          "median_delay_ps": 625.6267946008021,
+          "min_delay_ps": 625.5631088201472,
+          "max_delay_ps": 625.9416460622238
+        },
+        {
+          "to_bit": 1,
+          "node": "d0",
+          "threshold": 1.65,
+          "event_count": 76,
+          "measured_count": 76,
+          "missing": [],
+          "median_delay_ps": 10.519964160492567,
+          "min_delay_ps": 10.519941759329848,
+          "max_delay_ps": 10.520009651985186
+        },
+        {
+          "to_bit": 1,
+          "node": "xdrv.di",
+          "threshold": 1.65,
+          "event_count": 76,
+          "measured_count": 76,
+          "missing": [],
+          "median_delay_ps": 19.560437981481794,
+          "min_delay_ps": 19.55996222467466,
+          "max_delay_ps": 19.561238823604853
+        },
+        {
+          "to_bit": 1,
+          "node": "xdrv.n1",
+          "threshold": 1.65,
+          "event_count": 76,
+          "measured_count": 76,
+          "missing": [],
+          "median_delay_ps": 166.85373156822192,
+          "min_delay_ps": 166.85198574406152,
+          "max_delay_ps": 166.85722655867
+        },
+        {
+          "to_bit": 1,
+          "node": "xdrv.ctrl",
+          "threshold": 1.65,
+          "event_count": 76,
+          "measured_count": 76,
+          "missing": [],
+          "median_delay_ps": 304.5822797378396,
+          "min_delay_ps": 304.5694768511472,
+          "max_delay_ps": 304.65938614377416
+        },
+        {
+          "to_bit": 1,
+          "node": "out",
+          "threshold": 1.4353080916264045,
+          "event_count": 76,
+          "measured_count": 76,
+          "missing": [],
+          "median_delay_ps": 603.9648980173677,
+          "min_delay_ps": 603.3691538702952,
+          "max_delay_ps": 606.7219402770544
+        },
+        {
+          "to_bit": 1,
+          "node": "iled_cond",
+          "threshold": 6.25e-05,
+          "event_count": 76,
+          "measured_count": 76,
+          "missing": [],
+          "median_delay_ps": 668.4934358979824,
+          "min_delay_ps": 667.7521120024951,
+          "max_delay_ps": 671.5725652448357
+        }
+      ]
+    }
+  ]
+}

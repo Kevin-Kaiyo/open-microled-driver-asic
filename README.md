@@ -1,5 +1,7 @@
 # Open MicroLED Driver ASIC
 
+**电路改进与验证（2026-11-11）**：[专业报告 PDF](docs/research/driver-improvement-20261111/technical-stage-report.pdf) · [网页阅读版](docs/research/driver-improvement-20261111/index.html) · [复现与证据](docs/research/driver-improvement-20261111/reproduce.html)。A/B 与 VCSEL 逐项修改、失败反例、波形及电荷分析；当前名义模型下最高已测试通过点为净 1.6 / 2.0 / 6.4 Gb/s。A/B 在净 3.2 Gb/s 的电气接收通过，但完整光学/RX仍失败；不预选最终架构。
+
 An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
 **阶段技术成果更新（2026-11-10）**：[专业报告 PDF](docs/research/blue-emitter-speed-review-20261110/technical-stage-report.pdf) · [网页阅读版](docs/research/blue-emitter-speed-review-20261110/index.html) · [蓝光器件证据](docs/research/blue-emitter-speed-review-20261110/literature.html) · [数据与恢复](docs/research/blue-emitter-speed-review-20261110/reproduce.html)。新增 A/B/C 与 VCSEL 的实际低至高速扫描、负载边界、错误／余量／体结筛查，结合公开蓝光 MicroLED／VCSEL 资料复盘架构、器件、PWM、版图和研发方向。当前黄光及 850 nm 参考模型与蓝光器件证据分别保留。
