@@ -1,6 +1,6 @@
 # 当前研究资料入口
 
-**高速光发射工作台（2026-11-10）**：[报告](highspeed-workbench-20261110/index.html) · [文献](highspeed-workbench-20261110/literature.html) · [物理工作台](highspeed-workbench-20261110/physical/index.html) · [制造交付](highspeed-workbench-20261110/fabrication.html)。覆盖四条冻结通路的晶体管复跑、前置驱动负载和相位扫描、历史 GDS 的 2D/3D 和测试芯片的制造交付路径。
+**高速光发射工作台（2026-11-10）**：[报告](highspeed-workbench-20261110/index.html) · [位错诊断和 VCSEL 净 32 Gb/s](highspeed-workbench-20261110/bit-errors.html) · [文献](highspeed-workbench-20261110/literature.html) · [物理工作台](highspeed-workbench-20261110/physical/index.html) · [制造交付](highspeed-workbench-20261110/fabrication.html)。覆盖四条通路的晶体管复跑、门极与接收诊断、历史 GDS 的 2D/3D 和测试芯片的制造交付路径。
 
 **项目进度专业报告（2026-11-09，证据截至11-08）**：[17页PDF](project-progress-review-20261108/project-progress-report.pdf) / [HTML](project-progress-review-20261108/index.html) / [复现与审计范围](project-progress-review-20261108/reproduce.md)。按架构、成果、性能边界、未完成事项和研究方向阅读；历史专题证据保留。
 

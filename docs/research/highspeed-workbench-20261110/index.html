@@ -26,15 +26,16 @@ code{font-size:.92em;overflow-wrap:anywhere}
 .table-scroll{overflow:auto}
 @media(max-width:680px){main{padding:22px 18px 45px}figure.pair{grid-template-columns:1fr}td,th{padding:8px}.table-scroll table{min-width:520px}}
 @media print{main{padding:0}body{background:white;font-size:11pt;line-height:1.58}figure,tr,h2,h3{break-inside:avoid}h2,h3{break-after:avoid}nav{display:none}th{print-color-adjust:exact}}
-</style></head><body><main><header><nav aria-label="章节"><a href="literature.html">原始文献</a>　<a href="physical/index.html">物理工作台</a>　<a href="fabrication.html">制造交付</a>　<a href="reproduce.html">复现</a></nav></header><h1 id="driver">高速光发射 Driver 研究报告</h1>
-<p><strong>2026-11-10 · 单通道实验平台 · 晶体管复跑、接口电路、GDS 与制造交付</strong></p>
+</style></head><body><main><header><nav aria-label="章节"><a href="bit-errors.html">位错与速率决策</a>　<a href="literature.html">原始文献</a>　<a href="physical/index.html">物理工作台</a>　<a href="fabrication.html">制造交付</a>　<a href="reproduce.html">复现</a></nav></header><h1 id="driver">高速光发射 Driver 研究报告</h1>
+<p><strong>2026-11-10 · 单通道实验平台 · MicroLED 位错诊断与 VCSEL 净 32 Gb/s 复核</strong></p>
 <h2 id="_1">结论与下一轮实验</h2>
 <ul>
 <li><strong>器件尺寸与最终架构继续作为变量。</strong> 先用单通道净 3.2 Gb/s 做可重复的工程检查点。同一 GaN 尺寸论文中，60 µm 的 OFDM 实验速率高于 20 µm。约 6–7 µm 器件曾在独立测试板上跑到 10 Gb/s NRZ，同一研究的 16 nm 集成电路抽测为 3.3 Gb/s/路。电路、光耦合与接收条件足以改变速率排序。VCSEL 的公开单通道高速结果支持并行开展偏置与调制实验。</li>
 <li><strong>下一步优先补齐输入到门极的电气预算。</strong> 本轮前置驱动实验里，3.7 GBd、每路 10 fF 时，对称支路将观测的互补过阈时差从 128.37 ps 降至 13.09 ps。负载升到每路 50 fF，两种接法即使调整采样时间也过不了门极摆幅筛查。先抽取真实门极负载和输入路径，再决定驱动尺寸、级数、摆幅和工艺。</li>
 <li><strong>冻结条件下，三条 MicroLED 路线仍有接收错误，VCSEL r10 的典型仿真帧为零错。</strong> 这足以决定下一步查哪里。路线选择要等待真实输入 PHY、同口径链路功耗、发光器件动态量测和新核心版图的验证。已有二维和 Blender 三维来自历史 A/B 核心的真实 GDS，完整高速 TX 有单独的布局方案图。</li>
+<li><strong>新增位错诊断和十倍目标。</strong> MicroLED 净 3.2 Gb/s 下，B 的低寄生对照已出现零位错，仍需增加时序余量，建议优先试 B 的换流改版并保留 A 对照。VCSEL 新目标是净 <strong>32 Gb/s</strong>。旧 r10 在 37 GBd NRZ 的典型角复跑出现 <strong>1,462/4,096</strong> 位错，波形显示预驱动门极失去短脉冲。用理想门极直驱仍需解决输出过冲，光器件与接收端也要单独验证。</li>
 </ul>
-<p><a href="literature.html">器件文献与数据</a> · <a href="physical/index.html">二维与三维版图</a> · <a href="fabrication.html">制造交付路线</a> · <a href="reproduce.html">复现与跨电脑恢复</a></p>
+<p><a href="bit-errors.html">位错误、改电路和路线选择</a> · <a href="literature.html">器件文献与数据</a> · <a href="physical/index.html">二维与三维版图</a> · <a href="fabrication.html">制造交付路线</a> · <a href="reproduce.html">复现与跨电脑恢复</a></p>
 <h2 id="1-fpga">1. 从 FPGA 到发光器件</h2>
 <p><img alt="输入接口、时序、前置驱动和输出级的信号路径" src="interface.svg" /></p>
 <p>“缓冲”可以指两个电路。<strong>输入接收前端</strong>负责把板上差分电信号变成芯片内部可用的逻辑信号。<strong>前置驱动级</strong>负责把内部逻辑转换到输出晶体管所需的电压和电流，快速给门极充放电。接口电路可以在若干输出路线之间共用，预驱动摆幅、强度、时差、共模和功耗要按各输出级确定。远端光接收器 PD/TIA 属于另一侧。</p>
@@ -201,11 +202,15 @@ code{font-size:.92em;overflow-wrap:anywhere}
 </ul>
 <p>E+ 为七个激励/电源端口的正向交付能量，E净扣除回灌，二者都用 4,096 尝试净位为分母。A 与 B 在 E+ 和 E净 上的次序不同。VCSEL 的 VLASER 端口约占 E+ 的 71.5%，VDD 约 1.760 pJ/尝试净位，两条理想数据激励合计约 1.275 pJ/尝试净位。端口积分包括当前网表和供电反馈结构，完整 FPGA/ASIC SerDes、时钟与真实 RX 待纳入。</p>
 <p><a href="../../../evidence/highspeed-workbench-20261110/replay-summary.json">运行记录、端口能量与错误分桶</a> · <a href="../../../evidence/highspeed-workbench-20261110/replay-waves.csv">波形采样 CSV</a></p>
+<h3 id="_2">位错如何影响架构选择</h3>
+<p>仿真位错表示固定采样时刻落到了错误判决区。这些 A/B/C 帧包含错误。只把 RX 从 1 GHz 提至 5 GHz，三条路线仍有大量错误。B 在 10 fF、25 ps 光响应及 5 GHz RX 下达到零位错，联合选相后单侧余量为 73.02 ps。独立的晶体管门极旁路在 10 fF、25 ps、1 GHz RX 下也零错，余量由 17.36 ps 增到 73.33 ps，仍低于 100 ps 门槛。建议先做 B 的互补门驱、低寄生与主动放电对照，保持 A 作同条件控制。达到相同接收和可靠性门槛后，再比较每个有效交付净位的能量。<a href="bit-errors.html">错误影响、原因与改版顺序</a></p>
+<h3 id="vcsel">VCSEL 的十倍速率检查</h3>
+<p>净 32 Gb/s 对应 37 Gb/s 线速，NRZ 为 37 GBd、27.03 ps/UI。旧 r10 只升级 RX 后仍错 1,412 位，把输入边沿从 20 ps 缩到 5 ps 后也未恢复门极短脉冲。理想导通电流与假设的 25 GHz 光学/RX 双极点联合对照达到零错与 12.55 ps 单侧余量。这给出一组可通过筛查的波形条件，实际设计要重新配合预驱动、换向输出、光源与接收器。<a href="bit-errors.html#vcsel">32 Gb/s 波形、能量与公开先例</a></p>
 <h2 id="4">4. 器件、能耗与路线选择</h2>
 <h3 id="microled-20-m">MicroLED 的 20 µm 只是已知模型条件</h3>
 <p>同一 c-plane 蓝光 GaN 研究里，20/40/60/80/100/300 µm 样品分别报告 8.294/8.394/10.547/10.019/9.398/7.294 Gb/s 的 OFDM 最高点。论文摘要支持该顺序，不提供逐尺寸一致距离、偏置和 FEC 口径。缩小发光面，在同电流下提高电流密度并通常减小结电容。复合寿命、焊盘寄生、侧壁与收光仍会影响最终速率。以正方形和 100 µA 为例，10/20/40 µm 分别是 100/25/6.25 A/cm²。<a href="https://doi.org/10.1109/JLT.2024.3363729">尺寸扫描原始论文</a></p>
 <p>转印到金刚石的黄光样品给出另一组可追溯的工作点。20 µm、25 µA 的公开工作簿在对应测量链路上给出 −3 dB 约 2.136 GHz，−6 dB 约 2.850 GHz。1 m、1.5 Gb/s OOK 数据受约 1 GHz APD 约束，LED 偏置估算 0.056 pJ/bit。该文的高电流 OFDM 档使用不同偏置。用 10/20/40/60 µm 或相近可获得的样品类别，分别固定电流密度与固定接收目标做两组比较。实际发光面积、台面尺寸和注入口径分开登记。<a href="https://doi.org/10.1038/s41467-026-74151-4">Lin 等 Fig.4–5</a> · <a href="https://doi.org/10.5281/zenodo.20034288">数据工作簿</a></p>
-<h3 id="vcsel">VCSEL 独立设定低位偏置和调制幅度</h3>
+<h3 id="vcsel_1">VCSEL 独立设定低位偏置和调制幅度</h3>
 <p>驱动电流超过阈值 <code>Ith</code> 后，腔内受激振荡可建立，阈值以下仍有自发辐射。采用低侧叠加结构时，<code>I0=IB</code>、<code>I1=IB+IM</code>。靠近或高于阈值的偏置有利于限制跨阈值开启延迟，同时提高低位光功率和静态耗能。接收眼图需要同时看 OMA、消光比、抖动和温漂。已有 65 nm CMOS + 850 nm 外接 TOSA 的 25 Gb/s 光眼实验，采用 CML、CTLE、限幅前置放大和独立偏置/调制。200G 级论文使用 106.25 GBd PAM4 的 212.5 Gb/s 线路位速率，属于另一代发光器件、接口、接收与编码条件。<a href="https://doi.org/10.1088/2515-7647/add1a2">VCSEL 阈值、温度和频响实验</a> · <a href="https://arxiv.org/pdf/2006.11728">25 Gb/s 电路原文</a> · <a href="https://doi.org/10.3390/photonics13010090">200G 级原文</a></p>
 <h3 id="pj">把每 pJ 送达的有效位数算对</h3>
 <p>同一供电与链路边界下，<code>E_net=P_avg/R_payload</code>。1 pJ/bit 在净 3.2 Gb/s 下对应 3.2 mW。降低偏置电流能否提高 bit/pJ，取决于相同光路、误码目标、吞吐以及输入、偏置、dummy、输出和接收端的固定功耗。文献的 LED-only 偏置估算、这里的 SPICE 源端积分、最终 TX/RX 完整能耗分开登记。定量决策以通过同一接收目标的有效净位为分母。</p>

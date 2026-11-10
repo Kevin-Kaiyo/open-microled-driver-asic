@@ -1,0 +1,1165 @@
+{
+  "schema": "microled-nrz-pam4-failure-controls-v1",
+  "scope": "Native conduction waveform reuse and explicit diagnostic pole/ideal input changes, not a circuit change, fabricated device, measured optical RX, FEC, or BER.",
+  "sources_sha256": {
+    "scripts/highspeed_workbench_20261110/microled_errors.py": "b1e3894c1302632db8d1b372f419260cc3a1adc668e7d692f8c82dca0c95c1a9",
+    "scripts/microled_dynamic_v1/analyze.py": "53738c2565dca5707fa76001db929d89aa91003824c9ba2e7da626214c2d2930",
+    "scripts/fair_driver_v1/receiver_equal_latency_v2.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+    "build/microled-dynamic-v1/electrical/run-r1/stimulus.json": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+    "evidence/highspeed-workbench-20261110/replay-summary.json": "81777b72068bd1b55b2a555efd26a16228021c9193eb82c44115c1e28d85a87c"
+  },
+  "conditions": {
+    "rate_net_Gbps": 3.2,
+    "rate_line_Gbps": 3.7,
+    "scored_training_bits": 448,
+    "scored_validation_bits": 4096,
+    "training_only_fixed_delay_scan_ps": [
+      0,
+      8000,
+      5
+    ],
+    "alternative_delay_selection": "Maximize the smaller of training amplitude/7.5uAeq and training time/100ps, earliest exact tie. Fixed thresholds and a common disjoint validation segment.",
+    "min_signed_margin_uAeq": 7.5,
+    "min_time_margin_ps": 100,
+    "thresholds_uAeq": {
+      "NRZ": [
+        62.5
+      ],
+      "PAM4": [
+        37.5,
+        62.5,
+        87.5
+      ]
+    },
+    "ideal_edges_ps": 20
+  },
+  "charge_budget": {
+    "basis": "evidence/fair-driver-v1/load-dynamics.json",
+    "sha256": "7f09afa30fadb58e17450abfe1ba988b28876b51df3408cc29f47bad5a6863da",
+    "nominal_levels_uA": [
+      25,
+      100
+    ],
+    "vf_swing_V": 0.4065700811688311,
+    "hypothetical_full_swing_budget_ps": 135.13513513513513,
+    "controls": [
+      {
+        "capacitance_fF": 200,
+        "delta_charge_fC": 81.31401623376621,
+        "mean_absolute_displacement_current_uA": 601.72372012987
+      },
+      {
+        "capacitance_fF": 10,
+        "delta_charge_fC": 4.065700811688311,
+        "mean_absolute_displacement_current_uA": 30.0861860064935
+      }
+    ],
+    "scope": "Q=C*dV over a hypothetical half-NRZ-UI full-swing budget. This estimates only the average magnitude of capacitive current."
+  },
+  "rows": [
+    {
+      "route": "A",
+      "input": "native",
+      "capacitance_fF": 200,
+      "source": {
+        "waveform": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/A/cases/TT-A-C200fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "9dc68fa68fdc5526d4649792c0d362507b05e7b497e0c25a015646a3647c6b50",
+        "waveform_native_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+        "result_sha256": "c6d9cab6ea0f1a18432a03365222ed344f6402003288cd60308b5a603205b3a9",
+        "case_name": "TT-A-C200fF-S40",
+        "sample_count": 783066
+      },
+      "optical_tau_ps": 200,
+      "rx_GHz": 1,
+      "bit_errors": 844,
+      "bit_count": 4096,
+      "symbol_errors": 844,
+      "min_signed_margin_uA": -38.84157672245193,
+      "mean_signed_margin_uA": 14.589703400963785,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1260.0,
+      "training_bit_errors": 88,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          -75.4397797271191
+        ],
+        "best_min_gap_uAeq": -75.4397797271191,
+        "separable_training_classes_on_grid": false,
+        "delay_ps": 1250
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 1260,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 88,
+        "training_min_signed_margin_uAeq": -37.81002778102008,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 844,
+        "validation_min_signed_margin_uAeq": -38.84157672245193,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "A",
+      "input": "native",
+      "capacitance_fF": 200,
+      "source": {
+        "waveform": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/A/cases/TT-A-C200fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "9dc68fa68fdc5526d4649792c0d362507b05e7b497e0c25a015646a3647c6b50",
+        "waveform_native_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+        "result_sha256": "c6d9cab6ea0f1a18432a03365222ed344f6402003288cd60308b5a603205b3a9",
+        "case_name": "TT-A-C200fF-S40",
+        "sample_count": 783066
+      },
+      "optical_tau_ps": 200,
+      "rx_GHz": 5,
+      "bit_errors": 950,
+      "bit_count": 4096,
+      "symbol_errors": 950,
+      "min_signed_margin_uA": -38.72002855641543,
+      "mean_signed_margin_uA": 14.957828693844107,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1205.0,
+      "training_bit_errors": 99,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          -75.20398893592795
+        ],
+        "best_min_gap_uAeq": -75.20398893592795,
+        "separable_training_classes_on_grid": false,
+        "delay_ps": 785
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 1205,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 99,
+        "training_min_signed_margin_uAeq": -37.82422822278282,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 950,
+        "validation_min_signed_margin_uAeq": -38.72002855641543,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "A",
+      "input": "native",
+      "capacitance_fF": 200,
+      "source": {
+        "waveform": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/A/cases/TT-A-C200fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "9dc68fa68fdc5526d4649792c0d362507b05e7b497e0c25a015646a3647c6b50",
+        "waveform_native_sha256": "014ee0f8d2c5678c7f3aeedf919ad667fa6acc56c777454cf3620939c97c61db",
+        "result_sha256": "c6d9cab6ea0f1a18432a03365222ed344f6402003288cd60308b5a603205b3a9",
+        "case_name": "TT-A-C200fF-S40",
+        "sample_count": 783066
+      },
+      "optical_tau_ps": 25,
+      "rx_GHz": 5,
+      "bit_errors": 1219,
+      "bit_count": 4096,
+      "symbol_errors": 1219,
+      "min_signed_margin_uA": -38.57973525542367,
+      "mean_signed_margin_uA": 16.707941588153194,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 725.0,
+      "training_bit_errors": 125,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          -73.78928351507679
+        ],
+        "best_min_gap_uAeq": -73.78928351507679,
+        "separable_training_classes_on_grid": false,
+        "delay_ps": 685
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 725,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 125,
+        "training_min_signed_margin_uAeq": -37.99475132438189,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 1219,
+        "validation_min_signed_margin_uAeq": -38.57973525542367,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "A",
+      "input": "native",
+      "capacitance_fF": 10,
+      "source": {
+        "waveform": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C10fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "2b4ce77baa8f9f30a0b6183621d46083bd2619805d6b35ae89e35033738c8e27",
+        "waveform_native_sha256": "26357fabe1f8706abe9ece999041512a572eaf15a3104896137c99d616690c0b",
+        "result_sha256": "f127d74cee984c9fba5616e68ae077feec9a7a523e9ce62653319f0282d2b0eb",
+        "case_name": "TT-A-C10fF-S40",
+        "sample_count": 618251
+      },
+      "optical_tau_ps": 25,
+      "rx_GHz": 1,
+      "bit_errors": 1338,
+      "bit_count": 4096,
+      "symbol_errors": 1338,
+      "min_signed_margin_uA": -39.459917979459966,
+      "mean_signed_margin_uA": 15.514801977677891,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1160.0,
+      "training_bit_errors": 140,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          -78.03442296240996
+        ],
+        "best_min_gap_uAeq": -78.03442296240996,
+        "separable_training_classes_on_grid": false,
+        "delay_ps": 1165
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 1160,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 140,
+        "training_min_signed_margin_uAeq": -39.29132803647241,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 1338,
+        "validation_min_signed_margin_uAeq": -39.459917979459966,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "A",
+      "input": "native",
+      "capacitance_fF": 10,
+      "source": {
+        "waveform": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-A-C10fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "2b4ce77baa8f9f30a0b6183621d46083bd2619805d6b35ae89e35033738c8e27",
+        "waveform_native_sha256": "26357fabe1f8706abe9ece999041512a572eaf15a3104896137c99d616690c0b",
+        "result_sha256": "f127d74cee984c9fba5616e68ae077feec9a7a523e9ce62653319f0282d2b0eb",
+        "case_name": "TT-A-C10fF-S40",
+        "sample_count": 618251
+      },
+      "optical_tau_ps": 25,
+      "rx_GHz": 5,
+      "bit_errors": 650,
+      "bit_count": 4096,
+      "symbol_errors": 650,
+      "min_signed_margin_uA": -39.76106937104221,
+      "mean_signed_margin_uA": 28.298939478758655,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 720.0,
+      "training_bit_errors": 63,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          -73.58641885255466
+        ],
+        "best_min_gap_uAeq": -73.58641885255466,
+        "separable_training_classes_on_grid": false,
+        "delay_ps": 720
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 720,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 63,
+        "training_min_signed_margin_uAeq": -37.08556999143414,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 650,
+        "validation_min_signed_margin_uAeq": -39.76106937104221,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "B",
+      "input": "native",
+      "capacitance_fF": 200,
+      "source": {
+        "waveform": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/B/cases/TT-B-C200fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "844e1bf5a23d27ceece207addcef4f2f79569ed0e00c458d8cb59f7f97a6fcc9",
+        "waveform_native_sha256": "fabea9f162d5b5d3ff983b37132307b0375f8e31eb17eb1a6d94adfe4cbcafa6",
+        "result_sha256": "feab93f478a5d65d9faed4d06f9f78f8b154f95df2305fb422e6c72b9354bedb",
+        "case_name": "TT-B-C200fF-S40",
+        "sample_count": 1160991
+      },
+      "optical_tau_ps": 200,
+      "rx_GHz": 1,
+      "bit_errors": 1440,
+      "bit_count": 4096,
+      "symbol_errors": 1440,
+      "min_signed_margin_uA": -29.041254348403115,
+      "mean_signed_margin_uA": 5.876520801256042,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 780.0,
+      "training_bit_errors": 151,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          -44.42841858631554
+        ],
+        "best_min_gap_uAeq": -44.42841858631554,
+        "separable_training_classes_on_grid": false,
+        "delay_ps": 1015
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 780,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 151,
+        "training_min_signed_margin_uAeq": -28.320818712238207,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 1440,
+        "validation_min_signed_margin_uAeq": -29.041254348403115,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "B",
+      "input": "native",
+      "capacitance_fF": 200,
+      "source": {
+        "waveform": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/B/cases/TT-B-C200fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "844e1bf5a23d27ceece207addcef4f2f79569ed0e00c458d8cb59f7f97a6fcc9",
+        "waveform_native_sha256": "fabea9f162d5b5d3ff983b37132307b0375f8e31eb17eb1a6d94adfe4cbcafa6",
+        "result_sha256": "feab93f478a5d65d9faed4d06f9f78f8b154f95df2305fb422e6c72b9354bedb",
+        "case_name": "TT-B-C200fF-S40",
+        "sample_count": 1160991
+      },
+      "optical_tau_ps": 200,
+      "rx_GHz": 5,
+      "bit_errors": 1427,
+      "bit_count": 4096,
+      "symbol_errors": 1427,
+      "min_signed_margin_uA": -27.399823899018827,
+      "mean_signed_margin_uA": 6.292137060761325,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 630.0,
+      "training_bit_errors": 150,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          -44.18466206501758
+        ],
+        "best_min_gap_uAeq": -44.18466206501758,
+        "separable_training_classes_on_grid": false,
+        "delay_ps": 935
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 630,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 150,
+        "training_min_signed_margin_uAeq": -26.563546206870058,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 1427,
+        "validation_min_signed_margin_uAeq": -27.399823899018827,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "B",
+      "input": "native",
+      "capacitance_fF": 200,
+      "source": {
+        "waveform": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/B/cases/TT-B-C200fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "844e1bf5a23d27ceece207addcef4f2f79569ed0e00c458d8cb59f7f97a6fcc9",
+        "waveform_native_sha256": "fabea9f162d5b5d3ff983b37132307b0375f8e31eb17eb1a6d94adfe4cbcafa6",
+        "result_sha256": "feab93f478a5d65d9faed4d06f9f78f8b154f95df2305fb422e6c72b9354bedb",
+        "case_name": "TT-B-C200fF-S40",
+        "sample_count": 1160991
+      },
+      "optical_tau_ps": 25,
+      "rx_GHz": 5,
+      "bit_errors": 1161,
+      "bit_count": 4096,
+      "symbol_errors": 1161,
+      "min_signed_margin_uA": -20.25769985634554,
+      "mean_signed_margin_uA": 8.980201111097585,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 545.0,
+      "training_bit_errors": 119,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          -35.63090097089296
+        ],
+        "best_min_gap_uAeq": -35.63090097089296,
+        "separable_training_classes_on_grid": false,
+        "delay_ps": 560
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 545,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 119,
+        "training_min_signed_margin_uAeq": -19.623844308363616,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 1161,
+        "validation_min_signed_margin_uAeq": -20.25769985634554,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "B",
+      "input": "native",
+      "capacitance_fF": 10,
+      "source": {
+        "waveform": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-B-C10fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "3c5e5643de6f2fc5b60a8713718941752e4bcc3c31bf499dd4d0d2f875164734",
+        "waveform_native_sha256": "36b108f1d553353f32548cee9297dbd1e55fe29dcc0c41d3e5e7caae77d1c8c5",
+        "result_sha256": "db66e46b299530e299f0b4da9075314885538348cdbd28d1e01d524217caad83",
+        "case_name": "TT-B-C10fF-S40",
+        "sample_count": 784472
+      },
+      "optical_tau_ps": 25,
+      "rx_GHz": 1,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 1.519757772303862,
+      "mean_signed_margin_uA": 25.197752381128424,
+      "min_time_margin_ps": 17.355581118133728,
+      "delay_ps": 545.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          21.779695368247104
+        ],
+        "best_min_gap_uAeq": 21.779695368247104,
+        "separable_training_classes_on_grid": true,
+        "delay_ps": 560
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 545,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 0,
+        "training_min_signed_margin_uAeq": 1.5174979677884508,
+        "training_min_time_margin_ps": 17.236031423005148,
+        "validation_bit_errors": 0,
+        "validation_min_signed_margin_uAeq": 1.519757772303862,
+        "validation_min_time_margin_ps": 17.355581118133728,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "B",
+      "input": "native",
+      "capacitance_fF": 10,
+      "source": {
+        "waveform": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-B-C10fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "3c5e5643de6f2fc5b60a8713718941752e4bcc3c31bf499dd4d0d2f875164734",
+        "waveform_native_sha256": "36b108f1d553353f32548cee9297dbd1e55fe29dcc0c41d3e5e7caae77d1c8c5",
+        "result_sha256": "db66e46b299530e299f0b4da9075314885538348cdbd28d1e01d524217caad83",
+        "case_name": "TT-B-C10fF-S40",
+        "sample_count": 784472
+      },
+      "optical_tau_ps": 25,
+      "rx_GHz": 5,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 24.382155671836003,
+      "mean_signed_margin_uA": 35.01159254496897,
+      "min_time_margin_ps": 43.01971792626494,
+      "delay_ps": 525.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": true,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          58.09030793568314
+        ],
+        "best_min_gap_uAeq": 58.09030793568314,
+        "separable_training_classes_on_grid": true,
+        "delay_ps": 530
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 495,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 0,
+        "training_min_signed_margin_uAeq": 20.327936707999257,
+        "training_min_time_margin_ps": 73.03321141234031,
+        "validation_bit_errors": 0,
+        "validation_min_signed_margin_uAeq": 20.328270610007394,
+        "validation_min_time_margin_ps": 73.01971792624602,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "C",
+      "input": "native",
+      "capacitance_fF": 200,
+      "source": {
+        "waveform": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/C/cases/TT-C-C200fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "9ec590567dc2516c5f60cd58158e21bca64fe4e5e6ce0cb244f5223cd85ba399",
+        "waveform_native_sha256": "143f184962fc52767698858cc458a7e77c6561cf2feea81d9a96596770e670e1",
+        "result_sha256": "8ae8c39d02ec3792a3b65cc9d90c3b10eb56f7d3e6f415139342c1c1b5600b06",
+        "case_name": "TT-C-C200fF-S40",
+        "sample_count": 1133090
+      },
+      "optical_tau_ps": 200,
+      "rx_GHz": 1,
+      "bit_errors": 1399,
+      "bit_count": 4096,
+      "symbol_errors": 1300,
+      "min_signed_margin_uA": -36.789678640785496,
+      "mean_signed_margin_uA": -5.704974381213441,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1450.0,
+      "training_bit_errors": 177,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          -21.64318849915427,
+          -28.297510765073476,
+          -26.934329933852204
+        ],
+        "best_min_gap_uAeq": -28.297510765073476,
+        "separable_training_classes_on_grid": false,
+        "delay_ps": 1375
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 1450,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 177,
+        "training_min_signed_margin_uAeq": -34.31671412208799,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 1399,
+        "validation_min_signed_margin_uAeq": -36.789678640785496,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "C",
+      "input": "native",
+      "capacitance_fF": 200,
+      "source": {
+        "waveform": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/C/cases/TT-C-C200fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "9ec590567dc2516c5f60cd58158e21bca64fe4e5e6ce0cb244f5223cd85ba399",
+        "waveform_native_sha256": "143f184962fc52767698858cc458a7e77c6561cf2feea81d9a96596770e670e1",
+        "result_sha256": "8ae8c39d02ec3792a3b65cc9d90c3b10eb56f7d3e6f415139342c1c1b5600b06",
+        "case_name": "TT-C-C200fF-S40",
+        "sample_count": 1133090
+      },
+      "optical_tau_ps": 200,
+      "rx_GHz": 5,
+      "bit_errors": 1363,
+      "bit_count": 4096,
+      "symbol_errors": 1284,
+      "min_signed_margin_uA": -35.60963717726307,
+      "mean_signed_margin_uA": -5.325113350417727,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1305.0,
+      "training_bit_errors": 173,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          -19.54301995636299,
+          -26.71322303193574,
+          -25.36665160769396
+        ],
+        "best_min_gap_uAeq": -26.71322303193574,
+        "separable_training_classes_on_grid": false,
+        "delay_ps": 1275
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 1305,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 173,
+        "training_min_signed_margin_uAeq": -32.63978911120465,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 1363,
+        "validation_min_signed_margin_uAeq": -35.60963717726307,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "C",
+      "input": "native",
+      "capacitance_fF": 200,
+      "source": {
+        "waveform": "build/highspeed-workbench-20261110/replay/tt-20261110-r2/C/cases/TT-C-C200fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "9ec590567dc2516c5f60cd58158e21bca64fe4e5e6ce0cb244f5223cd85ba399",
+        "waveform_native_sha256": "143f184962fc52767698858cc458a7e77c6561cf2feea81d9a96596770e670e1",
+        "result_sha256": "8ae8c39d02ec3792a3b65cc9d90c3b10eb56f7d3e6f415139342c1c1b5600b06",
+        "case_name": "TT-C-C200fF-S40",
+        "sample_count": 1133090
+      },
+      "optical_tau_ps": 25,
+      "rx_GHz": 5,
+      "bit_errors": 1288,
+      "bit_count": 4096,
+      "symbol_errors": 1250,
+      "min_signed_margin_uA": -32.67048282605459,
+      "mean_signed_margin_uA": -4.395859169663206,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1145.0,
+      "training_bit_errors": 165,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          -15.07055367105766,
+          -24.000124701949417,
+          -21.367735234378962
+        ],
+        "best_min_gap_uAeq": -24.000124701949417,
+        "separable_training_classes_on_grid": false,
+        "delay_ps": 1190
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 1145,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 165,
+        "training_min_signed_margin_uAeq": -28.528194872609035,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 1288,
+        "validation_min_signed_margin_uAeq": -32.67048282605459,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "C",
+      "input": "native",
+      "capacitance_fF": 10,
+      "source": {
+        "waveform": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-C-C10fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "b320d51636c89e7b47f36d13ece383dd02c788dcc4a226be25d195f32d59ddfb",
+        "waveform_native_sha256": "05a8532c6b67772a2292e7e037a328cf149148de5ad2c4e127fcdfbaf137a9af",
+        "result_sha256": "c13b4d6c15e0d510517e41d504ad6eed207a6fa22ace595c10bac9d9118ae7c1",
+        "case_name": "TT-C-C10fF-S40",
+        "sample_count": 806729
+      },
+      "optical_tau_ps": 25,
+      "rx_GHz": 1,
+      "bit_errors": 416,
+      "bit_count": 4096,
+      "symbol_errors": 416,
+      "min_signed_margin_uA": -6.901285912057034,
+      "mean_signed_margin_uA": 4.43638278189001,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 1080.0,
+      "training_bit_errors": 49,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          1.1376375138890538,
+          -1.1141695860561143,
+          -1.157956923309996
+        ],
+        "best_min_gap_uAeq": -1.157956923309996,
+        "separable_training_classes_on_grid": false,
+        "delay_ps": 1115
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 1080,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 49,
+        "training_min_signed_margin_uAeq": -6.799137093873881,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 416,
+        "validation_min_signed_margin_uAeq": -6.901285912057034,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "C",
+      "input": "native",
+      "capacitance_fF": 10,
+      "source": {
+        "waveform": "build/microled-dynamic-v1/electrical/run-r1/cases/TT-C-C10fF-S40/waveform.dat.gz",
+        "waveform_gzip_sha256": "b320d51636c89e7b47f36d13ece383dd02c788dcc4a226be25d195f32d59ddfb",
+        "waveform_native_sha256": "05a8532c6b67772a2292e7e037a328cf149148de5ad2c4e127fcdfbaf137a9af",
+        "result_sha256": "c13b4d6c15e0d510517e41d504ad6eed207a6fa22ace595c10bac9d9118ae7c1",
+        "case_name": "TT-C-C10fF-S40",
+        "sample_count": 806729
+      },
+      "optical_tau_ps": 25,
+      "rx_GHz": 5,
+      "bit_errors": 54,
+      "bit_count": 4096,
+      "symbol_errors": 54,
+      "min_signed_margin_uA": -3.714476497753928,
+      "mean_signed_margin_uA": 6.997422067673001,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 940.0000000000001,
+      "training_bit_errors": 3,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          8.667811054325313,
+          10.893949140875883,
+          0.9367088095244753
+        ],
+        "best_min_gap_uAeq": 0.9367088095244753,
+        "separable_training_classes_on_grid": true,
+        "delay_ps": 945
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 940,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 3,
+        "training_min_signed_margin_uAeq": -0.10729059000243524,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 54,
+        "validation_min_signed_margin_uAeq": -3.714476497753928,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "NRZ",
+      "input": "ideal_20ps_conduction",
+      "capacitance_fF": null,
+      "optical_tau_ps": 200,
+      "rx_GHz": 1,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 0.4960042673823821,
+      "mean_signed_margin_uA": 18.894773046184497,
+      "min_time_margin_ps": 25.953215482234974,
+      "delay_ps": 355.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          0.9926424297416432
+        ],
+        "best_min_gap_uAeq": 0.9926424297416432,
+        "separable_training_classes_on_grid": true,
+        "delay_ps": 355
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 355,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 0,
+        "training_min_signed_margin_uAeq": 0.4955136832871716,
+        "training_min_time_margin_ps": 25.932651481568726,
+        "validation_bit_errors": 0,
+        "validation_min_signed_margin_uAeq": 0.4960042673823821,
+        "validation_min_time_margin_ps": 25.953215482234974,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "NRZ",
+      "input": "ideal_20ps_conduction",
+      "capacitance_fF": null,
+      "optical_tau_ps": 200,
+      "rx_GHz": 5,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 14.85855925697485,
+      "mean_signed_margin_uA": 26.11879051540641,
+      "min_time_margin_ps": 101.40393881157581,
+      "delay_ps": 290.0,
+      "training_bit_errors": 0,
+      "passed": true,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": true,
+        "time_margin_100ps": true,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          29.719172358717998
+        ],
+        "best_min_gap_uAeq": 29.719172358717998,
+        "separable_training_classes_on_grid": true,
+        "delay_ps": 290
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 285,
+        "training_grid_points_meeting_both_margins": 2,
+        "training_bit_errors": 0,
+        "training_min_signed_margin_uAeq": 14.64636381858135,
+        "training_min_time_margin_ps": 101.93807942186888,
+        "validation_bit_errors": 0,
+        "validation_min_signed_margin_uAeq": 14.643331939460175,
+        "validation_min_time_margin_ps": 101.93871144350958,
+        "joint_screen": true
+      }
+    },
+    {
+      "route": "NRZ",
+      "input": "ideal_20ps_conduction",
+      "capacitance_fF": null,
+      "optical_tau_ps": 75,
+      "rx_GHz": 1,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 14.859507778005351,
+      "mean_signed_margin_uA": 26.122937438591826,
+      "min_time_margin_ps": 104.01968421296698,
+      "delay_ps": 305.0,
+      "training_bit_errors": 0,
+      "passed": true,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": true,
+        "time_margin_100ps": true,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          29.724463534798126
+        ],
+        "best_min_gap_uAeq": 29.724463534798126,
+        "separable_training_classes_on_grid": true,
+        "delay_ps": 305
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 310,
+        "training_grid_points_meeting_both_margins": 4,
+        "training_bit_errors": 0,
+        "training_min_signed_margin_uAeq": 14.816267594756937,
+        "training_min_time_margin_ps": 109.01931512144961,
+        "validation_bit_errors": 0,
+        "validation_min_signed_margin_uAeq": 14.815133661747076,
+        "validation_min_time_margin_ps": 109.019684213105,
+        "joint_screen": true
+      }
+    },
+    {
+      "route": "NRZ",
+      "input": "ideal_20ps_conduction",
+      "capacitance_fF": null,
+      "optical_tau_ps": 25,
+      "rx_GHz": 5,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 37.40778793260196,
+      "mean_signed_margin_uA": 37.453683540170246,
+      "min_time_margin_ps": 58.03091015322298,
+      "delay_ps": 270.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": true,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          74.81557586945024
+        ],
+        "best_min_gap_uAeq": 74.81557586945024,
+        "separable_training_classes_on_grid": true,
+        "delay_ps": 270
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 195,
+        "training_grid_points_meeting_both_margins": 14,
+        "training_bit_errors": 0,
+        "training_min_signed_margin_uAeq": 36.60706932384155,
+        "training_min_time_margin_ps": 133.03091435408192,
+        "validation_bit_errors": 0,
+        "validation_min_signed_margin_uAeq": 36.607069323840946,
+        "validation_min_time_margin_ps": 133.0309101532551,
+        "joint_screen": true
+      }
+    },
+    {
+      "route": "PAM4",
+      "input": "ideal_20ps_conduction",
+      "capacitance_fF": null,
+      "optical_tau_ps": 200,
+      "rx_GHz": 1,
+      "bit_errors": 215,
+      "bit_count": 4096,
+      "symbol_errors": 215,
+      "min_signed_margin_uA": -1.5589859454977244,
+      "mean_signed_margin_uA": 6.849505336803944,
+      "min_time_margin_ps": 0.0,
+      "delay_ps": 580.0,
+      "training_bit_errors": 28,
+      "passed": false,
+      "checks": {
+        "training_error_free": false,
+        "validation_error_free": false,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          7.0497527516844585,
+          6.311167303184938,
+          6.3474711134700925
+        ],
+        "best_min_gap_uAeq": 6.311167303184938,
+        "separable_training_classes_on_grid": true,
+        "delay_ps": 580
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 580,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 28,
+        "training_min_signed_margin_uAeq": -1.5582172183566527,
+        "training_min_time_margin_ps": 0.0,
+        "validation_bit_errors": 215,
+        "validation_min_signed_margin_uAeq": -1.5589859454977244,
+        "validation_min_time_margin_ps": 0.0,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "PAM4",
+      "input": "ideal_20ps_conduction",
+      "capacitance_fF": null,
+      "optical_tau_ps": 200,
+      "rx_GHz": 5,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 6.412666718053767,
+      "mean_signed_margin_uA": 10.003163169723896,
+      "min_time_margin_ps": 47.61150970061347,
+      "delay_ps": 550.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": false,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          17.09912023056292,
+          16.907831697148573,
+          16.91938312182519
+        ],
+        "best_min_gap_uAeq": 16.907831697148573,
+        "separable_training_classes_on_grid": true,
+        "delay_ps": 550
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 520,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 0,
+        "training_min_signed_margin_uAeq": 5.532187039782045,
+        "training_min_time_margin_ps": 77.61194317308681,
+        "validation_bit_errors": 0,
+        "validation_min_signed_margin_uAeq": 5.532103856856828,
+        "validation_min_time_margin_ps": 77.61150970070042,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "PAM4",
+      "input": "ideal_20ps_conduction",
+      "capacitance_fF": null,
+      "optical_tau_ps": 75,
+      "rx_GHz": 1,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 7.763576177693576,
+      "mean_signed_margin_uA": 10.552012080995327,
+      "min_time_margin_ps": 63.158864964882284,
+      "delay_ps": 555.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": true,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          18.795628876896746,
+          18.694574636244717,
+          18.69762226460199
+        ],
+        "best_min_gap_uAeq": 18.694574636244717,
+        "separable_training_classes_on_grid": true,
+        "delay_ps": 555
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 525,
+        "training_grid_points_meeting_both_margins": 0,
+        "training_bit_errors": 0,
+        "training_min_signed_margin_uAeq": 6.9874149763213325,
+        "training_min_time_margin_ps": 93.16468982495465,
+        "validation_bit_errors": 0,
+        "validation_min_signed_margin_uAeq": 6.987441302373071,
+        "validation_min_time_margin_ps": 93.1588649649163,
+        "joint_screen": false
+      }
+    },
+    {
+      "route": "PAM4",
+      "input": "ideal_20ps_conduction",
+      "capacitance_fF": null,
+      "optical_tau_ps": 25,
+      "rx_GHz": 5,
+      "bit_errors": 0,
+      "bit_count": 4096,
+      "symbol_errors": 0,
+      "min_signed_margin_uA": 12.499979287576402,
+      "mean_signed_margin_uA": 12.49999132131343,
+      "min_time_margin_ps": 30.91278792985403,
+      "delay_ps": 540.0,
+      "training_bit_errors": 0,
+      "passed": false,
+      "checks": {
+        "training_error_free": true,
+        "validation_error_free": true,
+        "decision_distance_7p5uA": true,
+        "time_margin_100ps": false,
+        "all_directed_transitions_present": true
+      },
+      "static_threshold_train_bound": {
+        "adjacent_class_gaps_uAeq": [
+          24.999972384244987,
+          24.999972383436074,
+          24.999972387769418
+        ],
+        "best_min_gap_uAeq": 24.999972383436074,
+        "separable_training_classes_on_grid": true,
+        "delay_ps": 540
+      },
+      "joint_margin_training_diagnostic": {
+        "delay_ps": 400,
+        "training_grid_points_meeting_both_margins": 54,
+        "training_bit_errors": 0,
+        "training_min_signed_margin_uAeq": 12.498346119466277,
+        "training_min_time_margin_ps": 170.91278793010542,
+        "validation_bit_errors": 0,
+        "validation_min_signed_margin_uAeq": 12.498346105490185,
+        "validation_min_time_margin_ps": 170.9127879299069,
+        "joint_screen": true
+      }
+    }
+  ]
+}

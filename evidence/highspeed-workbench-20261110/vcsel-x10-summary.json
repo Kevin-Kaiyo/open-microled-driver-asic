@@ -1,0 +1,3652 @@
+{
+  "comparison": "VCSEL r10 transistor re-evaluation at fixed frame efficiency 4096/4736",
+  "scope": "Electrical transistor model with fixed hypothetical package and VCSEL graph response; all receiver variants are deterministic offline controls with separately trained delays. No device, PCB PHY or optical test.",
+  "screen": {
+    "training_scored_bits": [
+      64,
+      512
+    ],
+    "validation_bits": [
+      576,
+      4672
+    ],
+    "delay_UI": [
+      0,
+      8
+    ],
+    "delay_step_UI": 0.015625,
+    "minimum_one_sided_UI": 0.37,
+    "minimum_signed_uAeq": 7.5,
+    "threshold_uAeq": 62.5,
+    "training_and_validation_errors": 0,
+    "selection": "Maximize min(worst training signed margin / 7.5 µAeq, min training one-sided time margin / 0.37 UI); earliest tie.",
+    "note": "Historical 100 ps at 3.7 GBd equals 0.37 UI; scaled requirement is a new deterministic diagnostic, not a timing specification or BER certification."
+  },
+  "normalized_3mA_7mA_uAeq": [
+    25,
+    100
+  ],
+  "controls": {
+    "actual_electrical": "Conduction current transformed linearly, bypasses optical and RX.",
+    "actual_graph_5GHzRX": "Original published-figure shape proxy at 3 mA and original 5 GHz RX pole.",
+    "actual_graph_25GHzRX": "Original optical proxy plus hypothetical 25 GHz RX pole.",
+    "actual_static_25GHzRX": "Bypass optical dynamics but keep P-I nonlinearity and 25 GHz RX pole.",
+    "actual_25GHzOpt_25GHzRX": "Simulated conduction current with assumed 25 GHz optical pole and 25 GHz RX pole. Retains static P-I.",
+    "ideal_graph_5GHzRX": "Replace circuit/LED electrical response with ideal 3/7 mA current, same per-case ramp; original optical/RX.",
+    "ideal_graph_25GHzRX": "Ideal current control, original optical proxy, hypothetical 25 GHz RX pole.",
+    "ideal_25GHzOpt_25GHzRX": "Ideal current control, static P-I plus assumed 25 GHz optical pole and 25 GHz RX pole. Illustrative target, not matched to any actual 25 GHz part.",
+    "ideal_static_25GHzRX": "Ideal current control, no optical dynamics, 25 GHz RX pole."
+  },
+  "source_hashes": {
+    "scripts/highspeed_workbench_20261110/vcsel_x10_analyze.py": "3b86b3c6a2e438b57647315ed99be8318bb8e85c66095e920c663af35dfa76a8",
+    "scripts/three_gbps_experiment/vcsel_driver_receiver_v3.py": "1f47a36f24379b58fb3094303d17d678e0aba7328ddbd58eb601c7b966e0c962",
+    "scripts/three_gbps_experiment/vcsel_model.py": "5cf8907df8e1ace985012ff5107312ab3b04699f2e944696fc49dae4b4d7bf23",
+    "analog/models/vcsel_research_20261027/parameters.json": "a35665e2b9eed9d3776d2a9878608688a4a00677d0e57e51446d0956967a4991"
+  },
+  "cases": [
+    {
+      "run": "build/vcsel-robustness-20261029/frame-TT-r10",
+      "frozen_baseline": true,
+      "net_Gbps": 3.2,
+      "line_GBd": 3.6999999999999997,
+      "UI_ps": 270.2702702702703,
+      "input_edge_ps_0_to_100": 20.0,
+      "plot_grid_step_ps": 2.111486486486487,
+      "ideal_gate_injection": false,
+      "forced_gate_edge_ps": null,
+      "forced_gate_rail_V": null,
+      "forced_gate_driver_sha256": null,
+      "steps_per_UI": 40,
+      "native_rows": 448095,
+      "deck_sha256": "b43fe2618cca9575a3c0f8ec5f4876135fbb2e657ac8037f3894f1e9d085289e",
+      "stimulus_sha256": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+      "waveform": {
+        "path": "build/vcsel-robustness-20261029/frame-TT-r10/waveform.dat.gz",
+        "sha256": "1639a99afa2d004fce57665ceb444ec0ebdc1b68eb416b291c0f8c235731564c",
+        "raw_sha256": "d377fdd71f81b3cac9b62af49a0fe85eb4e169b8443fd7157474a15e5e776dd1",
+        "bytes": 192187458,
+        "roundtrip_verified": true
+      },
+      "ngspice_exit_code": 0,
+      "ngspice_log_sha256": "ddb7b144cec43505c9315c535e6d48f25871994a27ab4724db585b145d60f85e",
+      "native_source_hashes": {
+        "build/vcsel-robustness-20261029/frame-TT-r10/inputs/driver.spice": "c614ef23c1443adf5ec34f162c456f3cba3ce4f87cb872dacef689a8cc2840ac",
+        "build/vcsel-robustness-20261029/frame-TT-r10/inputs/runner.py": "09f72cb2fda4a04fd02a16612636101977ce6380f47fea84064983d7a8ccc83b",
+        "build/vcsel-robustness-20261029/shared/design.ngspice": "8d9721a5bf8f079d3fddbd03339af9a0c84d4feb06db8e06465fbd02c7500508",
+        "build/vcsel-robustness-20261029/shared/sm141064.ngspice": "73fc67d38747d95ce03f3c2ba5f0a25c98f56a293363a9df4c971a3a28a3dcda",
+        "build/vcsel-robustness-20261029/shared/vcsel.spice": "7ed34d124b85230c15b4914407dbac0761103879ced25b1bb3794fb0e2d90beb"
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.546875,
+          "delay_ps": 147.8040540540541,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 33.876210685377345,
+          "one_sided_margin_UI": 0.49688574738841823,
+          "one_sided_margin_ps": 134.29344524011304,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 28.409110451629008,
+              "median": 28.617347285965486,
+              "p95": 28.622612899381824
+            },
+            "1": {
+              "p05": 96.37661961040313,
+              "median": 96.59057608286707,
+              "p95": 96.59088958885316
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.015625,
+          "delay_ps": 274.4932432432432,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 37.191094808574796,
+          "one_sided_margin_UI": 0.49519197558595124,
+          "one_sided_margin_ps": 133.83566907728414,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.997770129047474,
+              "median": 25.194014511855613,
+              "p95": 25.304567225276212
+            },
+            "1": {
+              "p05": 99.71089626830883,
+              "median": 99.893693997922,
+              "p95": 99.99953700362704
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.0000000028214524,
+        "steering_gate_differential_peak_V": 3.266157120933835,
+        "laser_rail_range_V": [
+          3.099933505624741,
+          3.1003255134468546
+        ],
+        "predriver_rail_range_V": [
+          3.014201313099543,
+          3.100184207816007
+        ],
+        "electrical_current_range_mA": [
+          2.605450845355,
+          7.211587017178999
+        ],
+        "base_current_range_mA": [
+          2.014718993292,
+          3.8575787062990003
+        ],
+        "tail_current_range_mA": [
+          2.625199282628,
+          5.31183649757
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.3970349181236674,
+          4.175432529678321
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.299636206455
+        },
+        "max_body_forward_V": 0.16907315311399973
+      },
+      "pathways": {
+        "actual_electrical": {
+          "delay_UI": 1.09375,
+          "delay_ps": 295.6081081081082,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 34.335001877479414,
+          "one_sided_margin_UI": 0.4669817351850947,
+          "one_sided_margin_ps": 126.21127977975534,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.455756020328767,
+              "median": 25.99854245609401,
+              "p95": 26.50175252811693
+            },
+            "1": {
+              "p05": 97.40728839690578,
+              "median": 98.457257702803,
+              "p95": 99.23830788771018
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "actual_graph_5GHzRX": {
+          "delay_UI": 1.3125,
+          "delay_ps": 354.72972972972974,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 34.09949593212252,
+          "one_sided_margin_UI": 0.48338940535974534,
+          "one_sided_margin_ps": 130.6457852323636,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.54943110260695,
+              "median": 26.40937298635699,
+              "p95": 27.036406688056736
+            },
+            "1": {
+              "p05": 97.22490009321568,
+              "median": 98.36811232651647,
+              "p95": 99.26335507663438
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "actual_graph_25GHzRX": {
+          "delay_UI": 1.234375,
+          "delay_ps": 333.6148648648649,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 34.199191760106046,
+          "one_sided_margin_UI": 0.4743973660478586,
+          "one_sided_margin_ps": 128.2155043372591,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.534957718226067,
+              "median": 25.871061718050022,
+              "p95": 26.243716777557278
+            },
+            "1": {
+              "p05": 97.32077838242027,
+              "median": 98.47591877658033,
+              "p95": 99.2702693956247
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "actual_static_25GHzRX": {
+          "delay_UI": 1.125,
+          "delay_ps": 304.0540540540541,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 34.448316403706826,
+          "one_sided_margin_UI": 0.4791496633498355,
+          "one_sided_margin_ps": 129.49990901346908,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.55553995588732,
+              "median": 26.172426073190117,
+              "p95": 26.780054751560503
+            },
+            "1": {
+              "p05": 97.56386922813105,
+              "median": 98.50648719672306,
+              "p95": 99.26250475167065
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "actual_25GHzOpt_25GHzRX": {
+          "delay_UI": 1.15625,
+          "delay_ps": 312.50000000000006,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 34.32572561778527,
+          "one_sided_margin_UI": 0.4849234309404215,
+          "one_sided_margin_ps": 131.06038674065448,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.56056272167468,
+              "median": 26.175835531806793,
+              "p95": 26.79908649934255
+            },
+            "1": {
+              "p05": 97.44851891650576,
+              "median": 98.449479262288,
+              "p95": 99.26308369330306
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "ideal_graph_5GHzRX": {
+          "delay_UI": 0.734375,
+          "delay_ps": 198.47972972972977,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 37.3819313801594,
+          "one_sided_margin_UI": 0.4954859390839211,
+          "one_sided_margin_ps": 133.91511867133005,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.990464885516715,
+              "median": 25.109135298028182,
+              "p95": 25.118068617786378
+            },
+            "1": {
+              "p05": 99.96922861949952,
+              "median": 99.99987472464561,
+              "p95": 100.00880804440041
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "ideal_graph_25GHzRX": {
+          "delay_UI": 0.671875,
+          "delay_ps": 181.58783783783787,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 37.49967649423746,
+          "one_sided_margin_UI": 0.4977556927975902,
+          "one_sided_margin_ps": 134.52856562097034,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.361597630301567,
+              "median": 24.383869632580886,
+              "p95": 25.00032350125714
+            },
+            "1": {
+              "p05": 99.99968251105258,
+              "median": 100.02195451333169,
+              "p95": 100.83505138616916
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "ideal_25GHzOpt_25GHzRX": {
+          "delay_UI": 0.578125,
+          "delay_ps": 156.25000000000003,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 37.49999970816512,
+          "one_sided_margin_UI": 0.49628307248456993,
+          "one_sided_margin_ps": 134.13056013096485,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.00000000000002,
+              "median": 25.00000029183488,
+              "p95": 25.00000029183488
+            },
+            "1": {
+              "p05": 99.99999974261614,
+              "median": 100.00000000000001,
+              "p95": 100.00000000000001
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "ideal_static_25GHzRX": {
+          "delay_UI": 0.5625,
+          "delay_ps": 152.02702702702706,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 37.4999999757769,
+          "one_sided_margin_UI": 0.49380614959560515,
+          "one_sided_margin_ps": 133.46112151232572,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.00000000000001,
+              "median": 25.0000000242231,
+              "p95": 25.0000000242231
+            },
+            "1": {
+              "p05": 99.99999997872501,
+              "median": 100.00000000000001,
+              "p95": 100.00000000000001
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 11.16199677264421,
+        "returned": 0.020985426653372486,
+        "net": 11.141011345990838
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 7.97564617677351,
+          "returned": 0.0,
+          "net": 7.97564617677351
+        },
+        "VDD": {
+          "positive": 1.7595073566210724,
+          "returned": 0.0,
+          "net": 1.7595073566210724
+        },
+        "VREF": {
+          "positive": 0.15146872463917907,
+          "returned": 0.0069834891850703955,
+          "net": 0.14448523545410868
+        },
+        "VD": {
+          "positive": 0.6399666310109771,
+          "returned": 0.006925797834173419,
+          "net": 0.6330408331768036
+        },
+        "VDB": {
+          "positive": 0.6352563863816942,
+          "returned": 0.006925073091882158,
+          "net": 0.6283313132898121
+        },
+        "VSET": {
+          "positive": 0.00015062653288667636,
+          "returned": 0.00015063123885566875,
+          "net": -4.705968992402922e-09
+        },
+        "VREGSET": {
+          "positive": 8.70684891624837e-07,
+          "returned": 4.353033908464134e-07,
+          "net": 4.353815007784236e-07
+        }
+      }
+    },
+    {
+      "run": "build/highspeed-workbench-20261110/vcsel-x10/net16-edge20-s40",
+      "frozen_baseline": false,
+      "net_Gbps": 16.0,
+      "line_GBd": 18.5,
+      "UI_ps": 54.05405405405406,
+      "input_edge_ps_0_to_100": 20.0,
+      "plot_grid_step_ps": 0.42229729729729737,
+      "ideal_gate_injection": false,
+      "forced_gate_edge_ps": null,
+      "forced_gate_rail_V": null,
+      "forced_gate_driver_sha256": null,
+      "steps_per_UI": 40,
+      "native_rows": 259752,
+      "deck_sha256": "b8a776ee0647d0844c1230caebe31847cd563d3f3f2d76593bd65cbe1358405b",
+      "stimulus_sha256": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+      "waveform": {
+        "path": "build/highspeed-workbench-20261110/vcsel-x10/net16-edge20-s40/waveform.dat.gz",
+        "sha256": "7fcf2911b96ff89115077614344284b85269dbea6dece3d89c75f11a2b60fb40",
+        "raw_sha256": "3d7871737c6ddba32835f4f0fca2d7a4688e6508447268dca83034d4b3d49862",
+        "bytes": 111607063,
+        "roundtrip_verified": true
+      },
+      "ngspice_exit_code": 0,
+      "ngspice_log_sha256": "a2e1742a25f84d929f00d6cecd6d931940198e2d7bdec9302d1b89c296c1bf5e",
+      "native_source_hashes": {
+        "driver.spice": "c614ef23c1443adf5ec34f162c456f3cba3ce4f87cb872dacef689a8cc2840ac",
+        "runner.py": "09f72cb2fda4a04fd02a16612636101977ce6380f47fea84064983d7a8ccc83b",
+        "design.ngspice": "8d9721a5bf8f079d3fddbd03339af9a0c84d4feb06db8e06465fbd02c7500508",
+        "sm141064.ngspice": "73fc67d38747d95ce03f3c2ba5f0a25c98f56a293363a9df4c971a3a28a3dcda",
+        "vcsel.spice": "7ed34d124b85230c15b4914407dbac0761103879ced25b1bb3794fb0e2d90beb"
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.75,
+          "delay_ps": 40.54054054054054,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 33.70181709375211,
+          "one_sided_margin_UI": 0.4951598783949375,
+          "one_sided_margin_ps": 26.765398832158787,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 28.429429770301944,
+              "median": 28.69085487031834,
+              "p95": 28.769961909850693
+            },
+            "1": {
+              "p05": 96.2264510089768,
+              "median": 96.30969194155895,
+              "p95": 96.57802768987699
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.734375,
+          "delay_ps": 93.75000000000001,
+          "train_errors": 124,
+          "errors": 1193,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 86,
+          "worst_signed_margin_uAeq": -35.25136815146138,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 23.600693889878865,
+              "median": 33.62765469402596,
+              "p95": 96.94100831924781
+            },
+            "1": {
+              "p05": 28.47223523853817,
+              "median": 92.0091916066446,
+              "p95": 101.40382297172175
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 595,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 598,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.000000000000003,
+        "steering_gate_differential_peak_V": 3.2681805608431125,
+        "laser_rail_range_V": [
+          3.0998579091509257,
+          3.100315153688589
+        ],
+        "predriver_rail_range_V": [
+          2.940355676302528,
+          3.100186552461706
+        ],
+        "electrical_current_range_mA": [
+          2.5915212120750004,
+          7.199204828219
+        ],
+        "base_current_range_mA": [
+          2.006603110165,
+          3.963817259649
+        ],
+        "tail_current_range_mA": [
+          2.627307347931,
+          5.418117107669
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.4171620739027233,
+          4.1711150373179535
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.308848908605,
+          "instance": "XDUMP_0",
+          "pair": "VDB"
+        },
+        "max_body_forward_V": 0.17058976973499984
+      },
+      "pathways": {
+        "actual_electrical": {
+          "delay_UI": 2.828125,
+          "delay_ps": 152.87162162162164,
+          "train_errors": 107,
+          "errors": 1077,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 89,
+          "worst_signed_margin_uAeq": -36.815775910871565,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.859126745394008,
+              "median": 27.43015616582148,
+              "p95": 97.98135078790493
+            },
+            "1": {
+              "p05": 26.21660103088589,
+              "median": 95.67820789477182,
+              "p95": 100.52754743995229
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 33,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 539,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 456,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 49,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_graph_5GHzRX": {
+          "delay_UI": 3.859375,
+          "delay_ps": 208.6148648648649,
+          "train_errors": 109,
+          "errors": 1070,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 91,
+          "worst_signed_margin_uAeq": -37.22732850182048,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 23.0137652551379,
+              "median": 29.785649658401535,
+              "p95": 98.3875987922696
+            },
+            "1": {
+              "p05": 26.13666904297908,
+              "median": 94.48826471274927,
+              "p95": 99.89112251764007
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 43,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 509,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 475,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 43,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_graph_25GHzRX": {
+          "delay_UI": 3.4375,
+          "delay_ps": 185.81081081081084,
+          "train_errors": 105,
+          "errors": 1018,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 87,
+          "worst_signed_margin_uAeq": -37.809095348481435,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 21.284773025400487,
+              "median": 26.282668596041667,
+              "p95": 97.82351669412397
+            },
+            "1": {
+              "p05": 26.569881856127147,
+              "median": 97.64657396627533,
+              "p95": 107.36153874583758
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 539,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 478,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 1,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_static_25GHzRX": {
+          "delay_UI": 2.921875,
+          "delay_ps": 157.9391891891892,
+          "train_errors": 111,
+          "errors": 1101,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 87,
+          "worst_signed_margin_uAeq": -36.82157513060574,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.96088301170131,
+              "median": 27.88617995431701,
+              "p95": 98.23000950302392
+            },
+            "1": {
+              "p05": 26.341822057805306,
+              "median": 96.13417515823484,
+              "p95": 100.44888553304678
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 35,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 536,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 487,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 43,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_25GHzOpt_25GHzRX": {
+          "delay_UI": 3.03125,
+          "delay_ps": 163.85135135135138,
+          "train_errors": 113,
+          "errors": 1114,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 87,
+          "worst_signed_margin_uAeq": -36.81129390990384,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 23.037392329356845,
+              "median": 28.004909118310138,
+              "p95": 98.24652146967975
+            },
+            "1": {
+              "p05": 26.319823259639097,
+              "median": 96.0875960159236,
+              "p95": 100.40059476326532
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 34,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 544,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 494,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 42,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_graph_5GHzRX": {
+          "delay_UI": 1.640625,
+          "delay_ps": 88.68243243243244,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 25.809178534738024,
+          "one_sided_margin_UI": 0.41972590397581055,
+          "one_sided_margin_ps": 22.68788670139517,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.08560643853364,
+              "median": 30.994121512615553,
+              "p95": 36.56304077772133
+            },
+            "1": {
+              "p05": 89.79577228421924,
+              "median": 95.09401023882951,
+              "p95": 99.96230371203082
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "ideal_graph_25GHzRX": {
+          "delay_UI": 1.359375,
+          "delay_ps": 73.47972972972974,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 30.5886992929452,
+          "one_sided_margin_UI": 0.3724147957726486,
+          "one_sided_margin_ps": 20.130529501224252,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 6.296341680300563,
+              "median": 14.3627336648041,
+              "p95": 31.61277286385558
+            },
+            "1": {
+              "p05": 93.41428742368922,
+              "median": 101.21511264837618,
+              "p95": 119.37817908054576
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "ideal_25GHzOpt_25GHzRX": {
+          "delay_UI": 0.90625,
+          "delay_ps": 48.98648648648649,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.87174616653977,
+          "one_sided_margin_UI": 0.4832367429085114,
+          "one_sided_margin_ps": 26.120905022081697,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.00000000007048,
+              "median": 26.62756391042477,
+              "p95": 26.62825383345724
+            },
+            "1": {
+              "p05": 98.54768667895723,
+              "median": 99.99931007696985,
+              "p95": 99.9999999999999
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "ideal_static_25GHzRX": {
+          "delay_UI": 0.796875,
+          "delay_ps": 43.07432432432433,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 36.853172275499176,
+          "one_sided_margin_UI": 0.4844973015755682,
+          "one_sided_margin_ps": 26.189043328409095,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.0000000000056,
+              "median": 25.646711001857966,
+              "p95": 25.64682772449942
+            },
+            "1": {
+              "p05": 99.4315938582569,
+              "median": 99.99988327735969,
+              "p95": 99.9999999999999
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 2.3948220839756744,
+        "returned": 0.014322843003266398,
+        "net": 2.380499240972408
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 1.5955267017086725,
+          "returned": 0.0,
+          "net": 1.5955267017086725
+        },
+        "VDD": {
+          "positive": 0.4960818967294762,
+          "returned": 0.0,
+          "net": 0.4960818967294762
+        },
+        "VREF": {
+          "positive": 0.03015542663488525,
+          "returned": 0.0012541788745869485,
+          "net": 0.0289012477602983
+        },
+        "VD": {
+          "positive": 0.1369808339556429,
+          "returned": 0.006519385128376301,
+          "net": 0.1304614488272666
+        },
+        "VDB": {
+          "positive": 0.13604428881421735,
+          "returned": 0.0065174874109454155,
+          "net": 0.1295268014032719
+        },
+        "VSET": {
+          "positive": 3.162332574462276e-05,
+          "returned": 3.1526219927849704e-05,
+          "net": 9.710581677305499e-08
+        },
+        "VREGSET": {
+          "positive": 1.3128070357439257e-06,
+          "returned": 2.6536942988220953e-07,
+          "net": 1.0474376058617161e-06
+        }
+      }
+    },
+    {
+      "run": "build/highspeed-workbench-20261110/vcsel-x10/net32-edge20-s40",
+      "frozen_baseline": false,
+      "net_Gbps": 32.0,
+      "line_GBd": 37.0,
+      "UI_ps": 27.02702702702703,
+      "input_edge_ps_0_to_100": 20.0,
+      "plot_grid_step_ps": 0.21114864864864868,
+      "ideal_gate_injection": false,
+      "forced_gate_edge_ps": null,
+      "forced_gate_rail_V": null,
+      "forced_gate_driver_sha256": null,
+      "steps_per_UI": 40,
+      "native_rows": 222395,
+      "deck_sha256": "24ab3a14b161561c9c65441a65df8b63392cbb1f06385676b3a69b143cd41180",
+      "stimulus_sha256": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+      "waveform": {
+        "path": "build/highspeed-workbench-20261110/vcsel-x10/net32-edge20-s40/waveform.dat.gz",
+        "sha256": "1fd24d21f3fe191ead8aab47cde18e2304bbf0593af4de7f3af46aab05a0de98",
+        "raw_sha256": "df817d9790caa6fc99bd4d54142af7f962818e25428459f7727b41a95682ecd4",
+        "bytes": 95368178,
+        "roundtrip_verified": true
+      },
+      "ngspice_exit_code": 0,
+      "ngspice_log_sha256": "1e6e42bdb56f8a60e5877d6dedf7225596c4d09f09a9c0d8f5719f8e992351d0",
+      "native_source_hashes": {
+        "driver.spice": "c614ef23c1443adf5ec34f162c456f3cba3ce4f87cb872dacef689a8cc2840ac",
+        "runner.py": "09f72cb2fda4a04fd02a16612636101977ce6380f47fea84064983d7a8ccc83b",
+        "design.ngspice": "8d9721a5bf8f079d3fddbd03339af9a0c84d4feb06db8e06465fbd02c7500508",
+        "sm141064.ngspice": "73fc67d38747d95ce03f3c2ba5f0a25c98f56a293363a9df4c971a3a28a3dcda",
+        "vcsel.spice": "7ed34d124b85230c15b4914407dbac0761103879ced25b1bb3794fb0e2d90beb"
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 1.0,
+          "delay_ps": 27.02702702702703,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 32.64411051463482,
+          "one_sided_margin_UI": 0.4895551456159752,
+          "one_sided_margin_ps": 13.231220151783115,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 28.546760409598818,
+              "median": 29.528358920216796,
+              "p95": 29.71711236922055
+            },
+            "1": {
+              "p05": 95.2755982642835,
+              "median": 96.24278155005517,
+              "p95": 96.46452547319495
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 2.859375,
+          "delay_ps": 77.28040540540542,
+          "train_errors": 168,
+          "errors": 1622,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 139,
+          "worst_signed_margin_uAeq": -37.66338848456476,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.117812891764306,
+              "median": 49.72443914481813,
+              "p95": 99.29957873493751
+            },
+            "1": {
+              "p05": 25.754438129540645,
+              "median": 75.03394313299925,
+              "p95": 100.89944352064481
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 257,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 556,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 552,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 257,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.0000000000000204,
+        "steering_gate_differential_peak_V": 3.2607766658902966,
+        "laser_rail_range_V": [
+          3.0997139343154365,
+          3.1002911888137796
+        ],
+        "predriver_rail_range_V": [
+          2.9290941672655246,
+          3.100186475255221
+        ],
+        "electrical_current_range_mA": [
+          2.59869647913,
+          7.198101329557
+        ],
+        "base_current_range_mA": [
+          2.002004181023,
+          3.896022739817
+        ],
+        "tail_current_range_mA": [
+          2.634586627742,
+          5.473553752399
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.4212808160346402,
+          4.159776209414753
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.310806117838,
+          "instance": "XDUMP_0",
+          "pair": "VDB"
+        },
+        "max_body_forward_V": 0.16716034774599997
+      },
+      "pathways": {
+        "actual_electrical": {
+          "delay_UI": 7.671875,
+          "delay_ps": 207.347972972973,
+          "train_errors": 158,
+          "errors": 1468,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 142,
+          "worst_signed_margin_uAeq": -44.60903389874778,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.893664544834085,
+              "median": 32.069898671537885,
+              "p95": 98.25998747126027
+            },
+            "1": {
+              "p05": 24.477630499415625,
+              "median": 88.65340063896392,
+              "p95": 98.7698182168696
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 223,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 545,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 435,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 265,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_graph_5GHzRX": {
+          "delay_UI": 6.921875,
+          "delay_ps": 187.0777027027027,
+          "train_errors": 158,
+          "errors": 1462,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 145,
+          "worst_signed_margin_uAeq": -41.05660413329104,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.13967003765615,
+              "median": 37.19587098807524,
+              "p95": 97.92931775000385
+            },
+            "1": {
+              "p05": 24.910812459319484,
+              "median": 85.7909597324787,
+              "p95": 98.66341831728978
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 188,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 553,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 495,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 226,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_graph_25GHzRX": {
+          "delay_UI": 6.53125,
+          "delay_ps": 176.5202702702703,
+          "train_errors": 148,
+          "errors": 1412,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 140,
+          "worst_signed_margin_uAeq": -43.18433882372769,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.231742399038684,
+              "median": 29.35319217224413,
+              "p95": 98.19318526272303
+            },
+            "1": {
+              "p05": 24.21367920348639,
+              "median": 92.74650420558606,
+              "p95": 100.20708346413078
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 178,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 544,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 489,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 201,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_static_25GHzRX": {
+          "delay_UI": 7.859375,
+          "delay_ps": 212.41554054054058,
+          "train_errors": 156,
+          "errors": 1461,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 143,
+          "worst_signed_margin_uAeq": -44.40720270231089,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.881365930110487,
+              "median": 32.99852887046077,
+              "p95": 98.44023458050576
+            },
+            "1": {
+              "p05": 24.503136877219166,
+              "median": 89.79410685394339,
+              "p95": 98.87590911720326
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 230,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 526,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 451,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 254,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_25GHzOpt_25GHzRX": {
+          "delay_UI": 5.8125,
+          "delay_ps": 157.0945945945946,
+          "train_errors": 149,
+          "errors": 1432,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 143,
+          "worst_signed_margin_uAeq": -43.608036081395824,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 23.389637662862636,
+              "median": 35.8603272235773,
+              "p95": 98.1814228218286
+            },
+            "1": {
+              "p05": 24.38265261359297,
+              "median": 88.11007463476638,
+              "p95": 98.87307743167862
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 187,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 550,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 487,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 208,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_graph_5GHzRX": {
+          "delay_UI": 2.65625,
+          "delay_ps": 71.79054054054055,
+          "train_errors": 54,
+          "errors": 549,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 51,
+          "worst_signed_margin_uAeq": -7.067611762809264,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.69501814287969,
+              "median": 44.76702874412054,
+              "p95": 66.38172741214711
+            },
+            "1": {
+              "p05": 60.91910011181055,
+              "median": 81.57662266447265,
+              "p95": 102.75061730371344
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 198,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 351,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_graph_25GHzRX": {
+          "delay_UI": 2.546875,
+          "delay_ps": 68.83445945945947,
+          "train_errors": 37,
+          "errors": 340,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 25,
+          "worst_signed_margin_uAeq": -12.397424934476902,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 5.40075177416391,
+              "median": 36.24809566404998,
+              "p95": 66.18778608284745
+            },
+            "1": {
+              "p05": 61.68606408003814,
+              "median": 90.54020283530235,
+              "p95": 118.83061105207605
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 34,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 122,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 178,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 6,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_25GHzOpt_25GHzRX": {
+          "delay_UI": 1.28125,
+          "delay_ps": 34.62837837837838,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 23.220716851968774,
+          "one_sided_margin_UI": 0.46419079480988296,
+          "one_sided_margin_ps": 12.545697157023866,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.00620130471443,
+              "median": 34.76872787003298,
+              "p95": 39.279178494426546
+            },
+            "1": {
+              "p05": 87.58535537441564,
+              "median": 96.34270042982456,
+              "p95": 99.99989324803099
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "ideal_static_25GHzRX": {
+          "delay_UI": 1.078125,
+          "delay_ps": 29.138513513513516,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 30.42724403772447,
+          "one_sided_margin_UI": 0.4708070835066946,
+          "one_sided_margin_ps": 12.724515770451207,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.001170269811535,
+              "median": 30.698881951012147,
+              "p95": 32.072741277989486
+            },
+            "1": {
+              "p05": 93.89814537209108,
+              "median": 98.89720835935535,
+              "p95": 99.99998507883106
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 1.1342032612078423,
+        "returned": 0.013560597677903574,
+        "net": 1.120642663529939
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 0.7977494614853718,
+          "returned": 0.0,
+          "net": 0.7977494614853718
+        },
+        "VDD": {
+          "positive": 0.17636874531761293,
+          "returned": 0.0,
+          "net": 0.17636874531761293
+        },
+        "VREF": {
+          "positive": 0.015263103136988176,
+          "returned": 0.0008073143965665038,
+          "net": 0.01445578874042167
+        },
+        "VD": {
+          "positive": 0.07262642677475097,
+          "returned": 0.006366566691948775,
+          "net": 0.06625986008280219
+        },
+        "VDB": {
+          "positive": 0.07217464749072325,
+          "returned": 0.006367274190872414,
+          "net": 0.06580737329985083
+        },
+        "VSET": {
+          "positive": 1.9484202631626907e-05,
+          "returned": 1.9442373122965015e-05,
+          "net": 4.182950866188946e-08
+        },
+        "VREGSET": {
+          "positive": 1.392799763614238e-06,
+          "returned": 2.5392916873767566e-11,
+          "net": 1.3927743706973642e-06
+        }
+      },
+      "wide_delay_control_0_to_32_UI": {
+        "gate_polarity": {
+          "delay_UI": 2.859375,
+          "delay_ps": 77.28040540540542,
+          "train_errors": 168,
+          "errors": 1622,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 139,
+          "worst_signed_margin_uAeq": -37.66338848456476,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.117812891764306,
+              "median": 49.72443914481813,
+              "p95": 99.29957873493751
+            },
+            "1": {
+              "p05": 25.754438129540645,
+              "median": 75.03394313299925,
+              "p95": 100.89944352064481
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 257,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 556,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 552,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 257,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_electrical": {
+          "delay_UI": 8.53125,
+          "delay_ps": 230.57432432432435,
+          "train_errors": 162,
+          "errors": 1551,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 142,
+          "worst_signed_margin_uAeq": -44.598200099988205,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.5625168340452,
+              "median": 33.4108898704159,
+              "p95": 98.22340737320542
+            },
+            "1": {
+              "p05": 24.65987074765466,
+              "median": 85.09224918530086,
+              "p95": 98.65488626384288
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 257,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 552,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 443,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 299,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_graph_5GHzRX": {
+          "delay_UI": 28.71875,
+          "delay_ps": 776.1824324324325,
+          "train_errors": 216,
+          "errors": 2026,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 144,
+          "worst_signed_margin_uAeq": -40.95897435055717,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.25598398495444,
+              "median": 56.59715693565401,
+              "p95": 98.33848768511618
+            },
+            "1": {
+              "p05": 24.53875377680183,
+              "median": 58.78002612818001,
+              "p95": 98.46430167684485
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 405,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 467,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 555,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 599,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      }
+    },
+    {
+      "run": "build/highspeed-workbench-20261110/vcsel-x10/net32-edge5-s40",
+      "frozen_baseline": false,
+      "net_Gbps": 32.0,
+      "line_GBd": 37.0,
+      "UI_ps": 27.02702702702703,
+      "input_edge_ps_0_to_100": 5.0,
+      "plot_grid_step_ps": 0.21114864864864868,
+      "ideal_gate_injection": false,
+      "forced_gate_edge_ps": null,
+      "forced_gate_rail_V": null,
+      "forced_gate_driver_sha256": null,
+      "steps_per_UI": 40,
+      "native_rows": 246371,
+      "deck_sha256": "951632c50a8f530c89c3107709ee9cf3478a8ebb910366de2b548c0f121e3afc",
+      "stimulus_sha256": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+      "waveform": {
+        "path": "build/highspeed-workbench-20261110/vcsel-x10/net32-edge5-s40/waveform.dat.gz",
+        "sha256": "e6882135d689a71f62d5fa965e0b897af06ca9a3a6b60daa4828f9f609a0bb66",
+        "raw_sha256": "8859c9ebb7815a8a82a412a05a17513ad4119e0433d1abf2d13eaabbdfd8464b",
+        "bytes": 105110422,
+        "roundtrip_verified": true
+      },
+      "ngspice_exit_code": 0,
+      "ngspice_log_sha256": "da683c9945fadf89d260f5907ebce5bd1bffe9e583e3fbdea0398676897381ea",
+      "native_source_hashes": {
+        "driver.spice": "c614ef23c1443adf5ec34f162c456f3cba3ce4f87cb872dacef689a8cc2840ac",
+        "runner.py": "09f72cb2fda4a04fd02a16612636101977ce6380f47fea84064983d7a8ccc83b",
+        "design.ngspice": "8d9721a5bf8f079d3fddbd03339af9a0c84d4feb06db8e06465fbd02c7500508",
+        "sm141064.ngspice": "73fc67d38747d95ce03f3c2ba5f0a25c98f56a293363a9df4c971a3a28a3dcda",
+        "vcsel.spice": "7ed34d124b85230c15b4914407dbac0761103879ced25b1bb3794fb0e2d90beb"
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.6875,
+          "delay_ps": 18.581081081081084,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 33.294974473443084,
+          "one_sided_margin_UI": 0.4949679312107257,
+          "one_sided_margin_ps": 13.37751165434394,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 28.546962437571516,
+              "median": 28.990251468183715,
+              "p95": 29.12550311830899
+            },
+            "1": {
+              "p05": 95.87371191322472,
+              "median": 96.24061525377562,
+              "p95": 96.46035150244782
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 2.53125,
+          "delay_ps": 68.41216216216218,
+          "train_errors": 164,
+          "errors": 1620,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 139,
+          "worst_signed_margin_uAeq": -37.65760822637732,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 23.978113179140134,
+              "median": 48.5161503810722,
+              "p95": 99.11283718867521
+            },
+            "1": {
+              "p05": 25.95313008845671,
+              "median": 75.94794059119103,
+              "p95": 101.04247014991577
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 255,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 557,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 550,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 258,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.0000000000000204,
+        "steering_gate_differential_peak_V": 3.2639758755078296,
+        "laser_rail_range_V": [
+          3.0997800252425245,
+          3.1002958191374668
+        ],
+        "predriver_rail_range_V": [
+          2.9199141540724036,
+          3.1002060446679964
+        ],
+        "electrical_current_range_mA": [
+          2.5827207238520002,
+          7.236805371358
+        ],
+        "base_current_range_mA": [
+          1.929002891238,
+          3.9971555007819997
+        ],
+        "tail_current_range_mA": [
+          2.587305841556,
+          5.442424633074
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.4263292876201348,
+          4.179922121537752
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.340682930721,
+          "instance": "XBN2N_0",
+          "pair": "VGS"
+        },
+        "max_body_forward_V": 0.24065502478900003
+      },
+      "pathways": {
+        "actual_electrical": {
+          "delay_UI": 7.34375,
+          "delay_ps": 198.47972972972977,
+          "train_errors": 157,
+          "errors": 1454,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 142,
+          "worst_signed_margin_uAeq": -44.42934211481373,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.99664276387263,
+              "median": 31.30106529355991,
+              "p95": 98.5190472689174
+            },
+            "1": {
+              "p05": 24.359980311783648,
+              "median": 89.98730126722147,
+              "p95": 99.04483929354932
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 226,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 531,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 438,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 259,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_graph_5GHzRX": {
+          "delay_UI": 6.515625,
+          "delay_ps": 176.097972972973,
+          "train_errors": 160,
+          "errors": 1470,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 144,
+          "worst_signed_margin_uAeq": -41.16961439934187,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.123666806514514,
+              "median": 36.35552719268151,
+              "p95": 98.17327517842517
+            },
+            "1": {
+              "p05": 24.802097343665316,
+              "median": 87.48900301280416,
+              "p95": 98.93784536792104
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 193,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 548,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 510,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 219,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_graph_25GHzRX": {
+          "delay_UI": 6.21875,
+          "delay_ps": 168.07432432432435,
+          "train_errors": 148,
+          "errors": 1397,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 141,
+          "worst_signed_margin_uAeq": -43.28229540146906,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.050424577221726,
+              "median": 28.946710344413585,
+              "p95": 98.41346585647054
+            },
+            "1": {
+              "p05": 24.024642639521804,
+              "median": 93.36421746939966,
+              "p95": 100.86015461961554
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 181,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 526,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 498,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 192,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_static_25GHzRX": {
+          "delay_UI": 7.515625,
+          "delay_ps": 203.12500000000003,
+          "train_errors": 157,
+          "errors": 1455,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 141,
+          "worst_signed_margin_uAeq": -44.32515502451473,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.90442485815483,
+              "median": 32.32074215091577,
+              "p95": 98.73349734133782
+            },
+            "1": {
+              "p05": 24.45798476161932,
+              "median": 90.9804292605221,
+              "p95": 99.18242164215208
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 234,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 517,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 459,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 245,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_25GHzOpt_25GHzRX": {
+          "delay_UI": 7.703125,
+          "delay_ps": 208.1925675675676,
+          "train_errors": 157,
+          "errors": 1456,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 141,
+          "worst_signed_margin_uAeq": -43.853503894950734,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 23.08289181304462,
+              "median": 32.522112199027916,
+              "p95": 98.70474669074659
+            },
+            "1": {
+              "p05": 24.465474402115806,
+              "median": 90.74757321127824,
+              "p95": 99.1280966333993
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 234,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 516,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 463,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 243,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_graph_5GHzRX": {
+          "delay_UI": 2.34375,
+          "delay_ps": 63.344594594594604,
+          "train_errors": 47,
+          "errors": 494,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 43,
+          "worst_signed_margin_uAeq": -5.7534660365692645,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.192551489944556,
+              "median": 44.437323121435966,
+              "p95": 65.0712632943945
+            },
+            "1": {
+              "p05": 60.34349609628383,
+              "median": 81.93152549446862,
+              "p95": 103.14330735921264
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 240,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 254,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_graph_25GHzRX": {
+          "delay_UI": 2.265625,
+          "delay_ps": 61.23310810810811,
+          "train_errors": 31,
+          "errors": 293,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 21,
+          "worst_signed_margin_uAeq": -10.467549457026195,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 4.324608848383812,
+              "median": 34.85185069543319,
+              "p95": 64.52341266017575
+            },
+            "1": {
+              "p05": 61.58571108795696,
+              "median": 91.05616367029019,
+              "p95": 120.17249902291341
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 27,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 119,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 139,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 8,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_25GHzOpt_25GHzRX": {
+          "delay_UI": 0.984375,
+          "delay_ps": 26.60472972972973,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 29.114885956816146,
+          "one_sided_margin_UI": 0.48619442869969065,
+          "one_sided_margin_ps": 13.140389964856507,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.00008971976678,
+              "median": 33.16424058405716,
+              "p95": 33.38511247383152
+            },
+            "1": {
+              "p05": 91.8578735299122,
+              "median": 99.7791265408621,
+              "p95": 99.99999843064353
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "ideal_static_25GHzRX": {
+          "delay_UI": 0.765625,
+          "delay_ps": 20.692567567567572,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 33.00150087469399,
+          "one_sided_margin_UI": 0.4882651864103052,
+          "one_sided_margin_ps": 13.19635638946771,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.000013054895415,
+              "median": 29.43638151214799,
+              "p95": 29.498498942549876
+            },
+            "1": {
+              "p05": 95.66522489686274,
+              "median": 99.93788238684077,
+              "p95": 99.9999998172454
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 1.1791776104971041,
+        "returned": 0.010165572752339681,
+        "net": 1.1690120377447646
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 0.7975951893373995,
+          "returned": 0.0,
+          "net": 0.7975951893373995
+        },
+        "VDD": {
+          "positive": 0.185925046622283,
+          "returned": 0.0,
+          "net": 0.185925046622283
+        },
+        "VREF": {
+          "positive": 0.015157950678894512,
+          "returned": 0.0007026886708652286,
+          "net": 0.014455262008029282
+        },
+        "VD": {
+          "positive": 0.09046500132026658,
+          "returned": 0.0047222538416774994,
+          "net": 0.08574274747858908
+        },
+        "VDB": {
+          "positive": 0.0900149246449283,
+          "returned": 0.004722642971985018,
+          "net": 0.08529228167294328
+        },
+        "VSET": {
+          "positive": 1.8025706557407936e-05,
+          "returned": 1.7987140893587076e-05,
+          "net": 3.856566382086123e-08
+        },
+        "VREGSET": {
+          "positive": 1.472186774923028e-06,
+          "returned": 1.2691834885242117e-10,
+          "net": 1.4720598565741756e-06
+        }
+      }
+    },
+    {
+      "run": "build/highspeed-workbench-20261110/vcsel-x10/net32-edge20-s80",
+      "frozen_baseline": false,
+      "net_Gbps": 32.0,
+      "line_GBd": 37.0,
+      "UI_ps": 27.02702702702703,
+      "input_edge_ps_0_to_100": 20.0,
+      "plot_grid_step_ps": 0.21114864864864868,
+      "ideal_gate_injection": false,
+      "forced_gate_edge_ps": null,
+      "forced_gate_rail_V": null,
+      "forced_gate_driver_sha256": null,
+      "steps_per_UI": 80,
+      "native_rows": 395673,
+      "deck_sha256": "4ed8517443f84c487c8783a3bb1b45ce1c6b13e1c38832a875eb90259ea9af88",
+      "stimulus_sha256": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+      "waveform": {
+        "path": "build/highspeed-workbench-20261110/vcsel-x10/net32-edge20-s80/waveform.dat.gz",
+        "sha256": "9a7396252d48fb15e6cb870bd577fc189be81a39932d385bb78227597896ef7c",
+        "raw_sha256": "8fa5c524777690ca930dd0cb221937e3a02a30876a15e57f244e5bf478c847b1",
+        "bytes": 167023567,
+        "roundtrip_verified": true
+      },
+      "ngspice_exit_code": 0,
+      "ngspice_log_sha256": "6218542309b21d2ffaab52854b051b7ff5c0916637345914092ba706d5c01032",
+      "native_source_hashes": {
+        "driver.spice": "c614ef23c1443adf5ec34f162c456f3cba3ce4f87cb872dacef689a8cc2840ac",
+        "runner.py": "09f72cb2fda4a04fd02a16612636101977ce6380f47fea84064983d7a8ccc83b",
+        "design.ngspice": "8d9721a5bf8f079d3fddbd03339af9a0c84d4feb06db8e06465fbd02c7500508",
+        "sm141064.ngspice": "73fc67d38747d95ce03f3c2ba5f0a25c98f56a293363a9df4c971a3a28a3dcda",
+        "vcsel.spice": "7ed34d124b85230c15b4914407dbac0761103879ced25b1bb3794fb0e2d90beb"
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 1.0,
+          "delay_ps": 27.02702702702703,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 32.644924908413,
+          "one_sided_margin_UI": 0.48954140826461534,
+          "one_sided_margin_ps": 13.230848872016633,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 28.546760923702504,
+              "median": 29.532992939379163,
+              "p95": 29.720118039397782
+            },
+            "1": {
+              "p05": 95.2734899523017,
+              "median": 96.24278363905714,
+              "p95": 96.46452107615283
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 2.859375,
+          "delay_ps": 77.28040540540542,
+          "train_errors": 168,
+          "errors": 1622,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 139,
+          "worst_signed_margin_uAeq": -37.663878842730284,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.117650036286225,
+              "median": 49.72602037074472,
+              "p95": 99.299868911603
+            },
+            "1": {
+              "p05": 25.753932275736126,
+              "median": 75.03449451191612,
+              "p95": 100.89907293926044
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 257,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 556,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 552,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 257,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.0000000000000044,
+        "steering_gate_differential_peak_V": 3.2608122196929012,
+        "laser_rail_range_V": [
+          3.0997139379548,
+          3.1002913138630914
+        ],
+        "predriver_rail_range_V": [
+          2.929101364424064,
+          3.1001864142861275
+        ],
+        "electrical_current_range_mA": [
+          2.5983778520059997,
+          7.1982216914579995
+        ],
+        "base_current_range_mA": [
+          2.0012624592990003,
+          3.895751580112
+        ],
+        "tail_current_range_mA": [
+          2.635172217522,
+          5.473571287525
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.4214871298995577,
+          4.159765734515926
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.310892195293,
+          "instance": "XDUMP_0",
+          "pair": "VDB"
+        },
+        "max_body_forward_V": 0.16725010562999998
+      },
+      "pathways": {
+        "actual_electrical": {
+          "delay_UI": 7.671875,
+          "delay_ps": 207.347972972973,
+          "train_errors": 158,
+          "errors": 1469,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 142,
+          "worst_signed_margin_uAeq": -44.61724292400542,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.893689761200083,
+              "median": 32.075499093374816,
+              "p95": 98.26039456693667
+            },
+            "1": {
+              "p05": 24.47854848961518,
+              "median": 88.65144432750587,
+              "p95": 98.77124622123497
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 223,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 545,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 436,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 265,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_graph_5GHzRX": {
+          "delay_UI": 6.921875,
+          "delay_ps": 187.0777027027027,
+          "train_errors": 158,
+          "errors": 1462,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 145,
+          "worst_signed_margin_uAeq": -41.05702578916751,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.139066145215395,
+              "median": 37.197269093280305,
+              "p95": 97.92917927551105
+            },
+            "1": {
+              "p05": 24.910785474757876,
+              "median": 85.79035151904942,
+              "p95": 98.66319979162522
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 188,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 553,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 495,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 226,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_graph_25GHzRX": {
+          "delay_UI": 6.53125,
+          "delay_ps": 176.5202702702703,
+          "train_errors": 148,
+          "errors": 1412,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 140,
+          "worst_signed_margin_uAeq": -43.18483392259651,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.232563143820997,
+              "median": 29.35343736949412,
+              "p95": 98.19314483156944
+            },
+            "1": {
+              "p05": 24.21371364787413,
+              "median": 92.74793515881434,
+              "p95": 100.2063586305918
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 178,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 544,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 489,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 201,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_static_25GHzRX": {
+          "delay_UI": 7.859375,
+          "delay_ps": 212.41554054054058,
+          "train_errors": 156,
+          "errors": 1460,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 143,
+          "worst_signed_margin_uAeq": -44.41067321753191,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.879622181702015,
+              "median": 33.007369672703284,
+              "p95": 98.43986956371467
+            },
+            "1": {
+              "p05": 24.503019103621412,
+              "median": 89.79589952799161,
+              "p95": 98.87601179231316
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 230,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 526,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 450,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 254,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_25GHzOpt_25GHzRX": {
+          "delay_UI": 5.8125,
+          "delay_ps": 157.0945945945946,
+          "train_errors": 149,
+          "errors": 1432,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 143,
+          "worst_signed_margin_uAeq": -43.61206178993214,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 23.389717336192792,
+              "median": 35.858124730002466,
+              "p95": 98.18106783600254
+            },
+            "1": {
+              "p05": 24.381949970795525,
+              "median": 88.11064876817379,
+              "p95": 98.87314507858558
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 187,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 550,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 487,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 208,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_graph_5GHzRX": {
+          "delay_UI": 2.65625,
+          "delay_ps": 71.79054054054055,
+          "train_errors": 54,
+          "errors": 549,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 51,
+          "worst_signed_margin_uAeq": -7.067611762809264,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.69501814287969,
+              "median": 44.76702874412054,
+              "p95": 66.38172741214711
+            },
+            "1": {
+              "p05": 60.91910011181055,
+              "median": 81.57662266447265,
+              "p95": 102.75061730371344
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 198,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 351,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_graph_25GHzRX": {
+          "delay_UI": 2.546875,
+          "delay_ps": 68.83445945945947,
+          "train_errors": 37,
+          "errors": 340,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 25,
+          "worst_signed_margin_uAeq": -12.397424934476902,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 5.40075177416391,
+              "median": 36.24809566404998,
+              "p95": 66.18778608284745
+            },
+            "1": {
+              "p05": 61.68606408003814,
+              "median": 90.54020283530235,
+              "p95": 118.83061105207605
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 34,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 122,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 178,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 6,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_25GHzOpt_25GHzRX": {
+          "delay_UI": 1.28125,
+          "delay_ps": 34.62837837837838,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 23.220716851968774,
+          "one_sided_margin_UI": 0.46419079480988296,
+          "one_sided_margin_ps": 12.545697157023866,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.00620130471443,
+              "median": 34.76872787003298,
+              "p95": 39.279178494426546
+            },
+            "1": {
+              "p05": 87.58535537441564,
+              "median": 96.34270042982456,
+              "p95": 99.99989324803099
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "ideal_static_25GHzRX": {
+          "delay_UI": 1.078125,
+          "delay_ps": 29.138513513513516,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 30.42724403772447,
+          "one_sided_margin_UI": 0.4708070835066946,
+          "one_sided_margin_ps": 12.724515770451207,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.001170269811535,
+              "median": 30.698881951012147,
+              "p95": 32.072741277989486
+            },
+            "1": {
+              "p05": 93.89814537209108,
+              "median": 98.89720835935535,
+              "p95": 99.99998507883106
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 1.1341730888683483,
+        "returned": 0.013568991054617674,
+        "net": 1.1206040978137308
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 0.7977494809536191,
+          "returned": 0.0,
+          "net": 0.7977494809536191
+        },
+        "VDD": {
+          "positive": 0.17636129142176174,
+          "returned": 0.0,
+          "net": 0.17636129142176174
+        },
+        "VREF": {
+          "positive": 0.015263244939194679,
+          "returned": 0.0008074574108564662,
+          "net": 0.014455787528338213
+        },
+        "VD": {
+          "positive": 0.07261496876063601,
+          "returned": 0.006370697096559742,
+          "net": 0.06624427166407627
+        },
+        "VDB": {
+          "positive": 0.07216322500157989,
+          "returned": 0.006371393287933391,
+          "net": 0.0657918317136465
+        },
+        "VSET": {
+          "positive": 1.9485059102319878e-05,
+          "returned": 1.9443234019290362e-05,
+          "net": 4.182508302951557e-08
+        },
+        "VREGSET": {
+          "positive": 1.392732454710234e-06,
+          "returned": 2.5248785428428534e-11,
+          "net": 1.3927072059248056e-06
+        }
+      }
+    },
+    {
+      "run": "build/highspeed-workbench-20261110/vcsel-x10/net32-ideal-gates-edge5-s40",
+      "frozen_baseline": false,
+      "net_Gbps": 32,
+      "line_GBd": 37.0,
+      "UI_ps": 27.02702702702703,
+      "input_edge_ps_0_to_100": 20,
+      "plot_grid_step_ps": 0.21114864864864868,
+      "ideal_gate_injection": true,
+      "forced_gate_edge_ps": 5,
+      "forced_gate_rail_V": 3.1,
+      "forced_gate_driver_sha256": "a20614334bf895cbeaeabc4c22d1f6fc819457d9d663827b17fcfc1ec3667bfc",
+      "steps_per_UI": 40,
+      "native_rows": 303915,
+      "deck_sha256": "b1c55e19bd750d7aacce5cc4e93f5dfb49fc79dd1901e849e6a7b15f6c7572e9",
+      "stimulus_sha256": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+      "waveform": {
+        "path": "build/highspeed-workbench-20261110/vcsel-x10/net32-ideal-gates-edge5-s40/waveform.dat.gz",
+        "sha256": "fb12b6ec099009ce72508e8fa8b6251f2633ed42cda26063da0695ae5680eacc",
+        "raw_sha256": "2dee48babf8aea280b28510dcdbedcd67b729be3e582b2d148187a7b6a71768f",
+        "bytes": 143089826,
+        "roundtrip_verified": true
+      },
+      "ngspice_exit_code": 0,
+      "ngspice_log_sha256": "f1bddb6a58cc15a50b1335a4f17bf229a98b2285c38c6ec778e5dac96507ac05",
+      "native_source_hashes": {
+        "driver.spice": "c614ef23c1443adf5ec34f162c456f3cba3ce4f87cb872dacef689a8cc2840ac",
+        "runner.py": "09f72cb2fda4a04fd02a16612636101977ce6380f47fea84064983d7a8ccc83b",
+        "design.ngspice": "8d9721a5bf8f079d3fddbd03339af9a0c84d4feb06db8e06465fbd02c7500508",
+        "sm141064.ngspice": "73fc67d38747d95ce03f3c2ba5f0a25c98f56a293363a9df4c971a3a28a3dcda",
+        "vcsel.spice": "7ed34d124b85230c15b4914407dbac0761103879ced25b1bb3794fb0e2d90beb"
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 1.0,
+          "delay_ps": 27.02702702702703,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 32.629260046893606,
+          "one_sided_margin_UI": 0.48994048243634397,
+          "one_sided_margin_ps": 13.24163466044173,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 28.582839417618807,
+              "median": 29.541274468701026,
+              "p95": 29.740547310271417
+            },
+            "1": {
+              "p05": 95.24582107613307,
+              "median": 96.2542791318072,
+              "p95": 96.42794127557933
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 0.59375,
+          "delay_ps": 16.0472972972973,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 37.5,
+          "one_sided_margin_UI": 0.49874999833501416,
+          "one_sided_margin_ps": 13.479729684730113,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.0,
+              "median": 25.0,
+              "p95": 25.0
+            },
+            "1": {
+              "p05": 100.0,
+              "median": 100.0,
+              "p95": 100.0
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.000000000000006,
+        "steering_gate_differential_peak_V": 3.1,
+        "laser_rail_range_V": [
+          3.098735996652865,
+          3.100460861904918
+        ],
+        "predriver_rail_range_V": [
+          2.944269591953629,
+          3.100181390544041
+        ],
+        "electrical_current_range_mA": [
+          1.696133339811,
+          9.54828881553
+        ],
+        "base_current_range_mA": [
+          -10.1396455453,
+          13.879238495440001
+        ],
+        "tail_current_range_mA": [
+          -6.101517759481999,
+          15.287418987579999
+        ],
+        "dummy_resistor_current_range_mA": [
+          -1.5367877380121202,
+          5.440820455446834
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": false,
+        "terminal_screen_pass": false,
+        "terminal_peak": {
+          "value_V": 3.867652349328,
+          "instance": "XDUMP_0",
+          "pair": "VDB"
+        },
+        "max_body_forward_V": 0.16696616768500006
+      },
+      "pathways": {
+        "actual_electrical": {
+          "delay_UI": 1.109375,
+          "delay_ps": 29.983108108108112,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 1.0248240696596653,
+          "one_sided_margin_UI": 0.06226217528443062,
+          "one_sided_margin_ps": 1.6827614941738007,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.642558001359152,
+              "median": 36.5021517437427,
+              "p95": 39.744110168479345
+            },
+            "1": {
+              "p05": 65.8729491287645,
+              "median": 75.30318636890934,
+              "p95": 91.74055285040549
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_graph_5GHzRX": {
+          "delay_UI": 3.734375,
+          "delay_ps": 100.92905405405406,
+          "train_errors": 55,
+          "errors": 519,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 55,
+          "worst_signed_margin_uAeq": -13.838823633638853,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.992726663258356,
+              "median": 44.15154002043249,
+              "p95": 58.20316109633282
+            },
+            "1": {
+              "p05": 51.93345303114203,
+              "median": 70.08225608447911,
+              "p95": 91.56017255866277
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 516,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 3,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_graph_25GHzRX": {
+          "delay_UI": 2.890625,
+          "delay_ps": 78.12500000000001,
+          "train_errors": 57,
+          "errors": 615,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 29,
+          "worst_signed_margin_uAeq": -15.359862210037697,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 16.785660277012447,
+              "median": 40.40256125063236,
+              "p95": 56.46285219477929
+            },
+            "1": {
+              "p05": 52.282925498362985,
+              "median": 79.51980130886734,
+              "p95": 98.3935730925034
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 615,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_static_25GHzRX": {
+          "delay_UI": 1.890625,
+          "delay_ps": 51.09797297297298,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 0.6238620793040255,
+          "one_sided_margin_UI": 0.014181941638782522,
+          "one_sided_margin_ps": 0.3832957199670952,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.64616702566103,
+              "median": 34.845497303849214,
+              "p95": 44.001260496460155
+            },
+            "1": {
+              "p05": 64.83097878146269,
+              "median": 76.8964821560774,
+              "p95": 90.11644443492244
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "actual_25GHzOpt_25GHzRX": {
+          "delay_UI": 2.078125,
+          "delay_ps": 56.16554054054055,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 0.38702171000783636,
+          "one_sided_margin_UI": 0.011997704108448576,
+          "one_sided_margin_ps": 0.3242622732013129,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 27.34858889547851,
+              "median": 37.47716556363681,
+              "p95": 45.9007120321124
+            },
+            "1": {
+              "p05": 64.36553925895846,
+              "median": 76.25618515907409,
+              "p95": 90.09781115972132
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_graph_5GHzRX": {
+          "delay_UI": 2.65625,
+          "delay_ps": 71.79054054054055,
+          "train_errors": 54,
+          "errors": 549,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 51,
+          "worst_signed_margin_uAeq": -7.067611762809264,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.69501814287969,
+              "median": 44.76702874412054,
+              "p95": 66.38172741214711
+            },
+            "1": {
+              "p05": 60.91910011181055,
+              "median": 81.57662266447265,
+              "p95": 102.75061730371344
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 198,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 351,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_graph_25GHzRX": {
+          "delay_UI": 2.546875,
+          "delay_ps": 68.83445945945947,
+          "train_errors": 37,
+          "errors": 340,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 25,
+          "worst_signed_margin_uAeq": -12.397424934476902,
+          "one_sided_margin_UI": 0.0,
+          "one_sided_margin_ps": 0.0,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 5.40075177416391,
+              "median": 36.24809566404998,
+              "p95": 66.18778608284745
+            },
+            "1": {
+              "p05": 61.68606408003814,
+              "median": 90.54020283530235,
+              "p95": 118.83061105207605
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 34,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 122,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 178,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 6,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "ideal_25GHzOpt_25GHzRX": {
+          "delay_UI": 1.28125,
+          "delay_ps": 34.62837837837838,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 23.220716851968774,
+          "one_sided_margin_UI": 0.46419079480988296,
+          "one_sided_margin_ps": 12.545697157023866,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.00620130471443,
+              "median": 34.76872787003298,
+              "p95": 39.279178494426546
+            },
+            "1": {
+              "p05": 87.58535537441564,
+              "median": 96.34270042982456,
+              "p95": 99.99989324803099
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "ideal_static_25GHzRX": {
+          "delay_UI": 1.078125,
+          "delay_ps": 29.138513513513516,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 30.42724403772447,
+          "one_sided_margin_UI": 0.4708070835066946,
+          "one_sided_margin_ps": 12.724515770451207,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.001170269811535,
+              "median": 30.698881951012147,
+              "p95": 32.072741277989486
+            },
+            "1": {
+              "p05": 93.89814537209108,
+              "median": 98.89720835935535,
+              "p95": 99.99998507883106
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 1.2935465438855493,
+        "returned": 0.15610517460657017,
+        "net": 1.1374413692789793
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 0.7993406869736358,
+          "returned": 0.0,
+          "net": 0.7993406869736358
+        },
+        "VDD": {
+          "positive": 0.16215355248039975,
+          "returned": 0.0,
+          "net": 0.16215355248039975
+        },
+        "VREF": {
+          "positive": 0.026260331265769928,
+          "returned": 0.01181616724373976,
+          "net": 0.014444164022030167
+        },
+        "VD": {
+          "positive": 0.07265221239239439,
+          "returned": 0.006385598027814074,
+          "net": 0.06626661436458031
+        },
+        "VDB": {
+          "positive": 0.0721966191305387,
+          "returned": 0.006387639849043724,
+          "net": 0.06580897928149497
+        },
+        "VSET": {
+          "positive": 1.6281447896128483e-05,
+          "returned": 1.63278956419478e-05,
+          "net": -4.6447745819320115e-08
+        },
+        "VREGSET": {
+          "positive": 1.2729344037386105e-06,
+          "returned": 3.366766428501258e-09,
+          "net": 1.269567637310109e-06
+        },
+        "VGPFORCE": {
+          "positive": 0.07709458084839954,
+          "returned": 0.06985578565621324,
+          "net": 0.007238795192186306
+        },
+        "VGNFORCE": {
+          "positive": 0.08383100641211139,
+          "returned": 0.061643652567350986,
+          "net": 0.022187353844760404
+        }
+      }
+    }
+  ]
+}

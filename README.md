@@ -2,7 +2,7 @@
 
 An independent, open platform for experimental R&D methodology validation and teaching in digital, mixed-signal, transistor and physical ASIC design, starting with one pixel.
 
-**高速光发射 Driver（2026-11-10）**：[研究报告](docs/research/highspeed-workbench-20261110/index.html) · [二维与 Blender 三维](docs/research/highspeed-workbench-20261110/physical/index.html) · [送样数据与复现](docs/research/highspeed-workbench-20261110/reproduce.html)。单通道净 3.2 Gb/s 的 A/B/C 与 VCSEL 冻结帧复跑、新增 24 点预驱动实验、MicroLED 尺寸与 VCSEL 文献、旧宏 GDS 可视化及新 TX 布局方案。完整高速芯片的版图和光学实测仍待完成。
+**高速光发射 Driver（2026-11-10）**：[研究报告](docs/research/highspeed-workbench-20261110/index.html) · [位错诊断与 VCSEL 净 32 Gb/s](docs/research/highspeed-workbench-20261110/bit-errors.html) · [二维与 Blender 三维](docs/research/highspeed-workbench-20261110/physical/index.html) · [复现](docs/research/highspeed-workbench-20261110/reproduce.html)。涵盖 MicroLED A/B/C 的单通道净 3.2 Gb/s 电气与接收对照、VCSEL 十倍速率满帧复跑、前置驱动、历史 GDS 可视化和制造交付方案。完整高速芯片的版图和光学实测仍待完成。
 
 **项目进度总览（2026-11-09编制，证据截至2026-11-08）**：[专业报告PDF](docs/research/project-progress-review-20261108/project-progress-report.pdf) / [网页阅读版](docs/research/project-progress-review-20261108/index.html)。17页汇总照明PWM、MicroLED A/B/C、VCSEL、数字逻辑、实际版图/PEX、器件文献与教学平台；列明已验证范围、未过项及下一阶段进入条件。报告为现有证据综合，没有新增流片、硬件或光学通过声明。
 

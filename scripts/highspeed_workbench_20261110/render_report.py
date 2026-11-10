@@ -111,7 +111,7 @@ def html_report(stem, summary):
     body = body.replace("<table>", '<div class="table-scroll" role="region" aria-label="数据表" tabindex="0"><table>')
     body = body.replace("</table>", "</table></div>")
     if stem == "index":
-        top = ('<nav aria-label="章节"><a href="literature.html">原始文献</a>　'
+        top = ('<nav aria-label="章节"><a href="bit-errors.html">位错与速率决策</a>　<a href="literature.html">原始文献</a>　'
                '<a href="physical/index.html">物理工作台</a>　<a href="fabrication.html">制造交付</a>　'
                '<a href="reproduce.html">复现</a></nav>')
     else:
@@ -126,7 +126,7 @@ def html_report(stem, summary):
 def main():
     summary = json.loads((EVIDENCE / "replay-summary.json").read_text())
     waveform_plot(summary)
-    for stem in ["index", "literature", "fabrication", "reproduce"]:
+    for stem in ["index", "literature", "fabrication", "reproduce", "bit-errors"]:
         html_report(stem, summary)
 
 

@@ -79,4 +79,19 @@ python scripts/highspeed_workbench_20261110/render_report.py
   --asset-dir release-assets --group frozen-microled-metadata --root .
 </code></pre>
 <p>VCSEL 代表帧的原生数据复用前阶段已公开的 <code>vcsel-reference-microled-dynamics-20261029-s032-waveforms-001.tar.gz</code>。其中 <code>build/vcsel-robustness-20261029/frame-TT-r10/waveform.dat.gz</code> 解压后 SHA-256 与本轮 fresh 波形相同。gzip 外层哈希因封装时间不同而不同。完整历史矩阵、失败的中间重试、工具环境和 VM 继续保留在各原阶段。本轮无本地清理动作。</p>
-<p><a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/highspeed-workbench-20261110">当前阶段 Release</a> · <a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/vcsel-reference-microled-dynamics-20261029">VCSEL 归档 Release</a></p></main></body></html>
+<p><a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/highspeed-workbench-20261110">当前阶段 Release</a> · <a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/vcsel-reference-microled-dynamics-20261029">VCSEL 归档 Release</a></p>
+<h2 id="vcsel">位错诊断与 VCSEL 十倍目标</h2>
+<p>本次增量归档的 tag 为 <code>highspeed-bit-errors-vcsel-x10-20261110</code>。清单按案例列出历史 10 fF 参考输入、B 的门极旁路、新 VCSEL 满帧与数值对照。先恢复上节的 200 fF 与冻结 metadata，再恢复增量归档，保持仓库相对目录。VCSEL 3.2 Gb/s 原始控制仍取旧公开归档的 s032；MOS 模型按原锁恢复。本轮脚本保留现有 raw 证据，重跑使用空的输出目录。</p>
+<pre><code class="language-sh">python scripts/highspeed_workbench_20261110/microled_errors.py
+python scripts/highspeed_workbench_20261110/microled_errors_plot.py
+python scripts/highspeed_workbench_20261110/vcsel_x10_run.py --net 32 --edge-ps 20 --steps 40
+python scripts/highspeed_workbench_20261110/vcsel_x10_run.py --net 32 --edge-ps 20 --steps 80
+python scripts/highspeed_workbench_20261110/vcsel_x10_run.py --net 32 --edge-ps 5 --steps 40
+python scripts/highspeed_workbench_20261110/vcsel_x10_run.py --net 16 --edge-ps 20 --steps 40
+python scripts/highspeed_workbench_20261110/vcsel_x10_gate_control.py
+python scripts/highspeed_workbench_20261110/vcsel_x10_analyze.py baseline \
+  net16-edge20-s40 net32-edge20-s40 net32-edge5-s40 net32-edge20-s80 net32-ideal-gates-edge5-s40
+python scripts/highspeed_workbench_20261110/b_gate_bypass.py --run-id portable-bypass
+python scripts/highspeed_workbench_20261110/render_report.py
+</code></pre>
+<p><a href="bit-errors.html">位错诊断报告</a> · <a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/highspeed-bit-errors-vcsel-x10-20261110">阶段增量备份</a></p></main></body></html>

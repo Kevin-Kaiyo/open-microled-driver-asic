@@ -1,0 +1,89 @@
+{
+  "run": "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2",
+  "scope": "TT 27C, net 3.2 Gb/s. Replace five R/MOS input devices with complementary ideal 0/3.3V, 20ps controlled gate sources. Output MOS, LED, package, supplies, reference and fixed v2 RX are unchanged within each capacitance pair.",
+  "prior_attempt": "pair-r1 timed out in both cases at 300 s with repeated PWL sources. pair-r2 reuses the original data PWL through ideal controlled sources and uses a 600 s cap.",
+  "limit": "The ideal source supplies gate charge. This is a controlled upper-bound experiment, not a buildable replacement. No energy or reliability ranking.",
+  "ngspice": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******",
+  "script_sha256": "5af54eb65b9f2da495b8a9f7de3575e60882db628dbc6cafe990899f1c8e1f1c",
+  "inputs_sha256": {
+    "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/inputs/common.spice": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8",
+    "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/inputs/led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+    "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/inputs/pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/inputs/pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46",
+    "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/inputs/receiver.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+    "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/inputs/route_a.spice": "02ba88d9b7654b68b11b4db15bd8bbf316271123c8d377944335602763657a53",
+    "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/inputs/route_b.spice": "9572b2bc5f659391c48d3a69d3ab84cef8a2eebc37e582437803c2ddebd3c3c7",
+    "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/inputs/route_c.spice": "096ecd179eadf8193896b6c1177d845c666bbe93903ccf5a99020593c6da8b1d"
+  },
+  "stimulus_sha256": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+  "cases": [
+    {
+      "cap_fF": 200,
+      "rows": 5220637,
+      "original_deck_sha256": "0533d3c84df6ac4ce62ec736427d08cdaf97d05e961e5c71c503580665d4f8a6",
+      "native_sha256": "0590eade900f76ce0c098fe17ec39cb7e70c325f9180eaeb01261c612d9894f5",
+      "current_min_uA": 30.63400895039177,
+      "current_max_uA": 106.0476966204621,
+      "artifacts": {
+        "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/cases/TT-B-C200fF-S40/ngspice.log": "44431d6c2cf0e66fbdaf1b7b98539ea52ebc905dcf7efcb80bc194f202b66db0",
+        "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/cases/TT-B-C200fF-S40/route_b_gate_bypass.spice": "45641f5d327a7678fc93347c693c180cdcf4ee0bdbd7d3dbc363af19f7eb846b",
+        "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/cases/TT-B-C200fF-S40/testbench.spice": "1d3bcba8748482eb18d191a8291c2a2eca4ba684a87a84ed150beb86e7224879",
+        "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/cases/TT-B-C200fF-S40/waveform.dat.gz": "a36db9a54113a8d9e84a6ddd21b1e01571835b61cf18a3988f22109d0dfe2c6d"
+      },
+      "receiver_cases": {
+        "opt200ps_rx1GHz": {
+          "bit_errors": 1193,
+          "training_error_free": false,
+          "compared_bits": 4096,
+          "signed_margin_uAeq": -22.261910526239085,
+          "time_margin_ps": 0.0,
+          "delay_ps": 860.0,
+          "pass": false
+        },
+        "opt25ps_rx1GHz": {
+          "bit_errors": 1167,
+          "training_error_free": false,
+          "compared_bits": 4096,
+          "signed_margin_uAeq": -21.963603201931022,
+          "time_margin_ps": 0.0,
+          "delay_ps": 765.0,
+          "pass": false
+        }
+      }
+    },
+    {
+      "cap_fF": 10,
+      "rows": 5897626,
+      "original_deck_sha256": "f8ee23ee9313c740dabeeb590f019615cb79dc9f4ce4ce0015764f35fa7526ae",
+      "native_sha256": "d0000a016e74df29e6dcf5f28de3968a7b0d196c681ef4354773157e0cc82ba7",
+      "current_min_uA": 12.66513819851103,
+      "current_max_uA": 173.8151820360408,
+      "artifacts": {
+        "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/cases/TT-B-C10fF-S40/ngspice.log": "c48a5026d3d754531fa4a5391605694aad291ccd13e3019f918300726784077e",
+        "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/cases/TT-B-C10fF-S40/route_b_gate_bypass.spice": "45641f5d327a7678fc93347c693c180cdcf4ee0bdbd7d3dbc363af19f7eb846b",
+        "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/cases/TT-B-C10fF-S40/testbench.spice": "01d8b25d85eb53f3895b34e879676616cb53ea7b5aecf426bfc2f9cc99ceea64",
+        "build/highspeed-workbench-20261110/b-gate-bypass/pair-r2/cases/TT-B-C10fF-S40/waveform.dat.gz": "9bde4afa72dd749acc3c510102176275119a823d70e155c88245abdc31996629"
+      },
+      "receiver_cases": {
+        "opt200ps_rx1GHz": {
+          "bit_errors": 313,
+          "training_error_free": false,
+          "compared_bits": 4096,
+          "signed_margin_uAeq": -4.641677156357936,
+          "time_margin_ps": 0.0,
+          "delay_ps": 470.00000000000006,
+          "pass": false
+        },
+        "opt25ps_rx1GHz": {
+          "bit_errors": 0,
+          "training_error_free": true,
+          "compared_bits": 4096,
+          "signed_margin_uAeq": 10.491011213455778,
+          "time_margin_ps": 73.32849391552797,
+          "delay_ps": 375.0,
+          "pass": false
+        }
+      }
+    }
+  ]
+}
