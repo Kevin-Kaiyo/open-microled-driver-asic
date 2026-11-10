@@ -1,0 +1,147 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+:root{--ink:#213e49;--teal:#236d73;--muted:#5b727d;--line:#d3e0df;--light:#edf4f3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#eef3f2;color:var(--ink);font:16px/1.72 "PingFang SC","Noto Sans CJK SC",Arial,sans-serif}header{background:#203e49;color:#fff;padding:24px max(22px,calc((100vw - 1060px)/2));font-size:14px;letter-spacing:.06em}main{max-width:1120px;margin:auto;background:white;padding:24px 44px 64px}h1,h2,h3{font-family:"Avenir Next","PingFang SC",sans-serif;line-height:1.35;color:var(--teal)}h1{font-size:clamp(29px,4vw,42px)}h2{font-size:28px}h3{font-size:20px;margin-top:24px}p{margin:0 0 16px}section{padding:28px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}a{color:var(--teal);overflow-wrap:anywhere;text-underline-offset:3px}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}details{padding:18px 22px;background:var(--light);margin:22px 0}summary{cursor:pointer;font-weight:650}.toc{columns:2;padding-left:20px}.toc li{break-inside:avoid;padding:4px 0}.kicker{font:13px/1.6 "Avenir Next","PingFang SC",sans-serif;color:var(--muted);letter-spacing:.08em}.note{padding:16px 18px;background:var(--light);border-left:3px solid #6c9e9f;color:#49636e}.table-scroll{overflow:auto;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.6}td,th{padding:10px 11px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{background:var(--light);color:var(--teal)}figure{margin:22px 0}img{max-width:100%;height:auto;display:block;margin:auto}figcaption{font-size:13px;line-height:1.6;color:var(--muted);margin-top:10px}code{overflow-wrap:anywhere;font-size:.9em}li{margin:8px 0}@media(max-width:680px){main{padding:18px 18px 40px}.toc{columns:1}h2{font-size:25px}table{min-width:560px}section{padding:22px 0}}@media print{body{background:#fff;font-size:11pt}main{padding:0}header,nav,details{display:none}section{break-after:page}tr,figure{break-inside:avoid}h2,h3{break-after:avoid}table{font-size:9pt}.note,th{print-color-adjust:exact}}
+</style><title>蓝光发光器件、波长与速度的公开证据</title></head><body><main><nav><a href="index.html">返回阶段技术报告</a></nav><h1 id="_1">蓝光发光器件、波长与速度的公开证据</h1>
+<p>2026-11-10 核查 · 实验性研发方法与教学 · <a href="../../../evidence/blue-emitter-speed-review-20261110/sources.json">证据台账</a></p>
+<p><strong>蓝光 MicroLED 和蓝光 VCSEL 都有公开实例，但能否取得样品、能否达到指定通信速率，是两项独立问题。更短波长会提高光波本身的振荡频率，不能直接提高 Driver 可调制的数据速率。</strong> 对本项目，MicroLED 单通道净 3.2 Gb/s 与 VCSEL 单通道净 32 Gb/s 应保留为研发目标。它们超出了部分现有电路及假设模型的能力，却不构成这两类器件的行业速度上限。</p>
+<h2 id="1">1. 公开的“选择”处于什么阶段</h2>
+<p>下表用于辨别可研究的器件类别与资料完整性。它不建立商业产品排名，也不表示本项目已取得或验证这些器件。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>公开对象</th>
+<th>已核实的事实</th>
+<th>取得方式与当前缺口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>蓝光 MicroLED 产品资料 · Aledia NOVA BLUE</td>
+<td>官方资料列出 3.5 × 3.5 µm 芯片，内部为单根约 1 µm 有源区纳米线。两者不是同一个尺寸定义</td>
+<td>厂商提供联系订购入口。公开资料面向显示，未给通信 S 参数、PRBS/BER 或高速驱动模型，库存和交期未核实。<a href="https://www.aledia.com/app/uploads/2024/10/Nova-Blue-microLED-1.pdf">S01</a></td>
+</tr>
+<tr>
+<td>可定制 GaN MicroLED · QubeDot</td>
+<td>厂商介绍尺寸 1–1000 µm、波长覆盖 290–640 nm。ODT 页面另称调制可达 500 MHz、像素可小至 5 µm</td>
+<td>属于定制和询样路径。500 MHz 是网页规格表述，未核实 −3 dB 定义、偏置及 BER，不能换算成已保证的 3.2 Gb/s。<a href="https://qubedot.com/gan/">S02a</a> · <a href="https://qubedot.com/gan/optical-data-transfer/">S02b</a></td>
+</tr>
+<tr>
+<td>蓝光 VCSEL · 日亚公开样机</td>
+<td>官方 2025-06-18 展会公告列出 442 nm、1 mW，并明确标记 prototype</td>
+<td>确认蓝光 VCSEL 已有厂商样机。公告没有量产料号、带宽、调制电流和 BER，需询样与电光数据后才能建模。<a href="https://www.nichia.co.jp/en/newsroom/2025/2025_061801.html">S03</a></td>
+</tr>
+<tr>
+<td>蓝紫光 VCSEL · UCSB/KAUST 研究器件</td>
+<td>CLEO 2016 报告 419 nm、nonpolar InGaN/GaN 量子阱、隧穿结接触，测得约 1 GHz</td>
+<td>研究样品。作者博士论文 Fig.11 对同类 10 µm 孔径器件明确说明读到的 1 GHz 受 APD 响应限制；不能把它写成器件固有极限，也未证明净 32 Gb/s。<a href="https://doi.org/10.1364/CLEO_SI.2016.STh1L.2">S04a</a> · <a href="https://escholarship.org/uc/item/0js053zj">S04b，Fig.11</a></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>蓝光激光二极管不能一概叫蓝光 VCSEL。</strong> 例如 2025 年 InGaN 量子势垒的蓝光 LD 论文采用 300/500 µm 腔长、2 µm 脊宽，报告 &gt;8 GHz 本征带宽和 36.5 Gb/s 系统结果。这属于另一种激光器结构，不能用它替代 442 nm VCSEL 的模型或认证蓝光 VCSEL 已达到同速率。本轮只核查该论文摘要，具体调制格式、BER 和净速率不据此补写。<a href="https://doi.org/10.1002/lpor.202401751">S05</a></p>
+<h2 id="2">2. 同一批样品可以说明什么</h2>
+<p>Dai 等 2025 年的 Table 1、Table 2 提供同一研究内的尺寸比较。以下只摘录最高调制带宽和最高 OOK 报告速率，偏置可能不同。通信距离为 0.3 m，驱动电流密度和摆幅经优化，判据为 3.8 × 10⁻³ 的 FEC 门槛。表内数据来自论文，不是本项目仿真，也不是对应尺寸的普适最高值。<a href="https://opg.optica.org/col/abstract.cfm?uri=col-23-8-082501">S06，Table 1–2、Fig.7</a></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>圆形像素直径 µm</th>
+<th style="text-align: right;">10</th>
+<th style="text-align: right;">20</th>
+<th style="text-align: right;">40</th>
+<th style="text-align: right;">50</th>
+<th style="text-align: right;">60</th>
+<th style="text-align: right;">80</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>蓝光最大带宽 MHz</td>
+<td style="text-align: right;">360</td>
+<td style="text-align: right;">332</td>
+<td style="text-align: right;">283</td>
+<td style="text-align: right;">258</td>
+<td style="text-align: right;">229</td>
+<td style="text-align: right;">163</td>
+</tr>
+<tr>
+<td>蓝光最高 OOK 速率 Gb/s</td>
+<td style="text-align: right;">0.890</td>
+<td style="text-align: right;">1.032</td>
+<td style="text-align: right;">0.799</td>
+<td style="text-align: right;">0.741</td>
+<td style="text-align: right;">0.616</td>
+<td style="text-align: right;">0.580</td>
+</tr>
+<tr>
+<td>紫光最大带宽 MHz</td>
+<td style="text-align: right;">336</td>
+<td style="text-align: right;">313</td>
+<td style="text-align: right;">228</td>
+<td style="text-align: right;">203</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: right;">168</td>
+</tr>
+<tr>
+<td>紫光最高 OOK 速率 Gb/s</td>
+<td style="text-align: right;">1.095</td>
+<td style="text-align: right;">1.347</td>
+<td style="text-align: right;">0.856</td>
+<td style="text-align: right;">0.782</td>
+<td style="text-align: right;">0.768</td>
+<td style="text-align: right;">0.694</td>
+</tr>
+</tbody>
+</table></div>
+<p>10 µm 像素有最高带宽，但 20 µm 像素得到最高链路速率。20 µm 的紫光带宽低于蓝光，其链路速率却更高。该研究提示，应同时保留光功率和接收信噪比，不能仅按尺寸、颜色或单个带宽数值选型。蓝光样品生长于硅，紫光样品生长于蓝宝石，这也不是只改变波长的因果实验。最高速率按该论文的接收/FEC 门槛报告，不等同于无 FEC 的净吞吐；本项目未重建这套光链路。</p>
+<p>另外两组证据覆盖了更高速的研究样品，但测试条件差别明显。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>研究样品</th>
+<th>公开性能及条件</th>
+<th>对当前 Driver 研究的意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 µm 直径蓝光 GaN MicroLED，Illinois 等 2026 年录用论文</td>
+<td>标题给出 2.75 GHz，大学作者机构摘要给出 15 kA/cm² 时 &gt;2.7 GHz；研究覆盖直径 2–100 µm。全文及逐尺寸数据未取得</td>
+<td>证明蓝光 GHz 级器件已有测量依据。按圆形有源区计算，该电流密度对应约 2.95 mA，远高于本项目 25–100 µA 的假设比较范围，不能直接移植带宽。<a href="https://experts.illinois.edu/en/publications/scaling-of-gan-micro-leds-with-a-275-ghz-bandwidth-for-high-speed/">S07</a></td>
+</tr>
+<tr>
+<td>Pezeshki 等 CS MANTECH 2025 蓝紫光 GaN MicroLED</td>
+<td>Fig.4 光谱峰值图读约 425 nm，约 6–7 µm 有效注入口径。外部 50 Ω 激励及一抽头 FIR，10 Gb/s NRZ、约 10⁻¹⁰ BER；约 1 pJ/bit 只按 LED 电功耗估算。12 Gb/s 仅报告开眼</td>
+<td>说明某些小口径器件可超过本项目速率目标。不能把外部测试仪器的速率、能量当成当前集成 Driver 的能力。论文 16 nm ASIC 集成部分另在 3.3 Gb/s/路测试。<a href="https://csmantech.org/wp-content/uploads/2025/05/10A.1-Final.2025.pdf">S08，Fig.2、4–7</a></td>
+</tr>
+<tr>
+<td>850 nm 氧化孔径 VCSEL，Broadcom 2026 年论文</td>
+<td>9 mA 时 &gt;35 GHz，106.25 GBd PAM4 对应 212.5 Gb/s 线路位。光眼测量使用 7 抽头 TX FIR 和 25 抽头接收分析仪 FFE；文中另报告约 10⁻⁸ 未纠前 BER 与 50 m 链路 9 小时无不可纠帧</td>
+<td>证明红外 VCSEL 可显著超过 32 Gb/s 目标。该证据不能挪用到蓝光 VCSEL，也不能表述为项目已完成 212.5 Gb/s 芯片。论文所述约 1 pJ/bit 为 NPO 方案估算。<a href="https://doi.org/10.3390/photonics13010090">S09，§1、§3、Fig.4–6</a></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="3">3. 为什么波长更短，电光响应不一定更快</h2>
+<h3 id="_2">光载波与数据包络是不同的频率</h3>
+<p>按 <code>f光=c/λ</code> 计算，450 nm 的光载波约为 666 THz，850 nm 约为 353 THz。Driver 调制的是平均光强包络。每一个电气比特内部已经包含数千至数十万个光振荡周期，电路无需逐个跟随光周期。将波长从 850 nm 换到 450 nm，不会自动把 10 Gb/s 的驱动电路变为 19 Gb/s。这是由光频公式与直接强度调制的定义得到的计算解释。</p>
+<h3 id="microled">MicroLED 由复合、充电与光链路共同限制</h3>
+<p>一个教学用的小信号分解为</p>
+<pre><code class="language-text">输入数据 → Driver 边沿/输出阻抗 → 封装 RLC + 结电容
+        → 量子阱载流子复合 → 光耦合/光纤 → PD/TIA → 判决
+</code></pre>
+<p>若在一个偏置附近采用 <code>R(n)=An+Bn²+Cn³</code> 的简化复合模型，微分寿命为 <code>τdiff≈1/(A+2Bn+3Cn²)</code>，单极点近似带宽为 <code>1/(2π·τdiff)</code>。其中 A、B、C 是该材料与工作点的复合系数，不能与本项目电路路线 A/B/C 混同。增加电流密度可能缩短寿命，同时产生效率下降和发热。缩小尺寸可减小结电容，但电极接触、电流扩展电阻、侧壁损伤和固定焊盘电容可能抵消收益。Illinois 的阻抗实验在小尺寸器件中观察到了接触/扩展电阻和 50 Ω 失配的代价。<a href="https://doi.org/10.1109/LED.2026.3745737">S07</a></p>
+<p>波长改变通常伴随材料组分、量子阱、晶向和极化场变化。它可以间接改变复合过程，但只有同一结构族、匹配偏置/温度并测量动态后才能判断变化方向。蓝紫光和蓝光的公开数据也提示，快的光响应必须同时产生足够可接收的光信号。</p>
+<h3 id="vcsel">VCSEL 还受增益、光子寿命与弛豫振荡影响</h3>
+<p>阈值以上的 VCSEL 应用载流子与光子耦合模型；仅用 LED 的一阶发光延迟不够。微分增益、偏置与阈值之差、腔内光子密度、阻尼、镜面/内损耗、温升与寄生共同影响调制响应。Broadcom 报告的改进措施包括微分增益、载流子输运、腔与增益峰失谐、热阻和结寄生优化。改变波长并不自动完成这些改进。<a href="https://doi.org/10.3390/photonics13010090">S09，§2–3</a></p>
+<h3 id="pjbit">波长也不能单独决定 pJ/bit</h3>
+<p>450 nm 与 850 nm 的单光子能量分别约 2.76 eV 和 1.46 eV。对量子效率为 1 的理想探测器，响应度 <code>RPD=qλ/(hc)</code> 分别约 0.363 A/W 和 0.686 A/W。相同光功率下，短波长意味着较少光子数；真实 PD 的量子效率、耦合、噪声也随波长改变。发射端的电压、电流、效率和 VCSEL 偏置功耗仍要计入。因此比较蓝光与红外必须冻结<strong>接收判决目标</strong>，并使用各自真实光路/接收器条件，不能只冻结一个光功率或电流数值。</p>
+<h2 id="4">4. 如何把器件证据用到下一轮仿真</h2>
+<p><strong>保留三个独立负载族。</strong> 现有 20 µm MicroLED 模型来自黄光文献的特定 I–V 数据和动态假设，不应重命名为蓝光模型。蓝光 MicroLED 建立单独的来源编号和 DC/动态参数表。蓝光 VCSEL 目前只有研究证据与样机公告，继续列为待获取动态数据的探索对象。净 32 Gb/s 的 VCSEL 研究继续使用明确标注的 850 nm 模型族，同时用更高速红外器件的公开数据建立候选模型，不能只把旧模型时间常数缩小十倍。</p>
+<p><strong>速度极限应表达为带条件的可用区域。</strong> 对每一套冻结的 <code>I–V、P–I、C(V,I)、S11、S21、温度、封装、接收器</code>，从低速逐步增加速率，记录误码数/测试位数、幅度余量、眼宽、器件峰值端压和全部电源能量。在首次失败附近细化扫描并检查非单调行为。随后在频率边界附近独立扫 C、L、R、偏置和温度，才能给出“该电路在这些假设下支持多大的电容/封装负载”。一个 <code>RC</code> 截止频率或一个通过点都不足以定义最大负载。</p>
+<p>没有实测的参数应继续报告敏感性区间。在无噪声、固定短帧仿真中，零错误只能说明这一帧的确定性接收通过，不能估计真实极低 BER。目标调整也应区分两层：<strong>低速先建立可复现的通过点，高速目标用于测量改进距离。</strong> 这会让每一次预驱动、输出级或器件模型的修改都有清楚的收益与代价。</p>
+<h2 id="5">5. 对研发方向的建议</h2>
+<ol>
+<li><strong>先补齐可驱动器件的规格，而后决定颜色和尺寸。</strong> 下一轮的样品资料清单应包括 DC I–V/P–I、有效注入口径和焊盘尺寸、偏置/温度下的复数 S11/S21、绝对最大电流/反向电压以及封装模型。公开蓝光产品和实验室样品可作为不同获取路径。厂商宣布可提供某器件，不等于它已经满足高速通信需求。</li>
+<li><strong>把当前项目做成能回答“哪里限制速度”的电光联合验证平台。</strong> 主线交付物为速率—电容—偏置的通过/失败边界、可复现原始波形与模型来源。MicroLED 的低电流、小摆幅并行路径和 VCSEL 的高速差分调制路径分别迭代。将蓝光 VCSEL 放在器件数据成熟度较低的探索分支，有数据后再进入同口径比较。</li>
+<li><strong>按有效吞吐和系统能量决定后续投入。</strong> 通过接收、温度/寄生和电应力筛查后，才比较 pJ/有效位。文献最高速率用于验证技术空间，不直接作为当前电路应达到的性能。项目现阶段最有价值的成果，是可追溯的失败定位、合理的设计边界和下一轮能验证的电路假设。</li>
+</ol>
+<h2 id="_3">原图和复核边界</h2>
+<p>公开报告采用事实表与独立计算；原文图像的再发布许可未确认。已下载并目视检查 Aledia 两页产品资料及 Pezeshki 原文第 2–3 页，原图与解释保存在本地 <code>build/blue-emitter-speed-review-20261110/literature/</code>，不作为公开 Release 资料。Dai 数据逐项核对出版社在线 Table 1–2，全文页面获取不稳定；419 nm VCSEL 的 APD 限制由作者学位论文检索可见的 Fig.11 图注确认，完整 PDF 下载受到站点访问限制，未完成原图目视复核。Illinois 新论文目前核查至作者机构摘要，未取得逐尺寸原始数据。以上限制保留在证据台账中。</p></main></body></html>

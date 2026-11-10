@@ -1,0 +1,196 @@
+{
+  "schema": "receiver-counterfactual-controls-v1",
+  "scope": "Synthetic prescribed waveforms only. No new SPICE, device, noise, BER, startup, or energy validation.",
+  "signal": {
+    "NRZ_levels_uAeq": [
+      25,
+      100
+    ],
+    "PAM4_levels_uAeq": [
+      25,
+      50,
+      75,
+      100
+    ],
+    "ramp_line_bit_UI": 0.04,
+    "grid_per_line_bit_UI": 64,
+    "note": "Ramp scales with UI only in this mathematical receiver control. Actual transistor sweep retains 20 ps input edges and solves each rate anew."
+  },
+  "counterfactual": "Replace samples at or after 576 line-bit UI by 62.5 + 300*sin(t/bit_UI) uAeq. All earlier samples and all labels remain unchanged.",
+  "rates_Gbps": [
+    0.4,
+    3.2
+  ],
+  "numpy_version": "2.5.3",
+  "source_hashes": {
+    "scripts/blue_emitter_speed_20261110/receiver_controls.py": "a7a2e71377f854b6ea252a695d22b0690ab386fc28e3453831779b14d9df7eaf",
+    "scripts/blue_emitter_speed_20261110/analyze.py": "e3fba03245a7b538b640073a4d1f72f9292da112070b8d37db273ba89dd9fcc6",
+    "scripts/fair_driver_v1/receiver_equal_latency_v2.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0"
+  },
+  "counterfactual_checks": [
+    {
+      "modulation": "NRZ",
+      "synthetic_rate_Gbps": 0.4,
+      "baseline": {
+        "train_errors": 0,
+        "errors": 0,
+        "delay_bit_UI": 0.515625,
+        "delay_ps": 1114.864864864865,
+        "worst_signed_margin_uAeq": 37.5,
+        "one_sided_margin_bit_UI": 0.4956249999999644,
+        "one_sided_margin_symbol_UI": 0.4956249999999644,
+        "one_sided_margin_ps": 1071.6216216215448,
+        "research_margin_pass": true
+      },
+      "validation_only_counterfactual": {
+        "train_errors": 0,
+        "errors": 1988,
+        "delay_bit_UI": 0.515625,
+        "delay_ps": 1114.864864864865,
+        "worst_signed_margin_uAeq": -299.9995346554841,
+        "one_sided_margin_bit_UI": 0.0,
+        "one_sided_margin_symbol_UI": 0.0,
+        "one_sided_margin_ps": 0.0,
+        "research_margin_pass": false
+      },
+      "checks": {
+        "known_signal_zero_training_and_validation_errors": true,
+        "known_signal_passes_research_receiver_margin": true,
+        "all_prevalidation_samples_bitwise_unchanged": true,
+        "counterfactual_changes_validation_errors": true,
+        "selected_training_phase_unchanged": true,
+        "training_errors_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "modulation": "NRZ",
+      "synthetic_rate_Gbps": 3.2,
+      "baseline": {
+        "train_errors": 0,
+        "errors": 0,
+        "delay_bit_UI": 0.515625,
+        "delay_ps": 139.35810810810813,
+        "worst_signed_margin_uAeq": 37.5,
+        "one_sided_margin_bit_UI": 0.4956249999999644,
+        "one_sided_margin_symbol_UI": 0.4956249999999644,
+        "one_sided_margin_ps": 133.9527027026931,
+        "research_margin_pass": true
+      },
+      "validation_only_counterfactual": {
+        "train_errors": 0,
+        "errors": 1988,
+        "delay_bit_UI": 0.515625,
+        "delay_ps": 139.35810810810813,
+        "worst_signed_margin_uAeq": -299.9995346554841,
+        "one_sided_margin_bit_UI": 0.0,
+        "one_sided_margin_symbol_UI": 0.0,
+        "one_sided_margin_ps": 0.0,
+        "research_margin_pass": false
+      },
+      "checks": {
+        "known_signal_zero_training_and_validation_errors": true,
+        "known_signal_passes_research_receiver_margin": true,
+        "all_prevalidation_samples_bitwise_unchanged": true,
+        "counterfactual_changes_validation_errors": true,
+        "selected_training_phase_unchanged": true,
+        "training_errors_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "modulation": "PAM4",
+      "synthetic_rate_Gbps": 0.4,
+      "baseline": {
+        "train_errors": 0,
+        "errors": 0,
+        "delay_bit_UI": 0.65625,
+        "delay_ps": 1418.918918918919,
+        "worst_signed_margin_uAeq": 12.5,
+        "one_sided_margin_bit_UI": 0.6212797619047552,
+        "one_sided_margin_symbol_UI": 0.3106398809523776,
+        "one_sided_margin_ps": 1343.307593307579,
+        "research_margin_pass": true
+      },
+      "validation_only_counterfactual": {
+        "train_errors": 0,
+        "errors": 2039,
+        "delay_bit_UI": 0.65625,
+        "delay_ps": 1418.918918918919,
+        "worst_signed_margin_uAeq": -324.99893170754865,
+        "one_sided_margin_bit_UI": 0.0,
+        "one_sided_margin_symbol_UI": 0.0,
+        "one_sided_margin_ps": 0.0,
+        "research_margin_pass": false
+      },
+      "checks": {
+        "known_signal_zero_training_and_validation_errors": true,
+        "known_signal_passes_research_receiver_margin": true,
+        "all_prevalidation_samples_bitwise_unchanged": true,
+        "counterfactual_changes_validation_errors": true,
+        "selected_training_phase_unchanged": true,
+        "training_errors_unchanged": true
+      },
+      "passed": true
+    },
+    {
+      "modulation": "PAM4",
+      "synthetic_rate_Gbps": 3.2,
+      "baseline": {
+        "train_errors": 0,
+        "errors": 0,
+        "delay_bit_UI": 0.65625,
+        "delay_ps": 177.36486486486487,
+        "worst_signed_margin_uAeq": 12.5,
+        "one_sided_margin_bit_UI": 0.6212797619047552,
+        "one_sided_margin_symbol_UI": 0.3106398809523776,
+        "one_sided_margin_ps": 167.91344916344738,
+        "research_margin_pass": true
+      },
+      "validation_only_counterfactual": {
+        "train_errors": 0,
+        "errors": 2039,
+        "delay_bit_UI": 0.65625,
+        "delay_ps": 177.36486486486487,
+        "worst_signed_margin_uAeq": -324.99893170754865,
+        "one_sided_margin_bit_UI": 0.0,
+        "one_sided_margin_symbol_UI": 0.0,
+        "one_sided_margin_ps": 0.0,
+        "research_margin_pass": false
+      },
+      "checks": {
+        "known_signal_zero_training_and_validation_errors": true,
+        "known_signal_passes_research_receiver_margin": true,
+        "all_prevalidation_samples_bitwise_unchanged": true,
+        "counterfactual_changes_validation_errors": true,
+        "selected_training_phase_unchanged": true,
+        "training_errors_unchanged": true
+      },
+      "passed": true
+    }
+  ],
+  "scale_checks": [
+    {
+      "modulation": "NRZ",
+      "checks": {
+        "same_training_phase_in_line_bit_UI": true,
+        "same_normalized_line_bit_time_margin": true,
+        "same_normalized_symbol_time_margin": true,
+        "absolute_time_margin_scales_by_inverse_rate": true
+      },
+      "passed": true
+    },
+    {
+      "modulation": "PAM4",
+      "checks": {
+        "same_training_phase_in_line_bit_UI": true,
+        "same_normalized_line_bit_time_margin": true,
+        "same_normalized_symbol_time_margin": true,
+        "absolute_time_margin_scales_by_inverse_rate": true
+      },
+      "passed": true
+    }
+  ],
+  "all_passed": true,
+  "limits": "The controls detect validation-waveform leakage and normalization inconsistency for these signals. They do not prove all receiver software correct or characterize the simulated drivers."
+}

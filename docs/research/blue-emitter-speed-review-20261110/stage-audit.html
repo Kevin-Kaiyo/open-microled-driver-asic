@@ -1,0 +1,124 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+:root{--ink:#213e49;--teal:#236d73;--muted:#5b727d;--line:#d3e0df;--light:#edf4f3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#eef3f2;color:var(--ink);font:16px/1.72 "PingFang SC","Noto Sans CJK SC",Arial,sans-serif}header{background:#203e49;color:#fff;padding:24px max(22px,calc((100vw - 1060px)/2));font-size:14px;letter-spacing:.06em}main{max-width:1120px;margin:auto;background:white;padding:24px 44px 64px}h1,h2,h3{font-family:"Avenir Next","PingFang SC",sans-serif;line-height:1.35;color:var(--teal)}h1{font-size:clamp(29px,4vw,42px)}h2{font-size:28px}h3{font-size:20px;margin-top:24px}p{margin:0 0 16px}section{padding:28px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}a{color:var(--teal);overflow-wrap:anywhere;text-underline-offset:3px}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}details{padding:18px 22px;background:var(--light);margin:22px 0}summary{cursor:pointer;font-weight:650}.toc{columns:2;padding-left:20px}.toc li{break-inside:avoid;padding:4px 0}.kicker{font:13px/1.6 "Avenir Next","PingFang SC",sans-serif;color:var(--muted);letter-spacing:.08em}.note{padding:16px 18px;background:var(--light);border-left:3px solid #6c9e9f;color:#49636e}.table-scroll{overflow:auto;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.6}td,th{padding:10px 11px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{background:var(--light);color:var(--teal)}figure{margin:22px 0}img{max-width:100%;height:auto;display:block;margin:auto}figcaption{font-size:13px;line-height:1.6;color:var(--muted);margin-top:10px}code{overflow-wrap:anywhere;font-size:.9em}li{margin:8px 0}@media(max-width:680px){main{padding:18px 18px 40px}.toc{columns:1}h2{font-size:25px}table{min-width:560px}section{padding:22px 0}}@media print{body{background:#fff;font-size:11pt}main{padding:0}header,nav,details{display:none}section{break-after:page}tr,figure{break-inside:avoid}h2,h3{break-after:avoid}table{font-size:9pt}.note,th{print-color-adjust:exact}}
+</style><title>阶段成果审计与下一步研发方向</title></head><body><main><nav><a href="index.html">返回阶段技术报告</a></nav><h1 id="_1">阶段成果审计与下一步研发方向</h1>
+<p><strong>审计日期 2026-11-10 · 对象为当前仓库保存的设计与验证证据</strong></p>
+<p>本节检查已有成果的证据层级，并给出下一轮实验的进入条件。数值来自现有 JSON、模型卡、版图清单及报告源文件。本节没有新增流片、光学测试或物理签核，也没有把本轮扫速结果提前计入历史成果。</p>
+<h2 id="1">1. 目前最有价值的成果是什么</h2>
+<p>项目已经建立一条能够保留失败、冻结输入并复算结果的研发路径。显示方向覆盖单像素数字控制、参考源、保护、真实模拟版图寄生和有限角落电气回归。通信方向建立 A 电压驱动、B 电流转向、C PAM4 与 VCSEL 偏置调制的晶体管平台，能够将预驱动、电气负载、发光响应和接收端逐级旁路，检查失败发生在哪里。</p>
+<p>这套平台的价值是支持设计判断。现有光通信结果还不能给出可购买器件的保证速率、实际 BER 或最终产品能耗。当前最需要的进步，是把假设负载下的电路能力转成有数据边界的设计包络，再验证一版真实可实现的高速信号路径。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>研究分支</th>
+<th>已有定量结果</th>
+<th>现阶段证据与限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>显示／照明 PWM</td>
+<td>100 µA 设定，名义 99.7335 µA；144 点 DC 等效矩阵误差 −4.436%～+1.985%；27 个选定电气 case 通过</td>
+<td>有 39 MOS 实际宏 PEX 与外部补偿回归。依赖外部 0.5 V 基准、规定电源顺序及 FAULT／PERMIT。尚无可编程 mA 级范围或实测光学灰度</td>
+</tr>
+<tr>
+<td>PWM 数字控制</td>
+<td>1 MHz 时钟、256 时间槽，载波 3.90625 kHz；10 RTL + 10 门级案例、9 角 SDF 记录</td>
+<td>当前为 8 bit 时间量化。1 MHz 不能作为已验证 PWM 载波；最高时钟与最高载波未完成搜索</td>
+</tr>
+<tr>
+<td>MicroLED A/B/C 历史锚点</td>
+<td>净 3.2 Gb/s 固定 4,096 位验证段，历史接收规则下错误分别 844 / 1,440 / 1,399 位</td>
+<td>同一冻结 20 µm 静态 I–V、200 fF、200 ps 光极点和 1 GHz RX；三条现实现均未过此筛查。新统一选相规则下 A 为 846 错，原生电路波形未改变</td>
+</tr>
+<tr>
+<td>MicroLED B 隔离对照</td>
+<td>10 fF、25 ps 光极点、5 GHz RX，独立训练后可零错；联合选相单侧余量 73.02 ps</td>
+<td>条件性设计空间。未达到历史 100 ps 门槛；假设电容与光寿命仍未校准</td>
+</tr>
+<tr>
+<td>VCSEL r10</td>
+<td>原净 3.2 Gb/s 典型帧零错；提高到净 32 Gb/s，原 20 ps 输入边沿下为 1,462 / 4,096 位错</td>
+<td>850 nm 图读代理和 GF180 实际网表。净 32 Gb/s 是目标，尚未通过；历史快冷启动超限另行保留</td>
+</tr>
+<tr>
+<td>本轮速率／负载扫描</td>
+<td>29 行记录，包含 18 次新 SPICE 与 11 行已核验的复用结果。最高已测综合通过点为 A 净 0.8、B 净 0.4、VCSEL 净 4.8 Gb/s；C 未检出综合通过点</td>
+<td>仅扫描网格的 TT 研究包络。零错最高点分别为 1.6／0.8／6.4 Gb/s；这些更高速点余量未过。C 净 0.2 Gb/s 接收余量可过，但体结应力仍不过</td>
+</tr>
+<tr>
+<td>物理设计与可视化</td>
+<td>显示模拟宏、数字宏及共同顶层有实际物理证据；高速历史 A/B 核心有 GDS、DRC/LVS/PEX 与 Blender</td>
+<td>新 A/B/C 完整候选、VCSEL r10 没有对应新版图 PEX；Blender 为几何教学展示，未做电磁或热场求解</td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="../../../evidence/pwm-reference-v2/20261024/final-summary.json">显示参考／保护最终摘要</a> · <a href="../../../evidence/control-v3/summary.json">数字控制摘要</a> · <a href="../../../evidence/highspeed-workbench-20261110/replay-summary.json">A/B/C 与 VCSEL 冻结复跑</a> · <a href="../../../evidence/highspeed-workbench-20261110/microled-errors-controls.json">位错旁路实验</a> · <a href="../../../evidence/highspeed-workbench-20261110/vcsel-x10-summary.json">VCSEL 十倍目标</a></p>
+<p><a href="../../../evidence/blue-emitter-speed-review-20261110/speed-sweep-all.json">本轮完整扫速与五组半步长复验</a>中，五组粗／细步长的综合通过判定一致，最大时间余量差约 0.247 ps、幅度差约 0.00755 µAeq、正向能量相对差约 0.00359%。另有<a href="../../../evidence/blue-emitter-speed-review-20261110/receiver-controls.json">接收训练反事实控制</a>，独立合成 NRZ／PAM4 波形中破坏验证段未改变训练相位，并通过时间归一化检查；该控制仅检查接收分析方法，不增加器件性能证据。</p>
+<h2 id="2">2. 显示方向还差什么</h2>
+<p>参考源以 <code>0.5 V / 5 kΩ ≈ 100 µA</code> 建立目标电流。最终补偿采用片外 150 pF 对地支路、10 Ω 阻尼，以及 100 Ω／15 nF 参考供电滤波。12 个选定扰动顶点的最大电流偏离为 8.873%，最长恢复为 2.520 µs；恢复定义为回到原基线 ±0.5%，预算 5 µs。停钟故障的 TT 案例约 205.78 ns 达到电流安全条件。最低灰度 1 µs 脉冲积分为 99.6333 pC，相对同一网络 DC × 1 µs 的电荷误差为 −0.1005%。<a href="../../../evidence/pwm-reference-v2/20261024/final-summary.json">最终电气摘要</a></p>
+<p>这些结果支持受控条件下的单像素验证。它们没有建立任意电源顺序、自主 POR／欠压互锁、统计失配精度、阵列均匀性或实际发光功率。最新片外补偿也没有自动更新旧共同顶层的外接网络合同，后续必须锁定一致版本再联仿。</p>
+<p>用户给出的 45 µm、0.15～7.33 mA／像素、2.5 mA 时约 3.2 V、最高 1 MHz PWM，继续作为待核实的新研究工况。相对 100 µA，2.5 mA 和 7.33 mA 分别增加到 25 倍和 73.3 倍。1 MHz 载波加 8 bit 计数 PWM 需要 256 MHz 时钟、3.90625 ns 最短时间槽。此时既要看平均电流，也要看最短脉冲电荷、边沿残流、过冲及热约束。仅放大输出 MOS 无法继承旧验证结论。<a href="../../pwm.md">PWM 合同</a> · <a href="../project-progress-review-20261108/index.html">显示阶段总结</a></p>
+<h2 id="3">3. 高速报告必须一直保留的五个边界</h2>
+<h3 id="31-microled">3.1 当前 MicroLED 电气负载不是已校准的蓝光器件</h3>
+<p>静态 I–V 源于 Lin 等的 20 µm <strong>黄光</strong>转印金刚石器件。当前模型卡明确写有 <code>physical_dynamic_calibration_complete=false</code> 和 <code>usable_transient_family=false</code>。公开归一化整链 S21 幅值不能唯一决定结电容、复合寿命和相位；同一器件身份及去嵌也未建立。因此，当前 200 fF／200 ps、以及 10 fF／25 ps 对照应继续标为敏感性条件。本轮新扫速首先回答“冻结参考负载下，这个 Driver 能做到什么”，不能改名为“蓝光 MicroLED 的最高速率”。<a href="../../../analog/models/microled_dynamic_v1/model-card.json">模型卡及许可用途</a></p>
+<h3 id="32">3.2 短帧错误计数是诊断指标</h3>
+<p>4,096 位中的错误证明所选波形在该接收判决规则下失败。零错证明当前确定性帧通过了这项检查。由于尚未引入完整光噪声、时钟抖动、统计失配及大样本误码试验，这个结果不等于实物 BER。也不能把任意有限帧的错误比例直接代入 FEC 后吞吐。训练选相只能使用训练段，验证段必须固定所选规则；降速时同时检查固定阈值、幅度余量与归一化时间余量，避免只挑一个恰好零错的采样点。<a href="../../../evidence/highspeed-workbench-20261110/vcsel-x10-summary.json">训练及验证定义</a></p>
+<h3 id="33-pjbit">3.3 失败帧的 pJ/bit 不能用作有效通信效率排名</h3>
+<p>冻结 A/B/C 的正向源端积分 E+ 为 0.52563／0.50139／0.74452 pJ 每尝试净位。扣除回灌后 E净 为 0.49536／0.49974／0.71398，A/B 次序已发生变化。这些数值还缺真实输入 PHY、时钟及完整接收端能耗。净 32 Gb/s 时 VCSEL 的 1.134 pJ／尝试净位对应约 36.3 mW，与低速约 35.7 mW 相近，同时伴随大量位错。更小的数值主要反映尝试位数／时间的变化。设计决策要先满足同一可靠性门槛，再比较同一能量边界的有效交付净位能耗。<a href="../../../evidence/highspeed-workbench-20261110/replay-summary.json">端口能量与定义</a> · <a href="../../../evidence/highspeed-workbench-20261110/vcsel-x10-summary.json">VCSEL 速率对照</a></p>
+<h3 id="34">3.4 理想旁路的通过不能替代实际电路</h3>
+<p>在 VCSEL 净 32 Gb/s 对照中，原始输入差分极性正确，开关门极仍有 1,622 位判错，定位到预驱动短脉冲丢失。直接以理想门极驱动实际输出级后，导通电流可以零错，但只有约 1.03 µAeq／1.68 ps 余量，电流达到 1.696～9.548 mA，dummy 管 VDB 峰值 3.868 V 超过项目 3.63 V 筛查线。下一版需要同时修复门驱和换流应力。把光学与 RX 换成理想 25 GHz 双极点的通过，属于波形预算对照。<a href="../highspeed-workbench-20261110/bit-errors.html">完整诊断</a></p>
+<h3 id="35">3.5 目标速率、测试最大值与物理极限要分开</h3>
+<p>3.2 Gb/s 和 32 Gb/s 是当前两组净吞吐目标。早期复跑集中于目标点，本轮新增扫速后，A／B／VCSEL 的最高已测综合通过点与下一失败点分别为 0.8→1.6、0.4→0.8、4.8→6.4 Gb/s。这界定了继续细化的区间，尚不能唯一给出最大可用速率。最大负载同样是条件组合，至少包含电容、微分电阻、封装电感、电流目标、光响应、RX 与 PVT。应报告“某固定条件下，最高已通过测试速率”和“相邻首次失效点”，再在两点之间细化。若未证明单调性，就不把区间二分结果称作全局最大值。</p>
+<h3 id="36-c">3.6 C 路线低速零错仍需修正译码器的体结正偏</h3>
+<p>本轮 C 的净 0.4 Gb/s 原生晶体管日志中，<code>XORPA</code> 漏—体和 <code>XORPB</code> 源—体正偏峰值同为 <strong>0.858090981 V</strong>。两项对应 NOR2 串联 PMOS 的同一个中间节点 <code>P_OR − VDD</code>。同组 NOR 下拉 NMOS <code>XORNA/XORNB</code> 的 <code>N_OR</code> 也出现约 <strong>−0.603685 V</strong> 负冲。净 0.8 与 1.6 Gb/s 的最大正偏仍约 0.85809 V。这使 C 未通过项目 <strong>0.3 V 体结正偏研究筛查线</strong>，即使某个低速帧能判为零错，也不能标为综合通过。它不是 MicroLED 结两端的过压，更不能据此声称已发生工艺保证意义上的击穿。<a href="../../../evidence/blue-emitter-speed-review-20261110/speed-sweep-all.json">本轮晶体管扫速摘要</a></p>
+<p>四个既有 C 静态码级的体结正偏均为 0 V；净 0.4 Gb/s 数据帧中的 VDD 范围为 3.29893～3.30092 V，支持问题出在译码内部的切换瞬态。当前保留了原生峰值，紧凑波形未导出 <code>P_OR/N_OR</code> 的时间序列，尚不能给出峰值持续时间或唯一成因。固定 20 ps 输入边沿对串联内部节点的电容耦合、节点放电阻抗及码级切换顺序，是下一轮应分离的候选原因。<a href="../../../analog/fair_driver_v1/route_c.spice">C 原理图网表</a> · <a href="../../../evidence/microled-dynamic-v1/electrical-summary.json">既有 DC 矩阵</a></p>
+<p>改进首先单独导出 <code>D0/D1/P_OR/N_OR/VDD</code> 与体结电流，逐个方向切换验证，再比较受控输入斜率／阻尼、较小内部节点耦合的静态 CMOS 译码与缓冲级配置；若增加泄放或钳位，要检查电流、门延迟和功耗代价。完成半步长与电压／温度复核后，才能将该改版接回三支路电流 DAC。仅降低码速率仍保留快速边沿，因而不保证消除这类峰值。</p>
+<h2 id="4">4. 版图和工艺已经做到了哪一级</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>版本</th>
+<th>当前文件中的证据</th>
+<th>后续不能省略的工作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>显示 r5 模拟宏</td>
+<td>39 MOS、345 R、288 C；29／29 网络提取；Magic／KLayout、LVS 与实际开短路负控制</td>
+<td>外部基准／补偿和 PAD／封装需一致建模；无自主 POR、ESD、最终可靠性签核</td>
+</tr>
+<tr>
+<td>显示数字宏</td>
+<td>200 × 200 µm；DRC／LVS／XOR，9 角 STA／支持范围内 SDF</td>
+<td>当前 72.91 fF 输出负载与时序约束仍有限；跨宏 RC、异步恢复和电源顺序须联验</td>
+</tr>
+<tr>
+<td>显示共同顶层 joint-r2</td>
+<td>占据范围 916 × 204 µm；7,277 MOS、36,588 R、30,230 C；6,512／6,512 网络</td>
+<td><code>electrical_full_top_transient_regression_passed=null</code>，尚无完整顶层瞬态通过结论；不是产品 die 面积</td>
+</tr>
+<tr>
+<td>高速历史 A／B 核心</td>
+<td>A 为 6 MOS + 1 R、95 R／64 C；B 为 9 MOS + 1 R、127 R／76 C</td>
+<td>新完整 A/B/C 为 20／21／49 MOS，VCSEL r10 为 73 MOS，必须用新网表重新布局及 PEX</td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="../../../evidence/layout-v3/r5/summary.json">r5 物理摘要</a> · <a href="../../../evidence/layout-v3/joint-r2/summary.json">共同顶层物理摘要</a> · <a href="../../../evidence/highspeed-workbench-20261110/physical-sources.json">历史高速核心与来源</a></p>
+<p>现有公开 GF180MCU D 五层金属配置提供了可运行的学习平台。旧模拟宏实际布线到 M3，旧高速 A/B 核心到 M4。新高速设计的工艺应由晶体管速度、耐压、门电荷、PAD/ESD、互连与封装共同确定。当前工作没有证明 GF180 能实现净 32 Gb/s，也没有证明必须采用某种特殊 MOS 材料。应先完成负载与电路预算，再比较公开可获得且允许目标速度的器件模型。</p>
+<p>流片仍需完整顶层 GDS、相匹配的 PDK 和代工认可 rule deck、版本与哈希清单、DRC/LVS/PEX/ERC、密度与天线、EM/IR、可靠性和 PAD/ESD 结果。封装另需 die drawing、pad/bump 坐标、bond map、热路径和光轴公差；测试另需供电顺序、限流、模式与测量条件。当前可以继续完成研究级前后仿真，制造服务的受理与硅片实测尚未发生。<a href="../highspeed-workbench-20261110/fabrication.html">制造交付路线</a></p>
+<h2 id="5">5. 建议的三项研发优先级</h2>
+<h3 id="_2">优先级一：建立速率—负载—能耗边界，先找能够通过的工作点</h3>
+<p>先固定现有网表、静态电流、封装及 RX，在低速点验证后递增速率。每点保留导通电流、发光代理、接收判决、端间应力和源端能量。将门极理想替换、理想电流与 RX 旁路作为独立对照，不改变基准。再沿实际器件有依据的电容、电流和温度范围扫参。</p>
+<p><strong>验收</strong>：每条路线至少得到一个全帧零错且幅度／时间余量通过的低速点，以及相邻的失效点，或者明确在扫描下限仍不通过。边界点将最大步长减半，结论一致。能量、余量、过压任一失败都保留。若一条路线仅低速通过，报告其可用范围；若所有低速点仍错，优先检查 DC 电平、阈值和网表，而不是继续升速。光电容和寿命缺依据时，把条件范围作为最终结论的一部分。</p>
+<h3 id="_3">优先级二：实现可制造的高速输入、门驱和输出换流</h3>
+<p>MicroLED 以 <strong>A 作为当前可用实现的改进基线，A/B 成对开展下一轮电路实验</strong>。新扫速在冻结 200 fF／200 ps／1 GHz RX 条件下，A 已在净 0.4 与 0.8 Gb/s 通过研究筛查；B 在净 0.4 Gb/s 通过，净 0.8 Gb/s 虽零错，幅度余量仅 0.734 µAeq、单侧时间仅 0.0977 线路位 UI，未达到 7.5 µAeq／0.37 UI 门槛。同为净 0.4 Gb/s 且均通过时，A/B 正向源端能量分别为 2.514／3.201 pJ 每尝试净位。这些结果支持把 A 作为当前工程基线，继续改善供电轨、上下拉和预驱动。它们仍属于 TT 原理图与假设动态负载下的结果，尚不足以确定最终产品路线。</p>
+<p>此前 B 的低寄生／理想门极旁路证明了改进空间，仍值得开展互补门极、输出充放电和 dummy 匹配实验；该证据用于解释潜力，不再作为“当前 B 性能更好”的依据。A/B 的新实际电路保持相同电流、负载、RX 和能量统计面比较。C 作为四电平探索，先解决时序对齐和最小眼高。VCSEL 单独建立低摆幅差分信号路径，将慢速偏置／供电与高速门驱分开；对 dummy 与激光支路同时检查阻尼、栅漏耦合、峰值电流和模型适用域。<a href="../../../evidence/blue-emitter-speed-review-20261110/speed-sweep-all.json">本轮 MicroLED 扫速原始汇总</a></p>
+<p><strong>验收</strong>：在原条件下和修改后条件下使用同一帧、负载、RX 与能量边界，改动只包含列明的实际电路。达到训练／验证零错、当前幅度门槛及按 UI 归一化的时间预算；端压、体结、峰值／平均电流不超约定限制。MicroLED 仍保留净 3.2 Gb/s，VCSEL 保留净 32 Gb/s 作为远端目标，并保存所有中间可用速度点。理想源对照不参加实现能耗排名。完成至少 TT 与限制性 PVT／供电／元件角后，再选择需要投入布局的候选。</p>
+<h3 id="_4">优先级三：让器件数据、寄生和测量方法形成闭环</h3>
+<p>为蓝光 MicroLED、蓝光 VCSEL 和红外 VCSEL 分别建数据卡。至少记录器件身份、有效口径、L–I–V、I–V(T)、复数 S11/S21、偏置、封装参考面、绝对光功率、探测器与调制条件。仅有幅度曲线时保留多组相位／动态假设。现阶段没有硬件，可先向公开原始数据或作者附录寻证，并准备可直接执行的实验规程。只对已满足前述电气门槛的版本投入新布局，提取后以同一接收器回归。</p>
+<p><strong>验收</strong>：至少有一个可追溯器件数据包，明确量测值与剩余假设；独立留出数据能检查模型预测。新 GDS 与新网表匹配，DRC／LVS／PEX 报告绑定同一哈希，加入 PAD／ESD／封装后重新测定通过边界。实际光链路需要校准光功率、噪声与抖动预算和 BER 测试；制造前另行完成完整顶层与服务商规则验收。没有这些数据时，成果继续标为可复现的实验性设计，而不发布产品速度或量产成本承诺。</p>
+<h2 id="6">6. 路线选择应形成什么样的结论</h2>
+<p>最终选择应回答“在同一有效吞吐、可靠性、功耗边界和可制造约束下，哪一种实现更合适”。当前可以据定位结果分配实验优先级，尚不能仅按错误位数量、论文标题速率或失败帧的 pJ/bit 宣布获胜路线。低速通过和高速失败都值得保留，它们共同界定设计的可用范围；若新电路在合理器件与寄生范围内持续过不了目标，再以同一实验合同比较更快工艺、另一驱动结构或调制方式。</p></main></body></html>

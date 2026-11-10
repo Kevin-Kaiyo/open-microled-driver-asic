@@ -28,7 +28,8 @@ code{font-size:.92em;overflow-wrap:anywhere}
 @media print{main{padding:0}body{background:white;font-size:11pt;line-height:1.58}figure,tr,h2,h3{break-inside:avoid}h2,h3{break-after:avoid}nav{display:none}th{print-color-adjust:exact}}
 </style></head><body><main><header><nav><a href="index.html">返回高速光发射 Driver 研究报告</a></nav></header><h1 id="microled-vcsel-driver">高速 MicroLED 与 VCSEL Driver 的公开证据</h1>
 <p>2026-11-10 · 开放实验方法与教学 · <a href="../../../evidence/highspeed-workbench-20261110/literature-sources.json">文献数据台账</a></p>
-<p><strong>目前没有可以单靠论文确定的最佳 MicroLED 尺寸，也没有同口径数据可以判定哪一种发射器的系统能耗最低。</strong> 在公开样本中，直接调制 VCSEL 已展示更高的单通道速率，MicroLED 同时提供低电流与多通道并行的实验依据。当前设计目标仍是单通道净 3.2 Gb/s。这一阶段可以先冻结输入接口、能量边界与测试方法，再分别验证发射器和输出级。20 µm 是已有模型的几何条件，下一轮把尺寸作为实验变量。</p>
+<p><strong>目前没有可以单靠论文确定的最佳 MicroLED 尺寸，也没有同口径数据可以判定哪一种发射器的系统能耗最低。</strong> 在公开样本中，直接调制 VCSEL 已展示更高的单通道速率，MicroLED 同时提供低电流与多通道并行的实验依据。当前 MicroLED 目标为单通道净 3.2 Gb/s，VCSEL 已独立提高到净 32 Gb/s。这一阶段可以先冻结输入接口、能量边界与测试方法，再分别验证发射器和输出级。20 µm 是已有模型的几何条件，下一轮把尺寸作为实验变量。</p>
+<p>新增的<a href="../blue-emitter-speed-review-20261110/index.html">蓝光器件证据、实际扫速与阶段成果报告</a>区分蓝光／蓝紫光／近红外器件，以及波长、调制带宽和可用数据率。现有 20 µm 静态模型来自黄光样品，850 nm VCSEL 是红外模型，不能直接改名为蓝光模型。</p>
 <h2 id="1">1. 先看规格说的是什么</h2>
 <p>带宽以 GHz 表示，说明小幅度正弦调制在特定偏置下如何衰减。符号率以 GBd 表示，说明每秒发出多少符号。NRZ/OOK 每符号 1 bit，PAM4 每符号 2 bit。净吞吐还需要扣除编码、训练、帧和 FEC 开销。OFDM 的每个子载波可按信噪比选用不同调制阶数，因此 OFDM 的总数据率和 NRZ 的线速没有固定换算关系。</p>
 <p>项目的比较帧包含 4,736 线路位与 4,096 payload 位。净 3.2 Gb/s 对应 3.7 Gb/s 线路位速率。NRZ 为 3.7 GBd、UI 270.27 ps，PAM4 为 1.85 GBd、UI 540.54 ps。两者的基带 Nyquist 频率分别为 1.85 GHz 与 0.925 GHz，可作为频响检查点。真正的接收结果还由整个频响、采样抖动、噪声、幅度和调制格式决定。<a href="../microled-dynamic-validation-20261108/README.md">项目冻结帧与接收假设</a></p>

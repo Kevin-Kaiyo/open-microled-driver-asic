@@ -1,0 +1,50 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+:root{--ink:#213e49;--teal:#236d73;--muted:#5b727d;--line:#d3e0df;--light:#edf4f3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#eef3f2;color:var(--ink);font:16px/1.72 "PingFang SC","Noto Sans CJK SC",Arial,sans-serif}header{background:#203e49;color:#fff;padding:24px max(22px,calc((100vw - 1060px)/2));font-size:14px;letter-spacing:.06em}main{max-width:1120px;margin:auto;background:white;padding:24px 44px 64px}h1,h2,h3{font-family:"Avenir Next","PingFang SC",sans-serif;line-height:1.35;color:var(--teal)}h1{font-size:clamp(29px,4vw,42px)}h2{font-size:28px}h3{font-size:20px;margin-top:24px}p{margin:0 0 16px}section{padding:28px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}a{color:var(--teal);overflow-wrap:anywhere;text-underline-offset:3px}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}details{padding:18px 22px;background:var(--light);margin:22px 0}summary{cursor:pointer;font-weight:650}.toc{columns:2;padding-left:20px}.toc li{break-inside:avoid;padding:4px 0}.kicker{font:13px/1.6 "Avenir Next","PingFang SC",sans-serif;color:var(--muted);letter-spacing:.08em}.note{padding:16px 18px;background:var(--light);border-left:3px solid #6c9e9f;color:#49636e}.table-scroll{overflow:auto;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.6}td,th{padding:10px 11px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{background:var(--light);color:var(--teal)}figure{margin:22px 0}img{max-width:100%;height:auto;display:block;margin:auto}figcaption{font-size:13px;line-height:1.6;color:var(--muted);margin-top:10px}code{overflow-wrap:anywhere;font-size:.9em}li{margin:8px 0}@media(max-width:680px){main{padding:18px 18px 40px}.toc{columns:1}h2{font-size:25px}table{min-width:560px}section{padding:22px 0}}@media print{body{background:#fff;font-size:11pt}main{padding:0}header,nav,details{display:none}section{break-after:page}tr,figure{break-inside:avoid}h2,h3{break-after:avoid}table{font-size:9pt}.note,th{print-color-adjust:exact}}
+</style><title>数据、复现与阶段备份</title></head><body><main><nav><a href="index.html">返回阶段技术报告</a></nav><h1 id="_1">数据、复现与阶段备份</h1>
+<p>本轮研究包含公开蓝光器件资料、现有完整晶体管电路的真实扫速、负载电容对照与成果审计。所有新速率以新的 PWL 位周期运行 ngspice；没有把旧波形的时间轴缩放后当作新电路结果。历史锚点的网表与原生波形由 SHA-256 绑定。</p>
+<h2 id="_2">结果入口</h2>
+<ul>
+<li><a href="../../../evidence/blue-emitter-speed-review-20261110/speed-sweep-all.json">完整逐点结果</a>包含速率、错误位、幅度／时间、源端能量、应力和模型域。</li>
+<li><a href="../../../evidence/blue-emitter-speed-review-20261110/sources.json">公开文献来源台账</a>区分厂商规格、样机、研究测量、图读值与独立计算。</li>
+<li><a href="../../../evidence/blue-emitter-speed-review-20261110/validation.json">PDF／网页检查</a>和<a href="../../../evidence/blue-emitter-speed-review-20261110/report-manifest.json">文件身份</a>用于核对报告与数据。</li>
+<li><a href="../highspeed-workbench-20261110/reproduce.html">原阶段恢复说明</a>保留电气模型、冻结输入与工具条件。</li>
+</ul>
+<p>比较使用 TT 已建立 DC 偏置的数据帧，20 ps 激励边沿。显示参考源的启动验证属于另一组实验。4,096 位验证段前有独立训练段，采样延迟只从训练数据确定。新的归一化时间门槛为 0.37 线路 bit UI；旧报告的绝对 100 ps 另存为参考。MicroLED 的 0～8 bit UI 新训练窗与旧绝对延迟窗不同，原生波形不变也可能使少数错误计数变化。</p>
+<p>综合筛查需要训练／验证零错、幅度至少 7.5 µAeq、单侧时间至少 0.37 bit UI、MOS 端间电压筛查通过、体结正偏不超过项目 0.3 V 研究线，以及电流在原静态模型范围内。动态发光参数仍未完成物理校准；这些门槛不等于代工可靠性规则、实测 BER 或产品保证。</p>
+<h2 id="_3">重新运行仿真</h2>
+<p>建议在独立 checkout 中恢复历史输入，使用空的本阶段 <code>build/blue-emitter-speed-review-20261110/</code>。恢复本阶段归档后可以重做分析；要重新求解，应另建 checkout，保留归档原生证据，避免把返回已有成功结果当作新求解。</p>
+<p>电气环境使用项目 Python 3.12、NumPy 2.5.3、ngspice 47 KLU。完整 PDK 与工具环境不打包。MicroLED 原始 <code>run-r1/inputs/</code>、执行源快照和帧文件按原阶段说明恢复；PDK 两个文件按锁定哈希恢复到其 <code>inputs/pdk/</code>。VCSEL 需要 <code>frame-TT-r10/</code> 的冻结 metadata，以及 <code>.cache/pdk/gf180mcu/</code> 中锁定的两个模型文件。</p>
+<pre><code class="language-sh"># 仓库根目录，python 指向上述研究环境。
+python scripts/blue_emitter_speed_20261110/sweep.py microled --rates 0.4 0.8 1.6
+python scripts/blue_emitter_speed_20261110/sweep.py microled --routes C --rates 0.2
+python scripts/blue_emitter_speed_20261110/sweep.py microled --routes B --rates 0.4 --cap-fF 800
+python scripts/blue_emitter_speed_20261110/sweep.py vcsel --rates 6.4 12.8
+
+# 半步长案例和实际执行矩阵以 speed-sweep-all.json 为准。
+python scripts/blue_emitter_speed_20261110/analyze.py
+</code></pre>
+<p>分析还需要历史 MicroLED 净 3.2 Gb/s 的 A/B/C、B 的 0/10/50/800 fF 原生案例，及 VCSEL 原 3.2、16、32 Gb/s 案例。它们保留原相对路径，不将镜像快照和原件混为同一哈希。本轮 Release 清单纳入本报告实际使用的选定历史锚点及必要冻结 metadata；MOS 模型仍按锁恢复。</p>
+<p>核查时，旧 <code>microled-dynamic-validation-20261108</code> 全矩阵 Release 仍为 draft，已有 9 个 assets，不能当作完整公开备份。本轮只闭合本报告选定输入与结果的恢复范围，不宣称旧全矩阵已补齐；其本地原件继续保留。</p>
+<p>本轮 0.1 Gb/s 的预排队列取消，以已通过的 0.4 Gb/s 作为 A/B 低速点，仅为 C 追加 0.2 Gb/s。取消与未完成求解的本地日志保留，不计为通信失败，不进入已完成结果表。</p>
+<h2 id="_4">重建报告</h2>
+<p>科学图表使用 NumPy、Matplotlib、Pillow 与 CairoSVG。PDF 使用 ReportLab、pypdf、pdfplumber；HTML 使用 Markdown 3.9。字体按项目规则优先 PingFang SC，PDF 因 ReportLab 对系统 PingFang CFF 的限制嵌入 Heiti SC TrueType 和 Arial。跨平台需替换为有许可、支持 CJK 的可嵌入字体。</p>
+<pre><code class="language-sh">python scripts/blue_emitter_speed_20261110/figures.py
+python scripts/blue_emitter_speed_20261110/plot.py
+python scripts/blue_emitter_speed_20261110/waveform_plot.py
+python scripts/blue_emitter_speed_20261110/report.py
+python scripts/blue_emitter_speed_20261110/validate_report.py
+</code></pre>
+<p>本机科学图环境为 <code>build/layout/venv/</code>。报告环境为 <code>build/blue-emitter-speed-review-20261110/report-venv/</code>，复用桌面工具的 ReportLab／PDF 依赖，只额外安装 Markdown 3.9。这些环境不是研究输入，未放入 Git 或 Release。</p>
+<h2 id="git">Git 与原始波形</h2>
+<p>源码、图表、报告与紧凑证据进入 Git。大波形按 <code>blue-emitter-speed-review-20261110</code> 阶段 Release 的清单恢复，必须保留原仓库相对路径。</p>
+<pre><code class="language-sh">python3 scripts/backup/release_bundle.py verify \
+  --manifest release-assets/blue-emitter-speed-review-20261110-archive-manifest.json \
+  --asset-dir release-assets
+python3 scripts/backup/release_bundle.py restore \
+  --manifest release-assets/blue-emitter-speed-review-20261110-archive-manifest.json \
+  --asset-dir release-assets --root .
+</code></pre>
+<p>恢复先校验归档与每个成员 SHA，目标已有不同内容会拒绝覆盖。Git push 只备份 Git 中的文件，不能替代 <code>build/</code> 原生波形归档。远端备份状态见<a href="../../../evidence/blue-emitter-speed-review-20261110/delivery.json">交付核验</a>。本轮不删除任何本地原始输入、失败记录、PDK 或 VM。</p>
+<p>公开归档排除 Python 环境、PYC、PDK 副本、重复中间波形和文献原始 PDF／截图。原文图像公开转载许可未核实，已下载的原件与中文解释保存在本地 <code>build/blue-emitter-speed-review-20261110/literature/index.html</code>；公开报告使用独立图示、事实表与明确出处。</p>
+<p><a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/blue-emitter-speed-review-20261110">本阶段 Release</a> · <a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/microled-dynamic-validation-20261108">历史 MicroLED 动态实验</a> · <a href="https://github.com/Kevin-Kaiyo/open-microled-driver-asic/releases/tag/highspeed-bit-errors-vcsel-x10-20261110">此前位错／VCSEL 增量</a></p></main></body></html>

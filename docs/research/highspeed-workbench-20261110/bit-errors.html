@@ -28,6 +28,7 @@ code{font-size:.92em;overflow-wrap:anywhere}
 @media print{main{padding:0}body{background:white;font-size:11pt;line-height:1.58}figure,tr,h2,h3{break-inside:avoid}h2,h3{break-after:avoid}nav{display:none}th{print-color-adjust:exact}}
 </style></head><body><main><header><nav><a href="index.html">返回高速光发射 Driver 研究报告</a></nav></header><h1 id="_1">位错误、改电路和路线选择</h1>
 <p><strong>2026-11-10 · 单通道 · MicroLED 净 3.2 Gb/s / VCSEL 净 32 Gb/s</strong></p>
+<p><strong>后续扫速更新</strong>：<a href="../blue-emitter-speed-review-20261110/index.html">新版阶段报告</a>已补原电路低至高速与负载对照。在原负载下 A 比 B 有更高的已验证通过点；C 低速零错仍有译码器体结正偏。本篇所述 B 优先验证是当时基于理想旁路的机理实验建议，后续改为 A 作实际基线、A/B 成对改进。历史诊断数值保留原接收规则。</p>
 <h2 id="_2">一位错误意味着什么</h2>
 <p>以 NRZ 的 1→0 为例，发送端要求输出低光电平。若上一位留下的电荷或光响应在采样时仍把信号抬到阈值上方，接收端就会把 <strong>0 判成 1</strong>。PAM4 用三个阈值区分四个电平，一次符号判错可以影响一位或两位。C 的 1,399 位错对应 1,300 个符号错。</p>
 <p>在净 3.2 Gb/s 的确定性仿真帧里，A/B/C 分别有 <strong>20.61% / 35.16% / 34.16%</strong> 的验证位判错。原样交付这帧会造成数据损坏。若链路使用 CRC，检测到错误的帧会被丢弃或重传。FEC 能否恢复取决于码字、突发错误长度和码率。项目目前用固定实验帧，尚无这些协议机制，也不能从单个确定性帧推算实物 BER、帧丢失率或 FEC 后吞吐。<a href="../../../evidence/highspeed-workbench-20261110/replay-summary.json">四路复跑及错误分桶</a></p>
