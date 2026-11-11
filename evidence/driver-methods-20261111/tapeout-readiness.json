@@ -1,0 +1,409 @@
+{
+  "schema_version": 1,
+  "stage": "driver-methods-20261111",
+  "generated_utc": "2026-11-11T09:24:43.877086+00:00",
+  "audit_date": "2026-11-11",
+  "overall_readiness": "research_and_test_chip_preparation",
+  "ready_for_tapeout": false,
+  "foundry_accepted": false,
+  "production_qualified": false,
+  "scope": "Read-only maturity/gap assessment. No rerun of prior physical verification, no commercial commitment. Gates are project recommendations unless a cited provider explicitly requires them.",
+  "source_ledger": "evidence/driver-methods-20261111/product-sources.json",
+  "notes": "docs/research/driver-methods-20261111/productization-notes.md",
+  "gates": [
+    {
+      "id": "G01",
+      "topic": "System specification and evidence contract",
+      "current_stage": "Research receiver screen, not product specification",
+      "status": "open",
+      "current_evidence": [
+        "evidence/ab-improvement-20261111/selection.json",
+        "evidence/ab-improvement-20261111/scientific-validation.json"
+      ],
+      "observed_facts": [
+        "Prior completed A/B/VCSEL candidates have separate nominal discrete simulated envelopes.",
+        "MicroLED and VCSEL use different emitter/RX proxies; they are not a common measured optical link."
+      ],
+      "required_design_verification_and_deliverables": [
+        "Freeze net throughput, line coding/framing, optical launch/received power, distance/coupling, allowed current/voltage/temperature, BER target and energy boundary.",
+        "Record latency, startup/fault behavior and external ASIC/FPGA interface requirements."
+      ],
+      "open_environment_can_do": [
+        "Write executable stimulus/receiver/energy contracts and consistency checks.",
+        "Keep training independent and reserve holdout frames before optimization."
+      ],
+      "requires_external_confirmation_or_hardware": [
+        "Actual emitter and receiver specifications; optical path loss and performance conditions; intended application requirements."
+      ],
+      "exit_criteria": [
+        "Versioned numerical specification with unambiguous net-bit denominator, receiver criteria and operating range.",
+        "Every requirement mapped to a simulation or hardware acceptance test."
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "G02",
+      "topic": "Emitter dynamic model calibration",
+      "current_stage": "Synthetic/traceable-example models; not actual load qualification",
+      "status": "open",
+      "current_evidence": [
+        "evidence/ab-improvement-20261111/selection.json",
+        "evidence/ab-improvement-20261111/ideal-bounds.json"
+      ],
+      "observed_facts": [
+        "Fixed MicroLED optical/RX parameters are used for controlled comparison; a 20 um example is not an established size-dependent physical limit."
+      ],
+      "required_design_verification_and_deliverables": [
+        "Emitter IV, LIV, CV, S21 or pulse/impulse response versus bias and temperature.",
+        "Parameter provenance, de-embedding reference plane, fit uncertainty and holdout validation.",
+        "VCSEL threshold, thermal roll-over, relaxation dynamics and operating-current limits; MicroLED differential lifetime/efficiency versus current density."
+      ],
+      "open_environment_can_do": [
+        "Fit public or supplied measurements; run model sensitivity/identifiability and compare multiple plausible dynamic models.",
+        "Keep unmeasured parameters explicit and avoid treating eye-open proxies as measured BER."
+      ],
+      "requires_external_confirmation_or_hardware": [
+        "Manufacturer or laboratory data for the selected emitter, package and bias/temperature range.",
+        "Optical/electrical measurements to close uncertainty when public data cannot identify the model."
+      ],
+      "exit_criteria": [
+        "Model predicts independent measurements within predeclared tolerances over the intended operating range.",
+        "Remaining unmeasured parameters bounded and their effect on design decisions reported."
+      ],
+      "depends_on": [
+        "G01"
+      ]
+    },
+    {
+      "id": "G03",
+      "topic": "Electrical data interface and predriver",
+      "current_stage": "Circuit-level input stimuli; no complete system interface qualification",
+      "status": "open",
+      "current_evidence": [
+        "evidence/ab-improvement-20261111/selection.json"
+      ],
+      "observed_facts": [
+        "Latest candidates change input resistance, predrivers or steering-device dimensions.",
+        "An ideal stimulus source is not an implemented serializer/clock/input-pad interface."
+      ],
+      "required_design_verification_and_deliverables": [
+        "Specify differential/single-ended levels, common mode, source impedance, jitter, termination and source-to-pad interconnect.",
+        "Design input pads/ESD, level conversion, buffering, clock/data paths and test mode."
+      ],
+      "open_environment_can_do": [
+        "Model realistic source impedance/jitter and transistor input buffers.",
+        "Simulate input timing and power across PVT and package/board models."
+      ],
+      "requires_external_confirmation_or_hardware": [
+        "Source ASIC/FPGA I/O characteristics, pad library and intended package/PCB S parameters or measurements."
+      ],
+      "exit_criteria": [
+        "Driver meets rate/receiver/stress criteria under worst specified source amplitude/common mode/jitter and interconnect.",
+        "Energy includes the declared input/clock boundary; omitted serializer/CDR costs are explicit."
+      ],
+      "depends_on": [
+        "G01"
+      ]
+    },
+    {
+      "id": "G04",
+      "topic": "Reference, supply, startup and independent protection",
+      "current_stage": "Transistor reference/rail circuits exist; complete product safety/startup coverage not closed",
+      "status": "open",
+      "current_evidence": [
+        "evidence/layout-v3/r5/summary.json",
+        "evidence/ab-improvement-20261111/selection.json"
+      ],
+      "observed_facts": [
+        "Display macro uses external setup/passive elements and lacks complete internal POR.",
+        "High-speed normal communication is not evidence of power sequencing or fault-disable behavior.",
+        "B feed-forward capacitor can transfer transient charge even if DC bias is disabled."
+      ],
+      "required_design_verification_and_deliverables": [
+        "Implement defined enable/disable, POR/brownout, reference-valid sequencing, open/short protection and recovery.",
+        "Check data toggling during disable, multiple power-up/down orders, hot-plug and supply disturbance.",
+        "Choose implementable reference/passive components and tolerances."
+      ],
+      "open_environment_can_do": [
+        "Transistor transient/AC loops, operating-point sweeps, capacitor tolerance and fault-injection regression."
+      ],
+      "requires_external_confirmation_or_hardware": [
+        "Real component tolerances, pad clamp behavior, supply ramp/board impedance; safety requirements and laboratory fault tests."
+      ],
+      "exit_criteria": [
+        "Across declared corners, no overstress or unwanted optical/current pulse; bounded startup and recovery time.",
+        "No reliance on unimplemented ideal gates for independent shutdown.",
+        "External components and unintegrated reference sources clearly specified."
+      ],
+      "depends_on": [
+        "G01",
+        "G03"
+      ]
+    },
+    {
+      "id": "G05",
+      "topic": "Steady energy, PVT, mismatch and receiver robustness",
+      "current_stage": "Nominal finite-frame research screens plus limited prior controls",
+      "status": "open",
+      "current_evidence": [
+        "evidence/ab-improvement-20261111/scientific-validation.json",
+        "evidence/ab-improvement-20261111/energy-storage-audit.json"
+      ],
+      "observed_facts": [
+        "Zero errors in a deterministic finite frame is not a demonstrated production BER.",
+        "Finite-frame positive-source energy may be influenced by initial capacitor storage and supply settling."
+      ],
+      "required_design_verification_and_deliverables": [
+        "Use adequate warm-up and multiple steady windows; account for all declared supply/reference/clock sources.",
+        "Separate gross delivered energy, returned energy, stored-energy change and source-boundary omissions.",
+        "Expand PVT/independent resistor and capacitor variation/mismatch/package/supply/load sweeps.",
+        "Predeclare long code patterns, receiver noise/jitter model and acceptance criteria."
+      ],
+      "open_environment_can_do": [
+        "Automated transistor sweeps, sensitivity, holdouts, sampling-step checks and energy convergence.",
+        "Statistical Monte Carlo only when model distributions/correlations are defensible."
+      ],
+      "requires_external_confirmation_or_hardware": [
+        "Model statistical distributions and actual measured receiver noise/jitter/optical link; long-run BER and thermal behavior."
+      ],
+      "exit_criteria": [
+        "No hidden initial-energy subsidy; steady energy change below a predeclared tolerance.",
+        "Current targets, stress, optical/RX margins and error criteria pass the agreed joint corner matrix.",
+        "Reported confidence/coverage matches the amount and type of evidence; no inferred 10^-12 BER from a short frame."
+      ],
+      "depends_on": [
+        "G01",
+        "G02",
+        "G03",
+        "G04"
+      ]
+    },
+    {
+      "id": "G06",
+      "topic": "Provider-compatible process and complete PDK",
+      "current_stage": "Pinned public PDK used locally; no provider acceptance",
+      "status": "open",
+      "current_evidence": [
+        "layout/pdk-lock.json",
+        "scripts/physical/pdk-lock.json",
+        "evidence/driver-methods-20261111/product-sources.json"
+      ],
+      "observed_facts": [
+        "Historical flow selects gf180mcuD / 5LM_1TM_11K.",
+        "Public Google PDK README remains experimental and its repository is archived; underlying commercial process status is a separate issue."
+      ],
+      "required_design_verification_and_deliverables": [
+        "Select exact provider-accepted process, BEOL/MIM options, PDK/decks/libraries, top-cell/slot/pad constraints and permitted tool flow.",
+        "Record version hashes and rule exceptions with acceptance authority."
+      ],
+      "open_environment_can_do": [
+        "Maintain locked reproducible environments and local rule checks.",
+        "Adapt a public platform template only within its stated constraints."
+      ],
+      "requires_external_confirmation_or_hardware": [
+        "MPW/foundry confirms eligibility, accepted PDK version, delivery format, signoff requirements and waivers."
+      ],
+      "exit_criteria": [
+        "Written provider-specific acceptance checklist and matching PDK/library access.",
+        "No unreviewed mixing of models, physical layers and BEOL options."
+      ],
+      "depends_on": [
+        "G01"
+      ]
+    },
+    {
+      "id": "G07",
+      "topic": "New full driver layout and physical verification",
+      "current_stage": "Historical macros pass local checks; latest 20/21/73 MOS candidates lack matching layout",
+      "status": "open",
+      "current_evidence": [
+        "evidence/layout-v3/r5/summary.json",
+        "evidence/layout-v3/joint-r2/summary.json",
+        "evidence/highspeed-workbench-20261110/physical-sources.json",
+        "evidence/ab-improvement-20261111/selection.json"
+      ],
+      "observed_facts": [
+        "Historical high-speed A/B cores are 6/9 MOS and cannot certify latest full circuits.",
+        "Common display top has 7277 MOS with physical receipts but no full-top transistor transient closure.",
+        "DRM Appendix B lists a prohibition on sharing one DNWELL between 3.3 V and 6 V devices."
+      ],
+      "required_design_verification_and_deliverables": [
+        "New floorplan includes references, regulation, protection, mixed-voltage wells, taps/guard rings, real capacitors, test access and selected I/O.",
+        "DRC/LVS/ERC, antenna/density/fill, hand checks of non-coded rules and routing/return-path review.",
+        "Full extracted simulation of the actual revision, with the agreed RC corners and negative controls."
+      ],
+      "open_environment_can_do": [
+        "Magic/KLayout/Netgen and extraction; OpenROAD for digital implementation/STA where applicable.",
+        "Hash-linked GDS/CDL/PEX and extraction topology audit."
+      ],
+      "requires_external_confirmation_or_hardware": [
+        "Accepted foundry decks and manual requirements, pad/ESD library qualification, calibrated RC corners and signoff review."
+      ],
+      "exit_criteria": [
+        "Same final circuit and GDS uniquely match under approved LVS scope.",
+        "No unresolved required violations; each waiver explicitly authorized.",
+        "Post-layout target/next-failure regressions and protection/energy checks pass under the declared extraction conditions."
+      ],
+      "depends_on": [
+        "G04",
+        "G05",
+        "G06"
+      ]
+    },
+    {
+      "id": "G08",
+      "topic": "Pad/ESD, power integrity and reliability",
+      "current_stage": "Core terminal-stress checks; no complete chip qualification",
+      "status": "open",
+      "current_evidence": [
+        "evidence/layout-v3/r5/summary.json",
+        "evidence/layout-v3/joint-r2/summary.json",
+        "evidence/driver-methods-20261111/product-sources.json"
+      ],
+      "observed_facts": [
+        "Existing boundaries exclude complete pad ring, ESD, package and external signoff.",
+        "Normal MOS terminal-voltage screening does not establish HBM/CDM, latchup or electromigration qualification."
+      ],
+      "required_design_verification_and_deliverables": [
+        "Integrate qualified/accepted I/O protection, full supply/return network, decoupling and physical isolation.",
+        "Check dynamic IR/ground bounce, terminal/body stress, current density/via redundancy, hot spots and reliability limits."
+      ],
+      "open_environment_can_do": [
+        "Static IR/EM screening using suitable rules, SPICE supply-network transients and package proxy sweeps."
+      ],
+      "requires_external_confirmation_or_hardware": [
+        "Pad/library ESD data, process reliability limits, calibrated thermal/package models; HBM/CDM/latchup and lifetime qualification."
+      ],
+      "exit_criteria": [
+        "Specified voltage/temperature/current conditions meet relevant reliability rules and circuit targets.",
+        "ESD/thermal/qualification scope is explicitly accepted or measured rather than inferred from DRC."
+      ],
+      "depends_on": [
+        "G06",
+        "G07"
+      ]
+    },
+    {
+      "id": "G09",
+      "topic": "Package, board and optical coupling",
+      "current_stage": "Teaching 3D and lumped parasitic proxies; no accepted physical assembly",
+      "status": "open",
+      "current_evidence": [
+        "evidence/highspeed-workbench-20261110/physical-sources.json",
+        "evidence/highspeed-workbench-20261110/physical-delivery.json"
+      ],
+      "observed_facts": [
+        "Blender models use exaggerated heights/separation and do not solve electrical or thermal fields.",
+        "Small core area does not include pad/ESD/seal-ring/package constraints."
+      ],
+      "required_design_verification_and_deliverables": [
+        "Choose emitter mounting, wirebond/flip-chip, substrate/PCB return paths, optical aperture/coupling and thermal path before final die layout.",
+        "Provide die/pad coordinates, bond map, orientation, thickness, mechanical/optical tolerances and qualified stackups.",
+        "Extract/package S parameters or justified RLC with correct reference planes and de-embedding."
+      ],
+      "open_environment_can_do": [
+        "2D GDS/assembly drawings, Blender explanatory models, circuit co-simulation and sensitivity.",
+        "Field-solving only with appropriate geometry/material parameters and validation."
+      ],
+      "requires_external_confirmation_or_hardware": [
+        "Assembly house feasibility review; package/process tolerances, optical alignment, thermal/mechanical reliability and measured interconnect."
+      ],
+      "exit_criteria": [
+        "Assembler-approved drawing and connectivity; electrically/optically feasible geometry.",
+        "Post-package model and measurements retain target margin without excessive ringing, heating or coupling loss."
+      ],
+      "depends_on": [
+        "G02",
+        "G03",
+        "G06",
+        "G07"
+      ]
+    },
+    {
+      "id": "G10",
+      "topic": "DFT, wafer test and first-silicon characterization",
+      "current_stage": "Research logs and software screens; no manufacturing test program",
+      "status": "open",
+      "current_evidence": [
+        "evidence/control-v3/summary.json",
+        "evidence/driver-methods-20261111/product-sources.json"
+      ],
+      "observed_facts": [
+        "Open tools provide some scan operations but this design has no closed ATPG/ATE/analog test-coverage package."
+      ],
+      "required_design_verification_and_deliverables": [
+        "Digital test access/scan or justified alternatives; analog monitors and isolated test modes.",
+        "Pin list, register map, vectors, safe power sequences, current limits, test limits/calibration and fault taxonomy.",
+        "Plan DC/IV/LIV, frequency/S21, eye/BER, temperature and fault tests with fixtures."
+      ],
+      "open_environment_can_do": [
+        "Test RTL and vectors, scan planning, fault injection and simulation-to-measurement comparison scripts."
+      ],
+      "requires_external_confirmation_or_hardware": [
+        "Wafer prober/ATE or agreed lab fixtures; real silicon/optical instruments; calibrated measurements and sample/yield data."
+      ],
+      "exit_criteria": [
+        "Test modes verified in design and accessible after packaging.",
+        "Measured silicon/optical results meet predeclared acceptance criteria; discrepancy investigation complete.",
+        "Manufacturing coverage/yield test distinguished from one-off research characterization."
+      ],
+      "depends_on": [
+        "G01",
+        "G04",
+        "G07",
+        "G09"
+      ]
+    },
+    {
+      "id": "G11",
+      "topic": "Manufacturing handoff and production readiness",
+      "current_stage": "Reproducible research repository; not a released production product",
+      "status": "open",
+      "current_evidence": [
+        "evidence/driver-methods-20261111/product-sources.json"
+      ],
+      "observed_facts": [
+        "No wafer booking, manufacturing acceptance, production quote or measured yield/qualification is asserted."
+      ],
+      "required_design_verification_and_deliverables": [
+        "Deliver final hierarchical GDSII/all required layers plus agreed netlists, rule reports, waiver log, package/pad and test files.",
+        "Version manifest, license/IP provenance, restoration instructions and immutable release.",
+        "Separate engineering sample acceptance from volume reliability/yield/cost/traceability release."
+      ],
+      "open_environment_can_do": [
+        "Prepare reproducible handoff bundle, checksums, artifact comparison and review documentation."
+      ],
+      "requires_external_confirmation_or_hardware": [
+        "Foundry/MPW intake acceptance; assembly/test signoff; actual lot results, yield, qualification and commercial supply agreement."
+      ],
+      "exit_criteria": [
+        "Each recipient accepts its own deliverables and requirements.",
+        "Fabrication result is tested; production qualification and unit economics rely on real process/test/assembly evidence."
+      ],
+      "depends_on": [
+        "G05",
+        "G06",
+        "G07",
+        "G08",
+        "G09",
+        "G10"
+      ]
+    }
+  ],
+  "can_continue_without_new_hardware_now": [
+    "Reproduce and improve schematic drivers with locked fair-comparison conditions.",
+    "Run startup/disable/fault/PVT/tolerance/steady-energy/long-pattern regressions.",
+    "Implement and extract new layouts against the selected full open PDK while marking signoff limitations.",
+    "Prepare interface, package, test and manufacturing-delivery specifications."
+  ],
+  "external_engagement_needed_before_final_layout": [
+    "Provider-accepted process/PDK, pad and ESD libraries, MPW slot and die constraints.",
+    "Feasible emitter assembly, pad/bond/return-path layout, thermal/optical interface and obtainable models."
+  ],
+  "hardware_needed_to_close": [
+    "Emitter dynamic model accuracy when public data do not identify it.",
+    "Optical BER/OMA/LIV/bandwidth, supply/thermal interactions and package/board parasitics.",
+    "ESD/latchup/lifetime, wafer/package test yield and actual manufacturing cost."
+  ],
+  "decision_rule": "Compare methods only at common declared targets and evidence boundaries; do not select a production architecture solely from lowest short-frame errors or prelayout pJ/net-bit."
+}

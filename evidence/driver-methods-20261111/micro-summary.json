@@ -1,0 +1,4653 @@
+{
+  "schema": "microled-driver-methods-derived-v1",
+  "protocol": {
+    "schema": "microled-driver-methods-20261111",
+    "hypotheses": [
+      "B lower reference/dummy supply voltage with preserved dummy compliance",
+      "A damped N1-to-OUT capacitive feed-forward"
+    ],
+    "fixed": {
+      "LED_DC_targets_uA": [
+        25,
+        100
+      ],
+      "DC_tolerance_percent": 1,
+      "LED_cap_fF": 200,
+      "optical_tau_ps": 200,
+      "RX_GHz": 1,
+      "net_efficiency": "32/37",
+      "VLED_V": 5,
+      "VDD_V": 3.3
+    },
+    "development_sequence": "Prior stage frozen 4736-line-bit development frame",
+    "holdout_seed": 19501,
+    "holdout_seed_hex": "0x4c2d",
+    "selection": "DC gate first, then 1.6 Gb/s; adjacent higher-rate point only after success. Freeze candidate before holdout. Keep failures. No tuning against holdout.",
+    "scope": "Schematic transistor simulation, same public PDK and synthetic load; no new layout/PEX, startup, PVT or hardware qualification. Seven source-port energy, upstream converter/RX/clock excluded.",
+    "holdout_phase_offset_bits": 27081,
+    "holdout_scope": "Different PRBS15 window; not statistically independent random BER qualification",
+    "holdout_window_in_reference_cycle": [
+      27081,
+      31817
+    ],
+    "development_window": [
+      0,
+      4736
+    ],
+    "prior_holdout_window": [
+      16749,
+      21485
+    ],
+    "windows_nonoverlapping": true
+  },
+  "source_script_sha256": "786ed8f73f38cee5563008debbe249ad2ebd8efe408ecdb4e6cece1aaa5a7f5b",
+  "records": [
+    {
+      "candidate": "a-rin1wide-core03-matched",
+      "baseline": true,
+      "route": "A",
+      "case": {
+        "name": "DC-L0",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 0.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 900,
+        "kind": "dc",
+        "level": 0
+      },
+      "result": "build/ab-improvement-20261111/a-rin1wide-core03-matched/cases/DC-L0/result.json",
+      "result_sha256": "e35be97c94ceeb64fb80f92d3e49b9f4d2304417e5494067a7f81753e2b287b3",
+      "manifest_sha256": "b06561df791ea313d8690651387fc0e113d0775938aa75c9cf8c80d81b5476cd",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "764d9bf12d82741d170156e81c72bb82e35403bf64f983a9851d408f85587a4c",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "285fa9a4fdd3e9a1ad6f5e760429a0a23357da7d7ddd5810da6220a4a0a005b3",
+      "gzip_sha256": "35ac62ed447c8751def91a67f9a02d7307da3737064ab032e4ec3e18b7c5d822",
+      "kind": "dc",
+      "pass_screen": true,
+      "current_uA": 24.99736573348181,
+      "error_percent": -0.010537066072746626,
+      "power_mW": 0.6147775290214152,
+      "terminal_pass": true,
+      "body_forward_V": 0.01398066518891894
+    },
+    {
+      "candidate": "a-rin1wide-core03-matched",
+      "baseline": true,
+      "route": "A",
+      "case": {
+        "name": "DC-L1",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 0.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 900,
+        "kind": "dc",
+        "level": 1
+      },
+      "result": "build/ab-improvement-20261111/a-rin1wide-core03-matched/cases/DC-L1/result.json",
+      "result_sha256": "efbc64fed1ea05b2492b7374f8995290c2f6d22bdd849ad513d035d35391719f",
+      "manifest_sha256": "b06561df791ea313d8690651387fc0e113d0775938aa75c9cf8c80d81b5476cd",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "87ca506c5f8896d988c095a54920ce6065b83f972aec3b6771c4de508ad207ee",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "94dbf9da6b0f6fe10f8efab908ce171f24c392fa85cba254e0957eedb3916913",
+      "gzip_sha256": "544037c9a2285459e6cce7a068d5ea14cf36c2c730d444faa581e77354276150",
+      "kind": "dc",
+      "pass_screen": true,
+      "current_uA": 99.98473481646138,
+      "error_percent": -0.015265183538615279,
+      "power_mW": 0.9896920785053822,
+      "terminal_pass": true,
+      "body_forward_V": 0.0
+    },
+    {
+      "candidate": "a-rin1wide-core03-matched",
+      "baseline": true,
+      "route": "A",
+      "case": {
+        "name": "TT-net1.2-C200-S40",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.2,
+        "steps_per_symbol": 40,
+        "timeout_s": 900
+      },
+      "result": "build/ab-improvement-20261111/a-rin1wide-core03-matched/cases/TT-net1.2-C200-S40/result.json",
+      "result_sha256": "20051b5540e43e4c50e3c99100e1106ac4377e1d4845824752ac1007c3537281",
+      "manifest_sha256": "b06561df791ea313d8690651387fc0e113d0775938aa75c9cf8c80d81b5476cd",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "707569e75917517a2c33480b5faf572d1fb33dc940d5b44d1f2086390ff8b745",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "a6854e8c769c046c57cfe5bad9555c655c638b5a0005a43d1b8d0ac532db41f3",
+      "gzip_sha256": "b369779cd4ca832af4131fbdf60102e65a565c9466d8b795570e80930e1c4162",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.34375,
+        "delay_ps": 968.4684684684686,
+        "worst_signed_margin_uAeq": 26.09993848544333,
+        "one_sided_margin_ps": 324.3471096618996,
+        "one_sided_margin_bit_UI": 0.45003161465588565,
+        "one_sided_margin_symbol_UI": 0.45003161465588565,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.890625,
+        "delay_ps": 641.8918918918919,
+        "worst_signed_margin_uAeq": 35.602165986859006,
+        "one_sided_margin_ps": 352.0699548229862,
+        "one_sided_margin_bit_UI": 0.48849706231689327,
+        "one_sided_margin_symbol_UI": 0.48849706231689327,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 1.2292996426016458,
+        "returned": 0.1364429533628002,
+        "net": 1.0928566892388454
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.36299920731882546,
+          "returned": 0.0,
+          "net": 0.36299920731882546
+        },
+        "VDD": {
+          "positive": 0.3961407420248396,
+          "returned": 0.0,
+          "net": 0.3961407420248396
+        },
+        "VREF": {
+          "positive": 0.04516605025377336,
+          "returned": 0.0,
+          "net": 0.04516605025377336
+        },
+        "VLED": {
+          "positive": 0.3967700996215469,
+          "returned": 0.12970498874957462,
+          "net": 0.2670651108719722
+        },
+        "VD0": {
+          "positive": 0.028223543382660327,
+          "returned": 0.0067379646132256004,
+          "net": 0.021485578769434726
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 64.10820507197289,
+      "current_range_uA": [
+        17.18404034624292,
+        129.9817621121553
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.1233962409089673,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "a-rin1wide-core03-matched",
+      "baseline": true,
+      "route": "A",
+      "case": {
+        "name": "TT-net1.6-C200-S40",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.6,
+        "steps_per_symbol": 40,
+        "timeout_s": 900
+      },
+      "result": "build/ab-improvement-20261111/a-rin1wide-core03-matched/cases/TT-net1.6-C200-S40/result.json",
+      "result_sha256": "ca9ed15b9d3f3a5e2e295bea4e24447300a16bcdfb2ca43ebdcb9bb94258448f",
+      "manifest_sha256": "b06561df791ea313d8690651387fc0e113d0775938aa75c9cf8c80d81b5476cd",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "20c6f5de7bfd9627fd19fb213e17eca6a85de32d8ce6cd08b957cae1f0067f64",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "c40a9f73caec5e495b056cba212cf8ee0c5a7ad4dc347b86f6f11c272e199bb4",
+      "gzip_sha256": "6d40d142bd777b85acf09dcde9724b26ef18d739663e7dc8af4247a3a7fd3263",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.59375,
+        "delay_ps": 861.4864864864866,
+        "worst_signed_margin_uAeq": 17.494712519907424,
+        "one_sided_margin_ps": 216.92110847684853,
+        "one_sided_margin_bit_UI": 0.40130405068216973,
+        "one_sided_margin_symbol_UI": 0.40130405068216973,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.015625,
+        "delay_ps": 548.9864864864865,
+        "worst_signed_margin_uAeq": 33.49733183107032,
+        "one_sided_margin_ps": 259.892955327389,
+        "one_sided_margin_bit_UI": 0.48080196735566966,
+        "one_sided_margin_symbol_UI": 0.48080196735566966,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 1.0578312295262213,
+        "returned": 0.13627960769264533,
+        "net": 0.921551621833576
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.27228146091949484,
+          "returned": 0.0,
+          "net": 0.27228146091949484
+        },
+        "VDD": {
+          "positive": 0.3919452648041382,
+          "returned": 0.0,
+          "net": 0.3919452648041382
+        },
+        "VREF": {
+          "positive": 0.033874978279388325,
+          "returned": 0.0,
+          "net": 0.033874978279388325
+        },
+        "VLED": {
+          "positive": 0.33149865561397507,
+          "returned": 0.12954164211476252,
+          "net": 0.20195701349921258
+        },
+        "VD0": {
+          "positive": 0.028230869909224854,
+          "returned": 0.006737965577882815,
+          "net": 0.021492904331342037
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 64.64270810388759,
+      "current_range_uA": [
+        17.187513135755673,
+        129.8871791654724
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.123416366454288,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "a-rin1wide-core03-matched",
+      "baseline": true,
+      "route": "A",
+      "case": {
+        "name": "TT-net1.6-C200-S80",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.6,
+        "steps_per_symbol": 80,
+        "timeout_s": 900
+      },
+      "result": "build/ab-improvement-20261111/a-rin1wide-core03-matched/cases/TT-net1.6-C200-S80/result.json",
+      "result_sha256": "f497adf442e0f8e48955520dbf6e6d6d53c24ae8d1f9ceb6ce59e359d756db52",
+      "manifest_sha256": "b06561df791ea313d8690651387fc0e113d0775938aa75c9cf8c80d81b5476cd",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "747469f3198f58e87b8a6bda965349e8c267ebadf953ea354111bc2bc151a5e2",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "aed1bcfc972a2ac042bc1e9627a426e4da2238e416c579d5a2e71664f15fcf92",
+      "gzip_sha256": "58a3e46f2546084c80a7231df45d6ed54b6610a243e8df3cca0d42a2f108f872",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.59375,
+        "delay_ps": 861.4864864864866,
+        "worst_signed_margin_uAeq": 17.494694703182347,
+        "one_sided_margin_ps": 216.92030416909017,
+        "one_sided_margin_bit_UI": 0.4013025627128168,
+        "one_sided_margin_symbol_UI": 0.4013025627128168,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.015625,
+        "delay_ps": 548.9864864864865,
+        "worst_signed_margin_uAeq": 33.49766848107092,
+        "one_sided_margin_ps": 259.89280403502266,
+        "one_sided_margin_bit_UI": 0.4808016874647919,
+        "one_sided_margin_symbol_UI": 0.4808016874647919,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 1.0578325682807976,
+        "returned": 0.13627917425035171,
+        "net": 0.9215533940304459
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.27228144969615603,
+          "returned": 0.0,
+          "net": 0.27228144969615603
+        },
+        "VDD": {
+          "positive": 0.3919458522007764,
+          "returned": 0.0,
+          "net": 0.3919458522007764
+        },
+        "VREF": {
+          "positive": 0.033874978277348734,
+          "returned": 0.0,
+          "net": 0.033874978277348734
+        },
+        "VLED": {
+          "positive": 0.3314993431474348,
+          "returned": 0.1295417908399886,
+          "net": 0.2019575523074462
+        },
+        "VD0": {
+          "positive": 0.028230944959081666,
+          "returned": 0.00673738341036312,
+          "net": 0.021493561548718544
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 64.64268097816502,
+      "current_range_uA": [
+        17.18732653382331,
+        129.8865651009139
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.1234174901889102,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "a-rin1wide-core03-matched",
+      "baseline": true,
+      "route": "A",
+      "case": {
+        "name": "TT-net1.8-C200-S40",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 900
+      },
+      "result": "build/ab-improvement-20261111/a-rin1wide-core03-matched/cases/TT-net1.8-C200-S40/result.json",
+      "result_sha256": "7c4e837845223183d65a06bfa263266e4f8c74fe5c5c918ec6fd78918ba8c20a",
+      "manifest_sha256": "b06561df791ea313d8690651387fc0e113d0775938aa75c9cf8c80d81b5476cd",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "497574f105a780911103770a75e2d528a5e6b3878c7ddafae9532e6b1d0520ad",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "7239cd06c874872f259729a32ce0b220f1277acceb4b09f540b64f8e6e4d3d9b",
+      "gzip_sha256": "8270cb29fd62fce90453cd97401b8961b655931f4caa246e4a70c551f7cdba4c",
+      "kind": "transient",
+      "pass_screen": false,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.703125,
+        "delay_ps": 818.3183183183185,
+        "worst_signed_margin_uAeq": 12.878410198242157,
+        "one_sided_margin_ps": 173.2200432184416,
+        "one_sided_margin_bit_UI": 0.36051421494838154,
+        "one_sided_margin_symbol_UI": 0.36051421494838154,
+        "zero_error": true,
+        "research_margin_pass": false,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.078125,
+        "delay_ps": 518.0180180180181,
+        "worst_signed_margin_uAeq": 32.12390604847653,
+        "one_sided_margin_ps": 228.67733920129325,
+        "one_sided_margin_bit_UI": 0.4759347122126915,
+        "one_sided_margin_symbol_UI": 0.4759347122126915,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.999320268690608,
+        "returned": 0.13560833762682636,
+        "net": 0.8637119310637815
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.24204131576254947,
+          "returned": 0.0,
+          "net": 0.24204131576254947
+        },
+        "VDD": {
+          "positive": 0.3897898218620769,
+          "returned": 0.0,
+          "net": 0.3897898218620769
+        },
+        "VREF": {
+          "positive": 0.030111325179726003,
+          "returned": 0.0,
+          "net": 0.030111325179726003
+        },
+        "VLED": {
+          "positive": 0.3091514759321318,
+          "returned": 0.12887057772367375,
+          "net": 0.18028089820845808
+        },
+        "VD0": {
+          "positive": 0.028226329954123656,
+          "returned": 0.006737759903152613,
+          "net": 0.021488570050971045
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 64.91921285137711,
+      "current_range_uA": [
+        17.187877590991683,
+        129.8783288637683
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.1234341026656711,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "a-rin1wide-core03-matched",
+      "baseline": true,
+      "route": "A",
+      "case": {
+        "name": "TT-net1.8-C200-S80",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.8,
+        "steps_per_symbol": 80,
+        "timeout_s": 900
+      },
+      "result": "build/ab-improvement-20261111/a-rin1wide-core03-matched/cases/TT-net1.8-C200-S80/result.json",
+      "result_sha256": "ffa20ab5008dba0156f468ec0b6597407e6d50ba49668c96e75f3deab2e760b6",
+      "manifest_sha256": "b06561df791ea313d8690651387fc0e113d0775938aa75c9cf8c80d81b5476cd",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "ee976bf3f51bfa763868f8d4f8ff5047d522270087239839efad15c422c364ba",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "1211281604e1361a06d0366005282ee7e9093e32f325d1bb7225374682a88c2b",
+      "gzip_sha256": "e310ad104006ce1e8119a950e701461ad81f39f9e65194b18fb25dc2f160e69c",
+      "kind": "transient",
+      "pass_screen": false,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.703125,
+        "delay_ps": 818.3183183183185,
+        "worst_signed_margin_uAeq": 12.87884174156089,
+        "one_sided_margin_ps": 173.2445276620822,
+        "one_sided_margin_bit_UI": 0.3605651731967085,
+        "one_sided_margin_symbol_UI": 0.3605651731967085,
+        "zero_error": true,
+        "research_margin_pass": false,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.078125,
+        "delay_ps": 518.0180180180181,
+        "worst_signed_margin_uAeq": 32.12393470424941,
+        "one_sided_margin_ps": 228.6766688704302,
+        "one_sided_margin_bit_UI": 0.4759333170865828,
+        "one_sided_margin_symbol_UI": 0.4759333170865828,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.9993221797410786,
+        "returned": 0.13560783222124245,
+        "net": 0.8637143475198362
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.24204129581938671,
+          "returned": 0.0,
+          "net": 0.24204129581938671
+        },
+        "VDD": {
+          "positive": 0.3897900582285537,
+          "returned": 0.0,
+          "net": 0.3897900582285537
+        },
+        "VREF": {
+          "positive": 0.030111325176650876,
+          "returned": 0.0,
+          "net": 0.030111325176650876
+        },
+        "VLED": {
+          "positive": 0.30915297018138793,
+          "returned": 0.12887052578821173,
+          "net": 0.1802824443931762
+        },
+        "VD0": {
+          "positive": 0.028226530335099437,
+          "returned": 0.006737306433030723,
+          "net": 0.021489223902068713
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 64.91915225756877,
+      "current_range_uA": [
+        17.18823445612778,
+        129.881485135752
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.1234346204689689,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "a-rin1wide-core03-matched",
+      "baseline": true,
+      "route": "A",
+      "case": {
+        "name": "TT-net2-C200-S40",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 2.0,
+        "steps_per_symbol": 40,
+        "timeout_s": 900
+      },
+      "result": "build/ab-improvement-20261111/a-rin1wide-core03-matched/cases/TT-net2-C200-S40/result.json",
+      "result_sha256": "e1d3bfba4b3978d994021912a3b346416b7bc698d7ab154f106f9b9e0600f775",
+      "manifest_sha256": "b06561df791ea313d8690651387fc0e113d0775938aa75c9cf8c80d81b5476cd",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "53d8c04e756007a8c92995f6bb69370dac25c4d233ee7b494b895ccea772683b",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "16728ecba1258ff62d622856b3cb245093f73b2f6db2694bc02614c83827ef5e",
+      "gzip_sha256": "232f0928e33c01e5616e1b9220a6dafc6c9ae1f532efc1fdb4906d72097b5979",
+      "kind": "transient",
+      "pass_screen": false,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.8125,
+        "delay_ps": 783.7837837837839,
+        "worst_signed_margin_uAeq": 8.645604522366682,
+        "one_sided_margin_ps": 138.2926568907776,
+        "one_sided_margin_bit_UI": 0.31980176905992314,
+        "one_sided_margin_symbol_UI": 0.31980176905992314,
+        "zero_error": true,
+        "research_margin_pass": false,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.140625,
+        "delay_ps": 493.2432432432432,
+        "worst_signed_margin_uAeq": 30.84521981381217,
+        "one_sided_margin_ps": 203.71940468444913,
+        "one_sided_margin_bit_UI": 0.4711011233327886,
+        "one_sided_margin_symbol_UI": 0.4711011233327886,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.9515429841155539,
+        "returned": 0.13458769208292026,
+        "net": 0.8169552920326336
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.2178459531354789,
+          "returned": 0.0,
+          "net": 0.2178459531354789
+        },
+        "VDD": {
+          "positive": 0.38758352604205715,
+          "returned": 0.0,
+          "net": 0.38758352604205715
+        },
+        "VREF": {
+          "positive": 0.027100357149387376,
+          "returned": 0.0,
+          "net": 0.027100357149387376
+        },
+        "VLED": {
+          "positive": 0.29079468624370236,
+          "returned": 0.12785018750637106,
+          "net": 0.16294449873733133
+        },
+        "VD0": {
+          "positive": 0.0282184615449281,
+          "returned": 0.006737504576549206,
+          "net": 0.021480956968378893
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 65.1971927158717,
+      "current_range_uA": [
+        17.18980125125135,
+        129.8909967840986
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.1234466165345638,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "a-rin1wide-core03-matched",
+      "baseline": true,
+      "route": "A",
+      "case": {
+        "name": "TT-net3.2-C200-S40",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 3.2,
+        "steps_per_symbol": 40,
+        "timeout_s": 900
+      },
+      "result": "build/ab-improvement-20261111/a-rin1wide-core03-matched/cases/TT-net3.2-C200-S40/result.json",
+      "result_sha256": "0168ff1b7cfeb4503bb76f3f3734247282eba3395ce07c6c35e692765b97fd73",
+      "manifest_sha256": "b06561df791ea313d8690651387fc0e113d0775938aa75c9cf8c80d81b5476cd",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "4ca4e12176a64941ce950ddd53a1518d1f3e0e53dd44d17170b4f2a347f90f83",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "34ef0f02b68a1d09e51063d61a89203ddb15c18396ba9b3eda22c581f720b06f",
+      "gzip_sha256": "d8e55c993a7d462429fb02a00748ceab02aebe6a8681fe4d5e2c4906aee122aa",
+      "kind": "transient",
+      "pass_screen": false,
+      "full_receiver": {
+        "errors": 451,
+        "validation_bits": 4096,
+        "symbol_errors": 451,
+        "train_errors": 41,
+        "delay_bit_UI": 2.375,
+        "delay_ps": 641.891891891892,
+        "worst_signed_margin_uAeq": -9.80056194225564,
+        "one_sided_margin_ps": 0.0,
+        "one_sided_margin_bit_UI": 0.0,
+        "one_sided_margin_symbol_UI": 0.0,
+        "zero_error": false,
+        "research_margin_pass": false,
+        "historical_100ps_pass": false,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 451,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.484375,
+        "delay_ps": 401.1824324324325,
+        "worst_signed_margin_uAeq": 24.015354142579007,
+        "one_sided_margin_ps": 111.2783377516839,
+        "one_sided_margin_bit_UI": 0.4117298496812304,
+        "one_sided_margin_symbol_UI": 0.4117298496812304,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.7734060893137399,
+        "returned": 0.12262123967557932,
+        "net": 0.6507848496381605
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.13616596107097806,
+          "returned": 0.0,
+          "net": 0.13616596107097806
+        },
+        "VDD": {
+          "positive": 0.37195076037812524,
+          "returned": 0.0,
+          "net": 0.37195076037812524
+        },
+        "VREF": {
+          "positive": 0.01693812921040106,
+          "returned": 0.0,
+          "net": 0.01693812921040106
+        },
+        "VLED": {
+          "positive": 0.22046218380505686,
+          "returned": 0.11589672501848519,
+          "net": 0.10456545878657167
+        },
+        "VD0": {
+          "positive": 0.027889054849178637,
+          "returned": 0.006724514657094124,
+          "net": 0.021164540192084514
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 66.96080386011201,
+      "current_range_uA": [
+        17.1966522564315,
+        129.8972255477725
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.1234477256669702,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_wide_ff31p275",
+      "baseline": true,
+      "route": "B",
+      "case": {
+        "name": "DC-L0",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 0.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 900,
+        "kind": "dc",
+        "level": 0
+      },
+      "result": "build/ab-improvement-20261111/B_wide_ff31p275/cases/DC-L0/result.json",
+      "result_sha256": "b3bc9739b23c08e9709328fca2f70b908a06562fe45c903c1ae8a21adca8eb06",
+      "manifest_sha256": "5bed55b1bb9f78f6804d24d9fe120da8a06ca4e00763f8ca9cb291d6c6cb9174",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "bad7af74e0e4ce123e8213a6040f5a555c14e20c8465a386339282e27fed5c57",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "9121cf3f936d83bf551a0b4e55e73c0825c78431598bee4534467aba95930e7e",
+      "gzip_sha256": "d8c1348e013677b81d455b4958d675ec4e5268f617e036c7d30654042c9b6b53",
+      "kind": "dc",
+      "pass_screen": true,
+      "current_uA": 25.000668784097172,
+      "error_percent": 0.002675136388696764,
+      "power_mW": 1.2247467800536425,
+      "terminal_pass": true,
+      "body_forward_V": 0.0
+    },
+    {
+      "candidate": "B_wide_ff31p275",
+      "baseline": true,
+      "route": "B",
+      "case": {
+        "name": "DC-L1",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 0.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 900,
+        "kind": "dc",
+        "level": 1
+      },
+      "result": "build/ab-improvement-20261111/B_wide_ff31p275/cases/DC-L1/result.json",
+      "result_sha256": "01288460900462bf2df883533543e51deecd0198cda20fb9883ad3f40af38018",
+      "manifest_sha256": "5bed55b1bb9f78f6804d24d9fe120da8a06ca4e00763f8ca9cb291d6c6cb9174",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "97d1e47f40c890d6c1e196eb6a3698e1c5bb60687296541377b82a3ebe48e0f4",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "b76d2139f2585f3a458e462c845610ec29c0a5193c971a7baf9d9dba1082d0b9",
+      "gzip_sha256": "9ab44244577743ba8e092142f7205ee76457923bca9087411cf4861310feb3fc",
+      "kind": "dc",
+      "pass_screen": true,
+      "current_uA": 100.0150149957732,
+      "error_percent": 0.015014995773210416,
+      "power_mW": 1.2237999913158266,
+      "terminal_pass": true,
+      "body_forward_V": 0.0
+    },
+    {
+      "candidate": "B_wide_ff31p275",
+      "baseline": true,
+      "route": "B",
+      "case": {
+        "name": "TT-net0.8-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 0.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800
+      },
+      "result": "build/ab-improvement-20261111/B_wide_ff31p275/cases/TT-net0.8-C200-S40/result.json",
+      "result_sha256": "45d139761a250029820079c04b0ac39e0db05b7e38c323d97c186efd845a8280",
+      "manifest_sha256": "5bed55b1bb9f78f6804d24d9fe120da8a06ca4e00763f8ca9cb291d6c6cb9174",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "21c3b482660f9a6ba3deb17199fb992737f4d5429b701b07b28245eb75d8077d",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "7c4663167f3494dd3959564ed239f2f56857f1af45aa443ae6b521454d60b054",
+      "gzip_sha256": "7b9116ec0aa4931603172fb909eac7d1c703c43d0886e5bf6e6ed9a137f5926f",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.875,
+        "delay_ps": 945.945945945946,
+        "worst_signed_margin_uAeq": 32.88645587453345,
+        "one_sided_margin_ps": 522.3661605265745,
+        "one_sided_margin_bit_UI": 0.48318869848708135,
+        "one_sided_margin_symbol_UI": 0.48318869848708135,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.59375,
+        "delay_ps": 641.891891891892,
+        "worst_signed_margin_uAeq": 37.30463227954553,
+        "one_sided_margin_ps": 525.0293866179043,
+        "one_sided_margin_bit_UI": 0.48565218262156146,
+        "one_sided_margin_symbol_UI": 0.48565218262156146,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 1.864266811995763,
+        "returned": 0.11042090721492324,
+        "net": 1.7538459047808397
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 1.0993435124935056,
+          "returned": 0.0,
+          "net": 1.0993435124935056
+        },
+        "VDD": {
+          "positive": 0.20312683586462157,
+          "returned": 0.0,
+          "net": 0.20312683586462157
+        },
+        "VREF": {
+          "positive": 0.031249975547113524,
+          "returned": 0.0,
+          "net": 0.031249975547113524
+        },
+        "VLED": {
+          "positive": 0.5023355768837712,
+          "returned": 0.1036818070619209,
+          "net": 0.3986537698218503
+        },
+        "VD0": {
+          "positive": 0.028210911206751024,
+          "returned": 0.006739100153002344,
+          "net": 0.021471811053748683
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 63.78474004844532,
+      "current_range_uA": [
+        23.640867108420522,
+        109.0536315160004
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08741152217277248,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_wide_ff31p275",
+      "baseline": true,
+      "route": "B",
+      "case": {
+        "name": "TT-net1.2-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.2,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800
+      },
+      "result": "build/ab-improvement-20261111/B_wide_ff31p275/cases/TT-net1.2-C200-S40/result.json",
+      "result_sha256": "f4255305cc6058867559b2971c868a9e260e83e4bcc4790d80f0a97112ef23fe",
+      "manifest_sha256": "5bed55b1bb9f78f6804d24d9fe120da8a06ca4e00763f8ca9cb291d6c6cb9174",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "888c84e1aed371888450c63d44970abcc94304050078034faf9c5c5bb78d2235",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "6aed0b91716f62b6384be94be2ff8e86b617ef9d4187950c9c85fe7560cf1b47",
+      "gzip_sha256": "ad99536925bb2ca40b195ff1634af02ebc4bf26990839e0c79f68eb73daec2e9",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.0625,
+        "delay_ps": 765.7657657657659,
+        "worst_signed_margin_uAeq": 27.18212564134128,
+        "one_sided_margin_ps": 335.0354182656674,
+        "one_sided_margin_bit_UI": 0.4648616428436134,
+        "one_sided_margin_symbol_UI": 0.4648616428436134,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.640625,
+        "delay_ps": 461.71171171171176,
+        "worst_signed_margin_uAeq": 36.78706522346479,
+        "one_sided_margin_ps": 344.85093889184986,
+        "one_sided_margin_bit_UI": 0.4784806777124416,
+        "one_sided_margin_symbol_UI": 0.4784806777124416,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 1.3518213429059545,
+        "returned": 0.11036961810281157,
+        "net": 1.2414517248031431
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.7305311365393147,
+          "returned": 0.0,
+          "net": 0.7305311365393147
+        },
+        "VDD": {
+          "positive": 0.2008906954646062,
+          "returned": 0.0,
+          "net": 0.2008906954646062
+        },
+        "VREF": {
+          "positive": 0.020833317221404066,
+          "returned": 0.0,
+          "net": 0.020833317221404066
+        },
+        "VLED": {
+          "positive": 0.37135665326043454,
+          "returned": 0.10363041378682943,
+          "net": 0.26772623947360513
+        },
+        "VD0": {
+          "positive": 0.02820954042019497,
+          "returned": 0.006739204315982138,
+          "net": 0.021470336104212832
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 64.25417154539988,
+      "current_range_uA": [
+        23.59406147834052,
+        110.1491652396922
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08747232616422762,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_wide_ff31p275",
+      "baseline": true,
+      "route": "B",
+      "case": {
+        "name": "TT-net1.6-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.6,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800
+      },
+      "result": "build/ab-improvement-20261111/B_wide_ff31p275/cases/TT-net1.6-C200-S40/result.json",
+      "result_sha256": "1e40271933c5ef695bdd3733abcdc93c8aa7ed146b13190deed6fddecd59c662",
+      "manifest_sha256": "5bed55b1bb9f78f6804d24d9fe120da8a06ca4e00763f8ca9cb291d6c6cb9174",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "80e049e056deaa2b76b75eff5581470af03e0ad3cb5d408a8fff0b74fd65f391",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "e587a89b475f73486eef9ae33d5e5c382af896dbd2c055bb2116471ba23644ef",
+      "gzip_sha256": "e98ebe0b491d09e866a0dd49d754d1f08eae3e30adb8099b856aa86790efb3b3",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.21875,
+        "delay_ps": 658.783783783784,
+        "worst_signed_margin_uAeq": 20.79561364685278,
+        "one_sided_margin_ps": 233.00806843571138,
+        "one_sided_margin_bit_UI": 0.431064926606066,
+        "one_sided_margin_symbol_UI": 0.431064926606066,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.6875,
+        "delay_ps": 371.62162162162167,
+        "worst_signed_margin_uAeq": 36.02124848137959,
+        "one_sided_margin_ps": 254.7629847118347,
+        "one_sided_margin_bit_UI": 0.4713115217168941,
+        "one_sided_margin_symbol_UI": 0.4713115217168941,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 1.094429471788899,
+        "returned": 0.11031950892756161,
+        "net": 0.9841099628613372
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.5462780020349658,
+          "returned": 0.0,
+          "net": 0.5462780020349658
+        },
+        "VDD": {
+          "positive": 0.1986283404369019,
+          "returned": 0.0,
+          "net": 0.1986283404369019
+        },
+        "VREF": {
+          "positive": 0.015624988051920056,
+          "returned": 0.0,
+          "net": 0.015624988051920056
+        },
+        "VLED": {
+          "positive": 0.3056921011449038,
+          "returned": 0.10358042356324387,
+          "net": 0.20211167758165996
+        },
+        "VD0": {
+          "positive": 0.02820604012020735,
+          "returned": 0.00673908536431772,
+          "net": 0.02146695475588963
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 64.67576177383891,
+      "current_range_uA": [
+        23.57366397847043,
+        112.3217499519735
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08751899033322941,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_wide_ff31p275",
+      "baseline": true,
+      "route": "B",
+      "case": {
+        "name": "TT-net2-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 2.0,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800
+      },
+      "result": "build/ab-improvement-20261111/B_wide_ff31p275/cases/TT-net2-C200-S40/result.json",
+      "result_sha256": "4c2fb2ec27b8ec1d3b6be520b493f0ee078d8931f5bb54bbc56c25155483281f",
+      "manifest_sha256": "5bed55b1bb9f78f6804d24d9fe120da8a06ca4e00763f8ca9cb291d6c6cb9174",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "2f5a2bf6a6701df1a40c3fe4c01c68fa8f53835eb3a97c36eef785fd15d5e557",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "f9369ba6cf5aed37f1ac5a9299bfb8c4b5c37b74c3d3933f65872174eb9cd179",
+      "gzip_sha256": "f89e542c6718a8cc5fcba26a8098bfcc705212bf3da70d855f91ba4d7e7afc9e",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.375,
+        "delay_ps": 594.5945945945947,
+        "worst_signed_margin_uAeq": 13.330060643190315,
+        "one_sided_margin_ps": 165.3742541911814,
+        "one_sided_margin_bit_UI": 0.38242796281710695,
+        "one_sided_margin_symbol_UI": 0.38242796281710695,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.734375,
+        "delay_ps": 317.5675675675676,
+        "worst_signed_margin_uAeq": 34.94875674252703,
+        "one_sided_margin_ps": 200.7326919049744,
+        "one_sided_margin_bit_UI": 0.4641943500302532,
+        "one_sided_margin_symbol_UI": 0.4641943500302532,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.9389754597355539,
+        "returned": 0.1102961917774774,
+        "net": 0.8286792679580763
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.43580524825785694,
+          "returned": 0.0,
+          "net": 0.43580524825785694
+        },
+        "VDD": {
+          "positive": 0.19625333545702445,
+          "returned": 0.0,
+          "net": 0.19625333545702445
+        },
+        "VREF": {
+          "positive": 0.0124999905456681,
+          "returned": 0.0,
+          "net": 0.0124999905456681
+        },
+        "VLED": {
+          "positive": 0.26622626511549974,
+          "returned": 0.10355722646518727,
+          "net": 0.1626690386503125
+        },
+        "VD0": {
+          "positive": 0.028190620359504613,
+          "returned": 0.006738965312290154,
+          "net": 0.021451655047214458
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 65.06710452936152,
+      "current_range_uA": [
+        23.619786121098628,
+        114.2656403365042
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08757669062742757,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_wide_ff31p275",
+      "baseline": true,
+      "route": "B",
+      "case": {
+        "name": "TT-net2-C200-S80",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 2.0,
+        "steps_per_symbol": 80,
+        "timeout_s": 1800
+      },
+      "result": "build/ab-improvement-20261111/B_wide_ff31p275/cases/TT-net2-C200-S80/result.json",
+      "result_sha256": "c5aafa4edd53017f0d17a8a6ec287e82793617c806a2dc7176cd4a7fd84cb4e0",
+      "manifest_sha256": "5bed55b1bb9f78f6804d24d9fe120da8a06ca4e00763f8ca9cb291d6c6cb9174",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "df70e9e08f586e1e7f3ff1f60e22390593e704b9d714f75036eee3cc885b50e9",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "d00a31ecfab942720caefe6b635c31e60782247fe04c21eef11ed810f3c3aae4",
+      "gzip_sha256": "b6756c6ebcd3ba8f55e3dbc4bcc489f6ca828d4a9ac2f57d65c61d79f5d185fb",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.375,
+        "delay_ps": 594.5945945945947,
+        "worst_signed_margin_uAeq": 13.32988760914958,
+        "one_sided_margin_ps": 165.37394392078937,
+        "one_sided_margin_bit_UI": 0.38242724531682537,
+        "one_sided_margin_symbol_UI": 0.38242724531682537,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.734375,
+        "delay_ps": 317.5675675675676,
+        "worst_signed_margin_uAeq": 34.94873023220207,
+        "one_sided_margin_ps": 200.73182980992846,
+        "one_sided_margin_bit_UI": 0.4641923564354595,
+        "one_sided_margin_symbol_UI": 0.4641923564354595,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.9389766338604499,
+        "returned": 0.11029591344006286,
+        "net": 0.828680720420387
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.4358052533523318,
+          "returned": 0.0,
+          "net": 0.4358052533523318
+        },
+        "VDD": {
+          "positive": 0.19625326669393353,
+          "returned": 0.0,
+          "net": 0.19625326669393353
+        },
+        "VREF": {
+          "positive": 0.012499990546565816,
+          "returned": 0.0,
+          "net": 0.012499990546565816
+        },
+        "VLED": {
+          "positive": 0.26622739102053855,
+          "returned": 0.10355732763952417,
+          "net": 0.1626700633810144
+        },
+        "VD0": {
+          "positive": 0.02819073224708015,
+          "returned": 0.006738585800538679,
+          "net": 0.021452146446541472
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 65.06712833822257,
+      "current_range_uA": [
+        23.6197789477916,
+        114.2671579552675
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.0875791931287746,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_wide_ff31p275",
+      "baseline": true,
+      "route": "B",
+      "case": {
+        "name": "TT-net2.4-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 2.4,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800
+      },
+      "result": "build/ab-improvement-20261111/B_wide_ff31p275/cases/TT-net2.4-C200-S40/result.json",
+      "result_sha256": "229ab948cec971b6c53754486388285d98010d44808a247c4103f993f92549d3",
+      "manifest_sha256": "5bed55b1bb9f78f6804d24d9fe120da8a06ca4e00763f8ca9cb291d6c6cb9174",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "7a3c9636719f34585cb440aeea1bf6f8b5f1615596ca3052f45532708bbb7143",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "be0fef57ef516058cc02cb3e6e094525026fa5a61cff2c92231c9168ba430390",
+      "gzip_sha256": "7901e3efd9d9467bc90eb15ff3bdef2056ac03c26703e0e768b1e3da743132bf",
+      "kind": "transient",
+      "pass_screen": false,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.5,
+        "delay_ps": 540.5405405405406,
+        "worst_signed_margin_uAeq": 6.651093348959471,
+        "one_sided_margin_ps": 108.81431665469587,
+        "one_sided_margin_bit_UI": 0.301959728716781,
+        "one_sided_margin_symbol_UI": 0.301959728716781,
+        "zero_error": true,
+        "research_margin_pass": false,
+        "historical_100ps_pass": false,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.78125,
+        "delay_ps": 281.5315315315316,
+        "worst_signed_margin_uAeq": 33.569483847611394,
+        "one_sided_margin_ps": 164.76904411748373,
+        "one_sided_margin_bit_UI": 0.4572340974260173,
+        "one_sided_margin_symbol_UI": 0.4572340974260173,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.8342832252741951,
+        "returned": 0.11034330483513634,
+        "net": 0.7239399204390586
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.362178847636039,
+          "returned": 0.0,
+          "net": 0.362178847636039
+        },
+        "VDD": {
+          "positive": 0.19358384297546521,
+          "returned": 0.0,
+          "net": 0.19358384297546521
+        },
+        "VREF": {
+          "positive": 0.01041665887152436,
+          "returned": 0.0,
+          "net": 0.01041665887152436
+        },
+        "VLED": {
+          "positive": 0.2399608863752214,
+          "returned": 0.10360482225034748,
+          "net": 0.13635606412487392
+        },
+        "VD0": {
+          "positive": 0.028142989415944994,
+          "returned": 0.006738482584788862,
+          "net": 0.021404506831156134
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 65.44928597853539,
+      "current_range_uA": [
+        23.60796898297852,
+        116.2345523213757
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08763113098045094,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_wide_ff31p275",
+      "baseline": true,
+      "route": "B",
+      "case": {
+        "name": "TT-net2.4-C200-S80",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 2.4,
+        "steps_per_symbol": 80,
+        "timeout_s": 1800
+      },
+      "result": "build/ab-improvement-20261111/B_wide_ff31p275/cases/TT-net2.4-C200-S80/result.json",
+      "result_sha256": "05eba339adc3303a4ca8c834bf093d20c4618b5bdaaa36a3d70efa06dfc268c6",
+      "manifest_sha256": "5bed55b1bb9f78f6804d24d9fe120da8a06ca4e00763f8ca9cb291d6c6cb9174",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "1f3a6c179a845e665a03c6aeddabd3650edf0a3e86fd932c729ad5981cc06a8d",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "ce3b33ee985348fc778a90ebab84d91578d228930b51fd2b704ead5a71b4d6e7",
+      "gzip_sha256": "6dd1712e51cc5a413a8b80d9cbd7c30d0cdd1e3ed9d8f5e49e291d7f3df18107",
+      "kind": "transient",
+      "pass_screen": false,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.5,
+        "delay_ps": 540.5405405405406,
+        "worst_signed_margin_uAeq": 6.651092004512002,
+        "one_sided_margin_ps": 108.81386892822067,
+        "one_sided_margin_bit_UI": 0.30195848627581234,
+        "one_sided_margin_symbol_UI": 0.30195848627581234,
+        "zero_error": true,
+        "research_margin_pass": false,
+        "historical_100ps_pass": false,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.78125,
+        "delay_ps": 281.5315315315316,
+        "worst_signed_margin_uAeq": 33.56966173680655,
+        "one_sided_margin_ps": 164.76960653743453,
+        "one_sided_margin_bit_UI": 0.4572356581413808,
+        "one_sided_margin_symbol_UI": 0.4572356581413808,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.8342833577209448,
+        "returned": 0.11034282964147209,
+        "net": 0.7239405280794726
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.3621788644926038,
+          "returned": 0.0,
+          "net": 0.3621788644926038
+        },
+        "VDD": {
+          "positive": 0.19358370359455837,
+          "returned": 0.0,
+          "net": 0.19358370359455837
+        },
+        "VREF": {
+          "positive": 0.010416658872006162,
+          "returned": 0.0,
+          "net": 0.010416658872006162
+        },
+        "VLED": {
+          "positive": 0.23996107032454034,
+          "returned": 0.10360467315680212,
+          "net": 0.1363563971677382
+        },
+        "VD0": {
+          "positive": 0.028143060437236106,
+          "returned": 0.006738156484669961,
+          "net": 0.021404903952566147
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 65.44929964124084,
+      "current_range_uA": [
+        23.60789133913396,
+        116.2313635904649
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08762423969606514,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_wide_ff31p275",
+      "baseline": true,
+      "route": "B",
+      "case": {
+        "name": "TT-net3.2-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 3.2,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800
+      },
+      "result": "build/ab-improvement-20261111/B_wide_ff31p275/cases/TT-net3.2-C200-S40/result.json",
+      "result_sha256": "eed45660cec24bed86b641b9da61e8d105674dc52208941b3b6e10468268f039",
+      "manifest_sha256": "5bed55b1bb9f78f6804d24d9fe120da8a06ca4e00763f8ca9cb291d6c6cb9174",
+      "engine_sha256": "018c889b6c11d8543db3cdd5914f3490c3638c9f901f97e035bfc50ff4b27b41",
+      "deck_sha256": "81868ad3524a7912bc3fef10bca91a7cbb45873f409facfa52a39338e28375eb",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "43629e6187e051794fda8493885c01eb2008cbb5210d1d49006677ce0a1d0297",
+      "gzip_sha256": "bd743484a94020efb55cac4914a0ba04f94d3fa6bb11d529f0edef856849ff4e",
+      "kind": "transient",
+      "pass_screen": false,
+      "full_receiver": {
+        "errors": 256,
+        "validation_bits": 4096,
+        "symbol_errors": 256,
+        "train_errors": 24,
+        "delay_bit_UI": 1.734375,
+        "delay_ps": 468.75000000000006,
+        "worst_signed_margin_uAeq": -3.7970625323978453,
+        "one_sided_margin_ps": 0.0,
+        "one_sided_margin_bit_UI": 0.0,
+        "one_sided_margin_symbol_UI": 0.0,
+        "zero_error": false,
+        "research_margin_pass": false,
+        "historical_100ps_pass": false,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 1,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 255,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.859375,
+        "delay_ps": 232.26351351351354,
+        "worst_signed_margin_uAeq": 30.00811155927604,
+        "one_sided_margin_ps": 120.08405112951999,
+        "one_sided_margin_bit_UI": 0.44431098917922396,
+        "one_sided_margin_symbol_UI": 0.44431098917922396,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.6987576766471928,
+        "returned": 0.10950915273649052,
+        "net": 0.5892485239107021
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.2700267423808147,
+          "returned": 0.0,
+          "net": 0.2700267423808147
+        },
+        "VDD": {
+          "positive": 0.18666889334659822,
+          "returned": 0.0,
+          "net": 0.18666889334659822
+        },
+        "VREF": {
+          "positive": 0.007812494270861963,
+          "returned": 0.0,
+          "net": 0.007812494270861963
+        },
+        "VLED": {
+          "positive": 0.20636727120800857,
+          "returned": 0.1027765153861752,
+          "net": 0.10359075582183339
+        },
+        "VD0": {
+          "positive": 0.027882275440909276,
+          "returned": 0.006732637350315322,
+          "net": 0.021149638090593954
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 66.29533469243053,
+      "current_range_uA": [
+        23.638534360637273,
+        119.3388055383125
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08761975813241651,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "A_rcff31p275",
+      "baseline": false,
+      "route": "A",
+      "case": {
+        "name": "DC-L0",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 0.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 900,
+        "kind": "dc",
+        "level": 0
+      },
+      "result": "build/driver-methods-20261111/A_rcff31p275/cases/DC-L0/result.json",
+      "result_sha256": "894662dc1fa09298988cbb19bff9c4824469bac7c5ba9357015e6500ec3ea3d5",
+      "manifest_sha256": "b7bc05613fb09f239dd5869f7121c763c4b5078324ed04ebfa6c1cb7b0c5d3d0",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "ef7b45bd4d171acbd96f545dc91704ade74e3eeac43c9b926384bb33dcd0477e",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "98e38ad96e19fa2e84e57e7f3baa4b566ecc1da753a57efa598aeab01eb839a2",
+      "gzip_sha256": "24a63378e7a74c676b1d1931bda20d9d0fa761149a5b95e9fd46bf89f339d459",
+      "kind": "dc",
+      "pass_screen": true,
+      "current_uA": 24.997365733481832,
+      "error_percent": -0.01053706607266891,
+      "power_mW": 0.6147775290243463,
+      "terminal_pass": true,
+      "body_forward_V": 0.01398066518892005
+    },
+    {
+      "candidate": "A_rcff31p275",
+      "baseline": false,
+      "route": "A",
+      "case": {
+        "name": "DC-L1",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 0.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 900,
+        "kind": "dc",
+        "level": 1
+      },
+      "result": "build/driver-methods-20261111/A_rcff31p275/cases/DC-L1/result.json",
+      "result_sha256": "912a3aeca8d4d52f95c31539476213f0d3b827699d1b3adee1c3a9241afba83f",
+      "manifest_sha256": "b7bc05613fb09f239dd5869f7121c763c4b5078324ed04ebfa6c1cb7b0c5d3d0",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "ad7cc35596d813f0b48187f27e518df69af938cfd1e4aeb4f5a9000e4b698c0c",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "f7c1701affe7cbbe0872cd0ac07124a095d5598abe27b99edfd3ce4a9cf196b1",
+      "gzip_sha256": "04a9858bc83580ea74be09628ee214a100acce413b005cfc7e19e3e4e363e46b",
+      "kind": "dc",
+      "pass_screen": true,
+      "current_uA": 99.98473481646168,
+      "error_percent": -0.015265183538315519,
+      "power_mW": 0.9896920784876186,
+      "terminal_pass": true,
+      "body_forward_V": 0.0
+    },
+    {
+      "candidate": "A_rcff31p275",
+      "baseline": false,
+      "route": "A",
+      "case": {
+        "name": "TT-net1.6-C200-S40",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.6,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800
+      },
+      "result": "build/driver-methods-20261111/A_rcff31p275/cases/TT-net1.6-C200-S40/result.json",
+      "result_sha256": "c48c8424058cad78cfa71bec6cdd9c92c959639ce3a08db96461daf30f78e189",
+      "manifest_sha256": "b7bc05613fb09f239dd5869f7121c763c4b5078324ed04ebfa6c1cb7b0c5d3d0",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "9a353895cb4417e5309505a720067120336431a71774cc21fef0dca507e3c6d7",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "c9700b2c4efd2eeb5af2f97d81a6d5a765fdaec5a38e28795c4e37409a48c157",
+      "gzip_sha256": "666a0c1f4803bf52d14525ca93ea59acb9b592c8fead288853ddd4dfb8cd0df1",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.5,
+        "delay_ps": 810.810810810811,
+        "worst_signed_margin_uAeq": 17.354296903597827,
+        "one_sided_margin_ps": 241.14857150815394,
+        "one_sided_margin_bit_UI": 0.4461248572900847,
+        "one_sided_margin_symbol_UI": 0.4461248572900847,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.0,
+        "delay_ps": 540.5405405405406,
+        "worst_signed_margin_uAeq": 36.32847975040961,
+        "one_sided_margin_ps": 262.00530181207745,
+        "one_sided_margin_bit_UI": 0.4847098083523432,
+        "one_sided_margin_symbol_UI": 0.4847098083523432,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 1.1418842004115253,
+        "returned": 0.09029960535882989,
+        "net": 1.0515845950526954
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.2722451838725784,
+          "returned": 0.0,
+          "net": 0.2722451838725784
+        },
+        "VDD": {
+          "positive": 0.5273550826060593,
+          "returned": 0.0,
+          "net": 0.5273550826060593
+        },
+        "VREF": {
+          "positive": 0.0338745230179083,
+          "returned": 0.0,
+          "net": 0.0338745230179083
+        },
+        "VLED": {
+          "positive": 0.28026949269760226,
+          "returned": 0.08355996524820146,
+          "net": 0.19670952744940082
+        },
+        "VD0": {
+          "positive": 0.02813991821737717,
+          "returned": 0.0067396401106284256,
+          "net": 0.021400278106748747
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 62.94440867527289,
+      "current_range_uA": [
+        24.58048883263004,
+        101.8639030190704
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.09297149212914757,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "A_rcff31p275",
+      "baseline": false,
+      "route": "A",
+      "case": {
+        "name": "TT-net2-C200-S40",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 2.0,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800
+      },
+      "result": "build/driver-methods-20261111/A_rcff31p275/cases/TT-net2-C200-S40/result.json",
+      "result_sha256": "cfbd51b036b5fcb88ec71c4af63c7a0ac3573df86355c3a094ac12999408b8d8",
+      "manifest_sha256": "b7bc05613fb09f239dd5869f7121c763c4b5078324ed04ebfa6c1cb7b0c5d3d0",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "fa74adcd15d9a1bd87e5a1f2bbe42374a1da7848c291042090c8e0e9b163c2d6",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "9ec107929c4a12334e849da0527e629c14290717b88b0832c04fbd79a761ad19",
+      "gzip_sha256": "3632a7d9e459bb394af22749a90c28dca089040a4d875ff3b56bb613ffec2178",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.703125,
+        "delay_ps": 736.4864864864866,
+        "worst_signed_margin_uAeq": 10.038403010743082,
+        "one_sided_margin_ps": 161.61490325931302,
+        "one_sided_margin_bit_UI": 0.3737344637871613,
+        "one_sided_margin_symbol_UI": 0.3737344637871613,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.109375,
+        "delay_ps": 479.7297297297298,
+        "worst_signed_margin_uAeq": 33.55044745771211,
+        "one_sided_margin_ps": 204.0038339315485,
+        "one_sided_margin_bit_UI": 0.4717588659667059,
+        "one_sided_margin_symbol_UI": 0.4717588659667059,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 1.031302315463002,
+        "returned": 0.08865898026545066,
+        "net": 0.9426433351975515
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.2178041092434694,
+          "returned": 0.0,
+          "net": 0.2178041092434694
+        },
+        "VDD": {
+          "positive": 0.5186504818110664,
+          "returned": 0.0,
+          "net": 0.5186504818110664
+        },
+        "VREF": {
+          "positive": 0.02709973308575449,
+          "returned": 0.0,
+          "net": 0.02709973308575449
+        },
+        "VLED": {
+          "positive": 0.23978047672305702,
+          "returned": 0.08192214101997192,
+          "net": 0.1578583357030851
+        },
+        "VD0": {
+          "positive": 0.027967514599654783,
+          "returned": 0.006736839245478751,
+          "net": 0.021230675354176037
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 63.14159099366217,
+      "current_range_uA": [
+        24.57864809050337,
+        102.0079012773319
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.09297217934032087,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "A_rcff31p275",
+      "baseline": false,
+      "route": "A",
+      "case": {
+        "name": "TT-net2-C200-S80",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 2.0,
+        "steps_per_symbol": 80,
+        "timeout_s": 1800
+      },
+      "result": "build/driver-methods-20261111/A_rcff31p275/cases/TT-net2-C200-S80/result.json",
+      "result_sha256": "8a7a35400681c8af791668fb4e7e46b7586e771d4c9b7b91fbc2e17982075ce2",
+      "manifest_sha256": "b7bc05613fb09f239dd5869f7121c763c4b5078324ed04ebfa6c1cb7b0c5d3d0",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "6cb0718a53e49db4a1f0a4281d44ca3a0114ee13de4753e0c086bee9572128ac",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "0aeec4fec94a8f14f7636341ed425b487e3b7165e6c65404c8b0c6ab1a757967",
+      "gzip_sha256": "d99187aacfb588f102fc36b0d81cb45d3b153162c445009ec724fbc61354fe61",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.703125,
+        "delay_ps": 736.4864864864866,
+        "worst_signed_margin_uAeq": 10.038287186637739,
+        "one_sided_margin_ps": 161.6152495457048,
+        "one_sided_margin_bit_UI": 0.3737352645744423,
+        "one_sided_margin_symbol_UI": 0.3737352645744423,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.109375,
+        "delay_ps": 479.7297297297298,
+        "worst_signed_margin_uAeq": 33.55060850971795,
+        "one_sided_margin_ps": 204.0051299533677,
+        "one_sided_margin_bit_UI": 0.4717618630171628,
+        "one_sided_margin_symbol_UI": 0.4717618630171628,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 1.0312979600606422,
+        "returned": 0.08865771439197478,
+        "net": 0.9426402456686674
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.21780411545337472,
+          "returned": 0.0,
+          "net": 0.21780411545337472
+        },
+        "VDD": {
+          "positive": 0.5186482883870737,
+          "returned": 0.0,
+          "net": 0.5186482883870737
+        },
+        "VREF": {
+          "positive": 0.02709973307506665,
+          "returned": 0.0,
+          "net": 0.02709973307506665
+        },
+        "VLED": {
+          "positive": 0.2397782618249182,
+          "returned": 0.08192113383260326,
+          "net": 0.15785712799231497
+        },
+        "VD0": {
+          "positive": 0.027967561320208913,
+          "returned": 0.006736580559371536,
+          "net": 0.021230980760837376
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 63.141647574079805,
+      "current_range_uA": [
+        24.57883416027866,
+        102.0086797181823
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.0929721611439458,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "A_rcff31p275",
+      "baseline": false,
+      "route": "A",
+      "case": {
+        "name": "TT-net2.4-C200-S40",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 2.4,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800
+      },
+      "result": "build/driver-methods-20261111/A_rcff31p275/cases/TT-net2.4-C200-S40/result.json",
+      "result_sha256": "bd0857de309abc45a063d4f4faca12a9a2b0a8b9c408a78c568df6c6c0bbd50d",
+      "manifest_sha256": "b7bc05613fb09f239dd5869f7121c763c4b5078324ed04ebfa6c1cb7b0c5d3d0",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "2b40bbc248ed9027b665584c2400710cbc86300785e37e8ebca5df6e8d1c25d4",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "4422a9d346f40a8a70cac97be9b40fc5e78b3538b7e4b2727dbbf28e2515c580",
+      "gzip_sha256": "fda1e4a14a3d74fe7132fc646138841b7455f7acd92db23579ef4066c8f52a97",
+      "kind": "transient",
+      "pass_screen": false,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.875,
+        "delay_ps": 675.6756756756757,
+        "worst_signed_margin_uAeq": 2.7750592084716956,
+        "one_sided_margin_ps": 77.00274918742211,
+        "one_sided_margin_bit_UI": 0.21368262899509635,
+        "one_sided_margin_symbol_UI": 0.21368262899509635,
+        "zero_error": true,
+        "research_margin_pass": false,
+        "historical_100ps_pass": false,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.21875,
+        "delay_ps": 439.1891891891892,
+        "worst_signed_margin_uAeq": 25.509917949961036,
+        "one_sided_margin_ps": 163.49947773342117,
+        "one_sided_margin_bit_UI": 0.4537110507102437,
+        "one_sided_margin_symbol_UI": 0.4537110507102437,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.9476446197690939,
+        "returned": 0.08317760293301904,
+        "net": 0.8644670168360749
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.1815117169559961,
+          "returned": 0.0,
+          "net": 0.1815117169559961
+        },
+        "VDD": {
+          "positive": 0.507152055156252,
+          "returned": 0.0,
+          "net": 0.507152055156252
+        },
+        "VREF": {
+          "positive": 0.02258329207543395,
+          "returned": 0.0,
+          "net": 0.02258329207543395
+        },
+        "VLED": {
+          "positive": 0.20875073226899987,
+          "returned": 0.07644866341407583,
+          "net": 0.13230206885492404
+        },
+        "VD0": {
+          "positive": 0.027646823312411986,
+          "returned": 0.006728939518943215,
+          "net": 0.02091788379346877
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 63.502863565926816,
+      "current_range_uA": [
+        24.58308724910065,
+        101.5059598797462
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.09297254886171524,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "A_rcff31p275",
+      "baseline": false,
+      "route": "A",
+      "case": {
+        "name": "TT-net3.2-C200-S40",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 3.2,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800
+      },
+      "result": "build/driver-methods-20261111/A_rcff31p275/cases/TT-net3.2-C200-S40/result.json",
+      "result_sha256": "ca5057439f53975b7d671ec36f30da6b6f99ab2ea13e6c8df619d576d4ac35e0",
+      "manifest_sha256": "b7bc05613fb09f239dd5869f7121c763c4b5078324ed04ebfa6c1cb7b0c5d3d0",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "29416e0539780cafd46d8c97b3de47caab8dfb64e3f9f7fe2ed0f5f7e0aa5f06",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "d8cb193cb9b96a7a1d4dc2d48892fb8417a7092401164fd07e158216434164fc",
+      "gzip_sha256": "2792f52a2c5e44180b3299a4dbe68b7e4e5eded4f68df8f23e3595c338f2e099",
+      "kind": "transient",
+      "pass_screen": false,
+      "full_receiver": {
+        "errors": 650,
+        "validation_bits": 4096,
+        "symbol_errors": 650,
+        "train_errors": 63,
+        "delay_bit_UI": 2.125,
+        "delay_ps": 574.3243243243244,
+        "worst_signed_margin_uAeq": -11.060800687750842,
+        "one_sided_margin_ps": 0.0,
+        "one_sided_margin_bit_UI": 0.0,
+        "one_sided_margin_symbol_UI": 0.0,
+        "zero_error": false,
+        "research_margin_pass": false,
+        "historical_100ps_pass": false,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 256,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 394,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.375,
+        "delay_ps": 371.62162162162167,
+        "worst_signed_margin_uAeq": 12.029418039054647,
+        "one_sided_margin_ps": 95.43168823423143,
+        "one_sided_margin_bit_UI": 0.35309724646665624,
+        "one_sided_margin_symbol_UI": 0.35309724646665624,
+        "zero_error": true,
+        "research_margin_pass": false,
+        "historical_100ps_pass": false,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.8177820396859918,
+        "returned": 0.06631570140631024,
+        "net": 0.7514663382796816
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.1361394729537089,
+          "returned": 0.0,
+          "net": 0.1361394729537089
+        },
+        "VDD": {
+          "positive": 0.4771658885030474,
+          "returned": 0.0,
+          "net": 0.4771658885030474
+        },
+        "VREF": {
+          "positive": 0.01693765391104481,
+          "returned": 0.0,
+          "net": 0.01693765391104481
+        },
+        "VLED": {
+          "positive": 0.1608017688751258,
+          "returned": 0.05961811726689647,
+          "net": 0.10118365160822931
+        },
+        "VD0": {
+          "positive": 0.026737255443064944,
+          "returned": 0.006697584139413774,
+          "net": 0.02003967130365117
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 64.75309846906839,
+      "current_range_uA": [
+        24.57971854130787,
+        101.7177867857074
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.09297362254169039,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "A_rcff31p275-holdout4c2d",
+      "baseline": false,
+      "route": "A",
+      "case": {
+        "name": "TT-net2-C200-S40",
+        "route": "A",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 2.0,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800
+      },
+      "result": "build/driver-methods-20261111/A_rcff31p275-holdout4c2d/cases/TT-net2-C200-S40/result.json",
+      "result_sha256": "d34cc3bc58acae8816f7c9b6329f5adbdbbd1a704202240e1e326f363ddcf3af",
+      "manifest_sha256": "d448c9401f9ae74feb3a9285102b8000b87199f58ab7487c1877c231cc5cd9c1",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "71424e53cea49a3cc7f589fbfbf341683dcd9e784be72888e004092552ce60a1",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "cbd673014aef560bba272f8a3adbb06d33f08b3b2cd22004c6eb9f80ed94992a",
+      "gzip_sha256": "0746660111b505177b2e5ec7aa737b1dc8216b67cb679cd701d0a7b37696fd20",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.703125,
+        "delay_ps": 736.4864864864866,
+        "worst_signed_margin_uAeq": 10.035531660228358,
+        "one_sided_margin_ps": 161.5768831899471,
+        "one_sided_margin_bit_UI": 0.37364654237675266,
+        "one_sided_margin_symbol_UI": 0.37364654237675266,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1036
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1020
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1020
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1020
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.109375,
+        "delay_ps": 479.7297297297298,
+        "worst_signed_margin_uAeq": 33.54951798880588,
+        "one_sided_margin_ps": 203.99759021960728,
+        "one_sided_margin_bit_UI": 0.4717444273828418,
+        "one_sided_margin_symbol_UI": 0.4717444273828418,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1036
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1020
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1020
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1020
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 1.031511639311774,
+        "returned": 0.0885025461053925,
+        "net": 0.9430090932063815
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.21780460641213598,
+          "returned": 0.0,
+          "net": 0.21780460641213598
+        },
+        "VDD": {
+          "positive": 0.5193255962794343,
+          "returned": 0.0,
+          "net": 0.5193255962794343
+        },
+        "VREF": {
+          "positive": 0.027099739689495386,
+          "returned": 0.0,
+          "net": 0.027099739689495386
+        },
+        "VLED": {
+          "positive": 0.23936187129576134,
+          "returned": 0.08177702485916696,
+          "net": 0.15758484643659437
+        },
+        "VD0": {
+          "positive": 0.027919825634946972,
+          "returned": 0.006725521246225532,
+          "net": 0.02119430438872144
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 63.032226066319936,
+      "current_range_uA": [
+        24.57742423902905,
+        102.00426066903101
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.0929720388286932,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_vin3p3_dummy27p6k",
+      "baseline": false,
+      "route": "B",
+      "case": {
+        "name": "DC-L0",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 0.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 900,
+        "kind": "dc",
+        "level": 0,
+        "vin_V": 3.3
+      },
+      "result": "build/driver-methods-20261111/B_vin3p3_dummy27p6k/cases/DC-L0/result.json",
+      "result_sha256": "302b96e7ba3b13e75cd46e0aa5784d6e87a4a4e5d0dab61690564d3d64d9b144",
+      "manifest_sha256": "afd60270dababbd19488f7e1e8eed215dc50d77e4df27aa3cbf8b772aa4cac64",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "6db294fc0a4e7c19d44f6ce6a7b718ce40e48266180c39eefda720ab2a0ea3ee",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "0953c629b0b6e707ac63d46b41a6b25735063a0abd7a45a8d0445fe1341aab20",
+      "gzip_sha256": "f141d0350e7581f1ae6682532dbee14bd535428c6f8f0cc782051625bf529be9",
+      "kind": "dc",
+      "pass_screen": true,
+      "current_uA": 24.990710596058488,
+      "error_percent": -0.03715761576603693,
+      "power_mW": 0.7617045995193195,
+      "terminal_pass": true,
+      "body_forward_V": 0.0
+    },
+    {
+      "candidate": "B_vin3p3_dummy27p6k",
+      "baseline": false,
+      "route": "B",
+      "case": {
+        "name": "DC-L1",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 0.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 900,
+        "kind": "dc",
+        "level": 1,
+        "vin_V": 3.3
+      },
+      "result": "build/driver-methods-20261111/B_vin3p3_dummy27p6k/cases/DC-L1/result.json",
+      "result_sha256": "157faaa5590d7f6cc9cf17f898160ada6df2e4bfbb649fe837530942ef1aa4e6",
+      "manifest_sha256": "afd60270dababbd19488f7e1e8eed215dc50d77e4df27aa3cbf8b772aa4cac64",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "feb55729fd5eb67fc8f88419b08253fc54e0ba89cbe85d42d38e4926e44a6003",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "f19a5ce62622ed18e3f587a390a4fbc27e7172e4bc35b25fc63d2f3fc045558f",
+      "gzip_sha256": "d95293c6c2e8a6e48cb56e6b327b3aa1040189ba68032db80c76ab14cb3baee5",
+      "kind": "dc",
+      "pass_screen": true,
+      "current_uA": 99.97525344018388,
+      "error_percent": -0.0247465598161134,
+      "power_mW": 0.8886102691973476,
+      "terminal_pass": true,
+      "body_forward_V": 0.0
+    },
+    {
+      "candidate": "B_vin3p3_dummy27p6k",
+      "baseline": false,
+      "route": "B",
+      "case": {
+        "name": "TT-net1.6-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.6,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800,
+        "vin_V": 3.3
+      },
+      "result": "build/driver-methods-20261111/B_vin3p3_dummy27p6k/cases/TT-net1.6-C200-S40/result.json",
+      "result_sha256": "c11ced1062d463df1de7f77839480797f2d51cd9340a3d3ef9349edf7f58152e",
+      "manifest_sha256": "afd60270dababbd19488f7e1e8eed215dc50d77e4df27aa3cbf8b772aa4cac64",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "dca9ead475f289dbfb012ab112964c8d5fa1c20cb4420252eb3cbcb486f482cf",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "14d9b6a2d8be26e4f209ba220b0cc4b40722f94f7367766cd25356dfa5dc7b76",
+      "gzip_sha256": "5659ac91b8ef470c632d191023a67e28cd3123dc35816270dc9dc550854975db",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.21875,
+        "delay_ps": 658.783783783784,
+        "worst_signed_margin_uAeq": 20.347504836315842,
+        "one_sided_margin_ps": 229.80236442149206,
+        "one_sided_margin_bit_UI": 0.4251343741797603,
+        "one_sided_margin_symbol_UI": 0.4251343741797603,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.6875,
+        "delay_ps": 371.62162162162167,
+        "worst_signed_margin_uAeq": 35.832068130434706,
+        "one_sided_margin_ps": 254.75842725423837,
+        "one_sided_margin_bit_UI": 0.4713030904203409,
+        "one_sided_margin_symbol_UI": 0.4713030904203409,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.8475932740816866,
+        "returned": 0.11038170936655035,
+        "net": 0.7372115647151363
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.2987075697852576,
+          "returned": 0.0,
+          "net": 0.2987075697852576
+        },
+        "VDD": {
+          "positive": 0.1981990254407704,
+          "returned": 0.0,
+          "net": 0.1981990254407704
+        },
+        "VREF": {
+          "positive": 0.01562498815494158,
+          "returned": 0.0,
+          "net": 0.01562498815494158
+        },
+        "VLED": {
+          "positive": 0.30685414824531126,
+          "returned": 0.10364254706579543,
+          "net": 0.20321160117951584
+        },
+        "VD0": {
+          "positive": 0.028207542455405837,
+          "returned": 0.006739162300754922,
+          "net": 0.021468380154650916
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 65.02814793165663,
+      "current_range_uA": [
+        23.55054221442887,
+        113.3626354404727
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08748210301438597,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_vin3p3_dummy27p6k",
+      "baseline": false,
+      "route": "B",
+      "case": {
+        "name": "TT-net1.8-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800,
+        "vin_V": 3.3
+      },
+      "result": "build/driver-methods-20261111/B_vin3p3_dummy27p6k/cases/TT-net1.8-C200-S40/result.json",
+      "result_sha256": "7ff5e473920e958eda9d0a726f0817ee6766a535bfafcd2432ac17bf04bcca0a",
+      "manifest_sha256": "afd60270dababbd19488f7e1e8eed215dc50d77e4df27aa3cbf8b772aa4cac64",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "050840298d91fb11643be0649b5c135e9468483ca75d9b6a8304466cbbeb5c4c",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "907cd1227e233b2172b432c02b9ca60c30c00ff1b26f8b72e87b4e8f9dd9305d",
+      "gzip_sha256": "b17039c9c2152d42120d095b9fab6dcb4b23ac8cdc97eee24afc04f4875d936e",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.296875,
+        "delay_ps": 623.1231231231232,
+        "worst_signed_margin_uAeq": 16.716492159062902,
+        "one_sided_margin_ps": 190.9733459591057,
+        "one_sided_margin_bit_UI": 0.3974632762773887,
+        "one_sided_margin_symbol_UI": 0.3974632762773887,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.703125,
+        "delay_ps": 337.83783783783787,
+        "worst_signed_margin_uAeq": 35.24065927543131,
+        "one_sided_margin_ps": 225.08722552798983,
+        "one_sided_margin_bit_UI": 0.4684627881301288,
+        "one_sided_margin_symbol_UI": 0.4684627881301288,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.7890984903200575,
+        "returned": 0.11035694587417462,
+        "net": 0.6787415444458829
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.26492625723421875,
+          "returned": 0.0,
+          "net": 0.26492625723421875
+        },
+        "VDD": {
+          "positive": 0.19707593174475366,
+          "returned": 0.0,
+          "net": 0.19707593174475366
+        },
+        "VREF": {
+          "positive": 0.013888878426571532,
+          "returned": 0.0,
+          "net": 0.013888878426571532
+        },
+        "VLED": {
+          "positive": 0.2850045827171155,
+          "returned": 0.10361786684762969,
+          "net": 0.18138671586948582
+        },
+        "VD0": {
+          "positive": 0.028202840197398046,
+          "returned": 0.006739079026544929,
+          "net": 0.021463761170853114
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 65.29977223606093,
+      "current_range_uA": [
+        23.56412872812159,
+        114.64973913224961
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08751015589412825,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_vin3p3_dummy27p6k",
+      "baseline": false,
+      "route": "B",
+      "case": {
+        "name": "TT-net1.8-C200-S80",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.8,
+        "steps_per_symbol": 80,
+        "timeout_s": 1800,
+        "vin_V": 3.3
+      },
+      "result": "build/driver-methods-20261111/B_vin3p3_dummy27p6k/cases/TT-net1.8-C200-S80/result.json",
+      "result_sha256": "c6e1b94dd94dc24f32f180b67c7c070c9cffd3aa2b4e1cca792d8447f28b1cc6",
+      "manifest_sha256": "afd60270dababbd19488f7e1e8eed215dc50d77e4df27aa3cbf8b772aa4cac64",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "efc0045c206755cd189afea6bf46cd58be7f169445337107aba82266fb1c2723",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "3f32fd2847068779b31a1113fe8cad05f50105268e04d05a6ff48a574f5f9a52",
+      "gzip_sha256": "8e9c7bd8fe83195ea9c61efd941bc6e6c6a9067521c237fdadcc48b79796e721",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.296875,
+        "delay_ps": 623.1231231231232,
+        "worst_signed_margin_uAeq": 16.71641894541976,
+        "one_sided_margin_ps": 190.971412194375,
+        "one_sided_margin_bit_UI": 0.397459251629543,
+        "one_sided_margin_symbol_UI": 0.397459251629543,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.703125,
+        "delay_ps": 337.83783783783787,
+        "worst_signed_margin_uAeq": 35.240586864712576,
+        "one_sided_margin_ps": 225.0842894226917,
+        "one_sided_margin_bit_UI": 0.4684566773609771,
+        "one_sided_margin_symbol_UI": 0.4684566773609771,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.7891004620896952,
+        "returned": 0.11035656105086691,
+        "net": 0.6787439010388283
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.2649262921345354,
+          "returned": 0.0,
+          "net": 0.2649262921345354
+        },
+        "VDD": {
+          "positive": 0.1970759701478568,
+          "returned": 0.0,
+          "net": 0.1970759701478568
+        },
+        "VREF": {
+          "positive": 0.013888878427095384,
+          "returned": 0.0,
+          "net": 0.013888878427095384
+        },
+        "VLED": {
+          "positive": 0.2850063360076638,
+          "returned": 0.10361780088015266,
+          "net": 0.18138853512751116
+        },
+        "VD0": {
+          "positive": 0.02820298537254385,
+          "returned": 0.006738760170714263,
+          "net": 0.021464225201829588
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 65.29981769885197,
+      "current_range_uA": [
+        23.56418047208884,
+        114.6490802952716
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08751349545725162,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_vin3p3_dummy27p6k",
+      "baseline": false,
+      "route": "B",
+      "case": {
+        "name": "TT-net2-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 2.0,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800,
+        "vin_V": 3.3
+      },
+      "result": "build/driver-methods-20261111/B_vin3p3_dummy27p6k/cases/TT-net2-C200-S40/result.json",
+      "result_sha256": "3fb140dd233a326cbb397b2945249fae2e1e4b57cabec6b8856c9e261a81c0fc",
+      "manifest_sha256": "afd60270dababbd19488f7e1e8eed215dc50d77e4df27aa3cbf8b772aa4cac64",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "bba6590f86f32816ee3ba85742b7b1c4d9e3854b9bda3e4ac29ca8c2e5c1e235",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "204a2f5f8e7228bbf1f997384d1b268663e784a8fda93fbe9e608de68b2b15b0",
+      "gzip_sha256": "f7c2d77b8ab84f765dd5bbaa9e066c1d543e21011b6eb2719e9fc75e6ef7340a",
+      "kind": "transient",
+      "pass_screen": false,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.375,
+        "delay_ps": 594.5945945945947,
+        "worst_signed_margin_uAeq": 12.858473212374342,
+        "one_sided_margin_ps": 157.5217136608103,
+        "one_sided_margin_bit_UI": 0.3642689628406237,
+        "one_sided_margin_symbol_UI": 0.3642689628406237,
+        "zero_error": true,
+        "research_margin_pass": false,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.734375,
+        "delay_ps": 317.5675675675676,
+        "worst_signed_margin_uAeq": 34.67095731685636,
+        "one_sided_margin_ps": 200.74311578586727,
+        "one_sided_margin_bit_UI": 0.46421845525481803,
+        "one_sided_margin_symbol_UI": 0.46421845525481803,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.7420313890168071,
+        "returned": 0.11034392833749655,
+        "net": 0.6316874606793105
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.23790907417836954,
+          "returned": 0.0,
+          "net": 0.23790907417836954
+        },
+        "VDD": {
+          "positive": 0.19590638588160852,
+          "returned": 0.0,
+          "net": 0.19590638588160852
+        },
+        "VREF": {
+          "positive": 0.012499990642377798,
+          "returned": 0.0,
+          "net": 0.012499990642377798
+        },
+        "VLED": {
+          "positive": 0.26752260318048726,
+          "returned": 0.10360490404914206,
+          "net": 0.1639176991313452
+        },
+        "VD0": {
+          "positive": 0.02819333513396394,
+          "returned": 0.006739024288354489,
+          "net": 0.02145431084560945
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 65.56764385718249,
+      "current_range_uA": [
+        23.59634627735204,
+        116.0313000188861
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08754355585158535,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_vin3p3_dummy27p6k",
+      "baseline": false,
+      "route": "B",
+      "case": {
+        "name": "TT-net2.4-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 2.4,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800,
+        "vin_V": 3.3
+      },
+      "result": "build/driver-methods-20261111/B_vin3p3_dummy27p6k/cases/TT-net2.4-C200-S40/result.json",
+      "result_sha256": "a4b951703f9d3079ad44a236efc263896ca8b9010d64dcb0d03dcddbfd8fb915",
+      "manifest_sha256": "afd60270dababbd19488f7e1e8eed215dc50d77e4df27aa3cbf8b772aa4cac64",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "b0a892a37ba1b69be6a32b422e9ffd036ff0f6b51c7ca578f7aacd9ee9bbeb7d",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "6d874c774a27fed93ed2bb4fe88fcbeeafa8a72a8a5d1f446e65695ed809c927",
+      "gzip_sha256": "f16008f378bef7bfb6bd820c11cc0ea37b78636ea293fd6d5dddb04b73011a63",
+      "kind": "transient",
+      "pass_screen": false,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.5,
+        "delay_ps": 540.5405405405406,
+        "worst_signed_margin_uAeq": 5.885009013415598,
+        "one_sided_margin_ps": 100.47260924319013,
+        "one_sided_margin_bit_UI": 0.2788114906498526,
+        "one_sided_margin_symbol_UI": 0.2788114906498526,
+        "zero_error": true,
+        "research_margin_pass": false,
+        "historical_100ps_pass": false,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.78125,
+        "delay_ps": 281.5315315315316,
+        "worst_signed_margin_uAeq": 33.114794072239405,
+        "one_sided_margin_ps": 164.81161588655422,
+        "one_sided_margin_bit_UI": 0.45735223408518794,
+        "one_sided_margin_symbol_UI": 0.45735223408518794,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.6706314317815604,
+        "returned": 0.11037516464750352,
+        "net": 0.5602562671340567
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.19739035011620304,
+          "returned": 0.0,
+          "net": 0.19739035011620304
+        },
+        "VDD": {
+          "positive": 0.1933277358335487,
+          "returned": 0.0,
+          "net": 0.1933277358335487
+        },
+        "VREF": {
+          "positive": 0.010416658962636426,
+          "returned": 0.0,
+          "net": 0.010416658962636426
+        },
+        "VLED": {
+          "positive": 0.24134870683809445,
+          "returned": 0.10363648563394004,
+          "net": 0.1377122212041544
+        },
+        "VD0": {
+          "positive": 0.028147980031077713,
+          "returned": 0.006738679013563486,
+          "net": 0.02140930101751423
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 66.1011318351877,
+      "current_range_uA": [
+        23.58982420812618,
+        118.6644159389826
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08757024727027796,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_vin3p3_dummy27p6k",
+      "baseline": false,
+      "route": "B",
+      "case": {
+        "name": "TT-net3.2-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 3.2,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800,
+        "vin_V": 3.3
+      },
+      "result": "build/driver-methods-20261111/B_vin3p3_dummy27p6k/cases/TT-net3.2-C200-S40/result.json",
+      "result_sha256": "0a8caf47611bb06bd97fd4cc5234dfb16ce95d4079d0b4785d1ab68b7cc8fcd6",
+      "manifest_sha256": "afd60270dababbd19488f7e1e8eed215dc50d77e4df27aa3cbf8b772aa4cac64",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "ec0f97e384c5e063a9971fb8025cdf84ef2d47fa596535a199e07dee7f6c1849",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "04047a6269495197a4f15d411adb06a72d51c17c0f7f52f255f34f093c850c24",
+      "gzip_sha256": "1cd26bc207417b1a80d241b15bb0b3d8d1d62116ac7515aea11577bf1e69bdaf",
+      "kind": "transient",
+      "pass_screen": false,
+      "full_receiver": {
+        "errors": 259,
+        "validation_bits": 4096,
+        "symbol_errors": 259,
+        "train_errors": 23,
+        "delay_bit_UI": 1.734375,
+        "delay_ps": 468.75000000000006,
+        "worst_signed_margin_uAeq": -4.931321752205889,
+        "one_sided_margin_ps": 0.0,
+        "one_sided_margin_bit_UI": 0.0,
+        "one_sided_margin_symbol_UI": 0.0,
+        "zero_error": false,
+        "research_margin_pass": false,
+        "historical_100ps_pass": false,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 259,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.875,
+        "delay_ps": 236.4864864864865,
+        "worst_signed_margin_uAeq": 29.550101520444315,
+        "one_sided_margin_ps": 120.19284319089721,
+        "one_sided_margin_bit_UI": 0.44471351980631957,
+        "one_sided_margin_symbol_UI": 0.44471351980631957,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.5768175133139392,
+        "returned": 0.10951165589947148,
+        "net": 0.46730585741446773
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.1466903313844592,
+          "returned": 0.0,
+          "net": 0.1466903313844592
+        },
+        "VDD": {
+          "positive": 0.18660057872007932,
+          "returned": 0.0,
+          "net": 0.18660057872007932
+        },
+        "VREF": {
+          "positive": 0.007812494352726541,
+          "returned": 0.0,
+          "net": 0.007812494352726541
+        },
+        "VLED": {
+          "positive": 0.20782803164561162,
+          "returned": 0.10277883587764033,
+          "net": 0.10504919576797128
+        },
+        "VD0": {
+          "positive": 0.027886077211062527,
+          "returned": 0.006732820021831167,
+          "net": 0.021153257189231358
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 67.22973959597626,
+      "current_range_uA": [
+        23.637021709144857,
+        123.0732928230718
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.0875707744767622,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_vin3p3_dummy27p6k-holdout4c2d",
+      "baseline": false,
+      "route": "B",
+      "case": {
+        "name": "TT-net1.8-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800,
+        "vin_V": 3.3
+      },
+      "result": "build/driver-methods-20261111/B_vin3p3_dummy27p6k-holdout4c2d/cases/TT-net1.8-C200-S40/result.json",
+      "result_sha256": "3fdfeebaa622266647b7484942d752d24b2b3c4cbb375a76f408040295d4fd23",
+      "manifest_sha256": "7c4bce65926a4498f5d0df105f7753088662d60900f294baceb68bce67a201b1",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "9ca146a6e61c615dee1e8f171609c892e983c50d9a3618c67ca6e0b4a46856eb",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "3a952ba1242ab963ca2417440d22831cdfcade4ab290aab8c1da869d137ed7d1",
+      "gzip_sha256": "8a9a1acac452412051fa066201b4574675b82e9e512f743c5ef40908e73784a5",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.296875,
+        "delay_ps": 623.1231231231232,
+        "worst_signed_margin_uAeq": 16.711623653321197,
+        "one_sided_margin_ps": 190.812201096353,
+        "one_sided_margin_bit_UI": 0.3971278935317847,
+        "one_sided_margin_symbol_UI": 0.3971278935317847,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1036
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1020
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1020
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1020
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.703125,
+        "delay_ps": 337.83783783783787,
+        "worst_signed_margin_uAeq": 35.226103532680824,
+        "one_sided_margin_ps": 225.08851394398255,
+        "one_sided_margin_bit_UI": 0.4684654696459137,
+        "one_sided_margin_symbol_UI": 0.4684654696459137,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1036
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1020
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1020
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1020
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.7889367497963515,
+        "returned": 0.11017173081771697,
+        "net": 0.6787650189786345
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.2651048164743747,
+          "returned": 0.0,
+          "net": 0.2651048164743747
+        },
+        "VDD": {
+          "positive": 0.1972777043602494,
+          "returned": 0.0,
+          "net": 0.1972777043602494
+        },
+        "VREF": {
+          "positive": 0.013888878471824767,
+          "returned": 0.0,
+          "net": 0.013888878471824767
+        },
+        "VLED": {
+          "positive": 0.2845100201692016,
+          "returned": 0.10344399576158464,
+          "net": 0.181066024407617
+        },
+        "VD0": {
+          "positive": 0.028155330320700975,
+          "returned": 0.006727735056132339,
+          "net": 0.02142759526456864
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 65.18473235635048,
+      "current_range_uA": [
+        23.56449546298542,
+        114.6826581793206
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08751559970945522,
+      "body_pass": true,
+      "static_domain_pass": true
+    },
+    {
+      "candidate": "B_vin3p3_dummy50k_control",
+      "baseline": false,
+      "route": "B",
+      "case": {
+        "name": "DC-L0",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 0.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 900,
+        "kind": "dc",
+        "level": 0,
+        "vin_V": 3.3
+      },
+      "result": "build/driver-methods-20261111/B_vin3p3_dummy50k_control/cases/DC-L0/result.json",
+      "result_sha256": "9f31efd6eb9587d7eee7636e9e5d20c0fdc0e30ff7480596e1de596abe206507",
+      "manifest_sha256": "4b7e0e2afbd84ec8464051698df1285166c15db14d7536aebc02567bf46b1e27",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "6db294fc0a4e7c19d44f6ce6a7b718ce40e48266180c39eefda720ab2a0ea3ee",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "2df3d0ae7f15be4d0205c1cb203b0e023cada883e6c5c4f21622e8c6ce306e15",
+      "gzip_sha256": "8eb9372f18970fa58ad29f2eb2eae68300ae32a53cdd03912c14bb0023879e81",
+      "kind": "dc",
+      "pass_screen": true,
+      "current_uA": 24.99071068214646,
+      "error_percent": -0.03715727141415659,
+      "power_mW": 0.7107594779260039,
+      "terminal_pass": true,
+      "body_forward_V": 0.0
+    },
+    {
+      "candidate": "B_vin3p3_dummy50k_control",
+      "baseline": false,
+      "route": "B",
+      "case": {
+        "name": "DC-L1",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 0.8,
+        "steps_per_symbol": 40,
+        "timeout_s": 900,
+        "kind": "dc",
+        "level": 1,
+        "vin_V": 3.3
+      },
+      "result": "build/driver-methods-20261111/B_vin3p3_dummy50k_control/cases/DC-L1/result.json",
+      "result_sha256": "c368102205828f54338d44dcfff16c40dde35422f44a867e7827cc7e83fc6b76",
+      "manifest_sha256": "4b7e0e2afbd84ec8464051698df1285166c15db14d7536aebc02567bf46b1e27",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "feb55729fd5eb67fc8f88419b08253fc54e0ba89cbe85d42d38e4926e44a6003",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "17fe6ec8ea4d8a200e4683a8c7e21b7b5a565426b39c718668d164cba8dc320b",
+      "gzip_sha256": "7fc5f20c02e0dc72b726b175e917805a47f2438d3ac15f8a28f9ed44cda8bed6",
+      "kind": "dc",
+      "pass_screen": true,
+      "current_uA": 99.97525344018388,
+      "error_percent": -0.0247465598161134,
+      "power_mW": 0.8886102692032098,
+      "terminal_pass": true,
+      "body_forward_V": 0.0
+    },
+    {
+      "candidate": "B_vin3p3_dummy50k_control",
+      "baseline": false,
+      "route": "B",
+      "case": {
+        "name": "TT-net1.6-C200-S40",
+        "route": "B",
+        "corner": "typical",
+        "temp_C": 27,
+        "vdd_V": 3.3,
+        "led_cap_F": 2e-13,
+        "net_rate_Gbps": 1.6,
+        "steps_per_symbol": 40,
+        "timeout_s": 1800,
+        "vin_V": 3.3
+      },
+      "result": "build/driver-methods-20261111/B_vin3p3_dummy50k_control/cases/TT-net1.6-C200-S40/result.json",
+      "result_sha256": "94d8c5f41adeb4de8cffbc869a29b15b4425e885d8d36480753f1a49d1eb61b2",
+      "manifest_sha256": "4b7e0e2afbd84ec8464051698df1285166c15db14d7536aebc02567bf46b1e27",
+      "engine_sha256": "a93984ca602028a0de230c37cf28a72de5875703204d9cbdcefe59da9ad41c25",
+      "deck_sha256": "dca9ead475f289dbfb012ab112964c8d5fa1c20cb4420252eb3cbcb486f482cf",
+      "simulation_ok": true,
+      "analysis_error": null,
+      "raw_sha256": "e68c47a0539013b367fce76caa701a3512a42f4ed03e79c73f8af05acf210762",
+      "gzip_sha256": "4d0c92c3b4a232165d400e16cda1d488e377322970fdcfce5ae8ecd66e0ac0d3",
+      "kind": "transient",
+      "pass_screen": true,
+      "full_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 1.21875,
+        "delay_ps": 658.783783783784,
+        "worst_signed_margin_uAeq": 17.585659504001633,
+        "one_sided_margin_ps": 201.87646138058437,
+        "one_sided_margin_bit_UI": 0.37347145355408107,
+        "one_sided_margin_symbol_UI": 0.37347145355408107,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "electrical_receiver": {
+        "errors": 0,
+        "validation_bits": 4096,
+        "symbol_errors": 0,
+        "train_errors": 0,
+        "delay_bit_UI": 0.6875,
+        "delay_ps": 371.62162162162167,
+        "worst_signed_margin_uAeq": 34.16966245812412,
+        "one_sided_margin_ps": 254.81492944397056,
+        "one_sided_margin_bit_UI": 0.47140761947134546,
+        "one_sided_margin_symbol_UI": 0.47140761947134546,
+        "zero_error": true,
+        "research_margin_pass": true,
+        "historical_100ps_pass": true,
+        "transition_symbol_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        }
+      },
+      "energy_pJ": {
+        "positive": 0.8439428002324282,
+        "returned": 0.10971182137567154,
+        "net": 0.7342309788567567
+      },
+      "port_energy_pJ": {
+        "VIN": {
+          "positive": 0.28488074923815554,
+          "returned": 0.0,
+          "net": 0.28488074923815554
+        },
+        "VDD": {
+          "positive": 0.20057732755447708,
+          "returned": 0.0,
+          "net": 0.20057732755447708
+        },
+        "VREF": {
+          "positive": 0.015624988035169068,
+          "returned": 0.0,
+          "net": 0.015624988035169068
+        },
+        "VLED": {
+          "positive": 0.3146647506312097,
+          "returned": 0.10297274298356157,
+          "net": 0.21169200764764814
+        },
+        "VD0": {
+          "positive": 0.02819498477341687,
+          "returned": 0.006739078392109954,
+          "net": 0.021455906381306913
+        },
+        "VD1": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        },
+        "VDISABLE": {
+          "positive": 0.0,
+          "returned": 0.0,
+          "net": 0.0
+        }
+      },
+      "mean_current_uA": 67.73933022312916,
+      "current_range_uA": [
+        23.5046189027007,
+        123.897076977777
+      ],
+      "terminal_pass": true,
+      "body_forward_V": 0.08766847038484427,
+      "body_pass": true,
+      "static_domain_pass": true
+    }
+  ],
+  "same_rate_comparisons": [
+    {
+      "new_candidate": "A_rcff31p275",
+      "baseline_candidate": "a-rin1wide-core03-matched",
+      "rate_Gbps": 1.6,
+      "new_result_sha256": "c48c8424058cad78cfa71bec6cdd9c92c959639ce3a08db96461daf30f78e189",
+      "baseline_result_sha256": "ca9ed15b9d3f3a5e2e295bea4e24447300a16bcdfb2ca43ebdcb9bb94258448f",
+      "energy_positive_percent": 7.945782705143745,
+      "timing_delta_ps": 24.227463031305405,
+      "amplitude_delta_uAeq": -0.1404156163095962,
+      "mean_current_delta_uA": -1.6982994286146962
+    },
+    {
+      "new_candidate": "B_vin3p3_dummy50k_control",
+      "baseline_candidate": "B_wide_ff31p275",
+      "rate_Gbps": 1.6,
+      "new_result_sha256": "94d8c5f41adeb4de8cffbc869a29b15b4425e885d8d36480753f1a49d1eb61b2",
+      "baseline_result_sha256": "1e40271933c5ef695bdd3733abcdc93c8aa7ed146b13190deed6fddecd59c662",
+      "energy_positive_percent": -22.887420159385684,
+      "timing_delta_ps": -31.131607055127006,
+      "amplitude_delta_uAeq": -3.2099541428511458,
+      "mean_current_delta_uA": 3.063568449290244
+    },
+    {
+      "new_candidate": "B_vin3p3_dummy27p6k",
+      "baseline_candidate": "B_wide_ff31p275",
+      "rate_Gbps": 1.6,
+      "new_result_sha256": "c11ced1062d463df1de7f77839480797f2d51cd9340a3d3ef9349edf7f58152e",
+      "baseline_result_sha256": "1e40271933c5ef695bdd3733abcdc93c8aa7ed146b13190deed6fddecd59c662",
+      "energy_positive_percent": -22.55386976227407,
+      "timing_delta_ps": -3.2057040142193216,
+      "amplitude_delta_uAeq": -0.44810881053693663,
+      "mean_current_delta_uA": 0.352386157817719
+    },
+    {
+      "new_candidate": "B_vin3p3_dummy27p6k",
+      "baseline_candidate": "B_vin3p3_dummy50k_control",
+      "rate_Gbps": 1.6,
+      "new_result_sha256": "c11ced1062d463df1de7f77839480797f2d51cd9340a3d3ef9349edf7f58152e",
+      "baseline_result_sha256": "94d8c5f41adeb4de8cffbc869a29b15b4425e885d8d36480753f1a49d1eb61b2",
+      "energy_positive_percent": 0.432549913128355,
+      "timing_delta_ps": 27.925903040907684,
+      "amplitude_delta_uAeq": 2.761845332314209,
+      "mean_current_delta_uA": -2.711182291472525
+    }
+  ],
+  "half_step_checks": [
+    {
+      "candidate": "A_rcff31p275",
+      "rate_Gbps": 2.0,
+      "S40_result_sha256": "cfbd51b036b5fcb88ec71c4af63c7a0ac3573df86355c3a094ac12999408b8d8",
+      "S80_result_sha256": "8a7a35400681c8af791668fb4e7e46b7586e771d4c9b7b91fbc2e17982075ce2",
+      "same_pass_outcome": true,
+      "amplitude_delta_uAeq": -0.00011582410534316523,
+      "timing_delta_ps": 0.0003462863917889081,
+      "energy_positive_delta_percent": -0.00042232062262836934
+    },
+    {
+      "candidate": "B_vin3p3_dummy27p6k",
+      "rate_Gbps": 1.8,
+      "S40_result_sha256": "7ff5e473920e958eda9d0a726f0817ee6766a535bfafcd2432ac17bf04bcca0a",
+      "S80_result_sha256": "c6e1b94dd94dc24f32f180b67c7c070c9cffd3aa2b4e1cca792d8447f28b1cc6",
+      "same_pass_outcome": true,
+      "amplitude_delta_uAeq": -7.32136431409458e-05,
+      "timing_delta_ps": -0.0019337647306940653,
+      "energy_positive_delta_percent": 0.0002498762400104937
+    }
+  ],
+  "derived_causal_evidence": {
+    "path": "evidence/driver-methods-20261111/micro-causal.json",
+    "sha256": "5b05c21a738ab4c95ba280e47d06c62b25cac84865de5ac9210d132fc6861523"
+  },
+  "limitations": [
+    "Schematic transistor simulation; new physical layout, DRC, LVS and PEX not completed.",
+    "Synthetic 20um load and 200ps optical/1GHz RX held fixed; no device bandwidth claim.",
+    "Failed-case pJ denominates attempted payload, not successfully transmitted useful bits.",
+    "No random noise, measured BER, startup/disable, PVT or production qualification.",
+    "Positive seven-port supply energy reported; returned energy is separately retained and no perfect converter recovery is assumed."
+  ]
+}

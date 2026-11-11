@@ -1,0 +1,131 @@
+{
+  "candidate": "B_vin3p3_dummy27p6k",
+  "rate_Gbps": 1.8,
+  "only_data_sources_changed": true,
+  "result_sha256": "3fdfeebaa622266647b7484942d752d24b2b3c4cbb375a76f408040295d4fd23",
+  "analysis": {
+    "full_receiver": {
+      "errors": 0,
+      "validation_bits": 4096,
+      "symbol_errors": 0,
+      "train_errors": 0,
+      "delay_bit_UI": 1.296875,
+      "delay_ps": 623.1231231231232,
+      "worst_signed_margin_uAeq": 16.711623653321197,
+      "one_sided_margin_ps": 190.812201096353,
+      "one_sided_margin_bit_UI": 0.3971278935317847,
+      "one_sided_margin_symbol_UI": 0.3971278935317847,
+      "zero_error": true,
+      "research_margin_pass": true,
+      "historical_100ps_pass": true,
+      "transition_symbol_errors": {
+        "0->0": {
+          "errors": 0,
+          "occurrences": 1036
+        },
+        "0->1": {
+          "errors": 0,
+          "occurrences": 1020
+        },
+        "1->0": {
+          "errors": 0,
+          "occurrences": 1020
+        },
+        "1->1": {
+          "errors": 0,
+          "occurrences": 1020
+        }
+      }
+    },
+    "electrical_receiver": {
+      "errors": 0,
+      "validation_bits": 4096,
+      "symbol_errors": 0,
+      "train_errors": 0,
+      "delay_bit_UI": 0.703125,
+      "delay_ps": 337.83783783783787,
+      "worst_signed_margin_uAeq": 35.226103532680824,
+      "one_sided_margin_ps": 225.08851394398255,
+      "one_sided_margin_bit_UI": 0.4684654696459137,
+      "one_sided_margin_symbol_UI": 0.4684654696459137,
+      "zero_error": true,
+      "research_margin_pass": true,
+      "historical_100ps_pass": true,
+      "transition_symbol_errors": {
+        "0->0": {
+          "errors": 0,
+          "occurrences": 1036
+        },
+        "0->1": {
+          "errors": 0,
+          "occurrences": 1020
+        },
+        "1->0": {
+          "errors": 0,
+          "occurrences": 1020
+        },
+        "1->1": {
+          "errors": 0,
+          "occurrences": 1020
+        }
+      }
+    },
+    "energy_pJ_per_attempted_payload_bit": {
+      "positive": 0.7889367497963515,
+      "returned": 0.11017173081771697,
+      "net": 0.6787650189786345
+    },
+    "terminal_screen_pass": true,
+    "max_body_forward_V": 0.08751559970945522,
+    "body_screen_pass": true,
+    "static_IV_domain_pass": true,
+    "combined_screen_pass": true,
+    "current_range_uA": [
+      23.56449546298542,
+      114.6826581793206
+    ],
+    "native_samples": 1074747,
+    "max_step_ps": 12.012012012996033
+  },
+  "protocol": {
+    "schema": "microled-driver-methods-20261111",
+    "hypotheses": [
+      "B lower reference/dummy supply voltage with preserved dummy compliance",
+      "A damped N1-to-OUT capacitive feed-forward"
+    ],
+    "fixed": {
+      "LED_DC_targets_uA": [
+        25,
+        100
+      ],
+      "DC_tolerance_percent": 1,
+      "LED_cap_fF": 200,
+      "optical_tau_ps": 200,
+      "RX_GHz": 1,
+      "net_efficiency": "32/37",
+      "VLED_V": 5,
+      "VDD_V": 3.3
+    },
+    "development_sequence": "Prior stage frozen 4736-line-bit development frame",
+    "holdout_seed": 19501,
+    "holdout_seed_hex": "0x4c2d",
+    "selection": "DC gate first, then 1.6 Gb/s; adjacent higher-rate point only after success. Freeze candidate before holdout. Keep failures. No tuning against holdout.",
+    "scope": "Schematic transistor simulation, same public PDK and synthetic load; no new layout/PEX, startup, PVT or hardware qualification. Seven source-port energy, upstream converter/RX/clock excluded.",
+    "holdout_phase_offset_bits": 27081,
+    "holdout_scope": "Different PRBS15 window; not statistically independent random BER qualification",
+    "holdout_window_in_reference_cycle": [
+      27081,
+      31817
+    ],
+    "development_window": [
+      0,
+      4736
+    ],
+    "prior_holdout_window": [
+      16749,
+      21485
+    ],
+    "windows_nonoverlapping": true
+  },
+  "source_result_sha256": "7ff5e473920e958eda9d0a726f0817ee6766a535bfafcd2432ac17bf04bcca0a"
+}

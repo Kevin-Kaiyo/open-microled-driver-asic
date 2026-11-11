@@ -1,0 +1,206 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+:root{--ink:#213e49;--teal:#236d73;--muted:#5b727d;--line:#d3e0df;--light:#edf4f3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#eef3f2;color:var(--ink);font:16px/1.72 "PingFang SC","Noto Sans CJK SC",Arial,sans-serif}header{background:#203e49;color:#fff;padding:24px max(22px,calc((100vw - 1060px)/2));font-size:14px;letter-spacing:.06em}main{max-width:1120px;margin:auto;background:white;padding:24px 44px 64px}h1,h2,h3{font-family:"Avenir Next","PingFang SC",sans-serif;line-height:1.35;color:var(--teal)}h1{font-size:clamp(29px,4vw,42px)}h2{font-size:28px}h3{font-size:20px;margin-top:24px}p{margin:0 0 16px}section{padding:28px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}a{color:var(--teal);overflow-wrap:anywhere;text-underline-offset:3px}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}details{padding:18px 22px;background:var(--light);margin:22px 0}summary{cursor:pointer;font-weight:650}.toc{columns:2;padding-left:20px}.toc li{break-inside:avoid;padding:4px 0}.kicker{font:13px/1.6 "Avenir Next","PingFang SC",sans-serif;color:var(--muted);letter-spacing:.08em}.note{padding:16px 18px;background:var(--light);border-left:3px solid #6c9e9f;color:#49636e}.table-scroll{overflow:auto;margin:20px 0}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.6}td,th{padding:10px 11px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{background:var(--light);color:var(--teal)}figure{margin:22px 0}img{max-width:100%;height:auto;display:block;margin:auto}figcaption{font-size:13px;line-height:1.6;color:var(--muted);margin-top:10px}code{overflow-wrap:anywhere;font-size:.9em}li{margin:8px 0}pre{max-width:100%;overflow:auto;padding:14px;background:#edf4f3;font-size:13px;line-height:1.6}pre code{overflow-wrap:normal}@media(max-width:680px){main{padding:18px 18px 40px}.toc{columns:1}h2{font-size:25px}table{min-width:560px}section{padding:22px 0}}@media print{body{background:#fff;font-size:11pt}main{padding:0}header,nav,details{display:none}section{break-after:page}tr,figure{break-inside:avoid}h2,h3{break-after:avoid}table{font-size:9pt}.note,th{print-color-adjust:exact}}
+</style><title>从驱动电路实验到可流片产品：物理实现与交付审查</title></head><body><main><nav><a href="index.html">返回阶段技术报告</a></nav><h1 id="_1">从驱动电路实验到可流片产品：物理实现与交付审查</h1>
+<p>审查日期：2026-11-11。定位：实验性研发方法验证与教学。本文是本轮技术报告的产品化附件，不是代工签核报告、采购建议或报价。公开来源和本地证据校验记录见 <a href="../../../evidence/driver-methods-20261111/product-sources.json">product-sources.json</a>。</p>
+<p><strong>当前已经建立了可复现的电路实验和一部分真实版图验证能力；最新高速 A/B/VCSEL 电路还没有形成可直接交付晶圆厂的完整芯片数据包。</strong> 下一步应把速度与能耗改善转换成同一版本电路、版图、封装和接收链的验证，而不是把已有的局部 DRC/LVS 结果继承到修改后的电路。</p>
+<p>本次只读核查了历史记录和 15 个关键 GDS、PEX、验证报告文件；它们都存在且 SHA-256 与原收据一致。本次没有重跑 EDA，也没有取得 MPW 或代工方的设计接受确认。下面的速度是上一已完成阶段的离散标称仿真结果，本轮正在运行的新实验应以主报告的新证据为准。</p>
+<h2 id="1">1. 已经做成什么，边界在哪里</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>对象</th>
+<th>已有成果</th>
+<th>不能由此推出的结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>显示 PWM 模拟宏 <code>layout-v3/r5</code></td>
+<td>39 MOS，提取 345 R、288 C，29/29 网络；保存 GDS、DRC、LVS、PEX 及开路/电源短路负控制</td>
+<td>仍使用外部设定/无源器件；没有完整焊盘、ESD、封装和内部自主 POR</td>
+</tr>
+<tr>
+<td>显示模拟＋数字共同顶层 <code>joint-r2</code></td>
+<td>实际共同顶层 GDS；7277 MOS、36588 R、30230 C，6512/6512 网络；占用外框 916 × 204 µm，即 0.186864 mm²</td>
+<td>外框不是可封装 die 面积。完整共同顶层晶体管瞬态回归尚未完成；无外部签核、硅片或光测</td>
+</tr>
+<tr>
+<td>数字控制 <code>control-v3</code></td>
+<td>RTL、门级、SDF 回放及多角 STA 证据；415 标准单元、20 个时序单元</td>
+<td>工具对条件路径和时序检查有覆盖限制；数字 STA 不包含全部跨宏顶层 RC，更不是 GHz 发射器的输入接口签核</td>
+</tr>
+<tr>
+<td>历史高速 A 核 <code>hv-A8-ties-r5</code></td>
+<td>6 MOS＋1 器件电阻；95 R、64 C，9/9 网络，已有局部 GDS/PEX</td>
+<td>不含最新供电伺服、器件族及尺寸修改</td>
+</tr>
+<tr>
+<td>历史高速 B 核 <code>hv-r2</code></td>
+<td>9 MOS＋1 器件电阻；127 R、76 C，10/10 网络，已有局部 GDS/PEX</td>
+<td>不含最新参考源、预驱动和前馈电容</td>
+</tr>
+<tr>
+<td>最新已冻结 A/B/VCSEL</td>
+<td>分别 20/21/73 MOS；标称最高已测通过净速率分别为 1.6/2.0/6.4 Gb/s，下一个失败点分别为 1.8/2.4/7.2 Gb/s</td>
+<td>这三个新电路尚无对应新版图/PEX；离散通过点不是精确物理极限，也不是量产规格</td>
+</tr>
+</tbody>
+</table></div>
+<p>本地依据：<a href="../../../evidence/layout-v3/r5/summary.json">模拟宏</a>、<a href="../../../evidence/layout-v3/joint-r2/summary.json">共同顶层</a>、<a href="../../../evidence/control-v3/summary.json">数字控制</a>、<a href="../../../evidence/highspeed-workbench-20261110/physical-sources.json">历史高速物理来源</a>、<a href="../../../evidence/ab-improvement-20261111/selection.json">上阶段候选选择</a>。</p>
+<p>显示与通信的时钟含义也要分开：现有 8 位显示控制若使用 1 MHz 计数时钟，256 个时隙对应的 PWM 周期频率是 <strong>3.90625 kHz</strong>。这并不等于已验证 1 MHz PWM 载波，更不表示已实现 0.15–7.33 mA 全范围。高速 NRZ 使用另一套发射与接收时序。</p>
+<h2 id="2-gf180">2. GF180、材料和层数：需要锁定的是完整工艺选项</h2>
+<p>当前电驱动采用硅基 GF180MCU CMOS。器件的电压等级、栅氧/结构、沟道长度、模型角与版图规则决定速度、摆幅和可靠性的约束；不能仅以“180 nm”三个字判断性能。发光器件是外部负载，硅驱动芯片的制造流程不自动包含 MicroLED 或 VCSEL 的外延、发光结构和光学封装。</p>
+<p>项目物理锁文件选用 <code>gf180mcuD / 5LM_1TM_11K</code>。这里的五层是互连金属层选项，不是整个芯片只有五张掩膜。现有模拟宏只使用其中部分层。新增 MIM 电容、厚顶金属、I/O 或其他器件时，要检查它们是否属于同一个被接受的工艺选项。<a href="../../../layout/pdk-lock.json">项目 PDK 锁</a>、<a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_02.html">GF180 DRM Scope</a></p>
+<p>截至本次访问，Google 的 GF180 公开仓库已显示 2026-09-23 归档，README 仍标注 <strong>Experimental Preview</strong>。这是公开仓库/开源发行的状态，不表示 GF180 商业工艺停产。它也不能证明任意开源工具生成的 GDS 已获量产认可；应由具体 MPW/代工方指定接受的 PDK 分支、版本、器件库、金属选项、签核工具和豁免流程。<a href="https://github.com/google/gf180mcu-pdk">GF180 官方仓库</a></p>
+<p><strong>对新 A/B 最直接的版图约束：3.3 V 与 6 V 晶体管不能放在同一个 DNWELL 中。</strong> 该条列在“未编码规则”附录，意味着不能只看自动 DRC 的零错误。必须重新检查混合器件区域、深阱、阱接触、保护环、电源连接和跨区域信号。旧全 6 V 核心的布局不能直接沿用到混合器件版本。<a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_16.html">DRM Appendix B，DN.Note1</a></p>
+<h2 id="3">3. 提速和降耗方法有公开依据，但效果要在本电路重验</h2>
+<p>下面将“论文已经展示过的机制”与“本项目尚需证实的收益”分开。工艺、发光器件、码型、接收机和功耗边界不同，因此不把论文数字排成与本项目直接竞争的榜单。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>可用于解释实验的物理机制</th>
+<th>需要特别防止的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>降低输入串联电阻、优化预驱动尺寸</td>
+<td>减少输入 RC 延迟；较小换流管可能降低栅/扩散电容</td>
+<td>电阻太小增加对前级的负载或振铃；MOS 变小会提高导通电阻、减少电流余量</td>
+</tr>
+<tr>
+<td>前馈电容、预加重</td>
+<td>边沿传递额外电荷，改变上升/下降过程，补偿部分码间干扰</td>
+<td>电流峰值、过冲、器件应力、封装谐振；补偿不能无限抵消发光载流子动力学</td>
+</tr>
+<tr>
+<td>电流转向、非对称输出、电流复用</td>
+<td>电流保持可用，切换流向；减少无效终端或重复供电支路的消耗</td>
+<td>静态偏置耗能、输出顺从电压、反射和关断隔离；不能只统计发光支路</td>
+</tr>
+<tr>
+<td>降低供电或偏置</td>
+<td>开关电容能量近似随 (CV^2) 变化；直流部分近似 (VI)</td>
+<td>发光器件压降、MOS 饱和余量、VCSEL 阈值、温度、供电跌落与调节电路损耗</td>
+</tr>
+</tbody>
+</table></div>
+<p>这些是本附件的电路分析假设，不是新增仿真结果。尤其对 B 的显式集中前馈电容：</p>
+<p>[
+\Delta Q=C_{FF}\Delta V,\qquad i_{FF}=C_{FF}\frac{d(V_{GB}-V_{OUT})}{dt}.
+]</p>
+<p>它的电荷和能量来自实际驱动端。实现为物理电容后还会有下极板寄生、连线、容差、面积和电压限制。需要验证在保护关断而 DATA 仍翻转时，电容是否继续向输出注入脉冲；只测试静态关断不够。</p>
+<p>可追溯的研究例子：</p>
+<ul>
+<li><strong>IBM 2005</strong>：130 nm CMOS、990 nm VCSEL 的 20 Gb/s 发射研究采用预加重和受调节输出阻抗。此处仅核查机构摘要，未据此推定完整 BER 或本项目速度。<a href="https://research.ibm.com/publications/a-20gbs-vcsel-driver-with-pre-emphasis-and-regulated-output-impedance-in-013mm-cmos">原始机构条目</a></li>
+<li><strong>Yazaki 等，2018</strong>：65 nm CMOS、25 Gb/s/channel，研究非对称预加重；摘要给出的 PRBS 为 (2^9-1)，3.0 mW/Gbps/channel 等价于 3.0 pJ/原始 bit。它支持上升/下降边沿分别调节的研究思路，不能代替长码型与跨角验证。<a href="https://globals.ieice.org/en_transactions/fundamentals/10.1587/transfun.E101.A.402/_p">IEICE 原始论文摘要</a></li>
+<li><strong>Yang 等，2025</strong>：28 nm CMOS 采用电流复用和非对称高阻输出。独立 TX 测量为 25 Gb/s NRZ、850 nm/14 GHz VCSEL、6 mA 偏置和 6 mApp 调制，39.8 mW，即约 1.59 pJ/bit；完整背靠背链路另报最高 20 Gb/s。应分别阅读其模拟眼图与实测眼图，不能混成一个结果。<a href="https://www.mdpi.com/2072-666X/16/5/587">原文第 3–4 节、图 8–10/19–20、表 4</a></li>
+</ul>
+<p>本项目应坚持：相同负载与接收合同、相同目标 DC 电流、独立训练和保留码型、全部真实供电端能耗，再比较方法。当前帧有 4096 个有效 bit、4736 个线上 bit，因此净 3.2 Gb/s 对应 NRZ 线速 3.7 Gb/s；VCSEL 若以净 32 Gb/s 为研究目标，线速为 37 Gb/s。文献未明确帧开销时，不能直接把其 Gb/s 当成本项目的净吞吐。</p>
+<h2 id="4">4. 开源环境能完成哪些工作</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>工作</th>
+<th>可用工具与本项目能力</th>
+<th>仍需补齐的证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>晶体管电路、启动与故障</td>
+<td>ngspice＋锁定器件模型；DC、瞬态、AC 等实验</td>
+<td>实测光负载校准、全部角/失配、真实接口、充分长稳态及故障工况</td>
+</tr>
+<tr>
+<td>数字控制</td>
+<td>RTL、Icarus/cocotb、综合、布局布线、STA</td>
+<td>工具覆盖限制、跨域接口、真实 I/O、测试覆盖和完整约束</td>
+</tr>
+<tr>
+<td>二维版图与连接</td>
+<td>Magic/KLayout、Netgen；已有 GDS 回读与负控制</td>
+<td>新高速电路全版本实现，完整芯片规则、ERC、密度、天线和可靠性</td>
+</tr>
+<tr>
+<td>寄生提取</td>
+<td>Magic PEX；数字流程可用 OpenRCX/SPEF</td>
+<td>匹配工艺角的校准数据、耦合、封装/板级参考面与实测关联</td>
+</tr>
+<tr>
+<td>供电网络</td>
+<td>OpenROAD PDNSim 可做静态 IR/电流密度检查</td>
+<td>GHz 动态供电、封装电感、热和 EM 条件仍须单独建模</td>
+</tr>
+<tr>
+<td>测试设计</td>
+<td>OpenROAD 支持 scan 相关插入/连接步骤</td>
+<td>本项目尚未形成 ATPG、ATE 向量、模拟测试覆盖和生产限值</td>
+</tr>
+<tr>
+<td>三维观察</td>
+<td>Blender 可展示几何叠层、器件与连接关系</td>
+<td>当前高度有夸张，不能当 TCAD、3D 电磁场、真实热或制造仿真</td>
+</tr>
+</tbody>
+</table></div>
+<p>工具依据：<a href="https://openroad.readthedocs.io/en/latest/main/src/rcx/README.html">OpenRCX</a>、<a href="https://openroad.readthedocs.io/en/latest/main/src/psm/README.html">PDNSim</a>、<a href="https://openroad.readthedocs.io/en/latest/main/src/dft/README.html">DFT</a>。OpenRCX 明确依赖对应工艺角的提取规则文件；有提取器不等于具备代工认可的 RC 模型。</p>
+<p>版图和封装共同决定高速路径。应将“源端阻抗—输入焊盘/ESD—预驱动—输出级—输出焊盘/ESD—键合线或凸点—发光器件—地返回路径”纳入同一个参考面清晰的模型。若连线已不能视作集中参数，应使用分布参数或提取的 S 参数；RLC 的便捷代理模型不能自动成为封装签核。</p>
+<p>ESD 也不是把正常数据波形的最大电压检查一次。放电路径、寄生器件、钳位和保护环需要专项设计，TLP 与 HBM 也不能简单等同。金属/通孔电迁移则与电流定义、方向和结温有关；应逐段检查实际电源和返回路径。<a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_4.html">GF180 ESD</a>、<a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_2.html">GF180 EM</a></p>
+<h2 id="5-mos">5. 面积、成本与“可量产”不能从 MOS 数量推算</h2>
+<p>研发宏面积只计已有几何外框。可交付 die 还需要焊盘/ESD、电源环、隔离、去耦、测试、密封环和服务平台边界。一个公开 MPW 模板的示例为 die <strong>1.94 × 2.53 mm</strong>、core <strong>1.05 × 1.65 mm</strong>、56 个焊盘；按公布四舍五入尺寸计算，面积约 4.91 与 1.73 mm²，核心以外约占 65%。这是平台示例，说明 I/O 可主导小芯片面积，不是我们的面积预测。<a href="https://mith.ro/gf180mcu-project-template/">模板尺寸页面</a></p>
+<p>成本判断至少要分开设计/验证 NRE、掩膜或 MPW、die 面积与良率、封装和光耦合、测试时间、返工及可靠性验证。降低晶体管数量未必降低整机成本；如果需要更昂贵的封装或更长的测试，节省可能消失。目前没有制造报价、良率或实物测试成本，不能给出单价或“不牺牲性能即可更便宜”的结论。</p>
+<p>可优先研究的降本路径是复用被接受的工艺/焊盘和标准封装、减少外部电源种类、缩短高速互连、增加便宜而充分的测试访问、按实际光预算配置偏置。每项都必须重新比较电气、光学、能耗和可靠性，才有成本意义。</p>
+<h2 id="6">6. 交给晶圆厂、封装厂和测试方什么</h2>
+<p>三方的交付物不同，下面是本项目建议准备的工程包。最终必交项应由选定服务方确认，不能把此表当通用合同。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>接收方</th>
+<th>建议交付内容</th>
+<th>本项目现状</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MPW/晶圆制造</td>
+<td>指定完整 PDK/金属选项、顶层名/单位/层映射、最终层次 GDSII、工艺与裸片信息、DRC/LVS/ERC 等报告及获准豁免</td>
+<td>有局部/教学顶层 GDS；新高速完整版本和接受流程未完成</td>
+</tr>
+<tr>
+<td>设计复核/签核</td>
+<td>原理图/CDL或SPICE、RTL/门级、约束、提取网表、工具和规则版本、PVT/失配/供电/可靠性/保护证据、校验和</td>
+<td>有可复现实验基础；需按最终版本冻结并补齐缺口</td>
+</tr>
+<tr>
+<td>封装与组装</td>
+<td>die 外形/厚度、焊盘开口和坐标、引脚映射/键合图、芯片方向、接地/散热、发光器件安装/光路/机械尺寸、封装与板级模型</td>
+<td>还没有被组装方接受的实际方案</td>
+</tr>
+<tr>
+<td>电测/光测</td>
+<td>电源时序、绝对与工作范围、测试模式、向量/寄存器、限值、夹具/校准、光功率/眼图/BER及温度条件、失效分类</td>
+<td>现有仿真屏幕指标需转为可测规格，尚无生产测试包</td>
+</tr>
+<tr>
+<td>跨电脑复现/发布</td>
+<td>源码、许可证、锁文件、生成命令、模型/输入哈希、原始证据归档、恢复步骤和输出对应表</td>
+<td>已有基础；归档不是代工审核，也不替代受限 PDK 的合法授权</td>
+</tr>
+</tbody>
+</table></div>
+<p>GF180 的公开 tapeout 清单要求层次 GDSII、完整绘制层和 DRC；具体 MPW 模板还可能固定 pad 位置、数量、电源脚和版框。<a href="https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_06.html">GF180 清单</a>、<a href="https://github.com/wafer-space/gf180mcu-project-template">wafer.space 模板</a>。其公开技术页说明了设计到 tape-in 的流程，但我们未预约、询价或获得接受承诺。<a href="https://wafer.space/technology">流程说明</a></p>
+<p>封装规划要在最终版图之前完成。Europractice 的公开 ASIC 服务说明强调与制造服务伙伴协调；其 Si-PIC 光子封装指南明确建议流片前审核光、电、热接口。该指南是 Si-PIC 的指南，不能直接套到 MicroLED/VCSEL 表面发光器件。<a href="https://europractice-ic.com/services/packaging/asic-packaging/">ASIC 封装说明</a>、<a href="https://europractice-ic.com/wp-content/uploads/2024/11/Photonics-Packaging-Design-Rules-Ver-1.7-Sep-2024.pdf">光子封装指南 v1.7，第 2、4–5 页</a></p>
+<p>一个建议的首硅顺序是：限流上电与电源顺序 → 静态偏置/电流范围 → 开短路与保护关断 → 低速调制 → 光 L–I–V、S21/带宽 → 眼图与长码型 BER → 温度/供电/器件差异 → 可靠性。测试访问应尽量通过缓冲或测试模式实现，避免把大探针/多路器电容直接加到关键高速节点。量产则还需要晶圆测试、封装后测试、良率和可靠性计划；公开测试服务能力不等于已支持我们的具体高速光测夹具。<a href="https://europractice-ic.com/other-services/test-service/">Europractice 测试服务</a></p>
+<h2 id="7">7. 下一阶段的三个决定性工作</h2>
+<ol>
+<li><strong>固定能被测量的目标和边界。</strong> 对 A/B 保持相同 MicroLED/RX 条件；VCSEL 单独定义偏置、光预算和更高速目标。将接收通过、光功率、器件应力、源端能耗、持续运行温升分开。先完成更长稳态窗口、独立码型、PVT/失配及启动/掉电/关断，而不是仅增加标称速率点。</li>
+<li><strong>将新电路转换成真实可提取的测试宏。</strong> 选择接受的器件/电容/焊盘库，规划 3.3/6 V 阱隔离；把参考源、供电、保护和测试访问纳入边界。新 DRC/LVS/PEX 后重测旧通过点与失败点，定位性能损失属于器件、金属还是封装。</li>
+<li><strong>把光负载和封装测量闭环补上。</strong> 需要随电流/温度的 IV、LIV、CV、S21 或脉冲数据，以及可追溯的封装/板级互连。无法获得实测的参数继续保留敏感性范围；有条件后优先做可访问、可校准的小规模样片，而不是直接宣称产品或阵列量产能力。</li>
+</ol>
+<p>选择技术主线应依据这些门槛下的 Pareto 比较：同一净吞吐、能耗边界、接收余量和可靠性约束下，谁达到更好的速度/能量/面积/成本组合。不能仅因为一个短帧的错误位更少，或某条历史版图已经通过，就认定其产品潜力更好。</p>
+<h2 id="_2">来源与使用限制</h2>
+<p>全部网页访问日为 2026-11-11。公开文献例子用于机制研究，没有复制商业架构或协议，也没有将其宣传为本项目已实现的性能。IBM、IEICE 条目仅阅读可公开摘要；Yang 等文章正文/表格可读，所链接原图未逐图视觉核查，因此本文不复用原图。其文献图 10 的仿真与图 19 的测量已分别标识。</p>
+<p>Europractice 当前公开网页所链接的一份 ASIC 封装 PDF 带有保密标记，因此本附件不复制其中图表、规则或将其作为技术依据；机器可读来源表仅保留该链接及排除原因。本文使用的另一本 Si-PIC 指南适用范围已经注明。具体制造、封装和测试规则，须在选择服务方时获取可合法使用的版本。</p></main></body></html>

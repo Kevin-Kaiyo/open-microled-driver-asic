@@ -1,0 +1,4046 @@
+{
+  "schema": "vcsel-methods-v1",
+  "candidates": {
+    "vc-single-r150": {
+      "CFF_fF": 0.0,
+      "RDTOP_ohm": 85000.0,
+      "single_stage": true,
+      "atten_ohm": 150.0,
+      "hypothesis": "One computed damping confirmation: measured50to100ohm peak slope predicts~7.447mA at150ohm. FreezeRafterthispoint; preserve3/7mAtargets,69MOSandall7sources."
+    },
+    "vc-single-r100": {
+      "CFF_fF": 0.0,
+      "RDTOP_ohm": 85000.0,
+      "single_stage": true,
+      "atten_ohm": 100.0,
+      "hypothesis": "Same69MOSsingle-stage topology; increase existing RAD/RADB50to100ohm to damp fast input Miller feedthrough after7.584mA overshoot seen in undampedcontrol. No changing light-source calibration range."
+    },
+    "vc-single": {
+      "CFF_fF": 0.0,
+      "RDTOP_ohm": 85000.0,
+      "single_stage": true,
+      "hypothesis": "Remove first two CMOS inverters (4MOS); feed remaining GP inverter from DBI and GN inverter from DI, retaining output W12/24 and actual DR. Test less cascaded pulse compression versus greater input port capacitance."
+    },
+    "vc-ff20": {
+      "CFF_fF": 20.0,
+      "RDTOP_ohm": 85000.0,
+      "hypothesis": "Two DI-to-GP/DBI-to-GN passive feedforward capacitors supply early gate charge from already metered input ports; test gate delay versus rebound/stress."
+    },
+    "vc-ff40": {
+      "CFF_fF": 40.0,
+      "RDTOP_ohm": 85000.0,
+      "hypothesis": "One bounded feedforward dose control; double20fF only if20fF node behavior justifies it."
+    },
+    "vc-dr65": {
+      "CFF_fF": 0.0,
+      "RDTOP_ohm": 65000.0,
+      "hypothesis": "Reduce actual predriver regulator feedback target from~3.1V to~2.45V without changing raw3.3V sources or laser rail. Test smaller swing energy versus lower gate overdrive."
+    }
+  },
+  "dc": [
+    {
+      "candidate": "vc-dr65",
+      "level": 0,
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-dr65/DC-L0",
+      "result_sha256": "ae9f99589339e639b9010edd9198503d0160b69e525c50c1b32b8aae022b2bb9",
+      "current_mA": 2.999752205035,
+      "error_percent": -0.008259832166668257,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-dr65",
+      "level": 1,
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-dr65/DC-L1",
+      "result_sha256": "65ac09ccc11f658202383df47fe9bc2e790380941beb84f2685478228572e7c5",
+      "current_mA": 6.999450167531,
+      "error_percent": -0.007854749557145713,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-ff20",
+      "level": 0,
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-ff20/DC-L0",
+      "result_sha256": "c294c12459e2f2c2354ea30e28b2d401cdcd97676f65d9005bb72c019a98e793",
+      "current_mA": 2.999752205035,
+      "error_percent": -0.008259832166668257,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-ff20",
+      "level": 1,
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-ff20/DC-L1",
+      "result_sha256": "0015eb5acb31b050c30bea75148000ba4dcc64337e50f202534f14b17d6c4335",
+      "current_mA": 6.99946868765,
+      "error_percent": -0.007590176428562412,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-single",
+      "level": 0,
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single/DC-L0",
+      "result_sha256": "0e4e960c0e301c5aaa22c539962a33044b373d2ce01ebd8bf9118489eac09a0f",
+      "current_mA": 2.999752205035,
+      "error_percent": -0.008259832166668257,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-single",
+      "level": 1,
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single/DC-L1",
+      "result_sha256": "350421996e59680fcbf8583b0c943d5833f49e07c4058273bb08d5656d076405",
+      "current_mA": 6.99946868765,
+      "error_percent": -0.007590176428562412,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-single-r100",
+      "level": 0,
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single-r100/DC-L0",
+      "result_sha256": "7dcd0cc6550e6b9e1b7627feb342b46904e36d8d6d3f166acf7a3af63b20366f",
+      "current_mA": 2.999752205035,
+      "error_percent": -0.008259832166668257,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-single-r100",
+      "level": 1,
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single-r100/DC-L1",
+      "result_sha256": "458950237aac7585d62a98797e3c050f29c501f6aca188a9bd26084d6e56a919",
+      "current_mA": 6.99946868765,
+      "error_percent": -0.007590176428562412,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-single-r150",
+      "level": 0,
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single-r150/DC-L0",
+      "result_sha256": "dd85070d0c7f283c6b589cb78c67bc0f57f6ce7fa6095db46f43082b4b5f79b4",
+      "current_mA": 2.999752205035,
+      "error_percent": -0.008259832166668257,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "vc-single-r150",
+      "level": 1,
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single-r150/DC-L1",
+      "result_sha256": "ce8f1148baba18a51fce2cc924589453742a42479b60d685f06a5bd01f675e54",
+      "current_mA": 6.99946868765,
+      "error_percent": -0.007590176428562412,
+      "DC_screen_pass": true,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    }
+  ],
+  "rows": [
+    {
+      "candidate": "vc-dr65",
+      "net_Gbps": 6.4,
+      "steps_per_UI": 40,
+      "holdout": false,
+      "combined_screen_pass": false,
+      "full_receiver": {
+        "delay_UI": 1.90625,
+        "delay_ps": 257.6013513513514,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 16.774378876785676,
+        "one_sided_margin_UI": 0.2599154813813094,
+        "one_sided_margin_ps": 35.12371370017695,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.311914939181232,
+            "median": 30.50793773946686,
+            "p95": 43.50970240110859
+          },
+          "1": {
+            "p05": 87.72803479855811,
+            "median": 95.58618163525699,
+            "p95": 98.62286296413983
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.53125,
+        "delay_ps": 206.9256756756757,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 23.053573996796565,
+        "one_sided_margin_UI": 0.2851207537413539,
+        "one_sided_margin_ps": 38.52983158666946,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.35247572152771,
+            "median": 27.84251158662879,
+            "p95": 37.26271848739081
+          },
+          "1": {
+            "p05": 88.37484502522588,
+            "median": 95.47297123434213,
+            "p95": 98.89314508322151
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.578125,
+          "delay_ps": 78.12500000000001,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.95156500033475,
+          "one_sided_margin_UI": 0.4934125496146491,
+          "one_sided_margin_ps": 66.67737156954718,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.44237010271153,
+              "median": 26.508133795514418,
+              "p95": 26.548198403659043
+            },
+            "1": {
+              "p05": 98.45173133405166,
+              "median": 98.51566806703828,
+              "p95": 98.55768381114856
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.4375,
+          "delay_ps": 194.25675675675677,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 14.723448639640807,
+          "one_sided_margin_UI": 0.36569573932114807,
+          "one_sided_margin_ps": 49.418343151506505,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.346137868389526,
+              "median": 26.47299820316519,
+              "p95": 45.93850587506651
+            },
+            "1": {
+              "p05": 78.07352360586012,
+              "median": 99.96625522506248,
+              "p95": 102.68323309167303
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 5.636528195394678,
+        "returned": 0.03898979799327006,
+        "net": 5.597538397401409
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 4.040466673906653,
+          "returned": 0.0,
+          "net": 4.040466673906653
+        },
+        "VDD": {
+          "positive": 0.8260542409571932,
+          "returned": 0.0,
+          "net": 0.8260542409571932
+        },
+        "VREF": {
+          "positive": 0.0913545546866485,
+          "returned": 0.01915882054820171,
+          "net": 0.07219573413844681
+        },
+        "VD": {
+          "positive": 0.3404829142045629,
+          "returned": 0.00983209814416774,
+          "net": 0.33065081606039515
+        },
+        "VDB": {
+          "positive": 0.3380021137983645,
+          "returned": 0.009831559053433662,
+          "net": 0.3281705547449308
+        },
+        "VSET": {
+          "positive": 0.000166779181851374,
+          "returned": 0.0001670577236203355,
+          "net": -2.785417689614826e-07
+        },
+        "VREGSET": {
+          "positive": 9.186594055544165e-07,
+          "returned": 2.625238466146895e-07,
+          "net": 6.56135558939727e-07
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.173076923587044,
+        "steering_gate_differential_peak_V": 2.6237606964739077,
+        "laser_rail_range_V": [
+          3.0972530150214914,
+          3.100169404973893
+        ],
+        "predriver_rail_range_V": [
+          2.366012120922043,
+          2.447535147749016
+        ],
+        "electrical_current_range_mA": [
+          2.853102406284,
+          7.135427566323999
+        ],
+        "base_current_range_mA": [
+          2.313531879819,
+          3.703281654685
+        ],
+        "tail_current_range_mA": [
+          3.211765944217,
+          5.890880223017
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.20536079869965373,
+          4.208884727298234
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.203291810897,
+          "instance": "XDUMP_0",
+          "pair": "VDB"
+        },
+        "max_body_forward_V": 0.18570027383199994
+      },
+      "storage": {
+        "capacitors": {
+          "Lout": {
+            "C_F": 1e-08,
+            "initial_voltage_V": 3.10014331144,
+            "final_voltage_V": 3.097964749519,
+            "delta_J": -6.751481101925198e-11
+          },
+          "Dout": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 2.447497224024,
+            "final_voltage_V": 2.389148788349,
+            "delta_J": -1.411053643678459e-10
+          },
+          "rawLaser": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.29806705292,
+            "final_voltage_V": 3.298038097585,
+            "delta_J": -9.549621716392943e-14
+          },
+          "rawDriver": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.299849578543,
+            "final_voltage_V": 3.299549074099,
+            "delta_J": -9.915743114231143e-13
+          },
+          "Bcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.6802075886355999,
+            "final_voltage_V": -0.6789249865529001,
+            "delta_J": -4.358065679004623e-15
+          },
+          "Tcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.46225091917100003,
+            "final_voltage_V": -0.4089722187267001,
+            "delta_J": -1.1604409146048651e-13
+          },
+          "Lcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.3626840079795,
+            "final_voltage_V": -1.3622802036041999,
+            "delta_J": -1.6505287067605474e-14
+          },
+          "Dcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.7114656295876,
+            "final_voltage_V": -1.6971725885217999,
+            "delta_J": -7.307970904484082e-13
+          }
+        },
+        "explicit_cap_delta_J": -2.1057495045034045e-10,
+        "source_net_J": 2.292751727575617e-08,
+        "scope": "Actual native first/last supply, compensation and added CFF energies. Excludes intrinsic MOS, VCSEL C and inductors; not full energy balance or periodic steady-state efficiency."
+      },
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-dr65/net6.4-s40",
+      "analysis_sha256": "5c37d3b0bd3cef8b0a6b6d7393c228cbefd73153051c718f70ca37af4ee55433",
+      "deck_sha256": "2fadeed4798bf5ab5621807166c506dd2dd482eebd2bf72583ca400f2869c147",
+      "waveform": {
+        "path": "build/driver-methods-20261111/VCSEL/vc-dr65/net6.4-s40/waveform.dat.gz",
+        "sha256": "cf8c46a154eb9f552190e9d98479170ffc4bc8272eb3429715c5d6f9fcc62930",
+        "raw_sha256": "f5b1daddced086c7c7d44c72569869ec5480e7d09bb6fc129842741b495b5fd1",
+        "bytes": 166261800,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-dr65",
+      "net_Gbps": 7.2,
+      "steps_per_UI": 40,
+      "holdout": false,
+      "combined_screen_pass": false,
+      "full_receiver": {
+        "delay_UI": 2.0,
+        "delay_ps": 240.24024024024027,
+        "train_errors": 21,
+        "errors": 230,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 21,
+        "worst_signed_margin_uAeq": -4.366693490599943,
+        "one_sided_margin_UI": 0.0,
+        "one_sided_margin_ps": 0.0,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.381148821217852,
+            "median": 32.21844225282321,
+            "p95": 64.43005199526957
+          },
+          "1": {
+            "p05": 77.59228947355689,
+            "median": 94.34932661624977,
+            "p95": 98.11458188100885
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 230,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.515625,
+        "delay_ps": 182.05705705705708,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 1.5437558282444996,
+        "one_sided_margin_UI": 0.08417478462641298,
+        "one_sided_margin_ps": 10.111085240409968,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.58399552344489,
+            "median": 30.666613856856767,
+            "p95": 58.5176147339124
+          },
+          "1": {
+            "p05": 74.53246777950423,
+            "median": 93.77812630144065,
+            "p95": 97.70570483204177
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.59375,
+          "delay_ps": 71.32132132132134,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.944172302292245,
+          "one_sided_margin_UI": 0.4984551177164617,
+          "one_sided_margin_ps": 59.87448861459,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.442487115087822,
+              "median": 26.515467933685244,
+              "p95": 26.555544502043073
+            },
+            "1": {
+              "p05": 98.44438858411249,
+              "median": 98.51796508691018,
+              "p95": 98.55766972510197
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.484375,
+          "delay_ps": 178.30330330330332,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 6.5083176615057425,
+          "one_sided_margin_UI": 0.28859832123593204,
+          "one_sided_margin_ps": 34.66646501332517,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.31923805839056,
+              "median": 27.589716797117212,
+              "p95": 55.26946476527684
+            },
+            "1": {
+              "p05": 69.51526043729227,
+              "median": 99.9219346399585,
+              "p95": 102.71099082072712
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 5.039083775177355,
+        "returned": 0.0396582918057615,
+        "net": 4.999425483371593
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 3.6083373233562863,
+          "returned": 0.0,
+          "net": 3.6083373233562863
+        },
+        "VDD": {
+          "positive": 0.7413890723778279,
+          "returned": 0.0,
+          "net": 0.7413890723778279
+        },
+        "VREF": {
+          "positive": 0.08399753474732934,
+          "returned": 0.019831079890410306,
+          "net": 0.06416645485691903
+        },
+        "VD": {
+          "positive": 0.30368905041272215,
+          "returned": 0.009815834584132762,
+          "net": 0.29387321582858933
+        },
+        "VDB": {
+          "positive": 0.3014737310808686,
+          "returned": 0.009814679556173019,
+          "net": 0.2916590515246956
+        },
+        "VSET": {
+          "positive": 0.00019610257575918168,
+          "returned": 0.00019643182558778816,
+          "net": -3.29249828606493e-07
+        },
+        "VREGSET": {
+          "positive": 9.6062656125669e-07,
+          "returned": 2.659494576248458e-07,
+          "net": 6.946771036318443e-07
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.173076925690552,
+        "steering_gate_differential_peak_V": 2.6236243133451733,
+        "laser_rail_range_V": [
+          3.0962172674461725,
+          3.1001693922351095
+        ],
+        "predriver_rail_range_V": [
+          2.3640418081935906,
+          2.4475353124430668
+        ],
+        "electrical_current_range_mA": [
+          2.8500687802569997,
+          7.1354304504609996
+        ],
+        "base_current_range_mA": [
+          2.22534918516,
+          3.619213404486
+        ],
+        "tail_current_range_mA": [
+          3.162902216147,
+          6.063875962235
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.20647408015432056,
+          4.206066053266344
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.203858344618,
+          "instance": "XDUMP_0",
+          "pair": "VDB"
+        },
+        "max_body_forward_V": 0.18566367510400017
+      },
+      "storage": {
+        "capacitors": {
+          "Lout": {
+            "C_F": 1e-08,
+            "initial_voltage_V": 3.10014331144,
+            "final_voltage_V": 3.097086049233,
+            "delta_J": -9.473277556248674e-11
+          },
+          "Dout": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 2.447497224024,
+            "final_voltage_V": 2.386048519752,
+            "delta_J": -1.4850756149723809e-10
+          },
+          "rawLaser": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.29806705292,
+            "final_voltage_V": 3.298026956823,
+            "delta_J": -1.3223881261793298e-13
+          },
+          "rawDriver": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.299849578543,
+            "final_voltage_V": 3.299542398554,
+            "delta_J": -1.0136005774668723e-12
+          },
+          "Bcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.6802075886355999,
+            "final_voltage_V": -0.6789141979672999,
+            "delta_J": -4.394688589688505e-15
+          },
+          "Tcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.46225091917100003,
+            "final_voltage_V": -0.39540982290900006,
+            "delta_J": -1.4331746055376901e-13
+          },
+          "Lcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.3626840079795,
+            "final_voltage_V": -1.3621987813253997,
+            "delta_J": -1.9832786380045434e-14
+          },
+          "Dcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.7114656295876,
+            "final_voltage_V": -1.6985172063599001,
+            "delta_J": -6.623085143856133e-13
+          }
+        },
+        "explicit_cap_delta_J": -2.4521602989971873e-10,
+        "source_net_J": 2.0477646779890045e-08,
+        "scope": "Actual native first/last supply, compensation and added CFF energies. Excludes intrinsic MOS, VCSEL C and inductors; not full energy balance or periodic steady-state efficiency."
+      },
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-dr65/net7.2-s40",
+      "analysis_sha256": "a7903b5740ef620274452fe0afcd8eccc4667da3becf86e26f6c49fff0763f6c",
+      "deck_sha256": "4d6b37721b412f57058101879e50515b5ee75da01d8e20420f820abbd592d450",
+      "waveform": {
+        "path": "build/driver-methods-20261111/VCSEL/vc-dr65/net7.2-s40/waveform.dat.gz",
+        "sha256": "01dbe6c18d06ebfa3b7c26524ccf88e90c35310a6a3667b50f9f346988c025e7",
+        "raw_sha256": "998077122fb1174591684906733f85db916aed1360494b1a036a93cf96a27f5c",
+        "bytes": 159596690,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-ff20",
+      "net_Gbps": 6.4,
+      "steps_per_UI": 40,
+      "holdout": false,
+      "combined_screen_pass": false,
+      "full_receiver": {
+        "delay_UI": 2.0,
+        "delay_ps": 270.2702702702703,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 28.01471619389791,
+        "one_sided_margin_UI": 0.33245843465178543,
+        "one_sided_margin_ps": 44.926815493484526,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.30964422732876,
+            "median": 28.780698158093823,
+            "p95": 32.44311056846446
+          },
+          "1": {
+            "p05": 91.87606328148323,
+            "median": 98.57516084737775,
+            "p95": 100.217704226129
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.625,
+        "delay_ps": 219.59459459459464,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 30.564013276233055,
+        "one_sided_margin_UI": 0.3197395653316302,
+        "one_sided_margin_ps": 43.208049369139225,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.43281942982491,
+            "median": 26.09984131220572,
+            "p95": 29.273658009036094
+          },
+          "1": {
+            "p05": 94.62211477062772,
+            "median": 99.93097372932293,
+            "p95": 101.00589305818981
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.59375,
+          "delay_ps": 80.2364864864865,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 36.057307976197045,
+          "one_sided_margin_UI": 0.49458969117653123,
+          "one_sided_margin_ps": 66.83644475358531,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 25.769175056726635,
+              "median": 26.252645059446785,
+              "p95": 26.442627209160133
+            },
+            "1": {
+              "p05": 98.55737731601204,
+              "median": 98.61989790787402,
+              "p95": 99.2359219803835
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.40625,
+          "delay_ps": 190.0337837837838,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 24.895473187541356,
+          "one_sided_margin_UI": 0.3941440911160359,
+          "one_sided_margin_ps": 53.26271501568053,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.497996437431798,
+              "median": 26.109953928485062,
+              "p95": 36.00577909090646
+            },
+            "1": {
+              "p05": 88.59552541851072,
+              "median": 99.98101867492224,
+              "p95": 100.52364359167919
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 6.059668970132551,
+        "returned": 0.05693531950679656,
+        "net": 6.002733650625754
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 3.9781175373723765,
+          "returned": 0.0,
+          "net": 3.9781175373723765
+        },
+        "VDD": {
+          "positive": 1.3062936344152456,
+          "returned": 0.0,
+          "net": 1.3062936344152456
+        },
+        "VREF": {
+          "positive": 0.07450447369233665,
+          "returned": 0.002266879669873224,
+          "net": 0.07223759402246342
+        },
+        "VD": {
+          "positive": 0.351275763179015,
+          "returned": 0.027342140642322512,
+          "net": 0.3239336225366925
+        },
+        "VDB": {
+          "positive": 0.34939875995360664,
+          "returned": 0.027248491663233877,
+          "net": 0.32215026829037274
+        },
+        "VSET": {
+          "positive": 7.750844057739843e-05,
+          "returned": 7.742687386303604e-05,
+          "net": 8.156671436239978e-08
+        },
+        "VREGSET": {
+          "positive": 1.2930793931599826e-06,
+          "returned": 3.806575039144631e-07,
+          "net": 9.124218892455196e-07
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.31494391508604,
+        "steering_gate_differential_peak_V": 3.1600849709972665,
+        "laser_rail_range_V": [
+          3.100101127432099,
+          3.100728727152208
+        ],
+        "predriver_rail_range_V": [
+          2.953264228898244,
+          3.100161307886
+        ],
+        "electrical_current_range_mA": [
+          2.826672343127,
+          7.1467291923389995
+        ],
+        "base_current_range_mA": [
+          2.003811580214,
+          3.826683048115
+        ],
+        "tail_current_range_mA": [
+          3.07678143612,
+          4.5612266145880005
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.23571999605611182,
+          4.238655402595831
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.33032047774,
+          "instance": "XBN2N_0",
+          "pair": "VGS"
+        },
+        "max_body_forward_V": 0.2408071281843
+      },
+      "storage": {
+        "capacitors": {
+          "Lout": {
+            "C_F": 1e-08,
+            "initial_voltage_V": 3.100143311403,
+            "final_voltage_V": 3.100356959348,
+            "delta_J": 6.623620704079718e-12
+          },
+          "Dout": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.100161307886,
+            "final_voltage_V": 2.995216822957,
+            "delta_J": -3.1983815919440557e-10
+          },
+          "rawLaser": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.29806704829,
+            "final_voltage_V": 3.298070328719,
+            "delta_J": 1.0819080170005268e-14
+          },
+          "rawDriver": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.299816940703,
+            "final_voltage_V": 3.299277562728,
+            "delta_J": -1.779703115046253e-12
+          },
+          "Bcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.6802076022794001,
+            "final_voltage_V": -0.6791778283018,
+            "delta_J": -3.4996493548535828e-15
+          },
+          "Tcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.32453746796890004,
+            "final_voltage_V": -0.33348722698339994,
+            "delta_J": 1.4722906113532237e-14
+          },
+          "Lcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.3626832718943,
+            "final_voltage_V": -1.3627500367679,
+            "delta_J": 2.729448155365035e-15
+          },
+          "Dcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.6829901872355,
+            "final_voltage_V": -1.6627810126197002,
+            "delta_J": -1.014229116035814e-12
+          },
+          "FFP": {
+            "C_F": 2.0000000000000003e-14,
+            "initial_voltage_V": 0.07291561725300033,
+            "final_voltage_V": 0.8192040509159999,
+            "delta_J": 6.657785897977982e-15
+          },
+          "FFN": {
+            "C_F": 2.0000000000000003e-14,
+            "initial_voltage_V": -5.206740591165e-10,
+            "final_voltage_V": -1.31941532647815,
+            "delta_J": 1.7408568037454435e-14
+          }
+        },
+        "explicit_cap_delta_J": -3.1595963258238846e-10,
+        "source_net_J": 2.4587197032963088e-08,
+        "scope": "Actual native first/last supply, compensation and added CFF energies. Excludes intrinsic MOS, VCSEL C and inductors; not full energy balance or periodic steady-state efficiency."
+      },
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-ff20/net6.4-s40",
+      "analysis_sha256": "6b3acb93c94036ba0658428a6c3a97e50f977f783df7a3cb2d6b05ca092f0931",
+      "deck_sha256": "2fadeed4798bf5ab5621807166c506dd2dd482eebd2bf72583ca400f2869c147",
+      "waveform": {
+        "path": "build/driver-methods-20261111/VCSEL/vc-ff20/net6.4-s40/waveform.dat.gz",
+        "sha256": "f996dd772c64505d18cfd8d995364fd565ad778a27cfc022fd06b92aadea844a",
+        "raw_sha256": "6c9a3cfc332c3e5677e968964cddc585efd6b88d3e15c0b180a4e758d0f52a75",
+        "bytes": 174171205,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-ff20",
+      "net_Gbps": 7.2,
+      "steps_per_UI": 40,
+      "holdout": false,
+      "combined_screen_pass": false,
+      "full_receiver": {
+        "delay_UI": 2.125,
+        "delay_ps": 255.2552552552553,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 8.491198085714785,
+        "one_sided_margin_UI": 0.15909751882510537,
+        "one_sided_margin_ps": 19.110813072084728,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.31165597844837,
+            "median": 28.45336329193468,
+            "p95": 51.29483844203983
+          },
+          "1": {
+            "p05": 75.31256375492728,
+            "median": 98.3494249302379,
+            "p95": 99.80771327089658
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.703125,
+        "delay_ps": 204.57957957957962,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 14.033596101706252,
+        "one_sided_margin_UI": 0.19065507897346562,
+        "one_sided_margin_ps": 22.90151098780368,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.42383250376746,
+            "median": 26.054750908619646,
+            "p95": 43.60046474183118
+          },
+          "1": {
+            "p05": 78.67394316132115,
+            "median": 98.9910904989269,
+            "p95": 100.28702022392768
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.609375,
+          "delay_ps": 73.19819819819821,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 36.0568538166754,
+          "one_sided_margin_UI": 0.49803800178580127,
+          "one_sided_margin_ps": 59.82438459889505,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.00124861103115,
+              "median": 26.367820567792727,
+              "p95": 26.44290450055807
+            },
+            "1": {
+              "p05": 98.55695616602054,
+              "median": 98.63066007634205,
+              "p95": 99.01294842122098
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.5,
+          "delay_ps": 180.1801801801802,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 11.182363989249865,
+          "one_sided_margin_UI": 0.23520587977760377,
+          "one_sided_margin_ps": 28.2529585318443,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.289994164727485,
+              "median": 25.901626836486194,
+              "p95": 49.99380948407084
+            },
+            "1": {
+              "p05": 74.82082811784052,
+              "median": 99.954276159527,
+              "p95": 100.72882377970707
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 5.4336954704371285,
+        "returned": 0.05729829107226574,
+        "net": 5.376397179364862
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 3.5397815747201973,
+          "returned": 0.0,
+          "net": 3.5397815747201973
+        },
+        "VDD": {
+          "positive": 1.1863323927349978,
+          "returned": 0.0,
+          "net": 1.1863323927349978
+        },
+        "VREF": {
+          "positive": 0.06665343605555288,
+          "returned": 0.0024469909163748107,
+          "net": 0.06420644513917807
+        },
+        "VD": {
+          "positive": 0.32141975327199873,
+          "returned": 0.02742025661115487,
+          "net": 0.2939994966608439
+        },
+        "VDB": {
+          "positive": 0.31944395356983657,
+          "returned": 0.02736771215641146,
+          "net": 0.2920762414134251
+        },
+        "VSET": {
+          "positive": 6.30030495293458e-05,
+          "returned": 6.293889829794917e-05,
+          "net": 6.415123139663794e-08
+        },
+        "VREGSET": {
+          "positive": 1.3570350156062667e-06,
+          "returned": 3.92490026654843e-07,
+          "net": 9.645449889514238e-07
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.3143417173037824,
+        "steering_gate_differential_peak_V": 3.1592803844549957,
+        "laser_rail_range_V": [
+          3.1000976355463536,
+          3.100465801446312
+        ],
+        "predriver_rail_range_V": [
+          2.947894668230686,
+          3.100161307886
+        ],
+        "electrical_current_range_mA": [
+          2.82711816675,
+          7.140673722837
+        ],
+        "base_current_range_mA": [
+          2.102409701762,
+          3.809349468336
+        ],
+        "tail_current_range_mA": [
+          3.10428634165,
+          4.75409890382
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.23742516348586662,
+          4.230110232715667
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.330380662254,
+          "instance": "XBN2N_0",
+          "pair": "VGS"
+        },
+        "max_body_forward_V": 0.2413167019543
+      },
+      "storage": {
+        "capacitors": {
+          "Lout": {
+            "C_F": 1e-08,
+            "initial_voltage_V": 3.100143311403,
+            "final_voltage_V": 3.100277665887,
+            "delta_J": 4.165271804939342e-12
+          },
+          "Dout": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.100161307886,
+            "final_voltage_V": 2.988828090406,
+            "delta_J": -3.389533904567302e-10
+          },
+          "rawLaser": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.29806704829,
+            "final_voltage_V": 3.298068952312,
+            "delta_J": 6.279594030359921e-15
+          },
+          "rawDriver": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.299816940703,
+            "final_voltage_V": 3.299258315697,
+            "delta_J": -1.843204227349795e-12
+          },
+          "Bcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.6802076022794001,
+            "final_voltage_V": -0.6791584937096999,
+            "delta_J": -3.565306551655231e-15
+          },
+          "Tcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.32453746796890004,
+            "final_voltage_V": -0.3297467112254999,
+            "delta_J": 8.520813620921023e-15
+          },
+          "Lcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.3626832718943,
+            "final_voltage_V": -1.3627149533748,
+            "delta_J": 1.2951697609244094e-15
+          },
+          "Dcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.6829901872355,
+            "final_voltage_V": -1.6645066489887002,
+            "delta_J": -9.281037870508763e-13
+          },
+          "FFP": {
+            "C_F": 2.0000000000000003e-14,
+            "initial_voltage_V": 0.07291561725300033,
+            "final_voltage_V": 0.8051585674249999,
+            "delta_J": 6.429636314584922e-15
+          },
+          "FFN": {
+            "C_F": 2.0000000000000003e-14,
+            "initial_voltage_V": -5.206740591165e-10,
+            "final_voltage_V": -1.70627311843918,
+            "delta_J": 2.911367954708164e-14
+          }
+        },
+        "explicit_cap_delta_J": -3.375113530794693e-10,
+        "source_net_J": 2.2021722846678475e-08,
+        "scope": "Actual native first/last supply, compensation and added CFF energies. Excludes intrinsic MOS, VCSEL C and inductors; not full energy balance or periodic steady-state efficiency."
+      },
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-ff20/net7.2-s40",
+      "analysis_sha256": "0d995792e40454fe5958295015b89e539910ebf23b2482380055e532cb8db12f",
+      "deck_sha256": "4d6b37721b412f57058101879e50515b5ee75da01d8e20420f820abbd592d450",
+      "waveform": {
+        "path": "build/driver-methods-20261111/VCSEL/vc-ff20/net7.2-s40/waveform.dat.gz",
+        "sha256": "6bcd7bca5b6f9844d6085cc233896b3900778e5ecf8f52793bc6cda5acf72361",
+        "raw_sha256": "5b6e6ff0c9cb86dc11cb5b41522088013a143371ded0263ed3f549ac1edd8c3a",
+        "bytes": 160124397,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-single",
+      "net_Gbps": 7.2,
+      "steps_per_UI": 40,
+      "holdout": false,
+      "combined_screen_pass": false,
+      "full_receiver": {
+        "delay_UI": 1.515625,
+        "delay_ps": 182.05705705705708,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.79067490856172,
+        "one_sided_margin_UI": 0.446318752735439,
+        "one_sided_margin_ps": 53.61186219044312,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.574346568539042,
+            "median": 29.868898868969694,
+            "p95": 30.456743792557962
+          },
+          "1": {
+            "p05": 99.14578761594288,
+            "median": 100.43660047451499,
+            "p95": 101.43945094355293
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.0625,
+        "delay_ps": 127.62762762762765,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 33.1241959864541,
+        "one_sided_margin_UI": 0.42998676694979704,
+        "one_sided_margin_ps": 51.65006209607172,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.70434098853637,
+            "median": 28.627093234007347,
+            "p95": 29.173877286791857
+          },
+          "1": {
+            "p05": 98.26092594786016,
+            "median": 99.68681902914861,
+            "p95": 100.58824769332927
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.625,
+          "delay_ps": 75.07507507507509,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.31539511221456,
+          "one_sided_margin_UI": 0.49387860838979647,
+          "one_sided_margin_ps": 59.32475776454012,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.44226919168806,
+              "median": 27.133859658480155,
+              "p95": 27.14155602140163
+            },
+            "1": {
+              "p05": 97.81667119851306,
+              "median": 98.55679877361206,
+              "p95": 98.55769289440084
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 0.875,
+          "delay_ps": 105.10510510510511,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 36.36398344903495,
+          "one_sided_margin_UI": 0.4959739655432869,
+          "one_sided_margin_ps": 59.576452317511944,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.990692922560573,
+              "median": 26.102463529442204,
+              "p95": 26.128387668442485
+            },
+            "1": {
+              "p05": 99.04832034965523,
+              "median": 99.99973894410658,
+              "p95": 100.00251562303526
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 5.129340528803176,
+        "returned": 0.07250615417442959,
+        "net": 5.056834374628747
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 3.536085895084486,
+          "returned": 0.0,
+          "net": 3.536085895084486
+        },
+        "VDD": {
+          "positive": 0.7345394113715337,
+          "returned": 0.0,
+          "net": 0.7345394113715337
+        },
+        "VREF": {
+          "positive": 0.07180800040993447,
+          "returned": 0.007592027379692594,
+          "net": 0.06421597303024187
+        },
+        "VD": {
+          "positive": 0.3945021044437857,
+          "returned": 0.03241033927225573,
+          "net": 0.36209176517152997
+        },
+        "VDB": {
+          "positive": 0.3923239582248321,
+          "returned": 0.032423274131056355,
+          "net": 0.35990068409377574
+        },
+        "VSET": {
+          "positive": 8.04226511581573e-05,
+          "returned": 8.033469477904181e-05,
+          "net": 8.795637911548055e-08
+        },
+        "VREGSET": {
+          "positive": 7.366174460835497e-07,
+          "returned": 1.786966458723738e-07,
+          "net": 5.579208002111758e-07
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.1730881013866323,
+        "steering_gate_differential_peak_V": 3.6586021837965945,
+        "laser_rail_range_V": [
+          3.10008656994059,
+          3.1008319931272523
+        ],
+        "predriver_rail_range_V": [
+          3.015733216500857,
+          3.1002817329447048
+        ],
+        "electrical_current_range_mA": [
+          2.742220731435,
+          7.584325736221
+        ],
+        "base_current_range_mA": [
+          1.921969367198,
+          4.020591949697001
+        ],
+        "tail_current_range_mA": [
+          1.820958626049,
+          4.746088256735001
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.4342821344295684,
+          4.438080876026087
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": false,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.392761692637,
+          "instance": "XSTEER_0",
+          "pair": "VGB"
+        },
+        "max_body_forward_V": 0.29816060543599976
+      },
+      "storage": {
+        "capacitors": {
+          "Lout": {
+            "C_F": 1e-08,
+            "initial_voltage_V": 3.100143311403,
+            "final_voltage_V": 3.100418286218,
+            "delta_J": 8.524991391003034e-12
+          },
+          "Dout": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.100161307886,
+            "final_voltage_V": 3.034163715864,
+            "delta_J": -2.0242534012389926e-10
+          },
+          "rawLaser": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.29806704829,
+            "final_voltage_V": 3.298070998258,
+            "delta_J": 1.3027267103138163e-14
+          },
+          "rawDriver": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.299816940705,
+            "final_voltage_V": 3.299551071828,
+            "delta_J": -8.772832812000652e-13
+          },
+          "Bcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.6802076022794001,
+            "final_voltage_V": -0.6788738907244999,
+            "delta_J": -4.5315567281760996e-15
+          },
+          "Tcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.32453746796899996,
+            "final_voltage_V": -0.33314704419489993,
+            "delta_J": 1.4155962350172321e-14
+          },
+          "Lcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.3626832718943,
+            "final_voltage_V": -1.3627423892180002,
+            "delta_J": 2.4167980654273785e-15
+          },
+          "Dcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.6829901881146,
+            "final_voltage_V": -1.6723521696836,
+            "delta_J": -5.354129076685884e-13
+          }
+        },
+        "explicit_cap_delta_J": -1.9528797645097432e-10,
+        "source_net_J": 2.0712793598479346e-08,
+        "scope": "Actual native first/last supply, compensation and added CFF energies. Excludes intrinsic MOS, VCSEL C and inductors; not full energy balance or periodic steady-state efficiency."
+      },
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single/net7.2-s40",
+      "analysis_sha256": "3547f7477fabb8d916936ada380bebe3dad5d38d3e3ae12fbbca648e9afb0a54",
+      "deck_sha256": "7ba7cd3463dc7ebc0714bef91cc9d0d8ad53848cbd847b3d3893e29b4a0b575e",
+      "waveform": {
+        "path": "build/driver-methods-20261111/VCSEL/vc-single/net7.2-s40/waveform.dat.gz",
+        "sha256": "6a39363b305a2a5ceac15a9fda3ac0806a6ce65fa950a018a5695284da302f03",
+        "raw_sha256": "9c0c2d8fb191cc5bc7add095a36e9282cbd8378b2b2ad8832764fd9382e2c0b1",
+        "bytes": 158029338,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-single-r100",
+      "net_Gbps": 7.2,
+      "steps_per_UI": 40,
+      "holdout": false,
+      "combined_screen_pass": false,
+      "full_receiver": {
+        "delay_UI": 1.546875,
+        "delay_ps": 185.81081081081084,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.77747649156082,
+        "one_sided_margin_UI": 0.4485208006491472,
+        "one_sided_margin_ps": 53.876372450348015,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.481596960029307,
+            "median": 29.80152895850858,
+            "p95": 30.47198762116428
+          },
+          "1": {
+            "p05": 99.02936915662885,
+            "median": 100.34857539207422,
+            "p95": 101.39789371684118
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.078125,
+        "delay_ps": 129.50450450450452,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 32.793067667019955,
+        "one_sided_margin_UI": 0.43135303886471943,
+        "one_sided_margin_ps": 51.814178842608946,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.70974768218787,
+            "median": 28.87480076048543,
+            "p95": 29.49705990464297
+          },
+          "1": {
+            "p05": 97.92100565437457,
+            "median": 99.45523001846624,
+            "p95": 100.5175111205897
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.640625,
+          "delay_ps": 76.95195195195195,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 34.101542264233345,
+          "one_sided_margin_UI": 0.49222253669142624,
+          "one_sided_margin_ps": 59.12583023320436,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 27.122587587641934,
+              "median": 28.30581702308909,
+              "p95": 28.322903157277363
+            },
+            "1": {
+              "p05": 96.60318626837012,
+              "median": 97.87558657748326,
+              "p95": 97.87735871771655
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 0.90625,
+          "delay_ps": 108.85885885885887,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 36.3875195200537,
+          "one_sided_margin_UI": 0.49339322565653443,
+          "one_sided_margin_ps": 59.266453532316454,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.991088950055435,
+              "median": 26.079371174794233,
+              "p95": 26.105275465828036
+            },
+            "1": {
+              "p05": 99.05960801298701,
+              "median": 99.99973392128442,
+              "p95": 100.0022170749925
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 5.123330997607006,
+        "returned": 0.0580391819693247,
+        "net": 5.065291815637681
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 3.536496513037953,
+          "returned": 0.0,
+          "net": 3.536496513037953
+        },
+        "VDD": {
+          "positive": 0.7320229486466325,
+          "returned": 0.0,
+          "net": 0.7320229486466325
+        },
+        "VREF": {
+          "positive": 0.07127748540404871,
+          "returned": 0.007061181238690953,
+          "net": 0.06421630416535777
+        },
+        "VD": {
+          "positive": 0.3927822144370795,
+          "returned": 0.02544320966318156,
+          "net": 0.36733900477389797
+        },
+        "VDB": {
+          "positive": 0.39067227068267846,
+          "returned": 0.025455865920240628,
+          "net": 0.36521640476243783
+        },
+        "VSET": {
+          "positive": 7.883729668302753e-05,
+          "returned": 7.875247352157446e-05,
+          "net": 8.482316145306541e-08
+        },
+        "VREGSET": {
+          "positive": 7.281019309204514e-07,
+          "returned": 1.7267368998530116e-07,
+          "net": 5.554282409351503e-07
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.1132224299963225,
+        "steering_gate_differential_peak_V": 3.6186076651786556,
+        "laser_rail_range_V": [
+          3.1000866722986697,
+          3.100796098533981
+        ],
+        "predriver_rail_range_V": [
+          3.0161765498307225,
+          3.1002649172250942
+        ],
+        "electrical_current_range_mA": [
+          2.7480205695730002,
+          7.51550924138
+        ],
+        "base_current_range_mA": [
+          1.9206541179969998,
+          4.043260263505
+        ],
+        "tail_current_range_mA": [
+          1.946202903454,
+          4.729800398426
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.41983452449055214,
+          4.411345727188161
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": false,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.374797296236,
+          "instance": "XSTEER_0",
+          "pair": "VGB"
+        },
+        "max_body_forward_V": 0.2798722429609999
+      },
+      "storage": {
+        "capacitors": {
+          "Lout": {
+            "C_F": 1e-08,
+            "initial_voltage_V": 3.100143311403,
+            "final_voltage_V": 3.100403562497,
+            "delta_J": 8.068495536665238e-12
+          },
+          "Dout": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.100161307886,
+            "final_voltage_V": 3.034463669122,
+            "delta_J": -2.015151878460426e-10
+          },
+          "rawLaser": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.29806704829,
+            "final_voltage_V": 3.298070793894,
+            "delta_J": 1.235326014276094e-14
+          },
+          "rawDriver": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.299816940705,
+            "final_voltage_V": 3.299552699628,
+            "delta_J": -8.719122706412289e-13
+          },
+          "Bcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.6802076022794001,
+            "final_voltage_V": -0.678880603571,
+            "delta_J": -4.508770734413402e-15
+          },
+          "Tcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.32453746796890004,
+            "final_voltage_V": -0.3327075950981,
+            "delta_J": 1.3424439300741088e-14
+          },
+          "Lcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.3626832718943,
+            "final_voltage_V": -1.3627392685213,
+            "delta_J": 2.2892170411936265e-15
+          },
+          "Dcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.6829901881268998,
+            "final_voltage_V": -1.6724034997263,
+            "delta_J": -5.328376115196212e-13
+          }
+        },
+        "explicit_cap_delta_J": -1.9482788404578792e-10,
+        "source_net_J": 2.0747435276851945e-08,
+        "scope": "Actual native first/last supply, compensation and added CFF energies. Excludes intrinsic MOS, VCSEL C and inductors; not full energy balance or periodic steady-state efficiency."
+      },
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single-r100/net7.2-s40",
+      "analysis_sha256": "adc1454237c2054ae083fbd29151e010e8680f40ae2e29c25a7cb99fea2a5a9e",
+      "deck_sha256": "c278cc7c23cb1edd5d93270ff6608f66360d278f7479b540ecb478b47b268ec5",
+      "waveform": {
+        "path": "build/driver-methods-20261111/VCSEL/vc-single-r100/net7.2-s40/waveform.dat.gz",
+        "sha256": "6d7d4008866e21c559df33996439c3935978b8060957e1a57213b61c1592b003",
+        "raw_sha256": "180b431a9c9ae23d07a1a77d5de80fab512d6945ea922627e0020889a30396c6",
+        "bytes": 156427170,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-single-r150",
+      "net_Gbps": 8.8,
+      "steps_per_UI": 40,
+      "holdout": true,
+      "combined_screen_pass": true,
+      "full_receiver": {
+        "delay_UI": 1.796875,
+        "delay_ps": 176.5970515970516,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.420553874409865,
+        "one_sided_margin_UI": 0.4328088033135865,
+        "one_sided_margin_ps": 42.536491726151006,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.96105602011232,
+            "median": 26.148348577209397,
+            "p95": 30.834155195808062
+          },
+          "1": {
+            "p05": 97.69188152668481,
+            "median": 99.69521436106024,
+            "p95": 101.46251263710222
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1036
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1020
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1020
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1020
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.234375,
+        "delay_ps": 121.31449631449632,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.288500411880257,
+        "one_sided_margin_UI": 0.41608183034696816,
+        "one_sided_margin_ps": 40.89256317906321,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.708348822846062,
+            "median": 26.96244322919371,
+            "p95": 31.028278956195308
+          },
+          "1": {
+            "p05": 97.15975421315638,
+            "median": 99.4686457171497,
+            "p95": 101.26137057121885
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1036
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1020
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1020
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1020
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.671875,
+          "delay_ps": 66.03194103194103,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 32.1566815178858,
+          "one_sided_margin_UI": 0.4943666944478958,
+          "one_sided_margin_ps": 48.58640731674652,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 27.777729383726044,
+              "median": 27.8029985754093,
+              "p95": 30.297149251818915
+            },
+            "1": {
+              "p05": 94.67167385457589,
+              "median": 95.9572849540109,
+              "p95": 97.22220739983861
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1036
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1020
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1020
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1020
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.015625,
+          "delay_ps": 99.81572481572482,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.26225316973697,
+          "one_sided_margin_UI": 0.49291424107683396,
+          "one_sided_margin_ps": 48.4436600566913,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.856210693492073,
+              "median": 25.002640864743096,
+              "p95": 27.20938280113264
+            },
+            "1": {
+              "p05": 98.06373511712317,
+              "median": 99.13151288298417,
+              "p95": 100.13754231016244
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1036
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1020
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1020
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1020
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 4.2782091521505,
+        "returned": 0.048980660191337864,
+        "net": 4.229228491959161
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 2.8897159679455515,
+          "returned": 0.0,
+          "net": 2.8897159679455515
+        },
+        "VDD": {
+          "positive": 0.6570558863645687,
+          "returned": 0.0,
+          "net": 0.6570558863645687
+        },
+        "VREF": {
+          "positive": 0.06078917964895927,
+          "returned": 0.00824413742672814,
+          "net": 0.05254504222223113
+        },
+        "VD": {
+          "positive": 0.3353261221811106,
+          "returned": 0.020315846433123032,
+          "net": 0.31501027574798757
+        },
+        "VDB": {
+          "positive": 0.33525124870913403,
+          "returned": 0.020350626047029557,
+          "net": 0.31490062266210445
+        },
+        "VSET": {
+          "positive": 6.992705515610471e-05,
+          "returned": 6.985699805380765e-05,
+          "net": 7.005710229705274e-08
+        },
+        "VREGSET": {
+          "positive": 8.202460192923844e-07,
+          "returned": 1.932864033304388e-07,
+          "net": 6.269596159619456e-07
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.0555748403080334,
+        "steering_gate_differential_peak_V": 3.582698643863921,
+        "laser_rail_range_V": [
+          3.100085898195898,
+          3.1010688449581427
+        ],
+        "predriver_rail_range_V": [
+          3.004006759375965,
+          3.1002544642241974
+        ],
+        "electrical_current_range_mA": [
+          2.753777217749,
+          7.4725562263250005
+        ],
+        "base_current_range_mA": [
+          1.911034600139,
+          4.064680923281999
+        ],
+        "tail_current_range_mA": [
+          2.013718430246,
+          4.772953553604
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.4056091400416211,
+          4.413029191467258
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.359142083948,
+          "instance": "XSTEER_0",
+          "pair": "VGB"
+        },
+        "max_body_forward_V": 0.26483502783800006
+      },
+      "storage": {
+        "capacitors": {
+          "Lout": {
+            "C_F": 1e-08,
+            "initial_voltage_V": 3.100143311403,
+            "final_voltage_V": 3.100619288874,
+            "delta_J": 1.4757116503752862e-11
+          },
+          "Dout": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.100161307886,
+            "final_voltage_V": 3.027116386338,
+            "delta_J": -2.2378325923870212e-10
+          },
+          "rawLaser": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.29806704829,
+            "final_voltage_V": 3.298073738373,
+            "delta_J": 2.2064364670863728e-14
+          },
+          "rawDriver": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.299816940705,
+            "final_voltage_V": 3.299505461405,
+            "delta_J": -1.0277761611420252e-12
+          },
+          "Bcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.6802076022794001,
+            "final_voltage_V": -0.6789642939092,
+            "delta_J": -4.224674487680385e-15
+          },
+          "Tcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.32453746796899996,
+            "final_voltage_V": -0.3358947318555,
+            "delta_J": 1.875175693137145e-14
+          },
+          "Lcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.3626832718943,
+            "final_voltage_V": -1.3627580299286,
+            "delta_J": 3.0562295148608667e-15
+          },
+          "Dcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.6829901881094003,
+            "final_voltage_V": -1.6730722752596998,
+            "delta_J": -4.992770254476826e-13
+          }
+        },
+        "explicit_cap_delta_J": -2.1051354824490955e-10,
+        "source_net_J": 1.7322919903064726e-08,
+        "scope": "Actual native first/last supply, compensation and added CFF energies. Excludes intrinsic MOS, VCSEL C and inductors; not full energy balance or periodic steady-state efficiency."
+      },
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single-r150/holdout-net8.8-s40",
+      "analysis_sha256": "9375b46090696540161139bab0b07271a2c1ddeff3019cd042a1cb319bbb6a8e",
+      "deck_sha256": "ad24976c850d90ccf57ef3e3dfbe67f8be7f04b73f2d84d0bed514272dc64802",
+      "waveform": {
+        "path": "build/driver-methods-20261111/VCSEL/vc-single-r150/holdout-net8.8-s40/waveform.dat.gz",
+        "sha256": "7511b78d7fccf225e9b1b51fbe28df37de1d27ac4c7941092b98d66bab7733df",
+        "raw_sha256": "8a6639fc7f7f6a6727bec76930e7dd2d34f688f11e57061d9dbe99f36fed80f2",
+        "bytes": 145375381,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-single-r150",
+      "net_Gbps": 6.4,
+      "steps_per_UI": 40,
+      "holdout": false,
+      "combined_screen_pass": true,
+      "full_receiver": {
+        "delay_UI": 1.453125,
+        "delay_ps": 196.36824324324328,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.873198420800435,
+        "one_sided_margin_UI": 0.4633297755666684,
+        "one_sided_margin_ps": 62.61213183333357,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.654023253200823,
+            "median": 29.72567365354388,
+            "p95": 30.429472581898747
+          },
+          "1": {
+            "p05": 98.3705562511904,
+            "median": 99.74274360609583,
+            "p95": 100.5419709768221
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.03125,
+        "delay_ps": 139.35810810810813,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 34.09207562105295,
+        "one_sided_margin_UI": 0.43677337842133446,
+        "one_sided_margin_ps": 59.023429516396554,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.612611510027556,
+            "median": 27.74916095940484,
+            "p95": 28.248027982742908
+          },
+          "1": {
+            "p05": 98.39515689049135,
+            "median": 99.64820961245576,
+            "p95": 100.25731521958201
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.625,
+          "delay_ps": 84.45945945945948,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 33.279447991398484,
+          "one_sided_margin_UI": 0.495881911557655,
+          "one_sided_margin_ps": 67.01106912941285,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 27.777718339103483,
+              "median": 29.141558337559147,
+              "p95": 29.153160082867444
+            },
+            "1": {
+              "p05": 95.78112699567562,
+              "median": 97.22125721351243,
+              "p95": 97.22220492855337
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 0.875,
+          "delay_ps": 118.24324324324326,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 36.71374655342592,
+          "one_sided_margin_UI": 0.49550497751580713,
+          "one_sided_margin_ps": 66.9601320967307,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.991678891742765,
+              "median": 25.76830555509308,
+              "p95": 25.780491761687973
+            },
+            "1": {
+              "p05": 99.33173762225334,
+              "median": 99.99972628083435,
+              "p95": 100.0017090865476
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 5.684950750022498,
+        "returned": 0.04692944756492608,
+        "net": 5.638021302457572
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 3.9814310437381226,
+          "returned": 0.0,
+          "net": 3.9814310437381226
+        },
+        "VDD": {
+          "positive": 0.7786197039486282,
+          "returned": 0.0,
+          "net": 0.7786197039486282
+        },
+        "VREF": {
+          "positive": 0.07801511322609334,
+          "returned": 0.005773377789423777,
+          "net": 0.07224173543666956
+        },
+        "VD": {
+          "positive": 0.4245854724202717,
+          "returned": 0.02053300177667484,
+          "net": 0.4040524706435969
+        },
+        "VDB": {
+          "positive": 0.42221539972477834,
+          "returned": 0.02053961599795926,
+          "net": 0.40167578372681906
+        },
+        "VSET": {
+          "positive": 8.335663601840184e-05,
+          "returned": 8.32877979167661e-05,
+          "net": 6.883810163574579e-08
+        },
+        "VREGSET": {
+          "positive": 6.603285856789417e-07,
+          "returned": 1.642029514307893e-07,
+          "net": 4.961256342481524e-07
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.0555726029872337,
+        "steering_gate_differential_peak_V": 3.5825257093562697,
+        "laser_rail_range_V": [
+          3.1000861217103712,
+          3.1006481747905608
+        ],
+        "predriver_rail_range_V": [
+          3.024884545733037,
+          3.1002542396312767
+        ],
+        "electrical_current_range_mA": [
+          2.7492784429770003,
+          7.433488424456
+        ],
+        "base_current_range_mA": [
+          1.912168637873,
+          4.064226912787
+        ],
+        "tail_current_range_mA": [
+          2.097627918638,
+          4.716722171545
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.40583588947137894,
+          4.3678595286363135
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.359145155353,
+          "instance": "XSTEER_0",
+          "pair": "VGB"
+        },
+        "max_body_forward_V": 0.26353809330900013
+      },
+      "storage": {
+        "capacitors": {
+          "Lout": {
+            "C_F": 1e-08,
+            "initial_voltage_V": 3.100143311403,
+            "final_voltage_V": 3.100282617181,
+            "delta_J": 4.318775789568569e-12
+          },
+          "Dout": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.100161307886,
+            "final_voltage_V": 3.041660606907,
+            "delta_J": -1.7965044365178836e-10
+          },
+          "rawLaser": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.29806704829,
+            "final_voltage_V": 3.298069243125,
+            "delta_J": 7.238715398426671e-15
+          },
+          "rawDriver": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.299816940705,
+            "final_voltage_V": 3.299581277428,
+            "delta_J": -7.776179051562248e-13
+          },
+          "Bcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.6802076022794001,
+            "final_voltage_V": -0.6788473905899,
+            "delta_J": -4.6215062199360395e-15
+          },
+          "Tcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.32453746796899996,
+            "final_voltage_V": -0.3304607903839001,
+            "delta_J": 9.69941466355568e-15
+          },
+          "Lcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.3626832718943,
+            "final_voltage_V": -1.3627242277731,
+            "delta_J": 1.6743218885532642e-15
+          },
+          "Dcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.6829901881094003,
+            "final_voltage_V": -1.6721051582735003,
+            "delta_J": -5.478046942150058e-13
+          }
+        },
+        "explicit_cap_delta_J": -1.7664309951586042e-10,
+        "source_net_J": 2.3093335254866216e-08,
+        "scope": "Actual native first/last supply, compensation and added CFF energies. Excludes intrinsic MOS, VCSEL C and inductors; not full energy balance or periodic steady-state efficiency."
+      },
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single-r150/net6.4-s40",
+      "analysis_sha256": "370ae61b3994f5f741e1c3fd4ded26721104f3c864e062aa5a3294fcc4951e75",
+      "deck_sha256": "b0417ec60c46f3d0b80be874a57f9c8aee71799818f25810fcc4763129ef3229",
+      "waveform": {
+        "path": "build/driver-methods-20261111/VCSEL/vc-single-r150/net6.4-s40/waveform.dat.gz",
+        "sha256": "832762facbe4b5c11a34feff20ddabab83e954986bad7031423a76698d3e826e",
+        "raw_sha256": "58b3b2262471be5628c089056723590a10824f022b6e6114789f87c1075ad080",
+        "bytes": 154134895,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-single-r150",
+      "net_Gbps": 7.2,
+      "steps_per_UI": 40,
+      "holdout": false,
+      "combined_screen_pass": true,
+      "full_receiver": {
+        "delay_UI": 1.5625,
+        "delay_ps": 187.6876876876877,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.726070143134994,
+        "one_sided_margin_UI": 0.4489419198104455,
+        "one_sided_margin_ps": 53.92695733458805,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.45835666993326,
+            "median": 29.827778720800808,
+            "p95": 30.523105664371624
+          },
+          "1": {
+            "p05": 98.88542673417507,
+            "median": 100.26092116730526,
+            "p95": 101.35675874631977
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.109375,
+        "delay_ps": 133.25825825825828,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 32.647623494804066,
+        "one_sided_margin_UI": 0.4325885120527125,
+        "one_sided_margin_ps": 51.96258403035586,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.711653291496077,
+            "median": 28.791160457343558,
+            "p95": 29.637239332652793
+          },
+          "1": {
+            "p05": 97.34443038167085,
+            "median": 99.01736284121583,
+            "p95": 100.44549233060964
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.640625,
+          "delay_ps": 76.95195195195195,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 32.716108624494495,
+          "one_sided_margin_UI": 0.49537728350855925,
+          "one_sided_margin_ps": 59.504778799826944,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 27.777698807012314,
+              "median": 29.64625746963059,
+              "p95": 29.677714595694386
+            },
+            "1": {
+              "p05": 95.21818866116423,
+              "median": 97.21871507747662,
+              "p95": 97.22222149426659
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 0.921875,
+          "delay_ps": 110.73573573573574,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 36.294161384058334,
+          "one_sided_margin_UI": 0.49469530041164533,
+          "one_sided_margin_ps": 59.42285890830575,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.991603268003303,
+              "median": 26.170689356942738,
+              "p95": 26.196815873911863
+            },
+            "1": {
+              "p05": 98.96966207440488,
+              "median": 99.99972840793502,
+              "p95": 100.00177999018504
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 5.113323905295268,
+        "returned": 0.04761488130236449,
+        "net": 5.065709023992904
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 3.536940725587529,
+          "returned": 0.0,
+          "net": 3.536940725587529
+        },
+        "VDD": {
+          "positive": 0.7296780799722755,
+          "returned": 0.0,
+          "net": 0.7296780799722755
+        },
+        "VREF": {
+          "positive": 0.07073240861536895,
+          "returned": 0.006515838174618552,
+          "net": 0.0642165704407504
+        },
+        "VD": {
+          "positive": 0.3889678193593512,
+          "returned": 0.020504533631077834,
+          "net": 0.3684632857282734
+        },
+        "VDB": {
+          "positive": 0.38692702751792596,
+          "returned": 0.020517299942584857,
+          "net": 0.3664097275753411
+        },
+        "VSET": {
+          "positive": 7.712370674895314e-05,
+          "returned": 7.704213836703968e-05,
+          "net": 8.156838191345318e-08
+        },
+        "VREGSET": {
+          "positive": 7.2053606844488e-07,
+          "returned": 1.674157162089262e-07,
+          "net": 5.531203522359537e-07
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.05557316840952,
+        "steering_gate_differential_peak_V": 3.5824717926853533,
+        "laser_rail_range_V": [
+          3.1000859771193245,
+          3.1007594408901697
+        ],
+        "predriver_rail_range_V": [
+          3.016594710515163,
+          3.1002544975370534
+        ],
+        "electrical_current_range_mA": [
+          2.750481489411,
+          7.447527193230999
+        ],
+        "base_current_range_mA": [
+          1.918100114133,
+          4.067532520672
+        ],
+        "tail_current_range_mA": [
+          2.06180127795,
+          4.725691298657
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.40571447300162156,
+          4.384238795488455
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.359143777862,
+          "instance": "XSTEER_0",
+          "pair": "VGB"
+        },
+        "max_body_forward_V": 0.2640736290329997
+      },
+      "storage": {
+        "capacitors": {
+          "Lout": {
+            "C_F": 1e-08,
+            "initial_voltage_V": 3.100143311403,
+            "final_voltage_V": 3.10038775761,
+            "delta_J": 7.578481506036926e-12
+          },
+          "Dout": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.100161307886,
+            "final_voltage_V": 3.034744273335,
+            "delta_J": -2.006636651869301e-10
+          },
+          "rawLaser": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.29806704829,
+            "final_voltage_V": 3.298070576042,
+            "delta_J": 1.16347688475077e-14
+          },
+          "rawDriver": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.299816940705,
+            "final_voltage_V": 3.299554217759,
+            "delta_J": -8.669031162499939e-13
+          },
+          "Bcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.6802076022794001,
+            "final_voltage_V": -0.6788866888842,
+            "delta_J": -4.4881146363452266e-15
+          },
+          "Tcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.32453746796899996,
+            "final_voltage_V": -0.3322359113608999,
+            "delta_J": 1.2640331705195183e-14
+          },
+          "Lcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.3626832718943,
+            "final_voltage_V": -1.3627358927283,
+            "delta_J": 2.151207441624794e-15
+          },
+          "Dcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.6829901881094003,
+            "final_voltage_V": -1.6724514263091999,
+            "delta_J": -5.304329986325621e-13
+          }
+        },
+        "explicit_cap_delta_J": -1.9446058160241774e-10,
+        "source_net_J": 2.074914416227493e-08,
+        "scope": "Actual native first/last supply, compensation and added CFF energies. Excludes intrinsic MOS, VCSEL C and inductors; not full energy balance or periodic steady-state efficiency."
+      },
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single-r150/net7.2-s40",
+      "analysis_sha256": "d767668fca83929ff3c4d5fa84e938a0136f3487abdc48daa9f26dc75c3ad3dd",
+      "deck_sha256": "7132c79fc6d552b877f0cf2c9e565e080f09addb21f6d845cd04aa493fc21522",
+      "waveform": {
+        "path": "build/driver-methods-20261111/VCSEL/vc-single-r150/net7.2-s40/waveform.dat.gz",
+        "sha256": "f2c34f726f8f85247ac63db4d704595d51ea222fa7d483b71c49136a0ee5d709",
+        "raw_sha256": "ec520330380d524a208e6331ecc4d2b9bc7daea2d14e299bd2b0d8ab7c712c87",
+        "bytes": 152789886,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-single-r150",
+      "net_Gbps": 8.0,
+      "steps_per_UI": 40,
+      "holdout": false,
+      "combined_screen_pass": true,
+      "full_receiver": {
+        "delay_UI": 1.671875,
+        "delay_ps": 180.74324324324326,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.486645228507697,
+        "one_sided_margin_UI": 0.434438739443143,
+        "one_sided_margin_ps": 46.966350210069514,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.15752038895655,
+            "median": 29.798517256738048,
+            "p95": 30.79023419201178
+          },
+          "1": {
+            "p05": 98.56952607381102,
+            "median": 100.2645253208696,
+            "p95": 101.78846923612323
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.171875,
+        "delay_ps": 126.68918918918921,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.562850534731744,
+        "one_sided_margin_UI": 0.4268693830823325,
+        "one_sided_margin_ps": 46.14804141430622,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.74652420420108,
+            "median": 29.418141884799933,
+            "p95": 30.743164578426473
+          },
+          "1": {
+            "p05": 97.01965018976047,
+            "median": 98.95255171169111,
+            "p95": 100.78463420896712
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.65625,
+          "delay_ps": 70.94594594594595,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 32.31321531698114,
+          "one_sided_margin_UI": 0.49486486743082253,
+          "one_sided_margin_ps": 53.49890458711595,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 27.777675045118173,
+              "median": 30.03503879266946,
+              "p95": 30.084227359353488
+            },
+            "1": {
+              "p05": 94.82258951510073,
+              "median": 97.2128375133582,
+              "p95": 97.222230754314
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 0.96875,
+          "delay_ps": 104.72972972972974,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.802561606872636,
+          "one_sided_margin_UI": 0.49384787171341454,
+          "one_sided_margin_ps": 53.38895910415293,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.993023653416074,
+              "median": 26.638177947354507,
+              "p95": 26.681623200342866
+            },
+            "1": {
+              "p05": 98.54575184071952,
+              "median": 99.99770124959966,
+              "p95": 100.00088258778571
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 4.653934789423697,
+        "returned": 0.04843693818392602,
+        "net": 4.605497851239771
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 3.1811476960714735,
+          "returned": 0.0,
+          "net": 3.1811476960714735
+        },
+        "VDD": {
+          "positive": 0.6888959858794341,
+          "returned": 0.0,
+          "net": 0.6888959858794341
+        },
+        "VREF": {
+          "positive": 0.06524147170647207,
+          "returned": 0.007444287063985512,
+          "net": 0.05779718464248656
+        },
+        "VD": {
+          "positive": 0.3601566706043708,
+          "returned": 0.020450251200025176,
+          "net": 0.33970641940434565
+        },
+        "VDB": {
+          "positive": 0.3584194364351399,
+          "returned": 0.020469573201136054,
+          "net": 0.33794986323400383
+        },
+        "VSET": {
+          "positive": 7.275255230363582e-05,
+          "returned": 7.26572266787726e-05,
+          "net": 9.53256248632141e-08
+        },
+        "VREGSET": {
+          "positive": 7.761745029441656e-07,
+          "returned": 1.6949210050194223e-07,
+          "net": 6.066824024422234e-07
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.055573685416702,
+        "steering_gate_differential_peak_V": 3.5822109811417233,
+        "laser_rail_range_V": [
+          3.1000860350285513,
+          3.1008977669105637
+        ],
+        "predriver_rail_range_V": [
+          3.0089761761068496,
+          3.100254464785968
+        ],
+        "electrical_current_range_mA": [
+          2.7523660254899998,
+          7.475927583574
+        ],
+        "base_current_range_mA": [
+          1.903050381114,
+          4.061162467579
+        ],
+        "tail_current_range_mA": [
+          2.035742425299,
+          4.738939837669
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.40465282326176144,
+          4.398695732020592
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.359142789516,
+          "instance": "XSTEER_0",
+          "pair": "VGB"
+        },
+        "max_body_forward_V": 0.26452131548500013
+      },
+      "storage": {
+        "capacitors": {
+          "Lout": {
+            "C_F": 1e-08,
+            "initial_voltage_V": 3.100143311403,
+            "final_voltage_V": 3.100525610597,
+            "delta_J": 1.185255365570042e-11
+          },
+          "Dout": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.100161307886,
+            "final_voltage_V": 3.028253563025,
+            "delta_J": -2.2034024646991467e-10
+          },
+          "rawLaser": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.29806704829,
+            "final_voltage_V": 3.298072309796,
+            "delta_J": 1.735281340395829e-14
+          },
+          "rawDriver": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.299816940705,
+            "final_voltage_V": 3.299527567463,
+            "delta_J": -9.548368577014645e-13
+          },
+          "Bcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.6802076022794001,
+            "final_voltage_V": -0.6789335523554999,
+            "delta_J": -4.329034211580727e-15
+          },
+          "Tcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.32453746796899996,
+            "final_voltage_V": -0.33409318672410004,
+            "delta_J": 1.5734223249336746e-14
+          },
+          "Lcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.3626832718943,
+            "final_voltage_V": -1.3627466242204997,
+            "delta_J": 2.589934857196168e-15
+          },
+          "Dcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.6829901881094003,
+            "final_voltage_V": -1.6727974940509003,
+            "delta_J": -5.130677575431394e-13
+          }
+        },
+        "explicit_cap_delta_J": -2.0992424949215995e-10,
+        "source_net_J": 1.8864119198678103e-08,
+        "scope": "Actual native first/last supply, compensation and added CFF energies. Excludes intrinsic MOS, VCSEL C and inductors; not full energy balance or periodic steady-state efficiency."
+      },
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single-r150/net8-s40",
+      "analysis_sha256": "6aee1723251753debdd115230c413a117366c252f9ff1f6fc89ee5be9292caf6",
+      "deck_sha256": "3a341d623b393f2b4fc6f51150249d44b9540aa379c79229186889d2ef655df2",
+      "waveform": {
+        "path": "build/driver-methods-20261111/VCSEL/vc-single-r150/net8-s40/waveform.dat.gz",
+        "sha256": "6e4a15cde7f78a6e81e81dabe79a584b1c06a15366a086e036ac8d637e2e020a",
+        "raw_sha256": "29316e159b686b1489edf4a4f67a08e87d32d4e0baf119fad8038a960a68efbd",
+        "bytes": 149442531,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-single-r150",
+      "net_Gbps": 8.8,
+      "steps_per_UI": 40,
+      "holdout": false,
+      "combined_screen_pass": true,
+      "full_receiver": {
+        "delay_UI": 1.796875,
+        "delay_ps": 176.5970515970516,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.437092460022622,
+        "one_sided_margin_UI": 0.43239928018133295,
+        "one_sided_margin_ps": 42.496243752465155,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.977274119845955,
+            "median": 29.578400310996788,
+            "p95": 30.84390307049142
+          },
+          "1": {
+            "p05": 97.6766531938106,
+            "median": 99.64784090842775,
+            "p95": 101.46315543301624
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.234375,
+        "delay_ps": 121.31449631449632,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.29901754153359,
+        "one_sided_margin_UI": 0.4138748541733964,
+        "one_sided_margin_ps": 40.675661343822746,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.75576210068533,
+            "median": 29.66619127187512,
+            "p95": 31.03720720196616
+          },
+          "1": {
+            "p05": 97.12966207900286,
+            "median": 99.44866120099464,
+            "p95": 101.20804432108523
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.671875,
+          "delay_ps": 66.03194103194103,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 32.15184359759736,
+          "one_sided_margin_UI": 0.49435420780658473,
+          "one_sided_margin_ps": 48.58518012841128,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 27.777729778052755,
+              "median": 30.250089040570067,
+              "p95": 30.297228316399746
+            },
+            "1": {
+              "p05": 94.67194039383659,
+              "median": 97.20208163196237,
+              "p95": 97.22220542817698
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.015625,
+          "delay_ps": 99.81572481572482,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.25978752291711,
+          "one_sided_margin_UI": 0.4929245877093034,
+          "one_sided_margin_ps": 48.44467692474726,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.855893853437458,
+              "median": 27.026957776470766,
+              "p95": 27.20921999723567
+            },
+            "1": {
+              "p05": 98.0636794817103,
+              "median": 99.99319029446339,
+              "p95": 100.13736137727423
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 4.275445218487834,
+        "returned": 0.04906388310740236,
+        "net": 4.226381335380432
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 2.8898731887076794,
+          "returned": 0.0,
+          "net": 2.8898731887076794
+        },
+        "VDD": {
+          "positive": 0.6537662571238699,
+          "returned": 0.0,
+          "net": 0.6537662571238699
+        },
+        "VREF": {
+          "positive": 0.06080505183865558,
+          "returned": 0.008259385932779017,
+          "net": 0.05254566590587657
+        },
+        "VD": {
+          "positive": 0.33618544668762834,
+          "returned": 0.020349079842996724,
+          "net": 0.3158363668446316
+        },
+        "VDB": {
+          "positive": 0.33474455187112634,
+          "returned": 0.02038546347297356,
+          "net": 0.3143590883981528
+        },
+        "VSET": {
+          "positive": 6.989160289965632e-05,
+          "returned": 6.978086012387296e-05,
+          "net": 1.1074277578334943e-07
+        },
+        "VREGSET": {
+          "positive": 8.306559749996671e-07,
+          "returned": 1.729985291880237e-07,
+          "net": 6.576574458116435e-07
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.0555746757032676,
+        "steering_gate_differential_peak_V": 3.582698643863921,
+        "laser_rail_range_V": [
+          3.100086563463543,
+          3.10105289641724
+        ],
+        "predriver_rail_range_V": [
+          3.0024054349008797,
+          3.1002544642241974
+        ],
+        "electrical_current_range_mA": [
+          2.753434232411,
+          7.471526714648999
+        ],
+        "base_current_range_mA": [
+          1.916433471013,
+          4.060884663145
+        ],
+        "tail_current_range_mA": [
+          2.003690530638,
+          4.772640961505999
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.4056091400416211,
+          4.410953500298815
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.359142083948,
+          "instance": "XSTEER_0",
+          "pair": "VGB"
+        },
+        "max_body_forward_V": 0.26484712397199983
+      },
+      "storage": {
+        "capacitors": {
+          "Lout": {
+            "C_F": 1e-08,
+            "initial_voltage_V": 3.100143311403,
+            "final_voltage_V": 3.100696356901,
+            "delta_J": 1.7146732311876547e-11
+          },
+          "Dout": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.100161307886,
+            "final_voltage_V": 3.022095149155,
+            "delta_J": -2.3897052218362684e-10
+          },
+          "rawLaser": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.29806704829,
+            "final_voltage_V": 3.298074360333,
+            "delta_J": 2.4115634806520604e-14
+          },
+          "rawDriver": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.299816940705,
+            "final_voltage_V": 3.299501092009,
+            "delta_J": -1.0421929975601239e-12
+          },
+          "Bcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.6802076022794001,
+            "final_voltage_V": -0.6790040736372,
+            "delta_J": -4.089625456946426e-15
+          },
+          "Tcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.32453746796899996,
+            "final_voltage_V": -0.3360347122699999,
+            "delta_J": 1.8986899336629907e-14
+          },
+          "Lcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.3626832718943,
+            "final_voltage_V": -1.3627565230527998,
+            "delta_J": 2.994624336018744e-15
+          },
+          "Dcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.6829901881094003,
+            "final_voltage_V": -1.6731433946706997,
+            "delta_J": -4.957073121348222e-13
+          }
+        },
+        "explicit_cap_delta_J": -2.2331968264842303e-10,
+        "source_net_J": 1.731125794971825e-08,
+        "scope": "Actual native first/last supply, compensation and added CFF energies. Excludes intrinsic MOS, VCSEL C and inductors; not full energy balance or periodic steady-state efficiency."
+      },
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single-r150/net8.8-s40",
+      "analysis_sha256": "48d2d911cad821a0ff100361087ebf4af70744b37f3169e302dbd7f92f33f8cf",
+      "deck_sha256": "d74e4ad7e28d02b8eb7cfeae192ce1d89ca889779c8485b6b811b19f079f2aa1",
+      "waveform": {
+        "path": "build/driver-methods-20261111/VCSEL/vc-single-r150/net8.8-s40/waveform.dat.gz",
+        "sha256": "c4bf2495129de6835acc65d079f7a4334fc980359cc208347116d47c08eeff05",
+        "raw_sha256": "d3ba42168356e304cf440b8dbfadbb79770a27daddb0d8ce6e021137995350bc",
+        "bytes": 145493374,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "vc-single-r150",
+      "net_Gbps": 8.8,
+      "steps_per_UI": 80,
+      "holdout": false,
+      "combined_screen_pass": true,
+      "full_receiver": {
+        "delay_UI": 1.796875,
+        "delay_ps": 176.5970515970516,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.43767603246649,
+        "one_sided_margin_UI": 0.4323871931499365,
+        "one_sided_margin_ps": 42.4950558378316,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.97553917686321,
+            "median": 29.5760381296891,
+            "p95": 30.843365958664
+          },
+          "1": {
+            "p05": 97.6775864871191,
+            "median": 99.64789479507216,
+            "p95": 101.46547679068402
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.234375,
+        "delay_ps": 121.31449631449632,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.289121104218843,
+        "one_sided_margin_UI": 0.41369135154299325,
+        "one_sided_margin_ps": 40.657626687272064,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.764547367828204,
+            "median": 29.707280964535826,
+            "p95": 31.045151946544774
+          },
+          "1": {
+            "p05": 97.15211264626926,
+            "median": 99.47135468397987,
+            "p95": 101.21297328818247
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.671875,
+          "delay_ps": 66.03194103194103,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 32.150749645668526,
+          "one_sided_margin_UI": 0.49436393842247855,
+          "one_sided_margin_ps": 48.58613645429765,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 27.77773815559594,
+              "median": 30.250022012590463,
+              "p95": 30.29744541715336
+            },
+            "1": {
+              "p05": 94.67176320396061,
+              "median": 97.2019574337024,
+              "p95": 97.22220557829863
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.015625,
+          "delay_ps": 99.81572481572482,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.260058248673,
+          "one_sided_margin_UI": 0.4929443780488936,
+          "one_sided_margin_ps": 48.446621921267194,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.857617397422644,
+              "median": 27.02563976835706,
+              "p95": 27.209032031773916
+            },
+            "1": {
+              "p05": 98.06475385389408,
+              "median": 99.99322832858479,
+              "p95": 100.13568953566849
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "source_energy_pJ_per_attempted_net_bit": {
+        "positive": 4.275431605382949,
+        "returned": 0.049067728718387334,
+        "net": 4.226363876664562
+      },
+      "energy_by_source_pJ_per_attempted_net_bit": {
+        "VLASER": {
+          "positive": 2.8898737662573306,
+          "returned": 0.0,
+          "net": 2.8898737662573306
+        },
+        "VDD": {
+          "positive": 0.6537577479405077,
+          "returned": 0.0,
+          "net": 0.6537577479405077
+        },
+        "VREF": {
+          "positive": 0.06080696268318049,
+          "returned": 0.008261297216837141,
+          "net": 0.05254566546634335
+        },
+        "VD": {
+          "positive": 0.33618235619104037,
+          "returned": 0.020350030151400224,
+          "net": 0.3158323260396401
+        },
+        "VDB": {
+          "positive": 0.33474004534284973,
+          "returned": 0.020386442689807018,
+          "net": 0.3143536026530427
+        },
+        "VSET": {
+          "positive": 6.9896385000658e-05,
+          "returned": 6.978572891980838e-05,
+          "net": 1.1065608084963043e-07
+        },
+        "VREGSET": {
+          "positive": 8.305830399850588e-07,
+          "returned": 1.7293142314563607e-07,
+          "net": 6.576516168394228e-07
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.0555738374878696,
+        "steering_gate_differential_peak_V": 3.5828177462419206,
+        "laser_rail_range_V": [
+          3.1000866079806983,
+          3.101052849417675
+        ],
+        "predriver_rail_range_V": [
+          3.002407441247497,
+          3.10025435233769
+        ],
+        "electrical_current_range_mA": [
+          2.7522019776969997,
+          7.471329690180999
+        ],
+        "base_current_range_mA": [
+          1.916432993111,
+          4.053646653255
+        ],
+        "tail_current_range_mA": [
+          2.005213767811,
+          4.771723032500001
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.40677761969560056,
+          4.410947372992679
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.359126659221,
+          "instance": "XSTEER_0",
+          "pair": "VGB"
+        },
+        "max_body_forward_V": 0.2648175881680004
+      },
+      "storage": {
+        "capacitors": {
+          "Lout": {
+            "C_F": 1e-08,
+            "initial_voltage_V": 3.100143311403,
+            "final_voltage_V": 3.100696304019,
+            "delta_J": 1.7145092601641363e-11
+          },
+          "Dout": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.100161307886,
+            "final_voltage_V": 3.022096198171,
+            "delta_J": -2.389673519569125e-10
+          },
+          "rawLaser": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.29806704829,
+            "final_voltage_V": 3.298074360377,
+            "delta_J": 2.4115779922124186e-14
+          },
+          "rawDriver": {
+            "C_F": 1e-09,
+            "initial_voltage_V": 3.299816940705,
+            "final_voltage_V": 3.299501097991,
+            "delta_J": -1.0421732599454474e-12
+          },
+          "Bcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.6802076022794001,
+            "final_voltage_V": -0.6790041265369001,
+            "delta_J": -4.089445861380046e-15
+          },
+          "Tcomp": {
+            "C_F": 5e-12,
+            "initial_voltage_V": -0.32453746796899996,
+            "final_voltage_V": -0.33603566875199997,
+            "delta_J": 1.898850639468542e-14
+          },
+          "Lcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.3626832718943,
+            "final_voltage_V": -1.3627565186326,
+            "delta_J": 2.9944436263390337e-15
+          },
+          "Dcomp": {
+            "C_F": 3e-11,
+            "initial_voltage_V": -1.6829901881094003,
+            "final_voltage_V": -1.6731435599155997,
+            "delta_J": -4.956990177820279e-13
+          }
+        },
+        "explicit_cap_delta_J": -2.2331812234891685e-10,
+        "source_net_J": 1.7311186438818046e-08,
+        "scope": "Actual native first/last supply, compensation and added CFF energies. Excludes intrinsic MOS, VCSEL C and inductors; not full energy balance or periodic steady-state efficiency."
+      },
+      "source_case": "build/driver-methods-20261111/VCSEL/vc-single-r150/net8.8-s80",
+      "analysis_sha256": "68322dfeafb4498062835f39f1d2cdd4d3d311c9271b5289ccb49161e83cff78",
+      "deck_sha256": "47de0ea9a92353117ff19d37c2f5239aa9ad7dae6d3ab7038dc3c33d33268308",
+      "waveform": {
+        "path": "build/driver-methods-20261111/VCSEL/vc-single-r150/net8.8-s80/waveform.dat.gz",
+        "sha256": "f436ca47ad976ff7e539d757530e444bc61d85f711043d266eb3808f31f59028",
+        "raw_sha256": "a2e4dfbaee50a9083e74dcb73b923be0e54947743632e46bf848b887f3f7302c",
+        "bytes": 185682912,
+        "roundtrip_verified": true
+      }
+    }
+  ],
+  "holdout_protocol": {
+    "baseline_seed": 23246,
+    "holdout_seed": 19501,
+    "holdout_phase_offset_bits": 27081,
+    "frame_bits": 4736,
+    "prior_holdout_window": [
+      16749,
+      21485
+    ],
+    "new_holdout_window": [
+      27081,
+      31817
+    ],
+    "scope": "Predeclared nonoverlapping PRBS15 window; no post-holdout circuit retuning, training delay allowed. Not independent random BER."
+  },
+  "scope": "Nominal deterministic schematic only; all7 source ports counted. External supply IC/clock/RX overhead excluded. OP initial state, no long-pattern periodic closure, no PVT/layout/PEX/silicon/optical measurement."
+}

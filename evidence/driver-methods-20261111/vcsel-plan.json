@@ -1,0 +1,59 @@
+{
+  "frozen_baseline": "vc-atten50-steer20",
+  "nominal_contract": {
+    "dc_current_mA": [
+      3,
+      7
+    ],
+    "load_C_fF": 150,
+    "RX_GHz": 5,
+    "raw_supply_V": 3.3,
+    "input_edge_ps": 20,
+    "temp_C": 25,
+    "corner": "TT",
+    "validation_bits": 4096,
+    "full_screen_amplitude_uAeq": 7.5,
+    "full_screen_timing_UI": 0.37
+  },
+  "methods": [
+    {
+      "name": "vc-ff20",
+      "changes": "DI-GP and DBI-GN each20fF",
+      "question": "Can passive input-fed gate precharge recover gate timing without double crossing or stress?"
+    },
+    {
+      "name": "vc-dr65",
+      "changes": "OnlyRDTOP85k->65k; unchanged regulator transistor circuit",
+      "question": "Can smaller actual gate supply reduce gate charge and source energy without losing current compliance?"
+    },
+    {
+      "name": "vc-ff40",
+      "status": "Cancelled:20fF worsened native pulses; no justification to increase to40fF."
+    }
+  ],
+  "order": "DC0/1 then7.2; promisingcandidate6.4; choosebeforeadaptivebandedge. No per-rate retuning. HighestpassingandadjacentfailingS80. NewholdoutnonoverlappingPRBSphase24000afterfreeze. One concurrentngspice.",
+  "boundaries": "No new ideal gate source. All7 existing voltage sources metered, including VD/VDB loading. Explicit cap storage audit. NotPVT/layout/PEX or BER qualification.",
+  "amendment_after_first_two_7p2_cases": {
+    "method": "vc-single",
+    "reason": "Native NP/GP pulse compression observed; parent approved a topology control rather than parameter sweep. Delete first4MOS, swap DI/DBI to retained output inverters.69MOS, all7 sources counted.",
+    "sequence": "DC0/1 then7.2; if promising6.4/8.0 then adjacentbound andS80. No per-rate retuning.",
+    "new_holdout": "0x4c2d at PRBS15 offset27081, predeclared before any selected holdout; previous proposedoffset24000 not used."
+  },
+  "bounded_single_stage_damping_followup": {
+    "name": "vc-single-r100",
+    "change": "OnlyexistingRAD/RADB50to100ohm;69MOSandDRunchanged.",
+    "trigger": "Undampedsinglestage7.2:fullRX0.4463UIpass,but7.584mApeakoutside2to7.5mAcalibrationandbody0.298V.",
+    "hypothesis": "Loaded input edge damping may reduce Miller feedthrough; not fit to holdout.",
+    "test": "DC0/1+7.2; only one damping value first; no new rates if current/stress fail."
+  },
+  "single_computed_damping_confirmation": {
+    "name": "vc-single-r150",
+    "input_R_ohm": 150,
+    "measured_Ipeak_at50_mA": 7.584325736221,
+    "measured_Ipeak_at100_mA": 7.51550924138,
+    "local_slope_mA_per_ohm": -0.0013763298968200034,
+    "predicted_Ipeak_at150_mA": 7.446692746539,
+    "design_target_Ipeak_mA": 7.45,
+    "rule": "OnepredictionconfirmationthenfreezeR.Nochangeafterholdout.Noexpansionof7.5mAcalibratedrange."
+  }
+}

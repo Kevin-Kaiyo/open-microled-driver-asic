@@ -1,0 +1,184 @@
+{
+  "candidate": "vc-single-r150",
+  "parameters_frozen": true,
+  "MOS": 69,
+  "ATTEN_ohm": 150,
+  "RDTOP_ohm": 85000,
+  "dc_targets_mA": [
+    3,
+    7
+  ],
+  "driver_sha256": "799fe48da876842a367093906241d2fe48f1989c2df6b0c38f43993b2458144f",
+  "frozen_before_holdout": true,
+  "holdout_protocol": {
+    "baseline_seed": 23246,
+    "holdout_seed": 19501,
+    "holdout_phase_offset_bits": 27081,
+    "frame_bits": 4736,
+    "prior_holdout_window": [
+      16749,
+      21485
+    ],
+    "new_holdout_window": [
+      27081,
+      31817
+    ],
+    "scope": "Predeclared nonoverlapping PRBS15 window; no post-holdout circuit retuning, training delay allowed. Not independent random BER."
+  },
+  "first_all_gate_passing_net_Gbps": 7.2,
+  "bandedge_status": "Highesttestedpassing8.8Gb/s;highernotyettested.Notexactfmax.",
+  "damping_prediction": {
+    "predicted_peak_mA": 7.446692746539,
+    "measured_peak_mA": 7.447527193230999,
+    "error_mA": 0.0008344466919991689,
+    "error_percent": 0.01120560120313474
+  },
+  "scope": "Parameters frozen, receiver delay still trained underfixedrule. No PVT, startup, package/PEX, opticalmeasurement or BER qualification.",
+  "selected_holdout_net_Gbps": 8.8,
+  "predeclared_fallback_net_Gbps": 7.2,
+  "fallback_rule": "Onlyif8.8holdoutfails, test7.2withidenticalfrozenparametersandreportboth;nocircuittuning.",
+  "halfstep_pre_holdout": {
+    "rate_Gbps": 8.8,
+    "steps": [
+      40,
+      80
+    ],
+    "both_combined_pass": true,
+    "energy_relative_percent": -0.00031840204210986656,
+    "timing_delta_UI": -1.2087031396434966e-05
+  },
+  "candidate_spec_frozen": {
+    "CFF_fF": 0.0,
+    "RDTOP_ohm": 85000.0,
+    "single_stage": true,
+    "atten_ohm": 150.0,
+    "hypothesis": "One computed damping confirmation: measured50to100ohm peak slope predicts~7.447mA at150ohm. FreezeRafterthispoint; preserve3/7mAtargets,69MOSandall7sources."
+  },
+  "xdrv_instance_line_frozen": "XDRV d db out vlaser vdd vref vset vregset vl 0 vcsel_servo RBASE=50.0 RTAIL=37.5 CC=5e-12 CLDO=3e-11 WBASE=6e-05 WTAIL=8.4e-05 ATTEN=150.0 RZERO=100000.0 RZEROD=100000.0 RBLEED=5000.0",
+  "status": "Frozen;nominalS40/S80andnewholdoutcomplete",
+  "nominal_tested_rates_Gbps": [
+    6.4,
+    7.2,
+    8.0,
+    8.8
+  ],
+  "highest_tested_passing_net_Gbps": 8.8,
+  "next_tested_failing_net_Gbps": null,
+  "holdout": {
+    "seed_hex": "0x4c2d",
+    "phase_offset_bits": 27081,
+    "net_Gbps": 8.8,
+    "combined_screen_pass": true,
+    "receiver": {
+      "delay_UI": 1.796875,
+      "delay_ps": 176.5970515970516,
+      "train_errors": 0,
+      "errors": 0,
+      "validation_bits": 4096,
+      "min_training_errors_any_delay": 0,
+      "worst_signed_margin_uAeq": 31.420553874409865,
+      "one_sided_margin_UI": 0.4328088033135865,
+      "one_sided_margin_ps": 42.536491726151006,
+      "sample_level_quantiles_uAeq": {
+        "0": {
+          "p05": 24.96105602011232,
+          "median": 26.148348577209397,
+          "p95": 30.834155195808062
+        },
+        "1": {
+          "p05": 97.69188152668481,
+          "median": 99.69521436106024,
+          "p95": 101.46251263710222
+        }
+      },
+      "transition_errors": {
+        "0->0": {
+          "errors": 0,
+          "occurrences": 1036
+        },
+        "0->1": {
+          "errors": 0,
+          "occurrences": 1020
+        },
+        "1->0": {
+          "errors": 0,
+          "occurrences": 1020
+        },
+        "1->1": {
+          "errors": 0,
+          "occurrences": 1020
+        }
+      },
+      "screen_pass": true
+    },
+    "observed": {
+      "predriver_input_differential_peak_V": 3.0555748403080334,
+      "steering_gate_differential_peak_V": 3.582698643863921,
+      "laser_rail_range_V": [
+        3.100085898195898,
+        3.1010688449581427
+      ],
+      "predriver_rail_range_V": [
+        3.004006759375965,
+        3.1002544642241974
+      ],
+      "electrical_current_range_mA": [
+        2.753777217749,
+        7.4725562263250005
+      ],
+      "base_current_range_mA": [
+        1.911034600139,
+        4.064680923281999
+      ],
+      "tail_current_range_mA": [
+        2.013718430246,
+        4.772953553604
+      ],
+      "dummy_resistor_current_range_mA": [
+        -0.4056091400416211,
+        4.413029191467258
+      ],
+      "optical_graph_negative_fraction": 0.0,
+      "within_calibrated_electrical_and_optical_current_range": true,
+      "terminal_screen_pass": true,
+      "terminal_peak": {
+        "value_V": 3.359142083948,
+        "instance": "XSTEER_0",
+        "pair": "VGB"
+      },
+      "max_body_forward_V": 0.26483502783800006
+    },
+    "energy_pJ_per_attempted_payload_bit": {
+      "positive": 4.2782091521505,
+      "returned": 0.048980660191337864,
+      "net": 4.229228491959161
+    },
+    "source_case": "build/driver-methods-20261111/VCSEL/vc-single-r150/holdout-net8.8-s40",
+    "analysis_sha256": "9375b46090696540161139bab0b07271a2c1ddeff3019cd042a1cb319bbb6a8e",
+    "fallback_used": false
+  },
+  "halfstep": {
+    "net_Gbps": 8.8,
+    "coarse_steps": 40,
+    "fine_steps": 80,
+    "both_pass": true,
+    "amplitude_delta_uAeq": 0.0005835724438689738,
+    "time_delta_UI": -1.2087031396434966e-05,
+    "energy_relative_percent": -0.00031840204210986656
+  },
+  "physical_domain_headroom": {
+    "model_current_max_mA": 7.5,
+    "max_current_across_selected_cases_mA": 7.475927583574,
+    "smallest_remaining_current_headroom_uA": 24.072416425999776,
+    "max_body_forward_across_selected_cases_V": 0.26484712397199983,
+    "scope": "Researchmodel/screenheadroom,notdatasheetratingorreliabilityproof."
+  },
+  "upstream_input_burden": {
+    "matched_net_Gbps": 7.2,
+    "baseline_peak_supplied_current_mA": 3.5609870157260004,
+    "selected_peak_supplied_current_mA": 7.411056244601,
+    "ratio": 2.0811803614762865,
+    "scope": "Inputsourceportenergyincluded;realPHYcurrentdriveandSIstillunverified."
+  },
+  "no_post_holdout_parameter_retuning": true
+}

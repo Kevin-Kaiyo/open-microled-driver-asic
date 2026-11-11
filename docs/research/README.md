@@ -1,5 +1,9 @@
 # 当前研究资料入口
 
+**第二版：新驱动方法、物理机制与产品路径（2026-11-11）**：[48页PDF](driver-methods-20261111/technical-stage-report.pdf) · [HTML](driver-methods-20261111/index.html) · [复现](driver-methods-20261111/reproduce.html) · [流片门槛](driver-methods-20261111/productization-notes.html)。42个新晶体管案例与32格条件敏感性，比较A阻尼前馈、B降压/顺应电压及VCSEL单级阻尼；分别验证净2.0 / 1.8 / 8.8 Gb/s候选并保留失败与薄弱余量。原有第一版内容作为24页历史附录收录；未新增版图/PEX或制造资格。
+
+以下为历史阶段的冻结报告；“本轮/当前”按各报告日期理解。
+
 **电路改进及验证报告（2026-11-11）**：[PDF](driver-improvement-20261111/technical-stage-report.pdf) · [HTML](driver-improvement-20261111/index.html) · [复现](driver-improvement-20261111/reproduce.html)。解释 A 输入与核心器件优化、B 前馈电荷补偿及 VCSEL 输入/换流尺寸优化的原因、代价、数值复核与性能边界；新增通过点不是光学实测或 PVT/流片签核。
 
 **阶段技术成果报告（2026-11-10更新）**：[PDF](blue-emitter-speed-review-20261110/technical-stage-report.pdf) · [HTML](blue-emitter-speed-review-20261110/index.html) · [蓝光器件与波长](blue-emitter-speed-review-20261110/literature.html) · [成果审计](blue-emitter-speed-review-20261110/stage-audit.html)。实际扫速显示低速可用范围，区分零错、余量通过和电气应力通过；用当前 A/B/C、VCSEL 与 PWM 的证据重新安排研发优先级，保留文献与模型适用边界。

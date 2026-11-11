@@ -1,0 +1,40 @@
+{
+  "schema": "microled-driver-methods-20261111",
+  "hypotheses": [
+    "B lower reference/dummy supply voltage with preserved dummy compliance",
+    "A damped N1-to-OUT capacitive feed-forward"
+  ],
+  "fixed": {
+    "LED_DC_targets_uA": [
+      25,
+      100
+    ],
+    "DC_tolerance_percent": 1,
+    "LED_cap_fF": 200,
+    "optical_tau_ps": 200,
+    "RX_GHz": 1,
+    "net_efficiency": "32/37",
+    "VLED_V": 5,
+    "VDD_V": 3.3
+  },
+  "development_sequence": "Prior stage frozen 4736-line-bit development frame",
+  "holdout_seed": 19501,
+  "holdout_seed_hex": "0x4c2d",
+  "selection": "DC gate first, then 1.6 Gb/s; adjacent higher-rate point only after success. Freeze candidate before holdout. Keep failures. No tuning against holdout.",
+  "scope": "Schematic transistor simulation, same public PDK and synthetic load; no new layout/PEX, startup, PVT or hardware qualification. Seven source-port energy, upstream converter/RX/clock excluded.",
+  "holdout_phase_offset_bits": 27081,
+  "holdout_scope": "Different PRBS15 window; not statistically independent random BER qualification",
+  "holdout_window_in_reference_cycle": [
+    27081,
+    31817
+  ],
+  "development_window": [
+    0,
+    4736
+  ],
+  "prior_holdout_window": [
+    16749,
+    21485
+  ],
+  "windows_nonoverlapping": true
+}

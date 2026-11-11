@@ -1,0 +1,752 @@
+{
+  "schema_version": 1,
+  "stage": "driver-methods-20261111",
+  "audit_date": "2026-11-11",
+  "generated_utc": "2026-11-11T09:18:12.377390+00:00",
+  "scope": "Read-only inspection of existing local physical receipts and public primary-source research. No EDA re-run, provider acceptance, purchase or tapeout.",
+  "source_policy": "Use public source text and separately identified engineering inference. No restricted PDF/drawing reused; no prices or unverified current MPW availability claims.",
+  "sources": [
+    {
+      "id": "P01",
+      "title": "GF180MCU open PDK README",
+      "organization_or_authors": "Google / GlobalFoundries",
+      "url": "https://github.com/google/gf180mcu-pdk",
+      "locator": "README: Current Status — Experimental Preview; repository banner",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_documentation",
+      "facts": [
+        "Open release remains an experimental preview, distinguished from the commercially used underlying process.",
+        "Repository banner says archived on 2026-09-23."
+      ],
+      "does_not_establish": [
+        "This is not a declaration that the commercial GF180 process is unavailable.",
+        "It does not constitute production signoff or acceptance of this project by a fabrication provider."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P02",
+      "title": "GF180 DRM 2.0 Scope",
+      "organization_or_authors": "GlobalFoundries",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_02.html",
+      "locator": "Sections 2.1, 2.5, 2.7–2.10",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_documentation",
+      "facts": [
+        "DRM covers physical rules and reliability guidance, with multiple process/BEOL choices.",
+        "Guidelines are not necessarily implemented as automatic DRC checks."
+      ],
+      "does_not_establish": [
+        "A zero-error main DRC run does not prove all design rules, reliability or manufacturing acceptance."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P03",
+      "title": "GF180 DRM Essential Tapeout Checklist",
+      "organization_or_authors": "GlobalFoundries",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_06.html",
+      "locator": "Section 6.0",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_documentation",
+      "facts": [
+        "Hierarchical GDSII and all drawn/designer-generated layers are required.",
+        "Design must pass DRC before tapeout."
+      ],
+      "does_not_establish": [
+        "This short public checklist is not a complete fabrication contract or universal commercial delivery list."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P04",
+      "title": "GF180 DRM Appendix B: Rules not coded",
+      "organization_or_authors": "GlobalFoundries",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_16.html",
+      "locator": "DN.Note1, PL.10, matching/reliability entries",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_documentation",
+      "facts": [
+        "3.3 V and 6 V transistors are not allowed in the same DNWELL.",
+        "The list includes current-density and analog-matching guidance not fully encoded in automatic checks."
+      ],
+      "does_not_establish": [
+        "It does not prove a new mixed-device layout is correct; the actual floorplan/wells/contacts and selected rule-deck version must be inspected."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P05",
+      "title": "GF180 DRM Reliability Guidelines",
+      "organization_or_authors": "GlobalFoundries",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14.html",
+      "locator": "Section 14.0",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_documentation",
+      "facts": [
+        "Reliability guidance addresses operating voltage/temperature, electromigration, latchup and ESD and is not all-inclusive."
+      ],
+      "does_not_establish": [
+        "Normal transient terminal-voltage screening is not product reliability qualification."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P06",
+      "title": "GF180 DRM Electromigration",
+      "organization_or_authors": "GlobalFoundries",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_2.html",
+      "locator": "Section 14.2; current definitions and temperature-dependent limits",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_documentation",
+      "facts": [
+        "Rules distinguish current direction/metric and temperature; metal/via limits must use the applicable operating conditions."
+      ],
+      "does_not_establish": [
+        "A single peak-current or DC-average number is not a complete EM check of the routed design."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P07",
+      "title": "GF180 DRM ESD Guidelines",
+      "organization_or_authors": "GlobalFoundries",
+      "url": "https://gf180mcu-pdk.readthedocs.io/en/latest/physical_verification/design_manual/drm_14_4.html",
+      "locator": "Section 14.4; ESD paths and TLP/HBM caveat",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_documentation",
+      "facts": [
+        "All intentional/parasitic discharge paths matter.",
+        "The document warns that TLP-derived predictions can disagree with HBM behavior."
+      ],
+      "does_not_establish": [
+        "Our MOS terminal-stress guard is not HBM/CDM or latchup qualification."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P08",
+      "title": "wafer.space technology / flow",
+      "organization_or_authors": "wafer.space",
+      "url": "https://wafer.space/technology",
+      "locator": "Design-to-tape-in workflow",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_provider_description",
+      "facts": [
+        "Provider describes an open-GF180 flow through design checks, tape-in, MPW fabrication and delivery."
+      ],
+      "does_not_establish": [
+        "No reservation, eligibility, date, price, design acceptance or production guarantee has been obtained."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P09",
+      "title": "GF180MCU project template",
+      "organization_or_authors": "wafer.space",
+      "url": "https://github.com/wafer-space/gf180mcu-project-template",
+      "locator": "README: PDK setup, top chip, default bonding/breakout constraints",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_provider_design_template",
+      "facts": [
+        "Template uses gf180mcuD and explicit tool/PDK setup.",
+        "Default bonding and breakout constrain pad locations/count and power/ground assignments."
+      ],
+      "does_not_establish": [
+        "A generic GDS that passes our local flow does not automatically fit this platform."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P10",
+      "title": "GF180MCU slot size / IO floorplan example",
+      "organization_or_authors": "wafer.space linked project-template documentation",
+      "url": "https://mith.ro/gf180mcu-project-template/",
+      "locator": "0.5 × 0.5 slot table; generated 2026-10-24 01:02 UTC",
+      "published_or_version": "Generated 2026-10-24 01:02 UTC",
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_provider_design_template",
+      "facts": [
+        "One example lists die 1.94 × 2.53 mm, core 1.05 × 1.65 mm, 56 pads including 8 power/ground pads."
+      ],
+      "does_not_establish": [
+        "Example is not our die floorplan, a price, or a guaranteed available slot."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P11",
+      "title": "OpenRCX",
+      "organization_or_authors": "OpenROAD",
+      "url": "https://openroad.readthedocs.io/en/latest/main/src/rcx/README.html",
+      "locator": "Introduction / Extraction Rules",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_tool_documentation",
+      "facts": [
+        "LEF/DEF-based extraction uses a calibrated Extraction Rules file for the relevant process corner and can write SPEF."
+      ],
+      "does_not_establish": [
+        "Having an extractor is not evidence that our RC values match a foundry-qualified process/corner model."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P12",
+      "title": "Power Grid Analysis / PDNSim",
+      "organization_or_authors": "OpenROAD",
+      "url": "https://openroad.readthedocs.io/en/latest/main/src/psm/README.html",
+      "locator": "Introduction",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_tool_documentation",
+      "facts": [
+        "Static IR-drop analysis can report worst IR drop, current density and floating power-grid structures."
+      ],
+      "does_not_establish": [
+        "Static IR analysis alone does not resolve GHz package inductance, dynamic supply noise, optical/thermal performance or signoff."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P13",
+      "title": "Design for Test",
+      "organization_or_authors": "OpenROAD",
+      "url": "https://openroad.readthedocs.io/en/latest/main/src/dft/README.html",
+      "locator": "scan_replace, report_dft_plan, execute_dft_plan",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_tool_documentation",
+      "facts": [
+        "Provides scan replacement/planning/insertion operations."
+      ],
+      "does_not_establish": [
+        "No project-specific ATPG coverage, ATE vectors, analog fault coverage or production test has been established."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P14",
+      "title": "ASIC Packaging",
+      "organization_or_authors": "Europractice",
+      "url": "https://europractice-ic.com/services/packaging/asic-packaging/",
+      "locator": "Access conditions; standard/custom assembly",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_provider_description",
+      "facts": [
+        "Provider states that ASIC packaging access follows the fabrication partner and offers custom assembly options.",
+        "Pad/opening/wire geometry and package choice have assembly-specific constraints."
+      ],
+      "does_not_establish": [
+        "The page is not approval of our optical emitter assembly or high-frequency interconnect. No prices are adopted."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P15",
+      "title": "Photonics Packaging Design Rules and Service v1.7",
+      "organization_or_authors": "Tyndall National Institute / Europractice",
+      "url": "https://europractice-ic.com/wp-content/uploads/2024/11/Photonics-Packaging-Design-Rules-Ver-1.7-Sep-2024.pdf",
+      "locator": "PDF pp.2,4–5; sections 1.1–1.2, 2.1",
+      "published_or_version": "v1.7, September 2024",
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_provider_design_rules",
+      "facts": [
+        "The guide concerns Si-PIC packaging and separates optical coupling, electrical connection and thermal management.",
+        "It recommends package-partner review before foundry submission."
+      ],
+      "does_not_establish": [
+        "Si-PIC edge/grating package rules do not establish compatibility with a surface-emitting MicroLED or VCSEL assembly."
+      ],
+      "access_status": "PDF text inspected; no figures reused",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P16",
+      "title": "Test Service",
+      "organization_or_authors": "Europractice",
+      "url": "https://europractice-ic.com/other-services/test-service/",
+      "locator": "Wafer probing, final test, qualification",
+      "published_or_version": null,
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_provider_description",
+      "facts": [
+        "Provider describes wafer probing, electrical/yield testing, final package testing and reliability services."
+      ],
+      "does_not_establish": [
+        "Availability, fixture bandwidth and optical BER/LIV capability for our exact design are unconfirmed."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P17",
+      "title": "A 20Gb/s VCSEL driver with pre-emphasis and regulated output impedance in 0.13µm CMOS",
+      "organization_or_authors": "D. Kucharski et al.; IBM Research",
+      "url": "https://research.ibm.com/publications/a-20gbs-vcsel-driver-with-pre-emphasis-and-regulated-output-impedance-in-013mm-cmos",
+      "locator": "Publication abstract",
+      "published_or_version": "2005",
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_research_abstract",
+      "facts": [
+        "Published 2005 example uses 130 nm CMOS, pre-emphasis and regulated output impedance with a 990 nm VCSEL at 20 Gb/s."
+      ],
+      "does_not_establish": [
+        "Abstract-only evidence; full BER conditions and energy boundary were not inspected. It does not predict GF180 performance."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P18",
+      "title": "25-Gb/s/ch 4-channel VCSEL driver with asymmetric pre-emphasis",
+      "organization_or_authors": "T. Yazaki, N. Chujo, T. Takemoto, H. Yamashita, A. Hyogo",
+      "url": "https://globals.ieice.org/en_transactions/fundamentals/10.1587/transfun.E101.A.402/_p",
+      "locator": "Abstract; DOI 10.1587/transfun.E101.A.402",
+      "published_or_version": "2018-02-01",
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_research_abstract",
+      "facts": [
+        "65 nm CMOS example reports 25 Gb/s/channel using asymmetric pre-emphasis, with PRBS 2^9−1.",
+        "Reported 3.0 mW/Gbps/ch is dimensionally 3.0 pJ per raw bit."
+      ],
+      "does_not_establish": [
+        "Abstract only; short PRBS and different process/load cannot establish our long-frame BER, net-bit energy or PVT capability."
+      ],
+      "access_status": "HTML inspected",
+      "reuse_policy": "Link and concise attributed paraphrase only"
+    },
+    {
+      "id": "P19",
+      "title": "CMOS Low-Power Optical Transceiver for Short Reach",
+      "organization_or_authors": "R. Yang, Y. Dang, J. Chen, D. Li, F. Svelto",
+      "url": "https://www.mdpi.com/2072-666X/16/5/587",
+      "locator": "Sections 3–4, Figures 8–10/19–20, Table 4; DOI 10.3390/mi16050587",
+      "published_or_version": "2025-05-17",
+      "accessed_on": "2026-11-11",
+      "evidence_class": "primary_research_full_html",
+      "facts": [
+        "28 nm CMOS architecture combines equalization/predriving, stacked current reuse and asymmetric high-impedance current steering.",
+        "Measured standalone TX: 25 Gb/s NRZ, 850 nm / 14 GHz VCSEL, bias 6 mA, modulation 6 mApp, 39.8 mW, reported 1.59 pJ/bit.",
+        "Measured back-to-back link is reported separately at up to 20 Gb/s; Figure 10 is simulated, Figure 19 measured."
+      ],
+      "does_not_establish": [
+        "Different process, optical device and energy denominator; not comparable to our pJ/net-bit result without harmonizing boundaries.",
+        "No BER qualification is inferred from eye diagrams. B2B and standalone TX results must not be merged."
+      ],
+      "access_status": "HTML including equations/table inspected; PDF exceeds web tool size; image downloads not visually inspected",
+      "reuse_policy": "CC BY 4.0 verified on article; no source figures copied"
+    }
+  ],
+  "excluded_or_inaccessible_sources": [
+    {
+      "url": "https://europractice-ic.com/wp-content/uploads/2020/06/ASIC_Prototype_Packaging_Design_Rules_2024.pdf",
+      "source_of_link": "P14",
+      "accessed_on": "2026-11-11",
+      "status": "Public link opened; document carries strictly confidential marking.",
+      "action": "Excluded from technical facts and reuse; no PDF or drawings stored in project. Use openly described web services and request authorized package rules when choosing a provider."
+    },
+    {
+      "url": "https://europractice-ic.com/wp-content/uploads/2020/06/ASIC-Package-Design-Rules-10062020.pdf",
+      "accessed_on": "2026-11-11",
+      "status": "Earlier guessed/cached link returned 404; not used as an inspected source."
+    }
+  ],
+  "local_receipts": [
+    {
+      "path": "evidence/layout-v3/r5/summary.json",
+      "exists": true,
+      "bytes": 7865,
+      "sha256": "9c3e21a9dc221fc40b057cc6ee341f54fcb6d57dbcc7fcc386618fbb4abe708a"
+    },
+    {
+      "path": "evidence/layout-v3/joint-r2/summary.json",
+      "exists": true,
+      "bytes": 8533,
+      "sha256": "c19dfc416a572d3f8848500b69bb60d8f6ee38cb11096d1b1d406bf1418a74c8"
+    },
+    {
+      "path": "evidence/layout-v3/joint-r2/pex-audit.json",
+      "exists": true,
+      "bytes": 1156,
+      "sha256": "43ad41e9e63edbdb900eafa3c63b9a24bddd19a548ec6cf5f0d9ecca78071366"
+    },
+    {
+      "path": "evidence/control-v3/summary.json",
+      "exists": true,
+      "bytes": 3211,
+      "sha256": "0f58925181dc2f26dd9e9ecb30c6fc2559d6d26099d8f6cd482cc5f78e106b67"
+    },
+    {
+      "path": "evidence/control-v3/sta.json",
+      "exists": true,
+      "bytes": 2075,
+      "sha256": "a1009472d54e20e24f2fd9528239e715abdc21a42a565d4b9cf7d34a8d423f5b"
+    },
+    {
+      "path": "evidence/control-v3/sdf.json",
+      "exists": true,
+      "bytes": 4530,
+      "sha256": "033043cdb2d3f8e095d48e0b1cb41afe85ff8ed0f7a36173e4f7ae14e0c3b1bd"
+    },
+    {
+      "path": "evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/pex-audit.json",
+      "exists": true,
+      "bytes": 51863,
+      "sha256": "305179b653500527c9826c29a4288967b8ccd45496b52724851d60bab79c2723"
+    },
+    {
+      "path": "evidence/highspeed-nrz-robustness-layout/hv-r2/B/pex-audit.json",
+      "exists": true,
+      "bytes": 62976,
+      "sha256": "43bf2efca8aa22837ca14416652ab7607ebe62d6fe51462e2f8f3fac30cea10c"
+    },
+    {
+      "path": "evidence/highspeed-workbench-20261110/physical-sources.json",
+      "exists": true,
+      "bytes": 23473,
+      "sha256": "57e81d1dca0f1aa56e6c241902d44a6ccf5da9368816a307fb74945aff2afce7"
+    },
+    {
+      "path": "evidence/highspeed-workbench-20261110/physical-delivery.json",
+      "exists": true,
+      "bytes": 3238,
+      "sha256": "63ff3210b8b9862e31712d796fe978a6fbd878d797e00cbfba5eb75d9b11d5a0"
+    },
+    {
+      "path": "evidence/ab-improvement-20261111/selection.json",
+      "exists": true,
+      "bytes": 1497,
+      "sha256": "465ca2f0fb8d27e611bb3e5f76796f6c0770f7a6ed020a17620d765be04ccf61"
+    },
+    {
+      "path": "evidence/ab-improvement-20261111/scientific-validation.json",
+      "exists": true,
+      "bytes": 121980,
+      "sha256": "b575043218f4ee1e999191673c5825fcbce586c6773db80ae7939bbb80a2e442"
+    },
+    {
+      "path": "layout/pdk-lock.json",
+      "exists": true,
+      "bytes": 2539,
+      "sha256": "5384dc3bc5ab02bc1be273d6a0a1c065f234e66fb6406fb9f7a99b85d058ef4e"
+    },
+    {
+      "path": "scripts/physical/pdk-lock.json",
+      "exists": true,
+      "bytes": 103094,
+      "sha256": "50f119ae5e17f0589f0a7a58db4c7a6daa7e6e1b40c85e15cd0d96300f7c3762"
+    }
+  ],
+  "artifact_hash_checks": [
+    {
+      "path": "evidence/layout-v3/r5/negative-controls.json",
+      "receipt": "evidence/layout-v3/r5/summary.json",
+      "expected_sha256": "60fe32d6bb20b1478710b2991d8613af54ffbbe1ad0764bbff9f88199692f11a",
+      "actual_sha256": "60fe32d6bb20b1478710b2991d8613af54ffbbe1ad0764bbff9f88199692f11a",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/r5/startup_test_macro_rc.spice",
+      "receipt": "evidence/layout-v3/r5/summary.json",
+      "expected_sha256": "d6ebc340c5f2096c43e1358b851d68590fefddbf47b5cc6e746ffc3c12851424",
+      "actual_sha256": "d6ebc340c5f2096c43e1358b851d68590fefddbf47b5cc6e746ffc3c12851424",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/r5/netgen-lvs.log",
+      "receipt": "evidence/layout-v3/r5/summary.json",
+      "expected_sha256": "30fa2ea5d100647b47ad527b2b9b1bf58f8dfb0af1110d98cc95ca1bc7488433",
+      "actual_sha256": "30fa2ea5d100647b47ad527b2b9b1bf58f8dfb0af1110d98cc95ca1bc7488433",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/r5/startup_test_macro.gds",
+      "receipt": "evidence/layout-v3/r5/summary.json",
+      "expected_sha256": "a81c512f302f10b9f2795c465e91536e1fb013f2994f609101f579fca3d920bb",
+      "actual_sha256": "a81c512f302f10b9f2795c465e91536e1fb013f2994f609101f579fca3d920bb",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/r5/klayout-result.json",
+      "receipt": "evidence/layout-v3/r5/summary.json",
+      "expected_sha256": "86f3515475803a845b8295a3a6fc090c52885e7617aba56decf50fdfd515c5b1",
+      "actual_sha256": "86f3515475803a845b8295a3a6fc090c52885e7617aba56decf50fdfd515c5b1",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/joint-r2/startup_integrated_v3_flat_rc.spice",
+      "receipt": "evidence/layout-v3/joint-r2/summary.json",
+      "expected_sha256": "2b79f1a22812bb583b5ddebb773b0a7471dccab354d6815feb35a617a3bcf804",
+      "actual_sha256": "2b79f1a22812bb583b5ddebb773b0a7471dccab354d6815feb35a617a3bcf804",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/joint-r2/negative-controls.json",
+      "receipt": "evidence/layout-v3/joint-r2/summary.json",
+      "expected_sha256": "bdf24bb1beea912ff7ce503816754db6f0254e5f81ecfbb2fc0b4e0854b801be",
+      "actual_sha256": "bdf24bb1beea912ff7ce503816754db6f0254e5f81ecfbb2fc0b4e0854b801be",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/joint-r2/startup_integrated_v3.gds",
+      "receipt": "evidence/layout-v3/joint-r2/summary.json",
+      "expected_sha256": "85b78345f3355aab7fb7b4cc46166dc3f8d98adcbc0672118b4fbc13f698f0a0",
+      "actual_sha256": "85b78345f3355aab7fb7b4cc46166dc3f8d98adcbc0672118b4fbc13f698f0a0",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/joint-r2/netgen-lvs.log",
+      "receipt": "evidence/layout-v3/joint-r2/summary.json",
+      "expected_sha256": "17f96981ee2600cfe18f26b48cffda8123c6874aad682415a0f8c4873174ddaf",
+      "actual_sha256": "17f96981ee2600cfe18f26b48cffda8123c6874aad682415a0f8c4873174ddaf",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/joint-r2/pex-audit.json",
+      "receipt": "evidence/layout-v3/joint-r2/summary.json",
+      "expected_sha256": "43ad41e9e63edbdb900eafa3c63b9a24bddd19a548ec6cf5f0d9ecca78071366",
+      "actual_sha256": "43ad41e9e63edbdb900eafa3c63b9a24bddd19a548ec6cf5f0d9ecca78071366",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/layout-v3/joint-r2/klayout-result.json",
+      "receipt": "evidence/layout-v3/joint-r2/summary.json",
+      "expected_sha256": "5779b08d6a73789a642cd4629aa2a3832aad13f99ff17525d1186f7b4dc21481",
+      "actual_sha256": "5779b08d6a73789a642cd4629aa2a3832aad13f99ff17525d1186f7b4dc21481",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/generate/hs_voltage_robust.gds",
+      "receipt": "evidence/highspeed-workbench-20261110/physical-sources.json",
+      "expected_sha256": "61bf1932e1c265420cd9d338bf263ea9bdf01a3260db47ec2f5dce33e49cbbec",
+      "actual_sha256": "61bf1932e1c265420cd9d338bf263ea9bdf01a3260db47ec2f5dce33e49cbbec",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/highspeed-nrz-robustness-layout/hv-A8-ties-r5/A/full-rc/hs_voltage_robust_rc.spice",
+      "receipt": "evidence/highspeed-workbench-20261110/physical-sources.json",
+      "expected_sha256": "eb4dcab821c1bd55a5c89bf5b3e1ac6194976a3bda74b202f96666e3cb5eb623",
+      "actual_sha256": "eb4dcab821c1bd55a5c89bf5b3e1ac6194976a3bda74b202f96666e3cb5eb623",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/highspeed-nrz-robustness-layout/hv-r2/B/generate/hs_steering_robust.gds",
+      "receipt": "evidence/highspeed-workbench-20261110/physical-sources.json",
+      "expected_sha256": "d2e32ac286d208e2d74485b4d2650ffbbf4cd25cd57c86c5f7cd9cb97e3256af",
+      "actual_sha256": "d2e32ac286d208e2d74485b4d2650ffbbf4cd25cd57c86c5f7cd9cb97e3256af",
+      "present": true,
+      "matches": true
+    },
+    {
+      "path": "evidence/highspeed-nrz-robustness-layout/hv-r2/B/full-rc/hs_steering_robust_rc.spice",
+      "receipt": "evidence/highspeed-workbench-20261110/physical-sources.json",
+      "expected_sha256": "fcb457660f238ee402237378a48b06496109b101d51ee85e8a7257224e7ee6ae",
+      "actual_sha256": "fcb457660f238ee402237378a48b06496109b101d51ee85e8a7257224e7ee6ae",
+      "present": true,
+      "matches": true
+    }
+  ],
+  "artifact_hash_summary": {
+    "checked": 15,
+    "all_present_and_matching": true,
+    "meaning": "Identity matches historical receipts; checks are not rerun and model accuracy is not independently established."
+  },
+  "maturity_inventory": [
+    {
+      "id": "pwm_analog_r5",
+      "mos": 39,
+      "extracted_R": 345,
+      "extracted_C": 288,
+      "nets": [
+        29,
+        29
+      ],
+      "scope": "External-passive reference/protection/buffer/pixel macro",
+      "receipt": "evidence/layout-v3/r5/summary.json",
+      "external_signoff": false
+    },
+    {
+      "id": "pwm_common_top",
+      "mos": 7277,
+      "extracted_R": 36588,
+      "extracted_C": 30230,
+      "nets": [
+        6512,
+        6512
+      ],
+      "occupied_span_um": [
+        916,
+        204
+      ],
+      "occupied_area_um2": 186864,
+      "receipt": "evidence/layout-v3/joint-r2/summary.json",
+      "full_top_transistor_transient_passed": null,
+      "external_signoff": false,
+      "silicon": false
+    },
+    {
+      "id": "historical_highspeed_A",
+      "mos": 6,
+      "device_R": 1,
+      "extracted_R": 95,
+      "extracted_C": 64,
+      "nets": [
+        9,
+        9
+      ],
+      "revision": "hv-A8-ties-r5",
+      "scope": "Core only, excludes latest reference/rail/device changes"
+    },
+    {
+      "id": "historical_highspeed_B",
+      "mos": 9,
+      "device_R": 1,
+      "extracted_R": 127,
+      "extracted_C": 76,
+      "nets": [
+        10,
+        10
+      ],
+      "revision": "hv-r2",
+      "scope": "Core only, excludes latest reference/rail/device changes"
+    },
+    {
+      "id": "latest_frozen_A",
+      "candidate": "a-rin1wide-core03-matched",
+      "mos": 20,
+      "highest_tested_passing_net_Gbps": 1.6,
+      "next_failing_net_Gbps": 1.8,
+      "layout_for_this_revision": false
+    },
+    {
+      "id": "latest_frozen_B",
+      "candidate": "B_wide_ff31p275",
+      "mos": 21,
+      "highest_tested_passing_net_Gbps": 2.0,
+      "next_failing_net_Gbps": 2.4,
+      "layout_for_this_revision": false
+    },
+    {
+      "id": "latest_frozen_VCSEL",
+      "candidate": "vc-atten50-steer20",
+      "mos": 73,
+      "highest_tested_passing_net_Gbps": 6.4,
+      "next_failing_net_Gbps": 7.2,
+      "layout_for_this_revision": false
+    }
+  ],
+  "interpretation_limits": [
+    "The listed latest frozen candidates are the prior completed stage; new driver-methods experiments are in progress and not covered by this productization audit.",
+    "Historical GDS, LVS and PEX do not transfer to a different transistor inventory, device family, capacitor or rail circuit.",
+    "A/B use a fixed 20 um synthetic/dynamic load and optical/RX proxy; VCSEL has a different optical load/RX. These are not a common measured physical link.",
+    "Finite-frame E_source+/N_payload is not proven steady-state system energy; startup/capacitor storage and bias settling must be checked.",
+    "Zero observed errors in a short deterministic frame do not establish a production BER or MTBF.",
+    "Blender visualizations use exaggerated heights/separation and are not field-solver, process simulation or package signoff."
+  ],
+  "mechanism_hypotheses": [
+    {
+      "method": "Input resistance and predriver sizing",
+      "reasoning": "Lower R reduces an input RC pole; smaller driven MOS can lower gate/diffusion capacitance but raise on-resistance and hurt compliance.",
+      "required_checks": [
+        "DC target match",
+        "gate/diffusion transient",
+        "source energy",
+        "terminal stress",
+        "PVT/mismatch",
+        "new layout/PEX"
+      ]
+    },
+    {
+      "method": "Feed-forward capacitor / pre-emphasis",
+      "reasoning": "Transient charge transfer is DeltaQ=C*DeltaV; a real source supplies the energy. Pulse shaping can compensate some ISI but cannot eliminate recombination or arbitrary optical loss.",
+      "sources": [
+        "P17",
+        "P18",
+        "P19"
+      ],
+      "required_checks": [
+        "PDK-realizable C and tolerance",
+        "edge overshoot/body stress",
+        "disable with continuing data",
+        "PVT and package resonance",
+        "long-frame receiver holdout"
+      ]
+    },
+    {
+      "method": "Current steering and current reuse",
+      "reasoning": "Keeping current available can avoid turning the entire bias branch on/off; static bias remains an energy cost. Reuse/high-impedance outputs trade termination/reflection and headroom against wasted current.",
+      "sources": [
+        "P19"
+      ],
+      "required_checks": [
+        "I0/I1 versus temperature",
+        "output compliance",
+        "reverse/fault current",
+        "supply settling",
+        "optical ER/OMA and BER"
+      ]
+    },
+    {
+      "method": "Lower supply / bias",
+      "reasoning": "Switched capacitive energy approximately scales with C*V^2; DC dissipation with V*I. Whole-driver energy also includes references, regulation, rail loss and startup.",
+      "sources": [
+        "P19"
+      ],
+      "required_checks": [
+        "emitter Vf and I threshold",
+        "MOS headroom and well rules",
+        "PVT brownout",
+        "optical response versus bias",
+        "whole-source steady-window energy"
+      ]
+    }
+  ],
+  "recommended_gate_sequence": [
+    "Freeze target net rate, coding overhead, optical budget, allowed current/voltage/temperature, BER target and energy boundary.",
+    "Calibrate traceable emitter IV/LIV/CV/S21 versus current and temperature; expose unmeasured parameters as sensitivity ranges.",
+    "Complete prelayout PVT/mismatch, longer frames, startup/brownout/fault/disable and steady-energy checks.",
+    "Choose provider-accepted full PDK, rule/tool versions, BEOL option, pad/ESD library and package before final floorplan.",
+    "Build new full driver/test macro and pad ring; DRC/LVS/ERC/antenna/density/mixed-well review, PEX, timing and supply/reliability checks.",
+    "Co-design package/PCB/optical coupling, extraction/reference planes, return paths and test access.",
+    "Deliver reviewed manufacturing/assembly/test package; obtain provider acceptance independently of local reports.",
+    "Bring up silicon with current-limited power, DC/fault tests then optical LIV/S21/eye/BER and temperature/reliability qualification."
+  ]
+}
