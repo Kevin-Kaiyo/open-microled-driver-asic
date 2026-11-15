@@ -1,0 +1,102 @@
+{
+  "status": "actual_candidate_schematic_not_qualification",
+  "source_case": "build/driver-interface-20261115/MicroLED/B-protected_v6/fault-f2-net1.6-s40",
+  "manifest_sha256": "b416d7d4339ea394e0d3a83f6bb04b003a7825a32f7c595f0b63682d02350680",
+  "deck_sha256": "5c543acaafabba11c5d2e47933f1595462d8314d87e863c370301436f6f80b28",
+  "generator_sha256": "9c52853b7e556fe6d04d26776f613b1cb57fa02f60f8a06fc5a594ea7f0e8a16",
+  "generator_dependencies": {
+    "scripts/driver_interface_20261115/protection_v6.py": "9c52853b7e556fe6d04d26776f613b1cb57fa02f60f8a06fc5a594ea7f0e8a16",
+    "scripts/driver_interface_20261115/protection_candidates.py": "4f930e0131d7e7ec39baef9888af9a06b1a927d676e25e00caa0eab24295978f",
+    "scripts/driver_interface_20261115/protection_physics.py": "99ec6388957c30aebd0699a5a8d7450614617010452475e7f45ee71d017f305c"
+  },
+  "MOS_count": 39,
+  "connections_checked": {
+    "XFASTOFF": [
+      "iso_p",
+      "iso_gb",
+      "led_feed",
+      "led_feed"
+    ],
+    "XCLAMP": [
+      "led_a",
+      "disable",
+      "led_k",
+      "0"
+    ],
+    "XREADYRESET": [
+      "ready_rc",
+      "disable",
+      "0",
+      "0"
+    ],
+    "XNAND_PDATA": [
+      "nand_o",
+      "data_gate",
+      "vdd",
+      "vdd"
+    ],
+    "XNAND_PREADY": [
+      "nand_o",
+      "ready_rc",
+      "vdd",
+      "vdd"
+    ],
+    "XNAND_NDATA": [
+      "nand_o",
+      "data_gate",
+      "nand_s",
+      "0"
+    ],
+    "XNAND_NREADY": [
+      "nand_s",
+      "ready_rc",
+      "0",
+      "0"
+    ],
+    "XSAFE_N": [
+      "data_safe",
+      "nand_o",
+      "0",
+      "0"
+    ],
+    "XSAFE_P": [
+      "data_safe",
+      "nand_o",
+      "vdd",
+      "vdd"
+    ]
+  },
+  "input_damping": [
+    "XDATAIN",
+    "d0",
+    "data_gate",
+    "0",
+    "ppolyf_u_1k_6p0",
+    "r_width=4u",
+    "r_length=8u"
+  ],
+  "fast_off": [
+    "XFASTOFF",
+    "iso_p",
+    "iso_gb",
+    "led_feed",
+    "led_feed",
+    "pfet_06v0",
+    "w=4u",
+    "l=0.7u",
+    "ad=1.76p",
+    "as=1.76p",
+    "pd=8.88u",
+    "ps=8.88u"
+  ],
+  "source_ports": {
+    "VIN": "vin_src",
+    "VDD": "vdd_src",
+    "VREF": "vref_src",
+    "VLED": "led_src",
+    "VD0": "data0_src",
+    "VD1": "data1_src",
+    "VDISABLE": "disable"
+  },
+  "scope": "Actual B protected_v6: W4 fast-off, extra two-square PDK poly before NAND DATA, original XRIN retained; no new SPICE and no passing claim. Same named nets connect. Earlier W20 figures and scripts preserved."
+}

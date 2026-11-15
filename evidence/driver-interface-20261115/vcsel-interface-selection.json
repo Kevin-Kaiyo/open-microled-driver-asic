@@ -1,0 +1,61 @@
+{
+  "parameters_frozen": true,
+  "frozen_at_UTC": "2026-11-15T12:21:36.390092+00:00",
+  "candidate": "single-phy12",
+  "spec": {
+    "core": 69,
+    "nW_um": 12.0,
+    "pW_um": 24.0,
+    "internal_R_ohm": 150.0,
+    "hypothesis": "Only widen finite upstream CMOS from4/8to12/24um to reduce output resistance; command gate energy and all added supply current remain counted."
+  },
+  "selected_design_case": "build/driver-interface-20261115/VCSEL/single-phy12/net8.8-s40",
+  "selected_analysis_sha256": "8e8210c603b66ea1eeb190d971655c752e79a02796b4d687f946e1c21b7b92ef",
+  "driver_sha256": "799fe48da876842a367093906241d2fe48f1989c2df6b0c38f43993b2458144f",
+  "interface_and_core_instance_lines": [
+    "VPHY phy_src 0 3.3",
+    "RPHY phy_src phy_r .25",
+    "LPHY phy_r vphy .2n",
+    "RCPHY vphy phy_c .1",
+    "CPHY phy_c 0 1n",
+    "XPHYDN d_src db_cmd 0 0 nmos_3p3 w=12u l=.28u ad=5.28p as=5.28p pd=24.88u ps=24.88u",
+    "XPHYDP d_src db_cmd vphy vphy pmos_3p3 w=24u l=.28u ad=10.56p as=10.56p pd=48.88u ps=48.88u",
+    "XPHYDBN db_src d_cmd 0 0 nmos_3p3 w=12u l=.28u ad=5.28p as=5.28p pd=24.88u ps=24.88u",
+    "XPHYDBP db_src d_cmd vphy vphy pmos_3p3 w=24u l=.28u ad=10.56p as=10.56p pd=48.88u ps=48.88u",
+    "RD d_src d 50",
+    "RDB db_src db 50",
+    "XDRV d db out vlaser vdd vref vset vregset vl 0 vcsel_servo RBASE=50.0 RTAIL=37.5 CC=5e-12 CLDO=3e-11 WBASE=6e-05 WTAIL=8.4e-05 ATTEN=150.0 RZERO=100000.0 RZEROD=100000.0 RBLEED=5000.0"
+  ],
+  "runner_sha256": "4c452a8e89607de85630da8e672f813b609c9817d22ffe746da28d4f9815c94c",
+  "holdout_protocol": {
+    "development_seed": 23246,
+    "holdout_seed": 22446,
+    "holdout_seed_hex": "0x57ae",
+    "phase_offset_bits": 8192,
+    "window": [
+      8192,
+      12928
+    ],
+    "previous_windows": [
+      [
+        0,
+        4736
+      ],
+      [
+        16749,
+        21485
+      ],
+      [
+        27081,
+        31817
+      ]
+    ],
+    "scope": "Predeclared disjoint PRBS15 period window; not independent random BER. No circuit changes after holdout."
+  },
+  "confirmation": {
+    "net_Gbps": 8.8,
+    "half_step": 80,
+    "holdout_steps": 40
+  },
+  "reason": "Weak4/8 and separate25kshunt experiment both failed8.8 fixedRX margin despite0observederrors.12/24 restores8.8 on development frame; freeze now before S80 and phase8192holdout. No maximum-rate or best-global-architecture claim."
+}

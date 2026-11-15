@@ -1,0 +1,3291 @@
+{
+  "schema": "vcsel-finite-interface-summary-v1",
+  "candidates": {
+    "single-phy4": {
+      "core": 69,
+      "nW_um": 4.0,
+      "pW_um": 8.0,
+      "internal_R_ohm": 150.0,
+      "hypothesis": "Replace ideal command-driven pin source by finite GF180 CMOS inverter pair; preserve fixed50ohm series R and 150ohm internal input damping."
+    },
+    "double-phy4": {
+      "core": 73,
+      "nW_um": 4.0,
+      "pW_um": 8.0,
+      "internal_R_ohm": 50.0,
+      "hypothesis": "Same finite upstream output cell attached to original two-stage73MOS core; load-isolation control."
+    },
+    "single-phy12": {
+      "core": 69,
+      "nW_um": 12.0,
+      "pW_um": 24.0,
+      "internal_R_ohm": 150.0,
+      "hypothesis": "Only widen finite upstream CMOS from4/8to12/24um to reduce output resistance; command gate energy and all added supply current remain counted."
+    },
+    "single-phy4-r25k": {
+      "core": 69,
+      "nW_um": 4.0,
+      "pW_um": 8.0,
+      "internal_R_ohm": 150.0,
+      "shunt_R_ohm": 25000.0,
+      "hypothesis": "Only reduce historical input attenuation/static load: RADI/RADBI2500to25000ohm; preserve upstream4/8um and all series resistors. No vendor50ohm termination was specified for these shunts. Check input default/stress separately."
+    }
+  },
+  "dc": [
+    {
+      "candidate": "double-phy4",
+      "source_case": "build/driver-interface-20261115/VCSEL/double-phy4/DC-L0",
+      "result_sha256": "515a12c0a3cdeb1f20c31797688bd3f88f88a71b2e92e615781a0d42dcb17fe2",
+      "current_mA": 2.999752205035,
+      "target_mA": 3,
+      "DC_screen_pass": true,
+      "error_percent": -0.008259832166668257,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "double-phy4",
+      "source_case": "build/driver-interface-20261115/VCSEL/double-phy4/DC-L1",
+      "result_sha256": "10297c2dc2e474bc5e933ec132448e41086e955fb394c76a10df0a36cb35a18b",
+      "current_mA": 6.99946868765,
+      "target_mA": 7,
+      "DC_screen_pass": true,
+      "error_percent": -0.007590176428562412,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "single-phy12",
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy12/DC-L0",
+      "result_sha256": "b2cb88b04f8df5e055206bc8e3407d220b68986c4263c70cbb32f2161ebc26f2",
+      "current_mA": 2.999752205035,
+      "target_mA": 3,
+      "DC_screen_pass": true,
+      "error_percent": -0.008259832166668257,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "single-phy12",
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy12/DC-L1",
+      "result_sha256": "b009b7cc1e32abab161719448b19dca298f4d3143ca9f75e214cef601a89b0c4",
+      "current_mA": 6.99946868765,
+      "target_mA": 7,
+      "DC_screen_pass": true,
+      "error_percent": -0.007590176428562412,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "single-phy4",
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy4/DC-L0",
+      "result_sha256": "b086f2a833a136e546d775215d8de59e9b963790f9278bb9e30ccc9a6e06fc63",
+      "current_mA": 2.999752205035,
+      "target_mA": 3,
+      "DC_screen_pass": true,
+      "error_percent": -0.008259832166668257,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "single-phy4",
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy4/DC-L1",
+      "result_sha256": "9daa533b0189413c859bc4e60120bda248d307743cb8783b0475d155664e061f",
+      "current_mA": 6.99946868765,
+      "target_mA": 7,
+      "DC_screen_pass": true,
+      "error_percent": -0.007590176428562412,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "single-phy4-r25k",
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy4-r25k/DC-L0",
+      "result_sha256": "efbf0f0c5313d36506977585cb3a31137bedeec9052e63413a726d647e7cf2ae",
+      "current_mA": 2.999752205035,
+      "target_mA": 3,
+      "DC_screen_pass": true,
+      "error_percent": -0.008259832166668257,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    },
+    {
+      "candidate": "single-phy4-r25k",
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy4-r25k/DC-L1",
+      "result_sha256": "78263c853a7783c4d9b7e82e9d32b19b171d8836edb70e92e3e5b3449a91e569",
+      "current_mA": 6.99946868765,
+      "target_mA": 7,
+      "DC_screen_pass": true,
+      "error_percent": -0.007590176428562412,
+      "terminal_screen_pass": true,
+      "max_body_forward_V": 0.0
+    }
+  ],
+  "rows": [
+    {
+      "candidate": "double-phy4",
+      "config": {
+        "candidate": "double-phy4",
+        "spec": {
+          "core": 73,
+          "nW_um": 4.0,
+          "pW_um": 8.0,
+          "internal_R_ohm": 50.0,
+          "hypothesis": "Same finite upstream output cell attached to original two-stage73MOS core; load-isolation control."
+        },
+        "net_Gbps": 6.4,
+        "steps_per_UI": 40,
+        "level": null,
+        "holdout": false
+      },
+      "source_case": "build/driver-interface-20261115/VCSEL/double-phy4/net6.4-s40",
+      "MOS": 77,
+      "full_receiver": {
+        "delay_UI": 2.09375,
+        "delay_ps": 282.9391891891892,
+        "train_errors": 44,
+        "errors": 382,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 44,
+        "worst_signed_margin_uAeq": -32.82428894659263,
+        "one_sided_margin_UI": 0.0,
+        "one_sided_margin_ps": 0.0,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.06116557715389,
+            "median": 26.202728986466372,
+            "p95": 31.85808441781786
+          },
+          "1": {
+            "p05": 30.519543402386795,
+            "median": 108.61421611051448,
+            "p95": 116.96720221702016
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 382,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.6875,
+        "delay_ps": 228.04054054054058,
+        "train_errors": 44,
+        "errors": 382,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 44,
+        "worst_signed_margin_uAeq": -32.59628391365496,
+        "one_sided_margin_UI": 0.0,
+        "one_sided_margin_ps": 0.0,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.776948692120175,
+            "median": 26.014074215711826,
+            "p95": 30.01550427199555
+          },
+          "1": {
+            "p05": 30.653382610147368,
+            "median": 108.89039013185155,
+            "p95": 117.4192693234216
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 382,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.765625,
+          "delay_ps": 103.46283783783785,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 27.105425207700662,
+          "one_sided_margin_UI": 0.48985533734372805,
+          "one_sided_margin_ps": 66.19666720861191,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 33.89937390409897,
+              "median": 35.25679717792513,
+              "p95": 35.382362379469356
+            },
+            "1": {
+              "p05": 89.62016464738392,
+              "median": 90.76413974086852,
+              "p95": 91.10076286431948
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.546875,
+          "delay_ps": 209.0371621621622,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 11.625281391925782,
+          "one_sided_margin_UI": 0.2728018691910227,
+          "one_sided_margin_ps": 36.86511745824632,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 23.469247500529768,
+              "median": 28.472583153032872,
+              "p95": 50.69818644986371
+            },
+            "1": {
+              "p05": 74.42405459059665,
+              "median": 99.945428029184,
+              "p95": 101.54106296582499
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 2.897270582204814,
+        "steering_gate_differential_peak_V": 3.2231268770824486,
+        "laser_rail_range_V": [
+          3.1001338269336998,
+          3.1134475738227403
+        ],
+        "predriver_rail_range_V": [
+          2.9900477414593265,
+          3.1001663547884175
+        ],
+        "electrical_current_range_mA": [
+          2.8380556998350004,
+          8.15445950887
+        ],
+        "base_current_range_mA": [
+          1.874688333547,
+          3.8648919742500003
+        ],
+        "tail_current_range_mA": [
+          -0.2986927876116,
+          5.507291762973
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.19745426610626193,
+          4.685144160018936
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": false,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.512775045229,
+          "instance": "XPHYDBP",
+          "pair": "VDS"
+        },
+        "max_body_forward_V": 0.212981103622
+      },
+      "interface_observed": {
+        "source_currents": {
+          "VLASER": {
+            "source_peak_mA": 7.731816974152,
+            "sink_peak_mA": -7.097011016365,
+            "mean_source_mA": 7.250785285697881
+          },
+          "VDD": {
+            "source_peak_mA": 2.4095116869920004,
+            "sink_peak_mA": -0.7280323006285001,
+            "mean_source_mA": 2.0045240934195174
+          },
+          "VREF": {
+            "source_peak_mA": 2.4839493691769996,
+            "sink_peak_mA": 2.2831859445109997,
+            "mean_source_mA": 0.14031067004652575
+          },
+          "VD": {
+            "source_peak_mA": 2.746197591598,
+            "sink_peak_mA": 2.687785355178,
+            "mean_source_mA": -1.199810967719668e-07
+          },
+          "VDB": {
+            "source_peak_mA": 2.745772781108,
+            "sink_peak_mA": 2.6872257471239998,
+            "mean_source_mA": 2.997308713973453e-07
+          },
+          "VSET": {
+            "source_peak_mA": 0.22694436129479997,
+            "sink_peak_mA": 0.2058230476614,
+            "mean_source_mA": 7.692766840522452e-05
+          },
+          "VREGSET": {
+            "source_peak_mA": 0.00013629745955,
+            "sink_peak_mA": 5.436213716941e-05,
+            "mean_source_mA": 1.1828974870249057e-05
+          },
+          "VPHY": {
+            "source_peak_mA": 1.417222053854,
+            "sink_peak_mA": -0.9345701367565,
+            "mean_source_mA": 1.1874939076438076
+          }
+        },
+        "pin_series_currents": {
+          "d": {
+            "max_positive_mA": 1.4373347575799933,
+            "max_negative_mA": -0.7924915544200006,
+            "rms_mA": 0.771031650627644
+          },
+          "db": {
+            "max_positive_mA": 1.434909310260002,
+            "max_negative_mA": -0.79214447864,
+            "rms_mA": 0.768562434394302
+          }
+        },
+        "interface_source_energy_pJ_per_payload_bit": {
+          "positive_J": 0.6709962414456553,
+          "returned_J": 0.04534945670752167,
+          "net_J": 0.6256467847381336
+        },
+        "source_boundary": "All8 ports; VPHY plus command gates counted; optical/RX/host clock and still-upstream logic excluded.",
+        "native_samples": 426189
+      },
+      "energy_pJ": {
+        "positive": 5.646849595511582,
+        "returned": 0.17658381680899757,
+        "net": 5.470265778702585
+      },
+      "energy_by_source_pJ": {
+        "VLASER": {
+          "positive": 3.7386861629379697,
+          "returned": 0.0,
+          "net": 3.7386861629379697
+        },
+        "VDD": {
+          "positive": 1.033582735669439,
+          "returned": 0.0,
+          "net": 1.033582735669439
+        },
+        "VREF": {
+          "positive": 0.2027463887745862,
+          "returned": 0.13039869953184638,
+          "net": 0.07234768924273982
+        },
+        "VD": {
+          "positive": 0.029347155750142233,
+          "returned": 0.022674378524779347,
+          "net": 0.006672777225362885
+        },
+        "VDB": {
+          "positive": 0.02934753956667491,
+          "returned": 0.022675078182742323,
+          "net": 0.006672461383932586
+        },
+        "VSET": {
+          "positive": 0.0008371648404414977,
+          "returned": 0.0008353618482132504,
+          "net": 1.8029922282473807e-06
+        },
+        "VREGSET": {
+          "positive": 9.018434902448225e-07,
+          "returned": 2.987214162682786e-07,
+          "net": 6.031220739765439e-07
+        },
+        "VPHY": {
+          "positive": 0.6123015461288381,
+          "returned": 0.0,
+          "net": 0.6123015461288381
+        }
+      },
+      "combined_screen_pass": false,
+      "analysis_sha256": "8f1439e6e71ae848dba315d7131fa1a01e4d8dda1a53df48f7b48e28bd783e74",
+      "manifest_sha256": "a335d8ea5b7c4afdb354390d146165ea33a303e3b366c5f9ff0e244cdcbafe8a",
+      "waveform": {
+        "path": "build/driver-interface-20261115/VCSEL/double-phy4/net6.4-s40/waveform.dat.gz",
+        "sha256": "2f9c2d8e73f465401ba0b4473cf43f12256730bdc9ffc7d9f74bfe99fe6d3d3d",
+        "raw_sha256": "30cbef38743ba6e127cfd083c9c36b40664134ee6cd70eedfc6b85143ce6515b",
+        "bytes": 212209122,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "single-phy12",
+      "config": {
+        "candidate": "single-phy12",
+        "spec": {
+          "core": 69,
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Only widen finite upstream CMOS from4/8to12/24um to reduce output resistance; command gate energy and all added supply current remain counted."
+        },
+        "net_Gbps": 8.8,
+        "steps_per_UI": 40,
+        "level": null,
+        "holdout": true
+      },
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy12/holdout-net8.8-s40",
+      "MOS": 73,
+      "full_receiver": {
+        "delay_UI": 2.140625,
+        "delay_ps": 210.3808353808354,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 29.935656694858018,
+        "one_sided_margin_UI": 0.4386160301826074,
+        "one_sided_margin_ps": 43.10722655357321,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.58772408632309,
+            "median": 30.04629952282296,
+            "p95": 32.268834003581105
+          },
+          "1": {
+            "p05": 94.33911142369135,
+            "median": 96.83981694620664,
+            "p95": 99.35658540869926
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1014
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1028
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1027
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1027
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.59375,
+        "delay_ps": 156.63390663390663,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 30.880692987213113,
+        "one_sided_margin_UI": 0.4251278339911508,
+        "one_sided_margin_ps": 41.78160530625561,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.760074135576424,
+            "median": 28.598990829374817,
+            "p95": 31.36855377717946
+          },
+          "1": {
+            "p05": 94.41304954124564,
+            "median": 98.4165983556182,
+            "p95": 101.35519675882587
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1014
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1028
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1027
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1027
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.9375,
+          "delay_ps": 92.13759213759215,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 25.790991554127828,
+          "one_sided_margin_UI": 0.47928735189874955,
+          "one_sided_margin_ps": 47.10440804901715,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 30.128795495638848,
+              "median": 36.16240570865748,
+              "p95": 36.667170042147205
+            },
+            "1": {
+              "p05": 88.31725190164242,
+              "median": 88.83568495000202,
+              "p95": 94.873171418026
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1014
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1028
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1027
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1027
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.359375,
+          "delay_ps": 133.5995085995086,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 34.80280000040751,
+          "one_sided_margin_UI": 0.4689614029511425,
+          "one_sided_margin_ps": 46.08957277161106,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 21.16575017738726,
+              "median": 23.979464732680597,
+              "p95": 27.672581240621952
+            },
+            "1": {
+              "p05": 97.39387628751797,
+              "median": 99.9998526203783,
+              "p95": 103.84121596869666
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1014
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1028
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1027
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1027
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.2243294807717158,
+        "steering_gate_differential_peak_V": 3.4159206383728193,
+        "laser_rail_range_V": [
+          3.09995237794253,
+          3.100179487079687
+        ],
+        "predriver_rail_range_V": [
+          3.001281665320292,
+          3.1001901532161202
+        ],
+        "electrical_current_range_mA": [
+          2.763988390516,
+          7.119310690189
+        ],
+        "base_current_range_mA": [
+          2.0147207954099997,
+          3.865057457239
+        ],
+        "tail_current_range_mA": [
+          3.30378124804,
+          4.5985689706779995
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.3497803247264786,
+          4.183416738094948
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.5536052570401,
+          "instance": "XPHYDBP",
+          "pair": "VDS"
+        },
+        "max_body_forward_V": 0.2535390632697
+      },
+      "interface_observed": {
+        "source_currents": {
+          "VLASER": {
+            "source_peak_mA": 7.735161918276001,
+            "sink_peak_mA": -7.731782069038999,
+            "mean_source_mA": 7.733781506642918
+          },
+          "VDD": {
+            "source_peak_mA": 2.113310521507,
+            "sink_peak_mA": -0.7307524010471,
+            "mean_source_mA": 1.7421702696198518
+          },
+          "VREF": {
+            "source_peak_mA": 0.4538416815634,
+            "sink_peak_mA": 0.09366900947460999,
+            "mean_source_mA": 0.14008414098277164
+          },
+          "VD": {
+            "source_peak_mA": 8.910566087834,
+            "sink_peak_mA": 8.231920354602,
+            "mean_source_mA": -0.0003933979853658619
+          },
+          "VDB": {
+            "source_peak_mA": 8.906993621707999,
+            "sink_peak_mA": 8.227644448327,
+            "mean_source_mA": 0.0003932922297129104
+          },
+          "VSET": {
+            "source_peak_mA": 0.01423579566357,
+            "sink_peak_mA": 0.013951006552330001,
+            "mean_source_mA": -4.574784762963069e-06
+          },
+          "VREGSET": {
+            "source_peak_mA": 0.00012842272024660002,
+            "sink_peak_mA": 3.8442146492000004e-05,
+            "mean_source_mA": 1.679084950405726e-05
+          },
+          "VPHY": {
+            "source_peak_mA": 3.694103838528,
+            "sink_peak_mA": -0.8128101053835,
+            "mean_source_mA": 2.434401290911407
+          }
+        },
+        "pin_series_currents": {
+          "d": {
+            "max_positive_mA": 3.217375487680001,
+            "max_negative_mA": -2.6967717647599976,
+            "rms_mA": 1.531437521776066
+          },
+          "db": {
+            "max_positive_mA": 3.21577204964,
+            "max_negative_mA": -2.69561355804,
+            "rms_mA": 1.5309648402399483
+          }
+        },
+        "interface_source_energy_pJ_per_payload_bit": {
+          "positive_J": 1.1104026699374996,
+          "returned_J": 0.13687870562927532,
+          "net_J": 0.9735239643082244
+        },
+        "source_boundary": "All8 ports; VPHY plus command gates counted; optical/RX/host clock and still-upstream logic excluded.",
+        "native_samples": 377242
+      },
+      "energy_pJ": {
+        "positive": 4.7174658351436625,
+        "returned": 0.13792785722080292,
+        "net": 4.579537977922859
+      },
+      "energy_by_source_pJ": {
+        "VLASER": {
+          "positive": 2.9001680649908113,
+          "returned": 0.0,
+          "net": 2.9001680649908113
+        },
+        "VDD": {
+          "positive": 0.6533138511073805,
+          "returned": 0.0,
+          "net": 0.6533138511073805
+        },
+        "VREF": {
+          "positive": 0.05353670764206186,
+          "returned": 0.001005154773527629,
+          "net": 0.05253155286853423
+        },
+        "VD": {
+          "positive": 0.09867685328017188,
+          "returned": 0.06846796930939039,
+          "net": 0.030208883970781492
+        },
+        "VDB": {
+          "positive": 0.09882533256563944,
+          "returned": 0.06841073631988492,
+          "net": 0.030414596245754506
+        },
+        "VSET": {
+          "positive": 4.3725021596740074e-05,
+          "returned": 4.38030008824724e-05,
+          "net": -7.7979285732321e-08
+        },
+        "VREGSET": {
+          "positive": 8.164443120201091e-07,
+          "returned": 1.9381711749170058e-07,
+          "net": 6.226271945284086e-07
+        },
+        "VPHY": {
+          "positive": 0.9129004840916884,
+          "returned": 0.0,
+          "net": 0.9129004840916884
+        }
+      },
+      "combined_screen_pass": true,
+      "analysis_sha256": "0b78bd4f7d0186dac5cb2d086343f9ebca2b00c38276fd1a840738bc7a58b7b0",
+      "manifest_sha256": "2530ef6c9e15b699609a4170b2217f32c4414b1938815182bd7947e4e6782112",
+      "waveform": {
+        "path": "build/driver-interface-20261115/VCSEL/single-phy12/holdout-net8.8-s40/waveform.dat.gz",
+        "sha256": "57a1b5dd8c26194ccb86ace537346af1281d3f7f88f4b467324b7d800113c7ba",
+        "raw_sha256": "2425ae0a0508d254f53463b7ff1872694f8b7d016277a90ca4bb2c2532ed6f06",
+        "bytes": 181499859,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "single-phy12",
+      "config": {
+        "candidate": "single-phy12",
+        "spec": {
+          "core": 69,
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Only widen finite upstream CMOS from4/8to12/24um to reduce output resistance; command gate energy and all added supply current remain counted."
+        },
+        "net_Gbps": 6.4,
+        "steps_per_UI": 40,
+        "level": null,
+        "holdout": false
+      },
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy12/net6.4-s40",
+      "MOS": 73,
+      "full_receiver": {
+        "delay_UI": 1.71875,
+        "delay_ps": 232.26351351351354,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.657113758030846,
+        "one_sided_margin_UI": 0.4769443031822498,
+        "one_sided_margin_ps": 64.4519328624662,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.149824520354,
+            "median": 29.24242977608274,
+            "p95": 30.56139050560079
+          },
+          "1": {
+            "p05": 95.53973126987606,
+            "median": 98.1044494068426,
+            "p95": 99.46152007671282
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.3125,
+        "delay_ps": 177.36486486486487,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 33.19906672268285,
+        "one_sided_margin_UI": 0.45910100071569787,
+        "one_sided_margin_ps": 62.040675772391616,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.659418341883313,
+            "median": 28.21860806522749,
+            "p95": 29.053766093322906
+          },
+          "1": {
+            "p05": 96.20107372661087,
+            "median": 97.7253013585874,
+            "p95": 98.81270643918793
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.828125,
+          "delay_ps": 111.9087837837838,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 27.748895783102057,
+          "one_sided_margin_UI": 0.49475331352253143,
+          "one_sided_margin_ps": 66.85855588142317,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 30.127449860807143,
+              "median": 34.6651273960392,
+              "p95": 34.74692965195423
+            },
+            "1": {
+              "p05": 90.2668077258731,
+              "median": 94.85256782130732,
+              "p95": 94.87319742704673
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.140625,
+          "delay_ps": 154.13851351351352,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 36.555163872242275,
+          "one_sided_margin_UI": 0.49367145254572403,
+          "one_sided_margin_ps": 66.71235845212487,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.997123305248994,
+              "median": 25.760330900151786,
+              "p95": 25.934192108052784
+            },
+            "1": {
+              "p05": 99.11682798629572,
+              "median": 99.80135371010721,
+              "p95": 99.99967046550665
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.2234761636003006,
+        "steering_gate_differential_peak_V": 3.416651926151449,
+        "laser_rail_range_V": [
+          3.099860467841521,
+          3.100177034184436
+        ],
+        "predriver_rail_range_V": [
+          3.025292358115129,
+          3.1001906295635564
+        ],
+        "electrical_current_range_mA": [
+          2.758898078964,
+          7.1193274036480005
+        ],
+        "base_current_range_mA": [
+          2.014367736396,
+          3.850510351137
+        ],
+        "tail_current_range_mA": [
+          3.352427868621,
+          4.405841336281
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.35062919340350085,
+          4.180815712305589
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.5535810698908,
+          "instance": "XPHYDP",
+          "pair": "VDS"
+        },
+        "max_body_forward_V": 0.2535400130529
+      },
+      "interface_observed": {
+        "source_currents": {
+          "VLASER": {
+            "source_peak_mA": 7.7410986219149995,
+            "sink_peak_mA": -7.731782070008,
+            "mean_source_mA": 7.7373756241516265
+          },
+          "VDD": {
+            "source_peak_mA": 1.720915362814,
+            "sink_peak_mA": -0.7292339975162,
+            "mean_source_mA": 1.5062918195801938
+          },
+          "VREF": {
+            "source_peak_mA": 0.42841083558759996,
+            "sink_peak_mA": 0.032564126980720004,
+            "mean_source_mA": 0.14010329501475885
+          },
+          "VD": {
+            "source_peak_mA": 8.906702132293,
+            "sink_peak_mA": 8.187105244087,
+            "mean_source_mA": 8.193196126540169e-07
+          },
+          "VDB": {
+            "source_peak_mA": 8.896336762218,
+            "sink_peak_mA": 8.193917084288,
+            "mean_source_mA": 1.0813268268608949e-06
+          },
+          "VSET": {
+            "source_peak_mA": 0.013848914212959999,
+            "sink_peak_mA": 0.01355636094715,
+            "mean_source_mA": 3.772126309342946e-07
+          },
+          "VREGSET": {
+            "source_peak_mA": 9.312270716172999e-05,
+            "sink_peak_mA": 3.054666783336e-05,
+            "mean_source_mA": 9.725095207989629e-06
+          },
+          "VPHY": {
+            "source_peak_mA": 3.460839572222,
+            "sink_peak_mA": -0.7371873931277,
+            "mean_source_mA": 2.127715614719989
+          }
+        },
+        "pin_series_currents": {
+          "d": {
+            "max_positive_mA": 3.2172632061599993,
+            "max_negative_mA": -2.696658784160002,
+            "rms_mA": 1.3948773631279003
+          },
+          "db": {
+            "max_positive_mA": 3.2156126473400004,
+            "max_negative_mA": -2.6957915579000025,
+            "rms_mA": 1.39400482854732
+          }
+        },
+        "interface_source_energy_pJ_per_payload_bit": {
+          "positive_J": 1.2962634597449458,
+          "returned_J": 0.1363287870646232,
+          "net_J": 1.1599346726803228
+        },
+        "source_boundary": "All8 ports; VPHY plus command gates counted; optical/RX/host clock and still-upstream logic excluded.",
+        "native_samples": 428537
+      },
+      "energy_pJ": {
+        "positive": 6.135266601186198,
+        "returned": 0.1368246366468564,
+        "net": 5.998441964539342
+      },
+      "energy_by_source_pJ": {
+        "VLASER": {
+          "positive": 3.989584306203182,
+          "returned": 0.0,
+          "net": 3.989584306203182
+        },
+        "VDD": {
+          "positive": 0.7766817194710374,
+          "returned": 0.0,
+          "net": 0.7766817194710374
+        },
+        "VREF": {
+          "positive": 0.07267140440913494,
+          "returned": 0.00043064291714990936,
+          "net": 0.07224076149198504
+        },
+        "VD": {
+          "positive": 0.09959529413497763,
+          "returned": 0.06816406892386269,
+          "net": 0.03143122521111493
+        },
+        "VDB": {
+          "positive": 0.09956480176997415,
+          "returned": 0.06816471814076051,
+          "net": 0.031400083629213635
+        },
+        "VSET": {
+          "positive": 6.5066016241775e-05,
+          "returned": 6.505717532073747e-05,
+          "net": 8.840921037531255e-09
+        },
+        "VREGSET": {
+          "positive": 6.453416563842919e-07,
+          "returned": 1.4948976255584936e-07,
+          "net": 4.958518938284426e-07
+        },
+        "VPHY": {
+          "positive": 1.0971033638399943,
+          "returned": 0.0,
+          "net": 1.0971033638399943
+        }
+      },
+      "combined_screen_pass": true,
+      "analysis_sha256": "a82887879f04cb26755a40595fbdc6d9018c65be5e89dfbed5709c98943ce5a0",
+      "manifest_sha256": "fbd52b261749d1e8f3174a7b21cddf6569852f658ddeb70b0d370355dc065948",
+      "waveform": {
+        "path": "build/driver-interface-20261115/VCSEL/single-phy12/net6.4-s40/waveform.dat.gz",
+        "sha256": "7726f64f6c8537f52d59f05e009075e29608998625f916abcc19986ee821cc44",
+        "raw_sha256": "0b3128a7a5bdc3210e09b03238c3ade6b797304edeae9307df7bef8ef8e1bd41",
+        "bytes": 205519446,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "single-phy12",
+      "config": {
+        "candidate": "single-phy12",
+        "spec": {
+          "core": 69,
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Only widen finite upstream CMOS from4/8to12/24um to reduce output resistance; command gate energy and all added supply current remain counted."
+        },
+        "net_Gbps": 8.8,
+        "steps_per_UI": 40,
+        "level": null,
+        "holdout": false
+      },
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy12/net8.8-s40",
+      "MOS": 73,
+      "full_receiver": {
+        "delay_UI": 2.140625,
+        "delay_ps": 210.3808353808354,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 29.906647521878526,
+        "one_sided_margin_UI": 0.4382664520450367,
+        "one_sided_margin_ps": 43.072869979856186,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.596514464989696,
+            "median": 30.104161136979428,
+            "p95": 32.281990580668634
+          },
+          "1": {
+            "p05": 94.31472159732476,
+            "median": 98.21407984047782,
+            "p95": 99.3031180388836
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.59375,
+        "delay_ps": 156.63390663390663,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 30.82806104558491,
+        "one_sided_margin_UI": 0.4250549975636022,
+        "one_sided_margin_ps": 41.77444693499776,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.77690956451558,
+            "median": 28.655429676549723,
+            "p95": 31.363094480575256
+          },
+          "1": {
+            "p05": 94.37186379934808,
+            "median": 98.3934054534069,
+            "p95": 101.31185936310142
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.9375,
+          "delay_ps": 92.13759213759215,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 25.782775197037793,
+          "one_sided_margin_UI": 0.4792226061369487,
+          "one_sided_margin_ps": 47.098044829184154,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 30.128995001501103,
+              "median": 36.167569035017706,
+              "p95": 36.66131554437136
+            },
+            "1": {
+              "p05": 88.3232344720331,
+              "median": 94.66420613444618,
+              "p95": 94.87330210295174
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.359375,
+          "delay_ps": 133.5995085995086,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 34.806519695467166,
+          "one_sided_margin_UI": 0.46905454202368174,
+          "one_sided_margin_ps": 46.09872648881393,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 21.17066982876645,
+              "median": 23.97006646966277,
+              "p95": 27.672931927371838
+            },
+            "1": {
+              "p05": 97.3938872125837,
+              "median": 99.99980412019511,
+              "p95": 103.83526909627714
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.224371317954081,
+        "steering_gate_differential_peak_V": 3.4159206383728193,
+        "laser_rail_range_V": [
+          3.099919481370409,
+          3.100201373621511
+        ],
+        "predriver_rail_range_V": [
+          3.003411698450429,
+          3.1001901532161202
+        ],
+        "electrical_current_range_mA": [
+          2.762450225359,
+          7.119310690189
+        ],
+        "base_current_range_mA": [
+          2.0170403533620003,
+          3.865057457239
+        ],
+        "tail_current_range_mA": [
+          3.3049955284899997,
+          4.5970113403349995
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.3497803247264786,
+          4.182547293560647
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.5535117343868,
+          "instance": "XPHYDBP",
+          "pair": "VDS"
+        },
+        "max_body_forward_V": 0.2535417572416
+      },
+      "interface_observed": {
+        "source_currents": {
+          "VLASER": {
+            "source_peak_mA": 7.73676426682,
+            "sink_peak_mA": -7.731462615299,
+            "mean_source_mA": 7.734051391875811
+          },
+          "VDD": {
+            "source_peak_mA": 2.098790077596,
+            "sink_peak_mA": -0.727582859902,
+            "mean_source_mA": 1.7317239548990664
+          },
+          "VREF": {
+            "source_peak_mA": 0.4513169160378,
+            "sink_peak_mA": 0.09344058934735,
+            "mean_source_mA": 0.140096808215023
+          },
+          "VD": {
+            "source_peak_mA": 8.910433829053,
+            "sink_peak_mA": 8.233015074683,
+            "mean_source_mA": -3.1670718009331282e-06
+          },
+          "VDB": {
+            "source_peak_mA": 8.90814482801,
+            "sink_peak_mA": 8.228058484441,
+            "mean_source_mA": 8.948447152448157e-06
+          },
+          "VSET": {
+            "source_peak_mA": 0.01482926775664,
+            "sink_peak_mA": 0.013819960401680001,
+            "mean_source_mA": 1.9306058394709028e-06
+          },
+          "VREGSET": {
+            "source_peak_mA": 0.0001211736731578,
+            "sink_peak_mA": 3.366562629375e-05,
+            "mean_source_mA": 1.7716368037375696e-05
+          },
+          "VPHY": {
+            "source_peak_mA": 3.608346825686,
+            "sink_peak_mA": -0.93494137659,
+            "mean_source_mA": 2.4283254738997577
+          }
+        },
+        "pin_series_currents": {
+          "d": {
+            "max_positive_mA": 3.2170133269,
+            "max_negative_mA": -2.6965126331799993,
+            "rms_mA": 1.5284216192129778
+          },
+          "db": {
+            "max_positive_mA": 3.2156740282200014,
+            "max_negative_mA": -2.6954651577999966,
+            "rms_mA": 1.5297668615938294
+          }
+        },
+        "interface_source_energy_pJ_per_payload_bit": {
+          "positive_J": 1.107379997582432,
+          "returned_J": 0.13636221616221908,
+          "net_J": 0.971017781420213
+        },
+        "source_boundary": "All8 ports; VPHY plus command gates counted; optical/RX/host clock and still-upstream logic excluded.",
+        "native_samples": 376575
+      },
+      "energy_pJ": {
+        "positive": 4.7106221032174735,
+        "returned": 0.13740157382168444,
+        "net": 4.5732205293957895
+      },
+      "energy_by_source_pJ": {
+        "VLASER": {
+          "positive": 2.9002692719531455,
+          "returned": 0.0,
+          "net": 2.9002692719531455
+        },
+        "VDD": {
+          "positive": 0.6493964830870864,
+          "returned": 0.0,
+          "net": 0.6493964830870864
+        },
+        "VREF": {
+          "positive": 0.05353136877304318,
+          "returned": 0.000995065692414689,
+          "net": 0.052536303080628496
+        },
+        "VD": {
+          "positive": 0.09835439712494704,
+          "returned": 0.0681812613846423,
+          "net": 0.030173135740304734
+        },
+        "VDB": {
+          "positive": 0.09840354774516467,
+          "returned": 0.06818095477757675,
+          "net": 0.030222592967587916
+        },
+        "VSET": {
+          "positive": 4.416592935804285e-05,
+          "returned": 4.413302130396096e-05,
+          "net": 3.2908054081889296e-08
+        },
+        "VREGSET": {
+          "positive": 8.158924084019217e-07,
+          "returned": 1.589457467289318e-07,
+          "net": 6.569466616729899e-07
+        },
+        "VPHY": {
+          "positive": 0.9106220527123203,
+          "returned": 0.0,
+          "net": 0.9106220527123203
+        }
+      },
+      "combined_screen_pass": true,
+      "analysis_sha256": "8e8210c603b66ea1eeb190d971655c752e79a02796b4d687f946e1c21b7b92ef",
+      "manifest_sha256": "f87cea13b46e23a4bb10055a2eb48dec539d4352c1c239aa34b7a0ae6f5396f1",
+      "waveform": {
+        "path": "build/driver-interface-20261115/VCSEL/single-phy12/net8.8-s40/waveform.dat.gz",
+        "sha256": "980e00e34a0221c4466809310e8c094ebfd95693eb247ddd803f7f8f605068f6",
+        "raw_sha256": "08da10ffd5d4b59e20276227417581dc2cd63d13c1d2b83fb6d85b8445ee5ea7",
+        "bytes": 181162506,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "single-phy12",
+      "config": {
+        "candidate": "single-phy12",
+        "spec": {
+          "core": 69,
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Only widen finite upstream CMOS from4/8to12/24um to reduce output resistance; command gate energy and all added supply current remain counted."
+        },
+        "net_Gbps": 8.8,
+        "steps_per_UI": 80,
+        "level": null,
+        "holdout": false
+      },
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy12/net8.8-s80",
+      "MOS": 73,
+      "full_receiver": {
+        "delay_UI": 2.140625,
+        "delay_ps": 210.3808353808354,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 29.91001101615511,
+        "one_sided_margin_UI": 0.4383103770040402,
+        "one_sided_margin_ps": 43.077186929144,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.59186649069819,
+            "median": 30.098193593087558,
+            "p95": 32.27822307450736
+          },
+          "1": {
+            "p05": 94.32162524086375,
+            "median": 98.21919143033286,
+            "p95": 99.3081591100664
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.59375,
+        "delay_ps": 156.63390663390663,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 30.864667255983992,
+        "one_sided_margin_UI": 0.4246994293156458,
+        "one_sided_margin_ps": 41.73950165264333,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.777851552983254,
+            "median": 28.66267941869907,
+            "p95": 31.32545286213879
+          },
+          "1": {
+            "p05": 94.31540773441895,
+            "median": 98.37506020013956,
+            "p95": 101.30793640205817
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.9375,
+          "delay_ps": 92.13759213759215,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 25.781445924834742,
+          "one_sided_margin_UI": 0.4793792431529077,
+          "one_sided_margin_ps": 47.113439130506904,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 30.128988566663445,
+              "median": 36.1681609289033,
+              "p95": 36.662625183374324
+            },
+            "1": {
+              "p05": 88.32246659804787,
+              "median": 94.66403500747694,
+              "p95": 94.87330217634016
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.359375,
+          "delay_ps": 133.5995085995086,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 34.80684705088631,
+          "one_sided_margin_UI": 0.4690939988942818,
+          "one_sided_margin_ps": 46.10260431393433,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 21.168189671336684,
+              "median": 23.965248307155782,
+              "p95": 27.672970565329383
+            },
+            "1": {
+              "p05": 97.40031771176642,
+              "median": 99.99980389270924,
+              "p95": 103.83788380983836
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.224344014977764,
+        "steering_gate_differential_peak_V": 3.4160993933379764,
+        "laser_rail_range_V": [
+          3.099919439351079,
+          3.1002017074427157
+        ],
+        "predriver_rail_range_V": [
+          3.0034132596451997,
+          3.1001902788134506
+        ],
+        "electrical_current_range_mA": [
+          2.761570540327,
+          7.119302630193
+        ],
+        "base_current_range_mA": [
+          2.016109493834,
+          3.857753129107
+        ],
+        "tail_current_range_mA": [
+          3.316659226428,
+          4.597269853027
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.34988905354327926,
+          4.182519689594033
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.5535614348406996,
+          "instance": "XPHYDBP",
+          "pair": "VDS"
+        },
+        "max_body_forward_V": 0.2535437434015
+      },
+      "interface_observed": {
+        "source_currents": {
+          "VLASER": {
+            "source_peak_mA": 7.736762108989,
+            "sink_peak_mA": -7.731459284853,
+            "mean_source_mA": 7.734047534078882
+          },
+          "VDD": {
+            "source_peak_mA": 2.098759726518,
+            "sink_peak_mA": -0.7275828842861001,
+            "mean_source_mA": 1.731705688809734
+          },
+          "VREF": {
+            "source_peak_mA": 0.45183118447009996,
+            "sink_peak_mA": 0.09364341825213,
+            "mean_source_mA": 0.14009681863750212
+          },
+          "VD": {
+            "source_peak_mA": 8.904271470971999,
+            "sink_peak_mA": 8.230653211518,
+            "mean_source_mA": -1.900544100054468e-06
+          },
+          "VDB": {
+            "source_peak_mA": 8.907736621293001,
+            "sink_peak_mA": 8.230197137921,
+            "mean_source_mA": 7.515322506748991e-06
+          },
+          "VSET": {
+            "source_peak_mA": 0.01483072338837,
+            "sink_peak_mA": 0.01381784878692,
+            "mean_source_mA": 1.928877517977703e-06
+          },
+          "VREGSET": {
+            "source_peak_mA": 0.00012200051624959999,
+            "sink_peak_mA": 3.4520450840449996e-05,
+            "mean_source_mA": 1.7716112936599855e-05
+          },
+          "VPHY": {
+            "source_peak_mA": 3.608353381811,
+            "sink_peak_mA": -0.9349831327796001,
+            "mean_source_mA": 2.4283371860683083
+          }
+        },
+        "pin_series_currents": {
+          "d": {
+            "max_positive_mA": 3.2170075093999984,
+            "max_negative_mA": -2.6971012346400025,
+            "rms_mA": 1.528426910256911
+          },
+          "db": {
+            "max_positive_mA": 3.215300625320001,
+            "max_negative_mA": -2.6949694731399987,
+            "rms_mA": 1.5297717727853777
+          }
+        },
+        "interface_source_energy_pJ_per_payload_bit": {
+          "positive_J": 1.1073816498440685,
+          "returned_J": 0.13635953616974553,
+          "net_J": 0.9710221136743231
+        },
+        "source_boundary": "All8 ports; VPHY plus command gates counted; optical/RX/host clock and still-upstream logic excluded.",
+        "native_samples": 486999
+      },
+      "energy_pJ": {
+        "positive": 4.7106155284816795,
+        "returned": 0.13739895941961788,
+        "net": 4.573216569062062
+      },
+      "energy_by_source_pJ": {
+        "VLASER": {
+          "positive": 2.9002678252792973,
+          "returned": 0.0,
+          "net": 2.9002678252792973
+        },
+        "VDD": {
+          "positive": 0.6493896333035869,
+          "returned": 0.0,
+          "net": 0.6493896333035869
+        },
+        "VREF": {
+          "positive": 0.05353143204324393,
+          "returned": 0.0009951250541857769,
+          "net": 0.05253630698905816
+        },
+        "VD": {
+          "positive": 0.09835332522791031,
+          "returned": 0.06818011606993904,
+          "net": 0.03017320915797126
+        },
+        "VDB": {
+          "positive": 0.09840187984063174,
+          "returned": 0.06817942009980649,
+          "net": 0.03022245974082525
+        },
+        "VSET": {
+          "positive": 4.417226923455468e-05,
+          "returned": 4.413939064049825e-05,
+          "net": 3.2878594056426273e-08
+        },
+        "VREGSET": {
+          "positive": 8.157422482787786e-07,
+          "returned": 1.5880504608431883e-07,
+          "net": 6.569372021944598e-07
+        },
+        "VPHY": {
+          "positive": 0.9106264447755266,
+          "returned": 0.0,
+          "net": 0.9106264447755266
+        }
+      },
+      "combined_screen_pass": true,
+      "analysis_sha256": "8a709bc1636eb0271cd303abd659e67eff4f5df62cb8b086438b97a85763af8f",
+      "manifest_sha256": "37d53c7325c9537d44af213cdffb91e31d5ffe38030f7560de10be646a679901",
+      "waveform": {
+        "path": "build/driver-interface-20261115/VCSEL/single-phy12/net8.8-s80/waveform.dat.gz",
+        "sha256": "bbf826a173fb0392b74c2ef849f3249c907dfbc14108b75db14c8be47cb14aeb",
+        "raw_sha256": "8f4e04e34e22445755a7178f88204a720f38930579814c3f5a5620e60636a1cc",
+        "bytes": 231930840,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "single-phy4",
+      "config": {
+        "candidate": "single-phy4",
+        "spec": {
+          "core": 69,
+          "nW_um": 4.0,
+          "pW_um": 8.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Replace ideal command-driven pin source by finite GF180 CMOS inverter pair; preserve fixed50ohm series R and 150ohm internal input damping."
+        },
+        "net_Gbps": 6.4,
+        "steps_per_UI": 40,
+        "level": null,
+        "holdout": false
+      },
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy4/net6.4-s40",
+      "MOS": 73,
+      "full_receiver": {
+        "delay_UI": 1.859375,
+        "delay_ps": 251.26689189189193,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 21.93367290064387,
+        "one_sided_margin_UI": 0.39944561184922217,
+        "one_sided_margin_ps": 53.97913673638138,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.05698478795692,
+            "median": 30.338354635173875,
+            "p95": 33.36063863390993
+          },
+          "1": {
+            "p05": 85.08851551156553,
+            "median": 94.57213822576121,
+            "p95": 96.97331502613845
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.5,
+        "delay_ps": 202.70270270270274,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 24.216501618375247,
+        "one_sided_margin_UI": 0.4272844520004608,
+        "one_sided_margin_ps": 57.741142162224435,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 23.80286514184998,
+            "median": 25.590145316470608,
+            "p95": 30.478306594762188
+          },
+          "1": {
+            "p05": 87.33636629372846,
+            "median": 94.10665858694135,
+            "p95": 97.13727326846279
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.890625,
+          "delay_ps": 120.35472972972975,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 18.02483235980148,
+          "one_sided_margin_UI": 0.4627355008992574,
+          "one_sided_margin_ps": 62.5318244458456,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 34.703693372797645,
+              "median": 42.91785685252815,
+              "p95": 44.43150662298527
+            },
+            "1": {
+              "p05": 80.52985793455858,
+              "median": 89.41367450173809,
+              "p95": 90.29741241150276
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.265625,
+          "delay_ps": 171.03040540540542,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 29.189490901575994,
+          "one_sided_margin_UI": 0.43996714406244314,
+          "one_sided_margin_ps": 59.455019467897735,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 23.064774445238225,
+              "median": 28.662452551188444,
+              "p95": 32.302381790468644
+            },
+            "1": {
+              "p05": 91.82859909183333,
+              "median": 99.96387443984418,
+              "p95": 101.9335432144471
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 2.640094459491667,
+        "steering_gate_differential_peak_V": 3.249369147879714,
+        "laser_rail_range_V": [
+          3.09904049539363,
+          3.1001926283316013
+        ],
+        "predriver_rail_range_V": [
+          3.0229372209608925,
+          3.1001652208438735
+        ],
+        "electrical_current_range_mA": [
+          2.775027128393,
+          7.0377143008530005
+        ],
+        "base_current_range_mA": [
+          2.350706072137,
+          3.60315547646
+        ],
+        "tail_current_range_mA": [
+          2.799324469672,
+          5.677994512637
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.2975907150023316,
+          4.090266954943476
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.4675615335807,
+          "instance": "XPHYDP",
+          "pair": "VDS"
+        },
+        "max_body_forward_V": 0.167696449277
+      },
+      "interface_observed": {
+        "source_currents": {
+          "VLASER": {
+            "source_peak_mA": 7.777241847727001,
+            "sink_peak_mA": -7.731774433632999,
+            "mean_source_mA": 7.760803356514228
+          },
+          "VDD": {
+            "source_peak_mA": 1.769852377793,
+            "sink_peak_mA": -0.7322089675998,
+            "mean_source_mA": 1.543490777609666
+          },
+          "VREF": {
+            "source_peak_mA": 0.5557403116527,
+            "sink_peak_mA": 0.33587318964429996,
+            "mean_source_mA": 0.14007862222353115
+          },
+          "VD": {
+            "source_peak_mA": 2.776800651187,
+            "sink_peak_mA": 2.710568847146,
+            "mean_source_mA": -1.0938072169171151e-06
+          },
+          "VDB": {
+            "source_peak_mA": 2.7763681288,
+            "sink_peak_mA": 2.706686887756,
+            "mean_source_mA": 3.0262159694492046e-06
+          },
+          "VSET": {
+            "source_peak_mA": 0.026705140193939998,
+            "sink_peak_mA": 0.036136156058320004,
+            "mean_source_mA": -3.902293070121697e-06
+          },
+          "VREGSET": {
+            "source_peak_mA": 9.696622956763001e-05,
+            "sink_peak_mA": 2.8795580162380002e-05,
+            "mean_source_mA": 1.0060799498943603e-05
+          },
+          "VPHY": {
+            "source_peak_mA": 1.718620721887,
+            "sink_peak_mA": -0.8540845180018001,
+            "mean_source_mA": 1.3474919935934877
+          }
+        },
+        "pin_series_currents": {
+          "d": {
+            "max_positive_mA": 1.7815860957599927,
+            "max_negative_mA": -1.3791695622199995,
+            "rms_mA": 0.9762819517880803
+          },
+          "db": {
+            "max_positive_mA": 1.785289610599996,
+            "max_negative_mA": -1.3785146985000019,
+            "rms_mA": 0.9751430443233102
+          }
+        },
+        "interface_source_energy_pJ_per_payload_bit": {
+          "positive_J": 0.7519584069857984,
+          "returned_J": 0.045483274552709244,
+          "net_J": 0.7064751324330891
+        },
+        "source_boundary": "All8 ports; VPHY plus command gates counted; optical/RX/host clock and still-upstream logic excluded.",
+        "native_samples": 383249
+      },
+      "energy_pJ": {
+        "positive": 5.631695507309308,
+        "returned": 0.055465250876176354,
+        "net": 5.576230256433132
+      },
+      "energy_by_source_pJ": {
+        "VLASER": {
+          "positive": 4.001664230702649,
+          "returned": 0.0,
+          "net": 4.001664230702649
+        },
+        "VDD": {
+          "positive": 0.7958624322049841,
+          "returned": 0.0,
+          "net": 0.7958624322049841
+        },
+        "VREF": {
+          "positive": 0.08210286935834664,
+          "returned": 0.009874829774338397,
+          "net": 0.07222803958400824
+        },
+        "VD": {
+          "positive": 0.028578522779591744,
+          "returned": 0.02274138631996678,
+          "net": 0.005837136459624961
+        },
+        "VDB": {
+          "positive": 0.028579325009564484,
+          "returned": 0.022741888232742462,
+          "net": 0.005837436776822021
+        },
+        "VSET": {
+          "positive": 0.00010689975502102006,
+          "returned": 0.00010699121501485104,
+          "net": -9.145999383097303e-08
+        },
+        "VREGSET": {
+          "positive": 6.683025093708066e-07,
+          "returned": 1.553341138654338e-07,
+          "net": 5.129683955053729e-07
+        },
+        "VPHY": {
+          "positive": 0.6948005591966422,
+          "returned": 0.0,
+          "net": 0.6948005591966422
+        }
+      },
+      "combined_screen_pass": true,
+      "analysis_sha256": "1724e0630f44ef104cf3786e74c64131c819f2318712d8c7e36f6043563d837a",
+      "manifest_sha256": "324aeeeaf0358ba70dae61e30dae7e309bf6bde80cb129cb26ce4a2e13fb4e77",
+      "waveform": {
+        "path": "build/driver-interface-20261115/VCSEL/single-phy4/net6.4-s40/waveform.dat.gz",
+        "sha256": "ad6e5287cd5ec4fc058535a5991be4e66f42cc0963a387e42fe1efe083ff5c9b",
+        "raw_sha256": "d2fb3e65a4edbf0e59a594d18535a6e824a77de717365d2b37df9c771be52551",
+        "bytes": 183655654,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "single-phy4",
+      "config": {
+        "candidate": "single-phy4",
+        "spec": {
+          "core": 69,
+          "nW_um": 4.0,
+          "pW_um": 8.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Replace ideal command-driven pin source by finite GF180 CMOS inverter pair; preserve fixed50ohm series R and 150ohm internal input damping."
+        },
+        "net_Gbps": 8.8,
+        "steps_per_UI": 40,
+        "level": null,
+        "holdout": false
+      },
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy4/net8.8-s40",
+      "MOS": 73,
+      "full_receiver": {
+        "delay_UI": 2.28125,
+        "delay_ps": 224.2014742014742,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 1.8273401682428272,
+        "one_sided_margin_UI": 0.10709852380725017,
+        "one_sided_margin_ps": 10.525653445429993,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.244668315538487,
+            "median": 32.92415068777592,
+            "p95": 58.238216879419646
+          },
+          "1": {
+            "p05": 65.83582083581231,
+            "median": 90.03437258200334,
+            "p95": 95.64064844351826
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.625,
+        "delay_ps": 159.7051597051597,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 0.8700052794759188,
+        "one_sided_margin_UI": 0.07294572220051744,
+        "one_sided_margin_ps": 7.169112746979601,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.563887486755238,
+            "median": 32.123354855570845,
+            "p95": 54.94978875051013
+          },
+          "1": {
+            "p05": 65.14334188692447,
+            "median": 90.11491037766645,
+            "p95": 95.74585693662125
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 1.0,
+          "delay_ps": 98.28009828009829,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 14.215707224887822,
+          "one_sided_margin_UI": 0.41723953545472553,
+          "one_sided_margin_ps": 41.006342550832976,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 34.722753081433474,
+              "median": 44.250131963086375,
+              "p95": 48.206688811894665
+            },
+            "1": {
+              "p05": 76.75213781180442,
+              "median": 86.98893602305627,
+              "p95": 90.29492058198359
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.453125,
+          "delay_ps": 142.81326781326783,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 7.837242193539694,
+          "one_sided_margin_UI": 0.31809442787684056,
+          "one_sided_margin_ps": 31.262351634087523,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 23.824909463181864,
+              "median": 35.07354685961549,
+              "p95": 54.2234174889947
+            },
+            "1": {
+              "p05": 70.58484144012928,
+              "median": 99.80762905064391,
+              "p95": 101.1780057977192
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 2.640200550363065,
+        "steering_gate_differential_peak_V": 3.249360969967949,
+        "laser_rail_range_V": [
+          3.098767067914415,
+          3.1001801544544136
+        ],
+        "predriver_rail_range_V": [
+          3.016830550920139,
+          3.1001653311517825
+        ],
+        "electrical_current_range_mA": [
+          2.770575690582,
+          7.037975335983
+        ],
+        "base_current_range_mA": [
+          2.356067259284,
+          3.585522957013
+        ],
+        "tail_current_range_mA": [
+          2.6328236392089996,
+          5.654390481981
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.29874237817386984,
+          4.069771598931606
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.4675261722612,
+          "instance": "XPHYDBP",
+          "pair": "VDS"
+        },
+        "max_body_forward_V": 0.1676863303542
+      },
+      "interface_observed": {
+        "source_currents": {
+          "VLASER": {
+            "source_peak_mA": 7.791081488921,
+            "sink_peak_mA": -7.731774370209,
+            "mean_source_mA": 7.774505026401133
+          },
+          "VDD": {
+            "source_peak_mA": 1.8679711319949999,
+            "sink_peak_mA": -0.7315148665459,
+            "mean_source_mA": 1.5793147596346335
+          },
+          "VREF": {
+            "source_peak_mA": 0.6482608124379,
+            "sink_peak_mA": 0.34263083624220003,
+            "mean_source_mA": 0.1400535692371682
+          },
+          "VD": {
+            "source_peak_mA": 2.7803981247319998,
+            "sink_peak_mA": 2.712972564992,
+            "mean_source_mA": -1.7719956659127616e-06
+          },
+          "VDB": {
+            "source_peak_mA": 2.776320498628,
+            "sink_peak_mA": 2.713445115962,
+            "mean_source_mA": 6.170587975023639e-06
+          },
+          "VSET": {
+            "source_peak_mA": 0.03804733284408,
+            "sink_peak_mA": 0.0461032547521,
+            "mean_source_mA": -3.728833843544855e-06
+          },
+          "VREGSET": {
+            "source_peak_mA": 0.00010299326189860001,
+            "sink_peak_mA": 2.585002443028e-05,
+            "mean_source_mA": 1.5796903903667423e-05
+          },
+          "VPHY": {
+            "source_peak_mA": 1.688540194582,
+            "sink_peak_mA": -0.9767732129138001,
+            "mean_source_mA": 1.4221995928296975
+          }
+        },
+        "pin_series_currents": {
+          "d": {
+            "max_positive_mA": 1.8420470948599998,
+            "max_negative_mA": -1.3791666015799997,
+            "rms_mA": 1.0267949948579476
+          },
+          "db": {
+            "max_positive_mA": 1.8441553893599982,
+            "max_negative_mA": -1.378492679179999,
+            "rms_mA": 1.025860786459311
+          }
+        },
+        "interface_source_energy_pJ_per_payload_bit": {
+          "positive_J": 0.5892748569101919,
+          "returned_J": 0.04542946259470059,
+          "net_J": 0.5438453943154913
+        },
+        "source_boundary": "All8 ports; VPHY plus command gates counted; optical/RX/host clock and still-upstream logic excluded.",
+        "native_samples": 346328
+      },
+      "energy_pJ": {
+        "positive": 4.157775386769772,
+        "returned": 0.05372696201658546,
+        "net": 4.104048424753186
+      },
+      "energy_by_source_pJ": {
+        "VLASER": {
+          "positive": 2.9154393849001403,
+          "returned": 0.0,
+          "net": 2.9154393849001403
+        },
+        "VDD": {
+          "positive": 0.5922430348629297,
+          "returned": 0.0,
+          "net": 0.5922430348629297
+        },
+        "VREF": {
+          "positive": 0.06071564664184383,
+          "returned": 0.008195558177910905,
+          "net": 0.052520088463932926
+        },
+        "VD": {
+          "positive": 0.02797438411957302,
+          "returned": 0.02271455325848448,
+          "net": 0.0052598308610885425
+        },
+        "VDB": {
+          "positive": 0.02797562547953441,
+          "returned": 0.022714909336216105,
+          "net": 0.005260716143318301
+        },
+        "VSET": {
+          "positive": 0.00010175406724485716,
+          "returned": 0.00010181762691264485,
+          "net": -6.35596677876923e-08
+        },
+        "VREGSET": {
+          "positive": 7.093874213882957e-07,
+          "returned": 1.2361706132410188e-07,
+          "net": 5.857703600641938e-07
+        },
+        "VPHY": {
+          "positive": 0.5333248473110844,
+          "returned": 0.0,
+          "net": 0.5333248473110844
+        }
+      },
+      "combined_screen_pass": false,
+      "analysis_sha256": "c4265ebd8572fc225bd2c4ac138fa7d0dc294947775c963aba8eb3fc5cc0231b",
+      "manifest_sha256": "42871898c4c852593e8cab7dc7db25fa77e1baf5a497656db271fe4379020b0f",
+      "waveform": {
+        "path": "build/driver-interface-20261115/VCSEL/single-phy4/net8.8-s40/waveform.dat.gz",
+        "sha256": "b0d011958e299adaae73bfb897bb1982ea4cdf59934a949da646dd5554a38ad9",
+        "raw_sha256": "a713f36d680437e7da15d04c65a1f2e9d93a9bbf810ccf0d6e1650259a3ea0a2",
+        "bytes": 165912680,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "single-phy4-r25k",
+      "config": {
+        "candidate": "single-phy4-r25k",
+        "spec": {
+          "core": 69,
+          "nW_um": 4.0,
+          "pW_um": 8.0,
+          "internal_R_ohm": 150.0,
+          "shunt_R_ohm": 25000.0,
+          "hypothesis": "Only reduce historical input attenuation/static load: RADI/RADBI2500to25000ohm; preserve upstream4/8um and all series resistors. No vendor50ohm termination was specified for these shunts. Check input default/stress separately."
+        },
+        "net_Gbps": 6.4,
+        "steps_per_UI": 40,
+        "level": null,
+        "holdout": false
+      },
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy4-r25k/net6.4-s40",
+      "MOS": 73,
+      "full_receiver": {
+        "delay_UI": 1.875,
+        "delay_ps": 253.37837837837841,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 31.316749974342574,
+        "one_sided_margin_UI": 0.3737728455581616,
+        "one_sided_margin_ps": 50.50984399434617,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.494241982930248,
+            "median": 29.176566831221596,
+            "p95": 30.94875802577029
+          },
+          "1": {
+            "p05": 98.4068990605904,
+            "median": 100.24858504483349,
+            "p95": 101.7118407068325
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.484375,
+        "delay_ps": 200.59121621621625,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 32.98878684105485,
+        "one_sided_margin_UI": 0.37172804745517063,
+        "one_sided_margin_ps": 50.23351992637442,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.581596740589536,
+            "median": 26.680920980219547,
+            "p95": 29.279677196394612
+          },
+          "1": {
+            "p05": 98.81235539570591,
+            "median": 100.9294548376223,
+            "p95": 102.88093274094506
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 0.96875,
+          "delay_ps": 130.9121621621622,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 22.101520511779356,
+          "one_sided_margin_UI": 0.4332548674551222,
+          "one_sided_margin_ps": 58.54795506150301,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 26.10846128035579,
+              "median": 37.81548308183923,
+              "p95": 40.38921733404945
+            },
+            "1": {
+              "p05": 84.65023191680169,
+              "median": 98.23286112318726,
+              "p95": 98.89205398233776
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.328125,
+          "delay_ps": 179.47635135135138,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 35.431207138780785,
+          "one_sided_margin_UI": 0.4270105051273506,
+          "one_sided_margin_ps": 57.70412231450685,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.5674423534701,
+              "median": 25.003987826613077,
+              "p95": 27.041940578384516
+            },
+            "1": {
+              "p05": 98.15186731337019,
+              "median": 99.9996936664923,
+              "p95": 102.44097125349262
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": true
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.463533819258207,
+        "steering_gate_differential_peak_V": 3.3041180373959955,
+        "laser_rail_range_V": [
+          3.1000938184654148,
+          3.100887483626921
+        ],
+        "predriver_rail_range_V": [
+          3.0219596140857763,
+          3.10020968575306
+        ],
+        "electrical_current_range_mA": [
+          2.811220694063,
+          7.186432335291
+        ],
+        "base_current_range_mA": [
+          2.039536105308,
+          3.77968458291
+        ],
+        "tail_current_range_mA": [
+          2.5321813544230003,
+          4.744459007065
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.2644838456634231,
+          4.270688384918154
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.4688182763255,
+          "instance": "XPHYDP",
+          "pair": "VDS"
+        },
+        "max_body_forward_V": 0.1686715469774
+      },
+      "interface_observed": {
+        "source_currents": {
+          "VLASER": {
+            "source_peak_mA": 7.731815521327,
+            "sink_peak_mA": -7.704272284419,
+            "mean_source_mA": 7.712542875739552
+          },
+          "VDD": {
+            "source_peak_mA": 1.779355926695,
+            "sink_peak_mA": -0.729005243473,
+            "mean_source_mA": 1.55048335805871
+          },
+          "VREF": {
+            "source_peak_mA": 0.7566437043923999,
+            "sink_peak_mA": 0.2256363637834,
+            "mean_source_mA": 0.14011396833017806
+          },
+          "VD": {
+            "source_peak_mA": 2.872472681343,
+            "sink_peak_mA": 2.707313706776,
+            "mean_source_mA": -1.7771555338184677e-06
+          },
+          "VDB": {
+            "source_peak_mA": 2.8722395272259997,
+            "sink_peak_mA": 2.710166487965,
+            "mean_source_mA": 4.744181806069822e-06
+          },
+          "VSET": {
+            "source_peak_mA": 0.03172629303623,
+            "sink_peak_mA": 0.01977251057339,
+            "mean_source_mA": 3.548554460547185e-06
+          },
+          "VREGSET": {
+            "source_peak_mA": 9.472819994989001e-05,
+            "sink_peak_mA": 2.893805319964e-05,
+            "mean_source_mA": 1.0089519859565624e-05
+          },
+          "VPHY": {
+            "source_peak_mA": 1.616723856726,
+            "sink_peak_mA": 0.12266789811829999,
+            "mean_source_mA": 0.8474559591185167
+          }
+        },
+        "pin_series_currents": {
+          "d": {
+            "max_positive_mA": 1.5406630934980003,
+            "max_negative_mA": -1.5405221758800014,
+            "rms_mA": 0.842421133509747
+          },
+          "db": {
+            "max_positive_mA": 1.5403224356220013,
+            "max_negative_mA": -1.5401937366600027,
+            "rms_mA": 0.8442296313704991
+          }
+        },
+        "interface_source_energy_pJ_per_payload_bit": {
+          "positive_J": 0.49794604452360175,
+          "returned_J": 0.04548733936421986,
+          "net_J": 0.45245870515938186
+        },
+        "source_boundary": "All8 ports; VPHY plus command gates counted; optical/RX/host clock and still-upstream logic excluded.",
+        "native_samples": 424388
+      },
+      "energy_pJ": {
+        "positive": 5.35424058662185,
+        "returned": 0.053287117137989254,
+        "net": 5.3009534694838605
+      },
+      "energy_by_source_pJ": {
+        "VLASER": {
+          "positive": 3.9767799203032075,
+          "returned": 0.0,
+          "net": 3.9767799203032075
+        },
+        "VDD": {
+          "positive": 0.7994679814990222,
+          "returned": 0.0,
+          "net": 0.7994679814990222
+        },
+        "VREF": {
+          "positive": 0.07994934566500866,
+          "returned": 0.007703080744760608,
+          "net": 0.07224626492024806
+        },
+        "VD": {
+          "positive": 0.030445891478890666,
+          "returned": 0.022712548540961428,
+          "net": 0.00773334293792924
+        },
+        "VDB": {
+          "positive": 0.030468305751942586,
+          "returned": 0.02271242245097506,
+          "net": 0.007755883300967525
+        },
+        "VSET": {
+          "positive": 9.663161183522676e-05,
+          "returned": 9.654844259005769e-05,
+          "net": 8.316924516907712e-08
+        },
+        "VREGSET": {
+          "positive": 6.630191747230687e-07,
+          "returned": 1.4858641872545427e-07,
+          "net": 5.144327559976145e-07
+        },
+        "VPHY": {
+          "positive": 0.4370318472927685,
+          "returned": 6.236837228337822e-05,
+          "net": 0.4369694789204851
+        }
+      },
+      "combined_screen_pass": true,
+      "analysis_sha256": "72242aa4b34dca376c5b6b93964bfac0f782c7a152b6fb7d614779d45e8099b9",
+      "manifest_sha256": "dd28a71fa39f3117b1aea2b8db8642abedf5d7d4ee355a3a8a0ef3c7bab12695",
+      "waveform": {
+        "path": "build/driver-interface-20261115/VCSEL/single-phy4-r25k/net6.4-s40/waveform.dat.gz",
+        "sha256": "9e8e734dea5cc237748714bf656b90d221feeb5a4a1bb758237329e098c72c1f",
+        "raw_sha256": "84bd1335e40176ef22bb03233de56082a806866ea2787484e05500458e329bee",
+        "bytes": 203395128,
+        "roundtrip_verified": true
+      }
+    },
+    {
+      "candidate": "single-phy4-r25k",
+      "config": {
+        "candidate": "single-phy4-r25k",
+        "spec": {
+          "core": 69,
+          "nW_um": 4.0,
+          "pW_um": 8.0,
+          "internal_R_ohm": 150.0,
+          "shunt_R_ohm": 25000.0,
+          "hypothesis": "Only reduce historical input attenuation/static load: RADI/RADBI2500to25000ohm; preserve upstream4/8um and all series resistors. No vendor50ohm termination was specified for these shunts. Check input default/stress separately."
+        },
+        "net_Gbps": 8.8,
+        "steps_per_UI": 40,
+        "level": null,
+        "holdout": false
+      },
+      "source_case": "build/driver-interface-20261115/VCSEL/single-phy4-r25k/net8.8-s40",
+      "MOS": 73,
+      "full_receiver": {
+        "delay_UI": 2.25,
+        "delay_ps": 221.13022113022114,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 0.3327374277144912,
+        "one_sided_margin_UI": 0.03516201060637782,
+        "one_sided_margin_ps": 3.455725858120671,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.2777009979561,
+            "median": 27.05893098785475,
+            "p95": 45.39183060475172
+          },
+          "1": {
+            "p05": 65.45765573972781,
+            "median": 100.50672303460274,
+            "p95": 102.76530042305342
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "electrical_receiver": {
+        "delay_UI": 1.6875,
+        "delay_ps": 165.84766584766587,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 7.854510607313216,
+        "one_sided_margin_UI": 0.12408789605594416,
+        "one_sided_margin_ps": 12.195370619748811,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 25.55654640684394,
+            "median": 26.607696407636386,
+            "p95": 36.92369335388641
+          },
+          "1": {
+            "p05": 73.1207493397516,
+            "median": 101.39574403157238,
+            "p95": 104.1474178707359
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "stages": {
+        "predriver_input_polarity": {
+          "delay_UI": 1.078125,
+          "delay_ps": 105.95823095823097,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 15.511299009842823,
+          "one_sided_margin_UI": 0.3460801293585894,
+          "one_sided_margin_ps": 34.0127891261513,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 24.339131886647223,
+              "median": 37.43845522397205,
+              "p95": 46.881067059262286
+            },
+            "1": {
+              "p05": 78.13091239853172,
+              "median": 95.40622529628459,
+              "p95": 100.66118323790866
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        },
+        "steering_gate_polarity": {
+          "delay_UI": 1.46875,
+          "delay_ps": 144.34889434889436,
+          "train_errors": 0,
+          "errors": 0,
+          "validation_bits": 4096,
+          "min_training_errors_any_delay": 0,
+          "worst_signed_margin_uAeq": 13.958688523234741,
+          "one_sided_margin_UI": 0.23783252613392813,
+          "one_sided_margin_ps": 23.3742040426465,
+          "sample_level_quantiles_uAeq": {
+            "0": {
+              "p05": 22.494750566450296,
+              "median": 25.169840524252443,
+              "p95": 47.81340486617649
+            },
+            "1": {
+              "p05": 76.8059189845354,
+              "median": 99.89367718027468,
+              "p95": 102.51570670712128
+            }
+          },
+          "transition_errors": {
+            "0->0": {
+              "errors": 0,
+              "occurrences": 1006
+            },
+            "0->1": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->0": {
+              "errors": 0,
+              "occurrences": 1029
+            },
+            "1->1": {
+              "errors": 0,
+              "occurrences": 1032
+            }
+          },
+          "screen_pass": false
+        }
+      },
+      "observed": {
+        "predriver_input_differential_peak_V": 3.4638110464539373,
+        "steering_gate_differential_peak_V": 3.304256643238005,
+        "laser_rail_range_V": [
+          3.100092479636755,
+          3.1013168478631976
+        ],
+        "predriver_rail_range_V": [
+          3.007801139437784,
+          3.1002096953335405
+        ],
+        "electrical_current_range_mA": [
+          2.8075141971539996,
+          7.265813735263
+        ],
+        "base_current_range_mA": [
+          1.9703427365800001,
+          3.867405927635
+        ],
+        "tail_current_range_mA": [
+          2.443731283117,
+          4.826565969894
+        ],
+        "dummy_resistor_current_range_mA": [
+          -0.2716266440193289,
+          4.2924471934666
+        ],
+        "optical_graph_negative_fraction": 0.0,
+        "within_calibrated_electrical_and_optical_current_range": true,
+        "terminal_screen_pass": true,
+        "terminal_peak": {
+          "value_V": 3.4687858905364,
+          "instance": "XPHYDBP",
+          "pair": "VDS"
+        },
+        "max_body_forward_V": 0.1686752665745
+      },
+      "interface_observed": {
+        "source_currents": {
+          "VLASER": {
+            "source_peak_mA": 7.731815488407,
+            "sink_peak_mA": -7.683367272005,
+            "mean_source_mA": 7.6961688426672
+          },
+          "VDD": {
+            "source_peak_mA": 2.015700952354,
+            "sink_peak_mA": -0.72787287918,
+            "mean_source_mA": 1.67851684285517
+          },
+          "VREF": {
+            "source_peak_mA": 0.7937171606218,
+            "sink_peak_mA": 0.2910630516397,
+            "mean_source_mA": 0.14010975255693922
+          },
+          "VD": {
+            "source_peak_mA": 2.873323576071,
+            "sink_peak_mA": 2.705470507698,
+            "mean_source_mA": -3.4533346515668968e-06
+          },
+          "VDB": {
+            "source_peak_mA": 2.8729880662240004,
+            "sink_peak_mA": 2.7050083732349997,
+            "mean_source_mA": 8.78536506559622e-06
+          },
+          "VSET": {
+            "source_peak_mA": 0.03939731271948,
+            "sink_peak_mA": 0.024020539362410002,
+            "mean_source_mA": 8.971282899767439e-06
+          },
+          "VREGSET": {
+            "source_peak_mA": 0.0001103907479462,
+            "sink_peak_mA": 3.01773083498e-05,
+            "mean_source_mA": 1.6812297188094362e-05
+          },
+          "VPHY": {
+            "source_peak_mA": 1.5113998986450001,
+            "sink_peak_mA": -0.11071155707750001,
+            "mean_source_mA": 0.984903094647681
+          }
+        },
+        "pin_series_currents": {
+          "d": {
+            "max_positive_mA": 1.614982344880005,
+            "max_negative_mA": -1.54046359054,
+            "rms_mA": 0.9210960078909629
+          },
+          "db": {
+            "max_positive_mA": 1.6159126578400063,
+            "max_negative_mA": -1.5401848837999976,
+            "rms_mA": 0.9216014856503704
+          }
+        },
+        "interface_source_energy_pJ_per_payload_bit": {
+          "positive_J": 0.4281436706956676,
+          "returned_J": 0.04518386777885188,
+          "net_J": 0.38295980291681575
+        },
+        "source_boundary": "All8 ports; VPHY plus command gates counted; optical/RX/host clock and still-upstream logic excluded.",
+        "native_samples": 368857
+      },
+      "energy_pJ": {
+        "positive": 4.00426187651861,
+        "returned": 0.05325300798030403,
+        "net": 3.9510088685383065
+      },
+      "energy_by_source_pJ": {
+        "VLASER": {
+          "positive": 2.8860633159999183,
+          "returned": 0.0,
+          "net": 2.8860633159999183
+        },
+        "VDD": {
+          "positive": 0.629443816070627,
+          "returned": 0.0,
+          "net": 0.629443816070627
+        },
+        "VREF": {
+          "positive": 0.06052496529659689,
+          "returned": 0.007983808087749816,
+          "net": 0.05254115720884708
+        },
+        "VD": {
+          "positive": 0.029401746137734434,
+          "returned": 0.02259329399606606,
+          "net": 0.006808452141668374
+        },
+        "VDB": {
+          "positive": 0.02940326406508892,
+          "returned": 0.02259057378278582,
+          "net": 0.006812690282303098
+        },
+        "VSET": {
+          "positive": 8.534470435536104e-05,
+          "returned": 8.519178476047865e-05,
+          "net": 1.529195948823846e-07
+        },
+        "VREGSET": {
+          "positive": 7.63751445237991e-07,
+          "returned": 1.4032894185174746e-07,
+          "net": 6.234225033862435e-07
+        },
+        "VPHY": {
+          "positive": 0.3693386604928443,
+          "returned": 0.0,
+          "net": 0.3693386604928443
+        }
+      },
+      "combined_screen_pass": false,
+      "analysis_sha256": "9be072f40eb3708c7f58cea62459d88803de38091d55785b34de2e431fb8784e",
+      "manifest_sha256": "080556ae9ad05129de3baa5b3d1b5225afaa04a4f3491c00e429e398e056845b",
+      "waveform": {
+        "path": "build/driver-interface-20261115/VCSEL/single-phy4-r25k/net8.8-s40/waveform.dat.gz",
+        "sha256": "f5358d40bedd65e2260f2bf888587426c7242d5fb51a16f4f91465c94433e570",
+        "raw_sha256": "eede53e29a47d58848c7d4748e2776e977f630ac69581ae5dd30adc12d126dc4",
+        "bytes": 177000703,
+        "roundtrip_verified": true
+      }
+    }
+  ],
+  "holdout_protocol": {
+    "development_seed": 23246,
+    "holdout_seed": 22446,
+    "holdout_seed_hex": "0x57ae",
+    "phase_offset_bits": 8192,
+    "window": [
+      8192,
+      12928
+    ],
+    "previous_windows": [
+      [
+        0,
+        4736
+      ],
+      [
+        16749,
+        21485
+      ],
+      [
+        27081,
+        31817
+      ]
+    ],
+    "scope": "Predeclared disjoint PRBS15 period window; not independent random BER. No circuit changes after holdout."
+  },
+  "scope": "Generic finite CMOS interface, not vendor PHY compliance; fixed load/RX and eight-source energy boundary. Nominal deterministic frames, no PVT/long-term/physicalBER or layout qualification.",
+  "status": "frozen",
+  "frozen_at_UTC": "2026-11-15T12:33:04.171303+00:00",
+  "required_cases": [
+    "build/driver-interface-20261115/VCSEL/_diagnostics/open-input-single-phy4",
+    "build/driver-interface-20261115/VCSEL/_diagnostics/open-input-single-phy4-r25k",
+    "build/driver-interface-20261115/VCSEL/double-phy4/DC-L0",
+    "build/driver-interface-20261115/VCSEL/double-phy4/DC-L1",
+    "build/driver-interface-20261115/VCSEL/double-phy4/net6.4-s40",
+    "build/driver-interface-20261115/VCSEL/single-phy12/DC-L0",
+    "build/driver-interface-20261115/VCSEL/single-phy12/DC-L1",
+    "build/driver-interface-20261115/VCSEL/single-phy12/holdout-net8.8-s40",
+    "build/driver-interface-20261115/VCSEL/single-phy12/net6.4-s40",
+    "build/driver-interface-20261115/VCSEL/single-phy12/net8.8-s40",
+    "build/driver-interface-20261115/VCSEL/single-phy12/net8.8-s80",
+    "build/driver-interface-20261115/VCSEL/single-phy4/DC-L0",
+    "build/driver-interface-20261115/VCSEL/single-phy4/DC-L1",
+    "build/driver-interface-20261115/VCSEL/single-phy4/net6.4-s40",
+    "build/driver-interface-20261115/VCSEL/single-phy4/net8.8-s40",
+    "build/driver-interface-20261115/VCSEL/single-phy4-r25k/DC-L0",
+    "build/driver-interface-20261115/VCSEL/single-phy4-r25k/DC-L1",
+    "build/driver-interface-20261115/VCSEL/single-phy4-r25k/net6.4-s40",
+    "build/driver-interface-20261115/VCSEL/single-phy4-r25k/net8.8-s40"
+  ]
+}

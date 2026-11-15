@@ -1,0 +1,40 @@
+{
+  "source_svg": "docs/research/driver-interface-20261115/assets/micro-protection-v6r.svg",
+  "source_receipt": "docs/research/driver-interface-20261115/assets/micro-protection-v6r.source.json",
+  "pages": [
+    {
+      "panels": [110, 500],
+      "title": "B-v6r ①｜READY、保护命令与数据输入阻尼",
+      "case_label": "B-protected_v6r / fault-f2-net1.6-s40",
+      "output_svg": "docs/research/driver-interface-20261115/assets/micro-protection-v6r-input.svg",
+      "text_replacements": {"VD0 / data0_src": "data0_src"},
+      "footer": [
+        "VDISABLE 经真实 100 Ω 到 disable；其供能在 disable_src 端积分。参考源保持工作。",
+        "VD0 外部 PRBS 不停顿；两方块 PDK poly 是新增阻尼，原核心内的 XRIN 仍保留。"
+      ]
+    },
+    {
+      "panels": [690],
+      "title": "B-v6r ②｜6 MOS 数据门控：保持 NAND 原串联顺序",
+      "case_label": "B-protected_v6r / fault-f2-net1.6-s40",
+      "output_svg": "docs/research/driver-interface-20261115/assets/micro-protection-v6r-logic.svg",
+      "remove_text_prefixes": ["data_safe → XDRV", "原 XRIN 保留", "外部 PRBS 保持", "慢输入也会"],
+      "footer": [
+        "data_gate 接新增电阻后的 DATA；ready_rc 接真实 RC。DATA 在上管，READY 在下管。",
+        "data_safe → XDRV.D0 → 既有 XRIN → DI / GB / GP；必须检查慢输入延迟及 VDD 交越能耗。"
+      ]
+    },
+    {
+      "panels": [1330],
+      "title": "B-v6r ③｜W4 快关上拉与三只并联高边隔离管",
+      "case_label": "B-protected_v6r / fault-f2-net1.6-s40",
+      "output_svg": "docs/research/driver-interface-20261115/assets/micro-protection-v6r-power.svg",
+      "remove_text_prefixes": ["iso_gb 低："],
+      "footer": [
+        "iso_gb 低时快关上拉导通；高时上拉截止，iso_p 经 100 kΩ 慢放电。PMOS 体接 led_feed。",
+        "XCLAMP 的 D/G/S/B = LED_A / disable / LED_K / VSS，W/L = 10/0.7；CLED = 200 fF。",
+        "其余高边端接见 A-v3r 功率分图；此处 FASTOFF 为 W4，不是 A-v3r 的 W20。"
+      ]
+    }
+  ]
+}

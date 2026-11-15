@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+"""Frozen-candidate confirmation and explicit comparison to the ideal-source boundary."""
+import sys
+sys.dont_write_bytecode=True
+import run
+def main():
+ sel=run.read(run.EV/'vcsel-interface-selection.json');assert sel['parameters_frozen'];base=run.BUILD/sel['candidate'];rows=[]
+ for case in ['net8.8-s40','net8.8-s80','holdout-net8.8-s40']:
+  p=base/case;a=run.read(p/'analysis.json');m=run.read(p/'manifest.json');f=a['pathways']['actual_graph_5GHzRX'];assert a['combined_screen_pass'] and m['candidate_spec']==sel['spec'] and run.sha(p/'driver.spice')==sel['driver_sha256']
+  assert [x for x in (p/'testbench.spice').read_text().splitlines() if x.startswith(('VPHY ','RPHY ','LPHY ','RCPHY ','CPHY ','XPHY','RD ','RDB ','XDRV '))]==sel['interface_and_core_instance_lines']
+  rows.append(dict(case=str(p.relative_to(run.ROOT)),analysis_sha256=run.sha(p/'analysis.json'),manifest_sha256=run.sha(p/'manifest.json'),steps_per_UI=m['interface_config']['steps_per_UI'],holdout=m['interface_config']['holdout'],screen_pass=a['combined_screen_pass'],errors=f['errors'],amplitude_uAeq=f['worst_signed_margin_uAeq'],timing_UI=f['one_sided_margin_UI'],timing_ps=f['one_sided_margin_ps'],delay_ps=f['delay_ps'],energy_pJ=a['source_energy_pJ_per_attempted_net_bit'],current_mA=a['observed']['electrical_current_range_mA'],body_forward_V=a['observed']['max_body_forward_V'],waveform=a['waveform']))
+ old=run.read(run.BASE69.parent/'net8.8-s40/analysis.json');coarse,fine,holdout=rows
+ out=dict(status='PASS',scope='Frozen engineering-circuit candidate at a tested8.8Gb/s point; not technology-route selection, max-rate proof or real PHY/BER qualification.',selection_sha256=run.sha(run.EV/'vcsel-interface-selection.json'),protocol=run.protocol(),cases=rows,half_step_delta=dict(timing_UI=fine['timing_UI']-coarse['timing_UI'],timing_ps=fine['timing_ps']-coarse['timing_ps'],amplitude_uAeq=fine['amplitude_uAeq']-coarse['amplitude_uAeq'],energy_positive_pJ=fine['energy_pJ']['positive']-coarse['energy_pJ']['positive']),old_ideal69_comparison=dict(old_case=old['run'],old_analysis_sha256=run.sha(run.BASE69.parent/'net8.8-s40/analysis.json'),old_Epositive_pJ=old['source_energy_pJ_per_attempted_net_bit']['positive'],finite_interface_Epositive_pJ=coarse['energy_pJ']['positive'],Epositive_change_percent=100*(coarse['energy_pJ']['positive']/old['source_energy_pJ_per_attempted_net_bit']['positive']-1)),limits=['All8 sources including ideal command gate energy; truly earlier host/clock/PHY internal cost still absent.','Only independent input-width and shunt mechanisms tested; no post-holdout circuit retune.','2–7.5mA current domain and3.63V/.3V terminal/body screens unchanged.','DC default input low is not laser off; open-cable control retained.','No new VCSEL continuous-run/PVT/layout/PEX/optical or BER qualification.'])
+ run.emit(run.EV/'vcsel-interface-confirmation.json',out);print('PASS frozen8.8/S80/phase8192',holdout['timing_UI'],holdout['amplitude_uAeq'])
+if __name__=='__main__':main()

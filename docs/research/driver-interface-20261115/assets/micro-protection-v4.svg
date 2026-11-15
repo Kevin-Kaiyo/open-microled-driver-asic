@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1340" height="1260" viewBox="0 0 1340 1260"><style>text{font-family:"Arial Unicode MS","PingFang SC",Arial,sans-serif}</style><rect width="1340" height="1260" fill="#f7f9fb"/>
+<text x="35" y="45" font-size="27" fill="#334e60" text-anchor="start">B · protected_v4：真实 READY RC 与 6 MOS 数据门控候选</text>
+<text x="35" y="80" font-size="18" fill="#6b7e8a" text-anchor="start">本图展开新增 7 MOS；加上 11 MOS 高边保护，整条 B 电路共 39 MOS。外部数据继续翻转，候选仍在验证。</text>
+<rect x="25" y="110" width="1290" height="390" rx="10" fill="white" stroke="#d2dce4"/>
+<text x="45" y="144" font-size="23" fill="#334e60" text-anchor="start">1｜ready_rc 慢充 / 快复位：开环延迟允许，不是电源良好检测</text>
+<text x="65" y="205" font-size="19" fill="#334e60" text-anchor="start">en = NOT(disable)</text>
+<path d="M65,225 L230,225" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M230,225 L243,225" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M392,225 L405,225" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<rect x="243" y="216" width="149" height="18" fill="white" stroke="#334e60" stroke-width="2.3"/>
+<text x="317.5" y="202" font-size="18" fill="#334e60" text-anchor="middle">RREADY 100 kΩ</text>
+<path d="M405,225 L1150,225" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<circle cx="450" cy="225" r="4" fill="#334e60"/>
+<circle cx="706" cy="225" r="4" fill="#334e60"/>
+<text x="1000" y="207" font-size="21" fill="#334e60" text-anchor="start">ready_rc</text>
+<path d="M450,225 L450,313.0" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M426,313.0 L474,313.0" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M426,327.0 L474,327.0" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M450,327.0 L450,415" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="484" y="324.0" font-size="18" fill="#334e60" text-anchor="start"></text>
+<text x="425" y="350" font-size="18" fill="#334e60" text-anchor="end">CREADY 1 pF</text>
+<path d="M450,415 L450,427" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M436,427 L464,427" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M441,434 L459,434" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M446,441 L454,441" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M670,307 L670,353" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M684,308 L684,323" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M684,326 L684,334" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M684,337 L684,352" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M684,312 L706,312" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M706,312 L706,273" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M684,348 L706,348" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M706,348 L706,387" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M616,330 L670,330" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="611" y="317" font-size="16" fill="#334e60" text-anchor="end">disable</text>
+<text x="723" y="335" font-size="18" fill="#334e60" text-anchor="start">XREADYRESET</text>
+<path d="M706,273 L706,225" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M706,387 L706,399" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M692,399 L720,399" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M697,406 L715,406" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M702,413 L710,413" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="723" y="356" font-size="16" fill="#334e60" text-anchor="start">W/L = 10/0.28</text>
+<text x="885" y="329" font-size="20" fill="#334e60" text-anchor="start">RC 量级 = 100 ns</text>
+<text x="885" y="360" font-size="17" fill="#334e60" text-anchor="start">实际门限/允许时间由 MOS 决定</text>
+<text x="885" y="391" font-size="17" fill="#6b7e8a" text-anchor="start">并非理想 100 ns 延时器</text>
+<text x="45" y="475" font-size="18" fill="#6b7e8a" text-anchor="start">disable 高时复位管主动放电；disable 低时从 en 经电阻充电。复位和充电都有真实有限速度与能耗。</text>
+<rect x="25" y="520" width="1290" height="620" rx="10" fill="white" stroke="#d2dce4"/>
+<text x="45" y="554" font-size="23" fill="#334e60" text-anchor="start">2｜静态 CMOS NAND + 反相器：data_safe = d0 AND ready_rc</text>
+<path d="M236,600 L1076,600" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="685" y="583" font-size="18" fill="#334e60" text-anchor="middle">vdd ≈ 3.3 V；所有 PMOS 体接 vdd，NMOS 体接 VSS</text>
+<path d="M200,657 L200,703" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M214,658 L214,673" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M214,676 L214,684" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M214,687 L214,702" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M214,662 L236,662" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M236,662 L236,623" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M214,698 L236,698" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M236,698 L236,737" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<circle cx="193" cy="680" r="6" fill="white" stroke="#334e60" stroke-width="2.3"/>
+<path d="M146,680 L187,680" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="141" y="667" font-size="16" fill="#334e60" text-anchor="end">d0</text>
+<text x="253" y="685" font-size="18" fill="#334e60" text-anchor="start">XNAND_PDATA</text>
+<path d="M236,623 L236,600" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M236,737 L236,790" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="253" y="707" font-size="16" fill="#334e60" text-anchor="start">W/L = 3.93/0.28</text>
+<path d="M550,657 L550,703" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M564,658 L564,673" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M564,676 L564,684" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M564,687 L564,702" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M564,662 L586,662" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M586,662 L586,623" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M564,698 L586,698" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M586,698 L586,737" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<circle cx="543" cy="680" r="6" fill="white" stroke="#334e60" stroke-width="2.3"/>
+<path d="M496,680 L537,680" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="491" y="667" font-size="16" fill="#334e60" text-anchor="end">ready_rc</text>
+<text x="603" y="685" font-size="18" fill="#334e60" text-anchor="start">XNAND_PREADY</text>
+<path d="M586,623 L586,600" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M586,737 L586,790" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="603" y="707" font-size="16" fill="#334e60" text-anchor="start">W/L = 3.93/0.28</text>
+<path d="M236,790 L900,790" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<circle cx="386" cy="790" r="4" fill="#334e60"/>
+<circle cx="586" cy="790" r="4" fill="#334e60"/>
+<text x="690" y="770" font-size="21" fill="#334e60" text-anchor="start">nand_o</text>
+<path d="M350,832 L350,878" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M364,833 L364,848" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M364,851 L364,859" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M364,862 L364,877" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M364,837 L386,837" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M386,837 L386,798" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M364,873 L386,873" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M386,873 L386,912" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M296,855 L350,855" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="291" y="842" font-size="16" fill="#334e60" text-anchor="end">d0</text>
+<text x="403" y="860" font-size="18" fill="#334e60" text-anchor="start">XNAND_NDATA</text>
+<path d="M386,798 L386,790" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="403" y="882" font-size="16" fill="#334e60" text-anchor="start">W/L = 5/0.28</text>
+<path d="M350,1017 L350,1063" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M364,1018 L364,1033" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M364,1036 L364,1044" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M364,1047 L364,1062" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M364,1022 L386,1022" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M386,1022 L386,983" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M364,1058 L386,1058" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M386,1058 L386,1097" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M296,1040 L350,1040" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="291" y="1027" font-size="16" fill="#334e60" text-anchor="end">ready_rc</text>
+<text x="403" y="1045" font-size="18" fill="#334e60" text-anchor="start">XNAND_NREADY</text>
+<path d="M386,912 L386,983" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="401" y="951" font-size="18" fill="#334e60" text-anchor="start">nand_s</text>
+<path d="M386,1097 L386,1109" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M372,1109 L400,1109" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M377,1116 L395,1116" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M382,1123 L390,1123" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="403" y="1067" font-size="16" fill="#334e60" text-anchor="start">W/L = 5/0.28</text>
+<path d="M1040,702 L1040,748" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1054,703 L1054,718" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1054,721 L1054,729" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1054,732 L1054,747" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1054,707 L1076,707" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1076,707 L1076,668" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1054,743 L1076,743" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1076,743 L1076,782" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<circle cx="1033" cy="725" r="6" fill="white" stroke="#334e60" stroke-width="2.3"/>
+<path d="M986,725 L1027,725" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="981" y="712" font-size="16" fill="#334e60" text-anchor="end"></text>
+<text x="1093" y="730" font-size="18" fill="#334e60" text-anchor="start">XSAFE_P</text>
+<path d="M1040,832 L1040,878" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1054,833 L1054,848" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1054,851 L1054,859" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1054,862 L1054,877" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1054,837 L1076,837" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1076,837 L1076,798" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1054,873 L1076,873" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1076,873 L1076,912" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M986,855 L1040,855" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="981" y="842" font-size="16" fill="#334e60" text-anchor="end"></text>
+<text x="1093" y="860" font-size="18" fill="#334e60" text-anchor="start">XSAFE_N</text>
+<path d="M1076,782 L1076,798" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<circle cx="1076" cy="790" r="4" fill="#334e60"/>
+<path d="M1076,668 L1076,600" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1076,912 L1076,924" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1062,924 L1090,924" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1067,931 L1085,931" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M1072,938 L1080,938" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M986,725 L965,725" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M965,725 L965,855" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M965,855 L986,855" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<path d="M900,790 L965,790" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<circle cx="965" cy="790" r="4" fill="#334e60"/>
+<text x="1093" y="752" font-size="16" fill="#334e60" text-anchor="start">W/L = 3.93/0.28</text>
+<text x="1093" y="882" font-size="16" fill="#334e60" text-anchor="start">W/L = 2.5/0.28</text>
+<path d="M1076,790 L1270,790" fill="none" stroke="#334e60" stroke-width="2.3"/>
+<text x="1165" y="770" font-size="21" fill="#334e60" text-anchor="middle">data_safe</text>
+<text x="800" y="995" font-size="18" fill="#334e60" text-anchor="start">data_safe → XDRV.D0 → 既有 XRIN → DI / GB / GP</text>
+<text x="800" y="1025" font-size="17" fill="#334e60" text-anchor="start">d0 仍由 VD0 经既有 100 Ω 提供；VD0 的原 PRBS 不变。</text>
+<text x="800" y="1055" font-size="17" fill="#334e60" text-anchor="start">XDRV.DISABLE 接 0：参考源保持工作，额外功耗保留。</text>
+<text x="800" y="1085" font-size="17" fill="#6b7e8a" text-anchor="start">慢 RC 直接进入 NAND；首次脉冲与接收恢复必须实测。</text>
+<text x="35" y="1180" font-size="17" fill="#334e60" text-anchor="start">高边 11 MOS 与 A-v3r 的慢开/快关连接相同：RGATE=100 kΩ、XFASTOFF=20/0.7、PISO=3×100/0.7；B 不加命令源 100 Ω。</text>
+<text x="35" y="1210" font-size="17" fill="#334e60" text-anchor="start">输入门控的 MOS、CREADY、命令栅充电计入既有 VDD / VD0 / VDISABLE；无理想 delay、理想 AND 或新增免费电源。</text>
+<text x="35" y="1240" font-size="17" fill="#6b7e8a" text-anchor="start">此图对应 W20 的实际 v4 网表，不代表后续 W4 修改或验证通过；PVT、误码、保护与版图资格仍需分别闭合。</text>
+</svg>

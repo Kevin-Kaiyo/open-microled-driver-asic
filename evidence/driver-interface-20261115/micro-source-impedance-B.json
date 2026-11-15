@@ -1,0 +1,93 @@
+{
+  "schema_version": "micro-control-source-prefix-comparison-v1",
+  "route": "B",
+  "sources": [
+    {
+      "case": "build/driver-interface-20261115/MicroLED/B-protected_v6/fault-f2-net1.6-s40",
+      "manifest_sha256": "b416d7d4339ea394e0d3a83f6bb04b003a7825a32f7c595f0b63682d02350680",
+      "result_sha256": "786011d30d26063731edf7de64f73b0be24829b7e1672fd1601525ea615eb64f",
+      "waveform_gzip_sha256": "fc500464140a793c2f6a1bbaa2808552a333a18ebd8999315f6da90e7f4af986",
+      "raw_sha256": "55ab1f526cac920b4d3a5ac0d38b1778d56b04337fc0cd9ed498aec924492457"
+    },
+    {
+      "case": "build/driver-interface-20261115/MicroLED/B-protected_v6r/fault-f2-net1.6-s40",
+      "manifest_sha256": "b0adb237d0eacddc01545dcc12d26627c8dc07f3d0b07386d4821b37d90058ae",
+      "result_sha256": "45b5c4e5fab38327e76a03afd069fc27c8485093d60c1ccddd9d709638129cf8",
+      "waveform_gzip_sha256": "92053141b396b8a292ea277a8ab0b78832be129202ae5957704e60c6e60aacb1",
+      "raw_sha256": "7fba794d3a9975e135ed28be80686a47d7895e6947399215700d3786277d681d"
+    }
+  ],
+  "common_end_s": 7.432432444706663e-07,
+  "original_required_end_s": 5.12e-06,
+  "original_prefix_points": 323875,
+  "replacement_complete_end_s": 5.119999999999999e-06,
+  "metrics": {
+    "entire_common_prefix": {
+      "iled_cond": {
+        "max_abs_difference": 1.4453519885313909e-06,
+        "rms_sample_difference": 2.4240575205270158e-08,
+        "unit": "A",
+        "max_time_s": 6.409082222259809e-07
+      },
+      "out": {
+        "max_abs_difference": 0.018086592945490754,
+        "rms_sample_difference": 0.0002980990680426903,
+        "unit": "V",
+        "max_time_s": 6.412957198511373e-07
+      },
+      "disable": {
+        "max_abs_difference": 0.03172382115926098,
+        "rms_sample_difference": 0.0005123991811431678,
+        "unit": "V",
+        "max_time_s": 6.407578618597577e-07
+      },
+      "iso_p": {
+        "max_abs_difference": 0.0081902404364389,
+        "rms_sample_difference": 0.000411041290433407,
+        "unit": "V",
+        "max_time_s": 6.412867938219357e-07
+      },
+      "led_a": {
+        "max_abs_difference": 0.0016926461767541312,
+        "rms_sample_difference": 9.255176766973219e-05,
+        "unit": "V",
+        "max_time_s": 6.412867938219357e-07
+      }
+    },
+    "outside_control_edge_windows": {
+      "iled_cond": {
+        "max_abs_difference": 3.6707439266737865e-08,
+        "rms_sample_difference": 1.1276554845553595e-09,
+        "unit": "A",
+        "max_time_s": 1.41851760127359e-07
+      },
+      "out": {
+        "max_abs_difference": 0.0005113148249884514,
+        "rms_sample_difference": 4.811353046251019e-05,
+        "unit": "V",
+        "max_time_s": 6.908293982861437e-07
+      },
+      "disable": {
+        "max_abs_difference": 0.0007212296808826129,
+        "rms_sample_difference": 0.00025021760161836055,
+        "unit": "V",
+        "max_time_s": 4.861404754105633e-07
+      },
+      "iso_p": {
+        "max_abs_difference": 8.41118024297316e-06,
+        "rms_sample_difference": 5.508055376243533e-07,
+        "unit": "V",
+        "max_time_s": 7.005605405405408e-07
+      },
+      "led_a": {
+        "max_abs_difference": 0.0006500489583900482,
+        "rms_sample_difference": 7.657602686741618e-05,
+        "unit": "V",
+        "max_time_s": 6.783983783783785e-07
+      }
+    }
+  },
+  "method": "Replacement native-time signal interpolated only at existing original-prefix samples. RMS is sample-weighted diagnostic, not time-integrated power. No data after the old abort point is invented. Both whole prefix and outside +/-25ns control-edge windows are shown; DATA continues toggling.",
+  "scope": "Confirms numerical-prefix consistency after explicitly changing ideal control source to100ohm. It does not make the truncated original run complete or qualify the model.",
+  "source_sha256": "72bf4cc88bb437bb7ec63dc54d79313acac48e0666395b8569e3c1bfe2d7207c"
+}

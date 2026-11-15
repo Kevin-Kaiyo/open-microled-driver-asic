@@ -1,0 +1,28 @@
+{
+  "source_svg": "docs/research/driver-interface-20261115/assets/micro-protection-v3r.svg",
+  "source_receipt": "docs/research/driver-interface-20261115/assets/micro-protection-v3r.source.json",
+  "pages": [
+    {
+      "panels": [110],
+      "title": "A-v3r ①｜保护命令与 3.3 V → 5 V 电平转换",
+      "case_label": "A-protected_v3r / fault-f2-net1.6-s40",
+      "output_svg": "docs/research/driver-interface-20261115/assets/micro-protection-v3r-control.svg",
+      "text_replacements": {"VDISABLE / disable_src": "disable_src"},
+      "footer": [
+        "VDISABLE 的 disable_src 端经真实 100 Ω 后驱动 disable；未用理想延时器控制功率管。",
+        "图中 6 MOS 为原反相器和交叉耦合电平转换器；后续功率开关见独立分图。"
+      ]
+    },
+    {
+      "panels": [590],
+      "title": "A-v3r ②｜慢开 / 快关功率开关与 LED 两端钳位",
+      "case_label": "A-protected_v3r / fault-f2-net1.6-s40",
+      "output_svg": "docs/research/driver-interface-20261115/assets/micro-protection-v3r-power.svg",
+      "text_replacements": {"VLED / led_src": "led_src"},
+      "footer": [
+        "PMOS 的体接 led_feed；XCLAMP 的体接 VSS。LED_K 与 OUT 之间保留独立封装 R/L。",
+        "恢复经 RGATE 慢放电；关断由 W20 的 XFASTOFF 快充栅。实际响应、应力与恢复需分别检查。"
+      ]
+    }
+  ]
+}

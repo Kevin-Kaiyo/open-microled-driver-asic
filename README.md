@@ -1,8 +1,10 @@
 # Open MicroLED Driver ASIC
 
+**输入接口、连续运行与独立关断（2026-11-15）**：[专业技术报告 PDF](docs/research/driver-interface-20261115/technical-stage-report.pdf) · [网页阅读版](docs/research/driver-interface-20261115/index.html) · [复现与原始证据](docs/research/driver-interface-20261115/reproduce.html)。VCSEL加入有限MOS输入级：弱源在净8.8 Gb/s余量失败，加宽输入MOS后恢复，但必须计入额外输入能耗。MicroLED A/B在相同负载和接收条件下验证净1.6 Gb/s、连续10.24 µs，并新增实际MOS隔离、钳位与控制；保留体结过冲、数据注入、数值截断及逐项修订证据。新保护不继承旧最高速率或版图资格；低电流关断是未实测延拓区的研究筛查，仍无PVT、实物BER、热稳态或制造资格。
+
 **新方法与产品路径 · 第二版（2026-11-11）**：[48页成果报告 PDF](docs/research/driver-methods-20261111/technical-stage-report.pdf) · [网页阅读版](docs/research/driver-methods-20261111/index.html) · [复现与原始证据](docs/research/driver-methods-20261111/reproduce.html)。新增42个晶体管级案例和32格光学/RX条件敏感性：A阻尼前馈最高已测通过净2.0 Gb/s；B低压版1.8 Gb/s、同1.6 Gb/s能耗降低22.55%；VCSEL单级69MOS+150 Ω最高已测通过8.8 Gb/s，同6.4 Gb/s能耗降低3.32%。半步长与新数据片段复查通过，但A2.0仅约1.6 ps额外时序余量，VCSEL模型域余量仅几十µA；新A在3.2的电气余量也失败。含失败机理、接口代价、产品/流片门槛和第一版历史附录；无新布局/PEX、PVT、实物BER或制造合格声明。
 
-以下各阶段文字为当时状态，当前结论以上方第二版为准。
+以下各阶段文字保留当时条件与状态；最新接口与保护结论以上方2026-11-15增补为准，未重测项目保留各自证据边界。
 
 **电路改进与验证（2026-11-11）**：[专业报告 PDF](docs/research/driver-improvement-20261111/technical-stage-report.pdf) · [网页阅读版](docs/research/driver-improvement-20261111/index.html) · [复现与证据](docs/research/driver-improvement-20261111/reproduce.html)。A/B 与 VCSEL 逐项修改、失败反例、波形及电荷分析；当前名义模型下最高已测试通过点为净 1.6 / 2.0 / 6.4 Gb/s。A/B 在净 3.2 Gb/s 的电气接收通过，但完整光学/RX仍失败；不预选最终架构。
 

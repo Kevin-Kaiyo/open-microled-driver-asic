@@ -1,0 +1,72 @@
+{
+  "schema_version": "micro-candidate-freeze-v1",
+  "frozen_at_UTC": "2026-11-15T13:42:36.858167+00:00",
+  "route": "B",
+  "variant": "protected_v6r",
+  "work_manifest_sha256": "acf3297ee3dcebdbf891948937ac3ced3d6401212b157d3b9ccc537a92f5ef96",
+  "inputs": {
+    "route_a.spice": "02ba88d9b7654b68b11b4db15bd8bbf316271123c8d377944335602763657a53",
+    "route_c.spice": "096ecd179eadf8193896b6c1177d845c666bbe93903ccf5a99020593c6da8b1d",
+    "route_b.spice": "f4be00cd246c5cbb1d3fbb80384ae893537ddee81b694e0c0f080669db8a3943",
+    "receiver.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+    "common.spice": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8",
+    "led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+    "pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+    "pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46"
+  },
+  "parameters": {
+    "A": {
+      "RH": 177683.3997653013,
+      "RL": 87444.56014738003
+    },
+    "B": {
+      "RSET": 20126.535444301146,
+      "WTAIL": 5.76e-06,
+      "RINL": 4e-06
+    },
+    "C": {
+      "RSET": 20125.423810323304,
+      "WUNIT": 2.02e-06,
+      "RINL": 8e-06
+    }
+  },
+  "controls": [
+    {
+      "source_case": "build/driver-interface-20261115/MicroLED/B-protected_v6r/DC-L0",
+      "result_sha256": "bc94ceb603fa1e339b07a3a533384961d6dbfbe848eb323fbe5eda655e236459",
+      "manifest_sha256": "8b7c9bf287470fc9daf07db6f91470eebfe1fb62498ae0ffe8875dd718f0debe",
+      "deck_sha256": "940688fe22929652f26a63507a35807c3052c8dfd1df2d5b438800a3e8d20903"
+    },
+    {
+      "source_case": "build/driver-interface-20261115/MicroLED/B-protected_v6r/DC-L1",
+      "result_sha256": "8328622c45fe412b7a1e1975fb62b9df4ef14c4fbbe4f21fe609d506e4df4bd5",
+      "manifest_sha256": "670c65493c09a3498450d85bef4c5b682b6844e788c4419a778efac53d75073b",
+      "deck_sha256": "650d16ee67cf1749655f5fb87305781bf601ec75fdae7b27216af125653fdcb4"
+    },
+    {
+      "source_case": "build/driver-interface-20261115/MicroLED/B-protected_v6r/continuous-f4-net1.6-s40",
+      "result_sha256": "bbdb0ab02e6eb6004de58987576cdb4dad1b8fabc4e1b367b9b214ec0702850d",
+      "manifest_sha256": "95d378ea410703e802809c5b7fb41304eaa6cf8e9d99d6e4bc33d00c48619563",
+      "deck_sha256": "e1bf28dada94a19b59bc0274978170c170af2a2d395e00ab7c59cf5dddffb1c4"
+    },
+    {
+      "source_case": "build/driver-interface-20261115/MicroLED/B-protected_v6r/fault-f2-net1.6-s40",
+      "result_sha256": "45b5c4e5fab38327e76a03afd069fc27c8485093d60c1ccddd9d709638129cf8",
+      "manifest_sha256": "b0adb237d0eacddc01545dcc12d26627c8dc07f3d0b07386d4821b37d90058ae",
+      "deck_sha256": "8e8473e2415079ed572a361e8922034696cfa757e0aed31cef0eb20e44697340"
+    },
+    {
+      "source_case": "build/driver-interface-20261115/MicroLED/B-protected_v6r/fault-f2-net1.6-s80",
+      "result_sha256": "07c89ea743a8d0c7cc64067dc672623a0c44f60368adeb6b414942a78a385139",
+      "manifest_sha256": "dbe74331d17064a4aebeacfb493f61dbfa5f911b831d2b9333d3ed157d144256",
+      "deck_sha256": "a194006c279b61cabcd922b5c6f8d0291f4156fa6551ba182cfdd65fdb2ef3b7"
+    }
+  ],
+  "holdout_protocol_sha256": "2bfde070aa1c8273914c5b8ec1fb2ddc35a2ae25c4d285610df3b0d40b8de60b",
+  "holdout_window": [
+    8192,
+    12928
+  ],
+  "no_retuning_after_reveal": true,
+  "allowed_deck_delta": "Only external DATA0/DATA1 stimulus sources and case title; same fault timing, supplies, load, circuitry, solver settings, energy and receiver method."
+}

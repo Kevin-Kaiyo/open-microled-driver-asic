@@ -1,0 +1,30 @@
+{
+  "schema_version": "micro-off-tail-node-diagnostic-v1",
+  "source_case": "build/driver-interface-20261115/MicroLED/B-protected_v6r/fault-f2-net1.6-s40",
+  "result_sha256": "45b5c4e5fab38327e76a03afd069fc27c8485093d60c1ccddd9d709638129cf8",
+  "manifest_sha256": "b0adb237d0eacddc01545dcc12d26627c8dc07f3d0b07386d4821b37d90058ae",
+  "waveform_gzip_sha256": "92053141b396b8a292ea277a8ab0b78832be129202ae5957704e60c6e60aacb1",
+  "raw_sha256": "7fba794d3a9975e135ed28be80686a47d7895e6947399215700d3786277d681d",
+  "native_row_index_zero_based": 294097,
+  "native_time_s": 6.600003339444676e-07,
+  "relative_to_assert_ns": 20.000333944467634,
+  "native_values": {
+    "iled_cond": 8.909743202191266e-08,
+    "led_a": 4.020465822693551,
+    "led_k": 1.867675850693693,
+    "out": 1.867650862912002,
+    "disable": 3.299975570190517,
+    "iso_p": 4.989502145054202,
+    "ready_rc": 3.718815506302319e-07,
+    "data_safe": 1.778000625295857e-08
+  },
+  "derived": {
+    "V_AK_V": 2.152789971999858,
+    "XCLAMP_VGS_V": 1.4322997194968239,
+    "XCLAMP_VSB_V": 1.867675850693693,
+    "I_cond_uA": 0.08909743202191266,
+    "current_margin_to_0p1uA_uA": 0.010902567978087349,
+    "shutdown_deadline_margin_ns": 2.959125514990795
+  },
+  "interpretation": "This is the first native sample at/after the20ns guard and also the largest absolute conduction current within that whole OFF window. The LED voltage has not become zero. The gate drive of XCLAMP is V(DISABLE)-V(LED_K), not3.3V, and positive source/body voltage can alter its effective threshold. VTH/channel current were not separately exported; body-effect/overdrive is a next-step mechanism check, not an isolated proven cause. Below0.1uA remains uncalibrated LED I-V extension. This is not measured leakage/optical extinction."
+}
