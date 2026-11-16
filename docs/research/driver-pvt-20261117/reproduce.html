@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>复现电路、波形和数据</title><style>
+:root{--ink:#223c46;--teal:#20636a;--light:#edf5f4;--rule:#cfdedd;--mute:#526c75}
+*{box-sizing:border-box}body{margin:0;background:#f3f6f5;color:var(--ink);font:16px/1.68 "PingFang SC","Noto Sans CJK SC","Avenir Next",Arial,sans-serif}
+main{max-width:1060px;margin:auto;background:#fff;padding:32px clamp(18px,5vw,60px) 50px}h1,h2,h3{color:var(--teal);line-height:1.35;font-family:"Avenir Next","PingFang SC",sans-serif}
+h1{font-size:clamp(28px,4vw,40px);margin:.3em 0 .45em}h2{font-size:clamp(21px,3vw,28px);margin:1.65em 0 .75em;border-top:1px solid var(--rule);padding-top:.72em}h3{font-size:19px;margin:1.15em 0 .5em}
+p{margin:0 0 0.85em}a{color:var(--teal);overflow-wrap:anywhere}a:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+nav{display:flex;flex-wrap:wrap;gap:5px 20px;padding:10px 0;border-bottom:1px solid var(--rule);margin-bottom:20px;font-size:.88em}
+.table-wrap{overflow:auto;margin:.85em 0 1.1em;max-width:100%}table{width:100%;border-collapse:collapse;font-size:.9em}th,td{padding:.45em .58em;border-bottom:1px solid var(--rule);vertical-align:top;text-align:left}th{background:var(--light);color:var(--teal)}thead{display:table-header-group}
+figure{margin:1.15em 0;text-align:center}figcaption{color:var(--mute);font-size:.88em;text-align:left;margin-top:.35em}img{display:block;margin:auto;max-width:100%;height:auto;max-height:880px}
+code{font-size:.9em;overflow-wrap:anywhere}pre{white-space:pre-wrap;background:var(--light);padding:.65em .8em}blockquote{margin:.8em 0;padding:.5em .8em;border-left:3px solid var(--teal);background:var(--light)}blockquote p{margin:0}
+@media print{@page{size:A4;margin:18mm 19mm 19mm}body{background:#fff;font-size:10.8pt;line-height:1.56;print-color-adjust:exact;-webkit-print-color-adjust:exact}main{max-width:none;padding:0}nav{display:none}h1{font-size:24pt}h2{font-size:15pt;margin-top:1.35em}h3{font-size:12pt}h2,h3{break-after:avoid}figure,tr,.table-wrap{break-inside:avoid}.table-wrap{overflow:visible}figure{margin:.9em 0}img{max-height:137mm}a{text-decoration:none}p,li{orphans:3;widows:3}}
+</style></head>
+<body><main><nav><a href="index.html">返回报告</a></nav><h1 id="_1">复现电路、波形和数据</h1>
+<p>本轮各试验保存相对路径、实际网表、输入身份、执行脚本快照、ngspice 日志和压缩的原生波形。结果汇总在 <code>evidence/driver-pvt-20261117/</code>，仿真原始数据在 <code>build/driver-pvt-20261117/</code>。</p>
+<h2 id="_2">环境与固定输入</h2>
+<p>从本仓库恢复<a href="../driver-interface-20261115/reproduce.html">上一阶段交付</a>列出的历史原始输入，尤其是 <code>MicroLED/A-protected_v3r</code>、<code>MicroLED/B-protected_v6r</code> 和 <code>VCSEL/single-phy12</code>。使用 Python 3.12、NumPy 和 ngspice 47/KLU。参考工作区的解释器为 <code>build/layout/venv/bin/python</code>。报告册用 Python-Markdown、Playwright 和 Chrome 构建。</p>
+<p>MicroLED 冻结输入使用先前物理环境中的 GF180 模型接口，VCSEL 使用原版子电路名的锁定模型。两者有同名 <code>.ngspice</code> 文件，实际字节和器件命名不同。按各案例 manifest 的 SHA-256 恢复。完整物理 PDK 和运行环境遵循各自的安装与许可证说明。<a href="../../../evidence/driver-pvt-20261117/model-dependencies.json">模型依赖清单</a>列有排除模型的路径示例和身份。</p>
+<h2 id="_3">检查恢复内容</h2>
+<p>将本阶段 Release 的分卷放入 <code>release-assets/</code>，在仓库根目录运行下列命令。恢复器检查全部归档成员，并在目标路径已有不同内容时停止。</p>
+<pre><code class="language-sh">python scripts/backup/release_bundle.py verify \
+  --manifest evidence/driver-pvt-20261117/raw-backup-manifest.json \
+  --asset-dir release-assets
+python scripts/backup/release_bundle.py restore \
+  --manifest evidence/driver-pvt-20261117/raw-backup-manifest.json \
+  --asset-dir release-assets --root .
+python scripts/driver_pvt_20261117/restore_inputs.py \
+  --model-dir /path/to/matching/MicroLED-PDK \
+  --model-dir /path/to/matching/VCSEL-PDK
+</code></pre>
+<p>恢复命令按 SHA-256 选用两套输入模型，并重建 VCSEL 各工况到共享 <code>_inputs/</code> 的相对链接。两个模型目录各提供 matching <code>design.ngspice</code> 和 <code>sm141064.ngspice</code>。如原案例模型目录仍在，可直接使用它们。先加 <code>--check-only</code> 可核对计划与冲突。</p>
+<p>原始字节恢复后，可重新核对溯源及固化条件。这里的审计通过表示数据、网表和输入身份一致，功能是否通过请看每例独立报告。</p>
+<pre><code class="language-sh">python scripts/driver_pvt_20261117/validate.py --rehash-uncompressed
+python scripts/driver_pvt_20261117/led_voltage_budget.py
+python scripts/driver_pvt_20261117/clamp_probe.py
+python scripts/driver_pvt_20261117/plot_clamp.py
+</code></pre>
+<h2 id="_4">原生数据和评分</h2>
+<p>每例 <code>testbench.spice</code> 可在原病例目录由 <code>ngspice -b testbench.spice</code> 运行。独立复跑先复制到独立的输出树并保留包含文件相对路径，避免覆盖原生记录。短窗只用于机制验证。完整帧使用固定 4736 线路位与 4096 有效评分位。A/B 的保护窗保留持续翻转，恢复量由故障前已有的采样相位评估。功耗统计覆盖网表边界内所有源端口，返还能量单独记录。</p>
+<h2 id="_5">更新报告</h2>
+<pre><code class="language-sh">python scripts/driver_pvt_20261117/render_html.py
+node scripts/driver_pvt_20261117/print_report.mjs /path/to/playwright/index.mjs /path/to/Chrome
+</code></pre>
+<p>报告源是 <code>README.md</code>。波形预览以静态 PNG 供 PDF/网页阅读，原生网表和数值证据可独立审核。</p></main></body></html>

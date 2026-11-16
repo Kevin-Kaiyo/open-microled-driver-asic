@@ -1,0 +1,11 @@
+{
+  "schema": "vcsel-pvt-controlled-experiment-v1",
+  "scope": "Frozen Nov15 12/24um finite CMOS input stage; only the command-to-gate series resistance may change in the first physical experiment.",
+  "observed_trigger": {
+    "sshotlow": "1024-bit native minimum d_src=-0.3398034937753V with falling db_cmd=0.922667V, VPHY=3.134465V; upstream NMOS body screen fails.",
+    "tthigh": "1024-bit upstream PMOS maximum |VDS|=3.7042543486393V; positive rail and negative output excursion sum above3.63V."
+  },
+  "hypothesis": "The short falling command edge couples charge through upstream MOS gate-drain capacitance while its complementary output pull-up has not restored the node. Series gate resistance may reduce dVgate/dt and the negative kick, with a delay and short-circuit-energy tradeoff. This is a mechanism hypothesis tested by a controlled change; no claim of a separately extracted Cgd measurement.",
+  "first_variant": "cmd-r100: both CMOS command gate nets receive100ohm. All MOS W/L, external50ohm, internal150ohm,2.5kohm pulldowns and source/load/RX remain fixed. The20ps PWL stays at its original source; its energy remains inside the8-port boundary.",
+  "selection": "Measure all-MOS terminal/body stress and emitter current over the same short frame. Then full4736-bit/4096-payload reception at discriminating corners; no short-frame BER or receiver-pass claim. Preserve failing100ohm and any further declared resistance trials."
+}

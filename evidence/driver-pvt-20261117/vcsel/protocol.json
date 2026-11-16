@@ -1,0 +1,83 @@
+{
+  "schema": "vcsel-pvt-protocol-v1",
+  "grid": {
+    "tt25": {
+      "section": "typical",
+      "temp_C": 25,
+      "rail_scale": 1
+    },
+    "ttcold": {
+      "section": "typical",
+      "temp_C": -40,
+      "rail_scale": 1
+    },
+    "tthot": {
+      "section": "typical",
+      "temp_C": 85,
+      "rail_scale": 1
+    },
+    "ttlow": {
+      "section": "typical",
+      "temp_C": 25,
+      "rail_scale": 0.95
+    },
+    "tthigh": {
+      "section": "typical",
+      "temp_C": 25,
+      "rail_scale": 1.05
+    },
+    "sshotlow": {
+      "section": "ss",
+      "temp_C": 85,
+      "rail_scale": 0.95
+    },
+    "ffcoldhigh": {
+      "section": "ff",
+      "temp_C": -40,
+      "rail_scale": 1.05
+    },
+    "sfhotlow": {
+      "section": "sf",
+      "temp_C": 85,
+      "rail_scale": 0.95
+    },
+    "fscoldhigh": {
+      "section": "fs",
+      "temp_C": -40,
+      "rail_scale": 1.05
+    }
+  },
+  "baseline": "build/driver-interface-20261115/VCSEL/single-phy12/net8.8-s40",
+  "baseline_manifest_sha256": "f87cea13b46e23a4bb10055a2eb48dec539d4352c1c239aa34b7a0ae6f5396f1",
+  "baseline_driver_sha256": "799fe48da876842a367093906241d2fe48f1989c2df6b0c38f43993b2458144f",
+  "swept_sources": [
+    "VLASER",
+    "VDD",
+    "VREF",
+    "VPHY"
+  ],
+  "fixed_sources": {
+    "VSET": 0.15,
+    "VREGSET": 0.3263157894736842,
+    "VD_VDB_high": 3.3,
+    "command_edge_ps": 20
+  },
+  "short_line_bits": 1024,
+  "full_line_bits": 4736,
+  "payload_bits": 4096,
+  "net_rates_Gbps": [
+    8.8,
+    6.4
+  ],
+  "dc_error_percent": 1,
+  "body_forward_limit_V": 0.3,
+  "terminal_limit_V": 3.63,
+  "current_domain_mA": [
+    2,
+    7.5
+  ],
+  "RX_GHz": 5,
+  "amplitude_margin_uAeq": 7.5,
+  "timing_margin_UI": 0.37,
+  "scope": "MOS process/.temp and 3.3V source sweep with fixed25C emitter graph I-V/optical model,150fF,0.5ohm/0.2nH. Ideal passive values and VSET/VREGSET precision boundaries do not vary. Not full emitter temperature, resistor tolerance, PHY conformity or statistical BER. Short1024-bit probes never claim payload RX performance."
+}

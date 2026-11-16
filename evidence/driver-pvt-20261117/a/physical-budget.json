@@ -1,0 +1,47 @@
+{
+  "source_LED_sha256": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+  "equations": [
+    "HSENSE=a*VH+bH*VREF with a=0.25 and bH=(1/RH_REF)/1uS",
+    "HSET=a*LEDREF; ideal servo therefore LEDREF-VH=(bH/a)*VREF",
+    "VLED_AK=LEDREF-Vrail-I*(R_ISO+R_OUT+RPKG) approximately, with state-dependent R_OUT and nonlinear MOS R_ISO",
+    "Finite OTA input error is divided by a; current accuracy also depends on reference and matching of passive ratios."
+  ],
+  "targets": [
+    {
+      "target_uA": 25.0,
+      "voltage_V": 3.361339464285714,
+      "local_dV_dI_ohm": 10767.857142857245,
+      "minus1percent_voltage_mV": -2.6919642857139436,
+      "plus1percent_voltage_mV": 2.6919642857143877,
+      "reference_0p1percent_error_linearized_current_error_percent": 1.2486567827528903,
+      "interpretation": "The ±1% interval is mathematical interpolation of the same LED table, not evidence that the measured I-V or current can be known to ±1%."
+    },
+    {
+      "target_uA": 100.0,
+      "voltage_V": 3.767909545454545,
+      "local_dV_dI_ohm": 2954.545454545433,
+      "minus1percent_voltage_mV": -2.954545454544988,
+      "plus1percent_voltage_mV": 2.8284181818185594,
+      "reference_0p1percent_error_linearized_current_error_percent": 1.2752924615384706,
+      "interpretation": "The ±1% interval is mathematical interpolation of the same LED table, not evidence that the measured I-V or current can be known to ±1%."
+    }
+  ],
+  "load_thermal_scope": "Table independent of .temp; no VCSEL/MicroLED junction self-heating in these cases.",
+  "selected_calibration": {
+    "RH_ohm": 2970600.0,
+    "RL_ohm": 2646300.0
+  },
+  "geometry_change": {
+    "output_MOS_W_multiplier": 4,
+    "OTA_input_pair_W_multiplier": 5,
+    "output_channel_area_before_um2": 7.2016,
+    "output_channel_area_after_um2": 28.8064,
+    "OTA_input_pair_channel_area_before_um2": 320,
+    "OTA_input_pair_channel_area_after_um2": 1600,
+    "scope": "Sum W*L only, not die area, device active area, capacitance extraction or placement footprint."
+  },
+  "net_Gbps": 1.6,
+  "line_Gbps": 1.85,
+  "line_UI_ps": 540.5405405405405,
+  "transient_gate": "All waveforms preserve optical200ps and RX1GHz, 7.5uAeq amplitude and0.37lineUI timing; off<=0.1uA after20ns and recovery<=1us with>=1us verified observation."
+}

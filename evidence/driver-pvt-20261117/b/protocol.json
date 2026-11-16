@@ -1,0 +1,84 @@
+{
+  "schema": "b-pvt-protocol-v1",
+  "baseline": "B-protected_v6r, previous 20261115 frozen implementation, 39 MOS",
+  "grid": {
+    "tt": [
+      "typical",
+      27,
+      1.0
+    ],
+    "tt_cold": [
+      "typical",
+      -40,
+      1.0
+    ],
+    "tt_hot": [
+      "typical",
+      85,
+      1.0
+    ],
+    "tt_low": [
+      "typical",
+      27,
+      0.95
+    ],
+    "tt_high": [
+      "typical",
+      27,
+      1.05
+    ],
+    "ss_hot_low": [
+      "ss",
+      85,
+      0.95
+    ],
+    "ff_cold_high": [
+      "ff",
+      -40,
+      1.05
+    ],
+    "sf_hot_low": [
+      "sf",
+      85,
+      0.95
+    ],
+    "fs_cold_high": [
+      "fs",
+      -40,
+      1.05
+    ]
+  },
+  "rail_definition": "VIN=VDD=3.3V*s; VLED=5V*s; DATA and DISABLE high=VDD. Independent VREF fixed2.5V. Original supply R/L/C retained.",
+  "resistors": "PDK res_typical unchanged; PDK poly temperature behavior follows .temp. Ideal RSET/dividers/explicit100kohm have no inferred temperature coefficient. Independent resistor process corners not claimed.",
+  "LED_temperature": "Static traceable yellow20um IV has unspecified source measurement temperature and no temperature scaling. IV,C=200fF,L=0.5nH,R=1ohm, optical tau=200ps,RX1GHz fixed in every corner; changing .temp affects PDK MOS/poly, not LED.",
+  "rate_net_Gbps": 1.6,
+  "DC_target_uA": [
+    25,
+    100
+  ],
+  "DC_relative_error_limit": 0.01,
+  "Rx": {
+    "amplitude_uAeq": 7.5,
+    "timing_line_UI": 0.37,
+    "decision_uAeq": 62.5
+  },
+  "shutdown": {
+    "threshold_uA": 0.1,
+    "guard_ns": 20,
+    "recovery_ns": 1000,
+    "remaining_observation_ns": 1000
+  },
+  "stress": {
+    "03v3_pair_V": 3.63,
+    "06v0_pair_V": 6,
+    "forward_body_V": 0.3
+  },
+  "diagnostics": {
+    "assert": "local32ns off,96ns total; original DATA slice608..704ns, DC initialization at first DATA value",
+    "release": "local32ns release,160ns total; original DATA slice1248..1408ns, off-state DC initialization",
+    "scope": "No full reception or periodic-state claim. Initial OP differs from prior continuous history. Full original0.64us/1.28us fault phase required for protocol results."
+  },
+  "first_mechanism": "Inspect actual XCLAMP VGS,VSB,Vth,id versus CLED charge removal and output headroom. First isolated candidate connects existing6V XCLAMP gate to5V level-shifter iso_g instead of3.3V DISABLE; retain all widths, source resistances and READY. Measure any stress/normal-energy/recovery tradeoff.",
+  "measurement": "BSIM internal id,vth,vdsat saved observationally; id is model drain-current output, not a newly inserted ideal branch or blanket channel-only claim. Full MOS node inventory retained for native stress checks.",
+  "source_sha256": "c533ba8fd90fadf5a24e9013ff9ad787cf30010230071cda8901bf6d0fb04760"
+}

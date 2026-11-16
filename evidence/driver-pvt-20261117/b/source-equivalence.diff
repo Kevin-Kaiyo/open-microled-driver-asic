@@ -1,0 +1,46 @@
+--- actual-loaded-source
++++ later-disk-snapshot
+@@ -29,7 +29,7 @@
+    if variant in ['unit_long','unit_long_trim']:
+     s=re.sub(r'(?m)^XREF .+$',prior.mos('XREF','BIAS','BIAS','VSS','VSS','nfet_03v3',w,l),s);s=re.sub(r'(?m)^XBASE .+$',prior.mos('XBASE','OUT','BIAS','VSS','VSS','nfet_03v3',w,l),s)
+    p.write_text(s)
+- source_name='DC-L'+str(level) if mode=='dc' else ('continuous-f4-net1.6-s40' if mode=='continuous' else 'fault-f2-net1.6-s40')
++ source_name='DC-L'+str(level) if mode=='dc' else ('continuous-f4-net1.6-s40' if mode in ['continuous','normal1'] else 'fault-f2-net1.6-s40')
+  source=OLD/source_name;text=(source/'testbench.spice').read_text();m=copy.deepcopy(read(source/'manifest.json'));m['case'].update(name=folder.name,variant=variant,pvt_key=grid,corner=corner,temp_C=temp,rail_scale=scale,vdd_V=3.3*scale,vin_V=3.3*scale,steps_per_symbol=steps)
+  if mode!='dc':m['case']['mode']='fault' if mode=='full' else mode
+  text=re.sub(r'(?m)^\.lib (.+) typical$',r'.lib \1 '+corner,text);text=re.sub(r'(?m)^\.temp .+$',f'.temp {temp}',text)
+@@ -43,7 +43,8 @@
+    text=text.replace(line,'VD0 data0_src 0 '+pwl_window(line,start,end,scale));cmd=f'PWL(0 0 32n 0 33n {3.3*scale:.16g} {end:.16g} {3.3*scale:.16g})' if mode=='assert' else f'PWL(0 {3.3*scale:.16g} 32n {3.3*scale:.16g} 33n 0 {end:.16g} 0)'
+    text=re.sub(r'(?m)^VDISABLE disable_src 0 .+$','VDISABLE disable_src 0 '+cmd,text);m['diagnostic']={'edge_s':32e-9,'old_absolute_input_start_s':start,'end_s':end,'scope':'Short local DC-initialized diagnostic using exact old PRBS segment. Not original history, full receiver, continuous-energy or protocol qualification.'}
+   else:
+-   end=10.24e-6 if mode=='continuous' else 5.12e-6;text=text.replace(line,'VD0 data0_src 0 '+pwl_window(line,0,end,scale))
++   end=10.24e-6 if mode=='continuous' else (2.56e-6 if mode=='normal1' else 5.12e-6);text=text.replace(line,'VD0 data0_src 0 '+pwl_window(line,0,end,scale))
++   if mode=='normal1':m['frames']=1;m['case']['frames']=1
+    if mode=='full':text=re.sub(r'(?m)^VDISABLE disable_src 0 .+$',f'VDISABLE disable_src 0 PWL(0 0 6.4e-7 0 6.41e-7 {3.3*scale:.16g} 1.28e-6 {3.3*scale:.16g} 1.281e-6 0 5.12e-6 0)',text)
+   step=prior.ETA/1.6e9/steps;text=re.sub(r'(?m)^tran .+$',f'tran {step:.16g} {end:.16g} 0 {step:.16g}',text);m['end_s']=end
+  if variant.startswith('clamp5v'):
+@@ -123,15 +124,22 @@
+    if mode=='dc':
+     r['model_operating_quantities']={n:{'value':float(a[-1,m['vectors'][n]]),'unit':'A' if n.endswith('_id') else 'V'} for n in m['internal_model_quantities']}
+     for n in m['internal_model_quantities']:r['nodes_V'].pop(n,None)
++   elif mode not in ['assert','release']:
++    p=folder/'preview.npz';z=dict(np.load(p));indices=np.searchsorted(a[:,0],z['time_s'])
++    for n in ['clamp_g','data_buffered','ib1',*m['internal_model_quantities']]:
++     if n in m['vectors']:z[n]=a[indices,m['vectors'][n]]
++    np.savez_compressed(p,**z)
+   except Exception as e:r['analysis_error']=repr(e)
+  if raw.exists():
+   r['raw_sha256']=sha(raw)
+   with raw.open('rb') as src,gzip.open(folder/'waveform.dat.gz','wb',compresslevel=5) as dst:shutil.copyfileobj(src,dst)
+   with gzip.open(folder/'waveform.dat.gz','rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==r['raw_sha256']
+   r.update(gzip_sha256=sha(folder/'waveform.dat.gz'),gzip_bytes=(folder/'waveform.dat.gz').stat().st_size);raw.unlink()
+- r.update(log_sha256=sha(folder/'ngspice.log'),elapsed_s=time.monotonic()-clock);emit(folder/'result.json',r)
++ r.update(log_sha256=sha(folder/'ngspice.log'),elapsed_s=time.monotonic()-clock)
++ if (folder/'preview.npz').exists():r['preview_sha256']=sha(folder/'preview.npz')
++ emit(folder/'result.json',r)
+  print('DONE',variant,folder.name,r['simulation_ok'],r.get('analysis_error'),r.get('current_uA'),r.get('body_forward_V'),r.get('shutdown',{}).get('max_abs_current_uA'),flush=True);return r
+ if __name__=='__main__':
+- p=argparse.ArgumentParser();p.add_argument('variant',choices=['baseline','clamp5v','clamp5v_r1k','clamp5v_delayed','clamp5v_delay200','clamp5v_buffer','unit_tail','unit_long','unit_long_trim']);p.add_argument('--grid',default='tt');p.add_argument('--mode',choices=['dc','assert','release','full','continuous'],default='assert');p.add_argument('--steps',type=int,default=40);a=p.parse_args()
++ p=argparse.ArgumentParser();p.add_argument('variant',choices=['baseline','clamp5v','clamp5v_r1k','clamp5v_delayed','clamp5v_delay200','clamp5v_buffer','unit_tail','unit_long','unit_long_trim']);p.add_argument('--grid',default='tt');p.add_argument('--mode',choices=['dc','assert','release','full','continuous','normal1'],default='assert');p.add_argument('--steps',type=int,default=40);a=p.parse_args()
+  for grid in GRID if a.grid=='all' else a.grid.split(','):
+   for lev in [0,1] if a.mode=='dc' else [None]:run(a.variant,grid,a.mode,lev,a.steps)

@@ -1,0 +1,1520 @@
+{
+  "case": "net6.4-s40",
+  "net_Gbps": 8.8,
+  "line_GBd": 10.175,
+  "UI_ps": 98.28009828009829,
+  "source_edge_ps_0_to_100": 20,
+  "steps_per_UI": 40,
+  "frame_bits": 4736,
+  "attempted_payload_bits": null,
+  "end_s": 4.6545454545454546e-07,
+  "scope": "MOS process/.temp and 3.3V source sweep with fixed25C emitter graph I-V/optical model,150fF,0.5ohm/0.2nH. Ideal passive values and VSET/VREGSET precision boundaries do not vary. Not full emitter temperature, resistor tolerance, PHY conformity or statistical BER. Short1024-bit probes never claim payload RX performance.",
+  "original_deck_sha256": "b43fe2618cca9575a3c0f8ec5f4876135fbb2e657ac8037f3894f1e9d085289e",
+  "deck_sha256": "54ab804441ada8625247b4d2000edb01ab6fbcd3558178b0684174d3c5f40652",
+  "baseline_result_sha256": "697a8779ef312c5bd36586c6b0177fb5c4cf9759df32f04017da26215d948239",
+  "source_sha256": {
+    "design.ngspice": "8d9721a5bf8f079d3fddbd03339af9a0c84d4feb06db8e06465fbd02c7500508",
+    "sm141064.ngspice": "73fc67d38747d95ce03f3c2ba5f0a25c98f56a293363a9df4c971a3a28a3dcda",
+    "vcsel.spice": "7ed34d124b85230c15b4914407dbac0761103879ced25b1bb3794fb0e2d90beb",
+    "driver.spice": "799fe48da876842a367093906241d2fe48f1989c2df6b0c38f43993b2458144f"
+  },
+  "stimulus_sha256": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+  "expressions": [
+    "v(jmon)",
+    "v(d_src)",
+    "v(db_src)",
+    "v(laser_c)",
+    "v(laser_src)",
+    "v(out)",
+    "v(ref_src)",
+    "v(regset_src)",
+    "v(set_src)",
+    "v(vc_a)",
+    "v(vc_k)",
+    "v(vdd)",
+    "v(vdd_c)",
+    "v(vdd_src)",
+    "v(vl)",
+    "v(vlaser)",
+    "v(vref)",
+    "v(vregset)",
+    "v(vset)",
+    "v(xdrv.abias)",
+    "v(xdrv.bctrl)",
+    "v(xdrv.bn1)",
+    "v(xdrv.bn2)",
+    "v(xdrv.bs)",
+    "v(xdrv.btail)",
+    "v(xdrv.dbi)",
+    "v(xdrv.dcap)",
+    "v(xdrv.dctrl)",
+    "v(xdrv.dfb)",
+    "v(xdrv.di)",
+    "v(xdrv.dn1)",
+    "v(xdrv.dn2)",
+    "v(xdrv.dpb)",
+    "v(xdrv.dr)",
+    "v(xdrv.dtail)",
+    "v(xdrv.dummy)",
+    "v(xdrv.dzc)",
+    "v(xdrv.gn)",
+    "v(xdrv.gp)",
+    "v(xdrv.lcap)",
+    "v(xdrv.lctrl)",
+    "v(xdrv.lfb)",
+    "v(xdrv.ln1)",
+    "v(xdrv.ln2)",
+    "v(xdrv.lpb)",
+    "v(xdrv.ltail)",
+    "v(xdrv.lzc)",
+    "v(xdrv.sbase)",
+    "v(xdrv.stail)",
+    "v(xdrv.tctrl)",
+    "v(xdrv.tn1)",
+    "v(xdrv.tn2)",
+    "v(xdrv.ts)",
+    "v(xdrv.ttail)",
+    "v(xdrv.vx)",
+    "i(VLASER)",
+    "i(VDD)",
+    "i(VREF)",
+    "i(VD)",
+    "i(VDB)",
+    "i(VSET)",
+    "i(VREGSET)",
+    "i(v.xdrv.vibase)",
+    "i(v.xdrv.vitail)",
+    "v(d_cmd)",
+    "v(db_cmd)",
+    "v(phy_src)",
+    "v(phy_r)",
+    "v(vphy)",
+    "v(phy_c)",
+    "v(d)",
+    "v(db)",
+    "i(VPHY)",
+    "v(phy_d_gate)",
+    "v(phy_db_gate)"
+  ],
+  "ports": {
+    "VLASER": "laser_src",
+    "VDD": "vdd_src",
+    "VREF": "ref_src",
+    "VD": "d_cmd",
+    "VDB": "db_cmd",
+    "VSET": "set_src",
+    "VREGSET": "regset_src",
+    "VPHY": "phy_src"
+  },
+  "devices": [
+    {
+      "instance": "XLB_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.lpb",
+        "xdrv.lpb",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=10.0u",
+        "l=2u",
+        "ad=4.4p",
+        "as=4.4p",
+        "pd=20.88u",
+        "ps=20.88u"
+      ]
+    },
+    {
+      "instance": "XLT_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.ltail",
+        "xdrv.lpb",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=10.0u",
+        "l=2u",
+        "ad=4.4p",
+        "as=4.4p",
+        "pd=20.88u",
+        "ps=20.88u"
+      ]
+    },
+    {
+      "instance": "XLP1_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.ln1",
+        "vregset",
+        "xdrv.ltail",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XLP1_1",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.ln1",
+        "vregset",
+        "xdrv.ltail",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XLP2_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.ln2",
+        "xdrv.lfb",
+        "xdrv.ltail",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XLP2_1",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.ln2",
+        "xdrv.lfb",
+        "xdrv.ltail",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XLN1_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.ln1",
+        "xdrv.ln1",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=32.0u",
+        "l=8u",
+        "ad=14.08p",
+        "as=14.08p",
+        "pd=64.88u",
+        "ps=64.88u"
+      ]
+    },
+    {
+      "instance": "XLN2_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.ln2",
+        "xdrv.ln1",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=32.0u",
+        "l=8u",
+        "ad=14.08p",
+        "as=14.08p",
+        "pd=64.88u",
+        "ps=64.88u"
+      ]
+    },
+    {
+      "instance": "XLNS_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.lctrl",
+        "xdrv.ln2",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=20.0u",
+        "l=1u",
+        "ad=8.8p",
+        "as=8.8p",
+        "pd=40.88u",
+        "ps=40.88u"
+      ]
+    },
+    {
+      "instance": "XLPL_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.lctrl",
+        "xdrv.lpb",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=20.0u",
+        "l=2u",
+        "ad=8.8p",
+        "as=8.8p",
+        "pd=40.88u",
+        "ps=40.88u"
+      ]
+    },
+    {
+      "instance": "XLPASS_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "vl",
+        "xdrv.lctrl",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XLPASS_1",
+      "model": "pmos_3p3",
+      "nodes": [
+        "vl",
+        "xdrv.lctrl",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XLPASS_2",
+      "model": "pmos_3p3",
+      "nodes": [
+        "vl",
+        "xdrv.lctrl",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XLPASS_3",
+      "model": "pmos_3p3",
+      "nodes": [
+        "vl",
+        "xdrv.lctrl",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XLPASS_4",
+      "model": "pmos_3p3",
+      "nodes": [
+        "vl",
+        "xdrv.lctrl",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XLPASS_5",
+      "model": "pmos_3p3",
+      "nodes": [
+        "vl",
+        "xdrv.lctrl",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XLPASS_6",
+      "model": "pmos_3p3",
+      "nodes": [
+        "vl",
+        "xdrv.lctrl",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XLPASS_7",
+      "model": "pmos_3p3",
+      "nodes": [
+        "vl",
+        "xdrv.lctrl",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XLPASS_8",
+      "model": "pmos_3p3",
+      "nodes": [
+        "vl",
+        "xdrv.lctrl",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XLPASS_9",
+      "model": "pmos_3p3",
+      "nodes": [
+        "vl",
+        "xdrv.lctrl",
+        "vlaser",
+        "vlaser"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XDB_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dpb",
+        "xdrv.dpb",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=10.0u",
+        "l=2u",
+        "ad=4.4p",
+        "as=4.4p",
+        "pd=20.88u",
+        "ps=20.88u"
+      ]
+    },
+    {
+      "instance": "XDT_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dtail",
+        "xdrv.dpb",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=10.0u",
+        "l=2u",
+        "ad=4.4p",
+        "as=4.4p",
+        "pd=20.88u",
+        "ps=20.88u"
+      ]
+    },
+    {
+      "instance": "XDP1_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dn1",
+        "vregset",
+        "xdrv.dtail",
+        "vdd"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XDP1_1",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dn1",
+        "vregset",
+        "xdrv.dtail",
+        "vdd"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XDP2_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dn2",
+        "xdrv.dfb",
+        "xdrv.dtail",
+        "vdd"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XDP2_1",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dn2",
+        "xdrv.dfb",
+        "xdrv.dtail",
+        "vdd"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XDN1_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.dn1",
+        "xdrv.dn1",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=32.0u",
+        "l=8u",
+        "ad=14.08p",
+        "as=14.08p",
+        "pd=64.88u",
+        "ps=64.88u"
+      ]
+    },
+    {
+      "instance": "XDN2_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.dn2",
+        "xdrv.dn1",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=32.0u",
+        "l=8u",
+        "ad=14.08p",
+        "as=14.08p",
+        "pd=64.88u",
+        "ps=64.88u"
+      ]
+    },
+    {
+      "instance": "XDNS_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.dctrl",
+        "xdrv.dn2",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=20.0u",
+        "l=1u",
+        "ad=8.8p",
+        "as=8.8p",
+        "pd=40.88u",
+        "ps=40.88u"
+      ]
+    },
+    {
+      "instance": "XDPL_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dctrl",
+        "xdrv.dpb",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=20.0u",
+        "l=2u",
+        "ad=8.8p",
+        "as=8.8p",
+        "pd=40.88u",
+        "ps=40.88u"
+      ]
+    },
+    {
+      "instance": "XDPASS_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dr",
+        "xdrv.dctrl",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XDPASS_1",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dr",
+        "xdrv.dctrl",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XDPASS_2",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dr",
+        "xdrv.dctrl",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XDPASS_3",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dr",
+        "xdrv.dctrl",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XDPASS_4",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dr",
+        "xdrv.dctrl",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XDPASS_5",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dr",
+        "xdrv.dctrl",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XDPASS_6",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dr",
+        "xdrv.dctrl",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XDPASS_7",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dr",
+        "xdrv.dctrl",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XDPASS_8",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dr",
+        "xdrv.dctrl",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XDPASS_9",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.dr",
+        "xdrv.dctrl",
+        "vdd",
+        "vdd"
+      ],
+      "parameters": [
+        "w=100.0u",
+        "l=0.28u",
+        "ad=44.0p",
+        "as=44.0p",
+        "pd=200.88u",
+        "ps=200.88u"
+      ]
+    },
+    {
+      "instance": "XAB_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.abias",
+        "xdrv.abias",
+        "vref",
+        "vref"
+      ],
+      "parameters": [
+        "w=10.0u",
+        "l=2u",
+        "ad=4.4p",
+        "as=4.4p",
+        "pd=20.88u",
+        "ps=20.88u"
+      ]
+    },
+    {
+      "instance": "XBT_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.btail",
+        "xdrv.abias",
+        "vref",
+        "vref"
+      ],
+      "parameters": [
+        "w=10.0u",
+        "l=2u",
+        "ad=4.4p",
+        "as=4.4p",
+        "pd=20.88u",
+        "ps=20.88u"
+      ]
+    },
+    {
+      "instance": "XBP1_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.bn1",
+        "xdrv.sbase",
+        "xdrv.btail",
+        "vref"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XBP1_1",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.bn1",
+        "xdrv.sbase",
+        "xdrv.btail",
+        "vref"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XBP2_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.bn2",
+        "vset",
+        "xdrv.btail",
+        "vref"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XBP2_1",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.bn2",
+        "vset",
+        "xdrv.btail",
+        "vref"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XBN1_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.bn1",
+        "xdrv.bn1",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=32.0u",
+        "l=8u",
+        "ad=14.08p",
+        "as=14.08p",
+        "pd=64.88u",
+        "ps=64.88u"
+      ]
+    },
+    {
+      "instance": "XBN2_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.bn2",
+        "xdrv.bn1",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=32.0u",
+        "l=8u",
+        "ad=14.08p",
+        "as=14.08p",
+        "pd=64.88u",
+        "ps=64.88u"
+      ]
+    },
+    {
+      "instance": "XBNS_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.bctrl",
+        "xdrv.bn2",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=20.0u",
+        "l=1u",
+        "ad=8.8p",
+        "as=8.8p",
+        "pd=40.88u",
+        "ps=40.88u"
+      ]
+    },
+    {
+      "instance": "XBPL_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.bctrl",
+        "xdrv.abias",
+        "vref",
+        "vref"
+      ],
+      "parameters": [
+        "w=20.0u",
+        "l=2u",
+        "ad=8.8p",
+        "as=8.8p",
+        "pd=40.88u",
+        "ps=40.88u"
+      ]
+    },
+    {
+      "instance": "XTT_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.ttail",
+        "xdrv.abias",
+        "vref",
+        "vref"
+      ],
+      "parameters": [
+        "w=10.0u",
+        "l=2u",
+        "ad=4.4p",
+        "as=4.4p",
+        "pd=20.88u",
+        "ps=20.88u"
+      ]
+    },
+    {
+      "instance": "XTP1_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.tn1",
+        "xdrv.stail",
+        "xdrv.ttail",
+        "vref"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XTP1_1",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.tn1",
+        "xdrv.stail",
+        "xdrv.ttail",
+        "vref"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XTP2_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.tn2",
+        "vset",
+        "xdrv.ttail",
+        "vref"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XTP2_1",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.tn2",
+        "vset",
+        "xdrv.ttail",
+        "vref"
+      ],
+      "parameters": [
+        "w=64.0u",
+        "l=8u",
+        "ad=28.16p",
+        "as=28.16p",
+        "pd=128.88u",
+        "ps=128.88u"
+      ]
+    },
+    {
+      "instance": "XTN1_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.tn1",
+        "xdrv.tn1",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=32.0u",
+        "l=8u",
+        "ad=14.08p",
+        "as=14.08p",
+        "pd=64.88u",
+        "ps=64.88u"
+      ]
+    },
+    {
+      "instance": "XTN2_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.tn2",
+        "xdrv.tn1",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=32.0u",
+        "l=8u",
+        "ad=14.08p",
+        "as=14.08p",
+        "pd=64.88u",
+        "ps=64.88u"
+      ]
+    },
+    {
+      "instance": "XTNS_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.tctrl",
+        "xdrv.tn2",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=20.0u",
+        "l=1u",
+        "ad=8.8p",
+        "as=8.8p",
+        "pd=40.88u",
+        "ps=40.88u"
+      ]
+    },
+    {
+      "instance": "XTPL_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.tctrl",
+        "xdrv.abias",
+        "vref",
+        "vref"
+      ],
+      "parameters": [
+        "w=20.0u",
+        "l=2u",
+        "ad=8.8p",
+        "as=8.8p",
+        "pd=40.88u",
+        "ps=40.88u"
+      ]
+    },
+    {
+      "instance": "XBASE0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.bs",
+        "xdrv.bctrl",
+        "xdrv.sbase",
+        "0"
+      ],
+      "parameters": [
+        "w={WBASE}",
+        "l=1u",
+        "ad={WBASE*.44u}",
+        "as={WBASE*.44u}",
+        "pd={2*(WBASE+.44u)}",
+        "ps={2*(WBASE+.44u)}"
+      ]
+    },
+    {
+      "instance": "XTAIL0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.ts",
+        "xdrv.tctrl",
+        "xdrv.stail",
+        "0"
+      ],
+      "parameters": [
+        "w={WTAIL}",
+        "l=.28u",
+        "ad={WTAIL*.44u}",
+        "as={WTAIL*.44u}",
+        "pd={2*(WTAIL+.44u)}",
+        "ps={2*(WTAIL+.44u)}"
+      ]
+    },
+    {
+      "instance": "XBASE1",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.bs",
+        "xdrv.bctrl",
+        "xdrv.sbase",
+        "0"
+      ],
+      "parameters": [
+        "w={WBASE}",
+        "l=1u",
+        "ad={WBASE*.44u}",
+        "as={WBASE*.44u}",
+        "pd={2*(WBASE+.44u)}",
+        "ps={2*(WBASE+.44u)}"
+      ]
+    },
+    {
+      "instance": "XTAIL1",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.ts",
+        "xdrv.tctrl",
+        "xdrv.stail",
+        "0"
+      ],
+      "parameters": [
+        "w={WTAIL}",
+        "l=.28u",
+        "ad={WTAIL*.44u}",
+        "as={WTAIL*.44u}",
+        "pd={2*(WTAIL+.44u)}",
+        "ps={2*(WTAIL+.44u)}"
+      ]
+    },
+    {
+      "instance": "XSTEER_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "out",
+        "xdrv.gp",
+        "xdrv.vx",
+        "0"
+      ],
+      "parameters": [
+        "w=20u",
+        "l=0.28u",
+        "ad=8.8p",
+        "as=8.8p",
+        "pd=40.88u",
+        "ps=40.88u"
+      ]
+    },
+    {
+      "instance": "XDUMP_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.dummy",
+        "xdrv.gn",
+        "xdrv.vx",
+        "0"
+      ],
+      "parameters": [
+        "w=20u",
+        "l=0.28u",
+        "ad=8.8p",
+        "as=8.8p",
+        "pd=40.88u",
+        "ps=40.88u"
+      ]
+    },
+    {
+      "instance": "XBP2N_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.gp",
+        "xdrv.dbi",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=12.0u",
+        "l=0.28u",
+        "ad=5.28p",
+        "as=5.28p",
+        "pd=24.88u",
+        "ps=24.88u"
+      ]
+    },
+    {
+      "instance": "XBP2P_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.gp",
+        "xdrv.dbi",
+        "xdrv.dr",
+        "xdrv.dr"
+      ],
+      "parameters": [
+        "w=24.0u",
+        "l=0.28u",
+        "ad=10.56p",
+        "as=10.56p",
+        "pd=48.88u",
+        "ps=48.88u"
+      ]
+    },
+    {
+      "instance": "XBN2N_0",
+      "model": "nmos_3p3",
+      "nodes": [
+        "xdrv.gn",
+        "xdrv.di",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=12.0u",
+        "l=0.28u",
+        "ad=5.28p",
+        "as=5.28p",
+        "pd=24.88u",
+        "ps=24.88u"
+      ]
+    },
+    {
+      "instance": "XBN2P_0",
+      "model": "pmos_3p3",
+      "nodes": [
+        "xdrv.gn",
+        "xdrv.di",
+        "xdrv.dr",
+        "xdrv.dr"
+      ],
+      "parameters": [
+        "w=24.0u",
+        "l=0.28u",
+        "ad=10.56p",
+        "as=10.56p",
+        "pd=48.88u",
+        "ps=48.88u"
+      ]
+    },
+    {
+      "instance": "XPHYDN",
+      "model": "nmos_3p3",
+      "nodes": [
+        "d_src",
+        "phy_db_gate",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=12u",
+        "l=.28u",
+        "ad=5.28p",
+        "as=5.28p",
+        "pd=24.88u",
+        "ps=24.88u"
+      ]
+    },
+    {
+      "instance": "XPHYDP",
+      "model": "pmos_3p3",
+      "nodes": [
+        "d_src",
+        "phy_db_gate",
+        "vphy",
+        "vphy"
+      ],
+      "parameters": [
+        "w=24u",
+        "l=.28u",
+        "ad=10.56p",
+        "as=10.56p",
+        "pd=48.88u",
+        "ps=48.88u"
+      ]
+    },
+    {
+      "instance": "XPHYDBN",
+      "model": "nmos_3p3",
+      "nodes": [
+        "db_src",
+        "phy_d_gate",
+        "0",
+        "0"
+      ],
+      "parameters": [
+        "w=12u",
+        "l=.28u",
+        "ad=5.28p",
+        "as=5.28p",
+        "pd=24.88u",
+        "ps=24.88u"
+      ]
+    },
+    {
+      "instance": "XPHYDBP",
+      "model": "pmos_3p3",
+      "nodes": [
+        "db_src",
+        "phy_d_gate",
+        "vphy",
+        "vphy"
+      ],
+      "parameters": [
+        "w=24u",
+        "l=.28u",
+        "ad=10.56p",
+        "as=10.56p",
+        "pd=48.88u",
+        "ps=48.88u"
+      ]
+    }
+  ],
+  "ngspice": "******\n** ngspice-47 : Circuit level simulation program\n** Compiled with KLU Direct Linear Solver\n** The U. C. Berkeley CAD Group\n** Copyright 1985-1994, Regents of the University of California.\n** Copyright 2001-2026, The ngspice team.\n** Please get your ngspice manual from https://ngspice.sourceforge.io/docs.html\n** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html\n******\n",
+  "run_script_sha256": "61dfedfcafe1c401feca5affc191276fb467cf4db14bb05c704a3ccda4794d1c",
+  "method_config": {
+    "candidate": "vc-single-r150",
+    "spec": {
+      "CFF_fF": 0.0,
+      "RDTOP_ohm": 85000.0,
+      "single_stage": true,
+      "atten_ohm": 150.0,
+      "hypothesis": "One computed damping confirmation: measured50to100ohm peak slope predicts~7.447mA at150ohm. FreezeRafterthispoint; preserve3/7mAtargets,69MOSandall7sources."
+    },
+    "net_Gbps": 6.4,
+    "steps_per_UI": 40,
+    "level": null,
+    "holdout": false
+  },
+  "candidate_spec": {
+    "core": 69,
+    "nW_um": 12.0,
+    "pW_um": 24.0,
+    "internal_R_ohm": 150.0,
+    "hypothesis": "Only widen finite upstream CMOS from4/8to12/24um to reduce output resistance; command gate energy and all added supply current remain counted."
+  },
+  "execution_source_sha256": "37cfbd8f09b8d88fa254e71e148fc5e3bcac78b56c2fd9eb0bb3739cb7ab6aca",
+  "execution_helpers": {
+    "scripts/highspeed_workbench_20261110/vcsel_x10_run.py": {
+      "copy": "0-vcsel_x10_run.py",
+      "sha256": "61dfedfcafe1c401feca5affc191276fb467cf4db14bb05c704a3ccda4794d1c"
+    },
+    "scripts/highspeed_workbench_20261110/vcsel_x10_analyze.py": {
+      "copy": "1-vcsel_x10_analyze.py",
+      "sha256": "3b86b3c6a2e438b57647315ed99be8318bb8e85c66095e920c663af35dfa76a8"
+    },
+    "scripts/three_gbps_experiment/vcsel_driver_run.py": {
+      "copy": "2-vcsel_driver_run.py",
+      "sha256": "aec5178ecb05a39b69415e7bd45959b1953dd097eff5d022e3271bd02bcee1e3"
+    },
+    "scripts/fair_driver_v1/run.py": {
+      "copy": "3-run.py",
+      "sha256": "0316afadb96dabc2c7554214bad408779d8f07ea3b430074140899c685a92873"
+    },
+    "scripts/three_gbps_experiment/vcsel_model.py": {
+      "copy": "4-vcsel_model.py",
+      "sha256": "5cf8907df8e1ace985012ff5107312ab3b04699f2e944696fc49dae4b4d7bf23"
+    },
+    "scripts/three_gbps_experiment/vcsel_driver_receiver_v3.py": {
+      "copy": "5-vcsel_driver_receiver_v3.py",
+      "sha256": "1f47a36f24379b58fb3094303d17d678e0aba7328ddbd58eb601c7b966e0c962"
+    },
+    "analog/models/vcsel_research_20261027/parameters.json": {
+      "copy": "6-parameters.json",
+      "sha256": "a35665e2b9eed9d3776d2a9878608688a4a00677d0e57e51446d0956967a4991"
+    }
+  },
+  "baseline_manifest_sha256": "f87cea13b46e23a4bb10055a2eb48dec539d4352c1c239aa34b7a0ae6f5396f1",
+  "baseline_driver_sha256": "799fe48da876842a367093906241d2fe48f1989c2df6b0c38f43993b2458144f",
+  "holdout_protocol": null,
+  "schema": "vcsel-mos-pvt-v1",
+  "interface_config": {
+    "candidate": "single-phy12",
+    "spec": {
+      "core": 69,
+      "nW_um": 12.0,
+      "pW_um": 24.0,
+      "internal_R_ohm": 150.0,
+      "hypothesis": "Only widen finite upstream CMOS from4/8to12/24um to reduce output resistance; command gate energy and all added supply current remain counted."
+    },
+    "net_Gbps": 8.8,
+    "steps_per_UI": 40,
+    "level": null,
+    "holdout": false
+  },
+  "baseline_case": "build/driver-interface-20261115/VCSEL/single-phy12/net8.8-s40",
+  "pvt_config": {
+    "variant": "cmd-r100",
+    "corner": "fscoldhigh",
+    "pvt": {
+      "section": "fs",
+      "temp_C": -40,
+      "rail_scale": 1.05
+    },
+    "net_Gbps": 8.8,
+    "steps_per_UI": 40,
+    "kind": "dc",
+    "level": 1,
+    "spec": {
+      "nW_um": 12.0,
+      "pW_um": 24.0,
+      "internal_R_ohm": 150.0,
+      "hypothesis": "Only add 100ohm to each upstream CMOS gate command. Reduce falling-gate Cgd feedthrough at d_src/db_src; preserve ideal command20ps and count its source energy. May worsen delay/short-circuit energy.",
+      "command_R_ohm": 100.0
+    },
+    "line_bits": 4736
+  },
+  "kind": "dc"
+}

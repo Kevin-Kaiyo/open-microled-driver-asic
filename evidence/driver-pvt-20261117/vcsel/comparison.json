@@ -1,0 +1,1545 @@
+{
+  "schema": "vcsel-pvt-comparison-v1",
+  "rows": [
+    {
+      "case": "build/driver-interface-20261115/VCSEL/single-phy12/net8.8-s40",
+      "reused_nominal": true,
+      "reuse_receipt_sha256": "da6540f55deef59cd84a907f0c05b88225bdec2747f78d2b9622859bc232995e",
+      "config": {
+        "variant": "frozen",
+        "corner": "tt25",
+        "net_Gbps": 8.8,
+        "steps_per_UI": 40,
+        "kind": "full"
+      },
+      "analysis_sha256": "8e8210c603b66ea1eeb190d971655c752e79a02796b4d687f946e1c21b7b92ef",
+      "manifest_sha256": "f87cea13b46e23a4bb10055a2eb48dec539d4352c1c239aa34b7a0ae6f5396f1",
+      "combined_pass": true,
+      "rx": {
+        "delay_UI": 2.140625,
+        "delay_ps": 210.3808353808354,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 29.906647521878526,
+        "one_sided_margin_UI": 0.4382664520450367,
+        "one_sided_margin_ps": 43.072869979856186,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.596514464989696,
+            "median": 30.104161136979428,
+            "p95": 32.281990580668634
+          },
+          "1": {
+            "p05": 94.31472159732476,
+            "median": 98.21407984047782,
+            "p95": 99.3031180388836
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "energy": {
+        "positive": 4.7106221032174735,
+        "returned": 0.13740157382168444,
+        "net": 4.5732205293957895
+      },
+      "energy_by_source": {
+        "VLASER": {
+          "positive": 2.9002692719531455,
+          "returned": 0.0,
+          "net": 2.9002692719531455
+        },
+        "VDD": {
+          "positive": 0.6493964830870864,
+          "returned": 0.0,
+          "net": 0.6493964830870864
+        },
+        "VREF": {
+          "positive": 0.05353136877304318,
+          "returned": 0.000995065692414689,
+          "net": 0.052536303080628496
+        },
+        "VD": {
+          "positive": 0.09835439712494704,
+          "returned": 0.0681812613846423,
+          "net": 0.030173135740304734
+        },
+        "VDB": {
+          "positive": 0.09840354774516467,
+          "returned": 0.06818095477757675,
+          "net": 0.030222592967587916
+        },
+        "VSET": {
+          "positive": 4.416592935804285e-05,
+          "returned": 4.413302130396096e-05,
+          "net": 3.2908054081889296e-08
+        },
+        "VREGSET": {
+          "positive": 8.158924084019217e-07,
+          "returned": 1.589457467289318e-07,
+          "net": 6.569466616729899e-07
+        },
+        "VPHY": {
+          "positive": 0.9106220527123203,
+          "returned": 0.0,
+          "net": 0.9106220527123203
+        }
+      },
+      "terminal_peak": {
+        "value_V": 3.5535117343868,
+        "instance": "XPHYDBP",
+        "pair": "VDS"
+      },
+      "max_body_forward_V": 0.2535417572416,
+      "I_range_mA": [
+        2.762450225359,
+        7.119310690189
+      ],
+      "DC_pass": true
+    },
+    {
+      "case": "build/driver-pvt-20261117/vcsel/cmd-r330/sshotlow/full-net6.4-s40",
+      "config": {
+        "variant": "cmd-r330",
+        "corner": "sshotlow",
+        "pvt": {
+          "section": "ss",
+          "temp_C": 85,
+          "rail_scale": 0.95
+        },
+        "net_Gbps": 6.4,
+        "steps_per_UI": 40,
+        "kind": "full",
+        "level": null,
+        "spec": {
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Increase only the declared gate-command resistor100to330ohm after100ohm reduced but did not clear SS body and TT/FS high-rail VDS screens. Same speed/energy penalties require full-frame testing.",
+          "command_R_ohm": 330.0
+        },
+        "line_bits": 4736
+      },
+      "analysis_sha256": "b3d85369829b975e540a6cb34a1ea8280caea2ca6ecf15735a78d83623d0cbfb",
+      "manifest_sha256": "241fb932b28a346f5447da891307bf68b39e6c355b98d611e0c2f89ec431fb6d",
+      "combined_pass": true,
+      "rx": {
+        "delay_UI": 2.03125,
+        "delay_ps": 274.4932432432432,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 29.04196153642736,
+        "one_sided_margin_UI": 0.4053186575798071,
+        "one_sided_margin_ps": 54.772791564838805,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.372939256093975,
+            "median": 30.02264377065049,
+            "p95": 33.064658982412
+          },
+          "1": {
+            "p05": 92.92388069813417,
+            "median": 97.15569365726286,
+            "p95": 99.52072512792962
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "energy": {
+        "positive": 5.901104536097333,
+        "returned": 0.060365538894495266,
+        "net": 5.840738997202838
+      },
+      "energy_by_source": {
+        "VLASER": {
+          "positive": 3.8665192739032754,
+          "returned": 0.0,
+          "net": 3.8665192739032754
+        },
+        "VDD": {
+          "positive": 0.7520182792247566,
+          "returned": 0.0,
+          "net": 0.7520182792247566
+        },
+        "VREF": {
+          "positive": 0.07518575946384203,
+          "returned": 0.015746327303498505,
+          "net": 0.059439432160343524
+        },
+        "VD": {
+          "positive": 0.14782528949445733,
+          "returned": 0.022252119033481076,
+          "net": 0.12557317046097624
+        },
+        "VDB": {
+          "positive": 0.1478302107065579,
+          "returned": 0.022247555456163606,
+          "net": 0.1255826552503943
+        },
+        "VSET": {
+          "positive": 0.00011914031319379653,
+          "returned": 0.00011940058292227913,
+          "net": -2.602697284826099e-07
+        },
+        "VREGSET": {
+          "positive": 4.7574522060989483e-07,
+          "returned": 1.3651842979833176e-07,
+          "net": 3.392267908115631e-07
+        },
+        "VPHY": {
+          "positive": 0.9116061072460294,
+          "returned": 0.0,
+          "net": 0.9116061072460294
+        }
+      },
+      "terminal_peak": {
+        "value_V": 3.366235361762,
+        "instance": "XPHYDP",
+        "pair": "VDS"
+      },
+      "max_body_forward_V": 0.2312038417189,
+      "I_range_mA": [
+        2.800564542674,
+        7.125835144995
+      ],
+      "DC_pass": true
+    },
+    {
+      "case": "build/driver-pvt-20261117/vcsel/cmd-r330/sshotlow/full-net6.4-s80",
+      "config": {
+        "variant": "cmd-r330",
+        "corner": "sshotlow",
+        "pvt": {
+          "section": "ss",
+          "temp_C": 85,
+          "rail_scale": 0.95
+        },
+        "net_Gbps": 6.4,
+        "steps_per_UI": 80,
+        "kind": "full",
+        "level": null,
+        "spec": {
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Increase only the declared gate-command resistor100to330ohm after100ohm reduced but did not clear SS body and TT/FS high-rail VDS screens. Same speed/energy penalties require full-frame testing.",
+          "command_R_ohm": 330.0
+        },
+        "line_bits": 4736
+      },
+      "analysis_sha256": "df8b00566c3854bdd9974f09c2664c091b62443b28f4077c528e4beac1113e7e",
+      "manifest_sha256": "e19584acd0d5b91401e71d3f5b9903eca681235f393bd1d2d4d71c5a86fe273a",
+      "combined_pass": true,
+      "rx": {
+        "delay_UI": 2.03125,
+        "delay_ps": 274.4932432432432,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 29.04764512772438,
+        "one_sided_margin_UI": 0.4053369163739917,
+        "one_sided_margin_ps": 54.77525896945835,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.369594201297236,
+            "median": 30.016737590925924,
+            "p95": 33.05966004338481
+          },
+          "1": {
+            "p05": 92.92335726810498,
+            "median": 97.15524097049774,
+            "p95": 99.52312089978346
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "energy": {
+        "positive": 5.901133109991064,
+        "returned": 0.060404027896789725,
+        "net": 5.840729082094274
+      },
+      "energy_by_source": {
+        "VLASER": {
+          "positive": 3.866527711454065,
+          "returned": 0.0,
+          "net": 3.866527711454065
+        },
+        "VDD": {
+          "positive": 0.751992178147047,
+          "returned": 0.0,
+          "net": 0.751992178147047
+        },
+        "VREF": {
+          "positive": 0.07522450830943284,
+          "returned": 0.015785120636345393,
+          "net": 0.059439387673087436
+        },
+        "VD": {
+          "positive": 0.14782435973016772,
+          "returned": 0.02225194808124635,
+          "net": 0.12557241164892136
+        },
+        "VDB": {
+          "positive": 0.14782930066656144,
+          "returned": 0.022247383931354062,
+          "net": 0.1255819167352074
+        },
+        "VSET": {
+          "positive": 0.00011917808672103627,
+          "returned": 0.00011943870926999806,
+          "net": -2.606225489618005e-07
+        },
+        "VREGSET": {
+          "positive": 4.7574675835302443e-07,
+          "returned": 1.3653857392272936e-07,
+          "net": 3.392081844302951e-07
+        },
+        "VPHY": {
+          "positive": 0.9116153978503103,
+          "returned": 0.0,
+          "net": 0.9116153978503103
+        }
+      },
+      "terminal_peak": {
+        "value_V": 3.3662158270559,
+        "instance": "XPHYDP",
+        "pair": "VDS"
+      },
+      "max_body_forward_V": 0.2312039007661,
+      "I_range_mA": [
+        2.798861094286,
+        7.1257277046150005
+      ],
+      "DC_pass": true
+    },
+    {
+      "case": "build/driver-pvt-20261117/vcsel/cmd-r330/sshotlow/full-net8.8-s40",
+      "config": {
+        "variant": "cmd-r330",
+        "corner": "sshotlow",
+        "pvt": {
+          "section": "ss",
+          "temp_C": 85,
+          "rail_scale": 0.95
+        },
+        "net_Gbps": 8.8,
+        "steps_per_UI": 40,
+        "kind": "full",
+        "level": null,
+        "spec": {
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Increase only the declared gate-command resistor100to330ohm after100ohm reduced but did not clear SS body and TT/FS high-rail VDS screens. Same speed/energy penalties require full-frame testing.",
+          "command_R_ohm": 330.0
+        },
+        "line_bits": 4736
+      },
+      "analysis_sha256": "b438a70c95fda249c4a27588d66b4f1ac6894df38cf57f3a1351619edfa4f176",
+      "manifest_sha256": "b6f2ac331585ddf6bdcfef0621a7eae24d4f0fc0cf5e6336628e75f47650fd9e",
+      "combined_pass": false,
+      "rx": {
+        "delay_UI": 2.40625,
+        "delay_ps": 236.4864864864865,
+        "train_errors": 23,
+        "errors": 178,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 23,
+        "worst_signed_margin_uAeq": -2.608383473829619,
+        "one_sided_margin_UI": 0.0,
+        "one_sided_margin_ps": 0.0,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.52417165905763,
+            "median": 37.22136496995709,
+            "p95": 63.083926652930515
+          },
+          "1": {
+            "p05": 80.32212519664463,
+            "median": 95.00004985933855,
+            "p95": 98.87607367101532
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 178,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "energy": {
+        "positive": 4.5169224956553276,
+        "returned": 0.06678001903477893,
+        "net": 4.450142476620549
+      },
+      "energy_by_source": {
+        "VLASER": {
+          "positive": 2.8733508001356824,
+          "returned": 0.0,
+          "net": 2.8733508001356824
+        },
+        "VDD": {
+          "positive": 0.5628516453865707,
+          "returned": 0.0,
+          "net": 0.5628516453865707
+        },
+        "VREF": {
+          "positive": 0.06648844724507386,
+          "returned": 0.023281996384964386,
+          "net": 0.04320645086010947
+        },
+        "VD": {
+          "positive": 0.14193030129846596,
+          "returned": 0.021658427752883673,
+          "net": 0.1202718735455823
+        },
+        "VDB": {
+          "positive": 0.14190384193805503,
+          "returned": 0.021658809309201107,
+          "net": 0.12024503262885392
+        },
+        "VSET": {
+          "positive": 0.00018019112658695583,
+          "returned": 0.0001806696414869102,
+          "net": -4.785148999543733e-07
+        },
+        "VREGSET": {
+          "positive": 5.01361022923749e-07,
+          "returned": 1.1594624285386187e-07,
+          "net": 3.854147800698871e-07
+        },
+        "VPHY": {
+          "positive": 0.73021676716387,
+          "returned": 0.0,
+          "net": 0.73021676716387
+        }
+      },
+      "terminal_peak": {
+        "value_V": 3.3662195262596,
+        "instance": "XPHYDBP",
+        "pair": "VDS"
+      },
+      "max_body_forward_V": 0.2312043593186,
+      "I_range_mA": [
+        2.796630342029,
+        7.125751750725
+      ],
+      "DC_pass": true
+    },
+    {
+      "case": "build/driver-pvt-20261117/vcsel/cmd-r330/sshotlow/holdout-full-net6.4-s40",
+      "config": {
+        "variant": "cmd-r330",
+        "corner": "sshotlow",
+        "pvt": {
+          "section": "ss",
+          "temp_C": 85,
+          "rail_scale": 0.95
+        },
+        "net_Gbps": 6.4,
+        "steps_per_UI": 40,
+        "kind": "full",
+        "level": null,
+        "spec": {
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Increase only the declared gate-command resistor100to330ohm after100ohm reduced but did not clear SS body and TT/FS high-rail VDS screens. Same speed/energy penalties require full-frame testing.",
+          "command_R_ohm": 330.0
+        },
+        "line_bits": 4736,
+        "holdout_protocol": {
+          "generator": "same PRBS15 algorithm as previous frozen framework",
+          "original_seed": 23246,
+          "phase_offset": 22000,
+          "seed": 8155,
+          "seed_hex": "0x1fdb",
+          "window": [
+            22000,
+            26736
+          ],
+          "previous_windows": [
+            [
+              0,
+              4736
+            ],
+            [
+              8192,
+              12928
+            ],
+            [
+              16749,
+              21485
+            ],
+            [
+              27081,
+              31817
+            ]
+          ],
+          "scope": "Disjoint window of one deterministic PRBS15 period, not independent statistical BER. No circuit or receiver retuning after this declaration."
+        }
+      },
+      "analysis_sha256": "800e8c7882e142a606d70790f843bc8e18892a173701efe8e1d569f181d1764f",
+      "manifest_sha256": "5583cef05ca0301244fd8fd4b05484d2c2dfc34fde1d48c1f56a44d957f984cc",
+      "combined_pass": true,
+      "rx": {
+        "delay_UI": 2.046875,
+        "delay_ps": 276.6047297297298,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 27.117345038267516,
+        "one_sided_margin_UI": 0.4316702145899971,
+        "one_sided_margin_ps": 58.333812782432055,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 23.995175098017558,
+            "median": 26.075375696691857,
+            "p95": 32.25629944422514
+          },
+          "1": {
+            "p05": 89.8993213486688,
+            "median": 91.34354698612357,
+            "p95": 96.13452456845675
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1134
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 988
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 987
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 987
+          }
+        },
+        "screen_pass": true
+      },
+      "energy": {
+        "positive": 5.759397742469719,
+        "returned": 0.05136991195520478,
+        "net": 5.7080278305145145
+      },
+      "energy_by_source": {
+        "VLASER": {
+          "positive": 3.7700478035913503,
+          "returned": 0.0,
+          "net": 3.7700478035913503
+        },
+        "VDD": {
+          "positive": 0.7370135755563094,
+          "returned": 0.0,
+          "net": 0.7370135755563094
+        },
+        "VREF": {
+          "positive": 0.067735288996,
+          "returned": 0.008264755116000893,
+          "net": 0.0594705338799991
+        },
+        "VD": {
+          "positive": 0.1428389567276259,
+          "returned": 0.021502641998406184,
+          "net": 0.12133631472921973
+        },
+        "VDB": {
+          "positive": 0.14286546655860768,
+          "returned": 0.021497742907787692,
+          "net": 0.12136772365081999
+        },
+        "VSET": {
+          "positive": 0.00010472061209640896,
+          "returned": 0.00010459993019286859,
+          "net": 1.2068190354036188e-07
+        },
+        "VREGSET": {
+          "positive": 4.840292999911437e-07,
+          "returned": 1.720028171455024e-07,
+          "net": 3.120264828456413e-07
+        },
+        "VPHY": {
+          "positive": 0.8987914463984293,
+          "returned": 0.0,
+          "net": 0.8987914463984293
+        }
+      },
+      "terminal_peak": {
+        "value_V": 3.3662324966353,
+        "instance": "XPHYDP",
+        "pair": "VDS"
+      },
+      "max_body_forward_V": 0.2312111814136,
+      "I_range_mA": [
+        2.759087459853,
+        6.839395359489
+      ],
+      "DC_pass": true
+    },
+    {
+      "case": "build/driver-pvt-20261117/vcsel/cmd-r330/tt25/full-net8.8-s40",
+      "config": {
+        "variant": "cmd-r330",
+        "corner": "tt25",
+        "pvt": {
+          "section": "typical",
+          "temp_C": 25,
+          "rail_scale": 1
+        },
+        "net_Gbps": 8.8,
+        "steps_per_UI": 40,
+        "kind": "full",
+        "level": null,
+        "spec": {
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Increase only the declared gate-command resistor100to330ohm after100ohm reduced but did not clear SS body and TT/FS high-rail VDS screens. Same speed/energy penalties require full-frame testing.",
+          "command_R_ohm": 330.0
+        },
+        "line_bits": 4736
+      },
+      "analysis_sha256": "46417bd7cb683b6d5eb6e67a95638b0a8ec53be0153b617db6e1522ee79cb287",
+      "manifest_sha256": "65998985260103be92423d99feaa18c61a06053b8a8ab12a31e79887c82def6a",
+      "combined_pass": true,
+      "rx": {
+        "delay_UI": 2.328125,
+        "delay_ps": 228.80835380835381,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 29.54241910249543,
+        "one_sided_margin_UI": 0.43246743657553804,
+        "one_sided_margin_ps": 42.50294216958605,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.523422193502743,
+            "median": 30.290155869479236,
+            "p95": 32.61357832917819
+          },
+          "1": {
+            "p05": 93.0387812736593,
+            "median": 97.85969930600398,
+            "p95": 98.85576366691691
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "energy": {
+        "positive": 4.775502299679301,
+        "returned": 0.04395868309755976,
+        "net": 4.7315436165817415
+      },
+      "energy_by_source": {
+        "VLASER": {
+          "positive": 2.902433433218672,
+          "returned": 0.0,
+          "net": 2.902433433218672
+        },
+        "VDD": {
+          "positive": 0.6475138723855601,
+          "returned": 0.0,
+          "net": 0.6475138723855601
+        },
+        "VREF": {
+          "positive": 0.052982332578035356,
+          "returned": 0.0004499923954109195,
+          "net": 0.05253234018262443
+        },
+        "VD": {
+          "positive": 0.14502434261981254,
+          "returned": 0.02173353121512628,
+          "net": 0.12329081140468626
+        },
+        "VDB": {
+          "positive": 0.14501199986200738,
+          "returned": 0.021731194155118417,
+          "net": 0.12328080570688894
+        },
+        "VSET": {
+          "positive": 4.3832407139649675e-05,
+          "returned": 4.3809375230014005e-05,
+          "net": 2.3031909635672434e-08
+        },
+        "VREGSET": {
+          "positive": 8.113814456229244e-07,
+          "returned": 1.559566741295748e-07,
+          "net": 6.554247714933497e-07
+        },
+        "VPHY": {
+          "positive": 0.8824916752266291,
+          "returned": 0.0,
+          "net": 0.8824916752266291
+        }
+      },
+      "terminal_peak": {
+        "value_V": 3.4695678730796997,
+        "instance": "XPHYDBP",
+        "pair": "VDS"
+      },
+      "max_body_forward_V": 0.1695267902796,
+      "I_range_mA": [
+        2.765072376355,
+        7.102315576771001
+      ],
+      "DC_pass": true
+    },
+    {
+      "case": "build/driver-pvt-20261117/vcsel/cmd-r330/tthigh/full-net8.8-s40",
+      "config": {
+        "variant": "cmd-r330",
+        "corner": "tthigh",
+        "pvt": {
+          "section": "typical",
+          "temp_C": 25,
+          "rail_scale": 1.05
+        },
+        "net_Gbps": 8.8,
+        "steps_per_UI": 40,
+        "kind": "full",
+        "level": null,
+        "spec": {
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Increase only the declared gate-command resistor100to330ohm after100ohm reduced but did not clear SS body and TT/FS high-rail VDS screens. Same speed/energy penalties require full-frame testing.",
+          "command_R_ohm": 330.0
+        },
+        "line_bits": 4736
+      },
+      "analysis_sha256": "c87ee560d4bbd126ce7bbb75bddabed997956b43c524764b710fe8e0cba2972f",
+      "manifest_sha256": "24b48814164c53a9efafbab6da22b14e9fbeae2599349d87baff57fa784dd259",
+      "combined_pass": true,
+      "rx": {
+        "delay_UI": 2.3125,
+        "delay_ps": 227.27272727272728,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 30.28553746861592,
+        "one_sided_margin_UI": 0.4148441341734023,
+        "one_sided_margin_ps": 40.77092227748426,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.606128679115532,
+            "median": 29.68089683451807,
+            "p95": 31.9379047241808
+          },
+          "1": {
+            "p05": 94.86913723370152,
+            "median": 98.75171363639183,
+            "p95": 100.18917785672126
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "energy": {
+        "positive": 5.075084275331505,
+        "returned": 0.046047747719275896,
+        "net": 5.029036527612229
+      },
+      "energy_by_source": {
+        "VLASER": {
+          "positive": 3.044034485932379,
+          "returned": 0.0,
+          "net": 3.044034485932379
+        },
+        "VDD": {
+          "positive": 0.6862192339695633,
+          "returned": 0.0,
+          "net": 0.6862192339695633
+        },
+        "VREF": {
+          "positive": 0.061433939472305764,
+          "returned": 0.002228922495834824,
+          "net": 0.059205016976470945
+        },
+        "VD": {
+          "positive": 0.14872863511131348,
+          "returned": 0.021884038640734748,
+          "net": 0.12684459647057872
+        },
+        "VDB": {
+          "positive": 0.1487231892100941,
+          "returned": 0.021884924483070965,
+          "net": 0.1268382647270231
+        },
+        "VSET": {
+          "positive": 4.9749818934654947e-05,
+          "returned": 4.96960195920824e-05,
+          "net": 5.379934257254954e-08
+        },
+        "VREGSET": {
+          "positive": 7.99184555513322e-07,
+          "returned": 1.6608004327272056e-07,
+          "net": 6.331045122406014e-07
+        },
+        "VPHY": {
+          "positive": 0.9858942426323588,
+          "returned": 0.0,
+          "net": 0.9858942426323588
+        }
+      },
+      "terminal_peak": {
+        "value_V": 3.6190400978659,
+        "instance": "XPHYDBP",
+        "pair": "VDS"
+      },
+      "max_body_forward_V": 0.1539942360975,
+      "I_range_mA": [
+        2.770283997512,
+        7.142517015455001
+      ],
+      "DC_pass": true
+    },
+    {
+      "case": "build/driver-pvt-20261117/vcsel/cmd-r330/tthigh/full-net8.8-s80",
+      "config": {
+        "variant": "cmd-r330",
+        "corner": "tthigh",
+        "pvt": {
+          "section": "typical",
+          "temp_C": 25,
+          "rail_scale": 1.05
+        },
+        "net_Gbps": 8.8,
+        "steps_per_UI": 80,
+        "kind": "full",
+        "level": null,
+        "spec": {
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Increase only the declared gate-command resistor100to330ohm after100ohm reduced but did not clear SS body and TT/FS high-rail VDS screens. Same speed/energy penalties require full-frame testing.",
+          "command_R_ohm": 330.0
+        },
+        "line_bits": 4736
+      },
+      "analysis_sha256": "744ac641c14c51087a610472792581e39a1aa7455f9175865e0305c0f8fa304b",
+      "manifest_sha256": "6b2a3f7004e22edf62b3e8e3dbe22537dfa02a050822e84f65910d1a4b9c59cf",
+      "combined_pass": true,
+      "rx": {
+        "delay_UI": 2.3125,
+        "delay_ps": 227.27272727272728,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 30.288296204479607,
+        "one_sided_margin_UI": 0.41481183704890573,
+        "one_sided_margin_ps": 40.767748112914575,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.601617064007055,
+            "median": 29.674576909864413,
+            "p95": 31.93557738386224
+          },
+          "1": {
+            "p05": 94.87815543063351,
+            "median": 98.75531956951716,
+            "p95": 100.19180266154582
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "energy": {
+        "positive": 5.074998354926892,
+        "returned": 0.04607158358703738,
+        "net": 5.028926771339854
+      },
+      "energy_by_source": {
+        "VLASER": {
+          "positive": 3.0440370816868687,
+          "returned": 0.0,
+          "net": 3.0440370816868687
+        },
+        "VDD": {
+          "positive": 0.6861711104266206,
+          "returned": 0.0,
+          "net": 0.6861711104266206
+        },
+        "VREF": {
+          "positive": 0.06143424999876615,
+          "returned": 0.0022292481159948566,
+          "net": 0.059205001882771294
+        },
+        "VD": {
+          "positive": 0.14871744119748279,
+          "returned": 0.021896834600560022,
+          "net": 0.12682060659692276
+        },
+        "VDB": {
+          "positive": 0.14871012126326164,
+          "returned": 0.021895631691935005,
+          "net": 0.12681448957132663
+        },
+        "VSET": {
+          "positive": 4.975695012514156e-05,
+          "returned": 4.970318634854108e-05,
+          "net": 5.376377660047835e-08
+        },
+        "VREGSET": {
+          "positive": 7.990400949555875e-07,
+          "returned": 1.6599219896110695e-07,
+          "net": 6.330478959944806e-07
+        },
+        "VPHY": {
+          "positive": 0.9858777943636721,
+          "returned": 0.0,
+          "net": 0.9858777943636721
+        }
+      },
+      "terminal_peak": {
+        "value_V": 3.6190800949368,
+        "instance": "XPHYDBP",
+        "pair": "VDS"
+      },
+      "max_body_forward_V": 0.154005382502,
+      "I_range_mA": [
+        2.767591776789,
+        7.142416004047
+      ],
+      "DC_pass": true
+    },
+    {
+      "case": "build/driver-pvt-20261117/vcsel/cmd-r330-atten75/sshotlow/full-net8.8-s40",
+      "config": {
+        "variant": "cmd-r330-atten75",
+        "corner": "sshotlow",
+        "pvt": {
+          "section": "ss",
+          "temp_C": 85,
+          "rail_scale": 0.95
+        },
+        "net_Gbps": 8.8,
+        "steps_per_UI": 40,
+        "kind": "full",
+        "level": null,
+        "spec": {
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 75.0,
+          "hypothesis": "After330ohm clears SS electrical stress but causes178RXerrors at8.8, reduce only internal input150to75ohm. Retain command330ohm and all MOS sizes. Test whether lower input RC recovers GP/current edges without unsafe overshoot.",
+          "command_R_ohm": 330.0
+        },
+        "line_bits": 4736
+      },
+      "analysis_sha256": "80bada71535b62fc9f22058c4b6f72e459ca5ec63119f82b9722e1743620f8ce",
+      "manifest_sha256": "39880d5424693c5a48d3ab342f26c0b6af500171f63fd5670a2542b467a77005",
+      "combined_pass": false,
+      "rx": {
+        "delay_UI": 2.390625,
+        "delay_ps": 234.95085995085995,
+        "train_errors": 2,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 2,
+        "worst_signed_margin_uAeq": 0.535152128932431,
+        "one_sided_margin_UI": 0.05731085057201899,
+        "one_sided_margin_ps": 5.632516026734053,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.554785902147795,
+            "median": 36.76019141275035,
+            "p95": 60.105946427802714
+          },
+          "1": {
+            "p05": 81.39220726239891,
+            "median": 95.2540899294977,
+            "p95": 98.9935721845813
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "energy": {
+        "positive": 4.526675829396508,
+        "returned": 0.06513691427984215,
+        "net": 4.461538915116666
+      },
+      "energy_by_source": {
+        "VLASER": {
+          "positive": 2.864688153610251,
+          "returned": 0.0,
+          "net": 2.864688153610251
+        },
+        "VDD": {
+          "positive": 0.567786110477052,
+          "returned": 0.0,
+          "net": 0.567786110477052
+        },
+        "VREF": {
+          "positive": 0.0649085590955341,
+          "returned": 0.021700415111404994,
+          "net": 0.0432081439841291
+        },
+        "VD": {
+          "positive": 0.14130798069559294,
+          "returned": 0.021634269716746514,
+          "net": 0.11967371097884644
+        },
+        "VDB": {
+          "positive": 0.14127491826957303,
+          "returned": 0.021632836736355705,
+          "net": 0.11964208153321731
+        },
+        "VSET": {
+          "positive": 0.00016882921313517976,
+          "returned": 0.00016927999381765132,
+          "net": -4.5078068247156876e-07
+        },
+        "VREGSET": {
+          "positive": 5.023141148511535e-07,
+          "returned": 1.1272151729300965e-07,
+          "net": 3.8959259755814387e-07
+        },
+        "VPHY": {
+          "positive": 0.7465407757212552,
+          "returned": 0.0,
+          "net": 0.7465407757212552
+        }
+      },
+      "terminal_peak": {
+        "value_V": 3.3549934346168997,
+        "instance": "XPHYDBP",
+        "pair": "VDS"
+      },
+      "max_body_forward_V": 0.2199782668853,
+      "I_range_mA": [
+        2.793765564242,
+        7.1288204823929995
+      ],
+      "DC_pass": true
+    },
+    {
+      "case": "build/driver-pvt-20261117/vcsel/frozen/sshotlow/full-net6.4-s40",
+      "config": {
+        "variant": "frozen",
+        "corner": "sshotlow",
+        "pvt": {
+          "section": "ss",
+          "temp_C": 85,
+          "rail_scale": 0.95
+        },
+        "net_Gbps": 6.4,
+        "steps_per_UI": 40,
+        "kind": "full",
+        "level": null,
+        "spec": {
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Frozen Nov15 finite CMOS input candidate."
+        },
+        "line_bits": 4736
+      },
+      "analysis_sha256": "a4d423dbfc0959d4b361b0ffc3404d5017229f335139f95eaeddb3daafbd0693",
+      "manifest_sha256": "3ee2bd75a569ac242fb41c5f11c18ef8d23da7e0572c4f3c80841a6e3833fc90",
+      "combined_pass": false,
+      "rx": {
+        "delay_UI": 1.90625,
+        "delay_ps": 257.6013513513514,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 29.829797491836644,
+        "one_sided_margin_UI": 0.43692498617067677,
+        "one_sided_margin_ps": 59.043917050091466,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.391546320649564,
+            "median": 29.58850827853781,
+            "p95": 32.31542450199236
+          },
+          "1": {
+            "p05": 93.59834257959467,
+            "median": 97.57217763188167,
+            "p95": 99.81400558684967
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "energy": {
+        "positive": 5.814440760763689,
+        "returned": 0.14391329107234038,
+        "net": 5.670527469691349
+      },
+      "energy_by_source": {
+        "VLASER": {
+          "positive": 3.84111287037927,
+          "returned": 0.0,
+          "net": 3.84111287037927
+        },
+        "VDD": {
+          "positive": 0.7594650371539459,
+          "returned": 0.0,
+          "net": 0.7594650371539459
+        },
+        "VREF": {
+          "positive": 0.06724648103344605,
+          "returned": 0.007802353116840253,
+          "net": 0.059444127916605805
+        },
+        "VD": {
+          "positive": 0.09948126358405435,
+          "returned": 0.06800793811802822,
+          "net": 0.03147332546602614
+        },
+        "VDB": {
+          "positive": 0.09952900891196026,
+          "returned": 0.06801044595977737,
+          "net": 0.03151856295218289
+        },
+        "VSET": {
+          "positive": 9.224839103716368e-05,
+          "returned": 9.242778470770641e-05,
+          "net": -1.793936705427206e-07
+        },
+        "VREGSET": {
+          "positive": 4.679284832597993e-07,
+          "returned": 1.2609298684883993e-07,
+          "net": 3.4183549641095933e-07
+        },
+        "VPHY": {
+          "positive": 0.9475133833814922,
+          "returned": 0.0,
+          "net": 0.9475133833814922
+        }
+      },
+      "terminal_peak": {
+        "value_V": 3.4746723710237,
+        "instance": "XPHYDP",
+        "pair": "VDS"
+      },
+      "max_body_forward_V": 0.3398085055547,
+      "I_range_mA": [
+        2.798647454031,
+        7.151879326677999
+      ],
+      "DC_pass": true
+    },
+    {
+      "case": "build/driver-pvt-20261117/vcsel/frozen/sshotlow/full-net8.8-s40",
+      "config": {
+        "variant": "frozen",
+        "corner": "sshotlow",
+        "pvt": {
+          "section": "ss",
+          "temp_C": 85,
+          "rail_scale": 0.95
+        },
+        "net_Gbps": 8.8,
+        "steps_per_UI": 40,
+        "kind": "full",
+        "level": null,
+        "spec": {
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Frozen Nov15 finite CMOS input candidate."
+        },
+        "line_bits": 4736
+      },
+      "analysis_sha256": "f3d2134b8243c0691995da06ef43c5c05d06e36f71a2acb45fc5f7f33affcf35",
+      "manifest_sha256": "a7fbb392359128ec4c8e766a47b2819e19193a45eb9dd0be7b2ec39932e85029",
+      "combined_pass": false,
+      "rx": {
+        "delay_UI": 2.265625,
+        "delay_ps": 222.66584766584768,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 11.678211353920027,
+        "one_sided_margin_UI": 0.25757362241029125,
+        "one_sided_margin_ps": 25.31436092484435,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.387339809963493,
+            "median": 35.35056901053824,
+            "p95": 49.40607596191567
+          },
+          "1": {
+            "p05": 85.07979447242087,
+            "median": 96.1353831821236,
+            "p95": 99.38023268722635
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": false
+      },
+      "energy": {
+        "positive": 4.448807110815061,
+        "returned": 0.15091903367713416,
+        "net": 4.297888077137927
+      },
+      "energy_by_source": {
+        "VLASER": {
+          "positive": 2.8333776333976433,
+          "returned": 0.0,
+          "net": 2.8333776333976433
+        },
+        "VDD": {
+          "positive": 0.587551627909257,
+          "returned": 0.0,
+          "net": 0.587551627909257
+        },
+        "VREF": {
+          "positive": 0.05815624010098525,
+          "returned": 0.014941100112430099,
+          "net": 0.043215139988555154
+        },
+        "VD": {
+          "positive": 0.09756372779131785,
+          "returned": 0.06793164205107864,
+          "net": 0.0296320857402392
+        },
+        "VDB": {
+          "positive": 0.09756070300854695,
+          "returned": 0.06792621973407022,
+          "net": 0.029634483274476733
+        },
+        "VSET": {
+          "positive": 0.00011964632406356945,
+          "returned": 0.00011997430235475122,
+          "net": -3.279782911817751e-07
+        },
+        "VREGSET": {
+          "positive": 5.035606517118707e-07,
+          "returned": 9.747720045165655e-08,
+          "net": 4.060834512602141e-07
+        },
+        "VPHY": {
+          "positive": 0.7744770287225952,
+          "returned": 0.0,
+          "net": 0.7744770287225952
+        }
+      },
+      "terminal_peak": {
+        "value_V": 3.474639697647,
+        "instance": "XPHYDBP",
+        "pair": "VDS"
+      },
+      "max_body_forward_V": 0.3398034937753,
+      "I_range_mA": [
+        2.797184788902,
+        7.151391665669
+      ],
+      "DC_pass": true
+    },
+    {
+      "case": "build/driver-pvt-20261117/vcsel/frozen/tthigh/full-net8.8-s40",
+      "config": {
+        "variant": "frozen",
+        "corner": "tthigh",
+        "pvt": {
+          "section": "typical",
+          "temp_C": 25,
+          "rail_scale": 1.05
+        },
+        "net_Gbps": 8.8,
+        "steps_per_UI": 40,
+        "kind": "full",
+        "level": null,
+        "spec": {
+          "nW_um": 12.0,
+          "pW_um": 24.0,
+          "internal_R_ohm": 150.0,
+          "hypothesis": "Frozen Nov15 finite CMOS input candidate."
+        },
+        "line_bits": 4736
+      },
+      "analysis_sha256": "d2d4aa6a7206f72e616580c0f6108ade2ea5d250b4ec4cb03f8a543e6f82984f",
+      "manifest_sha256": "05e7ef4b542cd08fe4f1558459acd6b46ef97525dddb35cb0ab1fee107434848",
+      "combined_pass": false,
+      "rx": {
+        "delay_UI": 2.125,
+        "delay_ps": 208.84520884520884,
+        "train_errors": 0,
+        "errors": 0,
+        "validation_bits": 4096,
+        "min_training_errors_any_delay": 0,
+        "worst_signed_margin_uAeq": 30.50619213582047,
+        "one_sided_margin_UI": 0.4240242922837904,
+        "one_sided_margin_ps": 41.67314911880004,
+        "sample_level_quantiles_uAeq": {
+          "0": {
+            "p05": 24.66719338921102,
+            "median": 29.689747745729694,
+            "p95": 31.737020182851957
+          },
+          "1": {
+            "p05": 95.67908209912683,
+            "median": 98.89787134910594,
+            "p95": 100.57724485125688
+          }
+        },
+        "transition_errors": {
+          "0->0": {
+            "errors": 0,
+            "occurrences": 1006
+          },
+          "0->1": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->0": {
+            "errors": 0,
+            "occurrences": 1029
+          },
+          "1->1": {
+            "errors": 0,
+            "occurrences": 1032
+          }
+        },
+        "screen_pass": true
+      },
+      "energy": {
+        "positive": 5.003896798126315,
+        "returned": 0.14299928763979303,
+        "net": 4.860897510486522
+      },
+      "energy_by_source": {
+        "VLASER": {
+          "positive": 3.0423825629128602,
+          "returned": 0.0,
+          "net": 3.0423825629128602
+        },
+        "VDD": {
+          "positive": 0.6876891505953993,
+          "returned": 0.0,
+          "net": 0.6876891505953993
+        },
+        "VREF": {
+          "positive": 0.062360317043316606,
+          "returned": 0.0031488670518667852,
+          "net": 0.05921144999144982
+        },
+        "VD": {
+          "positive": 0.10159747337708669,
+          "returned": 0.06989930133014041,
+          "net": 0.031698172046946284
+        },
+        "VDB": {
+          "positive": 0.10164234326487893,
+          "returned": 0.06989663843440458,
+          "net": 0.03174570483047436
+        },
+        "VSET": {
+          "positive": 5.4377944454296926e-05,
+          "returned": 5.431225268398072e-05,
+          "net": 6.569177031620372e-08
+        },
+        "VREGSET": {
+          "positive": 8.024879318204518e-07,
+          "returned": 1.6857069726442497e-07,
+          "net": 6.339172345560268e-07
+        },
+        "VPHY": {
+          "positive": 1.0081697705003871,
+          "returned": 0.0,
+          "net": 1.0081697705003871
+        }
+      },
+      "terminal_peak": {
+        "value_V": 3.7042543486393,
+        "instance": "XPHYDBP",
+        "pair": "VDS"
+      },
+      "max_body_forward_V": 0.2392497910491,
+      "I_range_mA": [
+        2.7673626706750003,
+        7.190463466285
+      ],
+      "DC_pass": true
+    }
+  ],
+  "scope": "MOS process/.temp and 3.3V source sweep with fixed25C emitter graph I-V/optical model,150fF,0.5ohm/0.2nH. Ideal passive values and VSET/VREGSET precision boundaries do not vary. Not full emitter temperature, resistor tolerance, PHY conformity or statistical BER. Short1024-bit probes never claim payload RX performance."
+}

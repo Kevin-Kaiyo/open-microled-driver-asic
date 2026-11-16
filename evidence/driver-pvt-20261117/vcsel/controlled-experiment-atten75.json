@@ -1,0 +1,9 @@
+{
+ "schema":"vcsel-pvt-controlled-experiment-v1",
+ "variant":"cmd-r330-atten75",
+ "before":"cmd-r330: SS85low8.8Gb/s electrical domain passes but fullRX178/4096 errors, amplitude-2.608383uAeq,time0UI; DI0.43632UI,GP/GN0.33983UI,electrical current0.14955UI.",
+ "single_factor":"Internal input ATTEN150→75ohm on both DI and DBI; command330ohm,external50ohm,pulldown2.5kohm,allMOS W/L and all8ports fixed.",
+ "hypothesis":"Reduced internal series resistance may shorten DI/DBI gate-charge settling and improve downstream GP/GN and current pulse shape. It may also worsen feedthrough and device stress; no improvement is assumed.",
+ "planned_short_corners":["sshotlow","tthigh","tt25"],
+ "planned_full":"SS85low8.8 if electrical model domain passes, compared to the exact original/330ohm4736bit frame.6.4fallback remains separately tested."
+}
