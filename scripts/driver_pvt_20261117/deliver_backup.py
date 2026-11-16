@@ -32,6 +32,16 @@ def release():
     return None
 
 
+def wait_for_release(*, draft=None):
+    for attempt in range(12):
+        remote = release()
+        if remote is not None and (draft is None or remote['draft'] == draft):
+            return remote
+        if attempt < 11:
+            time.sleep(2)
+    raise RuntimeError(f'Release {TAG} did not become visible in the expected state')
+
+
 def upload(item):
     source, digest = item
     for attempt in range(5):
@@ -89,7 +99,7 @@ def main():
         command('gh', 'release', 'create', TAG, '--repo', REPO, '--draft', '--target', commit,
                 '--title', 'MicroLED and VCSEL PVT experiments · 2026-11-17',
                 '--notes-file', str(RELEASE / 'release-notes.md'))
-    remote = release()
+    remote = wait_for_release()
     assert remote['draft'] or api(f'git/ref/tags/{TAG}')['object']['sha'] == commit
     if remote['draft']:
         assert remote['target_commitish'] == commit
@@ -113,7 +123,7 @@ def main():
     print(f'MEMBER SHA VERIFIED {members}', flush=True)
     if release()['draft']:
         command('gh', 'release', 'edit', TAG, '--repo', REPO, '--draft=false', '--target', commit)
-    remote = release()
+    remote = wait_for_release(draft=False)
     assert not remote['draft'] and len(remote['assets']) == len(items)
     assert api(f'git/ref/tags/{TAG}')['object']['sha'] == commit
     manifest_asset = next(a for a in remote['assets'] if a['name'] == upload_manifest.name)
