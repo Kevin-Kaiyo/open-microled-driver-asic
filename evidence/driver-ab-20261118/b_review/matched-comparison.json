@@ -1,0 +1,733 @@
+{
+  "TT-normal": {
+    "ideal_inverter_cap_energy_estimate": {
+      "input_falls": 1188,
+      "VDD_V": 3.3,
+      "CIB1_fF": 10,
+      "CV2_per_rise_pJ_bit": 0.03158525390625,
+      "scope": "Full-swing charging from VDD; excludes internal short-circuit transitions, other nodes and finite rise time. Not a separately measured energy term."
+    },
+    "identical_contract_sha256": {
+      "VIN": "c2c6ded650550af83fc19ac08cd96856c3417894e10c012a9fb987984b804037",
+      "RVIN": "a9df7748cf697a15047f291ebc288dd8b2acac3590d23ea8995839adf02d2141",
+      "LVIN": "d8c043e394b81977ab9b5e7bd33f24515cc8387dae5bce316251d7be78e397eb",
+      "RCVIN": "85f3d08ae577625aefe497ff1df3a6bf6b5c9fe93a641798eb2fa37f8a1019e4",
+      "CVIN": "de7cc0e759e38197d01a6dc44867aed4bf193e4197396973915a2b9aec73409a",
+      "VDD": "1b8a1624dd22b9ef8988c7feebc8ab25941ee8fd6c0f8730d9f0d175f71aba85",
+      "RVDD": "1da323b1684a4dd577fa1c1b4070be7d8d99e627dd6dd80de5bd2327944b3855",
+      "LVDD": "332a7c1c3ae82738a79891b7b18e2ae19af7fd14cf168209637ab0dc29cb0e20",
+      "RCVDD": "e6c3c39d2d5baadfbe77f6db34ca34b0f6fa577b8b77d4d154f3a808b9a1b3df",
+      "CVDD": "353617aa9e8366b4b4bd9047a86d3deaba80b831694d140caad7123eb7c8ac3d",
+      "VREF": "e51b68b930d62958cec770e27fbb859ccbf5eb7fd601b0ad8c89797d4234a930",
+      "RREF": "707a187470b00eb4c4e5080c7d7c46f96512fe4ca69d460604ff6006e66cf4db",
+      "VLED": "7561dcaacef02127aae362ca0a7a3a67a70ffc11105d14af65ef9b5f40f45efa",
+      "RLEDSRC": "d8658e8e31c559cd3ec30762cc56da1ca63e674001b73286b957bfe658995197",
+      "VDISABLE": "d023d2659745280da66ad7af5ac2796d7b53f7c4187da39f3ca43e4c0363da7d",
+      "RDISABLE": "0729bc275317c20c2b9a5107a4364c7e5e3f903ce7d084135ed0bb33d84acf38",
+      "VD0": "3d92ac208f14b5b823362612d693b84891a91f834a4230e9f236d59ee949584b",
+      "RD0": "8df0bd22c0765e1931dbc268f1e257a1863b8731cbb08a855e09c816ae973955",
+      "VD1": "70950d9bc69797d937bacebe56e8be57151f8f51ad2347ed29886efe1760a62c",
+      "RD1": "a3bb9271cdde8c6644c76740e2b29dad792538312ed3aebb791c4d05ef8a87bc",
+      "XLED": "d705164d7e84e8a731cedbe5a6f3b03d85936777a8124c8d910b24ca09e2bde3",
+      "VSENSE": "a6f242044ba2818b1fd8bddfd250ab6bb301f82bd847e4d37be1b2ac487f17e7",
+      "CLED": "c5e5eb50d49bbe5c285ee5094e33b3f9a7886a1f8e88350ad476ffb8d4281900",
+      "RPKG": "1f40b80c2ef8064026db62971d2b7d959037248cd3afea583ee169ffaac3a09c",
+      "LPKG": "cf87a2d481e3f1c541209835c6f3ca8b6c61b1b197efc1be77dcbc26cab43e82",
+      ".temp": "7d68a3da43a9308569fa526417a9caa16fb3b623f43ae16bdb1e3c291d079922",
+      ".options": "f65d87cb88d326c523832cd40a69d036b28583a736815af381bc2d5d9a19ef4d",
+      "tran": "c76ebb195d52e16f101b53abbb81f3e1f2f3dbac9e7a49357793d6d7afc1b0c7",
+      "input/route_a.spice": "02ba88d9b7654b68b11b4db15bd8bbf316271123c8d377944335602763657a53",
+      "input/route_c.spice": "096ecd179eadf8193896b6c1177d845c666bbe93903ccf5a99020593c6da8b1d",
+      "input/receiver.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+      "input/common.spice": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8",
+      "input/led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+      "input/pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+      "input/pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46",
+      "stimulus.json": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+      "sources": {
+        "VIN": "vin_src",
+        "VDD": "vdd_src",
+        "VREF": "vref_src",
+        "VLED": "led_src",
+        "VD0": "data0_src",
+        "VD1": "data1_src",
+        "VDISABLE": "disable_src"
+      },
+      "model_sections": [
+        ".lib \"../inputs/pdk/sm141064.ngspice\" typical",
+        ".lib \"../inputs/pdk/sm141064.ngspice\" res_typical"
+      ],
+      "PVT": {
+        "model_section": "typical",
+        "temperature_C": 27,
+        "VIN_V": 3.3,
+        "VDD_V": 3.3,
+        "VLED_V": 5.0,
+        "VREF_V": 2.5,
+        "DATA_and_DISABLE_high_V": 3.3,
+        "resistor_corner": "res_typical",
+        "LED_temperature": "Static measured-IV PWL has no T coefficient; electrical IV/C and optical/RX held fixed. Only PDK devices get .temp; no LED/optical thermal qualification."
+      },
+      "training_and_filter_helper_digests": {
+        "scripts/fair_driver_v1/receiver_equal_latency_v2.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+        "scripts/microled_dynamic_v1/analyze.py": "53738c2565dca5707fa76001db929d89aa91003824c9ba2e7da626214c2d2930",
+        "scripts/blue_emitter_speed_20261110/analyze.py": "e3fba03245a7b538b640073a4d1f72f9292da112070b8d37db273ba89dd9fcc6"
+      }
+    },
+    "rows": [
+      {
+        "version": "clamp5v_buffer_soft",
+        "case": "build/driver-pvt-20261117/b/clamp5v_buffer_soft/tt-normal1-s40",
+        "mos": 44,
+        "terminal_margin_V": 0.1559572773899771,
+        "limiting_MOS": "xib1n",
+        "body_V": 0.17399425611017483,
+        "errors": 0,
+        "train_errors": 0,
+        "amp_uAeq": 18.52523502929938,
+        "timing_UI": 0.3974194208596258,
+        "positive_pJ_b": 1.1160189238355898,
+        "returned_pJ_b": 0.09821137957684131,
+        "net_pJ_b": 1.0178075442587484,
+        "last_frame": 1,
+        "cap_CIB1": {
+          "C_fF": 0.0,
+          "initial_V": 2.24669564874752e-09,
+          "final_V": 1.252653167920948e-06,
+          "delta_pJ": 0.0
+        },
+        "fault": null,
+        "energy_by_port": {
+          "VIN": {
+            "drawn": 0.29732901078059687,
+            "returned": 0.0,
+            "net": 0.29732901078059687
+          },
+          "VDD": {
+            "drawn": 0.4716819664447381,
+            "returned": 0.0,
+            "net": 0.4716819664447381
+          },
+          "VREF": {
+            "drawn": 0.01562498814725378,
+            "returned": 0.0,
+            "net": 0.01562498814725378
+          },
+          "VLED": {
+            "drawn": 0.29768484712498805,
+            "returned": 0.09240018306320487,
+            "net": 0.2052846640617832
+          },
+          "VD0": {
+            "drawn": 0.0336981113380131,
+            "returned": 0.005811196513636447,
+            "net": 0.027886914824376653
+          },
+          "VD1": {
+            "drawn": 0.0,
+            "returned": 0.0,
+            "net": 0.0
+          },
+          "VDISABLE": {
+            "drawn": 0.0,
+            "returned": 0.0,
+            "net": 0.0
+          }
+        },
+        "full_RX_train_phase_UI": 1.625,
+        "frozen_phase_UI": 1.625,
+        "f1_validation_errors": 0,
+        "steady_state_qualified": false
+      },
+      {
+        "version": "merged220c10r260",
+        "case": "build/driver-ab-20261118/b/merged220c10r260/tt-normal1-s40",
+        "mos": 46,
+        "terminal_margin_V": 0.19826969066501032,
+        "limiting_MOS": "xnand_pdata",
+        "body_V": 0.1319016492391009,
+        "errors": 0,
+        "train_errors": 0,
+        "amp_uAeq": 17.73694086209545,
+        "timing_UI": 0.38993576033212113,
+        "positive_pJ_b": 1.1485977845773594,
+        "returned_pJ_b": 0.09675577039565299,
+        "net_pJ_b": 1.0518420141817064,
+        "last_frame": 1,
+        "cap_CIB1": {
+          "C_fF": 10.000000000000002,
+          "initial_V": 2.24669564874752e-09,
+          "final_V": 1.837094967132516e-06,
+          "delta_pJ": 1.687456435311141e-14
+        },
+        "fault": null,
+        "energy_by_port": {
+          "VIN": {
+            "drawn": 0.2973271058029702,
+            "returned": 0.0,
+            "net": 0.2973271058029702
+          },
+          "VDD": {
+            "drawn": 0.5046373120970237,
+            "returned": 0.0,
+            "net": 0.5046373120970237
+          },
+          "VREF": {
+            "drawn": 0.015624988135722296,
+            "returned": 0.0,
+            "net": 0.015624988135722296
+          },
+          "VLED": {
+            "drawn": 0.29732648298632475,
+            "returned": 0.09093451440907548,
+            "net": 0.20639196857724929
+          },
+          "VD0": {
+            "drawn": 0.033681895555318433,
+            "returned": 0.005821255986577516,
+            "net": 0.02786063956874092
+          },
+          "VD1": {
+            "drawn": 0.0,
+            "returned": 0.0,
+            "net": 0.0
+          },
+          "VDISABLE": {
+            "drawn": 0.0,
+            "returned": 0.0,
+            "net": 0.0
+          }
+        },
+        "full_RX_train_phase_UI": 1.65625,
+        "frozen_phase_UI": 1.65625,
+        "f1_validation_errors": 0,
+        "steady_state_qualified": false
+      }
+    ],
+    "delta": {
+      "positive_pJ_b_by_port": {
+        "VIN": -1.9049776266433227e-06,
+        "VDD": 0.032955345652285584,
+        "VREF": -1.1531484100935074e-11,
+        "VLED": -0.00035836413866330297,
+        "VD0": -1.6215782694666003e-05,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "amp_uAeq": -0.7882941672039294,
+      "timing_ps": -4.045221906759273,
+      "positive_pJ_b": 0.03257886074176963,
+      "positive_percent": 2.9192032541707214
+    }
+  },
+  "SS-fault": {
+    "ideal_inverter_cap_energy_estimate": {
+      "input_falls": 1188,
+      "VDD_V": 3.135,
+      "CIB1_fF": 10,
+      "CV2_per_rise_pJ_bit": 0.02850569165039062,
+      "scope": "Full-swing charging from VDD; excludes internal short-circuit transitions, other nodes and finite rise time. Not a separately measured energy term."
+    },
+    "identical_contract_sha256": {
+      "VIN": "47e5156fa2b65c0ff5c0e63687455594a3a413476c78488e2e3b86d0365fa93b",
+      "RVIN": "a9df7748cf697a15047f291ebc288dd8b2acac3590d23ea8995839adf02d2141",
+      "LVIN": "d8c043e394b81977ab9b5e7bd33f24515cc8387dae5bce316251d7be78e397eb",
+      "RCVIN": "85f3d08ae577625aefe497ff1df3a6bf6b5c9fe93a641798eb2fa37f8a1019e4",
+      "CVIN": "de7cc0e759e38197d01a6dc44867aed4bf193e4197396973915a2b9aec73409a",
+      "VDD": "0a824e0dd34fe40deb5826475d278a399670d85ded2a6ef3aacf98a49be47f51",
+      "RVDD": "1da323b1684a4dd577fa1c1b4070be7d8d99e627dd6dd80de5bd2327944b3855",
+      "LVDD": "332a7c1c3ae82738a79891b7b18e2ae19af7fd14cf168209637ab0dc29cb0e20",
+      "RCVDD": "e6c3c39d2d5baadfbe77f6db34ca34b0f6fa577b8b77d4d154f3a808b9a1b3df",
+      "CVDD": "353617aa9e8366b4b4bd9047a86d3deaba80b831694d140caad7123eb7c8ac3d",
+      "VREF": "e51b68b930d62958cec770e27fbb859ccbf5eb7fd601b0ad8c89797d4234a930",
+      "RREF": "707a187470b00eb4c4e5080c7d7c46f96512fe4ca69d460604ff6006e66cf4db",
+      "VLED": "a9947c30135082909ab4993929b66effaade5e5b792612ecfc7951ce9d517475",
+      "RLEDSRC": "d8658e8e31c559cd3ec30762cc56da1ca63e674001b73286b957bfe658995197",
+      "VDISABLE": "4ab06aa2461312cb77175699c803c328b3808f3c3f2e58d7ec331154d117c28c",
+      "RDISABLE": "0729bc275317c20c2b9a5107a4364c7e5e3f903ce7d084135ed0bb33d84acf38",
+      "VD0": "379eb48f75d9992e33dc359cfc2c338364d2c7398fb8778d4100504b424eec7b",
+      "RD0": "8df0bd22c0765e1931dbc268f1e257a1863b8731cbb08a855e09c816ae973955",
+      "VD1": "70950d9bc69797d937bacebe56e8be57151f8f51ad2347ed29886efe1760a62c",
+      "RD1": "a3bb9271cdde8c6644c76740e2b29dad792538312ed3aebb791c4d05ef8a87bc",
+      "XLED": "d705164d7e84e8a731cedbe5a6f3b03d85936777a8124c8d910b24ca09e2bde3",
+      "VSENSE": "a6f242044ba2818b1fd8bddfd250ab6bb301f82bd847e4d37be1b2ac487f17e7",
+      "CLED": "c5e5eb50d49bbe5c285ee5094e33b3f9a7886a1f8e88350ad476ffb8d4281900",
+      "RPKG": "1f40b80c2ef8064026db62971d2b7d959037248cd3afea583ee169ffaac3a09c",
+      "LPKG": "cf87a2d481e3f1c541209835c6f3ca8b6c61b1b197efc1be77dcbc26cab43e82",
+      ".temp": "83a33f15ba0f2b25798be3664dec5de330bf1a51940769449c79ef1cab7ebe3e",
+      ".options": "f65d87cb88d326c523832cd40a69d036b28583a736815af381bc2d5d9a19ef4d",
+      "tran": "8c8e99f236b3ce321c262d8ada0138bfb8f02c25fa37b7c4eb3092673c3e2348",
+      "input/route_a.spice": "02ba88d9b7654b68b11b4db15bd8bbf316271123c8d377944335602763657a53",
+      "input/route_c.spice": "096ecd179eadf8193896b6c1177d845c666bbe93903ccf5a99020593c6da8b1d",
+      "input/receiver.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+      "input/common.spice": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8",
+      "input/led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+      "input/pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+      "input/pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46",
+      "stimulus.json": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+      "sources": {
+        "VIN": "vin_src",
+        "VDD": "vdd_src",
+        "VREF": "vref_src",
+        "VLED": "led_src",
+        "VD0": "data0_src",
+        "VD1": "data1_src",
+        "VDISABLE": "disable_src"
+      },
+      "model_sections": [
+        ".lib \"../inputs/pdk/sm141064.ngspice\" ss",
+        ".lib \"../inputs/pdk/sm141064.ngspice\" res_typical"
+      ],
+      "PVT": {
+        "model_section": "ss",
+        "temperature_C": 85,
+        "VIN_V": 3.135,
+        "VDD_V": 3.135,
+        "VLED_V": 4.75,
+        "VREF_V": 2.5,
+        "DATA_and_DISABLE_high_V": 3.135,
+        "resistor_corner": "res_typical",
+        "LED_temperature": "Static measured-IV PWL has no T coefficient; electrical IV/C and optical/RX held fixed. Only PDK devices get .temp; no LED/optical thermal qualification."
+      },
+      "training_and_filter_helper_digests": {
+        "scripts/fair_driver_v1/receiver_equal_latency_v2.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+        "scripts/microled_dynamic_v1/analyze.py": "53738c2565dca5707fa76001db929d89aa91003824c9ba2e7da626214c2d2930",
+        "scripts/blue_emitter_speed_20261110/analyze.py": "e3fba03245a7b538b640073a4d1f72f9292da112070b8d37db273ba89dd9fcc6"
+      }
+    },
+    "rows": [
+      {
+        "version": "clamp5v_buffer_soft",
+        "case": "build/driver-pvt-20261117/b/clamp5v_buffer_soft/ss_hot_low-full-s40",
+        "mos": 44,
+        "terminal_margin_V": 0.2829910646656999,
+        "limiting_MOS": "xib1n",
+        "body_V": 0.2607208968432195,
+        "errors": 0,
+        "train_errors": 0,
+        "amp_uAeq": 16.49705147930817,
+        "timing_UI": 0.4096175711489767,
+        "positive_pJ_b": 1.0284660557566905,
+        "returned_pJ_b": 0.07876088445888671,
+        "net_pJ_b": 0.9497051712978037,
+        "last_frame": 2,
+        "cap_CIB1": {
+          "C_fF": 0.0,
+          "initial_V": 4.678212440682431e-05,
+          "final_V": 4.676449691905204e-05,
+          "delta_pJ": -0.0
+        },
+        "fault": {
+          "off_max_uA": 0.04357719178054392,
+          "last_over_0p1uA_ns": 5.07346911157686,
+          "recovery_upper_ns": 80.99662162162167,
+          "remaining_ns": 3755.135135135135,
+          "release_peak_OUT": {
+            "time_after_ns": 17.248634065878882,
+            "nodes": {
+              "out": 3.068301276618979,
+              "led_a": 4.674788809551803,
+              "led_k": 3.068321894131504,
+              "iso_p": 3.61908363161709,
+              "data_safe": -4.293377013811813e-05,
+              "ib1": 3.134946918231538,
+              "xdrv.bias": 1.240625680170929
+            }
+          }
+        },
+        "energy_by_port": {
+          "VIN": {
+            "drawn": 0.2698474232684345,
+            "returned": 0.0,
+            "net": 0.2698474232684345
+          },
+          "VDD": {
+            "drawn": 0.44839917543231883,
+            "returned": 0.0,
+            "net": 0.44839917543231883
+          },
+          "VREF": {
+            "drawn": 0.015624987501386106,
+            "returned": 0.0,
+            "net": 0.015624987501386106
+          },
+          "VLED": {
+            "drawn": 0.26365047132296177,
+            "returned": 0.07336979236581788,
+            "net": 0.19028067895714387
+          },
+          "VD0": {
+            "drawn": 0.03094399823158929,
+            "returned": 0.005391092093068826,
+            "net": 0.025552906138520463
+          },
+          "VD1": {
+            "drawn": 0.0,
+            "returned": 0.0,
+            "net": 0.0
+          },
+          "VDISABLE": {
+            "drawn": 0.0,
+            "returned": 0.0,
+            "net": 0.0
+          }
+        },
+        "full_RX_train_phase_UI": 1.84375,
+        "frozen_phase_UI": 1.84375,
+        "f1_validation_errors": 625,
+        "steady_state_qualified": false
+      },
+      {
+        "version": "merged220c10r260",
+        "case": "build/driver-ab-20261118/b/merged220c10r260/ss_hot_low-full-s40",
+        "mos": 46,
+        "terminal_margin_V": 0.34605896536871006,
+        "limiting_MOS": "xib1n",
+        "body_V": 0.260358257402499,
+        "errors": 0,
+        "train_errors": 0,
+        "amp_uAeq": 14.202813325118981,
+        "timing_UI": 0.3659988635343932,
+        "positive_pJ_b": 1.063927426364271,
+        "returned_pJ_b": 0.0767949895338567,
+        "net_pJ_b": 0.9871324368304144,
+        "last_frame": 2,
+        "cap_CIB1": {
+          "C_fF": 10.000000000000002,
+          "initial_V": 0.00012272857403771654,
+          "final_V": 0.0001226980452850406,
+          "delta_pJ": -3.74628428069781e-14
+        },
+        "fault": {
+          "off_max_uA": 0.043293947062789356,
+          "last_over_0p1uA_ns": 5.935885298480396,
+          "recovery_upper_ns": 3770.211148648649,
+          "remaining_ns": 65.94594594594584,
+          "release_peak_OUT": {
+            "time_after_ns": 34.075038688659916,
+            "nodes": {
+              "out": 2.149244436046824,
+              "led_a": 4.654686977851183,
+              "led_k": 2.149266611404597,
+              "iso_p": 3.691891726293648,
+              "data_safe": 3.370845072967188e-05,
+              "ib1": -1.148799938507695e-05,
+              "xdrv.bias": 1.230418944467295
+            }
+          }
+        },
+        "energy_by_port": {
+          "VIN": {
+            "drawn": 0.2710172291070195,
+            "returned": 0.0,
+            "net": 0.2710172291070195
+          },
+          "VDD": {
+            "drawn": 0.47861444384674745,
+            "returned": 0.0,
+            "net": 0.47861444384674745
+          },
+          "VREF": {
+            "drawn": 0.01562498750113854,
+            "returned": 0.0,
+            "net": 0.01562498750113854
+          },
+          "VLED": {
+            "drawn": 0.26774747257048964,
+            "returned": 0.07139194010333305,
+            "net": 0.19635553246715662
+          },
+          "VD0": {
+            "drawn": 0.030923293338876025,
+            "returned": 0.005403049430523647,
+            "net": 0.025520243908352374
+          },
+          "VD1": {
+            "drawn": 0.0,
+            "returned": 0.0,
+            "net": 0.0
+          },
+          "VDISABLE": {
+            "drawn": 0.0,
+            "returned": 0.0,
+            "net": 0.0
+          }
+        },
+        "full_RX_train_phase_UI": 1.890625,
+        "frozen_phase_UI": 1.890625,
+        "f1_validation_errors": 625,
+        "steady_state_qualified": false
+      }
+    ],
+    "delta": {
+      "positive_pJ_b_by_port": {
+        "VIN": 0.0011698058385849475,
+        "VDD": 0.03021526841442862,
+        "VREF": -2.475658567036021e-13,
+        "VLED": 0.004097001247527876,
+        "VD0": -2.0704892713264283e-05,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "amp_uAeq": -2.2942381541891876,
+      "timing_ps": -23.577679791666743,
+      "positive_pJ_b": 0.03546137060758059,
+      "positive_percent": 3.4479864852214215
+    }
+  },
+  "FF-fault": {
+    "ideal_inverter_cap_energy_estimate": {
+      "input_falls": 1188,
+      "VDD_V": 3.465,
+      "CIB1_fF": 10,
+      "CV2_per_rise_pJ_bit": 0.03482274243164062,
+      "scope": "Full-swing charging from VDD; excludes internal short-circuit transitions, other nodes and finite rise time. Not a separately measured energy term."
+    },
+    "identical_contract_sha256": {
+      "VIN": "bd68b2abb3fdad633fe01a5f494dfa713f9e5bcbeb9c71ba322ae536c059dc47",
+      "RVIN": "a9df7748cf697a15047f291ebc288dd8b2acac3590d23ea8995839adf02d2141",
+      "LVIN": "d8c043e394b81977ab9b5e7bd33f24515cc8387dae5bce316251d7be78e397eb",
+      "RCVIN": "85f3d08ae577625aefe497ff1df3a6bf6b5c9fe93a641798eb2fa37f8a1019e4",
+      "CVIN": "de7cc0e759e38197d01a6dc44867aed4bf193e4197396973915a2b9aec73409a",
+      "VDD": "463b6ffab0000e7b4b3acb8ef3a03edbf4740741ce1e17ea6607a50e959ab885",
+      "RVDD": "1da323b1684a4dd577fa1c1b4070be7d8d99e627dd6dd80de5bd2327944b3855",
+      "LVDD": "332a7c1c3ae82738a79891b7b18e2ae19af7fd14cf168209637ab0dc29cb0e20",
+      "RCVDD": "e6c3c39d2d5baadfbe77f6db34ca34b0f6fa577b8b77d4d154f3a808b9a1b3df",
+      "CVDD": "353617aa9e8366b4b4bd9047a86d3deaba80b831694d140caad7123eb7c8ac3d",
+      "VREF": "e51b68b930d62958cec770e27fbb859ccbf5eb7fd601b0ad8c89797d4234a930",
+      "RREF": "707a187470b00eb4c4e5080c7d7c46f96512fe4ca69d460604ff6006e66cf4db",
+      "VLED": "ce29d1f53ac5d06eaa547af2fcce7fdd3546544a8ba45a77e231ccb76f30ff75",
+      "RLEDSRC": "d8658e8e31c559cd3ec30762cc56da1ca63e674001b73286b957bfe658995197",
+      "VDISABLE": "9dfc084a96e35a017d70669a4944fc5d567abf1630ca82d4ebd473efc7b3f6fd",
+      "RDISABLE": "0729bc275317c20c2b9a5107a4364c7e5e3f903ce7d084135ed0bb33d84acf38",
+      "VD0": "fab5bc429c453a4fffb8ae8c6a78dea9e8cbca0fee86f212b8c342f690d2542a",
+      "RD0": "8df0bd22c0765e1931dbc268f1e257a1863b8731cbb08a855e09c816ae973955",
+      "VD1": "70950d9bc69797d937bacebe56e8be57151f8f51ad2347ed29886efe1760a62c",
+      "RD1": "a3bb9271cdde8c6644c76740e2b29dad792538312ed3aebb791c4d05ef8a87bc",
+      "XLED": "d705164d7e84e8a731cedbe5a6f3b03d85936777a8124c8d910b24ca09e2bde3",
+      "VSENSE": "a6f242044ba2818b1fd8bddfd250ab6bb301f82bd847e4d37be1b2ac487f17e7",
+      "CLED": "c5e5eb50d49bbe5c285ee5094e33b3f9a7886a1f8e88350ad476ffb8d4281900",
+      "RPKG": "1f40b80c2ef8064026db62971d2b7d959037248cd3afea583ee169ffaac3a09c",
+      "LPKG": "cf87a2d481e3f1c541209835c6f3ca8b6c61b1b197efc1be77dcbc26cab43e82",
+      ".temp": "48e74e369b90525ba218d165f00fc051c4a75424748d787cef897a7019e875f6",
+      ".options": "f65d87cb88d326c523832cd40a69d036b28583a736815af381bc2d5d9a19ef4d",
+      "tran": "8c8e99f236b3ce321c262d8ada0138bfb8f02c25fa37b7c4eb3092673c3e2348",
+      "input/route_a.spice": "02ba88d9b7654b68b11b4db15bd8bbf316271123c8d377944335602763657a53",
+      "input/route_c.spice": "096ecd179eadf8193896b6c1177d845c666bbe93903ccf5a99020593c6da8b1d",
+      "input/receiver.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+      "input/common.spice": "280abc05195bc5ddc665379023999b55f4ec4a29d007eabd87c2f5ed9cc03fc8",
+      "input/led.spice": "51dabe11ee4a3fbbb7bf387e422eaa4faa0203d149a3c5701ab1dfaeba9734cc",
+      "input/pdk/design.ngspice": "091cb530bf85160a1f07878fb81f789ca367d018991c8ab41a584cd1a85c6692",
+      "input/pdk/sm141064.ngspice": "677822db50bf8968f77854bb455006ac5c245deb46ecfc8b352934e752135c46",
+      "stimulus.json": "59e4c8d4cc9d316f032951680e7c721c5e5f7bba23725b518a52aebbd977c4e3",
+      "sources": {
+        "VIN": "vin_src",
+        "VDD": "vdd_src",
+        "VREF": "vref_src",
+        "VLED": "led_src",
+        "VD0": "data0_src",
+        "VD1": "data1_src",
+        "VDISABLE": "disable_src"
+      },
+      "model_sections": [
+        ".lib \"../inputs/pdk/sm141064.ngspice\" ff",
+        ".lib \"../inputs/pdk/sm141064.ngspice\" res_typical"
+      ],
+      "PVT": {
+        "model_section": "ff",
+        "temperature_C": -40,
+        "VIN_V": 3.465,
+        "VDD_V": 3.465,
+        "VLED_V": 5.25,
+        "VREF_V": 2.5,
+        "DATA_and_DISABLE_high_V": 3.465,
+        "resistor_corner": "res_typical",
+        "LED_temperature": "Static measured-IV PWL has no T coefficient; electrical IV/C and optical/RX held fixed. Only PDK devices get .temp; no LED/optical thermal qualification."
+      },
+      "training_and_filter_helper_digests": {
+        "scripts/fair_driver_v1/receiver_equal_latency_v2.py": "54e016be473be37a32d2da84956009e6cab78942c6206f3f3c16a086d80195e0",
+        "scripts/microled_dynamic_v1/analyze.py": "53738c2565dca5707fa76001db929d89aa91003824c9ba2e7da626214c2d2930",
+        "scripts/blue_emitter_speed_20261110/analyze.py": "e3fba03245a7b538b640073a4d1f72f9292da112070b8d37db273ba89dd9fcc6"
+      }
+    },
+    "rows": [
+      {
+        "version": "clamp5v_buffer_soft",
+        "case": "build/driver-ab-20261118/b_review/reference/clamp5v_buffer_soft/ff_cold_high-full-s40",
+        "mos": 44,
+        "terminal_margin_V": -0.05153677115577615,
+        "limiting_MOS": "xdrv.xbase",
+        "body_V": 0.2857983995299481,
+        "errors": 0,
+        "train_errors": 0,
+        "amp_uAeq": 19.564287355016695,
+        "timing_UI": 0.38536300635658094,
+        "positive_pJ_b": 1.251591453019833,
+        "returned_pJ_b": 0.11711556351874718,
+        "net_pJ_b": 1.1344758895010856,
+        "last_frame": 2,
+        "cap_CIB1": {
+          "C_fF": 0.0,
+          "initial_V": 8.696761967926975e-10,
+          "final_V": -1.155776686570362e-10,
+          "delta_pJ": -0.0
+        },
+        "fault": {
+          "off_max_uA": 0.009578881120664537,
+          "last_over_0p1uA_ns": 3.826908151902292,
+          "recovery_upper_ns": 60.79391891891923,
+          "remaining_ns": 3775.1351351351354,
+          "release_peak_OUT": {
+            "time_after_ns": 13.157215844178078,
+            "nodes": {
+              "out": 3.681536771155776,
+              "led_a": 5.206309803303447,
+              "led_k": 3.681553857840698,
+              "iso_p": 4.267209067306018,
+              "data_safe": 0.0001152877472238815,
+              "ib1": 3.461040189657333,
+              "xdrv.bias": 0.9913221808264882
+            }
+          }
+        },
+        "energy_by_port": {
+          "VIN": {
+            "drawn": 0.32845356254604174,
+            "returned": 0.0,
+            "net": 0.32845356254604174
+          },
+          "VDD": {
+            "drawn": 0.5383177283559892,
+            "returned": 0.0,
+            "net": 0.5383177283559892
+          },
+          "VREF": {
+            "drawn": 0.015624987495911881,
+            "returned": 0.0,
+            "net": 0.015624987495911881
+          },
+          "VLED": {
+            "drawn": 0.3326573934362104,
+            "returned": 0.11096935544241344,
+            "net": 0.221688037993797
+          },
+          "VD0": {
+            "drawn": 0.03653778118567964,
+            "returned": 0.0061462080763337295,
+            "net": 0.03039157310934591
+          },
+          "VD1": {
+            "drawn": 0.0,
+            "returned": 0.0,
+            "net": 0.0
+          },
+          "VDISABLE": {
+            "drawn": 0.0,
+            "returned": 0.0,
+            "net": 0.0
+          }
+        },
+        "full_RX_train_phase_UI": 1.46875,
+        "frozen_phase_UI": 1.46875,
+        "f1_validation_errors": 615,
+        "steady_state_qualified": false
+      },
+      {
+        "version": "merged220c10r260",
+        "case": "build/driver-ab-20261118/b/merged220c10r260/ff_cold_high-full-s40",
+        "mos": 46,
+        "terminal_margin_V": 0.03361898324852186,
+        "limiting_MOS": "xdrv.xbase",
+        "body_V": 0.263732442950889,
+        "errors": 0,
+        "train_errors": 0,
+        "amp_uAeq": 20.099644343606407,
+        "timing_UI": 0.4010821788299531,
+        "positive_pJ_b": 1.2817746066793045,
+        "returned_pJ_b": 0.11618910321987064,
+        "net_pJ_b": 1.1655855034594336,
+        "last_frame": 2,
+        "cap_CIB1": {
+          "C_fF": 10.000000000000002,
+          "initial_V": 3.136316058403889e-08,
+          "final_V": 3.169276895855003e-08,
+          "delta_pJ": 1.0391881219910887e-19
+        },
+        "fault": {
+          "off_max_uA": 0.0069081276607571036,
+          "last_over_0p1uA_ns": 4.594199720084786,
+          "recovery_upper_ns": 60.81081081081101,
+          "remaining_ns": 3775.135135135135,
+          "release_peak_OUT": {
+            "time_after_ns": 26.39392047235199,
+            "nodes": {
+              "out": 2.866795126038469,
+              "led_a": 5.195106909337705,
+              "led_k": 2.866814712553269,
+              "iso_p": 4.321872058450306,
+              "data_safe": -1.246817928015187e-05,
+              "ib1": 3.464951023573722,
+              "xdrv.bias": 0.969552268383634
+            }
+          }
+        },
+        "energy_by_port": {
+          "VIN": {
+            "drawn": 0.32614839353572717,
+            "returned": 0.0,
+            "net": 0.32614839353572717
+          },
+          "VDD": {
+            "drawn": 0.57655910044505,
+            "returned": 0.0,
+            "net": 0.57655910044505
+          },
+          "VREF": {
+            "drawn": 0.015624987496785476,
+            "returned": 0.0,
+            "net": 0.015624987496785476
+          },
+          "VLED": {
+            "drawn": 0.3269224790147476,
+            "returned": 0.11003444858941205,
+            "net": 0.2168880304253355
+          },
+          "VD0": {
+            "drawn": 0.03651964618699425,
+            "returned": 0.006154654630458582,
+            "net": 0.03036499155653567
+          },
+          "VD1": {
+            "drawn": 0.0,
+            "returned": 0.0,
+            "net": 0.0
+          },
+          "VDISABLE": {
+            "drawn": 0.0,
+            "returned": 0.0,
+            "net": 0.0
+          }
+        },
+        "full_RX_train_phase_UI": 1.5,
+        "frozen_phase_UI": 1.5,
+        "f1_validation_errors": 615,
+        "steady_state_qualified": false
+      }
+    ],
+    "delta": {
+      "positive_pJ_b_by_port": {
+        "VIN": -0.0023051690103145783,
+        "VDD": 0.038241372089060754,
+        "VREF": 8.735945994375882e-13,
+        "VLED": -0.0057349144214628445,
+        "VD0": -1.813499868538737e-05,
+        "VD1": 0.0,
+        "VDISABLE": 0.0
+      },
+      "amp_uAeq": 0.5353569885897116,
+      "timing_ps": 8.496849985606582,
+      "positive_pJ_b": 0.03018315365947144,
+      "positive_percent": 2.4115819572469777
+    }
+  }
+}
