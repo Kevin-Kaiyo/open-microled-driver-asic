@@ -31,7 +31,10 @@ try {
     if (width===1280) {
       await page.evaluate(prefix=>{
         for(const a of document.querySelectorAll('a[href]')){
-          if (a.href.startsWith(prefix)) a.href='https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/driver-ab-20261118/'+a.href.slice(prefix.length);
+          if (!a.href.startsWith(prefix)) continue;
+          const repoPath = a.href.slice(prefix.length);
+          const ref = repoPath.startsWith('evidence/') ? '445863f722790d605654ed18bd77e864a79650d6' : 'main';
+          a.href = 'https://github.com/Kevin-Kaiyo/open-microled-driver-asic/blob/'+ref+'/'+repoPath;
         }
       },pathToFileURL(root).href.replace(/\/$/,'')+'/');
       await page.pdf({path:pdf, preferCSSPageSize:true, printBackground:true,
